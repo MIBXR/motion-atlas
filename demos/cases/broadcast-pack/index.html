@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>赛事转播图形包 — Motion Atlas Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage" id="stage" aria-label="转播图形演示">
+    <div class="arena" id="arena" aria-hidden="true">
+      <div class="beams" id="beams"></div>
+      <div class="floor" id="floor"></div>
+      <div class="crowd"></div>
+    </div>
+
+    <section class="bug" id="bug" aria-label="比分">
+      <div class="bug-event" id="bugEvent"></div>
+      <div class="bug-row">
+        <span class="t t-a"><i></i><b class="code"></b></span>
+        <span class="sc" id="scA"></span><span class="sep">:</span><span class="sc" id="scB"></span>
+        <span class="t t-b"><b class="code"></b><i></i></span>
+      </div>
+      <div class="bug-flash" id="bugFlash"></div>
+    </section>
+
+    <section class="l3" id="l3" aria-label="人物条">
+      <i class="l3-bar" id="l3Bar"></i>
+      <div class="l3-plate" id="l3Plate"><p class="l3-tag" id="l3Tag"></p><p class="l3-name" id="l3Name"></p><p class="l3-role" id="l3Role"></p></div>
+    </section>
+
+    <section class="stats" id="stats" aria-label="数据对比">
+      <header class="st-head"><b class="st-a"></b><span>MATCH STATS</span><b class="st-b"></b></header>
+      <div class="st-rows" id="stRows"></div>
+    </section>
+
+    <p class="point" id="point" aria-hidden="true"><span id="pointText"></span></p>
+
+    <div class="replay" id="replay" aria-hidden="true"><svg class="rp-act" viewBox="0 0 1600 900" preserveAspectRatio="none"><path id="rpTrail" fill="none" stroke="#c6ff3d" stroke-width="10" stroke-linecap="round"/><circle id="rpBall" r="18" fill="#fff"/></svg><span class="rp-tag">REPLAY</span><span class="rp-rate">0.5×</span><span class="rp-tc" id="rpTc"></span></div>
+
+    <footer class="ticker" id="ticker" aria-label="滚动新闻"><b>LIVE</b><span class="tk-track"><span class="tk-text" id="tkText"></span></span></footer>
+
+    <section class="winner" id="winner" aria-hidden="true"><p class="w-k">GRAND FINAL CHAMPION</p><p class="w-name" id="wName"></p><p class="w-score" id="wScore"></p></section>
+
+    <div class="stinger" id="stinger" aria-hidden="true"></div>
+    <section class="logo" id="logo" aria-hidden="true"><p class="lg-a" id="lgA"></p><p class="lg-b" id="lgB"></p></section>
+    <div class="beat-dot" id="beatDot" aria-hidden="true"></div>
+  </main>
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

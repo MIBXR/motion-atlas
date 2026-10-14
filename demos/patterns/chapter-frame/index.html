@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>章节主题：标签、强调色与四角框线 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #f2efe8; --ink: #16171a; --accent: #d9632b; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); color: var(--ink); font-family: "Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+  .world { position: absolute; inset: 0; background-image: linear-gradient(rgba(22,23,26,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(22,23,26,.07) 1px, transparent 1px); background-size: 64px 64px; }
+  .route { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .route path { fill: none; stroke-linecap: round; }
+  .frame { position: absolute; inset: clamp(8px, 1.2vw, 20px); pointer-events: none; }
+  .frame svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .frame path { fill: none; stroke: var(--accent); stroke-width: 3; }
+  .frame i { position: absolute; width: 14px; height: 14px; background: var(--accent); }
+  .tl { left: -6px; top: -6px; } .tr { right: -6px; top: -6px; } .bl { left: -6px; bottom: -6px; } .br { right: -6px; bottom: -6px; }
+  .tag { position: absolute; left: clamp(24px, 4vw, 64px); top: clamp(40px, 9vh, 90px); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .chip { padding: 7px 11px; background: var(--accent); color: #fff; font: 700 12px/1 var(--f-mono); letter-spacing: .24em; }
+  .title { font: 700 clamp(16px, 1.6vw, 24px)/1.2 inherit; }
+  .icon { width: 26px; height: 26px; color: var(--accent); }
+  .card { position: absolute; right: 8%; top: 30%; width: min(40vw, 640px); aspect-ratio: 16 / 10; border-radius: 6px; background: linear-gradient(160deg, #cfd9e2, #8fa3b4); box-shadow: 0 18px 50px rgba(0,0,0,.2), 0 0 0 3px var(--accent); }
+  @media (max-width: 720px) { .card { left: 16px; right: 16px; width: auto; top: 40%; } }
+</style>
+</head>
+<body>
+<div class="world" aria-hidden="true"></div>
+<svg class="route" aria-hidden="true"><path id="casing" stroke="#fff" stroke-width="9"/><path id="rail" stroke-width="4"/></svg>
+<div class="card" aria-hidden="true"></div>
+<div class="frame" id="frame" aria-hidden="true"><svg preserveAspectRatio="none"><path id="fpath"/></svg><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+<div class="tag" id="tag" role="status"><span class="chip" id="chip"></span><b class="title" id="title"></b>
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path id="glyph" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 ===== */
+const CONFIG = {
+  base: '#d9632b', // 无章节时的强调色
+  chapters: [
+    { t: 0.3, until: 3.6, tag: 'POETRY TRAIL', title: '苏轼 · 饮湖上初晴后雨', accent: '#1f8f84', glyph: 'M4 18c4-2 6-8 8-12 2 4 4 10 8 12M8 18h8' },
+    { t: 4.3, until: 7.6, tag: 'GARDEN CITY', title: '平江路 · 水巷与园林', accent: '#3d58c8', glyph: 'M4 20V9l8-5 8 5v11M9 20v-6h6v6' },
+    { t: 8.3, until: 11.6, tag: 'NIGHT RIVER', title: '外滩 · 江边的灯', accent: '#c8452d', glyph: 'M3 16c3-2 6 2 9 0s6 2 9 0M12 4v8M9 7h6' },
+  ],
+  colorIn: 0.4, colorOut: 0.6, frameDraw: 0.8, cornerStagger: 0.12, duration: 12.4,
+};
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s);
+const hex = (h) => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+const mix = (a, b, p) => `rgb(${hex(a).map((v, i) => Math.round(MK.lerp(v, hex(b)[i], p))).join(',')})`;
+function render(t) {
+  const ch = CONFIG.chapters.find((c) => t >= c.t - 0.1 && t <= c.until + 0.6);
+  const vis = ch ? MK.env(t, ch.t, ch.until, 0.5, 0.5) : 0;
+  const accent = ch ? mix(CONFIG.base, ch.accent, MK.env(t, ch.t, ch.until, CONFIG.colorIn, CONFIG.colorOut)) : CONFIG.base;
+  document.documentElement.style.setProperty('--accent', accent);
+  const w = innerWidth, h = innerHeight;
+  $('#casing').setAttribute('d', `M${w * 0.1} ${h * 0.85}C${w * 0.3} ${h * 0.6} ${w * 0.45} ${h * 0.75} ${w * 0.6} ${h * 0.45}`);
+  $('#rail').setAttribute('d', `M${w * 0.1} ${h * 0.85}C${w * 0.3} ${h * 0.6} ${w * 0.45} ${h * 0.75} ${w * 0.6} ${h * 0.45}`);
+  $('#rail').setAttribute('stroke', accent);
+  const tag = $('#tag'), frame = $('#frame');
+  tag.style.opacity = vis; frame.style.opacity = vis;
+  if (!ch) return;
+  // 标签：色块从左擦出，标题打字
+  $('#chip').textContent = ch.tag;
+  $('#chip').style.clipPath = `inset(0 ${(1 - MK.seg(t, ch.t, 0.35, MK.ease.outCubic)) * 100}% 0 0)`;
+  $('#title').textContent = MK.typeText(ch.title, MK.seg(t, ch.t + 0.25, 0.7, MK.ease.linear));
+  $('#glyph').setAttribute('d', ch.glyph);
+  $('.icon').style.transform = `rotate(${(1 - MK.seg(t, ch.t + 0.6, 0.4, MK.ease.outBack)) * -25}deg) scale(${MK.seg(t, ch.t + 0.6, 0.4, MK.ease.outBack)})`;
+  // 框线：周长描边 + 四角方块错峰回弹
+  const fw = frame.clientWidth, fh = frame.clientHeight, per = 2 * (fw + fh);
+  const path = $('#fpath');
+  path.setAttribute('d', `M0 0H${fw}V${fh}H0Z`);
+  path.style.strokeDasharray = per;
+  path.style.strokeDashoffset = per * (1 - MK.seg(t, ch.t + 0.1, CONFIG.frameDraw, MK.ease.inOutCubic));
+  frame.querySelectorAll('i').forEach((c, i) => { c.style.transform = `scale(${MK.seg(t, ch.t + 0.2 + i * CONFIG.cornerStagger, 0.3, MK.ease.outBack)})`; });
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: CONFIG.chapters.map((c) => ({ t: c.t, label: c.tag })) });
+MK.expose(tl);
+MK.controls(tl);
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 2 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+addEventListener('resize', () => tl.seek(tl.time));
+</script>
+</body>
+</html>

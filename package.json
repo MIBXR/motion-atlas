@@ -1,0 +1,20 @@
+{
+  "name": "motion-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "多媒体动态视觉参考库：影像视频、交互操作台与交互展示台的案例、巧思、节拍表、可复用 Prompt 与可逐帧渲染的 Demo。",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs --port 4321",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "capture": "node scripts/capture.mjs",
+    "render": "node scripts/render.mjs",
+    "frames": "node scripts/frames.mjs",
+    "atlas": "node scripts/atlas.mjs"
+  }
+}

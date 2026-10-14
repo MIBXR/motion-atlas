@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>翻牌与流光 — Motion Atlas 巧思</title>
+<style>
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: radial-gradient(ellipse at 50% 60%, #2a1f6b, #0b0826 70%); font-family: "Bahnschrift","Segoe UI","Microsoft YaHei",sans-serif; color: #fff; }
+  .row { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; gap: clamp(10px, 2vw, 28px); perspective: 1200px; }
+  .card { position: relative; width: clamp(110px, 16vw, 220px); aspect-ratio: 5 / 7; transform-style: preserve-3d; cursor: pointer; border: 0; padding: 0; background: none; }
+  .card:focus-visible { outline: 3px solid #fff; outline-offset: 6px; }
+  .face { position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden; overflow: hidden; }
+  .back { background: repeating-linear-gradient(45deg, #1c1650 0 10px, #241c66 10px 20px); border: 2px solid var(--rc); box-shadow: 0 0 26px var(--rc); }
+  .front { transform: rotateY(180deg); background: linear-gradient(160deg, var(--c1), var(--c2)); border: 2px solid var(--rc); display: grid; align-content: end; padding: 12%; color: #fff; text-align: left; }
+  .front svg { position: absolute; left: 50%; top: 40%; width: 56%; transform: translate(-50%, -50%); }
+  .front b { position: relative; font: 800 clamp(14px, 1.6vw, 22px)/1 inherit; letter-spacing: .12em; }
+  .sheen { position: absolute; inset: -40%; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.8) 50%, transparent 60%); pointer-events: none; }
+  .glow { position: absolute; inset: -8%; border-radius: 22px; box-shadow: 0 0 60px 10px var(--rc); opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="row" id="row"></div>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 翻牌：rotateY 0→180°（outBack，略超过再回正，像真的翻过去）；翻到正面后一道斜向流光扫过；
+ * 稀有卡在翻面前多停一拍，翻开后外发光脉冲并轻微放大。点击任意卡片可单独重翻。 */
+const CONFIG = {
+  cards: [{ r: 3, name: 'DRIFT', c: ['#1d3f8f', '#4aa8ff'] }, { r: 4, name: 'VESPER', c: ['#3d1f8f', '#b06bff'] }, { r: 3, name: 'TIDE', c: ['#1d3f8f', '#4aa8ff'] }, { r: 5, name: 'AURELIA', c: ['#8f5a0c', '#ffcf4a'] }],
+  rc: { 3: '#4aa8ff', 4: '#b06bff', 5: '#ffcf4a' },
+  start: 0.4, stagger: 0.25, flipDur: 0.45, rarePause: 0.6, sheenDelay: 0.3, sheenDur: 0.6, duration: 4.6,
+};
+/* ================================== */
+const MK = MotionKit, row = document.getElementById('row');
+const STAR = '<path d="M50 6l12 30 32 2-25 20 9 32-28-18-28 18 9-32L6 38l32-2z" fill="#fff"/>';
+row.innerHTML = CONFIG.cards.map((c, i) => `<button class="card" type="button" data-i="${i}" aria-label="${c.name}，${c.r} 星" style="--rc:${CONFIG.rc[c.r]};--c1:${c.c[0]};--c2:${c.c[1]}"><span class="glow"></span><span class="face back"></span><span class="face front"><svg viewBox="0 0 100 100" aria-hidden="true">${STAR}</svg><b>${c.name}</b><i class="sheen"></i></span></button>`).join('');
+const els = [...row.children];
+let manual = {}; // i -> 时间轴上的重翻时刻
+const flipAt = (i) => manual[i] ?? (CONFIG.start + i * CONFIG.stagger + (CONFIG.cards[i].r === 5 ? CONFIG.rarePause : 0));
+function render(t) {
+  els.forEach((el, i) => {
+    const fa = flipAt(i), k = MK.seg(t, fa, CONFIG.flipDur, MK.ease.outBack);
+    const rare = CONFIG.cards[i].r === 5;
+    const pop = rare && t > fa + 0.3 ? 0.08 * Math.exp(-(t - fa - 0.3) * 3) : 0;
+    el.style.transform = `rotateY(${MK.clamp(k, 0, 1.08) * 180}deg) scale(${1 + pop})`;
+    el.querySelector('.sheen').style.transform = `translateX(${MK.lerp(-100, 100, MK.seg(t, fa + CONFIG.sheenDelay, CONFIG.sheenDur, MK.ease.inOutCubic))}%)`;
+    el.querySelector('.glow').style.opacity = rare ? MK.seg(t, fa + 0.2, 0.3) * (0.6 + 0.4 * Math.sin(t * 4)) : 0;
+  });
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: CONFIG.cards.map((c, i) => ({ t: flipAt(i), label: `${c.name} ★${c.r}` })) });
+tl.on((t) => { if (t < 0.05) manual = {}; });
+row.addEventListener('click', (e) => { const b = e.target.closest('.card'); if (!b) return; manual[b.dataset.i] = tl.time + 0.05; if (!tl.playing) tl.play(); });
+MK.expose(tl);
+MK.controls(tl, { accent: '#ffcf4a' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 3 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

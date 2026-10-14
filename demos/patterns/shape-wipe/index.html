@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>异形遮罩转场 — Motion Atlas 巧思</title>
+<style>
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0b0c; font-family: "Arial Black",Impact,"Microsoft YaHei",sans-serif; }
+  .scene { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(40px, 8vw, 130px); letter-spacing: -.02em; }
+  .a { background: #d7141a; color: #0b0b0c; }
+  .a::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,0,0,.25) 1.6px, transparent 2.2px); background-size: 14px 14px; }
+  .b { background: #fff; color: #d7141a; }
+  .scene span { position: relative; transform: rotate(-6deg); }
+  svg.wipe { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .pick { position: absolute; left: 16px; bottom: 64px; display: flex; gap: 6px; }
+  .pick button { min-height: 38px; padding: 0 14px; border: 2px solid #fff; background: transparent; color: #fff; font: 700 13px/1 "Segoe UI","Microsoft YaHei",sans-serif; cursor: pointer; }
+  .pick button[aria-pressed="true"] { background: #fff; color: #0b0b0c; }
+  .pick button:focus-visible { outline: 3px solid #ffd23f; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<section class="scene a" id="A"><span>BATTLE</span></section>
+<section class="scene b" id="B"><span>ALL-OUT</span></section>
+<svg class="wipe" viewBox="-50 -50 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="shape" fill="#0b0b0c"/></svg>
+<div class="pick" id="pick" role="group" aria-label="遮罩形状">
+  <button type="button" data-s="star" aria-pressed="true">星芒</button><button type="button" data-s="zigzag" aria-pressed="false">锯齿</button><button type="button" data-s="slash" aria-pressed="false">斜切</button><button type="button" data-s="circle" aria-pressed="false">圆</button>
+</div>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 两段式遮罩：形状从中心放大到覆盖全屏（inQuad，加速吞没）→ 在中点切换场景 → 形状缩回（outCubic，减速释放）。旋转让边缘更有冲击。 */
+const CONFIG = { shape: 'star', tIn: 0.6, inDur: 0.38, tOut: 1.05, outDur: 0.32, cover: 3.2, spin: 90, hold: 1.4, duration: 3.6 };
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s);
+const SHAPES = {
+  star: () => { let d = ''; for (let i = 0; i < 32; i++) { const a = (i / 32) * Math.PI * 2 - Math.PI / 2, r = i % 2 ? 0.42 : 1; d += `${i ? 'L' : 'M'}${(Math.cos(a) * r * 50).toFixed(2)} ${(Math.sin(a) * r * 50).toFixed(2)}`; } return d + 'Z'; },
+  zigzag: () => { let d = 'M-50 -50'; for (let i = 0; i <= 10; i++) d += `L${-50 + i * 10} ${i % 2 ? 40 : 50}`; return d + 'L50 -50Z'; },
+  slash: () => 'M-60 -20L60 -50L60 20L-60 50Z',
+  circle: () => 'M-50 0a50 50 0 1 0 100 0a50 50 0 1 0 -100 0Z',
+};
+function render(t) {
+  const sIn = MK.seg(t, CONFIG.tIn, CONFIG.inDur, MK.ease.inQuad);
+  const sOut = MK.seg(t, CONFIG.tOut, CONFIG.outDur, MK.ease.outCubic);
+  const back = MK.seg(t, CONFIG.tOut + CONFIG.outDur + CONFIG.hold, 0.01); // 循环：回到 A
+  const s = t < CONFIG.tOut ? sIn * CONFIG.cover : CONFIG.cover * (1 - sOut);
+  $('#shape').setAttribute('d', SHAPES[CONFIG.shape]());
+  $('#shape').setAttribute('transform', `rotate(${MK.prefersReducedMotion() ? 0 : t * CONFIG.spin}) scale(${s.toFixed(3)})`);
+  const showB = t >= CONFIG.tOut && back < 1;
+  $('#A').style.visibility = showB ? 'hidden' : 'visible';
+  $('#B').style.visibility = showB ? 'visible' : 'hidden';
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: CONFIG.tIn, label: '吞没' }, { t: CONFIG.tOut, label: '换场 · 释放' }] });
+$('#pick').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  CONFIG.shape = b.dataset.s;
+  document.querySelectorAll('#pick button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  tl.seek(0); tl.play();
+});
+MK.expose(tl);
+MK.controls(tl, { accent: '#d7141a' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 1.2 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

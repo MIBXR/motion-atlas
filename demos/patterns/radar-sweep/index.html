@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雷达扫描与余辉 — Motion Atlas 巧思</title>
+<style>
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #05080b; color: #5ff3ff; font-family: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  .stage { position: absolute; inset: 0; display: grid; place-items: center; }
+  canvas { width: min(92vmin, 820px); height: min(92vmin, 820px); }
+  .panel { position: absolute; left: 16px; top: 16px; display: grid; gap: 8px; padding: 12px 14px; border: 1px solid #1d4a55; background: rgba(10,17,23,.85); font-size: 12px; }
+  .panel label { display: grid; grid-template-columns: 76px 110px 36px; gap: 8px; align-items: center; }
+  input { accent-color: #5ff3ff; }
+</style>
+</head>
+<body>
+<main class="stage"><canvas id="c" width="900" height="900" aria-label="雷达扫描"></canvas></main>
+<form class="panel" id="panel" aria-label="参数">
+  <label>周期 s<input type="range" name="period" min="1.5" max="8" step="0.5"><output></output></label>
+  <label>余辉衰减<input type="range" name="glow" min="0.3" max="4" step="0.1"><output></output></label>
+  <label>余辉角°<input type="range" name="wedge" min="10" max="120" step="5"><output></output></label>
+</form>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 扫描角 = t / 周期 × 2π；目标亮度 = e^(−衰减 × 扫描线离开它后的秒数)：被扫到时最亮，随后像荧光屏一样衰减。
+ * 余辉是一段锥形渐变扇区；全部只依赖时间，可逐帧渲染。 */
+const CONFIG = {
+  period: 4, glow: 1.3, wedge: 52, rings: 4, color: '#5ff3ff', dim: '#1d4a55', bg: '#05080b',
+  targets: [{ r: 0.62, a: 40 }, { r: 0.38, a: 128 }, { r: 0.82, a: 215, unknown: true }, { r: 0.5, a: 302 }, { r: 0.25, a: 260 }],
+};
+/* ================================== */
+const MK = MotionKit, cv = document.getElementById('c'), g = cv.getContext('2d'), TAU = Math.PI * 2;
+const rgba = (h, a) => { const n = parseInt(h.slice(1), 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`; };
+function render(t) {
+  const W = cv.width, cx = W / 2, cy = W / 2, R = W * 0.46;
+  const fs = Math.max(12 / (cv.getBoundingClientRect().width / W || 1), 14);
+  g.fillStyle = CONFIG.bg; g.fillRect(0, 0, W, W);
+  g.strokeStyle = CONFIG.dim; g.lineWidth = 1.5;
+  for (let i = 1; i <= CONFIG.rings; i++) { g.beginPath(); g.arc(cx, cy, (R * i) / CONFIG.rings, 0, TAU); g.stroke(); }
+  g.beginPath(); g.moveTo(cx - R, cy); g.lineTo(cx + R, cy); g.moveTo(cx, cy - R); g.lineTo(cx, cy + R); g.stroke();
+  g.fillStyle = CONFIG.dim; g.font = `${fs}px monospace`; g.textAlign = 'center'; g.textBaseline = 'middle';
+  for (let d = 0; d < 360; d += 30) { const a = (d - 90) * Math.PI / 180; g.fillText(String(d).padStart(3, '0'), cx + Math.cos(a) * (R + fs * 1.4), cy + Math.sin(a) * (R + fs * 1.4)); }
+  const sweep = (t / CONFIG.period) * TAU, sa = sweep - Math.PI / 2, w = (CONFIG.wedge * Math.PI) / 180;
+  const cg = g.createConicGradient(sa - w, cx, cy);
+  cg.addColorStop(0, rgba(CONFIG.color, 0)); cg.addColorStop(w / TAU, rgba(CONFIG.color, 0.2)); cg.addColorStop(w / TAU + 0.0005, rgba(CONFIG.color, 0)); cg.addColorStop(1, rgba(CONFIG.color, 0));
+  g.fillStyle = cg; g.beginPath(); g.moveTo(cx, cy); g.arc(cx, cy, R, sa - w, sa); g.closePath(); g.fill();
+  g.strokeStyle = CONFIG.color; g.lineWidth = 3; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(sa) * R, cy + Math.sin(sa) * R); g.stroke();
+  for (const tg of CONFIG.targets) {
+    const ang = (tg.a * Math.PI) / 180;
+    const since = ((((sweep - ang) % TAU) + TAU) % TAU) / TAU * CONFIG.period;
+    const I = Math.exp(-since * CONFIG.glow);
+    const x = cx + Math.cos(ang - Math.PI / 2) * R * tg.r, y = cy + Math.sin(ang - Math.PI / 2) * R * tg.r;
+    g.fillStyle = rgba(CONFIG.color, 0.2 + 0.8 * I); g.strokeStyle = rgba(CONFIG.color, I * 0.7);
+    if (tg.unknown) { g.beginPath(); g.moveTo(x, y - 10); g.lineTo(x + 10, y); g.lineTo(x, y + 10); g.lineTo(x - 10, y); g.closePath(); g.fill(); }
+    else { g.beginPath(); g.arc(x, y, 7, 0, TAU); g.fill(); }
+    g.lineWidth = 2; g.beginPath(); g.arc(x, y, 7 + (1 - I) * 26, 0, TAU); g.stroke();
+  }
+}
+const form = document.getElementById('panel');
+for (const k of ['period', 'glow', 'wedge']) { form[k].value = CONFIG[k]; form[k].nextElementSibling.textContent = CONFIG[k]; }
+form.addEventListener('input', (e) => { CONFIG[e.target.name] = Number(e.target.value); e.target.nextElementSibling.textContent = e.target.value; render(tl.time); });
+const tl = MK.timeline({ duration: 8, render, loop: true });
+MK.expose(tl);
+MK.controls(tl, { accent: '#5ff3ff' });
+const P = MK.params();
+tl.seek(P.t ?? 0.6);
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

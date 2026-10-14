@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>节拍动态字幕 · Kinetic Lyric — Motion Atlas Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage" id="stage" aria-label="节拍动态字幕">
+    <div class="bg" id="bg"></div>
+    <div class="wipe" id="wipe"></div>
+    <div class="stripes" id="stripes" aria-hidden="true"></div>
+    <div class="cam" id="cam">
+      <div class="words" id="words" aria-live="off"></div>
+      <div class="stack" id="stack" aria-hidden="true"></div>
+    </div>
+    <header class="hud">
+      <p class="hud-title"><b id="title"></b><span id="section"></span></p>
+      <p class="hud-beat"><span id="pos"></span><span class="sq" id="sq"><i></i><i></i><i></i><i></i></span></p>
+    </header>
+    <footer class="meter" id="meter" aria-hidden="true"></footer>
+    <section class="endcard" id="endcard" aria-hidden="true"><p class="ec-title" id="ecTitle"></p><p class="ec-credit" id="ecCredit"></p></section>
+    <p class="now" id="now" aria-live="polite"></p>
+  </main>
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

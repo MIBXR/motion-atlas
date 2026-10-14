@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "chamfer-panel",
+  "pattern": {
+    "id": "chamfer-panel",
+    "order": 50,
+    "title": "切角工业面板",
+    "types": [
+      "composition"
+    ],
+    "carriers": [
+      "console",
+      "showcase"
+    ],
+    "summary": "用 45° 切角、四角十字注册标记、刻度尺、安全黄三角角标和危险斜纹，把普通矩形面板变成“设备铭牌”；入场时切角从夸张收拢到标准尺寸。",
+    "mechanism": "clip-path 多边形实现对角两处切角（或文件夹标签式台阶切口）；切角尺寸用 CSS 变量 --cut 控制，入场时从 134px 以 snap 缓动收拢到 14px；注册标记由两条 2px 线组成；刻度尺是 1px/8px 重复渐变；危险条纹为 −45° 黄黑重复渐变。",
+    "trigger": "面板出现 / 常驻",
+    "effect": "统一的“工业设备”质感，信息块之间有清晰的边界与层级。",
+    "timing": [
+      {
+        "name": "切角",
+        "value": "标准 12–16px；入场从 +120px 收拢"
+      },
+      {
+        "name": "入场",
+        "value": "450ms snap，面板错峰 120ms"
+      },
+      {
+        "name": "附件",
+        "value": "注册标记/刻度/角标在面板就位后 250ms 起错峰 40ms 出现"
+      }
+    ],
+    "useCases": [
+      "工业/科幻操作台",
+      "游戏系统界面",
+      "数据大屏",
+      "品牌化后台"
+    ],
+    "avoid": [
+      "需要柔和亲切感的产品"
+    ],
+    "accessibility": {
+      "reducedMotion": "面板直接显示标准切角。",
+      "keyboard": "纯视觉容器，不影响内部控件的焦点顺序。"
+    },
+    "composition": {
+      "role": "foundation",
+      "pairsWellWith": [
+        "text-scramble",
+        "scanline-wipe",
+        "hold-confirm"
+      ],
+      "conflicts": [],
+      "notes": "切角只做在对角两处，四角全切会显得像八边形按钮；黄色角标每屏最多一两处。"
+    },
+    "prompt": "实现切角工业面板：clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% − var(--cut)), calc(100% − var(--cut)) 100%, 0 100%, 0 var(--cut))，标准 --cut 14px；变体：深色反色模块（右上黄色三角角标、底部 12px 黄黑 −45° 危险斜纹）、文件夹标签切口（顶边 46% 处 16px 台阶）。四角放 14×14 十字注册标记（两条 2px 线），标题下方加 1px/8px 刻度尺。入场：--cut 从 134px 以 cubic-bezier(.2,.9,.1,1) 450ms 收拢到 14px 并上移 24px→0，面板错峰 120ms，附件在其后错峰出现。",
+    "demo": "demos/patterns/chamfer-panel/index.html",
+    "kit": true,
+    "previewAt": 1.4,
+    "sources": [
+      {
+        "caseId": "industrial-protocol",
+        "observation": "终端、配装站与角色信息面板复用 Logo 衍生图形与三角形元素，界面整体呈工业机能风格。",
+        "evidence": "inferred",
+        "locator": "17173 评析"
+      }
+    ],
+    "preview": "previews/patterns/chamfer-panel.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "industrial-protocol",
+      "bundle": "agent/cases/industrial-protocol.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 切角工业面板 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/chamfer-panel.json) 自动生成。\n\n## 实现 Prompt\n\n实现切角工业面板：clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% − var(--cut)), calc(100% − var(--cut)) 100%, 0 100%, 0 var(--cut))，标准 --cut 14px；变体：深色反色模块（右上黄色三角角标、底部 12px 黄黑 −45° 危险斜纹）、文件夹标签切口（顶边 46% 处 16px 台阶）。四角放 14×14 十字注册标记（两条 2px 线），标题下方加 1px/8px 刻度尺。入场：--cut 从 134px 以 cubic-bezier(.2,.9,.1,1) 450ms 收拢到 14px 并上移 24px→0，面板错峰 120ms，附件在其后错峰出现。\n\n## 参数\n\n- **切角**：标准 12–16px；入场从 +120px 收拢\n- **入场**：450ms snap，面板错峰 120ms\n- **附件**：注册标记/刻度/角标在面板就位后 250ms 起错峰 40ms 出现\n\n[打开 Demo](../../demos/patterns/chamfer-panel/index.html) · [在库中查看](../../patterns.html#pattern/chamfer-panel)\n"
+  },
+  "entrypoint": "demos/patterns/chamfer-panel/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/chamfer-panel/index.html",
+      "bytes": 5215,
+      "sha256": "8c23b890a1c9a2d54bf81f33eadf26b57e8347605d3af0f12e3105fe5ac3cd8a"
+    },
+    {
+      "path": "demos/patterns/chamfer-panel/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/chamfer-panel.jpg",
+      "bytes": 55847,
+      "sha256": "f07e820a9da644d48cf46c896ea84391fcaa1677b22b90b9290d911a63668b38"
+    }
+  ]
+}

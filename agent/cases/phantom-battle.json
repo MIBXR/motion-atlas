@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "phantom-battle",
+  "entry": {
+    "id": "phantom-battle",
+    "order": 3,
+    "title": "怪盗动势 · P5 式战斗指令与总攻过场",
+    "subtitle": "PHANTOM KINETICS / COMMAND · CUT-IN · ALL-OUT",
+    "carriers": [
+      "console",
+      "video"
+    ],
+    "source": "game",
+    "evidence": "inferred",
+    "capturedAt": "2026-10-14",
+    "tags": [
+      "红黑白",
+      "剪报拼贴字",
+      "斜切菜单",
+      "切入特写",
+      "星形遮罩",
+      "冲击字"
+    ],
+    "summary": "红、黑、白三色与斜切几何，把战斗菜单本身做成表演：指令环绕角色、选中项放大扭转并抖动影子，命中后冲击字拍出、斜带切入特写、HOLD UP 定格，再以星形遮罩进入总攻与漫画格收尾。",
+    "focus": "《女神异闻录5》的界面被视为“菜单即娱乐”的代表：UI 设计师把网站菜单当作灵感来源，字体借鉴性手枪乐队专辑封面的剪报拼贴字。本条目按公开资料与常见设计分析整理其设计语言，并用原创角色、文案与配色比例做成可迁移的战斗过场 Demo；具体帧时长为本地拟合，需以实机录像逐帧核对。",
+    "accent": "#d7141a",
+    "background": "#0b0b0c",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 4.4,
+    "energy": [
+      0.45,
+      0.5,
+      0.55,
+      0.85,
+      0.9,
+      0.95,
+      0.8,
+      0.85,
+      0.6,
+      0.9,
+      1,
+      1,
+      0.95,
+      0.9,
+      0.85,
+      0.6,
+      0.4,
+      0.3
+    ],
+    "rhythm": {
+      "duration": 17.5,
+      "beats": [
+        {
+          "t": 0.4,
+          "label": "指令菜单",
+          "note": "四个指令环绕角色错峰弹出；光标移动时选中项 160ms snap 放大 1.2、扭转 −6°，黑白反转，白色影子持续抖动。"
+        },
+        {
+          "t": 2.6,
+          "label": "选择攻击",
+          "note": "菜单收起，旋转准星锁定敌人。"
+        },
+        {
+          "t": 3.05,
+          "label": "命中 · WEAK",
+          "note": "反色闪 80ms + 屏幕抖动（指数衰减）+ 敌人后坐；WEAK 从 2.6 倍回弹落定、倾斜 −10°。"
+        },
+        {
+          "t": 3.9,
+          "label": "1 MORE 切入",
+          "note": "黑底红带从右侧 220ms outExpo 切入，速度线流动、眼部特写缓推，剪报字母 30ms 错峰拍入；1.3 秒后继续向左离场。"
+        },
+        {
+          "t": 5.4,
+          "label": "HOLD UP",
+          "note": "敌人眩晕摇晃，巨大剪报字拍入并伴随抖动。"
+        },
+        {
+          "t": 6.5,
+          "label": "询问总攻",
+          "note": "画面压暗，ALL-OUT ATTACK 与 GO FOR IT? 提示，等待确认。"
+        },
+        {
+          "t": 7.5,
+          "label": "星形遮罩",
+          "note": "黑色 16 角星旋转放大吞没画面（inQuad），在总攻画面中缩回（outCubic）。"
+        },
+        {
+          "t": 7.9,
+          "label": "总攻",
+          "note": "白底上黑色剪影带拖尾冲刺，红色斜切按 0.22 秒节拍闪现，拟声词轮替冲击。"
+        },
+        {
+          "t": 10.7,
+          "label": "收尾漫画格",
+          "note": "反色闪一帧；红色放射背景旋转，白色斜切漫画格 350ms 推入，标语逐字拍入。"
+        },
+        {
+          "t": 14.2,
+          "label": "结算",
+          "note": "白色斜切板从左侧 450ms outExpo 滑入，数值行 120ms 错峰。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "背景",
+        "role": "红底 + 半色调网点（遮罩渐隐）+ 倾斜黑带 + 极淡斜纹；永远倾斜，没有水平线。"
+      },
+      {
+        "name": "角色与敌人",
+        "role": "黑色剪影 + 白描边 + 红色偏移影；敌人带倾斜名牌与血条。"
+      },
+      {
+        "name": "指令层",
+        "role": "围绕角色的放射状按钮：几何按键符号 + 粗黑标签；选中态黑白反转与影子抖动。"
+      },
+      {
+        "name": "状态层",
+        "role": "右下队伍卡片：斜切黑底、圆形头像、HP/SP 细条。"
+      },
+      {
+        "name": "事件层",
+        "role": "准星、反色闪、冲击字、切入斜带、HOLD UP、询问、星形遮罩。"
+      },
+      {
+        "name": "演出场景",
+        "role": "总攻（白底黑剪影 + 红切）、收尾漫画格（放射红 + 白格 + 剪报标语）、结算板。"
+      }
+    ],
+    "composition": {
+      "color": "只用红 #d7141a、黑 #0b0b0c、白；按键符号与 HP/SP 是唯一的辅助色（绿/粉/蓝），面积极小。高对比带来“叛逆”与“速度”。",
+      "typography": "剪报拼贴字：每个字母独立底色、字体（粗黑体/衬线/打字机/窄体）、角度与大小；标签用超粗无衬线；中文用粗黑体。",
+      "layout": "所有元素沿对角线组织：倾斜黑带切开画面，菜单按放射角度散布在角色周围，卡片与名牌都带 −3° 到 −8° 的倾斜。",
+      "imagery": "剪影化：角色与敌人只有轮廓、面具与眼睛；特写只给眼部；漫画格用放射线与大块黑白。",
+      "motion": "快进快停：出现用 outBack/outExpo（150–350ms），离场更快；命中用反色闪 + 指数衰减抖动；所有强调都“拍”进来而不是淡入。",
+      "sound": "原作每个光标移动、确认、命中、切入都有短促音效与爵士配乐；Demo 默认静音，开启后合成对应短音。",
+      "rhythm": "菜单阶段慢（玩家思考），命中到总攻约 7 秒内连续 6 个高潮事件，间隔 0.8–1.5 秒；总攻内部以 0.22 秒节拍密集冲击，收尾与结算再放慢。",
+      "coherence": "同一套“倾斜 + 剪报字 + 红黑白”贯穿菜单、提示、演出与结算，让每个系统界面都像同一张海报的局部。"
+    },
+    "tokens": {
+      "palette": [
+        "#d7141a",
+        "#8f0b10",
+        "#0b0b0c",
+        "#ffffff",
+        "#9be15d",
+        "#ff6fb0",
+        "#1fb4ff"
+      ],
+      "type": "剪报拼贴（Arial Black / Georgia / Courier / Impact / Bahnschrift 混排）+ 超粗无衬线标签",
+      "motion": [
+        {
+          "name": "menu-select",
+          "value": "160ms snap：放大 1.18–1.2、扭转 −6°~−7°、右移 26px；影子抖动 ±3px（31/27Hz）"
+        },
+        {
+          "name": "hit",
+          "value": "反色闪 60–80ms；抖动 22px·e^(−12t)；目标后坐 40px·e^(−6t)"
+        },
+        {
+          "name": "impact-text",
+          "value": "260ms outBack：2.6→1，倾斜 −10°；停留约 0.9s"
+        },
+        {
+          "name": "cut-in",
+          "value": "切入 220ms outExpo，停留约 1.3s，离场 220ms inCubic；速度线 1400px/s"
+        },
+        {
+          "name": "ransom-slam",
+          "value": "每字 220ms outBack：2.2→1，角度回弹，错峰 30–40ms"
+        },
+        {
+          "name": "shape-wipe",
+          "value": "吞没 380ms inQuad → 换场 → 释放 300ms outCubic；旋转 90°/s"
+        },
+        {
+          "name": "frenzy-beat",
+          "value": "红切每 220ms 一次，350ms 衰减"
+        }
+      ]
+    },
+    "observations": [
+      {
+        "at": "设计访谈 / 报道",
+        "what": "UI 设计师从 P3 起把菜单当作“图形娱乐”，并参考网站菜单；P5 菜单字体借鉴性手枪乐队专辑封面的剪报拼贴字（多家媒体转述的访谈内容）。"
+      },
+      {
+        "at": "Mechanics of Magic · Visual Design of Games: Persona 5",
+        "what": "暂停菜单悬停项放大并变色，与红黑白主色形成对比；战斗中主要行动（Persona/Item/Guard/Attack）围绕当前角色排布、颜色对应手柄按键；次要行动左下、HP/SP 右下、敌人信息左上。"
+      },
+      {
+        "at": "同上",
+        "what": "总攻收尾出现角色漫画格与标语；界面把行动映射到按键，减少多层菜单。"
+      },
+      {
+        "at": "Design Atlas · persona-kinetic（2026-10-07 官网快照）",
+        "what": "官网同样以金红黑、剪纸箭头、红色网点与倾斜画面表达都市怪盗风格，可作为网页端的对照。"
+      }
+    ],
+    "interaction": [
+      "菜单阶段：W/A/S/D 移动选择，Enter 或点击指令开始执行；询问阶段 Enter 确认总攻。",
+      "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个节拍；站内刻度条可拖动。",
+      "声音默认关闭；开启后每个事件有对应短音。",
+      "减少动态：关闭屏幕抖动与影子抖动，不自动播放。"
+    ],
+    "useCases": [
+      "游戏战斗/指令界面",
+      "直播打赏与高光时刻",
+      "综艺/音乐节目包装",
+      "潮流品牌发布",
+      "活动倒计时与抽奖"
+    ],
+    "avoid": [
+      "严肃的金融/医疗信息",
+      "需要长时间阅读的界面",
+      "对闪烁敏感的受众（需关闭闪光）"
+    ],
+    "constraints": [
+      "证据等级为“公开资料推断”：本会话无法实机录制《女神异闻录5》，所有时长与缓动为本地拟合，请用实机录像逐帧核对（方法见 docs/methodology.md）。",
+      "不使用 ATLUS/SEGA 的角色、标志、字体图像、台词与音乐；角色、敌人、标语与队伍名均为原创。",
+      "“CURTAIN CALL / 怪盗谢幕”等文案为原创，不复用原作结算台词。",
+      "反色闪与抖动存在光敏风险：减少动态时关闭，正式作品建议提供关闭选项。"
+    ],
+    "prompt": "做一段 P5 式“战斗指令 + 总攻过场”（HTML/CSS/JS，可 seek，约 17 秒）：只用红 #d7141a、黑 #0b0b0c、白，背景是红底 + 半色调网点 + 旋转 −14° 的黑色斜带。①指令：四个按钮按角度环绕黑色剪影角色（白描边 + 红色偏移影），每个按钮是斜切多边形白底 + 黑色偏移影子 + 几何按键符号（△○×□）+ 超粗标签；选中项 160ms snap 放大 1.2、扭转 −6°、黑白反转，白影子以 31/27Hz 抖动 ±3px；右下是斜切黑底的队伍 HP/SP 卡片。②选择攻击 → 旋转准星锁定敌人 → 命中：差值混合反色闪 80ms、屏幕抖动 22px·e^(−12t)、敌人后坐；WEAK 冲击字（白字黑描边 + 黑色硬投影）从 2.6 倍 outBack 落定并倾斜 −10°。③1 MORE：旋转 −8° 的黑带内嵌红带，从右 220ms outExpo 切入，内有横向流动速度线与眼部特写缓推，剪报字（每个字母独立底色/字体/角度/大小，固定种子）以 30ms 错峰从 2.2 倍拍入，1.3 秒后整条向左离场。④HOLD UP 巨型剪报字 + 敌人眩晕；⑤压暗询问 ALL-OUT ATTACK / GO FOR IT?；⑥黑色 16 角星旋转放大吞没（380ms inQuad）后在白底总攻画面中缩回：黑色剪影带拖尾冲刺，红色斜切按 0.22 秒节拍闪现，拟声词轮替；⑦反色一帧进入收尾：红色放射背景旋转，白色斜切漫画格推入，原创标语逐字拍入；⑧结算：白色斜切板从左滑入，数值行 120ms 错峰。所有动画是时间 t 的纯函数；WASD/Enter 可交互；声音默认关闭；prefers-reduced-motion 关闭抖动与闪光。",
+    "videoPrompt": "Stylish JRPG battle UI cutscene in a red, black and white palette, 1920×1080, 17 seconds, inspired by rebellious punk collage design (original characters only). A red background with halftone dots and a tilted black slab; a black silhouette hero with a white outline and red offset shadow stands among four tilted command plates (triangle, circle, cross, square glyphs). The cursor snaps between commands: the selected plate enlarges, twists and inverts to black with a jittering white shadow. Attack: a spinning reticle locks on a spiky masked enemy, a hard inverted flash and camera shake, the word \"WEAK\" slams in tilted with thick black outline. A diagonal black-and-red band slices in from the right with streaking speed lines and a close-up of narrow eyes, while ransom-note letters (each a different font, color block and angle) stamp in one by one reading \"1 MORE!\". \"HOLD UP!\" stamps across the screen. A black 16-point star spins outward to swallow the frame, then shrinks to reveal a white stage where black silhouettes dash with motion trails and red diagonal slashes flash on the beat. A finishing comic panel slides in over a rotating red sunburst with a collage tagline. Ends on a white slanted results plate sliding in from the left. Snappy, high-contrast, jazz-funk energy.",
+    "negativePrompt": "不要使用原作角色、标志、字体图像、台词或音乐；不要出现水平垂直的“正经”版式；不要渐变光晕、毛玻璃或霓虹；不要慢速淡入；不要每个字母同一种样式；不要让抖动与闪光在减少动态时出现。",
+    "migration": [
+      {
+        "field": "config.js → palette",
+        "how": "主红、深红、黑、白与按键辅助色。"
+      },
+      {
+        "field": "config.js → commands",
+        "how": "指令标签、中文、按键、几何符号与环绕角度（度）。"
+      },
+      {
+        "field": "config.js → party / enemy",
+        "how": "队伍名称、HP/SP、头像色；敌人名称与等级。"
+      },
+      {
+        "field": "config.js → text",
+        "how": "冲击字、切入字、HOLD UP、询问、收尾标语与结算行。"
+      },
+      {
+        "field": "config.js → beats",
+        "how": "每个事件的时刻：调这里即可改整场战斗的节奏。"
+      },
+      {
+        "field": "index.html → svg",
+        "how": "角色、敌人与漫画格剪影；替换为你的角色立绘或剪影。"
+      }
+    ],
+    "demo": "demos/cases/phantom-battle/index.html",
+    "research": "docs/research/phantom-battle.md",
+    "patternIds": [
+      "skew-menu",
+      "cutin-slash",
+      "ransom-type",
+      "impact-pop",
+      "shape-wipe"
+    ],
+    "sources": [
+      {
+        "title": "Mechanics of Magic · Visual Design of Games: Persona 5",
+        "url": "https://mechanicsofmagic.com/2022/04/23/visual-design-of-games-persona-5/",
+        "type": "资料 · 分析",
+        "note": "暂停菜单的放大与变色、战斗行动环绕角色与按键配色、信息分区（核心/支撑/附加）。"
+      },
+      {
+        "title": "GameSpot · Persona 5’s Menus Continue to Look Stunning",
+        "url": "https://www.gamespot.com/articles/persona-5s-menus-continue-to-look-stunning/1100-6439532/",
+        "type": "资料 · 报道",
+        "note": "早期预告与开发访谈中的菜单与胜利画面过渡。"
+      },
+      {
+        "title": "DT Next · Exuberant video game menus",
+        "url": "https://www.dtnext.in/amp/story/edit/exuberant-video-game-menus-designed-with-da-vinci-in-mind-807823",
+        "type": "资料 · 报道",
+        "note": "转述设计师把菜单视为“图形娱乐”、参考网站菜单与剪报拼贴字封面的说法。"
+      },
+      {
+        "title": "Design Atlas · Persona 5 Royal 黑金角色拼贴",
+        "url": "https://mibxr-design-atlas.mibxranime.chatgpt.site/cases.html#style/persona-kinetic",
+        "type": "实例 · 姊妹库",
+        "note": "官网（2026-10-07 快照）的网页端设计语言对照。"
+      }
+    ],
+    "preview": "previews/cases/phantom-battle.jpg"
+  },
+  "documents": {
+    "prompt": "# 怪盗动势 · P5 式战斗指令与总攻过场 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/phantom-battle.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/phantom-battle.md)。\n\n## 实现 Prompt\n\n做一段 P5 式“战斗指令 + 总攻过场”（HTML/CSS/JS，可 seek，约 17 秒）：只用红 #d7141a、黑 #0b0b0c、白，背景是红底 + 半色调网点 + 旋转 −14° 的黑色斜带。①指令：四个按钮按角度环绕黑色剪影角色（白描边 + 红色偏移影），每个按钮是斜切多边形白底 + 黑色偏移影子 + 几何按键符号（△○×□）+ 超粗标签；选中项 160ms snap 放大 1.2、扭转 −6°、黑白反转，白影子以 31/27Hz 抖动 ±3px；右下是斜切黑底的队伍 HP/SP 卡片。②选择攻击 → 旋转准星锁定敌人 → 命中：差值混合反色闪 80ms、屏幕抖动 22px·e^(−12t)、敌人后坐；WEAK 冲击字（白字黑描边 + 黑色硬投影）从 2.6 倍 outBack 落定并倾斜 −10°。③1 MORE：旋转 −8° 的黑带内嵌红带，从右 220ms outExpo 切入，内有横向流动速度线与眼部特写缓推，剪报字（每个字母独立底色/字体/角度/大小，固定种子）以 30ms 错峰从 2.2 倍拍入，1.3 秒后整条向左离场。④HOLD UP 巨型剪报字 + 敌人眩晕；⑤压暗询问 ALL-OUT ATTACK / GO FOR IT?；⑥黑色 16 角星旋转放大吞没（380ms inQuad）后在白底总攻画面中缩回：黑色剪影带拖尾冲刺，红色斜切按 0.22 秒节拍闪现，拟声词轮替；⑦反色一帧进入收尾：红色放射背景旋转，白色斜切漫画格推入，原创标语逐字拍入；⑧结算：白色斜切板从左滑入，数值行 120ms 错峰。所有动画是时间 t 的纯函数；WASD/Enter 可交互；声音默认关闭；prefers-reduced-motion 关闭抖动与闪光。\n\n## 视频生成 Prompt\n\nStylish JRPG battle UI cutscene in a red, black and white palette, 1920×1080, 17 seconds, inspired by rebellious punk collage design (original characters only). A red background with halftone dots and a tilted black slab; a black silhouette hero with a white outline and red offset shadow stands among four tilted command plates (triangle, circle, cross, square glyphs). The cursor snaps between commands: the selected plate enlarges, twists and inverts to black with a jittering white shadow. Attack: a spinning reticle locks on a spiky masked enemy, a hard inverted flash and camera shake, the word \"WEAK\" slams in tilted with thick black outline. A diagonal black-and-red band slices in from the right with streaking speed lines and a close-up of narrow eyes, while ransom-note letters (each a different font, color block and angle) stamp in one by one reading \"1 MORE!\". \"HOLD UP!\" stamps across the screen. A black 16-point star spins outward to swallow the frame, then shrinks to reveal a white stage where black silhouettes dash with motion trails and red diagonal slashes flash on the beat. A finishing comic panel slides in over a rotating red sunburst with a collage tagline. Ends on a white slanted results plate sliding in from the left. Snappy, high-contrast, jazz-funk energy.\n\n## 负向约束\n\n不要使用原作角色、标志、字体图像、台词或音乐；不要出现水平垂直的“正经”版式；不要渐变光晕、毛玻璃或霓虹；不要慢速淡入；不要每个字母同一种样式；不要让抖动与闪光在减少动态时出现。\n\n## 动效 Token\n\n- **menu-select**：160ms snap：放大 1.18–1.2、扭转 −6°~−7°、右移 26px；影子抖动 ±3px（31/27Hz）\n- **hit**：反色闪 60–80ms；抖动 22px·e^(−12t)；目标后坐 40px·e^(−6t)\n- **impact-text**：260ms outBack：2.6→1，倾斜 −10°；停留约 0.9s\n- **cut-in**：切入 220ms outExpo，停留约 1.3s，离场 220ms inCubic；速度线 1400px/s\n- **ransom-slam**：每字 220ms outBack：2.2→1，角度回弹，错峰 30–40ms\n- **shape-wipe**：吞没 380ms inQuad → 换场 → 释放 300ms outCubic；旋转 90°/s\n- **frenzy-beat**：红切每 220ms 一次，350ms 衰减\n\n## 制作约束\n\n- 证据等级为“公开资料推断”：本会话无法实机录制《女神异闻录5》，所有时长与缓动为本地拟合，请用实机录像逐帧核对（方法见 docs/methodology.md）。\n- 不使用 ATLUS/SEGA 的角色、标志、字体图像、台词与音乐；角色、敌人、标语与队伍名均为原创。\n- “CURTAIN CALL / 怪盗谢幕”等文案为原创，不复用原作结算台词。\n- 反色闪与抖动存在光敏风险：减少动态时关闭，正式作品建议提供关闭选项。\n\n## 迁移\n\n- `config.js → palette`：主红、深红、黑、白与按键辅助色。\n- `config.js → commands`：指令标签、中文、按键、几何符号与环绕角度（度）。\n- `config.js → party / enemy`：队伍名称、HP/SP、头像色；敌人名称与等级。\n- `config.js → text`：冲击字、切入字、HOLD UP、询问、收尾标语与结算行。\n- `config.js → beats`：每个事件的时刻：调这里即可改整场战斗的节奏。\n- `index.html → svg`：角色、敌人与漫画格剪影；替换为你的角色立绘或剪影。\n\n[打开 Demo](../../demos/cases/phantom-battle/index.html) · [在库中查看](../../cases.html#case/phantom-battle)\n",
+    "research": "# 怪盗动势：P5 式战斗界面研究\n\n- 对象：《女神异闻录5》/《女神异闻录5 皇家版》战斗指令、命中反馈、额外回合切入、总攻与结算界面（ATLUS / SEGA）\n- 整理日期：2026-10-14\n- 证据等级：**公开资料推断，待核验**。本会话无法实机录制，以下为设计分析文章、媒体报道转述的访谈内容与通用观察的整理；Demo 中的时长、缓动与布局为本地拟合。\n- 关联：Design Atlas 已收录 P5R 官网快照（persona-kinetic），可对照网页端的同一设计语言。\n\n## 设计语言要点\n\n| 维度 | 要点 | 来源 |\n| --- | --- | --- |\n| 菜单哲学 | 把菜单当作“图形娱乐”，从网站菜单中找灵感；UI 风格反过来影响了其他团队成员的创作 | 媒体转述的设计访谈 |\n| 字体 | 剪报拼贴字，参考性手枪乐队专辑封面 | 同上 |\n| 配色 | 红、黑、白为主；暂停菜单悬停项用蓝色与主色形成对比 | Mechanics of Magic 分析 |\n| 战斗布局 | 主要行动围绕当前角色，按手柄按键配色；次要行动左下；HP/SP 右下；敌人信息左上；队友喊话右上 | 同上 |\n| 信息层级 | 核心（主要行动）/ 支撑（次要行动、HP/SP、敌人）/ 附加（队友喊话） | 同上 |\n| 总攻 | 收尾时出现带标语的角色漫画格 | 同上 |\n\n## Demo 结构\n\n菜单（思考，慢）→ 命中与 WEAK（反馈）→ 1 MORE 切入（强调）→ HOLD UP（定格）→ 询问（停顿）→ 星形遮罩（转场）→ 总攻（密集节拍）→ 漫画格（高潮）→ 结算（回落）。节奏的关键是“慢—快—停—快—停”的交替：玩家思考时界面只做小幅抖动；一旦确认，事件以 0.8–1.5 秒间隔连续推进；总攻内部以 0.22 秒节拍密集冲击；最后用漫画格和结算把能量放回去。\n\n## 如何用实机录像核验（建议步骤）\n\n1. 录制 1080p60 战斗片段：光标移动、攻击命中弱点、额外回合、HOLD UP、总攻、结算各至少 3 次。\n2. 用本库 docs/methodology.md 的取帧方法，在每个事件起点前后 0.5 秒以 1/60 秒间隔取帧。\n3. 记录：选中项从开始变化到稳定的帧数（菜单 snap 时长）、冲击字出现到停稳的帧数与最大缩放、切入带从出现到停住的帧数、遮罩从出现到全覆盖的帧数、结算板滑入帧数。\n4. 把实测值写回 `entries/cases/phantom-battle.json` 的 `tokens.motion` 与 Demo 的 `config.js`，并把证据等级改为 observed、在本文件记录日期与片段来源。\n\n## 已知差异\n\n- 角色、敌人、漫画格均为原创剪影；原作为 3D 模型与手绘插画。\n- 总攻场景以 Canvas 绘制的剪影冲刺与红切表现，原作为角色动画与水墨/漫画风格演出。\n- 未实现原作的按键提示动画、队友喊话、敌人弱点图标系统与音乐。\n\n## 验证记录\n\n- 2026-10-14：Edge 无头 1600×900 下截取 12 个时刻，覆盖菜单、选择、WEAK、1 MORE、HOLD UP、询问、星形遮罩、总攻、漫画格、结算。\n- 调整：角色剪影在黑带上不可见 → 增加白色描边与红色偏移影；指令按钮放大；总攻剪影加大、红切加粗。\n"
+  },
+  "entrypoint": "demos/cases/phantom-battle/index.html",
+  "files": [
+    {
+      "path": "demos/cases/phantom-battle/config.js",
+      "bytes": 1791,
+      "sha256": "3ff4d7839c65387b88a2cc431fb568fa8b5885b67b79dfc12f3f2c24e743b60c"
+    },
+    {
+      "path": "demos/cases/phantom-battle/index.html",
+      "bytes": 4841,
+      "sha256": "ef9b74caa248b0bc65a01e3b9e899dc5fcd722daa8501d5df019a422ff3919ec"
+    },
+    {
+      "path": "demos/cases/phantom-battle/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "demos/cases/phantom-battle/script.js",
+      "bytes": 15615,
+      "sha256": "7bb1483a878fb783d6499da8fdf1dc639a7d1bef3f2b30ff5c6cf93ff2424348"
+    },
+    {
+      "path": "demos/cases/phantom-battle/style.css",
+      "bytes": 8729,
+      "sha256": "231e0284ce22a3d558d4ed81c7bce826dd8b9600e102b5bb94f98d35fa2eefa2"
+    },
+    {
+      "path": "previews/cases/phantom-battle.jpg",
+      "bytes": 88749,
+      "sha256": "41eb8f9173815ec40df24eb011e8780f5973bb0bb40d048a5a51366dc7a207d7"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>可逐帧定位的时间轴 — Motion Atlas 巧思</title>
+<style>
+  :root { --bg: #0e0f12; --ink: #ecebe6; --muted: #8f8d87; --line: #2a2d33; --accent: #ff5b2e; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--ink); font-family: "Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+  .wrap { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+  .stage { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .box { position: absolute; left: 0; top: 50%; width: clamp(60px, 9vw, 120px); aspect-ratio: 1; margin-top: calc(clamp(60px, 9vw, 120px) / -2); border-radius: 14px; background: var(--accent); }
+  .headline { position: absolute; left: 8%; top: 16%; font: 800 clamp(28px, 4.6vw, 72px)/1.05 "Bahnschrift","Segoe UI",sans-serif; letter-spacing: .02em; }
+  .counter { position: absolute; right: 8%; bottom: 14%; font: 700 clamp(32px, 5vw, 80px)/1 var(--f-mono); font-variant-numeric: tabular-nums; }
+  .counter small { display: block; font: 12px/1.4 var(--f-mono); color: var(--muted); letter-spacing: .2em; }
+  .lanes { padding: 12px clamp(12px, 3vw, 32px) 70px; display: grid; gap: 6px; }
+  .lane { position: relative; display: grid; grid-template-columns: 70px 1fr; align-items: center; gap: 10px; height: 26px; }
+  .lane b { font: 600 12px/1 var(--f-mono); letter-spacing: .14em; color: var(--muted); }
+  .lane .track { position: relative; height: 100%; border-radius: 5px; background: #16181b; }
+  .clip { position: absolute; top: 4px; bottom: 4px; border-radius: 4px; background: rgba(255,91,46,.35); border: 1px solid rgba(255,91,46,.8); }
+  .key { position: absolute; top: 50%; width: 9px; height: 9px; margin: -4.5px; background: var(--ink); transform: rotate(45deg); }
+  .head { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--accent); pointer-events: none; }
+  .code { position: absolute; right: 12px; top: 12px; max-width: min(46vw, 460px); padding: 10px 12px; border-radius: 8px; background: rgba(22,24,27,.9); border: 1px solid var(--line); font: 12px/1.6 var(--f-mono); color: #c9c7c0; white-space: pre; overflow: hidden; }
+  @media (max-width: 720px) { .code { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="stage" aria-label="画面">
+    <div class="headline" id="headline"></div>
+    <div class="box" id="box"></div>
+    <div class="counter"><small>FRAMES RENDERED</small><span id="count">0</span></div>
+    <pre class="code" aria-hidden="true">// 画面 = render(t)，只依赖 t
+const tl = MotionKit.timeline({
+  duration: 6, render(t) { … }
+});
+MotionKit.expose(tl);   // → window.__motion
+await __motion.seek(2.5); // 任意时刻
+// ?render=1 → 逐帧截图 → ffmpeg</pre>
+  </section>
+  <section class="lanes" id="lanes" aria-label="轨道"></section>
+</div>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 每条轨道是一串按时间排列的事件；render(t) 读取轨道计算画面。 */
+const CONFIG = {
+  duration: 6, fps: 30,
+  tracks: {
+    move: [{ t: 0.4, x: 0.08 }, { t: 2.2, x: 0.62, ease: 'snap' }, { t: 3.4, x: 0.62 }, { t: 4.6, x: 0.3, ease: 'outBack' }],
+    type: [{ t: 0.8, until: 4.8, text: 'RENDER(T) IS THE FRAME' }],
+    count: [{ t: 0, v: 0 }, { t: 6, v: 180 }],
+  },
+};
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s), D = CONFIG.duration;
+// 轨道可视化：片段、关键帧、播放头
+const lanes = [['MOVE', CONFIG.tracks.move.map((k) => ({ key: k.t }))], ['TYPE', CONFIG.tracks.type.map((c) => ({ clip: [c.t, c.until] }))], ['COUNT', [{ clip: [0, D] }]]];
+$('#lanes').innerHTML = lanes.map(([name, items]) => `<div class="lane"><b>${name}</b><div class="track">${items.map((it) => it.key != null ? `<i class="key" style="left:${(it.key / D) * 100}%"></i>` : `<i class="clip" style="left:${(it.clip[0] / D) * 100}%;width:${((it.clip[1] - it.clip[0]) / D) * 100}%"></i>`).join('')}<i class="head"></i></div></div>`).join('');
+function render(t) {
+  const m = CONFIG.tracks.move;
+  let x = m[0].x;
+  for (let i = 0; i < m.length - 1; i++) {
+    if (t >= m[i].t && t <= m[i + 1].t) x = MK.lerp(m[i].x, m[i + 1].x, (MK.ease[m[i + 1].ease] || MK.ease.inOutCubic)(MK.invLerp(m[i].t, m[i + 1].t, t)));
+    if (t > m[i + 1].t) x = m[i + 1].x;
+  }
+  $('#box').style.transform = `translateX(${x * innerWidth}px) rotate(${x * 90}deg)`;
+  const ty = CONFIG.tracks.type[0];
+  $('#headline').textContent = MK.typeText(ty.text, MK.seg(t, ty.t, 1.2, MK.ease.linear));
+  $('#headline').style.opacity = 1 - MK.seg(t, ty.until, 0.4);
+  $('#count').textContent = Math.round(t * CONFIG.fps);
+  document.querySelectorAll('.head').forEach((h) => { h.style.left = `${(t / D) * 100}%`; });
+}
+const tl = MK.timeline({ duration: D, render, loop: true, markers: [{ t: 0.4, label: '关键帧 1' }, { t: 2.2, label: '吸附停住' }, { t: 4.6, label: '回弹' }] });
+MK.expose(tl, { fps: CONFIG.fps });
+MK.controls(tl);
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 2.6 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+addEventListener('resize', () => tl.seek(tl.time));
+</script>
+</body>
+</html>

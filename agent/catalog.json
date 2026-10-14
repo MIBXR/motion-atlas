@@ -1,0 +1,1317 @@
+{
+  "schemaVersion": 1,
+  "name": "Motion Atlas",
+  "description": "多媒体动态视觉参考库：影像视频、交互操作台、交互展示台的案例、巧思、节奏表、Prompt 与可迁移 Demo。",
+  "contentVersion": "8698d63d25bbbe28f3f35d853e83fd429ea618903d296e843cb4e40b35f2a1fa",
+  "taxonomy": {
+    "carriers": {
+      "video": "影像视频",
+      "console": "交互操作台",
+      "showcase": "交互展示台"
+    },
+    "sources": {
+      "reference": "用户提供的参考",
+      "game": "游戏界面转译",
+      "original": "原创设计语言"
+    },
+    "types": {
+      "composition": "画面构成",
+      "type-motion": "文字动效",
+      "transition": "转场",
+      "camera": "镜头与空间",
+      "feedback": "交互反馈",
+      "rhythm": "节奏与时序",
+      "hud": "信息层 HUD",
+      "texture": "质感与后期",
+      "sound": "声音"
+    },
+    "evidence": {
+      "observed": "逐帧/源码实测",
+      "adapted": "本地转译",
+      "inferred": "公开资料推断·待核验",
+      "original": "原创设计"
+    },
+    "roles": {
+      "foundation": "骨架：决定主视觉与信息层级",
+      "support": "支撑：承担一个区域的交互或信息",
+      "accent": "点睛：短时、局部的强调"
+    }
+  },
+  "protocol": {
+    "seek": "Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn) }。",
+    "urlParams": "?embed 隐藏控制条；?render 关闭自动播放供逐帧渲染；?t=秒 定位到指定时刻。",
+    "kit": "kit/motion-kit.js"
+  },
+  "counts": {
+    "cases": 9,
+    "patterns": 38
+  },
+  "cases": [
+    {
+      "id": "map-pilgrimage",
+      "title": "地图巡礼 · 游戏过场式旅行影像",
+      "summary": "以真实地图为“交互基地”，四角 HUD 记录日序、坐标、时间与音乐；镜头沿路线推进，在卡片、全屏实拍、动画回忆与分屏对比之间切换，把一段旅行剪成游戏过场。",
+      "carriers": [
+        "video",
+        "showcase"
+      ],
+      "source": "reference",
+      "evidence": "observed",
+      "tags": [
+        "地图叙事",
+        "游戏过场",
+        "HUD 四角",
+        "昼夜切换",
+        "分屏对比",
+        "竖排汉字"
+      ],
+      "useCases": [
+        "旅行 / 巡礼 Vlog",
+        "城市与文旅宣传",
+        "物流与路线回顾",
+        "活动巡回纪录",
+        "年度回顾影像",
+        "交互式行程展示台"
+      ],
+      "avoid": [
+        "没有空间移动的内容",
+        "需要逐字阅读的长文",
+        "镜头要停在单一画面的访谈"
+      ],
+      "patternIds": [
+        "corner-hud",
+        "vertical-title-blur",
+        "route-draw-marker",
+        "day-night-flip",
+        "card-expand-fullscreen",
+        "chapter-frame",
+        "split-compare-stamp",
+        "collect-counter",
+        "alert-reroute",
+        "outro-stat-stack",
+        "seekable-timeline",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/map-pilgrimage.json",
+      "bundleSha256": "8aafdd40b29c6326a1818978f89cefbf2d5422faa60a064917208094e660d62b"
+    },
+    {
+      "id": "archive-os",
+      "title": "白色档案终端 · 莱茵式 Analysis OS",
+      "summary": "暖灰白底、细线与紧凑排字，一整片透明档案块组成可浏览的阵列：开机逐字验证身份，切换时选中块抬起并向四周传出波浪，读取时对角线合拢、盖板由磨砂变清晰、正文遮挡条依次退开。",
+      "carriers": [
+        "console",
+        "showcase"
+      ],
+      "source": "reference",
+      "evidence": "observed",
+      "tags": [
+        "暖灰白",
+        "档案阵列",
+        "开机序列",
+        "滚动编号",
+        "解密揭示",
+        "空闲呼吸"
+      ],
+      "useCases": [
+        "数据档案 / 资料库浏览",
+        "产品与展品陈列台",
+        "游戏内终端与图鉴",
+        "品牌发布会交互屏",
+        "桌面壁纸与工作台"
+      ],
+      "avoid": [
+        "需要高信息密度表格的后台",
+        "高饱和、强情绪的品牌",
+        "低性能设备上的大规模 3D"
+      ],
+      "patternIds": [
+        "boot-typing",
+        "rolling-digits",
+        "decrypt-reveal",
+        "wave-array",
+        "idle-breathing",
+        "seekable-timeline"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/archive-os.json",
+      "bundleSha256": "5cbcf0ae19b58e064cd4630f4aa20228fb15870158b3eba11d0f14006c523de6"
+    },
+    {
+      "id": "phantom-battle",
+      "title": "怪盗动势 · P5 式战斗指令与总攻过场",
+      "summary": "红、黑、白三色与斜切几何，把战斗菜单本身做成表演：指令环绕角色、选中项放大扭转并抖动影子，命中后冲击字拍出、斜带切入特写、HOLD UP 定格，再以星形遮罩进入总攻与漫画格收尾。",
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "source": "game",
+      "evidence": "inferred",
+      "tags": [
+        "红黑白",
+        "剪报拼贴字",
+        "斜切菜单",
+        "切入特写",
+        "星形遮罩",
+        "冲击字"
+      ],
+      "useCases": [
+        "游戏战斗/指令界面",
+        "直播打赏与高光时刻",
+        "综艺/音乐节目包装",
+        "潮流品牌发布",
+        "活动倒计时与抽奖"
+      ],
+      "avoid": [
+        "严肃的金融/医疗信息",
+        "需要长时间阅读的界面",
+        "对闪烁敏感的受众（需关闭闪光）"
+      ],
+      "patternIds": [
+        "skew-menu",
+        "cutin-slash",
+        "ransom-type",
+        "impact-pop",
+        "shape-wipe"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/phantom-battle.json",
+      "bundleSha256": "810520b906b642fc07c3906266e496f914a2d8abd59694c6f4610f4ba42b06dc"
+    },
+    {
+      "id": "industrial-protocol",
+      "title": "工业协议 · 终末地式设施操作台",
+      "summary": "米灰工业表面、石墨黑与安全黄，切角面板、注册标记、刻度与危险条纹构成“管理员终端”；分段加载后各区块以吸附缓动就位，产线物料沿传送带流动，设备蓝图逐线描出，部署需按住确认，换页用一条发光扫描线。",
+      "carriers": [
+        "console",
+        "showcase"
+      ],
+      "source": "game",
+      "evidence": "inferred",
+      "tags": [
+        "工业机能",
+        "安全黄",
+        "切角面板",
+        "危险条纹",
+        "字符解码",
+        "长按确认"
+      ],
+      "useCases": [
+        "工业/能源/物流监控台",
+        "游戏内建造与管理界面",
+        "B 端设备管理后台的品牌化外观",
+        "展会设备展示屏",
+        "科幻影视 FUI"
+      ],
+      "avoid": [
+        "温暖亲和的消费品牌",
+        "以图片为主的内容浏览",
+        "需要高信息密度表格且不允许装饰的严肃系统"
+      ],
+      "patternIds": [
+        "chamfer-panel",
+        "text-scramble",
+        "conveyor-flow",
+        "hold-confirm",
+        "scanline-wipe"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/industrial-protocol.json",
+      "bundleSha256": "a2e42643a54360720f576e810bb0aff0be3d0310232e01d66a2d7cda4d9aa99d"
+    },
+    {
+      "id": "broadcast-pack",
+      "title": "赛事转播图形包 · 踩拍的信息层",
+      "summary": "电竞/体育直播的一整套图形包：色带转场、比分角标、三段式下三分之一、数据对比条、得分强调、回放框、滚动新闻与冠军卡——所有出入场都按 120 BPM 的拍子写，转场永远落在拍点上。",
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "source": "original",
+      "evidence": "original",
+      "tags": [
+        "转播包装",
+        "120 BPM",
+        "斜切色带",
+        "比分角标",
+        "下三分之一",
+        "数据对比"
+      ],
+      "useCases": [
+        "电竞/体育直播包装",
+        "发布会与年会直播",
+        "综艺与节目包装",
+        "直播间信息条",
+        "数据播报短视频"
+      ],
+      "avoid": [
+        "安静的纪录片与访谈",
+        "需要长时间阅读的信息"
+      ],
+      "patternIds": [
+        "lower-third",
+        "stinger-bars",
+        "seekable-timeline",
+        "beat-clock"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/broadcast-pack.json",
+      "bundleSha256": "fc1af9dca72e34cfb28226d297d0ccf137332eca43bcc66e374cdeac05a57f0c"
+    },
+    {
+      "id": "beat-lyric",
+      "title": "节拍动态字幕 · Kinetic Lyric MV",
+      "summary": "把歌词写成“拍号表”：词在拍上硬切出现、反拍轻轻上弹、军鼓拍条纹闪、每段换一整块颜色、Build 段八分音符叠字加速、Drop 每拍换色并震动——画面本身就是一份可视化的节拍器。",
+      "carriers": [
+        "video"
+      ],
+      "source": "original",
+      "evidence": "original",
+      "tags": [
+        "节拍同步",
+        "动态字体",
+        "硬切",
+        "遮罩上升",
+        "堆叠网格",
+        "Drop"
+      ],
+      "useCases": [
+        "歌词 MV / Lyric Video",
+        "短视频卡点",
+        "品牌口号影片",
+        "发布会开场",
+        "演出 VJ 素材"
+      ],
+      "avoid": [
+        "光敏人群（需关闭闪光与 Drop 换色）",
+        "需要细读的长句"
+      ],
+      "patternIds": [
+        "beat-clock",
+        "word-slam",
+        "seekable-timeline"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/beat-lyric.json",
+      "bundleSha256": "204ea3f1c884592f3b17ef77362b60e4a381862d931e232f433cc454e7940866"
+    },
+    {
+      "id": "mission-fui",
+      "title": "任务指挥台 · 荧光 FUI",
+      "summary": "黑底荧光青的指挥台：雷达扫描带余辉、目标被扫到时点亮再衰减；锁定括号分四档“咔咔”收紧；遥测波形、系统条与逐行日志持续刷新；整台设备在 NOMINAL / CAUTION / ALERT 三种状态间一起换色、换闪烁节奏。",
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "source": "original",
+      "evidence": "original",
+      "tags": [
+        "FUI",
+        "雷达余辉",
+        "阶梯锁定",
+        "告警态",
+        "示波器",
+        "等宽"
+      ],
+      "useCases": [
+        "科幻影视 FUI",
+        "安防/监控大屏",
+        "游戏 HUD 与雷达",
+        "发布会“系统演示”",
+        "直播数据监控"
+      ],
+      "avoid": [
+        "日常办公后台",
+        "需要长时间阅读的内容",
+        "光敏人群（ALERT 闪烁）"
+      ],
+      "patternIds": [
+        "radar-sweep",
+        "target-lock",
+        "alert-state",
+        "text-scramble"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mission-fui.json",
+      "bundleSha256": "df69f69f9d11ef258d290e2e4ea438d1ad35b071a8f8758fc5cb17a065f11574"
+    },
+    {
+      "id": "gacha-reveal",
+      "title": "抽卡揭示舞台 · 期待与释放",
+      "summary": "把“揭示”拆成可调的节拍：粒子螺旋内收蓄力 → 光球给出预示色 → 金色先给紫色再升格 → 闪白冲击波爆发 → 十张卡从中心飞入 → 逐张翻面并扫过流光 → 金卡多停一拍、光柱升起再翻开。",
+      "carriers": [
+        "showcase",
+        "video"
+      ],
+      "source": "original",
+      "evidence": "original",
+      "tags": [
+        "期待感",
+        "稀有度预示",
+        "升格假动作",
+        "冲击波",
+        "翻牌流光",
+        "光柱"
+      ],
+      "useCases": [
+        "游戏抽卡/开箱",
+        "抽奖与开奖直播",
+        "成绩/名次公布",
+        "新品发布揭幕",
+        "活动奖励领取"
+      ],
+      "avoid": [
+        "与金钱相关的诱导性设计（需遵守当地法规与概率公示）",
+        "光敏人群（闪白）"
+      ],
+      "patternIds": [
+        "charge-release",
+        "card-flip-sheen"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/gacha-reveal.json",
+      "bundleSha256": "59fc5acc90716920bb0223e9dc3992606e2251fce503273621992d21885962e7"
+    },
+    {
+      "id": "ink-scroll",
+      "title": "水墨长卷展台 · 手卷式浏览",
+      "summary": "一卷可以“展开”的山水手卷：自右向左展开，远中近三层墨色依次晕开，竖排题诗笔刷式显现，镜头沿阅读方向平移并带出层层视差，最后在卷尾落下一方朱印；之后可以拖动、滚轮或用缩略图自由浏览。",
+      "carriers": [
+        "showcase",
+        "video"
+      ],
+      "source": "original",
+      "evidence": "original",
+      "tags": [
+        "手卷",
+        "自右向左",
+        "墨晕显影",
+        "多层视差",
+        "竖排题诗",
+        "印章"
+      ],
+      "useCases": [
+        "博物馆/书画数字展",
+        "文旅长卷导览",
+        "品牌长图与年度时间线",
+        "产品发展历程",
+        "东方美学发布会"
+      ],
+      "avoid": [
+        "需要快速检索信息的场景",
+        "竖屏短视频（横幅比例不适合）"
+      ],
+      "patternIds": [
+        "ink-bleed",
+        "seal-stamp"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/ink-scroll.json",
+      "bundleSha256": "c323aa3faa2d1fe0c1e0de18827440c48465a754b2cbd5c7ced2a07afbbf7719"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "corner-hud",
+      "title": "四角信息 HUD",
+      "summary": "把日序、坐标、时间、音乐与进度固定在四个角，中央留给世界；信息持续更新，画面就有了“系统在运行”的感觉。",
+      "types": [
+        "hud",
+        "composition"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "route-draw-marker",
+        "chapter-frame",
+        "collect-counter",
+        "vertical-title-blur"
+      ],
+      "bundle": "agent/patterns/corner-hud.json",
+      "bundleSha256": "3203b07d59725a7c08c47ffe5965d3cb5fdabbb3e852806a188098ddb2fc930b"
+    },
+    {
+      "id": "vertical-title-blur",
+      "title": "竖排汉字模糊入场 + 英文打字",
+      "summary": "粗黑竖排汉字自上而下逐字由模糊变清晰，横线描出，英文标题带模糊前沿打出：一组同时有“东方字形”和“系统输出”气质的标题。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video",
+        "showcase",
+        "console"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "chapter-frame",
+        "card-expand-fullscreen"
+      ],
+      "bundle": "agent/patterns/vertical-title-blur.json",
+      "bundleSha256": "6e8788d5cf65669287ecb8228fc595314f43dab9408cdedce79821b9269e4970"
+    },
+    {
+      "id": "route-draw-marker",
+      "title": "路线描画与标记脉冲",
+      "summary": "虚线航线带弧度飞越、地面路线白色描边加强调色，头部圆点领路；地图标记出现时回弹、标签打字、双环脉冲持续呼吸。",
+      "types": [
+        "camera",
+        "hud"
+      ],
+      "carriers": [
+        "video",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "alert-reroute",
+        "card-expand-fullscreen"
+      ],
+      "bundle": "agent/patterns/route-draw-marker.json",
+      "bundleSha256": "99e7de2abcae8ec23b0716720eb04dcb2683ec1ad54c8cd6d1d62e6eefa2a805"
+    },
+    {
+      "id": "day-night-flip",
+      "title": "昼夜翻转：逐层插值",
+      "summary": "用约 1 秒把世界从白天换到夜晚：按图层类别逐个插值颜色，中途经过灰阶。对照整体反色可以看到差别——反色会让水比陆地更亮。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "route-draw-marker"
+      ],
+      "bundle": "agent/patterns/day-night-flip.json",
+      "bundleSha256": "032f27b97d449b58a1b7d5517e36008a535a42723644e4dc50e4089ae4029efb"
+    },
+    {
+      "id": "card-expand-fullscreen",
+      "title": "卡片展开为全屏",
+      "summary": "地图上的照片卡片 600ms 平滑展开为全屏实景，HUD 保留并转白、上下压暗，停留时缓慢推近，再收回卡片——高光片段不脱离“系统”。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "vertical-title-blur",
+        "split-compare-stamp"
+      ],
+      "bundle": "agent/patterns/card-expand-fullscreen.json",
+      "bundleSha256": "e1e8ed961f25bfcc938fd94ee2e174c7daa7cd9141afc5bf41f3ffa3bdfa811b"
+    },
+    {
+      "id": "chapter-frame",
+      "title": "章节主题：标签、强调色与四角框线",
+      "summary": "进入一个主题时，标签色块擦出、标题打字、全局强调色换成主题色，屏幕边缘描出一圈细框并在四角弹出方块——像游戏进入一段任务。",
+      "types": [
+        "composition",
+        "transition"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "route-draw-marker",
+        "vertical-title-blur"
+      ],
+      "bundle": "agent/patterns/chapter-frame.json",
+      "bundleSha256": "856fcb630478b94c337d85e3e536ca3f7256fc38845ee1d65c54ee4ef61e73fb"
+    },
+    {
+      "id": "split-compare-stamp",
+      "title": "分屏对比与时间戳盖章",
+      "summary": "先给出“现在”的全屏画面，再让分割线从左边滑到中线露出“过去”，最后一枚倾斜的描边时间戳盖下来。动画结束后可拖动分割线。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video",
+        "showcase"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "card-expand-fullscreen",
+        "vertical-title-blur",
+        "film-grain"
+      ],
+      "bundle": "agent/patterns/split-compare-stamp.json",
+      "bundleSha256": "c67a2580863d3b8b7c808c359cf7c8a3a4dfe9655b6651430f67a0a032a7b2e6"
+    },
+    {
+      "id": "collect-counter",
+      "title": "收集计数徽章与图鉴托盘",
+      "summary": "一个吉祥物头像胶囊记录“发现次数”，每次 +1 数字上滚、徽章回弹、外圈扩散；图鉴托盘的空位依次点亮，给叙事加上轻游戏化的奖励感。",
+      "types": [
+        "feedback",
+        "hud"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "outro-stat-stack"
+      ],
+      "bundle": "agent/patterns/collect-counter.json",
+      "bundleSha256": "783d9da0692b77e164151cf3fb3fdec6718d87ecb2c9ff104aecae5cbfc7be50"
+    },
+    {
+      "id": "alert-reroute",
+      "title": "警示横幅与改道",
+      "summary": "意外事件用一条红色通栏从左擦入，错误路线画红并以叉号收尾，黑色“改道中…”胶囊闪烁省略号；纠正后换成绿色“已回到路线”。",
+      "types": [
+        "feedback",
+        "hud"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "route-draw-marker",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/alert-reroute.json",
+      "bundleSha256": "f7e28c0a6c8b4bcd13d33e110b564cb92d78fe68146ddab8b8073622adb12f76"
+    },
+    {
+      "id": "outro-stat-stack",
+      "title": "结尾数据堆叠与计数",
+      "summary": "大号数字逐行出现并快速计数，右侧配等宽小字标签，最后以衬线“— fin.”与署名收束；像游戏结算界面，给旅程一个“分数”。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "collect-counter",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/outro-stat-stack.json",
+      "bundleSha256": "e9b45d8930a8fc7072d9462688ad60fc68b7b366ecef20c97abb61f8a0f50748"
+    },
+    {
+      "id": "seekable-timeline",
+      "title": "可逐帧定位的时间轴",
+      "summary": "把画面写成 render(t) 纯函数、把所有时间写进轨道：同一份代码既能实时播放，也能被拖动、跳到节拍，或逐帧截图渲染成视频。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "film-grain",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/seekable-timeline.json",
+      "bundleSha256": "bd2d05270c14c046a1e1c2054c0758607c2d48efd856a8d79d9daea3502aa1f1"
+    },
+    {
+      "id": "film-grain",
+      "title": "可复现的胶片颗粒与暗角",
+      "summary": "预生成几帧噪声、按帧号选帧叠加，配合暗角、扫描线与轻微闪烁；同一时刻永远是同一张颗粒，逐帧渲染也不会“跳”。",
+      "types": [
+        "texture"
+      ],
+      "carriers": [
+        "video",
+        "showcase",
+        "console"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "seekable-timeline",
+        "split-compare-stamp"
+      ],
+      "bundle": "agent/patterns/film-grain.json",
+      "bundleSha256": "96b07562f92bb7d76063c6c8033ea00dee2d32fc200b597920d4e274d5c5dab3"
+    },
+    {
+      "id": "boot-typing",
+      "title": "终端逐字开机序列",
+      "summary": "白场上逐字输入请求、停顿、黑底闪一下再清空，圆环与标志随后绘出，身份确认三行错峰打字——用“输入的节奏”建立系统的可信度。",
+      "types": [
+        "type-motion",
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "console",
+        "video",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "rolling-digits",
+        "decrypt-reveal",
+        "wave-array"
+      ],
+      "bundle": "agent/patterns/boot-typing.json",
+      "bundleSha256": "360d9277b9afc122403765f57d27a6b828e9120714b100aac3d1ba42c0b39678"
+    },
+    {
+      "id": "rolling-digits",
+      "title": "滚动数字与文字",
+      "summary": "编号、计数、标题与分类在切换时沿输入方向滚动 460ms，带极轻的运动模糊；快速连按只显示“当前运动 → 最新目标”，不为中间值排队。",
+      "types": [
+        "type-motion",
+        "feedback"
+      ],
+      "carriers": [
+        "console",
+        "showcase",
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "wave-array",
+        "boot-typing",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/rolling-digits.json",
+      "bundleSha256": "630f0f69c51584f0030eda13db45176777c6da9a0630894baed90894aba85393"
+    },
+    {
+      "id": "decrypt-reveal",
+      "title": "对角解密与磨砂转清",
+      "summary": "两条信号色对角线合拢、停留、收束；玻璃盖板自上而下由磨砂变清晰；右侧文档上的黑色遮挡条按阅读顺序依次退开——“读取”被做成一个可以看见的过程。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "console",
+        "showcase",
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "boot-typing",
+        "rolling-digits",
+        "card-flip-sheen"
+      ],
+      "bundle": "agent/patterns/decrypt-reveal.json",
+      "bundleSha256": "4cd8bbb4b6a38a40c5968334572947c7124329e2fb2b2a01a7cc854c3657cadd"
+    },
+    {
+      "id": "wave-array",
+      "title": "阵列选择波浪",
+      "summary": "在一整片重复元素中选中一个：它以临界阻尼抬起，同时向四周传出一圈按距离延迟、指数衰减的余波——选择像投入水面的石子。",
+      "types": [
+        "feedback",
+        "rhythm"
+      ],
+      "carriers": [
+        "console",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "rolling-digits",
+        "idle-breathing"
+      ],
+      "bundle": "agent/patterns/wave-array.json",
+      "bundleSha256": "cced942782250a644c2dc8a1018bdf74f7a27d29f6d69a129fb0909412554622"
+    },
+    {
+      "id": "idle-breathing",
+      "title": "空闲呼吸",
+      "summary": "停止操作 2.5 秒后，界面元素以两个不成整数比的周期（8s 与 13s）叠加缓慢起伏，相邻元素错相；任何操作立即渐退——界面“活着”，但不打扰。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "console",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "wave-array",
+        "rolling-digits"
+      ],
+      "bundle": "agent/patterns/idle-breathing.json",
+      "bundleSha256": "6691717710efbbe00d62dc5abfab38b1f4681bc9f3693cf4f0a882033bffe7ad"
+    },
+    {
+      "id": "skew-menu",
+      "title": "斜切指令菜单",
+      "summary": "每个菜单项都是一块斜切的白板加一块偏移的黑影；选中时以“吸附”缓动放大、扭转并黑白反转，影子持续小幅抖动——静止的菜单也在呼吸与挑衅。",
+      "types": [
+        "feedback",
+        "composition"
+      ],
+      "carriers": [
+        "console",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "phantom-battle"
+      ],
+      "pairsWellWith": [
+        "ransom-type",
+        "impact-pop",
+        "cutin-slash"
+      ],
+      "bundle": "agent/patterns/skew-menu.json",
+      "bundleSha256": "9243dc2f4ae793b4a7415809a69f124795b56c070f4f75048724bb962fd1c066"
+    },
+    {
+      "id": "cutin-slash",
+      "title": "角色切入斜带",
+      "summary": "一条倾斜的黑带夹着红带从画面一侧极快切入，内含流动的速度线与眼部特写，文字逐字拍上，停留约一秒后继续从另一侧离场——战斗中的“高光插播”。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "phantom-battle"
+      ],
+      "pairsWellWith": [
+        "ransom-type",
+        "impact-pop",
+        "stinger-bars"
+      ],
+      "bundle": "agent/patterns/cutin-slash.json",
+      "bundleSha256": "96bbc65db100ee94ea4953fd221a2073880351ea5db1b74eabf4bf4f0bfc3aa0"
+    },
+    {
+      "id": "ransom-type",
+      "title": "剪报拼贴字",
+      "summary": "每个字母像从不同报纸上剪下：独立的底色/字色、字体、字重、角度、大小和上下偏移，并以错峰“拍”进来；固定种子保证每次一致。",
+      "types": [
+        "composition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "phantom-battle"
+      ],
+      "pairsWellWith": [
+        "skew-menu",
+        "cutin-slash",
+        "impact-pop"
+      ],
+      "bundle": "agent/patterns/ransom-type.json",
+      "bundleSha256": "87e9cc022097ebf1de56f1135c7f1f3eca41de4923a5be071982fc9481451618"
+    },
+    {
+      "id": "impact-pop",
+      "title": "冲击字弹出",
+      "summary": "命中瞬间先给反色闪、目标后坐与屏幕抖动，随后“WEAK / CRITICAL”从 2.6 倍以回弹落定、倾斜 −10°，背后一圈星芒爆开——反馈的层次比文字本身更重要。",
+      "types": [
+        "feedback",
+        "type-motion"
+      ],
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "phantom-battle"
+      ],
+      "pairsWellWith": [
+        "skew-menu",
+        "cutin-slash",
+        "ransom-type"
+      ],
+      "bundle": "agent/patterns/impact-pop.json",
+      "bundleSha256": "3d2f89550b6d437a1432250051831de2a7228f871a98759000c77592da9d76c6"
+    },
+    {
+      "id": "shape-wipe",
+      "title": "异形遮罩转场",
+      "summary": "用星芒、锯齿、斜切或圆形的黑色遮罩从中心旋转放大吞没画面，在完全覆盖的瞬间换场，再缩回释放——形状本身就是情绪。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "phantom-battle"
+      ],
+      "pairsWellWith": [
+        "ransom-type",
+        "impact-pop"
+      ],
+      "bundle": "agent/patterns/shape-wipe.json",
+      "bundleSha256": "54e323df824818eb5ffe5c08d3ec32faa962c38fd8122d1546f2920cd839f5e9"
+    },
+    {
+      "id": "chamfer-panel",
+      "title": "切角工业面板",
+      "summary": "用 45° 切角、四角十字注册标记、刻度尺、安全黄三角角标和危险斜纹，把普通矩形面板变成“设备铭牌”；入场时切角从夸张收拢到标准尺寸。",
+      "types": [
+        "composition"
+      ],
+      "carriers": [
+        "console",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "industrial-protocol"
+      ],
+      "pairsWellWith": [
+        "text-scramble",
+        "scanline-wipe",
+        "hold-confirm"
+      ],
+      "bundle": "agent/patterns/chamfer-panel.json",
+      "bundleSha256": "eb76516ad399b6e2c83f9b2506bd7550272fcb7273721ec24e90e490d53eaee8"
+    },
+    {
+      "id": "text-scramble",
+      "title": "字符解码",
+      "summary": "标题与编码先显示为随机字符，再按从左到右（带随机抖动）的阈值逐个“解出”，末尾跟一个块状光标；随机由帧号与位置决定，逐帧渲染也一致。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "console",
+        "video",
+        "showcase"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "industrial-protocol"
+      ],
+      "pairsWellWith": [
+        "chamfer-panel",
+        "scanline-wipe",
+        "boot-typing"
+      ],
+      "bundle": "agent/patterns/text-scramble.json",
+      "bundleSha256": "d77afc8e3db2ee453b5059ab7825cc446f5c639ef693214659d804dd45220e01"
+    },
+    {
+      "id": "conveyor-flow",
+      "title": "产线流动",
+      "summary": "节点之间的正交传送带上，物料方块匀速流动、带纹同速推进、节点指示灯闪烁、产量计数——持续运转的系统感来自“永不停的匀速”。",
+      "types": [
+        "hud",
+        "rhythm"
+      ],
+      "carriers": [
+        "console",
+        "showcase",
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "industrial-protocol"
+      ],
+      "pairsWellWith": [
+        "chamfer-panel",
+        "hold-confirm"
+      ],
+      "bundle": "agent/patterns/conveyor-flow.json",
+      "bundleSha256": "50852f7340a136826e202fc82e154d838d4e0155d09f9d560a2427a97531b967"
+    },
+    {
+      "id": "hold-confirm",
+      "title": "长按确认",
+      "summary": "不可逆操作需要按住：进度只在按住时增长，松开以 300ms 回落；满格瞬间锁定为完成态并盖章——比二次弹窗更有“物理”感。",
+      "types": [
+        "feedback"
+      ],
+      "carriers": [
+        "console",
+        "showcase"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "industrial-protocol"
+      ],
+      "pairsWellWith": [
+        "chamfer-panel",
+        "conveyor-flow"
+      ],
+      "bundle": "agent/patterns/hold-confirm.json",
+      "bundleSha256": "f33f0ffa87a55ef764d7662894d49c38c7990a3a619a4d21c3798c274ed35e8e"
+    },
+    {
+      "id": "scanline-wipe",
+      "title": "扫描线换页",
+      "summary": "一条发光的黄色扫描线从左扫到右：线左是新页、线右仍是旧页，像被设备重新扫描刷新；新页卡片在线经过后错峰上浮。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "console",
+        "showcase",
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "industrial-protocol"
+      ],
+      "pairsWellWith": [
+        "chamfer-panel",
+        "text-scramble"
+      ],
+      "bundle": "agent/patterns/scanline-wipe.json",
+      "bundleSha256": "942df841ef3da2d48418200c75f1e60420278d4d52df34d815ac9dee402a4ee8"
+    },
+    {
+      "id": "lower-third",
+      "title": "三段式下三分之一",
+      "summary": "人物条按“色条 → 底板 → 文字”三段入场，离场倒序且更快；时长按拍写，整条节目的人物条都踩在同一个节奏上。",
+      "types": [
+        "type-motion",
+        "hud"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "broadcast-pack"
+      ],
+      "pairsWellWith": [
+        "stinger-bars",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/lower-third.json",
+      "bundleSha256": "de0c353e6beef042ead7a17655d3bc3bce06fcc3ac9b555ad0bb272b44fd0d27"
+    },
+    {
+      "id": "stinger-bars",
+      "title": "色带转场 Stinger",
+      "summary": "多条斜色带错峰横扫，第一条盖住画面的那一刻完成场景硬切，品牌标志在色带中段闪现——观众只看到“品牌”，看不到切换。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "broadcast-pack"
+      ],
+      "pairsWellWith": [
+        "lower-third",
+        "cutin-slash"
+      ],
+      "bundle": "agent/patterns/stinger-bars.json",
+      "bundleSha256": "c251f76694cec32904d608757e90af2434341c373d59259ccad92d7a77a06a2c"
+    },
+    {
+      "id": "beat-clock",
+      "title": "BPM 节拍时钟与前瞻调度",
+      "summary": "用 beat = t ÷ (60 / BPM) 把时间换成拍；视觉用“每拍脉冲”，声音用“前瞻调度”交给 AudioContext 定时播放——画面与声音落在同一拍上。",
+      "types": [
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "video",
+        "console",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "beat-lyric",
+        "broadcast-pack"
+      ],
+      "pairsWellWith": [
+        "word-slam",
+        "seekable-timeline",
+        "stinger-bars"
+      ],
+      "bundle": "agent/patterns/beat-clock.json",
+      "bundleSha256": "648e9506cb5de8e2307cf78416313ed4160e5a53f121379632b66bd2e34a8e3e"
+    },
+    {
+      "id": "word-slam",
+      "title": "逐词重拍",
+      "summary": "每个词落在一个拍上：瞬间从 1.5 倍“敲”下去（120ms），持续若干拍后硬切到下一个词；反拍给一个很小的上弹——静止的字也在跟着律动。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "beat-lyric"
+      ],
+      "pairsWellWith": [
+        "beat-clock",
+        "ransom-type"
+      ],
+      "bundle": "agent/patterns/word-slam.json",
+      "bundleSha256": "e8aeec73a8dd9375bec196f58f2d3d811333ad7cd8b9c49d55d1ea9aeb9eac90"
+    },
+    {
+      "id": "radar-sweep",
+      "title": "雷达扫描与余辉",
+      "summary": "扫描线匀速旋转，身后拖一段锥形余辉；目标在被扫到的瞬间最亮，随后按指数衰减，并向外扩一圈——像荧光屏的余晖。",
+      "types": [
+        "hud",
+        "rhythm"
+      ],
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mission-fui"
+      ],
+      "pairsWellWith": [
+        "target-lock",
+        "alert-state"
+      ],
+      "bundle": "agent/patterns/radar-sweep.json",
+      "bundleSha256": "e4cd1ba4edf53e72e31dcd51465c65779f72dfc001dcf3bb4db4de3a4de492c2"
+    },
+    {
+      "id": "target-lock",
+      "title": "阶梯式目标锁定",
+      "summary": "锁定框不是平滑缩放，而是分档“咔、咔、咔”收紧并旋正，最后等一段确认时间才显示 LOCK——锁定有了机械感和重量。",
+      "types": [
+        "feedback"
+      ],
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mission-fui"
+      ],
+      "pairsWellWith": [
+        "radar-sweep",
+        "alert-state",
+        "text-scramble"
+      ],
+      "bundle": "agent/patterns/target-lock.json",
+      "bundleSha256": "1526a01bda00d2e25ba37b6d6efd09ebaaf51a5bf235af3e2eec80b77fa9f0f1"
+    },
+    {
+      "id": "alert-state",
+      "title": "全局告警态切换",
+      "summary": "一个状态变量同时决定全部颜色、闪烁频率、边缘辉光与数据波动；组件只读 CSS 变量，切换一次整台设备一起变。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "console",
+        "video",
+        "showcase"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mission-fui"
+      ],
+      "pairsWellWith": [
+        "radar-sweep",
+        "target-lock",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/alert-state.json",
+      "bundleSha256": "ca277cc811097715f9e23e05f3b334df9ae6f3e6da7c15d558e55fef3a0bf5cd"
+    },
+    {
+      "id": "charge-release",
+      "title": "蓄力—预示—爆发",
+      "summary": "期待感 = 时长 × 不确定性：粒子螺旋内收蓄力，预示色先给一部分答案，最高等级先给次一级颜色再升格（假动作），最后用最强的闪白与冲击波释放。",
+      "types": [
+        "rhythm",
+        "transition"
+      ],
+      "carriers": [
+        "showcase",
+        "video",
+        "console"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "gacha-reveal"
+      ],
+      "pairsWellWith": [
+        "card-flip-sheen",
+        "impact-pop"
+      ],
+      "bundle": "agent/patterns/charge-release.json",
+      "bundleSha256": "ad75f07f2c648be1970226a7aafedfa99f3dfe0e97edf8e078703312c61f06cc"
+    },
+    {
+      "id": "card-flip-sheen",
+      "title": "翻牌与流光",
+      "summary": "卡片以 outBack 翻转 180°（略超再回正，像真的翻过去），翻开后一道斜向流光扫过牌面；稀有卡多停一拍再翻，翻开后发光并轻微放大。",
+      "types": [
+        "feedback",
+        "transition"
+      ],
+      "carriers": [
+        "showcase",
+        "console",
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "gacha-reveal"
+      ],
+      "pairsWellWith": [
+        "charge-release",
+        "decrypt-reveal"
+      ],
+      "bundle": "agent/patterns/card-flip-sheen.json",
+      "bundleSha256": "3017643cc370470bf2e4b585d2a6fc82696b01dbc6bb83071e1394fa6d821543"
+    },
+    {
+      "id": "ink-bleed",
+      "title": "墨晕显影",
+      "summary": "扩散遮罩经过湍流位移，边缘像墨在宣纸上洇开；位移与模糊随显影完成逐渐归零，最后得到清晰的墨色。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "showcase",
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "ink-scroll"
+      ],
+      "pairsWellWith": [
+        "seal-stamp",
+        "vertical-title-blur"
+      ],
+      "bundle": "agent/patterns/ink-bleed.json",
+      "bundleSha256": "bcc8cc3b7b287047b404f9a5d917a05e49e99959cdae5dfdf7b1bb9f250e3932"
+    },
+    {
+      "id": "seal-stamp",
+      "title": "印章落下",
+      "summary": "抬起（影子变大变淡）→ 按下（1.35→1 回弹、轻微旋转）→ 印泥晕开（红色扩散环）→ 纸面微震与一声低频“咚”：一个确认动作的完整物理过程。",
+      "types": [
+        "feedback"
+      ],
+      "carriers": [
+        "showcase",
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "ink-scroll"
+      ],
+      "pairsWellWith": [
+        "ink-bleed",
+        "hold-confirm"
+      ],
+      "bundle": "agent/patterns/seal-stamp.json",
+      "bundleSha256": "c352a1ca07d9fd5369beb404d4f0b31008de990f95af6777a58223e60b9b7e83"
+    }
+  ]
+}

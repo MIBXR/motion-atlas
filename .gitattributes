@@ -1,0 +1,5 @@
+# 统一 LF：Agent 资料包里的 SHA256 按 LF 内容计算
+* text=auto eol=lf
+*.jpg binary
+*.png binary
+*.webp binary

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "cutin-slash",
+  "pattern": {
+    "id": "cutin-slash",
+    "order": 41,
+    "title": "角色切入斜带",
+    "types": [
+      "transition"
+    ],
+    "carriers": [
+      "video",
+      "console"
+    ],
+    "summary": "一条倾斜的黑带夹着红带从画面一侧极快切入，内含流动的速度线与眼部特写，文字逐字拍上，停留约一秒后继续从另一侧离场——战斗中的“高光插播”。",
+    "mechanism": "外层黑带旋转 −8° 并溢出画面两侧，translateX 由 120% → 0（220ms outExpo）→ −120%（220ms inCubic）；内层红带的重复线性渐变背景按时间平移形成速度线；特写 SVG 在停留期缓推 12%；切入瞬间反色闪 60ms 与指数衰减抖动。",
+    "trigger": "连击 / 额外回合 / 必杀前",
+    "effect": "打断常规节奏的一次“强调”，把角色情绪推到最前。",
+    "timing": [
+      {
+        "name": "切入",
+        "value": "220ms outExpo"
+      },
+      {
+        "name": "停留",
+        "value": "约 1.3–1.6s"
+      },
+      {
+        "name": "离场",
+        "value": "220ms inCubic，同方向继续"
+      },
+      {
+        "name": "速度线",
+        "value": "1400px/s"
+      },
+      {
+        "name": "缓推",
+        "value": "停留期 +12%"
+      }
+    ],
+    "useCases": [
+      "战斗连击",
+      "直播高光",
+      "体育进球插播",
+      "发布会角色介绍"
+    ],
+    "avoid": [
+      "每分钟多次（会失去冲击力）"
+    ],
+    "accessibility": {
+      "reducedMotion": "无闪光与抖动，斜带直接出现与消失。",
+      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [
+        "ransom-type",
+        "impact-pop",
+        "stinger-bars"
+      ],
+      "conflicts": [
+        "shape-wipe"
+      ],
+      "notes": "与异形遮罩不要紧挨着使用：两个“全屏强调”连续出现会互相削弱。"
+    },
+    "prompt": "实现角色切入斜带：一条宽度 130%、高度约 36% 的黑色带（rotate −8°）内嵌上下各留 13% 的红色带；红带背景是 repeating-linear-gradient 速度线，backgroundPosition 随时间以 1400px/s 平移；中间放角色眼部特写 SVG。切入：translateX 120%→0，220ms outExpo，同时 60ms 反色闪（mix-blend-mode: difference）与 12px·e^(−10t) 屏幕抖动；停留 1.4s 期间特写 scale 1→1.12；离场：继续向左 translateX 0→−120%，220ms inCubic。文字用剪报拼贴字在切入后 150ms 逐字拍入。",
+    "demo": "demos/patterns/cutin-slash/index.html",
+    "kit": true,
+    "previewAt": 1,
+    "sources": [
+      {
+        "caseId": "phantom-battle",
+        "observation": "额外回合与总攻前的角色特写切入、倾斜构图与速度线；时长为本地拟合，待实机逐帧核对。",
+        "evidence": "inferred",
+        "locator": "常见战斗演出 · 待核验"
+      }
+    ],
+    "preview": "previews/patterns/cutin-slash.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "phantom-battle",
+      "bundle": "agent/cases/phantom-battle.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 角色切入斜带 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/cutin-slash.json) 自动生成。\n\n## 实现 Prompt\n\n实现角色切入斜带：一条宽度 130%、高度约 36% 的黑色带（rotate −8°）内嵌上下各留 13% 的红色带；红带背景是 repeating-linear-gradient 速度线，backgroundPosition 随时间以 1400px/s 平移；中间放角色眼部特写 SVG。切入：translateX 120%→0，220ms outExpo，同时 60ms 反色闪（mix-blend-mode: difference）与 12px·e^(−10t) 屏幕抖动；停留 1.4s 期间特写 scale 1→1.12；离场：继续向左 translateX 0→−120%，220ms inCubic。文字用剪报拼贴字在切入后 150ms 逐字拍入。\n\n## 参数\n\n- **切入**：220ms outExpo\n- **停留**：约 1.3–1.6s\n- **离场**：220ms inCubic，同方向继续\n- **速度线**：1400px/s\n- **缓推**：停留期 +12%\n\n[打开 Demo](../../demos/patterns/cutin-slash/index.html) · [在库中查看](../../patterns.html#pattern/cutin-slash)\n"
+  },
+  "entrypoint": "demos/patterns/cutin-slash/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/cutin-slash/index.html",
+      "bytes": 4776,
+      "sha256": "3330c2dfe9588b26a8719909b602d98bdd66f5ad9573241f9595835bfcaf9298"
+    },
+    {
+      "path": "demos/patterns/cutin-slash/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/cutin-slash.jpg",
+      "bytes": 54319,
+      "sha256": "2c21fb49ed24c944cfd9059ad1b11abe8233eadb0ea6946d9fc99ec0153f19fb"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>卡片展开为全屏 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #f2efe8; --ink: #16171a; --accent: #d9632b; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; --f-display: "Bahnschrift","DIN Alternate","Segoe UI",sans-serif; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); }
+  .world { position: absolute; inset: 0; background-image: linear-gradient(rgba(22,23,26,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(22,23,26,.08) 1px, transparent 1px); background-size: 64px 64px; }
+  .pin { position: absolute; left: 28%; top: 52%; width: 16px; height: 16px; margin: -8px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); }
+  svg.lead { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  svg.lead path { stroke: var(--ink); stroke-dasharray: 2 4; opacity: .55; fill: none; }
+  .card { position: absolute; z-index: 2; }
+  .media { position: absolute; inset: 0; overflow: hidden; background: #222; box-shadow: 0 18px 50px rgba(0,0,0,.28); }
+  .media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cap { position: absolute; left: 0; top: calc(100% + 14px); padding-left: 12px; border-left: 3px solid var(--ink); font: 700 14px/1.3 var(--f-display); letter-spacing: .08em; color: var(--ink); }
+  .cap span { display: block; margin-top: 4px; font: 12px/1 var(--f-mono); color: rgba(22,23,26,.6); }
+  .scrim { position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(180deg, rgba(6,8,12,.5), transparent 26%, transparent 70%, rgba(6,8,12,.55)); }
+  .hud { position: absolute; z-index: 4; left: clamp(16px, 3vw, 48px); right: clamp(16px, 3vw, 48px); top: clamp(16px, 3vw, 40px); display: flex; justify-content: space-between; color: var(--hud, var(--ink)); font: 600 12px/1.5 var(--f-mono); letter-spacing: .18em; }
+  .hud b { font: 600 clamp(24px, 2.4vw, 40px)/1 var(--f-mono); letter-spacing: .02em; }
+  .loc { position: absolute; z-index: 4; left: clamp(16px, 3vw, 48px); bottom: clamp(16px, 3vw, 40px); color: #fff; writing-mode: vertical-rl; font: 900 clamp(40px, 6vw, 96px)/1 "PingFang SC","Microsoft YaHei",sans-serif; text-shadow: 0 2px 20px rgba(0,0,0,.4); }
+</style>
+</head>
+<body>
+<div class="world" aria-hidden="true"></div>
+<i class="pin" aria-hidden="true"></i>
+<svg class="lead" aria-hidden="true"><path id="lead"/></svg>
+<figure class="card" id="card" style="margin:0"><div class="media"><img id="img" alt="西湖清晨（程序化示意画面）"></div><figcaption class="cap"><span class="cap-t"></span><span class="cap-s"></span></figcaption></figure>
+<div class="scrim" id="scrim" aria-hidden="true"></div>
+<header class="hud" id="hud"><span>DAY 01 / 03<br>THU · OCT 01 2026</span><b>09:48</b></header>
+<div class="loc" id="loc" aria-hidden="true"></div>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 ===== */
+const CONFIG = {
+  image: '', // 填图片路径即用真实照片；留空用程序化示意
+  caption: 'WEST LAKE · SU CAUSEWAY', time: '09:48 CST', place: '西湖',
+  tIn: 0.4, tExpand: 2.2, expandDur: 0.6, hold: 3.0, collapseDur: 0.55, tOut: 8.2, duration: 9.2,
+  kenBurns: 0.07, // 全屏停留期间放大比例
+  radius: 6,      // 卡片圆角，展开时归零
+};
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s);
+function paint() { // 程序化“照片”：天空、远山、塔、水面
+  const c = document.createElement('canvas'); c.width = 1600; c.height = 1000; const g = c.getContext('2d'); const r = MK.rng(3);
+  const sky = g.createLinearGradient(0, 0, 0, 600); sky.addColorStop(0, '#8ea9bf'); sky.addColorStop(1, '#f2d4b6'); g.fillStyle = sky; g.fillRect(0, 0, 1600, 600);
+  const hill = (base, amp, col) => { g.fillStyle = col; g.beginPath(); g.moveTo(0, 1000); for (let x = 0; x <= 1600; x += 20) g.lineTo(x, base - Math.sin(x / 180 + r() * 0.3) * amp - r() * amp * 0.3); g.lineTo(1600, 1000); g.fill(); };
+  hill(520, 50, '#a6b2bb'); hill(570, 34, '#8b98a1');
+  g.fillStyle = '#5f6a72'; for (let i = 0; i < 5; i++) g.fillRect(420 - (40 - i * 6), 470 - i * 34, (40 - i * 6) * 2, 26);
+  const water = g.createLinearGradient(0, 600, 0, 1000); water.addColorStop(0, '#cdbfae'); water.addColorStop(1, '#6f8090'); g.fillStyle = water; g.fillRect(0, 600, 1600, 400);
+  g.strokeStyle = 'rgba(255,240,220,.35)'; for (let i = 0; i < 60; i++) { const y = 610 + r() * 380, x = r() * 1600; g.lineWidth = 1 + r() * 2; g.beginPath(); g.moveTo(x, y); g.lineTo(x + 30 + r() * 90, y); g.stroke(); }
+  return c.toDataURL('image/jpeg', 0.88);
+}
+$('#img').src = CONFIG.image || paint();
+$('.cap-t').textContent = CONFIG.caption; $('.cap-s').textContent = CONFIG.time; $('#loc').textContent = CONFIG.place;
+function render(t) {
+  const w = innerWidth, h = innerHeight, narrow = w < 720;
+  const cw = narrow ? w - 32 : Math.min(w * 0.44, 860), ch = cw * 0.62;
+  const cx = narrow ? 16 : w - cw - w * 0.04, cy = narrow ? h * 0.36 : (h - ch) / 2 - 10;
+  const pin = MK.seg(t, CONFIG.tIn, 0.55, MK.ease.outCubic), pout = MK.seg(t, CONFIG.tOut - 0.4, 0.4, MK.ease.inCubic);
+  const e0 = CONFIG.tExpand, e1 = e0 + CONFIG.expandDur + CONFIG.hold;
+  // f：0 = 卡片，1 = 全屏。展开与收回各自缓动，中间保持
+  const f = MK.seg(t, e0, CONFIG.expandDur, MK.ease.inOutCubic) * (1 - MK.seg(t, e1, CONFIG.collapseDur, MK.ease.inOutCubic));
+  const card = $('#card');
+  card.style.left = `${MK.lerp(cx, 0, f)}px`; card.style.top = `${MK.lerp(cy, 0, f)}px`;
+  card.style.width = `${MK.lerp(cw, w, f)}px`; card.style.height = `${MK.lerp(ch, h, f)}px`;
+  card.style.opacity = pin * (1 - pout);
+  card.style.transform = `translateY(${(1 - pin) * 26 - pout * 18}px) scale(${0.965 + 0.035 * pin})`;
+  $('.media').style.borderRadius = `${CONFIG.radius * (1 - f)}px`;
+  $('.cap').style.opacity = (1 - f) * MK.seg(t, CONFIG.tIn + 0.3, 0.4);
+  $('#img').style.transform = `scale(${1 + CONFIG.kenBurns * MK.seg(t, e0, CONFIG.expandDur + CONFIG.hold + CONFIG.collapseDur, MK.ease.linear)})`;
+  $('#scrim').style.opacity = f; // 全屏时上下压暗，保证 HUD 白字可读
+  document.body.style.setProperty('--hud', f > 0.5 ? '#fff' : '#16171a');
+  $('#loc').style.opacity = MK.seg(t, e0 + 0.5, 0.5) * (1 - MK.seg(t, e1 - 0.3, 0.3));
+  $('#lead').setAttribute('d', f < 0.05 && !narrow && pin > 0.5 && pout < 0.5 ? `M${w * 0.28 + 12} ${h * 0.52}L${cx - 6} ${cy + ch / 2}` : '');
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: CONFIG.tIn, label: '卡片浮入' }, { t: CONFIG.tExpand, label: '展开' }, { t: CONFIG.tExpand + CONFIG.expandDur + CONFIG.hold, label: '收回' }] });
+MK.expose(tl);
+MK.controls(tl);
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 1.5 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+addEventListener('resize', () => tl.seek(tl.time));
+</script>
+</body>
+</html>

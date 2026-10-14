@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "ink-scroll",
+  "entry": {
+    "id": "ink-scroll",
+    "order": 9,
+    "title": "水墨长卷展台 · 手卷式浏览",
+    "subtitle": "INK HANDSCROLL / UNROLL · BLEED · PARALLAX · SEAL",
+    "carriers": [
+      "showcase",
+      "video"
+    ],
+    "source": "original",
+    "evidence": "original",
+    "capturedAt": "2026-10-14",
+    "tags": [
+      "手卷",
+      "自右向左",
+      "墨晕显影",
+      "多层视差",
+      "竖排题诗",
+      "印章"
+    ],
+    "summary": "一卷可以“展开”的山水手卷：自右向左展开，远中近三层墨色依次晕开，竖排题诗笔刷式显现，镜头沿阅读方向平移并带出层层视差，最后在卷尾落下一方朱印；之后可以拖动、滚轮或用缩略图自由浏览。",
+    "focus": "中国手卷的观看方式本身就是一种“时间轴”：一段段展开、从右往左读、边看边走。这个原创语言把它变成展示台的交互模型——展开是开场、墨晕是揭示、平移是叙事、盖章是结尾——适合博物馆、文旅、品牌长图与产品时间线。",
+    "accent": "#b8322a",
+    "background": "#f1ead8",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 7.5,
+    "energy": [
+      0.1,
+      0.3,
+      0.45,
+      0.55,
+      0.6,
+      0.55,
+      0.5,
+      0.45,
+      0.45,
+      0.5,
+      0.5,
+      0.5,
+      0.8,
+      0.4,
+      0.3
+    ],
+    "rhythm": {
+      "duration": 14.5,
+      "beats": [
+        {
+          "t": 0.5,
+          "label": "展开",
+          "note": "右轴固定，左轴 2.1s（outCubic）向左滑开，纸面在两轴之间显露。"
+        },
+        {
+          "t": 2.2,
+          "label": "远山晕开",
+          "note": "扩散遮罩从画面右中部外推，湍流位移 70→0、模糊 6→0，像墨在宣纸上洇开。"
+        },
+        {
+          "t": 3,
+          "label": "中景",
+          "note": "中景山与小舟、飞鸟晕开；雾带淡入。"
+        },
+        {
+          "t": 3.8,
+          "label": "近景",
+          "note": "近山与松树晕开，墨色最重。"
+        },
+        {
+          "t": 5,
+          "label": "题诗",
+          "note": "竖排“行到水穷处 / 坐看云起时”逐列自上而下显现，落款与小印随后。"
+        },
+        {
+          "t": 6.4,
+          "label": "平移",
+          "note": "镜头沿阅读方向自右向左平移 5.2s（inOutCubic），三层山与两条雾带以不同视差移动。"
+        },
+        {
+          "t": 12,
+          "label": "盖章",
+          "note": "卷尾朱印 1.35→1 回弹落下，红色扩散环与纸面微震，低频“咚”。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "展室",
+        "role": "暗色木调背景，聚光感径向渐变。"
+      },
+      {
+        "name": "纸面",
+        "role": "米色宣纸 + 分形噪声纹理，两端木轴。"
+      },
+      {
+        "name": "墨层",
+        "role": "远（视差 .35）/ 中（.6）/ 近（1.0）三层程序化山水，每层墨色深浅不同。"
+      },
+      {
+        "name": "雾带",
+        "role": "两条横向雾带，视差 .8 与 1.1，并缓慢自漂。"
+      },
+      {
+        "name": "文字与印",
+        "role": "竖排楷体题诗、落款、小印；卷尾大印。"
+      },
+      {
+        "name": "导航",
+        "role": "底部缩略图与视窗框（可点击跳转）。"
+      }
+    ],
+    "composition": {
+      "color": "墨的五色（焦、浓、重、淡、清）用同一墨色的不同透明度表达；唯一彩色是朱印 #b8322a。",
+      "typography": "楷体竖排，宽字距；落款小字；不使用无衬线。",
+      "layout": "手卷横幅，远山高、近山低，留白（雾与天）占画面近半；题诗位于卷首右上，印章位于卷尾。",
+      "imagery": "程序化山脊（值噪声）+ 墨色渐变 + 沿山脊的皴笔线 + 松树笔触；小舟与飞鸟点景。",
+      "motion": "慢：展开 2.1s、晕开 1.6s/层、平移 5.2s；唯一的“快”是盖章的回弹与微震。",
+      "sound": "展开时纸张摩擦噪声、每层晕开一个低沉长音、盖章一声“咚”（默认关闭）。",
+      "rhythm": "按“展开—显影—题字—行走—落款”的书画节奏，事件间隔 0.8–1.2s，平移段给足呼吸。",
+      "coherence": "所有动效都对应真实的书画行为（展卷、落墨、题字、移步、钤印），东方审美来自“动作的合理性”，而不只是配色。"
+    },
+    "tokens": {
+      "palette": [
+        "#f1ead8",
+        "#1e1d1b",
+        "#b8322a",
+        "#f6f1e3",
+        "#8a5a32"
+      ],
+      "type": "楷体（KaiTi / STKaiti / Kaiti SC）竖排",
+      "motion": [
+        {
+          "name": "unroll",
+          "value": "2.1s outCubic，自右向左"
+        },
+        {
+          "name": "bleed",
+          "value": "每层 1.6s outCubic：遮罩外推 + 湍流位移 70→0 + 模糊 6→0；层间 0.8s"
+        },
+        {
+          "name": "brush-text",
+          "value": "每列 1.1s，遮罩自上而下，轻微模糊 1.2→0"
+        },
+        {
+          "name": "pan",
+          "value": "5.2s inOutCubic；视差 .35 / .6 / 1.0；雾 .8 / 1.1"
+        },
+        {
+          "name": "stamp",
+          "value": "260ms outBack 1.35→1、−6°→−2°；扩散环 0.8s；微震 6px·e^(−14t)"
+        },
+        {
+          "name": "browse",
+          "value": "用户浏览用临界阻尼跟随（速率 7）"
+        }
+      ]
+    },
+    "interaction": [
+      "动画结束后：拖动画卷、滚轮、←/→ 或点击缩略图浏览；镜头以临界阻尼跟随。",
+      "空格播放/暂停；站内刻度条或重播回到自动演示。",
+      "声音默认关闭；减少动态时关闭墨晕扰动与微震，直接显示完整画面。"
+    ],
+    "useCases": [
+      "博物馆/书画数字展",
+      "文旅长卷导览",
+      "品牌长图与年度时间线",
+      "产品发展历程",
+      "东方美学发布会"
+    ],
+    "avoid": [
+      "需要快速检索信息的场景",
+      "竖屏短视频（横幅比例不适合）"
+    ],
+    "constraints": [
+      "原创设计语言：山水为程序化生成；王维《终南别业》为公有领域。",
+      "超宽元素的 SVG 滤镜会被浏览器截断，Demo 只在晕开期间启用滤镜并把区域限制在可见窗口。"
+    ],
+    "prompt": "做一个水墨长卷展台（HTML/CSS/JS + SVG，可 seek）：暗色展室中一幅宽为视口 3.2 倍的米色宣纸手卷（分形噪声纹理），两端木轴。①展开：右轴固定，左轴 2.1s outCubic 向左滑开，纸面用 clip-path 在两轴之间显露；②墨层：远/中/近三层程序化山水（值噪声山脊 + 同一墨色不同透明度的竖向渐变 + 沿山脊的皴笔描边；近层加松树、中层加小舟与飞鸟），视差系数 .35/.6/1.0；每层依次（间隔 0.8s）晕开：径向遮罩从画面中右部外推 + feTurbulence/feDisplacementMap 位移 70→0 + 模糊 6→0（滤镜只在晕开时启用，区域限定为可见窗口）；两条雾带视差 .8/1.1 并缓慢自漂；③题诗：竖排楷体两列自上而下遮罩显现（每列 1.1s），落款与小朱印随后；④平移：镜头自右向左 5.2s inOutCubic；⑤盖章：卷尾朱印 260ms outBack 从 1.35 落到 1、−6°→−2°，红色扩散环与纸面微震；⑥之后可拖动/滚轮/方向键/点击缩略图浏览，镜头临界阻尼跟随。声音默认关闭；减少动态关闭扰动与震动。",
+    "videoPrompt": "A traditional Chinese ink landscape handscroll unrolling in a dim gallery, 1920×1080, 14 seconds. Cream rice paper with subtle texture between two wooden rollers; the left roller glides left to reveal the painting from right to left. Mountain layers appear one by one as if ink were bleeding into wet paper — far pale peaks, mid-ground ridges with a tiny boat and flying birds, then dark near hills with pine trees — with soft horizontal mist bands. A vertical poem in brush calligraphy reveals from top to bottom with a small red seal. The camera slowly pans right-to-left along the scroll with gentle parallax between the layers. At the end a red square seal stamp presses down with a small bounce and a faint red ripple. Calm, elegant, contemplative; monochrome ink with one red accent.",
+    "negativePrompt": "不要彩色山水与渐变天空；不要从左往右展开或平移；不要无衬线字体；不要快速闪烁与弹跳（盖章除外）；不要使用受版权保护的名画。",
+    "migration": [
+      {
+        "field": "config.js → span / layers",
+        "how": "长卷宽度倍数；每层的视差、墨色浓度、山高、峰数、晕开时刻与随机种子。"
+      },
+      {
+        "field": "config.js → poem / seal",
+        "how": "竖排题诗（建议使用公有领域或自有文本）、落款、印章文字。"
+      },
+      {
+        "field": "config.js → timing",
+        "how": "展开、题诗、平移起止与盖章时刻。"
+      },
+      {
+        "field": "config.js → palette",
+        "how": "纸色、墨色、印泥色、雾色。"
+      },
+      {
+        "field": "换成真实画作",
+        "how": "把各层 SVG 换成分层切好的透明 PNG/WebP（远中近），保持视差与晕开机制。"
+      }
+    ],
+    "demo": "demos/cases/ink-scroll/index.html",
+    "research": "docs/research/ink-scroll.md",
+    "patternIds": [
+      "ink-bleed",
+      "seal-stamp"
+    ],
+    "sources": [
+      {
+        "title": "原创设计语言 · Motion Atlas",
+        "type": "原创",
+        "note": "手卷观看方式（自右向左展开、移步换景）转译为展示台交互；山水程序化生成。"
+      },
+      {
+        "title": "王维《终南别业》",
+        "type": "资料 · 公有领域",
+        "note": "题诗“行到水穷处，坐看云起时”。"
+      }
+    ],
+    "preview": "previews/cases/ink-scroll.jpg"
+  },
+  "documents": {
+    "prompt": "# 水墨长卷展台 · 手卷式浏览 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/ink-scroll.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/ink-scroll.md)。\n\n## 实现 Prompt\n\n做一个水墨长卷展台（HTML/CSS/JS + SVG，可 seek）：暗色展室中一幅宽为视口 3.2 倍的米色宣纸手卷（分形噪声纹理），两端木轴。①展开：右轴固定，左轴 2.1s outCubic 向左滑开，纸面用 clip-path 在两轴之间显露；②墨层：远/中/近三层程序化山水（值噪声山脊 + 同一墨色不同透明度的竖向渐变 + 沿山脊的皴笔描边；近层加松树、中层加小舟与飞鸟），视差系数 .35/.6/1.0；每层依次（间隔 0.8s）晕开：径向遮罩从画面中右部外推 + feTurbulence/feDisplacementMap 位移 70→0 + 模糊 6→0（滤镜只在晕开时启用，区域限定为可见窗口）；两条雾带视差 .8/1.1 并缓慢自漂；③题诗：竖排楷体两列自上而下遮罩显现（每列 1.1s），落款与小朱印随后；④平移：镜头自右向左 5.2s inOutCubic；⑤盖章：卷尾朱印 260ms outBack 从 1.35 落到 1、−6°→−2°，红色扩散环与纸面微震；⑥之后可拖动/滚轮/方向键/点击缩略图浏览，镜头临界阻尼跟随。声音默认关闭；减少动态关闭扰动与震动。\n\n## 视频生成 Prompt\n\nA traditional Chinese ink landscape handscroll unrolling in a dim gallery, 1920×1080, 14 seconds. Cream rice paper with subtle texture between two wooden rollers; the left roller glides left to reveal the painting from right to left. Mountain layers appear one by one as if ink were bleeding into wet paper — far pale peaks, mid-ground ridges with a tiny boat and flying birds, then dark near hills with pine trees — with soft horizontal mist bands. A vertical poem in brush calligraphy reveals from top to bottom with a small red seal. The camera slowly pans right-to-left along the scroll with gentle parallax between the layers. At the end a red square seal stamp presses down with a small bounce and a faint red ripple. Calm, elegant, contemplative; monochrome ink with one red accent.\n\n## 负向约束\n\n不要彩色山水与渐变天空；不要从左往右展开或平移；不要无衬线字体；不要快速闪烁与弹跳（盖章除外）；不要使用受版权保护的名画。\n\n## 动效 Token\n\n- **unroll**：2.1s outCubic，自右向左\n- **bleed**：每层 1.6s outCubic：遮罩外推 + 湍流位移 70→0 + 模糊 6→0；层间 0.8s\n- **brush-text**：每列 1.1s，遮罩自上而下，轻微模糊 1.2→0\n- **pan**：5.2s inOutCubic；视差 .35 / .6 / 1.0；雾 .8 / 1.1\n- **stamp**：260ms outBack 1.35→1、−6°→−2°；扩散环 0.8s；微震 6px·e^(−14t)\n- **browse**：用户浏览用临界阻尼跟随（速率 7）\n\n## 制作约束\n\n- 原创设计语言：山水为程序化生成；王维《终南别业》为公有领域。\n- 超宽元素的 SVG 滤镜会被浏览器截断，Demo 只在晕开期间启用滤镜并把区域限制在可见窗口。\n\n## 迁移\n\n- `config.js → span / layers`：长卷宽度倍数；每层的视差、墨色浓度、山高、峰数、晕开时刻与随机种子。\n- `config.js → poem / seal`：竖排题诗（建议使用公有领域或自有文本）、落款、印章文字。\n- `config.js → timing`：展开、题诗、平移起止与盖章时刻。\n- `config.js → palette`：纸色、墨色、印泥色、雾色。\n- `换成真实画作`：把各层 SVG 换成分层切好的透明 PNG/WebP（远中近），保持视差与晕开机制。\n\n[打开 Demo](../../demos/cases/ink-scroll/index.html) · [在库中查看](../../cases.html#case/ink-scroll)\n",
+    "research": "# 水墨长卷展台：设计说明\n\n- 类型：原创设计语言（2026-10-14）\n- 目标：用书画的真实动作（展卷、落墨、题字、移步、钤印）组织展示台交互。\n\n## 为什么自右向左\n\n传统手卷从右往左展开、阅读。Demo 的展开、题诗位置（卷首右侧）、镜头平移与印章位置（卷尾左侧）都遵循这一方向，东方观众会自然地“顺着读”。\n\n## 视差与留白\n\n远/中/近三层的视差系数 .35/.6/1.0，雾带 .8/1.1。雾带比近山还快一点（1.1），会产生“雾在前景飘过”的空气感。画面近半是留白（天与雾），墨色只在山形中做浓淡变化。\n\n## 工程注意\n\n- 超宽元素（> 4000px）的 SVG 滤镜区域会被浏览器截断，出现竖直断边：只在晕开期间启用滤镜，并把滤镜区域限定为当前可见窗口；雾带宽度要覆盖“视口 + (卷宽 − 视口) × 视差系数”。\n- 用户浏览用临界阻尼跟随，拖动松手后自然停下。\n\n## 验证记录\n\n- 2026-10-14：Edge 无头 1600×900 截取 12 个时刻；修复了近景竖直断边（雾带宽度不足 + 滤镜区域截断）。\n"
+  },
+  "entrypoint": "demos/cases/ink-scroll/index.html",
+  "files": [
+    {
+      "path": "demos/cases/ink-scroll/config.js",
+      "bytes": 1003,
+      "sha256": "c2972adc1ea3473491040679616b41ed749097432b876e710203a77a2bcb98df"
+    },
+    {
+      "path": "demos/cases/ink-scroll/index.html",
+      "bytes": 2420,
+      "sha256": "40209cea7b1a2ee4a13403cbc84b3ed78584fa5924166ceab2b4d6a5f9d2743f"
+    },
+    {
+      "path": "demos/cases/ink-scroll/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "demos/cases/ink-scroll/script.js",
+      "bytes": 12462,
+      "sha256": "b48fe00dea309c07aa609d7152558c61f4ac086f0c9e673dede5ec2f3afd8758"
+    },
+    {
+      "path": "demos/cases/ink-scroll/style.css",
+      "bytes": 2979,
+      "sha256": "34aedc669a997376c07b914dbdb816a0dad6da6db7a8df4f68a910a5fe469020"
+    },
+    {
+      "path": "previews/cases/ink-scroll.jpg",
+      "bytes": 47554,
+      "sha256": "7753756577ae937ad90423888f4d321a6ae4e668be14449dd07918fb7d49ec51"
+    }
+  ]
+}

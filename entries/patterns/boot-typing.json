@@ -1,0 +1,76 @@
+{
+  "id": "boot-typing",
+  "order": 30,
+  "title": "终端逐字开机序列",
+  "types": [
+    "type-motion",
+    "rhythm",
+    "sound"
+  ],
+  "carriers": [
+    "console",
+    "video",
+    "showcase"
+  ],
+  "summary": "白场上逐字输入请求、停顿、黑底闪一下再清空，圆环与标志随后绘出，身份确认三行错峰打字——用“输入的节奏”建立系统的可信度。",
+  "mechanism": "预先计算每个字符的出现时刻（每字间隔 + 指定字符后的停顿），渲染与音效共用同一份时刻表；行完成时黑底反色闪 180ms 后清空；圆环用 stroke-dashoffset 依次描出，标志笔画随后显现；光标在输入中常亮、完成后闪烁。逐字短音三种音高轮替，并限制最短间隔防止叠音。",
+  "trigger": "页面载入 / 重新初始化",
+  "effect": "在任何内容出现前先建立“系统正在启动、正在识别你”的仪式感。",
+  "timing": [
+    {
+      "name": "每字间隔",
+      "value": "45ms（身份行 30–32ms）"
+    },
+    {
+      "name": "停顿",
+      "value": "冒号后 250–350ms，省略号每点 120ms"
+    },
+    {
+      "name": "反色闪",
+      "value": "180ms"
+    },
+    {
+      "name": "圆环",
+      "value": "900ms inOutCubic，第二环延迟 450ms"
+    },
+    {
+      "name": "短音",
+      "value": "38ms 方波，三音高轮替，最短间隔 24ms"
+    }
+  ],
+  "useCases": [
+    "操作台/终端开机",
+    "游戏内系统登录",
+    "发布会开场",
+    "展示台待机唤醒"
+  ],
+  "avoid": [
+    "每次访问都强制观看（提供跳过与只播放一次）"
+  ],
+  "accessibility": {
+    "reducedMotion": "直接显示完整文字与标志，不做逐字与闪烁。",
+    "keyboard": "空格播放/暂停；提供跳过入口。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [
+      "rolling-digits",
+      "decrypt-reveal",
+      "wave-array"
+    ],
+    "conflicts": [],
+    "notes": "开机层结束时整体失焦、缩小并淡出，让下一层自然接管。"
+  },
+  "prompt": "实现终端逐字开机序列：先按“每字间隔 + 特定字符后停顿”预计算每个字符的出现时刻（如每字 45ms、冒号后停 350ms），渲染与音效共用这份时刻表；输入中显示块状光标，完成后黑底反色闪 180ms 再清空；随后两个圆环以 stroke-dashoffset 900ms 依次描出（第二环延迟 450ms），标志笔画显现；再错峰打出三行身份确认（每字 30ms）。逐字短音用 38ms 方波、三种音高轮替、最短间隔 24ms，默认静音。全部是时间 t 的纯函数，提供跳过与减少动态下的静态完成态。",
+  "demo": "demos/patterns/boot-typing/index.html",
+  "kit": true,
+  "previewAt": 6.4,
+  "sources": [
+    {
+      "caseId": "archive-os",
+      "observation": "逐字输入、停顿、清空、闪切固定到原片帧点；标志从右上弧线开始绘制、绕左环再补全右环；身份段 ID CONFIRMED / REQUEST RECEIVED / START PROCESSING；逐字输入音为原片三个 38ms 短音轮替，最短间隔 24ms。",
+      "evidence": "observed",
+      "locator": "DESIGN.md · 启动前段逐帧修订 / 原片逐字输入音效复刻"
+    }
+  ]
+}

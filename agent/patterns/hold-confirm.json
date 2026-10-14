@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "hold-confirm",
+  "pattern": {
+    "id": "hold-confirm",
+    "order": 53,
+    "title": "长按确认",
+    "types": [
+      "feedback"
+    ],
+    "carriers": [
+      "console",
+      "showcase"
+    ],
+    "summary": "不可逆操作需要按住：进度只在按住时增长，松开以 300ms 回落；满格瞬间锁定为完成态并盖章——比二次弹窗更有“物理”感。",
+    "mechanism": "记录每次按下/松开的时刻；进度 = (min(松开, t) − 按下) / 时长，松开后乘以回落系数；按住时长 ≥ 阈值（带 1e-6 容差）即在“按下 + 阈值”时刻完成。按钮同时支持指针与空格/回车（忽略按键重复），标签实时显示百分比。",
+    "trigger": "部署 / 删除 / 提交等不可逆操作",
+    "effect": "防误触，同时让确认本身成为一段有张力的交互。",
+    "timing": [
+      {
+        "name": "时长",
+        "value": "1.2s 线性"
+      },
+      {
+        "name": "回落",
+        "value": "300ms outCubic"
+      },
+      {
+        "name": "完成印章",
+        "value": "350ms outBack，1.5→1，−8°"
+      }
+    ],
+    "useCases": [
+      "部署/发射/提交",
+      "删除与重置",
+      "游戏中的蓄力确认"
+    ],
+    "avoid": [
+      "高频操作（会拖慢效率）",
+      "运动障碍用户的唯一入口（需提供替代确认）"
+    ],
+    "accessibility": {
+      "reducedMotion": "进度直接显示，无回弹。",
+      "keyboard": "聚焦后按住空格/回车；aria-describedby 说明需要按住。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [
+        "chamfer-panel",
+        "conveyor-flow"
+      ],
+      "conflicts": [],
+      "notes": "完成后要有明确的状态变化（文字 + 印章 + 系统反馈），否则用户不确定是否成功。"
+    },
+    "prompt": "实现长按确认按钮：切角深色按钮，右侧黄黑危险斜纹；按下（pointerdown 或聚焦后空格/回车，忽略 repeat）记录开始时刻，松开记录结束；进度 = clamp((min(end, t) − start)/1.2s)，松开过早时以 300ms outCubic 回落到 0；当 (end ?? t) − start ≥ 1.2s − 1e-6 时在 start+1.2s 锁定完成：标签变为 DEPLOYED，盖下倾斜 −8° 的绿色描边印章（350ms outBack 1.5→1）。上方配一个同步的圆环进度。按钮 aria-describedby 指向“需按住 1.2 秒”的说明。",
+    "demo": "demos/patterns/hold-confirm/index.html",
+    "kit": true,
+    "previewAt": 4.2,
+    "sources": [
+      {
+        "caseId": "industrial-protocol",
+        "observation": "部署/建造等确认操作；长按形式为本库转译。",
+        "evidence": "inferred",
+        "locator": "交互转译 · 待核验"
+      }
+    ],
+    "preview": "previews/patterns/hold-confirm.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "industrial-protocol",
+      "bundle": "agent/cases/industrial-protocol.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 长按确认 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/hold-confirm.json) 自动生成。\n\n## 实现 Prompt\n\n实现长按确认按钮：切角深色按钮，右侧黄黑危险斜纹；按下（pointerdown 或聚焦后空格/回车，忽略 repeat）记录开始时刻，松开记录结束；进度 = clamp((min(end, t) − start)/1.2s)，松开过早时以 300ms outCubic 回落到 0；当 (end ?? t) − start ≥ 1.2s − 1e-6 时在 start+1.2s 锁定完成：标签变为 DEPLOYED，盖下倾斜 −8° 的绿色描边印章（350ms outBack 1.5→1）。上方配一个同步的圆环进度。按钮 aria-describedby 指向“需按住 1.2 秒”的说明。\n\n## 参数\n\n- **时长**：1.2s 线性\n- **回落**：300ms outCubic\n- **完成印章**：350ms outBack，1.5→1，−8°\n\n[打开 Demo](../../demos/patterns/hold-confirm/index.html) · [在库中查看](../../patterns.html#pattern/hold-confirm)\n"
+  },
+  "entrypoint": "demos/patterns/hold-confirm/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/hold-confirm/index.html",
+      "bytes": 5915,
+      "sha256": "0f02e4d07c4c40900fe895053d6ddd3441392b7bcfe688d9e21e7d568d3c3dba"
+    },
+    {
+      "path": "demos/patterns/hold-confirm/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/hold-confirm.jpg",
+      "bytes": 20497,
+      "sha256": "3699c370083da359bb2bb6da185e0c1d7d177a75f7c342c14ad533ee196e3f15"
+    }
+  ]
+}

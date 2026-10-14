@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "alert-reroute",
+  "pattern": {
+    "id": "alert-reroute",
+    "order": 18,
+    "title": "警示横幅与改道",
+    "types": [
+      "feedback",
+      "hud"
+    ],
+    "carriers": [
+      "video",
+      "console"
+    ],
+    "summary": "意外事件用一条红色通栏从左擦入，错误路线画红并以叉号收尾，黑色“改道中…”胶囊闪烁省略号；纠正后换成绿色“已回到路线”。",
+    "mechanism": "横幅 clip-path 380ms 从左展开，说明文字随后打字；画面瞬间叠一层 18% 红色乘法闪光并指数衰减；错误路线描画结束时 × 以 outBack 弹出；改道路线用强调色重新描画；恢复时胶囊图标与文字替换并轻微回弹，错误路线降为 35% 透明度保留痕迹。",
+    "trigger": "意外 / 错误 / 系统告警",
+    "effect": "节奏里的“转折”，制造小小紧张感并立刻给出解决。",
+    "timing": [
+      {
+        "name": "横幅擦入",
+        "value": "380ms outCubic"
+      },
+      {
+        "name": "红色闪光",
+        "value": "18% → 0，约 350ms 衰减"
+      },
+      {
+        "name": "胶囊省略号",
+        "value": "每 333ms 增加一个点"
+      },
+      {
+        "name": "错误路线淡化",
+        "value": "600ms 降到 35%"
+      }
+    ],
+    "useCases": [
+      "旅行意外",
+      "物流异常",
+      "操作台告警",
+      "游戏任务失败/重试"
+    ],
+    "avoid": [
+      "频繁告警（会削弱紧张感）"
+    ],
+    "accessibility": {
+      "reducedMotion": "无闪光，横幅直接出现。",
+      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [
+        "route-draw-marker",
+        "corner-hud"
+      ],
+      "conflicts": [],
+      "notes": "告警期间暂停其他事件层，避免两条横幅同时出现。"
+    },
+    "prompt": "实现“警示 + 改道”：红色通栏（#e5483b，带 1px/3px 横向扫描纹理）从左 380ms clip-path 擦入，内容为 SVG 警示图标 + 粗体字距 .14em 的标题 + 12px 等宽说明（打字）；画面同时叠加 18% 红色 multiply 闪光并在 350ms 内衰减。地图上错误路线画红、末端弹出 ×；下方黑色胶囊“REROUTING”带 SVG 双左箭头，省略号每 333ms 加一点。改道路线用强调色重新描出；恢复时胶囊变绿、图标换成对勾并回弹，错误路线 600ms 降至 35% 透明度。",
+    "demo": "demos/patterns/alert-reroute/index.html",
+    "kit": true,
+    "sources": [
+      {
+        "caseId": "map-pilgrimage",
+        "observation": "红色通栏 ⚠ WRONG TRAIN + 线路说明，黑色 ◀◀ REROUTING… 胶囊，错误路线红色并以叉号收尾。",
+        "evidence": "observed",
+        "locator": "2:08.5"
+      }
+    ],
+    "previewAt": 2.6,
+    "preview": "previews/patterns/alert-reroute.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "map-pilgrimage",
+      "bundle": "agent/cases/map-pilgrimage.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 警示横幅与改道 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/alert-reroute.json) 自动生成。\n\n## 实现 Prompt\n\n实现“警示 + 改道”：红色通栏（#e5483b，带 1px/3px 横向扫描纹理）从左 380ms clip-path 擦入，内容为 SVG 警示图标 + 粗体字距 .14em 的标题 + 12px 等宽说明（打字）；画面同时叠加 18% 红色 multiply 闪光并在 350ms 内衰减。地图上错误路线画红、末端弹出 ×；下方黑色胶囊“REROUTING”带 SVG 双左箭头，省略号每 333ms 加一点。改道路线用强调色重新描出；恢复时胶囊变绿、图标换成对勾并回弹，错误路线 600ms 降至 35% 透明度。\n\n## 参数\n\n- **横幅擦入**：380ms outCubic\n- **红色闪光**：18% → 0，约 350ms 衰减\n- **胶囊省略号**：每 333ms 增加一个点\n- **错误路线淡化**：600ms 降到 35%\n\n[打开 Demo](../../demos/patterns/alert-reroute/index.html) · [在库中查看](../../patterns.html#pattern/alert-reroute)\n"
+  },
+  "entrypoint": "demos/patterns/alert-reroute/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/alert-reroute/index.html",
+      "bytes": 6990,
+      "sha256": "139b3136826d092a03a7b5af4e627fc14ccac279c65a3cf8be19368232b124d1"
+    },
+    {
+      "path": "demos/patterns/alert-reroute/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/alert-reroute.jpg",
+      "bytes": 49636,
+      "sha256": "45efd2e889a00481d8fd0cba43566277d8b42e8c377c56be28bc547ec34fcce8"
+    }
+  ]
+}

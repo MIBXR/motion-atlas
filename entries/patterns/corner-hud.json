@@ -1,0 +1,73 @@
+{
+  "id": "corner-hud",
+  "order": 10,
+  "title": "四角信息 HUD",
+  "types": [
+    "hud",
+    "composition"
+  ],
+  "carriers": [
+    "video",
+    "console",
+    "showcase"
+  ],
+  "summary": "把日序、坐标、时间、音乐与进度固定在四个角，中央留给世界；信息持续更新，画面就有了“系统在运行”的感觉。",
+  "mechanism": "左上日序与日期、右上坐标/海拔/缩放与大号时钟、左下正在播放与双语歌词、右下旅程步进器；顶部一条贯穿细线按进度填充强调色。数值由时间轨道驱动：时钟在同一天内连续推进、跨天时跳变；日序变化时数字从下方滚入。",
+  "trigger": "时间推进 / 旅程进度变化",
+  "effect": "信息层稳定而持续变化，观众随时知道“现在是哪天、几点、在哪、走到哪”。",
+  "timing": [
+    {
+      "name": "日序滚入",
+      "value": "460ms outCubic"
+    },
+    {
+      "name": "歌词打字",
+      "value": "700ms 线性，副行延迟 400ms 淡入"
+    },
+    {
+      "name": "进度细线",
+      "value": "与步进器共用同一进度值，inOutCubic"
+    },
+    {
+      "name": "字号",
+      "value": "标签 12px 等宽、时钟 26–44px、日序 16–24px"
+    }
+  ],
+  "useCases": [
+    "旅行与巡礼影像",
+    "直播/转播的持续信息层",
+    "操作台状态栏",
+    "展示台导览"
+  ],
+  "avoid": [
+    "信息本身不随时间变化的静态海报",
+    "需要大面积正文阅读的页面"
+  ],
+  "accessibility": {
+    "reducedMotion": "数值直接更新、不做滚入；时间轴静止在信息完整的一帧。",
+    "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
+  },
+  "composition": {
+    "role": "foundation",
+    "pairsWellWith": [
+      "route-draw-marker",
+      "chapter-frame",
+      "collect-counter",
+      "vertical-title-blur"
+    ],
+    "conflicts": [],
+    "notes": "四角各管一类信息，不要在同一角堆叠第二套系统；全屏图片时 HUD 改白字并加上下压暗层。"
+  },
+  "prompt": "为【影像/操作台】加一套四角 HUD：左上“DAY 01 / 03”（日序数字用强调色，变化时 460ms 从下方滚入）+ 12px 等宽日期；右上 12px 等宽纬经度与“ELEV · Z”缩放，旁边 26–44px 等宽大号时钟 + 时区角标；左下 NOW PLAYING（均衡器小图标）+ 曲名 — 艺人 + 一行加粗歌词与一行灰色译文（打字推进）；右下 4 站旅程步进器（节点实心表示已到达，连线按进度填充）；顶部贯穿一条 1px 细线，按旅程进度填充 3px 强调色。所有数值由时间轨道驱动、可 seek；中央完全留空给画面。所有文字 ≥12px。",
+  "demo": "demos/patterns/corner-hud/index.html",
+  "kit": true,
+  "sources": [
+    {
+      "caseId": "map-pilgrimage",
+      "observation": "全片持续显示 DAY xx / 07、日期、坐标、ELEV·Z、JST 时钟、YUI SPOTTED 计数、NOW PLAYING 与双语歌词、SEOUL–KANSAI–KYOTO–TOKYO 步进器。",
+      "evidence": "observed",
+      "locator": "0:16.5、1:14.5、2:08.5"
+    }
+  ],
+  "previewAt": 7.2
+}

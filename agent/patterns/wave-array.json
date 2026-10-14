@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "wave-array",
+  "pattern": {
+    "id": "wave-array",
+    "order": 33,
+    "title": "阵列选择波浪",
+    "types": [
+      "feedback",
+      "rhythm"
+    ],
+    "carriers": [
+      "console",
+      "showcase"
+    ],
+    "summary": "在一整片重复元素中选中一个：它以临界阻尼抬起，同时向四周传出一圈按距离延迟、指数衰减的余波——选择像投入水面的石子。",
+    "mechanism": "每块的高度 = 选中抬起（临界阻尼阶跃，取消选中时以当时高度衰减回落）+ 最近三次选择的余波之和；余波 z = A·sin(ωτ)·e^(−kτ)/(1+f·d)，τ = t − t₀ − delay·d，d = 行距 + 0.8×列距。全部是事件序列在时刻 t 的解析函数，可快速反向、可 seek。",
+    "trigger": "选择变化（键盘/点击）",
+    "effect": "整片阵列都对一次选择作出反应，焦点清晰且有“物理”感。",
+    "timing": [
+      {
+        "name": "抬起",
+        "value": "临界阻尼速率 4.2，26px"
+      },
+      {
+        "name": "余波",
+        "value": "A 9–10px · ω 7.5 · k 2.6 · 延迟 70ms/格 · 距离衰减 0.35"
+      },
+      {
+        "name": "叠加",
+        "value": "只叠加最近 3 次选择，避免长期累积"
+      }
+    ],
+    "useCases": [
+      "档案/卡片阵列",
+      "音乐可视化选择",
+      "商品墙",
+      "游戏关卡选择"
+    ],
+    "avoid": [
+      "元素少于 9 个（余波不明显）",
+      "需要精确对齐阅读的表格"
+    ],
+    "accessibility": {
+      "reducedMotion": "只抬起选中块，不发余波。",
+      "keyboard": "方向键移动选择，点击块直接选择。"
+    },
+    "composition": {
+      "role": "foundation",
+      "pairsWellWith": [
+        "rolling-digits",
+        "idle-breathing"
+      ],
+      "conflicts": [],
+      "notes": "余波幅度要小于块间距，避免互相穿插；选中块的抬起与余波同时开始。"
+    },
+    "prompt": "实现阵列选择波浪：CSS 3D（perspective 1500px，rotateX 58° rotateZ -36°）排列 7×9 块（顶/正/侧三面），每块 translateZ 由解析函数计算：选中块 z += L·(1 − (1 + wτ)e^(−wτ))（w=4.2，L=26px），取消选中后以当时高度按 (1 + wτ)e^(−wτ) 回落；对最近 3 次选择，其他块 z += 10·sin(7.5τ)·e^(−2.6τ)/(1 + 0.35d)，τ = t − t₀ − 0.07d，d = |Δ行| + 0.8|Δ列|。方向键与点击产生选择事件；整个状态由事件序列在时刻 t 推导，可 seek。透明度不要加在 preserve-3d 容器上。",
+    "demo": "demos/patterns/wave-array/index.html",
+    "kit": true,
+    "previewAt": 2.55,
+    "sources": [
+      {
+        "caseId": "archive-os",
+        "observation": "选中卡片两侧在回传后继续起伏，按距选中位置的距离延迟并衰减；用户对比后确认采用原始基线：完整正负波谷的选中波浪，选中与波浪同时开始，升降阻尼速率 4.2。",
+        "evidence": "observed",
+        "locator": "DESIGN.md · 参考与既有规范 / 当前采用：原始基线动效"
+      }
+    ],
+    "preview": "previews/patterns/wave-array.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "archive-os",
+      "bundle": "agent/cases/archive-os.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 阵列选择波浪 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/wave-array.json) 自动生成。\n\n## 实现 Prompt\n\n实现阵列选择波浪：CSS 3D（perspective 1500px，rotateX 58° rotateZ -36°）排列 7×9 块（顶/正/侧三面），每块 translateZ 由解析函数计算：选中块 z += L·(1 − (1 + wτ)e^(−wτ))（w=4.2，L=26px），取消选中后以当时高度按 (1 + wτ)e^(−wτ) 回落；对最近 3 次选择，其他块 z += 10·sin(7.5τ)·e^(−2.6τ)/(1 + 0.35d)，τ = t − t₀ − 0.07d，d = |Δ行| + 0.8|Δ列|。方向键与点击产生选择事件；整个状态由事件序列在时刻 t 推导，可 seek。透明度不要加在 preserve-3d 容器上。\n\n## 参数\n\n- **抬起**：临界阻尼速率 4.2，26px\n- **余波**：A 9–10px · ω 7.5 · k 2.6 · 延迟 70ms/格 · 距离衰减 0.35\n- **叠加**：只叠加最近 3 次选择，避免长期累积\n\n[打开 Demo](../../demos/patterns/wave-array/index.html) · [在库中查看](../../patterns.html#pattern/wave-array)\n"
+  },
+  "entrypoint": "demos/patterns/wave-array/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/wave-array/index.html",
+      "bytes": 5659,
+      "sha256": "01ca8529f95bb922b0a753dbd798eb8ae667d5fb9c7fcdb9581bf767c445fda8"
+    },
+    {
+      "path": "demos/patterns/wave-array/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/wave-array.jpg",
+      "bytes": 35829,
+      "sha256": "2ca523285ef369a672600564111fd3ab472643d80cf59ab5c75e38222cd3e9ae"
+    }
+  ]
+}

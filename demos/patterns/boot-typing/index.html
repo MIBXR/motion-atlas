@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>终端逐字开机序列 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #f3f1ee; --ink: #171713; --muted: #77756d; --accent: #c8742f; --f: "Segoe UI Variable Display","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); color: var(--ink); font-family: var(--f); }
+  .stage { position: absolute; inset: 0; display: grid; place-items: center; }
+  .wrap { display: flex; align-items: center; gap: clamp(20px, 5vw, 80px); }
+  svg.logo { width: clamp(120px, 16vw, 230px); flex: none; }
+  .lines { display: grid; gap: 14px; min-width: 22ch; }
+  .line { font: 500 clamp(14px, 1.4vw, 21px)/1.2 var(--f); letter-spacing: .04em; white-space: pre; min-height: 1.2em; }
+  .line::before { content: "·"; margin-right: 12px; color: var(--muted); }
+  .line.flash { background: var(--ink); color: var(--paper); }
+  .cursor { display: inline-block; width: .55em; height: 1em; margin-left: 2px; vertical-align: -2px; background: var(--ink); }
+  .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accent); transform-origin: 0 50%; }
+  .hint { position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%); font: 12px/1 var(--f-mono); letter-spacing: .14em; color: var(--muted); }
+  @media (max-width: 640px) { .wrap { flex-direction: column; } }
+</style>
+</head>
+<body>
+<main class="stage">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 200 120" aria-hidden="true">
+      <circle id="ra" cx="62" cy="56" r="40" fill="none" stroke="#171713" stroke-width="14"/>
+      <circle id="rb" cx="138" cy="56" r="40" fill="none" stroke="#171713" stroke-width="14"/>
+      <path id="mk" d="M50 56h24M62 44v24M126 56h24" stroke="#171713" stroke-width="9"/>
+    </svg>
+    <div class="lines" id="lines" aria-live="polite"></div>
+  </div>
+  <i class="bar" id="bar" aria-hidden="true"></i>
+  <p class="hint">开启声音可听到逐字输入的短音</p>
+</main>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 每一行：文字、开始时刻、每字间隔；pause 指定“遇到某字符后停顿”。flash：输入完成后黑底闪一次。 */
+const CONFIG = {
+  lines: [
+    { text: 'ACCESS REQUEST : ANALYSIS OS', t: 0.3, cps: 0.045, pause: { ':': 0.35 }, flash: true, clearAt: 2.6 },
+    { text: 'ID CONFIRMED : OPERATOR K. ARLEN', t: 3.4, cps: 0.032, pause: { ':': 0.25 } },
+    { text: 'REQUEST RECEIVED', t: 4.7, cps: 0.03 },
+    { text: 'START PROCESSING...', t: 5.4, cps: 0.03, pause: { '.': 0.12 } },
+  ],
+  ring: { a: [1.0, 0.9], b: [1.45, 0.9], mark: 2.3 }, // [开始, 时长]
+  minTick: 0.024, // 两次输入音的最短间隔（秒）
+  duration: 8,
+};
+/* ================================== */
+const MK = MotionKit, sfx = MK.sound();
+const box = document.getElementById('lines');
+box.innerHTML = CONFIG.lines.map(() => '<p class="line"></p>').join('');
+const els = [...box.children];
+// 预先计算每个字符的出现时刻（含停顿），供渲染与音效共用
+const sched = CONFIG.lines.map((ln) => {
+  let t = ln.t;
+  return MK.chars(ln.text).map((ch) => { const at = t; t += ln.cps + ((ln.pause || {})[ch] || 0); return at; });
+});
+const circ = 2 * Math.PI * 40;
+['ra', 'rb'].forEach((id) => { document.getElementById(id).style.strokeDasharray = circ; });
+function render(t) {
+  CONFIG.lines.forEach((ln, i) => {
+    const n = sched[i].filter((at) => t >= at).length;
+    const done = n === sched[i].length;
+    const cleared = ln.clearAt && t >= ln.clearAt;
+    const el = els[i];
+    const last = sched[i][sched[i].length - 1];
+    el.classList.toggle('flash', !!(ln.flash && done && t < last + 0.18 && !cleared));
+    const typing = t >= ln.t && !done;
+    const blink = done && !cleared && Math.floor((t - last) * 2.5) % 2 === 0 && i === CONFIG.lines.findLastIndex((l, j) => t >= l.t && !(l.clearAt && t >= l.clearAt));
+    el.innerHTML = cleared ? '' : MK.chars(ln.text).slice(0, n).join('') + (typing || blink ? '<i class="cursor"></i>' : '');
+    el.style.visibility = t >= ln.t && !cleared ? 'visible' : 'hidden';
+  });
+  document.getElementById('ra').style.strokeDashoffset = circ * (1 - MK.seg(t, CONFIG.ring.a[0], CONFIG.ring.a[1], MK.ease.inOutCubic));
+  document.getElementById('rb').style.strokeDashoffset = circ * (1 - MK.seg(t, CONFIG.ring.b[0], CONFIG.ring.b[1], MK.ease.inOutCubic));
+  document.getElementById('mk').style.opacity = MK.seg(t, CONFIG.ring.mark, 0.2);
+  document.getElementById('bar').style.transform = `scaleX(${t / CONFIG.duration})`;
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: CONFIG.lines.map((l, i) => ({ t: l.t, label: `第 ${i + 1} 行` })) });
+// 逐字短音：三种音高轮替，并限制最短间隔
+let prev = 0, lastTick = -1;
+const ticks = sched.flat().sort((a, b) => a - b);
+tl.on((t, playing) => {
+  if (playing && t > prev && t - prev < 0.5) for (const at of ticks) if (at > prev && at <= t && at - lastTick >= CONFIG.minTick) { sfx.tone({ f: [1800, 1940, 2080][Math.round(at * 100) % 3], d: 0.038, type: 'square', g: 0.03 }); lastTick = at; }
+  if (t < prev) lastTick = -1;
+  prev = t;
+});
+MK.expose(tl);
+MK.controls(tl, { sound: sfx, accent: '#c8742f' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 6.5 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

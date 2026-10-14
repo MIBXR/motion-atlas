@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "map-pilgrimage",
+  "entry": {
+    "id": "map-pilgrimage",
+    "order": 1,
+    "title": "地图巡礼 · 游戏过场式旅行影像",
+    "subtitle": "CARTOGRAPHIC PILGRIMAGE / MAP × HUD × MEMORY",
+    "carriers": [
+      "video",
+      "showcase"
+    ],
+    "source": "reference",
+    "evidence": "observed",
+    "capturedAt": "2026-10-14",
+    "tags": [
+      "地图叙事",
+      "游戏过场",
+      "HUD 四角",
+      "昼夜切换",
+      "分屏对比",
+      "竖排汉字"
+    ],
+    "summary": "以真实地图为“交互基地”，四角 HUD 记录日序、坐标、时间与音乐；镜头沿路线推进，在卡片、全屏实拍、动画回忆与分屏对比之间切换，把一段旅行剪成游戏过场。",
+    "focus": "参考视频 151 秒、1920×1080，由 Agent 用旅行素材自动剪辑。它的价值不在某个特效，而在“一个稳定的世界层 + 一套持续更新的信息层 + 有节制的模式切换”：地图永远是底座，HUD 永远在报时，只有高光才允许离开地图。Demo 用原创内容（江南三日）完整复现这套结构，所有时间点都写在 config.js 的轨道里。",
+    "accent": "#d9632b",
+    "background": "#f2efe8",
+    "timeline": true,
+    "kit": true,
+    "energy": [
+      0.15,
+      0.2,
+      0.6,
+      0.5,
+      0.45,
+      0.55,
+      0.6,
+      0.72,
+      0.55,
+      0.8,
+      0.78,
+      0.75,
+      0.45,
+      0.4,
+      0.6,
+      0.55,
+      0.88,
+      0.6,
+      0.5,
+      0.62,
+      0.45,
+      0.35,
+      0.3,
+      0.2
+    ],
+    "rhythm": {
+      "duration": 56,
+      "beats": [
+        {
+          "t": 0,
+          "label": "冷开场",
+          "note": "夜间地球缓推，起终点标记依次出现并打字标注。"
+        },
+        {
+          "t": 3.3,
+          "label": "昼夜翻转",
+          "note": "暗 → 灰 → 亮约 0.9s，画面先变灰再变亮，像“天亮了”。"
+        },
+        {
+          "t": 4,
+          "label": "片名",
+          "note": "竖排汉字自上而下逐字模糊入场（140ms 错峰），横线描出，英文带模糊前沿打字。"
+        },
+        {
+          "t": 7.6,
+          "label": "HUD 上线",
+          "note": "四角信息从各自边缘轻移入场：日序、坐标、时钟、正在播放、旅程步进。"
+        },
+        {
+          "t": 8.2,
+          "label": "航线",
+          "note": "虚线航线随镜头飞越逐段描出，头部圆点领路。"
+        },
+        {
+          "t": 11.6,
+          "label": "抵达",
+          "note": "竖排地名 + 英文地点；照片卡片从右侧浮入，引线连到地图标记。"
+        },
+        {
+          "t": 15.8,
+          "label": "卡片 → 全屏",
+          "note": "卡片 0.6s 展开为全屏实景，HUD 保留并转为白字压暗层；3s 后收回。"
+        },
+        {
+          "t": 20.6,
+          "label": "章节主题",
+          "note": "章节标签 + 强调色替换 + 屏幕四角框线描出，宣布进入一个“作品/主题”。"
+        },
+        {
+          "t": 21.6,
+          "label": "回忆",
+          "note": "全屏插画风回忆：独立框线、档案标签、竖排字幕逐字、英文字幕打字、颗粒加重。"
+        },
+        {
+          "t": 25.2,
+          "label": "分屏对比",
+          "note": "先切到实景全屏，分割线从左滑到中线露出旧明信片，倾斜时间戳盖章落下。"
+        },
+        {
+          "t": 29.4,
+          "label": "入夜 · 便签",
+          "note": "底图逐层变为夜色；通知条与手写便签卡片弹出又收回。"
+        },
+        {
+          "t": 33,
+          "label": "DAY 02",
+          "note": "大号日序：DAY 描边 + 数字实心滚入，同时天亮。"
+        },
+        {
+          "t": 38.1,
+          "label": "意外 · 改道",
+          "note": "红色警示横幅从左擦入，错误路线画红并打叉，黑色 REROUTING 胶囊闪烁省略号。"
+        },
+        {
+          "t": 44.3,
+          "label": "终点城市",
+          "note": "夜景竖卡 + 3D 建筑，收集托盘最后一格点亮。"
+        },
+        {
+          "t": 49.8,
+          "label": "全程鸟瞰",
+          "note": "镜头拉远到全线路，所有标记与路线同屏。"
+        },
+        {
+          "t": 51,
+          "label": "结尾统计",
+          "note": "数字逐行计数堆叠（320ms 错峰），衬线 fin. 与署名、致谢。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "世界层",
+        "role": "真实底图（MapLibre + OpenFreeMap），镜头关键帧驱动；昼夜按图层逐个插值配色。"
+      },
+      {
+        "name": "路线层",
+        "role": "航线虚线、地面实线、错误路线红线，均在 GL 图层内绘制以保证大俯仰角下的透视与裁切。"
+      },
+      {
+        "name": "媒体层",
+        "role": "照片卡片、全屏实景、插画回忆、分屏对比；同一时间只有一种全屏媒体。"
+      },
+      {
+        "name": "信息层 HUD",
+        "role": "四角固定：左上日序与日期、右上坐标/海拔/缩放与时钟、左下正在播放与双语歌词、右下旅程步进与收集托盘。"
+      },
+      {
+        "name": "事件层",
+        "role": "地名标题、章节标签、警示横幅、通知、便签、日序大字——短暂出现、有明确入出场。"
+      },
+      {
+        "name": "质感层",
+        "role": "按时间选帧的颗粒（可复现）、回忆段加重；全屏图片时上下压暗。"
+      }
+    ],
+    "composition": {
+      "color": "白天米白纸色 #f2efe8 + 墨色文字；夜晚深蓝黑；默认橙色强调，每个章节换一种强调色（青、蓝、红、紫）并同步到路线、卡片描边、框线。",
+      "typography": "三套字体各司其职：粗黑竖排汉字做地名与片名；工业感无衬线（Bahnschrift/DIN 类）做英文标题；等宽字体做坐标、时间、标签，字距放宽 0.12–0.24em；结尾用衬线营造“落幕”。",
+      "layout": "四角 HUD 固定、中央留给世界；卡片靠右、标题靠左上，形成对角平衡；一条贯穿顶部的细线承载进度。",
+      "imagery": "实拍卡片带阴影与细描边；回忆用高饱和柔光插画；对比用旧明信片（棕褐、纸边、暗角）对现代实景。",
+      "motion": "镜头缓入缓出、长时运动；文字用“模糊→清晰”的逐字入场；卡片 550ms 浮入、600ms 展开；时间戳盖章用回弹。",
+      "sound": "参考视频有完整配乐与歌词；Demo 不提供音轨，仅在开启后合成标记、展开、计数、盖章、警示的短音。",
+      "rhythm": "约每 4–6 秒一个事件，每 10–15 秒一次模式切换（地图 ↔ 全屏），高光前后留 1–2 秒地图呼吸。",
+      "coherence": "所有模式共享同一套 HUD 和颗粒，所以全屏、回忆、对比都像同一个“系统”里的不同视图，而不是硬拼剪辑。"
+    },
+    "tokens": {
+      "palette": [
+        "#f2efe8",
+        "#16171a",
+        "#d9632b",
+        "#1f8f84",
+        "#3d58c8",
+        "#e5483b",
+        "#090c12"
+      ],
+      "type": "粗黑 CJK 竖排 + DIN 类英文 + 等宽数据 + 衬线结尾",
+      "motion": [
+        {
+          "name": "blur-in 逐字",
+          "value": "500ms outCubic，字间 140–160ms，模糊 14px → 0，上移 10px → 0"
+        },
+        {
+          "name": "type-in 打字",
+          "value": "按字符推进，前沿 2 个字符带 6px 模糊"
+        },
+        {
+          "name": "card-in",
+          "value": "550ms outCubic：透明 0→1、上移 26px→0、缩放 0.965→1"
+        },
+        {
+          "name": "card-expand",
+          "value": "600ms inOutCubic 展开，停 3s，550ms 收回；停留期 Ken Burns 1→1.07"
+        },
+        {
+          "name": "day-night",
+          "value": "约 0.9–1.2s，逐图层插值；中间经过灰阶"
+        },
+        {
+          "name": "frame-draw",
+          "value": "800ms inOutCubic 描边；四角方块 120ms 错峰回弹"
+        },
+        {
+          "name": "stamp",
+          "value": "380ms outBack，缩放 1.45→1，旋转 -4°"
+        },
+        {
+          "name": "stat-stack",
+          "value": "每行 320ms 错峰，计数 900ms outQuart"
+        }
+      ]
+    },
+    "observations": [
+      {
+        "at": "0:00–0:05",
+        "what": "深色太空中地球自转推近，首尔与关西标记带英中标签依次出现；左下已在显示 NOW PLAYING。"
+      },
+      {
+        "at": "0:05.2–0:06.1",
+        "what": "亮度交叉：暗 → 灰 → 亮，约 0.9 秒完成“天亮”。"
+      },
+      {
+        "at": "0:06.4–0:07.0",
+        "what": "竖排「聖地巡礼」逐字模糊入场，横线描出，PILGRIMAGE '26 从左向右打出且前沿模糊。"
+      },
+      {
+        "at": "0:16.5",
+        "what": "HUD 全貌：DAY 01 / 07、MON · SEP 28 2026、34.4320°N 135.2304°E、ELEV 0 M · Z 10.9、11:33 JST、YUI SPOTTED ×2、NOW PLAYING 曲名 — 艺人、SEOUL–KANSAI–KYOTO–TOKYO 步进器、右下地图署名。"
+      },
+      {
+        "at": "0:20.6–0:22.7",
+        "what": "照片卡片在地图上切换，地名竖排模糊入场；22.7 秒硬切为全屏实拍，HUD 保留。"
+      },
+      {
+        "at": "0:38.9–0:41.0",
+        "what": "夜 → 昼的同时出现 DAY 02（DAY 描边、02 实心）；章节主题出现时屏幕四角框线描出、强调色变为该作品的蓝色。"
+      },
+      {
+        "at": "0:55.2–0:57.9",
+        "what": "全屏动画回忆：蓝色内框、FLASHBACK · S1 EP05 标签、竖排日文字幕逐字揭示、英文字幕打字、底部场景说明，颗粒明显。"
+      },
+      {
+        "at": "1:12–1:20",
+        "what": "角色收集托盘：四个角色位依次点亮，与计数徽章 ×11 呼应。"
+      },
+      {
+        "at": "1:39.35–1:40.6",
+        "what": "动画 → 实景经暗场交叉；分割线从左滑到中线，ANIME · 2015 / REAL · 2026 标签，倾斜描边时间戳“10.01 · 18:20 JST”。"
+      },
+      {
+        "at": "2:08.5",
+        "what": "红色通栏 ⚠ WRONG TRAIN + 线路说明，黑色 ◀◀ REROUTING… 胶囊；错误路线画红并以叉号收尾。"
+      },
+      {
+        "at": "2:30.5",
+        "what": "结尾统计堆叠：7 DAYS · 2 COUNTRIES / 5 WORKS VISITED / 3 NOTES LEFT / ×19 SIGHTINGS / 1,159 km，衬线「聖地巡礼 — fin.」与署名、音乐与动画出处。"
+      }
+    ],
+    "interaction": [
+      "影像模式：空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个节拍；站内刻度条可拖动并显示节拍与能量曲线。",
+      "展示台用法：把 config.js 的 tracks 当作剪辑轨道，修改时间即改变节奏；?t=秒 可直接定位任一画面。",
+      "逐帧渲染：?render=1 关闭自动播放，每次 seek 等待地图瓦片完成再返回，scripts/render.mjs 据此导出帧序列。",
+      "离线或地图服务不可用时自动退回网格底图，HUD、路线、卡片与转场保持完整。"
+    ],
+    "useCases": [
+      "旅行 / 巡礼 Vlog",
+      "城市与文旅宣传",
+      "物流与路线回顾",
+      "活动巡回纪录",
+      "年度回顾影像",
+      "交互式行程展示台"
+    ],
+    "avoid": [
+      "没有空间移动的内容",
+      "需要逐字阅读的长文",
+      "镜头要停在单一画面的访谈"
+    ],
+    "constraints": [
+      "参考视频为 B 站公开作品，Demo 只学习结构与节奏，画面、文字、地点与音乐全部替换为原创或公有领域内容。",
+      "参考视频中的动画截图与音乐属于各自权利人，本库不收录其帧画面。",
+      "底图使用 OpenFreeMap（OpenStreetMap 数据），必须保留署名；高缩放下的 3D 建筑依赖 render_height 数据，各城市覆盖不同。",
+      "程序化“照片”只用于示意；正式作品请在 config.js 填入有权使用的真实照片。",
+      "所有文字最终字号 ≥ 12px；成片 1920×1080 下的 HUD 小字为 12px，缩放预览时属于视频画面。"
+    ],
+    "prompt": "用 HTML/CSS/JS 制作一支 50–60 秒、可逐帧定位的“地图巡礼”影像（1920×1080，同时适配窄屏）。结构：①世界层：MapLibre + OpenFreeMap positron 底图，隐藏全部文字标注，增加 3D 建筑；镜头用关键帧 {t, center, zoom, pitch, bearing} 缓入缓出，长距离移动中途降低缩放形成弧线飞行；开场用地球投影。②昼夜：按图层类别（背景/水/绿地/道路/建筑/3D 建筑）逐个插值白天与夜晚配色，过渡约 1 秒、中途经过灰阶，不要整体反色。③路线：航线虚线、地面实线（白色描边+强调色）、错误路线红线，放进 GL 图层绘制，按进度截断并带头部圆点。④HUD 四角常驻：左上“DAY 01 / 03”与等宽日期，右上纬经度、ELEV·Z 缩放与大号时钟+时区角标，右侧胶囊计数徽章（变化时数字上滚+回弹），左下 NOW PLAYING + 双语歌词（打字），右下旅程步进器与收集托盘；顶部细线随旅程进度填充强调色。⑤事件：竖排粗黑汉字逐字模糊入场（500ms，字间 140ms）+ 英文带模糊前沿打字；照片卡片 550ms 浮入并用虚线连到地图标记；卡片 600ms 展开为全屏实景、HUD 保留并加上下压暗层；章节主题出现时替换强调色并描出屏幕四角框线；全屏插画回忆带独立框线、档案标签、竖排字幕逐字；分屏对比先实景全屏、分割线 700ms 从左滑至中线露出旧明信片，倾斜描边时间戳以回弹盖章；红色警示横幅从左擦入 + 黑色 REROUTING 胶囊；大号日序 DAY 描边 + 数字实心滚入；结尾统计逐行计数堆叠 + 衬线 fin.。⑥节奏：每 4–6 秒一个事件，每 10–15 秒一次地图↔全屏切换，高光前后留 1–2 秒地图呼吸。⑦工程：画面写成 render(t) 纯函数，所有时间写进一个 config 轨道对象；暴露 window.__motion = {duration, seek(t)→Promise, play, pause, on}；?render=1 时 seek 等待地图 idle；颗粒按时间选帧以便复现；声音默认关闭；prefers-reduced-motion 时不自动播放并停在一帧完整构图；离线退回网格底图。所有文字 ≥12px。",
+    "videoPrompt": "1920×1080 travel cutscene in the style of a video-game map interface, 55 seconds. A pale paper-colored 3D map (light warm grey land, blue-grey water, white roads, extruded white buildings) is the persistent world; the camera glides along a route with slow ease-in-out moves and gentle pitch. Fixed HUD in four corners: top-left 'DAY 01 / 03' with a small date in monospace, top-right latitude/longitude, 'ELEV 7 M · Z 11.2' and a large digital clock with 'CST' superscript, bottom-left 'NOW PLAYING' with an equalizer icon and bilingual lyric lines, bottom-right a 4-stop journey progress stepper. Beats: dark night globe → brightness flips to day through grey → giant vertical Chinese title characters blur in one by one with an English title typing in → a dashed flight arc draws across the map → arrival: a vertical Chinese place name blurs in, a photo card floats in on the right with a thin dashed leader line to the map pin → the card expands to full screen while the HUD stays on top → a chapter tag appears and an accent-colored frame draws around the screen edges with square corner caps → an anime-style flashback with its own frame and vertical subtitles revealing character by character → split-screen comparison: a divider slides from the left edge to center revealing an old sepia postcard against a modern photo, a tilted outlined timestamp stamps down → night falls on the map layer by layer → a red 'WRONG TRAIN' banner wipes in, the wrong route turns red and ends with an X → ends with stacked statistics counting up and a serif 'fin.'. Clean, restrained, game-UI precision, subtle film grain, no camera shake.",
+    "negativePrompt": "不要整体反色做夜景；不要让多个全屏模式叠在一起；不要把 HUD 做成满屏发光科幻风；不要用卡通贴纸替代信息层；不要在高缩放时保留地图文字标注抢走注意力；不要让镜头连续快速甩动；不要使用无授权的照片、动画截图与音乐。",
+    "migration": [
+      {
+        "field": "config.js → meta",
+        "how": "片名（竖排汉字 + 英文）、副标题、时区、总天数、总时长。"
+      },
+      {
+        "field": "config.js → stops",
+        "how": "每个地点的名称、代码、汉字、经纬度、海拔、默认场景；填 media 即用真实照片。"
+      },
+      {
+        "field": "config.js → tracks.camera",
+        "how": "镜头关键帧；长距离移动在中途加一个低缩放关键帧，形成“飞越”。"
+      },
+      {
+        "field": "config.js → tracks.*",
+        "how": "night / clock / day / routes / cards / chapter / flashback / compare / alert / outro 等轨道，改时间即改节奏。"
+      },
+      {
+        "field": "config.js → chapters",
+        "how": "每个主题的标签、标题、强调色；会同步到路线、卡片描边与四角框线。"
+      },
+      {
+        "field": "config.js → palette / map",
+        "how": "纸色、墨色、夜色与默认强调色；底图样式与 MapLibre 版本。"
+      },
+      {
+        "field": "scenes.js",
+        "how": "仅在没有真实照片时使用，可删除；或按示例增加新的程序化场景。"
+      }
+    ],
+    "demo": "demos/cases/map-pilgrimage/index.html",
+    "research": "docs/research/map-pilgrimage.md",
+    "patternIds": [
+      "corner-hud",
+      "vertical-title-blur",
+      "route-draw-marker",
+      "day-night-flip",
+      "card-expand-fullscreen",
+      "chapter-frame",
+      "split-compare-stamp",
+      "collect-counter",
+      "alert-reroute",
+      "outro-stat-stack",
+      "seekable-timeline",
+      "film-grain"
+    ],
+    "sources": [
+      {
+        "title": "【眩晕瘫坐 旅游时拍的素材给Opus5.5剪出来是这样】· 哔哩哔哩",
+        "url": "https://b23.tv/eBjaN0O",
+        "type": "实例 · 影像",
+        "note": "用户提供并下载到本地的 151.2 秒 1920×1080 成片；2026-10-14 以 2 秒间隔全片取样，并在 6 处转场以 0.25–0.3 秒间隔逐帧观察。画面署名 @DWTornier。"
+      },
+      {
+        "title": "OpenFreeMap",
+        "url": "https://openfreemap.org/",
+        "type": "资料 · 底图",
+        "note": "免费、无需密钥的矢量瓦片与样式；参考视频右下角同样标注 OpenStreetMap / OpenFreeMap。"
+      },
+      {
+        "title": "MapLibre GL JS",
+        "url": "https://maplibre.org/maplibre-gl-js/docs/",
+        "type": "资料 · 渲染",
+        "note": "地球投影、jumpTo、fill-extrusion、GeoJSON 线图层。"
+      },
+      {
+        "title": "苏轼《饮湖上初晴后雨》",
+        "type": "资料 · 公有领域",
+        "note": "Demo 回忆段竖排字幕与便签文字。"
+      }
+    ],
+    "previewAt": 13.6,
+    "preview": "previews/cases/map-pilgrimage.jpg"
+  },
+  "documents": {
+    "prompt": "# 地图巡礼 · 游戏过场式旅行影像 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/map-pilgrimage.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/map-pilgrimage.md)。\n\n## 实现 Prompt\n\n用 HTML/CSS/JS 制作一支 50–60 秒、可逐帧定位的“地图巡礼”影像（1920×1080，同时适配窄屏）。结构：①世界层：MapLibre + OpenFreeMap positron 底图，隐藏全部文字标注，增加 3D 建筑；镜头用关键帧 {t, center, zoom, pitch, bearing} 缓入缓出，长距离移动中途降低缩放形成弧线飞行；开场用地球投影。②昼夜：按图层类别（背景/水/绿地/道路/建筑/3D 建筑）逐个插值白天与夜晚配色，过渡约 1 秒、中途经过灰阶，不要整体反色。③路线：航线虚线、地面实线（白色描边+强调色）、错误路线红线，放进 GL 图层绘制，按进度截断并带头部圆点。④HUD 四角常驻：左上“DAY 01 / 03”与等宽日期，右上纬经度、ELEV·Z 缩放与大号时钟+时区角标，右侧胶囊计数徽章（变化时数字上滚+回弹），左下 NOW PLAYING + 双语歌词（打字），右下旅程步进器与收集托盘；顶部细线随旅程进度填充强调色。⑤事件：竖排粗黑汉字逐字模糊入场（500ms，字间 140ms）+ 英文带模糊前沿打字；照片卡片 550ms 浮入并用虚线连到地图标记；卡片 600ms 展开为全屏实景、HUD 保留并加上下压暗层；章节主题出现时替换强调色并描出屏幕四角框线；全屏插画回忆带独立框线、档案标签、竖排字幕逐字；分屏对比先实景全屏、分割线 700ms 从左滑至中线露出旧明信片，倾斜描边时间戳以回弹盖章；红色警示横幅从左擦入 + 黑色 REROUTING 胶囊；大号日序 DAY 描边 + 数字实心滚入；结尾统计逐行计数堆叠 + 衬线 fin.。⑥节奏：每 4–6 秒一个事件，每 10–15 秒一次地图↔全屏切换，高光前后留 1–2 秒地图呼吸。⑦工程：画面写成 render(t) 纯函数，所有时间写进一个 config 轨道对象；暴露 window.__motion = {duration, seek(t)→Promise, play, pause, on}；?render=1 时 seek 等待地图 idle；颗粒按时间选帧以便复现；声音默认关闭；prefers-reduced-motion 时不自动播放并停在一帧完整构图；离线退回网格底图。所有文字 ≥12px。\n\n## 视频生成 Prompt\n\n1920×1080 travel cutscene in the style of a video-game map interface, 55 seconds. A pale paper-colored 3D map (light warm grey land, blue-grey water, white roads, extruded white buildings) is the persistent world; the camera glides along a route with slow ease-in-out moves and gentle pitch. Fixed HUD in four corners: top-left 'DAY 01 / 03' with a small date in monospace, top-right latitude/longitude, 'ELEV 7 M · Z 11.2' and a large digital clock with 'CST' superscript, bottom-left 'NOW PLAYING' with an equalizer icon and bilingual lyric lines, bottom-right a 4-stop journey progress stepper. Beats: dark night globe → brightness flips to day through grey → giant vertical Chinese title characters blur in one by one with an English title typing in → a dashed flight arc draws across the map → arrival: a vertical Chinese place name blurs in, a photo card floats in on the right with a thin dashed leader line to the map pin → the card expands to full screen while the HUD stays on top → a chapter tag appears and an accent-colored frame draws around the screen edges with square corner caps → an anime-style flashback with its own frame and vertical subtitles revealing character by character → split-screen comparison: a divider slides from the left edge to center revealing an old sepia postcard against a modern photo, a tilted outlined timestamp stamps down → night falls on the map layer by layer → a red 'WRONG TRAIN' banner wipes in, the wrong route turns red and ends with an X → ends with stacked statistics counting up and a serif 'fin.'. Clean, restrained, game-UI precision, subtle film grain, no camera shake.\n\n## 负向约束\n\n不要整体反色做夜景；不要让多个全屏模式叠在一起；不要把 HUD 做成满屏发光科幻风；不要用卡通贴纸替代信息层；不要在高缩放时保留地图文字标注抢走注意力；不要让镜头连续快速甩动；不要使用无授权的照片、动画截图与音乐。\n\n## 动效 Token\n\n- **blur-in 逐字**：500ms outCubic，字间 140–160ms，模糊 14px → 0，上移 10px → 0\n- **type-in 打字**：按字符推进，前沿 2 个字符带 6px 模糊\n- **card-in**：550ms outCubic：透明 0→1、上移 26px→0、缩放 0.965→1\n- **card-expand**：600ms inOutCubic 展开，停 3s，550ms 收回；停留期 Ken Burns 1→1.07\n- **day-night**：约 0.9–1.2s，逐图层插值；中间经过灰阶\n- **frame-draw**：800ms inOutCubic 描边；四角方块 120ms 错峰回弹\n- **stamp**：380ms outBack，缩放 1.45→1，旋转 -4°\n- **stat-stack**：每行 320ms 错峰，计数 900ms outQuart\n\n## 制作约束\n\n- 参考视频为 B 站公开作品，Demo 只学习结构与节奏，画面、文字、地点与音乐全部替换为原创或公有领域内容。\n- 参考视频中的动画截图与音乐属于各自权利人，本库不收录其帧画面。\n- 底图使用 OpenFreeMap（OpenStreetMap 数据），必须保留署名；高缩放下的 3D 建筑依赖 render_height 数据，各城市覆盖不同。\n- 程序化“照片”只用于示意；正式作品请在 config.js 填入有权使用的真实照片。\n- 所有文字最终字号 ≥ 12px；成片 1920×1080 下的 HUD 小字为 12px，缩放预览时属于视频画面。\n\n## 迁移\n\n- `config.js → meta`：片名（竖排汉字 + 英文）、副标题、时区、总天数、总时长。\n- `config.js → stops`：每个地点的名称、代码、汉字、经纬度、海拔、默认场景；填 media 即用真实照片。\n- `config.js → tracks.camera`：镜头关键帧；长距离移动在中途加一个低缩放关键帧，形成“飞越”。\n- `config.js → tracks.*`：night / clock / day / routes / cards / chapter / flashback / compare / alert / outro 等轨道，改时间即改节奏。\n- `config.js → chapters`：每个主题的标签、标题、强调色；会同步到路线、卡片描边与四角框线。\n- `config.js → palette / map`：纸色、墨色、夜色与默认强调色；底图样式与 MapLibre 版本。\n- `scenes.js`：仅在没有真实照片时使用，可删除；或按示例增加新的程序化场景。\n\n[打开 Demo](../../demos/cases/map-pilgrimage/index.html) · [在库中查看](../../cases.html#case/map-pilgrimage)\n",
+    "research": "# 地图巡礼 · 游戏过场式旅行影像：逐帧研究\n\n- 参考：【眩晕瘫坐 旅游时拍的素材给Opus5.5剪出来是这样】（哔哩哔哩，<https://b23.tv/eBjaN0O>），画面署名 @DWTornier\n- 素材：用户下载的本地成片，151.21 秒，1920×1080\n- 观察日期：2026-10-14\n- 方法：浏览器 `<video>` + Canvas 取帧。全片每 2 秒一帧（76 帧）；转场处每 0.25–0.3 秒一帧（片头昼夜与片名、卡片→全屏、全屏动画回忆、夜→昼与章节框线、动画→实景分屏）；关键画面按 1920 宽全分辨率读取 HUD 文字。\n- 证据等级：结构、文字内容、版式与时间点为 **逐帧实测**；具体缓动曲线与毫秒数为本地拟合（标注“约”）。原片使用的工具链未公开，本笔记不做推断。\n\n## 一句话结构\n\n一个稳定的**世界层**（地图）+ 一套持续更新的**信息层**（四角 HUD）+ 有节制的**模式切换**（卡片 / 全屏实拍 / 全屏动画回忆 / 分屏对比）。地图永远是底座，HUD 永远在报时；只有高光才允许离开地图，而离开时 HUD 也跟着走。\n\n## 全片节拍（原片时间）\n\n| 时间 | 段落 | 主要模式 | 备注 |\n| --- | --- | --- | --- |\n| 0:00–0:05 | 冷开场 | 夜间地球 | 首尔、关西标记带英中标签；左下 NOW PLAYING 已出现 |\n| 0:05.2–0:06.1 | 天亮 | 亮度交叉 | 暗 → 灰 → 亮，约 0.9 秒 |\n| 0:06.4–0:08 | 片名 | 文字 | 竖排「聖地巡礼」逐字模糊入场，横线描出，PILGRIMAGE '26 打字 |\n| 0:08–0:20 | DAY 00–01 | 地图 + 卡片 | 航线、机场、照片卡片、计数徽章 ×1→×2 |\n| 0:22.7 | 高光 | 全屏实拍 | HUD 保留；约 1.2 秒后回到地图 |\n| 0:24–0:31 | 作品 1 | 地图 + 主题 | PILGRIMAGE 标签 + 作品名 + 小图标，强调色橙；手写便签卡片 |\n| 0:32–0:38 | 夜 | 夜间地图 | 竖排「京都」，夜景卡片 |\n| 0:38.9–0:41 | DAY 02 + 作品 2 | 地图 + 主题 | DAY 描边 + 02 实心；四角框线（蓝）描出 |\n| 0:41.6 | 高光 | 全屏实拍 | |\n| 0:55.2–0:57.9 | 回忆 | 全屏动画 | 独立框、FLASHBACK 标签、竖排日文字幕逐字、英文字幕打字、颗粒加重 |\n| 0:58–1:10 | 夜/晨 | 全屏实拍段 | 花瓣粒子、竖排地名、倾斜时间戳 |\n| 1:12–1:30 | DAY 04 | 地图 + 托盘 | 角色收集托盘依次点亮，计数 ×11 |\n| 1:32–1:39 | 回忆 | 全屏动画 | 展望台夜景 |\n| 1:39.35–1:41 | 对比 | 分屏 | 动画 → 实景 → 分割线滑到中线 + 盖章 |\n| 1:42.5 | DAY 05 | 地图概览 | 全路线 |\n| 1:44–1:58 | 作品 3 | 地图 + 拼贴 | 红色主题，多张照片叠放微旋转；红色胶囊角色标签 |\n| 2:02 | DAY 06 | 夜间地图 | |\n| 2:08.5 | 意外 | 警示 | 红色 WRONG TRAIN 通栏 + REROUTING 胶囊，错误路线画红打叉 |\n| 2:10–2:18 | 作品 4 | 地图 + 主题 | 紫色主题，纪念章手绘卡片 |\n| 2:20–2:27 | 终点 | 全日本概览 → 东京夜景 | |\n| 2:28–2:31 | 结尾 | 统计 | 数字堆叠 + 「聖地巡礼 — fin.」+ 署名与出处 |\n\n## HUD 规格（0:16.5 全分辨率读数）\n\n- 左上：`DAY 01 / 07`（DAY 粗体、01 为强调色、/ 07 等宽小字），下方 `MON · SEP 28 2026`（等宽、大字距），再下方一条短粗下划线。\n- 顶部：一条贯穿全宽的细线，左段为强调色（随行程推进）。\n- 右上：`34.4320°N 135.2304°E` 与 `ELEV 0 M · Z 10.9`（等宽小字，Z 为地图缩放级别），右侧大号等宽时钟 `11:33` + 角标 `JST`。\n- 右侧：白色胶囊计数徽章（吉祥物头像 + `YUI SPOTTED` + `×2`）。\n- 左下：均衡器图标 + `NOW PLAYING`，曲名粗体 — 艺人常规；其下一行加粗歌词与一行灰色副歌词。\n- 右下：`SEOUL — KANSAI — KYOTO — TOKYO` 步进器，已到达节点实心；最底一行地图署名。\n\n## 转场目录\n\n| 转场 | 原片时间 | 观察 | Demo 实现 |\n| --- | --- | --- | --- |\n| 昼夜翻转 | 0:05.2、0:38.9 | 中途经过灰阶 | 逐图层配色插值（巧思：day-night-flip） |\n| 竖排标题 | 0:06.4、0:16.5、0:21.5 | 逐字模糊 → 清晰，自上而下 | blur-in 500ms / 140ms 错峰（vertical-title-blur） |\n| 卡片 → 全屏 | 0:22.7 | 硬切，HUD 保留 | 600ms 连续展开 + 压暗层（card-expand-fullscreen，标为本地转译） |\n| 章节框线 | 0:40.7 | 四角带方块的细框描出、强调色替换 | dashoffset 描边 + 四角错峰（chapter-frame） |\n| 全屏回忆 | 0:55.2 | 独立框、标签、竖排字幕逐字 | 插画风格 + 字幕模式（vertical-title-blur 字幕变体） |\n| 分屏对比 | 1:39.35 | 经暗场交叉，分割线从左到中 | outQuart 700ms + 盖章 outBack（split-compare-stamp） |\n| 警示改道 | 2:08.5 | 红色通栏 + 黑色胶囊 | clip-path 擦入 + 错误路线打叉（alert-reroute） |\n| 结尾统计 | 2:30.5 | 数字堆叠 + 衬线 fin. | 逐行计数（outro-stat-stack） |\n\n## 节奏分析\n\n- **事件密度**：地图段落平均每 4–6 秒出现一个新事件（新卡片、新地名、计数、便签、歌词换行），观众始终有新信息可看，但同一时刻只有一个主事件。\n- **模式切换**：约每 10–15 秒离开一次地图（全屏实拍/动画/对比），全屏段落持续 1.2–7 秒；回到地图后至少留 1–2 秒“呼吸”。\n- **能量曲线**：开场低 → 片名第一峰 → 旅程中速 → 回忆与对比为最高峰 → 意外事件制造第二个尖峰 → 结尾回落。Demo 的能量曲线按同样形状设计（见条目 `energy`）。\n- **一致性来源**：所有模式共用 HUD、颗粒与强调色系统，所以“切换”像在同一个系统里切视图，而不是不同素材的拼接。\n\n## Demo 与原片的差异\n\n- 内容全部替换：江南三日（北京 → 杭州 → 苏州 → 上海），苏轼诗句为公有领域；程序化场景替代实拍与动画截图；无音轨。\n- 卡片 → 全屏由硬切改为连续展开，属于本地设计选择（证据标为 adapted）。\n- 原片的照片拼贴、花瓣粒子、多部作品主题等未全部复现；结构性机制（世界层、HUD、事件层、模式切换、节奏）全部保留。\n- 夜景使用逐图层插值，而不是 CSS 整体反色——原片夜间地图为深蓝灰陆地 + 更暗的水面，整体反色无法得到这种关系。\n\n## 验证记录\n\n- 2026-10-14：用 Edge 无头模式（CDP）在 1600×900 下对 Demo 的 16 个时刻逐一截图：开场地球、天亮、片名、杭州卡片、全屏、章节框线、回忆、对比、入夜便签、DAY 02、苏州卡片、警示、DAY 03、上海 3D 建筑、鸟瞰、结尾统计——均按预期渲染。\n- 首轮发现并修复：MapLibre 自带 CSS 覆盖容器定位导致地图只有 300px 高；大俯仰角下 SVG 路线投影错位（改为 GL 图层）；整体反色夜景水面偏亮（改为逐层插值）；全屏时 HUD 被卡片遮挡与白字可读性（层级与压暗层）。\n- 窄屏（约 800×1120）在浏览器面板中检查：卡片改为通栏，地点标题与章节标签不重叠，步进器标签不粘连。\n- 未验证：真实音轨同步、移动端 Safari 的 WebGL 性能。\n"
+  },
+  "entrypoint": "demos/cases/map-pilgrimage/index.html",
+  "files": [
+    {
+      "path": "demos/cases/map-pilgrimage/config.js",
+      "bytes": 9250,
+      "sha256": "667c772e8d1880f305077edd166bbe745303f3db186099d99c5555e47e7adf82"
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 5850,
+      "sha256": "10683b08f3298e92ae0bdef3d408b86920fa6d2531d6c74acc82f414cebc9375"
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/scenes.js",
+      "bytes": 16231,
+      "sha256": "c36e14b5d37e2bfab66332ed00dd997c938517581e54d50d195247adcce40c87"
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/script.js",
+      "bytes": 36435,
+      "sha256": "1ed3e479d8a2da4fe6bd07507e3d330d185ff30dc8b4d39ad5ba1e62f33554bd"
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/style.css",
+      "bytes": 17346,
+      "sha256": "6c5bdceb1fbca9f5e2ccaba4bb349373989d174990a2e066bfe9c0cce0045dc7"
+    },
+    {
+      "path": "previews/cases/map-pilgrimage.jpg",
+      "bytes": 181841,
+      "sha256": "f1cfe8161698cf0e566bcee41b1b328c29064ec20549bf1b69cc56df75f8bf86"
+    }
+  ]
+}

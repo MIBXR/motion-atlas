@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent 工作流 · Motion Atlas</title>
+  <meta name="description" content="给编码 Agent 的结构化索引、带 SHA256 文件清单的资料包、零依赖 CLI 与指令生成器。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/agent.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="agent-page">
+    <header class="ag-head">
+      <p class="eyebrow">FOR AGENTS · INDEX / BUNDLE / CLI / RENDER</p>
+      <h1>同一套资料，<em>机器也能读</em>。</h1>
+      <p>人看站点，Agent 读 JSON。每个条目都有结构化索引、完整资料包（条目、Prompt、研究笔记、带 SHA256 的文件清单）和可运行的 Demo；CLI 负责检索、查看与导出，渲染脚本负责把结果变成视频。</p>
+      <div class="cta"><a class="btn primary" href="agent/catalog.json">打开 agent/catalog.json</a><a class="btn" href="docs.html#doc/AGENT.md">AGENT.md</a><a class="btn ghost" href="docs.html#doc/docs/pipeline.md">render(t) 协议</a></div>
+    </header>
+
+    <section class="ag-band">
+      <h2>推荐工作流</h2>
+      <ol class="ag-steps">
+        <li><b>01 检索</b><p>读 <code>agent/catalog.json</code> 的摘要字段，或运行 <code>atlas.mjs search</code>。按载体、类型、证据等级筛选。</p></li>
+        <li><b>02 读取</b><p>打开 <code>agent/&lt;kind&gt;/&lt;id&gt;.json</code>：条目全文、Prompt 文档、研究笔记与文件清单；用 <code>bundleSha256</code> 判断缓存是否过期。</p></li>
+        <li><b>03 组合</b><p>按职责挑选：1 个骨架 + 2–4 个支撑 + 1–2 个点睛；检查 <code>pairsWellWith</code> 与 <code>conflicts</code>。</p></li>
+        <li><b>04 导出</b><p><code>atlas.mjs export &lt;id&gt; --out dir</code> 得到可运行 Demo、PROMPT.md 与迁移说明；只改 <code>config.js</code> / <code>CONFIG</code>。</p></li>
+        <li><b>05 验证</b><p>按节拍表截图核对；时间驱动的作品用 <code>render.mjs</code> 逐帧出片；遵守 12px 字号与减少动态。</p></li>
+      </ol>
+    </section>
+
+    <section class="ag-band">
+      <div class="ag-row"><h2>指令生成器</h2><p class="ag-sub">勾选条目，生成一段可以直接交给编码 Agent 或视频模型的任务说明。</p></div>
+      <div class="gen">
+        <div class="gen-pick">
+          <label class="gen-q"><span class="sr-only">筛选条目</span><input type="search" id="genQ" placeholder="筛选：地图、转场、HUD、抽卡…"></label>
+          <div class="seg" role="group" aria-label="条目类型" id="genKind"><button type="button" data-k="all" aria-pressed="true">全部</button><button type="button" data-k="cases" aria-pressed="false">案例</button><button type="button" data-k="patterns" aria-pressed="false">巧思</button></div>
+          <div class="gen-list" id="genList"></div>
+        </div>
+        <div class="gen-out">
+          <div class="seg" role="group" aria-label="生成目标" id="genTarget"><button type="button" data-t="code" aria-pressed="true">代码实现</button><button type="button" data-t="video" aria-pressed="false">视频生成</button></div>
+          <label class="gen-brief"><span>你的主题（可选）</span><input type="text" id="genBrief" placeholder="例如：上海一日城市漫游、新品发布倒计时"></label>
+          <div class="prompt-box"><pre id="genOut"></pre><button class="btn" type="button" id="genCopy"></button></div>
+          <p class="ag-note" id="genWarn" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-band ag-two">
+      <div>
+        <h2>命令行</h2>
+        <div class="tbl-wrap"><table class="ag-table">
+          <tr><th>命令</th><th>作用</th></tr>
+          <tr><td><code>node scripts/atlas.mjs search "转场 地图" --limit 5</code></td><td>检索；支持 <code>--kind</code>、<code>--carrier</code>、<code>--type</code>、<code>--json</code></td></tr>
+          <tr><td><code>node scripts/atlas.mjs show map-pilgrimage --source</code></td><td>条目、节拍、三段 Prompt、迁移字段与源码</td></tr>
+          <tr><td><code>node scripts/atlas.mjs export split-compare-stamp --out ../my-demo</code></td><td>导出可运行 Demo + PROMPT.md + README.md + entry.json；<code>--code-only</code> 只导出代码</td></tr>
+          <tr><td><code>node scripts/render.mjs demos/cases/beat-lyric/index.html --fps 30</code></td><td>逐帧渲染；有 ffmpeg 时自动合成 MP4</td></tr>
+          <tr><td><code>node scripts/frames.mjs reference.mp4 --every 2</code></td><td>参考视频取帧，生成带时间码的接触表</td></tr>
+          <tr><td><code>node scripts/check.mjs</code></td><td>条目、引用、kit 副本、生成物、字号与预览图检查</td></tr>
+        </table></div>
+      </div>
+      <div>
+        <h2>资料格式</h2>
+        <div class="tbl-wrap"><table class="ag-table">
+          <tr><th>文件</th><th>内容</th></tr>
+          <tr><td><code>agent/catalog.json</code></td><td><code>taxonomy</code>、<code>protocol</code>、<code>contentVersion</code>，以及每个条目的摘要、标签、关联与 <code>bundle</code> / <code>bundleSha256</code></td></tr>
+          <tr><td><code>agent/cases/&lt;id&gt;.json</code></td><td><code>entry</code>（完整条目）、<code>documents.prompt</code>、<code>documents.research</code>、<code>entrypoint</code>、<code>files[]</code>（path、bytes、sha256）</td></tr>
+          <tr><td><code>agent/patterns/&lt;id&gt;.json</code></td><td><code>pattern</code>、<code>sourceCases</code>、<code>documents.prompt</code>、<code>entrypoint</code>、<code>files[]</code></td></tr>
+          <tr><td><code>window.__motion</code></td><td>时间驱动 Demo 的运行时协议：<code>duration</code>、<code>markers</code>、<code>seek(t)</code>、<code>play()</code>、<code>pause()</code>、<code>on(fn)</code></td></tr>
+        </table></div>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="data/catalog.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/agent.js"></script>
+</body>
+</html>

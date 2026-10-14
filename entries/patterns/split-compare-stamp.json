@@ -1,0 +1,66 @@
+{
+  "id": "split-compare-stamp",
+  "order": 16,
+  "title": "分屏对比与时间戳盖章",
+  "types": [
+    "transition",
+    "composition"
+  ],
+  "carriers": [
+    "video",
+    "showcase"
+  ],
+  "summary": "先给出“现在”的全屏画面，再让分割线从左边滑到中线露出“过去”，最后一枚倾斜的描边时间戳盖下来。动画结束后可拖动分割线。",
+  "mechanism": "左层用 clip-path inset 控制可见宽度，分割线位置 700ms outQuart 从 0 到 50%；两侧标签分别在各自画面出现后淡入；时间戳 380ms outBack 从 1.45 缩到 1、旋转 -4°。交互模式下指针/方向键改变分割百分比。",
+  "trigger": "对照时刻（动画 vs 实景、过去 vs 现在、方案 A vs B）",
+  "effect": "两张构图对齐的图片形成强烈“同一地点”的确认感。",
+  "timing": [
+    {
+      "name": "分割线",
+      "value": "700ms outQuart，停在 50%"
+    },
+    {
+      "name": "盖章",
+      "value": "380ms outBack，1.45→1，-4°"
+    },
+    {
+      "name": "标签",
+      "value": "各自 300ms 淡入"
+    }
+  ],
+  "useCases": [
+    "巡礼对比",
+    "前后改造",
+    "设计方案对照",
+    "展示台复原对比"
+  ],
+  "avoid": [
+    "两张图构图不对齐时（对比失去意义）"
+  ],
+  "accessibility": {
+    "reducedMotion": "直接停在 50% 分割与盖章完成态。",
+    "keyboard": "分割线可聚焦，←/→ 每次移动 5%。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [
+      "card-expand-fullscreen",
+      "vertical-title-blur",
+      "film-grain"
+    ],
+    "conflicts": [],
+    "notes": "对比前先给一段任一侧的全屏，让观众记住构图，再揭示另一侧。"
+  },
+  "prompt": "实现分屏对比：两张构图对齐的图片叠放，上层（过去）用 clip-path: inset(0 X% 0 0) 控制可见宽度；分割线 3px 白色带阴影与圆形把手，700ms outQuart 从左边滑到 50%；左右各有 12px 等宽深色标签（如 POSTCARD · 1930s / REAL · 2026）在各自画面出现后淡入；380ms 后一枚 3px 白色描边、等宽粗体的时间戳以 outBack 从 1.45 缩到 1 并旋转 -4° 盖下。动画结束后分割线可拖动、可用方向键调整（role=slider）。",
+  "demo": "demos/patterns/split-compare-stamp/index.html",
+  "kit": true,
+  "sources": [
+    {
+      "caseId": "map-pilgrimage",
+      "observation": "动画全屏 → 实景全屏 → 分割线从左滑到中线，ANIME · 2015 / REAL · 2026 标签，倾斜描边时间戳 10.01 · 18:20 JST。",
+      "evidence": "observed",
+      "locator": "1:39.35–1:40.6"
+    }
+  ],
+  "previewAt": 2.4
+}

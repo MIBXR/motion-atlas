@@ -1,0 +1,69 @@
+{
+  "id": "idle-breathing",
+  "order": 34,
+  "title": "空闲呼吸",
+  "types": [
+    "rhythm"
+  ],
+  "carriers": [
+    "console",
+    "showcase"
+  ],
+  "summary": "停止操作 2.5 秒后，界面元素以两个不成整数比的周期（8s 与 13s）叠加缓慢起伏，相邻元素错相；任何操作立即渐退——界面“活着”，但不打扰。",
+  "mechanism": "空闲时长 = t − 最后一次输入；强度 = clamp((空闲 − 2.5) / 1.5)；位移 = 强度 × A × (0.6·sin(2πt/8 + iφ₁) + 0.4·sin(2πt/13 + iφ₂))。两个周期不成整数比，叠加后长时间不重复；相位按元素索引偏移形成“流动”。",
+  "trigger": "一段时间无操作",
+  "effect": "静止画面里保有生命感，暗示“系统在等待你”。",
+  "timing": [
+    {
+      "name": "阈值",
+      "value": "2.5s 后开始，1.5s 渐入"
+    },
+    {
+      "name": "周期",
+      "value": "8s 与 13s，权重 0.6 / 0.4"
+    },
+    {
+      "name": "幅度",
+      "value": "约元素高度的 2–3%（Demo 14px 为演示放大）"
+    },
+    {
+      "name": "退出",
+      "value": "任何输入立即开始渐退"
+    }
+  ],
+  "useCases": [
+    "待机画面",
+    "展示台/壁纸",
+    "游戏菜单",
+    "操作台空闲态"
+  ],
+  "avoid": [
+    "用户正在阅读或比较数值时",
+    "可能引起眩晕的大幅运动"
+  ],
+  "accessibility": {
+    "reducedMotion": "完全关闭呼吸。",
+    "keyboard": "任何按键都会打断呼吸。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [
+      "wave-array",
+      "rolling-digits"
+    ],
+    "conflicts": [],
+    "notes": "呼吸与选择余波可以叠加，但呼吸强度在操作时为 0，避免两者同时明显。"
+  },
+  "prompt": "实现空闲呼吸：记录最后一次输入时刻；强度 = clamp((t − last − 2.5) / 1.5)；第 i 个元素位移 = 强度 × A × (0.6·sin(2πt/8 + 1.3i) + 0.4·sin(2πt/13 + 0.7i))，A 取元素高度的 2–3%；任何输入立即让强度归零（或在 300ms 内渐退）；prefers-reduced-motion 时完全关闭。附一个空闲计量条与呼吸曲线可视化便于调参。",
+  "demo": "demos/patterns/idle-breathing/index.html",
+  "kit": true,
+  "previewAt": 6.5,
+  "sources": [
+    {
+      "caseId": "archive-os",
+      "observation": "交互预览停止操作 2.5 秒后渐入呼吸起伏：8 秒与 13 秒周期叠加，最大单向位移约卡片高度的 2.8%，相邻卡片略微错相；切换档案、进入详情或开启减少动态效果时渐退。",
+      "evidence": "observed",
+      "locator": "DESIGN.md · 最新交互修订"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "card-flip-sheen",
+  "order": 74,
+  "title": "翻牌与流光",
+  "types": [
+    "feedback",
+    "transition"
+  ],
+  "carriers": [
+    "showcase",
+    "console",
+    "video"
+  ],
+  "summary": "卡片以 outBack 翻转 180°（略超再回正，像真的翻过去），翻开后一道斜向流光扫过牌面；稀有卡多停一拍再翻，翻开后发光并轻微放大。",
+  "mechanism": "父元素 transform-style: preserve-3d，正反两面 backface-visibility: hidden，正面预先 rotateY(180°)；翻转 rotateY = clamp(outBack(p), 0, 1.08)×180°；流光是 105° 线性渐变条，translateX −100%→100%；稀有卡额外延迟与外发光脉冲。",
+  "trigger": "揭示结果 / 点击卡片",
+  "effect": "每张卡都是一次小揭示，稀有卡被“停顿”放大。",
+  "timing": [
+    {
+      "name": "翻转",
+      "value": "450ms outBack"
+    },
+    {
+      "name": "流光",
+      "value": "600ms，延迟 300ms"
+    },
+    {
+      "name": "错峰",
+      "value": "120–250ms"
+    },
+    {
+      "name": "稀有停顿",
+      "value": "0.6–0.7s"
+    }
+  ],
+  "useCases": [
+    "卡牌/奖励揭示",
+    "翻卡记忆游戏",
+    "产品特性卡片",
+    "答案揭晓"
+  ],
+  "avoid": [
+    "大量卡片同时翻转（失去节奏）"
+  ],
+  "accessibility": {
+    "reducedMotion": "直接显示正面。",
+    "keyboard": "卡片为原生 button，带名称与星级的可访问名称。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [
+      "charge-release",
+      "decrypt-reveal"
+    ],
+    "conflicts": [],
+    "notes": "翻牌顺序按阅读顺序，稀有卡永远最后。"
+  },
+  "prompt": "实现翻牌与流光：卡片 button 设 transform-style: preserve-3d，内含背面（斜纹 + 稀有度描边发光）与正面（渐变 + 图形 + 名称，预先 rotateY(180deg)），两面 backface-visibility: hidden。第 i 张在 start + i×0.25s（稀有卡再加 0.6s）开始，rotateY = clamp(outBack(p), 0, 1.08)×180°（450ms）；翻开后 300ms 一条 105° 白色流光 600ms 从左扫到右；稀有卡外发光脉冲并 scale 1.08 回落。点击单张卡可重翻。",
+  "demo": "demos/patterns/card-flip-sheen/index.html",
+  "kit": true,
+  "previewAt": 1.9,
+  "sources": [
+    {
+      "caseId": "gacha-reveal",
+      "observation": "十连结果的逐张翻牌与金卡停顿。",
+      "evidence": "original",
+      "locator": "4.1–6.6s"
+    }
+  ]
+}

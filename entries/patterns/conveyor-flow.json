@@ -1,0 +1,66 @@
+{
+  "id": "conveyor-flow",
+  "order": 52,
+  "title": "产线流动",
+  "types": [
+    "hud",
+    "rhythm"
+  ],
+  "carriers": [
+    "console",
+    "showcase",
+    "video"
+  ],
+  "summary": "节点之间的正交传送带上，物料方块匀速流动、带纹同速推进、节点指示灯闪烁、产量计数——持续运转的系统感来自“永不停的匀速”。",
+  "mechanism": "路径为带圆角的正交折线（灰色粗底 + 黑色虚线带纹）；物料位置 = getPointAtLength(L × ((t × v / L + i / n) mod 1))，带纹 stroke-dashoffset = −t × v；全部只依赖时间。状态变化（如部署加速）只改变 v。",
+  "trigger": "常驻（后台运行）",
+  "effect": "画面始终“在工作”，与离散的交互事件形成节奏对比。",
+  "timing": [
+    {
+      "name": "速度",
+      "value": "90px/s（加速 150px/s）"
+    },
+    {
+      "name": "密度",
+      "value": "每条带 4–5 个物料"
+    },
+    {
+      "name": "圆角",
+      "value": "14–16px"
+    }
+  ],
+  "useCases": [
+    "产线/物流监控",
+    "数据管道可视化",
+    "游戏建造界面",
+    "流程说明影像"
+  ],
+  "avoid": [
+    "真实需要精确吞吐数值的监控（示意动画可能误导）"
+  ],
+  "accessibility": {
+    "reducedMotion": "物料静止在固定位置，计数直接显示。",
+    "keyboard": "参数为原生滑杆。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [
+      "chamfer-panel",
+      "hold-confirm"
+    ],
+    "conflicts": [],
+    "notes": "匀速运动不要加缓动；与离散事件的“snap”形成对比。"
+  },
+  "prompt": "实现产线流动：在 SVG 中为每条连接生成正交折线路径（M x1 y1 H mx−r Q … V … Q … H x2），先画 14px 灰色底，再画 2px 黑色 6/10 虚线带纹；每帧带纹 strokeDashoffset = −t×v；每条带放 n 个旋转 45° 的小方块，位置 = path.getPointAtLength(L×(((t×v/L + i/n) % 1 + 1) % 1))。节点为切角白盒 + 编码 + 计数 + 闪烁绿灯。提供速度与物料数滑杆；SVG 文字按缩放换算保证 ≥12px。",
+  "demo": "demos/patterns/conveyor-flow/index.html",
+  "kit": true,
+  "previewAt": 2,
+  "sources": [
+    {
+      "caseId": "industrial-protocol",
+      "observation": "集成工业系统在菜单中规划与模拟产线；传送带流动的可视化为本库转译。",
+      "evidence": "inferred",
+      "locator": "GameWith 攻略 · 待核验"
+    }
+  ]
+}

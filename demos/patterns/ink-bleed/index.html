@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>墨晕显影 — Motion Atlas 巧思</title>
+<style>
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #f1ead8; font-family: "KaiTi","STKaiti","Kaiti SC",serif; color: #1e1d1b; }
+  svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .cap { position: absolute; right: 6vw; top: 8vh; writing-mode: vertical-rl; font-size: clamp(22px, 3.4vh, 40px); letter-spacing: .2em; }
+  .panel { position: absolute; left: 16px; bottom: 64px; display: grid; gap: 6px; padding: 10px 12px; background: rgba(241,234,216,.92); border: 1px solid #c9bfa6; font: 12px/1.3 "Microsoft YaHei",sans-serif; }
+  .panel label { display: grid; grid-template-columns: 74px 110px 34px; gap: 8px; align-items: center; }
+  input { accent-color: #1e1d1b; }
+</style>
+</head>
+<body>
+<svg id="svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <filter id="bleed" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" id="disp" scale="0"/><feGaussianBlur id="blur" stdDeviation="0"/></filter>
+    <radialGradient id="spread" cx="0.62" cy="0.55" r="0.5"><stop offset="0" stop-color="#fff"/><stop id="edge1" offset="0.5" stop-color="#fff"/><stop id="edge2" offset="0.65" stop-color="#000"/></radialGradient>
+    <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900"><rect width="1600" height="900" fill="url(#spread)" filter="url(#bleed)"/></mask>
+    <linearGradient id="wash" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1d1b" stop-opacity=".85"/><stop offset=".6" stop-color="#1e1d1b" stop-opacity=".45"/><stop offset="1" stop-color="#1e1d1b" stop-opacity=".05"/></linearGradient>
+  </defs>
+  <g mask="url(#m)"><path id="mtn" fill="url(#wash)"/><path id="ridge" fill="none" stroke="#1e1d1b" stroke-width="4" stroke-linejoin="round"/></g>
+</svg>
+<p class="cap">墨分五色</p>
+<form class="panel" id="panel" aria-label="参数"><label>扩散时长<input type="range" name="dur" min="0.8" max="4" step="0.1"><output></output></label><label>扰动强度<input type="range" name="disp" min="0" max="160" step="5"><output></output></label></form>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 一个“扩散遮罩”（径向渐变的边缘位置随时间外推）经过湍流位移 → 边缘像墨在宣纸上洇开；
+ * 位移强度与模糊随显影完成逐渐归零，最后得到清晰的墨色。 */
+const CONFIG = { start: 0.4, dur: 2.2, disp: 90, blur: 4, hold: 2.4, duration: 5.6 };
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s);
+const pts = []; for (let x = 0; x <= 1600; x += 8) { const u = x / 1600; pts.push([x, 520 - 300 * Math.pow(Math.abs(Math.sin(u * Math.PI * 2.4 + 0.6)), 1.5) * (0.7 + 0.3 * Math.sin(u * 37))]); }
+$('#mtn').setAttribute('d', `M0 900${pts.map((p) => `L${p[0]} ${p[1].toFixed(1)}`).join('')}L1600 900Z`);
+$('#ridge').setAttribute('d', `M${pts.map((p) => `${p[0]} ${p[1].toFixed(1)}`).join('L')}`);
+function render(t) {
+  const k = MK.seg(t, CONFIG.start, CONFIG.dur, MK.ease.outCubic);
+  const out = MK.seg(t, CONFIG.start + CONFIG.dur + CONFIG.hold, 0.6);
+  const r = MK.lerp(0, 1.25, k) * (1 - out);
+  $('#edge1').setAttribute('offset', Math.max(0, r - 0.15).toFixed(3));
+  $('#edge2').setAttribute('offset', Math.max(0.001, r).toFixed(3));
+  const reduce = MK.prefersReducedMotion();
+  $('#disp').setAttribute('scale', reduce ? 0 : ((1 - k) * CONFIG.disp + 18).toFixed(1));
+  $('#blur').setAttribute('stdDeviation', reduce ? 0 : ((1 - k) * CONFIG.blur).toFixed(2));
+}
+const form = document.getElementById('panel');
+for (const k of ['dur', 'disp']) { form[k].value = CONFIG[k]; form[k].nextElementSibling.textContent = CONFIG[k]; }
+form.addEventListener('input', (e) => { CONFIG[e.target.name] = Number(e.target.value); e.target.nextElementSibling.textContent = e.target.value; tl.seek(0); tl.play(); });
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: CONFIG.start, label: '落墨' }] });
+MK.expose(tl);
+MK.controls(tl, { accent: '#1e1d1b' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 3 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

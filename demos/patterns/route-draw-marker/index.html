@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>路线描画与标记脉冲 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #f2efe8; --ink: #16171a; --muted: rgba(22,23,26,.6); --accent: #d9632b; --water: #c6d4de;
+    --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; --f-cjk: "PingFang SC","Microsoft YaHei",sans-serif; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); }
+  svg.map { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .land { fill: #e7e2d8; } .water { fill: var(--water); } .road { stroke: #fff; stroke-width: 3; fill: none; } .grid { stroke: rgba(22,23,26,.06); }
+  .r-dash { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 9 7; opacity: .8; }
+  .r-casing { fill: none; stroke: #fff; stroke-width: 9; stroke-linecap: round; }
+  .r-rail { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; }
+  .head { fill: #fff; stroke: var(--ink); stroke-width: 2.5; }
+  .marker { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 10px; }
+  .dot { position: relative; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); }
+  .dot::after { content: ""; position: absolute; inset: 2px; border-radius: 50%; background: var(--accent); }
+  .ring { position: absolute; left: -8px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; border: 1.5px solid var(--ink); }
+  .label { padding: 5px 9px; border-radius: 4px; background: rgba(255,255,255,.92); font: 600 12px/1 var(--f-mono); letter-spacing: .12em; color: var(--ink); white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+  .label em { font-style: normal; font-family: var(--f-cjk); color: var(--muted); margin-left: .5em; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<svg class="map" id="map" aria-hidden="true"></svg>
+<div id="markers" aria-hidden="true"></div>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 坐标使用 0–1 的画面比例（换成地图时改为 map.project(lngLat)）。 */
+const CONFIG = {
+  duration: 10,
+  stops: {
+    a: { x: 0.18, y: 0.24, name: 'BEIJING · PEK', cjk: '北京', t: 0.3 },
+    b: { x: 0.56, y: 0.7, name: 'HANGZHOU · HGH', cjk: '杭州', t: 3.6 },
+    c: { x: 0.8, y: 0.46, name: 'SUZHOU · SZH', cjk: '苏州', t: 7.4 },
+  },
+  routes: [
+    { from: 'a', to: 'b', style: 'dash', bend: 0.22, t0: 0.9, t1: 3.6 },   // 航线：虚线 + 弧度
+    { from: 'b', to: 'c', style: 'rail', bend: -0.12, t0: 4.8, t1: 7.4 },  // 地面：白色描边 + 强调色
+  ],
+  pulsePeriod: 2,   // 脉冲周期（秒）
+  ringScale: 2.6,   // 脉冲最大放大倍数
+  labelType: 0.55,  // 标签打字时长
+};
+/* ================================== */
+const MK = MotionKit, NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('map');
+const el = (tag, cls, parent = svg) => { const e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); parent.appendChild(e); return e; };
+const W = () => innerWidth, H = () => innerHeight;
+// 背景：网格、水面与道路（示意）
+const bg = el('g');
+const land = el('rect', 'land', bg), water = el('path', 'water', bg), road = el('path', 'road', bg), grid = el('path', 'grid', bg);
+const routes = CONFIG.routes.map((r) => ({ r, casing: r.style === 'rail' ? el('path', 'r-casing') : null, line: el('path', r.style === 'dash' ? 'r-dash' : 'r-rail'), head: el('circle', 'head') }));
+routes.forEach((x) => x.head.setAttribute('r', 5));
+const markers = Object.entries(CONFIG.stops).map(([id, s]) => {
+  const m = document.createElement('div');
+  m.className = 'marker';
+  m.innerHTML = '<i class="ring"></i><i class="ring"></i><span class="dot"></span><span class="label"><span class="txt"></span><em></em></span>';
+  m.querySelector('em').textContent = s.cjk;
+  document.getElementById('markers').appendChild(m);
+  return { s, m, txt: m.querySelector('.txt'), em: m.querySelector('em'), rings: m.querySelectorAll('.ring') };
+});
+const P = (s) => [s.x * W(), s.y * H()];
+// 二次贝塞尔弧线采样；按弧长截断得到“描到哪里”
+function arc(a, b, bend, n = 80) {
+  const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1];
+  const cx = mx - dy * bend, cy = my + dx * bend;
+  return Array.from({ length: n + 1 }, (_, i) => { const k = i / n, u = 1 - k; return [u * u * a[0] + 2 * u * k * cx + k * k * b[0], u * u * a[1] + 2 * u * k * cy + k * k * b[1]]; });
+}
+function cut(pts, p) {
+  const cum = [0];
+  for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  const target = cum[cum.length - 1] * p, out = [pts[0]];
+  for (let i = 1; i < pts.length; i++) {
+    if (cum[i] <= target) { out.push(pts[i]); continue; }
+    const k = (target - cum[i - 1]) / (cum[i] - cum[i - 1]);
+    out.push([MK.lerp(pts[i - 1][0], pts[i][0], k), MK.lerp(pts[i - 1][1], pts[i][1], k)]);
+    break;
+  }
+  return out;
+}
+const d = (pts) => pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join('');
+function render(t) {
+  const w = W(), h = H();
+  land.setAttribute('width', w); land.setAttribute('height', h);
+  water.setAttribute('d', `M${w * 0.62} 0C${w * 0.7} ${h * 0.2} ${w * 0.95} ${h * 0.25} ${w} ${h * 0.3}V0Z M0 ${h * 0.86}C${w * 0.2} ${h * 0.8} ${w * 0.35} ${h * 0.95} ${w * 0.45} ${h}H0Z`);
+  road.setAttribute('d', `M0 ${h * 0.5}C${w * 0.3} ${h * 0.46} ${w * 0.5} ${h * 0.6} ${w} ${h * 0.55}M${w * 0.4} 0C${w * 0.42} ${h * 0.4} ${w * 0.5} ${h * 0.7} ${w * 0.48} ${h}`);
+  let gd = '';
+  for (let x = 0; x < w; x += 64) gd += `M${x} 0V${h}`;
+  for (let y = 0; y < h; y += 64) gd += `M0 ${y}H${w}`;
+  grid.setAttribute('d', gd);
+  routes.forEach(({ r, casing, line, head }) => {
+    const pts = arc(P(CONFIG.stops[r.from]), P(CONFIG.stops[r.to]), r.bend);
+    const p = MK.seg(t, r.t0, r.t1 - r.t0, MK.ease.inOutQuad);
+    const part = t >= r.t0 ? cut(pts, p) : [];
+    line.setAttribute('d', part.length ? d(part) : '');
+    if (casing) casing.setAttribute('d', part.length ? d(part) : '');
+    const drawing = t >= r.t0 && t <= r.t1 + 0.3 && part.length;
+    head.style.opacity = drawing ? 1 : 0;
+    if (drawing) { const e = part[part.length - 1]; head.setAttribute('cx', e[0]); head.setAttribute('cy', e[1]); }
+  });
+  markers.forEach(({ s, m, txt, em, rings }) => {
+    const k = MK.seg(t, s.t, 0.45, MK.ease.outBack);
+    const [x, y] = P(s);
+    m.style.transform = `translate(${x}px, ${y}px) scale(${0.6 + 0.4 * MK.clamp(k, 0, 1.2)})`;
+    m.style.opacity = MK.clamp(k);
+    txt.textContent = MK.typeText(s.name, MK.seg(t, s.t + 0.15, CONFIG.labelType, MK.ease.linear));
+    em.style.opacity = MK.seg(t, s.t + 0.6, 0.3);
+    rings.forEach((rg, j) => {
+      const f = ((((t - s.t) / CONFIG.pulsePeriod + j * 0.5) % 1) + 1) % 1;
+      rg.style.transform = `scale(${1 + f * CONFIG.ringScale})`;
+      rg.style.opacity = t > s.t ? (1 - f) * 0.7 : 0;
+    });
+  });
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: 0.3, label: '起点' }, { t: 0.9, label: '航线描画' }, { t: 3.6, label: '抵达' }, { t: 4.8, label: '地面路线' }] });
+MK.expose(tl);
+MK.controls(tl);
+const Q = MK.params();
+tl.seek(Q.t ?? (MK.prefersReducedMotion() ? 8 : 0));
+if (Q.autoplay && !MK.prefersReducedMotion()) tl.play();
+addEventListener('resize', () => tl.seek(tl.time));
+</script>
+</body>
+</html>

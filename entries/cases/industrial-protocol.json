@@ -1,0 +1,271 @@
+{
+  "id": "industrial-protocol",
+  "order": 4,
+  "title": "工业协议 · 终末地式设施操作台",
+  "subtitle": "INDUSTRIAL PROTOCOL / PANEL · FLOW · DEPLOY",
+  "carriers": [
+    "console",
+    "showcase"
+  ],
+  "source": "game",
+  "evidence": "inferred",
+  "capturedAt": "2026-10-14",
+  "tags": [
+    "工业机能",
+    "安全黄",
+    "切角面板",
+    "危险条纹",
+    "字符解码",
+    "长按确认"
+  ],
+  "summary": "米灰工业表面、石墨黑与安全黄，切角面板、注册标记、刻度与危险条纹构成“管理员终端”；分段加载后各区块以吸附缓动就位，产线物料沿传送带流动，设备蓝图逐线描出，部署需按住确认，换页用一条发光扫描线。",
+  "focus": "《明日方舟：终末地》以“工业机能 + 未来科幻”的界面建立玩家“管理员”的身份：三角形元素与工业徽章贯穿系统界面，Logo 衍生图形在终端、配装站、角色面板反复出现；集成工业（工厂）系统让玩家在菜单里规划产线。本条目整理公开评析中的设计语言，用原创设施、产线与干员名称做成可迁移的操作台 Demo；实机动效参数待录像核验。",
+  "accent": "#ffd400",
+  "background": "#e6e6e1",
+  "timeline": true,
+  "kit": true,
+  "previewAt": 8.4,
+  "energy": [
+    0.3,
+    0.45,
+    0.6,
+    0.5,
+    0.45,
+    0.55,
+    0.6,
+    0.75,
+    0.85,
+    0.6,
+    0.65,
+    0.55,
+    0.6,
+    0.55,
+    0.5,
+    0.4,
+    0.35
+  ],
+  "rhythm": {
+    "duration": 17,
+    "beats": [
+      {
+        "t": 0.2,
+        "label": "分段加载",
+        "note": "三角徽记 + 标题字符解码；24 段进度条带随机跳变，当前段为安全黄。"
+      },
+      {
+        "t": 2.2,
+        "label": "界面装配",
+        "note": "加载层自下而上裁切退场；顶栏、侧栏、内容区、详情区、底栏以 420ms snap 缓动从各自边缘就位，资源数字计数。"
+      },
+      {
+        "t": 3,
+        "label": "产线运转",
+        "note": "物料方块沿传送带流动，带纹同速推进，节点指示灯闪烁。"
+      },
+      {
+        "t": 4.6,
+        "label": "选择设备",
+        "note": "节点四角黄色括号回弹出现；右侧名称解码、蓝图逐线描出、三项分段条依次填充。"
+      },
+      {
+        "t": 6.4,
+        "label": "按住部署",
+        "note": "按住期间黄色从左填满（1.2s），松开过早回落；满格锁定为完成态。"
+      },
+      {
+        "t": 7.8,
+        "label": "部署完成",
+        "note": "绿色描边印章倾斜盖下，设备产量提升、相关传送带加速，日志更新。"
+      },
+      {
+        "t": 9.4,
+        "label": "扫描线换页",
+        "note": "发光黄线从左扫到右：线左是新页、线右是旧页；新页标题解码、卡片 snap 错峰上浮。"
+      },
+      {
+        "t": 12.2,
+        "label": "仓储",
+        "note": "同一扫描线换页；行数据从左侧错峰滑入。"
+      },
+      {
+        "t": 14.6,
+        "label": "回到产线",
+        "note": "已部署状态保留，产线继续以加速运转。"
+      }
+    ]
+  },
+  "layers": [
+    {
+      "name": "底层",
+      "role": "米灰底 + 40px 细网格，像工程图纸。"
+    },
+    {
+      "name": "框架层",
+      "role": "石墨黑顶栏（右下切角）、侧栏按钮（右下切角）、内容区与详情区（对角切角 + 注册标记）、底栏（危险条纹 + 日志）。"
+    },
+    {
+      "name": "内容层",
+      "role": "产线节点图（SVG）/ 干员卡片 / 仓储表格；换页时由扫描线裁切。"
+    },
+    {
+      "name": "详情层",
+      "role": "设备名称、深色蓝图（浅蓝线框 + 虚线网格）、分段指标条、按住部署按钮与印章。"
+    },
+    {
+      "name": "启动层",
+      "role": "三角徽记、解码标题、分段进度条与百分比。"
+    }
+  ],
+  "composition": {
+    "color": "米灰 #e6e6e1 / 面板 #f4f4f0 / 石墨 #1d1f22 构成 90% 面积；安全黄 #ffd400 只用于“当前、警示、进行中”；完成用绿色，蓝图用浅蓝线。",
+    "typography": "DIN 类窄体（Bahnschrift）做标题与数值、等宽字体做编码与日志、中文黑体做名称；大量大写英文编码 + 中文名称的双语标注。",
+    "layout": "严格的模块化网格：顶栏 / 左侧栏 / 中央内容 / 右侧详情 / 底栏；每个模块都有切角与标记，像设备上的铭牌。",
+    "imagery": "无照片：设备以几何图标与线框蓝图表现，干员卡片以深色块 + 几何暗纹 + 稀有度条表现。",
+    "motion": "机械、准确：snap 缓动（快进硬停）、错峰装配、字符解码、匀速传送带；没有弹性夸张，唯一的回弹留给“完成”印章与选中括号。",
+    "sound": "原作有系统确认音与工业环境音；Demo 默认静音，开启后合成加载滴答、装配气流、选择、蓄力上扬与完成双音。",
+    "rhythm": "启动 2.4s 内完成加载与装配；之后以“持续运转（传送带）+ 离散事件（选择/部署/换页）”交替，离散事件间隔 1.5–3 秒。",
+    "coherence": "所有模块共享切角语言、注册标记与安全黄的单一语义，切换模块时只有内容变化，框架保持不动——“同一台设备上的不同屏幕”。"
+  },
+  "tokens": {
+    "palette": [
+      "#e6e6e1",
+      "#f4f4f0",
+      "#1d1f22",
+      "#6b6e70",
+      "#c9cbc6",
+      "#ffd400",
+      "#2fbf71",
+      "#9fd3ff"
+    ],
+    "type": "Bahnschrift / DIN 类窄体 + 等宽编码 + 中文黑体",
+    "motion": [
+      {
+        "name": "snap",
+        "value": "cubic-bezier(.2,.9,.1,1)：装配 420ms、页签指示 350ms、卡片 320ms"
+      },
+      {
+        "name": "assemble-stagger",
+        "value": "顶栏 → 侧栏（60ms/项）→ 内容 → 详情 → 底栏，约 0.1s 递进"
+      },
+      {
+        "name": "scramble",
+        "value": "24fps 随机字符刷新，阈值 = 位置×0.7 + 随机×0.3，时长 0.6–1.2s"
+      },
+      {
+        "name": "conveyor",
+        "value": "物料 90px/s（部署后 150px/s），每条带 4 个，带纹同速"
+      },
+      {
+        "name": "blueprint",
+        "value": "8 条线框各 450ms inOutCubic，错峰 70ms"
+      },
+      {
+        "name": "hold",
+        "value": "1.2s 线性填充，松开 300ms 回落；完成印章 350ms outBack"
+      },
+      {
+        "name": "scanline",
+        "value": "500ms inOutQuart，3px 黄线 + 外发光"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "at": "17173 评析 · 工业风视觉语言",
+      "what": "界面中的核心符号是三角形元素与工业徽章；Logo 及衍生图形在终端、配装站、角色信息面板等关键界面反复复用，强化“管理员”身份认同。"
+    },
+    {
+      "at": "同上 · 菜单与多平台",
+      "what": "PC 端承载更密集的信息与快捷操作栏，移动端缩放重组并把关键按钮放在拇指区域；手柄与键鼠侧重焦点切换与快捷键。"
+    },
+    {
+      "at": "GameWith / 攻略 · 集成工业",
+      "what": "工厂规划在 AIC Plan 界面与建造模式中进行，包含模拟、研究升级与蓝图（Schematics）导入导出。"
+    },
+    {
+      "at": "Design Atlas · endfield-industrial（官网八章研究）",
+      "what": "官网同样采用白底工业档案、点云射线与分层切换，可作为网页端对照。"
+    }
+  ],
+  "interaction": [
+    "点击顶栏页签切换模块（扫描线换页），点击产线节点选择设备，按住 DEPLOY（或聚焦后按住空格/回车）1.2 秒部署。",
+    "自动演示由时间轴驱动，任何点击切到实时交互；站内刻度条或重播回到自动演示。",
+    "声音默认关闭；减少动态时不自动播放，停在部署完成的完整构图。",
+    "SVG 内的文字会按画布实际缩放换算字号，保证最终渲染 ≥12px。"
+  ],
+  "useCases": [
+    "工业/能源/物流监控台",
+    "游戏内建造与管理界面",
+    "B 端设备管理后台的品牌化外观",
+    "展会设备展示屏",
+    "科幻影视 FUI"
+  ],
+  "avoid": [
+    "温暖亲和的消费品牌",
+    "以图片为主的内容浏览",
+    "需要高信息密度表格且不允许装饰的严肃系统"
+  ],
+  "constraints": [
+    "证据等级为“公开资料推断”：未实机录制《明日方舟：终末地》，动效时长为本地拟合；请按 docs/methodology.md 用实机录像核验后更新。",
+    "不使用鹰角网络/GRYPHLINE 的标志、角色、术语（如源石、AIC 等）与美术；设施、干员与资源名称均为原创。",
+    "产线图为示意，不包含真实游戏的配方与数值。"
+  ],
+  "prompt": "做一个“工业协议”风格的设施操作台（HTML/CSS/JS，可 seek）：米灰底 #e6e6e1 + 40px 细网格，面板 #f4f4f0，石墨 #1d1f22，安全黄 #ffd400 只表示“当前/进行中/警示”，完成用绿色。字体：Bahnschrift/DIN 类窄体 + 等宽编码 + 中文黑体。布局：石墨黑顶栏（三角徽记 + 终端名 + 4 个页签 + 资源计数，右下切角，当前页签下方 4px 黄色指示条以 350ms snap 移动）、左侧子菜单（右下切角，当前项反黑 + 右侧黄条）、中央内容（对角切角）、右侧详情（对角切角 + 四角十字注册标记）、底栏（危险斜纹 + 坐标 + 滚动日志 + 时钟）。①启动：三角徽记 + 标题字符解码（24fps 随机字符，按位置逐个解出）+ 24 段进度条（当前段黄色，带随机跳变）→ 加载层自下而上裁切退场，各区块以 cubic-bezier(.2,.9,.1,1) 420ms 从各自边缘错峰装配，资源数字计数。②产线：SVG 节点图（切角白盒、几何图标、编码、名称、OUTPUT/min、闪烁指示灯），节点间是带圆角的正交传送带（灰色粗底 + 黑色虚线带纹按速度推进），物料方块按 (t×速度/长度 + i/数量) mod 1 沿路径取点。③选择设备：四角黄色括号 outBack 回弹；右侧名称解码、深色蓝图 8 条浅蓝线框（pathLength=1）错峰 70ms 描出、三项 10 格分段条依次填充。④按住部署：按住时黄色从左线性填满 1.2s，松开过早 300ms 回落，满格锁定为 DEPLOYED 并盖下倾斜绿色印章，相关产线加速。⑤换页：3px 黄色发光扫描线 500ms inOutQuart 从左扫到右，线左新页、线右旧页（两侧 clip-path），新页标题解码、卡片 snap 错峰上浮。SVG 文字按实际缩放换算保证 ≥12px；声音默认关闭；减少动态停在完成态。",
+  "videoPrompt": "Industrial sci-fi management terminal UI, 1920×1080, 16 seconds. Off-white industrial panels with chamfered 45-degree corners, graphite black header bar, a single safety-yellow accent, crosshair registration marks, tick rulers and yellow-black hazard stripes, a thin engineering grid background. A triangle emblem appears and a monospace title decodes from random characters while a 24-segment progress bar fills. The loader slices away upward and UI modules snap into place from their edges with mechanical precision. A production-line node graph runs: small black square items flow along orthogonal conveyor belts between machine nodes with blinking green lamps. A machine is selected with yellow corner brackets popping in; on the right a dark blueprint panel draws light-blue wireframe lines one by one and segmented meters fill. A long-press button fills with yellow from left to right and a green \"DEPLOYED\" stamp slams down at an angle. Then a glowing yellow scanline sweeps across the content area revealing a new page of dark operator cards. Precise, mechanical, calm; no glow overload; no neon.",
+  "negativePrompt": "不要赛博朋克霓虹与紫粉渐变；不要圆润的消费级卡片与大阴影；不要让黄色泛滥成背景色；不要弹性夸张的动画；不要使用原作的标志、角色、术语与美术。",
+  "migration": [
+    {
+      "field": "config.js → brand / palette",
+      "how": "终端名称、站点代码、版本号；纸色、面板、石墨、灰、细线、安全黄、警示与完成色。"
+    },
+    {
+      "field": "config.js → tabs",
+      "how": "模块页签（英文 + 中文）与每个模块的子菜单。"
+    },
+    {
+      "field": "config.js → machines / links",
+      "how": "产线节点（坐标、编码、名称、产量、图标）与连接关系，传送带路径自动生成。"
+    },
+    {
+      "field": "config.js → operators / resources",
+      "how": "卡片内容与顶栏资源计数。"
+    },
+    {
+      "field": "config.js → holdDuration / autopilot",
+      "how": "长按确认时长；自动演示事件（选择、按住、换页）的时刻。"
+    },
+    {
+      "field": "style.css → --cut",
+      "how": "切角尺寸；改成 0 即得到直角版本。"
+    }
+  ],
+  "demo": "demos/cases/industrial-protocol/index.html",
+  "research": "docs/research/industrial-protocol.md",
+  "patternIds": [
+    "chamfer-panel",
+    "text-scramble",
+    "conveyor-flow",
+    "hold-confirm",
+    "scanline-wipe"
+  ],
+  "sources": [
+    {
+      "title": "17173 · 明日方舟：终末地 评析专题",
+      "url": "https://news.17173.com/z/arknights2026/content/01202026/181744280.shtml",
+      "type": "资料 · 评析",
+      "note": "工业机能美学、三角形元素与工业徽章、Logo 衍生图形复用、多平台布局适配。"
+    },
+    {
+      "title": "GameWith · Arknights: Endfield 集成工业指南",
+      "url": "https://gamewith.net/akendfield/72372",
+      "type": "资料 · 攻略",
+      "note": "工厂规划界面入口、模拟与研究升级、蓝图导入流程。"
+    },
+    {
+      "title": "Design Atlas · 终末地 白底工业档案",
+      "url": "https://mibxr-design-atlas.mibxranime.chatgpt.site/cases.html#style/endfield-industrial",
+      "type": "实例 · 姊妹库",
+      "note": "官网研究（网页端设计语言）对照。"
+    }
+  ]
+}

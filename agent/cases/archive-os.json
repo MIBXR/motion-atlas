@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "archive-os",
+  "entry": {
+    "id": "archive-os",
+    "order": 2,
+    "title": "白色档案终端 · 莱茵式 Analysis OS",
+    "subtitle": "CLINICAL ARCHIVE OS / BOOT · ARRAY · DECRYPT",
+    "carriers": [
+      "console",
+      "showcase"
+    ],
+    "source": "reference",
+    "evidence": "observed",
+    "capturedAt": "2026-10-14",
+    "tags": [
+      "暖灰白",
+      "档案阵列",
+      "开机序列",
+      "滚动编号",
+      "解密揭示",
+      "空闲呼吸"
+    ],
+    "summary": "暖灰白底、细线与紧凑排字，一整片透明档案块组成可浏览的阵列：开机逐字验证身份，切换时选中块抬起并向四周传出波浪，读取时对角线合拢、盖板由磨砂变清晰、正文遮挡条依次退开。",
+    "focus": "参考开源项目 RHINE LAB · ANALYSIS OS（MIT）：用 TypeScript + Three.js 复刻《明日方舟》特别映像「莱茵生命：访问」的终端界面，并扩展为 Wallpaper Engine 壁纸。它把影像里的“看”变成可以操作的“用”：每个动作都有方向、余波与回程。Demo 以零依赖的 CSS 3D 重建其定义性机制，品牌与档案内容全部替换为原创。",
+    "accent": "#c8742f",
+    "background": "#eae5e1",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 11.8,
+    "energy": [
+      0.15,
+      0.35,
+      0.45,
+      0.5,
+      0.6,
+      0.7,
+      0.55,
+      0.45,
+      0.5,
+      0.55,
+      0.5,
+      0.75,
+      0.8,
+      0.6,
+      0.4,
+      0.35,
+      0.45,
+      0.4,
+      0.3
+    ],
+    "rhythm": {
+      "duration": 24,
+      "beats": [
+        {
+          "t": 0.3,
+          "label": "逐字输入",
+          "note": "白场上 ACCESS REQUEST 逐字打出，冒号后停顿，输入完成黑底闪一次后清空。"
+        },
+        {
+          "t": 2,
+          "label": "圆环与标志",
+          "note": "两个圆环依次绕行描出，随后标志笔画补全，整组左移让出位置。"
+        },
+        {
+          "t": 3.3,
+          "label": "身份确认",
+          "note": "ID CONFIRMED / REQUEST RECEIVED / START PROCESSING 三行错峰打字。"
+        },
+        {
+          "t": 4.6,
+          "label": "授权扫描",
+          "note": "黑白双环从画面外收拢，橙色节点绕行，中心方块四帧跳变。"
+        },
+        {
+          "t": 5.8,
+          "label": "欢迎",
+          "note": "黑底公司名横向擦出，INTERNAL DATABASE 闪现两次。"
+        },
+        {
+          "t": 6.7,
+          "label": "阵列入场",
+          "note": "启动层缩小、失焦并带轻微色偏退场；阵列从左侧滑入、镜头从近侧视抬高。"
+        },
+        {
+          "t": 9.4,
+          "label": "切列",
+          "note": "选中块临界阻尼抬起 26px，其余块收到按距离延迟的正弦余波；编号、标题、列名同向滚动 460ms。"
+        },
+        {
+          "t": 10.6,
+          "label": "翻阅",
+          "note": "同列前后切换，刻度当前位加长；连续输入只显示“当前运动 → 最新目标”。"
+        },
+        {
+          "t": 13.8,
+          "label": "读取 · 解密",
+          "note": "选中块继续升高、阵列淡出拉近；玻璃检视窗与文档入场，对角线合拢、盖板自上而下转清、遮挡条依次退开。"
+        },
+        {
+          "t": 19.2,
+          "label": "返回",
+          "note": "详情 250ms 退出，块回落，阵列恢复；停止操作 2.5 秒后开始呼吸起伏。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "氛围层",
+        "role": "暖灰白底 + 径向提亮，上下与右侧压浅色遮罩，让阵列在边缘自然消失。"
+      },
+      {
+        "name": "阵列层",
+        "role": "5 列 × 16 块的 CSS 3D 档案块（顶面/正面/侧面），抬起、波浪、呼吸都作用在 translateZ。"
+      },
+      {
+        "name": "信息层",
+        "role": "品牌三行、系统导航、悬停信息（分类/编号/标题/ACCESS）、选择计数、行列导航、页脚状态与时钟。"
+      },
+      {
+        "name": "详情层",
+        "role": "左侧玻璃检视窗（内构 SVG + 磨砂层 + 对角线），右侧档案文档与遮挡条。"
+      },
+      {
+        "name": "启动层",
+        "role": "逐字输入、圆环标志、身份确认、授权扫描、欢迎——全部覆盖在白场上，结束后整体失焦退场。"
+      }
+    ],
+    "composition": {
+      "color": "暖灰白 #eae5e1 + 近黑墨色 #171713 + 杏金/铜色 #c8742f 作为唯一信号色（选中边、内构环、对角线）；不使用纯白与纯黑大面积。",
+      "typography": "几何无衬线：品牌三行用 800/700/300 字重对比与字距；标签 12px 大字距；编号用等宽数字；中文正文 15px 舒适行高。",
+      "layout": "左上品牌、右上系统、中右悬停信息、左下计数、中下导航、右下署名；阵列占满画面并从边缘溢出，信息只用细线和点组织。",
+      "imagery": "没有照片：所有“图像”都是同一种半透明档案块与它的内构（双环、连接带、标签、螺丝），靠重复和光影建立质感。",
+      "motion": "一切运动都“有质量”：临界阻尼抬起、有余波的选择、可接续的滚动编号、2.5 秒后的慢速呼吸；进入与退出时长不对称（入 300–400ms / 出 200–250ms）。",
+      "sound": "原项目有逐字输入短音（取自原片）、玻璃交互音与三轨配乐；Demo 默认静音，开启后合成逐字、标志、扫描、欢迎与玻璃轻碰。",
+      "rhythm": "开机约 7.6 秒，信息逐层出现；浏览时每次输入 460ms 内完成主要反馈、余波持续约 1 秒；读取解密约 1.6 秒。",
+      "coherence": "启动、浏览、读取三个阶段共用同一字体、细线与信号色；每个状态都能从中途反向，保证“操作系统”的可信度。"
+    },
+    "tokens": {
+      "palette": [
+        "#eae5e1",
+        "#edebe4",
+        "#171713",
+        "#77756d",
+        "#bdb8ad",
+        "#c8742f"
+      ],
+      "type": "几何无衬线（MiSans/HarmonyOS/Segoe UI 回退）+ 等宽编号",
+      "motion": [
+        {
+          "name": "type-tick",
+          "value": "每字 45ms（身份行 30–32ms），冒号后停 250–350ms；最短音间隔 24ms"
+        },
+        {
+          "name": "ring-draw",
+          "value": "900ms inOutCubic，第二环延迟 450ms"
+        },
+        {
+          "name": "select-lift",
+          "value": "临界阻尼速率 4.2，预览抬起 26px，读取抬起 150px"
+        },
+        {
+          "name": "wave",
+          "value": "幅度 9px · 角频 7.5 · 衰减 2.6 · 距离延迟 70ms/格 · 距离衰减 1/(1+0.35d)"
+        },
+        {
+          "name": "roll",
+          "value": "编号/标题/列名 460ms outCubic，0.35px 运动模糊，方向跟随输入"
+        },
+        {
+          "name": "breathe",
+          "value": "空闲 2.5s 后 1.5s 渐入；8s 与 13s 周期以 0.6/0.4 叠加，幅度 4px，相邻块错相"
+        },
+        {
+          "name": "decrypt",
+          "value": "对角线 450ms 合拢，停留后 350ms 收束；盖板 1.3s 自上而下转清；遮挡条 420ms、错峰 80ms"
+        },
+        {
+          "name": "modal",
+          "value": "入 300–400ms、位移 12px；出 200–250ms、位移 8px，可中途反向"
+        }
+      ]
+    },
+    "observations": [
+      {
+        "at": "README · 新版效果",
+        "what": "模型与正文同步解密：对角解密线合拢、保持并收束，盖板自上而下由磨砂变清晰；右侧文档的遮挡条随之退开。"
+      },
+      {
+        "at": "README · 循环阵列",
+        "what": "五类、每类八份，共 40 份档案；上下翻阅、左右切列均可循环，切回某列保留上次选择；选中抬起与阵列波浪同时开始，标题和编号跟随输入滚动。"
+      },
+      {
+        "at": "DESIGN.md · 档案标题滚动",
+        "what": "标题与编号共享 460ms 运动配置，direct 模式直接替换中文、关闭逐字延迟；连续输入从当前运动接续，只显示可见过渡与最新目标。"
+      },
+      {
+        "at": "DESIGN.md · 交互预览",
+        "what": "停止操作 2.5 秒后渐入呼吸起伏：8 秒与 13 秒周期叠加，最大单向位移约卡片高度的 2.8%，相邻卡片略微错相；切换、进入详情或减少动态时渐退。"
+      },
+      {
+        "at": "DESIGN.md · 详情与弹窗",
+        "what": "检索、收藏、设置弹窗统一 300ms 入场、200ms 退出；入场位移 12px、退出 8px；进入中途关闭时从实际透明度与位移继续。"
+      },
+      {
+        "at": "DESIGN.md · 启动前段",
+        "what": "逐字输入、停顿、清空、闪切固定到原片帧点；标志从右上弧线开始绘制、绕左环再补全右环；权限段双环从画面外收拢、橙色节点、四帧缩放跳变；欢迎段黑底横扫与 INTERNAL DATABASE 闪现。"
+      },
+      {
+        "at": "docs/media/archive.jpg",
+        "what": "暖灰白底、品牌三行左上、ARCHIVE INDEX / SAVED 右上、FILE NUMBER: X-001 与细线、ARCHIVE / SELECT 01 / 08、行列导航与刻度、POWERED BY 署名、底部 SESSION AUTHORIZED 与时钟。"
+      }
+    ],
+    "interaction": [
+      "←/→ 切换列（每列记住上次选中），↑/↓ 前后档案，Enter 读取并解密，Esc 返回阵列；屏幕上的箭头与 ACCESS FILE 按钮等效；点击档案块可直接选中。",
+      "自动演示由时间轴驱动（可拖动、可逐帧渲染）；任何真实按键或点击切换为实时交互，站点刻度条或重播回到自动演示。",
+      "空格播放/暂停；右上角喇叭按钮开启合成音效（默认关闭，页面隐藏自动静音）。",
+      "减少动态：不自动播放、停在阵列完整构图，关闭空闲呼吸。"
+    ],
+    "useCases": [
+      "数据档案 / 资料库浏览",
+      "产品与展品陈列台",
+      "游戏内终端与图鉴",
+      "品牌发布会交互屏",
+      "桌面壁纸与工作台"
+    ],
+    "avoid": [
+      "需要高信息密度表格的后台",
+      "高饱和、强情绪的品牌",
+      "低性能设备上的大规模 3D"
+    ],
+    "constraints": [
+      "参考为开源项目 LBEILC/RhineLabUI（MIT）及其 README、DESIGN.md 与截图；《明日方舟》与莱茵生命相关设定权利归鹰角网络，Demo 不使用其标志与名称。",
+      "原项目为 Three.js 实时渲染的透射玻璃模型；Demo 用 CSS 3D 方块近似，无物理透射、景深与阴影。",
+      "原项目的解密与镜头联动、360° 拆解查看器、画质设置、PWA 与壁纸工作台未复现。",
+      "MiSans 字体未随 Demo 分发，按系统字体回退；所有文字 ≥12px。"
+    ],
+    "prompt": "用 HTML/CSS/JS（零依赖）实现一个“白色档案终端”：暖灰白底 #eae5e1、墨色 #171713、唯一信号色杏铜 #c8742f，几何无衬线字体。①启动序列（约 7.6s，可跳过、可 seek）：白场上逐字输入“ACCESS REQUEST : ANALYSIS OS”（每字 45ms，冒号后停 350ms，完成后黑底闪一次再清空）→ 两个圆环 900ms 依次绕行描出、标志笔画补全并左移 → 三行身份确认错峰打字 → 黑白双环从画面外收拢、橙色节点绕行、中心方块四帧缩放跳变 → 黑底公司名横向擦出、INTERNAL DATABASE 闪现 → 启动层缩小 4%、模糊 8px 并轻微色偏退场，阵列从左侧滑入、镜头从 74° 抬到 58°。②阵列：CSS 3D（perspective 1700px；rotateX 58° rotateZ -38°）5 列 × 16 块档案（顶/正/侧三个面，正面带标签框与螺丝点），选中块顶边用信号色。③选择：←/→ 切列（记住每列选择）、↑/↓ 前后档案；选中块以临界阻尼（速率 4.2）抬起 26px，其余块收到正弦余波：z += 9·sin(7.5τ)·e^(−2.6τ)/(1+0.35d)，τ = t − t₀ − 0.07·d，d 为行距 + 0.8×列距；编号 X-001、标题、列名、01/08 计数同向滚动 460ms 并带 0.35px 运动模糊，连续输入只显示当前运动到最新目标。④空闲：停止操作 2.5s 后 1.5s 渐入呼吸，8s 与 13s 周期按 0.6/0.4 叠加、幅度 4px、相邻块错相，任何输入立即渐退。⑤读取（Enter）：选中块升至 150px，阵列淡出并拉近左移；左侧玻璃检视窗（内构：双环、铜色环、连接带、标签）入场，两条对角线 450ms 合拢、停留后收束，磨砂层 1.3s 自上而下转清（clip-path），右侧文档的标题、分类、四项元数据、摘要上的黑色遮挡条以 80ms 错峰 420ms 退开；Esc 250ms 退出。⑥HUD：左上品牌三行（800/700/300 字重），右上 ARCHIVE INDEX / SAVED / 声音，中右悬停信息（分类、FILE NUMBER、带方点的细线、标题、ACCESS FILE →），左下 ARCHIVE / SELECT 大号计数，中下行刻度与列导航，右下 POWERED BY，底部 SESSION AUTHORIZED、操作员与时钟。⑦工程：所有状态由“按键事件序列在时刻 t 的推导”得到并写成解析函数，暴露 window.__motion 供 seek；真实输入切换为实时时钟；opacity 加在 3D 面上而不是 preserve-3d 容器；声音默认关闭；减少动态时关闭呼吸；文字 ≥12px。",
+    "videoPrompt": "Clinical white sci-fi archive terminal, 1920×1080, 20 seconds. Warm off-white background (#eae5e1), near-black thin typography, a single copper-orange signal color. Opening: on a white screen a monospace-like line types character by character, flashes black, then two thick black rings draw themselves in sequence forming an infinity-like logo; identity lines type in; black and white double rings converge from outside the frame with an orange node orbiting; a black bar sweeps in revealing the company name. The boot layer shrinks, blurs and dissolves into a vast isometric array of translucent ivory archive slabs standing in rows like files in a drawer, filling the frame and fading at the edges. One slab lifts smoothly and a gentle wave ripples outward through neighboring slabs with distance-delayed, damped oscillation; a file number rolls up digit by digit. Then the selected slab rises high, the array fades, a frosted glass panel appears and two diagonal copper lines converge across it; the frosted glass clears from top to bottom revealing double rings inside, while black redaction bars on a document retract one by one. Calm, precise, weighty motion; soft studio light; no lens flares; no neon.",
+    "negativePrompt": "不要深色赛博朋克配色或霓虹发光；不要多种强调色；不要让波浪幅度大到块互相穿插；不要每次输入都排队播放所有中间编号；不要无质量的线性动画；不要使用《明日方舟》或莱茵生命的标志与名称。",
+    "migration": [
+      {
+        "field": "config.js → brand",
+        "how": "品牌三行、操作员、署名。"
+      },
+      {
+        "field": "config.js → columns / files",
+        "how": "列名（中英）与每列档案：标题、科室、编目、相关人、状态、摘要；缺省自动生成占位。"
+      },
+      {
+        "field": "config.js → palette",
+        "how": "纸色、面板、墨色、灰、细线与唯一信号色。"
+      },
+      {
+        "field": "config.js → timing",
+        "how": "启动时长、抬起高度、阻尼速率、波浪参数、滚动时长、呼吸周期与幅度、解密时长。"
+      },
+      {
+        "field": "config.js → autopilot",
+        "how": "自动演示的按键脚本（秒）；也是站点刻度条上的节拍。"
+      },
+      {
+        "field": "style.css → .plate",
+        "how": "档案块的面色、标签与螺丝装饰；换成产品卡、唱片或展品即可。"
+      }
+    ],
+    "demo": "demos/cases/archive-os/index.html",
+    "research": "docs/research/archive-os.md",
+    "patternIds": [
+      "boot-typing",
+      "rolling-digits",
+      "decrypt-reveal",
+      "wave-array",
+      "idle-breathing",
+      "seekable-timeline"
+    ],
+    "sources": [
+      {
+        "title": "LBEILC/RhineLabUI · RHINE LAB · ANALYSIS OS",
+        "url": "https://github.com/LBEILC/RhineLabUI",
+        "type": "开源 · MIT",
+        "note": "2026-10-14 克隆默认分支：README、DESIGN.md（视觉与行为基准）、src 文件结构与 docs/media 截图（2026-09-09 采集）。"
+      },
+      {
+        "title": "【开源】再次震惊瘫坐，GPT6-Astra代码复刻莱茵终端上线Wallpaper Engine · 哔哩哔哩",
+        "url": "https://www.bilibili.com/video/BV1e3Y36gEGr",
+        "type": "实例 · 影像",
+        "note": "用户提供的作者演示视频；本条目的机制描述以仓库文档与截图为准。"
+      },
+      {
+        "title": "RhineLabWallpaper",
+        "url": "https://github.com/LBEILC/RhineLabWallpaper",
+        "type": "开源",
+        "note": "壁纸版独立仓库：工作台、音乐律动、呼吸效果与波纹小游戏。"
+      }
+    ],
+    "preview": "previews/cases/archive-os.jpg"
+  },
+  "documents": {
+    "prompt": "# 白色档案终端 · 莱茵式 Analysis OS · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/archive-os.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/archive-os.md)。\n\n## 实现 Prompt\n\n用 HTML/CSS/JS（零依赖）实现一个“白色档案终端”：暖灰白底 #eae5e1、墨色 #171713、唯一信号色杏铜 #c8742f，几何无衬线字体。①启动序列（约 7.6s，可跳过、可 seek）：白场上逐字输入“ACCESS REQUEST : ANALYSIS OS”（每字 45ms，冒号后停 350ms，完成后黑底闪一次再清空）→ 两个圆环 900ms 依次绕行描出、标志笔画补全并左移 → 三行身份确认错峰打字 → 黑白双环从画面外收拢、橙色节点绕行、中心方块四帧缩放跳变 → 黑底公司名横向擦出、INTERNAL DATABASE 闪现 → 启动层缩小 4%、模糊 8px 并轻微色偏退场，阵列从左侧滑入、镜头从 74° 抬到 58°。②阵列：CSS 3D（perspective 1700px；rotateX 58° rotateZ -38°）5 列 × 16 块档案（顶/正/侧三个面，正面带标签框与螺丝点），选中块顶边用信号色。③选择：←/→ 切列（记住每列选择）、↑/↓ 前后档案；选中块以临界阻尼（速率 4.2）抬起 26px，其余块收到正弦余波：z += 9·sin(7.5τ)·e^(−2.6τ)/(1+0.35d)，τ = t − t₀ − 0.07·d，d 为行距 + 0.8×列距；编号 X-001、标题、列名、01/08 计数同向滚动 460ms 并带 0.35px 运动模糊，连续输入只显示当前运动到最新目标。④空闲：停止操作 2.5s 后 1.5s 渐入呼吸，8s 与 13s 周期按 0.6/0.4 叠加、幅度 4px、相邻块错相，任何输入立即渐退。⑤读取（Enter）：选中块升至 150px，阵列淡出并拉近左移；左侧玻璃检视窗（内构：双环、铜色环、连接带、标签）入场，两条对角线 450ms 合拢、停留后收束，磨砂层 1.3s 自上而下转清（clip-path），右侧文档的标题、分类、四项元数据、摘要上的黑色遮挡条以 80ms 错峰 420ms 退开；Esc 250ms 退出。⑥HUD：左上品牌三行（800/700/300 字重），右上 ARCHIVE INDEX / SAVED / 声音，中右悬停信息（分类、FILE NUMBER、带方点的细线、标题、ACCESS FILE →），左下 ARCHIVE / SELECT 大号计数，中下行刻度与列导航，右下 POWERED BY，底部 SESSION AUTHORIZED、操作员与时钟。⑦工程：所有状态由“按键事件序列在时刻 t 的推导”得到并写成解析函数，暴露 window.__motion 供 seek；真实输入切换为实时时钟；opacity 加在 3D 面上而不是 preserve-3d 容器；声音默认关闭；减少动态时关闭呼吸；文字 ≥12px。\n\n## 视频生成 Prompt\n\nClinical white sci-fi archive terminal, 1920×1080, 20 seconds. Warm off-white background (#eae5e1), near-black thin typography, a single copper-orange signal color. Opening: on a white screen a monospace-like line types character by character, flashes black, then two thick black rings draw themselves in sequence forming an infinity-like logo; identity lines type in; black and white double rings converge from outside the frame with an orange node orbiting; a black bar sweeps in revealing the company name. The boot layer shrinks, blurs and dissolves into a vast isometric array of translucent ivory archive slabs standing in rows like files in a drawer, filling the frame and fading at the edges. One slab lifts smoothly and a gentle wave ripples outward through neighboring slabs with distance-delayed, damped oscillation; a file number rolls up digit by digit. Then the selected slab rises high, the array fades, a frosted glass panel appears and two diagonal copper lines converge across it; the frosted glass clears from top to bottom revealing double rings inside, while black redaction bars on a document retract one by one. Calm, precise, weighty motion; soft studio light; no lens flares; no neon.\n\n## 负向约束\n\n不要深色赛博朋克配色或霓虹发光；不要多种强调色；不要让波浪幅度大到块互相穿插；不要每次输入都排队播放所有中间编号；不要无质量的线性动画；不要使用《明日方舟》或莱茵生命的标志与名称。\n\n## 动效 Token\n\n- **type-tick**：每字 45ms（身份行 30–32ms），冒号后停 250–350ms；最短音间隔 24ms\n- **ring-draw**：900ms inOutCubic，第二环延迟 450ms\n- **select-lift**：临界阻尼速率 4.2，预览抬起 26px，读取抬起 150px\n- **wave**：幅度 9px · 角频 7.5 · 衰减 2.6 · 距离延迟 70ms/格 · 距离衰减 1/(1+0.35d)\n- **roll**：编号/标题/列名 460ms outCubic，0.35px 运动模糊，方向跟随输入\n- **breathe**：空闲 2.5s 后 1.5s 渐入；8s 与 13s 周期以 0.6/0.4 叠加，幅度 4px，相邻块错相\n- **decrypt**：对角线 450ms 合拢，停留后 350ms 收束；盖板 1.3s 自上而下转清；遮挡条 420ms、错峰 80ms\n- **modal**：入 300–400ms、位移 12px；出 200–250ms、位移 8px，可中途反向\n\n## 制作约束\n\n- 参考为开源项目 LBEILC/RhineLabUI（MIT）及其 README、DESIGN.md 与截图；《明日方舟》与莱茵生命相关设定权利归鹰角网络，Demo 不使用其标志与名称。\n- 原项目为 Three.js 实时渲染的透射玻璃模型；Demo 用 CSS 3D 方块近似，无物理透射、景深与阴影。\n- 原项目的解密与镜头联动、360° 拆解查看器、画质设置、PWA 与壁纸工作台未复现。\n- MiSans 字体未随 Demo 分发，按系统字体回退；所有文字 ≥12px。\n\n## 迁移\n\n- `config.js → brand`：品牌三行、操作员、署名。\n- `config.js → columns / files`：列名（中英）与每列档案：标题、科室、编目、相关人、状态、摘要；缺省自动生成占位。\n- `config.js → palette`：纸色、面板、墨色、灰、细线与唯一信号色。\n- `config.js → timing`：启动时长、抬起高度、阻尼速率、波浪参数、滚动时长、呼吸周期与幅度、解密时长。\n- `config.js → autopilot`：自动演示的按键脚本（秒）；也是站点刻度条上的节拍。\n- `style.css → .plate`：档案块的面色、标签与螺丝装饰；换成产品卡、唱片或展品即可。\n\n[打开 Demo](../../demos/cases/archive-os/index.html) · [在库中查看](../../cases.html#case/archive-os)\n",
+    "research": "# 白色档案终端：RHINE LAB · ANALYSIS OS 研究\n\n- 参考：开源项目 [LBEILC/RhineLabUI](https://github.com/LBEILC/RhineLabUI)（MIT），作者演示视频【开源】再次震惊瘫坐，GPT6-Astra代码复刻莱茵终端上线Wallpaper Engine（哔哩哔哩 BV1e3Y36gEGr）\n- 原始灵感：《明日方舟》特别映像「莱茵生命：访问」5–40 秒的终端画面（权利归鹰角网络）\n- 观察日期：2026-10-14（克隆默认分支；README 截图与 GIF 采集于 2026-09-09）\n- 证据：README、DESIGN.md（视觉与行为基准，逐条记录了时长、阻尼、周期与用户确认的取舍）、`src/` 模块划分与 `docs/media` 截图。Demo 中的参数在文档写明处直接采用；文档未写明处为本地拟合并在下文标注。\n\n## 为什么值得收录\n\n这个项目把一段几十秒的宣传影像“反推”成可以操作的系统，并且对每一个动作都追问了三件事：从哪里来（方向）、留下什么（余波）、怎么回去（回程）。这正是“交互操作台 / 展示台”最需要学习的部分——不是视觉风格，而是让每次输入都有质量。\n\n## 设计语言\n\n| 维度 | 观察 |\n| --- | --- |\n| 色彩 | 暖灰白底（`#eae5e1`）、近黑文字、暖杏金/铜色为唯一信号；亮暗两套配色，卡片依次变色。 |\n| 字体 | 用户指定 MiSans；品牌三行精确到字距和每个字符的位置（第一行 44px/2.5px，第二行 19px/600，第三行 35px）。 |\n| 版式 | 品牌左上、系统右上、信息中右、计数左下、导航中下、署名右下、状态页脚。阵列铺满并溢出画面，用浅色遮罩在上下与右侧淡出。 |\n| 质感 | 透明档案盒：磨砂盖板、基板、内部光学腔、双环、螺钉、标签与刻线；物理透射材质。 |\n| 声音 | 原片三个 38ms 逐字短音轮替、玻璃交互音（短起音、不等间隔共鸣、迅速衰减）、三轨循环配乐，音乐与音效可分别开关。 |\n\n## 关键机制与参数（文档原值）\n\n- **启动**：以原片 25fps 逐帧复核；逐字输入、停顿、清空、闪切固定到帧点；标志从右上弧线开始、绕左环再补全右环；权限段黑白双环从画面外收拢、反向内弧、橙色节点、四帧缩放跳变；欢迎段黑白闪切、公司名黑底横扫、INTERNAL DATABASE 闪现；最后缩小、失焦、带轻微青色过渡进入白场。\n- **阵列**：五类 × 每类八份 = 40 份；上下翻阅、左右切列均循环；切回某列保留上次选择；选中抬起与阵列波浪同时开始；升降为保留速度的临界阻尼（速率 4.2），快速重新选中时接续运动。\n- **滚动文字**：编号与标题共享 460ms，固定向上滚，标题模糊 0.2；连续输入只显示可见过渡与最新目标。\n- **呼吸**：停止 2.5 秒后渐入；8 秒与 13 秒周期叠加；最大单向位移约卡片高度 2.8%；相邻错相；切换、进入详情或减少动态时渐退。\n- **详情过渡**：详情层 180ms 进出；弹窗 300ms 入 / 200ms 出，位移 12px / 8px，可从中途反向；页签正文 150ms 淡入，下划线 180ms 连续移动。\n- **解密**：对角线合拢、保持、收束；盖板自上而下由磨砂变清晰；正文遮挡条随之退开。\n\n## Demo 的取舍\n\n| 原项目 | Demo | 说明 |\n| --- | --- | --- |\n| Three.js 透射玻璃模型、Blender 制作 | CSS 3D 三面方块 | 零依赖、易迁移；没有透射与阴影 |\n| 镜头沿原片关键帧转向与推近 | 世界整体平移、缩放、俯仰插值 | 本地拟合 |\n| 9 列 × 32 行循环阵列 | 5 列 × 16 块 | 足以表现波浪与选择 |\n| 原片逐字音、配乐 | WebAudio 合成短音（默认静音） | 不分发原片音频 |\n| 360° 拆解查看器、画质设置、PWA、壁纸工作台 | 未实现 | 超出机制学习范围 |\n| 品牌与档案正文 | 原创 LUMEN LAB 与虚构档案 | 不使用原作名称与标志 |\n\n所有状态写成“按键事件序列在时刻 t 的解析函数”：抬起是临界阻尼阶跃的闭式解，余波是衰减正弦的叠加，呼吸是两个正弦的和。这让同一套代码既能被刻度条拖动、逐帧渲染，也能在真实按键后用实时时钟继续运行。\n\n## 验证记录\n\n- 2026-10-14：Edge 无头模式 1600×900 下截取 1.2–22.5 秒共 12 帧，覆盖启动五段、阵列入场、切列、翻阅、读取解密三个阶段与返回。\n- 发现并修复：`preserve-3d` 容器设置 `opacity < 1` 会把 3D 面压平（详情返回后档案块只剩顶面）→ 改为把透明度加在每个面上；阵列初版偏小 → 放大并让阵列从画面边缘溢出；选中块位于后排被遮罩 → 改到中排。\n- 未验证：真实移动设备上的 CSS 3D 性能；屏幕阅读器对实时交互状态的播报完整性。\n"
+  },
+  "entrypoint": "demos/cases/archive-os/index.html",
+  "files": [
+    {
+      "path": "demos/cases/archive-os/config.js",
+      "bytes": 4329,
+      "sha256": "a71501e9fa1f9a0b57f33a0920bf0b609f67f9f4943d4bee5bb6165c8719c4a7"
+    },
+    {
+      "path": "demos/cases/archive-os/index.html",
+      "bytes": 8556,
+      "sha256": "1d01c944890050e6cfddc67eb1b9c89d8189e615dcce05dfe4499719bd5db437"
+    },
+    {
+      "path": "demos/cases/archive-os/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "demos/cases/archive-os/script.js",
+      "bytes": 19652,
+      "sha256": "bb6dec50743a752e038259c7837e644b0d1837e59c8ee95c108fe84beabb5794"
+    },
+    {
+      "path": "demos/cases/archive-os/style.css",
+      "bytes": 12914,
+      "sha256": "08912b58ecebc2856a16c29dcf4d2ea9b80424613dcc7e009a46a6eff3746dcf"
+    },
+    {
+      "path": "previews/cases/archive-os.jpg",
+      "bytes": 76781,
+      "sha256": "2cc4f32ae4463b584028b6aa655f0983d91167f62cfdd09c8b5b0a090fcec9a1"
+    }
+  ]
+}

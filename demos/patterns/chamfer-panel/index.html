@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>切角工业面板 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #e6e6e1; --panel: #f4f4f0; --dark: #1d1f22; --muted: #6b6e70; --line: #c9cbc6; --yellow: #ffd400; --cut: 14px;
+    --f: "Bahnschrift","DIN Alternate","Segoe UI","Microsoft YaHei",sans-serif; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); color: var(--dark); font-family: var(--f); }
+  body { background-image: linear-gradient(rgba(29,31,34,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(29,31,34,.06) 1px, transparent 1px); background-size: 40px 40px; }
+  .wrap { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: clamp(16px, 5vw, 70px); align-content: center; }
+  .panel { position: relative; min-height: 220px; padding: 22px; background: var(--panel); clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)); }
+  .panel.dark { background: var(--dark); color: var(--panel); }
+  .panel.tab { clip-path: polygon(0 0, 46% 0, calc(46% + 16px) 16px, 100% 16px, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); padding-top: 34px; }
+  .reg { position: absolute; width: 14px; height: 14px; }
+  .reg::before, .reg::after { content: ""; position: absolute; background: currentColor; }
+  .reg::before { left: 6px; width: 2px; height: 14px; } .reg::after { top: 6px; width: 14px; height: 2px; }
+  .tl { left: 10px; top: 10px; } .tr { right: 10px; top: 10px; } .bl { left: 10px; bottom: 10px; } .br { right: 10px; bottom: 10px; }
+  .k { font: 600 12px/1 var(--f-mono); letter-spacing: .16em; color: var(--muted); }
+  .dark .k { color: #9b9fa2; }
+  h2 { margin: 12px 0 0; font: 700 clamp(20px, 2vw, 30px)/1.1 var(--f); letter-spacing: .04em; }
+  .ruler { margin-top: 16px; height: 18px; background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 8px); opacity: .5; mask-image: linear-gradient(180deg, #000 40%, transparent 41%), linear-gradient(90deg, transparent 0, transparent 0); }
+  .hazard { position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: repeating-linear-gradient(-45deg, var(--yellow) 0 8px, var(--dark) 8px 16px); }
+  .corner { position: absolute; right: 0; top: 0; width: 42px; height: 42px; background: var(--yellow); clip-path: polygon(0 0, 100% 0, 100% 100%); }
+  .tri { width: 34px; height: 30px; margin-top: 18px; }
+  .note { margin-top: 14px; font: 13px/1.6 "Microsoft YaHei","PingFang SC",sans-serif; color: inherit; opacity: .8; }
+  @media (max-width: 760px) { .wrap { grid-template-columns: 1fr; overflow: auto; align-content: start; } }
+</style>
+</head>
+<body>
+<main class="wrap" id="wrap">
+  <section class="panel"><i class="reg tl"></i><i class="reg tr"></i><i class="reg bl"></i><i class="reg br"></i><p class="k">PANEL · A-01</p><h2>切角面板</h2><div class="ruler"></div><p class="note">对角两处 45° 切角 + 四角注册标记。</p></section>
+  <section class="panel dark"><span class="corner"></span><p class="k">MODULE · STATUS</p><h2>反色模块</h2><svg class="tri" viewBox="0 0 34 30" aria-hidden="true"><path d="M17 2l15 26H2z" fill="none" stroke="#f4f4f0" stroke-width="2.5"/><path d="M17 12l6 10H11z" fill="#ffd400"/></svg><p class="note">黄色三角徽记复用在关键界面上。</p><i class="hazard"></i></section>
+  <section class="panel tab"><p class="k">FILE · TAB CUT</p><h2>标签切口</h2><div class="ruler"></div><p class="note">顶边的台阶切口像文件夹的标签页。</p></section>
+</main>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 面板入场：clip-path 从切角处“展开”（snap 缓动），标记与刻度随后出现；面板之间错峰。 */
+const CONFIG = { stagger: 0.12, dur: 0.45, start: 0.3, hold: 2.6, duration: 4 };
+/* ================================== */
+const MK = MotionKit;
+const panels = [...document.querySelectorAll('.panel')];
+function render(t) {
+  panels.forEach((p, i) => {
+    const k = MK.seg(t, CONFIG.start + i * CONFIG.stagger, CONFIG.dur, MK.ease.snap);
+    const out = MK.seg(t, CONFIG.start + CONFIG.hold + i * 0.06, 0.3, MK.ease.exit);
+    const v = k * (1 - out);
+    p.style.transform = `translateY(${(1 - v) * 24}px)`;
+    p.style.opacity = v > 0 ? 1 : 0;
+    p.style.setProperty('--cut', `${14 + (1 - v) * 120}px`); // 切角从夸张收拢到 14px
+    p.querySelectorAll('.reg, .ruler, .note, .tri, .hazard, .corner').forEach((e, j) => { e.style.opacity = MK.seg(t, CONFIG.start + i * CONFIG.stagger + 0.25 + j * 0.04, 0.2) * (1 - out); });
+  });
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: CONFIG.start, label: '面板展开' }] });
+MK.expose(tl);
+MK.controls(tl, { accent: '#ffd400' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 2 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

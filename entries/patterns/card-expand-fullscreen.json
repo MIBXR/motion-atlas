@@ -1,0 +1,69 @@
+{
+  "id": "card-expand-fullscreen",
+  "order": 14,
+  "title": "卡片展开为全屏",
+  "types": [
+    "transition"
+  ],
+  "carriers": [
+    "video",
+    "showcase"
+  ],
+  "summary": "地图上的照片卡片 600ms 平滑展开为全屏实景，HUD 保留并转白、上下压暗，停留时缓慢推近，再收回卡片——高光片段不脱离“系统”。",
+  "mechanism": "记录卡片静止矩形与全屏矩形，用一个值 f（展开 inOutCubic，收回 inOutCubic）插值 left/top/width/height 与圆角；停留期间图片 1→1.07 Ken Burns；f 同时驱动压暗层透明度与 HUD 文字颜色；卡片说明与引线随 f 退场。",
+  "trigger": "高光时刻",
+  "effect": "从“看地图上的一张照片”无缝进入“身临其境”，再回到地图。",
+  "timing": [
+    {
+      "name": "浮入",
+      "value": "550ms outCubic：上移 26px、缩放 0.965→1"
+    },
+    {
+      "name": "展开",
+      "value": "600ms inOutCubic"
+    },
+    {
+      "name": "停留",
+      "value": "约 3s，Ken Burns 1→1.07"
+    },
+    {
+      "name": "收回",
+      "value": "550ms inOutCubic"
+    }
+  ],
+  "useCases": [
+    "影像高光",
+    "展示台展品放大",
+    "操作台详情查看"
+  ],
+  "avoid": [
+    "连续多次展开造成疲劳",
+    "卡片与全屏图片比例差距过大而又不允许裁切"
+  ],
+  "accessibility": {
+    "reducedMotion": "直接切换卡片与全屏，保留压暗层与 HUD。",
+    "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [
+      "corner-hud",
+      "vertical-title-blur",
+      "split-compare-stamp"
+    ],
+    "conflicts": [],
+    "notes": "全屏时只允许一种全屏媒体；参考视频中部分全屏为硬切，Demo 用连续展开示范同一结构。"
+  },
+  "prompt": "实现“卡片 → 全屏 → 卡片”：卡片静止于右侧（宽 min(44vw, 860px)，16:10），550ms outCubic 浮入；在高光时刻用 600ms inOutCubic 把 left/top/width/height 插值到全屏、圆角 6px→0，停留 3s 期间图片 scale 1→1.07，再 550ms 收回。用同一个展开值驱动：上下渐变压暗层透明度、HUD 文字由墨色变白、卡片说明与引线淡出。所有状态由时间 t 计算，可任意 seek。",
+  "demo": "demos/patterns/card-expand-fullscreen/index.html",
+  "kit": true,
+  "sources": [
+    {
+      "caseId": "map-pilgrimage",
+      "observation": "地图上的照片卡片切换后，于 22.7 秒变为全屏实拍，DAY/时钟等 HUD 保留在画面上；之后回到地图卡片。",
+      "evidence": "adapted",
+      "locator": "0:20.6–0:23.9"
+    }
+  ],
+  "previewAt": 1.6
+}

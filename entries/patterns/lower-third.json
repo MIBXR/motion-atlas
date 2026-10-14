@@ -1,0 +1,68 @@
+{
+  "id": "lower-third",
+  "order": 60,
+  "title": "三段式下三分之一",
+  "types": [
+    "type-motion",
+    "hud"
+  ],
+  "carriers": [
+    "video",
+    "console"
+  ],
+  "summary": "人物条按“色条 → 底板 → 文字”三段入场，离场倒序且更快；时长按拍写，整条节目的人物条都踩在同一个节奏上。",
+  "mechanism": "色条 scaleY 0→1（200ms，从底部长出）；底板用 clip-path 多边形从色条处向右擦出，右端保留斜切（350ms snap）；标签/姓名/职位三行 80ms 错峰上浮 14px；离场：文字 140ms 先淡出 → 底板 220ms 收回 → 色条 180ms 缩回。",
+  "trigger": "人物出镜 / 发言",
+  "effect": "信息分层出现，视线依次被“颜色 → 名字 → 身份”引导。",
+  "timing": [
+    {
+      "name": "色条",
+      "value": "200ms outCubic"
+    },
+    {
+      "name": "底板",
+      "value": "350ms snap，延迟 150ms"
+    },
+    {
+      "name": "文字",
+      "value": "300ms outCubic，错峰 80ms"
+    },
+    {
+      "name": "离场",
+      "value": "约入场的 60%，倒序"
+    }
+  ],
+  "useCases": [
+    "直播/节目人物条",
+    "纪录片字幕条",
+    "发布会讲者介绍"
+  ],
+  "avoid": [
+    "同时出现两条以上"
+  ],
+  "accessibility": {
+    "reducedMotion": "直接显示完整人物条。",
+    "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [
+      "stinger-bars",
+      "corner-hud"
+    ],
+    "conflicts": [],
+    "notes": "与得分、数据等中央事件错开至少 1 拍。"
+  },
+  "prompt": "实现三段式下三分之一：左侧 14px 强调色竖条 scaleY 0→1（200ms，transform-origin 底部）；右侧深色底板 clip-path: polygon(0 0, P% 0, calc(P% − 28px) 100%, 0 100%)，P 在 350ms 内以 cubic-bezier(.2,.9,.1,1) 从 0 到 100（延迟 150ms）；标签（12px 等宽强调色）、姓名（超粗斜体）、职位（宽字距）三行 80ms 错峰上浮 14px；右上角一个品红“LIVE”胶囊回弹出现。离场倒序：文字 140ms → 底板 220ms → 色条 180ms。入场与离场时刻用 BPM 拍号计算。",
+  "demo": "demos/patterns/lower-third/index.html",
+  "kit": true,
+  "previewAt": 1.6,
+  "sources": [
+    {
+      "caseId": "broadcast-pack",
+      "observation": "原创转播包中的人物条入场语法。",
+      "evidence": "original",
+      "locator": "第 8–15 拍"
+    }
+  ]
+}

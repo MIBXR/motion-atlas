@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>剪报拼贴字 — Motion Atlas 巧思</title>
+<style>
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #d7141a; }
+  .bg { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,0,0,.22) 1.6px, transparent 2.2px); background-size: 14px 14px; }
+  .stage { position: absolute; inset: 0; display: grid; place-content: center; gap: 4vh; justify-items: center; padding: 20px; }
+  .line { display: flex; flex-wrap: wrap; justify-content: center; margin: 0; }
+  .line span { display: inline-block; padding: .05em .12em; margin: .03em .025em; line-height: 1; }
+  .l1 { font-size: clamp(48px, 8vw, 132px); }
+  .l2 { font-size: clamp(28px, 4.4vw, 70px); }
+  .panel { position: absolute; left: 16px; bottom: 64px; display: flex; gap: 8px; }
+  input, button { min-height: 40px; border: 2px solid #0b0b0c; background: #fff; padding: 0 12px; font: 700 14px/1 "Segoe UI","Microsoft YaHei",sans-serif; }
+  button { background: #0b0b0c; color: #fff; cursor: pointer; }
+  button:focus-visible, input:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main class="stage"><p class="line l1" id="l1"></p><p class="line l2" id="l2"></p></main>
+<form class="panel" id="form"><label class="sr" style="position:absolute;left:-9999px" for="txt">文字</label><input id="txt" maxlength="24" value="TAKE YOUR TIME"><button type="submit">重新拼贴</button></form>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 每个字母独立抽取：底色/字色组合、字体、字重、旋转、缩放、上下偏移；固定种子保证每次一致。 */
+const CONFIG = {
+  lines: [{ el: 'l1', text: 'TAKE YOUR TIME' }, { el: 'l2', text: '偷走你的心 · 怪盗团' }],
+  pairs: [['#0b0b0c', '#fff'], ['#fff', '#0b0b0c'], ['#d7141a', '#fff'], ['#fff', '#d7141a'], ['#0b0b0c', '#d7141a'], ['#f2e6c9', '#0b0b0c']],
+  fonts: ['"Arial Black",Impact,sans-serif', 'Georgia,"Times New Roman",serif', '"Courier New",monospace', 'Impact,sans-serif', 'Bahnschrift,"Segoe UI",sans-serif', '"Microsoft YaHei","PingFang SC",sans-serif', '"SimSun","Songti SC",serif'],
+  rotate: 18, scale: [0.86, 1.24], shiftY: 0.16, seed: 11,
+  stagger: 0.035, slam: 0.22, from: 2.2, duration: 3.5,
+};
+/* ================================== */
+const MK = MotionKit;
+let built = [];
+function build(seed) {
+  built = CONFIG.lines.map((ln, li) => {
+    const el = document.getElementById(ln.el), r = MK.rng(seed + li * 97);
+    el.innerHTML = '';
+    el.setAttribute('aria-label', ln.text);
+    return MK.chars(ln.text).map((ch) => {
+      const s = document.createElement('span');
+      s.setAttribute('aria-hidden', 'true');
+      if (ch === ' ') { s.style.width = '.35em'; el.appendChild(s); return null; }
+      const [bg, fg] = CONFIG.pairs[Math.floor(r() * CONFIG.pairs.length)];
+      Object.assign(s.style, { background: bg, color: fg, fontFamily: CONFIG.fonts[Math.floor(r() * CONFIG.fonts.length)], fontWeight: r() > 0.35 ? 900 : 600 });
+      s.textContent = ch; el.appendChild(s);
+      return { s, rot: (r() - 0.5) * CONFIG.rotate, sc: MK.lerp(CONFIG.scale[0], CONFIG.scale[1], r()), dy: (r() - 0.5) * CONFIG.shiftY };
+    });
+  });
+}
+function render(t) {
+  let n = 0;
+  built.forEach((line, li) => line.forEach((l) => {
+    if (!l) return;
+    const k = MK.seg(t, 0.2 + li * 0.25 + n++ * CONFIG.stagger, CONFIG.slam, MK.ease.outBack);
+    l.s.style.opacity = MK.clamp(k * 4);
+    l.s.style.transform = `translateY(${l.dy}em) rotate(${l.rot * (2 - k)}deg) scale(${l.sc * MK.lerp(CONFIG.from, 1, MK.clamp(k, 0, 1.2))})`;
+  }));
+}
+build(CONFIG.seed);
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: false });
+document.getElementById('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  CONFIG.lines[0].text = document.getElementById('txt').value || 'TAKE YOUR TIME';
+  build(Math.floor(Math.random() * 1e6));
+  tl.seek(0); tl.play();
+});
+MK.expose(tl);
+MK.controls(tl, { accent: '#d7141a' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? CONFIG.duration : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

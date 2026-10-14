@@ -1,0 +1,70 @@
+{
+  "id": "skew-menu",
+  "order": 40,
+  "title": "斜切指令菜单",
+  "types": [
+    "feedback",
+    "composition"
+  ],
+  "carriers": [
+    "console",
+    "showcase"
+  ],
+  "summary": "每个菜单项都是一块斜切的白板加一块偏移的黑影；选中时以“吸附”缓动放大、扭转并黑白反转，影子持续小幅抖动——静止的菜单也在呼吸与挑衅。",
+  "mechanism": "菜单项静止角度错落（−5°~+3°）；选中/离开用同一个 0→1 进度驱动 translateX、rotate、scale（snap 缓动 160ms）；选中项 plate 与 shadow 颜色互换，shadow 位移叠加两个不同频率的正弦形成抖动；z-index 提升避免被邻项遮挡。",
+  "trigger": "光标移动 / 悬停 / 聚焦",
+  "effect": "当前选项极其醒目，菜单本身成为视觉表演的一部分。",
+  "timing": [
+    {
+      "name": "切换",
+      "value": "160ms snap（cubic-bezier(.2,.9,.1,1)）"
+    },
+    {
+      "name": "选中形变",
+      "value": "scale 1.18 · rotate −7° · 右移 26px"
+    },
+    {
+      "name": "影子抖动",
+      "value": "±3px，31Hz / 27Hz"
+    },
+    {
+      "name": "静止角度",
+      "value": "−5° ~ +3° 错落"
+    }
+  ],
+  "useCases": [
+    "游戏主菜单/战斗指令",
+    "活动页导航",
+    "直播互动菜单"
+  ],
+  "avoid": [
+    "需要稳定扫读的长列表",
+    "对动态敏感的场景（关闭抖动）"
+  ],
+  "accessibility": {
+    "reducedMotion": "保留放大与反色，关闭影子抖动。",
+    "keyboard": "原生按钮，↑/↓ 移动焦点，焦点即选中。"
+  },
+  "composition": {
+    "role": "foundation",
+    "pairsWellWith": [
+      "ransom-type",
+      "impact-pop",
+      "cutin-slash"
+    ],
+    "conflicts": [],
+    "notes": "背景需要大块对角线（黑带）来承接倾斜的菜单，否则会显得歪而不是酷。"
+  },
+  "prompt": "实现斜切指令菜单：每项是一个按钮，内部两层 clip-path 斜切多边形——白色板与向右下偏移 10px/8px 的黑色影子，上面是 26–64px 超粗标签与小字中文；各项静止角度错落（如 −4°, 2°, −2°, 3°, −5°）。选中时用 160ms cubic-bezier(.2,.9,.1,1) 把 translateX 0→26px、rotate 加 −7°、scale 1→1.18，板与影子黑白互换、文字反白；选中项影子位移叠加 sin(31t)·3px 与 cos(27t)·3px 的抖动。悬停、聚焦、↑/↓ 都会选中。减少动态时关闭抖动。",
+  "demo": "demos/patterns/skew-menu/index.html",
+  "kit": true,
+  "previewAt": 2.2,
+  "sources": [
+    {
+      "caseId": "phantom-battle",
+      "observation": "暂停菜单悬停项放大并变色（与红黑白主色对比）；战斗行动围绕当前角色排布并以按键颜色区分。",
+      "evidence": "inferred",
+      "locator": "Mechanics of Magic 分析"
+    }
+  ]
+}

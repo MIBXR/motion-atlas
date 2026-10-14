@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>昼夜翻转：逐层插值 — Motion Atlas 巧思</title>
+<style>
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; font-family: "Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+  .wrap { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .pane { position: relative; overflow: hidden; }
+  .pane svg { width: 100%; height: 100%; display: block; }
+  .tag { position: absolute; left: 16px; top: 16px; padding: 7px 11px; border-radius: 5px; font: 600 12px/1 "JetBrains Mono","Cascadia Mono",Consolas,monospace; letter-spacing: .14em; background: rgba(10,12,16,.75); color: #fff; }
+  .clock { position: absolute; right: 18px; top: 14px; font: 600 28px/1 "JetBrains Mono","Cascadia Mono",Consolas,monospace; font-variant-numeric: tabular-nums; }
+  .pane.right { border-left: 2px solid rgba(255,255,255,.5); }
+  @media (max-width: 720px) { .wrap { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; } .pane.right { border-left: 0; border-top: 2px solid rgba(255,255,255,.5); } .clock { font-size: 20px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="pane left" aria-label="逐层插值"><svg id="a" preserveAspectRatio="xMidYMid slice" viewBox="0 0 800 600" aria-hidden="true"></svg><span class="tag">逐层插值 · 推荐</span><span class="clock" id="ca"></span></section>
+  <section class="pane right" aria-label="整体反色"><svg id="b" preserveAspectRatio="xMidYMid slice" viewBox="0 0 800 600" aria-hidden="true"></svg><span class="tag">整体反色 · 对照</span><span class="clock" id="cb"></span></section>
+</div>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 每个图层类别一组 [白天, 夜晚] 颜色。接入 MapLibre 时：遍历 style.layers 分类后 setPaintProperty。 */
+const CONFIG = {
+  duration: 9,
+  night: [{ t: 0, v: 0 }, { t: 1.6, v: 0 }, { t: 2.8, v: 1 }, { t: 5.6, v: 1 }, { t: 6.8, v: 0 }, { t: 9, v: 0 }],
+  palette: {
+    bg: ['#eeebe4', '#1b2431'], water: ['#bccdd9', '#0d131c'], green: ['#dde4d3', '#121b1e'],
+    block: ['#d9d3c7', '#1c2433'], road: ['#ffffff', '#2c3648'], casing: ['#d3cdc2', '#0b1017'],
+    route: ['#d9632b', '#ff8a4c'], ink: ['#16171a', '#e9edf2'],
+  },
+  clock: ['15:40', '19:20'],
+};
+/* ================================== */
+const MK = MotionKit;
+const hex = (h) => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+const mix = (a, b, p) => { const A = hex(a), B = hex(b); return `rgb(${A.map((v, i) => Math.round(MK.lerp(v, B[i], p))).join(',')})`; };
+// 同一张示意城市图画两份
+function scene(svg) {
+  const r = MK.rng(9);
+  let s = `<rect width="800" height="600" data-k="bg"/>`;
+  s += `<path d="M0 420C160 380 260 470 420 430S700 360 800 400V600H0Z" data-k="water"/>`;
+  s += `<path d="M520 60h180v140H520z M80 80h140v90H80z" data-k="green"/>`;
+  for (let i = 0; i < 70; i++) {
+    const x = 20 + Math.floor(r() * 19) * 40, y = 20 + Math.floor(r() * 9) * 40;
+    if (y > 360) continue;
+    s += `<rect x="${x}" y="${y}" width="${24 + r() * 10}" height="${24 + r() * 10}" rx="2" data-k="block"/>`;
+  }
+  s += `<path d="M0 230H800M300 0V420M0 120C200 140 500 90 800 150" fill="none" stroke-width="12" data-k="casing"/>`;
+  s += `<path d="M0 230H800M300 0V420M0 120C200 140 500 90 800 150" fill="none" stroke-width="8" data-k="road"/>`;
+  s += `<path d="M90 330C220 300 360 180 610 210" fill="none" stroke-width="5" stroke-linecap="round" data-k="route"/>`;
+  s += `<circle cx="610" cy="210" r="9" stroke-width="3" data-k="ink" fill="#fff"/>`;
+  svg.innerHTML = s;
+  return [...svg.querySelectorAll('[data-k]')];
+}
+const A = scene(document.getElementById('a'));
+const B = scene(document.getElementById('b'));
+const paint = (els, n) => els.forEach((e) => {
+  const c = mix(...CONFIG.palette[e.dataset.k], n);
+  if (e.getAttribute('fill') === 'none' || e.dataset.k === 'route') e.setAttribute('stroke', c);
+  else if (e.dataset.k === 'ink') e.setAttribute('stroke', c);
+  else e.setAttribute('fill', c);
+});
+paint(B, 0);
+const toMin = (s) => { const [h, m] = s.split(':').map(Number); return h * 60 + m; };
+function render(t) {
+  const n = (() => { const L = CONFIG.night; for (let i = 0; i < L.length - 1; i++) if (t <= L[i + 1].t) return MK.lerp(L[i].v, L[i + 1].v, MK.ease.inOutCubic(MK.invLerp(L[i].t, L[i + 1].t, t))); return 0; })();
+  paint(A, n); // 左：逐图层插值颜色
+  document.getElementById('b').style.filter = n > 0.001 ? `invert(${n}) hue-rotate(${180 * n}deg)` : 'none'; // 右：整体反色（水会比陆地更亮）
+  const m = MK.lerp(toMin(CONFIG.clock[0]), toMin(CONFIG.clock[1]), n);
+  const txt = `${MK.pad(m / 60)}:${MK.pad(m % 60)}`;
+  ['ca', 'cb'].forEach((id) => { const c = document.getElementById(id); c.textContent = txt; c.style.color = mix(...CONFIG.palette.ink, n); });
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: 1.6, label: '入夜' }, { t: 2.2, label: '灰阶中点' }, { t: 5.6, label: '天亮' }] });
+MK.expose(tl);
+MK.controls(tl);
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 4 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

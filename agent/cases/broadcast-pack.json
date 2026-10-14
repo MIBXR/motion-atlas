@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "broadcast-pack",
+  "entry": {
+    "id": "broadcast-pack",
+    "order": 5,
+    "title": "赛事转播图形包 · 踩拍的信息层",
+    "subtitle": "BROADCAST PACKAGE / STINGER · BUG · LOWER THIRD · STATS",
+    "carriers": [
+      "video",
+      "console"
+    ],
+    "source": "original",
+    "evidence": "original",
+    "capturedAt": "2026-10-14",
+    "tags": [
+      "转播包装",
+      "120 BPM",
+      "斜切色带",
+      "比分角标",
+      "下三分之一",
+      "数据对比"
+    ],
+    "summary": "电竞/体育直播的一整套图形包：色带转场、比分角标、三段式下三分之一、数据对比条、得分强调、回放框、滚动新闻与冠军卡——所有出入场都按 120 BPM 的拍子写，转场永远落在拍点上。",
+    "focus": "转播图形的核心不是“好看的条”，而是“可预期的节奏”：观众在 30 秒内会看到 8–10 个图形元素，如果每个都踩在音乐拍点上、并且遵循同一套入场语法（色条→底板→文字），信息就会显得专业、可信而不吵。这个原创设计语言把节拍写进配置，改 BPM 即可整体重新对齐。",
+    "accent": "#c6ff3d",
+    "background": "#0a1230",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 10,
+    "energy": [
+      0.9,
+      0.7,
+      0.4,
+      0.5,
+      0.55,
+      0.5,
+      0.6,
+      0.65,
+      0.6,
+      0.95,
+      0.7,
+      0.85,
+      0.6,
+      0.5,
+      0.45,
+      0.5,
+      0.55,
+      0.9,
+      0.85,
+      0.6,
+      0.4
+    ],
+    "rhythm": {
+      "duration": 24,
+      "bpm": 120,
+      "beats": [
+        {
+          "t": 0,
+          "label": "开场色带",
+          "note": "5 条斜色带（青柠/青/白/品红/深蓝）错峰 70ms 横扫 2 拍，标志字母斜切滑入。"
+        },
+        {
+          "t": 2,
+          "label": "比分角标",
+          "note": "第 4 拍横向展开（snap 400ms），赛事条 + 队名 + 比分。"
+        },
+        {
+          "t": 4,
+          "label": "下三分之一",
+          "note": "第 8 拍：色条 200ms 长出 → 底板 350ms 擦出 → 三行文字 80ms 错峰上浮；第 15 拍倒序离场。"
+        },
+        {
+          "t": 8,
+          "label": "数据对比",
+          "note": "第 16 拍：标题下落，每半拍一行从中线展开，条形向两侧生长并计数。"
+        },
+        {
+          "t": 12,
+          "label": "得分",
+          "note": "第 24 拍：角标闪光、比分滚动、巨型斜体字回弹、场景轻微震动。"
+        },
+        {
+          "t": 14,
+          "label": "回放转场",
+          "note": "第 28 拍：色带转场遮住硬切；进入品红回放框、0.5× 慢放、轨迹与半速时间码。"
+        },
+        {
+          "t": 18,
+          "label": "回到直播",
+          "note": "第 36 拍色带转场；第 37 拍底部滚动新闻条上浮。"
+        },
+        {
+          "t": 21,
+          "label": "冠军卡",
+          "note": "第 42 拍：冠军名回弹放大、比分胶囊弹出、彩带抛洒。"
+        },
+        {
+          "t": 23,
+          "label": "结尾色带",
+          "note": "第 46 拍：色带 + 标志收尾。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "场景",
+        "role": "深蓝竞技场：灯束、透视网格地板、观众光点；回放时降饱和并减速。"
+      },
+      {
+        "name": "常驻层",
+        "role": "左上比分角标、底部滚动新闻、右下拍点指示灯。"
+      },
+      {
+        "name": "事件层",
+        "role": "下三分之一、数据对比、得分大字、冠军卡——一次只出现一个。"
+      },
+      {
+        "name": "框架层",
+        "role": "回放框（品红描边 + 标签 + 倍速 + 时间码）。"
+      },
+      {
+        "name": "转场层",
+        "role": "色带 stinger 与品牌标志，遮住场景硬切。"
+      }
+    ],
+    "composition": {
+      "color": "深蓝 #0a1230 做底与底板；青柠 #c6ff3d 为主队与系统强调；青 #29d3ff 为客队；品红 #ff2e88 只用于“直播/回放”等状态；白色用于正文。",
+      "typography": "DIN 类窄体（Bahnschrift）+ 斜体做名字与大字，等宽字体做标签与时间码；大写、宽字距的小标签与超大斜体数字形成对比。",
+      "layout": "常驻元素贴边（左上角标、底部新闻），事件元素在左下（人物条）或中央（数据、得分、冠军）；所有图形都带 −12° 到 −18° 的斜切。",
+      "imagery": "没有照片：竞技场由渐变、锥形光束、透视网格与光点构成，保证图形层永远是主角。",
+      "motion": "统一的入场语法：先出“色”（色条/色带）、再出“底”（底板擦出）、最后出“字”（上浮/计数）；离场倒序且更快（约入场的 60%）。",
+      "sound": "开启声音后：每拍底鼓、反拍镲片、转场呼啸、得分三和弦、冠军五和弦——帮助理解“踩拍”。",
+      "rhythm": "120 BPM（一拍 0.5s）；元素入场在整拍，离场提前 1 拍开始；转场长度 2 拍；每 4–8 拍一个新事件。",
+      "coherence": "每个元素都来自同一套斜切几何、同一组颜色角色和同一个节拍网格，因此即使信息很多，也像同一首曲子的不同乐句。"
+    },
+    "tokens": {
+      "palette": [
+        "#0a1230",
+        "#050a1c",
+        "#c6ff3d",
+        "#29d3ff",
+        "#ff2e88",
+        "#ffffff"
+      ],
+      "type": "Bahnschrift / DIN 窄体斜体 + 等宽标签",
+      "motion": [
+        {
+          "name": "beat",
+          "value": "120 BPM = 0.5s；所有入场写成拍号"
+        },
+        {
+          "name": "stinger",
+          "value": "5 条 34% 宽、−18° 斜切色带，错峰 70ms，2 拍 inOutCubic 横扫"
+        },
+        {
+          "name": "bug",
+          "value": "400ms snap 横向展开；比分滚动 400ms"
+        },
+        {
+          "name": "lower-third",
+          "value": "色条 200ms → 底板 350ms snap → 文字 300ms，错峰 80ms；离场 140–220ms"
+        },
+        {
+          "name": "stats",
+          "value": "每半拍一行；条形 900ms outQuart 从中线生长并计数"
+        },
+        {
+          "name": "point",
+          "value": "250ms outBack 1.6→1，−10° 斜切；震动 10px·e^(−8t)"
+        },
+        {
+          "name": "replay",
+          "value": "场景速度 ×0.5、降饱和；品红框 + 标签闪烁 2Hz"
+        }
+      ]
+    },
+    "interaction": [
+      "空格播放/暂停；←/→ 跳 1 秒；Shift+←/→ 跳到上/下一个节拍标记；站内刻度条显示每个图形的出场拍。",
+      "右下拍点灯每拍闪一次、小节首拍更大，便于对照“踩拍”。",
+      "开启声音后有底鼓/镲片节拍与转场音效。",
+      "减少动态：关闭场景震动与彩带，不自动播放。"
+    ],
+    "useCases": [
+      "电竞/体育直播包装",
+      "发布会与年会直播",
+      "综艺与节目包装",
+      "直播间信息条",
+      "数据播报短视频"
+    ],
+    "avoid": [
+      "安静的纪录片与访谈",
+      "需要长时间阅读的信息"
+    ],
+    "constraints": [
+      "原创设计语言：赛事名、队伍、选手与数据均为虚构。",
+      "回放段仅以轨迹示意，实际节目应替换为真实回放素材。",
+      "所有文字 ≥12px；1920×1080 成片下标签为 12–14px。"
+    ],
+    "prompt": "做一套 24 秒的电竞转播图形包（HTML/CSS/JS，可 seek），120 BPM，所有元素按拍号出入场：配色深蓝 #0a1230 / 青柠 #c6ff3d（主队与系统）/ 青 #29d3ff（客队）/ 品红 #ff2e88（直播与回放状态）/ 白；字体 Bahnschrift 窄体斜体 + 等宽标签；所有图形带 −12°~−18° 斜切。背景是深蓝竞技场（锥形光束、透视网格地板、观众光点）。①第 0 拍色带转场：5 条 34% 宽的斜色带错峰 70ms 在 2 拍内横扫，品牌字母斜切滑入；②第 4 拍左上比分角标 400ms snap 横向展开（赛事条 + 队名色条 + 比分）；③第 8 拍下三分之一：青柠色条 200ms 从下长出 → 深蓝底板 350ms 从左擦出（右端斜切）→ 标签/姓名/职位 80ms 错峰上浮；第 15 拍倒序离场；④第 16 拍数据对比：青柠标题条下落，三行数据每半拍一行从中线展开，左右条形 900ms outQuart 向两侧生长并计数；⑤第 24 拍得分：角标青柠闪烁、比分滚动、巨型斜体“POINT · 队名”250ms outBack 落定、场景震动；⑥第 28 拍色带转场进入回放：品红描边框、REPLAY 标签 2Hz 闪、0.5×、轨迹以半速划过、时间码半速；第 36 拍色带回到直播；⑦第 37 拍底部滚动新闻条上浮；⑧第 42 拍冠军卡：名字回弹、比分胶囊、彩带；⑨第 46 拍色带 + 标志收尾。右下拍点灯每拍闪一次。声音默认关闭；减少动态关闭震动与彩带。",
+    "videoPrompt": "Esports broadcast graphics package, 1920×1080, 24 seconds at 120 BPM, every graphic landing on the beat. Deep navy arena with cone light beams, a glowing perspective grid floor and twinkling crowd dots. Opens with five slanted color bars (lime, cyan, white, magenta, navy) sweeping across the screen in a staggered stinger, revealing an italic condensed logo. A slanted score bug snaps open top-left. A lower third builds in three stages: a lime bar grows, a navy plate wipes out with a slanted edge, then name and role rise in. A match-stats panel unfolds row by row from the center with bars growing outward and numbers counting up. A big italic lime \"POINT\" slams in with a flash on the score bug. A stinger hides the cut to a magenta-framed slow-motion replay with a glowing lime trajectory and half-speed timecode. A news ticker slides up; a champion card bursts in with confetti. Crisp, energetic, high-contrast, perfectly rhythmic.",
+    "negativePrompt": "不要让多个事件图形同时出现；不要软绵绵的淡入淡出；不要让转场时长与拍子不一致；不要过多颜色角色；不要真实赛事的商标与选手。",
+    "migration": [
+      {
+        "field": "config.js → bpm / beats",
+        "how": "改 BPM 即整体变速；beats 中每个元素的出场拍号决定节奏结构。"
+      },
+      {
+        "field": "config.js → event / teams",
+        "how": "赛事名、阶段、场馆；队伍代码、名称、颜色与比分变化。"
+      },
+      {
+        "field": "config.js → lowerThird / stats / ticker",
+        "how": "人物条三行、数据对比行（可带小数）、滚动新闻。"
+      },
+      {
+        "field": "config.js → palette",
+        "how": "底色、主客队色与状态色（直播/回放）。"
+      },
+      {
+        "field": "style.css",
+        "how": "斜切角度（skewX）、色带宽度、字体与圆角。"
+      }
+    ],
+    "demo": "demos/cases/broadcast-pack/index.html",
+    "research": "docs/research/broadcast-pack.md",
+    "patternIds": [
+      "lower-third",
+      "stinger-bars",
+      "seekable-timeline",
+      "beat-clock"
+    ],
+    "sources": [
+      {
+        "title": "原创设计语言 · Motion Atlas",
+        "type": "原创",
+        "note": "基于电视与直播图形包的通用结构（角标、下三分之一、转场 stinger、数据条）设计；所有名称与数据虚构。"
+      }
+    ],
+    "preview": "previews/cases/broadcast-pack.jpg"
+  },
+  "documents": {
+    "prompt": "# 赛事转播图形包 · 踩拍的信息层 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/broadcast-pack.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/broadcast-pack.md)。\n\n## 实现 Prompt\n\n做一套 24 秒的电竞转播图形包（HTML/CSS/JS，可 seek），120 BPM，所有元素按拍号出入场：配色深蓝 #0a1230 / 青柠 #c6ff3d（主队与系统）/ 青 #29d3ff（客队）/ 品红 #ff2e88（直播与回放状态）/ 白；字体 Bahnschrift 窄体斜体 + 等宽标签；所有图形带 −12°~−18° 斜切。背景是深蓝竞技场（锥形光束、透视网格地板、观众光点）。①第 0 拍色带转场：5 条 34% 宽的斜色带错峰 70ms 在 2 拍内横扫，品牌字母斜切滑入；②第 4 拍左上比分角标 400ms snap 横向展开（赛事条 + 队名色条 + 比分）；③第 8 拍下三分之一：青柠色条 200ms 从下长出 → 深蓝底板 350ms 从左擦出（右端斜切）→ 标签/姓名/职位 80ms 错峰上浮；第 15 拍倒序离场；④第 16 拍数据对比：青柠标题条下落，三行数据每半拍一行从中线展开，左右条形 900ms outQuart 向两侧生长并计数；⑤第 24 拍得分：角标青柠闪烁、比分滚动、巨型斜体“POINT · 队名”250ms outBack 落定、场景震动；⑥第 28 拍色带转场进入回放：品红描边框、REPLAY 标签 2Hz 闪、0.5×、轨迹以半速划过、时间码半速；第 36 拍色带回到直播；⑦第 37 拍底部滚动新闻条上浮；⑧第 42 拍冠军卡：名字回弹、比分胶囊、彩带；⑨第 46 拍色带 + 标志收尾。右下拍点灯每拍闪一次。声音默认关闭；减少动态关闭震动与彩带。\n\n## 视频生成 Prompt\n\nEsports broadcast graphics package, 1920×1080, 24 seconds at 120 BPM, every graphic landing on the beat. Deep navy arena with cone light beams, a glowing perspective grid floor and twinkling crowd dots. Opens with five slanted color bars (lime, cyan, white, magenta, navy) sweeping across the screen in a staggered stinger, revealing an italic condensed logo. A slanted score bug snaps open top-left. A lower third builds in three stages: a lime bar grows, a navy plate wipes out with a slanted edge, then name and role rise in. A match-stats panel unfolds row by row from the center with bars growing outward and numbers counting up. A big italic lime \"POINT\" slams in with a flash on the score bug. A stinger hides the cut to a magenta-framed slow-motion replay with a glowing lime trajectory and half-speed timecode. A news ticker slides up; a champion card bursts in with confetti. Crisp, energetic, high-contrast, perfectly rhythmic.\n\n## 负向约束\n\n不要让多个事件图形同时出现；不要软绵绵的淡入淡出；不要让转场时长与拍子不一致；不要过多颜色角色；不要真实赛事的商标与选手。\n\n## 动效 Token\n\n- **beat**：120 BPM = 0.5s；所有入场写成拍号\n- **stinger**：5 条 34% 宽、−18° 斜切色带，错峰 70ms，2 拍 inOutCubic 横扫\n- **bug**：400ms snap 横向展开；比分滚动 400ms\n- **lower-third**：色条 200ms → 底板 350ms snap → 文字 300ms，错峰 80ms；离场 140–220ms\n- **stats**：每半拍一行；条形 900ms outQuart 从中线生长并计数\n- **point**：250ms outBack 1.6→1，−10° 斜切；震动 10px·e^(−8t)\n- **replay**：场景速度 ×0.5、降饱和；品红框 + 标签闪烁 2Hz\n\n## 制作约束\n\n- 原创设计语言：赛事名、队伍、选手与数据均为虚构。\n- 回放段仅以轨迹示意，实际节目应替换为真实回放素材。\n- 所有文字 ≥12px；1920×1080 成片下标签为 12–14px。\n\n## 迁移\n\n- `config.js → bpm / beats`：改 BPM 即整体变速；beats 中每个元素的出场拍号决定节奏结构。\n- `config.js → event / teams`：赛事名、阶段、场馆；队伍代码、名称、颜色与比分变化。\n- `config.js → lowerThird / stats / ticker`：人物条三行、数据对比行（可带小数）、滚动新闻。\n- `config.js → palette`：底色、主客队色与状态色（直播/回放）。\n- `style.css`：斜切角度（skewX）、色带宽度、字体与圆角。\n\n[打开 Demo](../../demos/cases/broadcast-pack/index.html) · [在库中查看](../../cases.html#case/broadcast-pack)\n",
+    "research": "# 赛事转播图形包：设计说明\n\n- 类型：原创设计语言（2026-10-14）\n- 目标：给“视频生成 / 直播包装”提供一套可直接迁移的图形语法，并示范如何把图形编排写成节拍表。\n\n## 设计原则\n\n1. **一次只讲一件事**：常驻层（角标、新闻条）永远在边缘；事件层（人物条、数据、得分、冠军）一次只出现一个，彼此间隔至少 1 拍。\n2. **同一套入场语法**：颜色先行（色条/色带）→ 承载面（底板）→ 信息（文字/数字）。离场倒序，并且更快。\n3. **节拍是唯一的时间单位**：所有出入场写成拍号，BPM 改变时整体同步；转场 2 拍、人物条停留 6–7 拍、数据每半拍一行。\n4. **颜色有角色**：主队/系统、客队、状态（直播/回放）、正文，各用一种颜色，不混用。\n5. **转场遮住硬切**：场景切换发生在色带完全遮住画面的那一刻，观众只看到品牌。\n\n## 节拍表（120 BPM）\n\n| 拍 | 秒 | 元素 |\n| --- | --- | --- |\n| 0 | 0.0 | 开场色带 + 标志 |\n| 4 | 2.0 | 比分角标 |\n| 8–15 | 4.0–7.5 | 下三分之一 |\n| 16–23 | 8.0–11.5 | 数据对比 |\n| 24 | 12.0 | 得分强调 |\n| 28–36 | 14.0–18.0 | 回放（色带进出） |\n| 37 | 18.5 | 滚动新闻 |\n| 42 | 21.0 | 冠军卡 |\n| 46 | 23.0 | 结尾色带 |\n\n## 迁移提示\n\n- 接真实节目时，把 `beats` 改成节目流程中的实际时刻（可用 `quantize` 吸附到最近的拍）。\n- 下三分之一与角标的尺寸按 1920×1080 设计，窄屏自动改为通栏。\n\n## 验证记录\n\n- 2026-10-14：Edge 无头 1600×900 截取 12 个时刻 + 回放单帧；补充了回放段的慢动作轨迹与时间码；拍点指示灯移到右下避免与回放标签重叠。\n"
+  },
+  "entrypoint": "demos/cases/broadcast-pack/index.html",
+  "files": [
+    {
+      "path": "demos/cases/broadcast-pack/config.js",
+      "bytes": 1171,
+      "sha256": "4b1e9f0f4dadab67f20985665b3ac440f97f119c2911cf909cb23649b700f328"
+    },
+    {
+      "path": "demos/cases/broadcast-pack/index.html",
+      "bytes": 2627,
+      "sha256": "f9cfb5750b271d1842976580c0e11d34d818f466cbe5ec8acd82f152b9ee8c30"
+    },
+    {
+      "path": "demos/cases/broadcast-pack/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "demos/cases/broadcast-pack/script.js",
+      "bytes": 11576,
+      "sha256": "ca941620f74a07517048727bd37165aef9a477b3f9d63ce9ada80d4395c82264"
+    },
+    {
+      "path": "demos/cases/broadcast-pack/style.css",
+      "bytes": 8617,
+      "sha256": "79a9bb2b1fe25a30bdc8daf2a6f7d5a95ccc0f92e4b0dfd4e0b2e6fe09b1345d"
+    },
+    {
+      "path": "previews/cases/broadcast-pack.jpg",
+      "bytes": 47504,
+      "sha256": "d1753a3986fa2f4a3c7064a3750fc71c6a5f56ecbdceec9fcdf0678c65b3bf22"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "film-grain",
+  "pattern": {
+    "id": "film-grain",
+    "order": 21,
+    "title": "可复现的胶片颗粒与暗角",
+    "types": [
+      "texture"
+    ],
+    "carriers": [
+      "video",
+      "showcase",
+      "console"
+    ],
+    "summary": "预生成几帧噪声、按帧号选帧叠加，配合暗角、扫描线与轻微闪烁；同一时刻永远是同一张颗粒，逐帧渲染也不会“跳”。",
+    "mechanism": "320×180 的噪声画布放大覆盖全屏（image-rendering: pixelated），mix-blend-mode: overlay；frames 帧循环，帧号 = floor(t × fps)；闪烁亮度用以帧号为种子的伪随机；暗角是径向渐变；扫描线是 1px/3px 重复渐变。回忆段把强度从 0.07 提到 0.15 左右。",
+    "trigger": "常驻 / 回忆段加重",
+    "effect": "数码画面有了“胶片/录像”的质感，并把不同来源的素材统一在一起。",
+    "timing": [
+      {
+        "name": "强度",
+        "value": "常态 0.07–0.12，回忆 0.15–0.25（overlay）"
+      },
+      {
+        "name": "换帧",
+        "value": "12fps，6 帧循环"
+      },
+      {
+        "name": "暗角",
+        "value": "0.3–0.45"
+      },
+      {
+        "name": "闪烁",
+        "value": "±4% 亮度"
+      }
+    ],
+    "useCases": [
+      "影像统一质感",
+      "回忆/档案段",
+      "复古操作台"
+    ],
+    "avoid": [
+      "需要高清细节的产品图",
+      "大量小字区域（降低可读性）"
+    ],
+    "accessibility": {
+      "reducedMotion": "颗粒停在一帧，关闭闪烁。",
+      "keyboard": "参数面板为原生滑杆。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [
+        "seekable-timeline",
+        "split-compare-stamp"
+      ],
+      "conflicts": [],
+      "notes": "颗粒放在所有层之上但不拦截指针；HUD 小字区域保持低强度。"
+    },
+    "prompt": "叠加可复现的胶片颗粒：预生成 6 帧 320×180 灰度噪声（固定种子），放在全屏 canvas 上（image-rendering: pixelated，mix-blend-mode: overlay，pointer-events: none），每帧显示 frames[floor(t×12) % 6]，透明度常态 0.07–0.12、回忆段 0.2；加 0.3–0.45 的径向暗角、可选 1px/3px 扫描线；亮度闪烁 ±4% 用 rng(帧号) 计算而不是 Math.random()。提供强度/fps/暗角/扫描线/闪烁五个滑杆。",
+    "demo": "demos/patterns/film-grain/index.html",
+    "kit": true,
+    "sources": [
+      {
+        "caseId": "map-pilgrimage",
+        "observation": "全片带轻颗粒，动画回忆段颗粒明显加重，实景与动画素材因此统一。",
+        "evidence": "observed",
+        "locator": "0:22.7、0:55.2"
+      }
+    ],
+    "previewAt": 1.2,
+    "preview": "previews/patterns/film-grain.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "map-pilgrimage",
+      "bundle": "agent/cases/map-pilgrimage.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 可复现的胶片颗粒与暗角 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/film-grain.json) 自动生成。\n\n## 实现 Prompt\n\n叠加可复现的胶片颗粒：预生成 6 帧 320×180 灰度噪声（固定种子），放在全屏 canvas 上（image-rendering: pixelated，mix-blend-mode: overlay，pointer-events: none），每帧显示 frames[floor(t×12) % 6]，透明度常态 0.07–0.12、回忆段 0.2；加 0.3–0.45 的径向暗角、可选 1px/3px 扫描线；亮度闪烁 ±4% 用 rng(帧号) 计算而不是 Math.random()。提供强度/fps/暗角/扫描线/闪烁五个滑杆。\n\n## 参数\n\n- **强度**：常态 0.07–0.12，回忆 0.15–0.25（overlay）\n- **换帧**：12fps，6 帧循环\n- **暗角**：0.3–0.45\n- **闪烁**：±4% 亮度\n\n[打开 Demo](../../demos/patterns/film-grain/index.html) · [在库中查看](../../patterns.html#pattern/film-grain)\n"
+  },
+  "entrypoint": "demos/patterns/film-grain/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/film-grain/index.html",
+      "bytes": 4512,
+      "sha256": "2cc6a02167284d22b93e157b3cde03c9a8b9df327c2544d950683d100b5de1d2"
+    },
+    {
+      "path": "demos/patterns/film-grain/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/film-grain.jpg",
+      "bytes": 82531,
+      "sha256": "923270293f8823e9c6e656b7a061d2a2cb4e58f913c5b120cbfb483a7f2b4aa3"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BPM 节拍时钟与前瞻调度 — Motion Atlas 巧思</title>
+<style>
+  :root { --bg: #111214; --fg: #f5f0e6; --accent: #ff4d2e; --muted: #8f8d87; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--fg); font-family: "Bahnschrift","Segoe UI","Microsoft YaHei",sans-serif; }
+  .stage { position: absolute; inset: 0; display: grid; place-content: center; gap: 26px; padding: 24px; justify-items: center; }
+  .bpm { font: 800 clamp(56px, 10vw, 160px)/1 "Bahnschrift",sans-serif; font-variant-numeric: tabular-nums; }
+  .bpm small { font: 700 14px/1 var(--f-mono); letter-spacing: .3em; color: var(--muted); margin-left: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 6px; width: min(86vw, 900px); }
+  .grid i { height: 46px; border: 2px solid #2a2d33; }
+  .grid i.beat { border-color: #555a62; }
+  .grid i.k { background: rgba(255,77,46,.25); } .grid i.s { background: rgba(245,240,230,.18); }
+  .grid i.now { background: var(--accent); border-color: var(--accent); }
+  .row { display: flex; gap: 22px; align-items: center; font: 12px/1.4 var(--f-mono); letter-spacing: .12em; color: var(--muted); flex-wrap: wrap; justify-content: center; }
+  .pulse { width: 92px; height: 92px; border-radius: 50%; background: var(--fg); }
+  label { display: flex; gap: 10px; align-items: center; }
+  input { accent-color: var(--accent); }
+  .log { font: 12px/1.6 var(--f-mono); color: var(--muted); text-align: center; min-height: 3.2em; }
+</style>
+</head>
+<body>
+<main class="stage">
+  <div class="pulse" id="pulse" aria-hidden="true"></div>
+  <p class="bpm"><span id="bpmV"></span><small>BPM</small></p>
+  <div class="grid" id="grid" aria-label="16 步节奏网格"></div>
+  <div class="row"><span id="pos"></span><label>BPM <input type="range" id="bpm" min="60" max="180" step="1"></label></div>
+  <p class="log" id="log">开启声音（右下控制条）听前瞻调度的鼓点：画面与声音在同一拍上</p>
+</main>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 拍点时钟：beat = t / (60 / bpm)。视觉用“每拍脉冲 e^(−k·frac(beat))”；
+ * 声音不要在每帧“到点了才播”，而是每帧把未来 lookahead 秒内的音符交给 AudioContext 按精确时间播放。 */
+const CONFIG = { bpm: 110, lookahead: 0.12, kick: 'x...x...x...x...', snare: '....x.......x...', hat: '..x...x...x...x.', bars: 4 };
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s), sfx = MK.sound();
+let BT = MK.beats(CONFIG.bpm);
+$('#grid').innerHTML = Array.from({ length: 16 }, (_, i) => `<i class="${i % 4 === 0 ? 'beat ' : ''}${CONFIG.kick[i] === 'x' ? 'k ' : ''}${CONFIG.snare[i] === 'x' ? 's' : ''}"></i>`).join('');
+const cells = [...document.querySelectorAll('#grid i')];
+$('#bpm').value = CONFIG.bpm;
+function render(t) {
+  const beat = BT.beatOf(t), step = Math.floor(beat * 4) % 16;
+  cells.forEach((c, i) => c.classList.toggle('now', i === step));
+  const p = BT.pulse(t, 7), bar1 = Math.floor(beat) % 4 === 0;
+  $('#pulse').style.transform = `scale(${0.7 + p * (bar1 ? 0.5 : 0.3)})`;
+  $('#pulse').style.background = bar1 && p > 0.5 ? '#ff4d2e' : '#f5f0e6';
+  $('#bpmV').textContent = CONFIG.bpm;
+  $('#pos').textContent = `BAR ${Math.floor(beat / 4) + 1} · BEAT ${(Math.floor(beat) % 4) + 1} · STEP ${MK.pad(step + 1)} · ${(BT.spb * 1000).toFixed(0)} ms/拍`;
+}
+// 事件表：每个十六分音符位置
+function buildEvents() {
+  const ev = [];
+  for (let s = 0; s < CONFIG.bars * 16; s++) {
+    const t = s * BT.spb / 4, i = s % 16;
+    if (CONFIG.kick[i] === 'x') ev.push({ t, fn: (d) => sfx.tone({ f: 130, d: 0.2, g: 0.55, slide: -85, delay: d }) });
+    if (CONFIG.snare[i] === 'x') ev.push({ t, fn: (d) => sfx.noise({ d: 0.13, g: 0.22, hp: 1400, delay: d }) });
+    if (CONFIG.hat[i] === 'x') ev.push({ t, fn: (d) => sfx.noise({ d: 0.03, g: 0.06, hp: 7500, delay: d }) });
+  }
+  return ev;
+}
+let events = buildEvents(), cursor = 0, last = 0;
+const tl = MK.timeline({ duration: CONFIG.bars * 4 * BT.spb, render, loop: true, markers: Array.from({ length: CONFIG.bars }, (_, b) => ({ t: b * 4 * BT.spb, label: `BAR ${b + 1}` })) });
+tl.on((t, playing) => {
+  if (t < last - 0.02 || !playing) cursor = Math.max(0, events.findIndex((e) => e.t >= t - 0.001));
+  if (playing && sfx.enabled) {
+    while (cursor < events.length && events[cursor].t < t + CONFIG.lookahead) { const e = events[cursor++]; if (e.t >= t - 0.02) e.fn(Math.max(0, e.t - t)); }
+    // 循环衔接：把下一圈开头的事件也提前排进去
+    if (t + CONFIG.lookahead > tl.duration) for (const e of events) if (e.t < t + CONFIG.lookahead - tl.duration && !e.wrapped) { e.wrapped = true; e.fn(tl.duration - t + e.t); }
+  }
+  if (t < last) events.forEach((e) => { e.wrapped = false; });
+  last = t;
+});
+$('#bpm').addEventListener('input', (e) => {
+  CONFIG.bpm = Number(e.target.value); BT = MK.beats(CONFIG.bpm);
+  const frac = tl.time / tl.duration;
+  tl.duration = CONFIG.bars * 4 * BT.spb; // 保持在小节中的相对位置
+  events = buildEvents(); cursor = 0;
+  tl.seek(frac * tl.duration);
+});
+MK.expose(tl, { bpm: CONFIG.bpm });
+MK.controls(tl, { sound: sfx, accent: '#ff4d2e' });
+const P = MK.params();
+tl.seek(P.t ?? 0);
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

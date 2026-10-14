@@ -1,0 +1,66 @@
+{
+  "id": "collect-counter",
+  "order": 17,
+  "title": "收集计数徽章与图鉴托盘",
+  "types": [
+    "feedback",
+    "hud"
+  ],
+  "carriers": [
+    "video",
+    "console",
+    "showcase"
+  ],
+  "summary": "一个吉祥物头像胶囊记录“发现次数”，每次 +1 数字上滚、徽章回弹、外圈扩散；图鉴托盘的空位依次点亮，给叙事加上轻游戏化的奖励感。",
+  "mechanism": "计数由事件列表推导（发生时刻 ≤ t 的数量），最后一次事件后的时间 k 驱动：数字 300ms 从下方滚入、整体缩放 1 + 0.14·e^(-7k)、头像外圈放大淡出。托盘槽位按事件依次 420ms outBack 填入缩略图与名字，空位显示虚线与问号。",
+  "trigger": "发现/打卡/完成任务",
+  "effect": "把重复出现的小元素变成线索与奖励，鼓励观众“找”。",
+  "timing": [
+    {
+      "name": "数字滚入",
+      "value": "300ms outCubic"
+    },
+    {
+      "name": "回弹",
+      "value": "幅度 0.14，衰减系数 7（约 0.5s 收敛）"
+    },
+    {
+      "name": "槽位点亮",
+      "value": "420ms outBack，缩放 0.9→1"
+    }
+  ],
+  "useCases": [
+    "旅行吉祥物出现次数",
+    "展会打卡",
+    "任务进度",
+    "收藏型展示台"
+  ],
+  "avoid": [
+    "计数与叙事无关时（会显得廉价）"
+  ],
+  "accessibility": {
+    "reducedMotion": "数字与槽位直接更新；状态以 aria-live 文本播报。",
+    "keyboard": "“+1 发现”与“重置”为原生按钮。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [
+      "corner-hud",
+      "outro-stat-stack"
+    ],
+    "conflicts": [],
+    "notes": "结尾统计里复用同一计数（×N），形成首尾呼应。"
+  },
+  "prompt": "实现收集计数徽章：右上角白色胶囊（头像 + 12px 等宽标签 + 粗体 ×N），计数由事件时刻列表推导；最近一次事件后经过 k 秒时，数字在 300ms 内从下方滚入、徽章 scale(1 + 0.14·e^(-7k))、头像外圈 2px 强调色环放大并淡出。下方图鉴托盘 N 个 3:4 槽位，空位为虚线 + 问号，事件发生时依次 420ms outBack 填入缩略图与名字并换成强调色描边。徽章 role=status 播报当前数量，提供手动 +1 与重置按钮。",
+  "demo": "demos/patterns/collect-counter/index.html",
+  "kit": true,
+  "sources": [
+    {
+      "caseId": "map-pilgrimage",
+      "observation": "右上角 YUI SPOTTED ×N 随全片递增（×2→×11→×22）；Sound! Euphonium 段落右下角色托盘 REINA / HAZUKI / MIDORI / KUMIKO 依次点亮；结尾统计 ×19 YUI SIGHTINGS。",
+      "evidence": "observed",
+      "locator": "0:16.5、1:14.5、2:30.5"
+    }
+  ],
+  "previewAt": 6.2
+}

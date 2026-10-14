@@ -1,0 +1,27 @@
+:root { --paper: #f1ead8; --ink: #1e1d1b; --seal: #b8322a; --f-kai: "KaiTi", "STKaiti", "Kaiti SC", "楷体", "Songti SC", "SimSun", serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #2b2722; color: var(--ink); }
+p { margin: 0; }
+.defs { position: absolute; }
+.room { position: relative; width: 100vw; height: 100vh; overflow: hidden; background: radial-gradient(ellipse at 50% 40%, #3a332b, #1f1b17 75%); touch-action: none; cursor: grab; }
+.room:active { cursor: grabbing; }
+.scroll { position: absolute; left: 0; right: 0; top: 50%; height: min(66vh, 62vw); transform: translateY(-52%); }
+.paper { position: absolute; inset: 0; background: var(--paper); box-shadow: 0 30px 80px rgba(0, 0, 0, .45); overflow: hidden; }
+.paper .tex { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.layers { position: absolute; inset: 0; }
+.layer { position: absolute; left: 0; top: 0; height: 100%; }
+.layer svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.mist { position: absolute; left: -300px; height: 18%; background: linear-gradient(180deg, transparent, rgba(246, 241, 227, .92) 45%, rgba(246, 241, 227, .92) 55%, transparent); pointer-events: none; }
+.mist.m1 { top: 44%; } .mist.m2 { top: 64%; height: 14%; }
+.poem { position: absolute; top: 9%; display: flex; flex-direction: row-reverse; gap: .5em; align-items: flex-start; font-family: var(--f-kai); }
+.col { writing-mode: vertical-rl; font-size: clamp(22px, 3.2vh, 40px); letter-spacing: .18em; line-height: 1.4; color: #2a2723; }
+.by { writing-mode: vertical-rl; margin-top: 2.4em; font-size: clamp(13px, 1.6vh, 18px); letter-spacing: .2em; color: #5a544a; }
+.seal-s { width: clamp(28px, 3.2vh, 40px); margin-top: 1.2em; }
+.seal { position: absolute; width: clamp(70px, 10vh, 120px); }
+.ink-ring { position: absolute; width: 10px; height: 10px; border-radius: 50%; border: 3px solid var(--seal); pointer-events: none; }
+.roller { position: absolute; top: -4%; bottom: -4%; width: clamp(14px, 1.8vw, 26px); border-radius: 8px; background: linear-gradient(90deg, #4a2a16, #8a5a32 45%, #c08a54 55%, #5a3418); box-shadow: 0 8px 22px rgba(0, 0, 0, .5); }
+.roller::before, .roller::after { content: ""; position: absolute; left: -20%; right: -20%; height: 5%; border-radius: 6px; background: #d9b77a; }
+.roller::before { top: -3%; } .roller::after { bottom: -3%; }
+.mini { position: absolute; left: 50%; bottom: 5vh; width: min(60vw, 520px); height: 22px; transform: translateX(-50%); border: 1px solid rgba(241, 234, 216, .5); background: rgba(241, 234, 216, .08); }
+.mini .win { position: absolute; top: -3px; bottom: -3px; border: 2px solid #f1ead8; background: rgba(241, 234, 216, .18); }
+.hint { position: absolute; left: 50%; bottom: calc(5vh + 34px); transform: translateX(-50%); font: 13px/1 "Microsoft YaHei", "PingFang SC", sans-serif; color: rgba(241, 234, 216, .75); letter-spacing: .1em; white-space: nowrap; }

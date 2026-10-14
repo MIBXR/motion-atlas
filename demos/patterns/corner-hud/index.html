@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>四角信息 HUD — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #f2efe8; --ink: #16171a; --muted: rgba(22,23,26,.62); --line: rgba(22,23,26,.2); --accent: #d9632b;
+    --pad: clamp(16px, 3.4vw, 60px); --f-sans: "Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    --f-display: "Bahnschrift","DIN Alternate","Segoe UI","PingFang SC",sans-serif; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); color: var(--ink); font-family: var(--f-sans); }
+  p, ol { margin: 0; padding: 0; }
+  .world { position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 72px 72px; opacity: .55; }
+  .world::after { content: ""; position: absolute; left: 30%; top: 22%; width: 46%; height: 52%; border-radius: 48% 52% 40% 60%; background: rgba(110,140,165,.18); }
+  .hud { position: absolute; left: var(--pad); right: var(--pad); }
+  .top { top: clamp(18px, 3vw, 50px); display: grid; grid-template-columns: 1fr auto auto; gap: 12px 28px; align-items: start; }
+  .day { font: 700 clamp(16px, 1.5vw, 24px)/1 var(--f-display); letter-spacing: .06em; }
+  .day .n { display: inline-block; color: var(--accent); overflow: hidden; height: 1em; vertical-align: top; }
+  .day .n i { display: block; font-style: normal; }
+  .day small { font: 500 13px/1 var(--f-mono); color: var(--muted); }
+  .date { margin-top: 8px; font: 12px/1 var(--f-mono); letter-spacing: .18em; color: var(--muted); }
+  .under { display: block; margin-top: 14px; width: 120px; height: 3px; background: var(--ink); opacity: .7; }
+  .geo { text-align: right; font: 12px/1.6 var(--f-mono); letter-spacing: .08em; color: var(--muted); }
+  .clock { font: 600 clamp(26px, 2.6vw, 44px)/1 var(--f-mono); font-variant-numeric: tabular-nums; }
+  .clock sup { margin-left: 4px; font-size: 12px; color: var(--accent); vertical-align: top; letter-spacing: .1em; }
+  .rule { grid-column: 1 / -1; position: relative; height: 1px; background: var(--line); }
+  .rule i { position: absolute; left: 0; top: -1px; height: 3px; background: var(--accent); }
+  .bottom { bottom: clamp(16px, 2.6vw, 44px); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 16px 24px; }
+  .np-head { display: flex; align-items: center; gap: 10px; font: 600 12px/1 var(--f-mono); letter-spacing: .24em; color: var(--muted); }
+  .np-head svg { width: 20px; height: 16px; fill: var(--accent); }
+  .track { margin-top: 8px; font-size: 14px; color: var(--muted); } .track b { color: var(--ink); }
+  .lyric { margin-top: 22px; font: 700 clamp(15px, 1.5vw, 24px)/1.25 var(--f-sans); min-height: 1.25em; }
+  .sub { margin-top: 6px; font-size: clamp(13px, 1.05vw, 17px); color: var(--muted); min-height: 1.3em; }
+  .stepper { list-style: none; position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(64px, 9vw, 160px); }
+  .stepper::before, .stepper .fill { content: ""; position: absolute; top: 9px; left: 6px; height: 3px; background: var(--line); }
+  .stepper::before { right: calc(clamp(64px, 9vw, 160px) - 6px); }
+  .stepper .fill { background: var(--ink); }
+  .stepper li { position: relative; padding-top: 22px; font: 600 12px/1 var(--f-mono); letter-spacing: .14em; color: var(--muted); }
+  .stepper li::before { content: ""; position: absolute; left: 0; top: 3px; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--line); background: var(--paper); }
+  .stepper li.on { color: var(--ink); } .stepper li.on::before { background: var(--ink); border-color: var(--ink); }
+  @media (max-width: 720px) { .geo { display: none; } .top { grid-template-columns: 1fr auto; } .bottom { grid-template-columns: 1fr; } .stepper { grid-auto-columns: minmax(0, 1fr); } .stepper li { letter-spacing: .04em; } .stepper::before { right: calc(25% - 6px); } }
+</style>
+</head>
+<body>
+<div class="world" aria-hidden="true"></div>
+<header class="hud top" aria-label="行程信息">
+  <div><p class="day"><b>DAY</b> <span class="n"><i>01</i></span> <small>/ <span class="total"></span></small></p><p class="date"></p><i class="under"></i></div>
+  <div class="geo"><p class="coord"></p><p class="elev"></p></div>
+  <div class="clock"><span class="time"></span><sup class="tz"></sup></div>
+  <i class="rule"><i></i></i>
+</header>
+<footer class="hud bottom">
+  <div>
+    <p class="np-head"><svg viewBox="0 0 20 16" aria-hidden="true"><rect x="1" width="3"/><rect x="6" width="3"/><rect x="11" width="3"/><rect x="16" width="3"/></svg><span>NOW PLAYING</span></p>
+    <p class="track"><b class="title"></b> — <span class="artist"></span></p>
+    <p class="lyric"></p><p class="sub"></p>
+  </div>
+  <ol class="stepper"><i class="fill"></i></ol>
+</footer>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 ===== */
+const CONFIG = {
+  duration: 12,
+  totalDays: 3,
+  tz: 'CST',
+  accent: '#d9632b',
+  days: [{ t: 0, n: 1, date: 'THU · OCT 01 2026' }, { t: 6, n: 2, date: 'FRI · OCT 02 2026' }],
+  clock: [{ t: 0, m: 9 * 60 + 12 }, { t: 5.9, m: 21 * 60 + 40 }, { t: 6, m: 8 * 60 + 5 }, { t: 12, m: 18 * 60 }], // 分钟，可跨天跳变
+  coords: [{ t: 0, lat: 30.2427, lng: 120.1446, z: 11.2, elev: 7 }, { t: 12, lat: 31.315, lng: 120.631, z: 12.4, elev: 4 }],
+  stops: ['BEIJING', 'HANGZHOU', 'SUZHOU', 'SHANGHAI'],
+  progress: [{ t: 0, v: 1 }, { t: 6, v: 1 }, { t: 9, v: 2 }, { t: 12, v: 2 }],
+  music: { title: 'Paper Lanterns', artist: 'Motion Atlas Original' },
+  lyrics: [
+    { t: 0.4, text: 'Paper lanterns on the water line', sub: '水面上一排纸灯笼' },
+    { t: 4.0, text: 'Every bridge I cross remembers me', sub: '走过的每一座桥都记得我' },
+    { t: 8.0, text: 'Count the gables, count the boats', sub: '数一数山墙，数一数小船' },
+  ],
+};
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s);
+document.documentElement.style.setProperty('--accent', CONFIG.accent);
+$('.total').textContent = MK.pad(CONFIG.totalDays);
+$('.tz').textContent = CONFIG.tz;
+$('.title').textContent = CONFIG.music.title;
+$('.artist').textContent = CONFIG.music.artist;
+const stepper = $('.stepper');
+stepper.insertAdjacentHTML('beforeend', CONFIG.stops.map((s) => `<li>${s}</li>`).join(''));
+const lis = stepper.querySelectorAll('li');
+const lastBefore = (list, t) => list.filter((x) => t >= x.t).pop() || list[0];
+const lerpList = (list, t, key) => {
+  for (let i = 0; i < list.length - 1; i++) if (t <= list[i + 1].t) return MK.lerp(list[i][key], list[i + 1][key], MK.ease.inOutCubic(MK.invLerp(list[i].t, list[i + 1].t, t)));
+  return list[list.length - 1][key];
+};
+function render(t) {
+  // 日序：变化时数字从下方滚入（460ms）
+  const d = lastBefore(CONFIG.days, t);
+  const k = MK.seg(t, d.t, 0.46, MK.ease.outCubic);
+  $('.day .n').innerHTML = `<i style="transform:translateY(${(1 - k) * 100}%)">${MK.pad(d.n)}</i>`;
+  $('.date').textContent = d.date;
+  // 时钟：同一天内连续推进；相邻关键帧间隔 < 0.2s 视为跨天跳变
+  let m = CONFIG.clock[0].m;
+  for (let i = 0; i < CONFIG.clock.length - 1; i++) {
+    const a = CONFIG.clock[i], b = CONFIG.clock[i + 1];
+    if (t >= a.t && t < b.t) m = b.t - a.t < 0.2 ? a.m : MK.lerp(a.m, b.m, (t - a.t) / (b.t - a.t));
+    if (t >= b.t) m = b.m;
+  }
+  $('.time').textContent = `${MK.pad(m / 60 % 24)}:${MK.pad(m % 60)}`;
+  const lat = lerpList(CONFIG.coords, t, 'lat'), lng = lerpList(CONFIG.coords, t, 'lng');
+  $('.coord').textContent = `${lat.toFixed(4)}°N ${lng.toFixed(4)}°E`;
+  $('.elev').textContent = `ELEV ${Math.round(lerpList(CONFIG.coords, t, 'elev'))} M · Z ${lerpList(CONFIG.coords, t, 'z').toFixed(1)}`;
+  // 进度：顶部细线 + 步进器
+  const p = lerpList(CONFIG.progress, t, 'v'), ratio = p / (CONFIG.stops.length - 1);
+  $('.rule i').style.width = `${ratio * 100}%`;
+  lis.forEach((li, i) => li.classList.toggle('on', p >= i - 0.02));
+  $('.fill').style.width = innerWidth <= 720 ? `calc(75% * ${ratio})` : `calc((100% - clamp(64px, 9vw, 160px)) * ${ratio})`;
+  // 歌词：打字 + 副行淡入；均衡器柱高由时间决定（可复现）
+  const ly = CONFIG.lyrics.filter((x) => t >= x.t).pop();
+  $('.lyric').textContent = ly ? MK.typeText(ly.text, MK.seg(t, ly.t, 0.7, MK.ease.linear)) : '···';
+  $('.sub').textContent = ly ? ly.sub : '';
+  $('.sub').style.opacity = ly ? MK.seg(t, ly.t + 0.4, 0.4) : 0;
+  document.querySelectorAll('.np-head rect').forEach((r, i) => { const h = 3 + 12 * (0.5 + 0.5 * Math.sin(t * (6 + i * 1.9) + i)); r.setAttribute('y', 16 - h); r.setAttribute('height', h); });
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: 0, label: 'DAY 01' }, { t: 4, label: '歌词换行' }, { t: 6, label: '跨天' }, { t: 9, label: '抵达下一站' }] });
+MK.expose(tl);
+MK.controls(tl, { accent: CONFIG.accent });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 5 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+addEventListener('resize', () => tl.seek(tl.time));
+</script>
+</body>
+</html>

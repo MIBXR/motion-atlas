@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "decrypt-reveal",
+  "pattern": {
+    "id": "decrypt-reveal",
+    "order": 32,
+    "title": "对角解密与磨砂转清",
+    "types": [
+      "transition",
+      "texture"
+    ],
+    "carriers": [
+      "console",
+      "showcase",
+      "video"
+    ],
+    "summary": "两条信号色对角线合拢、停留、收束；玻璃盖板自上而下由磨砂变清晰；右侧文档上的黑色遮挡条按阅读顺序依次退开——“读取”被做成一个可以看见的过程。",
+    "mechanism": "对角线是两条 SVG 路径（vector-effect: non-scaling-stroke），用 dashoffset 从 0 到全长再到负值实现“合拢→收束”；磨砂层是 backdrop-filter: blur 的覆盖层，用 clip-path: inset(p% 0 0 0) 自上而下切掉，并有一条高光边沿跟随；每个文本块内放一条绝对定位的黑色遮挡条，transform-origin 右侧，scaleX 1→0，按 80ms 错峰。",
+    "trigger": "打开档案 / 解锁内容",
+    "effect": "把等待变成揭示，内容的价值感与保密感同时成立。",
+    "timing": [
+      {
+        "name": "对角线",
+        "value": "合拢 450ms inOutCubic，约 1.1s 后收束 350ms"
+      },
+      {
+        "name": "转清",
+        "value": "1.3s inOutCubic，自上而下"
+      },
+      {
+        "name": "遮挡条",
+        "value": "每条 420ms，错峰 80ms，从标题到摘要"
+      }
+    ],
+    "useCases": [
+      "档案/资料详情",
+      "解锁奖励",
+      "产品规格揭示",
+      "保密信息展示"
+    ],
+    "avoid": [
+      "频繁打开的列表详情（每次都揭示会拖慢效率，可只在首次）"
+    ],
+    "accessibility": {
+      "reducedMotion": "直接显示清晰内容与正文。",
+      "keyboard": "揭示不阻挡焦点；正文在 DOM 中始终可读。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [
+        "boot-typing",
+        "rolling-digits",
+        "card-flip-sheen"
+      ],
+      "conflicts": [],
+      "notes": "遮挡条只覆盖视觉，正文文字始终在 DOM 中，屏幕阅读器不受影响。"
+    },
+    "prompt": "实现“解密揭示”：左侧玻璃卡（圆角 16px、半透明暖白、内含 SVG 结构图），其上覆盖 backdrop-filter: blur(9px) 的磨砂层；两条信号色对角线（SVG，non-scaling-stroke）用 stroke-dasharray 142 在 450ms 内合拢，停留约 1.1s 后 350ms 收束；磨砂层用 clip-path: inset(p% 0 0 0) 在 1.3s 内自上而下切掉，并有一条渐变高光沿切口移动；右侧文档每个文本块（标题、分类、四项元数据、摘要）内置一条黑色遮挡条，transform-origin 右侧、scaleX 1→0，每条 420ms、按阅读顺序错峰 80ms。正文始终在 DOM 中可读；减少动态时直接显示完成态。",
+    "demo": "demos/patterns/decrypt-reveal/index.html",
+    "kit": true,
+    "previewAt": 1.6,
+    "sources": [
+      {
+        "caseId": "archive-os",
+        "observation": "模型与正文同步解密：对角解密线合拢、保持并收束，盖板自上而下由磨砂变清晰；右侧文档的遮挡条随之退开，露出标题、资料字段与正文。",
+        "evidence": "observed",
+        "locator": "README · 新版效果"
+      }
+    ],
+    "preview": "previews/patterns/decrypt-reveal.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "archive-os",
+      "bundle": "agent/cases/archive-os.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 对角解密与磨砂转清 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/decrypt-reveal.json) 自动生成。\n\n## 实现 Prompt\n\n实现“解密揭示”：左侧玻璃卡（圆角 16px、半透明暖白、内含 SVG 结构图），其上覆盖 backdrop-filter: blur(9px) 的磨砂层；两条信号色对角线（SVG，non-scaling-stroke）用 stroke-dasharray 142 在 450ms 内合拢，停留约 1.1s 后 350ms 收束；磨砂层用 clip-path: inset(p% 0 0 0) 在 1.3s 内自上而下切掉，并有一条渐变高光沿切口移动；右侧文档每个文本块（标题、分类、四项元数据、摘要）内置一条黑色遮挡条，transform-origin 右侧、scaleX 1→0，每条 420ms、按阅读顺序错峰 80ms。正文始终在 DOM 中可读；减少动态时直接显示完成态。\n\n## 参数\n\n- **对角线**：合拢 450ms inOutCubic，约 1.1s 后收束 350ms\n- **转清**：1.3s inOutCubic，自上而下\n- **遮挡条**：每条 420ms，错峰 80ms，从标题到摘要\n\n[打开 Demo](../../demos/patterns/decrypt-reveal/index.html) · [在库中查看](../../patterns.html#pattern/decrypt-reveal)\n"
+  },
+  "entrypoint": "demos/patterns/decrypt-reveal/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/decrypt-reveal/index.html",
+      "bytes": 6424,
+      "sha256": "a3e9124b31aaaaaee167ae6867606ed6c40661f25a77911f89b855b12dae1ad0"
+    },
+    {
+      "path": "demos/patterns/decrypt-reveal/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/decrypt-reveal.jpg",
+      "bytes": 37595,
+      "sha256": "77ce7087425b0cdd0a13ac76ccc980b1429b10e96b192e1a6581be6e4067205d"
+    }
+  ]
+}

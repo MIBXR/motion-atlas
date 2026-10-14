@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>滚动数字与文字 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #eae5e1; --ink: #171713; --muted: #77756d; --accent: #c8742f; --f: "Segoe UI Variable Display","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); color: var(--ink); font-family: var(--f); }
+  .stage { position: absolute; inset: 0; display: grid; place-content: center; gap: 34px; padding: 24px; }
+  .k { font: 600 12px/1 var(--f); letter-spacing: .12em; color: var(--muted); }
+  .file { margin-top: 12px; font: 800 clamp(26px, 3.4vw, 54px)/1 var(--f); display: flex; align-items: baseline; }
+  .count { display: flex; align-items: baseline; gap: 24px; }
+  .big { font: 300 clamp(54px, 7vw, 110px)/1 var(--f); }
+  .count small { font: 400 20px/1 var(--f-mono); color: var(--muted); }
+  .digits { display: inline-flex; overflow: hidden; height: 1em; line-height: 1; }
+  .digits > span { display: block; width: .6em; text-align: center; }
+  .big .digits > span { width: .56em; }
+  .digits i { display: block; font-style: normal; height: 1em; }
+  .title { position: relative; display: inline-block; overflow: hidden; height: 1.3em; margin-top: 10px; font: 500 clamp(16px, 1.6vw, 24px)/1.3 var(--f); min-width: 14em; }
+  .title span { position: absolute; left: 0; top: 0; white-space: nowrap; }
+  .pad { display: flex; gap: 10px; }
+  button { min-width: 44px; min-height: 44px; border: 1px solid var(--ink); background: transparent; color: var(--ink); font: 600 13px/1 var(--f-mono); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; }
+  button svg { width: 18px; height: 18px; }
+  button:hover { background: var(--ink); color: var(--paper); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main class="stage">
+  <section><p class="k">INTERNAL DATABASE / FILE NUMBER</p><p class="file">X-<span class="digits" id="num"></span></p><p class="title" id="title" aria-live="polite"></p></section>
+  <section><p class="k">ARCHIVE / SELECT</p><p class="count"><span class="big"><span class="digits" id="row"></span></span><small>/ 08</small></p></section>
+  <div class="pad">
+    <button type="button" data-d="-1" aria-label="上一份"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" data-d="1" aria-label="下一份"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" data-burst="1">快速连按 ×5</button>
+  </div>
+</main>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 每次切换：旧值沿方向滚出、新值滚入；连续快速输入只显示“当前运动 → 最新目标”，不排队。 */
+const CONFIG = {
+  roll: 0.46, blur: 0.35, // 滚动时长（秒）与运动模糊（px）
+  titles: ['光学腔体 · 第三代', '低温回路校准', '模块化框架 B-7', '共生菌群观察', '细胞培养舱 · 维护日志', '访客通行规程', '共振电池 · 原型 4', '项目 · 静默海'],
+  events: [{ t: 0.6, d: 1 }, { t: 1.6, d: 1 }, { t: 2.6, d: -1 }, { t: 3.6, d: 1 }, { t: 3.75, d: 1 }, { t: 3.9, d: 1 }, { t: 4.05, d: 1 }, { t: 5.4, d: -1 }],
+  duration: 7,
+};
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s);
+let extra = [];
+const N = CONFIG.titles.length;
+// 从事件序列推导：当前值、上一次变化时刻、滚动起点（取当时“正在显示”的值）
+function state(t) {
+  let v = 0, last = -9, from = 0, dir = 1;
+  for (const e of [...CONFIG.events, ...extra].sort((a, b) => a.t - b.t)) {
+    if (e.t > t) break;
+    // 连续输入时从上一个目标重新起滚：只显示“当前运动 → 最新目标”，不为中间值排队
+    from = v; v = (v + e.d + N) % N; last = e.t; dir = e.d;
+  }
+  return { v, last, from, dir };
+}
+function digits(el, a, b, p, dir, len) {
+  const A = String(a).padStart(len, '0'), B = String(b).padStart(len, '0');
+  el.innerHTML = [...B].map((ch, i) => {
+    if (A[i] === ch || p >= 1) return `<span><i>${ch}</i></span>`;
+    const y = dir > 0 ? -p : p - 1, bl = (Math.sin(p * Math.PI) * CONFIG.blur).toFixed(2);
+    const [top, bottom] = dir > 0 ? [A[i], ch] : [ch, A[i]];
+    return `<span><i style="transform:translateY(${y * 100}%);filter:blur(${bl}px)">${top}</i><i style="transform:translateY(${y * 100}%);filter:blur(${bl}px)">${bottom}</i></span>`;
+  }).join('');
+}
+function text(el, a, b, p, dir) {
+  if (p >= 1 || a === b) { el.innerHTML = `<span>${b}</span>`; return; }
+  const o = dir > 0 ? -p : p, n = dir > 0 ? 1 - p : p - 1;
+  el.innerHTML = `<span style="transform:translateY(${o * 100}%);opacity:${1 - p}">${a}</span><span style="transform:translateY(${n * 100}%);opacity:${p}">${b}</span>`;
+}
+function render(t) {
+  const s = state(t), p = MK.seg(t, s.last, CONFIG.roll, MK.ease.outCubic);
+  digits($('#num'), 17 + s.from, 17 + s.v, p, s.dir, 3);
+  digits($('#row'), s.from + 1, s.v + 1, p, s.dir, 2);
+  text($('#title'), CONFIG.titles[s.from], CONFIG.titles[s.v], p, s.dir);
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: CONFIG.events.map((e, i) => ({ t: e.t, label: e.d > 0 ? '↓ 下一份' : '↑ 上一份' })) });
+tl.on((t) => { if (t < 0.05) extra = []; });
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.burst) for (let i = 0; i < 5; i++) extra.push({ t: tl.time + i * 0.08, d: 1 });
+  else extra.push({ t: tl.time, d: Number(b.dataset.d) });
+  if (!tl.playing) tl.play();
+});
+MK.expose(tl);
+MK.controls(tl, { accent: '#c8742f' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 6 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

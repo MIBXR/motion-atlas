@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>地图巡礼 · 游戏过场式旅行影像 — Motion Atlas Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="stage" class="stage" aria-label="地图巡礼影像">
+    <div id="map" class="map" aria-hidden="true"></div>
+    <div id="fallback" class="map-fallback" aria-hidden="true"></div>
+    <svg id="routes" class="routes" aria-hidden="true"></svg>
+    <div id="markers" class="markers" aria-hidden="true"></div>
+
+    <div id="cards" class="cards"></div>
+
+    <section id="flashback" class="flashback" aria-hidden="true">
+      <img alt="">
+      <span class="fb-tag"></span>
+      <div class="fb-vtext"></div>
+      <p class="fb-en"></p>
+      <p class="fb-caption"></p>
+    </section>
+
+    <section id="compare" class="compare" aria-hidden="true">
+      <div class="cmp-right"><img alt=""><span class="cmp-label"></span></div>
+      <div class="cmp-left"><img alt=""><span class="cmp-label"></span></div>
+      <i class="cmp-divider"></i>
+      <span class="cmp-stamp"></span>
+    </section>
+
+    <div id="scrim" class="scrim" aria-hidden="true"></div>
+
+    <div id="frame" class="chapter-frame" aria-hidden="true">
+      <svg preserveAspectRatio="none"><path class="fr-line"/></svg>
+      <i class="fr-c tl"></i><i class="fr-c tr"></i><i class="fr-c bl"></i><i class="fr-c br"></i>
+    </div>
+
+    <section id="intro" class="intro-title" aria-hidden="true">
+      <div class="it-cjk"></div>
+      <div class="it-side">
+        <i class="it-rule"></i>
+        <h1 class="it-en"></h1>
+        <p class="it-sub"></p>
+      </div>
+    </section>
+
+    <section id="loc" class="loc-title" aria-hidden="true">
+      <div class="lt-cjk"></div>
+      <div class="lt-side"><i class="lt-rule"></i><h2 class="lt-en"></h2></div>
+    </section>
+
+    <section id="daycard" class="daycard" aria-hidden="true">
+      <div class="dc-row"><span class="dc-day">DAY</span><span class="dc-num"></span></div>
+      <p class="dc-date"></p>
+    </section>
+
+    <header class="hud hud-top">
+      <div class="hud-day">
+        <p class="hd-title"><b>DAY</b> <span class="hd-n">00</span> <small>/ <span class="hd-total"></span></small></p>
+        <p class="hd-date"></p>
+        <i class="hd-under"></i>
+      </div>
+      <div class="hud-geo">
+        <p class="hg-coord"></p>
+        <p class="hg-elev"></p>
+      </div>
+      <div class="hud-clock"><span class="hc-time">06:10</span><sup class="hc-tz"></sup></div>
+      <i class="hud-rule"><i class="hud-rule-fill"></i></i>
+    </header>
+
+    <div class="badge" aria-hidden="true">
+      <span class="bd-avatar">
+        <svg viewBox="0 0 32 32"><path d="M6 9l4 4h12l4-4v14a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="#f3b562"/><circle cx="12.5" cy="19" r="1.6" fill="#16171a"/><circle cx="19.5" cy="19" r="1.6" fill="#16171a"/><path d="M14.5 23h3l-1.5 1.4z" fill="#d9632b"/><path d="M4 21h5M4 24h5M23 21h5M23 24h5" stroke="#16171a" stroke-width="1" stroke-linecap="round"/></svg>
+      </span>
+      <span class="bd-label"></span>
+      <b class="bd-n">×0</b>
+    </div>
+
+    <div class="chapter-tag" aria-hidden="true">
+      <span class="ct-chip"></span><b class="ct-title"></b>
+    </div>
+
+    <div class="alert" role="status">
+      <div class="al-bar">
+        <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v5M12 17.6v.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <b class="al-title"></b><span class="al-detail"></span>
+      </div>
+      <span class="al-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6l-7 6 7 6zM20 6l-7 6 7 6z" fill="currentColor"/></svg><span class="al-chip-text"></span></span>
+    </div>
+
+    <div class="toast" aria-hidden="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11h8M8 15h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span class="ts-text"></span>
+    </div>
+
+    <figure class="note" aria-hidden="true">
+      <svg class="nt-doodle" viewBox="0 0 120 80" aria-hidden="true"><path d="M10 60c20-8 32-30 50-30s30 22 50 30M30 62c8-16 22-24 30-24s22 8 30 24M18 70h84" fill="none" stroke="#2a2a2a" stroke-width="2.2" stroke-linecap="round"/><circle cx="92" cy="18" r="9" fill="none" stroke="#d9632b" stroke-width="2.2"/></svg>
+      <p class="nt-text"></p>
+      <figcaption class="nt-sign"></figcaption>
+    </figure>
+
+    <aside class="collect" aria-hidden="true"></aside>
+
+    <footer class="hud hud-bottom">
+      <div class="np">
+        <p class="np-head"><svg class="np-eq" viewBox="0 0 20 16" aria-hidden="true"><rect x="1" width="3" y="6" height="10"/><rect x="6" width="3" y="2" height="14"/><rect x="11" width="3" y="8" height="8"/><rect x="16" width="3" y="4" height="12"/></svg><span>NOW PLAYING</span></p>
+        <p class="np-track"><b class="np-title"></b> — <span class="np-artist"></span></p>
+        <p class="np-lyric"></p>
+        <p class="np-sub"></p>
+      </div>
+      <ol class="stepper"></ol>
+      <p class="attrib"></p>
+    </footer>
+
+    <section class="outro" aria-hidden="true">
+      <ul class="ou-stats"></ul>
+      <p class="ou-fin"><span class="ou-fin-text"></span> <small class="ou-handle"></small></p>
+      <div class="ou-credits"></div>
+    </section>
+
+    <canvas id="grain" class="grain" width="320" height="180" aria-hidden="true"></canvas>
+  </main>
+
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script src="scenes.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

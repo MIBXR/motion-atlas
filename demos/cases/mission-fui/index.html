@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>任务指挥台 FUI — Motion Atlas Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app" id="app" aria-label="任务指挥台">
+    <div class="edge" id="edge" aria-hidden="true"></div>
+    <header class="top" id="top">
+      <p class="m-name"><b id="mName"></b><small id="mCode"></small></p>
+      <p class="state" id="state" role="status"><i></i><span id="stateLabel">NOMINAL</span></p>
+      <p class="utc"><small>UTC</small><b id="utc">04:17:00</b></p>
+    </header>
+
+    <aside class="left panel" id="left">
+      <p class="ph">CONTACTS <span id="cCount"></span></p>
+      <ul class="contacts" id="contacts"></ul>
+      <div class="lockbox" id="lockbox">
+        <p class="ph">TARGET</p>
+        <p class="lk-id" id="lkId">—</p>
+        <dl class="lk-data" id="lkData"></dl>
+        <p class="lk-status" id="lkStatus">NO LOCK</p>
+      </div>
+    </aside>
+
+    <section class="center panel" id="center">
+      <div class="scope-wrap" id="scopeWrap">
+        <canvas id="scope" width="900" height="900" aria-label="雷达扫描"></canvas>
+        <div class="reticle" id="reticle" aria-hidden="true"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><span class="rt-label" id="rtLabel"></span></div>
+      </div>
+      <p class="scope-meta"><span id="sweep">BRG 000</span><span>RANGE 120 KM</span><span id="ringLbl">4 RINGS</span></p>
+    </section>
+
+    <aside class="right panel" id="right">
+      <p class="ph">TELEMETRY</p>
+      <canvas id="osc" width="600" height="220" aria-label="遥测波形"></canvas>
+      <div class="sys" id="sys"></div>
+      <p class="ph">EVENT LOG</p>
+      <ol class="log" id="log" aria-live="polite"></ol>
+    </aside>
+
+    <footer class="bottom" id="bottom"><span class="prompt">&gt; <span id="cmd"></span><i class="caret"></i></span><span class="keys">1 / 2 / 3 切换告警态 · 点击目标锁定</span></footer>
+    <div class="scan" aria-hidden="true"></div>
+  </main>
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

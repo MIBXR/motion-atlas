@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>产线流动 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #f4f4f0; --dark: #1d1f22; --muted: #6b6e70; --line: #c9cbc6; --yellow: #ffd400; --ok: #2fbf71; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #e6e6e1; font-family: "Bahnschrift","Segoe UI","Microsoft YaHei",sans-serif; color: var(--dark); }
+  svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .panel { position: absolute; right: 18px; top: 18px; display: grid; gap: 8px; padding: 12px 14px; background: var(--paper); clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); font: 12px/1.3 "JetBrains Mono",Consolas,monospace; }
+  .panel label { display: grid; grid-template-columns: 70px 120px 40px; gap: 8px; align-items: center; }
+  .panel input { accent-color: var(--dark); }
+</style>
+</head>
+<body>
+<svg id="svg" viewBox="0 0 1000 560" aria-label="产线流动示意"></svg>
+<form class="panel" id="panel" aria-label="参数"><label>速度<input type="range" name="speed" min="20" max="240" step="10"><output></output></label><label>物料数<input type="range" name="items" min="1" max="10" step="1"><output></output></label></form>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 物料位置 = 路径长度 × ((t × 速度 / 长度 + i / 数量) mod 1)，用 getPointAtLength 取点：只依赖时间，可 seek。
+ * 传送带纹理用 stroke-dashoffset 同速推进；节点上的数字按时间计数。 */
+const CONFIG = {
+  nodes: [{ id: 'a', x: 110, y: 140, label: 'MN-01' }, { id: 'b', x: 110, y: 420, label: 'MN-02' }, { id: 'c', x: 500, y: 280, label: 'RF-02' }, { id: 'd', x: 890, y: 280, label: 'DP-K7' }],
+  links: [['a', 'c'], ['b', 'c'], ['c', 'd']],
+  speed: 110, items: 5, duration: 8,
+};
+/* ================================== */
+const MK = MotionKit, NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('svg');
+const el = (tag, a, p = svg) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e; };
+const N = Object.fromEntries(CONFIG.nodes.map((n) => [n.id, n]));
+const links = CONFIG.links.map(([a, b]) => {
+  const A = N[a], B = N[b], x1 = A.x + 80, x2 = B.x - 80, mx = (x1 + x2) / 2, r = 16, s = Math.sign(B.y - A.y);
+  const d = Math.abs(B.y - A.y) < 1 ? `M${x1} ${A.y}H${x2}` : `M${x1} ${A.y}H${mx - r}Q${mx} ${A.y} ${mx} ${A.y + s * r}V${B.y - s * r}Q${mx} ${B.y} ${mx + r} ${B.y}H${x2}`;
+  el('path', { d, fill: 'none', stroke: '#c9cbc6', 'stroke-width': 14, 'stroke-linejoin': 'round' });
+  const belt = el('path', { d, fill: 'none', stroke: '#1d1f22', 'stroke-width': 2, 'stroke-dasharray': '6 10' });
+  return { belt, len: belt.getTotalLength(), g: el('g', {}) };
+});
+const counters = CONFIG.nodes.map((n) => {
+  const g = el('g', { transform: `translate(${n.x} ${n.y})` });
+  el('path', { d: 'M-70 -40H80V30L70 40H-80V-30Z', fill: '#fff', stroke: '#1d1f22', 'stroke-width': 2 }, g);
+  el('text', { x: -60, y: -12, 'data-fs': 14, 'font-family': 'JetBrains Mono, Consolas, monospace', fill: '#6b6e70' }, g).textContent = n.label;
+  const c = el('text', { x: -60, y: 18, 'data-fs': 22, 'font-weight': 700, 'font-family': 'Bahnschrift, Segoe UI, sans-serif', fill: '#1d1f22' }, g);
+  el('circle', { cx: 62, cy: -24, r: 6, fill: '#2fbf71' }, g);
+  return c;
+});
+let rects = [];
+function ensureItems() {
+  if (rects.length === CONFIG.items * links.length) return;
+  links.forEach((l) => { l.g.innerHTML = ''; });
+  rects = links.flatMap((l) => Array.from({ length: CONFIG.items }, () => ({ l, r: el('rect', { width: 12, height: 12, x: -6, y: -6, fill: '#1d1f22' }, l.g) })));
+}
+// SVG 文字按画布缩放换算，保证渲染字号 ≥ 12px
+function fitText() { const sc = svg.getBoundingClientRect().width / 1000; if (sc) svg.querySelectorAll('text').forEach((tx) => tx.setAttribute('font-size', Math.max(Number(tx.dataset.fs), 12 / sc).toFixed(1))); }
+addEventListener('resize', fitText);
+function render(t) {
+  ensureItems();
+  links.forEach((l) => { l.belt.style.strokeDashoffset = -t * CONFIG.speed; });
+  const idx = new Map();
+  rects.forEach((it) => {
+    const i = idx.get(it.l) ?? 0; idx.set(it.l, i + 1);
+    const u = (((t * CONFIG.speed) / it.l.len + i / CONFIG.items) % 1 + 1) % 1;
+    const p = it.l.belt.getPointAtLength(u * it.l.len);
+    it.r.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(45)`);
+  });
+  // 每个节点的累计产量：按“已到达终点的物料数”计算
+  counters.forEach((c, i) => { c.textContent = `${Math.floor((t * CONFIG.speed * CONFIG.items) / 480) + i * 3} pcs`; });
+}
+const form = document.getElementById('panel');
+for (const k of ['speed', 'items']) { form[k].value = CONFIG[k]; form[k].nextElementSibling.textContent = CONFIG[k]; }
+form.addEventListener('input', (e) => { CONFIG[e.target.name] = Number(e.target.value); e.target.nextElementSibling.textContent = e.target.value; render(tl.time); });
+fitText();
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true });
+MK.expose(tl);
+MK.controls(tl, { accent: '#ffd400' });
+const P = MK.params();
+tl.seek(P.t ?? 0);
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

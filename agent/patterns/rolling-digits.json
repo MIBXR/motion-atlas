@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "rolling-digits",
+  "pattern": {
+    "id": "rolling-digits",
+    "order": 31,
+    "title": "滚动数字与文字",
+    "types": [
+      "type-motion",
+      "feedback"
+    ],
+    "carriers": [
+      "console",
+      "showcase",
+      "video"
+    ],
+    "summary": "编号、计数、标题与分类在切换时沿输入方向滚动 460ms，带极轻的运动模糊；快速连按只显示“当前运动 → 最新目标”，不为中间值排队。",
+    "mechanism": "每个数字位是一个裁切窗口，旧字符与新字符上下排列，按进度 p 平移一格；只有变化的位才滚动。文字（含中文）整行替换：旧行沿方向滚出并淡出，新行从反方向滚入。方向跟随输入（下一项向上滚、上一项向下滚）。连续输入时从上一个目标重新起滚。",
+    "trigger": "切换选择 / 数值更新",
+    "effect": "数字的变化有方向和重量，用户能“感觉”到自己往哪个方向翻动。",
+    "timing": [
+      {
+        "name": "时长",
+        "value": "460ms outCubic"
+      },
+      {
+        "name": "运动模糊",
+        "value": "sin(pπ)×0.35px"
+      },
+      {
+        "name": "方向",
+        "value": "下一项向上滚，上一项向下滚"
+      }
+    ],
+    "useCases": [
+      "档案编号",
+      "计数器与页码",
+      "时钟",
+      "分类标题切换"
+    ],
+    "avoid": [
+      "大段文字",
+      "每秒变化很多次的实时数据（改为直接替换）"
+    ],
+    "accessibility": {
+      "reducedMotion": "立即显示最终值。",
+      "keyboard": "按钮为原生 button，带可访问名称；数值区域 aria-live。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [
+        "wave-array",
+        "boot-typing",
+        "corner-hud"
+      ],
+      "conflicts": [],
+      "notes": "编号、标题、列名共用同一个时长与方向，看起来是同一次“翻动”。"
+    },
+    "prompt": "实现方向感滚动数字与文字：每个数字位是 height:1em 的 overflow:hidden 窗口，内部上下排列旧字符与新字符，按进度 p（460ms outCubic）平移一格，只有变化的位滚动，并加 sin(pπ)×0.35px 的运动模糊；文字整行替换，旧行沿方向滚出淡出、新行反方向滚入。方向由输入决定（下一项向上、上一项向下）。快速连按时从上一个目标重新起滚，不排队播放中间值。减少动态时直接替换。",
+    "demo": "demos/patterns/rolling-digits/index.html",
+    "kit": true,
+    "previewAt": 3.85,
+    "sources": [
+      {
+        "caseId": "archive-os",
+        "observation": "主档案标题与编号共享 460ms 滚动配置，固定向上滚动、模糊强度 0.2；连续输入从当前运动接续，只显示可见过渡与最新目标；底部列名、悬停标题与权限标签复用同一滚动。",
+        "evidence": "observed",
+        "locator": "DESIGN.md · 档案标题滚动 / 档案导航文字与刻度"
+      }
+    ],
+    "preview": "previews/patterns/rolling-digits.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "archive-os",
+      "bundle": "agent/cases/archive-os.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 滚动数字与文字 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/rolling-digits.json) 自动生成。\n\n## 实现 Prompt\n\n实现方向感滚动数字与文字：每个数字位是 height:1em 的 overflow:hidden 窗口，内部上下排列旧字符与新字符，按进度 p（460ms outCubic）平移一格，只有变化的位滚动，并加 sin(pπ)×0.35px 的运动模糊；文字整行替换，旧行沿方向滚出淡出、新行反方向滚入。方向由输入决定（下一项向上、上一项向下）。快速连按时从上一个目标重新起滚，不排队播放中间值。减少动态时直接替换。\n\n## 参数\n\n- **时长**：460ms outCubic\n- **运动模糊**：sin(pπ)×0.35px\n- **方向**：下一项向上滚，上一项向下滚\n\n[打开 Demo](../../demos/patterns/rolling-digits/index.html) · [在库中查看](../../patterns.html#pattern/rolling-digits)\n"
+  },
+  "entrypoint": "demos/patterns/rolling-digits/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/rolling-digits/index.html",
+      "bytes": 6374,
+      "sha256": "58f468b5ed65c3e41e6450639a41189484c9a3d113c94ebbe3336c66820483e3"
+    },
+    {
+      "path": "demos/patterns/rolling-digits/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/rolling-digits.jpg",
+      "bytes": 17701,
+      "sha256": "026f2a072e5bd90b651bcd610dc081dfe4ea748b344f91378144518779934585"
+    }
+  ]
+}

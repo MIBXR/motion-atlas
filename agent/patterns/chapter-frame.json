@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "chapter-frame",
+  "pattern": {
+    "id": "chapter-frame",
+    "order": 15,
+    "title": "章节主题：标签、强调色与四角框线",
+    "types": [
+      "composition",
+      "transition"
+    ],
+    "carriers": [
+      "video",
+      "console",
+      "showcase"
+    ],
+    "summary": "进入一个主题时，标签色块擦出、标题打字、全局强调色换成主题色，屏幕边缘描出一圈细框并在四角弹出方块——像游戏进入一段任务。",
+    "mechanism": "强调色以 400ms 从默认色插值到章节色，并同步到路线、卡片描边、标签与框线；框线是沿屏幕内缘的路径，用 dashoffset 800ms 描出；四角 14px 方块 120ms 错峰 outBack 弹出。离开时整体 500ms 淡出、颜色 600ms 回到默认。",
+    "trigger": "进入作品/主题/任务段",
+    "effect": "观众立即知道“现在讲的是另一件事”，同时保持同一套系统。",
+    "timing": [
+      {
+        "name": "色块擦出",
+        "value": "350ms outCubic（clip-path）"
+      },
+      {
+        "name": "强调色",
+        "value": "入 400ms / 出 600ms"
+      },
+      {
+        "name": "框线描出",
+        "value": "800ms inOutCubic"
+      },
+      {
+        "name": "四角方块",
+        "value": "300ms outBack，错峰 120ms"
+      }
+    ],
+    "useCases": [
+      "多主题旅行影像",
+      "游戏任务段落",
+      "展示台分区"
+    ],
+    "avoid": [
+      "主题过多导致色彩失去意义（建议 ≤5 种）"
+    ],
+    "accessibility": {
+      "reducedMotion": "框线与颜色直接出现，标题完整显示。",
+      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [
+        "corner-hud",
+        "route-draw-marker",
+        "vertical-title-blur"
+      ],
+      "conflicts": [],
+      "notes": "全屏回忆有自己的框时，隐藏章节框线避免双框。"
+    },
+    "prompt": "实现章节主题切换：标签色块（强调色底、白色 12px 等宽、字距 .24em）用 clip-path 350ms 从左擦出，旁边标题打字 700ms，再弹出一个 SVG 小图标；全局 CSS 变量 --accent 用 400ms 从默认色插值到章节色，路线、卡片描边、标签与框线都读取它；沿屏幕内缘（inset 8–20px）描一圈 3px 框线，stroke-dashoffset 800ms inOutCubic 从周长到 0，四角 14px 方块 120ms 错峰 outBack 弹出。离开时 500ms 淡出，颜色 600ms 回默认。",
+    "demo": "demos/patterns/chapter-frame/index.html",
+    "kit": true,
+    "sources": [
+      {
+        "caseId": "map-pilgrimage",
+        "observation": "每部作品出现时：PILGRIMAGE 标签 + 作品名 + 小图标，强调色变为该作品色（蓝/红/紫），屏幕四角框线描出带方块。",
+        "evidence": "observed",
+        "locator": "0:40.7、1:46.5、2:10.5"
+      }
+    ],
+    "previewAt": 2.4,
+    "preview": "previews/patterns/chapter-frame.jpg"
+  },
+  "sourceCases": [
+    {
+      "caseId": "map-pilgrimage",
+      "bundle": "agent/cases/map-pilgrimage.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 章节主题：标签、强调色与四角框线 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/chapter-frame.json) 自动生成。\n\n## 实现 Prompt\n\n实现章节主题切换：标签色块（强调色底、白色 12px 等宽、字距 .24em）用 clip-path 350ms 从左擦出，旁边标题打字 700ms，再弹出一个 SVG 小图标；全局 CSS 变量 --accent 用 400ms 从默认色插值到章节色，路线、卡片描边、标签与框线都读取它；沿屏幕内缘（inset 8–20px）描一圈 3px 框线，stroke-dashoffset 800ms inOutCubic 从周长到 0，四角 14px 方块 120ms 错峰 outBack 弹出。离开时 500ms 淡出，颜色 600ms 回默认。\n\n## 参数\n\n- **色块擦出**：350ms outCubic（clip-path）\n- **强调色**：入 400ms / 出 600ms\n- **框线描出**：800ms inOutCubic\n- **四角方块**：300ms outBack，错峰 120ms\n\n[打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)\n"
+  },
+  "entrypoint": "demos/patterns/chapter-frame/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/chapter-frame/index.html",
+      "bytes": 6066,
+      "sha256": "86542fb349fda8a1eb86623336178c5266726af3ffe8fa18b024b30c7c7c453b"
+    },
+    {
+      "path": "demos/patterns/chapter-frame/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "previews/patterns/chapter-frame.jpg",
+      "bytes": 49030,
+      "sha256": "5ee88a5bce50ac821482b62dd0d74a1543ef399cadce40cfbae8ef544389957d"
+    }
+  ]
+}

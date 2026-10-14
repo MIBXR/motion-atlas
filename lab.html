@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>节奏实验室 · Motion Atlas</title>
+  <meta name="description" content="调缓动曲线、时长、错峰与 BPM 拍点，把结果导出为 CSS 变量、MotionKit 参数与 Prompt 片段。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/lab.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="lab">
+    <header class="lab-head">
+      <p class="eyebrow">RHYTHM LAB · EASE / DURATION / STAGGER / BPM</p>
+      <h1>把“手感”调成<em>数字</em>。</h1>
+      <p>动效的韵律由四个数决定：曲线、时长、错峰、拍子。在这里拖动曲线、改时长、设 BPM，立刻看到结果，并导出给代码或 Prompt。</p>
+    </header>
+
+    <section class="panel-grid">
+      <article class="pane">
+        <h2>缓动曲线 <small>CUBIC-BEZIER</small></h2>
+        <div class="presets" id="presets" role="group" aria-label="缓动预设"></div>
+        <div class="curve-wrap">
+          <svg id="curve" viewBox="-20 -60 340 420" aria-label="缓动曲线编辑器（可拖动两个控制点）">
+            <rect x="0" y="0" width="300" height="300" class="cv-box"/>
+            <path id="cvGrid" class="cv-grid"/>
+            <line id="h1" class="cv-handle-line"/><line id="h2" class="cv-handle-line"/>
+            <path id="cvPath" class="cv-path"/>
+            <circle id="p1" r="10" class="cv-pt" tabindex="0" role="slider" aria-label="控制点 1"/>
+            <circle id="p2" r="10" class="cv-pt" tabindex="0" role="slider" aria-label="控制点 2"/>
+            <circle id="cvDot" r="6" class="cv-dot"/>
+          </svg>
+          <div class="cv-vals">
+            <label>x1<input type="number" step="0.01" min="0" max="1" id="x1"></label><label>y1<input type="number" step="0.01" min="-1" max="2" id="y1"></label>
+            <label>x2<input type="number" step="0.01" min="0" max="1" id="x2"></label><label>y2<input type="number" step="0.01" min="-1" max="2" id="y2"></label>
+          </div>
+        </div>
+      </article>
+
+      <article class="pane">
+        <h2>时长与错峰 <small>DURATION / STAGGER</small></h2>
+        <div class="sliders">
+          <label><span>时长</span><input type="range" id="dur" min="80" max="2000" step="10"><output id="durV"></output></label>
+          <label><span>错峰</span><input type="range" id="stag" min="0" max="300" step="5"><output id="stagV"></output></label>
+          <label><span>位移</span><input type="range" id="dist" min="20" max="100" step="1"><output id="distV"></output></label>
+          <label><span>数量</span><input type="range" id="count" min="1" max="12" step="1"><output id="countV"></output></label>
+        </div>
+        <div class="preview" id="preview" aria-hidden="true"></div>
+        <div class="pv-tools"><button class="btn" type="button" id="replay"></button><label class="chk"><input type="checkbox" id="loop" checked>循环</label><span class="total" id="total"></span></div>
+      </article>
+
+      <article class="pane">
+        <h2>拍点与吸附 <small>BPM / QUANTIZE</small></h2>
+        <div class="sliders">
+          <label><span>BPM</span><input type="range" id="bpm" min="60" max="180" step="1"><output id="bpmV"></output></label>
+          <label><span>首拍偏移</span><input type="range" id="offset" min="0" max="1000" step="5"><output id="offsetV"></output></label>
+        </div>
+        <div class="seg" role="group" aria-label="吸附精度" id="div"><button type="button" data-d="1">拍</button><button type="button" data-d="2">半拍</button><button type="button" data-d="4">十六分</button></div>
+        <label class="ta-label" for="events">事件时刻（秒，逗号或换行分隔）</label>
+        <textarea id="events" rows="3"></textarea>
+        <div class="beatbar" id="beatbar" aria-hidden="true"></div>
+        <table class="qtable" id="qtable"></table>
+        <div class="pv-tools"><button class="btn" type="button" id="metro"></button><span class="total" id="beatInfo"></span></div>
+      </article>
+
+      <article class="pane export">
+        <h2>导出 <small>CSS · JS · PROMPT</small></h2>
+        <div class="tabs" role="tablist" id="exTabs"><button type="button" role="tab" aria-selected="true" data-k="css">CSS 变量</button><button type="button" role="tab" aria-selected="false" data-k="js">MotionKit</button><button type="button" role="tab" aria-selected="false" data-k="prompt">Prompt 片段</button></div>
+        <div class="prompt-box"><pre id="exOut"></pre><button class="btn" type="button" id="copyEx"></button></div>
+        <p class="note">设置会记在本浏览器里，方便下次继续调；换设备不会同步。</p>
+      </article>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="kit/motion-kit.js"></script>
+  <script src="data/catalog.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/lab.js"></script>
+</body>
+</html>

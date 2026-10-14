@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>字符解码 — Motion Atlas 巧思</title>
+<style>
+  :root { --paper: #e6e6e1; --dark: #1d1f22; --muted: #9b9fa2; --yellow: #ffd400; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--dark); color: #f4f4f0; font-family: "Bahnschrift","Segoe UI","Microsoft YaHei",sans-serif; }
+  .stage { position: absolute; inset: 0; display: grid; place-content: center; gap: 18px; padding: 24px; }
+  .row { display: grid; gap: 6px; }
+  .k { font: 600 12px/1 var(--f-mono); letter-spacing: .2em; color: var(--muted); }
+  .v { margin: 0; font: 700 clamp(22px, 3.4vw, 54px)/1.1 var(--f-mono); letter-spacing: .06em; white-space: pre; }
+  .v.cn { font-family: "Microsoft YaHei","PingFang SC",sans-serif; letter-spacing: .04em; }
+  .v .n { color: var(--yellow); opacity: .85; }
+  .v .c { display: inline-block; width: .6em; height: .95em; margin-left: 2px; vertical-align: -4px; background: var(--yellow); }
+</style>
+</head>
+<body>
+<main class="stage" aria-live="polite">
+  <div class="row"><span class="k">CALLSIGN</span><p class="v" id="a"></p></div>
+  <div class="row"><span class="k">SECTOR</span><p class="v" id="b"></p></div>
+  <div class="row"><span class="k">任务</span><p class="v cn" id="c"></p></div>
+</main>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 每个字符有自己的解出阈值（从左到右 + 随机抖动）；未解出时显示随机字符，随机由“帧号 + 位置”决定，可复现。 */
+const CONFIG = {
+  items: [
+    { el: 'a', text: 'PROTOCOL · FIELD TERMINAL', t: 0.3, dur: 1.1 },
+    { el: 'b', text: 'SECTOR K-7 / PLANT 02', t: 0.9, dur: 0.9 },
+    { el: 'c', text: '恢复区域供电 · 优先级 A', t: 1.5, dur: 1.0, set: '电网区域供恢复优先级任务协议终端节点线路' },
+  ],
+  fps: 24,                   // 随机字符刷新率
+  charset: 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#/%+=<>',
+  hold: 2.4, duration: 5,
+};
+/* ================================== */
+const MK = MotionKit;
+function render(t) {
+  for (const it of CONFIG.items) {
+    const el = document.getElementById(it.el);
+    const out = MK.seg(t, it.t + it.dur + CONFIG.hold, 0.5, MK.ease.linear); // 循环前反向“加密”
+    const p = MK.seg(t, it.t, it.dur, MK.ease.linear) * (1 - out);
+    if (t < it.t) { el.innerHTML = '<i class="c"></i>'; continue; }
+    const chars = MK.scramble(it.text, p, Math.floor(t * CONFIG.fps), 11 + it.el.charCodeAt(0), it.set || CONFIG.charset);
+    el.innerHTML = chars.map((c) => (c.done ? c.ch : `<span class="n">${c.ch}</span>`)).join('') + (p < 1 ? '<i class="c"></i>' : '');
+    el.setAttribute('aria-label', it.text);
+  }
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: CONFIG.items.map((it) => ({ t: it.t, label: it.el.toUpperCase() })) });
+MK.expose(tl);
+MK.controls(tl, { accent: '#ffd400' });
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? 3 : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>分屏对比与时间戳盖章 — Motion Atlas 巧思</title>
+<style>
+  :root { --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #05070b; }
+  .layer { position: absolute; inset: 0; overflow: hidden; }
+  .layer img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .left { clip-path: inset(0 100% 0 0); }
+  .label { position: absolute; top: clamp(24px, 8vh, 80px); padding: 7px 11px; background: rgba(10,12,16,.78); color: #fff; font: 600 12px/1 var(--f-mono); letter-spacing: .22em; }
+  .left .label { left: clamp(16px, 4vw, 60px); } .right .label { left: calc(50% + 24px); }
+  .divider { position: absolute; top: 0; bottom: 0; left: 0; width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 12px rgba(0,0,0,.5); cursor: ew-resize; touch-action: none; }
+  .divider::after { content: ""; position: absolute; top: 50%; left: 50%; width: 34px; height: 34px; margin: -17px; border-radius: 50%; border: 2px solid #fff; background: rgba(10,12,16,.5); }
+  .divider:focus-visible { outline: 3px solid #ffb38a; outline-offset: 4px; }
+  .stamp { position: absolute; right: 7%; bottom: 12%; padding: 10px 16px; border: 3px solid #fff; border-radius: 4px; color: #fff; font: 700 clamp(14px, 1.8vw, 28px)/1 var(--f-mono); letter-spacing: .08em; background: rgba(0,0,0,.28); }
+  .hint { position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%); color: rgba(255,255,255,.75); font: 12px/1 var(--f-mono); letter-spacing: .12em; }
+</style>
+</head>
+<body>
+<div class="layer right"><img id="now" alt="现在（程序化示意）"><span class="label" id="lr"></span></div>
+<div class="layer left" id="left"><img id="then" alt="过去（旧明信片风格示意）"><span class="label" id="ll"></span></div>
+<div class="divider" id="divider" role="slider" tabindex="0" aria-label="对比分割线" aria-valuemin="0" aria-valuemax="100"></div>
+<span class="stamp" id="stamp"></span>
+<p class="hint" id="hint">动画结束后可拖动分割线</p>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 ===== */
+const CONFIG = {
+  then: '', now: '',             // 两张对齐构图的图片；留空用程序化示意
+  leftLabel: 'POSTCARD · 1930s', rightLabel: 'REAL · 2026', stamp: '10.01 · 16:50 CST',
+  tWipe: 0.6, wipeDur: 0.7, split: 50, // 分割线停在百分比
+  tStamp: 1.5, stampDur: 0.38, stampFrom: 1.45, stampRotate: -4,
+  duration: 6,
+};
+/* ================================== */
+const MK = MotionKit, $ = (s) => document.querySelector(s);
+function scene(style) {
+  const c = document.createElement('canvas'); c.width = 1600; c.height = 1000; const g = c.getContext('2d'); const r = MK.rng(5);
+  const sky = g.createLinearGradient(0, 0, 0, 600); sky.addColorStop(0, '#7ea3c4'); sky.addColorStop(1, '#f1d6b8'); g.fillStyle = sky; g.fillRect(0, 0, 1600, 600);
+  const hill = (base, amp, col) => { g.fillStyle = col; g.beginPath(); g.moveTo(0, 1000); for (let x = 0; x <= 1600; x += 20) g.lineTo(x, base - Math.sin(x / 200 + 1) * amp - r() * 12); g.lineTo(1600, 1000); g.fill(); };
+  hill(540, 60, '#9aa9b4'); hill(590, 40, '#7d8b94');
+  g.fillStyle = '#56626a'; for (let i = 0; i < 5; i++) g.fillRect(1100 - (44 - i * 7), 520 - i * 36, (44 - i * 7) * 2, 28);
+  const w = g.createLinearGradient(0, 600, 0, 1000); w.addColorStop(0, '#cab9a6'); w.addColorStop(1, '#5d6f80'); g.fillStyle = w; g.fillRect(0, 600, 1600, 400);
+  if (style === 'postcard') {
+    const t = document.createElement('canvas'); t.width = 1600; t.height = 1000; const tg = t.getContext('2d');
+    tg.filter = 'sepia(.85) contrast(.82) brightness(1.08)'; tg.drawImage(c, 0, 0);
+    g.fillStyle = '#efe4cf'; g.fillRect(0, 0, 1600, 1000); g.drawImage(t, 56, 56, 1488, 888);
+    const img = g.getImageData(0, 0, 1600, 1000); for (let i = 0; i < img.data.length; i += 4) { const n = (r() - 0.5) * 34; img.data[i] += n; img.data[i + 1] += n; img.data[i + 2] += n; } g.putImageData(img, 0, 0);
+  }
+  return c.toDataURL('image/jpeg', 0.88);
+}
+$('#then').src = CONFIG.then || scene('postcard');
+$('#now').src = CONFIG.now || scene('photo');
+$('#ll').textContent = CONFIG.leftLabel; $('#lr').textContent = CONFIG.rightLabel; $('#stamp').textContent = CONFIG.stamp;
+let manual = null; // 用户拖动后的位置（百分比）
+function apply(x) {
+  $('#left').style.clipPath = `inset(0 ${100 - x}% 0 0)`;
+  $('#divider').style.left = `${x}%`;
+  $('#divider').style.opacity = x > 0.2 ? 1 : 0;
+  $('#divider').setAttribute('aria-valuenow', Math.round(x));
+}
+function render(t) {
+  const x = manual ?? MK.seg(t, CONFIG.tWipe, CONFIG.wipeDur, MK.ease.outQuart) * CONFIG.split;
+  apply(x);
+  $('#lr').style.opacity = MK.seg(t, 0.2, 0.3);
+  $('#ll').style.opacity = MK.seg(t, CONFIG.tWipe + 0.35, 0.3);
+  const k = MK.seg(t, CONFIG.tStamp, CONFIG.stampDur, MK.ease.outBack);
+  $('#stamp').style.opacity = MK.clamp(k * 3);
+  $('#stamp').style.transform = `rotate(${CONFIG.stampRotate}deg) scale(${CONFIG.stampFrom - (CONFIG.stampFrom - 1) * k})`;
+  $('#hint').style.opacity = MK.seg(t, 2.6, 0.5) * (manual == null ? 1 : 0);
+}
+// 拖动 / 键盘调节分割线
+const div = $('#divider');
+const fromX = (cx) => MK.clamp(cx / innerWidth, 0, 1) * 100;
+div.addEventListener('pointerdown', (e) => { div.setPointerCapture(e.pointerId); tl.pause(); manual = fromX(e.clientX); render(tl.time); });
+div.addEventListener('pointermove', (e) => { if (div.hasPointerCapture(e.pointerId)) { manual = fromX(e.clientX); render(tl.time); } });
+div.addEventListener('keydown', (e) => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  e.preventDefault(); e.stopPropagation(); tl.pause();
+  manual = MK.clamp((manual ?? CONFIG.split) + (e.key === 'ArrowRight' ? 5 : -5), 0, 100); render(tl.time);
+});
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: false, markers: [{ t: CONFIG.tWipe, label: '分割线滑入' }, { t: CONFIG.tStamp, label: '盖章' }] });
+tl.on((t, playing) => { if (playing && t < 0.05) manual = null; });
+MK.expose(tl);
+MK.controls(tl);
+const P = MK.params();
+tl.seek(P.t ?? (MK.prefersReducedMotion() ? CONFIG.duration : 0));
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>

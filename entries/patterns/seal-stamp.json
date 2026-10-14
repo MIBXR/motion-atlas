@@ -1,0 +1,68 @@
+{
+  "id": "seal-stamp",
+  "order": 76,
+  "title": "印章落下",
+  "types": [
+    "feedback"
+  ],
+  "carriers": [
+    "showcase",
+    "video"
+  ],
+  "summary": "抬起（影子变大变淡）→ 按下（1.35→1 回弹、轻微旋转）→ 印泥晕开（红色扩散环）→ 纸面微震与一声低频“咚”：一个确认动作的完整物理过程。",
+  "mechanism": "按下前 350ms 印章半透明放大 1.5、影子模糊扩大；按下 260ms outBack 从 1.35 缩到 1、−6°→−2°；按下后 100ms 起红色描边环 0.8s 扩到 16 倍并淡出；容器微震 6px·e^(−14t)；低频正弦下滑音 + 短噪声。",
+  "trigger": "确认 / 完成 / 签署",
+  "effect": "把“完成”变成一个有重量、有仪式感的动作。",
+  "timing": [
+    {
+      "name": "抬起",
+      "value": "350ms outCubic"
+    },
+    {
+      "name": "按下",
+      "value": "260ms outBack，1.35→1"
+    },
+    {
+      "name": "扩散环",
+      "value": "0.8s"
+    },
+    {
+      "name": "微震",
+      "value": "6px·e^(−14t)"
+    }
+  ],
+  "useCases": [
+    "完成/签署确认",
+    "文旅打卡盖章",
+    "长卷与证书结尾",
+    "任务完成"
+  ],
+  "avoid": [
+    "高频操作"
+  ],
+  "accessibility": {
+    "reducedMotion": "无震动，印章直接出现。",
+    "keyboard": "纸面可聚焦，回车在中心盖章。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [
+      "ink-bleed",
+      "hold-confirm"
+    ],
+    "conflicts": [],
+    "notes": "印章是画面中唯一的强彩色，放在阅读终点。"
+  },
+  "prompt": "实现印章落下：点击位置为落点；落下前 350ms 印章以 1.5 倍、半透明出现在上方，下方投影放大模糊；按下时 260ms outBack 从 scale 1.35 落到 1、rotate −6°→−2°，投影迅速变小消失；100ms 后一圈 3px 印泥色描边环 0.8s 扩大到 16 倍并淡出；纸面 translate 微震 6px·e^(−14t)；声音 90Hz 下滑正弦 + 80ms 低通噪声。纸面可聚焦，回车在中心盖章。",
+  "demo": "demos/patterns/seal-stamp/index.html",
+  "kit": true,
+  "previewAt": 1.3,
+  "sources": [
+    {
+      "caseId": "ink-scroll",
+      "observation": "长卷卷尾钤印。",
+      "evidence": "original",
+      "locator": "12.0s"
+    }
+  ]
+}

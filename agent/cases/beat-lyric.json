@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "beat-lyric",
+  "entry": {
+    "id": "beat-lyric",
+    "order": 6,
+    "title": "节拍动态字幕 · Kinetic Lyric MV",
+    "subtitle": "ON THE ONE / 96 BPM KINETIC TYPOGRAPHY",
+    "carriers": [
+      "video"
+    ],
+    "source": "original",
+    "evidence": "original",
+    "capturedAt": "2026-10-14",
+    "tags": [
+      "节拍同步",
+      "动态字体",
+      "硬切",
+      "遮罩上升",
+      "堆叠网格",
+      "Drop"
+    ],
+    "summary": "把歌词写成“拍号表”：词在拍上硬切出现、反拍轻轻上弹、军鼓拍条纹闪、每段换一整块颜色、Build 段八分音符叠字加速、Drop 每拍换色并震动——画面本身就是一份可视化的节拍器。",
+    "focus": "“韵律感”的关键是：画面的每次变化都对齐到一个可感知的时间网格（拍、半拍、小节），并且不同层级的变化用不同频率——词按拍、颜色按段、闪光按军鼓、镜头按底鼓。Demo 内置合成鼓点，开启声音后用前瞻调度与画面同拍，方便直接感受“对齐”带来的愉悦。",
+    "accent": "#ff4d2e",
+    "background": "#111214",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 13.9,
+    "energy": [
+      0.25,
+      0.3,
+      0.55,
+      0.6,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.85,
+      0.95,
+      1,
+      1,
+      0.95,
+      0.9,
+      0.6,
+      0.45,
+      0.3
+    ],
+    "rhythm": {
+      "duration": 31.2,
+      "bpm": 96,
+      "beats": [
+        {
+          "t": 0,
+          "label": "倒数",
+          "note": "1·2·3·4 每拍一个数字，等宽体，1.4→1 落定后在 60% 拍处淡出。"
+        },
+        {
+          "t": 2.5,
+          "label": "WE MOVE ON THE ONE",
+          "note": "每拍一个词硬切出现，1.5→1（120ms outExpo），反拍上弹 2%。"
+        },
+        {
+          "t": 5,
+          "label": "中文遮罩上升",
+          "note": "红底；“城市 / 在拍子里 / 醒来 / 每一步 / 都算数”从基线下方上升，按 hold 拍数停留后向上离场。"
+        },
+        {
+          "t": 10,
+          "label": "堆叠网格",
+          "note": "蓝底；8 个格子逐拍点亮一个词，第 20 拍起隔格反色闪烁。"
+        },
+        {
+          "t": 15,
+          "label": "Build",
+          "note": "米白底；“UP”按八分音符叠加放大、留下残影，条纹闪随进度加密，军鼓变成滚奏。"
+        },
+        {
+          "t": 20,
+          "label": "Drop",
+          "note": "巨型 DROP 铺满，每拍换色、底鼓震动与纵向拉伸。"
+        },
+        {
+          "t": 25,
+          "label": "Outro",
+          "note": "“STAY ON THE ONE”逐拍，第 44 拍进入结尾卡。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "色场",
+        "role": "整块纯色背景；段落开始时新色块 350ms 从左擦入，Drop 每拍换色。"
+      },
+      {
+        "name": "闪光层",
+        "role": "军鼓拍的 100° 斜条纹（difference 混合），Build 段随进度加密。"
+      },
+      {
+        "name": "镜头",
+        "role": "包住文字层的缩放与震动：每拍缩放脉冲 2.2%（Drop 6% + 震动）。"
+      },
+      {
+        "name": "文字层",
+        "role": "倒数、拍入、遮罩上升、堆叠网格、叠字、巨型字，各段一种语法。"
+      },
+      {
+        "name": "HUD",
+        "role": "标题 + 段名、小节/拍计数 + 四格拍点、底部频谱条。"
+      }
+    ],
+    "composition": {
+      "color": "四种纯色轮换：炭黑 #111214、信号红 #ff4d2e、电蓝 #2b59ff、米白 #f5f0e6；每段只用两色（底 + 字），强调色只在拍点灯与小元素上。",
+      "typography": "超粗窄体大写（Bahnschrift 75% 宽）做英文；超粗黑体做中文；等宽体做倒数与 HUD。字号以视口宽度计，单词永远占满画面主体。",
+      "layout": "中心构图为主，Stack 段改为 2×4 网格，Build 段散点叠加——用版式变化标记段落。",
+      "imagery": "没有图像：颜色、字形与节拍就是全部画面。",
+      "motion": "硬切优先：词在拍上直接出现（不淡入），只用 120ms 的“落定”缩放；反拍的小上弹与每拍镜头脉冲提供持续律动。",
+      "sound": "合成四拍底鼓、2/4 拍军鼓、反拍镲片与每拍低音；Build 段军鼓滚奏，Drop 段每拍底鼓 + 开镲。",
+      "rhythm": "词 = 拍；闪光 = 军鼓；镜头 = 底鼓；颜色 = 段落（2 小节）；八分音符只在 Build 使用——层级分明，避免“全都在动”。",
+      "coherence": "所有视觉事件都是同一个拍号表的不同读法，改 BPM 一处即可整体同步。"
+    },
+    "tokens": {
+      "palette": [
+        "#111214",
+        "#ff4d2e",
+        "#2b59ff",
+        "#f5f0e6",
+        "#ffd23f"
+      ],
+      "type": "Bahnschrift 窄体 800 + 中文黑体 900 + 等宽 HUD",
+      "motion": [
+        {
+          "name": "beat",
+          "value": "96 BPM = 625ms；十六分音符 156ms"
+        },
+        {
+          "name": "slam",
+          "value": "出现瞬间 1.5→1，120ms outExpo；hold 拍后硬切"
+        },
+        {
+          "name": "offbeat",
+          "value": "+0.5 拍上弹 2%，e^(−10·Δ) 回落"
+        },
+        {
+          "name": "rise",
+          "value": "遮罩内 250ms outCubic 上升，200ms inCubic 离场"
+        },
+        {
+          "name": "cam-pulse",
+          "value": "每拍 1 + 0.022·e^(−8·frac)（Drop 0.06 + 14px 震动）"
+        },
+        {
+          "name": "section-wipe",
+          "value": "新色块 350ms inOutQuart 从左擦入"
+        },
+        {
+          "name": "audio",
+          "value": "前瞻 120ms 调度到 AudioContext"
+        }
+      ]
+    },
+    "interaction": [
+      "空格播放/暂停；←/→ 跳 1 秒；Shift+←/→ 跳段落；站内刻度条按段落标记。",
+      "开启声音：合成鼓点与画面同拍（前瞻调度，拖动后自动重排）。",
+      "减少动态：关闭镜头缩放、震动与条纹闪，不自动播放。"
+    ],
+    "useCases": [
+      "歌词 MV / Lyric Video",
+      "短视频卡点",
+      "品牌口号影片",
+      "发布会开场",
+      "演出 VJ 素材"
+    ],
+    "avoid": [
+      "光敏人群（需关闭闪光与 Drop 换色）",
+      "需要细读的长句"
+    ],
+    "constraints": [
+      "原创歌词与合成鼓点，无真实音乐授权问题；接入真实歌曲时需按歌曲 BPM 与拍点重写 lyrics 表。",
+      "Drop 段每拍换色属于高强度闪烁，正式发布应提供关闭选项。"
+    ],
+    "prompt": "做一支 30 秒的节拍动态字幕 MV（HTML/CSS/JS，可 seek），96 BPM、12 小节：把歌词写成拍号表 {beat, text, style, hold}，所有视觉事件都换算成拍。①倒数：1·2·3·4 每拍一个等宽数字；②拍入（slam）：英文大写超粗窄体占满画面，每拍硬切出现，120ms outExpo 从 1.5 倍落定、−3° 回正，反拍上弹 2%；③遮罩上升（rise）：中文超粗黑体在 overflow:hidden 容器中 250ms 从下方升起，按 hold 拍停留后向上离场；④堆叠网格（stack）：2×4 描边格子逐拍点亮一个词，第 5 小节起隔格反色；⑤Build：“UP”按八分音符叠加，每次放大 12%、旋转、散点位置，旧的留下衰减残影，斜条纹闪随进度加密；⑥Drop：巨型词铺满，每拍在四色间轮换底与字，底鼓震动 + 纵向拉伸；⑦结尾卡。配色四种纯色轮换（炭黑/信号红/电蓝/米白），每段新色块 350ms 从左擦入；镜头每拍缩放脉冲 2.2%；军鼓拍（2、4 拍）100° 斜条纹 difference 闪。HUD：标题 + 段名、BAR/BEAT 计数、四格拍点、底部频谱条（底鼓/镲片确定性包络）。内置 WebAudio 合成鼓点并用 120ms 前瞻调度对齐画面。减少动态关闭闪光与震动。",
+    "videoPrompt": "Kinetic typography lyric video, 1920×1080, 30 seconds at 96 BPM, every change locked to the beat. Flat solid color fields cycling between charcoal, signal red, electric blue and off-white, each new section wiping in from the left. Huge condensed uppercase words slam onto the screen exactly on each beat — no fades, just a quick settle from 150% to 100% — and bob slightly on the offbeat. Bold Chinese characters rise from behind an invisible baseline mask. A 2×4 outlined grid fills one word per beat, then cells invert in a checker rhythm. A build-up stacks the word \"UP\" on eighth notes, growing and rotating with fading echoes while diagonal stripes flash faster and faster. The drop: a giant word fills the frame, background and text colors swap every beat with a camera punch on each kick. Minimal HUD with bar/beat counter and four beat squares, a small spectrum at the bottom. Tight, musical, graphic.",
+    "negativePrompt": "不要淡入淡出；不要让词的出现时间偏离拍点；不要所有层同时用同一频率运动；不要渐变和照片背景；不要超过四种主色。",
+    "migration": [
+      {
+        "field": "config.js → bpm / bars",
+        "how": "速度与小节数；时长自动计算。"
+      },
+      {
+        "field": "config.js → lyrics",
+        "how": "拍号表：beat（可为 .5）、text、style（count/slam/rise/stack/build/giant）、hold；stack 用 cell 指定格子。"
+      },
+      {
+        "field": "config.js → sections",
+        "how": "每段起始小节、底色/字色/强调色；strobe 数组用于 Drop 每拍换色。"
+      },
+      {
+        "field": "config.js → pattern",
+        "how": "十六步鼓点字符串（x 触发）、低音、Build/Drop 起止拍。"
+      },
+      {
+        "field": "接真实歌曲",
+        "how": "用 <audio> 播放并以 audio.currentTime 作为 t；按歌曲 BPM 与第一拍偏移（offset）重写 lyrics。"
+      }
+    ],
+    "demo": "demos/cases/beat-lyric/index.html",
+    "research": "docs/research/beat-lyric.md",
+    "patternIds": [
+      "beat-clock",
+      "word-slam",
+      "seekable-timeline"
+    ],
+    "sources": [
+      {
+        "title": "原创设计语言 · Motion Atlas",
+        "type": "原创",
+        "note": "动态字体 / 歌词视频的通用语法（拍入、遮罩、卡点）整理为可配置的拍号系统；歌词与鼓点原创。"
+      }
+    ],
+    "preview": "previews/cases/beat-lyric.jpg"
+  },
+  "documents": {
+    "prompt": "# 节拍动态字幕 · Kinetic Lyric MV · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/beat-lyric.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/beat-lyric.md)。\n\n## 实现 Prompt\n\n做一支 30 秒的节拍动态字幕 MV（HTML/CSS/JS，可 seek），96 BPM、12 小节：把歌词写成拍号表 {beat, text, style, hold}，所有视觉事件都换算成拍。①倒数：1·2·3·4 每拍一个等宽数字；②拍入（slam）：英文大写超粗窄体占满画面，每拍硬切出现，120ms outExpo 从 1.5 倍落定、−3° 回正，反拍上弹 2%；③遮罩上升（rise）：中文超粗黑体在 overflow:hidden 容器中 250ms 从下方升起，按 hold 拍停留后向上离场；④堆叠网格（stack）：2×4 描边格子逐拍点亮一个词，第 5 小节起隔格反色；⑤Build：“UP”按八分音符叠加，每次放大 12%、旋转、散点位置，旧的留下衰减残影，斜条纹闪随进度加密；⑥Drop：巨型词铺满，每拍在四色间轮换底与字，底鼓震动 + 纵向拉伸；⑦结尾卡。配色四种纯色轮换（炭黑/信号红/电蓝/米白），每段新色块 350ms 从左擦入；镜头每拍缩放脉冲 2.2%；军鼓拍（2、4 拍）100° 斜条纹 difference 闪。HUD：标题 + 段名、BAR/BEAT 计数、四格拍点、底部频谱条（底鼓/镲片确定性包络）。内置 WebAudio 合成鼓点并用 120ms 前瞻调度对齐画面。减少动态关闭闪光与震动。\n\n## 视频生成 Prompt\n\nKinetic typography lyric video, 1920×1080, 30 seconds at 96 BPM, every change locked to the beat. Flat solid color fields cycling between charcoal, signal red, electric blue and off-white, each new section wiping in from the left. Huge condensed uppercase words slam onto the screen exactly on each beat — no fades, just a quick settle from 150% to 100% — and bob slightly on the offbeat. Bold Chinese characters rise from behind an invisible baseline mask. A 2×4 outlined grid fills one word per beat, then cells invert in a checker rhythm. A build-up stacks the word \"UP\" on eighth notes, growing and rotating with fading echoes while diagonal stripes flash faster and faster. The drop: a giant word fills the frame, background and text colors swap every beat with a camera punch on each kick. Minimal HUD with bar/beat counter and four beat squares, a small spectrum at the bottom. Tight, musical, graphic.\n\n## 负向约束\n\n不要淡入淡出；不要让词的出现时间偏离拍点；不要所有层同时用同一频率运动；不要渐变和照片背景；不要超过四种主色。\n\n## 动效 Token\n\n- **beat**：96 BPM = 625ms；十六分音符 156ms\n- **slam**：出现瞬间 1.5→1，120ms outExpo；hold 拍后硬切\n- **offbeat**：+0.5 拍上弹 2%，e^(−10·Δ) 回落\n- **rise**：遮罩内 250ms outCubic 上升，200ms inCubic 离场\n- **cam-pulse**：每拍 1 + 0.022·e^(−8·frac)（Drop 0.06 + 14px 震动）\n- **section-wipe**：新色块 350ms inOutQuart 从左擦入\n- **audio**：前瞻 120ms 调度到 AudioContext\n\n## 制作约束\n\n- 原创歌词与合成鼓点，无真实音乐授权问题；接入真实歌曲时需按歌曲 BPM 与拍点重写 lyrics 表。\n- Drop 段每拍换色属于高强度闪烁，正式发布应提供关闭选项。\n\n## 迁移\n\n- `config.js → bpm / bars`：速度与小节数；时长自动计算。\n- `config.js → lyrics`：拍号表：beat（可为 .5）、text、style（count/slam/rise/stack/build/giant）、hold；stack 用 cell 指定格子。\n- `config.js → sections`：每段起始小节、底色/字色/强调色；strobe 数组用于 Drop 每拍换色。\n- `config.js → pattern`：十六步鼓点字符串（x 触发）、低音、Build/Drop 起止拍。\n- `接真实歌曲`：用 <audio> 播放并以 audio.currentTime 作为 t；按歌曲 BPM 与第一拍偏移（offset）重写 lyrics。\n\n[打开 Demo](../../demos/cases/beat-lyric/index.html) · [在库中查看](../../cases.html#case/beat-lyric)\n",
+    "research": "# 节拍动态字幕：设计说明\n\n- 类型：原创设计语言（2026-10-14）\n- 目标：示范“韵律感”如何被工程化——把视觉事件全部写成拍号，并让不同层级的变化使用不同的音乐频率。\n\n## 频率分层\n\n| 层 | 频率 | 表现 |\n| --- | --- | --- |\n| 文字 | 每拍（Build 段八分音符） | 拍入 / 遮罩上升 / 网格点亮 |\n| 镜头 | 每拍（底鼓） | 缩放脉冲，Drop 加震动 |\n| 闪光 | 第 2、4 拍（军鼓） | 斜条纹 difference 闪 |\n| 颜色 | 每 2 小节（段落） | 新色块从左擦入；Drop 每拍换色 |\n| 版式 | 每段 | 中心 → 网格 → 散点 → 铺满 |\n\n层级越高，变化越慢；这样画面始终有律动，但不会“所有东西一起抖”。\n\n## 音画同步\n\n浏览器的 requestAnimationFrame 每帧约 16ms，且会抖动；如果在“到点那一帧”才播放声音，听感会拖拍。Demo 把未来 120ms 内的音符提前交给 AudioContext，以精确的 `delay` 播放；拖动刻度条后重置调度游标。接真实歌曲时，用 `audio.currentTime` 作为 t，并测出第一拍的偏移量。\n\n## 验证记录\n\n- 2026-10-14：Edge 无头 1600×900 截取 12 个时刻，覆盖倒数、拍入、中文遮罩、堆叠网格、Build、Drop、Outro；把结尾卡提前到第 44 拍以消除 2.5 秒空白。\n- 声音调度通过代码审查与本地试听验证事件顺序；未在多设备上测量音画延迟。\n"
+  },
+  "entrypoint": "demos/cases/beat-lyric/index.html",
+  "files": [
+    {
+      "path": "demos/cases/beat-lyric/config.js",
+      "bytes": 2824,
+      "sha256": "5811b0512428e96ec427844ad3b0e53bf93e06099802f16b92e0277d43e3d46b"
+    },
+    {
+      "path": "demos/cases/beat-lyric/index.html",
+      "bytes": 1271,
+      "sha256": "05a8d4061fa5d9939f11b1ef23ce33453d5623790c79a7eb0281afbb1ed239e2"
+    },
+    {
+      "path": "demos/cases/beat-lyric/motion-kit.js",
+      "bytes": 18550,
+      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+    },
+    {
+      "path": "demos/cases/beat-lyric/script.js",
+      "bytes": 10690,
+      "sha256": "07515a13d4061ffda7460ef454066977cfc92dec0bb0bde4c501b5748ef0e5f2"
+    },
+    {
+      "path": "demos/cases/beat-lyric/style.css",
+      "bytes": 3258,
+      "sha256": "a23e47dbf5d2b00f2a94be09864840b9cc1165f0aeadeccace0ea97e8ac3b3b8"
+    },
+    {
+      "path": "previews/cases/beat-lyric.jpg",
+      "bytes": 56322,
+      "sha256": "ce26321e469386c5db1fb93118787e6bd0cd6e73efe97b99e7fd6516153f3789"
+    }
+  ]
+}

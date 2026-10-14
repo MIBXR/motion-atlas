@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>可复现的胶片颗粒与暗角 — Motion Atlas 巧思</title>
+<style>
+  :root { --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
+  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #111; color: #fff; font-family: "Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+  .scene { position: absolute; inset: 0; background: linear-gradient(180deg, #2a3f5a 0%, #e9b98a 58%, #3f4b55 59%, #1d252c 100%); }
+  .scene::before { content: ""; position: absolute; left: 0; right: 0; top: 40%; height: 19%; background: radial-gradient(ellipse at 60% 100%, #ffd9a8 0, transparent 60%); }
+  .scene h1 { position: absolute; left: 7%; bottom: 14%; margin: 0; font: 800 clamp(32px, 6vw, 96px)/1 "Bahnschrift","Segoe UI",sans-serif; letter-spacing: .04em; text-shadow: 0 2px 30px rgba(0,0,0,.35); }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; image-rendering: pixelated; }
+  .vig { position: absolute; inset: 0; pointer-events: none; }
+  .scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); }
+  .panel { position: absolute; right: 14px; top: 14px; display: grid; gap: 8px; padding: 12px 14px; border-radius: 10px; background: rgba(10,12,16,.72); backdrop-filter: blur(8px); font: 12px/1.3 var(--f-mono); }
+  .panel label { display: grid; grid-template-columns: 74px 120px 34px; align-items: center; gap: 8px; }
+  .panel input { accent-color: #ff5b2e; }
+</style>
+</head>
+<body>
+<div class="scene" aria-hidden="true"><h1>GOLDEN HOUR</h1></div>
+<canvas id="grain" width="320" height="180" aria-hidden="true"></canvas>
+<div class="scan" id="scan" aria-hidden="true"></div>
+<div class="vig" id="vig" aria-hidden="true"></div>
+<form class="panel" id="panel" aria-label="颗粒参数">
+  <label>颗粒强度<input type="range" name="amount" min="0" max="0.4" step="0.01"><output></output></label>
+  <label>换帧 fps<input type="range" name="fps" min="6" max="30" step="1"><output></output></label>
+  <label>暗角<input type="range" name="vignette" min="0" max="0.8" step="0.02"><output></output></label>
+  <label>扫描线<input type="range" name="scan" min="0" max="0.6" step="0.02"><output></output></label>
+  <label>闪烁<input type="range" name="flicker" min="0" max="0.12" step="0.01"><output></output></label>
+</form>
+<script src="motion-kit.js"></script>
+<script>
+/* ===== CONFIG：改这里即可迁移 =====
+ * 预生成 N 帧噪声，按 floor(t*fps) 选帧 → 同一时刻永远同一张，逐帧渲染可复现。 */
+const CONFIG = { amount: 0.1, fps: 12, frames: 6, vignette: 0.45, scan: 0, flicker: 0.04, blend: 'overlay', duration: 6 };
+/* ================================== */
+const MK = MotionKit, cv = document.getElementById('grain'), g = cv.getContext('2d');
+cv.style.mixBlendMode = CONFIG.blend;
+const frames = Array.from({ length: CONFIG.frames }, (_, k) => {
+  const r = MK.rng(100 + k), img = g.createImageData(320, 180);
+  for (let i = 0; i < img.data.length; i += 4) { const v = r() * 255; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
+  return img;
+});
+const form = document.getElementById('panel');
+for (const k of ['amount', 'fps', 'vignette', 'scan', 'flicker']) { form[k].value = CONFIG[k]; form[k].nextElementSibling.textContent = CONFIG[k]; }
+form.addEventListener('input', (e) => { CONFIG[e.target.name] = Number(e.target.value); e.target.nextElementSibling.textContent = e.target.value; tl.seek(tl.time); });
+function render(t) {
+  const i = Math.max(0, Math.floor(t * CONFIG.fps));
+  g.putImageData(frames[i % frames.length], 0, 0);
+  // 闪烁用帧号的伪随机，而不是 Math.random()
+  const fl = (MK.rng(7 + i)() - 0.5) * 2 * CONFIG.flicker;
+  cv.style.opacity = CONFIG.amount;
+  document.querySelector('.scene').style.filter = `brightness(${1 + fl})`;
+  document.getElementById('vig').style.background = `radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(0,0,0,${CONFIG.vignette}) 100%)`;
+  document.getElementById('scan').style.opacity = CONFIG.scan;
+}
+const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true });
+MK.expose(tl);
+MK.controls(tl);
+const P = MK.params();
+tl.seek(P.t ?? 0);
+if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+</script>
+</body>
+</html>
