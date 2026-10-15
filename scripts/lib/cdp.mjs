@@ -58,9 +58,10 @@ class Page {
   }
   once(method, timeout = 30000) {
     return new Promise((resolve, reject) => {
-      const w = { method, resolve };
+      // 计时器在事件到达后清除，避免挂住 Node 进程直到超时
+      const timer = setTimeout(() => { this.waiters = this.waiters.filter((x) => x !== w); reject(new Error(`等待 ${method} 超时`)); }, timeout);
+      const w = { method, resolve: (v) => { clearTimeout(timer); resolve(v); } };
       this.waiters.push(w);
-      setTimeout(() => { this.waiters = this.waiters.filter((x) => x !== w); reject(new Error(`等待 ${method} 超时`)); }, timeout);
     });
   }
   async viewport(width, height, dpr = 1) {
@@ -73,10 +74,11 @@ class Page {
   }
   /** 执行表达式并等待 Promise；返回值需可 JSON 序列化 */
   async eval(expression, timeout = 60000) {
+    let timer = 0;
     const r = await Promise.race([
       this.send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }),
-      sleep(timeout).then(() => { throw new Error('脚本执行超时：' + expression.slice(0, 80)); }),
-    ]);
+      new Promise((_, rej) => { timer = setTimeout(() => rej(new Error('脚本执行超时：' + expression.slice(0, 80))), timeout); }),
+    ]).finally(() => clearTimeout(timer));
     if (r.exceptionDetails) throw new Error(r.exceptionDetails.exception?.description || r.exceptionDetails.text);
     return r.result.value;
   }
@@ -96,15 +98,20 @@ class Page {
   }
 }
 
-export async function launch({ width = 1600, height = 900, port = 9300 + Math.floor(Math.random() * 500) } = {}) {
+/**
+ * 启动无头浏览器。args 追加命令行参数（例如 '--autoplay-policy=document-user-activation-required'）。
+ * close() 会关闭全部页面连接并请求浏览器正常退出，避免 Node 进程因 WebSocket 未关闭而挂住。
+ */
+export async function launch({ width = 1600, height = 900, port = 9300 + Math.floor(Math.random() * 500), args = [] } = {}) {
   const exe = findBrowser();
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'motion-atlas-cdp-'));
   const proc = spawn(exe, [
     '--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`,
     `--window-size=${width},${height}`, '--hide-scrollbars', '--mute-audio', '--no-first-run',
     '--no-default-browser-check', '--disable-extensions', '--force-color-profile=srgb',
-    '--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist', 'about:blank',
+    '--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist', ...args, 'about:blank',
   ], { stdio: 'ignore' });
+  const pages = new Set();
   const base = `http://127.0.0.1:${port}`;
   for (let i = 0; i < 100; i++) {
     try { await getJSON(`${base}/json/version`); break; } catch { await sleep(100); }
@@ -116,12 +123,24 @@ export async function launch({ width = 1600, height = 900, port = 9300 + Math.fl
     const ws = new WebSocket(target.webSocketDebuggerUrl);
     await new Promise((res, rej) => { ws.addEventListener('open', res, { once: true }); ws.addEventListener('error', rej, { once: true }); });
     const page = new Page(ws);
+    pages.add(page);
+    ws.addEventListener('close', () => pages.delete(page));
     await page.send('Page.enable');
     await page.send('Runtime.enable');
     await page.viewport(width, height);
     return page;
   }
   async function close() {
+    // 先请求浏览器正常退出（Windows 上直接 kill 可能留下子进程，使页面 WebSocket 一直不断开）
+    try {
+      const v = await getJSON(`${base}/json/version`);
+      const ws = new WebSocket(v.webSocketDebuggerUrl);
+      await Promise.race([new Promise((res, rej) => { ws.addEventListener('open', res, { once: true }); ws.addEventListener('error', rej, { once: true }); }), sleep(1500)]);
+      if (ws.readyState === 1) { ws.send(JSON.stringify({ id: 1, method: 'Browser.close' })); await sleep(200); }
+      try { ws.close(); } catch { /* 已关闭 */ }
+    } catch { /* 浏览器已退出 */ }
+    for (const p of pages) { try { p.ws.close(); } catch { /* 已关闭 */ } }
+    pages.clear();
     try { proc.kill(); } catch { /* 已退出 */ }
     await sleep(300);
     try { fs.rmSync(profile, { recursive: true, force: true }); } catch { /* Windows 可能仍占用 */ }

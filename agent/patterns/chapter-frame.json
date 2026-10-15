@@ -71,7 +71,8 @@
       }
     ],
     "previewAt": 2.4,
-    "preview": "previews/patterns/chapter-frame.jpg"
+    "preview": "previews/patterns/chapter-frame.jpg",
+    "previewPortrait": null
   },
   "sourceCases": [
     {
@@ -91,8 +92,8 @@
     },
     {
       "path": "demos/patterns/chapter-frame/motion-kit.js",
-      "bytes": 18550,
-      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+      "bytes": 106749,
+      "sha256": "da072b9799e311d9e8abd6bb304a56f6c4c4159a7f223944ff730ce1c2705aa4"
     },
     {
       "path": "previews/patterns/chapter-frame.jpg",
