@@ -1,7 +1,7 @@
 /* Motion Atlas · 案例库与巧思库（同一套浏览、筛选、详情与刻度条） */
 (function () {
   'use strict';
-  const { ICONS, favs, copy, esc, toast } = window.Site;
+  const { ICONS, favs, copy, esc, toast, store } = window.Site;
   const MA = window.MA;
   const KIND = document.body.dataset.lib; // 'cases' | 'patterns'
   const TAX = MA.taxonomy;
@@ -11,6 +11,7 @@
 
   /* ---------- 小工具 ---------- */
   const fmtT = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${(s % 60).toFixed(2).padStart(5, '0')}`;
+  const fmtB = (s) => fmtT(s).replace(/^00:/, ''); // 节拍点的短格式：不足一分钟时省略分钟
   const evBadge = (ev) => `<span class="ev ev-${ev}">${esc(TAX.evidence[ev] || ev)}</span>`;
   const energyPath = (arr, w = 100, h = 26) => {
     if (!arr || !arr.length) return '';
@@ -139,7 +140,7 @@
             ${caseOptions}
             <select class="select" id="sort" aria-label="排序">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
           </div>
-          <div class="result-line"><span id="result-count"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : '每个巧思都有独立 Demo'}</span></div>
+          <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : '每个巧思都有独立 Demo'}</span></div>
           <div class="grid" id="grid"></div>
         </section>
       </div>`;
@@ -212,148 +213,654 @@
     }
   });
 
-  /* ---------- 详情：舞台与刻度条 ---------- */
-  let poll = 0, unsub = null;
-  function stageHTML(it) {
-    return `<div class="stage-panel">
-      <div class="stage-tools">
-        <div class="seg" role="group" aria-label="预览尺寸">
-          <button type="button" data-size="fit" aria-pressed="true">适应面板</button>
-          <button type="button" data-size="1080" aria-pressed="false">成片 1920×1080</button>
-          <button type="button" data-size="phone" aria-pressed="false">手机 390</button>
+  /* ---------- 详情：舞台、刻度条、画幅、声音、全屏 ----------
+   * 舞台框按 Demo 的画幅比例计算（横屏 16:9、竖屏 9:16；未迁移的旧 Demo 按 16:9 画框、内部自适应）：
+   *   可用高度 = 视口高 − 顶栏 − 上边距 − 舞台工具栏 − 刻度条 − 间距 − 下边距；舞台宽 = min(可用宽, 可用高 × 比例)。
+   * 左右并排（split）还是上下排列（stack）由计算结果决定：并排时舞台宽 ≥ 960px，或不小于上下排列时的 85%，才并排。
+   * 竖屏且旁边放得下时，节拍列表放到舞台右侧（data-side="1"），刻度条横跨两者。
+   * 全屏：舞台按 contain 铺满屏幕，工具栏与刻度条浮在上下，静止 2.5 秒后淡出。
+   * 与 Demo 的通信：同源 iframe，直接读写 contentWindow.__motion；画幅、声音、加载状态走 postMessage（docs/pipeline.md 第六节）。 */
+  const PREF_ORIENT = 'ma-orient', PREF_SOUND = 'ma-sound';
+  const SIDE_MIN = 220, SIDE_MAX = 360, MIN_STAGE_H = 200, BOTTOM = 16;
+  const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const normOrient = (o) => (o === 'portrait' || o === 'p' ? 'portrait' : o === 'landscape' || o === 'l' ? 'landscape' : null);
+  // 详情页 hash 可带参数，便于分享：#case/<id>?orient=portrait&t=3.5
+  const hashParams = () => { const h = location.hash, i = h.indexOf('?'); return new URLSearchParams(i > -1 ? h.slice(i + 1) : ''); };
+  function setHashParam(k, v) {
+    const h = location.hash, i = h.indexOf('?');
+    const p = new URLSearchParams(i > -1 ? h.slice(i + 1) : '');
+    if (v == null) p.delete(k); else p.set(k, v);
+    const s = p.toString();
+    history.replaceState(null, '', location.pathname + location.search + (i > -1 ? h.slice(0, i) : h) + (s ? '?' + s : ''));
+  }
+  const svgI = (cls, body) => `<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true">${body}</svg>`;
+  const STROKE = 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+  const SI = {
+    play: svgI('i-play', '<path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/>'),
+    pause: svgI('i-pause', '<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/>'),
+    landscape: svgI('', `<rect x="2.5" y="6.5" width="19" height="11" rx="1.8" ${STROKE}/><path d="M6 10.5v3" ${STROKE}/>`),
+    portrait: svgI('', `<rect x="6.5" y="2.5" width="11" height="19" rx="1.8" ${STROKE}/><path d="M10.5 18h3" ${STROKE}/>`),
+    soundOn: svgI('i-on', `<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" ${STROKE}/>`),
+    soundOff: svgI('i-off', `<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5" ${STROKE}/>`),
+    expand: svgI('i-expand', `<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" ${STROKE}/>`),
+    collapse: svgI('i-collapse', `<path d="M9 4v5H4M15 4v5h5M15 20v-5h5M9 20v-5H4" ${STROKE}/>`),
+  };
+  const SOUND_TEXT = { off: '关', on: '开', blocked: '待启用', pending: '开启中', none: '无' };
+  const SOUND_TITLE = {
+    off: '声音已关闭：点击开启（M）', on: '声音已开启：点击关闭（M）', pending: '正在开启声音…',
+    blocked: '浏览器拦截了自动播放：点击这里或点击舞台一次即可出声', none: '这个 Demo 还没有声音设计',
+  };
+
+  let det = null; // 当前详情页的舞台控制器（离开详情页时销毁）
+
+  function stageHTML(it, isCase) {
+    const want = wantedOrient();
+    const t = Number(hashParams().get('t'));
+    const src = `${it.demo}?embed=1&orient=${want}${Number.isFinite(t) && t > 0 ? `&t=${t}` : ''}`;
+    const libName = isCase ? '案例库' : '巧思库';
+    return `<section class="stage-col" id="stage-col" aria-label="${esc(it.title)} Demo">
+      <div class="stage-bar">
+        <a class="tool-btn back" href="#" title="返回${libName}">${ICONS.back}<span class="lbl-mid">${libName}</span></a>
+        <div class="orient-seg" role="group" aria-label="画幅" hidden>
+          <button type="button" data-orient="landscape" aria-pressed="false" title="横屏 1920×1080">${SI.landscape}<span class="lbl-mid">横屏 16:9</span></button>
+          <button type="button" data-orient="portrait" aria-pressed="false" title="竖屏 1080×1920">${SI.portrait}<span class="lbl-mid">竖屏 9:16</span></button>
         </div>
-        <button class="btn" type="button" data-act="replay">${ICONS.replay}<span>重播</span></button>
-        <a class="btn ghost" href="${esc(it.demo)}" target="_blank" rel="noopener">${ICONS.external}<span>独立打开</span></a>
+        <span class="orient-badge" hidden></span>
+        <span class="spacer"></span>
+        <button class="sound-btn" type="button" data-state="off" aria-pressed="false">${SI.soundOff}${SI.soundOn}<span class="sound-txt">声音</span><span class="sound-state">关</span><i class="meter" aria-hidden="true"><b></b><b></b><b></b></i></button>
+        <button class="tool-btn" type="button" data-act="fullscreen" aria-label="全屏查看" title="全屏查看（F）">${SI.expand}${SI.collapse}<span class="lbl-wide">全屏</span></button>
+        <button class="tool-btn" type="button" data-act="replay" aria-label="从头播放" title="从头播放">${ICONS.replay}<span class="lbl-wide">重播</span></button>
+        <a class="tool-btn" data-act="open" href="${esc(it.demo)}" target="_blank" rel="noopener" aria-label="独立打开 Demo" title="在新标签页独立打开">${ICONS.external}<span class="lbl-wide">独立打开</span></a>
       </div>
-      <div class="stage-frame fit" id="stage-frame"><iframe id="demo-frame" title="${esc(it.title)} Demo" src="${esc(it.demo)}?embed=1" allow="autoplay"></iframe></div>
-      <p class="stage-note" id="stage-note">适应面板使用真实 CSS 像素排版；“成片”按 1920×1080 画幅等比缩放，用于检查视频构图。</p>
-      <div class="scrubber" id="scrubber" hidden>
+      <div class="stage-body">
+        <div class="stage-frame" id="stage-frame" aria-busy="true">
+          <iframe id="demo-frame" title="${esc(it.title)} Demo" src="${esc(src)}" allow="autoplay"></iframe>
+          <div class="stage-loading" aria-hidden="true" data-indeterminate><div class="ld-card"><span class="ld-text">正在载入 Demo</span><i class="ld-bar"><b></b></i></div></div>
+          <div class="stage-hint" hidden>${SI.soundOn}<span>点击舞台启用声音</span></div>
+        </div>
+        <div class="beat-side"><p class="side-h">节拍点<small>BEATS</small></p><div class="side-beats" id="beat-side"></div></div>
+      </div>
+      <div class="scrubber" id="scrubber" data-ready="0">
         <div class="scrub-row">
-          <button class="icon-btn" type="button" id="scrub-play" aria-label="播放">${ICONS.play}</button>
-          <div class="scrub-track" id="scrub-track" tabindex="0" role="slider" aria-label="时间轴" aria-valuemin="0"><svg id="scrub-svg" preserveAspectRatio="none"></svg><i class="head" id="scrub-head"></i></div>
-          <output id="scrub-time">00:00.00</output>
+          <button class="icon-btn play-btn" type="button" id="scrub-play" data-playing="false" aria-label="播放" title="播放 / 暂停（空格）">${SI.play}${SI.pause}</button>
+          <div class="scrub-track" id="scrub-track" tabindex="0" role="slider" aria-label="时间轴（←/→ 跳 1 秒，Shift 跳到上 / 下一个节拍点）" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="00:00.00"><svg id="scrub-svg" preserveAspectRatio="none" aria-hidden="true"></svg><i class="head" id="scrub-head"></i><span class="scrub-tip" id="scrub-tip" aria-hidden="true"></span></div>
+          <span class="scrub-time" aria-hidden="true"><b id="scrub-time">00:00.00</b><span class="dur" id="scrub-dur"></span></span>
         </div>
         <div class="beat-list" id="beat-list"></div>
       </div>
-    </div>`;
+    </section>`;
+  }
+  // 画幅意向：hash 参数 → 页面查询参数 → 上次的选择 → 横屏
+  function wantedOrient() {
+    return normOrient(hashParams().get('orient')) || normOrient(q.get('orient')) || normOrient(store.get(PREF_ORIENT, null)) || 'landscape';
   }
 
-  function sizeFrame(mode) {
-    const box = document.getElementById('stage-frame');
-    const fr = document.getElementById('demo-frame');
-    if (!box || !fr) return;
-    box.className = 'stage-frame ' + (mode === '1080' ? 'scaled' : mode);
-    fr.style.cssText = '';
-    if (mode === '1080') {
-      const s = Math.min(box.clientWidth / 1920, box.clientHeight / 1080);
-      fr.style.width = '1920px'; fr.style.height = '1080px';
-      fr.style.transform = `translate(-50%, -50%) scale(${s})`;
+  function mountStage(it) {
+    const $ = (id) => document.getElementById(id);
+    const el = root.querySelector('.detail');
+    const want = wantedOrient();
+    const d = det = {
+      it, el, grid: el.querySelector('.detail-grid'), col: $('stage-col'), bar: el.querySelector('.stage-bar'),
+      frame: $('stage-frame'), ifr: $('demo-frame'), sc: $('scrubber'), track: $('scrub-track'), svg: $('scrub-svg'),
+      head: $('scrub-head'), tip: $('scrub-tip'), time: $('scrub-time'), dur: $('scrub-dur'), play: $('scrub-play'),
+      strip: $('beat-list'), side: $('beat-side'), seg: el.querySelector('.orient-seg'), badge: el.querySelector('.orient-badge'),
+      snd: el.querySelector('.sound-btn'), fsBtn: el.querySelector('[data-act="fullscreen"]'), open: el.querySelector('[data-act="open"]'),
+      hint: el.querySelector('.stage-hint'), loader: el.querySelector('.stage-loading'),
+      m: null, unsub: null, D: (it.rhythm && it.rhythm.duration) || 0, markers: null, beats: [], beatKey: '', cur: -2,
+      playing: null, lastText: '', lastPct: -1, pendingT: null, dragging: false,
+      // 迁移后的条目有竖屏预览图，可以先按意向画幅给出舞台框，等 Demo 回报后再以回报为准
+      want, orient: it.previewPortrait && want === 'portrait' ? 'portrait' : 'landscape', orients: null,
+      sound: { pref: store.get(PREF_SOUND, false) === true, state: 'off', available: true, pending: false, seq: 0 },
+      loaded: false, fs: false, pseudo: false, lastPointerInCol: false,
+      timers: new Set(), poll: 0, meterRaf: 0, idleT: 0, touchAt: new WeakMap(), ro: null,
+    };
+    paintOrient();
+    paintBeats(true);
+    renderSound();
+    layout(); // 同步算一次，首帧就是正确尺寸
+    d.ro = new ResizeObserver(scheduleLayout);
+    [d.el, d.bar, d.sc].forEach((x) => d.ro.observe(x));
+
+    // 加载状态：200ms 内就绪的不显示，避免闪一下
+    later(() => { if (!d.loaded) d.loader.classList.add('show'); }, 200);
+    d.ifr.addEventListener('load', () => { if (det !== d) return; hookFrame(); tryConnect(); });
+    let tries = 0;
+    d.poll = setInterval(() => { if (det !== d || d.m || ++tries > 600) clearInterval(d.poll); else tryConnect(); }, 100);
+
+    // 工具栏
+    d.bar.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      if (b.dataset.orient) chooseOrient(b.dataset.orient);
+      else if (b === d.snd) toggleSound();
+      else if (b.dataset.act === 'fullscreen') toggleFs();
+      else if (b.dataset.act === 'replay') { if (d.m) { d.m.seek(0); d.m.play(); } else reloadFrame(); }
+    });
+    d.play.addEventListener('click', () => togglePlay());
+    const beatClick = (e) => { const b = e.target.closest('[data-t]'); if (b) seekTo(Number(b.dataset.t)); };
+    d.strip.addEventListener('click', beatClick);
+    d.side.addEventListener('click', beatClick);
+    // 节拍条：用户手动滚动后 4 秒内不自动跟随；竖向滚轮在横向溢出时转为横向滚动
+    for (const box of [d.strip, d.side]) ['pointerdown', 'wheel', 'touchstart'].forEach((t) => box.addEventListener(t, () => d.touchAt.set(box, performance.now()), { passive: true }));
+    d.strip.addEventListener('wheel', (e) => {
+      const s = d.strip;
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX) || s.scrollWidth <= s.clientWidth) return;
+      const max = s.scrollWidth - s.clientWidth;
+      if ((e.deltaY < 0 && s.scrollLeft <= 0) || (e.deltaY > 0 && s.scrollLeft >= max - 1)) return; // 到头了就让页面滚动
+      e.preventDefault();
+      s.scrollLeft += e.deltaY;
+    }, { passive: false });
+    d.col.addEventListener('pointermove', poke, { passive: true });
+    d.col.addEventListener('focusin', poke);
+    bindTrack();
+  }
+
+  function destroyDetail() {
+    const d = det;
+    if (!d) return;
+    det = null;
+    clearInterval(d.poll);
+    d.timers.forEach(clearTimeout);
+    cancelAnimationFrame(d.meterRaf);
+    clearTimeout(d.idleT);
+    if (d.unsub) { try { d.unsub(); } catch { /* iframe 已卸载 */ } }
+    if (d.ro) d.ro.disconnect();
+    document.documentElement.classList.remove('ma-fs-lock');
+    const fe = document.fullscreenElement || document.webkitFullscreenElement;
+    if (fe && fe === d.col) { try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch { /* 已退出 */ } }
+  }
+  function later(fn, ms) {
+    const d = det;
+    const id = setTimeout(() => { d.timers.delete(id); if (det === d) fn(); }, ms);
+    d.timers.add(id);
+  }
+  function post(msg) {
+    try { det.ifr.contentWindow.postMessage(msg, location.origin && location.origin !== 'null' ? location.origin : '*'); } catch { /* iframe 尚未就绪 */ }
+  }
+  function frameWin() { try { return det && det.ifr.contentWindow; } catch { return null; } }
+  function reloadFrame() {
+    const d = det;
+    if (d.unsub) { try { d.unsub(); } catch { /* 已卸载 */ } d.unsub = null; }
+    d.m = null; d.loaded = false;
+    d.loader.classList.add('show');
+    d.frame.setAttribute('aria-busy', 'true');
+    d.ifr.src = d.ifr.src;
+  }
+
+  /* ----- 尺寸 ----- */
+  let layoutRaf = 0;
+  function scheduleLayout() {
+    if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; layout(); });
+  }
+  addEventListener('resize', scheduleLayout);
+  function layout() {
+    const d = det;
+    if (!d) return;
+    const vars = {};
+    let mode = d.el.dataset.layout || 'split', side = '0';
+    if (d.fs) {
+      // 全屏：舞台按 contain 铺满，工具栏与刻度条为浮层，不参与计算
+      const W = d.col.clientWidth, H = d.col.clientHeight, r = d.orient === 'portrait' ? 9 / 16 : 16 / 9;
+      const w = Math.floor(Math.min(W, H * r)), h = Math.round(w / r);
+      Object.assign(vars, { '--ifr-w': w, '--ifr-h': h });
+    } else {
+      const cs = getComputedStyle(d.el), colCS = getComputedStyle(d.col), scCS = getComputedStyle(d.sc);
+      const W = d.el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      const header = document.querySelector('.site-header');
+      const headH = header ? header.getBoundingClientRect().height : 0;
+      const gap = parseFloat(colCS.rowGap) || 0;
+      const colGap = parseFloat(getComputedStyle(d.grid).columnGap) || 0;
+      // 刻度条高度：节拍条（--strip-h）是否显示由画幅决定，先扣掉它得到不变的基础高度，避免显隐引起来回重算
+      const stripBlock = (parseFloat(scCS.getPropertyValue('--strip-h')) || 0) + (parseFloat(scCS.rowGap) || 0);
+      const stripShown = getComputedStyle(d.strip).display !== 'none';
+      const scBase = d.sc.offsetHeight - (stripShown ? stripBlock : 0);
+      const chrome = headH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
+      const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
+      const infoMin = Math.round(Math.min(440, Math.max(340, W * 0.24)));
+      const room = W - colGap - infoMin; // 并排时舞台列最多能占的宽度
+      if (d.orient === 'portrait') {
+        const h = Math.floor(availH(false)), w = Math.round(h * 9 / 16);
+        if (room - w - gap >= SIDE_MIN) {
+          const sw = Math.min(SIDE_MAX, room - w - gap);
+          mode = 'split'; side = '1';
+          Object.assign(vars, { '--stage-col': w + gap + sw, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
+        } else if (W - w - gap >= SIDE_MIN) {
+          mode = 'stack'; side = '1';
+          Object.assign(vars, { '--stage-col': W, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
+        } else {
+          const h2 = Math.floor(Math.min(availH(true), W * 16 / 9)), w2 = Math.round(h2 * 9 / 16);
+          mode = 'stack';
+          Object.assign(vars, { '--stage-col': W, '--frame-w': W, '--frame-h': h2, '--ifr-w': w2, '--ifr-h': h2 });
+        }
+      } else {
+        const hA = availH(true);
+        const splitW = Math.floor(Math.min(room, hA * 16 / 9)), stackW = Math.floor(Math.min(W, hA * 16 / 9));
+        const split = room >= 480 && (splitW >= 960 || splitW >= stackW * 0.85);
+        const w = split ? splitW : stackW, h = Math.round(w * 9 / 16);
+        mode = split ? 'split' : 'stack';
+        Object.assign(vars, { '--stage-col': w, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
+      }
+    }
+    const el = d.el;
+    if (el.dataset.layout !== mode) el.dataset.layout = mode;
+    if (el.dataset.side !== side) el.dataset.side = side;
+    for (const [k, v] of Object.entries(vars)) {
+      const s = v + 'px';
+      if (el.style.getPropertyValue(k) !== s) el.style.setProperty(k, s);
     }
   }
 
-  function bindStage(it) {
-    let mode = 'fit';
-    const tools = root.querySelector('.stage-tools');
-    tools.addEventListener('click', (e) => {
-      const b = e.target.closest('button');
-      if (!b) return;
-      if (b.dataset.size) {
-        mode = b.dataset.size;
-        tools.querySelectorAll('[data-size]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-        sizeFrame(mode);
-        // 尺寸变化后重新载入，让作品按新视口布局
-        reloadFrame();
-      }
-      if (b.dataset.act === 'replay') {
-        const m = frameMotion();
-        if (m) { m.seek(0); m.play(); } else reloadFrame();
-      }
+  /* ----- 连接 Demo ----- */
+  function tryConnect() {
+    const d = det;
+    if (!d) return;
+    let m = null;
+    try { m = d.ifr.contentWindow.__motion; } catch { return; }
+    if (!m || !m.duration || m === d.m) return;
+    if (d.unsub) { try { d.unsub(); } catch { /* 旧文档已卸载 */ } }
+    d.m = m;
+    d.D = m.duration;
+    try { d.unsub = m.on(onFrame); } catch { d.unsub = null; }
+    if (!d.markers && Array.isArray(m.markers) && m.markers.length) d.markers = m.markers.map((x) => ({ t: x.t, label: x.label }));
+    applyOrients(Array.isArray(m.orients) ? m.orients : [], m.orient);
+    paintBeats();
+    d.sc.dataset.ready = '1';
+    if (d.pendingT != null) { m.seek(d.pendingT); d.pendingT = null; }
+    onFrame(m.time, m.playing);
+    hookFrame();
+    syncSound();
+    Promise.resolve(m.ready).then(() => { if (det === d && d.m === m) loadDone(); }, () => {});
+  }
+  // 同源 iframe：在 Demo 窗口里监听指针（全屏时唤出浮层）与 Esc（伪全屏时退出）
+  function hookFrame() {
+    const w = frameWin();
+    try {
+      if (!w || !w.document || w.__maHost) return;
+      w.__maHost = true;
+      w.addEventListener('pointermove', poke, { passive: true });
+      w.addEventListener('pointerdown', poke, { passive: true });
+      w.addEventListener('keydown', (e) => { if (e.key === 'Escape' && det && det.pseudo) setPseudo(false); }, true);
+    } catch { /* 跨源时忽略 */ }
+  }
+
+  addEventListener('message', (e) => {
+    const d = det;
+    if (!d || e.source !== frameWin()) return;
+    const msg = e.data;
+    if (!msg || typeof msg.type !== 'string') return;
+    if (msg.type === 'motion:loading') setLoading(Number(msg.progress));
+    else if (msg.type === 'motion:ready') onReady(msg);
+    else if (msg.type === 'motion:orient') {
+      const o = normOrient(msg.orient);
+      if (o) d.orient = o;
+      if (msg.rejected) toast(`这个 Demo 只有${o === 'portrait' ? '竖屏' : '横屏'}画幅`);
+      paintOrient();
+      layout();
+    } else if (msg.type === 'motion:sound') {
+      d.sound.pending = false;
+      d.sound.state = msg.state || (msg.on ? 'on' : 'off');
+      renderSound();
+    }
+  });
+
+  function onReady(msg) {
+    const d = det;
+    if (Array.isArray(msg.markers) && msg.markers.length) d.markers = msg.markers;
+    if (msg.duration) d.D = msg.duration;
+    applyOrients(Array.isArray(msg.orients) ? msg.orients : [], msg.orient);
+    // sound:false 只对已迁移的固定画幅 Demo 可信：旧 Demo 有的把 sfx 只传给 controls() 而没有写进 expose()（6 个巧思），
+    // 回报为 false 但实际有声音，所以旧 Demo 一律保留开关
+    d.sound.available = msg.sound !== false || !(Array.isArray(msg.orients) && msg.orients.length);
+    // 每个新载入的 Demo 都按上次的选择重发一次（同源子框架继承父页面的用户激活，无需新手势）
+    if (d.sound.available && d.sound.pref) {
+      d.sound.pending = true;
+      post({ type: 'motion:sound', on: true });
+      settleSound(); // 回报丢失时的兜底
+    }
+    tryConnect();
+    paintBeats();
+    syncSound();
+    loadDone();
+  }
+
+  /* ----- 加载状态 ----- */
+  function setLoading(p) {
+    const d = det;
+    if (!d || d.loaded || !Number.isFinite(p)) return;
+    const pct = Math.round(Math.max(0, Math.min(1, p)) * 100);
+    delete d.loader.dataset.indeterminate;
+    d.loader.querySelector('.ld-text').textContent = pct >= 100 ? '准备播放' : `正在预加载资源 ${pct}%`;
+    d.loader.querySelector('.ld-bar b').style.transform = `scaleX(${pct / 100})`;
+  }
+  function loadDone() {
+    const d = det;
+    if (!d || d.loaded) return;
+    d.loaded = true;
+    d.loader.classList.remove('show');
+    d.frame.removeAttribute('aria-busy');
+  }
+
+  /* ----- 画幅 ----- */
+  function applyOrients(list, cur) {
+    const d = det;
+    d.orients = list.slice();
+    const legacy = !d.orients.length;
+    d.orient = legacy ? 'landscape' : (normOrient(cur) && d.orients.includes(normOrient(cur)) ? normOrient(cur) : d.orients[0]);
+    d.seg.hidden = d.orients.length < 2;
+    d.badge.hidden = d.orients.length > 1;
+    d.badge.textContent = legacy ? '16:9 · 自适应' : d.orients[0] === 'portrait' ? '仅竖屏 9:16' : '仅横屏 16:9';
+    d.badge.title = legacy ? '这个 Demo 尚未迁移到固定画幅：按 16:9 画框显示，内部排版随画框自适应。' : '这个 Demo 只提供一种画幅。';
+    paintOrient();
+    layout();
+  }
+  function paintOrient() {
+    const d = det;
+    d.el.dataset.orient = d.orient;
+    d.seg.querySelectorAll('[data-orient]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.orient === d.orient)));
+    const multi = d.orients && d.orients.length > 1;
+    d.open.href = d.it.demo + (multi ? `?orient=${d.orient}` : '');
+  }
+  function chooseOrient(o) {
+    const d = det;
+    o = normOrient(o);
+    if (!o || !d.orients || !d.orients.includes(o) || o === d.orient) return;
+    d.want = o;
+    store.set(PREF_ORIENT, o);
+    setHashParam('orient', o);
+    post({ type: 'motion:orient', orient: o });
+    // 以 Demo 回报的 motion:orient 为准；万一消息丢失，稍后直接读一次
+    later(() => { const m = d.m; if (m && normOrient(m.orient) && m.orient !== d.orient) { d.orient = m.orient; paintOrient(); layout(); } }, 500);
+  }
+
+  /* ----- 声音 ----- */
+  function syncSound() {
+    const d = det;
+    if (!d) return;
+    const w = frameWin();
+    try {
+      const a = w && w.MotionKit && w.MotionKit.audio;
+      if (a && typeof a.state === 'string' && !d.sound.pending) d.sound.state = a.state;
+    } catch { /* 跨源时只靠消息 */ }
+    renderSound();
+  }
+  function renderSound() {
+    const d = det, s = d.sound, b = d.snd;
+    const st = !s.available ? 'none' : s.pending ? 'pending' : s.state;
+    if (b.dataset.state !== st) {
+      b.dataset.state = st;
+      b.disabled = st === 'none';
+      b.setAttribute('aria-pressed', String(st !== 'off' && st !== 'none'));
+      b.querySelector('.sound-state').textContent = SOUND_TEXT[st] || '';
+      b.title = SOUND_TITLE[st] || '';
+      b.setAttribute('aria-label', `声音：${SOUND_TEXT[st] || ''}`);
+    }
+    d.hint.hidden = st !== 'blocked';
+    runMeter();
+  }
+  function toggleSound() {
+    const d = det;
+    if (!d || !d.sound.available) return;
+    // 关 → 开；开（或开启中）→ 关；待启用（被自动播放策略挡住）时这次点击本身就是手势，直接再开一次
+    const next = d.sound.pending ? false : d.sound.state !== 'on';
+    d.sound.pref = next;
+    store.set(PREF_SOUND, next);
+    post({ type: 'motion:sound', on: next });
+    d.sound.pending = next;
+    if (!next) d.sound.state = 'off';
+    renderSound();
+    settleSound();
+  }
+  // 首次启动音频设备可能要一两秒：在 Demo 回报 motion:sound 之前保持“开启中”，2.5 秒仍无回报再读一次实际状态（只认最近一次操作）
+  function settleSound() {
+    const d = det, seq = ++d.sound.seq;
+    later(() => { if (d.sound.pending && d.sound.seq === seq) { d.sound.pending = false; syncSound(); } }, 2500);
+  }
+  // 小电平表：读 Demo 内 MotionKit.audio.meter()，只改三根竖条的 transform，不重建节点
+  function runMeter() {
+    const d = det;
+    cancelAnimationFrame(d.meterRaf);
+    d.meterRaf = 0;
+    const bars = d.snd.querySelectorAll('.meter b');
+    if (d.snd.dataset.state !== 'on' || reducedMotion()) { bars.forEach((b) => { b.style.transform = ''; }); return; }
+    let lvl = 0;
+    const K = [0.75, 1, 0.6];
+    const step = () => {
+      if (det !== d) return;
+      let p = 0;
+      try { const r = frameWin().MotionKit.audio.meter(); p = (r && r.peak) || 0; } catch { /* Demo 还没有引擎 */ }
+      const v = Math.max(0, Math.min(1, (20 * Math.log10(Math.max(p, 1e-5)) + 54) / 48));
+      lvl = Math.max(v, lvl * 0.86);
+      bars.forEach((b, i) => { b.style.transform = `scaleY(${(0.2 + 0.8 * Math.min(1, lvl * K[i])).toFixed(3)})`; });
+      d.meterRaf = requestAnimationFrame(step);
+    };
+    step();
+  }
+
+  /* ----- 全屏 ----- */
+  function toggleFs() { if (det) (det.fs ? exitFs : enterFs)(); }
+  function enterFs() {
+    const c = det.col, req = c.requestFullscreen || c.webkitRequestFullscreen;
+    if (!req) return setPseudo(true); // iPhone Safari 等不支持元素全屏：用固定定位铺满窗口
+    try { Promise.resolve(req.call(c)).catch(() => setPseudo(true)); } catch { setPseudo(true); }
+  }
+  function exitFs() {
+    const d = det;
+    if (d.pseudo) return setPseudo(false);
+    const ex = document.exitFullscreen || document.webkitExitFullscreen;
+    if (ex && (document.fullscreenElement || document.webkitFullscreenElement)) { try { Promise.resolve(ex.call(document)).catch(() => {}); } catch { /* 已退出 */ } }
+  }
+  function setPseudo(on) {
+    const d = det;
+    d.pseudo = on;
+    document.documentElement.classList.toggle('ma-fs-lock', on);
+    setFs(on);
+  }
+  function setFs(on) {
+    const d = det;
+    if (!d || d.fs === on) return;
+    d.fs = on;
+    d.col.classList.toggle('is-fs', on);
+    d.col.classList.remove('idle');
+    d.fsBtn.dataset.fs = String(on);
+    d.fsBtn.setAttribute('aria-label', on ? '退出全屏' : '全屏查看');
+    d.fsBtn.title = on ? '退出全屏（Esc）' : '全屏查看（F）';
+    d.fsBtn.querySelector('.lbl-wide').textContent = on ? '退出全屏' : '全屏';
+    layout();
+    poke();
+  }
+  const onFsChange = () => {
+    if (!det) return;
+    const fe = document.fullscreenElement || document.webkitFullscreenElement;
+    if (!det.pseudo) setFs(!!fe && fe === det.col);
+  };
+  document.addEventListener('fullscreenchange', onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+  // 全屏时浮层在静止 2.5 秒后淡出（暂停、拖动、悬停在浮层上或键盘聚焦时保持显示）
+  function poke() {
+    const d = det;
+    if (!d || !d.fs) return;
+    d.col.classList.remove('idle');
+    clearTimeout(d.idleT);
+    d.idleT = setTimeout(() => {
+      if (det !== d || !d.fs || !d.m || !d.m.playing || d.dragging) return;
+      if (d.col.querySelector('.stage-bar:hover, .scrubber:hover')) return poke();
+      const a = document.activeElement;
+      if (a && d.col.contains(a) && a.matches(':focus-visible')) return poke();
+      d.col.classList.add('idle');
+    }, 2500);
+  }
+
+  /* ----- 时间轴与节拍点 ----- */
+  function seekTo(t) {
+    const d = det;
+    if (!d || !Number.isFinite(t)) return;
+    const T = Math.max(0, Math.min(d.D || t, t));
+    if (d.m) d.m.seek(T);
+    else { d.pendingT = T; onFrame(T, false); } // Demo 尚未载入：先记下，连上后再定位
+  }
+  function togglePlay() { const d = det; if (d && d.m) d.m.toggle(); }
+  function stepBeat(dir) {
+    const d = det, t = d.m ? d.m.time : d.pendingT || 0;
+    const ts = d.beats.map((b) => b.t);
+    const nx = dir > 0 ? ts.find((v) => v > t + 0.05) : [...ts].reverse().find((v) => v < t - 0.05);
+    if (nx != null) seekTo(nx);
+  }
+
+  function onFrame(t, playing) {
+    const d = det;
+    if (!d) return;
+    if (d.m && d.m.duration && d.m.duration !== d.D) { d.D = d.m.duration; paintBeats(); }
+    const pct = d.D ? Math.max(0, Math.min(1, t / d.D)) * 100 : 0;
+    if (Math.abs(pct - d.lastPct) > 0.005) { d.lastPct = pct; d.head.style.left = pct.toFixed(3) + '%'; }
+    const txt = fmtT(t);
+    if (txt !== d.lastText) {
+      d.lastText = txt;
+      d.time.textContent = txt;
+      d.track.setAttribute('aria-valuenow', t.toFixed(2));
+      d.track.setAttribute('aria-valuetext', txt);
+    }
+    // 播放状态只在变化时更新：两个图标常驻，用 data-playing 切换显隐（每帧重写按钮内容会让按下与抬起落在不同节点上，click 丢失）
+    playing = !!playing;
+    if (playing !== d.playing) {
+      d.playing = playing;
+      d.play.dataset.playing = String(playing);
+      d.play.setAttribute('aria-label', playing ? '暂停' : '播放');
+      if (d.fs) poke();
+    }
+    let idx = -1;
+    for (let i = 0; i < d.beats.length; i++) { if (d.beats[i].t <= t + 0.02) idx = i; else break; }
+    if (idx !== d.cur) setCurrentBeat(idx);
+  }
+
+  function computeBeats() {
+    const d = det, it = d.it;
+    const src = it.rhythm && it.rhythm.beats && it.rhythm.beats.length ? it.rhythm.beats : d.markers || [];
+    return src.map((b) => ({ t: Number(b.t), label: b.label || '', note: b.note || '' }))
+      .filter((b) => Number.isFinite(b.t) && b.t >= 0 && (!d.D || b.t <= d.D + 1e-3))
+      .sort((a, b) => a.t - b.t);
+  }
+  function paintBeats(initial) {
+    const d = det;
+    const beats = computeBeats();
+    const key = JSON.stringify([d.D, beats.map((b) => [b.t, b.label])]);
+    if (key === d.beatKey) return;
+    d.beatKey = key;
+    d.beats = beats;
+    d.cur = -2;
+    const D = d.D;
+    const W = 1000, H = 48;
+    d.svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const e = d.it.energy || [];
+    const pts = e.map((v, i) => [(i / Math.max(1, e.length - 1)) * W, H - 6 - v * (H - 14)]);
+    const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join('');
+    d.svg.innerHTML = `<rect class="base" x="0" y="${H - 5}" width="${W}" height="2"/>
+      ${line ? `<path class="e-fill" d="${line}L${W} ${H}L0 ${H}Z"/><path class="e-line" d="${line}" vector-effect="non-scaling-stroke"/>` : ''}
+      ${D ? beats.map((b, i) => { const x = ((b.t / D) * W).toFixed(2); return `<line class="tick" data-i="${i}" x1="${x}" x2="${x}" y1="2" y2="${H - 5}" vector-effect="non-scaling-stroke"/>`; }).join('') : ''}`;
+    const empty = initial && !beats.length ? '正在读取节拍点…' : '这个 Demo 没有节拍标记：拖动刻度条逐帧查看';
+    d.strip.innerHTML = beats.length
+      ? beats.map((b, i) => `<button type="button" data-t="${b.t}" data-i="${i}"><b>${fmtB(b.t)}</b>${esc(b.label)}</button>`).join('')
+      : `<span class="beat-empty">${empty}</span>`;
+    d.side.innerHTML = beats.length
+      ? beats.map((b, i) => `<button type="button" data-t="${b.t}" data-i="${i}"><b>${fmtB(b.t)}</b><span>${esc(b.label)}</span>${b.note ? `<small>${esc(b.note)}</small>` : ''}</button>`).join('')
+      : `<span class="beat-empty">${empty}</span>`;
+    d.track.setAttribute('aria-valuemax', D ? D.toFixed(2) : '0');
+    d.dur.textContent = D ? ` / ${fmtB(D)}` : '';
+    if (d.m) onFrame(d.m.time, d.m.playing);
+  }
+  function setCurrentBeat(idx) {
+    const d = det;
+    d.cur = idx;
+    for (const box of [d.strip, d.side]) {
+      const a = box.querySelector('[aria-current]');
+      if (a) a.removeAttribute('aria-current');
+      const b = idx >= 0 ? box.querySelector(`[data-i="${idx}"]`) : null;
+      if (b) { b.setAttribute('aria-current', 'true'); follow(box, b); }
+    }
+    const on = d.svg.querySelector('.tick.on');
+    if (on) on.classList.remove('on');
+    const tk = idx >= 0 ? d.svg.querySelector(`.tick[data-i="${idx}"]`) : null;
+    if (tk) tk.classList.add('on');
+  }
+  // 让当前节拍点留在列表的可见范围内：只滚动列表自身（scrollLeft / scrollTop），不滚动页面
+  function follow(box, item) {
+    const d = det;
+    if (!box.clientWidth || performance.now() - (d.touchAt.get(box) || 0) < 4000) return;
+    const horiz = box === d.strip;
+    const pos = horiz ? item.offsetLeft : item.offsetTop, size = horiz ? item.offsetWidth : item.offsetHeight;
+    const view = horiz ? box.clientWidth : box.clientHeight, cur = horiz ? box.scrollLeft : box.scrollTop, pad = 28;
+    let to = null;
+    if (pos < cur + pad) to = pos - pad;
+    else if (pos + size > cur + view - pad) to = pos + size - view + pad;
+    if (to == null) return;
+    box.scrollTo({ [horiz ? 'left' : 'top']: Math.max(0, to), behavior: reducedMotion() ? 'auto' : 'smooth' });
+  }
+
+  function bindTrack() {
+    const d = det, tr = d.track;
+    const tAt = (x) => { const r = tr.getBoundingClientRect(); return r.width ? Math.max(0, Math.min(1, (x - r.left) / r.width)) * (d.D || 0) : 0; };
+    let raf = 0, lastX = 0, was = false;
+    const flush = () => { raf = 0; seekTo(tAt(lastX)); };
+    const tip = (x) => {
+      if (!d.D) return;
+      const t = tAt(x);
+      const near = d.beats.find((b) => Math.abs(b.t - t) <= d.D * 0.012);
+      d.tip.textContent = near ? `${fmtB(near.t)} · ${near.label}` : fmtB(t);
+      d.tip.style.left = `${(t / d.D) * 100}%`;
+      d.tip.classList.add('show');
+    };
+    tr.addEventListener('pointerdown', (ev) => {
+      if (ev.button !== 0 || !d.D) return;
+      d.dragging = true;
+      was = !!(d.m && d.m.playing);
+      if (d.m) d.m.pause();
+      try { tr.setPointerCapture(ev.pointerId); } catch { /* 不支持时退化为普通事件 */ }
+      lastX = ev.clientX;
+      flush();
+      tip(ev.clientX);
     });
-    const ro = new ResizeObserver(() => sizeFrame(mode));
-    ro.observe(document.getElementById('stage-frame'));
-    watchMotion(it);
-  }
-  function reloadFrame() {
-    const fr = document.getElementById('demo-frame');
-    const src = fr.getAttribute('src');
-    fr.src = 'about:blank';
-    setTimeout(() => { fr.src = src; watchMotion(currentItem); }, 30);
-  }
-  function frameMotion() {
-    const fr = document.getElementById('demo-frame');
-    try { return fr && fr.contentWindow && fr.contentWindow.__motion; } catch { return null; }
+    tr.addEventListener('pointermove', (ev) => {
+      if (ev.pointerType === 'mouse' || d.dragging) tip(ev.clientX);
+      if (!d.dragging) return;
+      lastX = ev.clientX;
+      if (!raf) raf = requestAnimationFrame(flush);
+    });
+    const end = () => {
+      if (!d.dragging) return;
+      d.dragging = false;
+      if (raf) { cancelAnimationFrame(raf); flush(); }
+      if (was && d.m) d.m.play();
+      if (!tr.matches(':hover')) d.tip.classList.remove('show');
+    };
+    tr.addEventListener('pointerup', end);
+    tr.addEventListener('pointercancel', end);
+    tr.addEventListener('lostpointercapture', end);
+    tr.addEventListener('pointerleave', () => { if (!d.dragging) d.tip.classList.remove('show'); });
   }
 
-  function watchMotion(it) {
-    clearInterval(poll);
-    if (unsub) { try { unsub(); } catch { /* iframe 已卸载 */ } unsub = null; }
-    const sc = document.getElementById('scrubber');
-    if (!sc) return;
-    sc.hidden = true;
-    let tries = 0;
-    poll = setInterval(() => {
-      const m = frameMotion();
-      if (m && m.duration) { clearInterval(poll); setupScrubber(m, it); }
-      else if (++tries > 120) clearInterval(poll);
-    }, 250);
-  }
-
-  function setupScrubber(m, it) {
-    const sc = document.getElementById('scrubber');
-    const track = document.getElementById('scrub-track');
-    const svg = document.getElementById('scrub-svg');
-    const head = document.getElementById('scrub-head');
-    const out = document.getElementById('scrub-time');
-    const play = document.getElementById('scrub-play');
-    const list = document.getElementById('beat-list');
-    sc.hidden = false;
-    const D = m.duration;
-    const beats = (it.rhythm && it.rhythm.beats && it.rhythm.beats.length ? it.rhythm.beats : (m.markers || []).map((x) => ({ t: x.t, label: x.label })));
-    track.setAttribute('aria-valuemax', String(D));
-    const W = 1000, H = 56;
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    const e = it.energy || [];
-    const ePts = e.map((v, i) => [(i / Math.max(1, e.length - 1)) * W, H - 6 - v * (H - 16)]);
-    const eLine = ePts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join('');
-    svg.innerHTML = `
-      <rect x="0" y="${H - 6}" width="${W}" height="2" fill="var(--line-2)"/>
-      ${eLine ? `<path d="${eLine}L${W} ${H}L0 ${H}Z" fill="var(--accent-soft)"/><path d="${eLine}" fill="none" stroke="var(--accent)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>` : ''}
-      ${beats.map((b) => `<rect x="${((b.t / D) * W).toFixed(1)}" y="2" width="1.5" height="${H - 8}" fill="var(--ink)" opacity=".35"/>`).join('')}`;
-    list.innerHTML = beats.map((b) => `<button type="button" data-t="${b.t}"><b>${fmtT(b.t).replace(/^00:/, '')}</b>${esc(b.label)}</button>`).join('');
-    const paint = (t, playing) => {
-      head.style.left = `${(t / D) * 100}%`;
-      out.textContent = fmtT(t);
-      track.setAttribute('aria-valuenow', t.toFixed(2));
-      track.setAttribute('aria-valuetext', fmtT(t));
-      play.innerHTML = playing ? ICONS.pause : ICONS.play;
-      play.setAttribute('aria-label', playing ? '暂停' : '播放');
-    };
-    unsub = m.on(paint);
-    paint(m.time, m.playing);
-    const seekAt = (clientX) => {
-      const r = track.getBoundingClientRect();
-      m.seek(Math.max(0, Math.min(1, (clientX - r.left) / r.width)) * D);
-    };
-    let dragging = false, was = false;
-    track.onpointerdown = (ev) => { dragging = true; was = m.playing; m.pause(); track.setPointerCapture(ev.pointerId); seekAt(ev.clientX); };
-    track.onpointermove = (ev) => { if (dragging) seekAt(ev.clientX); };
-    track.onpointerup = () => { dragging = false; if (was) m.play(); };
-    track.onkeydown = (ev) => {
-      if (ev.key === 'ArrowRight' || ev.key === 'ArrowLeft') {
-        ev.preventDefault();
-        const dir = ev.key === 'ArrowRight' ? 1 : -1;
-        if (ev.shiftKey) {
-          const ts = beats.map((b) => b.t).sort((a, b) => a - b);
-          const nx = dir > 0 ? ts.find((v) => v > m.time + 0.05) : [...ts].reverse().find((v) => v < m.time - 0.05);
-          if (nx != null) m.seek(nx);
-        } else m.seek(m.time + dir);
-      } else if (ev.key === ' ') { ev.preventDefault(); m.toggle(); }
-      else if (ev.key === 'Home') m.seek(0);
-    };
-    play.onclick = () => m.toggle();
-    list.onclick = (ev) => { const b = ev.target.closest('button'); if (b) { m.seek(Number(b.dataset.t)); } };
-    root.querySelectorAll('[data-seek]').forEach((b) => { b.onclick = () => { m.seek(Number(b.dataset.seek)); document.getElementById('stage-frame').scrollIntoView({ block: 'nearest' }); }; });
-  }
+  // 键盘：焦点在刻度条上、在舞台列内、全屏中，或焦点在页面主体且最近一次指针操作落在舞台列内时生效。
+  // 焦点在按钮 / 链接上时空格与回车交给它们自己（避免双重切换）；焦点在 Demo 里时由 Demo 自己的快捷键处理（父页面收不到）。
+  document.addEventListener('pointerdown', (e) => { if (det) det.lastPointerInCol = det.col.contains(e.target); }, true);
+  document.addEventListener('keydown', (e) => {
+    const d = det;
+    if (!d || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'Escape' && d.pseudo) { e.preventDefault(); setPseudo(false); return; }
+    const tg = e.target instanceof Element ? e.target : document.body;
+    if (tg.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) return;
+    const bodyFocus = tg === document.body || tg === document.documentElement;
+    if (!(d.fs || d.col.contains(tg) || (bodyFocus && d.lastPointerInCol))) return;
+    const k = e.key;
+    if ((k === ' ' || k === 'Enter') && tg.closest('button, a, summary')) return;
+    if (k === ' ') { e.preventDefault(); togglePlay(); }
+    else if (k === 'ArrowRight' || k === 'ArrowLeft') {
+      e.preventDefault();
+      const dir = k === 'ArrowRight' ? 1 : -1;
+      if (e.shiftKey) stepBeat(dir);
+      else seekTo((d.m ? d.m.time : d.pendingT || 0) + dir);
+    } else if (k === 'Home') { e.preventDefault(); seekTo(0); }
+    else if (k === 'End') { e.preventDefault(); seekTo(d.D); }
+    else if (k === 'f' || k === 'F') { e.preventDefault(); toggleFs(); }
+    else if (k === 'm' || k === 'M') { e.preventDefault(); toggleSound(); }
+  });
 
   /* ---------- 详情：说明 ---------- */
   const sec = (title, en, body) => `<section class="note-sec"><h2>${title}<small>${en}</small></h2>${body}</section>`;
@@ -384,7 +891,7 @@
         <dl class="kv">${[['色彩', c.color], ['字体', c.typography], ['版式', c.layout], ['图像', c.imagery], ['动效', c.motion], ['声音', c.sound], ['节奏', c.rhythm], ['协调', c.coherence]].filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`),
       it.tokens?.motion ? sec('动效 Token', 'MOTION TOKENS', `<table class="token-table"><tbody>${it.tokens.motion.map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.value)}</td></tr>`).join('')}</tbody></table>`) : '',
       it.layers ? sec('画面分层', 'LAYERS', `<table class="token-table"><tbody>${it.layers.map((l) => `<tr><td>${esc(l.name)}</td><td>${esc(l.role)}</td></tr>`).join('')}</tbody></table>`) : '',
-      it.observations ? sec('逐帧观察', 'OBSERVED', `<table class="beat-table"><tbody>${it.observations.map((o) => `<tr><td>${esc(o.at)}</td><td>${esc(o.what)}</td></tr>`).join('')}</tbody></table>`) : '',
+      it.observations ? sec('逐帧观察', 'OBSERVED', `<table class="beat-table obs-table"><tbody>${it.observations.map((o) => `<tr><td>${esc(o.at)}</td><td>${esc(o.what)}</td></tr>`).join('')}</tbody></table>`) : '',
       sec('交互与状态', 'INTERACTION', ul(it.interaction)),
       sec('可复用 Prompt', 'PROMPT', promptTabs(it)),
       it.migration ? sec('迁移指南', 'MIGRATE', `<table class="token-table"><tbody>${it.migration.map((m) => `<tr><td>${esc(m.field)}</td><td>${esc(m.how)}</td></tr>`).join('')}</tbody></table>`) : '',
@@ -409,9 +916,8 @@
     ].join('');
   }
 
-  let currentItem = null;
   function renderDetail(it) {
-    currentItem = it;
+    destroyDetail();
     document.title = `${it.title} · Motion Atlas`;
     const isCase = KIND === 'cases';
     const idx = items.indexOf(it);
@@ -419,32 +925,35 @@
       ? [...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), `<span class="chip accent">${esc(TAX.sources[it.source])}</span>`, ...(it.tags || []).map((t) => `<span class="chip">${esc(t)}</span>`)]
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)];
     const fav = favs.has(KIND, it.id);
+    // 左列：舞台工具栏 + 舞台 + 刻度条（并排时吸顶，首屏完整可见）；右列：操作、标题与说明
     root.innerHTML = `
-      <div class="detail">
-        <div class="detail-bar">
-          <a class="back" href="#">${ICONS.back}<span>返回${isCase ? '案例库' : '巧思库'}</span></a>
-          <span class="spacer"></span>
-          <button class="btn" type="button" data-act="fav" aria-pressed="${fav}">${fav ? ICONS.starFill : ICONS.star}<span>${fav ? '已收藏' : '收藏'}</span></button>
-          <button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>
-          <a class="btn" href="agent/${KIND}/${it.id}.json" download>${ICONS.download}<span>资料包 JSON</span></a>
-        </div>
-        <header class="detail-head">
-          <p class="eyebrow">${String(idx + 1).padStart(2, '0')} / ${isCase ? 'CASE' : 'PATTERN'} · ${esc(it.id)}</p>
-          <h1>${esc(it.title)}</h1>
-          ${it.subtitle ? `<p class="sub">${esc(it.subtitle)}</p>` : ''}
-          <div class="chips">${chips.join('')} ${evBadge(it.evidence || (it.sources && it.sources[0] && it.sources[0].evidence) || 'original')}</div>
-        </header>
+      <div class="detail" data-layout="split" data-orient="landscape" data-side="0">
         <div class="detail-grid">
-          ${stageHTML(it)}
-          <div class="notes">${isCase ? caseNotes(it) : patternNotes(it)}</div>
+          ${stageHTML(it, isCase)}
+          <div class="info-col">
+            <div class="detail-actions">
+              <button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button>
+              <button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>
+              <a class="btn" href="agent/${KIND}/${it.id}.json" download>${ICONS.download}<span>资料包 JSON</span></a>
+            </div>
+            <header class="detail-head">
+              <p class="eyebrow">${String(idx + 1).padStart(2, '0')} / ${isCase ? 'CASE' : 'PATTERN'} · ${esc(it.id)}</p>
+              <h1>${esc(it.title)}</h1>
+              ${it.subtitle ? `<p class="sub">${esc(it.subtitle)}</p>` : ''}
+              <div class="chips">${chips.join('')} ${evBadge(it.evidence || (it.sources && it.sources[0] && it.sources[0].evidence) || 'original')}</div>
+            </header>
+            <div class="notes">${isCase ? caseNotes(it) : patternNotes(it)}</div>
+          </div>
         </div>
       </div>`;
-    bindStage(it);
+    window.scrollTo(0, 0);
+    mountStage(it);
     root.querySelector('[data-act="fav"]').addEventListener('click', (e) => {
       const b = e.currentTarget;
       const on = favs.toggle(KIND, it.id);
       b.setAttribute('aria-pressed', String(on));
-      b.innerHTML = `${on ? ICONS.starFill : ICONS.star}<span>${on ? '已收藏' : '收藏'}</span>`;
+      b.innerHTML = `${on ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${on ? '已收藏' : '收藏'}</span>`;
+      b.title = on ? '取消收藏' : '收藏';
     });
     root.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => copy(document.getElementById(b.dataset.copy).textContent, 'Prompt 已复制')));
     root.querySelectorAll('.tabs').forEach((tabs) => tabs.addEventListener('click', (e) => {
@@ -453,16 +962,21 @@
       tabs.querySelectorAll('[data-tab]').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
       tabs.parentElement.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== b.dataset.tab; });
     }));
-    window.scrollTo(0, 0);
+    // 说明里的节拍表：只定位时间，不滚动页面；舞台不在视野里时（上下排列且已向下滚动）用提示告知
+    root.querySelectorAll('[data-seek]').forEach((b) => b.addEventListener('click', () => {
+      const t = Number(b.dataset.seek);
+      seekTo(t);
+      const r = det && det.frame.getBoundingClientRect();
+      if (r && (r.bottom < 80 || r.top > innerHeight - 80)) toast(`已定位到 ${fmtB(t)}，舞台在页面上方`);
+    }));
   }
 
   /* ---------- 路由 ---------- */
   function route() {
-    clearInterval(poll);
     const m = location.hash.match(/^#(case|pattern)\/([\w-]+)/);
     const it = m && byId(items, m[2]);
     if (it) renderDetail(it);
-    else { currentItem = null; renderList(); }
+    else { destroyDetail(); renderList(); }
   }
   addEventListener('hashchange', route);
   document.addEventListener('ma:favorites', () => {

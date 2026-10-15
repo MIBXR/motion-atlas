@@ -33,6 +33,22 @@ const sampleRate = Number(get('--sample-rate', 48000));
 const shown = (p) => { const r = path.relative(ROOT, p); return r && !r.startsWith('..') ? r : p; };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// ffmpeg：FFMPEG_PATH → PATH → Windows 上 winget 的安装位置（刚装好、当前进程还读不到新 PATH 时也能找到）
+function findFfmpeg() {
+  const candidates = [process.env.FFMPEG_PATH, 'ffmpeg'].filter(Boolean);
+  const local = process.env.LOCALAPPDATA;
+  if (process.platform === 'win32' && local) {
+    candidates.push(path.join(local, 'Microsoft', 'WinGet', 'Links', 'ffmpeg.exe'));
+    const pkgs = path.join(local, 'Microsoft', 'WinGet', 'Packages');
+    try {
+      for (const d of fs.readdirSync(pkgs).filter((n) => /ffmpeg/i.test(n))) {
+        for (const sub of fs.readdirSync(path.join(pkgs, d))) candidates.push(path.join(pkgs, d, sub, 'bin', 'ffmpeg.exe'));
+      }
+    } catch { /* 没有 winget 安装目录 */ }
+  }
+  return candidates.find((c) => spawnSync(c, ['-version'], { stdio: 'ignore' }).status === 0) || null;
+}
+
 let url = target, server = null;
 if (!/^https?:/.test(target)) {
   const rel = path.relative(ROOT, path.resolve(target)).split(path.sep).join('/');
@@ -99,14 +115,14 @@ try {
   }
 
   if (!audioOnly) {
-    const ff = spawnSync('ffmpeg', ['-version'], { stdio: 'ignore' });
+    const ffmpeg = findFfmpeg();
     const frames = path.join(out, `frame-%05d.${ext}`);
     const mp4 = `${out}.mp4`;
     const ffArgs = ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', frames, ...(wav ? ['-i', wav] : []),
       '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', ...(wav ? ['-c:a', 'aac', '-b:a', '192k', '-shortest'] : []), mp4];
     if (has('--no-encode')) console.log('已跳过合成（--no-encode）。');
-    else if (ff.status === 0) {
-      const r = spawnSync('ffmpeg', ffArgs, { stdio: 'inherit' });
+    else if (ffmpeg) {
+      const r = spawnSync(ffmpeg, ffArgs, { stdio: 'inherit' });
       console.log(r.status === 0 ? `已合成 ${shown(mp4)}${wav ? '（含音频）' : ''}` : 'ffmpeg 合成失败，帧序列已保留。');
     } else {
       const q = (s) => (/[\s%]/.test(s) ? `"${s}"` : s);

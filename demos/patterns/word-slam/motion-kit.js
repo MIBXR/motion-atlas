@@ -291,6 +291,7 @@
     preloads: [], // 已登记的预加载 Promise
     load: { done: 0, total: 0 },
     readyState: false,
+    usesSound: false, // 用到了声音（sound() / audio.play / attach / controls 的声音开关），站点据此显示开关
     events: emitter(),
   };
   const inFrame = (() => { try { return hasDOM && global.parent && global.parent !== global; } catch (e) { return false; } })();
@@ -1839,6 +1840,7 @@
       toggle() { return enabled ? api.disable() : api.enable(); },
       /** 即时触发（交互输入）：play('blip', { note: 'E6', vel: 0.8, pan: -0.3, delay: 0 }) → { stop(fade) } 或 null */
       play(voiceName, p = {}) {
+        KIT.usesSound = true;
         if (!live()) return null;
         if (records.size > 64) cleanup();
         const when = ctx.currentTime + 0.005 + (p.delay || 0);
@@ -1854,6 +1856,7 @@
        * 从新位置继续；支持 rate 与 loop。返回调度器 { set(score), resync(hard), detach() }。一个时间轴只挂一份乐谱（再次 attach 会替换）。
        */
       attach(tl, score, opts = {}) {
+        KIT.usesSound = true;
         if (tl.__score) tl.__score.detach();
         const s = makeScheduler(tl, score, opts);
         schedulers.add(s);
@@ -1886,6 +1889,7 @@
    * 与 MotionKit.audio 共用开关（站点的 motion:sound 消息对旧 Demo 同样有效）。
    */
   function sound() {
+    KIT.usesSound = true;
     return {
       get enabled() { return audio.enabled; },
       get ctx() { return audio.ctx; },
@@ -1907,7 +1911,7 @@
       orients: KIT.stage ? KIT.stage.orients.slice() : [],
       orient: KIT.stage ? KIT.stage.orient : null,
       markers: (tl.markers || []).map((m) => ({ t: m.t, label: m.label })),
-      sound: !!(tl.__score || tl.sound),
+      sound: !!(tl.__score || tl.sound || KIT.usesSound),
       title: tl.title || (hasDOM ? document.title : ''),
       kit: VERSION,
     };
@@ -2000,6 +2004,7 @@
    */
   function controls(tl, { sound: snd = null, accent = '#ff5b2e', orient = true } = {}) {
     const p = params();
+    if (snd) KIT.usesSound = true;
     const keys = (e) => {
       const tg = e.target;
       if (tg && tg.closest) {
