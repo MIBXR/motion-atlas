@@ -2,6 +2,8 @@
 
 面向**影像视频、交互操作台、交互展示台**的动态设计参考库。每个案例都拆成镜头、信息层、文字、转场与声音轨道，附节拍表、能量曲线、动效 Token、可复用 Prompt，以及可以拖动、跳拍、逐帧渲染成视频的零依赖 Demo。
 
+**在线浏览：[Motion Atlas](https://motion-atlas.mibxranime.chatgpt.site)**
+
 <!-- counts:start -->
 **9 个案例**　·　**38 个巧思**　·　**9 个可逐帧渲染的影像 Demo**
 <!-- counts:end -->
@@ -89,6 +91,7 @@ scripts/            serve / build / check / smoke / capture / shot / render / fr
 | 命令 | 作用 |
 | --- | --- |
 | `node scripts/build.mjs` | 校验条目、同步 kit 副本，生成站点数据、Prompt 文档、Agent 资料包与本文件的计数 |
+| `npm run build:site` | 生成完整静态站点到 `dist/`，用于 Sites 发布；站点配置见 `.openai/hosting.json` |
 | `node scripts/check.mjs` | 只读检查：条目与引用、kit 副本、生成物是否最新、文字 ≥ 12px、预览图 |
 | `node scripts/smoke.mjs` | 无头浏览器把每个 Demo 从头 seek 到尾，收集运行时错误 |
 | `node scripts/capture.mjs` | 重新截取预览图（需先启动本地服务器） |
