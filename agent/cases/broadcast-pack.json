@@ -259,8 +259,8 @@
     },
     {
       "path": "demos/cases/broadcast-pack/motion-kit.js",
-      "bytes": 107017,
-      "sha256": "702791f69af5250fa2fb097620dcdb2ef7188a5b6ff0e93ef8750c8e0a234f2d"
+      "bytes": 107562,
+      "sha256": "2708c09729958b6f1dc5e57565a854f8bf7d19c6b6b35fdd45729565202e61ac"
     },
     {
       "path": "demos/cases/broadcast-pack/script.js",

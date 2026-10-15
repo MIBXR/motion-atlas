@@ -1354,6 +1354,9 @@
 
   /* ---------- 混音图 ---------- */
   const MIX = { master: 0.65, music: 0.8, sfx: 0.9, ui: 0.7, bed: 0.7, reverb: 0.3, trim: 1, sidechain: true };
+  /** DynamicsCompressorNode 的固定预读延迟（Chromium 实现为 6ms）：声音比排程时刻晚这么多；离线导出时据此对齐画面 */
+  const PROCESS_LATENCY = 0.006;
+
   function buildGraph(ctx) {
     const G = { ctx, buses: {} };
     G.master = gain(ctx, MIX.master);
@@ -1779,6 +1782,8 @@
       /** 'off' 关闭；'on' 正在出声；'blocked' 已开启但被浏览器自动播放策略挡住（等待页面内手势） */
       get state() { return stateOf(); },
       get ctx() { return ctx; },
+      /** 主链路固有处理延迟（秒）：声音比排程时刻晚这么多；需要“听到的时刻”或离线对齐时减去它 */
+      latency: PROCESS_LATENCY,
       /** 当前输出电平 { peak, rms, peakDb, rmsDb }（最近约 43ms；未开启时为 0）——可用于电平表或验证静音 */
       meter() {
         if (!G || !G.meter) return { peak: 0, rms: 0, peakDb: -Infinity, rmsDb: -Infinity };
@@ -1942,7 +1947,8 @@
           events: (from = 0, to = tl.duration) => s.list.query(from, to).map((e) => ({ t: e.t, voice: typeof e.voice === 'string' ? e.voice : 'custom' })),
           /** 离线渲染 WAV：返回 { base64, sampleRate, channels, duration, peakDb, rmsDb, clipped, events } */
           async renderWav({ from = 0, to = tl.duration, sampleRate = 48000 } = {}) {
-            const r = await audio.renderOffline(s.list, Math.max(0.01, to - from), { from, sampleRate });
+            // 主链路压缩器有固定预读延迟（PROCESS_LATENCY），从 from + 延迟处截取，让 WAV 第 0 个样本对齐画面的 from 时刻
+            const r = await audio.renderOffline(s.list, Math.max(0.01, to - from), { from: from + PROCESS_LATENCY, sampleRate });
             return { base64: await r.base64(), sampleRate: r.sampleRate, channels: r.channels, duration: r.duration, peakDb: r.peakDb, rmsDb: r.rmsDb, clipped: r.clipped, events: r.events };
           },
         };
