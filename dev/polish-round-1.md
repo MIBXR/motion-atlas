@@ -139,7 +139,7 @@
 | T2 | 已完成 | 详情页首屏适配、横竖切换、全屏、声音开关、加载状态、暂停可靠；报告 dev/reports/T2.md |
 | T3 | 已完成 | 节拍器重做、拍点与吸附可听可见（A/B、偏移、强度、摇摆、三连音、打拍录入）、曲线×拍子、导出 WAV；kit 增加 audio.latency 并让离线导出对齐画面；报告 dev/reports/T3.md |
 | T4 | T4a 已完成 | 地图巡礼案例（日本关西路线、渐进瓦片缓冲、横竖构图、配乐）；报告 dev/reports/T4a.md；smoke 需绕过系统代理（`node --import ./dev/wip/T4a/tools/direct-browser.mjs scripts/smoke.mjs …`）；T4b（12 个巧思）搁置 |
-| T5 | 待开始 | 只做案例本身，5 个巧思搁置 |
+| T5 | 已完成 | 档案终端案例（无线信号开场、40 份档案双轴循环、四向过渡、解密、横竖构图、配乐）；报告 dev/reports/T5.md；5 个巧思搁置 |
 | T6 | 搁置 | 下一轮 |
 | T7 | 搁置 | 下一轮 |
 | T8 | 搁置 | 下一轮 |

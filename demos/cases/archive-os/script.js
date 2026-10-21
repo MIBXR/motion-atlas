@@ -1,379 +1,350 @@
 /*
- * 白色档案终端 · 渲染器
- * 状态 = 按键事件序列在时刻 t 的推导结果（选中列/行、模式、每次切换的时间）。
- * 阵列抬起、波浪、呼吸、编号滚动、解密都写成时间的解析函数：
- *   自动演示时由时间轴驱动（可拖动、可逐帧渲染）；真实按键后切到实时时钟，用同一个 render。
+ * Motion mechanisms adapted from https://github.com/LBEILC/RhineLabUI
+ * Copyright (c) 2026 LBEILC. MIT License; full notice in docs/research/archive-os.md.
+ * Original FIELDWORK records, SVG geometry and synthesized score. No reference artwork or audio.
  */
 (() => {
   'use strict';
-  const MK = window.MotionKit, C = window.CONFIG, T = C.timing;
+  const MK = window.MotionKit, C = window.CONFIG;
   const { clamp, lerp, seg, ease } = MK;
-  const $ = (s, r = document) => r.querySelector(s);
-  const P = MK.params();
-  const sfx = MK.sound();
-  const REDUCE = MK.prefersReducedMotion();
-  const NCOL = C.columns.length, NROW = 8, ROWS = T.rowsVisible, ROW0 = 5; // 档案行 r 显示在第 ROW0 + r 块
-  const W = 170, TH = 12, HH = 118, PITCH_X = 192, PITCH_Y = 26; // 档案块尺寸（px）
+  const $ = (s) => document.querySelector(s);
+  const P = MK.params(), reduced = MK.prefersReducedMotion();
+  let events = C.events;
+  const stage = MK.stage({ root: '#stage' });
+  MK.audio.setMix({ music: 1.6 });
+  MK.preload([MK.preload.fonts()]);
+  const mod = (n, d) => ((n % d) + d) % d;
+  const step = (t, rate = C.timing.orbitRate) => t <= 0 ? 0 : 1 - (1 + rate * t) * Math.exp(-rate * t);
+  const fileAt = (s) => C.files[s.col][s.row];
+  const arrows = { ArrowUp: 'UP / 上行', ArrowDown: 'DOWN / 下行', ArrowLeft: 'LEFT / 左移', ArrowRight: 'RIGHT / 右移' };
+  const ticks = $('#rowTicks');
+  ticks.innerHTML = '<i></i>'.repeat(8);
+  const tickEls = [...ticks.children];
+  $('#category').classList.add('rolling');
+  $('#colName').classList.add('rolling');
+  const parts = ['#category', '#level', '#fileTitle', '#fileEn', '#timestamp', '#author', '#abstract', '#metrics', '#chart', '.annotation'].map($);
+  $('#operator').textContent = C.brand.operator;
+  $('.brand > b').textContent = C.brand.name;
+  $('.brand > span').textContent = C.brand.sub;
+  $('#welcomeName').textContent = C.brand.name;
+  $('#welcomeDatabase').textContent = C.brand.sub;
+  parts.filter((el) => el.tagName !== 'svg').forEach((el) => el.classList.add('redacted'));
 
-  /* ---------- 数据 ---------- */
-  const fileAt = (c, r) => {
-    const f = (C.files[c] || [])[r];
-    return f || { title: `${C.columns[c].name} · 档案 ${MK.pad(r + 1)}`, dept: '—', collection: '示意占位', related: '—', status: '已归档 · 可读取', abstract: '本档案为示意占位，正文可在 config.js 的 files 中补充。' };
-  };
-  const fileNo = (c, r) => c * NROW + r + 1;
-
-  /* ---------- 品牌与静态文字 ---------- */
-  $('.b1').textContent = C.brand.line1;
-  $('.b2').textContent = C.brand.line2;
-  $('.b3a').textContent = C.brand.line3a;
-  $('.b3b').textContent = C.brand.line3b;
-  $('#powered b').textContent = C.brand.powered;
-  $('.status .op').textContent = C.brand.operator;
-  $('#wCompany').textContent = C.brand.line1;
-  $('#colTotal').textContent = MK.pad(NCOL);
-  $('#rowTotal').textContent = MK.pad(NROW);
-  $('#ticks').innerHTML = Array.from({ length: NROW }, () => '<i></i>').join('');
-  const ticks = [...document.querySelectorAll('#ticks i')];
-
-  /* ---------- 阵列 DOM ---------- */
-  const world = $('#world');
-  const plates = [];
-  for (let c = 0; c < NCOL; c++) for (let pr = 0; pr < ROWS; pr++) {
-    const el = document.createElement('div');
-    el.className = 'plate';
-    el.dataset.c = c; el.dataset.r = pr;
-    el.innerHTML = `<i class="top" style="width:${W}px;height:${TH}px;transform:translateZ(${HH}px)"></i>`
-      + `<i class="front" style="width:${W}px;height:${HH}px;transform:translateY(${TH}px) rotateX(90deg)"></i>`
-      + `<i class="side" style="width:${HH}px;height:${TH}px;transform:rotateY(-90deg)"></i>`;
-    world.appendChild(el);
-    plates.push({ el, c, pr, faces: [...el.children], x: c * PITCH_X - (NCOL * PITCH_X) / 2, y: pr * PITCH_Y - (ROWS * PITCH_Y) / 2 });
-  }
-
-  /* ---------- 状态推导 ---------- */
-  const autopilot = C.autopilot.map((e) => ({ ...e }));
-  let live = false, liveEvents = [], liveBase = 0, liveStart = 0, saved = 0;
   function derive(events, t) {
-    let col = 2, row = 0, mode = 'array';
-    const mem = new Array(NCOL).fill(0);
-    const sels = [{ t: T.bootEnd - 0.5, col, row, dir: 1, boot: true }];
-    const modes = [];
-    let lastT = T.bootEnd;
+    let x = 0, y = 0, col = 0, detail = false;
+    const memory = [0, 0, 0, 0, 0];
+    const selections = [{ t: C.timing.bootEnd, col: 0, row: 0, x: 0, y: 0, key: '', fromCol: 0, fromRow: 0 }];
+    const modes = [], moves = [];
     for (const e of events) {
       if (e.t > t) break;
-      if (mode === 'detail' && e.key !== 'Escape') continue;
-      const prev = { col, row };
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        mem[col] = row;
-        col = (col + (e.key === 'ArrowRight' ? 1 : -1) + NCOL) % NCOL;
-        row = mem[col];
-      } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-        row = (row + (e.key === 'ArrowDown' ? 1 : -1) + NROW) % NROW;
-      } else if (e.key === 'select') {
-        mem[col] = row; col = e.col; row = e.row;
-      } else if (e.key === 'Enter' && mode === 'array') { mode = 'detail'; modes.push({ t: e.t, on: true }); }
-      else if (e.key === 'Escape' && mode === 'detail') { mode = 'array'; modes.push({ t: e.t, on: false }); }
-      if (prev.col !== col || prev.row !== row) {
-        const dir = e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 1;
-        sels.push({ t: e.t, col, row, dir, pcol: prev.col, prow: prev.row });
-      }
-      lastT = e.t;
+      if (e.key === 'Enter' && !detail) { detail = true; modes.push({ t: e.t, on: true }); continue; }
+      if (e.key === 'Escape' && detail) { detail = false; modes.push({ t: e.t, on: false }); continue; }
+      if (detail || !arrows[e.key]) continue;
+      const fromCol = col, fromRow = mod(y, 8), previousY = y;
+      const dx = e.key === 'ArrowLeft' ? -1 : e.key === 'ArrowRight' ? 1 : 0;
+      const dy = e.key === 'ArrowUp' ? -1 : e.key === 'ArrowDown' ? 1 : 0;
+      x += dx; col = mod(x, 5);
+      y = dx ? memory[col] + Math.floor((y - memory[col] + 4) / 8) * 8 : y + dy;
+      memory[col] = mod(y, 8);
+      const sel = { ...e, col, row: mod(y, 8), x, y, dx, dy: y - previousY, fromCol, fromRow };
+      selections.push(sel); moves.push(sel);
     }
-    return { col, row, mode, sels, modes, lastT };
-  }
-
-  const w = T.liftRate;
-  const crit = (tau) => (tau <= 0 ? 0 : 1 - (1 + w * tau) * Math.exp(-w * tau)); // 临界阻尼阶跃 0→1
-  const detailAmount = (S, t) => clamp(S.modes.reduce((a, m) => a + (m.on ? 1 : -1) * crit(t - m.t), 0));
-
-  function plateLift(p, t, S, m) {
-    let lift = 0;
-    const from = Math.max(0, S.sels.length - 5);
-    for (let i = from; i < S.sels.length; i++) {
-      const s = S.sels[i];
-      if (s.col === p.c && s.row + ROW0 === p.pr) {
-        const end = i + 1 < S.sels.length ? S.sels[i + 1].t : Infinity;
-        if (t < end) lift += T.previewLift * crit(t - s.t);
-        else { const v0 = T.previewLift * crit(end - s.t), tau = t - end; lift += v0 * (1 + w * tau) * Math.exp(-w * tau); }
-      }
-      // 选中波浪：按距离延迟、随距离衰减
-      if (i >= S.sels.length - 3) {
-        const d = s.boot ? p.c * 1.6 + Math.abs(p.pr - (s.row + ROW0)) * 0.4 : Math.abs(p.pr - (s.row + ROW0)) + 0.8 * Math.abs(p.c - s.col);
-        if (d > 0) {
-          const tau = t - s.t - d * T.waveDelay;
-          if (tau > 0) lift += T.waveAmp * Math.sin(T.waveFreq * tau) * Math.exp(-T.waveDecay * tau) / (1 + 0.35 * d);
-        }
-      }
+    let orbitX = 0, orbitY = 0;
+    for (const e of moves) {
+      orbitX += e.dx * step(t - e.t);
+      orbitY += e.dy * step(t - e.t);
     }
-    const isSel = p.c === S.col && p.pr === S.row + ROW0;
-    if (isSel) lift += (T.detailLift - T.previewLift) * m;
-    // 空闲呼吸：8s 与 13s 两个周期叠加，相邻块错相
-    const idle = REDUCE ? 0 : clamp((t - S.lastT - T.idleAfter) / 1.5) * (1 - m);
-    if (idle > 0) lift += idle * T.breatheAmp * (0.6 * Math.sin((2 * Math.PI * t) / T.breathe[0] + p.c * 1.3 + p.pr * 0.7) + 0.4 * Math.sin((2 * Math.PI * t) / T.breathe[1] + p.c * 0.4 + p.pr * 1.1));
-    return lift;
+    const amount = clamp(modes.reduce((n, e) => n + (e.on ? 1 : -1) * step(t - e.t, C.timing.liftRate), 0));
+    return { col, row: mod(y, 8), x, y, selections, modes, moves, orbitX, orbitY, amount, detail };
   }
 
-  /* ---------- 滚动数字与文字 ---------- */
-  function rollDigits(el, from, to, p, dir, len) {
-    const a = String(from).padStart(len, '0'), b = String(to).padStart(len, '0');
-    let html = '';
-    for (let i = 0; i < len; i++) {
-      if (a[i] === b[i] || p >= 1) { html += `<span><i>${b[i]}</i></span>`; continue; }
-      const y = dir > 0 ? -p : p - 1;
-      html += `<span><i style="transform:translateY(${y * 100}%);filter:blur(${(Math.sin(p * Math.PI) * 0.35).toFixed(2)}px)">${dir > 0 ? a[i] : b[i]}</i><i style="transform:translateY(${y * 100}%)">${dir > 0 ? b[i] : a[i]}</i></span>`;
-    }
-    el.innerHTML = html;
+  const array = $('#array');
+  const plates = [];
+  const NS = 'http://www.w3.org/2000/svg';
+  array.innerHTML = '<defs><linearGradient id="face" x2="0.4" y2="1"><stop stop-color="#fffdf8"/><stop offset="1" stop-color="#d8d7cd"/></linearGradient><linearGradient id="side" x2="1"><stop stop-color="#babaae"/><stop offset="1" stop-color="#e1dfd5"/></linearGradient></defs>';
+  for (let i = 0; i < 7 * 13; i++) {
+    const g = document.createElementNS(NS, 'g');
+    g.innerHTML = '<path fill="url(#face)" stroke="#c3c3b7" stroke-width="1" d="M0 0 146-48 146-174 0-126Z"/><path fill="url(#side)" d="M146-48 156-42 156-168 146-174Z"/><path class="cap" fill="#fffdf9" stroke="#e7e5dc" d="M0-126 146-174 156-168 10-120Z"/><path class="tag" d="M15-33 64-49 64-35 15-19Z" fill="#efeee6" stroke="#c8c6bb"/><path d="M15-86 116-120M15-79 84-102" fill="none" stroke="#dad7cd" stroke-width="2"/><ellipse cx="126" cy="-63" rx="4" ry="5" fill="#c5c1b5"/>';
+    array.appendChild(g);
+    plates.push({ g, cap: g.querySelector('.cap'), tag: g.querySelector('.tag'), c: Math.floor(i / 13), r: i % 13 });
   }
-  function rollText(el, from, to, p, dir) {
-    if (p >= 1 || from === to) { el.innerHTML = `<span>${to}</span>`; return; }
-    const out = dir > 0 ? -p * 100 : p * 100, inn = dir > 0 ? (1 - p) * 100 : -(1 - p) * 100;
-    el.innerHTML = `<span style="transform:translateY(${out}%);opacity:${1 - p}">${from}</span><span class="next" style="transform:translateY(${inn}%);opacity:${p}">${to}</span>`;
+  let L;
+  function layout() {
+    L = stage.portrait ? { w: 984, h: 700, cx: 450, cy: 440, col: [178, -62], row: [-48, 48], chart: [952, 56] }
+      : { w: 1008, h: 510, cx: 455, cy: 350, col: [156, -48], row: [-34, 32], chart: [744, 64] };
+    array.setAttribute('viewBox', `0 0 ${L.w} ${L.h}`);
+    $('#chart').setAttribute('viewBox', `0 0 ${L.chart[0]} ${L.chart[1]}`);
+    $('.read-button > span').textContent = stage.portrait ? '读取' : '读取档案 / READ RECORD';
+    const instrument = $('#instrument');
+    instrument.setAttribute('viewBox', '0 0 780 620');
   }
+  layout(); stage.on('orient', layout);
 
-  /* ---------- 详情遮挡条 ---------- */
-  const doc = $('#doc');
-  function fillDoc(c, r) {
-    const f = fileAt(c, r), no = MK.pad(fileNo(c, r), 3);
-    $('#docFile').textContent = `FILE X-${no}`;
-    $('#docTitle').textContent = f.title;
-    $('#docCn').textContent = C.columns[c].name;
-    $('#docCol').textContent = C.columns[c].en;
-    $('#meta').innerHTML = [['DEPARTMENT / 科室', f.dept], ['COLLECTION / 编目范围', f.collection], ['RELATED / 相关人物', f.related], ['STATUS / 状态', f.status]]
-      .map(([k, v]) => `<div class="masked"><dt>${k}</dt><dd>${v}</dd><i class="mask-bar"></i></div>`).join('');
-    $('#abs').innerHTML = `${f.abstract}<i class="mask-bar"></i>`;
-    $('#glassNo').textContent = `NO.${no}`;
-    $('#glassNum').textContent = `NO.${no}`;
-    for (const sel of ['#docTitle', '.doc-cn']) {
-      const el = $(sel, doc);
-      el.classList.add('masked');
-      if (!el.querySelector('.mask-bar')) el.insertAdjacentHTML('beforeend', '<i class="mask-bar"></i>');
-    }
-    $('#abs').classList.add('masked');
-  }
-  let docKey = '';
-
-  /* ---------- 启动序列 ---------- */
-  const bootText = 'ACCESS REQUEST : ANALYSIS OS';
-  const bootLines = [`ID CONFIRMED : ${C.brand.operator}`, 'REQUEST RECEIVED', 'START PROCESSING...'];
-  $('#bootLines').innerHTML = bootLines.map(() => '<p></p>').join('');
-  const lineEls = [...document.querySelectorAll('#bootLines p')];
-  const circ = 2 * Math.PI * 40;
-  ['#ringA', '#ringB'].forEach((s) => { $(s).style.strokeDasharray = circ; });
-
-  function renderBoot(t) {
-    const boot = $('#boot');
-    const out = seg(t, T.bootEnd - 0.8, 0.8, ease.inCubic);
-    boot.style.visibility = t < T.bootEnd ? 'visible' : 'hidden';
-    boot.style.opacity = 1 - out;
-    boot.style.transform = `scale(${1 - 0.04 * out})`;
-    boot.style.filter = out > 0 ? `blur(${out * 8}px) hue-rotate(${out * 12}deg)` : 'none';
-    // 逐字输入：每字 45ms，“ : ”后停顿
-    const typed = t < 2.0 ? MK.typeText(bootText, clamp((t - 0.3) / 1.4)) : '';
-    $('#bootType').textContent = typed + (t > 0.3 && t < 2.0 && Math.floor(t * 4) % 2 ? '_' : '');
-    $('#bootType').style.opacity = t < 2.0 ? 1 : 0;
-    // 圆环绕行与标志
-    const logo = $('#bootLogo');
-    logo.style.opacity = t > 1.95 && t < 4.7 ? 1 - seg(t, 4.4, 0.3) : 0;
-    logo.style.transform = `translateX(${-seg(t, 3.2, 0.5, ease.outCubic) * 4}vw)`;
-    $('#ringA').style.strokeDashoffset = circ * (1 - seg(t, 2.0, 0.9, ease.inOutCubic));
-    $('#ringB').style.strokeDashoffset = circ * (1 - seg(t, 2.45, 0.9, ease.inOutCubic));
-    $('#markBar').style.opacity = seg(t, 3.15, 0.2);
-    // 身份确认
-    lineEls.forEach((el, i) => {
-      const st = 3.3 + i * 0.42;
-      el.textContent = t > st ? MK.typeText(bootLines[i], seg(t, st, 0.36, ease.linear)) : '';
-      el.style.opacity = t < 4.7 ? 1 - seg(t, 4.4, 0.3) : 0;
-    });
-    // 授权扫描：双环从画面外收拢，核心四帧跳变
-    const scan = $('#scan');
-    const sv = t > 4.6 && t < 5.8;
-    scan.style.opacity = sv ? 1 : 0;
-    if (sv) {
-      const k = seg(t, 4.6, 0.7, ease.outCubic);
-      $('#scanA').setAttribute('transform', `scale(${lerp(2.4, 1, k)}) rotate(${k * 90})`);
-      $('#scanB').setAttribute('transform', `scale(${lerp(0.3, 1, k)})`);
-      const a = t * 7;
-      $('#scanNode').setAttribute('cx', Math.cos(a) * 70); $('#scanNode').setAttribute('cy', Math.sin(a) * 70);
-      const jump = [1, 1.5, 0.75, 1.25, 1][clamp(Math.floor((t - 5.2) / 0.08), 0, 4)];
-      $('#scanCore').setAttribute('transform', `scale(${t > 5.2 ? jump : 0.001})`);
-    }
-    // 欢迎：黑底公司名横扫，INTERNAL DATABASE 闪现
-    const wel = $('#welcome');
-    wel.style.opacity = t > 5.8 && t < T.bootEnd ? 1 : 0;
-    $('.w2 b', wel).style.clipPath = `inset(0 ${(1 - seg(t, 5.9, 0.45, ease.outCubic)) * 100}% 0 0)`;
-    $('.w3', wel).style.opacity = t > 6.25 && !(t > 6.4 && t < 6.5) ? 1 : 0;
-  }
-
-  /* ---------- 主渲染 ---------- */
-  let lastSelKey = '';
-  function renderAt(t, events) {
-    const S = derive(events, t);
-    const m = detailAmount(S, t);
-    renderBoot(t);
-
-    // 阵列入场：从左侧滑入、镜头抬高
-    const enter = seg(t, T.bootEnd - 0.9, 1.3, ease.outCubic);
-    const narrow = innerWidth < 760;
-    const baseScale = narrow ? 0.62 : Math.min(1.9, innerWidth / 1060);
-    const rx = lerp(74, 58, enter) - 4 * m;
-    const rz = -38 + 6 * m;
-    const ox = (1 - enter) * -innerWidth * 0.4 - m * innerWidth * 0.22 + (narrow ? -innerWidth * 0.05 : -innerWidth * 0.1);
-    const oy = (narrow ? innerHeight * 0.06 : innerHeight * 0.04) + m * innerHeight * 0.05;
-    const sc = baseScale * (1 + 0.45 * m);
-    world.style.transform = `translate3d(${ox}px, ${oy}px, 0) scale(${sc}) rotateX(${rx}deg) rotateZ(${rz}deg)`;
-    world.style.visibility = enter > 0.001 ? 'visible' : 'hidden';
-    $('#viewport').style.opacity = enter;
+  function renderArray(s, t) {
+    const origin = Math.floor(s.orbitX) - 3;
+    const enter = step(t - C.timing.bootEnd + 0.45, C.timing.liftRate);
     for (const p of plates) {
-      const lift = plateLift(p, t, S, m);
-      const isSel = p.c === S.col && p.pr === S.row + ROW0;
-      p.el.style.transform = `translate3d(${p.x}px, ${p.y}px, ${lift.toFixed(2)}px)`;
-      p.el.classList.toggle('sel', isSel);
-      // 透明度放在各个面上：preserve-3d 元素本身 opacity<1 会被压平
-      const op = isSel || m < 0.002 ? '' : String(1 - 0.75 * m);
-      if (p.op !== op) { p.op = op; p.faces.forEach((f) => { f.style.opacity = op; }); }
-    }
-
-    // HUD 入场与详情让位
-    const hud = seg(t, T.bootEnd - 0.2, 0.8, ease.outCubic);
-    for (const id of ['#brand', '#sysnav', '#powered', '#status']) $(id).style.opacity = hud;
-    for (const id of ['#info', '#selectBox', '#navBox']) { $(id).style.opacity = hud * (1 - m); $(id).style.visibility = hud * (1 - m) > 0.02 ? 'visible' : 'hidden'; }
-    $('#info').style.transform = `translateX(${(1 - hud) * 30}px)`;
-
-    // 编号、标题、列名滚动（只显示当前运动与最终目标）
-    const last = S.sels[S.sels.length - 1];
-    const prevSel = S.sels.length > 1 ? S.sels[S.sels.length - 2] : last;
-    const p = last.boot ? 1 : seg(t, last.t, T.roll, ease.outCubic);
-    const fromC = last.boot ? last.col : last.pcol, fromR = last.boot ? last.row : last.prow;
-    rollDigits($('#digits'), fileNo(fromC, fromR), fileNo(S.col, S.row), p, last.dir, 3);
-    rollDigits($('#rowDigits'), fromR + 1, S.row + 1, p, last.dir, 2);
-    rollText($('#titleRoll'), fileAt(fromC, fromR).title, fileAt(S.col, S.row).title, p, last.dir);
-    rollText($('#catRoll'), C.columns[fromC].name, C.columns[S.col].name, p, last.dir);
-    rollText($('#colRoll'), C.columns[fromC].name, C.columns[S.col].name, p, last.dir);
-    $('#colIdx').textContent = MK.pad(S.col + 1);
-    ticks.forEach((tk, i) => tk.classList.toggle('on', i === S.row));
-    void prevSel;
-
-    // 详情：玻璃检视与解密
-    const det = $('#detail');
-    const lastMode = S.modes[S.modes.length - 1];
-    const dv = lastMode ? (lastMode.on ? seg(t, lastMode.t + 0.35, 0.4, ease.outCubic) : 1 - seg(t, lastMode.t, 0.25)) : 0;
-    det.style.visibility = dv > 0.01 ? 'visible' : 'hidden';
-    det.style.opacity = dv;
-    det.classList.toggle('on', S.mode === 'detail');
-    det.setAttribute('aria-hidden', String(S.mode !== 'detail'));
-    const key = `${S.col}:${S.row}`;
-    if (key !== docKey) { docKey = key; fillDoc(S.col, S.row); }
-    if (lastMode && lastMode.on) {
-      const te = lastMode.t;
-      $('#glass').style.transform = `translateX(${(1 - seg(t, te + 0.35, 0.6, ease.outCubic)) * -40}px) scale(${0.97 + 0.03 * seg(t, te + 0.35, 0.6, ease.outCubic)})`;
-      const dIn = seg(t, te + 0.55, 0.45, ease.inOutCubic), dOut = seg(t, te + 0.55 + T.decrypt, 0.35, ease.inCubic);
-      ['#diagA', '#diagB'].forEach((s) => {
-        const el = $(s);
-        el.style.strokeDasharray = '142 142';
-        el.style.strokeDashoffset = 142 * (1 - dIn) - 142 * dOut;
-        el.style.opacity = 1 - dOut;
+      const c = origin + p.c, logical = mod(c, 5), rowOrbit = s.orbitY;
+      const row = Math.floor(rowOrbit) - 5 + p.r;
+      const dx = c - s.orbitX, dy = row - rowOrbit;
+      let lift = 0, wave = 0;
+      s.selections.forEach((e, i) => {
+        const end = s.selections[i + 1]?.t ?? Infinity;
+        if (e.x === c && e.y === row) lift += 34 * (step(t - e.t, C.timing.liftRate) - step(t - end, C.timing.liftRate));
+        const age = t - e.t, d = Math.hypot(row - e.y, 2.2 * (c - e.x));
+        if (!reduced && age >= 0 && age < 3.2) {
+          const front = age * 8 - d;
+          const rise = clamp(age / .2), smooth = rise ** 3 * (10 - 15 * rise + 6 * rise * rise);
+          wave += 22.4 * smooth * Math.exp(-1.15 * age) * Math.cos(front * 0.58) * Math.exp(-front * front / (2 * 3.4 ** 2));
+        }
       });
-      // 盖板自上而下由磨砂变清晰
-      const clear = seg(t, te + 0.9, T.decrypt - 0.3, ease.inOutCubic);
-      $('#frost').style.clipPath = `inset(${clear * 100}% 0 0 0)`;
-      // 正文遮挡条依次退开
-      doc.querySelectorAll('.mask-bar').forEach((b, i) => {
-        const k = seg(t, te + 1.0 + i * 0.08, 0.42, ease.inOutCubic);
-        b.style.width = '100%';
-        b.style.transform = `scaleX(${1 - k})`;
-      });
-      $('.tab-line').style.transform = 'translateX(0)';
+      const selected = c === s.x && row === s.y;
+      if (selected) lift += 102 * s.amount;
+      const age = t - s.selections.at(-1).t;
+      const breathe = reduced ? 0 : 3.4 * seg(age, C.timing.idleAfter, 1.5) * (0.6 * Math.sin(t * 2 * Math.PI / 8 + c * 0.8 + row * 0.5) + 0.4 * Math.sin(t * 2 * Math.PI / 13 + row));
+      const px = Math.round(L.cx + dx * L.col[0] + dy * L.row[0] - (1 - enter) * 280);
+      const py = Math.round(L.cy + dx * L.col[1] + dy * L.row[1] - lift - wave - breathe);
+      p.g.setAttribute('transform', `translate(${px} ${py})`);
+      p.g.setAttribute('opacity', String(clamp(Math.min((px + 140) / 150, (L.w - px) / 150, (py + 30) / 80, (L.h + 100 - py) / 110))));
+      p.cap.setAttribute('fill', selected ? '#b46c3c' : '#fffdf9');
+      p.tag.setAttribute('fill', selected ? '#c29a73' : '#efeee6');
+      p.g.dataset.file = C.files[logical][mod(row, 8)].id;
     }
-
-    // 时钟
-    const s0 = 12 * 3600 + 21 * 60 + Math.floor(t);
-    $('#clock').textContent = `${MK.pad(s0 / 3600)}:${MK.pad((s0 % 3600) / 60)}:${MK.pad(s0 % 60)}`;
-    $('#saved').textContent = MK.pad(saved);
-
-    // 声音：选择变化时玻璃轻碰（仅播放/实时状态）
-    const sk = `${last.t}|${key}`;
-    if (sk !== lastSelKey) { if (lastSelKey && !last.boot) glass(); lastSelKey = sk; }
-  }
-  function glass() {
-    sfx.tone({ f: 2140, d: 0.18, g: 0.07, type: 'sine' });
-    sfx.tone({ f: 3260, d: 0.12, g: 0.04, type: 'sine', delay: 0.012 });
-    sfx.noise({ d: 0.03, g: 0.05, hp: 4000, lp: 12000 });
   }
 
-  /* ---------- 时间轴 / 实时模式 ---------- */
-  const tl = MK.timeline({
-    duration: C.duration,
-    render: (t) => { if (!live) renderAt(t, autopilot); },
-    markers: [{ t: 0.3, label: '逐字输入' }, { t: 2.0, label: '圆环与标志' }, { t: 3.3, label: '身份确认' }, { t: 4.6, label: '授权扫描' }, { t: 5.8, label: '欢迎' }, { t: T.bootEnd - 0.9, label: '阵列入场' }, ...C.autopilot.map((e) => ({ t: e.t, label: { ArrowRight: '→ 下一列', ArrowLeft: '← 上一列', ArrowDown: '↓ 下一份', ArrowUp: '↑ 上一份', Enter: '读取 · 解密', Escape: '返回阵列' }[e.key] })) ],
-  });
-  // 外部 seek / play（站点刻度条、重播）回到自动演示
-  const seek0 = tl.seek, play0 = tl.play;
-  tl.seek = (x) => { live = false; return seek0(x); };
-  tl.play = () => { live = false; return play0(); };
-
-  let raf = 0;
-  function liveLoop() {
-    if (!live) return;
-    renderAt(liveBase + (performance.now() - liveStart) / 1000, liveEvents);
-    raf = requestAnimationFrame(liveLoop);
+  function rolling(el, from, to, p, height) {
+    if (from === to || p >= 1) { el.textContent = to; return; }
+    el.innerHTML = `<span style="transform:translateY(${-p * height}px);opacity:${1 - p}">${from}</span><span class="next" style="transform:translateY(${(1 - p) * height}px);opacity:${p}">${to}</span>`;
   }
-  function input(key, extra = {}) {
-    if (!live) {
-      const now = Math.max(tl.time, T.bootEnd);
-      tl.pause();
-      live = true;
-      liveBase = now;
-      liveStart = performance.now();
-      liveEvents = autopilot.filter((e) => e.t <= tl.time);
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(liveLoop);
+  function numberRoll(from, to, p, direction) {
+    const height = stage.portrait ? 72 : 68;
+    $('#fileNumber').innerHTML = [...to].map((ch, i) => ch === from[i] || p >= 1 ? `<span>${ch}</span>` : `<span class="digit"><i style="transform:translateY(${-direction * p * height}px)">${from[i]}</i><i style="transform:translateY(${direction * (1 - p) * height}px)">${ch}</i></span>`).join('');
+  }
+  let contentKey = '';
+  function renderFile(s, t) {
+    const f = fileAt(s), last = s.selections.at(-1), from = C.files[last.fromCol][last.fromRow];
+    const u = clamp((t - last.t) / C.timing.roll);
+    const k = Math.floor(u * 48), sample = (n) => n >= 48 ? 1 : 1 - (1 + 10 * n / 48) * Math.exp(-10 * n / 48);
+    const p = reduced || !last.key ? 1 : lerp(sample(k), sample(k + 1), u * 48 - k);
+    numberRoll(from.id, f.id, p, ['ArrowUp', 'ArrowLeft'].includes(last.key) ? -1 : 1);
+    rolling($('#fileTitle'), from.title, f.title, p, stage.portrait ? 72 : 56);
+    rolling($('#fileEn'), from.en, f.en, p, stage.portrait ? 44 : 34);
+    rolling($('#category'), `${C.columns[last.fromCol].code} / ${C.columns[last.fromCol].name}`, `${C.columns[s.col].code} / ${C.columns[s.col].name}`, p, stage.portrait ? 44 : 31);
+    rolling($('#colName'), C.columns[last.fromCol].name, C.columns[s.col].name, p, stage.portrait ? 48 : 34);
+    const key = `${f.id}/${stage.orient}`;
+    if (key !== contentKey) {
+      contentKey = key;
+      $('#level').textContent = f.level;
+      $('#timestamp').textContent = f.timestamp;
+      $('#author').textContent = `复核 / ${f.author}`;
+      $('#abstract').textContent = stage.portrait ? f.abstract.split('。')[0] + '。' : f.abstract;
+      $('#note').textContent = f.note;
+      $('#metrics').innerHTML = f.metrics.map((m) => `<div class="metric"><span>${m.label}</span><p><b>${m.value}</b><em>${m.unit}</em></p></div>`).join('');
+      $('#inspectionId').textContent = f.id + ' / ' + f.en;
+      const [w, h] = L.chart;
+      const pts = f.series.map((v, i) => [4 + i * (w - 8) / (f.series.length - 1), h - 4 - v * (h - 8)]);
+      $('#chart').innerHTML = `<path d="M0 4H${w}M0 ${h / 2}H${w}M0 ${h - 4}H${w}" fill="none" stroke="#bfc0b5"/>`
+        + `<path d="M${pts.map((v) => v.join(' ')).join(' L')}" fill="none" stroke="#b46c3c" stroke-width="3"/>`
+        + pts.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="#b46c3c"/>`).join('');
+      $('#chartValue').textContent = f.metrics[0].value;
     }
-    const t = liveBase + (performance.now() - liveStart) / 1000;
-    liveEvents.push({ t, key, ...extra });
-    if (key === 'Enter') sfx.tone({ f: 520, d: 0.35, g: 0.08, slide: -220 });
+    $('#arrayCode').textContent = C.columns[s.col].code + ' / ' + C.columns[s.col].en;
+    $('#loopState').textContent = `${MK.pad(s.row + 1)} / 08 · ${MK.pad(s.col + 1)} / 05`;
+    $('#rowCount').textContent = `${MK.pad(s.row + 1)}/08`;
+    const prev = s.selections.at(-2) || last;
+    tickEls.forEach((el, i) => {
+      const size = lerp(i === prev.row ? 40 : 18, i === s.row ? 40 : 18, seg(t, last.t, 0.4));
+      el.style.height = size + 'px'; el.classList.toggle('on', i === s.row);
+    });
+    const complete = s.moves.length >= 12;
+    $('#direction').textContent = t - last.t < 1.8 && last.key ? arrows[last.key] : complete ? 'CYCLE / RETURNED' : 'INDEX / STABLE';
+    $('#modeLabel').textContent = complete ? 'TWO CYCLES / ORIGIN VERIFIED' : 'CIRCULAR INDEX / BIDIRECTIONAL';
+    $('#stage').dataset.record = f.id;
+    $('#stage').dataset.direction = last.key;
+  }
+
+  // Monotone Hermite sampling follows the measured decryption knots without overshoot.
+  function curve(keys, time) {
+    if (time <= keys[0][0]) return keys[0][1];
+    if (time >= keys.at(-1)[0]) return keys.at(-1)[1];
+    const slope = (i) => (keys[i + 1][1] - keys[i][1]) / (keys[i + 1][0] - keys[i][0]);
+    const tangent = (i) => {
+      if (!i || i === keys.length - 1) return 0;
+      const a = slope(i - 1), b = slope(i);
+      if (a * b <= 0) return 0;
+      const h0 = keys[i][0] - keys[i - 1][0], h1 = keys[i + 1][0] - keys[i][0];
+      return (3 * (h0 + h1)) / ((2 * h1 + h0) / a + (h1 + 2 * h0) / b);
+    };
+    let i = 0; while (time > keys[i + 1][0]) i++;
+    const h = keys[i + 1][0] - keys[i][0], p = (time - keys[i][0]) / h;
+    return (2 * p ** 3 - 3 * p * p + 1) * keys[i][1] + (p ** 3 - 2 * p * p + p) * h * tangent(i)
+      + (-2 * p ** 3 + 3 * p * p) * keys[i + 1][1] + (p ** 3 - p * p) * h * tangent(i + 1);
+  }
+  const grow = [[34.24, 0], [34.4, .19], [34.64, .57], [34.96, .79], [35.28, .92], [35.6, .973], [36.04, 1]];
+  const retract = [[37.72, 1], [37.88, .72], [38, .38], [38.12, .22], [38.24, .14], [38.4, .075], [38.64, .024], [38.84, 0]];
+  const reveal = [[38.84, 0], [38.92, .28], [39, .51], [39.16, .74], [39.32, .94], [39.56, 1]];
+  function renderDetail(s, t) {
+    const mode = s.modes.at(-1), on = mode?.on;
+    const alpha = mode ? on ? seg(t, mode.t + .25, .65, ease.outCubic) : 1 - seg(t, mode.t, .4) : 0;
+    const browseText = mode ? on ? 1 - seg(t, mode.t, .18) : seg(t, mode.t + .25, .18) : 1;
+    const inspectText = mode ? on ? seg(t, mode.t + .25, .18) : 1 - seg(t, mode.t, .18) : 0;
+    $('#inspection').style.opacity = alpha;
+    $('#inspection').style.pointerEvents = alpha > .5 ? 'auto' : 'none';
+    $('.array-frame').style.opacity = (1 - s.amount) * seg(t, C.timing.bootEnd - .4, .8);
+    for (const sel of ['.array-caption', '.field-foot', '.navigation']) $(sel).style.opacity = browseText * seg(t, C.timing.bootEnd, .6) * (1 - seg(t, C.outro, .18));
+    for (const sel of ['.inspection-heading', '.inspection-caption', '.back-button']) $(sel).style.opacity = inspectText;
+    $('.navigation').style.pointerEvents = browseText > .5 ? 'auto' : 'none';
+    const dt = mode && on ? t - mode.t - 1 : -1;
+    const ref = reduced && on ? 40 : 34.12 + Math.max(-1, dt) * 1.5;
+    const clear = curve(reveal, ref);
+    $('#instrumentCore').style.filter = `blur(${(1 - clear) * 5}px)`;
+    $('#frost').style.clipPath = `inset(${clear * 100}% 0 0 0)`;
+    const a = ref < 36.04 ? curve(grow, ref) : curve(retract, ref);
+    const range = ref < 36.04 ? [[0, a / 2], [1 - a / 2, 1]] : [[.5 - a / 2, .5 + a / 2], [.5, .5]];
+    ['#decodeA', '#decodeB'].forEach((id, i) => {
+      const [u, v] = range[i];
+      $(id).setAttribute('d', `M${lerp(80, 700, u)} ${lerp(482, 88, u)}L${lerp(80, 700, v)} ${lerp(482, 88, v)}`);
+    });
+    $('#diagonal').style.opacity = dt >= 0 && ref < 39.56 ? 1 : 0;
+    $('#decryptPhase').textContent = ref < 34.24 ? 'ALIGNING' : ref < 36.04 ? 'JOINING' : ref < 37.72 ? 'CONNECTED' : ref < 38.84 ? 'DECODING' : clear < 1 ? 'REVEALING' : 'VERIFIED';
+    const revealStart = mode?.t + 1 + (38.84 - 34.12) / 1.5;
+    parts.forEach((el, i) => {
+      const progress = clamp((t - revealStart) / .95);
+      const local = clamp((progress - i / (parts.length - 1) * .22) / .78);
+      const r = on && dt >= 0 ? local < .2 ? .4 * (local / .2) ** 2 : 1 - .6 * ((1 - local) / .8) ** (16 / 3) : 1;
+      el.style.setProperty('--reveal', String(r));
+      if (!el.classList.contains('redacted')) el.style.opacity = on && dt >= 0 ? .14 + .86 * r : 1;
+    });
+    $('.read-button').style.opacity = 1 - s.amount;
+    $('.read-button').style.pointerEvents = s.amount < .1 ? 'auto' : 'none';
+  }
+
+  const arcs = [...document.querySelectorAll('.signal-arc')];
+  const signalPaths = [100, 72, 42].map((d) => `M${120 - d} ${164 - d}a${Math.SQRT2 * d} ${Math.SQRT2 * d} 0 0 1 ${2 * d} 0`);
+  arcs.forEach((el, i) => el.setAttribute('d', signalPaths[i]));
+  $('#outro > svg path').setAttribute('d', signalPaths.join(''));
+  const accessCounts = [1, 1, 3, 4, 5, 6, 9, 11, 12, 14, 17, 18, 19, 20, 22, 23, 25, 26];
+  const typed = (text, frame, start, end) => text.slice(0, frame < start ? 0 : Math.min(text.length, 1 + Math.floor((frame - start) * (text.length - 1) / (end - start))));
+  function renderBoot(t) {
+    const f = Math.floor((t + 5) * 25 + .00001);
+    const exit = seg(t, 21.56, .36, ease.inOutCubic);
+    $('#boot').style.opacity = t < 21.92 ? 1 - exit : 0;
+    $('#boot').style.pointerEvents = t < 21.92 ? 'auto' : 'none';
+    $('#bootFrame').textContent = `FRAME ${String(f).padStart(4, '0')} / 25 FPS`;
+    $('.boot-access').style.opacity = t < 14.48 ? 1 : 0;
+    const signalOn = f >= 170;
+    $('#signal').style.opacity = signalOn ? 1 : 0;
+    arcs.forEach((el, i) => {
+      const start = 173 + (2 - i) * 4, k = clamp((f - start) / 3);
+      el.style.opacity = .12 + .88 * k;
+      el.style.strokeDasharray = '1'; el.style.strokeDashoffset = 1 - k;
+      el.setAttribute('pathLength', '1');
+    });
+    $('#signalDot').style.opacity = signalOn && (f >= 188 || f % 4 < 3) ? 1 : .15;
+    $('#signal').style.transform = `translateY(${-seg(t, 4.16, 1.5, ease.outCubic) * (stage.portrait ? 40 : 10)}px)`;
+    $('#accessText').textContent = f >= 170 && f < 227 ? 'ARCHIVE CONNECTION REQUEST'.slice(0, accessCounts[Math.min(17, f - 170)]) : f < 279 ? 'FIELDWORK / ACCESS GATEWAY' : '';
+    $('#accessText').style.opacity = f >= 170 ? 1 : 0;
+    let auth = '';
+    if (f < 363) {
+      auth = typed('IDENTITY VERIFIED', f, 282, 295);
+      if (f >= 320) auth += ' / ' + typed('OPERATOR 07', f, 321, 339);
+    } else if (f < 421) auth = typed('REQUEST ACCEPTED', f, 367, 389);
+    else auth = typed('INDEX PREPARATION', f, 423, 440) + (f >= 449 ? '.'.repeat(Math.min(3, 1 + Math.floor((f - 449) / 4))) : '');
+    $('#authText').textContent = auth;
+    $('#authText').style.opacity = f >= 281 && f < 487 && ![479, 485, 486].includes(f) ? 1 : 0;
+    $('#scan').style.opacity = t >= 14.48 && t < 17.76 ? 1 : 0;
+    const sp = seg(t, 14.48, 1.32, ease.outCubic), glitch = [525, 526, 528, 529].includes(f);
+    $('#scanRings').setAttribute('transform', `scale(${lerp(6.9, 1, sp) * (glitch ? 1.94 : 1)}) rotate(${(t - 14.48) * 16})`);
+    $('#scanRings').style.opacity = glitch ? .32 : seg(t, 14.48, .24);
+    const angle = (t - 14.48) * 2.2;
+    $('#orbitDot').setAttribute('cx', Math.cos(angle) * 266);
+    $('#orbitDot').setAttribute('cy', Math.sin(angle) * 266);
+    $('#welcome').style.opacity = t >= 17.76 && t < 21.92 ? 1 : 0;
+    const flash = [1, 0, .28, 0, 1, 0, 0][f - 569] || 0;
+    $('#welcome').style.background = flash ? `rgba(39,41,34,${flash})` : 'transparent';
+    $('#welcomeName').style.opacity = f >= 588 && ![590, 591].includes(f) ? 1 : 0;
+    $('#welcomeName').style.clipPath = `inset(0 ${(1 - seg(t, 18.52, .92, ease.outCubic)) * 100}% 0 0)`;
+    $('#welcomeDatabase').style.opacity = f >= 626 && ![628, 629, 631, 634].includes(f) ? 1 : 0;
+    $('#bootStatus').textContent = t < 1.8 ? 'STANDBY' : t < 4.12 ? 'LINK / NEGOTIATING' : t < 14.48 ? 'IDENTITY / VERIFIED' : t < 17.76 ? 'AUTHORIZATION / SCANNING' : 'DATABASE / ONLINE';
+  }
+
+  function render(t) {
+    const s = derive(events, t);
+    renderBoot(t); renderArray(s, t); renderFile(s, t); renderDetail(s, t);
+    const leaveText = 1 - seg(t, C.outro, .18);
+    $('.brand').style.opacity = seg(t, C.timing.bootEnd, .6) * leaveText;
+    $('.session').style.opacity = seg(t, C.timing.bootEnd, .6) * leaveText;
+    $('.dossier').style.opacity = seg(t, C.timing.bootEnd, .8) * leaveText;
+    $('.footer').style.opacity = seg(t, C.timing.bootEnd, .6) * leaveText;
+    $('#clock').textContent = `09:${MK.pad(41 + Math.floor(t / 60))}:${MK.pad(Math.floor(t) % 60)}`;
+    const out = seg(t, C.outro, .8, ease.inOutCubic);
+    $('#outro').style.opacity = out;
+    [...$('#outro').children].filter((el) => el.tagName !== 'svg').forEach((el) => { el.style.opacity = seg(t, C.outro + .25, .4); });
+    $('#outro h2').style.transform = `translateY(${(1 - out) * 36}px)`;
+  }
+
+  const switchNotes = { ArrowUp: 'E6', ArrowDown: 'C6', ArrowLeft: 'A5', ArrowRight: 'D6' };
+  const switchScore = (e) => [
+    { t: e.t, voice: 'chime', note: switchNotes[e.key], decay: .24, ratio: 2.71, index: 1.1, vel: .45, pan: e.key === 'ArrowLeft' ? -.55 : e.key === 'ArrowRight' ? .55 : 0 },
+    { t: e.t + .04, voice: 'paper', dur: .23, tone: 2800, vel: .28 },
+    { t: e.t + .46, voice: 'blip', note: switchNotes[e.key], vel: .22 },
+  ];
+  const readScore = (t) => [
+    { t, voice: 'chime', note: 'A5', decay: .58, vel: .55 },
+    { t: t + 1, voice: 'beep', f: 960, dur: .06, vel: .4 },
+    { t: t + 1.12, voice: 'beep', f: 960, dur: .06, vel: .4 },
+    { t: t + 3.4, voice: 'glitch', dur: .44, density: 22, bits: 8, vel: .16 },
+    { t: t + 4.147, voice: 'whoosh', dur: .48, vel: .3 },
+    { t: t + 4.627, voice: 'confirm', f: 640, vel: .45 },
+  ];
+  const eventScore = (list) => list.flatMap((e, i) => arrows[e.key] ? switchScore(e) : e.key === 'Enter'
+    ? readScore(e.t).filter((cue) => cue.t < (list.slice(i + 1).find((x) => x.key === 'Escape')?.t ?? Infinity))
+    : [{ t: e.t, voice: 'chime', note: 'D5', decay: .22, vel: .4 }]);
+  const SCORE = [
+    { t: 0, voice: 'air', dur: C.duration, tone: 1400, vel: .35, fade: 1.2 },
+    { t: 4.16, voice: 'pad', notes: ['D3', 'A3', 'E4'], dur: 13.6, attack: .72, vel: .33 },
+    { t: 14.48, voice: 'reverse', dur: 1.32, vel: .32 },
+    ...[14.48, 15.04, 15.6, 16.16].map((t, i) => ({ t, voice: 'beep', f: 640 + i * 160, dur: .08, vel: .45 })),
+    { t: 17.76, voice: 'pad', notes: ['D3', 'A3', 'C#4', 'E4'], dur: 4.2, attack: .3, vel: .5 },
+    { t: 18.52, voice: 'confirm', f: 640, steps: [0, 7], vel: .5 },
+    { t: 21.92, voice: 'whoosh', dur: .65, vel: .45 },
+    { t: 21.92, voice: 'chime', note: 'D5', vel: .48 },
+    ...[1.8, 1.96, 2.12, 2.28].map((t, i) => ({ t, voice: 'blip', note: ['D5', 'A5', 'D6', 'E6'][i], vel: .35 })),
+    ...[...Array(18)].map((_, i) => ({ t: 1.8 + i / 25, voice: 'tick', vel: .25 })),
+    ...[6.28, 7.84, 9.68, 11.92].flatMap((t) => [...Array(12)].map((_, i) => ({ t: t + i / 25, voice: 'tick', vel: .22 }))),
+    ...[22, 30, 38, 46, 54].map((t, i) => ({ t, voice: 'pad', notes: [['D3', 'A3', 'C#4', 'E4'], ['B2', 'F#3', 'A3', 'D4'], ['G2', 'D3', 'A3', 'B3'], ['A2', 'E3', 'B3', 'D4'], ['D3', 'A3', 'E4', 'F#4']][i], dur: 8, attack: 1, release: 1, vel: .46 })),
+    MK.audio.pattern({ bpm: C.bpm, from: 22, to: 50, tracks: { rim: 'X.......o.......', hat: '....o.......o...' }, voices: { rim: { gain: .28 }, hat: { gain: .18 } } }),
+    ...[...Array(19)].map((_, i) => ({ t: 22 + i * 2, voice: 'pluck', note: ['D4', 'E4', 'A4', 'F#4', 'B4', 'A4', 'E4', 'C#4'][i % 8], vel: .3, decay: .7, pan: i % 2 ? .25 : -.25 })),
+    { t: 60, voice: 'pad', notes: ['D3', 'A3', 'D4', 'E4', 'F#4'], dur: 2.5, attack: .15, release: .6, vel: .5 },
+    { t: 60.1, voice: 'confirm', note: 'D6', steps: [0, 7, 12], vel: .5 },
+  ];
+  const markers = [{ t: 0, label: '启动待机' }, { t: 1.8, label: '无线链路' }, { t: 6.24, label: '身份验证' }, { t: 14.48, label: '授权扫描' }, { t: 17.76, label: '欢迎' }, { t: 21.92, label: '档案阵列' },
+    ...C.events.map((e) => ({ t: e.t, label: arrows[e.key] || (e.key === 'Enter' ? '抽取与解密' : '返回阵列') })), { t: 54.147, label: '自上而下揭示' }, { t: 60, label: '闭环收尾' }].sort((a, b) => a.t - b.t);
+  const tl = MK.timeline({ duration: C.duration, render, markers });
+  const schedule = MK.audio.attach(tl, [...SCORE, ...eventScore(events)]);
+  const seek = tl.seek, play = tl.play;
+  function auto() {
+    if (events !== C.events) { events = C.events; schedule.set([...SCORE, ...eventScore(events)]); }
+  }
+  tl.seek = (t) => { auto(); return seek(t); };
+  tl.play = () => { auto(); return play(); };
+
+  // Manual input appends timeline events, so controls, seeks and audio keep one clock.
+  function input(key) {
+    if (P.render || !arrows[key] && !['Enter', 'Escape'].includes(key)) return;
+    const now = tl.time < C.timing.bootEnd || tl.time >= C.outro ? C.timing.bootEnd + .3 : tl.time;
+    const s = derive(events, now);
+    if (s.detail && key !== 'Escape' || !s.detail && key === 'Escape') return;
+    events = [...events.filter((e) => e.t <= now), { t: now + .001, key }];
+    schedule.set([...SCORE, ...eventScore(events)]);
+    seek(now); play();
   }
   addEventListener('keydown', (e) => {
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', 'Escape'].includes(e.key)) {
-      if (e.target.closest && e.target.closest('input, textarea, select')) return;
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      input(e.key);
-    }
+    if (P.render || ![...Object.keys(arrows), 'Enter', 'Escape'].includes(e.key) || e.target.closest('input,textarea,select') || e.target.closest('button:not([data-key]),a')) return;
+    e.preventDefault(); e.stopImmediatePropagation(); input(e.key);
   }, true);
-  document.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-key], [data-act]');
-    if (b && b.dataset.key) return input(b.dataset.key);
-    if (b && b.dataset.act === 'enter') return input('Enter');
-    if (b && b.dataset.act === 'save') { saved++; return; }
-    if (b && b.dataset.act === 'sound') {
-      sfx.toggle();
-      b.setAttribute('aria-pressed', String(sfx.enabled));
-      b.setAttribute('aria-label', sfx.enabled ? '关闭声音' : '开启声音');
-      $('#sndwave').setAttribute('d', sfx.enabled ? 'M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11' : 'M16 9.5l5 5M21 9.5l-5 5');
-      return;
-    }
-    const plate = e.target.closest('.plate');
-    if (plate) {
-      const r = Number(plate.dataset.r) - ROW0;
-      if (r >= 0 && r < NROW) input('select', { col: Number(plate.dataset.c), row: r });
-    }
-  });
-
-  // 启动序列的逐字音
-  const cues = [];
-  MK.chars(bootText).forEach((_, i) => cues.push({ t: 0.3 + (i / bootText.length) * 1.4, fn: () => sfx.tone({ f: 1800 + (i % 3) * 140, d: 0.035, type: 'square', g: 0.025 }) }));
-  cues.push({ t: 2.0, fn: () => sfx.tone({ f: 180, d: 0.9, g: 0.08, slide: 60 }) });
-  cues.push({ t: 4.6, fn: () => { sfx.tone({ f: 880, d: 0.08, type: 'square', g: 0.04 }); sfx.tone({ f: 1320, d: 0.08, type: 'square', g: 0.04, delay: 0.1 }); } });
-  cues.push({ t: 5.9, fn: () => sfx.tone({ f: 440, d: 0.6, g: 0.07, slide: 440 }) });
-  let prevT = 0;
-  tl.on((t, playing) => {
-    if (playing && t > prevT && t - prevT < 0.5) for (const c of cues) if (c.t > prevT && c.t <= t) c.fn();
-    prevT = t;
-  });
-
-  MK.expose(tl, { title: '白色档案终端', sound: sfx });
-  MK.controls(tl, { sound: sfx, accent: C.palette.accent });
-  addEventListener('resize', () => (live ? null : tl.seek(tl.time)));
-  const reduce = MK.prefersReducedMotion();
-  tl.seek(P.t ?? (reduce ? T.bootEnd + 0.5 : 0));
-  if (P.autoplay && !reduce) tl.play();
+  document.addEventListener('click', (e) => { const b = e.target.closest('[data-key]'); if (b) input(b.dataset.key); });
+  MK.expose(tl, { title: C.title, bpm: C.bpm });
+  MK.controls(tl, { accent: '#b46c3c' });
+  MK.start(tl, { t: 0, reduced: 24 });
 })();

@@ -1,113 +1,61 @@
 <!doctype html>
+<!-- Motion adaptation: Copyright (c) 2026 LBEILC / RhineLabUI, MIT.
+     Original FIELDWORK content and SVG artwork; full notice: docs/research/archive-os.md. -->
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>白色档案终端 · Analysis OS — Motion Atlas Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FIELDWORK · 循环档案终端</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main id="app" class="app" aria-label="档案终端">
-    <div class="atmos" aria-hidden="true"></div>
-
-    <div class="viewport" id="viewport" aria-hidden="true"><div class="world" id="world"></div></div>
-    <div class="veil" id="veil" aria-hidden="true"></div>
-
-    <header class="brand" id="brand">
-      <p class="b1"></p><p class="b2"></p><p class="b3"><span class="b3a"></span><b class="b3b"></b></p>
-    </header>
-
-    <nav class="sys-nav" id="sysnav" aria-label="系统">
-      <button type="button" class="sys-btn" data-act="index"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>ARCHIVE INDEX</span></button>
-      <span class="sys-saved">+ SAVED <b id="saved">00</b></span>
-      <button type="button" class="sys-btn" data-act="sound" aria-pressed="false" aria-label="开启声音"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path id="sndwave" d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-    </nav>
-
-    <section class="hover-info" id="info" aria-live="polite">
-      <p class="hi-cat"><span>INTERNAL DATABASE</span><i>/</i><span class="roll" id="catRoll"></span></p>
-      <h1 class="hi-file">FILE NUMBER: X-<span class="digits" id="digits"></span></h1>
-      <div class="hi-rule"><i></i></div>
-      <p class="hi-title roll" id="titleRoll"></p>
-      <button type="button" class="hi-access" data-act="enter"><span>ACCESS FILE</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </section>
-
-    <section class="select-box" id="selectBox">
-      <p class="sb-label">ARCHIVE / SELECT</p>
-      <p class="sb-count"><span class="digits big" id="rowDigits"></span><i>/</i><small id="rowTotal">08</small></p>
-    </section>
-
-    <section class="nav-box" id="navBox">
-      <div class="rows">
-        <button type="button" class="arrow" data-key="ArrowUp" aria-label="上一份档案"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="ticks" id="ticks"></div>
-        <button type="button" class="arrow" data-key="ArrowDown" aria-label="下一份档案"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <main id="stage" data-stage>
+    <header class="brand"><b>FIELDWORK</b><span>INDEPENDENT RESEARCH ARCHIVE</span><p>ARCHIVE <strong>OS / 07</strong></p></header>
+    <div class="session"><span class="status-dot"></span><span>SESSION / AUTHORIZED</span><span id="clock"></span></div>
+    <section id="browse" aria-label="循环档案浏览">
+      <div class="array-frame">
+        <div class="array-caption"><span>RECORD FIELD / 40 UNITS</span><span id="arrayCode">A / OPTICS</span></div>
+        <svg id="array" aria-label="可循环的等轴档案阵列"></svg>
+        <div class="field-foot"><span id="direction">INDEX READY</span><span id="loopState">01 / 08 · 01 / 05</span></div>
       </div>
-      <div class="cols">
-        <button type="button" class="arrow" data-key="ArrowLeft" aria-label="上一列"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="col-name"><small>COLUMN <span id="colIdx">03</span> / <span id="colTotal">05</span></small><b class="roll" id="colRoll"></b></div>
-        <button type="button" class="arrow" data-key="ArrowRight" aria-label="下一列"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-      <p class="keys">←→ 切换列 / ↑↓ 前后档案 / ENTER 读取 / ESC 返回</p>
-    </section>
-
-    <p class="powered" id="powered">POWERED BY <b></b><i></i></p>
-    <footer class="status" id="status"><span><i class="dot"></i>SESSION AUTHORIZED</span><span class="op"></span><span class="clock" id="clock">12:21:39</span></footer>
-
-    <!-- 详情：玻璃检视 + 解密文档 -->
-    <section class="detail" id="detail" aria-hidden="true">
-      <button type="button" class="back" data-key="Escape"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ARCHIVE OVERVIEW</span><kbd>ESC</kbd></button>
-      <div class="glass" id="glass">
-        <svg class="inner" viewBox="0 0 400 300" aria-hidden="true">
-          <rect x="14" y="14" width="372" height="272" rx="10" fill="none" stroke="#c9c3b8" stroke-width="2"/>
-          <rect x="40" y="40" width="88" height="40" rx="3" fill="#fbfaf7" stroke="#d2ccc2"/>
-          <text x="50" y="57" font-size="12" font-family="Segoe UI, sans-serif" fill="#55534c">LUMEN LAB</text>
-          <text x="50" y="74" font-size="12" font-family="Segoe UI, sans-serif" fill="#26251f" font-weight="700" id="glassNo">NO.001</text>
-          <circle cx="170" cy="175" r="78" fill="none" stroke="#e7e2da" stroke-width="22"/>
-          <circle cx="170" cy="175" r="78" fill="none" stroke="#d9d3c9" stroke-width="2"/>
-          <path d="M120 230a78 78 0 0 1-22-60" fill="none" stroke="#c8742f" stroke-width="4" stroke-linecap="round"/>
-          <circle cx="292" cy="112" r="44" fill="none" stroke="#ebe6de" stroke-width="18"/>
-          <circle cx="292" cy="112" r="30" fill="none" stroke="#c8742f" stroke-width="9"/>
-          <path d="M245 175c30 0 46-14 50-30" fill="none" stroke="#e1dbd2" stroke-width="10" stroke-linecap="round"/>
-          <circle cx="346" cy="252" r="8" fill="#ebe7e0" stroke="#cfc9bf"/><path d="M300 262h40" stroke="#d6d0c6" stroke-width="2" stroke-dasharray="3 4"/>
-        </svg>
-        <div class="frost" id="frost"></div>
-        <svg class="diag" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path id="diagA" d="M0 0L100 100"/><path id="diagB" d="M100 0L0 100"/></svg>
-        <p class="glass-cap"><b id="glassNum">NO.001</b><small>INTERNAL DATABASE</small></p>
-      </div>
-      <article class="doc" id="doc">
-        <p class="doc-k"><span id="docFile">FILE X-001</span><span>REFERENCE AREA</span></p>
-        <h2 class="doc-title" id="docTitle"></h2>
-        <p class="doc-cn"><span id="docCn"></span><small id="docCol"></small></p>
-        <dl class="meta" id="meta"></dl>
-        <div class="tabs" role="tablist"><button role="tab" aria-selected="true"><small>01</small>概述</button><button role="tab" aria-selected="false"><small>02</small>研究记录</button><button role="tab" aria-selected="false"><small>03</small>访问日志</button><i class="tab-line"></i></div>
-        <p class="abs-k">ABSTRACT / 摘要</p>
-        <p class="abs" id="abs"></p>
-        <div class="doc-actions"><button type="button" class="solid" data-act="save"><span>+ SAVE ARCHIVE</span><small>收藏档案</small></button><button type="button" class="ghost" data-act="export">EXPORT</button></div>
+      <article class="dossier" id="dossier">
+        <div class="file-kicker"><span id="category"></span><span id="level"></span></div>
+        <div class="file-number"><span id="fileNumber"></span><span class="file-count">/ 040</span></div>
+        <h1 class="rolling" id="fileTitle"></h1><p class="file-en rolling" id="fileEn"></p>
+        <div class="record-meta"><span id="timestamp"></span><span id="author"></span></div>
+        <p class="abstract" id="abstract"></p><div class="metrics" id="metrics"></div>
+        <div class="chart-head"><span>OBSERVATION / 12 SAMPLES</span><span id="chartValue"></span></div>
+        <svg id="chart" viewBox="0 0 740 120" aria-label="本档案十二次采样图"></svg>
+        <p class="annotation"><b>批注 / </b><span id="note"></span></p>
+        <button class="read-button" data-key="Enter"><span>读取档案 / READ RECORD</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 16h23M19 7l9 9-9 9"/></svg></button>
       </article>
+      <nav class="navigation" aria-label="档案方向导航">
+        <div class="row-nav"><button data-key="ArrowUp" aria-label="上一份档案"><svg viewBox="0 0 32 32"><path d="M16 27V5M7 14l9-9 9 9"/></svg></button><div id="rowTicks"></div><button data-key="ArrowDown" aria-label="下一份档案"><svg viewBox="0 0 32 32"><path d="M16 5v22M7 18l9 9 9-9"/></svg></button><span id="rowCount"></span></div>
+        <div class="col-nav"><button data-key="ArrowLeft" aria-label="上一分类"><svg viewBox="0 0 32 32"><path d="M27 16H5M14 7l-9 9 9 9"/></svg></button><span id="colName"></span><button data-key="ArrowRight" aria-label="下一分类"><svg viewBox="0 0 32 32"><path d="M5 16h22M18 7l9 9-9 9"/></svg></button></div>
+      </nav>
     </section>
-
-    <!-- 启动序列 -->
-    <section class="boot" id="boot" aria-hidden="true">
-      <p class="boot-type" id="bootType"></p>
-      <svg class="boot-logo" id="bootLogo" viewBox="0 0 200 120" aria-hidden="true">
-        <circle id="ringA" cx="62" cy="56" r="40" fill="none" stroke="#171713" stroke-width="14"/>
-        <circle id="ringB" cx="138" cy="56" r="40" fill="none" stroke="#171713" stroke-width="14"/>
-        <path id="markBar" d="M50 56h24M62 44v24M126 56h24" stroke="#171713" stroke-width="9"/>
-        <text x="100" y="116" text-anchor="middle" font-size="12" letter-spacing="9" font-family="Segoe UI, sans-serif" font-weight="700" fill="#171713">LUMEN·LAB</text>
+    <section class="inspection" id="inspection" aria-label="档案解密检视">
+      <div class="inspection-heading"><span>RECORD INSPECTION</span><span id="decryptPhase"></span></div>
+      <svg id="instrument" viewBox="0 0 780 620" aria-label="原创光学仪器与解密扫描">
+        <defs><linearGradient id="panelGlass" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".92"/><stop offset="1" stop-color="#d7d3ca" stop-opacity=".6"/></linearGradient></defs>
+        <rect x="30" y="30" width="720" height="510" rx="18" fill="url(#panelGlass)" stroke="#fff" stroke-width="4"/>
+        <g id="instrumentCore" fill="none" stroke="#bbb4a6" stroke-width="8"><rect x="108" y="112" width="564" height="332" rx="18"/><path d="M160 278h460M390 130v296" stroke-width="2"/><circle cx="390" cy="278" r="125"/><circle cx="390" cy="278" r="86" stroke="#b46c3c" stroke-width="22"/><path d="m285 160 210 236m0-236L285 396" stroke-width="3"/><circle cx="390" cy="278" r="32" fill="#e0d5c3"/><path d="M125 150h70m-70 30h40m445 216h40m-70 30h70" stroke-width="4"/></g>
+        <g id="frost"><rect x="32" y="32" width="716" height="506" rx="16" fill="#eeeae3" fill-opacity=".86"/><path d="M64 96h650M64 164h650M64 232h650M64 300h650M64 368h650M64 436h650M64 504h650" stroke="#e3ded6" stroke-width="2"/></g>
+        <g id="diagonal" stroke="#22251f" stroke-width="3"><path id="decodeA"/><path id="decodeB"/><path d="M58 58h30M58 58v30M722 512h-30M722 512v-30"/></g>
       </svg>
-      <div class="boot-lines" id="bootLines"></div>
-      <svg class="scan" id="scan" viewBox="-100 -100 200 200" aria-hidden="true">
-        <circle id="scanA" r="70" fill="none" stroke="#171713" stroke-width="6"/>
-        <circle id="scanB" r="52" fill="none" stroke="#bdb8ad" stroke-width="10"/>
-        <circle id="scanNode" r="6" fill="#c8742f"/>
-        <rect id="scanCore" x="-14" y="-14" width="28" height="28" fill="#171713"/>
-      </svg>
-      <div class="welcome" id="welcome"><p class="w1">WELCOME</p><p class="w2"><b id="wCompany">LUMEN LAB</b></p><p class="w3">INTERNAL DATABASE</p></div>
+      <p class="inspection-caption"><span id="inspectionId"></span><span>OPTICAL DATA / VERIFIED</span></p>
+      <button class="back-button" data-key="Escape"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27 16H5M14 7l-9 9 9 9"/></svg><span>返回阵列 / ESC</span></button>
     </section>
+    <footer class="footer"><span id="operator">OPERATOR 07</span><span id="modeLabel">CIRCULAR INDEX / BIDIRECTIONAL</span><span>FIELDWORK / 2026</span></footer>
+    <section id="boot" class="boot" aria-label="终端启动">
+      <div class="boot-grid"></div><div class="boot-label"><span>FIELDWORK / TERMINAL 07</span><span id="bootFrame"></span></div>
+      <div class="boot-access"><svg class="signal" id="signal" viewBox="0 0 240 200" aria-label="无线信号"><path class="signal-arc"/><path class="signal-arc"/><path class="signal-arc"/><circle id="signalDot" cx="120" cy="164" r="13"/></svg><p id="accessText"></p><span id="authText"></span></div>
+      <div id="scan" class="scan"><svg viewBox="-500 -500 1000 1000" aria-hidden="true"><g id="scanRings" fill="none"><circle r="290" stroke="#272922" stroke-width="10" stroke-dasharray="920 160 220 522"/><circle r="245" stroke="#fff" stroke-width="22"/><path d="M-136 -136a192 192 0 0 1 272 0" stroke="#b46c3c" stroke-width="14"/><path d="M-95 -94a134 134 0 0 1 190 0M-52 -52a74 74 0 0 1 104 0" stroke="#272922" stroke-width="12"/><circle cy="10" r="14" fill="#b46c3c"/></g><circle id="orbitDot" r="13" fill="#b46c3c"/></svg><span>LINK AUTHORIZATION</span></div>
+      <div class="welcome" id="welcome"><span>CONNECTION ESTABLISHED</span><b id="welcomeName">FIELDWORK</b><p id="welcomeDatabase">INDEPENDENT RESEARCH ARCHIVE</p></div>
+      <div class="boot-footer"><span id="bootStatus">STANDBY</span><span>OFFLINE / SECURE CHANNEL</span></div>
+    </section>
+    <section class="outro" id="outro"><svg viewBox="0 0 240 200" aria-hidden="true"><path/><circle cx="120" cy="164" r="13"/></svg><span>CYCLE COMPLETE / INDEX VERIFIED</span><h2>每一份，都有回程。</h2><p>40 RECORDS · 05 COLUMNS · 04 DIRECTIONS</p><div>FIELDWORK / ARCHIVE OS</div></section>
   </main>
-
-  <script src="motion-kit.js"></script>
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+  <script src="motion-kit.js"></script><script src="config.js"></script><script src="script.js"></script>
 </body>
 </html>
