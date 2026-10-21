@@ -147,4 +147,4 @@
 | T10 | 搁置 | 下一轮 |
 | T11 | 搁置 | 下一轮 |
 | T12 | 搁置 | 下一轮 |
-| T13 | 待开始 | |
+| T13 | 已完成 | 全量 build/check/smoke（47/47）、站点走查 142/142、5 处修复 + seek 一致性修复；报告 dev/reports/T13.md；PR 说明 dev/reports/PR-polish-round-1.md |

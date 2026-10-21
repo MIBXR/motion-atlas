@@ -7,6 +7,8 @@
 - **预加载** `MotionKit.preload()`：资源就绪后才宣告 ready，进度可被站点显示。
 - **宿主通信**：站点用 postMessage 切换画幅、开关声音，Demo 回报就绪、画幅、加载进度与声音状态。
 
+地图巡礼与档案终端使用这套固定舞台、预加载与乐谱协议。其余七个案例和全部三十八个巧思仍保留自适应布局及原有音效调用，由 kit 兼容；共享基础设施就绪不表示这些 Demo 已迁移。
+
 参考模板：`demos/_template/case/`（案例：`index.html` / `style.css` / `script.js` / `config.js`）与 `demos/_template/pattern/index.html`（巧思单文件）。模板不是条目、不进入站点，直接引用 `kit/motion-kit.js`。
 
 ## 一、约定
@@ -139,6 +141,7 @@ CSS 写法（横竖两套构图）：
 - `audio.on('change', (enabled, state) => …)`；状态变化同时向父页面发 `motion:sound`。
 - 页面切到后台：停止调度、淡出并挂起 AudioContext；回到前台后恢复，从当前时刻重新对齐。
 - `audio.meter()` → `{ peak, rms, peakDb, rmsDb }`：输出电平（最近约 43ms），可做电平表；`audio.active`：仍在发声或已排程的声部数。
+- `audio.latency`：主混音链的固定处理延迟，当前为 0.006 秒；不包含设备输出延迟。需要将画面贴合实际听到的声音时，还要结合 AudioContext 的输出时间戳或 `outputLatency`。
 - 渲染模式（`?render`）下 `enable()` 不生效（无头渲染只走离线渲染）。
 
 ### 4.3 乐谱与调度
@@ -176,6 +179,8 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 ### 4.4 音色库
 
 每个音色是 `(ctx, out, when, params) => 结束时刻` 函数（`audio.voices`），默认总线 / 混响发送 / 校准电平在 `audio.meta`。括号里是默认值。
+
+重拍需要在笔记本扬声器上清晰可辨时，应给低频 `kick` 叠加 `rim`、`click` 等中高频层；节奏实验室的鼓组采用 `kick + rim`。仅用低频峰值判断重音强弱不足以反映小扬声器上的表现。
 
 | 音色 | 总线 | 手段 | 参数 |
 | --- | --- | --- | --- |
@@ -216,11 +221,13 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 
 ### 4.5 离线渲染
 
-`audio.renderOffline(score, duration, { sampleRate = 48000, channels = 2, from = 0, preroll = 2 })` 用 OfflineAudioContext 与**同一套音色、同一条混音链**生成 PCM，返回 `{ data, peakDb, rmsDb, clipped, wav(), base64() }`；`from > 0` 时向前多渲染 `preroll` 秒再裁掉，并接上之前开始的持续音。`audio.encodeWav(channels, sampleRate)` 编码 16-bit PCM WAV。站点或脚本通常通过 `__motion.audio.renderWav()` 调用。8 秒乐谱的离线渲染约 0.6 秒。
+`audio.renderOffline(score, duration, { sampleRate = 48000, channels = 2, from = 0, preroll = 2 })` 用 OfflineAudioContext 与**同一套音色、同一条混音链**生成 PCM，返回 `{ data, peakDb, rmsDb, clipped, wav(), base64() }`；`from > 0` 时向前多渲染 `preroll` 秒再裁掉，并接上之前开始的持续音。`audio.encodeWav(channels, sampleRate)` 编码 16-bit PCM WAV。站点或脚本通常通过 `__motion.audio.renderWav()` 调用，它按 `from + audio.latency` 截取，补偿主链路的 6ms 处理延迟，使导出的第 0 个样本对齐画面的 `from`。直接使用 `renderOffline()` 时由调用方处理这项补偿。
 
 ### 4.6 旧 API 兼容
 
-`MotionKit.sound()` 仍返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，内部改由新引擎发声（同一个开关、同一条混音链；响度与旧版一致），所以站点的 `motion:sound` 对未迁移的 Demo 同样有效。旧 Demo 自己做的前瞻排程在暂停或跳转时也会被淡出。新 Demo 请改用乐谱。
+`MotionKit.sound()` 返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，与 `MotionKit.audio` 共用引擎、声音开关及混音链，所以站点的 `motion:sound` 对未迁移的 Demo 同样有效。旧 Demo 自己做的前瞻排程在暂停或跳转时也会被淡出。新 Demo 请使用乐谱。
+
+`motion:ready.sound` 取乐谱、`expose()` 的声音元数据和 kit 的声音使用标记：创建 `sound()`、调用 `audio.play()` / `audio.attach()`，或给 `controls()` 传入声音对象都会登记。它表示 Demo 使用声音，不表示当前已开启；`__motion.audio` 只表示可离线导出的乐谱接口，不能用于判断旧版音效是否存在。仅在用户操作后才调用 `audio.play()` 的 Demo，应在 `expose(tl, { sound: true })` 中预先声明声音能力。
 
 ## 五、预加载 `MotionKit.preload(tasks, { onProgress, timeout = 30000 })`
 
@@ -233,7 +240,7 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 | `preload.fetch(url, as = 'blob')` | 预取任意资源，结果存入 `preload.cache` |
 | `preload.wait(ms)` | 等待（调试进度显示用） |
 
-**地图类 Demo**（地图巡礼等）：在 `preload()` 里加一个自定义任务——按全部相机关键帧（含飞行途中的采样点，例如每 0.25 秒一次）依次 `map.jumpTo(camera)` 并等 `map.once('idle')`，让各缩放级别的瓦片进入 MapLibre 的瓦片缓存（必要时调大 `maxTileCacheSize`）；预取完再回到第 0 帧。播放中仍未就绪时：渲染模式下 render 返回 Promise 等待；实时模式下降级（例如地图层淡入），不要闪白。
+**地图巡礼的渐进缓冲**：实时播放先扫描全片镜头需求，按瓦片最早 / 最晚出现时刻排计划；下载窗口 45 秒进入 HTTP 缓存，解析窗口 10 秒进入 MapLibre 缓存，另设解析内存预算。快速推拉中能由必需上级覆盖的瓦片列为可选，优先为近期必需瓦片分配带宽。开头 6 秒就绪即开始；前方缓冲不足 0.5 秒时停在当前帧并显示 `BUFFERING MAP`，攒够 4 秒自动继续。切换画幅会重扫计划。渲染模式不走实时缓冲，`seek()` 等待瓦片和地图 idle 后截图。实现、采样规则与实测范围见 [地图研究笔记](research/map-pilgrimage.md)。
 
 **进度显示**：独立打开时 kit 在页面顶部显示一条细进度条；嵌入（`?embed`）时不显示，由站点根据 `motion:loading` 显示加载状态。进度同时写在 `<html data-motion-loading="0.500|done">` 并派发 `window` 事件 `motion:loading`（`detail.progress`）。
 
@@ -288,7 +295,7 @@ Demo → 父页面：
 
 播放 / 暂停、从头播放、刻度、时间，外加画幅切换（舞台支持两种画幅时出现，SVG 图标显示“将切换到”的画幅）与声音开关（传入 `sound` 或时间轴挂了乐谱时出现；被策略挡住时半透明）。只在独立打开时创建（`?embed` / `?render` 不显示）。键盘：空格播放 / 暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上 / 下一个标记，Home 回到开头；焦点在按钮上时空格与回车交给按钮本身（避免双重切换）。
 
-按钮节点只创建一次，状态变化时只切换属性（`data-playing`、`data-sound`、`data-orient`），不再每帧重写按钮内容——旧版每帧 `innerHTML` 替换图标，按下与抬起落在不同节点上，click 丢失（实测旧版播放中按压 90ms 的点击 0/20 生效、5ms 的 6/20；新版均 20/20）。站点刻度条（`assets/library.js`）的播放按钮有同样问题，由站点任务按同样方式修正。
+按钮节点只创建一次，状态变化时切换属性（`data-playing`、`data-sound`、`data-orient`），使一次按下与抬起始终落在同一节点上。站点详情页（`assets/library.js`）同样保留稳定的播放按钮节点；舞台、工具栏与刻度条按视口高度布局，加载中允许定位，横竖切换保持当前时刻，全屏时提供浮层控制。
 
 ## 九、逐帧渲染成视频
 

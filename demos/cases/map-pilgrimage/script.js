@@ -387,6 +387,7 @@
     const key = `${cam.center[0].toFixed(7)},${cam.center[1].toFixed(7)},${cam.zoom.toFixed(4)},${cam.pitch.toFixed(3)},${cam.bearing.toFixed(3)},${cam.focus[0].toFixed(1)},${cam.focus[1].toFixed(1)}`;
     const changed = key !== MAP.applied;
     MAP.applied = key;
+    syncProjection(MAP.map, cam.zoom, cam.center[1]);
     MAP.map.jumpTo({ center: cam.center, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing, padding: cam.padding });
     // 低缩放（地球）时用球面角距判断可见，不需要边界框
     if (cam.zoom >= 6) {
@@ -482,8 +483,6 @@
     try {
       for (const it of list) {
         applyCamera(it.cam);
-        // 地球 ↔ 平面投影的过渡状态由缩放决定（z11–12 之间），渲染时才更新；扫描不渲染，所以这里按同样的方式手动更新
-        syncProjection(map, it.cam.zoom);
         const need = [];
         for (const [id, sc] of caches) {
           sc.used = map.style._order.some((lid) => { const l = map.style._layers[lid]; return l.source === id && !l.isHidden(it.cam.zoom); });
@@ -501,7 +500,7 @@
     return out;
   }
   let EvalParams = null;
-  function syncProjection(map, zoom) {
+  function syncProjection(map, zoom, latitude = map.transform.center.lat) {
     const proj = map.style.projection;
     if (!proj || !proj.recalculate) return;
     if (!EvalParams) {
@@ -512,7 +511,7 @@
       if (!EvalParams) { map.redraw(); return; } // 找不到就退回同步重绘（慢一些，但结果一样）
     }
     proj.recalculate(new EvalParams(zoom, { now: performance.now() }));
-    if (proj.setErrorQueryLatitudeDegrees) proj.setErrorQueryLatitudeDegrees(map.transform.center.lat);
+    if (proj.setErrorQueryLatitudeDegrees) proj.setErrorQueryLatitudeDegrees(latitude);
     map.transform.setTransitionState(proj.transitionState, proj.latitudeErrorCorrectionRadians);
   }
   /** 建立缓冲计划：每块瓦片记下最早 / 最晚用到的时刻 */
@@ -937,10 +936,10 @@
   const stars = (() => { const r = MK.rng(2026); return Array.from({ length: 520 }, () => ({ x: r(), y: r(), m: r() ** 3, tw: r() * 6.28, sp: 0.6 + r() * 1.6 })); })();
   let spaceKey = '';
   function drawSpace(t, vis) {
+    op(spaceCv, vis);
     const key = vis < 0.01 ? 'off' : `${O}|${Math.floor(t * 12)}|${vis.toFixed(2)}`;
     if (key === spaceKey) return;
     spaceKey = key;
-    op(spaceCv, vis);
     if (vis < 0.01) return;
     const g = spaceCv.getContext('2d');
     if (spaceCv.width !== W || spaceCv.height !== H) { spaceCv.width = W; spaceCv.height = H; }
@@ -1043,6 +1042,7 @@
     for (const ce of cardEls) mountScene(ce.media, ce.c.scene, 'photo', ce.c);
     MAP.sceneO = O;
     $('.attrib').textContent = O === 'portrait' ? C.map.attributionShort : C.map.attribution;
+    (O === 'portrait' ? stageEl : $('.hud-bottom')).appendChild($('.attrib'));
     applyStaticLayout();
     for (const me of markerEls) { me.el.style.width = ''; const keep = me.en.textContent; me.en.textContent = me.full; me.em.style.opacity = '1'; me.fullW = Math.ceil(me.el.getBoundingClientRect().width / (stage.scale || 1)); me.el.style.width = me.fullW + 'px'; me.en.textContent = keep; cache(me.en).t = keep; cache(me.em)['s:opacity'] = '1'; }
   }
@@ -1313,7 +1313,7 @@
         setPaint(sid + '-casing', 'line-opacity', f2(0.9 * fade * on));
       } else {
         const pts = t >= r.t0 ? partial(r, p) : [];
-        const key = pts.length + ':' + (pts.length ? pts[pts.length - 1].map((v) => v.toFixed(6)).join(',') : '');
+        const key = pts.length + ':' + (pts.length ? pts[pts.length - 1].join(',') : '');
         if (key !== r.partialKey) { r.partialKey = key; map.getSource(sid).setData(pts.length > 1 ? lineFeature(pts) : EMPTY); }
         const on = pts.length > 1 ? 1 : 0;
         setPaint(sid, 'line-color', r.style === 'flight' ? inkC : inkC);
@@ -1359,6 +1359,7 @@
     const placed = (G.placed = []);
     let zones = null, textRects = null;
     markerEls.forEach((me, i) => {
+      me.box = null;
       const nd = G.nodes[i];
       const k = seg(t, me.m.t, 0.45, ease.outBack);
       const s = me.s;
@@ -1398,7 +1399,6 @@
       // 标签：缩放过小（全景）时只留主站；片名出现时让位
       const minZ = s.minZoom ?? 0;
       const lvis = vis0 * seg(z, minZ - 0.25, 0.25, ease.linear) * seg(t, me.m.t + 0.1, 0.25);
-      me.box = null;
       if (lvis <= 0.001) { op(me.el, 0); return; }
       txt(me.en, MK.typeText(me.full, seg(t, me.m.t + 0.12, 0.5, ease.linear)));
       sty(me.em, 'opacity', String(f2(seg(t, me.m.t + 0.55, 0.3))));
@@ -1745,7 +1745,7 @@
     op(G.stepGroup, hudIn * (1 - Math.max(fbVis, cmpVis)));
     op(G.ruleBase, hudIn * (1 - fbVis)); op(G.ruleFill, hudIn * (1 - fbVis)); op(G.ruleHead, hudIn * (1 - fbVis));
     G.ruleTicks.forEach((tk) => op(tk, hudIn * (1 - fbVis)));
-    // 底部：正在播放、歌词、比例尺、署名
+    // 底部：正在播放、歌词、比例尺
     op(BOTTOM, seg(t, 1.2, 0.8) * (1 - fbVis));
     op(el.np, 1 - hudOut);
     const ly = stepAt(C.music.lyrics, t);
@@ -1767,7 +1767,7 @@
     sty(el.scBar, 'width', `${f1(px)}px`);
     txt(el.scText, nice >= 1000 ? `${nice / 1000} km` : `${nice} m`);
     op(el.scale, hudIn * (1 - hudOut) * (cam.zoom > 4.5 ? 1 : 0));
-    op(el.attrib, seg(t, 1.2, 0.8) * (1 - fbVis) * 0.85);
+    op(el.attrib, O === 'portrait' ? 1 : seg(t, 1.2, 0.8) * (1 - fbVis) * 0.85);
   }
 
   /* ---------- 警示改道 ---------- */
@@ -1812,6 +1812,7 @@
   function drawOutro(t) {
     const ov = seg(t, O_.t, 0.5);
     op(outro, ov);
+    op($('.outro-bg'), ov);
     if (ov <= 0) return;
     statEls.forEach((li, i) => {
       const s = O_.stats[i], st0 = O_.t + 0.25 + i * 0.32;
@@ -1822,7 +1823,6 @@
     });
     blurIn(finChars, t, O_.t + 2.0, 0.06, 0.5, 12, -8);
     sty($('.ou-handle', outro), 'opacity', String(f2(seg(t, O_.t + 2.6, 0.4))));
-    op($('.outro-bg'), ov);
     sty($('.ou-credits', outro), 'opacity', String(f2(seg(t, O_.t + 2.7, 0.5))));
   }
 

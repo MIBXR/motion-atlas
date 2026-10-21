@@ -35,6 +35,13 @@ class Page {
     this.id = 0;
     this.pending = new Map();
     this.waiters = [];
+    ws.addEventListener('close', () => {
+      for (const { method, resolve, reject } of this.pending.values()) {
+        if (method === 'Page.close') resolve({});
+        else reject(new Error(`页面连接已关闭：${method}`));
+      }
+      this.pending.clear();
+    });
     ws.addEventListener('message', (ev) => {
       const msg = JSON.parse(typeof ev.data === 'string' ? ev.data : Buffer.from(ev.data).toString());
       if (msg.id && this.pending.has(msg.id)) {
@@ -54,7 +61,7 @@ class Page {
   send(method, params = {}) {
     const id = ++this.id;
     this.ws.send(JSON.stringify({ id, method, params }));
-    return new Promise((resolve, reject) => this.pending.set(id, { resolve, reject }));
+    return new Promise((resolve, reject) => this.pending.set(id, { method, resolve, reject }));
   }
   once(method, timeout = 30000) {
     return new Promise((resolve, reject) => {

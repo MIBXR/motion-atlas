@@ -142,7 +142,7 @@ h1 { height: 56px; margin-top: 18px; font-size: 42px; line-height: 56px; font-we
 [data-orient="portrait"] h1 { height: 72px; margin-top: 18px; font-size: 54px; line-height: 72px; }
 [data-orient="portrait"] .file-en { height: 44px; margin-top: 2px; font-size: 36px; line-height: 44px; }
 [data-orient="portrait"] .record-meta { font-size: 36px; line-height: 44px; }
-[data-orient="portrait"] .abstract { min-height: 88px; font-size: 36px; line-height: 44px; }
+[data-orient="portrait"] .abstract { min-height: 88px; font-size: 36px; line-height: 44px; text-wrap: balance; }
 [data-orient="portrait"] .metrics { margin-top: 22px; grid-template-columns: repeat(3, 317px); }
 [data-orient="portrait"] .metric > span { font-size: 36px; line-height: 40px; }
 [data-orient="portrait"] .metric > p { margin-top: 0; }

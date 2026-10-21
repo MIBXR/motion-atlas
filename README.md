@@ -18,8 +18,8 @@
 
 | 案例 | 载体 | 证据 | 时长 |
 | --- | --- | --- | --- |
-| [地图巡礼 · 游戏过场式旅行影像](demos/cases/map-pilgrimage/) | 影像视频 / 交互展示台 | 逐帧实测 | 56s |
-| [白色档案终端 · 莱茵式 Analysis OS](demos/cases/archive-os/) | 交互操作台 / 交互展示台 | 逐帧/源码实测 | 24s |
+| [地图巡礼 · 游戏过场式旅行影像](demos/cases/map-pilgrimage/) | 影像视频 / 交互展示台 | 逐帧实测 | 60s |
+| [白色档案终端 · 循环档案](demos/cases/archive-os/) | 交互操作台 / 交互展示台 | 逐帧/源码实测 | 64s |
 | [怪盗动势 · P5 式战斗指令与总攻过场](demos/cases/phantom-battle/) | 交互操作台 / 影像视频 | 公开资料推断·待核验 | 17.5s |
 | [工业协议 · 终末地式设施操作台](demos/cases/industrial-protocol/) | 交互操作台 / 交互展示台 | 公开资料推断·待核验 | 17s |
 | [赛事转播图形包 · 踩拍的信息层](demos/cases/broadcast-pack/) | 影像视频 / 交互操作台 | 原创 | 24s |
@@ -29,6 +29,10 @@
 | [水墨长卷展台 · 手卷式浏览](demos/cases/ink-scroll/) | 交互展示台 / 影像视频 | 原创 | 14.5s |
 
 前四个来自用户提供的参考与游戏界面转译，后五个是本库原创的设计语言，用来补齐转播、MV、FUI、揭示与东方长卷这几类常见需求。
+
+地图巡礼与档案终端采用**横屏 1920×1080 / 竖屏 1080×1920 两套固定画幅构图**，整体等比缩放，配有可离线导出的原创合成乐谱。地图巡礼从上海飞抵关西机场，走访京都伏见稻荷、鸭川、奈良公园与大阪道顿堀；地图瓦片按镜头计划渐进下载、解析，缓冲不足时暂停等待。档案终端以 FIELDWORK 为原创品牌，提供五类四十份档案、双轴首尾循环、四向过渡与读取解密，字体预加载后开始。
+
+其余七个案例与全部三十八个巧思仍使用自适应布局与原有音效调用；共享 kit 兼容这些调用。本轮完成范围是舞台 / 声音 / 预加载基础、站点详情页、节奏实验室及上述两个案例，其他案例与巧思的固定画幅和乐谱迁移留待下一轮。
 
 ### 巧思
 
@@ -55,8 +59,8 @@ node scripts/serve.mjs --port 4321
 
 打开 <http://localhost:4321/>：
 
-- **案例库 / 巧思库**：筛选、收藏（可导出 JSON 备份）、内嵌 Demo、刻度条与节拍点、三段 Prompt。
-- **节奏实验室**：调缓动曲线、时长、错峰与 BPM 吸附，导出 CSS 变量、MotionKit 代码与 Prompt 片段。
+- **案例库 / 巧思库**：筛选、收藏（可导出 JSON 备份）、内嵌 Demo、首屏刻度条与节拍点、加载进度、声音开关、全屏与三段 Prompt；支持固定画幅的 Demo 可切换横竖构图并保持当前时刻。
+- **节奏实验室**：用多音色节拍器、拍号 / 细分 / 摇摆练节拍，以 A/B 对比、打拍录入、首拍偏移与量化强度理解吸附；曲线、时长和错峰可对齐拍子，导出 CSS 变量、MotionKit 乐谱代码、Prompt 与 WAV。
 - **文档中心**：指南、节奏方法、Prompt 写法、渲染管线、收录方法、9 篇研究笔记与全部 Prompt。
 - **Agent 工作流**：资料格式、CLI 与指令生成器。
 
@@ -70,6 +74,8 @@ node scripts/atlas.mjs export split-compare-stamp --out ../my-demo
 
 # 逐帧渲染（PATH 上有 ffmpeg 时自动合成 MP4）
 node scripts/render.mjs demos/cases/beat-lyric/index.html --fps 30
+# 固定画幅案例：竖屏成片，同时导出同一乐谱的音轨
+node scripts/render.mjs demos/cases/archive-os/index.html --orient portrait --fps 30 --audio
 ```
 
 每个案例 Demo 的内容都集中在 `config.js`，巧思 Demo 集中在 `index.html` 顶部的 `CONFIG` 块：改文案、配色、时刻表即可迁移，时间结构与动效参数保持不变。
@@ -79,7 +85,7 @@ node scripts/render.mjs demos/cases/beat-lyric/index.html --fps 30
 ```text
 entries/            案例与巧思条目（唯一内容源）
 demos/              可运行 Demo；时间驱动的 Demo 遵守 render(t) 协议
-kit/motion-kit.js   共享运行时：时间轴、缓动 Token、节拍、文字揭示、控制条、合成音效
+kit/motion-kit.js   共享运行时：固定画幅、时间轴、缓动、节拍、合成乐谱、预加载、控制条
 docs/               指南、方法与研究笔记
 prompts/ agent/ data/   由 entries 生成（勿手改）
 previews/           Demo 实际截图
@@ -92,8 +98,8 @@ scripts/            serve / build / check / smoke / capture / shot / render / fr
 | --- | --- |
 | `node scripts/build.mjs` | 校验条目、同步 kit 副本，生成站点数据、Prompt 文档、Agent 资料包与本文件的计数 |
 | `npm run build:site` | 生成完整静态站点到 `dist/`，用于 Sites 发布；站点配置见 `.openai/hosting.json` |
-| `node scripts/check.mjs` | 只读检查：条目与引用、kit 副本、生成物是否最新、文字 ≥ 12px、预览图 |
-| `node scripts/smoke.mjs` | 无头浏览器把每个 Demo 从头 seek 到尾，收集运行时错误 |
+| `node scripts/check.mjs` | 只读检查：条目与引用、kit 副本、生成物是否最新、预览图；站点 / 旧 Demo 字号 ≥ 12px，固定舞台按横 24px / 竖 36px 检查 |
+| `node scripts/smoke.mjs [--strict-fonts]` | 无头浏览器逐个 Demo 检查全时间轴与播放；固定舞台另测两画幅、切换保持时刻及运行时字号，`--strict-fonts` 将字号警告计为失败 |
 | `node scripts/capture.mjs` | 重新截取预览图（需先启动本地服务器） |
 | `node scripts/frames.mjs <video>` | 参考视频取帧，生成带时间码的接触表 |
 

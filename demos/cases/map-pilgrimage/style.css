@@ -5,7 +5,7 @@
  *  2. 两套构图：公共样式写在普通选择器里，位置与字号写在 [data-orient="landscape"] / [data-orient="portrait"] 下。
  *  3. 字号下限：横屏 24px、竖屏 36px。
  *  4. 层级（下 → 上）：太空 0 · 底图 0 · 降级遮罩 / 色调 1 · 地图图形 2 · 地图标签 3 · 卡片 4 · 全屏回忆 / 对比 5 · 压暗 6 ·
- *     章节装饰 7 · 事件文字 8 · HUD 9 · 收尾 10 · 加载 11 · 颗粒与暗角 12。文字永不被线条压住：标签带衬底，引线终点停在卡片外缘。
+ *     章节装饰 7 · 事件文字 8 · HUD 9 · 收尾 10 · 加载 11 · 颗粒与暗角 12 · 竖屏地图署名 13。文字永不被线条压住：标签带衬底，引线终点停在卡片外缘。
  */
 :root {
   --f-sans: "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", "Yu Gothic UI", "Microsoft YaHei UI", sans-serif;
@@ -501,7 +501,7 @@ html, body { margin: 0; background: #000; }
 [data-orient="portrait"] .np-sub { grid-column: 1 / -1; margin-top: 2px; font-size: 36px; line-height: 44px; }
 [data-orient="portrait"] .scale { left: 140px; top: 190px; gap: 16px; }
 [data-orient="portrait"] .sc-text { font-size: 36px; }
-[data-orient="portrait"] .attrib { left: 56px; right: 56px; top: 1862px; font-size: 36px; text-align: center; }
+[data-orient="portrait"] .attrib { z-index: 13; left: 56px; right: 56px; top: 1850px; font-size: 36px; line-height: 36px; color: #16171a; background: rgba(250, 249, 245, .94); text-align: center; pointer-events: none; }
 
 [data-orient="portrait"] .outro { left: 72px; top: 330px; }
 [data-orient="portrait"] .ou-stats { gap: 10px; }

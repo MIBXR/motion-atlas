@@ -449,7 +449,7 @@
     {
       "path": "demos/cases/map-pilgrimage/config.js",
       "bytes": 17491,
-      "sha256": "6a513bda1b49eedd5793a59dc7e6b04e9f92b691e1f55c6064c26b9a2bbaac1c"
+      "sha256": "88096725031e411fee835a8f052d4a2a35a0023c2c64810fa5f14101715b9d87"
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
@@ -473,23 +473,23 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/script.js",
-      "bytes": 128321,
-      "sha256": "49696dd540c804d2ed0d0f0f177d6418e8626639d3303dc82a19a92f952e3a39"
+      "bytes": 128252,
+      "sha256": "1d8a3dd268d920ffdcabb8229f124dd352ec06e46cdd34d9e8b5cd7ed8a70693"
     },
     {
       "path": "demos/cases/map-pilgrimage/style.css",
-      "bytes": 38988,
-      "sha256": "710d374191bb254fcfd88971981f9028458634e3f3479a14d52d32a2428f42b6"
+      "bytes": 39121,
+      "sha256": "2f87f38f2193bbb5d5d23fe9154cdbaaeb929bb9559f29d8756618daa1716987"
     },
     {
       "path": "previews/cases/map-pilgrimage.jpg",
-      "bytes": 197400,
-      "sha256": "7d202341e63e86077d12d23a4ff32f5610cfbd8fb73adbb62c35b7b66836f0d8"
+      "bytes": 263142,
+      "sha256": "c51649c310218ce15117584339d7c33760fdaf2da95c99b40bf0855cd39c3a76"
     },
     {
       "path": "previews/cases/map-pilgrimage-portrait.jpg",
-      "bytes": 164098,
-      "sha256": "be2556c12b2b0b8251e71bc3633b113236397f227935e94401383826c6412dce"
+      "bytes": 228731,
+      "sha256": "0c0b97b12f2eec1a7e3da44b1eeb51d819cdd25284fa8f53d5713fdb0edda0cf"
     }
   ]
 }

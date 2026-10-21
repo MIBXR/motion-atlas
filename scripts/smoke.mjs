@@ -72,6 +72,7 @@ async function openPage(url, vw, vh) {
   const errors = [];
   page.on('Runtime.exceptionThrown', (p) => errors.push(p.exceptionDetails?.exception?.description || p.exceptionDetails?.text));
   page.on('Runtime.consoleAPICalled', (p) => { if (p.type === 'error') errors.push(p.args.map((a) => a.value ?? a.description).join(' ')); });
+  await page.send('Page.addScriptToEvaluateOnNewDocument', { source: "addEventListener('motion:ready', (e) => { window.__smokeReady = e.detail; });" });
   await page.goto(url, 45000);
   const hasMotion = await page.eval('new Promise(r => { let n = 0; const iv = setInterval(() => { if (window.__motion || ++n > 150) { clearInterval(iv); r(!!window.__motion); } }, 100); })', 25000);
   if (hasMotion) await page.eval('Promise.resolve(window.__motion.ready).then(() => true)', 60000);
@@ -122,11 +123,11 @@ try {
         const { page, errors: errs, hasMotion } = await openPage(u.href, vw, vh);
         try {
           if (!hasMotion) { await page.eval('new Promise(r => setTimeout(r, 1500))'); notes.push('interactive'); errors.push(...errs); break; }
-          const info = await page.eval('({ orients: window.__motion.orients || [], orient: window.__motion.orient || null, sound: !!window.__motion.audio, legacySound: !!window.__motion.sound })');
+          const info = await page.eval('({ orients: window.__motion.orients || [], orient: window.__motion.orient || null, sound: !!window.__smokeReady?.sound, score: !!window.__motion.audio })');
           legacy = !info.orients.length;
           if (legacy) {
             const D = await sweep(page, errs);
-            notes.push(`seek 0–${+D.toFixed(2)}s · 旧 Demo（未使用 stage()）：跳过画幅与字号检查${info.legacySound ? ' · 旧版音效' : ' · 无声音'}`);
+            notes.push(`seek 0–${+D.toFixed(2)}s · 旧 Demo（未使用 stage()）：跳过画幅与字号检查${info.sound ? ' · 旧版音效' : ' · 无声音'}`);
             errors.push(...errs);
             break;
           }
@@ -142,7 +143,7 @@ try {
             const msg = `${orient} 字号 < ${MIN[orient]}px ${fc.bad.length} 处：` + fc.bad.slice(0, 4).map((b) => `「${b.text}」${b.px}px@${b.t}s`).join('，');
             if (strictFonts) errs.push(msg); else notes.push('⚠ ' + msg);
           }
-          notes.push(`${orient} seek 0–${+D.toFixed(2)}s · 最小字号 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}${info.sound ? ' · 乐谱' : ' · 无乐谱'}`);
+          notes.push(`${orient} seek 0–${+D.toFixed(2)}s · 最小字号 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}${info.sound ? info.score ? ' · 乐谱' : ' · 即时音效' : ' · 无声音'}`);
           // 运行中切换画幅：时刻保持、舞台尺寸跟随
           if (idx === 0 && info.orients.length > 1) {
             const other = portrait ? 'landscape' : 'portrait';
