@@ -74,7 +74,7 @@ window.CONFIG = {
   // 地点：name 英文、ja 日文、lngLat 经纬度、elev 海拔（米）；路线的端点会对齐到这里
   stops: {
     pvg: { name: 'SHANGHAI · PVG', ja: '上海浦東', lngLat: [121.8052, 31.1443], elev: 4, side: -1 },
-    kix: { name: 'KANSAI · KIX', ja: '関西空港', lngLat: [135.24433, 34.4364], elev: 5 },
+    kix: { name: 'KANSAI · KIX', ja: '関西空港', lngLat: [135.24433, 34.4364], elev: 5, sideP: 0 }, // sideP：竖屏标签位置（0 = 节点正下方）
     kyoto: { name: 'KYOTO STA.', ja: '京都駅', lngLat: [135.75878, 34.98513], elev: 29 },
     inari: { name: 'FUSHIMI INARI', ja: '伏見稲荷', lngLat: [135.7727, 34.9671], elev: 38, minZoom: 12 },
     kamo: { name: 'KAMO RIVER · SANJO', ja: '鴨川', lngLat: [135.7716, 35.0088], elev: 40, minZoom: 12 },
@@ -128,8 +128,8 @@ window.CONFIG = {
       { t: 48.6, c: [135.63, 34.69], z: 10.65, p: 26, b: 0, f: [800, 600], fp: [540, 760], zp: -0.75 },
       { t: 50.0, c: [135.50125, 34.66876], z: 15.6, p: 58, b: 28, f: [640, 620], fp: [540, 700], e: 'out' },
       { t: 53.8, c: [135.50125, 34.6690], z: 15.9, p: 60, b: 38, f: [640, 620], fp: [540, 700] },
-      { t: 55.2, c: [135.56, 34.72], z: 8.95, p: 0, b: 0, f: [1420, 540], fp: [540, 1420], zp: -0.85, e: 'inOut' },
-      { t: 60, c: [135.56, 34.72], z: 8.8, p: 0, b: 0, f: [1420, 540], fp: [540, 1420], zp: -0.85 },
+      { t: 55.2, c: [135.56, 34.72], z: 8.95, p: 0, b: 0, f: [1420, 540], fp: [500, 1408], zp: -0.85, e: 'inOut' }, // 竖屏焦点略偏左上：奈良公园标签整段放得下在右侧、关西机场标签放得下在节点下方，收尾拉远途中不换边
+      { t: 60, c: [135.56, 34.72], z: 8.9, p: 0, b: 0, f: [1420, 540], fp: [500, 1408], zp: -0.85 }, // 收尾只留极轻的拉远（0.05 级）：标签整段不换边
     ],
     // 昼夜：0 白天 → 1 夜晚
     night: [
@@ -157,7 +157,7 @@ window.CONFIG = {
     // 路线：style = flight（航线虚线 + 飞机）| rail（发光实线 + 车头）| walk（步行圆点）| wrong（错误路线）
     // path 写经纬度数组，或写 paths.js 里的名字；from / to 指定端点对齐的站点
     routes: [
-      { id: 'flight', from: 'pvg', to: 'kix', style: 'flight', bend: 0.16, t0: 8.0, t1: 11.3, tag: 'MU 515 · 2H 05M' },
+      { id: 'flight', from: 'pvg', to: 'kix', style: 'flight', bend: 0.16, t0: 8.0, t1: 11.3, tag: 'MU 515 · 2H 05M', follow: true }, // follow：飞机按屏幕位置跟随镜头（一口气推近时不被甩出画面）
       { id: 'haruka', path: 'haruka', from: 'kix', to: 'kyoto', style: 'rail', t0: 14.6, t1: 16.6, tag: 'JR HARUKA · 75 MIN' },
       { id: 'naraLine', path: 'naraLine', from: 'kyoto', to: 'jrNara', style: 'rail', t0: 37.4, t1: 39.4, tag: 'JR NARA LINE · 45 MIN' },
       { id: 'walk1', path: 'jrNaraToPark', from: 'jrNara', to: 'naraPark', style: 'walk', t0: 39.4, t1: 40.8 },

@@ -122,7 +122,33 @@
     out.push(h.ll);
     return out;
   }
-  const routeP = (r, t) => (t < r.t0 ? 0 : seg(t, r.t0, r.t1 - r.t0, ease.inOutSine || ((x) => 0.5 - Math.cos(Math.PI * x) / 2)));
+  const inOutSine = (x) => 0.5 - Math.cos(Math.PI * x) / 2, inSine = (x) => 1 - Math.cos((Math.PI * x) / 2);
+  const routeP = (r, t) => (t < r.t0 ? 0 : r.follow && MAP.ok && t < r.t1 ? followP(r, t) : seg(t, r.t0, r.t1 - r.t0, inOutSine));
+  /*
+   * 航线进度按“屏幕空间”跟随（route.follow）：镜头在 3.8 秒里从地球推近 9 级，飞机若按时间匀速前进，推到一半就被甩出画面
+   * （实测 9.5–11s 画面里既没有飞机也没有航线）。改为：飞机在屏幕上始终位于终点“来向”一侧、距终点 (1 − e)·L 像素处
+   * （e 为时间的缓入缓出，L 横屏 520 / 竖屏 400），进度取航线上投影离这个屏幕位置最近的点。镜头越推越近，同样的屏幕距离
+   * 对应的地理距离越短，进度单调前进；地球视角时这个位置在起点之外，飞机从起点出发；t1 时正好落在终点。
+   * 只依赖 t 与当前镜头，seek 到任意时刻结果一致。必须在 applyCamera(当前镜头) 之后调用。
+   */
+  function followP(r, t) {
+    const n = r.pts.length, e = inOutSine(clamp((t - r.t0) / (r.t1 - r.t0)));
+    const k = project(r.pts[n - 1]), back = project(r.pts[Math.max(0, n - 7)]);
+    const dl = Math.hypot(back.x - k.x, back.y - k.y) || 1, L = (portrait() ? 400 : 520) * (1 - e);
+    const sx = k.x + ((back.x - k.x) / dl) * L, sy = k.y + ((back.y - k.y) / dl) * L;
+    let best = 0, bd = Infinity;
+    for (let i = 0; i < n; i++) { const q = project(r.pts[i]), d = (q.x - sx) ** 2 + (q.y - sy) ** 2; if (d < bd) { bd = d; best = i; } }
+    // 相邻两段里再细分，进度连续（按墨卡托弧长）
+    let p = r.cum[best] / r.len, pd = bd;
+    for (const j of [best - 1, best + 1]) {
+      if (j < 0 || j >= r.pts.length) continue;
+      for (let m = 1; m < 8; m++) {
+        const c = lerp(r.cum[best], r.cum[j], m / 8) / r.len, q = project(pointAt(r, c).ll), d = (q.x - sx) ** 2 + (q.y - sy) ** 2;
+        if (d < pd) { pd = d; p = c; }
+      }
+    }
+    return Math.max(p, seg(t, r.t0, r.t1 - r.t0, inSine)); // 兜底：不慢于缓入的进度
+  }
 
   /* =====================================================================
    * 4. 镜头
@@ -169,7 +195,7 @@
    * 5. 地图
    * ===================================================================== */
   const MAP = {
-    map: null, ok: false, stats: { samples: 0, ms: 0, misses: 0, frames: 0, missFrames: [], tiles: 0 },
+    map: null, ok: false, stats: { samples: 0, ms: 0, misses: 0, frames: 0, missFrames: [], missTiles: [], tiles: 0 },
     veil: 0, lastMissAt: -1, applied: '',
   };
   const loadScript = (src, ms) => new Promise((res, rej) => {
@@ -210,14 +236,28 @@
   const EMPTY = { type: 'FeatureCollection', features: [] };
   const lineFeature = (pts) => ({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: pts } });
 
+  /** WebGL 是否由 CPU 软件实现（SwiftShader / llvmpipe / Microsoft Basic Render 等） */
+  function softwareGL() {
+    try {
+      const gl = document.createElement('canvas').getContext('webgl');
+      if (!gl) return true;
+      const ext = gl.getExtension('WEBGL_debug_renderer_info');
+      const name = String(ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER));
+      const lose = gl.getExtension('WEBGL_lose_context');
+      if (lose) lose.loseContext();
+      return /swiftshader|llvmpipe|softpipe|basic render|software/i.test(name);
+    } catch (e) { return false; }
+  }
   async function initMap() {
     if (new URLSearchParams(location.search).has('nomap')) throw new Error('nomap');
     const link = document.createElement('link');
     link.rel = 'stylesheet'; link.href = C.map.css;
     document.head.appendChild(link);
-    // ?tilemirror=http://主机:端口：把 OpenFreeMap 与高程瓦片改走镜像（自建瓦片服务、离线演示、可重复的网络测试）
-    const mirror = (new URLSearchParams(location.search).get('tilemirror') || '').replace(/\/$/, '');
-    const rewrite = (url) => (mirror ? url.replace('https://tiles.openfreemap.org/', mirror + '/ofm/').replace('https://s3.amazonaws.com/elevation-tiles-prod/', mirror + '/dem/') : url);
+    // ?tilemirror=http://主机:端口：把 OpenFreeMap 与高程瓦片改走镜像（自建瓦片服务、离线演示、可重复的网络测试）；
+    // ?demmirror= 单独指定高程瓦片的镜像（与线上一样分属两个主机，各用各的连接数）
+    const qs = new URLSearchParams(location.search);
+    const mirror = (qs.get('tilemirror') || '').replace(/\/$/, ''), demMirror = (qs.get('demmirror') || mirror).replace(/\/$/, '');
+    const rewrite = (url) => url.replace('https://tiles.openfreemap.org/', mirror ? mirror + '/ofm/' : '$&').replace('https://s3.amazonaws.com/elevation-tiles-prod/', demMirror ? demMirror + '/dem/' : '$&');
     MAP.rewrite = rewrite;
     const styleP = fetch(rewrite(C.map.style)).then((r) => r.json());
     // 样式里的矢量数据源只给 tilejson 地址：提前取回，省掉样式加载后的又一次往返
@@ -226,13 +266,16 @@
     // MapLibre 5 默认只用 1 个 worker 解析瓦片；预取时要并行解析几百块瓦片，开到 2–4 个
     try { window.maplibregl.setWorkerCount(clamp(Math.floor((navigator.hardwareConcurrency || 4) / 2), 2, 4)); } catch (e) { /* 旧版本 */ }
     const cam = cameraAt(0);
+    MAP.softGL = softwareGL();
+    const softwarePreview = MAP.softGL && (!P.render || stage.scale < 1);
     const map = new window.maplibregl.Map({
       container: 'map', style: await styleP.catch(() => rewrite(C.map.style)), center: cam.center,
-      transformRequest: mirror ? (url) => ({ url: rewrite(url) }) : undefined, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
+      transformRequest: mirror || demMirror ? (url) => ({ url: rewrite(url) }) : undefined, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
       interactive: false, attributionControl: false, fadeDuration: 0, maxPitch: 75, renderWorldCopies: false,
       // 预取的瓦片要整段留在缓存里：默认缓存只有“视口瓦片数 × 5”（1920×1080 约 100 块），这里放大
       maxTileCacheSize: 900, maxTileCacheZoomLevels: 60,
-      pixelRatio: pixelRatioFor(stage.scale), canvasContextAttributes: { antialias: true, preserveDrawingBuffer: false },
+      // 软件 GL 预览关闭 MSAA；原生尺寸逐帧导出保留抗锯齿。
+      pixelRatio: pixelRatioFor(stage.scale), canvasContextAttributes: { antialias: !softwarePreview, preserveDrawingBuffer: false },
     });
     MAP.map = map;
     window.__map = map; // 调试与验证脚本用
@@ -243,6 +286,17 @@
       setTimeout(() => rej(new Error('map timeout')), 30000);
     });
     try { map.setProjection({ type: 'globe' }); } catch (e) { /* 旧版本不支持地球投影 */ }
+    if (softwarePreview) {
+      // MapLibre 5.6 的精度读回会同步等待 GPU；软件预览保留首测结果，避免重复阻塞整条流水线。
+      const settlePrecision = () => {
+        const measurement = map.style.projection._verticalPerspectiveProjection?._errorMeasurement;
+        if (measurement && measurement._lastReadbackFrame >= 0) {
+          measurement._measureWaitFrames = Infinity;
+          map.off('render', settlePrecision);
+        }
+      };
+      map.on('render', settlePrecision);
+    }
     try { map.setSky({ 'atmosphere-blend': ['interpolate', ['linear'], ['zoom'], 0, 0.9, 4, 0.6, 6, 0] }); } catch (e) { /* 无天空 */ }
     const style = map.getStyle();
     for (const l of style.layers) if (l.type === 'symbol') map.setLayoutProperty(l.id, 'visibility', 'none');
@@ -268,7 +322,8 @@
     map.addLayer({ id: 'bld3d', type: 'fill-extrusion', source: 'openmaptiles', 'source-layer': 'building', minzoom: 14,
       paint: {
         'fill-extrusion-color': '#efebe3',
-        'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, ['coalesce', ['get', 'render_height'], 6]],
+        // 高度在 z14 → 14.15 之间长出来：平面建筑止于 z14，伏见稻荷这一镜停在 z14.05–14.3，之前 14 → 14.5 的渐变让这一整段建筑几乎看不见
+        'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.15, ['coalesce', ['get', 'render_height'], 6]],
         'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
         'fill-extrusion-opacity': 0.92, 'fill-extrusion-vertical-gradient': true,
       } });
@@ -370,33 +425,53 @@
    * 缓冲（实时模式）：像视频一样渐进预取
    *  1. 扫描（只在开始播放前做一次；切换画幅时重做）：逐个采样点 jumpTo，让 MapLibre 自己算出这一帧要哪些瓦片
    *     （与渲染时完全一致），只记清单、不下载。
-   *  2. 缓冲泵（后台持续运行）：按“最早用到的时刻”顺序，把播放头之前 ahead 秒内要用的瓦片直接交给 MapLibre 的
-   *     worker 下载并解析，放进它的瓦片缓存；播放到那一帧时直接取用。已经播过 behind 秒以上、后面不再用到的瓦片
-   *     主动淘汰，内存只保留一个滑动窗口。
+   *  2. 缓冲泵（后台持续运行），两级，和视频播放器“下载在前、解码在后”一样：
+   *     a. 下载：按“最早用到的时刻”顺序，把播放头之后 fetchAhead 秒内的瓦片用普通 fetch 拉进浏览器 HTTP 缓存
+   *        （只占磁盘缓存，不占 JS 堆）；
+   *     b. 解析：播放头之后 ahead 秒内的瓦片直接交给 MapLibre 的 worker 解析（命中 HTTP 缓存，只剩解析），放进它的
+   *        瓦片缓存，播放到那一帧时直接取用。解析过的瓦片在主线程堆上约为 pbf 原始字节的 8–10 倍（实测），所以不在
+   *        画面上的已解析瓦片按原始字节设预算 budgetMB：超出时只解析 resume + 1 秒以内的瓦片。
+   *     已经播过 behind 秒以上、后面不再用到的瓦片主动淘汰，内存只保留一个滑动窗口。
+   *     优先级：“必需”瓦片在前；只在快速推拉帧里用到、且 3 级以内已有上级瓦片可顶替的是“可选”瓦片（低价值：
+   *     地图正在一秒跨好几级缩放），排在所有必需瓦片之后，带宽有富余才取。
    *  3. bufferedUntil = 从播放头起、所有采样点瓦片都已就绪的最远时刻。前方不足 stall 秒时暂停在当前帧并显示
    *     “缓冲”提示，攒够 resume 秒自动继续；拖动到未缓冲的位置同理。ready 门槛只要求开头 gate 秒。
    * ===================================================================== */
-  // concVector / concDem：后台并发数（OpenFreeMap 与 S3 都走 HTTP/2，可以多路复用；单块瓦片冷请求约 1–1.5 秒）
-  const BUF_CFG = { gate: 6, ahead: 12, behind: 2, stall: 0.5, resume: 4, concVector: 10, concDem: 6 };
-  const BUF = { orient: null, samples: [], tiles: new Map(), bufferedUntil: 0, gen: 0, stalled: false, selfPause: false, stallCount: 0, stallMs: 0, stallAt: 0, stalls: [], loads: 0, evicted: 0, maxHeap: 0 };
-  /** 采样点：镜头变化超过阈值（缩放 0.25、俯仰 5°、方位 6°、平移 300px）就记一个，相邻采样点之间的瓦片集合基本连续 */
+  // concVector / concDem：后台并发数（下载与解析共用；OpenFreeMap 走 HTTP/2 多路复用，S3 高程瓦片走 HTTP/1.1）
+  // budgetMB：低内存设备（navigator.deviceMemory ≤ 4GB，多为手机）减半
+  const BUF_CFG = { gate: 6, ahead: 10, fetchAhead: 45, soon: 20, budgetMB: navigator.deviceMemory && navigator.deviceMemory <= 4 ? 10 : 20, behind: 2, stall: 0.5, resume: 4, concVector: 10, concDem: 6 };
+  const BUF = { orient: null, samples: [], tiles: new Map(), bufferedUntil: 0, gen: 0, stalled: false, selfPause: false, stallCount: 0, stallMs: 0, stallAt: 0, stalls: [], loads: 0, fetches: 0, deferred: 0, needSoon: false, evicted: 0, maxHeap: 0, cachedMB: 0, maxCachedMB: 0, budgetHits: 0 };
   function cameraSamples(orient) {
     const out = [], keys = new Set(CAM.map((k) => k.t));
     let last = null;
+    // 地球远景（zoom < 6）的快速推拉按 5ms 扫描，覆盖地平线边缘的短暂瓦片；其余快速段为 25ms，缓慢段不超过 0.2s。
     const far = (a, b) => {
       if (!b) return true;
-      if (Math.abs(a.zoom - b.zoom) > 0.25 || Math.abs(a.pitch - b.pitch) > 5 || Math.abs(a.bearing - b.bearing) > 6) return true;
+      if (Math.abs(a.zoom - b.zoom) > 0.12 || Math.abs(a.pitch - b.pitch) > 2.5 || Math.abs(a.bearing - b.bearing) > 3) return true;
       const ws = 512 * 2 ** Math.min(a.zoom, b.zoom), ma = merc(a.center), mb = merc(b.center);
-      if (Math.hypot(ma[0] - mb[0], ma[1] - mb[1]) * ws > (orient === 'portrait' ? 200 : 300)) return true;
-      return Math.hypot(a.focus[0] - b.focus[0], a.focus[1] - b.focus[1]) > 260;
+      if (Math.hypot(ma[0] - mb[0], ma[1] - mb[1]) * ws > (orient === 'portrait' ? 100 : 150)) return true;
+      return Math.hypot(a.focus[0] - b.focus[0], a.focus[1] - b.focus[1]) > 130;
     };
-    for (let t = 0; t <= DUR + 1e-6; t = +(t + 0.025).toFixed(3)) {
+    let lastT = -1;
+    for (let i = 0; i <= Math.round(DUR * 200); i++) {
+      const t = i / 200;
+      const fast = Math.abs(cameraAt(Math.min(DUR, t + 0.1), orient).zoom - cameraAt(Math.max(0, t - 0.1), orient).zoom) / 0.2 > 1;
       const cam = cameraAt(t, orient);
-      if (keys.has(t) || far(cam, last)) { out.push({ t, cam }); last = cam; }
+      if (i % 5 && !(fast && cam.zoom < 6)) continue;
+      const moving = !last || far(cam, last) || (t - lastT >= 0.2 && JSON.stringify(cam) !== JSON.stringify(last));
+      if (keys.has(t) || fast || moving) {
+        // 快速段里缩放跨过整数级的那一格再细分 6 份：地球视角跨级的一瞬间（实测十几毫秒）边缘会多出几块瓦片
+        if (fast && last && Math.floor(cam.zoom) !== Math.floor(last.zoom)) for (let k = 1; k < 6; k++) { const tk = +(lastT + ((t - lastT) * k) / 6).toFixed(4); out.push({ t: tk, cam: cameraAt(tk, orient) }); }
+        out.push({ t, cam }); last = cam; lastT = t;
+      }
     }
     return out;
   }
   const BASE_SOURCES = ['openmaptiles', 'dem'];
+  /** 缺瓦片时允许用几级以内的上级瓦片顶替：一般 3 级；世界尺度（z ≤ 5，海岸线与国界本来就很概括）放宽到 4 级。
+   *  只影响快速推拉帧（computeBuffered 只在快速帧接受顶替）与“缺瓦片”判定；航线起飞时一口气从 z2 推到 z11，
+   *  z5 那一层 24 块 5MB 只在 0.3 秒里出现，放宽后改由 z1 顶替，10Mbps 下航线前的缓冲约少 2.5 秒 */
+  const upLevels = (z) => (z <= 5 ? 4 : 3);
   /** 扫描：返回每个采样点需要的瓦片（tileID）。会清空数据源里的瓦片，只能在播放前 / 暂停时调用 */
   function scanTiles(list) {
     const map = MAP.map;
@@ -449,22 +524,37 @@
     BUF.gen++;
     BUF.orient = orient;
     BUF.tiles = new Map();
-    BUF.samples = scanned.map((s) => {
+    BUF.samples = scanned.map((s, k) => {
       const tiles = [];
+      // 采样点代表 [t, 下一个采样点) 这一整段（镜头静止时一段可以长达数秒）：tLast 记这一段的结束时刻。
+      // 只记 s.t 的话，静止镜头里播放头一过 s.t + 0.5 秒，这些瓦片既不再排队、又会被淘汰，缓冲永远等不到它们（实测卡死）
+      const tEnd = k + 1 < scanned.length ? scanned[k + 1].t : DUR;
       for (const [src, tid] of s.need) {
         const key = src + '/' + tid.key;
         let e = BUF.tiles.get(key);
-        if (!e) BUF.tiles.set(key, (e = { key, src, tid, tFirst: s.t, tLast: s.t, state: 'pending', fastOnly: true }));
-        e.tLast = Math.max(e.tLast, s.t);
+        if (!e) BUF.tiles.set(key, (e = { key, src, tid, tFirst: s.t, tLast: tEnd, state: 'pending', fastOnly: true }));
+        e.tLast = Math.max(e.tLast, tEnd);
         if (!s.fast) e.fastOnly = false; // 只在快速推拉帧里用到的瓦片：优先级最低（画面可以先用上级瓦片）
         tiles.push(e);
       }
       return { t: s.t, tiles, fast: s.fast };
     });
+    // 分级（静态）：只在快速推拉帧里用到的瓦片，若 upLevels 级以内有“必需”的上级瓦片、且上级瓦片到那时还留在缓存里
+    // （上级的使用时段 + 0.5 秒最短保留期与它重叠），就是“可选”瓦片——播放到那里时上级瓦片已经就绪，可以顶替
+    // （MapLibre 本来就这样画）。按缩放从低到高推，上级的分级先定
+    const byZ = [...BUF.tiles.values()].sort((a, b) => a.tid.overscaledZ - b.tid.overscaledZ);
+    for (const e of byZ) {
+      e.optional = false;
+      if (!e.fastOnly) continue;
+      for (let z = e.tid.overscaledZ - 1; z >= Math.max(0, e.tid.overscaledZ - upLevels(e.tid.overscaledZ)) && !e.optional; z--) {
+        const a = BUF.tiles.get(e.src + '/' + e.tid.scaledTo(z).key);
+        if (a && !a.optional && a.tFirst <= e.tLast && a.tLast + 0.5 >= e.tFirst) e.optional = true;
+      }
+    }
     BUF.bufferedUntil = 0;
     BUF.gateDone = false;
     BUF.planMs = Math.round(performance.now() - t0);
-    console.info(`[地图巡礼] 缓冲计划 ${orient}：${list.length} 个采样点 · ${BUF.tiles.size} 块瓦片 · 扫描 ${BUF.planMs}ms`);
+    console.info(`[地图巡礼] 缓冲计划 ${orient}：${list.length} 个采样点 · ${BUF.tiles.size} 块瓦片（可选 ${byZ.filter((e) => e.optional).length}）· 扫描 ${BUF.planMs}ms`);
   }
   let TileCtor = null;
   /** 瓦片是否已解析并留在 MapLibre 里（正在显示，或在瓦片缓存中） */
@@ -496,6 +586,7 @@
     }
     e.state = 'loading';
     const tile = new TileCtor(e.tid, sc._source.tileSize * e.tid.overscaleFactor());
+    tile.__pump = true; // 缓冲泵自己的请求：不受下面“推迟可选瓦片”的限制
     let timer = 0;
     try {
       // 单块瓦片 60 秒还没回来（网络卡住）：放弃这次请求，重新排队（最多重试 2 次）
@@ -521,10 +612,62 @@
       e.state = gen === BUF.gen ? 'error' : 'pending'; // 404 / 网络错误：不阻塞缓冲（MapLibre 渲染时也会跳过这块瓦片）
     }
   }
-  /** 淘汰：播放头之前 behind 秒以前用过、之后不再用到的瓦片，以及不在当前窗口里的缓存项 */
+  /**
+   * MapLibre 自己为当前画面发出的瓦片请求里，“可选”瓦片在带宽紧张时（soon 秒内还有必需瓦片没到）且正在播放时不下载：
+   * 它们只在快速推拉的几帧里出现、马上离开画面，下载一半就被取消，白白占带宽（实测 10Mbps 下航线一段多出几 MB）。
+   * 画面先用上级瓦片顶替；瓦片离开画面时 MapLibre 会丢掉它（这个 Promise 永不完成，随瓦片对象一起回收）。
+   * 被推迟的瓦片标上 __deferred，缓冲泵仍可以自己加载它（进缓存）。
+   */
+  function installDefer() {
+    for (const src of BASE_SOURCES) {
+      const sc = MAP.map.style.sourceCaches[src], s = sc && sc._source;
+      if (!s || s.__deferWrapped) continue;
+      const load = s.loadTile.bind(s);
+      s.loadTile = (tile) => {
+        const e = tile.__pump ? null : BUF.tiles.get(src + '/' + tile.tileID.key);
+        if (e && e.optional && !e.fetched && BUF.needSoon && tl.playing && !P.render) { tile.__deferred = true; BUF.deferred++; return new Promise(() => {}); }
+        return load(tile);
+      };
+      s.__deferWrapped = true;
+    }
+  }
+  /** 瓦片地址（与 MapLibre 请求的地址一致，才能命中同一条 HTTP 缓存） */
+  function tileUrl(e) {
+    const tpl = e.src === 'dem' ? MAP.rewrite(C.map.dem) : MAP.map.getSource(e.src).tiles[0];
+    const c = e.tid.canonical;
+    return tpl.replace('{z}', c.z).replace('{x}', c.x).replace('{y}', c.y);
+  }
+  /** 下载（不解析）：拉进浏览器 HTTP 缓存，之后 MapLibre 解析时直接命中。失败不重试，解析时再走一次网络 */
+  async function fetchEntry(e) {
+    e.fetching = true;
+    try {
+      const r = await fetch(tileUrl(e), { credentials: 'same-origin' });
+      await r.arrayBuffer(); // 读完响应体，缓存条目才完整
+      e.fetched = r.ok || r.status === 404;
+      BUF.fetches++;
+    } catch (err) { e.fetched = true; /* 交给解析阶段处理 */ } finally { e.fetching = false; }
+  }
+  /** 一块已解析瓦片的原始字节（矢量：pbf；高程：解码后的高程数组） */
+  function tileBytes(tile) {
+    if (!tile) return 0;
+    if (tile.latestRawTileData) return tile.latestRawTileData.byteLength;
+    return tile.dem && tile.dem.data ? tile.dem.data.byteLength : 0;
+  }
+  /** 不在画面上的已解析瓦片（数据源缓存里的）共多少原始字节 */
+  function cachedBytes() {
+    let n = 0;
+    for (const src of BASE_SOURCES) {
+      const sc = MAP.map.style.sourceCaches[src];
+      if (sc) for (const k of sc._cache.order) n += tileBytes(sc._cache.getByKey(k));
+    }
+    return n;
+  }
+  /** 淘汰：播放头之前 behind 秒以前用过、之后不再用到的瓦片，以及不在当前窗口里的缓存项。
+   *  超出内存预算时收紧窗口：只留播放头前后 0.5 秒到 resume + 1 秒之内要用的 */
   function evict(T) {
-    const map = MAP.map, keep = new Set();
-    for (const e of BUF.tiles.values()) if (e.tLast >= T - BUF_CFG.behind && e.tFirst <= T + BUF_CFG.ahead + 2) keep.add(e.key);
+    const map = MAP.map, keep = new Set(), over = BUF.cachedMB > BUF_CFG.budgetMB;
+    const lo = T - (over ? 0.5 : BUF_CFG.behind), hi = T + (over ? BUF_CFG.resume + 1 : BUF_CFG.ahead + 2);
+    for (const e of BUF.tiles.values()) if (e.tLast >= lo && e.tFirst <= hi) keep.add(e.key);
     for (const src of BASE_SOURCES) {
       const sc = map.style.sourceCaches[src];
       if (!sc) continue;
@@ -540,10 +683,10 @@
       }
     }
   }
-  /** 上级瓦片（最多 3 级）是否已在 MapLibre 里：过渡帧可以先用它顶替 */
+  /** 上级瓦片（upLevels 级以内）是否已在 MapLibre 里：过渡帧可以先用它顶替 */
   function parentReady(e) {
     const sc = MAP.map.style.sourceCaches[e.src];
-    for (let z = e.tid.overscaledZ - 1; z >= Math.max(0, e.tid.overscaledZ - 3); z--) {
+    for (let z = e.tid.overscaledZ - 1; z >= Math.max(0, e.tid.overscaledZ - upLevels(e.tid.overscaledZ)); z--) {
       const p = e.tid.scaledTo(z);
       const live = sc._tiles[p.key];
       if (live && live.hasData()) return true;
@@ -568,17 +711,15 @@
       for (const src of BASE_SOURCES) { const sc = MAP.map.style.sourceCaches[src]; if (sc) for (const k in sc._tiles) out.push(src + '/' + k + ' z' + sc._tiles[k].tileID.overscaledZ + '/' + sc._tiles[k].tileID.canonical.x + '/' + sc._tiles[k].tileID.canonical.y); }
       return out;
     },
-    scan1(t) { const r = scanTiles([{ t, cam: cameraAt(t) }])[0]; return { fast: r.fast, need: r.need.map(([id, tid]) => id + ' ' + tid.overscaledZ + '/' + tid.canonical.x + '/' + tid.canonical.y) }; },
+    scan1(t) { const r = scanTiles([{ t, cam: cameraAt(t) }])[0]; return { fast: r.fast, need: r.need.map(([id, tid]) => id + '/' + tid.key + ' ' + tid.overscaledZ + '/' + tid.canonical.x + '/' + tid.canonical.y) }; },
     urls() {
       const out = [];
-      for (const e of BUF.tiles.values()) {
-        const tpl = e.src === 'dem' ? MAP.rewrite(C.map.dem) : MAP.map.getSource(e.src).tiles[0];
-        const c = e.tid.canonical;
-        out.push(tpl.replace('{z}', c.z).replace('{x}', c.x).replace('{y}', c.y));
-      }
+      for (const e of BUF.tiles.values()) out.push(tileUrl(e));
       return out;
     },
     states() { const c = {}; for (const e of BUF.tiles.values()) c[e.state] = (c[e.state] || 0) + 1; return c; },
+    /** 缓冲计划：[数据源, z, x, y, 最早, 最晚, 只在快速推拉帧用到, 可选] */
+    plan() { return [...BUF.tiles.values()].map((e) => [e.src, e.tid.canonical.z, e.tid.canonical.x, e.tid.canonical.y, e.tFirst, e.tLast, e.fastOnly ? 1 : 0, e.optional ? 1 : 0]); },
     blocking() {
       const T = tl.time; let i = 0;
       while (i < BUF.samples.length - 1 && BUF.samples[i + 1].t <= T) i++;
@@ -608,27 +749,53 @@
   /** 缓冲泵：后台持续运行，重新规划（切换画幅）时由 gen 结束旧的循环 */
   async function pump(gen) {
     const inflight = { openmaptiles: 0, dem: 0 };
-    let lastEvict = 0;
+    let lastEvict = 0, lastBytes = 0, inflightNear = 0, inflightSoon = 0;
     while (gen === BUF.gen) {
       const T = tl.time;
       BUF.bufferedUntil = computeBuffered(T);
-      // 开头还没缓冲好时只取开头 gate 秒（不和后面的大瓦片抢带宽），之后放开到 ahead 秒
-      const horizon = Math.min(DUR, T + BUF_CFG.ahead, BUF.gateDone ? Infinity : BUF_CFG.gate);
-      const queue = [];
+      if (performance.now() - lastBytes > 250) { BUF.cachedMB = cachedBytes() / 1048576; BUF.maxCachedMB = Math.max(BUF.maxCachedMB, BUF.cachedMB); lastBytes = performance.now(); }
+      // 解析窗口：开头还没缓冲好时只取开头 gate 秒（不和后面的大瓦片抢带宽），之后放开到 ahead 秒；
+      // 不在画面上的已解析瓦片超出内存预算时，只解析 resume + 1 秒以内的（保证能继续播放），其余等播过、淘汰后再解析
+      const over = BUF.cachedMB > BUF_CFG.budgetMB;
+      if (over) BUF.budgetHits++;
+      const horizon = Math.min(DUR, T + (over ? BUF_CFG.resume + 1 : BUF_CFG.ahead), BUF.gateDone ? Infinity : BUF_CFG.gate);
+      // 下载窗口：开头就绪之后才放开（之前全部带宽给开头）
+      const fetchHorizon = BUF.gateDone ? Math.min(DUR, T + BUF_CFG.fetchAhead) : -1;
+      const parse = [], fetchQ = [];
       for (const e of BUF.tiles.values()) {
-        if (e.tFirst > horizon || e.tLast < T - 0.5) continue;
+        if (e.tLast < T - 0.5) continue;
         if (e.state === 'ready' && !tileReady(e)) e.state = 'pending'; // 被 MapLibre 或淘汰挪走了：重新排队
+        if (e.state !== 'pending') continue;
         // 画面正在用、MapLibre 自己正在加载的瓦片不重复加载（否则同一块瓦片会被下载、解析两次）
-        if (e.state === 'pending' && !MAP.map.style.sourceCaches[e.src]._tiles[e.tid.key]) queue.push(e);
+        const live = MAP.map.style.sourceCaches[e.src]._tiles[e.tid.key];
+        if (e.tFirst <= horizon) { if (!(over && e.optional) && (!live || live.__deferred)) parse.push(e); }
+        else if (e.tFirst <= fetchHorizon && !e.fetched && !e.fetching) fetchQ.push(e);
       }
-      // 按最早用到的时刻排队（当前帧缺的瓦片最先），同一时刻先低缩放（大块的先铺底）
-      queue.sort((a, b) => (a.fastOnly - b.fastOnly) || Math.max(a.tFirst, T) - Math.max(b.tFirst, T) || a.tid.canonical.z - b.tid.canonical.z);
-      for (const e of queue) {
+      // 必需的在前；同类按最早用到的时刻（当前帧缺的瓦片最先），同一时刻先低缩放（大块的先铺底）
+      const order = (a, b) => (a.optional - b.optional) || Math.max(a.tFirst, T) - Math.max(b.tFirst, T) || a.tid.canonical.z - b.tid.canonical.z;
+      parse.sort(order);
+      fetchQ.sort(order);
+      // 带宽两个数据源共用，按三档分配：
+      //  1. 解析窗口里的必需瓦片（近期播放要用）——有任何一块在排队或在途，就不开始下面两档；
+      //  2. 窗口之外的必需瓦片：只下载进 HTTP 缓存；
+      //  3. 可选瓦片：soon 秒内的必需瓦片全部到手之后才取。
+      // 实测 10Mbps：之前远处的下载和 1MB 级的可选世界瓦片与眼前必需的高程瓦片平分带宽，航线前卡了 20 多秒
+      const nearBusy = inflightNear > 0 || parse.some((e) => !e.optional);
+      const soon = T + BUF_CFG.soon;
+      const needSoon = nearBusy || inflightSoon > 0 || fetchQ.some((e) => !e.optional && e.tFirst <= soon);
+      BUF.needSoon = needSoon;
+      const start = (e, job, near) => {
         const lim = e.src === 'dem' ? BUF_CFG.concDem : BUF_CFG.concVector;
-        if (inflight[e.src] >= lim) continue;
+        if (inflight[e.src] >= lim) return;
+        if (e.optional ? needSoon : !near && nearBusy) return;
+        const isNear = near && !e.optional, isSoon = !near && !e.optional && e.tFirst <= soon;
         inflight[e.src]++;
-        loadEntry(e, gen).finally(() => { inflight[e.src]--; });
-      }
+        if (isNear) inflightNear++;
+        if (isSoon) inflightSoon++;
+        job(e).finally(() => { inflight[e.src]--; if (isNear) inflightNear--; if (isSoon) inflightSoon--; });
+      };
+      for (const e of parse) start(e, (x) => loadEntry(x, gen), true);
+      for (const e of fetchQ) start(e, fetchEntry, false);
       if (performance.now() - lastEvict > 500) { evict(T); lastEvict = performance.now(); }
       updateStall(T);
       if (performance.memory) BUF.maxHeap = Math.max(BUF.maxHeap, performance.memory.usedJSHeapSize);
@@ -745,22 +912,24 @@
   const finChars = splitChars($('.ou-fin-text', outro), O_.fin);
   $('.ou-credits', outro).innerHTML = O_.credits.map((c) => `<p>${c}</p>`).join('');
 
-  // 颗粒：预生成 4 张 256px 噪点贴图（固定种子），按时间换图与平铺位置（可复现）。
-  // 用重复的背景图而不是拉伸的 canvas，也不用 mix-blend-mode：软件渲染下缩放画布 / 混合模式每帧要几百毫秒。
+  // 颗粒：一张 256px 噪点贴图（固定种子，放大 2 倍平铺成 512px 周期），按时间换平移位置（可复现）。
+  // 颗粒层比舞台大一个周期、是独立的合成层：每步只改 transform，合成器直接平移已栅格化的纹理，从不重绘。
+  // 实测（无头软件渲染 1280×720）：之前每步改 background-image / background-position，整层 1920×1080 重新栅格化，
+  // 单这一项就让播放掉到每秒 3–6 帧；也不用拉伸 canvas 和 mix-blend-mode（同样每帧几百毫秒）。
   // 亮颗粒是半透明白、暗颗粒是半透明黑，普通叠加即可得到胶片噪点。
   const grainEl = $('#grain');
-  const grainTiles = Array.from({ length: 4 }, (_, k) => {
+  {
     const cv = document.createElement('canvas');
     cv.width = cv.height = 256;
-    const g = cv.getContext('2d'), img = g.createImageData(256, 256), r = MK.rng(100 + k);
+    const g = cv.getContext('2d'), img = g.createImageData(256, 256), r = MK.rng(100);
     for (let i = 0; i < img.data.length; i += 4) {
       const v = (r() + r() + r() - 1.5) / 1.5; // -1..1，近似正态
       img.data[i] = img.data[i + 1] = img.data[i + 2] = v > 0 ? 255 : 0;
       img.data[i + 3] = Math.min(255, Math.abs(v) * 255);
     }
     g.putImageData(img, 0, 0);
-    return `url(${cv.toDataURL('image/png')})`;
-  });
+    grainEl.style.backgroundImage = `url(${cv.toDataURL('image/png')})`;
+  }
   let grainIdx = -1;
 
   // 星空（只在夜间地球时可见）
@@ -1037,15 +1206,15 @@
     const inkBase = mix(PAL.ink, PAL.nightInk, night);
     const ink = mix(inkBase, WHITE, over);
     const surfaceBase = mix([250, 249, 245], [22, 28, 40], night);
-    stageEl.style.setProperty('--paper', css(paper));
-    stageEl.style.setProperty('--ink', css(ink));
-    stageEl.style.setProperty('--ink-map', css(inkBase));
-    stageEl.style.setProperty('--muted', css(ink, 0.62));
-    stageEl.style.setProperty('--line', css(ink, 0.26));
-    stageEl.style.setProperty('--surface', css(mix(surfaceBase, [12, 14, 20], over), 0.94));
-    stageEl.style.setProperty('--accent', css(accent));
-    stageEl.style.setProperty('--accent-soft', css(accent, 0.22));
-    stageEl.style.setProperty('--night', String(+night.toFixed(3)));
+    sty(stageEl, '--paper', css(paper));
+    sty(stageEl, '--ink', css(ink));
+    sty(stageEl, '--ink-map', css(inkBase));
+    sty(stageEl, '--muted', css(ink, 0.62));
+    sty(stageEl, '--line', css(ink, 0.26));
+    sty(stageEl, '--surface', css(mix(surfaceBase, [12, 14, 20], over), 0.94));
+    sty(stageEl, '--accent', css(accent));
+    sty(stageEl, '--accent-soft', css(accent, 0.22));
+    sty(stageEl, '--night', String(+night.toFixed(3)));
     sty(TOP, '--shadow', over > 0.01 ? `0 1px 10px rgba(0,0,0,${f2(0.45 * over)})` : 'none');
 
     /* --- 地图配色、路线 --- */
@@ -1097,8 +1266,7 @@
     if (fi !== grainIdx) {
       grainIdx = fi;
       const gr = MK.rng(9 + fi);
-      sty(grainEl, 'background-image', grainTiles[((fi % 4) + 4) % 4]);
-      sty(grainEl, 'background-position', `${Math.floor(gr() * 512)}px ${Math.floor(gr() * 512)}px`);
+      sty(grainEl, 'transform', `translate(${Math.floor(gr() * 512)}px, ${Math.floor(gr() * 512)}px)`);
     }
     op(grainEl, 0.1 + 0.14 * fbVis + 0.04 * night + 0.05 * cmpVis);
     const noteK = T.note.reduce((m, n) => Math.max(m, env(t, n.t, n.until, 0.5, 0.4)), 0);
@@ -1113,6 +1281,13 @@
   }
 
   /* ---------- 路线（GL） ---------- */
+  const visCache = new Map();
+  function setVis(r, on) {
+    if (visCache.get(r.id) === on) return;
+    visCache.set(r.id, on);
+    const sid = 'rt-' + r.id, ids = r.style === 'rail' || r.style === 'wrong' ? [sid + '-glow', sid + '-casing', sid] : [sid + '-casing', sid];
+    for (const id of ids) { try { MAP.map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none'); } catch (e) { /* 图层不存在时忽略 */ } }
+  }
   function updateRoutesGL(t, n, accent, over) {
     const map = MAP.map;
     const inkC = css(dayNight(PAL.ink, PAL.nightInk, n));
@@ -1120,25 +1295,32 @@
     for (const r of routes) {
       const sid = 'rt-' + r.id;
       const p = routeP(r, t);
+      // 出场前 0.6 秒以前，整条路线的图层设为不可见：不可见图层的数据源不参与瓦片计算。实测（软件渲染、地球视角）
+      // 8 条还没出场的路线即使全透明 / 数据为空，每帧仍要为它们计算覆盖瓦片并切 GeoJSON 瓦片，帧率约 9 → 隐藏后约 16。
+      // 提前 0.6 秒设为可见（此时仍全透明），让数据源先切好瓦片，出场第一帧不缺线
+      setVis(r, t >= r.t0 - 0.6);
       if (r.style === 'rail' || r.style === 'wrong') {
         const col = r.style === 'wrong' ? css(PAL.alert) : css(PAL.accent);
         const fade = r.style === 'wrong' ? 1 - 0.6 * seg(t, r.t1 + 1.6, 0.8) : 1;
         // 描出中发光更强，完成后回落
         const glowK = (t >= r.t0 && t <= r.t1 + 0.6 ? 0.85 : 0.35 + 0.25 * n) * fade;
+        const on = p > 0 ? 1 : 0;
         setPaint(sid, 'line-gradient', STEP(p, col));
         setPaint(sid + '-casing', 'line-gradient', STEP(p, paperC));
         setPaint(sid + '-glow', 'line-gradient', STEP(p, col));
-        setPaint(sid + '-glow', 'line-opacity', f2(glowK * 0.55));
-        setPaint(sid, 'line-opacity', f2(fade));
-        setPaint(sid + '-casing', 'line-opacity', f2(0.9 * fade));
+        setPaint(sid + '-glow', 'line-opacity', f2(glowK * 0.55 * on));
+        setPaint(sid, 'line-opacity', f2(fade * on));
+        setPaint(sid + '-casing', 'line-opacity', f2(0.9 * fade * on));
       } else {
         const pts = t >= r.t0 ? partial(r, p) : [];
         const key = pts.length + ':' + (pts.length ? pts[pts.length - 1].map((v) => v.toFixed(6)).join(',') : '');
         if (key !== r.partialKey) { r.partialKey = key; map.getSource(sid).setData(pts.length > 1 ? lineFeature(pts) : EMPTY); }
+        const on = pts.length > 1 ? 1 : 0;
         setPaint(sid, 'line-color', r.style === 'flight' ? inkC : inkC);
         setPaint(sid + '-casing', 'line-color', paperC);
+        setPaint(sid + '-casing', 'line-opacity', f2(0.55 * on));
         // 航线在城市尺度下淡出（它从 1300 km 外过来，近景只留到达的一小段）
-        setPaint(sid, 'line-opacity', r.style === 'flight' ? f2(0.85 * (1 - 0.7 * seg(t, 14.2, 1.0)) * (1 - seg(t, 54.8, 0.8))) : 0.9);
+        setPaint(sid, 'line-opacity', f2(on * (r.style === 'flight' ? 0.85 * (1 - 0.7 * seg(t, 14.2, 1.0)) * (1 - seg(t, 54.8, 0.8)) : 0.9)));
       }
     }
   }
@@ -1175,16 +1357,32 @@
     const z = cam.zoom;
     const cardRect = activeCard && activeCard.rect;
     const placed = (G.placed = []);
-    const zones = avoidZones(t);
+    let zones = null, textRects = null;
     markerEls.forEach((me, i) => {
       const nd = G.nodes[i];
       const k = seg(t, me.m.t, 0.45, ease.outBack);
       const s = me.s;
       const ll = s.lngLat;
       const titleK = 1 - env(t, 3.9, 7.3, 0.3, 0.5); // 片名出现时，地图标记让位
-      const vis0 = t >= me.m.t ? ui * titleK : 0;
+      let vis0 = t >= me.m.t ? ui * titleK : 0;
       if (vis0 <= 0.001 || !visible(ll, cam)) { op(nd.g, 0); op(me.el, 0); return; }
+      // 有可见节点时才读取避让几何，避免空镜头也同步刷新整页布局。
+      if (!zones) {
+        zones = avoidZones(t); textRects = [];
+        const sr = stageEl.getBoundingClientRect(), sk = stage.scale || 1;
+        for (const b of [intro, loc, dayc, el.chapter]) {
+          const m = cache(b), o = m['s:visibility'] === 'hidden' ? 0 : parseFloat(m['s:opacity'] ?? '0');
+          if (!(o > 0.02)) continue;
+          b.querySelectorAll('*').forEach((e) => {
+            if (e.children.length || !e.textContent.trim()) return;
+            const r = e.getBoundingClientRect();
+            if (r.width >= 1) textRects.push({ x: (r.left - sr.left) / sk, y: (r.top - sr.top) / sk, w: r.width / sk, h: r.height / sk, o });
+          });
+        }
+      }
       const q = project(ll);
+      for (const r of textRects) if (q.x > r.x - 16 && q.x < r.x + r.w + 16 && q.y > r.y - 16 && q.y < r.y + r.h + 16) { vis0 *= 1 - r.o; break; }
+      if (vis0 <= 0.001) { op(nd.g, 0); op(me.el, 0); return; }
       const x = f2(q.x), y = f2(q.y);
       // 节点：从 0.6 弹到 1；脉冲两圈错开半个周期
       op(nd.g, clamp(k) * vis0);
@@ -1211,8 +1409,11 @@
       const tryBox = (side, dy) => { const x0 = side > 0 ? q.x + gap : side < 0 ? q.x - gap - wLab : q.x - wLab / 2; return { x0, x1: x0 + wLab, y0: q.y - hLab / 2 + dy, y1: q.y + hLab / 2 + dy, side }; };
       const bad = (bx) => bx.x0 < 16 || bx.x1 > W - 16 || hitRect(bx, cardRect) || placed.some((p) => hitRect(bx, p, 6)) || zones.some((zr) => hitRect(bx, zr, 4));
       let box = null;
-      const pf = me.pref || 1, vy = hLab / 2 + gap + 4;
-      for (const [side, dy] of [[pf, 0], [-pf, 0], [0, vy + hLab / 2], [0, -vy - hLab / 2], [pf, hLab + 6], [-pf, hLab + 6], [pf, -hLab - 6], [-pf, -hLab - 6]]) { const bx = tryBox(side, dy); if (!bad(bx)) { box = bx; break; } }
+      // 偏好：side（1 右 / -1 左）；竖屏可单独给 sideP，0 表示先放节点正下方（例如关西机场：左边是航线来向、右边是印章栏）
+      const pf0 = por() && s.sideP !== undefined ? s.sideP : me.pref, pf = pf0 || 1, vy = hLab / 2 + gap + 4;
+      const order = [[pf, 0], [-pf, 0], [0, vy + hLab / 2], [0, -vy - hLab / 2], [pf, hLab + 6], [-pf, hLab + 6], [pf, -hLab - 6], [-pf, -hLab - 6]];
+      if (pf0 === 0) order.unshift(order.splice(2, 1)[0]);
+      for (const [side, dy] of order) { const bx = tryBox(side, dy); if (!bad(bx)) { box = bx; break; } }
       if (!box) { me.box = null; op(me.el, 0); return; }
       placed.push({ x: box.x0, y: box.y0, w: wLab, h: hLab });
       me.box = box;
@@ -1224,6 +1425,7 @@
   /** HUD 保留区（文字区域）：地图标签不进入这些矩形；收尾时加上左侧统计区 */
   // 事件文字（地点标题、日序卡、章节标签、通知、便签、片名）出现时，它们的矩形也是保留区
   const EVENT_BLOCKS = () => [loc, dayc, el.chapter, el.toast, el.note, intro];
+  window.__labelDebug = () => ({ zones: avoidZones(tl.time).map((r) => [r.x, r.y, r.w, r.h].map(Math.round)), placed: (G.placed || []).map((r) => [r.x, r.y, r.w, r.h].map(Math.round)) }); // 验证脚本：标签避让区
   function avoidZones(t) {
     const z = (L.avoid || []).map(([x, y, w, h]) => ({ x, y, w, h }));
     for (const b of EVENT_BLOCKS()) {
@@ -1327,7 +1529,8 @@
           capX = ex; capY = ey;
         }
       } else {
-        const sy = box && Math.abs(box.x0 - q.x) < 80 ? Math.max(q.y + 18, box.y1 + 8) : q.y + 18;
+        // 标签在节点下方且横向盖住节点（居中 / 偏下）时，引线从标签下缘出发，不穿过标签
+        const sy = box && box.y0 >= q.y - 4 && box.x0 - 4 <= q.x && q.x <= box.x1 + 4 ? Math.max(q.y + 18, box.y1 + 8) : q.y + 18;
         const ey = base.y - 10, ex = clamp(q.x, base.x + 40, base.x + base.w - 40);
         if (ey - sy > 24) {
           const my = Math.round(lerp(sy, ey, 0.55));
@@ -1632,7 +1835,7 @@
     if (!waitP) waitP = nextRender(map).then(() => tilesSettled(map, 20000)).then(() => waitIdle(map, 4000)).finally(() => { waitP = null; });
     return waitP;
   }
-  // “露白”判定：画面需要的瓦片既没解析好，也没有 3 级以内的上级瓦片可以顶替（MapLibre 会用上级瓦片先画出来）
+  // “露白”判定：画面需要的瓦片既没解析好，也没有 upLevels 级以内的上级瓦片可以顶替（MapLibre 会用上级瓦片先画出来）
   function baseMissing(map) {
     for (const id of ['openmaptiles', 'dem']) {
       const sc = map.style.sourceCaches[id];
@@ -1640,20 +1843,20 @@
       for (const k in sc._tiles) {
         const tile = sc._tiles[k], st = tile.state;
         if (st === 'loaded' || st === 'errored') continue;
-        if (sc.findLoadedParent(tile.tileID, Math.max(0, tile.tileID.overscaledZ - 3))) continue;
-        return true;
+        if (sc.findLoadedParent(tile.tileID, Math.max(0, tile.tileID.overscaledZ - upLevels(tile.tileID.overscaledZ)))) continue;
+        return id + '/' + k + ' z' + tile.tileID.overscaledZ; // 真值：缺的是哪块（验证脚本记录）
       }
     }
     return false;
   }
-  window.__baseMissing = () => (MAP.ok ? baseMissing(MAP.map) : false);
+  window.__baseMissing = () => (MAP.ok ? !!baseMissing(MAP.map) : false);
   function liveDegrade(t) {
     const map = MAP.map;
     if (!MAP.started) return;
     // 只看底图（矢量瓦片 + 高程）；路线的 GeoJSON 在描线时每帧更新，本来就会短暂处于加载中
     const missing = baseMissing(map);
     MAP.stats.frames++;
-    if (missing) { MAP.stats.misses++; if (MAP.stats.missFrames.length < 200) MAP.stats.missFrames.push(+t.toFixed(2)); }
+    if (missing) { MAP.stats.misses++; if (MAP.stats.missFrames.length < 200) MAP.stats.missFrames.push(+t.toFixed(2)); if (MAP.stats.missTiles.length < 20) MAP.stats.missTiles.push(t.toFixed(2) + ' ' + missing + ' ' + (BUF.tiles.has(missing.split(' ')[0]) ? BUF.tiles.get(missing.split(' ')[0]).state : 'unplanned')); }
     // 降级：持续缺瓦片 120ms 后，地图层淡到纸色遮罩（不露白）；就绪后 250ms 淡出
     const now = performance.now();
     if (missing) { if (MAP.lastMissAt < 0) MAP.lastMissAt = now; }
@@ -1916,6 +2119,7 @@
       await nextRender(MAP.map);
       for (let k = 0; k < 100 && !BASE_SOURCES.every((id) => { const sc = MAP.map.style.sourceCaches[id]; return !sc || (sc._sourceLoaded && !sc._paused); }); k++) await new Promise((r) => setTimeout(r, 30));
       planBuffer(O);
+      installDefer();
       applyCamera(cameraAt(tl.time));
       stPlan.resolve();
       pump(BUF.gen);
@@ -1944,7 +2148,7 @@
   Object.defineProperty(window, '__buffer', { get: () => ({
     orient: BUF.orient, tiles: BUF.tiles.size, samples: BUF.samples.length, planMs: BUF.planMs, readyMs: MAP.readyMs,
     bufferedUntil: +BUF.bufferedUntil.toFixed(2), stalled: BUF.stalled, stallCount: BUF.stallCount, stallMs: Math.round(BUF.stallMs), stalls: BUF.stalls,
-    loads: BUF.loads, evicted: BUF.evicted, timeouts: BUF.timeouts || 0, maxHeapMB: Math.round(BUF.maxHeap / 1048576),
+    loads: BUF.loads, fetches: BUF.fetches, deferred: BUF.deferred, evicted: BUF.evicted, cachedMB: +BUF.cachedMB.toFixed(1), maxCachedMB: +BUF.maxCachedMB.toFixed(1), budgetHits: BUF.budgetHits, timeouts: BUF.timeouts || 0, maxHeapMB: Math.round(BUF.maxHeap / 1048576),
     cache: Object.fromEntries(BASE_SOURCES.map((id) => { const sc = MAP.map && MAP.map.style.sourceCaches[id]; return [id, sc ? sc._cache.order.length : 0]; })),
   }) });
   MK.start(tl, { t: 0, reduced: 19.6 });

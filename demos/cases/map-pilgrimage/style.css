@@ -291,7 +291,8 @@ html, body { margin: 0; background: #000; }
 [data-orient="portrait"] .buffering svg { width: 36px; height: 36px; }
 @media (prefers-reduced-motion: reduce) { .buffering svg { animation: none; } }
 
-.grain { inset: 0; z-index: 12; pointer-events: none; opacity: .1; background-repeat: repeat; background-size: 512px 512px; }
+/* 颗粒：比舞台大一个周期（512px）的独立合成层，只改 transform 平移、从不重绘（见 script.js“颗粒”） */
+.grain { inset: -512px 0 0 -512px; z-index: 12; pointer-events: none; opacity: .1; background-repeat: repeat; background-size: 512px 512px; will-change: transform, opacity; }
 .vignette { inset: 0; z-index: 12; pointer-events: none; background: radial-gradient(ellipse at 50% 46%, rgba(0, 0, 0, 0) 58%, rgba(10, 12, 18, .22) 100%); }
 
 /* =====================================================================
