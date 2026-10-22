@@ -344,6 +344,10 @@ ffmpeg -y -framerate 30 -i renders/beat-lyric/frame-%05d.png -i renders/beat-lyr
 | `node scripts/capture.mjs [--only ids] [--orient both\|landscape\|portrait] [--out 目录] [--url 页面 --t 秒]` | 预览图：横屏 1280×720 → `previews/<kind>/<id>.jpg`；Demo 支持竖屏时再出 720×1280 → `previews/<kind>/<id>-portrait.jpg`（时刻用条目的 `previewAtPortrait`，缺省同 `previewAt`）。站点数据里对应 `preview` 与 `previewPortrait` |
 | `node scripts/shot.mjs <url> --orient portrait --t 3 --t 5 --out a.png` | 截图：`--orient` 给 URL 加 `?orient=` 并把视口默认设为舞台尺寸；可用 `--w/--h` 检查缩放与黑边 |
 
+条目设置 `"renderer": "gpu"` 时，smoke 与 capture 为该条目单独启动带 GPU 参数的浏览器，输出实际 WebGL renderer；若实际仍为 SwiftShader、llvmpipe、Software 或 Microsoft Basic Render，则判失败，其余条目沿用默认浏览器配置。
+
+`seek` / `play` 可以返回 Promise；检查脚本会等待它们完成，再开始播放推进检查的计时。
+
 ## 十一、可交互 Demo 的双时钟
 
 操作台类 Demo（档案终端、工业协议、任务指挥台）既要能被操作，又要能被录制。做法：

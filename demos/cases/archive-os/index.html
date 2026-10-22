@@ -1,61 +1,15 @@
 <!doctype html>
-<!-- Motion adaptation: Copyright (c) 2026 LBEILC / RhineLabUI, MIT.
-     Original FIELDWORK content and SVG artwork; full notice: docs/research/archive-os.md. -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>FIELDWORK · 循环档案终端</title>
+  <title>莱茵生命档案终端</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main id="stage" data-stage>
-    <header class="brand"><b>FIELDWORK</b><span>INDEPENDENT RESEARCH ARCHIVE</span><p>ARCHIVE <strong>OS / 07</strong></p></header>
-    <div class="session"><span class="status-dot"></span><span>SESSION / AUTHORIZED</span><span id="clock"></span></div>
-    <section id="browse" aria-label="循环档案浏览">
-      <div class="array-frame">
-        <div class="array-caption"><span>RECORD FIELD / 40 UNITS</span><span id="arrayCode">A / OPTICS</span></div>
-        <svg id="array" aria-label="可循环的等轴档案阵列"></svg>
-        <div class="field-foot"><span id="direction">INDEX READY</span><span id="loopState">01 / 08 · 01 / 05</span></div>
-      </div>
-      <article class="dossier" id="dossier">
-        <div class="file-kicker"><span id="category"></span><span id="level"></span></div>
-        <div class="file-number"><span id="fileNumber"></span><span class="file-count">/ 040</span></div>
-        <h1 class="rolling" id="fileTitle"></h1><p class="file-en rolling" id="fileEn"></p>
-        <div class="record-meta"><span id="timestamp"></span><span id="author"></span></div>
-        <p class="abstract" id="abstract"></p><div class="metrics" id="metrics"></div>
-        <div class="chart-head"><span>OBSERVATION / 12 SAMPLES</span><span id="chartValue"></span></div>
-        <svg id="chart" viewBox="0 0 740 120" aria-label="本档案十二次采样图"></svg>
-        <p class="annotation"><b>批注 / </b><span id="note"></span></p>
-        <button class="read-button" data-key="Enter"><span>读取档案 / READ RECORD</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 16h23M19 7l9 9-9 9"/></svg></button>
-      </article>
-      <nav class="navigation" aria-label="档案方向导航">
-        <div class="row-nav"><button data-key="ArrowUp" aria-label="上一份档案"><svg viewBox="0 0 32 32"><path d="M16 27V5M7 14l9-9 9 9"/></svg></button><div id="rowTicks"></div><button data-key="ArrowDown" aria-label="下一份档案"><svg viewBox="0 0 32 32"><path d="M16 5v22M7 18l9 9 9-9"/></svg></button><span id="rowCount"></span></div>
-        <div class="col-nav"><button data-key="ArrowLeft" aria-label="上一分类"><svg viewBox="0 0 32 32"><path d="M27 16H5M14 7l-9 9 9 9"/></svg></button><span id="colName"></span><button data-key="ArrowRight" aria-label="下一分类"><svg viewBox="0 0 32 32"><path d="M5 16h22M18 7l9 9-9 9"/></svg></button></div>
-      </nav>
-    </section>
-    <section class="inspection" id="inspection" aria-label="档案解密检视">
-      <div class="inspection-heading"><span>RECORD INSPECTION</span><span id="decryptPhase"></span></div>
-      <svg id="instrument" viewBox="0 0 780 620" aria-label="原创光学仪器与解密扫描">
-        <defs><linearGradient id="panelGlass" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".92"/><stop offset="1" stop-color="#d7d3ca" stop-opacity=".6"/></linearGradient></defs>
-        <rect x="30" y="30" width="720" height="510" rx="18" fill="url(#panelGlass)" stroke="#fff" stroke-width="4"/>
-        <g id="instrumentCore" fill="none" stroke="#bbb4a6" stroke-width="8"><rect x="108" y="112" width="564" height="332" rx="18"/><path d="M160 278h460M390 130v296" stroke-width="2"/><circle cx="390" cy="278" r="125"/><circle cx="390" cy="278" r="86" stroke="#b46c3c" stroke-width="22"/><path d="m285 160 210 236m0-236L285 396" stroke-width="3"/><circle cx="390" cy="278" r="32" fill="#e0d5c3"/><path d="M125 150h70m-70 30h40m445 216h40m-70 30h70" stroke-width="4"/></g>
-        <g id="frost"><rect x="32" y="32" width="716" height="506" rx="16" fill="#eeeae3" fill-opacity=".86"/><path d="M64 96h650M64 164h650M64 232h650M64 300h650M64 368h650M64 436h650M64 504h650" stroke="#e3ded6" stroke-width="2"/></g>
-        <g id="diagonal" stroke="#22251f" stroke-width="3"><path id="decodeA"/><path id="decodeB"/><path d="M58 58h30M58 58v30M722 512h-30M722 512v-30"/></g>
-      </svg>
-      <p class="inspection-caption"><span id="inspectionId"></span><span>OPTICAL DATA / VERIFIED</span></p>
-      <button class="back-button" data-key="Escape"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27 16H5M14 7l-9 9 9 9"/></svg><span>返回阵列 / ESC</span></button>
-    </section>
-    <footer class="footer"><span id="operator">OPERATOR 07</span><span id="modeLabel">CIRCULAR INDEX / BIDIRECTIONAL</span><span>FIELDWORK / 2026</span></footer>
-    <section id="boot" class="boot" aria-label="终端启动">
-      <div class="boot-grid"></div><div class="boot-label"><span>FIELDWORK / TERMINAL 07</span><span id="bootFrame"></span></div>
-      <div class="boot-access"><svg class="signal" id="signal" viewBox="0 0 240 200" aria-label="无线信号"><path class="signal-arc"/><path class="signal-arc"/><path class="signal-arc"/><circle id="signalDot" cx="120" cy="164" r="13"/></svg><p id="accessText"></p><span id="authText"></span></div>
-      <div id="scan" class="scan"><svg viewBox="-500 -500 1000 1000" aria-hidden="true"><g id="scanRings" fill="none"><circle r="290" stroke="#272922" stroke-width="10" stroke-dasharray="920 160 220 522"/><circle r="245" stroke="#fff" stroke-width="22"/><path d="M-136 -136a192 192 0 0 1 272 0" stroke="#b46c3c" stroke-width="14"/><path d="M-95 -94a134 134 0 0 1 190 0M-52 -52a74 74 0 0 1 104 0" stroke="#272922" stroke-width="12"/><circle cy="10" r="14" fill="#b46c3c"/></g><circle id="orbitDot" r="13" fill="#b46c3c"/></svg><span>LINK AUTHORIZATION</span></div>
-      <div class="welcome" id="welcome"><span>CONNECTION ESTABLISHED</span><b id="welcomeName">FIELDWORK</b><p id="welcomeDatabase">INDEPENDENT RESEARCH ARCHIVE</p></div>
-      <div class="boot-footer"><span id="bootStatus">STANDBY</span><span>OFFLINE / SECURE CHANNEL</span></div>
-    </section>
-    <section class="outro" id="outro"><svg viewBox="0 0 240 200" aria-hidden="true"><path/><circle cx="120" cy="164" r="13"/></svg><span>CYCLE COMPLETE / INDEX VERIFIED</span><h2>每一份，都有回程。</h2><p>40 RECORDS · 05 COLUMNS · 04 DIRECTIONS</p><div>FIELDWORK / ARCHIVE OS</div></section>
-  </main>
-  <script src="motion-kit.js"></script><script src="config.js"></script><script src="script.js"></script>
+  <main id="stage" data-stage></main>
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

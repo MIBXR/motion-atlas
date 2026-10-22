@@ -31,10 +31,31 @@ if (urlArg) {
   jobs.push({ e: { id: demo.split('/').filter((x) => x && x !== 'index.html').slice(-2).join('-'), demo, previewAt: Number(get('--t', 0)) }, dir: 'misc' });
 }
 
-const browser = await launch({ width: w, height: h });
+let browser;
 let ok = 0, portraits = 0;
 
-async function shoot(e, dir, orient) {
+async function checkRenderer(page, renderers) {
+  const renderer = await page.eval(`(() => {
+    const docs = [document];
+    for (const doc of docs) {
+      for (const frame of doc.querySelectorAll('iframe')) if (frame.contentDocument) docs.push(frame.contentDocument);
+      for (const canvas of doc.querySelectorAll('canvas')) {
+        const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+        if (!gl) continue;
+        const info = gl.getExtension('WEBGL_debug_renderer_info');
+        if (!info) throw new Error('无法读取 WebGL UNMASKED_RENDERER_WEBGL');
+        return gl.getParameter(info.UNMASKED_RENDERER_WEBGL);
+      }
+    }
+    throw new Error('未找到 WebGL canvas');
+  })()`);
+  renderers.add(renderer);
+  if (/swiftshader|llvmpipe|software|microsoft basic render/i.test(renderer)) {
+    throw new Error(`需要 GPU，当前为软件渲染：${renderer}`);
+  }
+}
+
+async function shoot(browser, e, dir, orient, renderers) {
   const portrait = orient === 'portrait';
   const page = await browser.newPage();
   const [vw, vh] = portrait ? [h, w] : [w, h];
@@ -46,6 +67,7 @@ async function shoot(e, dir, orient) {
     const hasMotion = await page.eval('new Promise(r => { let n = 0; const iv = setInterval(() => { if (window.__motion || ++n > 120) { clearInterval(iv); r(!!window.__motion); } }, 100); })', 20000);
     if (hasMotion) {
       await page.eval('Promise.resolve(window.__motion.ready).then(() => true)', 60000);
+      if (e.renderer === 'gpu') await checkRenderer(page, renderers);
       const orients = await page.eval('window.__motion.orients || []');
       if (portrait && !orients.includes('portrait')) return 'skip';
       const t = (portrait ? e.previewAtPortrait : null) ?? e.previewAt ?? 0;
@@ -56,6 +78,7 @@ async function shoot(e, dir, orient) {
       if (portrait) return 'skip';
       if (e.previewScript) await page.eval(e.previewScript, 20000);
       await page.eval(`new Promise(r => setTimeout(r, ${e.previewWait ?? 1500}))`);
+      if (e.renderer === 'gpu') await checkRenderer(page, renderers);
     }
     fs.mkdirSync(path.dirname(out), { recursive: true });
     await page.screenshot(out, { format: 'jpeg', quality: 82 });
@@ -67,18 +90,25 @@ async function shoot(e, dir, orient) {
 
 try {
   for (const { e, dir } of jobs) {
+    let gpuBrowser;
+    const renderers = new Set();
     try {
+      const jobBrowser = e.renderer === 'gpu'
+        ? gpuBrowser = await launch({ width: w, height: h, args: ['--enable-gpu', '--use-angle=d3d11', '--ignore-gpu-blocklist'] })
+        : browser ??= await launch({ width: w, height: h });
       const done = [];
-      if (orientArg !== 'portrait') { await shoot(e, dir, 'landscape'); done.push('横'); }
-      if (orientArg !== 'landscape' && (await shoot(e, dir, 'portrait')) === 'ok') { done.push('竖'); portraits++; }
-      console.log('✓', dir, e.id, done.join(' / '));
+      if (orientArg !== 'portrait') { await shoot(jobBrowser, e, dir, 'landscape', renderers); done.push('横'); }
+      if (orientArg !== 'landscape' && (await shoot(jobBrowser, e, dir, 'portrait', renderers)) === 'ok') { done.push('竖'); portraits++; }
+      console.log('✓', dir, e.id, done.join(' / '), ...renderers);
       ok++;
     } catch (err) {
-      console.error('✗', dir, e.id, err.message);
+      console.error('✗', dir, e.id, err.message, ...renderers);
+    } finally {
+      await gpuBrowser?.close();
     }
   }
 } finally {
-  await browser.close();
+  await browser?.close();
 }
 console.log(`captured ${ok}/${jobs.length}${portraits ? ` · 竖屏预览 ${portraits}` : ''}`);
 if (ok < jobs.length) process.exit(1);

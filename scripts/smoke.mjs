@@ -26,7 +26,7 @@ if (!ORIENTS.every((o) => o === 'landscape' || o === 'portrait')) { console.erro
 
 const { cases, patterns } = loadEntries();
 const jobs = [
-  ...(urls.length && !only ? [] : [...cases, ...patterns].filter((e) => !only || only.has(e.id)).map((e) => ({ id: e.id, url: `${base}/${e.demo}` }))),
+  ...(urls.length && !only ? [] : [...cases, ...patterns].filter((e) => !only || only.has(e.id)).map((e) => ({ id: e.id, url: `${base}/${e.demo}`, fontFloor: e.fontFloor, renderer: e.renderer }))),
   ...urls.map((u) => ({ id: u.replace(/^https?:\/\/[^/]+\//, '').replace(/\/index\.html.*$|\?.*$/, ''), url: /^https?:/.test(u) ? u : `${base}/${u.replace(/^\//, '')}` })),
 ];
 
@@ -62,12 +62,44 @@ const FONT_PROBE = `(() => {
   return out;
 })()`;
 
-const browser = await launch({ width: w, height: h });
+const REFERENCE_FONT_PROBE = `(() => {
+  const st = window.__motion.stage, scale = st.scale || 1;
+  const doc = st.root.querySelector('iframe').contentDocument, win = doc.defaultView, out = [];
+  const opacityOf = (el) => { let op = 1; for (let e = el; e; e = e.parentElement) { op *= parseFloat(win.getComputedStyle(e).opacity); if (op < 0.05) return 0; } return op; };
+  for (const el of doc.querySelectorAll('*')) {
+    let text = '';
+    for (const n of el.childNodes) if (n.nodeType === 3 && n.textContent.trim()) text += n.textContent.trim();
+    if (!text) continue;
+    const cs = win.getComputedStyle(el), r = el.getBoundingClientRect();
+    if (parseFloat(cs.fontSize) <= 0 || cs.display === 'none' || cs.visibility !== 'visible' || r.width < 1 || r.height < 1) continue;
+    if (r.right <= 0 || r.left >= win.innerWidth || r.bottom <= 0 || r.top >= win.innerHeight || opacityOf(el) < 0.05) continue;
+    out.push({ px: Math.round(parseFloat(cs.fontSize) * scale * 10) / 10, text: text.slice(0, 20) });
+  }
+  return out;
+})()`;
+
+const GPU_PROBE = `(() => {
+  const renderers = new Set();
+  function inspect(doc) {
+    for (const canvas of doc.querySelectorAll('canvas')) {
+      const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+      if (!gl) continue;
+      const debug = gl.getExtension('WEBGL_debug_renderer_info');
+      if (!debug) throw new Error('无法读取 WebGL UNMASKED_RENDERER_WEBGL');
+      renderers.add(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL));
+    }
+    for (const frame of doc.querySelectorAll('iframe')) if (frame.contentDocument) inspect(frame.contentDocument);
+  }
+  inspect(document);
+  return [...renderers].join(' / ');
+})()`;
+
+const browser = jobs.some((job) => job.renderer !== 'gpu') ? await launch({ width: w, height: h }) : null;
 const failures = [];
 let fontWarn = 0;
 
-async function openPage(url, vw, vh) {
-  const page = await browser.newPage();
+async function openPage(runner, url, vw, vh) {
+  const page = await runner.newPage();
   await page.viewport(vw, vh);
   const errors = [];
   page.on('Runtime.exceptionThrown', (p) => errors.push(p.exceptionDetails?.exception?.description || p.exceptionDetails?.text));
@@ -82,7 +114,7 @@ async function openPage(url, vw, vh) {
 async function sweep(page, errors) {
   const D = await page.eval('window.__motion.duration');
   await page.eval(`(() => { const m = window.__motion; m.pause(); for (let t = 0; t <= ${D}; t += ${step}) m.seek(t); m.seek(${D}); return true; })()`, 60000);
-  const t0 = await page.eval('(window.__motion.seek(0), window.__motion.play(), window.__motion.time)');
+  const t0 = await page.eval('(async () => { const m = window.__motion; await m.seek(0); await m.play(); return m.time; })()');
   await page.eval('new Promise(r => setTimeout(r, 1500))');
   const t1 = await page.eval('window.__motion.time');
   if (!(t1 > t0 + 0.5)) errors.push(`播放 1.5 秒后时间只从 ${t0} 走到 ${t1}`);
@@ -90,14 +122,14 @@ async function sweep(page, errors) {
   return D;
 }
 
-async function fontCheck(page, orient, D) {
+async function fontCheck(page, orient, D, reference) {
   const marks = await page.eval('(window.__motion.markers || []).map(m => m.t)');
   const times = [...new Set([...marks, ...[0.1, 0.3, 0.5, 0.7, 0.9].map((k) => k * D), Math.max(0, D - 0.01)].map((t) => Math.round(Math.min(D, Math.max(0, t)) * 100) / 100))].sort((a, b) => a - b).slice(0, 16);
   const bad = new Map();
   let min = Infinity;
   for (const t of times) {
     await page.eval(`window.__motion.seek(${t})`, 30000);
-    const list = await page.eval(FONT_PROBE, 30000);
+    const list = await page.eval(reference ? REFERENCE_FONT_PROBE : FONT_PROBE, 30000);
     for (const f of list) {
       min = Math.min(min, f.px);
       if (f.px < MIN[orient] - 0.05) {
@@ -113,15 +145,25 @@ try {
   for (const job of jobs) {
     const errors = [], notes = [];
     let legacy = false;
+    let gpuBrowser;
     try {
+      const runner = job.renderer === 'gpu'
+        ? (gpuBrowser = await launch({ width: w, height: h, args: ['--enable-gpu', '--use-angle=d3d11', '--ignore-gpu-blocklist'] }))
+        : browser;
       for (const [idx, orient] of ORIENTS.entries()) {
         const portrait = orient === 'portrait';
         const [vw, vh] = portrait ? [Math.min(w, h), Math.max(w, h)] : [Math.max(w, h), Math.min(w, h)];
         const u = new URL(job.url);
         u.searchParams.set('render', '1');
         u.searchParams.set('orient', orient);
-        const { page, errors: errs, hasMotion } = await openPage(u.href, vw, vh);
+        const { page, errors: errs, hasMotion } = await openPage(runner, u.href, vw, vh);
         try {
+          if (job.renderer === 'gpu') {
+            const renderer = await page.eval(GPU_PROBE);
+            notes.push(`${orient} WebGL ${renderer || '未找到 WebGL canvas'}`);
+            if (!renderer) throw new Error('需要 GPU，未找到 WebGL canvas');
+            if (/swiftshader|llvmpipe|software|microsoft basic render/i.test(renderer)) throw new Error(`需要 GPU，当前为软件渲染：${renderer}`);
+          }
           if (!hasMotion) { await page.eval('new Promise(r => setTimeout(r, 1500))'); notes.push('interactive'); errors.push(...errs); break; }
           const info = await page.eval('({ orients: window.__motion.orients || [], orient: window.__motion.orient || null, sound: !!window.__smokeReady?.sound, score: !!window.__motion.audio })');
           legacy = !info.orients.length;
@@ -137,13 +179,15 @@ try {
           const want = portrait ? [1080, 1920] : [1920, 1080];
           if (size[0] !== want[0] || size[1] !== want[1] || size[2] !== orient) errs.push(`${orient} 舞台尺寸 ${size[0]}×${size[1]}（data-orient=${size[2]}），应为 ${want.join('×')}`);
           const D = await sweep(page, errs);
-          const fc = await fontCheck(page, orient, D);
-          if (fc.bad.length) {
+          const referenceFonts = job.fontFloor === 'reference';
+          const fc = await fontCheck(page, orient, D, referenceFonts);
+          if (fc.bad.length && !referenceFonts) {
             fontWarn++;
             const msg = `${orient} 字号 < ${MIN[orient]}px ${fc.bad.length} 处：` + fc.bad.slice(0, 4).map((b) => `「${b.text}」${b.px}px@${b.t}s`).join('，');
             if (strictFonts) errs.push(msg); else notes.push('⚠ ' + msg);
           }
-          notes.push(`${orient} seek 0–${+D.toFixed(2)}s · 最小字号 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}${info.sound ? info.score ? ' · 乐谱' : ' · 即时音效' : ' · 无声音'}`);
+          const fontNote = referenceFonts ? `字号沿用参考（最小 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}）` : `最小字号 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}`;
+          notes.push(`${orient} seek 0–${+D.toFixed(2)}s · ${fontNote}${info.sound ? info.score ? ' · 乐谱' : ' · 即时音效' : ' · 无声音'}`);
           // 运行中切换画幅：时刻保持、舞台尺寸跟随
           if (idx === 0 && info.orients.length > 1) {
             const other = portrait ? 'landscape' : 'portrait';
@@ -159,12 +203,14 @@ try {
       }
     } catch (err) {
       errors.push(err.message);
+    } finally {
+      if (gpuBrowser) await gpuBrowser.close();
     }
     if (errors.length) failures.push({ id: job.id, errors });
     console.log(errors.length ? '✗' : '✓', job.id, notes.join(' | '), errors.length ? `\n    ${[...new Set(errors)].slice(0, 4).join('\n    ')}` : '');
   }
 } finally {
-  await browser.close();
+  if (browser) await browser.close();
 }
 console.log(`smoke ${jobs.length - failures.length}/${jobs.length} passed${fontWarn ? ` · ${fontWarn} 项字号警告${strictFonts ? '' : '（未计为失败，--strict-fonts 时失败）'}` : ''}`);
 if (failures.length) process.exit(1);

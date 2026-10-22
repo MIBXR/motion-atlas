@@ -1517,10 +1517,10 @@
     const out = [];
     for (const e of list.statics) {
       if (e.t >= T) break;
-      if (typeof e.voice !== 'string') continue;
-      const name = ALIASES[e.voice] ? ALIASES[e.voice][0] : e.voice, meta = META[name];
-      if (!meta || !meta.resume) continue;
-      const total = e.dur ?? meta.resume;
+      const name = typeof e.voice === 'string' && (ALIASES[e.voice] ? ALIASES[e.voice][0] : e.voice), meta = META[name];
+      const resume = typeof e.voice === 'function' ? e.resume === true && e.dur : meta && meta.resume;
+      if (!resume) continue;
+      const total = e.dur ?? resume;
       if (e.t + total > T + 0.05) out.push(Object.assign({}, e, { offset: T - e.t }));
     }
     return out;
@@ -1884,7 +1884,14 @@
       _stopOwner(owner, fade = 0.012) { stopWhere((r) => r.owner === owner, fade); },
       _resyncAll(hard) { for (const s of schedulers) s.resync(hard); stopWhere((r) => r.owner === 'legacy', 0.012); },
       /** 内部工具（自定义音色可用）：osc / noise / gain / filter / perc / drive / panner / fm */
-      dsp: { osc, noise: noiseSrc, gain, filter: bq, perc, drive, panner, fm: fmNote, noteHz, semis, rng },
+      dsp: { osc, noise: noiseSrc, gain, filter: bq, perc, drive, panner, fm: fmNote, noteHz, semis, rng,
+        sample(ctx, out, when, buffer, { offset = 0, gain: level = 1 } = {}) {
+          const source = ctx.createBufferSource();
+          source.buffer = buffer;
+          source.connect(gain(ctx, level)).connect(out);
+          return track(source, when, when + Math.max(0, buffer.duration - offset), offset);
+        },
+      },
     };
     return api;
   })();
