@@ -181,8 +181,8 @@
     },
     {
       "path": "demos/patterns/split-compare-stamp/motion-kit.js",
-      "bytes": 107562,
-      "sha256": "2708c09729958b6f1dc5e57565a854f8bf7d19c6b6b35fdd45729565202e61ac"
+      "bytes": 107961,
+      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
     },
     {
       "path": "demos/patterns/split-compare-stamp/paths.js",
@@ -211,13 +211,13 @@
     },
     {
       "path": "demos/patterns/split-compare-stamp/script.js",
-      "bytes": 136333,
-      "sha256": "b651ba9e7e011c822ef350aacd066f6e9c8f53ad03cf580a8a9b8891a67049ef"
+      "bytes": 144841,
+      "sha256": "c3b637c27ee1ba984fcc1ee04d256edf96082ad2cf131ece1e4a61d4507345d7"
     },
     {
       "path": "demos/patterns/split-compare-stamp/style.css",
-      "bytes": 39863,
-      "sha256": "9aac344d383ca9c1c398d6f512336b0fea24e6c62c7b619c1d4100892c70c54e"
+      "bytes": 40334,
+      "sha256": "d64e0e85091ba7ddce9116b61791798caefb0898b0b2cd9df54a0213ba584ccf"
     },
     {
       "path": "previews/patterns/split-compare-stamp.jpg",

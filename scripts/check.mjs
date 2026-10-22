@@ -38,6 +38,9 @@ const RULES = [
 ];
 const STAGE_CALL = /\b(?:MotionKit|MK)\.stage\(/;
 const demoDir = (f) => (f.startsWith('demos/') ? f.split('/').slice(0, 3).join('/') : null);
+const referenceFonts = [...cases, ...patterns].filter((e) => e.fontFloor === 'reference');
+const referenceDirs = new Set(referenceFonts.map((e) => demoDir(e.demo)));
+for (const e of referenceFonts) console.log(`${e.id}：字号沿用参考作品（RhineLabUI）`);
 const migrated = new Map();
 const isMigrated = (dir) => {
   if (!migrated.has(dir)) {
@@ -50,6 +53,7 @@ let stageDirs = 0;
 for (const f of sources) {
   const dir = demoDir(f);
   const staged = dir ? isMigrated(dir) : false;
+  if (referenceDirs.has(dir)) continue;
   const lines = fs.readFileSync(path.join(ROOT, f), 'utf8').split('\n');
   let sel = ''; // 当前 CSS 选择器上下文（.css 与 <style> 内），用于识别竖屏规则
   lines.forEach((line, i) => {

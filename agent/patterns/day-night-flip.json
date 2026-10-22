@@ -16,7 +16,7 @@
       "showcase"
     ],
     "summary": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
-    "mechanism": "地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。以巧思时间 t 映射到案例时刻 caseT，复制函数 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 按 caseT 求值。",
+    "mechanism": "地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。以巧思时间 t 映射到案例时刻 caseT，复制函数 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 按 caseT 求值。",
     "trigger": "播放、暂停或 seek 到巧思时间 t。",
     "effect": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
     "timing": [
@@ -60,9 +60,9 @@
         "route-draw-marker"
       ],
       "conflicts": [],
-      "notes": "地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。"
+      "notes": "地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。"
     },
-    "prompt": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。片段：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
+    "prompt": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。片段：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
     "demo": "demos/patterns/day-night-flip/index.html",
     "kit": true,
     "sources": [
@@ -70,7 +70,7 @@
         "caseId": "map-pilgrimage",
         "observation": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
         "evidence": "observed",
-        "locator": "caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5"
+        "locator": "caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值"
       }
     ],
     "previewAt": 4,
@@ -160,13 +160,14 @@
       },
       {
         "field": "config.js → segments / markers",
-        "how": "caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5"
+        "how": "caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值"
       },
       {
         "field": "score.json",
         "how": "事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
       }
     ],
+    "renderer": "gpu",
     "preview": "previews/patterns/day-night-flip.jpg",
     "previewPortrait": "previews/patterns/day-night-flip-portrait.jpg"
   },
@@ -177,14 +178,14 @@
     }
   ],
   "documents": {
-    "prompt": "# 昼夜翻转：逐层插值 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/day-night-flip.json) 自动生成。\n\n## 实现 Prompt\n\n地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。片段：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n- **声音 voice**：whoosh、sub、reverse、chime\n\n## 动效 Token\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n\n## 迁移\n\n- `复制的函数`：dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。\n- `需要的数据`：config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。\n- `config.js → segments / markers`：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5\n- `score.json`：事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
+    "prompt": "# 昼夜翻转：逐层插值 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/day-night-flip.json) 自动生成。\n\n## 实现 Prompt\n\n地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。片段：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n- **声音 voice**：whoosh、sub、reverse、chime\n\n## 动效 Token\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n\n## 迁移\n\n- `复制的函数`：dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。\n- `需要的数据`：config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。\n- `config.js → segments / markers`：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值\n- `score.json`：事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
   },
   "entrypoint": "demos/patterns/day-night-flip/index.html",
   "files": [
     {
       "path": "demos/patterns/day-night-flip/config.js",
-      "bytes": 26385,
-      "sha256": "78b714b631256fa957b91f853579d2c878cff8428ea3fa07302cd5fd84815cc8"
+      "bytes": 25919,
+      "sha256": "44fdc8e2459556049d8c879ee27b9733448e3bd85f3901e29f05be1895ebd061"
     },
     {
       "path": "demos/patterns/day-night-flip/index.html",
@@ -193,8 +194,8 @@
     },
     {
       "path": "demos/patterns/day-night-flip/motion-kit.js",
-      "bytes": 107562,
-      "sha256": "2708c09729958b6f1dc5e57565a854f8bf7d19c6b6b35fdd45729565202e61ac"
+      "bytes": 107961,
+      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
     },
     {
       "path": "demos/patterns/day-night-flip/paths.js",
@@ -213,13 +214,13 @@
     },
     {
       "path": "demos/patterns/day-night-flip/script.js",
-      "bytes": 136333,
-      "sha256": "b651ba9e7e011c822ef350aacd066f6e9c8f53ad03cf580a8a9b8891a67049ef"
+      "bytes": 144841,
+      "sha256": "c3b637c27ee1ba984fcc1ee04d256edf96082ad2cf131ece1e4a61d4507345d7"
     },
     {
       "path": "demos/patterns/day-night-flip/style.css",
-      "bytes": 39863,
-      "sha256": "9aac344d383ca9c1c398d6f512336b0fea24e6c62c7b619c1d4100892c70c54e"
+      "bytes": 40334,
+      "sha256": "d64e0e85091ba7ddce9116b61791798caefb0898b0b2cd9df54a0213ba584ccf"
     },
     {
       "path": "previews/patterns/day-night-flip.jpg",

@@ -458,8 +458,8 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 107562,
-      "sha256": "2708c09729958b6f1dc5e57565a854f8bf7d19c6b6b35fdd45729565202e61ac"
+      "bytes": 107961,
+      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
     },
     {
       "path": "demos/cases/map-pilgrimage/paths.js",
@@ -473,13 +473,13 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/script.js",
-      "bytes": 130075,
-      "sha256": "9e84070a9157e3aac6293f544d1488d90e703bf1195a58523513cce2c83eccfc"
+      "bytes": 130325,
+      "sha256": "cd8f2c5cd56a7033eae7024a331f8a01518120273c39aeb6afcbb0eb65e554cd"
     },
     {
       "path": "demos/cases/map-pilgrimage/style.css",
-      "bytes": 39451,
-      "sha256": "ee776df101e849bf46063b7cd1fed8107934e427de494e6a2462e769f7d21ee7"
+      "bytes": 39744,
+      "sha256": "ebc31bb267d93cbb0b9d182efaa33be5d1c955b8b63e13949d3db388c3aec998"
     },
     {
       "path": "previews/cases/map-pilgrimage.jpg",
