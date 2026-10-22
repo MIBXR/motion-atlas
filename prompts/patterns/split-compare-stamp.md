@@ -4,12 +4,27 @@
 
 ## 实现 Prompt
 
-实现分屏对比：两张构图对齐的图片叠放，上层（过去）用 clip-path: inset(0 X% 0 0) 控制可见宽度；分割线 3px 白色带阴影与圆形把手，700ms outQuart 从左边滑到 50%；左右各有 12px 等宽深色标签（如 POSTCARD · 1930s / REAL · 2026）在各自画面出现后淡入；380ms 后一枚 3px 白色描边、等宽粗体的时间戳以 outBack 从 1.45 缩到 1 并旋转 -4° 盖下。动画结束后分割线可拖动、可用方向键调整（role=slider）。
+旧明信片与今日实景左右对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。
 
 ## 参数
 
-- **分割线**：700ms outQuart，停在 50%
-- **盖章**：380ms outBack，1.45→1，-4°
-- **标签**：各自 300ms 淡入
+- **分屏**：0s
+- **盖章**：1.65s
+- **时长**：4.8s
+- **声音 voice**：whoosh、stamp、sub
+
+## 动效 Token
+
+- **分屏**：0s
+- **盖章**：1.65s
+- **时长**：4.8s
+
+## 迁移
+
+- `复制的函数`：drawCompare、mountScene、sceneCanvas、paintScene
+- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
+- `需要的数据`：config.js 的 tracks.compare 与横竖 layout；scenes.js 的 postcard / photo 两侧画布。
+- `config.js → segments / markers`：caseT 29→33.4
+- `score.json`：事件 voice：whoosh、stamp、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。
 
 [打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)

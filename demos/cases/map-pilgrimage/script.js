@@ -16,6 +16,8 @@
   const T = C.tracks;
   const PATHS = window.PATHS || {};
   const P = MK.params();
+  const layerParam = new URLSearchParams(location.search).get('layers');
+  const layerMode = ['map', 'map,routes,markers'].includes(layerParam) ? layerParam : null;
   const { clamp, lerp, seg, env, ease } = MK;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -28,6 +30,7 @@
    * 1. 舞台
    * ===================================================================== */
   const stageEl = $('#stage');
+  if (layerMode) stageEl.dataset.layers = layerMode;
   const stage = MK.stage({ root: '#stage', background: '#000' });
   let O = stage.orient, L = C.layout[O], W = stage.width, H = stage.height;
   const portrait = () => O === 'portrait';
@@ -876,7 +879,9 @@
   const fb = $('#flashback'), cmp = $('#compare'), intro = $('#intro'), loc = $('#loc'), dayc = $('#daycard');
   const introCJK = splitChars($('.it-cjk', intro), C.meta.titleCJK);
   const introEN = splitChars($('.it-en', intro), C.meta.titleEN);
-  $('.it-sub', intro).textContent = C.meta.subline;
+  const introSub = $('.it-sub', intro);
+  introSub.innerHTML = '<span class="it-sub-landscape"></span><span class="it-sub-portrait"><span>SHANGHAI → KANSAI</span><span>KYOTO · NARA · OSAKA</span><span>10.01 – 10.03</span></span>';
+  $('.it-sub-landscape', introSub).textContent = C.meta.subline;
   $('.hd-total').textContent = MK.pad(C.meta.totalDays);
   $('.hc-tz').textContent = C.meta.tz;
   $('.bd-label').textContent = C.mascot.label;
@@ -1044,7 +1049,32 @@
     $('.attrib').textContent = O === 'portrait' ? C.map.attributionShort : C.map.attribution;
     (O === 'portrait' ? stageEl : $('.hud-bottom')).appendChild($('.attrib'));
     applyStaticLayout();
-    for (const me of markerEls) { me.el.style.width = ''; const keep = me.en.textContent; me.en.textContent = me.full; me.em.style.opacity = '1'; me.fullW = Math.ceil(me.el.getBoundingClientRect().width / (stage.scale || 1)); me.el.style.width = me.fullW + 'px'; me.en.textContent = keep; cache(me.en).t = keep; cache(me.em)['s:opacity'] = '1'; }
+    measureMarkerLabels();
+  }
+  function measureMarkerLabels() {
+    const scale = stage.scale || 1;
+    for (const me of markerEls) {
+      const keep = me.en.textContent;
+      const visibility = me.el.style.visibility;
+      me.el.style.visibility = 'hidden';
+      me.el.style.width = ''; me.el.style.height = '';
+      const cs = getComputedStyle(me.el);
+      me.padW = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+      me.gapW = parseFloat(cs.columnGap) || 0;
+      me.emW = me.em.getBoundingClientRect().width / scale;
+      me.prefixW = new Map();
+      const chars = MK.chars(me.full);
+      for (let i = 0; i <= chars.length; i++) {
+        const prefix = chars.slice(0, i).join('');
+        me.en.textContent = prefix;
+        me.prefixW.set(prefix, me.en.getBoundingClientRect().width / scale);
+      }
+      me.fullW = Math.ceil(me.el.getBoundingClientRect().width / scale);
+      me.el.style.height = (me.el.getBoundingClientRect().height / scale) + 'px';
+      me.en.textContent = keep; cache(me.en).t = keep;
+      me.el.style.visibility = visibility;
+      delete cache(me.el)['s:width'];
+    }
   }
   // 场景画面：按画幅生成一次后缓存（canvas 直接放进 DOM，不经过图片编码）
   const sceneCache = new Map();
@@ -1232,6 +1262,15 @@
       updateRoutesGL(t, n2, accent, over);
     }
 
+    if (layerMode) {
+      if (layerMode === 'map,routes,markers') drawMarkers(t, cam, 1, null, true);
+      if (MAP.ok) {
+        if (P.render) return renderWait();
+        liveDegrade(t);
+      }
+      return null;
+    }
+
     /* --- 事件文字先画：它们的矩形是地图标签的避让区 --- */
     drawChapter(t, ch, chDef, chK, fbVis, cmpVis);
     drawIntro(t);
@@ -1298,7 +1337,9 @@
       // 出场前 0.6 秒以前，整条路线的图层设为不可见：不可见图层的数据源不参与瓦片计算。实测（软件渲染、地球视角）
       // 8 条还没出场的路线即使全透明 / 数据为空，每帧仍要为它们计算覆盖瓦片并切 GeoJSON 瓦片，帧率约 9 → 隐藏后约 16。
       // 提前 0.6 秒设为可见（此时仍全透明），让数据源先切好瓦片，出场第一帧不缺线
-      setVis(r, t >= r.t0 - 0.6);
+      const show = layerMode ? layerMode === 'map,routes,markers' && t >= r.t1 : t >= r.t0 - 0.6;
+      setVis(r, show);
+      if (layerMode && !show) continue;
       if (r.style === 'rail' || r.style === 'wrong') {
         const col = r.style === 'wrong' ? css(PAL.alert) : css(PAL.accent);
         const fade = r.style === 'wrong' ? 1 - 0.6 * seg(t, r.t1 + 1.6, 0.8) : 1;
@@ -1353,7 +1394,7 @@
   }
 
   /* ---------- 地图标记 ---------- */
-  function drawMarkers(t, cam, ui, activeCard) {
+  function drawMarkers(t, cam, ui, activeCard, dotsOnly = false) {
     const z = cam.zoom;
     const cardRect = activeCard && activeCard.rect;
     const placed = (G.placed = []);
@@ -1364,11 +1405,11 @@
       const k = seg(t, me.m.t, 0.45, ease.outBack);
       const s = me.s;
       const ll = s.lngLat;
-      const titleK = 1 - env(t, 3.9, 7.3, 0.3, 0.5); // 片名出现时，地图标记让位
+      const titleK = dotsOnly ? 1 : 1 - env(t, 3.9, 7.3, 0.3, 0.5); // 片名出现时，地图标记让位
       let vis0 = t >= me.m.t ? ui * titleK : 0;
       if (vis0 <= 0.001 || !visible(ll, cam)) { op(nd.g, 0); op(me.el, 0); return; }
       // 有可见节点时才读取避让几何，避免空镜头也同步刷新整页布局。
-      if (!zones) {
+      if (!dotsOnly && !zones) {
         zones = avoidZones(t); textRects = [];
         const sr = stageEl.getBoundingClientRect(), sk = stage.scale || 1;
         for (const b of [intro, loc, dayc, el.chapter]) {
@@ -1382,7 +1423,7 @@
         }
       }
       const q = project(ll);
-      for (const r of textRects) if (q.x > r.x - 16 && q.x < r.x + r.w + 16 && q.y > r.y - 16 && q.y < r.y + r.h + 16) { vis0 *= 1 - r.o; break; }
+      for (const r of textRects || []) if (q.x > r.x - 16 && q.x < r.x + r.w + 16 && q.y > r.y - 16 && q.y < r.y + r.h + 16) { vis0 *= 1 - r.o; break; }
       if (vis0 <= 0.001) { op(nd.g, 0); op(me.el, 0); return; }
       const x = f2(q.x), y = f2(q.y);
       // 节点：从 0.6 弹到 1；脉冲两圈错开半个周期
@@ -1396,12 +1437,17 @@
         });
       }
       if (nd.x) sty(nd.x, 'opacity', String(f2(seg(t, me.m.t + 0.1, 0.25, ease.outBack))));
+      if (dotsOnly) { op(me.el, 0); return; }
       // 标签：缩放过小（全景）时只留主站；片名出现时让位
       const minZ = s.minZoom ?? 0;
       const lvis = vis0 * seg(z, minZ - 0.25, 0.25, ease.linear) * seg(t, me.m.t + 0.1, 0.25);
       if (lvis <= 0.001) { op(me.el, 0); return; }
-      txt(me.en, MK.typeText(me.full, seg(t, me.m.t + 0.12, 0.5, ease.linear)));
-      sty(me.em, 'opacity', String(f2(seg(t, me.m.t + 0.55, 0.3))));
+      const prefix = MK.typeText(me.full, seg(t, me.m.t + 0.12, 0.5, ease.linear));
+      const jaOpacity = f2(seg(t, me.m.t + 0.55, 0.3));
+      txt(me.en, prefix);
+      sty(me.em, 'opacity', String(jaOpacity));
+      const labelW = prefix === me.full && jaOpacity > 0 ? me.fullW : me.padW + me.prefixW.get(prefix) + (jaOpacity > 0 ? me.gapW + me.emW : 0);
+      sty(me.el, 'width', labelW + 'px');
       // 放置：先右后左，碰到卡片、已放好的标签或出画就换边 / 下移（锚点 = 节点外缘 + 间隙，用完整文字的宽度决定，打字时不跳）
       const gap = (s.node ? 6 : por() ? 12 : 10) + 10;
       const wLab = me.fullW || me.el.offsetWidth || 200, hLab = me.el.offsetHeight || 40;
@@ -2083,7 +2129,7 @@
   A.attach(tl, SCORE);
   MK.expose(tl, { title: '地图巡礼', fps: 30, bpm: C.meta.bpm });
   Object.defineProperty(window, '__mapStats', { get: () => MAP.stats });
-  MK.controls(tl, { accent: C.palette.accent });
+  if (!layerMode) MK.controls(tl, { accent: C.palette.accent });
 
   // 预加载：字体、场景画面、地图（实时模式加上全部镜头的瓦片预取）
   // 预加载：字体、场景画面、地图。实时模式分三段登记（地图库与样式 1 · 扫描 1 · 开头 ${BUF_CFG.gate} 秒的瓦片 4），
@@ -2137,7 +2183,7 @@
   };
   mapTask();
   MK.preload([
-    MK.preload.fonts(),
+    { label: 'document.fonts.ready', run: () => MK.preload.fonts()().then((result) => { measureMarkerLabels(); return result; }) },
     { label: '场景画面', weight: 1, run: () => new Promise((res) => { requestAnimationFrame(() => { const a = performance.now(); MAP.scenes = true; layout(O); console.info(`[地图巡礼] 场景画面 ${Math.round(performance.now() - a)}ms`); res(true); }); }) },
     { label: '地图库与样式', weight: 1, run: () => stMap },
     { label: '缓冲计划', weight: 1, run: () => stPlan },

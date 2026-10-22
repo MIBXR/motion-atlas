@@ -14,22 +14,26 @@
       "video",
       "showcase"
     ],
-    "summary": "先给出“现在”的全屏画面，再让分割线从左边滑到中线露出“过去”，最后一枚倾斜的描边时间戳盖下来。动画结束后可拖动分割线。",
-    "mechanism": "左层用 clip-path inset 控制可见宽度，分割线位置 700ms outQuart 从 0 到 50%；两侧标签分别在各自画面出现后淡入；时间戳 380ms outBack 从 1.45 缩到 1、旋转 -4°。交互模式下指针/方向键改变分割百分比。",
-    "trigger": "对照时刻（动画 vs 实景、过去 vs 现在、方案 A vs B）",
-    "effect": "两张构图对齐的图片形成强烈“同一地点”的确认感。",
+    "summary": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。",
+    "mechanism": "drawCompare 的两侧插画、分割线、边框与时间戳印章。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawCompare、mountScene、sceneCanvas、paintScene 按 caseT 求值。",
+    "trigger": "播放、暂停或 seek 到巧思时间 t。",
+    "effect": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。",
     "timing": [
       {
-        "name": "分割线",
-        "value": "700ms outQuart，停在 50%"
+        "name": "分屏",
+        "value": "0s"
       },
       {
         "name": "盖章",
-        "value": "380ms outBack，1.45→1，-4°"
+        "value": "1.65s"
       },
       {
-        "name": "标签",
-        "value": "各自 300ms 淡入"
+        "name": "时长",
+        "value": "4.8s"
+      },
+      {
+        "name": "声音 voice",
+        "value": "whoosh、stamp、sub"
       }
     ],
     "useCases": [
@@ -42,8 +46,8 @@
       "两张图构图不对齐时（对比失去意义）"
     ],
     "accessibility": {
-      "reducedMotion": "直接停在 50% 分割与盖章完成态。",
-      "keyboard": "分割线可聚焦，←/→ 每次移动 5%。"
+      "reducedMotion": "可使用时间轴暂停在完整帧。",
+      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
     },
     "composition": {
       "role": "accent",
@@ -53,22 +57,106 @@
         "film-grain"
       ],
       "conflicts": [],
-      "notes": "对比前先给一段任一侧的全屏，让观众记住构图，再揭示另一侧。"
+      "notes": "drawCompare 的两侧插画、分割线、边框与时间戳印章。"
     },
-    "prompt": "实现分屏对比：两张构图对齐的图片叠放，上层（过去）用 clip-path: inset(0 X% 0 0) 控制可见宽度；分割线 3px 白色带阴影与圆形把手，700ms outQuart 从左边滑到 50%；左右各有 12px 等宽深色标签（如 POSTCARD · 1930s / REAL · 2026）在各自画面出现后淡入；380ms 后一枚 3px 白色描边、等宽粗体的时间戳以 outBack 从 1.45 缩到 1 并旋转 -4° 盖下。动画结束后分割线可拖动、可用方向键调整（role=slider）。",
+    "prompt": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/split-compare-stamp/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage",
-        "observation": "动画全屏 → 实景全屏 → 分割线从左滑到中线，ANIME · 2015 / REAL · 2026 标签，倾斜描边时间戳 10.01 · 18:20 JST。",
+        "observation": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。",
         "evidence": "observed",
-        "locator": "1:39.35–1:40.6"
+        "locator": "caseT 29→33.4"
       }
     ],
     "previewAt": 2.4,
+    "markers": [
+      {
+        "t": 0,
+        "label": "分屏"
+      },
+      {
+        "t": 1.65,
+        "label": "盖章"
+      }
+    ],
+    "sound": {
+      "voices": [
+        "whoosh",
+        "stamp",
+        "sub"
+      ],
+      "score": "demos/patterns/split-compare-stamp/score.json",
+      "description": "MotionKit.audio.attach 挂接事件：whoosh、stamp、sub。"
+    },
+    "tokens": {
+      "palette": [
+        "#f1eee7",
+        "#16171a",
+        "#d9562c",
+        "#e23b3b"
+      ],
+      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。",
+      "css": {
+        "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+        "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+        "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+        "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+        "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+        "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+        "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+        "--paper": "#f1eee7",
+        "--ink": "#16171a",
+        "--ink-map": "#16171a",
+        "--muted": "rgba(22, 23, 26, .62)",
+        "--line": "rgba(22, 23, 26, .26)",
+        "--accent": "#d9562c",
+        "--accent-soft": "rgba(217, 86, 44, .22)",
+        "--surface": "rgba(250, 249, 245, .94)",
+        "--alert": "#e23b3b"
+      },
+      "motion": [
+        {
+          "name": "分屏",
+          "value": "0s"
+        },
+        {
+          "name": "盖章",
+          "value": "1.65s"
+        },
+        {
+          "name": "时长",
+          "value": "4.8s"
+        }
+      ]
+    },
+    "migration": [
+      {
+        "field": "复制的函数",
+        "how": "drawCompare、mountScene、sceneCanvas、paintScene"
+      },
+      {
+        "field": "依赖",
+        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+      },
+      {
+        "field": "需要的数据",
+        "how": "config.js 的 tracks.compare 与横竖 layout；scenes.js 的 postcard / photo 两侧画布。"
+      },
+      {
+        "field": "config.js → segments / markers",
+        "how": "caseT 29→33.4"
+      },
+      {
+        "field": "score.json",
+        "how": "事件 voice：whoosh、stamp、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      }
+    ],
     "preview": "previews/patterns/split-compare-stamp.jpg",
-    "previewPortrait": null
+    "previewPortrait": "previews/patterns/split-compare-stamp-portrait.jpg"
   },
   "sourceCases": [
     {
@@ -77,14 +165,19 @@
     }
   ],
   "documents": {
-    "prompt": "# 分屏对比与时间戳盖章 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/split-compare-stamp.json) 自动生成。\n\n## 实现 Prompt\n\n实现分屏对比：两张构图对齐的图片叠放，上层（过去）用 clip-path: inset(0 X% 0 0) 控制可见宽度；分割线 3px 白色带阴影与圆形把手，700ms outQuart 从左边滑到 50%；左右各有 12px 等宽深色标签（如 POSTCARD · 1930s / REAL · 2026）在各自画面出现后淡入；380ms 后一枚 3px 白色描边、等宽粗体的时间戳以 outBack 从 1.45 缩到 1 并旋转 -4° 盖下。动画结束后分割线可拖动、可用方向键调整（role=slider）。\n\n## 参数\n\n- **分割线**：700ms outQuart，停在 50%\n- **盖章**：380ms outBack，1.45→1，-4°\n- **标签**：各自 300ms 淡入\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
+    "prompt": "# 分屏对比与时间戳盖章 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/split-compare-stamp.json) 自动生成。\n\n## 实现 Prompt\n\n旧明信片与今日实景左右对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n- **声音 voice**：whoosh、stamp、sub\n\n## 动效 Token\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n\n## 迁移\n\n- `复制的函数`：drawCompare、mountScene、sceneCanvas、paintScene\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。\n- `需要的数据`：config.js 的 tracks.compare 与横竖 layout；scenes.js 的 postcard / photo 两侧画布。\n- `config.js → segments / markers`：caseT 29→33.4\n- `score.json`：事件 voice：whoosh、stamp、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
   },
   "entrypoint": "demos/patterns/split-compare-stamp/index.html",
   "files": [
     {
+      "path": "demos/patterns/split-compare-stamp/config.js",
+      "bytes": 25703,
+      "sha256": "b23fbf717d37638e8b6ddfe27977d5b34f5922b9fbd86b1df9031c371f81d475"
+    },
+    {
       "path": "demos/patterns/split-compare-stamp/index.html",
-      "bytes": 6429,
-      "sha256": "54906c2d4e0c1f70896a864f73fea4d5a54dfbe85b2548922b0c6da042151923"
+      "bytes": 7651,
+      "sha256": "300ba469dcc32a7c6926ed45ffcc76d0c64e823ef5545b76b315d7a3514109ca"
     },
     {
       "path": "demos/patterns/split-compare-stamp/motion-kit.js",
@@ -92,9 +185,49 @@
       "sha256": "2708c09729958b6f1dc5e57565a854f8bf7d19c6b6b35fdd45729565202e61ac"
     },
     {
+      "path": "demos/patterns/split-compare-stamp/paths.js",
+      "bytes": 8047,
+      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/plates/landscape-24.6-map.webp",
+      "bytes": 483390,
+      "sha256": "2a951267c2d6bc87af159e1bf44f7cc9fc5f14f1110d5a61500f609616081190"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/plates/portrait-24.6-map.webp",
+      "bytes": 547812,
+      "sha256": "5bc3569e6315a506c2002b23fe154894f388e805bff502f4e61b18054a813143"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/scenes.js",
+      "bytes": 35275,
+      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/score.json",
+      "bytes": 379,
+      "sha256": "f93aa80bb8b2a9ceaa1d969f5ebe2e9514996557f5be1ef8e1a91c6015548228"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/script.js",
+      "bytes": 136333,
+      "sha256": "b651ba9e7e011c822ef350aacd066f6e9c8f53ad03cf580a8a9b8891a67049ef"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/style.css",
+      "bytes": 39863,
+      "sha256": "9aac344d383ca9c1c398d6f512336b0fea24e6c62c7b619c1d4100892c70c54e"
+    },
+    {
       "path": "previews/patterns/split-compare-stamp.jpg",
-      "bytes": 103722,
-      "sha256": "f9e58129bcf8c0212cd7b6092bd393e2c68b59038d37406bbe67d4e0e054b7c0"
+      "bytes": 183245,
+      "sha256": "5ca1ee7c50353f26c348eeeabb40d4cb2e732e8b65c5e9d6efbfbdedaf7fb30a"
+    },
+    {
+      "path": "previews/patterns/split-compare-stamp-portrait.jpg",
+      "bytes": 176622,
+      "sha256": "0bf234f75a6575c3455406660cbaa6f8afbd2ef3d799421cf41b4214085db06e"
     }
   ]
 }

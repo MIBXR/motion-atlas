@@ -15,22 +15,38 @@
       "console",
       "showcase"
     ],
-    "summary": "一个吉祥物头像胶囊记录“发现次数”，每次 +1 数字上滚、徽章回弹、外圈扩散；图鉴托盘的空位依次点亮，给叙事加上轻游戏化的奖励感。",
-    "mechanism": "计数由事件列表推导（发生时刻 ≤ t 的数量），最后一次事件后的时间 k 驱动：数字 300ms 从下方滚入、整体缩放 1 + 0.14·e^(-7k)、头像外圈放大淡出。托盘槽位按事件依次 420ms outBack 填入缩略图与名字，空位显示虚线与问号。",
-    "trigger": "发现/打卡/完成任务",
-    "effect": "把重复出现的小元素变成线索与奖励，鼓励观众“找”。",
+    "summary": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
+    "mechanism": "MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawHud、stepAtX、ruleX、stampXY 按 caseT 求值。",
+    "trigger": "播放、暂停或 seek 到巧思时间 t。",
+    "effect": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
     "timing": [
       {
-        "name": "数字滚入",
-        "value": "300ms outCubic"
+        "name": "徽章出现",
+        "value": "0s"
       },
       {
-        "name": "回弹",
-        "value": "幅度 0.14，衰减系数 7（约 0.5s 收敛）"
+        "name": "×1 + 关空",
+        "value": "0.8s"
       },
       {
-        "name": "槽位点亮",
-        "value": "420ms outBack，缩放 0.9→1"
+        "name": "×2 + 京都",
+        "value": "2.2s"
+      },
+      {
+        "name": "×3 + 奈良",
+        "value": "3.4s"
+      },
+      {
+        "name": "×4 + 大阪",
+        "value": "4.6s"
+      },
+      {
+        "name": "时长",
+        "value": "6.6s"
+      },
+      {
+        "name": "声音 voice",
+        "value": "confirm、stamp、sparkle"
       }
     ],
     "useCases": [
@@ -43,8 +59,8 @@
       "计数与叙事无关时（会显得廉价）"
     ],
     "accessibility": {
-      "reducedMotion": "数字与槽位直接更新；状态以 aria-live 文本播报。",
-      "keyboard": "“+1 发现”与“重置”为原生按钮。"
+      "reducedMotion": "可使用时间轴暂停在完整帧。",
+      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
     },
     "composition": {
       "role": "accent",
@@ -53,22 +69,130 @@
         "outro-stat-stack"
       ],
       "conflicts": [],
-      "notes": "结尾统计里复用同一计数（×N），形成首尾呼应。"
+      "notes": "MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。"
     },
-    "prompt": "实现收集计数徽章：右上角白色胶囊（头像 + 12px 等宽标签 + 粗体 ×N），计数由事件时刻列表推导；最近一次事件后经过 k 秒时，数字在 300ms 内从下方滚入、徽章 scale(1 + 0.14·e^(-7k))、头像外圈 2px 强调色环放大并淡出。下方图鉴托盘 N 个 3:4 槽位，空位为虚线 + 问号，事件发生时依次 420ms outBack 填入缩略图与名字并换成强调色描边。徽章 role=status 播报当前数量，提供手动 +1 与重置按钮。",
+    "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/collect-counter/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage",
-        "observation": "右上角 YUI SPOTTED ×N 随全片递增（×2→×11→×22）；Sound! Euphonium 段落右下角色托盘 REINA / HAZUKI / MIDORI / KUMIKO 依次点亮；结尾统计 ×19 YUI SIGHTINGS。",
+        "observation": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
         "evidence": "observed",
-        "locator": "0:16.5、1:14.5、2:30.5"
+        "locator": "caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6"
       }
     ],
     "previewAt": 6.2,
+    "markers": [
+      {
+        "t": 0,
+        "label": "徽章出现"
+      },
+      {
+        "t": 0.8,
+        "label": "×1 + 关空"
+      },
+      {
+        "t": 2.2,
+        "label": "×2 + 京都"
+      },
+      {
+        "t": 3.4,
+        "label": "×3 + 奈良"
+      },
+      {
+        "t": 4.6,
+        "label": "×4 + 大阪"
+      }
+    ],
+    "sound": {
+      "voices": [
+        "confirm",
+        "stamp",
+        "sparkle"
+      ],
+      "score": "demos/patterns/collect-counter/score.json",
+      "description": "MotionKit.audio.attach 挂接事件：confirm、stamp、sparkle。"
+    },
+    "tokens": {
+      "palette": [
+        "#f1eee7",
+        "#16171a",
+        "#d9562c",
+        "#e23b3b"
+      ],
+      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。",
+      "css": {
+        "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+        "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+        "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+        "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+        "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+        "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+        "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+        "--paper": "#f1eee7",
+        "--ink": "#16171a",
+        "--ink-map": "#16171a",
+        "--muted": "rgba(22, 23, 26, .62)",
+        "--line": "rgba(22, 23, 26, .26)",
+        "--accent": "#d9562c",
+        "--accent-soft": "rgba(217, 86, 44, .22)",
+        "--surface": "rgba(250, 249, 245, .94)",
+        "--alert": "#e23b3b"
+      },
+      "motion": [
+        {
+          "name": "徽章出现",
+          "value": "0s"
+        },
+        {
+          "name": "×1 + 关空",
+          "value": "0.8s"
+        },
+        {
+          "name": "×2 + 京都",
+          "value": "2.2s"
+        },
+        {
+          "name": "×3 + 奈良",
+          "value": "3.4s"
+        },
+        {
+          "name": "×4 + 大阪",
+          "value": "4.6s"
+        },
+        {
+          "name": "时长",
+          "value": "6.6s"
+        }
+      ]
+    },
+    "migration": [
+      {
+        "field": "复制的函数",
+        "how": "drawHud、stepAtX、ruleX、stampXY"
+      },
+      {
+        "field": "依赖",
+        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+      },
+      {
+        "field": "需要的数据",
+        "how": "config.js 的 mascot、stepper、tracks.counter / stamps / progress 与横竖 layout。"
+      },
+      {
+        "field": "config.js → segments / markers",
+        "how": "caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6"
+      },
+      {
+        "field": "score.json",
+        "how": "事件 voice：confirm、stamp、sparkle；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      }
+    ],
     "preview": "previews/patterns/collect-counter.jpg",
-    "previewPortrait": null
+    "previewPortrait": "previews/patterns/collect-counter-portrait.jpg"
   },
   "sourceCases": [
     {
@@ -77,14 +201,19 @@
     }
   ],
   "documents": {
-    "prompt": "# 收集计数徽章与图鉴托盘 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/collect-counter.json) 自动生成。\n\n## 实现 Prompt\n\n实现收集计数徽章：右上角白色胶囊（头像 + 12px 等宽标签 + 粗体 ×N），计数由事件时刻列表推导；最近一次事件后经过 k 秒时，数字在 300ms 内从下方滚入、徽章 scale(1 + 0.14·e^(-7k))、头像外圈 2px 强调色环放大并淡出。下方图鉴托盘 N 个 3:4 槽位，空位为虚线 + 问号，事件发生时依次 420ms outBack 填入缩略图与名字并换成强调色描边。徽章 role=status 播报当前数量，提供手动 +1 与重置按钮。\n\n## 参数\n\n- **数字滚入**：300ms outCubic\n- **回弹**：幅度 0.14，衰减系数 7（约 0.5s 收敛）\n- **槽位点亮**：420ms outBack，缩放 0.9→1\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
+    "prompt": "# 收集计数徽章与图鉴托盘 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/collect-counter.json) 自动生成。\n\n## 实现 Prompt\n\n每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：6.6s\n- **声音 voice**：confirm、stamp、sparkle\n\n## 动效 Token\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：6.6s\n\n## 迁移\n\n- `复制的函数`：drawHud、stepAtX、ruleX、stampXY\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。\n- `需要的数据`：config.js 的 mascot、stepper、tracks.counter / stamps / progress 与横竖 layout。\n- `config.js → segments / markers`：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6\n- `score.json`：事件 voice：confirm、stamp、sparkle；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
   },
   "entrypoint": "demos/patterns/collect-counter/index.html",
   "files": [
     {
+      "path": "demos/patterns/collect-counter/config.js",
+      "bytes": 26559,
+      "sha256": "8a3c6676f4606f951054bacf20e9be0ba9220c908c8d011c036af51cee4b343e"
+    },
+    {
       "path": "demos/patterns/collect-counter/index.html",
-      "bytes": 6315,
-      "sha256": "f3d2020218914f2cba301d9ee6ae1ea5cbc24d459b3714529a1fa94c08a0ecb5"
+      "bytes": 7647,
+      "sha256": "716a8de5ed7fee8dc2c84165b77c555159ea8132a7c5863019e075b76716761f"
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
@@ -92,9 +221,79 @@
       "sha256": "2708c09729958b6f1dc5e57565a854f8bf7d19c6b6b35fdd45729565202e61ac"
     },
     {
+      "path": "demos/patterns/collect-counter/paths.js",
+      "bytes": 8047,
+      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/landscape-10.4-map.webp",
+      "bytes": 141718,
+      "sha256": "433a3d60e4bf47c78dd68e3a720d913493137c1abb6719c50b4e2e63fd7756f0"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/landscape-20.4-map.webp",
+      "bytes": 422340,
+      "sha256": "bcbc975c5d68d5dda342585fdd638fcfd12029bdd8a5616dff592c7de6447419"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/landscape-41-map.webp",
+      "bytes": 256236,
+      "sha256": "3e6afd5e956ee7117290467b2ecd2f9eff797458635b7b2ea9def380eafb52db"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/landscape-51.6-map.webp",
+      "bytes": 240404,
+      "sha256": "9498a8968d41ef4cb51bb573add8535474eb43d5faef37994d7e313681e26475"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/portrait-10.4-map.webp",
+      "bytes": 178700,
+      "sha256": "b6ce9e9de60b29b32661da7e3abd5b966e7049285f12bd40b64efff13d97bac2"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/portrait-20.4-map.webp",
+      "bytes": 314310,
+      "sha256": "aa1009c7d9f032dffb07c3f5f120c1bb3ab74bfbdd2a14a5e623d60f8e0b7cac"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/portrait-41-map.webp",
+      "bytes": 263766,
+      "sha256": "c40cd2ca01c4ea4bb095c67c294ae4d3c3ad6d6f405c4c935837611af10a4e54"
+    },
+    {
+      "path": "demos/patterns/collect-counter/plates/portrait-51.6-map.webp",
+      "bytes": 269560,
+      "sha256": "3f0435103d3ffc1d11f07262c5040f7d5837a626b3b5a141836619731fb20a98"
+    },
+    {
+      "path": "demos/patterns/collect-counter/scenes.js",
+      "bytes": 35275,
+      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+    },
+    {
+      "path": "demos/patterns/collect-counter/score.json",
+      "bytes": 1115,
+      "sha256": "0ef7b7bc00b64e960005e51288aea3195045911462fe633adaa5498df2c3639d"
+    },
+    {
+      "path": "demos/patterns/collect-counter/script.js",
+      "bytes": 136333,
+      "sha256": "b651ba9e7e011c822ef350aacd066f6e9c8f53ad03cf580a8a9b8891a67049ef"
+    },
+    {
+      "path": "demos/patterns/collect-counter/style.css",
+      "bytes": 39863,
+      "sha256": "9aac344d383ca9c1c398d6f512336b0fea24e6c62c7b619c1d4100892c70c54e"
+    },
+    {
       "path": "previews/patterns/collect-counter.jpg",
-      "bytes": 34529,
-      "sha256": "3a2ee128bc1a7baf3e99434ab2e1ade81df06918e8d945c8cedb81924e1926d8"
+      "bytes": 175784,
+      "sha256": "a7f12a0825cb120a8ce3f0c18356bc9bba0bb1945d380e35c6c9c870a8022a54"
+    },
+    {
+      "path": "previews/patterns/collect-counter-portrait.jpg",
+      "bytes": 186990,
+      "sha256": "7293fae5649740af2c5aaafe6e929a751db548dac2d884a87ac658caf13c9dc1"
     }
   ]
 }

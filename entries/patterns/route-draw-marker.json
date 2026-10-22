@@ -10,26 +10,34 @@
     "video",
     "showcase"
   ],
-  "summary": "虚线航线带弧度飞越、地面路线白色描边加强调色，头部圆点领路；地图标记出现时回弹、标签打字、双环脉冲持续呼吸。",
-  "mechanism": "路线按弧长截断到进度 p（inOutQuad），头部圆点停在截断点；航线用二次贝塞尔弧并加虚线，地面路线用白色粗描边垫底。标记 450ms outBack 回弹出现，标签打字 550ms，汉字延迟淡入；两个脉冲环相位差半个周期，2 秒一圈放大 2.6 倍并淡出。",
-  "trigger": "行程段开始 / 抵达",
-  "effect": "移动被“画”出来，空间关系和先后顺序一眼可读。",
+  "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。",
+  "mechanism": "三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。以巧思时间 t 映射到案例时刻 caseT，复制函数 cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt 按 caseT 求值。",
+  "trigger": "播放、暂停或 seek 到巧思时间 t。",
+  "effect": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。",
   "timing": [
     {
+      "name": "机场",
+      "value": "0s"
+    },
+    {
       "name": "描画",
-      "value": "按段时长 inOutQuad；航线约 3s、地面 2.5–3.5s"
+      "value": "0.6s"
     },
     {
-      "name": "标记回弹",
-      "value": "450ms outBack，缩放 0.6→1"
+      "name": "第二段",
+      "value": "4s"
     },
     {
-      "name": "脉冲",
-      "value": "周期 2s，两环相位差 0.5，最大 2.6×"
+      "name": "步行",
+      "value": "7.2s"
     },
     {
-      "name": "标签",
-      "value": "打字 550ms，汉字 +600ms 淡入"
+      "name": "时长",
+      "value": "10.6s"
+    },
+    {
+      "name": "声音 voice",
+      "value": "sonar、whoosh、clack、blip、chime、tick"
     }
   ],
   "useCases": [
@@ -41,7 +49,7 @@
     "没有空间意义的流程图"
   ],
   "accessibility": {
-    "reducedMotion": "路线一次画完，脉冲停止为静态双环。",
+    "reducedMotion": "可使用时间轴暂停在完整帧。",
     "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
   },
   "composition": {
@@ -52,18 +60,121 @@
       "card-expand-fullscreen"
     ],
     "conflicts": [],
-    "notes": "在真实地图中把路线放进 GL 图层（大俯仰角下 project 会把相机后方的点投影错位）；标记可以留在 DOM。"
+    "notes": "三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。"
   },
-  "prompt": "在【地图/示意图】上实现路线描画：路线点集按累计弧长截断到进度 p（inOutQuad），航线用二次贝塞尔弧（控制点沿垂线偏移 bend×距离）+ 9/7 虚线，地面路线先画 9px 白色描边再画 4px 强调色；描画期间在截断点显示白底黑边头部圆点。标记：16px 白底黑边圆点内嵌强调色，450ms outBack 从 0.6 缩放回弹出现；右侧等宽标签 550ms 打字，汉字随后淡入；两个 1.5px 脉冲环每 2 秒放大到 2.6 倍并淡出，相位相差半周期。接真实地图时把路线放进 MapLibre GeoJSON line 图层。",
+  "prompt": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。复用地图巡礼的 cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt 与对应 CSS。三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。片段：kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65；时长 10.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
   "demo": "demos/patterns/route-draw-marker/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage",
-      "observation": "首尔→关西虚线航线、地铁/铁路实线随行程描出，标记带脉冲环与英中标签，路线颜色随作品主题变化。",
+      "observation": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。",
       "evidence": "observed",
-      "locator": "0:10.5、0:16.5、1:44.5"
+      "locator": "kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65"
     }
   ],
-  "previewAt": 8.6
+  "previewAt": 8.6,
+  "markers": [
+    {
+      "t": 0,
+      "label": "机场"
+    },
+    {
+      "t": 0.6,
+      "label": "描画"
+    },
+    {
+      "t": 4,
+      "label": "第二段"
+    },
+    {
+      "t": 7.2,
+      "label": "步行"
+    }
+  ],
+  "sound": {
+    "voices": [
+      "sonar",
+      "whoosh",
+      "clack",
+      "blip",
+      "chime",
+      "tick"
+    ],
+    "score": "demos/patterns/route-draw-marker/score.json",
+    "description": "MotionKit.audio.attach 挂接事件：sonar、whoosh、clack、blip、chime、tick。"
+  },
+  "tokens": {
+    "palette": [
+      "#f1eee7",
+      "#16171a",
+      "#d9562c",
+      "#e23b3b"
+    ],
+    "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。",
+    "css": {
+      "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+      "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+      "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+      "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+      "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+      "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+      "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+      "--paper": "#f1eee7",
+      "--ink": "#16171a",
+      "--ink-map": "#16171a",
+      "--muted": "rgba(22, 23, 26, .62)",
+      "--line": "rgba(22, 23, 26, .26)",
+      "--accent": "#d9562c",
+      "--accent-soft": "rgba(217, 86, 44, .22)",
+      "--surface": "rgba(250, 249, 245, .94)",
+      "--alert": "#e23b3b"
+    },
+    "motion": [
+      {
+        "name": "机场",
+        "value": "0s"
+      },
+      {
+        "name": "描画",
+        "value": "0.6s"
+      },
+      {
+        "name": "第二段",
+        "value": "4s"
+      },
+      {
+        "name": "步行",
+        "value": "7.2s"
+      },
+      {
+        "name": "时长",
+        "value": "10.6s"
+      }
+    ]
+  },
+  "migration": [
+    {
+      "field": "复制的函数",
+      "how": "cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt"
+    },
+    {
+      "field": "依赖",
+      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。"
+    },
+    {
+      "field": "需要的数据",
+      "how": "config.js 的 stops、tracks.routes / markers、tracks.camera；paths.js 的 haruka / naraLine / walk1 几何；横竖 S1 / S2 / S3 固定镜头。"
+    },
+    {
+      "field": "config.js → segments / markers",
+      "how": "kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65"
+    },
+    {
+      "field": "score.json",
+      "how": "事件 voice：sonar、whoosh、clack、blip、chime、tick；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+    }
+  ]
 }

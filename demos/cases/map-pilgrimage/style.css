@@ -45,6 +45,10 @@ html, body { margin: 0; background: #000; }
 .veil { inset: 0; z-index: 1; background: var(--paper); opacity: 0; visibility: hidden; pointer-events: none; }
 .veil-tag { position: absolute; right: 64px; bottom: 120px; font: 600 24px/1 var(--f-mono); letter-spacing: .2em; color: var(--muted); }
 .wash { inset: 0; z-index: 1; opacity: 0; visibility: hidden; pointer-events: none; background: linear-gradient(115deg, rgba(243, 196, 90, .35) 0%, rgba(233, 162, 76, .3) 60%, rgba(217, 138, 58, .35) 100%); }
+[data-layers] > :not(#map):not(#fallback):not(#geo) { display: none !important; }
+[data-layers="map"] > #geo { display: none !important; }
+[data-layers="map,routes,markers"] #geo > :not(.node),
+[data-layers="map,routes,markers"] .node > :not(.nd-ring):not(.nd-core) { display: none !important; }
 
 /* ---------- 地图锚定图形（SVG，viewBox = 舞台尺寸，1 单位 = 1 像素） ---------- */
 .geo, .hudgfx { left: 0; top: 0; overflow: visible; pointer-events: none; }
@@ -84,6 +88,7 @@ html, body { margin: 0; background: #000; }
   background: var(--surface); color: var(--ink-map); border-radius: 6px;
   box-shadow: 0 2px 0 rgba(0, 0, 0, .04), 0 6px 18px rgba(0, 0, 0, .12);
 }
+.mk-label > * { flex-shrink: 0; }
 .mk-label .mk-en { font-family: var(--f-display); font-weight: 700; letter-spacing: .07em; }
 .mk-label em { font-style: normal; color: var(--accent); }
 .mk-label.is-node { background: transparent; box-shadow: none; }
@@ -150,6 +155,8 @@ html, body { margin: 0; background: #000; }
 .it-en span, .lt-en span { display: inline-block; }
 .it-en .sp, .lt-en .sp { width: .28em; }
 .it-sub, .lt-sub { font-family: var(--f-mono); letter-spacing: .12em; color: var(--muted); }
+.it-sub-landscape { white-space: nowrap; }
+.it-sub-portrait { display: none; }
 .lt-sub { font-family: var(--f-ja); letter-spacing: .14em; }
 .loc-title { display: flex; align-items: flex-start; opacity: 0; visibility: hidden; }
 .lt-rule { background: var(--accent); }
@@ -441,6 +448,9 @@ html, body { margin: 0; background: #000; }
 [data-orient="portrait"] .it-rule { top: 30px; width: 620px; }
 [data-orient="portrait"] .it-en { font-size: 76px; }
 [data-orient="portrait"] .it-sub { margin-top: 26px; font-size: 36px; line-height: 1.4; white-space: normal; max-width: 640px; }
+[data-orient="portrait"] .it-sub-landscape { display: none; }
+[data-orient="portrait"] .it-sub-portrait { display: block; }
+[data-orient="portrait"] .it-sub-portrait > span { display: block; white-space: nowrap; }
 
 [data-orient="portrait"] .loc-title { left: 56px; top: 466px; gap: 28px; }
 [data-orient="portrait"] .lt-cjk { font-size: 140px; }

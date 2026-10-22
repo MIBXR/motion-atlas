@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "Motion Atlas",
   "description": "多媒体动态视觉参考库：影像视频、交互操作台、交互展示台的案例、巧思、节奏表、Prompt 与可迁移 Demo。",
-  "contentVersion": "7dbbeefecbeabc9008bf74da460d222e9faa599d8f258b938d10b2022fa156e6",
+  "contentVersion": "68986c4065d1e92b36da25a682af6992a541d08c12b0e00a296b367d9d9044da",
   "taxonomy": {
     "carriers": {
       "video": "影像视频",
@@ -97,7 +97,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/map-pilgrimage.json",
-      "bundleSha256": "6eb51115a57a6158934c757c40573675ec1262e5e2629a4e023883209670b3fd"
+      "bundleSha256": "de183b4d8db18e62da425a11baa18198f94862233025a803fc4fa43a9e5659d5"
     },
     {
       "id": "archive-os",
@@ -418,7 +418,7 @@
     {
       "id": "corner-hud",
       "title": "四角信息 HUD",
-      "summary": "把日序、坐标、时间、音乐与进度固定在四个角，中央留给世界；信息持续更新，画面就有了“系统在运行”的感觉。",
+      "summary": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。",
       "types": [
         "hud",
         "composition"
@@ -439,12 +439,12 @@
         "vertical-title-blur"
       ],
       "bundle": "agent/patterns/corner-hud.json",
-      "bundleSha256": "2516eb2d81f649c3b174ce052d1cecd628c170c1e5dc15ea848379dfaa3c3afa"
+      "bundleSha256": "9ab02028dac3b99d35c87a20e2fbe9a27e865944187fec2740b2027a5e3b530c"
     },
     {
       "id": "vertical-title-blur",
       "title": "竖排汉字模糊入场 + 英文打字",
-      "summary": "粗黑竖排汉字自上而下逐字由模糊变清晰，横线描出，英文标题带模糊前沿打出：一组同时有“东方字形”和“系统输出”气质的标题。",
+      "summary": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
       "types": [
         "type-motion"
       ],
@@ -463,12 +463,12 @@
         "card-expand-fullscreen"
       ],
       "bundle": "agent/patterns/vertical-title-blur.json",
-      "bundleSha256": "fc6a47504f25f8bdc7e88f5ac4246c80f01c8aa27dd57245b89e1c386854a749"
+      "bundleSha256": "0be962599e2f33cd09344a6e0ba0d4a4f695e7cb2e147398d82c58928cfd39bd"
     },
     {
       "id": "route-draw-marker",
       "title": "路线描画与标记脉冲",
-      "summary": "虚线航线带弧度飞越、地面路线白色描边加强调色，头部圆点领路；地图标记出现时回弹、标签打字、双环脉冲持续呼吸。",
+      "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。",
       "types": [
         "camera",
         "hud"
@@ -487,12 +487,12 @@
         "card-expand-fullscreen"
       ],
       "bundle": "agent/patterns/route-draw-marker.json",
-      "bundleSha256": "4ba6c76f9d7881229eefa6c85522387a0a060a5c3ca0941ee8801483283fd8bd"
+      "bundleSha256": "d1fbbc961527e1e4ccfb06bc12181e14b4393e234daf7245eb87424dfd48cee9"
     },
     {
       "id": "day-night-flip",
       "title": "昼夜翻转：逐层插值",
-      "summary": "用约 1 秒把世界从白天换到夜晚：按图层类别逐个插值颜色，中途经过灰阶。对照整体反色可以看到差别——反色会让水比陆地更亮。",
+      "summary": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
       "types": [
         "transition",
         "composition"
@@ -511,12 +511,12 @@
         "route-draw-marker"
       ],
       "bundle": "agent/patterns/day-night-flip.json",
-      "bundleSha256": "44b52bb9b8ab76b88dc030414f74041a4530329f21b8b42173d2b1ec8cbfcb2a"
+      "bundleSha256": "9933eba566b500409c009450001a546c3c02eca5fdea7fa44002873f3e0d3fd5"
     },
     {
       "id": "card-expand-fullscreen",
       "title": "卡片展开为全屏",
-      "summary": "地图上的照片卡片 600ms 平滑展开为全屏实景，HUD 保留并转白、上下压暗，停留时缓慢推近，再收回卡片——高光片段不脱离“系统”。",
+      "summary": "照片卡片由引线牵出，展开到全屏停留，再收回原位。",
       "types": [
         "transition"
       ],
@@ -534,12 +534,12 @@
         "split-compare-stamp"
       ],
       "bundle": "agent/patterns/card-expand-fullscreen.json",
-      "bundleSha256": "e2f3201ab2b76d6ee26d6b0a8c35bcf6c12285c56caf35f57f048015e737fd41"
+      "bundleSha256": "8eb1b93734413c8581785a2baf3a4868333d64bc823e41add110b762a0474255"
     },
     {
       "id": "chapter-frame",
       "title": "章节主题：标签、强调色与四角框线",
-      "summary": "进入一个主题时，标签色块擦出、标题打字、全局强调色换成主题色，屏幕边缘描出一圈细框并在四角弹出方块——像游戏进入一段任务。",
+      "summary": "章节标签配框线或胶带网点入场，为一段旅程划出章节。",
       "types": [
         "composition",
         "transition"
@@ -559,12 +559,12 @@
         "vertical-title-blur"
       ],
       "bundle": "agent/patterns/chapter-frame.json",
-      "bundleSha256": "f4967322671e4cd76dccd173145b766cc541314039ca85fdfc51214f93eed6d2"
+      "bundleSha256": "d780ed160b24d739172a0bff0c8b1aab21d8db6cbce6317c9e550fc4a667af47"
     },
     {
       "id": "split-compare-stamp",
       "title": "分屏对比与时间戳盖章",
-      "summary": "先给出“现在”的全屏画面，再让分割线从左边滑到中线露出“过去”，最后一枚倾斜的描边时间戳盖下来。动画结束后可拖动分割线。",
+      "summary": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。",
       "types": [
         "transition",
         "composition"
@@ -583,12 +583,12 @@
         "film-grain"
       ],
       "bundle": "agent/patterns/split-compare-stamp.json",
-      "bundleSha256": "c144e2b424376a4b854d18d17c742f747bdd646bba9046632fbd216dca524769"
+      "bundleSha256": "62d21bd11359ae14024494c481d401eefc93da6daf6eaab69f952da7c0fa0640"
     },
     {
       "id": "collect-counter",
       "title": "收集计数徽章与图鉴托盘",
-      "summary": "一个吉祥物头像胶囊记录“发现次数”，每次 +1 数字上滚、徽章回弹、外圈扩散；图鉴托盘的空位依次点亮，给叙事加上轻游戏化的奖励感。",
+      "summary": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
       "types": [
         "feedback",
         "hud"
@@ -607,12 +607,12 @@
         "outro-stat-stack"
       ],
       "bundle": "agent/patterns/collect-counter.json",
-      "bundleSha256": "20257a24c3544c705acf5c90f788e3ec4ced4d3abf9b1851f16b95fc441c1c65"
+      "bundleSha256": "a5426fe002cbbe4f3c0777ee5f76dcd5a5c81d1726e4b7f07afd5688513589e7"
     },
     {
       "id": "alert-reroute",
       "title": "警示横幅与改道",
-      "summary": "意外事件用一条红色通栏从左擦入，错误路线画红并以叉号收尾，黑色“改道中…”胶囊闪烁省略号；纠正后换成绿色“已回到路线”。",
+      "summary": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。",
       "types": [
         "feedback",
         "hud"
@@ -630,12 +630,12 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/alert-reroute.json",
-      "bundleSha256": "0879388946ca0411772d20d36d2c8d2f2aae41faee80317f45f74e061f211d01"
+      "bundleSha256": "205c35da75d76fcfaa124f3834697116226af3471165c2c81ec8be6ed0e6c184"
     },
     {
       "id": "outro-stat-stack",
       "title": "结尾数据堆叠与计数",
-      "summary": "大号数字逐行出现并快速计数，右侧配等宽小字标签，最后以衬线“— fin.”与署名收束；像游戏结算界面，给旅程一个“分数”。",
+      "summary": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
       "types": [
         "type-motion",
         "rhythm"
@@ -653,12 +653,12 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/outro-stat-stack.json",
-      "bundleSha256": "03ad5be76cbfb4097975f22873f7079779b7c4ac53808eff6c5498da0089c828"
+      "bundleSha256": "71a5de77f9a7f465639aabbbef4d08750a88c560a7fb438ad65b6a8385ff1c9b"
     },
     {
       "id": "seekable-timeline",
       "title": "可逐帧定位的时间轴",
-      "summary": "把画面写成 render(t) 纯函数、把所有时间写进轨道：同一份代码既能实时播放，也能被拖动、跳到节拍，或逐帧截图渲染成视频。",
+      "summary": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。",
       "types": [
         "rhythm"
       ],
@@ -676,12 +676,12 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/seekable-timeline.json",
-      "bundleSha256": "2a8860af4c86486ff6e23820005e0d6c66e99e68723b3bb4fbdca37c3d629323"
+      "bundleSha256": "960763cfb78ef9f3b6a54212de5281d0f4c26952f29a4b30fe2bad78e4f8068f"
     },
     {
       "id": "film-grain",
       "title": "可复现的胶片颗粒与暗角",
-      "summary": "预生成几帧噪声、按帧号选帧叠加，配合暗角、扫描线与轻微闪烁；同一时刻永远是同一张颗粒，逐帧渲染也不会“跳”。",
+      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
       "types": [
         "texture"
       ],
@@ -699,7 +699,7 @@
         "split-compare-stamp"
       ],
       "bundle": "agent/patterns/film-grain.json",
-      "bundleSha256": "4fd8255eb62086458c6a0923f316def2c33f259aaabc314b7134ffb70f363663"
+      "bundleSha256": "d2b7c7aa29215cc92fcf5c5a3206f0f49a99627052d60d2e12e5197c6fffbb9b"
     },
     {
       "id": "boot-typing",

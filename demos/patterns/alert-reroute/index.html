@@ -1,95 +1,152 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>警示横幅与改道 — Motion Atlas 巧思</title>
-<style>
-  :root { --paper: #f2efe8; --ink: #16171a; --alert: #e5483b; --accent: #d9632b; --ok: #2f9e6b; --pad: clamp(16px, 4vw, 60px);
-    --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; --f-display: "Bahnschrift","DIN Alternate","Segoe UI",sans-serif; }
-  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); }
-  svg.map { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .grid { stroke: rgba(22,23,26,.07); } .water { fill: #c9d6df; }
-  .line { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .flash { position: absolute; inset: 0; background: var(--alert); pointer-events: none; opacity: 0; mix-blend-mode: multiply; }
-  .alert { position: absolute; left: 0; right: 0; top: clamp(40px, 10vh, 100px); pointer-events: none; }
-  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 14px var(--pad); background: var(--alert); color: #fff;
-    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0 1px, transparent 1px 3px); }
-  .bar svg { width: 22px; height: 22px; }
-  .bar b { font: 700 clamp(16px, 1.8vw, 26px)/1 var(--f-display); letter-spacing: .14em; }
-  .bar span { font: 12px/1.3 var(--f-mono); letter-spacing: .1em; }
-  .chip { display: inline-flex; align-items: center; gap: 8px; margin: 14px var(--pad); padding: 8px 14px; border-radius: 5px; background: var(--ink); color: #fff; font: 700 12px/1 var(--f-mono); letter-spacing: .2em; }
-  .chip svg { width: 16px; height: 16px; }
-  .chip.ok { background: var(--ok); }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>alert-reroute — Motion Atlas Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- 地图资源尽早开始下载（与 config.js 的 map.lib / map.style 保持一致）：与页面脚本并行，缩短可播放前的等待 -->
 </head>
 <body>
-<svg class="map" id="map" aria-hidden="true"></svg>
-<div class="flash" id="flash" aria-hidden="true"></div>
-<div class="alert" id="alert" role="status" aria-live="assertive">
-  <div class="bar" id="bar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v5M12 17.6v.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><b id="title"></b><span id="detail"></span></div>
-  <span class="chip" id="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="chipIcon" fill="currentColor"/></svg><span id="chipText"></span></span>
-</div>
-<script src="motion-kit.js"></script>
-<script>
-/* ===== CONFIG：改这里即可迁移 ===== */
-const CONFIG = {
-  title: 'WRONG TRAIN', detail: 'G7215 · boarded at Suzhou · heading west to Nanjing',
-  chip: 'REROUTING', okChip: 'BACK ON ROUTE',
-  tAlert: 1.2, tWrong: [0.2, 1.4], tFix: [3.4, 5.4], tClear: 5.6, duration: 8,
-  wipe: 0.38, flash: 0.35,
-};
-/* ================================== */
-const MK = MotionKit, NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('map'), $ = (s) => document.querySelector(s);
-const mk = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; };
-const grid = mk('path', { class: 'grid' }), water = mk('path', { class: 'water' });
-const done = mk('path', { class: 'line', stroke: '#16171a', 'stroke-width': 3 });
-const wrong = mk('path', { class: 'line', stroke: '#e5483b', 'stroke-width': 4.5 });
-const fix = mk('path', { class: 'line', stroke: '#d9632b', 'stroke-width': 4.5 });
-const x = mk('path', { class: 'line', stroke: '#e5483b', 'stroke-width': 3.5 });
-const here = mk('circle', { r: 7, fill: '#fff', stroke: '#16171a', 'stroke-width': 3 });
-const cut = (pts, p) => { const n = Math.max(1, Math.round(p * (pts.length - 1))); return pts.slice(0, n + 1); };
-const sample = (a, b, c, n = 50) => Array.from({ length: n + 1 }, (_, i) => { const k = i / n, u = 1 - k; return [u * u * a[0] + 2 * u * k * b[0] + k * k * c[0], u * u * a[1] + 2 * u * k * b[1] + k * k * c[1]]; });
-const d = (pts) => pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join('');
-function render(t) {
-  const w = innerWidth, h = innerHeight;
-  let g = ''; for (let i = 0; i < w; i += 64) g += `M${i} 0V${h}`; for (let i = 0; i < h; i += 64) g += `M0 ${i}H${w}`;
-  grid.setAttribute('d', g);
-  water.setAttribute('d', `M${w * 0.7} ${h}C${w * 0.72} ${h * 0.6} ${w * 0.9} ${h * 0.5} ${w} ${h * 0.45}V${h}Z`);
-  const S = [w * 0.48, h * 0.62];
-  done.setAttribute('d', d(sample([w * 0.15, h * 0.9], [w * 0.3, h * 0.6], S)));
-  const wrongPts = sample(S, [w * 0.36, h * 0.48], [w * 0.22, h * 0.42]);
-  const fixPts = sample(S, [w * 0.66, h * 0.5], [w * 0.86, h * 0.36]);
-  const pw = MK.seg(t, CONFIG.tWrong[0], CONFIG.tWrong[1] - CONFIG.tWrong[0], MK.ease.inOutQuad);
-  wrong.setAttribute('d', t >= CONFIG.tWrong[0] ? d(cut(wrongPts, pw)) : '');
-  wrong.style.opacity = 1 - 0.65 * MK.seg(t, CONFIG.tClear, 0.6);
-  const end = wrongPts[wrongPts.length - 1], xk = MK.seg(t, CONFIG.tWrong[1], 0.3, MK.ease.outBack);
-  x.setAttribute('d', `M${end[0] - 8} ${end[1] - 8}L${end[0] + 8} ${end[1] + 8}M${end[0] + 8} ${end[1] - 8}L${end[0] - 8} ${end[1] + 8}`);
-  x.style.opacity = MK.clamp(xk) * wrong.style.opacity;
-  const pf = MK.seg(t, CONFIG.tFix[0], CONFIG.tFix[1] - CONFIG.tFix[0], MK.ease.inOutQuad);
-  fix.setAttribute('d', t >= CONFIG.tFix[0] ? d(cut(fixPts, pf)) : '');
-  here.setAttribute('cx', S[0]); here.setAttribute('cy', S[1]);
-  // 横幅：从左擦入；警示期间红色闪一下；结束时换成“已回到路线”
-  const a = CONFIG.tAlert, out = MK.seg(t, CONFIG.tClear + 1.2, 0.35);
-  $('#alert').style.opacity = t >= a - 0.01 ? 1 - out : 0;
-  $('#bar').style.clipPath = `inset(0 ${(1 - MK.seg(t, a, CONFIG.wipe, MK.ease.outCubic)) * 100}% 0 0)`;
-  $('#title').textContent = CONFIG.title;
-  $('#detail').textContent = MK.typeText(CONFIG.detail, MK.seg(t, a + 0.3, 0.9, MK.ease.linear));
-  $('#flash').style.opacity = t >= a ? 0.18 * Math.exp(-(t - a) / CONFIG.flash * 3) : 0;
-  const chip = $('#chip'), ok = t >= CONFIG.tClear;
-  chip.classList.toggle('ok', ok);
-  chip.style.opacity = MK.seg(t, a + 0.55, 0.25);
-  chip.style.transform = `translateX(${(1 - MK.seg(t, a + 0.55, 0.3, MK.ease.outCubic)) * -16}px) scale(${ok ? 1 + 0.08 * Math.exp(-(t - CONFIG.tClear) * 8) : 1})`;
-  $('#chipIcon').setAttribute('d', ok ? 'M5 12.5l4.5 4.5L19 7.5l-1.5-1.5-8 8-3-3z' : 'M11 6l-7 6 7 6zM20 6l-7 6 7 6z');
-  $('#chipText').textContent = ok ? CONFIG.okChip : CONFIG.chip + '.'.repeat(Math.max(0, Math.floor((t - a) * 3)) % 4);
-}
-const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: CONFIG.tAlert, label: '警示' }, { t: CONFIG.tFix[0], label: '改道' }, { t: CONFIG.tClear, label: '恢复' }] });
-MK.expose(tl);
-MK.controls(tl);
-const P = MK.params();
-tl.seek(P.t ?? (MK.prefersReducedMotion() ? 3 : 0));
-if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
-addEventListener('resize', () => tl.seek(tl.time));
-</script>
+  <!--
+    固定画幅舞台：MotionKit.stage() 把 #stage 设为 1920×1080 / 1080×1920 并整体等比缩放，内部一律用舞台像素。
+    层级（下 → 上）：太空 / 底图 → 地图降级遮罩 → 色调层 → 地图锚定图形（SVG：航线、节点、引线）→ 地图标签 →
+    卡片 → 全屏回忆 / 对比 → 压暗层 → 章节装饰 → 事件文字 → HUD → 收尾 → 颗粒与暗角
+  -->
+  <main id="stage" class="stage" aria-label="地图巡礼影像：关西三日">
+    <div id="plates" class="plates" aria-hidden="true"></div>
+    <canvas id="space" class="space" aria-hidden="true"></canvas>
+    <div id="map" class="map" aria-hidden="true"></div>
+    <div id="fallback" class="map-fallback" aria-hidden="true"></div>
+    <div id="veil" class="veil" aria-hidden="true"><span class="veil-tag">SYNCING MAP</span></div>
+    <div id="wash" class="wash" aria-hidden="true"></div>
+
+    <svg id="geo" class="geo" aria-hidden="true"></svg>
+    <i class="hud-fade top" aria-hidden="true"></i><i class="hud-fade bottom" aria-hidden="true"></i>
+    <div id="labels" class="labels" aria-hidden="true"></div>
+
+    <div id="cards" class="cards" aria-hidden="true"></div>
+
+    <section id="flashback" class="flashback" aria-hidden="true">
+      <div class="fb-media"></div>
+      <i class="fb-frame"></i>
+      <span class="fb-tag"></span>
+      <div class="fb-vtext"></div>
+      <p class="fb-en"><span class="fb-en-text"></span><i class="fb-caret"></i></p>
+      <p class="fb-caption"></p>
+    </section>
+
+    <section id="compare" class="compare" aria-hidden="true">
+      <div class="cmp-a"><div class="cmp-media"></div><span class="cmp-label"></span></div>
+      <div class="cmp-b"><div class="cmp-media"></div><span class="cmp-label"></span></div>
+      <i class="cmp-divider"><i class="cmp-knob"></i></i>
+      <i class="cmp-frame"></i>
+      <span class="cmp-stamp"></span>
+    </section>
+
+    <div id="scrim" class="scrim" aria-hidden="true"></div>
+
+    <div id="decor" class="decor" aria-hidden="true">
+      <svg class="frame-svg"><path class="fr-line"/></svg>
+      <i class="fr-c tl"></i><i class="fr-c tr"></i><i class="fr-c bl"></i><i class="fr-c br"></i>
+      <canvas class="halftone"></canvas>
+      <div class="tape"><i></i></div>
+    </div>
+
+    <section id="intro" class="intro-title" aria-hidden="true">
+      <div class="it-cjk"></div>
+      <div class="it-side">
+        <i class="it-rule"></i>
+        <h1 class="it-en"></h1>
+        <p class="it-sub"></p>
+      </div>
+    </section>
+
+    <section id="loc" class="loc-title" aria-hidden="true">
+      <div class="lt-cjk"></div>
+      <div class="lt-side"><i class="lt-rule"></i><h2 class="lt-en"></h2><p class="lt-sub"></p></div>
+    </section>
+
+    <section id="daycard" class="daycard" aria-hidden="true">
+      <div class="dc-row"><span class="dc-day">DAY</span><span class="dc-num"><i></i></span></div>
+      <p class="dc-date"></p>
+    </section>
+
+    <div id="chapter" class="chapter-tag" aria-hidden="true"><span class="ct-chip"></span><b class="ct-title"></b></div>
+
+    <div id="alert" class="alert" aria-hidden="true">
+      <div class="al-bar">
+        <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10v5M12 17.6v.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <b class="al-title"></b><span class="al-detail"></span>
+      </div>
+      <span class="al-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6l-7 6 7 6zM20 6l-7 6 7 6z" fill="currentColor"/></svg><span class="al-chip-text"></span></span>
+    </div>
+
+    <div id="toast" class="toast" aria-hidden="true">
+      <span class="ts-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 11h8M8 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span class="ts-body"><b class="ts-text"></b><span class="ts-sub"></span></span>
+    </div>
+
+    <figure id="note" class="note" aria-hidden="true">
+      <svg class="nt-doodle" viewBox="0 0 360 150" aria-hidden="true"></svg>
+      <p class="nt-text"></p>
+      <figcaption class="nt-sign"></figcaption>
+    </figure>
+
+    <header class="hud hud-top" aria-hidden="true">
+      <div class="hud-day">
+        <p class="hd-title"><b>DAY</b> <span class="hd-n"><i>01</i></span> <small>/ <span class="hd-total"></span></small></p>
+        <p class="hd-date"></p>
+      </div>
+      <svg class="compass" viewBox="-30 -30 60 60" aria-hidden="true">
+        <circle class="cp-ring" r="26"/>
+        <g class="cp-ticks"></g>
+        <g class="cp-needle"><path class="cp-n" d="M0 -20 L5 0 L-5 0Z"/><path class="cp-s" d="M0 20 L5 0 L-5 0Z"/></g>
+        <circle class="cp-hub" r="2.6"/>
+      </svg>
+      <div class="hud-geo"><p class="hg-coord"></p><p class="hg-elev"></p></div>
+      <div class="hud-clock"><span class="hc-time">00:00</span><span class="hc-tz"></span></div>
+    </header>
+    <svg id="hudgfx" class="hudgfx" aria-hidden="true"></svg>
+
+    <div id="badge" class="badge" aria-hidden="true">
+      <span class="bd-avatar"><svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M8 13l5 5h14l5-5v15a9 9 0 0 1-9 9h-6a9 9 0 0 1-9-9z" fill="#f2a94b"/>
+        <path d="M8 13l5 5h-5zM32 13l-5 5h5z" fill="#d9792c"/>
+        <circle cx="15.5" cy="25" r="1.9" fill="#16171a"/><circle cx="24.5" cy="25" r="1.9" fill="#16171a"/>
+        <path d="M18.4 29h3.2l-1.6 1.5z" fill="#c9452e"/>
+        <path d="M5 27h6M5 30.5h6M29 27h6M29 30.5h6" stroke="#16171a" stroke-width="1.2" stroke-linecap="round"/>
+      </svg></span>
+      <span class="bd-label"></span>
+      <b class="bd-n"><i>×0</i></b>
+    </div>
+
+    <footer class="hud hud-bottom" aria-hidden="true">
+      <div class="np">
+        <p class="np-head"><svg class="np-eq" viewBox="0 0 30 22" aria-hidden="true"><rect x="0" width="4" y="8" height="14"/><rect x="6.5" width="4" y="3" height="19"/><rect x="13" width="4" y="10" height="12"/><rect x="19.5" width="4" y="5" height="17"/><rect x="26" width="4" y="12" height="10"/></svg><span>NOW PLAYING</span></p>
+        <p class="np-track"><b class="np-title"></b> — <span class="np-artist"></span></p>
+        <p class="np-lyric"><span class="np-lyric-text"></span></p>
+        <p class="np-sub"></p>
+      </div>
+      <div class="scale" aria-hidden="true"><i class="sc-bar"><i></i><i></i></i><span class="sc-text"></span></div>
+      <p class="attrib"></p>
+    </footer>
+
+    <i class="outro-bg" aria-hidden="true"></i>
+    <section id="outro" class="outro" aria-hidden="true">
+      <ul class="ou-stats"></ul>
+      <p class="ou-fin"><span class="ou-fin-text"></span> <small class="ou-handle"></small></p>
+      <div class="ou-credits"></div>
+    </section>
+
+    <i id="grain" class="grain" aria-hidden="true"></i>
+    <i class="vignette" aria-hidden="true"></i>
+  </main>
+
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script src="paths.js"></script>
+  <script src="scenes.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

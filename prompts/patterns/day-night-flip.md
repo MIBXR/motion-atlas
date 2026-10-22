@@ -4,12 +4,29 @@
 
 ## 实现 Prompt
 
-实现昼夜翻转：为每类图层定义 [白天, 夜晚] 两个颜色（背景/陆地、水、绿地、建筑、道路、道路描边、路线、文字），用 night∈[0,1] 统一插值，0.9–1.2s inOutCubic，过渡中途画面经过灰阶。若是 MapLibre，加载后遍历 style.layers 按 id 关键词归类（water/park/building/highway/casing/railway/boundary），每帧仅在值变化时 setPaintProperty。HUD 的纸色与墨色同步插值。不要用 CSS invert 做整张夜景（会让水比陆地亮）。
+地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。片段：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。
 
 ## 参数
 
-- **时长**：0.9–1.2s inOutCubic
-- **中点**：画面经过灰阶，像“天色渐变”
-- **配色**：陆地 #eeebe4→#1b2431，水 #bccdd9→#0d131c，道路 #fff→#2c3648
+- **白天**：0s
+- **入夜**：1.5s
+- **天亮**：4.5s
+- **时长**：7s
+- **声音 voice**：whoosh、sub、reverse、chime
+
+## 动效 Token
+
+- **白天**：0s
+- **入夜**：1.5s
+- **天亮**：4.5s
+- **时长**：7s
+
+## 迁移
+
+- `复制的函数`：dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint
+- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。
+- `需要的数据`：config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。
+- `config.js → segments / markers`：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5
+- `score.json`：事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。
 
 [打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)

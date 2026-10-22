@@ -11,22 +11,38 @@
     "console",
     "showcase"
   ],
-  "summary": "一个吉祥物头像胶囊记录“发现次数”，每次 +1 数字上滚、徽章回弹、外圈扩散；图鉴托盘的空位依次点亮，给叙事加上轻游戏化的奖励感。",
-  "mechanism": "计数由事件列表推导（发生时刻 ≤ t 的数量），最后一次事件后的时间 k 驱动：数字 300ms 从下方滚入、整体缩放 1 + 0.14·e^(-7k)、头像外圈放大淡出。托盘槽位按事件依次 420ms outBack 填入缩略图与名字，空位显示虚线与问号。",
-  "trigger": "发现/打卡/完成任务",
-  "effect": "把重复出现的小元素变成线索与奖励，鼓励观众“找”。",
+  "summary": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
+  "mechanism": "MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawHud、stepAtX、ruleX、stampXY 按 caseT 求值。",
+  "trigger": "播放、暂停或 seek 到巧思时间 t。",
+  "effect": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
   "timing": [
     {
-      "name": "数字滚入",
-      "value": "300ms outCubic"
+      "name": "徽章出现",
+      "value": "0s"
     },
     {
-      "name": "回弹",
-      "value": "幅度 0.14，衰减系数 7（约 0.5s 收敛）"
+      "name": "×1 + 关空",
+      "value": "0.8s"
     },
     {
-      "name": "槽位点亮",
-      "value": "420ms outBack，缩放 0.9→1"
+      "name": "×2 + 京都",
+      "value": "2.2s"
+    },
+    {
+      "name": "×3 + 奈良",
+      "value": "3.4s"
+    },
+    {
+      "name": "×4 + 大阪",
+      "value": "4.6s"
+    },
+    {
+      "name": "时长",
+      "value": "6.6s"
+    },
+    {
+      "name": "声音 voice",
+      "value": "confirm、stamp、sparkle"
     }
   ],
   "useCases": [
@@ -39,8 +55,8 @@
     "计数与叙事无关时（会显得廉价）"
   ],
   "accessibility": {
-    "reducedMotion": "数字与槽位直接更新；状态以 aria-live 文本播报。",
-    "keyboard": "“+1 发现”与“重置”为原生按钮。"
+    "reducedMotion": "可使用时间轴暂停在完整帧。",
+    "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
   },
   "composition": {
     "role": "accent",
@@ -49,18 +65,126 @@
       "outro-stat-stack"
     ],
     "conflicts": [],
-    "notes": "结尾统计里复用同一计数（×N），形成首尾呼应。"
+    "notes": "MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。"
   },
-  "prompt": "实现收集计数徽章：右上角白色胶囊（头像 + 12px 等宽标签 + 粗体 ×N），计数由事件时刻列表推导；最近一次事件后经过 k 秒时，数字在 300ms 内从下方滚入、徽章 scale(1 + 0.14·e^(-7k))、头像外圈 2px 强调色环放大并淡出。下方图鉴托盘 N 个 3:4 槽位，空位为虚线 + 问号，事件发生时依次 420ms outBack 填入缩略图与名字并换成强调色描边。徽章 role=status 播报当前数量，提供手动 +1 与重置按钮。",
+  "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
   "demo": "demos/patterns/collect-counter/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage",
-      "observation": "右上角 YUI SPOTTED ×N 随全片递增（×2→×11→×22）；Sound! Euphonium 段落右下角色托盘 REINA / HAZUKI / MIDORI / KUMIKO 依次点亮；结尾统计 ×19 YUI SIGHTINGS。",
+      "observation": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
       "evidence": "observed",
-      "locator": "0:16.5、1:14.5、2:30.5"
+      "locator": "caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6"
     }
   ],
-  "previewAt": 6.2
+  "previewAt": 6.2,
+  "markers": [
+    {
+      "t": 0,
+      "label": "徽章出现"
+    },
+    {
+      "t": 0.8,
+      "label": "×1 + 关空"
+    },
+    {
+      "t": 2.2,
+      "label": "×2 + 京都"
+    },
+    {
+      "t": 3.4,
+      "label": "×3 + 奈良"
+    },
+    {
+      "t": 4.6,
+      "label": "×4 + 大阪"
+    }
+  ],
+  "sound": {
+    "voices": [
+      "confirm",
+      "stamp",
+      "sparkle"
+    ],
+    "score": "demos/patterns/collect-counter/score.json",
+    "description": "MotionKit.audio.attach 挂接事件：confirm、stamp、sparkle。"
+  },
+  "tokens": {
+    "palette": [
+      "#f1eee7",
+      "#16171a",
+      "#d9562c",
+      "#e23b3b"
+    ],
+    "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。",
+    "css": {
+      "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+      "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+      "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+      "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+      "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+      "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+      "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+      "--paper": "#f1eee7",
+      "--ink": "#16171a",
+      "--ink-map": "#16171a",
+      "--muted": "rgba(22, 23, 26, .62)",
+      "--line": "rgba(22, 23, 26, .26)",
+      "--accent": "#d9562c",
+      "--accent-soft": "rgba(217, 86, 44, .22)",
+      "--surface": "rgba(250, 249, 245, .94)",
+      "--alert": "#e23b3b"
+    },
+    "motion": [
+      {
+        "name": "徽章出现",
+        "value": "0s"
+      },
+      {
+        "name": "×1 + 关空",
+        "value": "0.8s"
+      },
+      {
+        "name": "×2 + 京都",
+        "value": "2.2s"
+      },
+      {
+        "name": "×3 + 奈良",
+        "value": "3.4s"
+      },
+      {
+        "name": "×4 + 大阪",
+        "value": "4.6s"
+      },
+      {
+        "name": "时长",
+        "value": "6.6s"
+      }
+    ]
+  },
+  "migration": [
+    {
+      "field": "复制的函数",
+      "how": "drawHud、stepAtX、ruleX、stampXY"
+    },
+    {
+      "field": "依赖",
+      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+    },
+    {
+      "field": "需要的数据",
+      "how": "config.js 的 mascot、stepper、tracks.counter / stamps / progress 与横竖 layout。"
+    },
+    {
+      "field": "config.js → segments / markers",
+      "how": "caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6"
+    },
+    {
+      "field": "score.json",
+      "how": "事件 voice：confirm、stamp、sparkle；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+    }
+  ]
 }

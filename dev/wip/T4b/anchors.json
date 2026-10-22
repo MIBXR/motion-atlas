@@ -1,0 +1,5010 @@
+{
+  "landscape": {
+    "13": {
+      "caseT": 13,
+      "stops": {
+        "pvg": {
+          "x": -7356.680334177248,
+          "y": 412.41603420957074
+        },
+        "kix": {
+          "x": 649.0157664937358,
+          "y": 585.0491483138986
+        },
+        "kyoto": {
+          "x": 2115.074652334577,
+          "y": -59.160210280039976
+        },
+        "inari": {
+          "x": 2161.292398512297,
+          "y": -36.79041063029478
+        },
+        "kamo": {
+          "x": 2129.2551262507814,
+          "y": -77.75874332156096
+        },
+        "jrNara": {
+          "x": 2634.895293203094,
+          "y": 415.1555408669127
+        },
+        "naraPark": {
+          "x": 2705.9169958128305,
+          "y": 419.40343410750177
+        },
+        "kintetsuNara": {
+          "x": 2664.9608835251356,
+          "y": 414.3631145041614
+        },
+        "saidaiji": {
+          "x": 2479.03301591576,
+          "y": 363.5898411767795
+        },
+        "takanohara": {
+          "x": 2465.9978519127944,
+          "y": 308.7159416267342
+        },
+        "namba": {
+          "x": 1568.5655129240022,
+          "y": 247.57538710477857
+        },
+        "dotonbori": {
+          "x": 1578.6330433082146,
+          "y": 246.6751686252849
+        }
+      },
+      "camera": {
+        "center": [
+          135.24400000000003,
+          34.431
+        ],
+        "zoom": 11.277662037037036,
+        "bearing": -20.263888888888914,
+        "pitch": 44.842592592592595,
+        "padding": {
+          "top": 120,
+          "bottom": 0,
+          "left": 0,
+          "right": 640
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": true,
+          "box": {
+            "x": 669,
+            "y": 562,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(669px, 562px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 1576,
+            "y": 296,
+            "w": 247,
+            "h": 46
+          },
+          "transform": "translate(1576px, 296px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 389,
+            "y": 657,
+            "w": 311,
+            "h": 46
+          },
+          "transform": "translate(389px, 657px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 720,
+            "y": 557,
+            "w": 78.6875,
+            "h": 46
+          },
+          "transform": "translate(720px, 557px)",
+          "text": "KAM",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 1317,
+            "y": 546,
+            "w": 275,
+            "h": 46
+          },
+          "transform": "translate(1317px, 546px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 487,
+            "y": 760,
+            "w": 301,
+            "h": 40
+          },
+          "transform": "translate(487px, 760px)",
+          "text": "OSAKA NAMBA",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 663,
+            "y": 600,
+            "w": 249,
+            "h": 46
+          },
+          "transform": "translate(663px, 600px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M966 585H1022",
+        "style": "stroke-dasharray: 56, 56; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "1018",
+          "y": "581",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": true,
+          "box": {
+            "x": 1032,
+            "y": 212,
+            "w": 824,
+            "h": 464
+          },
+          "style": "opacity: 1; visibility: inherit; left: 1032px; top: 212px; width: 824px; height: 464px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 1032,
+            "y": 198,
+            "w": 824,
+            "h": 464
+          },
+          "style": "opacity: 0; visibility: hidden; left: 1032px; top: 212px; width: 824px; height: 464px; transform: translate(0px, -14px) scale(1); z-index: 1; --r: 10px; --ring: rgb(56,139,164);"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 1416,
+            "y": 200,
+            "w": 440,
+            "h": 516
+          },
+          "style": "opacity: 0; visibility: hidden; left: 1416px; top: 200px; width: 440px; height: 516px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "41": {
+      "caseT": 41,
+      "stops": {
+        "pvg": {
+          "x": 25826.375144398276,
+          "y": -615.9296056787698
+        },
+        "kix": {
+          "x": 10308.56230075473,
+          "y": -918.6696354664599
+        },
+        "kyoto": {
+          "x": 637.6921004918863,
+          "y": -466.3370774090755
+        },
+        "inari": {
+          "x": 684.1168811573413,
+          "y": -459.38881052702277
+        },
+        "kamo": {
+          "x": 722.6933062998106,
+          "y": -472.78475464123204
+        },
+        "jrNara": {
+          "x": -376.67801500041094,
+          "y": 645.8953752793614
+        },
+        "naraPark": {
+          "x": 774.5197879886762,
+          "y": 613.0610137758329
+        },
+        "kintetsuNara": {
+          "x": 190.15660902269823,
+          "y": 585.4802578568783
+        },
+        "saidaiji": {
+          "x": -1061.301776044863,
+          "y": 179.06725942112877
+        },
+        "takanohara": {
+          "x": -89.68035934982115,
+          "y": -96.56684261043792
+        },
+        "namba": {
+          "x": -7013.578806339698,
+          "y": -59.64058634482116
+        },
+        "dotonbori": {
+          "x": -6828.236473728382,
+          "y": -66.40464255910237
+        }
+      },
+      "camera": {
+        "center": [
+          135.83719739466721,
+          34.68520065133358
+        ],
+        "zoom": 15.151302666395278,
+        "bearing": -12.03907999185833,
+        "pitch": 54.006513331976386,
+        "padding": {
+          "top": 120,
+          "bottom": 0,
+          "left": 0,
+          "right": 640
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 692,
+            "y": 563,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(692px, 563px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 106,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 130,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 82,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": true,
+          "box": {
+            "x": 795,
+            "y": 590,
+            "w": 42.5,
+            "h": 46
+          },
+          "transform": "translate(795px, 590px)",
+          "text": "N",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 106,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": null,
+        "cap": {
+          "x": null,
+          "y": null,
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "58": {
+      "caseT": 58,
+      "stops": {
+        "pvg": {
+          "x": -4468.41063069318,
+          "y": 1940.145377627746
+        },
+        "kix": {
+          "x": 1202.773148787106,
+          "y": 776.2850263648112
+        },
+        "kyoto": {
+          "x": 1555.9166606591323,
+          "y": 318.5996619684981
+        },
+        "inari": {
+          "x": 1565.470010382889,
+          "y": 333.6221410548902
+        },
+        "kamo": {
+          "x": 1564.6296864946812,
+          "y": 298.8460727022928
+        },
+        "jrNara": {
+          "x": 1597.7947320117842,
+          "y": 572.5015568696405
+        },
+        "naraPark": {
+          "x": 1612.0489932665869,
+          "y": 568.6977078301559
+        },
+        "kintetsuNara": {
+          "x": 1604.2922154785972,
+          "y": 569.7377674444908
+        },
+        "saidaiji": {
+          "x": 1572.8207188013928,
+          "y": 561.7442510985026
+        },
+        "takanohara": {
+          "x": 1578.9719371806052,
+          "y": 536.1438567996859
+        },
+        "namba": {
+          "x": 1377.2745964379108,
+          "y": 584.0947174923392
+        },
+        "dotonbori": {
+          "x": 1379.6580776337819,
+          "y": 582.7687412719473
+        }
+      },
+      "camera": {
+        "center": [
+          135.55999999999995,
+          34.720000000000006
+        ],
+        "zoom": 8.914467592592592,
+        "bearing": 0,
+        "pitch": 0,
+        "padding": {
+          "top": 0,
+          "bottom": 0,
+          "left": 920,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": true,
+          "box": {
+            "x": 1223,
+            "y": 701,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(1223px, 701px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": true,
+          "box": {
+            "x": 1576,
+            "y": 296,
+            "w": 247,
+            "h": 46
+          },
+          "transform": "translate(1576px, 296px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 389,
+            "y": 657,
+            "w": 311,
+            "h": 46
+          },
+          "transform": "translate(389px, 657px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 82,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": true,
+          "box": {
+            "x": 1317,
+            "y": 546,
+            "w": 275,
+            "h": 46
+          },
+          "transform": "translate(1317px, 546px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": true,
+          "box": {
+            "x": 1255,
+            "y": 630,
+            "w": 249,
+            "h": 46
+          },
+          "transform": "translate(1255px, 630px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": "stroke-dasharray: 328, 328; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "1018",
+          "y": "632",
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 1032,
+            "y": 212,
+            "w": 824,
+            "h": 464
+          },
+          "style": "opacity: 0; visibility: hidden; left: 1032px; top: 212px; width: 824px; height: 464px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "10.4": {
+      "caseT": 10.4,
+      "stops": {
+        "pvg": {
+          "x": -9695.442957240857,
+          "y": 874.5346558127701
+        },
+        "kix": {
+          "x": 672.4340461828168,
+          "y": 586.4014411195313
+        },
+        "kyoto": {
+          "x": 1816.9323273884013,
+          "y": -55.408410652686534
+        },
+        "inari": {
+          "x": 1850.3516445222676,
+          "y": -34.46060679009718
+        },
+        "kamo": {
+          "x": 1830.844107714876,
+          "y": -74.86116340343705
+        },
+        "jrNara": {
+          "x": 2129.9606525833788,
+          "y": 360.8982123642029
+        },
+        "naraPark": {
+          "x": 2179.381757784593,
+          "y": 361.52909368148016
+        },
+        "kintetsuNara": {
+          "x": 2151.3886147190556,
+          "y": 359.0046404673765
+        },
+        "saidaiji": {
+          "x": 2027.5670449529182,
+          "y": 323.7582461489963
+        },
+        "takanohara": {
+          "x": 2027.1954303939397,
+          "y": 277.0007068070798
+        },
+        "namba": {
+          "x": 1363.0809147303607,
+          "y": 258.8444765097729
+        },
+        "dotonbori": {
+          "x": 1370.846247902692,
+          "y": 257.625756421023
+        }
+      },
+      "camera": {
+        "center": [
+          135.24168326522727,
+          34.430391679376555
+        ],
+        "zoom": 10.871180215503962,
+        "bearing": -15.599877972465949,
+        "pitch": 40.9496796777231,
+        "padding": {
+          "top": 117.99938986232974,
+          "bottom": 0,
+          "left": 0,
+          "right": 598.9874921777593
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": true,
+          "box": {
+            "x": 692,
+            "y": 563,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(692px, 563px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 106,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 130,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 82,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 94,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 130,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 106,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": null,
+        "cap": {
+          "x": null,
+          "y": null,
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "5.95": {
+      "caseT": 5.95,
+      "stops": {
+        "pvg": {
+          "x": 1421.6722059222839,
+          "y": 566.0094937052397
+        },
+        "kix": {
+          "x": 1492.2066212829116,
+          "y": 544.5203727084962
+        },
+        "kyoto": {
+          "x": 1494.5409030109695,
+          "y": 540.889338581374
+        },
+        "inari": {
+          "x": 1494.621255327843,
+          "y": 540.9964332990663
+        },
+        "kamo": {
+          "x": 1494.593079463772,
+          "y": 540.736330621433
+        },
+        "jrNara": {
+          "x": 1495.011342662643,
+          "y": 542.767054986636
+        },
+        "naraPark": {
+          "x": 1495.1146898611134,
+          "y": 542.7304559572106
+        },
+        "kintetsuNara": {
+          "x": 1495.0578036125444,
+          "y": 542.7426589106582
+        },
+        "saidaiji": {
+          "x": 1494.8193387599981,
+          "y": 542.700709283181
+        },
+        "takanohara": {
+          "x": 1494.8488796254533,
+          "y": 542.505494580742
+        },
+        "namba": {
+          "x": 1493.3828084030608,
+          "y": 542.9796242252828
+        },
+        "dotonbori": {
+          "x": 1493.399663417522,
+          "y": 542.9683313003314
+        }
+      },
+      "camera": {
+        "center": [
+          127.23358651620379,
+          32.21741022253704
+        ],
+        "zoom": 1.904198314525463,
+        "bearing": 0,
+        "pitch": 0,
+        "padding": {
+          "top": 40,
+          "bottom": 0,
+          "left": 981.6793258101852,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 692,
+            "y": 563,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(692px, 563px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 106,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 130,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 82,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 795,
+            "y": 590,
+            "w": 42.5,
+            "h": 46
+          },
+          "transform": "translate(795px, 590px)",
+          "text": "N",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 106,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": null,
+        "cap": {
+          "x": null,
+          "y": null,
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "19.7": {
+      "caseT": 19.7,
+      "stops": {
+        "pvg": {
+          "x": 26051.046456101936,
+          "y": -770.3371278643959
+        },
+        "kix": {
+          "x": 3978.7628315186075,
+          "y": -938.9203331768296
+        },
+        "kyoto": {
+          "x": 548.7480899788123,
+          "y": 365.97720141666855
+        },
+        "inari": {
+          "x": 719.9999999994113,
+          "y": 680.000000000883
+        },
+        "kamo": {
+          "x": 886.7245685913895,
+          "y": 165.305832090721
+        },
+        "jrNara": {
+          "x": 982.5838151757152,
+          "y": -1093.5062236850172
+        },
+        "naraPark": {
+          "x": 813.5223749195693,
+          "y": -1094.5381690010388
+        },
+        "kintetsuNara": {
+          "x": 903.9395763791214,
+          "y": -1096.2484757304278
+        },
+        "saidaiji": {
+          "x": 1283.107314081474,
+          "y": -1133.3068744040022
+        },
+        "takanohara": {
+          "x": 1202.0434839689171,
+          "y": -1207.2192644208658
+        },
+        "namba": {
+          "x": 4206.436738478211,
+          "y": -1202.9792560975297
+        },
+        "dotonbori": {
+          "x": 4186.439780149848,
+          "y": -1205.7138184837133
+        }
+      },
+      "camera": {
+        "center": [
+          135.7727,
+          34.96709999999999
+        ],
+        "zoom": 14.15,
+        "bearing": -13.000000000000002,
+        "pitch": 49.99999999999999,
+        "padding": {
+          "top": 280,
+          "bottom": 0,
+          "left": 0,
+          "right": 480
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 692,
+            "y": 563,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(692px, 563px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 247,
+            "h": 46
+          },
+          "transform": "",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": true,
+          "box": {
+            "x": 389,
+            "y": 657,
+            "w": 311,
+            "h": 46
+          },
+          "transform": "translate(389px, 657px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 82,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 795,
+            "y": 590,
+            "w": 42.5,
+            "h": 46
+          },
+          "transform": "translate(795px, 590px)",
+          "text": "N",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 106,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M738 680H894V636H1022",
+        "style": "stroke-dasharray: 328, 328; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "1018",
+          "y": "632",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": true,
+          "box": {
+            "x": 1032,
+            "y": 212,
+            "w": 824,
+            "h": 464
+          },
+          "style": "opacity: 1; visibility: inherit; left: 1032px; top: 212px; width: 824px; height: 464px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "20.4": {
+      "caseT": 20.4,
+      "stops": {
+        "pvg": {
+          "x": 47206.9115334398,
+          "y": -758.701632480665
+        },
+        "kix": {
+          "x": 4168.839037713518,
+          "y": -848.9978111440201
+        },
+        "kyoto": {
+          "x": 563.1769852379518,
+          "y": 362.1176480248266
+        },
+        "inari": {
+          "x": 719.9999999988227,
+          "y": 679.9999999997057
+        },
+        "kamo": {
+          "x": 923.3785633875151,
+          "y": 172.39957966162828
+        },
+        "jrNara": {
+          "x": 1077.0203628210043,
+          "y": -968.1190103741933
+        },
+        "naraPark": {
+          "x": 913.655237511057,
+          "y": -967.8887404070433
+        },
+        "kintetsuNara": {
+          "x": 1000.9992726461874,
+          "y": -969.9303270901945
+        },
+        "saidaiji": {
+          "x": 1371.0405927566114,
+          "y": -1004.0206547936617
+        },
+        "takanohara": {
+          "x": 1294.0492134200133,
+          "y": -1065.978342190286
+        },
+        "namba": {
+          "x": 4383.295151826276,
+          "y": -1088.6475253290503
+        },
+        "dotonbori": {
+          "x": 4361.189245415162,
+          "y": -1090.8974210832148
+        }
+      },
+      "camera": {
+        "center": [
+          135.7727,
+          34.96709999999999
+        ],
+        "zoom": 14.224806823152063,
+        "bearing": -15.244204694561857,
+        "pitch": 51.49613646304126,
+        "padding": {
+          "top": 280,
+          "bottom": 0,
+          "left": 0,
+          "right": 480
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 1223,
+            "y": 701,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(1223px, 701px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 1576,
+            "y": 296,
+            "w": 247,
+            "h": 46
+          },
+          "transform": "translate(1576px, 296px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": true,
+          "box": {
+            "x": 389,
+            "y": 657,
+            "w": 311,
+            "h": 46
+          },
+          "transform": "translate(389px, 657px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 82,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 1317,
+            "y": 546,
+            "w": 275,
+            "h": 46
+          },
+          "transform": "translate(1317px, 546px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 1255,
+            "y": 630,
+            "w": 249,
+            "h": 46
+          },
+          "transform": "translate(1255px, 630px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M738 680H894V636H1022",
+        "style": "stroke-dasharray: 328, 328; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "1018",
+          "y": "632",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": true,
+          "box": {
+            "x": 1032,
+            "y": 212,
+            "w": 824,
+            "h": 464
+          },
+          "style": "opacity: 1; visibility: inherit; left: 1032px; top: 212px; width: 824px; height: 464px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "24.6": {
+      "caseT": 24.6,
+      "stops": {
+        "pvg": {
+          "x": 4381.444813127491,
+          "y": -559.790096247855
+        },
+        "kix": {
+          "x": 1762.9102857019059,
+          "y": -613.9234368100534
+        },
+        "kyoto": {
+          "x": -999.3168736853547,
+          "y": 4533.596815511422
+        },
+        "inari": {
+          "x": -1196.0093842044816,
+          "y": -4842.332624335255
+        },
+        "kamo": {
+          "x": 699.9650534109319,
+          "y": 579.5054870003368
+        },
+        "jrNara": {
+          "x": 32.453584904269704,
+          "y": -682.7608528466718
+        },
+        "naraPark": {
+          "x": -100.04188829692077,
+          "y": -686.2370510689832
+        },
+        "kintetsuNara": {
+          "x": -28.721711688852785,
+          "y": -684.8918449763914
+        },
+        "saidaiji": {
+          "x": 240.8391401595758,
+          "y": -686.2773392244426
+        },
+        "takanohara": {
+          "x": 166.13655795072316,
+          "y": -703.3440240397038
+        },
+        "namba": {
+          "x": 1629.429931535148,
+          "y": -660.3001266155707
+        },
+        "dotonbori": {
+          "x": 1620.4099681237508,
+          "y": -660.9461149066162
+        }
+      },
+      "camera": {
+        "center": [
+          135.7715976676385,
+          35.00878600593234
+        ],
+        "zoom": 15.104081632653061,
+        "bearing": 10.093294460641344,
+        "pitch": 55.02332361516036,
+        "padding": {
+          "top": 80,
+          "bottom": 0,
+          "left": 0,
+          "right": 520
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 1223,
+            "y": 701,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(1223px, 701px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 1576,
+            "y": 296,
+            "w": 247,
+            "h": 46
+          },
+          "transform": "translate(1576px, 296px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 389,
+            "y": 657,
+            "w": 311,
+            "h": 46
+          },
+          "transform": "translate(389px, 657px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": true,
+          "box": {
+            "x": 720,
+            "y": 557,
+            "w": 78.6875,
+            "h": 46
+          },
+          "transform": "translate(720px, 557px)",
+          "text": "KAM",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 1317,
+            "y": 546,
+            "w": 275,
+            "h": 46
+          },
+          "transform": "translate(1317px, 546px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 1255,
+            "y": 630,
+            "w": 249,
+            "h": 46
+          },
+          "transform": "translate(1255px, 630px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": "stroke-dasharray: 328, 328; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "1018",
+          "y": "632",
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 1032,
+            "y": 198,
+            "w": 824,
+            "h": 464
+          },
+          "style": "opacity: 0; visibility: hidden; left: 1032px; top: 212px; width: 824px; height: 464px; transform: translate(0px, -14px) scale(1); z-index: 1; --r: 10px; --ring: rgb(56,139,164);"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "51.6": {
+      "caseT": 51.6,
+      "stops": {
+        "pvg": {
+          "x": 2351.1306271431968,
+          "y": -371.3122404625406
+        },
+        "kix": {
+          "x": 1047.7453878174226,
+          "y": -440.52799686379694
+        },
+        "kyoto": {
+          "x": 727.122015348517,
+          "y": -317.80430967584357
+        },
+        "inari": {
+          "x": 821.9245915371847,
+          "y": -316.54834987121654
+        },
+        "kamo": {
+          "x": 707.6675140701465,
+          "y": -320.8933757736765
+        },
+        "jrNara": {
+          "x": 3137.828554118131,
+          "y": -244.90699826032852
+        },
+        "naraPark": {
+          "x": 3091.6389018460327,
+          "y": -253.72542689341452
+        },
+        "kintetsuNara": {
+          "x": 3093.7382183437,
+          "y": -249.8252269783387
+        },
+        "saidaiji": {
+          "x": 2823.920791091748,
+          "y": -241.61298462260754
+        },
+        "takanohara": {
+          "x": 2386.972969365205,
+          "y": -261.65342522786875
+        },
+        "namba": {
+          "x": 471.04334592152406,
+          "y": 780.1039293487213
+        },
+        "dotonbori": {
+          "x": 643.3815596591403,
+          "y": 622.9340467445098
+        }
+      },
+      "camera": {
+        "center": [
+          135.50125000000003,
+          34.66883166066474
+        ],
+        "zoom": 15.689575739903777,
+        "bearing": 30.98585799679256,
+        "pitch": 58.59717159935851,
+        "padding": {
+          "top": 160,
+          "bottom": 0,
+          "left": 0,
+          "right": 640
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 332.234375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 1223,
+            "y": 701,
+            "w": 289,
+            "h": 46
+          },
+          "transform": "translate(1223px, 701px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 1576,
+            "y": 296,
+            "w": 247,
+            "h": 46
+          },
+          "transform": "translate(1576px, 296px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 389,
+            "y": 657,
+            "w": 311,
+            "h": 46
+          },
+          "transform": "translate(389px, 657px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 720,
+            "y": 557,
+            "w": 78.6875,
+            "h": 46
+          },
+          "transform": "translate(720px, 557px)",
+          "text": "KAM",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 203,
+            "h": 40
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 1317,
+            "y": 546,
+            "w": 275,
+            "h": 46
+          },
+          "transform": "translate(1317px, 546px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 40
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 101.59375,
+            "h": 46
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": true,
+          "box": {
+            "x": 487,
+            "y": 760,
+            "w": 301,
+            "h": 40
+          },
+          "transform": "translate(487px, 760px)",
+          "text": "OSAKA NAMBA",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": true,
+          "box": {
+            "x": 663,
+            "y": 600,
+            "w": 249,
+            "h": 46
+          },
+          "transform": "translate(663px, 600px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M920.4 622.9H1406",
+        "style": "stroke-dasharray: 485.6, 485.6; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "1402",
+          "y": "618.9",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 1032,
+            "y": 198,
+            "w": 824,
+            "h": 464
+          },
+          "style": "opacity: 0; visibility: hidden; left: 1032px; top: 212px; width: 824px; height: 464px; transform: translate(0px, -14px) scale(1); z-index: 1; --r: 10px; --ring: rgb(56,139,164);"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": true,
+          "box": {
+            "x": 1416,
+            "y": 200,
+            "w": 440,
+            "h": 516
+          },
+          "style": "opacity: 1; visibility: inherit; left: 1416px; top: 200px; width: 440px; height: 516px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    }
+  },
+  "portrait": {
+    "13": {
+      "caseT": 13,
+      "stops": {
+        "pvg": {
+          "x": -10752.933399219455,
+          "y": 435.09342078124314
+        },
+        "kix": {
+          "x": 546.1929564131025,
+          "y": 689.7302161834256
+        },
+        "kyoto": {
+          "x": 1892.1675366896536,
+          "y": 95.76275925589013
+        },
+        "inari": {
+          "x": 1918.9131827833908,
+          "y": 122.80741509858092
+        },
+        "kamo": {
+          "x": 1918.7232219750188,
+          "y": 72.54423245363043
+        },
+        "jrNara": {
+          "x": 2012.905678473021,
+          "y": 563.5224342756096
+        },
+        "naraPark": {
+          "x": 2063.263704793697,
+          "y": 566.8406356150725
+        },
+        "kintetsuNara": {
+          "x": 2035.840407396903,
+          "y": 562.8698674195327
+        },
+        "saidaiji": {
+          "x": 1926.2433856109626,
+          "y": 521.7965549700734
+        },
+        "takanohara": {
+          "x": 1948.99234822241,
+          "y": 475.23686077878193
+        },
+        "namba": {
+          "x": 1273.032223155087,
+          "y": 421.78743030021525
+        },
+        "dotonbori": {
+          "x": 1281.2965229404292,
+          "y": 420.95754476799635
+        }
+      },
+      "camera": {
+        "center": [
+          135.24400000000003,
+          34.431
+        ],
+        "zoom": 10.727662037037035,
+        "bearing": -20.263888888888914,
+        "pitch": 44.842592592592595,
+        "padding": {
+          "top": 0,
+          "bottom": 520,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": true,
+          "box": {
+            "x": 335,
+            "y": 748,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(335px, 748px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 597,
+            "y": 1253,
+            "w": 359,
+            "h": 64
+          },
+          "transform": "translate(597px, 1253px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 312,
+            "y": 818,
+            "w": 456,
+            "h": 64
+          },
+          "transform": "translate(312px, 818px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 74,
+            "y": 848,
+            "w": 110.03125,
+            "h": 64
+          },
+          "transform": "translate(74px, 848px)",
+          "text": "KAM",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 629,
+            "y": 1392,
+            "w": 402,
+            "h": 64
+          },
+          "transform": "translate(629px, 1392px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 443,
+            "h": 56
+          },
+          "transform": "",
+          "text": "OSAKA NAMBA",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 94,
+            "y": 1400,
+            "w": 362,
+            "h": 64
+          },
+          "transform": "translate(94px, 1400px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M546.2 819.7V930",
+        "style": "stroke-dasharray: 110.3, 110.3; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "542.2",
+          "y": "926",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": true,
+          "box": {
+            "x": 56,
+            "y": 940,
+            "w": 968,
+            "h": 544
+          },
+          "style": "opacity: 1; visibility: inherit; left: 56px; top: 940px; width: 968px; height: 544px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 56,
+            "y": 926,
+            "w": 968,
+            "h": 544
+          },
+          "style": "opacity: 0; visibility: hidden; left: 56px; top: 940px; width: 968px; height: 544px; transform: translate(0px, -14px) scale(1); z-index: 1; --r: 10px; --ring: rgb(56,139,164);"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 300,
+            "y": 820,
+            "w": 480,
+            "h": 640
+          },
+          "style": "opacity: 0; visibility: hidden; left: 300px; top: 820px; width: 480px; height: 640px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "41": {
+      "caseT": 41,
+      "stops": {
+        "pvg": {
+          "x": 47842.24518245903,
+          "y": -1583.6235862714273
+        },
+        "kix": {
+          "x": 32714.83555825241,
+          "y": -4353.796445479289
+        },
+        "kyoto": {
+          "x": 536.4333192957199,
+          "y": -947.9417172127664
+        },
+        "inari": {
+          "x": 607.622882157717,
+          "y": -923.8438170317769
+        },
+        "kamo": {
+          "x": 668.7793040645147,
+          "y": -970.6609070960214
+        },
+        "jrNara": {
+          "x": -138.12434393787598,
+          "y": 730.6122201839992
+        },
+        "naraPark": {
+          "x": 631.255978690727,
+          "y": 708.8603737236872
+        },
+        "kintetsuNara": {
+          "x": 230.39538233185695,
+          "y": 690.0067905742358
+        },
+        "saidaiji": {
+          "x": -950.3142615903195,
+          "y": 331.26937543558984
+        },
+        "takanohara": {
+          "x": -244.27766778249202,
+          "y": -48.68647864359912
+        },
+        "namba": {
+          "x": -7443.474751476327,
+          "y": 11.926603307414911
+        },
+        "dotonbori": {
+          "x": -7292.485284677846,
+          "y": 1.0927579964414138
+        }
+      },
+      "camera": {
+        "center": [
+          135.83719739466721,
+          34.68520065133358
+        ],
+        "zoom": 14.601302666395277,
+        "bearing": -12.03907999185833,
+        "pitch": 54.006513331976386,
+        "padding": {
+          "top": 0,
+          "bottom": 520,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 338,
+            "y": 764,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(338px, 764px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 184,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 112,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": true,
+          "box": {
+            "x": 430,
+            "y": 767,
+            "w": 55.734375,
+            "h": 64
+          },
+          "transform": "translate(430px, 767px)",
+          "text": "N",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": null,
+        "cap": {
+          "x": null,
+          "y": null,
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "58": {
+      "caseT": 58,
+      "stops": {
+        "pvg": {
+          "x": -3986.2255395173556,
+          "y": 2474.734021470805
+        },
+        "kix": {
+          "x": 379.4306920675357,
+          "y": 1539.1473325905222
+        },
+        "kyoto": {
+          "x": 575.4270935098424,
+          "y": 1285.1336499967856
+        },
+        "inari": {
+          "x": 580.7273940288605,
+          "y": 1293.472292921112
+        },
+        "kamo": {
+          "x": 580.2665275816425,
+          "y": 1274.1644865172657
+        },
+        "jrNara": {
+          "x": 598.6521103543417,
+          "y": 1426.0339830022604
+        },
+        "naraPark": {
+          "x": 606.5636887543843,
+          "y": 1423.923715887082
+        },
+        "kintetsuNara": {
+          "x": 602.2583281544341,
+          "y": 1424.500612215347
+        },
+        "saidaiji": {
+          "x": 584.7915706827348,
+          "y": 1420.0646547040399
+        },
+        "takanohara": {
+          "x": 588.2051055543625,
+          "y": 1405.8604304379217
+        },
+        "namba": {
+          "x": 476.2962016382559,
+          "y": 1432.4634855405795
+        },
+        "dotonbori": {
+          "x": 477.61857386229497,
+          "y": 1431.7278088805776
+        }
+      },
+      "camera": {
+        "center": [
+          135.55999999999995,
+          34.720000000000006
+        ],
+        "zoom": 8.064467592592592,
+        "bearing": 0,
+        "pitch": 0,
+        "padding": {
+          "top": 896,
+          "bottom": 0,
+          "left": 0,
+          "right": 80
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": true,
+          "box": {
+            "x": 401,
+            "y": 1507,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(401px, 1507px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": true,
+          "box": {
+            "x": 597,
+            "y": 1253,
+            "w": 359,
+            "h": 64
+          },
+          "transform": "translate(597px, 1253px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 312,
+            "y": 818,
+            "w": 456,
+            "h": 64
+          },
+          "transform": "translate(312px, 818px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 112,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": true,
+          "box": {
+            "x": 629,
+            "y": 1392,
+            "w": 402,
+            "h": 64
+          },
+          "transform": "translate(629px, 1392px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": true,
+          "box": {
+            "x": 94,
+            "y": 1400,
+            "w": 362,
+            "h": 64
+          },
+          "transform": "translate(94px, 1400px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": "stroke-dasharray: 40, 40; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "536",
+          "y": "926",
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 56,
+            "y": 940,
+            "w": 968,
+            "h": 544
+          },
+          "style": "opacity: 0; visibility: hidden; left: 56px; top: 940px; width: 968px; height: 544px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "10.4": {
+      "caseT": 10.4,
+      "stops": {
+        "pvg": {
+          "x": -12263.810019033093,
+          "y": 1055.6570515731491
+        },
+        "kix": {
+          "x": 548.9005987710294,
+          "y": 706.3078612389291
+        },
+        "kyoto": {
+          "x": 1557.2177859424655,
+          "y": 139.6765005106738
+        },
+        "inari": {
+          "x": 1577.4290846972985,
+          "y": 162.9763693077406
+        },
+        "kamo": {
+          "x": 1578.2799028538084,
+          "y": 117.48705728417019
+        },
+        "jrNara": {
+          "x": 1638.5438746398313,
+          "y": 537.0913968746829
+        },
+        "naraPark": {
+          "x": 1675.4973538592717,
+          "y": 537.5583016205949
+        },
+        "kintetsuNara": {
+          "x": 1655.4395003781235,
+          "y": 535.533992632238
+        },
+        "saidaiji": {
+          "x": 1575.4324427016886,
+          "y": 506.64503744402003
+        },
+        "takanohara": {
+          "x": 1593.2162747547084,
+          "y": 466.9940895066905
+        },
+        "namba": {
+          "x": 1084.0168519257716,
+          "y": 451.90432183070044
+        },
+        "dotonbori": {
+          "x": 1090.2844016277331,
+          "y": 450.8358827527201
+        }
+      },
+      "camera": {
+        "center": [
+          135.24132525662708,
+          34.43029767425674
+        ],
+        "zoom": 10.327432122184181,
+        "bearing": -15.599877972465949,
+        "pitch": 40.9496796777231,
+        "padding": {
+          "top": 0,
+          "bottom": 489.9908479349458,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": true,
+          "box": {
+            "x": 338,
+            "y": 764,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(338px, 764px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 184,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 112,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 132,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 184,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": null,
+        "cap": {
+          "x": null,
+          "y": null,
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "5.95": {
+      "caseT": 5.95,
+      "stops": {
+        "pvg": {
+          "x": 516.1100716598135,
+          "y": 1277.441131021465
+        },
+        "kix": {
+          "x": 573.8988626862571,
+          "y": 1259.8339429549278
+        },
+        "kyoto": {
+          "x": 575.8171613115751,
+          "y": 1256.8560546396434
+        },
+        "inari": {
+          "x": 575.883066912451,
+          "y": 1256.9438070517053
+        },
+        "kamo": {
+          "x": 575.8600999194459,
+          "y": 1256.7305734767986
+        },
+        "jrNara": {
+          "x": 576.2022735344366,
+          "y": 1258.3951928215736
+        },
+        "naraPark": {
+          "x": 576.287151706901,
+          "y": 1258.3651280025065
+        },
+        "kintetsuNara": {
+          "x": 576.2404360128379,
+          "y": 1258.3751654903765
+        },
+        "saidaiji": {
+          "x": 576.0446637973217,
+          "y": 1258.3409142820547
+        },
+        "takanohara": {
+          "x": 576.0690333612115,
+          "y": 1258.1808580547251
+        },
+        "namba": {
+          "x": 574.8651345091214,
+          "y": 1258.5703799832402
+        },
+        "dotonbori": {
+          "x": 574.8789772785179,
+          "y": 1258.5611132820409
+        }
+      },
+      "camera": {
+        "center": [
+          127.23358651620379,
+          32.21741022253704
+        ],
+        "zoom": 1.6156487358940972,
+        "bearing": 0,
+        "pitch": 0,
+        "padding": {
+          "top": 625.0379774305557,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 338,
+            "y": 764,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(338px, 764px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 184,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 112,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 430,
+            "y": 767,
+            "w": 55.734375,
+            "h": 64
+          },
+          "transform": "translate(430px, 767px)",
+          "text": "N",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": null,
+        "cap": {
+          "x": null,
+          "y": null,
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "19.7": {
+      "caseT": 19.7,
+      "stops": {
+        "pvg": {
+          "x": 50985.48835051667,
+          "y": -2128.2724926028845
+        },
+        "kix": {
+          "x": 8888.656649902481,
+          "y": -3387.5279742708644
+        },
+        "kyoto": {
+          "x": 403.63225414914837,
+          "y": 509.94392072221865
+        },
+        "inari": {
+          "x": 540.0000000006622,
+          "y": 760
+        },
+        "kamo": {
+          "x": 688.5013926835996,
+          "y": 301.56246205142355
+        },
+        "jrNara": {
+          "x": 1452.368953761731,
+          "y": -5402.192504943449
+        },
+        "naraPark": {
+          "x": 865.7257668166053,
+          "y": -5420.476130338319
+        },
+        "kintetsuNara": {
+          "x": 1183.1777250330317,
+          "y": -5450.971429885524
+        },
+        "saidaiji": {
+          "x": 2694.1437566366476,
+          "y": -6176.730503561308
+        },
+        "takanohara": {
+          "x": 2809.6785486555787,
+          "y": -8125.881094797456
+        },
+        "namba": {
+          "x": 16741.19830267982,
+          "y": -7990.057039951421
+        },
+        "dotonbori": {
+          "x": 16785.190718160116,
+          "y": -8077.245867230906
+        }
+      },
+      "camera": {
+        "center": [
+          135.7727,
+          34.96709999999999
+        ],
+        "zoom": 13.6,
+        "bearing": -13.000000000000002,
+        "pitch": 49.99999999999999,
+        "padding": {
+          "top": 0,
+          "bottom": 400,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 338,
+            "y": 764,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(338px, 764px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": true,
+          "box": {
+            "x": 312,
+            "y": 818,
+            "w": 456,
+            "h": 64
+          },
+          "transform": "translate(312px, 818px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 112,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 430,
+            "y": 767,
+            "w": 55.734375,
+            "h": 64
+          },
+          "transform": "translate(430px, 767px)",
+          "text": "N",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 148,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M540 890V930",
+        "style": "stroke-dasharray: 40, 40; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "536",
+          "y": "926",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": true,
+          "box": {
+            "x": 56,
+            "y": 940,
+            "w": 968,
+            "h": 544
+          },
+          "style": "opacity: 1; visibility: inherit; left: 56px; top: 940px; width: 968px; height: 544px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "20.4": {
+      "caseT": 20.4,
+      "stops": {
+        "pvg": {
+          "x": 102123.29354858946,
+          "y": -2383.8537308720033
+        },
+        "kix": {
+          "x": 9283.285093074725,
+          "y": -3116.2214250464513
+        },
+        "kyoto": {
+          "x": 413.70369158940014,
+          "y": 503.99569078328005
+        },
+        "inari": {
+          "x": 540,
+          "y": 760
+        },
+        "kamo": {
+          "x": 723.3912403509696,
+          "y": 302.28474654320206
+        },
+        "jrNara": {
+          "x": 1687.5216419425976,
+          "y": -4537.323149744299
+        },
+        "naraPark": {
+          "x": 1162.1173899682012,
+          "y": -4533.842063453949
+        },
+        "kintetsuNara": {
+          "x": 1446.87093544019,
+          "y": -4564.831787109561
+        },
+        "saidaiji": {
+          "x": 2816.305739327019,
+          "y": -5128.028986673737
+        },
+        "takanohara": {
+          "x": 2905.6110445247273,
+          "y": -6435.0375564203205
+        },
+        "namba": {
+          "x": 16691.68721830462,
+          "y": -7038.072621668124
+        },
+        "dotonbori": {
+          "x": 16706.40953536859,
+          "y": -7102.555617072129
+        }
+      },
+      "camera": {
+        "center": [
+          135.7727,
+          34.96709999999999
+        ],
+        "zoom": 13.674806823152062,
+        "bearing": -15.244204694561857,
+        "pitch": 51.49613646304126,
+        "padding": {
+          "top": 0,
+          "bottom": 400,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 401,
+            "y": 1507,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(401px, 1507px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 597,
+            "y": 1253,
+            "w": 359,
+            "h": 64
+          },
+          "transform": "translate(597px, 1253px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": true,
+          "box": {
+            "x": 312,
+            "y": 818,
+            "w": 456,
+            "h": 64
+          },
+          "transform": "translate(312px, 818px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 112,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 629,
+            "y": 1392,
+            "w": 402,
+            "h": 64
+          },
+          "transform": "translate(629px, 1392px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 94,
+            "y": 1400,
+            "w": 362,
+            "h": 64
+          },
+          "transform": "translate(94px, 1400px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M540 890V930",
+        "style": "stroke-dasharray: 40, 40; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "536",
+          "y": "926",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": true,
+          "box": {
+            "x": 56,
+            "y": 940,
+            "w": 968,
+            "h": 544
+          },
+          "style": "opacity: 1; visibility: inherit; left: 56px; top: 940px; width: 968px; height: 544px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "24.6": {
+      "caseT": 24.6,
+      "stops": {
+        "pvg": {
+          "x": 7204.912094062277,
+          "y": -1164.9073050220409
+        },
+        "kix": {
+          "x": 2666.6457750200175,
+          "y": -1441.3782570103322
+        },
+        "kyoto": {
+          "x": 231.319192188595,
+          "y": 1737.7654293186888
+        },
+        "inari": {
+          "x": 1265.4080740517993,
+          "y": 2782.9778747387713
+        },
+        "kamo": {
+          "x": 599.9761243621383,
+          "y": 879.6621468892482
+        },
+        "jrNara": {
+          "x": -852.5890016888942,
+          "y": -1867.782753571439
+        },
+        "naraPark": {
+          "x": -1151.4398167534198,
+          "y": -1892.0273414830438
+        },
+        "kintetsuNara": {
+          "x": -991.5781881639036,
+          "y": -1882.610525470897
+        },
+        "saidaiji": {
+          "x": -405.2586641215185,
+          "y": -1892.310050290523
+        },
+        "takanohara": {
+          "x": -604.6135609148812,
+          "y": -2015.7472883761222
+        },
+        "namba": {
+          "x": 2546.7605586244676,
+          "y": -1717.9014505847927
+        },
+        "dotonbori": {
+          "x": 2529.944907265674,
+          "y": -1722.055298832544
+        }
+      },
+      "camera": {
+        "center": [
+          135.7715976676385,
+          35.00878600593234
+        ],
+        "zoom": 14.55408163265306,
+        "bearing": 10.093294460641344,
+        "pitch": 55.02332361516036,
+        "padding": {
+          "top": 0,
+          "bottom": 160,
+          "left": 120,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 401,
+            "y": 1507,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(401px, 1507px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 597,
+            "y": 1253,
+            "w": 359,
+            "h": 64
+          },
+          "transform": "translate(597px, 1253px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 312,
+            "y": 818,
+            "w": 456,
+            "h": 64
+          },
+          "transform": "translate(312px, 818px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": true,
+          "box": {
+            "x": 74,
+            "y": 848,
+            "w": 110.03125,
+            "h": 64
+          },
+          "transform": "translate(74px, 848px)",
+          "text": "KAM",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 629,
+            "y": 1392,
+            "w": 402,
+            "h": 64
+          },
+          "transform": "translate(629px, 1392px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 94,
+            "y": 1400,
+            "w": 362,
+            "h": 64
+          },
+          "transform": "translate(94px, 1400px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "",
+        "style": "stroke-dasharray: 40, 40; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "536",
+          "y": "926",
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 56,
+            "y": 926,
+            "w": 968,
+            "h": 544
+          },
+          "style": "opacity: 0; visibility: hidden; left: 56px; top: 940px; width: 968px; height: 544px; transform: translate(0px, -14px) scale(1); z-index: 1; --r: 10px; --ring: rgb(56,139,164);"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "51.6": {
+      "caseT": 51.6,
+      "stops": {
+        "pvg": {
+          "x": 3593.641518872784,
+          "y": -1069.0713775003424
+        },
+        "kix": {
+          "x": 1359.98929799719,
+          "y": -1432.7564544881373
+        },
+        "kyoto": {
+          "x": 683.0251278663384,
+          "y": -839.5601303298305
+        },
+        "inari": {
+          "x": 838.0988253925508,
+          "y": -834.6136586608192
+        },
+        "kamo": {
+          "x": 651.603322100469,
+          "y": -851.8055882663172
+        },
+        "jrNara": {
+          "x": 4237.230181526066,
+          "y": -580.2160712384831
+        },
+        "naraPark": {
+          "x": 4212.56333351827,
+          "y": -608.8436327039434
+        },
+        "kintetsuNara": {
+          "x": 4196.233853527893,
+          "y": -596.0976919845652
+        },
+        "saidaiji": {
+          "x": 3758.285791216358,
+          "y": -569.6966104485595
+        },
+        "takanohara": {
+          "x": 3185.6151792164524,
+          "y": -635.1756011644427
+        },
+        "namba": {
+          "x": 435.0608597332502,
+          "y": 799.4407044329578
+        },
+        "dotonbori": {
+          "x": 542.3054613390663,
+          "y": 702.0003584185837
+        }
+      },
+      "camera": {
+        "center": [
+          135.50125000000003,
+          34.66883166066474
+        ],
+        "zoom": 15.139575739903776,
+        "bearing": 30.98585799679256,
+        "pitch": 58.59717159935851,
+        "padding": {
+          "top": 0,
+          "bottom": 520,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "labels": [
+        {
+          "stop": "pvg",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 487.359375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "SHANGHAI · PVG",
+          "ja": "上海浦東"
+        },
+        {
+          "stop": "kix",
+          "visible": false,
+          "box": {
+            "x": 401,
+            "y": 1507,
+            "w": 422,
+            "h": 64
+          },
+          "transform": "translate(401px, 1507px)",
+          "text": "KANSAI · KIX",
+          "ja": "関西空港"
+        },
+        {
+          "stop": "kyoto",
+          "visible": false,
+          "box": {
+            "x": 597,
+            "y": 1253,
+            "w": 359,
+            "h": 64
+          },
+          "transform": "translate(597px, 1253px)",
+          "text": "KYOTO STA.",
+          "ja": "京都駅"
+        },
+        {
+          "stop": "inari",
+          "visible": false,
+          "box": {
+            "x": 312,
+            "y": 818,
+            "w": 456,
+            "h": 64
+          },
+          "transform": "translate(312px, 818px)",
+          "text": "FUSHIMI INARI",
+          "ja": "伏見稲荷"
+        },
+        {
+          "stop": "kamo",
+          "visible": false,
+          "box": {
+            "x": 74,
+            "y": 848,
+            "w": 110.03125,
+            "h": 64
+          },
+          "transform": "translate(74px, 848px)",
+          "text": "KAM",
+          "ja": "鴨川"
+        },
+        {
+          "stop": "jrNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 296,
+            "h": 56
+          },
+          "transform": "",
+          "text": "JR NARA",
+          "ja": "奈良駅"
+        },
+        {
+          "stop": "naraPark",
+          "visible": false,
+          "box": {
+            "x": 629,
+            "y": 1392,
+            "w": 402,
+            "h": 64
+          },
+          "transform": "translate(629px, 1392px)",
+          "text": "NARA PARK",
+          "ja": "奈良公園"
+        },
+        {
+          "stop": "kintetsuNara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 168,
+            "h": 56
+          },
+          "transform": "",
+          "text": "",
+          "ja": "近鉄奈良"
+        },
+        {
+          "stop": "saidaiji",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 220,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "大和西大寺"
+        },
+        {
+          "stop": "takanohara",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 141.375,
+            "h": 64
+          },
+          "transform": "",
+          "text": "",
+          "ja": "高の原"
+        },
+        {
+          "stop": "namba",
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 443,
+            "h": 56
+          },
+          "transform": "",
+          "text": "OSAKA NAMBA",
+          "ja": "大阪難波"
+        },
+        {
+          "stop": "dotonbori",
+          "visible": false,
+          "box": {
+            "x": 94,
+            "y": 1400,
+            "w": 362,
+            "h": 64
+          },
+          "transform": "translate(94px, 1400px)",
+          "text": "DOTONBORI",
+          "ja": "道頓堀"
+        }
+      ],
+      "leader": {
+        "d": "M542.3 720V810",
+        "style": "stroke-dasharray: 90, 90; stroke-dashoffset: 0;",
+        "cap": {
+          "x": "538.3",
+          "y": "806",
+          "style": "opacity: 1; visibility: inherit;"
+        }
+      },
+      "cards": [
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 56,
+            "y": 926,
+            "w": 968,
+            "h": 544
+          },
+          "style": "opacity: 0; visibility: hidden; left: 56px; top: 940px; width: 968px; height: 544px; transform: translate(0px, -14px) scale(1); z-index: 1; --r: 10px; --ring: rgb(56,139,164);"
+        },
+        {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "style": "opacity: 0; visibility: hidden;"
+        },
+        {
+          "visible": true,
+          "box": {
+            "x": 300,
+            "y": 820,
+            "w": 480,
+            "h": 640
+          },
+          "style": "opacity: 1; visibility: inherit; left: 300px; top: 820px; width: 480px; height: 640px; transform: translate(0px, 0px) scale(1); z-index: 1; --r: 10px; --ring: transparent;"
+        }
+      ],
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    }
+  }
+}

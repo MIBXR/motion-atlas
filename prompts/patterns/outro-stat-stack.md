@@ -4,12 +4,27 @@
 
 ## 实现 Prompt
 
-实现片尾数据堆叠：左侧垂直列表，每行“大号数字（DIN 类 800 字重，34–86px，等宽数字）+ 12px 等宽标签（字距 .22em）”；第 i 行在 t0 + i×320ms 以 450ms 上移 14px 淡入，数字 900ms outQuart 从 0 计数到目标值（支持“×”前缀与“ km”后缀、千分位）。最后一行下方用衬线体写“标题 — fin.”，逐字 60ms 错峰模糊入场，再淡入署名与 12px 致谢。背景保留淡化的完整路线。
+收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。
 
 ## 参数
 
-- **行错峰**：320ms
-- **计数**：900ms outQuart，千分位格式
-- **fin.**：逐字 500ms，错峰 60ms，模糊 12px
+- **统计**：0.65s
+- **fin.**：2.4s
+- **时长**：5.2s
+- **声音 voice**：blip、tick、bell、shimmer、sub
+
+## 动效 Token
+
+- **统计**：0.65s
+- **fin.**：2.4s
+- **时长**：5.2s
+
+## 迁移
+
+- `复制的函数`：drawOutro、blurIn
+- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
+- `需要的数据`：config.js 的 tracks.outro 与横竖 layout；58s 底图包含已完成路线和标记圆点。
+- `config.js → segments / markers`：caseT 55.6→60
+- `score.json`：事件 voice：blip、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。
 
 [打开 Demo](../../demos/patterns/outro-stat-stack/index.html) · [在库中查看](../../patterns.html#pattern/outro-stat-stack)

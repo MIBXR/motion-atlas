@@ -4,13 +4,29 @@
 
 ## 实现 Prompt
 
-实现“卡片 → 全屏 → 卡片”：卡片静止于右侧（宽 min(44vw, 860px)，16:10），550ms outCubic 浮入；在高光时刻用 600ms inOutCubic 把 left/top/width/height 插值到全屏、圆角 6px→0，停留 3s 期间图片 scale 1→1.07，再 550ms 收回。用同一个展开值驱动：上下渐变压暗层透明度、HUD 文字由墨色变白、卡片说明与引线淡出。所有状态由时间 t 计算，可任意 seek。
+照片卡片由引线牵出，展开到全屏停留，再收回原位。复用地图巡礼的 drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene 与对应 CSS。inari 标记、引线、照片卡片、全屏展开与收回。片段：caseT 18.4→24.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。
 
 ## 参数
 
-- **浮入**：550ms outCubic：上移 26px、缩放 0.965→1
-- **展开**：600ms inOutCubic
-- **停留**：约 3s，Ken Burns 1→1.07
-- **收回**：550ms inOutCubic
+- **出卡**：0s
+- **展开**：2.6s
+- **收回**：5.4s
+- **时长**：6.6s
+- **声音 voice**：shutter、paper、whoosh、impact
+
+## 动效 Token
+
+- **出卡**：0s
+- **展开**：2.6s
+- **收回**：5.4s
+- **时长**：6.6s
+
+## 迁移
+
+- `复制的函数`：drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene
+- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
+- `需要的数据`：config.js 的 inari、tracks.cards 与 expand、横竖 layout；20.4s 底图对应的横竖屏幕锚点；scenes.js 的 torii 照片画布。
+- `config.js → segments / markers`：caseT 18.4→24.6
+- `score.json`：事件 voice：shutter、paper、whoosh、impact；保持 inventory 中全部音色参数，t 映射为巧思时刻。
 
 [打开 Demo](../../demos/patterns/card-expand-fullscreen/index.html) · [在库中查看](../../patterns.html#pattern/card-expand-fullscreen)

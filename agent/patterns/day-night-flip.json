@@ -15,22 +15,30 @@
       "console",
       "showcase"
     ],
-    "summary": "用约 1 秒把世界从白天换到夜晚：按图层类别逐个插值颜色，中途经过灰阶。对照整体反色可以看到差别——反色会让水比陆地更亮。",
-    "mechanism": "为背景、水、绿地、建筑、道路、描边、路线、文字各定一组 [白天, 夜晚] 颜色，以同一个 night 值（0–1，inOutCubic）插值；HUD 文字与纸色同步。真实地图里遍历样式图层分类后 setPaintProperty，并缓存避免重复设置。",
-    "trigger": "时间流逝 / 跨天 / 章节气氛切换",
-    "effect": "时间感和情绪变化，而不必切镜头。",
+    "summary": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
+    "mechanism": "地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。以巧思时间 t 映射到案例时刻 caseT，复制函数 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 按 caseT 求值。",
+    "trigger": "播放、暂停或 seek 到巧思时间 t。",
+    "effect": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
     "timing": [
       {
+        "name": "白天",
+        "value": "0s"
+      },
+      {
+        "name": "入夜",
+        "value": "1.5s"
+      },
+      {
+        "name": "天亮",
+        "value": "4.5s"
+      },
+      {
         "name": "时长",
-        "value": "0.9–1.2s inOutCubic"
+        "value": "7s"
       },
       {
-        "name": "中点",
-        "value": "画面经过灰阶，像“天色渐变”"
-      },
-      {
-        "name": "配色",
-        "value": "陆地 #eeebe4→#1b2431，水 #bccdd9→#0d131c，道路 #fff→#2c3648"
+        "name": "声音 voice",
+        "value": "whoosh、sub、reverse、chime"
       }
     ],
     "useCases": [
@@ -42,7 +50,7 @@
       "频繁来回切换造成闪烁"
     ],
     "accessibility": {
-      "reducedMotion": "直接切换到目标配色，不做中间过渡。",
+      "reducedMotion": "可使用时间轴暂停在完整帧。",
       "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
     },
     "composition": {
@@ -52,22 +60,115 @@
         "route-draw-marker"
       ],
       "conflicts": [],
-      "notes": "路线和标记的颜色要单独定义夜晚值，不要跟着底图一起反色。"
+      "notes": "地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。"
     },
-    "prompt": "实现昼夜翻转：为每类图层定义 [白天, 夜晚] 两个颜色（背景/陆地、水、绿地、建筑、道路、道路描边、路线、文字），用 night∈[0,1] 统一插值，0.9–1.2s inOutCubic，过渡中途画面经过灰阶。若是 MapLibre，加载后遍历 style.layers 按 id 关键词归类（water/park/building/highway/casing/railway/boundary），每帧仅在值变化时 setPaintProperty。HUD 的纸色与墨色同步插值。不要用 CSS invert 做整张夜景（会让水比陆地亮）。",
+    "prompt": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。片段：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
     "demo": "demos/patterns/day-night-flip/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage",
-        "observation": "片头深色地球 → 灰 → 亮约 0.9 秒；之后多次随时间进入夜间暗色地图，次日早晨再变亮。",
+        "observation": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
         "evidence": "observed",
-        "locator": "0:05.2–0:06.1、0:38.6–0:39.2"
+        "locator": "caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5"
       }
     ],
     "previewAt": 4,
+    "markers": [
+      {
+        "t": 0,
+        "label": "白天"
+      },
+      {
+        "t": 1.5,
+        "label": "入夜"
+      },
+      {
+        "t": 4.5,
+        "label": "天亮"
+      }
+    ],
+    "sound": {
+      "voices": [
+        "whoosh",
+        "sub",
+        "reverse",
+        "chime"
+      ],
+      "score": "demos/patterns/day-night-flip/score.json",
+      "description": "MotionKit.audio.attach 挂接事件：whoosh、sub、reverse、chime。"
+    },
+    "tokens": {
+      "palette": [
+        "#f1eee7",
+        "#16171a",
+        "#d9562c",
+        "#e23b3b"
+      ],
+      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。",
+      "css": {
+        "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+        "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+        "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+        "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+        "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+        "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+        "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+        "--paper": "#f1eee7",
+        "--ink": "#16171a",
+        "--ink-map": "#16171a",
+        "--muted": "rgba(22, 23, 26, .62)",
+        "--line": "rgba(22, 23, 26, .26)",
+        "--accent": "#d9562c",
+        "--accent-soft": "rgba(217, 86, 44, .22)",
+        "--surface": "rgba(250, 249, 245, .94)",
+        "--alert": "#e23b3b"
+      },
+      "motion": [
+        {
+          "name": "白天",
+          "value": "0s"
+        },
+        {
+          "name": "入夜",
+          "value": "1.5s"
+        },
+        {
+          "name": "天亮",
+          "value": "4.5s"
+        },
+        {
+          "name": "时长",
+          "value": "7s"
+        }
+      ]
+    },
+    "migration": [
+      {
+        "field": "复制的函数",
+        "how": "dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint"
+      },
+      {
+        "field": "依赖",
+        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。"
+      },
+      {
+        "field": "需要的数据",
+        "how": "config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。"
+      },
+      {
+        "field": "config.js → segments / markers",
+        "how": "caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5"
+      },
+      {
+        "field": "score.json",
+        "how": "事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      }
+    ],
     "preview": "previews/patterns/day-night-flip.jpg",
-    "previewPortrait": null
+    "previewPortrait": "previews/patterns/day-night-flip-portrait.jpg"
   },
   "sourceCases": [
     {
@@ -76,14 +177,19 @@
     }
   ],
   "documents": {
-    "prompt": "# 昼夜翻转：逐层插值 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/day-night-flip.json) 自动生成。\n\n## 实现 Prompt\n\n实现昼夜翻转：为每类图层定义 [白天, 夜晚] 两个颜色（背景/陆地、水、绿地、建筑、道路、道路描边、路线、文字），用 night∈[0,1] 统一插值，0.9–1.2s inOutCubic，过渡中途画面经过灰阶。若是 MapLibre，加载后遍历 style.layers 按 id 关键词归类（water/park/building/highway/casing/railway/boundary），每帧仅在值变化时 setPaintProperty。HUD 的纸色与墨色同步插值。不要用 CSS invert 做整张夜景（会让水比陆地亮）。\n\n## 参数\n\n- **时长**：0.9–1.2s inOutCubic\n- **中点**：画面经过灰阶，像“天色渐变”\n- **配色**：陆地 #eeebe4→#1b2431，水 #bccdd9→#0d131c，道路 #fff→#2c3648\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
+    "prompt": "# 昼夜翻转：逐层插值 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/day-night-flip.json) 自动生成。\n\n## 实现 Prompt\n\n地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑和 HUD；HUD 镜头数值固定为案例 34.5s，昼夜值按两次切换更新。片段：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n- **声音 voice**：whoosh、sub、reverse、chime\n\n## 动效 Token\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n\n## 迁移\n\n- `复制的函数`：dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。\n- `需要的数据`：config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。\n- `config.js → segments / markers`：caseT 32.8→33.8；caseT 36.6→37.5；固定镜头与 HUD 数值 caseT 34.5\n- `score.json`：事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
   },
   "entrypoint": "demos/patterns/day-night-flip/index.html",
   "files": [
     {
+      "path": "demos/patterns/day-night-flip/config.js",
+      "bytes": 26385,
+      "sha256": "78b714b631256fa957b91f853579d2c878cff8428ea3fa07302cd5fd84815cc8"
+    },
+    {
       "path": "demos/patterns/day-night-flip/index.html",
-      "bytes": 5400,
-      "sha256": "da11d152c0506c2c7ed47f971cb75470d8d3eb6264266900b30bb5edf14a22db"
+      "bytes": 7646,
+      "sha256": "3bca5dfb786be5a1688aea3f93ec024c7e49173bcf6c0e8cff561e6f989292ad"
     },
     {
       "path": "demos/patterns/day-night-flip/motion-kit.js",
@@ -91,9 +197,39 @@
       "sha256": "2708c09729958b6f1dc5e57565a854f8bf7d19c6b6b35fdd45729565202e61ac"
     },
     {
+      "path": "demos/patterns/day-night-flip/paths.js",
+      "bytes": 8047,
+      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/scenes.js",
+      "bytes": 35275,
+      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/score.json",
+      "bytes": 392,
+      "sha256": "39215b80723d2b484bed932916e4e6bde6f87e315d5af3159af60e706b0a37b0"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/script.js",
+      "bytes": 136333,
+      "sha256": "b651ba9e7e011c822ef350aacd066f6e9c8f53ad03cf580a8a9b8891a67049ef"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/style.css",
+      "bytes": 39863,
+      "sha256": "9aac344d383ca9c1c398d6f512336b0fea24e6c62c7b619c1d4100892c70c54e"
+    },
+    {
       "path": "previews/patterns/day-night-flip.jpg",
-      "bytes": 37678,
-      "sha256": "90c2eeec2a511024dc158b64aca7ea2d3b0b79c648b09e607b5165402d07459d"
+      "bytes": 187443,
+      "sha256": "b31f062ff08f77b5aa0efc39424b5f53185756fb49da4b3d0c69008f6e2c9f58"
+    },
+    {
+      "path": "previews/patterns/day-night-flip-portrait.jpg",
+      "bytes": 208522,
+      "sha256": "6129b551f52e8466e9ebd45a4d62c8db98b8048c14325f4bd8467c5cc1d4a07f"
     }
   ]
 }
