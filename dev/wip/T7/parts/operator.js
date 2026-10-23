@@ -13,7 +13,7 @@ function createOperator(host) {
     '<path d="M9 24c0-8 7-15 15-15m15 15c0 8-7 15-15 15"/><path d="m17 5 7 4-6 6m13 28-7-4 6-6"/><circle cx="24" cy="24" r="7"/>',
   ];
   const star = svg('<path d="m24 5 5.8 11.7 12.9 1.9-9.4 9.1 2.2 12.9L24 34.5l-11.5 6.1 2.2-12.9-9.4-9.1 12.9-1.9Z" fill="currentColor" stroke="none"/>', 21);
-  const silhouette = (background = false) => `<svg class="${background ? 'op-shadow-person' : 'op-person'}" viewBox="0 0 520 820" aria-hidden="true" fill="currentColor">
+  const silhouette = () => `<svg class="op-shadow-person" viewBox="0 0 520 820" aria-hidden="true" fill="currentColor">
     <path d="M225 18c-27 9-42 29-45 62l-3 58 38 35 73-1 39-40-2-52c-3-37-19-57-51-63Z"/>
     <g class="op-hair"><path d="m182 71-29 77 27-13-7 49 37-51 4-49Zm135 1 34 77-28-16 9 54-40-55-4-48Z"/></g>
     <path d="m227 144-7 34-57 24-36 91-25 122 28 8 44-109 35-63 100 1 37 68 39 96 30-9-29-117-38-87-57-25-8-34Z"/>
@@ -29,12 +29,12 @@ function createOperator(host) {
   const root = document.createElement('section');
   root.className = 'operator-scene'; root.id = 'operator-scene';
   write(root, "innerHTML", `
-    <div class="op-paper"></div>${silhouette(true)}
+    <div class="op-paper"></div>${silhouette()}
     <svg class="op-floor" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><path d="M370 990C635 875 1155 860 1500 1000" fill="none" stroke="#c8cacb" stroke-width="1"/></svg>
     <div class="op-section-label"><span>//</span> 干员</div>
     <div class="op-avatar-tabs">${Array.from({ length: 6 }, (_, i) => avatar(i)).join('')}</div>
     <button class="op-close" aria-label="关闭干员界面">${svg('<path d="m12 12 24 24m0-24L12 36"/>', 32)}</button>
-    ${silhouette()}
+    <div class="op-person"><svg class="op-person-art" viewBox="194 5 674 1509" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><image href="assets/gen/operator.png" width="1024" height="1536"/></svg></div>
     <svg class="op-yellow-band" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><polygon class="op-band-landscape" points="1440,0 1920,0 1920,1080 1640,1080" fill="var(--yellow)"/><polygon class="op-band-portrait" points="720,0 1080,0 1080,1220 900,1220" fill="var(--yellow)"/></svg>
     <div class="op-outline-word"><svg class="op-outline-ink" aria-hidden="true"><text class="op-outline-text" x="0" y="0">ENDFIELD</text></svg></div>
     <div class="op-band-shine"></div>
@@ -58,17 +58,14 @@ function createOperator(host) {
   const toast = root.querySelector('.op-level-toast');
   const shine = root.querySelector('.op-band-shine');
   const band = root.querySelector('.op-yellow-band');
-  const person = root.querySelector('.op-person');
+  const person = root.querySelector('.op-person-art');
   const outline = root.querySelector('.op-outline-text');
   const textContext = document.createElement('canvas').getContext('2d');
   const upgrade = root.querySelector('.op-upgrade');
   const statEls = Array.from(root.querySelectorAll('.op-stat-value'));
   const rings = Array.from(root.querySelectorAll('.op-skill-ring circle'));
-  const tails = root.querySelectorAll('.op-coat-tail');
-  const hair = root.querySelectorAll('.op-hair');
   function render(t, p) {
     attribute(band, 'viewBox', p ? '0 0 1080 1920' : '0 0 1920 1080');
-    attribute(person, 'viewBox', p ? '72 17 352 803' : '0 0 520 820');
     textContext.font = `700 ${p ? 150 : 160}px "Barlow Semi Condensed"`;
     textContext.letterSpacing = p ? '3px' : '3.2px';
     const ink = textContext.measureText('ENDFIELD');
@@ -103,9 +100,8 @@ function createOperator(host) {
     write(shine.style, "opacity", t >= 40.4 && t < 40.8 ? Math.sin(shineP * Math.PI) : 0);
     write(shine.style, "top", `${lerp(-180, p ? 1220 : 1080, shineP)}px`);
     rings.forEach((ring, i) => { write(ring.style, "strokeDashoffset", 100 * (1 - seg(t, 43 + i * .4, .6, E.outCubic))); });
-    const sway = Math.sin((t - 36) * Math.PI / 2) * 2;
-    tails.forEach((el) => { attribute(el, 'transform', `rotate(${sway} 260 380)`); });
-    hair.forEach((el) => { attribute(el, 'transform', `rotate(${-sway} 260 90)`); });
+    const breath = Math.sin((t - 36) * Math.PI / 2);
+    write(person.style, "transform", `rotate(${breath}deg) scale(${1 + breath * .01})`);
   }
   function targets(p) { return { upgrade: p ? { x: 870, y: 1120 } : { x: 1630, y: 600 } }; }
   return { root, render, targets };

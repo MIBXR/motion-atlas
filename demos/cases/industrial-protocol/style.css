@@ -97,6 +97,7 @@ html[data-orient="portrait"] .build-backing{top:170.666667px;width:315px;height:
 #machine-panel .mp-pane{position:absolute;left:0;top:0;width:1320px;height:730px;transform-origin:0 0;background:var(--glass);border:1px solid var(--line);border-radius:6px;clip-path:polygon(16px 0,100% 0,100% 100%,0 100%,0 16px);box-shadow:0 16px 60px #0006}
 #machine-panel h2,#machine-panel h3,#machine-panel p{margin:0;font-weight:500}
 #machine-panel svg{display:block;flex:none}
+#machine-panel .mp-item-image{display:block;flex:none;object-fit:contain}
 #machine-panel .mp-header{position:absolute;left:32px;top:24px;height:48px;display:flex;align-items:center;gap:20px}
 #machine-panel .mp-header h2{font-size:34px;font-weight:700;line-height:48px}
 #machine-panel .mp-header>i{height:30px;width:1px;background:var(--grey);margin:0 6px}
@@ -180,7 +181,7 @@ html[data-orient="portrait"] #machine-panel .mp-bag-title>span{font-size:34px}
 html[data-orient="portrait"] #machine-panel .mp-bag-grid{left:128px;top:476px;grid-template-columns:repeat(4,200px);grid-template-rows:repeat(3,200px)}
 html[data-orient="portrait"] #machine-panel .mp-item{width:200px;height:200px}
 html[data-orient="portrait"] #machine-panel .mp-item-icon{inset:18px 26px 40px}
-html[data-orient="portrait"] #machine-panel .mp-item-icon svg{width:112px;height:112px}
+html[data-orient="portrait"] #machine-panel .mp-item-icon .mp-item-image{width:112px;height:112px}
 html[data-orient="portrait"] #machine-panel .mp-drop{left:40px;top:1104px;width:1000px;height:68px;padding:1px 16px}
 html[data-orient="portrait"] #machine-panel .mp-drop b{font-size:28px;line-height:32px;margin:0}
 html[data-orient="portrait"] #machine-panel .mp-drop p{font-size:28px;line-height:32px;white-space:nowrap}
@@ -200,6 +201,7 @@ html[data-orient="portrait"] #machine-panel .mp-producing{left:420px;top:1188px;
 #operator-scene .op-avatar.selected{border:3px solid var(--yellow);box-shadow:0 0 0 2px rgba(23,25,27,.16)}
 #operator-scene .op-close{position:absolute;z-index:5;right:48px;top:40px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--white)}
 #operator-scene .op-person{position:absolute;left:720px;top:150px;width:520px;height:820px;color:#3a3d41}
+#operator-scene .op-person-art{position:absolute;left:0;top:17px;width:100%;height:803px;overflow:visible;transform-origin:50% 100%}
 #operator-scene .op-silhouette-detail{stroke:var(--paper);opacity:.14}
 #operator-scene .op-yellow-band{position:absolute;inset:0;width:100%;height:100%}
 #operator-scene .op-band-portrait{display:none}
@@ -236,6 +238,7 @@ html[data-orient="portrait"] #operator-scene .op-section-label{left:40px;top:165
 html[data-orient="portrait"] #operator-scene .op-avatar-tabs{left:40px;top:60px}
 html[data-orient="portrait"] #operator-scene .op-close{right:40px;top:60px;width:64px;height:64px}
 html[data-orient="portrait"] #operator-scene .op-person{left:202.7397260274px;top:330px;width:394.5205479452px;height:900px}
+html[data-orient="portrait"] #operator-scene .op-person-art{top:0;height:900px}
 html[data-orient="portrait"] #operator-scene .op-yellow-band{width:1080px;height:1920px}
 html[data-orient="portrait"] #operator-scene .op-yellow-band{overflow:visible}
 html[data-orient="portrait"] #operator-scene .op-band-landscape{display:none}

@@ -11,6 +11,7 @@
 #operator-scene .op-avatar.selected{border:3px solid var(--yellow);box-shadow:0 0 0 2px rgba(23,25,27,.16)}
 #operator-scene .op-close{position:absolute;z-index:5;right:48px;top:40px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--white)}
 #operator-scene .op-person{position:absolute;left:720px;top:150px;width:520px;height:820px;color:#3a3d41}
+#operator-scene .op-person-art{position:absolute;left:0;top:17px;width:100%;height:803px;overflow:visible;transform-origin:50% 100%}
 #operator-scene .op-silhouette-detail{stroke:var(--paper);opacity:.14}
 #operator-scene .op-yellow-band{position:absolute;inset:0;width:100%;height:100%}
 #operator-scene .op-band-portrait{display:none}
@@ -47,6 +48,7 @@ html[data-orient="portrait"] #operator-scene .op-section-label{left:40px;top:165
 html[data-orient="portrait"] #operator-scene .op-avatar-tabs{left:40px;top:60px}
 html[data-orient="portrait"] #operator-scene .op-close{right:40px;top:60px;width:64px;height:64px}
 html[data-orient="portrait"] #operator-scene .op-person{left:202.7397260274px;top:330px;width:394.5205479452px;height:900px}
+html[data-orient="portrait"] #operator-scene .op-person-art{top:0;height:900px}
 html[data-orient="portrait"] #operator-scene .op-yellow-band{width:1080px;height:1920px}
 html[data-orient="portrait"] #operator-scene .op-yellow-band{overflow:visible}
 html[data-orient="portrait"] #operator-scene .op-band-landscape{display:none}

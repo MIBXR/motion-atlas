@@ -12,11 +12,12 @@ function machineSVG(m, ghost = false) {
   const circle = (cx, cy, r, fill = dark, stroke = line, width = 1, extra = '') => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${width}" ${extra}/>`;
   const slats = (sx, sy, count, length, spacing) => Array.from({ length: count }, (_, i) => path(`M${sx} ${sy + i * spacing}h${length}`, line, 2)).join('');
   const center = content => `<g class="machine-center-icon">${content}</g>`;
-  let art = '', defs = '';
+  let art = '', defs = '', overlay = '';
 
   if (m.id === 'furnace') {
     const gid = `machine-mouth-${m.id}${ghost ? '-ghost' : ''}`;
     defs = `<radialGradient id="${gid}"><stop offset="0" stop-color="#ffd08a"/><stop offset=".38" stop-color="#ff8a2a"/><stop offset=".76" stop-color="#ed6520"/><stop offset="1" stop-color="#6f341c"/></radialGradient>`;
+    overlay = center(circle(x, y, 24, `url(#${gid})`, line, 1, 'class="machine-furnace-mouth"'));
     art = center(circle(x, y, 27, dark, edge, 2)
       + circle(x, y, 24, ghost ? panel : `url(#${gid})`, line, 1, 'class="machine-furnace-mouth"'))
       + [-1, 1].map(side => Array.from({ length: 5 }, (_, i) => path(`M${x + side * (32 + i * 4)} ${y - 16}v32`, line, 2)).join('')).join('');
@@ -25,6 +26,7 @@ function machineSVG(m, ghost = false) {
       const a = i * Math.PI / 16, r = i % 4 === 0 || i % 4 === 3 ? 21 : 17;
       return `${i ? 'L' : 'M'}${(Math.cos(a) * r).toFixed(3)} ${(Math.sin(a) * r).toFixed(3)}`;
     }).join(' ') + 'Z';
+    overlay = center(`<g transform="translate(${x} ${y})"><g class="machine-gear-rotor">${path(teeth, line, 2)}${circle(0, 0, 7, 'none', line, 2)}</g></g>`);
     art = center(circle(x, y, 24, dark, edge, 1)
       + `<g transform="translate(${x} ${y})"><g class="machine-gear-rotor">${path(teeth, line, 2)}${circle(0, 0, 7, 'none', line, 2)}</g></g>`)
       + slats(x - 26, y - 40, 3, 52, 5) + slats(x - 26, y + 30, 3, 52, 5);
@@ -34,8 +36,9 @@ function machineSVG(m, ghost = false) {
         const a = j * Math.PI / 3;
         return path(`M${(Math.cos(a) * 6).toFixed(3)} ${(Math.sin(a) * 6).toFixed(3)}L${(Math.cos(a) * 18).toFixed(3)} ${(Math.sin(a) * 18).toFixed(3)}`, line, 2);
       }).join('');
-      return `<g transform="translate(${x + dx} ${y})"><g class="machine-cut-rotor machine-cut-${i ? 'right' : 'left'}">${circle(0, 0, 18, dark, line, 2)}${cuts}${circle(0, 0, 4, solid, line, 1)}</g></g>`;
+      return `<g transform="translate(${x + dx} ${y})"><g class="machine-cut-rotor machine-cut-${i ? 'right' : 'left'}">${circle(0, 0, 18, ghost ? dark : 'none', line, 2)}${cuts}${circle(0, 0, 4, ghost ? solid : 'none', line, 1)}</g></g>`;
     }).join(''));
+    overlay = art;
   } else if (m.id === 'box') {
     art = center([0, 1, 2, 3].map(i => {
       const sx = x - 27 + (i % 2) * 30, sy = y - 31 + Math.floor(i / 2) * 30;
@@ -43,6 +46,7 @@ function machineSVG(m, ghost = false) {
         + slats(sx + 4, sy + 8, 2, 16, 8);
     }).join(''))
       + `<rect x="${w * .4 - 12}" y="${h - 23}" width="${w * .6}" height="6" fill="${ghost ? panel : accent}" stroke="${ghost ? line : 'none'}" stroke-width="1"/>`;
+    overlay = `<rect x="${w * .4 - 12}" y="${h - 23}" width="${w * .6}" height="6" fill="${accent}"/>`;
   } else if (m.id === 'plant') {
     art = center([-20, 0, 20].map(dy => `<rect x="${x - 37}" y="${y + dy - 7}" width="74" height="14" fill="${dark}" stroke="${edge}" stroke-width="1"/>`
       + [-24, -12, 0, 12, 24].map(dx => circle(x + dx, y + dy, 1.5, ghost ? panel : '#7bd88f', ghost ? line : 'none', ghost ? 1 : 0)).join('')).join(''));
@@ -51,6 +55,7 @@ function machineSVG(m, ghost = false) {
       + path(`M${x} ${y - 42}l10 14-10 14-10-14Z`, line, 2, dark)
       + path(`M${x} ${y - 11}l-5 13h7l-4 11`, line, 1))
       + Array.from({ length: 3 }, (_, i) => `<path class="machine-power-arc" data-arc="${i}" fill="none" stroke="${line}" stroke-width="1" opacity=".9"/>`).join('');
+    overlay = Array.from({ length: 3 }, (_, i) => `<path class="machine-power-arc" data-arc="${i}" fill="none" stroke="${line}" stroke-width="1" opacity=".9"/>`).join('');
   } else if (m.id === 'core') {
     const r = Math.min(w, h) * .33;
     const vertices = radius => [-90, 30, 150].map(a => [x + Math.cos(a * Math.PI / 180) * radius, y + Math.sin(a * Math.PI / 180) * radius]);
@@ -64,10 +69,12 @@ function machineSVG(m, ghost = false) {
 
   const arrows = `M${x} 5l-5 10h10Z M${w - 5} ${y}l-10-5v10Z M${x} ${h - 5}l-5-10h10Z M5 ${y}l10-5v10Z`;
   const corners = `M14 2H2v12 M${w - 14} 2h12v12 M${w - 2} ${h - 14}v12h-12 M14 ${h - 2}H2v-12`;
+  const source = {core:'core',furnace:'refinery',a:'assembler',b:'assembler',crusher:'crusher',box:'storage',plant:'planter',power:'pylon'}[m.id];
+  const base = ghost
+    ? `<rect x="3" y="3" width="${w - 6}" height="${h - 6}" fill="${panel}" stroke="${edge}" stroke-width="2"/>` + path(`M${x} 6V${h - 6}M6 ${y}H${w - 6}`, seam, 1) + art
+    : `<g class="${m.id==='core'?'machine-bitmap':'machine-center-icon'}"><image class="machine-bitmap" href="${bitmaps[source]}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none"/></g>` + overlay;
   return `<svg class="machine-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="overflow:visible" data-machine-art="${m.id}" data-ghost="${ghost}" aria-hidden="true"><defs>${defs}</defs><g class="machine-art-frame">`
-    + `<rect x="3" y="3" width="${w - 6}" height="${h - 6}" fill="${panel}" stroke="${edge}" stroke-width="${ghost ? 2 : 6}"/>`
-    + path(`M${x} 6V${h - 6}M6 ${y}H${w - 6}`, seam, 1)
-    + art
+    + base
     + path(arrows, ghost ? line : 'none', ghost ? 1 : 0, solid, 'class="machine-edge-arrows"')
     + path(corners, accent, 3, 'none', 'class="corner-marks"')
     + circle(w - 17, 17, 5, 'none', lamp, 2, 'class="machine-lamp-halo" opacity=".3"')

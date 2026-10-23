@@ -3,10 +3,11 @@ function createPanel(host) {
   root.id = 'machine-panel';
   attribute(root, 'aria-label', '配件机生产面板');
   const items = [
-    ['crystal', 45, 'white'], ['module', 29, 'gold'], ['gear', 20, 'purple'], ['can', 21, 'white'],
-    ['gear', 2, 'purple'], ['box', 50, 'gold'], ['can', 1, 'purple'], ['module', 1, 'white'],
-    ['crystal', 11, 'gold'], ['crystal', 20, 'purple'], ['crystal', 10, 'purple'], ['box', 19, 'white'],
+    ['crystal', 45, 'white'], ['module', 29, 'gold'], ['part', 20, 'purple'], ['canister', 21, 'white'],
+    ['part', 2, 'purple'], ['ore', 50, 'gold'], ['canister', 1, 'purple'], ['module', 1, 'white'],
+    ['ore', 11, 'gold'], ['plate', 20, 'purple'], ['crystal', 10, 'purple'], ['plate', 19, 'white'],
   ];
+  const itemImage = (name, size) => `<img class="mp-item-image" src="assets/gen/item-${name}.png" width="${size}" height="${size}" alt="">`;
   const num = (name, value) => `<span class="mp-number" data-number="${name}"><span>${value}</span><span>${value}</span></span>`;
   write(root, "innerHTML", `<div class="mp-dimmer"></div><div class="mp-pane">
     <header class="mp-header"><span class="mp-header-icon">${icon('gear', 48)}</span><h2>配件机</h2><i></i><p>耗电功率值: 20</p></header>
@@ -14,18 +15,18 @@ function createPanel(host) {
     <div class="mp-toggle"><b>开</b><span>关</span></div>
     <div class="mp-mini-actions"><span>移动</span><i></i><span>收纳</span></div>
     <div class="mp-bag-title"><h3>背包</h3><span>容量 24/35</span></div>
-    <div class="mp-bag-grid">${items.map(([name, count, rarity], i) => `<div class="mp-item mp-rarity-${rarity}${i === 2 ? ' mp-accessory' : ''}" aria-label="${i === 2 ? '配件' : '背包物品'}"><div class="mp-item-icon">${icon(name, 64)}</div>${num(`bag-${i}`, count)}<i class="mp-rarity"></i><i class="mp-item-flash"></i></div>`).join('')}</div>
+    <div class="mp-bag-grid">${items.map(([name, count, rarity], i) => `<div class="mp-item mp-rarity-${rarity}${i === 2 ? ' mp-accessory' : ''}" aria-label="${i === 2 ? '配件' : '背包物品'}"><div class="mp-item-icon">${itemImage(name, 64)}</div>${num(`bag-${i}`, count)}<i class="mp-rarity"></i><i class="mp-item-flash"></i></div>`).join('')}</div>
     <div class="mp-drop"><b>四号谷地仓库｜全部</b><p>将物品拖入该区域，可展开并存放入仓库</p></div>
     <div class="mp-machine-visual"><svg viewBox="0 0 360 250" fill="none" aria-label="配件机正视线框示意图"><g stroke="currentColor" stroke-width="2"><path d="M83 26h194l24 22v158l-24 22H83l-24-22V48z"/><path d="M93 26v202m174-202v202M59 74h242M59 174h242M112 51h136v145H112z"/><path d="M133 68h94v110h-94zM180 68v110M133 122h94M112 196l21-18m115 18-21-18M35 90h24m242 0h24M35 158h24m242 0h24"/><path d="M152 94l28-16 28 16v36l-28 16-28-16zM152 94l28 16 28-16m-28 16v36"/><path stroke="var(--yellow-deep)" stroke-width="5" d="M59 58V42h22m198 0h22v16M59 192v16h22m198 0h22v-16"/></g></svg></div>
-    <div class="mp-slot mp-input"><span class="mp-slot-icon">${icon('crystal', 54)}</span>${num('input', 9)}<small>晶体</small></div>
-    <div class="mp-slot mp-output"><span class="mp-slot-icon">${icon('gear', 54)}</span>${num('output', 0)}<small>配件</small><i class="mp-output-flash"></i></div>
+    <div class="mp-slot mp-input"><span class="mp-slot-icon">${itemImage('crystal', 54)}</span>${num('input', 9)}<small>晶体</small></div>
+    <div class="mp-slot mp-output"><span class="mp-slot-icon">${itemImage('part', 54)}</span>${num('output', 0)}<small>配件</small><i class="mp-output-flash"></i></div>
     <svg class="mp-flow" viewBox="0 0 700 240" fill="none" aria-hidden="true"><path d="M46 126h173m262 0h173" stroke="currentColor" stroke-width="2"/><path d="m205 118 12 8-12 8m435-16 12 8-12 8" stroke="currentColor" stroke-width="2"/></svg>
     <div class="mp-cycle"><i></i><i></i><span>2秒</span></div>
     <div class="mp-recipe-title">当前自动生产中的配方</div>
-    <div class="mp-recipe"><span>${icon('crystal', 42)}</span><i>${icon('arrow', 24)}</i><b>${icon('chevrons', 28)} 2秒</b><i>${icon('arrow', 24)}</i><span>${icon('gear', 42)}</span></div>
+    <div class="mp-recipe"><span>${itemImage('crystal', 42)}</span><i>${icon('arrow', 24)}</i><b>${icon('chevrons', 28)} 2秒</b><i>${icon('arrow', 24)}</i><span>${itemImage('part', 42)}</span></div>
     <div class="mp-collect"><i></i><span>全部收取</span><b>${icon('warehouse', 30)}</b></div>
     <div class="mp-progress"><i></i></div><div class="mp-producing">${icon('chevrons', 20)}<span>生产中</span></div>
-    <div class="mp-flying">${icon('gear', 40)}</div><div class="mp-flying">${icon('gear', 40)}</div>
+    <div class="mp-flying">${itemImage('part', 40)}</div><div class="mp-flying">${itemImage('part', 40)}</div>
   </div>`);
   host.appendChild(root);
   const pane = root.querySelector('.mp-pane');

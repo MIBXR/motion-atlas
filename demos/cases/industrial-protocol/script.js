@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const MK=MotionKit,C=window.CONFIG,E=MK.ease,{clamp,lerp}=MK;
+  const bitmaps=Object.fromEntries(['ground','core','refinery','assembler','crusher','storage','planter','pylon','operator','item-crystal','item-part','item-canister','item-module','item-ore','item-plate'].map(name=>[name,`assets/gen/${name}.${name==='ground'?'webp':'png'}`]));
   const seg=(t,start,duration,ease=E.linear)=>ease(clamp((t-start)/duration,0,1));
   const $=(s,r=document)=>r.querySelector(s);
   const written=new WeakMap();
@@ -40,11 +41,12 @@ function machineSVG(m, ghost = false) {
   const circle = (cx, cy, r, fill = dark, stroke = line, width = 1, extra = '') => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${width}" ${extra}/>`;
   const slats = (sx, sy, count, length, spacing) => Array.from({ length: count }, (_, i) => path(`M${sx} ${sy + i * spacing}h${length}`, line, 2)).join('');
   const center = content => `<g class="machine-center-icon">${content}</g>`;
-  let art = '', defs = '';
+  let art = '', defs = '', overlay = '';
 
   if (m.id === 'furnace') {
     const gid = `machine-mouth-${m.id}${ghost ? '-ghost' : ''}`;
     defs = `<radialGradient id="${gid}"><stop offset="0" stop-color="#ffd08a"/><stop offset=".38" stop-color="#ff8a2a"/><stop offset=".76" stop-color="#ed6520"/><stop offset="1" stop-color="#6f341c"/></radialGradient>`;
+    overlay = center(circle(x, y, 24, `url(#${gid})`, line, 1, 'class="machine-furnace-mouth"'));
     art = center(circle(x, y, 27, dark, edge, 2)
       + circle(x, y, 24, ghost ? panel : `url(#${gid})`, line, 1, 'class="machine-furnace-mouth"'))
       + [-1, 1].map(side => Array.from({ length: 5 }, (_, i) => path(`M${x + side * (32 + i * 4)} ${y - 16}v32`, line, 2)).join('')).join('');
@@ -53,6 +55,7 @@ function machineSVG(m, ghost = false) {
       const a = i * Math.PI / 16, r = i % 4 === 0 || i % 4 === 3 ? 21 : 17;
       return `${i ? 'L' : 'M'}${(Math.cos(a) * r).toFixed(3)} ${(Math.sin(a) * r).toFixed(3)}`;
     }).join(' ') + 'Z';
+    overlay = center(`<g transform="translate(${x} ${y})"><g class="machine-gear-rotor">${path(teeth, line, 2)}${circle(0, 0, 7, 'none', line, 2)}</g></g>`);
     art = center(circle(x, y, 24, dark, edge, 1)
       + `<g transform="translate(${x} ${y})"><g class="machine-gear-rotor">${path(teeth, line, 2)}${circle(0, 0, 7, 'none', line, 2)}</g></g>`)
       + slats(x - 26, y - 40, 3, 52, 5) + slats(x - 26, y + 30, 3, 52, 5);
@@ -62,8 +65,9 @@ function machineSVG(m, ghost = false) {
         const a = j * Math.PI / 3;
         return path(`M${(Math.cos(a) * 6).toFixed(3)} ${(Math.sin(a) * 6).toFixed(3)}L${(Math.cos(a) * 18).toFixed(3)} ${(Math.sin(a) * 18).toFixed(3)}`, line, 2);
       }).join('');
-      return `<g transform="translate(${x + dx} ${y})"><g class="machine-cut-rotor machine-cut-${i ? 'right' : 'left'}">${circle(0, 0, 18, dark, line, 2)}${cuts}${circle(0, 0, 4, solid, line, 1)}</g></g>`;
+      return `<g transform="translate(${x + dx} ${y})"><g class="machine-cut-rotor machine-cut-${i ? 'right' : 'left'}">${circle(0, 0, 18, ghost ? dark : 'none', line, 2)}${cuts}${circle(0, 0, 4, ghost ? solid : 'none', line, 1)}</g></g>`;
     }).join(''));
+    overlay = art;
   } else if (m.id === 'box') {
     art = center([0, 1, 2, 3].map(i => {
       const sx = x - 27 + (i % 2) * 30, sy = y - 31 + Math.floor(i / 2) * 30;
@@ -71,6 +75,7 @@ function machineSVG(m, ghost = false) {
         + slats(sx + 4, sy + 8, 2, 16, 8);
     }).join(''))
       + `<rect x="${w * .4 - 12}" y="${h - 23}" width="${w * .6}" height="6" fill="${ghost ? panel : accent}" stroke="${ghost ? line : 'none'}" stroke-width="1"/>`;
+    overlay = `<rect x="${w * .4 - 12}" y="${h - 23}" width="${w * .6}" height="6" fill="${accent}"/>`;
   } else if (m.id === 'plant') {
     art = center([-20, 0, 20].map(dy => `<rect x="${x - 37}" y="${y + dy - 7}" width="74" height="14" fill="${dark}" stroke="${edge}" stroke-width="1"/>`
       + [-24, -12, 0, 12, 24].map(dx => circle(x + dx, y + dy, 1.5, ghost ? panel : '#7bd88f', ghost ? line : 'none', ghost ? 1 : 0)).join('')).join(''));
@@ -79,6 +84,7 @@ function machineSVG(m, ghost = false) {
       + path(`M${x} ${y - 42}l10 14-10 14-10-14Z`, line, 2, dark)
       + path(`M${x} ${y - 11}l-5 13h7l-4 11`, line, 1))
       + Array.from({ length: 3 }, (_, i) => `<path class="machine-power-arc" data-arc="${i}" fill="none" stroke="${line}" stroke-width="1" opacity=".9"/>`).join('');
+    overlay = Array.from({ length: 3 }, (_, i) => `<path class="machine-power-arc" data-arc="${i}" fill="none" stroke="${line}" stroke-width="1" opacity=".9"/>`).join('');
   } else if (m.id === 'core') {
     const r = Math.min(w, h) * .33;
     const vertices = radius => [-90, 30, 150].map(a => [x + Math.cos(a * Math.PI / 180) * radius, y + Math.sin(a * Math.PI / 180) * radius]);
@@ -92,10 +98,12 @@ function machineSVG(m, ghost = false) {
 
   const arrows = `M${x} 5l-5 10h10Z M${w - 5} ${y}l-10-5v10Z M${x} ${h - 5}l-5-10h10Z M5 ${y}l10-5v10Z`;
   const corners = `M14 2H2v12 M${w - 14} 2h12v12 M${w - 2} ${h - 14}v12h-12 M14 ${h - 2}H2v-12`;
+  const source = {core:'core',furnace:'refinery',a:'assembler',b:'assembler',crusher:'crusher',box:'storage',plant:'planter',power:'pylon'}[m.id];
+  const base = ghost
+    ? `<rect x="3" y="3" width="${w - 6}" height="${h - 6}" fill="${panel}" stroke="${edge}" stroke-width="2"/>` + path(`M${x} 6V${h - 6}M6 ${y}H${w - 6}`, seam, 1) + art
+    : `<g class="${m.id==='core'?'machine-bitmap':'machine-center-icon'}"><image class="machine-bitmap" href="${bitmaps[source]}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none"/></g>` + overlay;
   return `<svg class="machine-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="overflow:visible" data-machine-art="${m.id}" data-ghost="${ghost}" aria-hidden="true"><defs>${defs}</defs><g class="machine-art-frame">`
-    + `<rect x="3" y="3" width="${w - 6}" height="${h - 6}" fill="${panel}" stroke="${edge}" stroke-width="${ghost ? 2 : 6}"/>`
-    + path(`M${x} 6V${h - 6}M6 ${y}H${w - 6}`, seam, 1)
-    + art
+    + base
     + path(arrows, ghost ? line : 'none', ghost ? 1 : 0, solid, 'class="machine-edge-arrows"')
     + path(corners, accent, 3, 'none', 'class="corner-marks"')
     + circle(w - 17, 17, 5, 'none', lamp, 2, 'class="machine-lamp-halo" opacity=".3"')
@@ -139,10 +147,11 @@ function createPanel(host) {
   root.id = 'machine-panel';
   attribute(root, 'aria-label', '配件机生产面板');
   const items = [
-    ['crystal', 45, 'white'], ['module', 29, 'gold'], ['gear', 20, 'purple'], ['can', 21, 'white'],
-    ['gear', 2, 'purple'], ['box', 50, 'gold'], ['can', 1, 'purple'], ['module', 1, 'white'],
-    ['crystal', 11, 'gold'], ['crystal', 20, 'purple'], ['crystal', 10, 'purple'], ['box', 19, 'white'],
+    ['crystal', 45, 'white'], ['module', 29, 'gold'], ['part', 20, 'purple'], ['canister', 21, 'white'],
+    ['part', 2, 'purple'], ['ore', 50, 'gold'], ['canister', 1, 'purple'], ['module', 1, 'white'],
+    ['ore', 11, 'gold'], ['plate', 20, 'purple'], ['crystal', 10, 'purple'], ['plate', 19, 'white'],
   ];
+  const itemImage = (name, size) => `<img class="mp-item-image" src="assets/gen/item-${name}.png" width="${size}" height="${size}" alt="">`;
   const num = (name, value) => `<span class="mp-number" data-number="${name}"><span>${value}</span><span>${value}</span></span>`;
   write(root, "innerHTML", `<div class="mp-dimmer"></div><div class="mp-pane">
     <header class="mp-header"><span class="mp-header-icon">${icon('gear', 48)}</span><h2>配件机</h2><i></i><p>耗电功率值: 20</p></header>
@@ -150,18 +159,18 @@ function createPanel(host) {
     <div class="mp-toggle"><b>开</b><span>关</span></div>
     <div class="mp-mini-actions"><span>移动</span><i></i><span>收纳</span></div>
     <div class="mp-bag-title"><h3>背包</h3><span>容量 24/35</span></div>
-    <div class="mp-bag-grid">${items.map(([name, count, rarity], i) => `<div class="mp-item mp-rarity-${rarity}${i === 2 ? ' mp-accessory' : ''}" aria-label="${i === 2 ? '配件' : '背包物品'}"><div class="mp-item-icon">${icon(name, 64)}</div>${num(`bag-${i}`, count)}<i class="mp-rarity"></i><i class="mp-item-flash"></i></div>`).join('')}</div>
+    <div class="mp-bag-grid">${items.map(([name, count, rarity], i) => `<div class="mp-item mp-rarity-${rarity}${i === 2 ? ' mp-accessory' : ''}" aria-label="${i === 2 ? '配件' : '背包物品'}"><div class="mp-item-icon">${itemImage(name, 64)}</div>${num(`bag-${i}`, count)}<i class="mp-rarity"></i><i class="mp-item-flash"></i></div>`).join('')}</div>
     <div class="mp-drop"><b>四号谷地仓库｜全部</b><p>将物品拖入该区域，可展开并存放入仓库</p></div>
     <div class="mp-machine-visual"><svg viewBox="0 0 360 250" fill="none" aria-label="配件机正视线框示意图"><g stroke="currentColor" stroke-width="2"><path d="M83 26h194l24 22v158l-24 22H83l-24-22V48z"/><path d="M93 26v202m174-202v202M59 74h242M59 174h242M112 51h136v145H112z"/><path d="M133 68h94v110h-94zM180 68v110M133 122h94M112 196l21-18m115 18-21-18M35 90h24m242 0h24M35 158h24m242 0h24"/><path d="M152 94l28-16 28 16v36l-28 16-28-16zM152 94l28 16 28-16m-28 16v36"/><path stroke="var(--yellow-deep)" stroke-width="5" d="M59 58V42h22m198 0h22v16M59 192v16h22m198 0h22v-16"/></g></svg></div>
-    <div class="mp-slot mp-input"><span class="mp-slot-icon">${icon('crystal', 54)}</span>${num('input', 9)}<small>晶体</small></div>
-    <div class="mp-slot mp-output"><span class="mp-slot-icon">${icon('gear', 54)}</span>${num('output', 0)}<small>配件</small><i class="mp-output-flash"></i></div>
+    <div class="mp-slot mp-input"><span class="mp-slot-icon">${itemImage('crystal', 54)}</span>${num('input', 9)}<small>晶体</small></div>
+    <div class="mp-slot mp-output"><span class="mp-slot-icon">${itemImage('part', 54)}</span>${num('output', 0)}<small>配件</small><i class="mp-output-flash"></i></div>
     <svg class="mp-flow" viewBox="0 0 700 240" fill="none" aria-hidden="true"><path d="M46 126h173m262 0h173" stroke="currentColor" stroke-width="2"/><path d="m205 118 12 8-12 8m435-16 12 8-12 8" stroke="currentColor" stroke-width="2"/></svg>
     <div class="mp-cycle"><i></i><i></i><span>2秒</span></div>
     <div class="mp-recipe-title">当前自动生产中的配方</div>
-    <div class="mp-recipe"><span>${icon('crystal', 42)}</span><i>${icon('arrow', 24)}</i><b>${icon('chevrons', 28)} 2秒</b><i>${icon('arrow', 24)}</i><span>${icon('gear', 42)}</span></div>
+    <div class="mp-recipe"><span>${itemImage('crystal', 42)}</span><i>${icon('arrow', 24)}</i><b>${icon('chevrons', 28)} 2秒</b><i>${icon('arrow', 24)}</i><span>${itemImage('part', 42)}</span></div>
     <div class="mp-collect"><i></i><span>全部收取</span><b>${icon('warehouse', 30)}</b></div>
     <div class="mp-progress"><i></i></div><div class="mp-producing">${icon('chevrons', 20)}<span>生产中</span></div>
-    <div class="mp-flying">${icon('gear', 40)}</div><div class="mp-flying">${icon('gear', 40)}</div>
+    <div class="mp-flying">${itemImage('part', 40)}</div><div class="mp-flying">${itemImage('part', 40)}</div>
   </div>`);
   host.appendChild(root);
   const pane = root.querySelector('.mp-pane');
@@ -246,7 +255,7 @@ function createOperator(host) {
     '<path d="M9 24c0-8 7-15 15-15m15 15c0 8-7 15-15 15"/><path d="m17 5 7 4-6 6m13 28-7-4 6-6"/><circle cx="24" cy="24" r="7"/>',
   ];
   const star = svg('<path d="m24 5 5.8 11.7 12.9 1.9-9.4 9.1 2.2 12.9L24 34.5l-11.5 6.1 2.2-12.9-9.4-9.1 12.9-1.9Z" fill="currentColor" stroke="none"/>', 21);
-  const silhouette = (background = false) => `<svg class="${background ? 'op-shadow-person' : 'op-person'}" viewBox="0 0 520 820" aria-hidden="true" fill="currentColor">
+  const silhouette = () => `<svg class="op-shadow-person" viewBox="0 0 520 820" aria-hidden="true" fill="currentColor">
     <path d="M225 18c-27 9-42 29-45 62l-3 58 38 35 73-1 39-40-2-52c-3-37-19-57-51-63Z"/>
     <g class="op-hair"><path d="m182 71-29 77 27-13-7 49 37-51 4-49Zm135 1 34 77-28-16 9 54-40-55-4-48Z"/></g>
     <path d="m227 144-7 34-57 24-36 91-25 122 28 8 44-109 35-63 100 1 37 68 39 96 30-9-29-117-38-87-57-25-8-34Z"/>
@@ -262,12 +271,12 @@ function createOperator(host) {
   const root = document.createElement('section');
   root.className = 'operator-scene'; root.id = 'operator-scene';
   write(root, "innerHTML", `
-    <div class="op-paper"></div>${silhouette(true)}
+    <div class="op-paper"></div>${silhouette()}
     <svg class="op-floor" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><path d="M370 990C635 875 1155 860 1500 1000" fill="none" stroke="#c8cacb" stroke-width="1"/></svg>
     <div class="op-section-label"><span>//</span> 干员</div>
     <div class="op-avatar-tabs">${Array.from({ length: 6 }, (_, i) => avatar(i)).join('')}</div>
     <button class="op-close" aria-label="关闭干员界面">${svg('<path d="m12 12 24 24m0-24L12 36"/>', 32)}</button>
-    ${silhouette()}
+    <div class="op-person"><svg class="op-person-art" viewBox="194 5 674 1509" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><image href="assets/gen/operator.png" width="1024" height="1536"/></svg></div>
     <svg class="op-yellow-band" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><polygon class="op-band-landscape" points="1440,0 1920,0 1920,1080 1640,1080" fill="var(--yellow)"/><polygon class="op-band-portrait" points="720,0 1080,0 1080,1220 900,1220" fill="var(--yellow)"/></svg>
     <div class="op-outline-word"><svg class="op-outline-ink" aria-hidden="true"><text class="op-outline-text" x="0" y="0">ENDFIELD</text></svg></div>
     <div class="op-band-shine"></div>
@@ -291,17 +300,14 @@ function createOperator(host) {
   const toast = root.querySelector('.op-level-toast');
   const shine = root.querySelector('.op-band-shine');
   const band = root.querySelector('.op-yellow-band');
-  const person = root.querySelector('.op-person');
+  const person = root.querySelector('.op-person-art');
   const outline = root.querySelector('.op-outline-text');
   const textContext = document.createElement('canvas').getContext('2d');
   const upgrade = root.querySelector('.op-upgrade');
   const statEls = Array.from(root.querySelectorAll('.op-stat-value'));
   const rings = Array.from(root.querySelectorAll('.op-skill-ring circle'));
-  const tails = root.querySelectorAll('.op-coat-tail');
-  const hair = root.querySelectorAll('.op-hair');
   function render(t, p) {
     attribute(band, 'viewBox', p ? '0 0 1080 1920' : '0 0 1920 1080');
-    attribute(person, 'viewBox', p ? '72 17 352 803' : '0 0 520 820');
     textContext.font = `700 ${p ? 150 : 160}px "Barlow Semi Condensed"`;
     textContext.letterSpacing = p ? '3px' : '3.2px';
     const ink = textContext.measureText('ENDFIELD');
@@ -336,9 +342,8 @@ function createOperator(host) {
     write(shine.style, "opacity", t >= 40.4 && t < 40.8 ? Math.sin(shineP * Math.PI) : 0);
     write(shine.style, "top", `${lerp(-180, p ? 1220 : 1080, shineP)}px`);
     rings.forEach((ring, i) => { write(ring.style, "strokeDashoffset", 100 * (1 - seg(t, 43 + i * .4, .6, E.outCubic))); });
-    const sway = Math.sin((t - 36) * Math.PI / 2) * 2;
-    tails.forEach((el) => { attribute(el, 'transform', `rotate(${sway} 260 380)`); });
-    hair.forEach((el) => { attribute(el, 'transform', `rotate(${-sway} 260 90)`); });
+    const breath = Math.sin((t - 36) * Math.PI / 2);
+    write(person.style, "transform", `rotate(${breath}deg) scale(${1 + breath * .01})`);
   }
   function targets(p) { return { upgrade: p ? { x: 870, y: 1120 } : { x: 1630, y: 600 } }; }
   return { root, render, targets };
@@ -373,36 +378,8 @@ function createOperator(host) {
   function makeTerrain(p) {
     const w=p?1080:1920,h=p?1920:1080;
     terrain.width=flow.width=w;terrain.height=flow.height=h;
-    const rand=MK.rng(713);
-    ctx.fillStyle='#5f7d3a';ctx.fillRect(0,0,w,h);
-    for(let y=0;y<h;y+=48)for(let x=0;x<w;x+=48){
-      const g=ctx.createRadialGradient(x,y,0,x,y,100);
-      g.addColorStop(0,`rgba(111,140,69,${rand()*.8})`);g.addColorStop(1,'rgba(111,140,69,0)');
-      ctx.fillStyle=g;ctx.fillRect(x-100,y-100,200,200);
-    }
-    for(let y=-120;y<h;y+=120)for(let x=-120;x<w;x+=120){
-      ctx.beginPath();
-      for(let j=0;j<10;j++){const a=j*Math.PI/5,r=48+rand()*24,xx=x+60+Math.cos(a)*r,yy=y+60+Math.sin(a)*r;j?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}
-      ctx.closePath();ctx.fillStyle=rand()>.5?'#57732f':'#7a9850';ctx.globalAlpha=.35;ctx.fill();
-    }
-    ctx.globalAlpha=1;
-    for(let i=0;i<6;i++){
-      const x=rand()*w,y=rand()*h;ctx.beginPath();
-      for(let j=0;j<12;j++){const a=j/12*Math.PI*2,r=70+rand()*90,xx=x+Math.cos(a)*r,yy=y+Math.sin(a)*r*.5;j?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}
-      ctx.closePath();ctx.save();ctx.filter='blur(2px)';ctx.fillStyle='#8a7a5c66';ctx.fill();ctx.filter='none';ctx.clip();
-      for(let k=0;k<240;k++){ctx.fillStyle=k%2?'#b09a7344':'#594d3b44';ctx.beginPath();ctx.arc(x+(rand()-.5)*320,y+(rand()-.5)*180,.6+rand()*1.5,0,Math.PI*2);ctx.fill();}
-      ctx.restore();
-    }
-    for(let i=0;i<45000;i++){const x=rand()*w,y=rand()*h;ctx.strokeStyle=rand()>.5?'#c5c98a30':'#233b233a';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-1+rand()*3,y-2-rand()*5);ctx.stroke();}
-    ctx.strokeStyle='#86a35a';ctx.lineWidth=1;
-    for(let y=0;y<h;y+=32)for(let x=0;x<w;x+=32)for(let i=0;i<6;i++){const xx=x+rand()*32,yy=y+rand()*32,len=3+rand()*3,a=-Math.PI/2+(rand()-.5)*.8;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx+Math.cos(a)*len,yy+Math.sin(a)*len);ctx.stroke();}
-    for(let i=0;i<700;i++){ctx.fillStyle='#9a9a92';const s=2+rand()*4;ctx.globalAlpha=.3+rand()*.4;ctx.fillRect(rand()*w,rand()*h,s,s*.6);}
-    ctx.globalAlpha=1;
-    const beltSegments=[...conveyorPoints.slice(1).map((v,i)=>[mapBelt(...conveyorPoints[i],p),mapBelt(...v,p)]),...oldPoints.slice(1).map((v,i)=>[mapped(...oldPoints[i],p),mapped(...v,p)])];
-    const blocked=(x,y,r)=>machines.some(m=>{const a=machineRect(m,p);return x>a.x-r&&x<a.x+a.w+r&&y>a.y-r&&y<a.y+a.h+r;})||beltSegments.some(([a,b])=>{const dx=b.x-a.x,dy=b.y-a.y,k=clamp(((x-a.x)*dx+(y-a.y)*dy)/(dx*dx+dy*dy),0,1);return Math.hypot(x-a.x-dx*k,y-a.y-dy*k)<(p?24*4/7:24)+r;});
-    ctx.save();ctx.shadowOffsetX=1;ctx.shadowOffsetY=1;ctx.shadowBlur=1;ctx.shadowColor='#0009';
-    for(let i=0;i<40;i++){const size=6+rand()*8;let x,y;do{x=rand()*w;y=rand()*h;}while(blocked(x,y,size));ctx.fillStyle=i%2?'#a1a299':'#82877b';ctx.beginPath();ctx.moveTo(x-size*.45,y-size*.25);ctx.lineTo(x+size*.2,y-size*.4);ctx.lineTo(x+size*.5,y+size*.15);ctx.lineTo(x-size*.15,y+size*.4);ctx.closePath();ctx.fill();}
-    ctx.restore();
+    ctx.fillStyle=ctx.createPattern(MK.preload.cache.get(bitmaps.ground),'repeat');
+    ctx.fillRect(0,0,w,h);
     const b=p?{x:60,y:240,w:960,h:940}:{x:120,y:96,w:1680,h:904};
     ctx.save();ctx.beginPath();ctx.rect(b.x,b.y,b.w,b.h);ctx.clip();ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=1;
     const ss=p?64*4/7:64;
@@ -465,7 +442,7 @@ function createOperator(host) {
     fx.clearRect(0,0,w,h);drawBelt(t,p,oldBeltPath,false,mapped);if(t>=16)drawBelt(t,p,beltPath,true);if(t>=13.6&&t<14){fx.fillStyle=`rgba(45,140,255,${.25*(1-seg(t,13.6,.4))})`;const ss=p?4/7:1;for(let y=-4;y<4;y++)for(let x=-1;x<1;x++)fx.fillRect(snap.x+x*64*ss,snap.y+y*64*ss,64*ss-1,64*ss-1);}
     flowKey=nextFlowKey;
     }
-    for(const{m,el}of machineEls){const r=machineRect(m,p),age=t-(m.born??-100),born=m.born?clamp(age,0,1):1;styles(el.style, {left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px',visibility:age<0?'hidden':'visible',background:age<.8?'transparent':'#2a2d31',borderColor:age<.8?'transparent':'#4a4e53'});write(node('.machine-svg',el).style, "clipPath", m.born&&age<.8?`inset(0 0 ${100*(1-seg(t,m.born+.4,.4))}% 0)`:'none');write(node('.machine-edges',el).style, "opacity", m.born&&age<.8?'1':'0');write(node('.machine-edges',el).style, "clipPath", `inset(0 ${100*(1-seg(t,m.born??0,.4))}% 0 0)`);write(node('.machine-scan',el).style, "opacity", m.born&&age>=.4&&age<.8?'1':'0');write(node('.machine-scan',el).style, "top", 100*seg(t,(m.born??0)+.4,.4)+'%');const active=t>=(m.wake??(m.born?m.born+1:Infinity));write(node('.status-dot',el).style, "display", active?'block':'none');write(node('.machine-name',el).style, "opacity", String(p?(m.born?Math.min(seg(t,m.born,.2),1-seg(t,m.born+1.4,.3)):0):born));if(m.id!=='core'){const zz=node('.zz',el),wake=seg(t,m.wake??Infinity,.4);write(zz.style, "opacity", m.born?'0':String((.8+.2*Math.sin(t*Math.PI*2/1.6))*(1-wake)));write(zz.style, "transform", `translateY(${-24*wake}px)`);}const wr=node('.work-ring',el);write(wr.style, "opacity", active?'1':'0');write(wr.style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(wr.style, "transform", `rotate(${active?t*90:0}deg)`);write(node('.corner-marks',el).style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(node('.corner-marks',el).style, "transform", m.born?`scale(${seg(t,m.born+.8,.2,E.outBack)})`:'none');renderMachineDetails(m,el,t,active,false,p);}
+    for(const{m,el}of machineEls){const r=machineRect(m,p),age=t-(m.born??-100),born=m.born?clamp(age,0,1):1;styles(el.style, {left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px',visibility:age<0?'hidden':'visible',background:'transparent',borderColor:'transparent'});write(node('.machine-svg',el).style, "clipPath", m.born&&age<.8?`inset(0 0 ${100*(1-seg(t,m.born+.4,.4))}% 0)`:'none');write(node('.machine-edges',el).style, "opacity", m.born&&age<.8?'1':'0');write(node('.machine-edges',el).style, "clipPath", `inset(0 ${100*(1-seg(t,m.born??0,.4))}% 0 0)`);write(node('.machine-scan',el).style, "opacity", m.born&&age>=.4&&age<.8?'1':'0');write(node('.machine-scan',el).style, "top", 100*seg(t,(m.born??0)+.4,.4)+'%');const active=t>=(m.wake??(m.born?m.born+1:Infinity));write(node('.status-dot',el).style, "display", active?'block':'none');write(node('.machine-name',el).style, "opacity", String(p?(m.born?Math.min(seg(t,m.born,.2),1-seg(t,m.born+1.4,.3)):0):born));if(m.id!=='core'){const zz=node('.zz',el),wake=seg(t,m.wake??Infinity,.4);write(zz.style, "opacity", m.born?'0':String((.8+.2*Math.sin(t*Math.PI*2/1.6))*(1-wake)));write(zz.style, "transform", `translateY(${-24*wake}px)`);}const wr=node('.work-ring',el);write(wr.style, "opacity", active?'1':'0');write(wr.style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(wr.style, "transform", `rotate(${active?t*90:0}deg)`);write(node('.corner-marks',el).style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(node('.corner-marks',el).style, "transform", m.born?`scale(${seg(t,m.born+.8,.2,E.outBack)})`:'none');renderMachineDetails(m,el,t,active,false,p);}
     const g=node('.ghost-group'),gp=springGhost(Math.min(t,13.6),p),sn=seg(t,13.6,.12,E.outCubic),ss=p?4/7:1;styles(g.style, {left:lerp(gp.x,snap.x,sn)+'px',top:lerp(gp.y,snap.y,sn)+'px',transform:`translate(-50%,-50%) scale(${ss}) rotate(${90*seg(t,13,.25,E.outCubic)}deg)`,opacity:t>=10.6&&t<14.5?'1':'0',filter:t>=14.4?'brightness(8)':'none'});
     ghostMachines.forEach(m=>renderMachineDetails(m,node('[data-ghost-machine="'+m.id+'"]'),t,false,true));
     write(node('.hud-mode').style, "opacity", String(seg(t,4.6,.3,E.outCubic)));const res=node('.resources'),rin=seg(t,5.4,.3,E.outCubic);write(res.style, "opacity", String(rin));write(res.style, "marginTop", (1-rin)*-20+'px');roll(node('#resource-number'),2065,2214,seg(t,20,3,E.outQuad));const bi=seg(t,10,.3,E.outCubic);write(node('.build-title').style, "opacity", String(bi));write(node('.build-title').style, "transform", `translateX(${-40*(1-bi)}px)`);write(node('.task').style, "top", (p?182:112)+(t>=10?64:0)+'px');write(node('.task').style, "opacity", String(seg(t,6.6,.3)));write(node('.build-backing').style, "opacity", String(seg(t,6.6,.3)));write(node('.task em'), "innerHTML", t>=22.5?icon('check',p?28:20):'<svg width="12" height="12"><circle cx="6" cy="6" r="6" fill="currentColor"/></svg>');write(node('.task em').style, "color", t>=22.5?'var(--ok)':'var(--yellow)');write(node('.task span'), "textContent", `搭建一条配件产线　${t>=22.5?'1/1':'0/1'}`);
@@ -475,6 +452,7 @@ function createOperator(host) {
     const cp=cursorAt(t,p);write(cursor, "innerHTML", p?'':'<svg viewBox="0 0 24 32" width="24" height="32"><path d="M2 1v25l6-7 5 11 5-2-5-10h9z" fill="white" stroke="#17191b" stroke-width="1.5"/></svg>');write(cursor.style, "left", cp.x-(p?28:0)+'px');write(cursor.style, "top", cp.y-(p?28:0)+'px');write(cursor.style, "opacity", t>=10.6&&t<56?'1':'0');const press=[13,14.4,24.9,32,35,39.4,51.6,53].find(v=>t>=v&&t<v+.3),rp=press===undefined?1:(t-press)/.3;write(ring.style, "opacity", press===undefined?'0':String(1-rp));write(ring.style, "left", cp.x-28+'px');write(ring.style, "top", cp.y-28+'px');write(ring.style, "transform", `scale(${1+rp*.6})`);
     const wipe=node('#wipe');let phase=-1,reverse=false;for(const[a,d,r]of[[3.4,.6,false],[36,.8,false],[48,.6,true]])if(t>=a&&t<a+d){phase=(t-a)/d;reverse=r;}if(phase>=0){write(wipe.style, "display", 'block');if(reduced)styles(wipe.style, {width:w+'px',height:h+'px',left:'0',top:'0',transform:'none',opacity:String(Math.sin(phase*Math.PI))});else styles(wipe.style, {width:w*.6+'px',height:h*3+'px',top:-h+'px',left:lerp(reverse?-w*1.2:w*1.6,reverse?w*1.6:-w*1.2,E.inOutCubic(phase))+'px',transform:'rotate(-28deg)',opacity:'1'});}else write(wipe.style, 'display', 'none');write(node('#outro').style, "opacity", String(seg(t,57.4,.4)));write(node('#fade').style, "opacity", String(seg(t,59.4,.6,E.inOutSine)));
   }
+  MK.preload(Object.values(bitmaps).map(MK.preload.image));
   MK.preload([{label:'Google Fonts',run:async()=>{await Promise.all(C.fonts.map(url=>new Promise((resolve,reject)=>{const link=document.createElement('link');link.rel='stylesheet';link.href=url;link.onload=resolve;link.onerror=reject;document.head.append(link);})));await Promise.all(C.fontSpecs.map(spec=>MK.preload.font(spec,'ENDFIELD 集成工业协议管理员配件机')()));await document.fonts.ready;}}]);
-  const tl=MK.timeline({duration:C.duration,render,markers:C.markers});MK.audio.attach(tl,C.score);MK.expose(tl,{title:C.title});MK.controls(tl,{accent:C.tokens.yellow});MK.start(tl,{t:0,reduced:0});
+  const tl=MK.timeline({duration:C.duration,render,markers:C.markers});MK.audio.attach(tl,C.score);MK.expose(tl,{title:C.title});MK.controls(tl,{accent:C.tokens.yellow});tl.ready.then(()=>MK.start(tl,{t:0,reduced:0}));
 })();

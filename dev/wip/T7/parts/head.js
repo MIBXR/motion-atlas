@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const MK=MotionKit,C=window.CONFIG,E=MK.ease,{clamp,lerp}=MK;
+  const bitmaps=Object.fromEntries(['ground','core','refinery','assembler','crusher','storage','planter','pylon','operator','item-crystal','item-part','item-canister','item-module','item-ore','item-plate'].map(name=>[name,`assets/gen/${name}.${name==='ground'?'webp':'png'}`]));
   const seg=(t,start,duration,ease=E.linear)=>ease(clamp((t-start)/duration,0,1));
   const $=(s,r=document)=>r.querySelector(s);
   const written=new WeakMap();

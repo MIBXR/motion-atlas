@@ -27,36 +27,8 @@
   function makeTerrain(p) {
     const w=p?1080:1920,h=p?1920:1080;
     terrain.width=flow.width=w;terrain.height=flow.height=h;
-    const rand=MK.rng(713);
-    ctx.fillStyle='#5f7d3a';ctx.fillRect(0,0,w,h);
-    for(let y=0;y<h;y+=48)for(let x=0;x<w;x+=48){
-      const g=ctx.createRadialGradient(x,y,0,x,y,100);
-      g.addColorStop(0,`rgba(111,140,69,${rand()*.8})`);g.addColorStop(1,'rgba(111,140,69,0)');
-      ctx.fillStyle=g;ctx.fillRect(x-100,y-100,200,200);
-    }
-    for(let y=-120;y<h;y+=120)for(let x=-120;x<w;x+=120){
-      ctx.beginPath();
-      for(let j=0;j<10;j++){const a=j*Math.PI/5,r=48+rand()*24,xx=x+60+Math.cos(a)*r,yy=y+60+Math.sin(a)*r;j?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}
-      ctx.closePath();ctx.fillStyle=rand()>.5?'#57732f':'#7a9850';ctx.globalAlpha=.35;ctx.fill();
-    }
-    ctx.globalAlpha=1;
-    for(let i=0;i<6;i++){
-      const x=rand()*w,y=rand()*h;ctx.beginPath();
-      for(let j=0;j<12;j++){const a=j/12*Math.PI*2,r=70+rand()*90,xx=x+Math.cos(a)*r,yy=y+Math.sin(a)*r*.5;j?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}
-      ctx.closePath();ctx.save();ctx.filter='blur(2px)';ctx.fillStyle='#8a7a5c66';ctx.fill();ctx.filter='none';ctx.clip();
-      for(let k=0;k<240;k++){ctx.fillStyle=k%2?'#b09a7344':'#594d3b44';ctx.beginPath();ctx.arc(x+(rand()-.5)*320,y+(rand()-.5)*180,.6+rand()*1.5,0,Math.PI*2);ctx.fill();}
-      ctx.restore();
-    }
-    for(let i=0;i<45000;i++){const x=rand()*w,y=rand()*h;ctx.strokeStyle=rand()>.5?'#c5c98a30':'#233b233a';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-1+rand()*3,y-2-rand()*5);ctx.stroke();}
-    ctx.strokeStyle='#86a35a';ctx.lineWidth=1;
-    for(let y=0;y<h;y+=32)for(let x=0;x<w;x+=32)for(let i=0;i<6;i++){const xx=x+rand()*32,yy=y+rand()*32,len=3+rand()*3,a=-Math.PI/2+(rand()-.5)*.8;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx+Math.cos(a)*len,yy+Math.sin(a)*len);ctx.stroke();}
-    for(let i=0;i<700;i++){ctx.fillStyle='#9a9a92';const s=2+rand()*4;ctx.globalAlpha=.3+rand()*.4;ctx.fillRect(rand()*w,rand()*h,s,s*.6);}
-    ctx.globalAlpha=1;
-    const beltSegments=[...conveyorPoints.slice(1).map((v,i)=>[mapBelt(...conveyorPoints[i],p),mapBelt(...v,p)]),...oldPoints.slice(1).map((v,i)=>[mapped(...oldPoints[i],p),mapped(...v,p)])];
-    const blocked=(x,y,r)=>machines.some(m=>{const a=machineRect(m,p);return x>a.x-r&&x<a.x+a.w+r&&y>a.y-r&&y<a.y+a.h+r;})||beltSegments.some(([a,b])=>{const dx=b.x-a.x,dy=b.y-a.y,k=clamp(((x-a.x)*dx+(y-a.y)*dy)/(dx*dx+dy*dy),0,1);return Math.hypot(x-a.x-dx*k,y-a.y-dy*k)<(p?24*4/7:24)+r;});
-    ctx.save();ctx.shadowOffsetX=1;ctx.shadowOffsetY=1;ctx.shadowBlur=1;ctx.shadowColor='#0009';
-    for(let i=0;i<40;i++){const size=6+rand()*8;let x,y;do{x=rand()*w;y=rand()*h;}while(blocked(x,y,size));ctx.fillStyle=i%2?'#a1a299':'#82877b';ctx.beginPath();ctx.moveTo(x-size*.45,y-size*.25);ctx.lineTo(x+size*.2,y-size*.4);ctx.lineTo(x+size*.5,y+size*.15);ctx.lineTo(x-size*.15,y+size*.4);ctx.closePath();ctx.fill();}
-    ctx.restore();
+    ctx.fillStyle=ctx.createPattern(MK.preload.cache.get(bitmaps.ground),'repeat');
+    ctx.fillRect(0,0,w,h);
     const b=p?{x:60,y:240,w:960,h:940}:{x:120,y:96,w:1680,h:904};
     ctx.save();ctx.beginPath();ctx.rect(b.x,b.y,b.w,b.h);ctx.clip();ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=1;
     const ss=p?64*4/7:64;
@@ -119,7 +91,7 @@
     fx.clearRect(0,0,w,h);drawBelt(t,p,oldBeltPath,false,mapped);if(t>=16)drawBelt(t,p,beltPath,true);if(t>=13.6&&t<14){fx.fillStyle=`rgba(45,140,255,${.25*(1-seg(t,13.6,.4))})`;const ss=p?4/7:1;for(let y=-4;y<4;y++)for(let x=-1;x<1;x++)fx.fillRect(snap.x+x*64*ss,snap.y+y*64*ss,64*ss-1,64*ss-1);}
     flowKey=nextFlowKey;
     }
-    for(const{m,el}of machineEls){const r=machineRect(m,p),age=t-(m.born??-100),born=m.born?clamp(age,0,1):1;styles(el.style, {left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px',visibility:age<0?'hidden':'visible',background:age<.8?'transparent':'#2a2d31',borderColor:age<.8?'transparent':'#4a4e53'});write(node('.machine-svg',el).style, "clipPath", m.born&&age<.8?`inset(0 0 ${100*(1-seg(t,m.born+.4,.4))}% 0)`:'none');write(node('.machine-edges',el).style, "opacity", m.born&&age<.8?'1':'0');write(node('.machine-edges',el).style, "clipPath", `inset(0 ${100*(1-seg(t,m.born??0,.4))}% 0 0)`);write(node('.machine-scan',el).style, "opacity", m.born&&age>=.4&&age<.8?'1':'0');write(node('.machine-scan',el).style, "top", 100*seg(t,(m.born??0)+.4,.4)+'%');const active=t>=(m.wake??(m.born?m.born+1:Infinity));write(node('.status-dot',el).style, "display", active?'block':'none');write(node('.machine-name',el).style, "opacity", String(p?(m.born?Math.min(seg(t,m.born,.2),1-seg(t,m.born+1.4,.3)):0):born));if(m.id!=='core'){const zz=node('.zz',el),wake=seg(t,m.wake??Infinity,.4);write(zz.style, "opacity", m.born?'0':String((.8+.2*Math.sin(t*Math.PI*2/1.6))*(1-wake)));write(zz.style, "transform", `translateY(${-24*wake}px)`);}const wr=node('.work-ring',el);write(wr.style, "opacity", active?'1':'0');write(wr.style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(wr.style, "transform", `rotate(${active?t*90:0}deg)`);write(node('.corner-marks',el).style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(node('.corner-marks',el).style, "transform", m.born?`scale(${seg(t,m.born+.8,.2,E.outBack)})`:'none');renderMachineDetails(m,el,t,active,false,p);}
+    for(const{m,el}of machineEls){const r=machineRect(m,p),age=t-(m.born??-100),born=m.born?clamp(age,0,1):1;styles(el.style, {left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px',visibility:age<0?'hidden':'visible',background:'transparent',borderColor:'transparent'});write(node('.machine-svg',el).style, "clipPath", m.born&&age<.8?`inset(0 0 ${100*(1-seg(t,m.born+.4,.4))}% 0)`:'none');write(node('.machine-edges',el).style, "opacity", m.born&&age<.8?'1':'0');write(node('.machine-edges',el).style, "clipPath", `inset(0 ${100*(1-seg(t,m.born??0,.4))}% 0 0)`);write(node('.machine-scan',el).style, "opacity", m.born&&age>=.4&&age<.8?'1':'0');write(node('.machine-scan',el).style, "top", 100*seg(t,(m.born??0)+.4,.4)+'%');const active=t>=(m.wake??(m.born?m.born+1:Infinity));write(node('.status-dot',el).style, "display", active?'block':'none');write(node('.machine-name',el).style, "opacity", String(p?(m.born?Math.min(seg(t,m.born,.2),1-seg(t,m.born+1.4,.3)):0):born));if(m.id!=='core'){const zz=node('.zz',el),wake=seg(t,m.wake??Infinity,.4);write(zz.style, "opacity", m.born?'0':String((.8+.2*Math.sin(t*Math.PI*2/1.6))*(1-wake)));write(zz.style, "transform", `translateY(${-24*wake}px)`);}const wr=node('.work-ring',el);write(wr.style, "opacity", active?'1':'0');write(wr.style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(wr.style, "transform", `rotate(${active?t*90:0}deg)`);write(node('.corner-marks',el).style, "transformOrigin", `${m.w/2}px ${m.h/2}px`);write(node('.corner-marks',el).style, "transform", m.born?`scale(${seg(t,m.born+.8,.2,E.outBack)})`:'none');renderMachineDetails(m,el,t,active,false,p);}
     const g=node('.ghost-group'),gp=springGhost(Math.min(t,13.6),p),sn=seg(t,13.6,.12,E.outCubic),ss=p?4/7:1;styles(g.style, {left:lerp(gp.x,snap.x,sn)+'px',top:lerp(gp.y,snap.y,sn)+'px',transform:`translate(-50%,-50%) scale(${ss}) rotate(${90*seg(t,13,.25,E.outCubic)}deg)`,opacity:t>=10.6&&t<14.5?'1':'0',filter:t>=14.4?'brightness(8)':'none'});
     ghostMachines.forEach(m=>renderMachineDetails(m,node('[data-ghost-machine="'+m.id+'"]'),t,false,true));
     write(node('.hud-mode').style, "opacity", String(seg(t,4.6,.3,E.outCubic)));const res=node('.resources'),rin=seg(t,5.4,.3,E.outCubic);write(res.style, "opacity", String(rin));write(res.style, "marginTop", (1-rin)*-20+'px');roll(node('#resource-number'),2065,2214,seg(t,20,3,E.outQuad));const bi=seg(t,10,.3,E.outCubic);write(node('.build-title').style, "opacity", String(bi));write(node('.build-title').style, "transform", `translateX(${-40*(1-bi)}px)`);write(node('.task').style, "top", (p?182:112)+(t>=10?64:0)+'px');write(node('.task').style, "opacity", String(seg(t,6.6,.3)));write(node('.build-backing').style, "opacity", String(seg(t,6.6,.3)));write(node('.task em'), "innerHTML", t>=22.5?icon('check',p?28:20):'<svg width="12" height="12"><circle cx="6" cy="6" r="6" fill="currentColor"/></svg>');write(node('.task em').style, "color", t>=22.5?'var(--ok)':'var(--yellow)');write(node('.task span'), "textContent", `搭建一条配件产线　${t>=22.5?'1/1':'0/1'}`);
@@ -129,6 +101,7 @@
     const cp=cursorAt(t,p);write(cursor, "innerHTML", p?'':'<svg viewBox="0 0 24 32" width="24" height="32"><path d="M2 1v25l6-7 5 11 5-2-5-10h9z" fill="white" stroke="#17191b" stroke-width="1.5"/></svg>');write(cursor.style, "left", cp.x-(p?28:0)+'px');write(cursor.style, "top", cp.y-(p?28:0)+'px');write(cursor.style, "opacity", t>=10.6&&t<56?'1':'0');const press=[13,14.4,24.9,32,35,39.4,51.6,53].find(v=>t>=v&&t<v+.3),rp=press===undefined?1:(t-press)/.3;write(ring.style, "opacity", press===undefined?'0':String(1-rp));write(ring.style, "left", cp.x-28+'px');write(ring.style, "top", cp.y-28+'px');write(ring.style, "transform", `scale(${1+rp*.6})`);
     const wipe=node('#wipe');let phase=-1,reverse=false;for(const[a,d,r]of[[3.4,.6,false],[36,.8,false],[48,.6,true]])if(t>=a&&t<a+d){phase=(t-a)/d;reverse=r;}if(phase>=0){write(wipe.style, "display", 'block');if(reduced)styles(wipe.style, {width:w+'px',height:h+'px',left:'0',top:'0',transform:'none',opacity:String(Math.sin(phase*Math.PI))});else styles(wipe.style, {width:w*.6+'px',height:h*3+'px',top:-h+'px',left:lerp(reverse?-w*1.2:w*1.6,reverse?w*1.6:-w*1.2,E.inOutCubic(phase))+'px',transform:'rotate(-28deg)',opacity:'1'});}else write(wipe.style, 'display', 'none');write(node('#outro').style, "opacity", String(seg(t,57.4,.4)));write(node('#fade').style, "opacity", String(seg(t,59.4,.6,E.inOutSine)));
   }
+  MK.preload(Object.values(bitmaps).map(MK.preload.image));
   MK.preload([{label:'Google Fonts',run:async()=>{await Promise.all(C.fonts.map(url=>new Promise((resolve,reject)=>{const link=document.createElement('link');link.rel='stylesheet';link.href=url;link.onload=resolve;link.onerror=reject;document.head.append(link);})));await Promise.all(C.fontSpecs.map(spec=>MK.preload.font(spec,'ENDFIELD 集成工业协议管理员配件机')()));await document.fonts.ready;}}]);
-  const tl=MK.timeline({duration:C.duration,render,markers:C.markers});MK.audio.attach(tl,C.score);MK.expose(tl,{title:C.title});MK.controls(tl,{accent:C.tokens.yellow});MK.start(tl,{t:0,reduced:0});
+  const tl=MK.timeline({duration:C.duration,render,markers:C.markers});MK.audio.attach(tl,C.score);MK.expose(tl,{title:C.title});MK.controls(tl,{accent:C.tokens.yellow});tl.ready.then(()=>MK.start(tl,{t:0,reduced:0}));
 })();
