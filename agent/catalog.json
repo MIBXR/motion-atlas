@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "Motion Atlas",
   "description": "多媒体动态视觉参考库：影像视频、交互操作台、交互展示台的案例、巧思、节奏表、Prompt 与可迁移 Demo。",
-  "contentVersion": "40bf2dd77c945523fc952392681c1243474f176a0c98afc1e83d41397429ec4d",
+  "contentVersion": "51e5a1a713e965452a83d069432ea6b5734a57dbb33088cb887b352dcc110a47",
   "taxonomy": {
     "carriers": {
       "video": "影像视频",
@@ -184,33 +184,32 @@
     },
     {
       "id": "industrial-protocol",
-      "title": "工业协议 · 终末地式设施操作台",
-      "summary": "米灰工业表面、石墨黑与安全黄，切角面板、注册标记、刻度与危险条纹构成“管理员终端”；分段加载后各区块以吸附缓动就位，产线物料沿传送带流动，设备蓝图逐线描出，部署需按住确认，换页用一条发光扫描线。",
+      "title": "终末地 · 集成工业协议",
+      "summary": "复刻《明日方舟：终末地》集成工业系统的界面与交互：工业模式 HUD、蓝图放置与建造、设备面板收取、干员升级与蓝图分享。",
       "carriers": [
-        "console",
+        "video",
         "showcase"
       ],
       "source": "game",
-      "evidence": "inferred",
+      "evidence": "adapted",
       "tags": [
-        "工业机能",
-        "安全黄",
-        "切角面板",
-        "危险条纹",
-        "字符解码",
-        "长按确认"
+        "终末地",
+        "集成工业",
+        "蓝图建造",
+        "设备收取",
+        "干员升级",
+        "横竖构图",
+        "合成音效"
       ],
       "useCases": [
-        "工业/能源/物流监控台",
-        "游戏内建造与管理界面",
-        "B 端设备管理后台的品牌化外观",
-        "展会设备展示屏",
-        "科幻影视 FUI"
+        "游戏界面复刻研究",
+        "手游界面影片",
+        "集成工业交互演示",
+        "横竖屏动效适配"
       ],
       "avoid": [
-        "温暖亲和的消费品牌",
-        "以图片为主的内容浏览",
-        "需要高信息密度表格且不允许装饰的严肃系统"
+        "把示意产线作为真实游戏配方或数值指南",
+        "将自绘剪影误认为官方角色素材"
       ],
       "patternIds": [
         "chamfer-panel",
@@ -221,7 +220,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/industrial-protocol.json",
-      "bundleSha256": "dc2a487f4b92d93fc6ba7c69cabf2f2056484813b4625cb06d4c2a43f4b66c6b"
+      "bundleSha256": "fd41e3b53a410ebf5d3bac4f9944a1835e83ab4318b56ca88aba5438110e4c2e"
     },
     {
       "id": "broadcast-pack",

@@ -1,42 +1,43 @@
-# 工业协议 · 终末地式设施操作台 · 复用 Prompt
+# 终末地 · 集成工业协议 · 复用 Prompt
 
 由 [结构化条目](../../entries/cases/industrial-protocol.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/industrial-protocol.md)。
 
 ## 实现 Prompt
 
-做一个“工业协议”风格的设施操作台（HTML/CSS/JS，可 seek）：米灰底 #e6e6e1 + 40px 细网格，面板 #f4f4f0，石墨 #1d1f22，安全黄 #ffd400 只表示“当前/进行中/警示”，完成用绿色。字体：Bahnschrift/DIN 类窄体 + 等宽编码 + 中文黑体。布局：石墨黑顶栏（三角徽记 + 终端名 + 4 个页签 + 资源计数，右下切角，当前页签下方 4px 黄色指示条以 350ms snap 移动）、左侧子菜单（右下切角，当前项反黑 + 右侧黄条）、中央内容（对角切角）、右侧详情（对角切角 + 四角十字注册标记）、底栏（危险斜纹 + 坐标 + 滚动日志 + 时钟）。①启动：三角徽记 + 标题字符解码（24fps 随机字符，按位置逐个解出）+ 24 段进度条（当前段黄色，带随机跳变）→ 加载层自下而上裁切退场，各区块以 cubic-bezier(.2,.9,.1,1) 420ms 从各自边缘错峰装配，资源数字计数。②产线：SVG 节点图（切角白盒、几何图标、编码、名称、OUTPUT/min、闪烁指示灯），节点间是带圆角的正交传送带（灰色粗底 + 黑色虚线带纹按速度推进），物料方块按 (t×速度/长度 + i/数量) mod 1 沿路径取点。③选择设备：四角黄色括号 outBack 回弹；右侧名称解码、深色蓝图 8 条浅蓝线框（pathLength=1）错峰 70ms 描出、三项 10 格分段条依次填充。④按住部署：按住时黄色从左线性填满 1.2s，松开过早 300ms 回落，满格锁定为 DEPLOYED 并盖下倾斜绿色印章，相关产线加速。⑤换页：3px 黄色发光扫描线 500ms inOutQuart 从左扫到右，线左新页、线右旧页（两侧 clip-path），新页标题解码、卡片 snap 错峰上浮。SVG 文字按实际缩放换算保证 ≥12px；声音默认关闭；减少动态停在完成态。
+按60秒时间轴制作《明日方舟：终末地》集成工业系统界面影片，横1920×1080、竖1080×1920，MotionKit.stage固定舞台，render(t)纯函数。0–4黑底ENDFIELD/终末地字标和加载线；4–10草地俯视工地、黄黑建造边界、模式/资源/任务/设备栏HUD；10–24放置512px蓝图：配件机A128+传送带64+粉碎机128+传送带64+仓储箱128，三次贝塞尔光标跟随、13s旋转90°、13.6s吸附、14.4s确认，三台依14.6/14.9/15.2s线框扫描成形，铺带连核心→A→粉碎→仓储→B，18.5s起80px/s运料；24–36配件机浅色半透明面板，背包、输入输出、2秒生产进度、32s全部收取，两件弧线飞入背包20→22；36–48浅灰干员页，中央外套剪影、右侧亮黄斜带、等级20→21与属性滚动、四技能描黄环；48–56蓝图纸与贯屏白色分享弹窗，复制EF01-7KQ2-M9A3-ZT58并确认；56–60回工地拉远、右下字标、淡黑。统一ink#17191b/paper#e8e9e8/yellow#ffe400/belt#f2a51c/ghost#2d8cff，品牌五段彩条。字体Barlow Semi Condensed与Noto Sans SC经MotionKit.preload；字号按本条目横竖阶梯。竖屏重排为触控圆钮、底部设备面板与干员信息卡、下方蓝图详情；界面DOM/CSS，设施内联自绘SVG，地形物料Canvas固定种子。MotionKit.audio合成音谱同轴，sound:true；13s click gain.9。减少动态时仅镜头和扫带改淡入淡出。界面复刻自游戏，未使用游戏美术素材。
 
 ## 视频生成 Prompt
 
-Industrial sci-fi management terminal UI, 1920×1080, 16 seconds. Off-white industrial panels with chamfered 45-degree corners, graphite black header bar, a single safety-yellow accent, crosshair registration marks, tick rulers and yellow-black hazard stripes, a thin engineering grid background. A triangle emblem appears and a monospace title decodes from random characters while a 24-segment progress bar fills. The loader slices away upward and UI modules snap into place from their edges with mechanical precision. A production-line node graph runs: small black square items flow along orthogonal conveyor belts between machine nodes with blinking green lamps. A machine is selected with yellow corner brackets popping in; on the right a dark blueprint panel draws light-blue wireframe lines one by one and segmented meters fill. A long-press button fills with yellow from left to right and a green "DEPLOYED" stamp slams down at an angle. Then a glowing yellow scanline sweeps across the content area revealing a new page of dark operator cards. Precise, mechanical, calm; no glow overload; no neon.
+A 60-second Arknights: Endfield integrated industrial UI film in landscape 1920×1080 and portrait 1080×1920. Black ENDFIELD title and loading line, overhead grassy industrial site with lemon-yellow hazard border, industrial HUD, blue three-machine blueprint placement and construction, orange conveyors with moving materials, translucent accessory-machine production and collection panel, pale operator screen with a coat silhouette and yellow level-up band, blueprint-paper sharing modal, industrial-site pullback and fade to black. Recreate the referenced interface layout and interaction with original geometric SVG/Canvas assets, OFL Barlow Semi Condensed and Noto Sans SC fonts, and synchronized synthesized interface sounds. No game screenshots or official character, icon, or font assets.
 
 ## 负向约束
 
-不要赛博朋克霓虹与紫粉渐变；不要圆润的消费级卡片与大阴影；不要让黄色泛滥成背景色；不要弹性夸张的动画；不要使用原作的标志、角色、术语与美术。
+不使用游戏截图、角色立绘、官方图标或官方字体文件；不把60秒设计时序标为原游戏动效实测；不加入规格外的界面文案、场景或构图。
 
 ## 动效 Token
 
-- **snap**：cubic-bezier(.2,.9,.1,1)：装配 420ms、页签指示 350ms、卡片 320ms
-- **assemble-stagger**：顶栏 → 侧栏（60ms/项）→ 内容 → 详情 → 底栏，约 0.1s 递进
-- **scramble**：24fps 随机字符刷新，阈值 = 位置×0.7 + 随机×0.3，时长 0.6–1.2s
-- **conveyor**：物料 90px/s（部署后 150px/s），每条带 4 个，带纹同速
-- **blueprint**：8 条线框各 450ms inOutCubic，错峰 70ms
-- **hold**：1.2s 线性填充，松开 300ms 回落；完成印章 350ms outBack
-- **scanline**：500ms inOutQuart，3px 黄线 + 外发光
+- **loading**：1.0–3.4s 0→100%，easeInOutSine
+- **hud**：4.6/5.4/5.8/6.2/6.6s入场；模式5.0s切换，0.25s easeOutBack
+- **blueprint**：512px三设备蓝图；13.0s旋转90°/0.25s，13.6s吸附/0.12s；弹簧180/22
+- **construction**：14.6/14.9/15.2s起，每台1.0s；线框0.4s、扫描0.4s、角标0.2s
+- **conveyor**：64px/段，0.12s/段铺设；18.5s起80px/s，物料间隔0.5s
+- **production**：25.5–31.0s，2.0s/轮；第三轮停75%；32.1s起飞行0.4s/枚，间隔0.15s
+- **upgrade**：39.6–40.4s填经验；40.4–40.8s等级20→21；40.8–42.0s属性滚动
+- **share**：50.0–50.4s条带展开；51.6s复制，53.0s确认，53.2–53.6s收起
+- **outro**：56.6–59.0s镜头1→0.86；57.4s字标；59.4–60.0s淡黑
 
 ## 制作约束
 
-- 证据等级为“公开资料推断”：未实机录制《明日方舟：终末地》，动效时长为本地拟合；请按 docs/methodology.md 用实机录像核验后更新。
-- 不使用鹰角网络/GRYPHLINE 的标志、角色、术语（如源石、AIC 等）与美术；设施、干员与资源名称均为原创。
-- 产线图为示意，不包含真实游戏的配方与数值。
+- 界面复刻自游戏，未使用游戏美术素材。
+- 版式、交互、动效、配色、字体风格照真实游戏；不复制游戏角色立绘、官方图标、官方字体文件，也不截取游戏画面使用。
+- 设备、地形、图标全部SVG/Canvas自绘；人物用剪影；字体为Google Fonts上的OFL字体。
+- 60秒场景时序、设备数量、尺寸和数值来自本案例设计规格，没有将这些参数标为原游戏动效的测量值。
+- 本地参考视频、抽帧与联系表仅供样式核对，不纳入仓库。
 
 ## 迁移
 
-- `config.js → brand / palette`：终端名称、站点代码、版本号；纸色、面板、石墨、灰、细线、安全黄、警示与完成色。
-- `config.js → tabs`：模块页签（英文 + 中文）与每个模块的子菜单。
-- `config.js → machines / links`：产线节点（坐标、编码、名称、产量、图标）与连接关系，传送带路径自动生成。
-- `config.js → operators / resources`：卡片内容与顶栏资源计数。
-- `config.js → holdDuration / autopilot`：长按确认时长；自动演示事件（选择、按住、换页）的时刻。
-- `style.css → --cut`：切角尺寸；改成 0 即得到直角版本。
+- `config.js → tokens / brand / fontSizes`：全案色值、五段彩条、横竖字号与Google Fonts配置。
+- `config.js → machines / blueprint`：已有设施、三设备蓝图、512px总长、64px网格、建造时刻与产线顺序。
+- `config.js → markers / scenes / score`：60秒场景、十个标记与合成声音事件。
 
 [打开 Demo](../../demos/cases/industrial-protocol/index.html) · [在库中查看](../../cases.html#case/industrial-protocol)
