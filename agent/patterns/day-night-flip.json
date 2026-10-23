@@ -105,7 +105,7 @@
         "#d9562c",
         "#e23b3b"
       ],
-      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。",
+      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
       "css": {
         "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
         "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
@@ -189,8 +189,8 @@
     },
     {
       "path": "demos/patterns/day-night-flip/index.html",
-      "bytes": 7646,
-      "sha256": "3bca5dfb786be5a1688aea3f93ec024c7e49173bcf6c0e8cff561e6f989292ad"
+      "bytes": 7644,
+      "sha256": "01c59ab0f42eebfe1f32ecaefd396ec31d5a7e7925e4a8bd35c9e8869fd271c6"
     },
     {
       "path": "demos/patterns/day-night-flip/motion-kit.js",
@@ -214,23 +214,23 @@
     },
     {
       "path": "demos/patterns/day-night-flip/script.js",
-      "bytes": 144841,
-      "sha256": "c3b637c27ee1ba984fcc1ee04d256edf96082ad2cf131ece1e4a61d4507345d7"
+      "bytes": 145413,
+      "sha256": "9d611795fe74f3e5be69ff110525a46f84cd132c35f2c477ee50149c68a29485"
     },
     {
       "path": "demos/patterns/day-night-flip/style.css",
-      "bytes": 40334,
-      "sha256": "d64e0e85091ba7ddce9116b61791798caefb0898b0b2cd9df54a0213ba584ccf"
+      "bytes": 41282,
+      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
     },
     {
       "path": "previews/patterns/day-night-flip.jpg",
-      "bytes": 187443,
-      "sha256": "b31f062ff08f77b5aa0efc39424b5f53185756fb49da4b3d0c69008f6e2c9f58"
+      "bytes": 166972,
+      "sha256": "58155ccd8e5f55b4dd6f6b5f4c42fb37cf6c04afaf24abcf92c4ae3cbfdfdec7"
     },
     {
       "path": "previews/patterns/day-night-flip-portrait.jpg",
-      "bytes": 208522,
-      "sha256": "6129b551f52e8466e9ebd45a4d62c8db98b8048c14325f4bd8467c5cc1d4a07f"
+      "bytes": 187886,
+      "sha256": "67c8dc8cb988063186d2f411538cd799eb1161751e92d24ffcd5a637f344cd01"
     }
   ]
 }

@@ -27,7 +27,7 @@ A faithful port of LBEILC/RhineLabUI at commit 12cc5e4. Preserve the original wh
 ## 制作约束
 
 - 忠实复用上游源码、模型、字体、音频与档案内容。上游修改边界及逐文件原因见 vendor/rhinelabui/UPSTREAM.md。
-- 原版字号按 fontFloor:reference 豁免，不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。
+- 舞台字号按设计决定，不设下限；网站界面 ≥ 12px。不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。
 - 《明日方舟》及莱茵生命相关名称、标志、设定、原片和音频采样的权利归各自权利人所有。许可全文与免责声明见 demos/cases/archive-os/LICENSES.md。
 
 ## 迁移

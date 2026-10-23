@@ -990,11 +990,12 @@
 
     // --- HUD 图形 ---
     hudgfx.innerHTML = '';
+    G.ruleGroup = svg('g', { class: 'hud-rule' }, hudgfx);
     const ry = half(L.rule.y);
-    G.ruleBase = svg('line', { class: 'rl-base', x1: L.rule.x0, y1: ry, x2: L.rule.x1, y2: ry }, hudgfx);
-    G.ruleFill = svg('rect', { class: 'rl-fill', x: L.rule.x0, y: L.rule.y - 2, width: 0, height: 4 }, hudgfx);
-    G.ruleTicks = C.stepper.map((_, i) => svg('line', { class: 'rl-tick', x1: ruleX(i), y1: L.rule.y + 6, x2: ruleX(i), y2: L.rule.y + 16 }, hudgfx));
-    G.ruleHead = svg('path', { class: 'rl-head', d: 'M0 -7 L7 0 L0 7 L-7 0 Z' }, hudgfx);
+    G.ruleBase = svg('line', { class: 'rl-base', x1: L.rule.x0, y1: ry, x2: L.rule.x1, y2: ry }, G.ruleGroup);
+    G.ruleFill = svg('rect', { class: 'rl-fill', x: L.rule.x0, y: L.rule.y - 2, width: 0, height: 4 }, G.ruleGroup);
+    G.ruleTicks = C.stepper.map((_, i) => svg('line', { class: 'rl-tick', x1: ruleX(i), y1: L.rule.y + 6, x2: ruleX(i), y2: L.rule.y + 16 }, G.ruleGroup));
+    G.ruleHead = svg('path', { class: 'rl-head', d: 'M0 -7 L7 0 L0 7 L-7 0 Z' }, G.ruleGroup);
     // 步进器：线、填充、节点、标签都由 stepX() 计算
     const sy = L.stepper.y;
     G.stepGroup = svg('g', { class: 'stepper-g' }, hudgfx);
@@ -1011,8 +1012,8 @@
     });
     // 印章：横屏与步进器同列（stampXY 与 stepX 同源）；竖屏排在右上
     G.stamps = C.stepper.map((st, i) => {
-      const { x, y } = stampXY(i), r = L.stamps.r;
-      const g = svg('g', { class: 'stamp', transform: `translate(${x} ${y})` }, hudgfx);
+      const { x, y } = stampXY(i), r = L.stamps.r, stampScale = portrait() ? 0.917 : 0.75;
+      const g = svg('g', { class: 'stamp', transform: `translate(${x} ${y + r * (1 - stampScale)}) scale(${stampScale})` }, hudgfx);
       const slot = svg('circle', { class: 'sp-slot', r }, g);
       const ghost = svg('text', { class: 'sp-ghost', y: 12, 'text-anchor': 'middle' }, g);
       ghost.textContent = st.stamp;
@@ -1056,7 +1057,7 @@
     for (const ce of cardEls) mountScene(ce.media, ce.c.scene, 'photo', ce.c);
     MAP.sceneO = O;
     $('.attrib').textContent = O === 'portrait' ? C.map.attributionShort : C.map.attribution;
-    (O === 'portrait' ? stageEl : $('.hud-bottom')).appendChild($('.attrib'));
+    stageEl.appendChild($('.attrib'));
     applyStaticLayout();
     measureMarkerLabels();
   }
@@ -1319,10 +1320,10 @@
       expandF = Math.max(expandF, f);
     }
     const fbItem = T.flashback.find((f) => t >= f.t - 0.3 && t <= f.until + 0.4);
-    const fbVis = fbItem ? env(t, fbItem.t, fbItem.until, 0.28, 0.32) : 0;
+    const fbVis = 0;
     const cmpItem = T.compare.find((c) => t >= c.t - 0.5 && t <= c.until + 0.6);
-    const cmpVis = cmpItem ? env(t, cmpItem.t, cmpItem.until, 0.3, 0.5) : 0;
-    over = Math.max(expandF, fbVis, cmpVis);
+    const cmpVis = 0;
+    over = 0;
 
     /* --- 章节与强调色 --- */
     const ch = T.chapter.find((c) => t >= c.t - 0.1 && t <= c.until + 0.7);
@@ -1939,9 +1940,19 @@
   /* ---------- HUD ---------- */
   const alertK = (t) => { const a = T.alert.find((x) => t >= x.t - 0.05 && t <= x.until + 0.4); return a ? env(t, a.t, a.until, 0.25, 0.35) : 0; };
   function drawHud(t, cam, night, over, fbVis, cmpVis) {
+    const hudNight = night < 0.5 ? 0 : 1;
+    const hudAlpha = clamp(Math.abs(night - 0.5) / 0.25);
+    const hudInk = mix(mix(PAL.ink, PAL.nightInk, hudNight), WHITE, over);
+    for (const container of [TOP, BOTTOM, G.ruleGroup, G.stepGroup]) {
+      sty(container, '--ink', css(hudInk));
+      sty(container, '--muted', css(hudInk, 0.62));
+      sty(container, '--line', css(hudInk, 0.26));
+      sty(container, '--paper', css(mix(PAL.paper, PAL.nightPaper, hudNight)));
+    }
+    op(G.ruleGroup, hudAlpha);
     const hudIn = seg(t, 7.5, 0.8, ease.outCubic);
     const hudOut = seg(t, O_.t - 0.4, 0.8);
-    op(TOP, hudIn * (1 - fbVis));
+    op(TOP, hudIn * (1 - fbVis) * hudAlpha);
     sty(TOP, 'transform', `translateY(${f1((1 - hudIn) * -14)}px)`);
     op(el.hudDay, 1 - hudOut * 0.8);
     // 日序（滚动）
@@ -1987,7 +1998,8 @@
       attr(st.ink, 'transform', `rotate(${st.rot}) scale(${f2(on ? 1.5 - 0.5 * clamp(sk, 0, 1.2) : 1)})`);
       sty(st.ghost, 'opacity', on ? '0' : '0.32');
       st.slot.classList.toggle('on', !!on && sk > 0.35);
-      attr(st.g, 'transform', `translate(${x} ${y})`);
+      const stampScale = portrait() ? 0.917 : 0.75;
+      attr(st.g, 'transform', `translate(${x} ${y + L.stamps.r * (1 - stampScale)}) scale(${stampScale})`);
     });
     // 步进器：线、节点、标签由 stepX() 计算；填充末端 = stepAtX(进度)
     const sy = L.stepper.y;
@@ -2000,11 +2012,11 @@
       attr(n.pulse, 'r', String(f1(10 + f * 16)));
       sty(n.pulse, 'opacity', reached && Math.round(prog) === i ? String(f2((1 - f) * 0.6)) : '0');
     });
-    op(G.stepGroup, hudIn * (1 - Math.max(fbVis, cmpVis)));
+    op(G.stepGroup, hudIn * (1 - Math.max(fbVis, cmpVis)) * hudAlpha);
     op(G.ruleBase, hudIn * (1 - fbVis)); op(G.ruleFill, hudIn * (1 - fbVis)); op(G.ruleHead, hudIn * (1 - fbVis));
     G.ruleTicks.forEach((tk) => op(tk, hudIn * (1 - fbVis)));
     // 底部：正在播放、歌词、比例尺
-    op(BOTTOM, seg(t, 1.2, 0.8) * (1 - fbVis));
+    op(BOTTOM, seg(t, 1.2, 0.8) * (1 - fbVis) * hudAlpha);
     op(el.np, 1 - hudOut);
     const ly = stepAt(C.music.lyrics, t);
     txt(el.lyric, ly ? MK.typeText(ly.text, seg(t, ly.t, 0.8, ease.linear)) : '♪ · · ·');
@@ -2025,7 +2037,7 @@
     sty(el.scBar, 'width', `${f1(px)}px`);
     txt(el.scText, nice >= 1000 ? `${nice / 1000} km` : `${nice} m`);
     op(el.scale, hudIn * (1 - hudOut) * (cam.zoom > 4.5 ? 1 : 0));
-    op(el.attrib, O === 'portrait' ? 1 : seg(t, 1.2, 0.8) * (1 - fbVis) * 0.85);
+    op(el.attrib, 1);
   }
 
   /* ---------- 警示改道 ---------- */

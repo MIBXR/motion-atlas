@@ -54,7 +54,7 @@ const controlStart = kit.indexOf('    style.textContent = `',kit.indexOf('  func
 const controlEnd = kit.indexOf('`;',controlStart);
 const controlCSS = kit.slice(controlStart,controlEnd);
 const scaledControlCSS = ['landscape','portrait'].map(orient=>{
-  const k=(orient==='landscape'?24:36)/13;
+  const k=(orient==='landscape'?18:33)/13;
   const selector=`[data-orient="${orient}"] `;
   return controlCSS.replace(/(-?[\d.]+)px/g,(_,n)=>`${+(Number(n)*k).toFixed(5)}px`).replace(/\.mk-controls/g,`${selector}.mk-controls`);
 }).join('\n');
@@ -107,7 +107,11 @@ for (const [id, rows, hold] of definitions) {
   fs.writeFileSync(path.join(dir,'config.js'),`window.CASE_CONFIG = ${JSON.stringify(caseConfig,null,2)};\nwindow.CONFIG = ${JSON.stringify(config,null,2)};\n`);
   fs.copyFileSync(path.join(sourceDir,'paths.js'),path.join(dir,'paths.js'));
   fs.copyFileSync(path.join(sourceDir,'scenes.js'),path.join(dir,'scenes.js'));
-  fs.writeFileSync(path.join(dir,'script.js'),source.replace('__PATTERN_RUNTIME__',runtime)+'\n'+liveRuntime+`\n  startPattern();\n})();\n`);
+  const patternRuntime = id === 'day-night-flip' ? runtime
+    .replace(/const fbVis = .*;/, 'const fbVis = 0;')
+    .replace(/const cmpVis = .*;/, 'const cmpVis = 0;')
+    .replace('over = Math.max(expandF, fbVis, cmpVis);', 'over = 0;') : runtime;
+  fs.writeFileSync(path.join(dir,'script.js'),source.replace('__PATTERN_RUNTIME__',patternRuntime)+'\n'+liveRuntime+`\n  startPattern();\n})();\n`);
   console.log(`${id}: ${config.duration}s, ${segments.length} segments${liveIds.has(id)?', live':''}`);
 }
 fs.appendFileSync(path.join(root,'dev/wip/T4b/progress.md'),`- ${new Date().toISOString()}：同步十二巧思源码、配置与案例函数/CSS副本；保留score、entries和plates。\n`);

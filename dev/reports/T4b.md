@@ -1,104 +1,122 @@
-# T4b 本轮局部效果报告
+# T4b / R2 当前执行与验收报告
 
-本轮按最新用户决定修改seekable-timeline并交付四项效果截图、逐张审图、全段碰撞检查和地图区域MAD；**没有进行T4b完整验收，也不宣称最终完成。** 本轮核心PNG为24张（route4、seek6、day-night10、film4），另有MAD参考图和参与区mask。
+四步实施与规定验收均已执行。三项裁定已落实：竖屏印章保留 x980 右栏并按 0.917 缩放、网站两组 SVG 实际字号 ≥ 12px、指定八处失效说明原句替换。追加复验为站点 140/140、六张竖屏章图几何与逐张查看通过、同命令 smoke 25/25、build/check/build:site 通过。
 
-当前结果：seek已去掉底部HUD与Δ，上移导致的旧碰撞不再作为当前停止原因；628/628局部检查通过。day-night地图MAD横竖均未达到严格<4/255，且六张采样有HUD低对比观察。已保留既定画面与口径，等待主任务决定镜头/参考几何及HUD配色问题。
+当前为本地未提交工作树，分支 feat/patterns-t4b-t5，HEAD 7a84101；没有commit、push或切分支。112个明确删除项由git rm暂存，其余修改未暂存。执行期间出现的dev/wip/T7/未由本任务创建或修改。
 
-## 范围与实现
+## 四步执行对照
 
-| 项目 | 本轮实现 | 局部证据/边界 |
+| 步骤 | 已实施与已验证 | 边界与结论 |
 |---|---|---|
-| route S3 | 两站地理中点、舞台居中、零padding、20%边距且zoom≥13；源候选优先避开可见路线、其他标签/标记和舞台边缘；不避让隐藏HUD | t9、10.4横竖四图及候选诊断，不代表全片验收 |
-| seek底部 | 不显示NOW PLAYING、歌词、步进器，取消Δ；保留顶部HUD、kix卡片/引线、徽章、控制条；署名在控制条上方，g横12/竖18，右对齐 | 全段采样与t0.5、2.3、4.5横竖六图；不是smoke |
-| day-night | caseT=31.3+t（t<4.5），之后36.6+(t−4.5)；全HUD/dayNight取caseT，镜头仍固定34.5；复制wash暖色，score重取四事件 | t0.5、2、3.5、5、6.5横竖十图；MAD只对源35.8 |
-| film | 照片取源13.5媒体实际可见区，插画取回忆画布，cover铺满；不带CSS卡片框/阴影/圆角/说明 | t3.75、6.25横竖四图；root逐张看过，无新增问题 |
+| 1 day-night | t3.2与case34.5同镜头MAD；day-night的fbVis/cmpVis/over=0；案例与12巧思共同HUD函数同步端点色和a(n)；40张最终图逐张查看 | 横屏署名按要求维持原色，在n=.5时低对比；没有加入未授权保护层 |
+| 2 删除 | 6案例/16巧思，112源/预览文件+44生成物删除；用户6段文字逐字应用，decrypt组合项只删除；build3/22，删除ID和旧计数零匹配；16组合站点走查 | 站点 140/140；两列表横竖实际字号均 ≥ 12px |
+| 3 字号 | 案例+12巧思53选择器1365项一致；印章整体缩放；容器、模板、控制条k；检查脚本取消Demo下限，archive fontFloor字段删除且renderer保留；指定文档更新 | 竖屏按裁定保留 x980 右栏；指定八处旧说明已替换 |
+| 4 验收 | 198组同caseT对照、38组字号对照逐张审阅；署名180适用样本和18例外；4次smoke25/25；capture25/25/14竖；两MP4及ffprobe；12WAV；build/check/build:site | 追加一轮 smoke 25/25；六张竖屏章图复验通过，未放宽验收阈值 |
 
-方案背景为`dev/wip/T4b/plan-fix-5.md`及最新用户决定。GPU状态：条目`entries/patterns/day-night-flip.json`的renderer=`gpu`，**GPU声明，待外分支机制合并后复验**。本分支未实现GPU分流机制、未修改scripts；本轮硬件适配器只用于获准截图/局部测量，不能称正式smoke/capture通过。
+## HUD 淡出、切色、淡入
 
-## 24张效果图与逐张查看
+地图和其他覆盖层继续使用原n平滑插值。HUD在n<.5取昼端点、n>=.5取夜端点，并在顶部/底部HUD、进度规尺组和步进器组容器上乘a(n)=clamp(abs(n-.5)/.25,0,1)。强调色原实现不随n插值，保留既有章节强调色；实际全屏覆盖层所需白色上下文在案例保留，在day-night按决定清零。署名为stage直接子元素、opacity1，不跟随HUD淡出。
 
-总索引`dev/shots/T4b/fix5-effects/index.json`：记录24张，文件存在24张，索引含逐张review24张。索引中的renderer与原生尺寸记录保留；本轮截图适配器："dev/wip/T4b/tools/hardware-browser.mjs (screenshots only)"。
+最终样本为巧思横竖16张、案例横竖24张，共40张，全部逐张查看同分辨率JPEG审图副本；原PNG保留。没有发现opacity>=.5且HUD主字与背景同灰的样本。
 
-| 巧思 | 画幅 | t | PNG | 实际观察 |
-|---|---|---:|---|---|
-| route-draw-marker | landscape | 9 | `dev/shots/T4b/fix5-effects/route-draw-marker/landscape-9.png` | 两站横跨画面中央，围绕舞台中心近似对称；JR NARA 标签放在站点左侧，步行虚线没有穿过文字。Nara Park 正在按源函数打字，当前显示 NARA，衬底随当前子串增长。署名在底边清晰可见。 |
-| route-draw-marker | landscape | 10.4 | `dev/shots/T4b/fix5-effects/route-draw-marker/landscape-10.4.png` | 镜头与9秒相同，两站关于舞台中心近似对称；JR NARA 位于站点左侧，NARA PARK 位于站点右侧，双语标签完整，路线没有穿过标签。署名在底边清晰可见。 |
-| route-draw-marker | portrait | 9 | `dev/shots/T4b/fix5-effects/route-draw-marker/portrait-9.png` | 两站位于画面中央区域，左右位置关于舞台中心近似对称；JR NARA 标签置于站点下方，Nara Park 标签置于站点左上方，正在打出的 NARA 与步行线分离。署名清晰可见。 |
-| route-draw-marker | portrait | 10.4 | `dev/shots/T4b/fix5-effects/route-draw-marker/portrait-10.4.png` | 镜头与9秒相同；JR NARA 下方标签、NARA PARK 左上方标签均为完整双语文字，路线与标签没有交叠，标签没有出画，两个站点与署名均清晰可见。 |
-| seekable-timeline | landscape | 0.5 | `dev/shots/T4b/fix5-effects/seekable-timeline/landscape-0.5.png` | kix照片卡片、引线与说明文字清楚可见，未被底部控件遮挡。；顶部HUD、MIKAN徽章、独立署名和控制条保留。；底部NOW PLAYING、歌词、步进器和底部HUD渐变均未显示；署名与控制条、卡片说明无重叠。 |
-| seekable-timeline | landscape | 2.3 | `dev/shots/T4b/fix5-effects/seekable-timeline/landscape-2.3.png` | kix照片卡片、引线与说明文字清楚可见，未被底部控件遮挡。；顶部HUD、MIKAN徽章、独立署名和控制条保留。；底部NOW PLAYING、歌词、步进器和底部HUD渐变均未显示；署名与控制条、卡片说明无重叠。 |
-| seekable-timeline | landscape | 4.5 | `dev/shots/T4b/fix5-effects/seekable-timeline/landscape-4.5.png` | kix卡片与引线已随源时刻退场。；顶部HUD、MIKAN徽章、独立署名和控制条保留。；底部NOW PLAYING、歌词、步进器和底部HUD渐变均未显示；署名与控制条、卡片区域无重叠。 |
-| seekable-timeline | portrait | 0.5 | `dev/shots/T4b/fix5-effects/seekable-timeline/portrait-0.5.png` | kix照片卡片、引线与说明文字清楚可见，未被底部控件遮挡。；顶部HUD、MIKAN徽章、独立署名和控制条保留。；底部NOW PLAYING、歌词、步进器和底部HUD渐变均未显示；署名与控制条、卡片说明无重叠。 |
-| seekable-timeline | portrait | 2.3 | `dev/shots/T4b/fix5-effects/seekable-timeline/portrait-2.3.png` | kix照片卡片、引线与说明文字清楚可见，未被底部控件遮挡。；顶部HUD、MIKAN徽章、独立署名和控制条保留。；底部NOW PLAYING、歌词、步进器和底部HUD渐变均未显示；署名与控制条、卡片说明无重叠。 |
-| seekable-timeline | portrait | 4.5 | `dev/shots/T4b/fix5-effects/seekable-timeline/portrait-4.5.png` | kix卡片与引线已随源时刻退场。；顶部HUD、MIKAN徽章、独立署名和控制条保留。；底部NOW PLAYING、歌词、步进器和底部HUD渐变均未显示；署名与控制条、卡片区域无重叠。 |
-| day-night-flip | landscape | 0.5 | `dev/shots/T4b/fix5-effects/day-night-flip/landscape-0.5.png` | 白天地形、蓝青强调色，时钟18:30，DAY 01 / THU日期。白色日序、日期、坐标与歌词落在明亮地图上，对比很低；不是文字缺失。竖屏白底署名可辨，横屏署名偏淡。未见卡片或徽章泄漏。 |
-| day-night-flip | landscape | 2 | `dev/shots/T4b/fix5-effects/day-night-flip/landscape-2.png` | 入夜中间态night=0.5，地图和HUD均呈中灰；时钟、日期、坐标、曲名与歌词很淡，蓝青进度线和节点仍可辨。截图不宜表述为全部文字清晰。 |
-| day-night-flip | landscape | 3.5 | `dev/shots/T4b/fix5-effects/day-night-flip/landscape-3.5.png` | 夜景变深，地图右侧有暖褐色调；20:35、DAY 01、THU日期、完整Lanterns歌词、坐标/海拔、步进器与署名可辨。整体颜色接近参考的判断不等于MAD通过；固定镜头与案例35.8的几何仍不同。 |
-| day-night-flip | landscape | 5 | `dev/shots/T4b/fix5-effects/day-night-flip/landscape-5.png` | 天亮过渡中，DAY 02 / FRI、08:38，歌词Morn为源逐字状态。橘红进度与节点明显；日期、海拔和曲目信息在中灰地图上仍偏淡。没有据此自行调色。 |
-| day-night-flip | landscape | 6.5 | `dev/shots/T4b/fix5-effects/day-night-flip/landscape-6.5.png` | 白天结束态，DAY 02 / FRI、09:05、完整Morning trains and bowing deer及中文歌词可辨。橘红进度/步进器、地图固定构图和署名保持，未观察到新的裁切或图层泄漏。 |
-| day-night-flip | portrait | 0.5 | `dev/shots/T4b/fix5-effects/day-night-flip/portrait-0.5.png` | 白天地形、蓝青强调色，时钟18:30，DAY 01 / THU日期。白色日序、日期、坐标与歌词落在明亮地图上，对比很低；不是文字缺失。竖屏白底署名可辨，横屏署名偏淡。未见卡片或徽章泄漏。 |
-| day-night-flip | portrait | 2 | `dev/shots/T4b/fix5-effects/day-night-flip/portrait-2.png` | 入夜中间态night=0.5，地图和HUD均呈中灰；时钟、日期、坐标、曲名与歌词很淡，蓝青进度线和节点仍可辨。截图不宜表述为全部文字清晰。 |
-| day-night-flip | portrait | 3.5 | `dev/shots/T4b/fix5-effects/day-night-flip/portrait-3.5.png` | 夜景变深，地图右侧有暖褐色调；20:35、DAY 01、THU日期、完整Lanterns歌词、坐标/海拔、步进器与署名可辨。整体颜色接近参考的判断不等于MAD通过；固定镜头与案例35.8的几何仍不同。 |
-| day-night-flip | portrait | 5 | `dev/shots/T4b/fix5-effects/day-night-flip/portrait-5.png` | 天亮过渡中，DAY 02 / FRI、08:38，歌词Morn为源逐字状态。橘红进度与节点明显；日期、海拔和曲目信息在中灰地图上仍偏淡。没有据此自行调色。 |
-| day-night-flip | portrait | 6.5 | `dev/shots/T4b/fix5-effects/day-night-flip/portrait-6.5.png` | 白天结束态，DAY 02 / FRI、09:05、完整Morning trains and bowing deer及中文歌词可辨。橘红进度/步进器、地图固定构图和署名保持，未观察到新的裁切或图层泄漏。 |
-| film-grain | landscape | 3.75 | `dev/shots/T4b/fix5-effects/film-grain/landscape-3.75.png` | 照片画布按cover铺满舞台，没有留边或透明空隙；没有卡片CSS边框、阴影和caption。照片内容中的飞机舷窗轮廓属于原插画，保留源绘制内容。颗粒可见。 |
-| film-grain | landscape | 6.25 | `dev/shots/T4b/fix5-effects/film-grain/landscape-6.25.png` | 回忆插画铺满横屏，保持宽高比并居中裁切，没有卡片框、caption或留白；画布颗粒与舞台暗角可见。 |
-| film-grain | portrait | 3.75 | `dev/shots/T4b/fix5-effects/film-grain/portrait-3.75.png` | 照片画布居中裁切后铺满竖屏，天空与跑道延伸到舞台四边；没有外层卡片边框、阴影、caption或空白墙面。颗粒可见。 |
-| film-grain | portrait | 6.25 | `dev/shots/T4b/fix5-effects/film-grain/portrait-6.25.png` | 回忆插画铺满竖屏，保持宽高比并居中裁切，没有卡片框、caption或留白；画布颗粒与舞台暗角可见。 |
+| 巧思t | caseT | n | a(n) | 横竖结论 |
+|---|---|---:|---:|---|
+| 0.5 | 31.8 | 0.000000 | 1.000000 | 端点色主字可辨读 |
+| 1.75 | 33.05 | 0.062500 | 1.000000 | 端点色主字可辨读 |
+| 2 | 33.3 | 0.500000 | 0.000000 | HUD 完全淡出 |
+| 2.25 | 33.55 | 0.937500 | 1.000000 | 端点色主字可辨读 |
+| 4.75 | 36.85 | 0.914266 | 1.000000 | 端点色主字可辨读 |
+| 5 | 37.1 | 0.351166 | 0.595336 | 端点色主字可辨读 |
+| 5.25 | 37.35 | 0.018519 | 1.000000 | 端点色主字可辨读 |
+| 6.5 | 38.6 | 0.000000 | 1.000000 | 端点色主字可辨读 |
 
-逐张记录分别为`dev/shots/T4b/fix5-effects/route-draw-marker/review.json`、`dev/shots/T4b/fix5-effects/seekable-timeline/review.json`、`dev/shots/T4b/fix5-effects/day-night-flip/review.json`、`dev/shots/T4b/fix5-effects/film-grain/review.json`。day10张由spec_audit逐张看原生PNG；其他14张按索引所附root/代理记录，不把“生成过”视为“已查看”。
+案例四段32.8–33.8、36.6–37.5、47.6–48.6、54.6–55.5各取起点/中点/终点，横竖均查看：起终点a=1且主字可辨；中点a≈0，HUD完全淡出。四十张的n、a、计算颜色、容器/祖先透明度、署名状态和renderer逐项见dev/shots/R2/hud-transition/verification.json；视觉记录见同目录review.json。
 
-## route两站坐标与标签候选
+横屏n=.5的地图署名仍沿用原muted插值，肉眼低对比；它在DOM上始终位于HUD外、opacity1、舞台内且没有被覆盖。竖屏署名有现有浅底，清楚。这里没有把DOM可见等同于横屏署名对比清晰。
 
-以下是本轮新镜头实测，旧route-final-cameras.json中x384/898的居中前方案不作当前证据。候选编号从0开始；完整路线折线、线宽及各候选碰撞结果在`dev/shots/T4b/fix5-effects/route-draw-marker/index.json`及同目录每帧JSON。
+## MAD
 
-| 画幅/t | camera | JR NARA x/y | NARA PARK x/y | 选择结果 |
-|---|---|---|---|---|
-| landscape/9 | {"center":[135.829405,34.683045],"zoom":15.24974452935124,"bearing":0,"pitch":0,"padding":{"top":0,"bottom":0,"left":0,"right":0}} | 384 / 691.950365 | 1536 / 388.045497 | jrNara: #1, side=-1, dy=0, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]}；naraPark: #0, side=1, dy=0, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]} |
-| landscape/10.4 | {"center":[135.829405,34.683045],"zoom":15.24974452935124,"bearing":0,"pitch":0,"padding":{"top":0,"bottom":0,"left":0,"right":0}} | 384 / 691.950365 | 1536 / 388.045497 | jrNara: #1, side=-1, dy=0, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]}；naraPark: #0, side=1, dy=0, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]} |
-| portrait/9 | {"center":[135.829405,34.683045],"zoom":14.419668671314271,"bearing":0,"pitch":0,"padding":{"top":0,"bottom":0,"left":0,"right":0}} | 216.000193 / 1045.472029 | 863.999807 / 874.525643 | jrNara: #2, side=0, dy=76, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]}；naraPark: #7, side=-1, dy=-70, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]} |
-| portrait/10.4 | {"center":[135.829405,34.683045],"zoom":14.419668671314271,"bearing":0,"pitch":0,"padding":{"top":0,"bottom":0,"left":0,"right":0}} | 216.000193 / 1045.472029 | 863.999807 / 874.525643 | jrNara: #2, side=0, dy=76, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]}；naraPark: #7, side=-1, dy=-70, fallback=false; 碰撞={"stage":false,"labels":[],"markers":[],"routes":[]} |
+巧思t3.2映射caseT34.5，对案例caseT34.5，使用相同原生画幅与上一轮area缩略/文字Range/SVG叶节点/有色面/阴影外扩遮罩口径，没有新增遮罩或覆盖率阈值。
 
-两站关于舞台中心近似对称；审图记录中JR标签已避开步行虚线。t9的NARA字样属于源入场打字中间态，不能当作截断缺字。
+- landscape：MAD 0/255，参与区 57.4074%，严格<4通过。
+- portrait：MAD 0/255，参与区 24.8601%，严格<4通过。
 
-## seek全段局部碰撞检查
+renderer均为ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)。原图、mask及相机/数值见dev/shots/R2/day-night/mad/verification.json。原六图文件也已刷新到新HUD/最终字号状态，review.json引用40图总记录。
 
-证据`dev/shots/T4b/fix5-effects/seekable-timeline/checks.json`：完成628/628采样，碰撞0，失败采样0，执行错误0。该检查验证底部HUD隐藏、应保留部件、署名/控制条间距与卡片/说明碰撞；不跑播放测试。
+## 十二巧思逐条对照
 
-本轮无底部HUD，也无Δ字段布局规则。kix卡片及说明未移动或缩小。seek声音事件数为13，没有独立步进器事件需要删除，其余保留；本轮没有重新导出WAV或进行声音完整验收。
+每段横竖各取段首+.2、中点、段尾-.2；新截198组，全部case图按同caseT刷新，没有复用改字号前的源图。66张三组拼图均逐组查看。完整时刻/片段/底图/源图索引：dev/shots/T4b/parity/index.json；逐组审阅：dev/shots/R2/parity-review.json。
 
-## day-night地图MAD：已验证失败
+| 巧思 | 时长/段数 | 对照组数 | WAV事件数 | 执行与观察 |
+|---|---|---:|---:|---|
+| corner-hud | 13.8s / 2段 | 12 | 7 | 日期、时钟、坐标、歌词及步进器在同caseT对应；源多余层未带入。夜字在固定日间底图上的对比弱于源夜景，HUD渐变衬底仍在。 |
+| vertical-title-blur | 14.1s / 4段 | 24 | 74 | 片名、地点、回忆字幕与fin的文字/入退场对应；C署名按例外隐藏。B尾浅字对比偏弱，C尾源compare遮住回忆、提取层仍可见，单列图层差异。 |
+| route-draw-marker | 10.6s / 3段 | 18 | 37 | 三个固定镜头按动作重放；标签前缀到完整双语文本清楚，S3两站关于中心分布，标签不被步行线穿过。 |
+| day-night-flip | 7s / 2段 | 12 | 4 | 固定34.5镜头，caseT分段映射；隐藏覆盖层上下文清零；HUD新淡出切色淡入满足40图验收，地图MAD双0。 |
+| card-expand-fullscreen | 6.6s / 1段 | 6 | 5 | FU前缀、全屏鸟居与回收后完整标签对应；画布与源同形态，未带入源HUD，署名始终外置。 |
+| chapter-frame | 7.05s / 3段 | 18 | 4 | 鸭川框线、章节标签与奈良胶带/网点的文字和进入/退场对应；浅底上的退场字较弱，未擅改。 |
+| split-compare-stamp | 4.8s / 1段 | 6 | 4 | 分屏、标签、时间印记与横向/竖向构图对应；进入/退出时源另有回忆或HUD，未带入。 |
+| collect-counter | 6.6s / 5段 | 30 | 12 | 徽章计数与章形/整体缩放对应；横屏章与stepper同列。12组有章竖屏样本按裁定保留右侧列；追加6张案例 / 巧思竖屏图确认 x980、0.917 缩放及底边不变。 |
+| alert-reroute | 6.2s / 1段 | 6 | 23 | 红横幅、详情、改道胶囊对应；固定总览与源运动镜头的锚点/标签差异按规定保留。 |
+| outro-stat-stack | 5.2s / 1段 | 6 | 28 | 统计数字、标签、fin、账号与制作名单对应；中段147km、末段194km。 |
+| seekable-timeline | 7s / 7段 | 42 | 13 | 只保留顶部HUD、KIX卡片/引线、徽章及控制条；署名与条体分离且无遮挡。源变镜头引线端点有指定差异，无卡片/说明/控件碰撞。 |
+| film-grain | 7.5s / 3段 | 18 | 2 | B/C画布cover铺满，无卡片边框/阴影/说明；交叉淡化和轻推可见，B/C按例外隐藏署名。 |
 
-证据`dev/shots/T4b/fix5-effects/day-night-flip/mad/verification.json`。严格比较巧思t3.5与案例35.8；巧思按映射实际caseT34.8、镜头固定34.5。复用同版同t的原生巧思PNG，只新增源35.8参考图；不改参考时刻或相机求通过。
+F1站名衬底保留前缀测量缓存，按当前computed字体/padding/gap算宽；对照图可见KA/FU等前缀到完整标签的变化，未重跑依赖旧6px圆角的尺寸断言。F2的两种layers过滤规则保留，根署名也落在统一隐藏选择器内；本轮未另开完整F2专项，原有机制与本次字号修改分开描述。
 
-方法：保留wash、grain、vignette及HUD fade；只排除双方可见文字Range、SVG叶形状、实体背景/画布与计算阴影。面积平均缩略图按RGB通道绝对差取平均；阈值严格<4/255，没有新增覆盖率阈值或为通过增大mask。
+同源函数/CSS、anchors、指定固定镜头/底图、分段时间和hold按配置保留。地图锚点/引线随源运动镜头与巧思固定镜头不同，未把此规定差异当字体/卡片布局失败。进入、淡出、隐藏或数字变换帧中不可见的内容没有假称已验证。
 
-| 画幅 | MAD | 阈值结果 | 地图参与比例/像素 | RGB均值差绝对值 | camera Δzoom/Δbearing | mask PNG |
-|---|---:|---|---|---|---|---|
-| landscape | 5.015804 | 失败 | 50.96% / 10567 | 0.239425 / 0.196555 / 0.144317 | 0.066675 / 1.333505 | `dev/shots/T4b/fix5-effects/day-night-flip/mad/landscape-case-35.8-mask.png` |
-| portrait | 4.185868 | 失败 | 23.27% / 4826 | 0.24741 / 0.219022 / 0.217157 | 0.066675 / 1.333505 | `dev/shots/T4b/fix5-effects/day-night-flip/mad/portrait-case-35.8-mask.png` |
+## 署名专项
 
-双方RGB均值各通道差<0.25，是上述数值结果；**不能证明唯一差异来源就是几何或颗粒**。camera的zoom差约0.066675、bearing差约1.333505也是实测，但不是单因果证明。判定只说明本口径MAD未过，不应直接改称“纯色调错误”或“仅几何造成”。
+33个片段×2画幅共66组合、每组合3时刻，共198样本。180个应显示样本的署名均在HUD外、舞台内、未被卡片/控件遮挡；film B/C和vertical C共18样本按例外隐藏。DOM与范围记录dev/shots/R2/attribution.json；逐图观察见parity-review.json。该专项不把未采样连续帧或低对比自动推定为清晰。
 
-参与区横约50.96%、竖约23.27%。竖屏源note及其阴影占据大面积，剩余地图代表性有限；PNG mask白色参与、黑色排除，四区coverage和MAD均在JSON中。root和审阅代理查看过参与区图。没有增加mask或改阈值使数值通过。
+## smoke、预览、声音与构建
 
-## day-night逐图低对比观察
+四次均执行同一原命令：node --import ./dev/wip/T4a/tools/direct-browser.mjs scripts/smoke.mjs --base http://localhost:4322。没有其他smoke适配器，NODE_OPTIONS为空；step、播放检查、错误与GPU门未放宽。
 
-`dev/shots/T4b/fix5-effects/day-night-flip/review.json`保留6张低对比采样：landscape t0.5、landscape t2、landscape t5、portrait t0.5、portrait t2、portrait t5。t0.5白色HUD落在亮地图上；t2灰色HUD与灰地图接近；t5部分日期/海拔/曲目信息仍偏淡。t3.5夜景和t6.5白天的主体文字可辨，t3.5时钟已为20:35。
+- smoke-1：smoke 25/25 passed，exit 0；dev/shots/R2/smoke-1.log及.log.json。
+- smoke-2：smoke 25/25 passed，exit 0；dev/shots/R2/smoke-2.log及.log.json。
+- smoke-3：smoke 25/25 passed，exit 0；dev/shots/R2/smoke-3.log及.log.json。
+- smoke-full：smoke 25/25 passed，exit 0；dev/shots/R2/smoke-full.log及.log.json。
+- closeout-smoke：同一命令 smoke 25/25 passed，exit 0；dev/shots/R2/closeout-smoke.log及.log.json。
 
-这是实际原生截图观察，不是新测得的对比度数值。代码关系可见source over=max(expandF,fbVis,cmpVis)，未显示compare时该源变量仍可能影响HUD配色；它是原因推断，未量化因果。最新用户决定与既定方案未授权自行改色、镜头或MAD口径，问题交主任务决定。
+仅day-night-flip与archive-os由条目自动走GPU，两者横竖五轮均打印上述Intel Iris Xe/D3D11 renderer。地图案例及12地图巧思最小舞台文字横18/竖33；archive输出最小5.3px，仅报告。11个未迁移条目按既有协议做seek/play/错误检查，跳过固定画幅与舞台字号采样。
 
-## 本轮边界与后续
+capture按node scripts/capture.mjs --base http://localhost:4322实际执行，25/25，14个固定竖屏预览；两个GPU条目自动分流。日志dev/shots/R2/capture.log。
 
-- 仅完成本轮源码改动、24张效果截图及逐张查看、seek全段局部检查和双幅MAD。没有三轮smoke、全量smoke、案例MP4、capture、全部对照重截或其他完整验收；旧记录不作本轮通过证据。
-- day-night保持GPU声明；外分支检测机制合并、删减与字号调整完成后，再统一完整验收。临时GPU三轮在本轮没有执行。
-- MAD双幅失败与HUD低对比六帧需主任务决定；未继续调色/相机/MAD方法。seek已无底部HUD与Δ，不再引用旧上移碰撞作为当前STOP。
-- 行首文字基线检查可复用`dev/shots/T4b/portrait-lines/summary.json`：42源、13页、1326点、真实发现0，字幕检查25次；36旋转文字误报已复查排除。它不代替本轮布局/色差检查或最终验收。
+12个WAV导出到dev/shots/T4b/audio/，213个事件与score一致，132/132检查通过，削波样本0；最高PCM峰值-2.231dBFS，全部严格<=-1dBFS。证据同目录verification.json，日志dev/shots/R2/audio.log。
 
-关键历史证据仅作索引：F1/F2见`dev/shots/T4b/case-fixes/verification.json`；旧正式日志归档`dev/shots/T4b/before-fix-3/`；旧WAV见`dev/shots/T4b/audio/verification.json`，day-night新score不能拿旧WAV当新验证。本轮不展开旧十二项证据细节。
+build为3 cases·22 patterns，check exit0；npm run build:site exit0、static site ready。dist的1146个文件中被删ID路径与文本内容均0。本次完整站点走查 140/140；SVG 字号单独在 1440 / 800 / 390 宽度实测均 ≥ 12px。构建与站点复验日志使用 dev/shots/R2/closeout- 前缀。
 
-## 收尾状态
+## MP4
 
-`dev/shots/T4b/final-state.json`：服务器已停止=true；4322监听=0；本轮浏览器进程=0；4321/4323未触碰。分支=`feat/patterns-t4b-t5`，HEAD=`cb2249cc468d081b5c2d5891387e45d381e6ac86`，暂存=false。
+- landscape：dev/shots/R2/render/map-pilgrimage-landscape-8-31.mp4；1920×1080，30/1fps，690帧，23s，h264/yuvj420p，aac 48000Hz/2ch，ffprobe通过。
+- portrait：dev/shots/R2/render/map-pilgrimage-portrait-8-31.mp4；1080×1920，30/1fps，690帧，23s，h264/yuvj420p，aac 48000Hz/2ch，ffprobe通过。
 
-报告生成时间：2026-10-22T22:07:36.851Z。没有commit、push或切分支；具体工作树和进程状态以本轮final-state记录为准。
+按指定8–31s窗口从最终工作树重渲，使用现有hardware-browser适配器。该窗口不包含32.8s之后的四段昼夜过渡，过渡效果由40张专门截图覆盖。ffprobe原始记录及核对表在dev/shots/R2/render/；已从两个成品各抽取case20.4的一帧查看，真实地图、照片、字体与署名存在，无fallback或空白画面。
+
+## 三项裁定与实际限制
+
+1. 竖屏印章中心 x=[980,980,980,980]，整体 0.917，底边不变；横屏仍对齐对应站点。计划已更正。案例 t=13.8/42.8/52.4 与 collect-counter t=2/4.4/5.8 六图逐张查看，圆环、汉字完整，无新增重叠或裁切；几何 6/6。截图与坐标见 dev/shots/R2/closeout/screenshots.json。
+2. 网站两组 hero SVG 标签仅按实际缩放修正 font-size，复用既有 resize。桌面 1440、窄屏 800、手机 390 实测分别为 12.000068、12.000148、12.000717px。站点 16 组合 / 140 项全部通过，四张受影响列表截图已重新查看。
+3. 指定八处下限 / 豁免正文均原样使用“舞台字号按设计决定，不设下限；网站界面 ≥ 12px。”，其余正文逐文件比对未变。证据 dev/shots/R2/closeout/text-changes.json。
+4. 横屏过渡中点署名保持原配色，低对比，按用户明确保留现状记录。corner 夜字 / vertical B 尾浅字在固定浅底上对比弱于源；vertical C 尾的 compare 遮层差异亦保留。
+5. 地图正常入口通过；初始 URL 非零 t=23.6 的内部预载 20% 观察仍保留，开头 gate / 缓冲窗口冲突为代码结合现象的判断，未扩展修改缓冲。工业协议手机 16:9 详情仅露顶部区域，T7 重做另行规划。
+
+## 执行阻碍与处理
+
+- HUD中段同灰问题由用户给定的淡出/切色/淡入规则解决，40图验证通过；横屏layout把署名重挂回footer的路径已修成始终root并复验。
+- PowerShell管道/JSON默认编码与BOM问题已纠正为UTF-8/LF；报告/JSON读回可解析，业务源文本没有被破坏。
+- 两个审图代理出现后端408传输超时。保留截图与已完成横屏19/19结论；用fresh上下文、小批量、同分辨率JPEG代理补齐余项，每张立即存记录。未重渲未变化的素材，原PNG和MAD输入未动。
+- 初次站点平滑滚动CDP超时改用测试脚本instant滚动后完成；非零初始t的视觉失败留档，正常入口重查没有掩盖该限制。
+- MP4验收脚本额外限定yuv420p而误拒yuvj420p；实际ffprobe为有效H264全范围输出。取消这一未请求限制并保留真实pixelFormat，复用已完成横屏成品，仅续跑竖屏；帧率/尺寸/时长/帧数/音轨核对未放宽。
+- 本次初次印章截图在 Runtime.evaluate 时浏览器连接关闭，未产出样本；原因未确认。保留 closeout-capture-initial.log，单独重跑后六图及六项 SVG 视口字号检查全部通过。
+- Windows Bash -c包装未实际执行构建，已改为UTF-8/LF的临时.sh入口，核实bash/node/npm解析路径并实际完成npm run build:site。
+
+代表截图与全部结果索引：dev/shots/R2/verification.json。没有依赖安装、发布或Git提交操作。
+
+本次启动的4322服务器已关闭并核对无监听；截图、媒体与声音工作流均已结束。4321、4323、4324未操作。
+
+## 范围外文案待决
+
+另有 12 个地图巧思 entries 的 tokens.type，以及 dev/wip/T4b/tools/scores-entries.mjs，仍写“横屏 ≥24px、竖屏 ≥36px。”。这些不在本次指定八处中，按用户要求保留原文，已询问是否同步替换；尚未修改。

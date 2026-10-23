@@ -97,7 +97,7 @@
         "#d9562c",
         "#e23b3b"
       ],
-      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。",
+      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
       "css": {
         "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
         "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
@@ -176,8 +176,8 @@
     },
     {
       "path": "demos/patterns/split-compare-stamp/index.html",
-      "bytes": 7651,
-      "sha256": "300ba469dcc32a7c6926ed45ffcc76d0c64e823ef5545b76b315d7a3514109ca"
+      "bytes": 7649,
+      "sha256": "132bdb7798f4802ea5e3971b40c065f7d55dba2df3409740e5fb134b7c943684"
     },
     {
       "path": "demos/patterns/split-compare-stamp/motion-kit.js",
@@ -211,23 +211,23 @@
     },
     {
       "path": "demos/patterns/split-compare-stamp/script.js",
-      "bytes": 144841,
-      "sha256": "c3b637c27ee1ba984fcc1ee04d256edf96082ad2cf131ece1e4a61d4507345d7"
+      "bytes": 145553,
+      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
     },
     {
       "path": "demos/patterns/split-compare-stamp/style.css",
-      "bytes": 40334,
-      "sha256": "d64e0e85091ba7ddce9116b61791798caefb0898b0b2cd9df54a0213ba584ccf"
+      "bytes": 41282,
+      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
     },
     {
       "path": "previews/patterns/split-compare-stamp.jpg",
-      "bytes": 183245,
-      "sha256": "5ca1ee7c50353f26c348eeeabb40d4cb2e732e8b65c5e9d6efbfbdedaf7fb30a"
+      "bytes": 183553,
+      "sha256": "1e14a9d53928228560697ef6c0460b70b8ff2f90c3f3f9febccbb96e0a3233b0"
     },
     {
       "path": "previews/patterns/split-compare-stamp-portrait.jpg",
-      "bytes": 176622,
-      "sha256": "0bf234f75a6575c3455406660cbaa6f8afbd2ef3d799421cf41b4214085db06e"
+      "bytes": 180049,
+      "sha256": "5a7d2e1b2f721c2abf6c43cf940cceca92d808fd4f85bc17317bd03c71935032"
     }
   ]
 }

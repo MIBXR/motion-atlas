@@ -26,7 +26,6 @@
   "background": "#e8e5e1",
   "timeline": true,
   "kit": true,
-  "fontFloor": "reference",
   "renderer": "gpu",
   "previewAt": 14,
   "energy": [],
@@ -110,7 +109,7 @@
     "imagery": "原版档案 GLB 与可拆解 GLB 原样复用；档案文本来自 content/archives.json，下载文本来自 app/archives/。来源：vendor/rhinelabui/src/scene.ts、model-viewer.ts、data.ts。",
     "layout": "横屏舞台 1920×1080，竖屏 1080×1920；iframe 的实际宽高交给原版 viewport-layout 决定桌面或 portrait 布局，portrait 分界为宽高比 < 1.05。来源：vendor/rhinelabui/src/viewport-layout.ts。",
     "sound": "三轨原创配乐与原版音效合成均由上游 audio.ts 调度；逐字输入使用三个 38ms 原 PV 采样。来源：vendor/rhinelabui/src/audio.ts、typing-samples.ts、licenses/audio/README.md。",
-    "typography": "保留原版字号与 MiSans 分片字体，不放大。字体包为 misans-webfont@4.3.1，Version 4.003。来源：vendor/rhinelabui/src/fonts.css、licenses/fonts/NOTICE.txt。字号检查使用 fontFloor:reference。"
+    "typography": "保留原版字号与 MiSans 分片字体，不放大。字体包为 misans-webfont@4.3.1，Version 4.003。来源：vendor/rhinelabui/src/fonts.css、licenses/fonts/NOTICE.txt。舞台字号按设计决定，不设下限；网站界面 ≥ 12px。"
   },
   "tokens": {
     "palette": [
@@ -202,7 +201,7 @@
   ],
   "constraints": [
     "忠实复用上游源码、模型、字体、音频与档案内容。上游修改边界及逐文件原因见 vendor/rhinelabui/UPSTREAM.md。",
-    "原版字号按 fontFloor:reference 豁免，不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。",
+    "舞台字号按设计决定，不设下限；网站界面 ≥ 12px。不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。",
     "《明日方舟》及莱茵生命相关名称、标志、设定、原片和音频采样的权利归各自权利人所有。许可全文与免责声明见 demos/cases/archive-os/LICENSES.md。"
   ],
   "prompt": "将 LBEILC/RhineLabUI 提交 12cc5e4 忠实移植为 Motion Atlas 案例。源码、两份 GLB、MiSans 字体、三轨配乐、合成音效、逐字输入采样与四十份档案内容原样复用；仅接入固定画幅、60Hz 虚拟时钟、输入胶片与统一音轨。开场自然运行至首次 detail，之后按胶片表演示页签、360° 查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏 1920×1080、竖屏 1080×1920，由原版 viewport-layout 排版。保留上游视觉、字号、文案、动效参数、缓动与音量声像。",
