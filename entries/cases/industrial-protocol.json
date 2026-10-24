@@ -11,7 +11,7 @@
   "capturedAt": "2026-10-23",
   "tags": ["终末地", "集成工业", "蓝图建造", "设备收取", "干员升级", "横竖构图", "合成音效"],
   "summary": "复刻《明日方舟：终末地》集成工业系统的界面与交互：工业模式 HUD、蓝图放置与建造、设备面板收取、干员升级与蓝图分享。",
-  "focus": "以官方实机视频的界面观察为依据，按60秒设计规格编排标题、工业HUD、三设备蓝图、配件机生产与收取、管理员升级、蓝图分享和收尾。横屏1920×1080、竖屏1080×1920各自构图，地面、设施实体、六类物品和中央人物采用内置image_gen.imagegen生成的15张原创位图，功能SVG与程序叠层保留。界面参考游戏，未使用游戏美术素材或以官方美术作为生图输入。",
+  "focus": "以官方实机视频的界面观察为依据，按60秒设计规格编排标题、工业HUD、三设备蓝图、配件机生产与收取、管理员升级、蓝图分享和收尾。横屏1920×1080、竖屏1080×1920各自构图，地面、设施实体、六类物品和中央人物采用内置image_gen.imagegen生成的15张风格化位图，功能SVG与程序叠层保留。界面参考游戏，未使用官方美术文件或以官方美术图片作为生图输入。",
   "accent": "#ffe400",
   "background": "#e8e9e8",
   "timeline": true,
@@ -27,7 +27,7 @@
       { "t": 14.4, "label": "建造", "note": "14.6/14.9/15.2s依次建造三台设备，线框、扫描实体化、黄色角标逐步成形。16.0–18.5s铺带，18.5s起物料以80px/s流动。" },
       { "t": 24, "label": "设备面板", "note": "点击配件机A，浅色半透明面板展开；每2秒生产一次，共两轮完整与第三轮75%，输入9→7、输出0→2。" },
       { "t": 32, "label": "全部收取", "note": "按钮下沉；两枚配件沿弧线飞入背包第三格，数量20→22，输出归零；35.0s关闭面板。" },
-      { "t": 36, "label": "干员", "note": "亮黄斜带揭开浅灰干员界面；中央原创外套人物、背景浅剪影、头像页签、属性、四技能与黄色等级带。" },
+      { "t": 36, "label": "干员", "note": "亮黄斜带揭开浅灰干员界面；中央女性管理员立绘、背景浅剪影、头像页签、属性、四技能与黄色等级带。" },
       { "t": 39.6, "label": "等级提升", "note": "经验从70%填满；等级20→21，攻击342→358、生命2341→2420、防御326→335，经验回到12%；四技能依次描出黄环。" },
       { "t": 48, "label": "分享蓝图", "note": "回到工地后切蓝图纸，白色条带展开分享弹窗；51.6s复制EF01-7KQ2-M9A3-ZT58，53.0s确认。" },
       { "t": 56, "label": "收尾", "note": "蓝图纸淡回运行中的工地，镜头拉远到0.86，HUD隐去，右下字标出现，59.4–60.0s淡黑。" }
@@ -44,14 +44,14 @@
     { "name": "工地", "role": "Canvas 2D平铺原创草地位图，保留网格、边界、传送带与运送物料；面板遮挡期间保持运行。" },
     { "name": "设施", "role": "原创设施位图叠加SVG机械动效、黄色角标、状态灯与名牌，蓝图虚影保留内部线框；种植机中心y900，供电桩中心y520。横屏以Zz表示待机；竖屏以蓝灯和0.7透明度设施图像表示待机，名牌只在新设施成形时于左侧12px处短暂显示，唤醒后灯色变绿、设施图像恢复。" },
     { "name": "HUD", "role": "DOM/CSS模式标签、资源胶囊、任务、设备栏及横屏按键提示或竖屏触控圆钮。" },
-    { "name": "设备与终端", "role": "浅色配件机面板、六类原创物品位图、背包、生产与收取；中央原创人物、背景浅剪影、头像、属性、技能和等级。" },
+    { "name": "设备与终端", "role": "浅色配件机面板、六类原创物品位图、背包、生产与收取；中央女性管理员立绘、背景浅剪影、头像、属性、技能和等级。" },
     { "name": "分享与转场", "role": "浅灰蓝图纸、详情、贯屏白色分享条带、亮黄斜带及字标。" }
   ],
   "composition": {
     "color": "近黑#17191b、深面板rgba(28,30,33,.86)、浅玻璃rgba(236,238,238,.88)、纸灰#e8e9e8、白#f7f7f5；柠檬黄#ffe400为主强调，传送带#f2a51c，虚影#2d8cff，工作#5fd38a，待机#4aa8ff。",
     "typography": "Barlow Semi Condensed 400/600/700，字标为700斜体；Noto Sans SC 400/500/700。横/竖字号：微标签16/28、正文20/34、小标题26/42、面板标题34/52、大数字64/96、等级220/200、描边字160/150px。",
     "layout": "横屏1920×1080、竖屏1080×1920。S4横屏等级块左x1500，数字顶250、LEVEL顶500、经验条(1500,532)260×8、按钮(1500,568)260×64，描边字目标外框(1780,80)120×920，提示条中心(960,120)。竖屏人物高900、中心x400、头顶330；等级块左720，数字顶800、LEVEL顶1010、经验条(720,1046)宽300、按钮(720,1080)300×80，描边字目标外框(950,110)120×680，提示条中心(540,200)，信息卡(40,1240)1000×640。设备面板为竖屏底部弹层，蓝图详情移到底部，分享按钮上下排列。",
-    "imagery": "内置image_gen.imagegen按文本生成15张原创位图：地面2048×2048无损WebP、7张设施512×512 RGBA PNG、6张物品128×128 RGBA PNG、人物1024×1536 RGBA PNG；FFmpeg仅归一尺寸与PNG/WebP格式并保留内容和Alpha。地面平铺，设施实体及S3物品使用位图；S4中央人物为原创立绘，背景浅剪影和头像保留。功能SVG、机械动效与状态叠层、蓝图虚影、蓝图纸、传送带和运送物料保持代码绘制；带体40px、两侧深边4px、白V纹样。官方视频只作界面参考，游戏截图、官方角色立绘、图标和logo均未作为生图输入或成片素材。",
+    "imagery": "统一使用风格化平面着色、简化形状与清晰轮廓，白灰炭黑配柠檬黄；人物为女性管理员外观的文本生成立绘。内置image_gen.imagegen按文本生成15张风格化位图：地面2048×2048无损WebP、7张设施512×512 RGBA PNG、6张物品128×128 RGBA PNG、人物1024×1536 RGBA PNG；FFmpeg仅归一尺寸与PNG/WebP格式并保留内容和Alpha。地面平铺，设施实体及S3物品使用位图；S4中央人物为按文本生成的女性管理员立绘，背景浅剪影和头像保留。功能SVG、机械动效与状态叠层、蓝图虚影、蓝图纸、传送带和运送物料保持代码绘制；带体40px、两侧深边4px、白V纹样。官方视频只作界面参考，游戏截图、官方角色立绘、图标和logo均未作为生图输入或成片素材。",
     "motion": "加载easeInOutSine；HUD与面板easeOutCubic；模式和角标easeOutBack；光标三次贝塞尔easeInOutCubic；蓝图弹簧刚度180/阻尼22；设备白线描形、扫描实体化、黄角标回弹；人物呼吸4秒一周期，缩放1±0.01、倾斜±1°。",
     "sound": "MotionKit.audio时间轴合成音谱覆盖加载、HUD、放置、建造、生产、收取、升级、复制和收尾；13.0s为click，增益0.9；18.5–56.0s每2秒sub，增益0.2。",
     "rhythm": "60秒：S0 0–4、S1 4–10、S2 10–24、S3 24–36、S4 36–48、S5 48–56、S6 56–60；事件与音谱使用同一时间轴。",
@@ -84,20 +84,20 @@
   "interaction": [
     "影片时间轴演示模式切换、蓝图跟随/旋转/吸附/确认、生产收取、等级提升及分享复制确认；所有画面由render(t)确定，任意seek可复现。",
     "横屏显示24px鼠标箭头；竖屏显示56px触控点与按下扩散环，以旋转/确认/取消圆钮替代键盘提示。",
-    "字体与15张原创位图通过MotionKit.preload加载，资源ready后开始；motion:ready报告sound:true。",
+    "字体与15张风格化位图通过MotionKit.preload加载，资源ready后开始；motion:ready报告sound:true。",
     "prefers-reduced-motion下镜头推拉与斜带扫屏改为淡入淡出，其余时间轴照常。"
   ],
   "useCases": ["游戏界面复刻研究", "手游界面影片", "集成工业交互演示", "横竖屏动效适配"],
-  "avoid": ["把示意产线作为真实游戏配方或数值指南", "将原创人物与设施位图误认为官方美术素材"],
+  "avoid": ["把示意产线作为真实游戏配方或数值指南", "将生图人物与设施位图误认为官方美术素材"],
   "constraints": [
     "界面复刻自游戏，未使用游戏美术素材。",
     "版式、交互、动效、配色、字体风格参考真实游戏；官方视频仅用于界面观察，不将游戏截图、官方角色立绘、图标或logo作为生图输入或成片素材，不使用官方字体文件。",
-    "地面、设施、物品和中央人物由内置image_gen.imagegen按文本生成；FFmpeg仅归一尺寸及PNG/WebP格式，保留内容与Alpha。功能SVG、状态叠层、蓝图虚影、蓝图纸、背景浅剪影及头像保留代码绘制；字体为Google Fonts上的OFL字体。",
+    "地面、设施与物品为原创工业素材，中央人物按女性管理员外观文本生成，均使用内置image_gen.imagegen；FFmpeg仅归一尺寸及PNG/WebP格式，保留内容与Alpha。功能SVG、状态叠层、蓝图虚影、蓝图纸、背景浅剪影及头像保留代码绘制；字体为Google Fonts上的OFL字体。",
     "60秒场景时序、设备数量、尺寸和数值来自本案例设计规格，没有将这些参数标为原游戏动效的测量值。",
     "本地参考视频、抽帧与联系表仅供样式核对，不纳入仓库。"
   ],
-  "prompt": "按60秒时间轴制作《明日方舟：终末地》集成工业系统界面影片，横1920×1080、竖1080×1920，MotionKit.stage固定舞台，render(t)纯函数。0–4黑底ENDFIELD/终末地字标和加载线；4–10草地俯视工地、黄黑建造边界、模式/资源/任务/设备栏HUD；10–24放置512px蓝图：配件机A128+传送带64+粉碎机128+传送带64+仓储箱128，三次贝塞尔光标跟随、13s旋转90°、13.6s吸附、14.4s确认，三台依14.6/14.9/15.2s线框扫描成形，铺带连核心→A→粉碎→仓储→B，18.5s起80px/s运料；24–36配件机浅色半透明面板，背包、输入输出、2秒生产进度、32s全部收取，两件弧线飞入背包20→22；36–48浅灰干员页，中央原创外套人物、背景浅剪影与头像、右侧亮黄斜带、等级20→21与属性滚动、四技能描黄环，人物以4秒周期缩放1±0.01并倾斜±1°；48–56蓝图纸与贯屏白色分享弹窗，复制EF01-7KQ2-M9A3-ZT58并确认；56–60回工地拉远、右下字标、淡黑。统一ink#17191b/paper#e8e9e8/yellow#ffe400/belt#f2a51c/ghost#2d8cff，品牌五段彩条。字体Barlow Semi Condensed与Noto Sans SC及15张原创位图经MotionKit.preload；字号按本条目横竖阶梯。内置image_gen.imagegen按文本生成地面2048×2048无损WebP、7张设施512×512 RGBA PNG、6张物品128×128 RGBA PNG、人物1024×1536 RGBA PNG，FFmpeg仅归一尺寸与格式。竖屏重排为触控圆钮、底部设备面板与干员信息卡、下方蓝图详情；界面DOM/CSS，地面平铺位图，设施实体、S3物品及S4中央人物使用位图；功能SVG、机械动效与状态叠层、蓝图虚影、蓝图纸、背景浅剪影和头像保留代码绘制，传送带与运送物料由Canvas绘制。MotionKit.audio合成音谱同轴，sound:true；13s click gain.9。减少动态时仅镜头和扫带改淡入淡出。界面参考游戏，官方视频仅作界面观察，未使用游戏美术素材或以官方美术作为生图输入。",
-  "videoPrompt": "A 60-second Arknights: Endfield integrated industrial UI film in landscape 1920×1080 and portrait 1080×1920. Black ENDFIELD title and loading line, overhead grassy industrial site with lemon-yellow hazard border, industrial HUD, blue three-machine blueprint placement and construction, orange conveyors with moving materials, translucent accessory-machine production and collection panel, pale operator screen with an original illustrated field engineer and yellow level-up band, blueprint-paper sharing modal, industrial-site pullback and fade to black. Use 15 original images generated from text with the built-in image_gen.imagegen: a 2048×2048 lossless WebP ground texture, seven 512×512 RGBA facility PNGs, six 128×128 RGBA inventory PNGs, and a 1024×1536 RGBA character PNG. FFmpeg only normalizes dimensions and PNG/WebP format while preserving content and alpha. Preserve functional SVG icons, procedural overlays, blueprint ghosts and paper, the background silhouette and avatar tabs. Animate the central character with a four-second breathing cycle, scale 1±0.01 and tilt ±1 degree. Recreate the referenced interface layout and interaction with OFL Barlow Semi Condensed and Noto Sans SC fonts and synchronized synthesized interface sounds. Official videos are interface references only; no game screenshots or official character, icon, or logo artwork is used as image-generation input or final imagery, and no official font assets are used.",
+  "prompt": "按60秒时间轴制作《明日方舟：终末地》集成工业系统界面影片，横1920×1080、竖1080×1920，MotionKit.stage固定舞台，render(t)纯函数。0–4黑底ENDFIELD/终末地字标和加载线；4–10草地俯视工地、黄黑建造边界、模式/资源/任务/设备栏HUD；10–24放置512px蓝图：配件机A128+传送带64+粉碎机128+传送带64+仓储箱128，三次贝塞尔光标跟随、13s旋转90°、13.6s吸附、14.4s确认，三台依14.6/14.9/15.2s线框扫描成形，铺带连核心→A→粉碎→仓储→B，18.5s起80px/s运料；24–36配件机浅色半透明面板，背包、输入输出、2秒生产进度、32s全部收取，两件弧线飞入背包20→22；36–48浅灰干员页，中央女性管理员立绘、背景浅剪影与头像、右侧亮黄斜带、等级20→21与属性滚动、四技能描黄环，人物以4秒周期缩放1±0.01并倾斜±1°；48–56蓝图纸与贯屏白色分享弹窗，复制EF01-7KQ2-M9A3-ZT58并确认；56–60回工地拉远、右下字标、淡黑。统一ink#17191b/paper#e8e9e8/yellow#ffe400/belt#f2a51c/ghost#2d8cff，品牌五段彩条。字体Barlow Semi Condensed与Noto Sans SC及15张风格化位图经MotionKit.preload；字号按本条目横竖阶梯。内置image_gen.imagegen按文本生成地面2048×2048无损WebP、7张设施512×512 RGBA PNG、6张物品128×128 RGBA PNG、人物1024×1536 RGBA PNG，FFmpeg仅归一尺寸与格式。竖屏重排为触控圆钮、底部设备面板与干员信息卡、下方蓝图详情；界面DOM/CSS，地面平铺位图，设施实体、S3物品及S4中央人物使用位图；功能SVG、机械动效与状态叠层、蓝图虚影、蓝图纸、背景浅剪影和头像保留代码绘制，传送带与运送物料由Canvas绘制。MotionKit.audio合成音谱同轴，sound:true；13s click gain.9。减少动态时仅镜头和扫带改淡入淡出。界面参考游戏，官方视频仅作界面观察，未使用官方美术文件或以官方美术图片作为生图输入。",
+  "videoPrompt": "A 60-second Arknights: Endfield integrated industrial UI film in landscape 1920×1080 and portrait 1080×1920. Black ENDFIELD title and loading line, overhead grassy industrial site with lemon-yellow hazard border, industrial HUD, blue three-machine blueprint placement and construction, orange conveyors with moving materials, translucent accessory-machine production and collection panel, pale operator screen with a text-generated female Endministrator and yellow level-up band, blueprint-paper sharing modal, industrial-site pullback and fade to black. Use 15 clean stylized images generated from text with the built-in image_gen.imagegen: a 2048×2048 lossless WebP ground texture, seven 512×512 RGBA facility PNGs, six 128×128 RGBA inventory PNGs, and a 1024×1536 RGBA character PNG. FFmpeg only normalizes dimensions and PNG/WebP format while preserving content and alpha. Preserve functional SVG icons, procedural overlays, blueprint ghosts and paper, the background silhouette and avatar tabs. Animate the central character with a four-second breathing cycle, scale 1±0.01 and tilt ±1 degree. Recreate the referenced interface layout and interaction with OFL Barlow Semi Condensed and Noto Sans SC fonts and synchronized synthesized interface sounds. Official videos are interface references only; no game screenshots or official character, icon, or logo artwork is used as image-generation input or final imagery, and no official font assets are used.",
   "negativePrompt": "不使用游戏截图、官方角色立绘、图标、logo或字体文件，不将官方美术作为生图输入；不把60秒设计时序标为原游戏动效实测；不加入规格外的界面文案、场景或构图。",
   "migration": [
     { "field": "config.js → tokens / brand / fontSizes", "how": "全案色值、五段彩条、横竖字号与Google Fonts配置。" },
@@ -111,6 +111,6 @@
     { "title": "《明日方舟：终末地》「再次测试」实机展示", "url": "https://www.bilibili.com/video/BV1fJq9YJEnw/", "type": "官方视频", "note": "仅作界面参考：本地01-02联系表用于干员页，01-07用于探索/工业HUD；不作为生图输入或成片美术素材。" },
     { "title": "Arknights: Endfield PlayStation®5 Gameplay Demo", "url": "https://www.youtube.com/watch?v=2GjOGijE9fM", "type": "官方视频", "note": "仅作系统界面上下文参考；本地视频02，不作为生图输入或成片美术素材。" },
     { "title": "Arknights: Endfield Gameplay Preview — Advance and Expand", "url": "https://www.youtube.com/watch?v=PpyzMnjSuZo", "type": "官方视频", "note": "仅作界面参考：00:43.350蓝图俯视及00:45.583配件机面板为主要对照帧；不作为生图输入或成片美术素材。" },
-    { "title": "原创生图素材与完整提示词", "url": "demos/cases/industrial-protocol/assets/gen/SOURCES.md", "type": "素材记录", "note": "15张原创位图的用途、image_gen.imagegen完整提示词、原生与最终尺寸、重生成次数及FFmpeg归一化说明。" }
+    { "title": "风格化生图素材与完整提示词", "url": "demos/cases/industrial-protocol/assets/gen/SOURCES.md", "type": "素材记录", "note": "15张风格化位图的用途、image_gen.imagegen完整提示词、原生与最终尺寸、重生成次数及FFmpeg归一化说明。" }
   ]
 }

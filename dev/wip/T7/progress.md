@@ -42,3 +42,11 @@
 - 2026-10-24：生图版原命令smoke连续3次退出0、1/1 passed，横竖Intel Iris Xe / D3D11；仅预期旧字号警告。开始生图版横竖60秒/30fps/带音轨导出，输出imagegen/render。
 
 - 2026-10-24：生图版完成48张场景/峰值截图检查、3组前后对照、原命令smoke连续3次通过、双60秒/30fps含音轨MP4及ffprobe/每段6帧解码检查。capture/build/build:site退出0；check仅49项允许旧字号报错、非字号0。报告、SOURCES、元数据与改动清单更新，无提交/推送/切分支。
+
+- 2026-10-24 T7 art-v2：v1 的15张素材和SOURCES已归档到assets/gen/_v1并忽略Git；横竖S1/S3/S4基线截图已保存到imagegen/before-v2。
+- 2026-10-24 T7 art-v2：15张风格化素材由内置image_gen.imagegen生成并归一化，7台设施与人物各重生成1次；总览和Alpha检查完成。
+- 2026-10-24 T7 art-v2：同名位图已替换，人物按新Alpha边界等比适配原矩形；构图、时序、交互与叠层保持。
+- 2026-10-24 T7 art-v2：原命令smoke连续3次退出0，横竖均打印Intel Iris Xe / D3D11硬件renderer；NODE_OPTIONS、BROWSER_PATH未设置，仅旧字号警告。
+- 2026-10-24 T7 art-v2：横竖48张场景与呼吸峰值截图已按场景拼图逐张检查，S1/S3/S4原尺寸代表及人物面部/双手细节已查看；三组v1/v2对照图已完成并查看。
+- 2026-10-24 T7 art-v2：双MP4的ffprobe与各6帧解码检查完成，capture/build/build:site通过；check只有旧字号错误，来源与报告已更新。
+- 2026-10-24 T7 art-v2：构建时临时移出本地_v1归档并恢复，资料包与dist排除旧版；build/check/build:site复验结果不变，SOURCES行尾空白已清除，diff --check通过。

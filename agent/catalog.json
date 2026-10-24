@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "Motion Atlas",
   "description": "多媒体动态视觉参考库：影像视频、交互操作台、交互展示台的案例、巧思、节奏表、Prompt 与可迁移 Demo。",
-  "contentVersion": "769e3c1111716e6140f1b5ef1bae49133c899080a2ab614978c5e0d7ab3de950",
+  "contentVersion": "8aef7bef22abbc78a3db6a872fc6da437c069ba3a83f5b3055c119be121d1200",
   "taxonomy": {
     "carriers": {
       "video": "影像视频",
@@ -209,7 +209,7 @@
       ],
       "avoid": [
         "把示意产线作为真实游戏配方或数值指南",
-        "将原创人物与设施位图误认为官方美术素材"
+        "将生图人物与设施位图误认为官方美术素材"
       ],
       "patternIds": [
         "chamfer-panel",
@@ -220,7 +220,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/industrial-protocol.json",
-      "bundleSha256": "891597c6efc6dff155e19b4921d164801bee21fe04856392999feddc58ecf236"
+      "bundleSha256": "3c1867ffd3d3c5524bd85e80f4815c60d9bd9972426589fd2abece3567019769"
     },
     {
       "id": "broadcast-pack",

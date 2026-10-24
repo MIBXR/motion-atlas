@@ -276,7 +276,7 @@ function createOperator(host) {
     <div class="op-section-label"><span>//</span> 干员</div>
     <div class="op-avatar-tabs">${Array.from({ length: 6 }, (_, i) => avatar(i)).join('')}</div>
     <button class="op-close" aria-label="关闭干员界面">${svg('<path d="m12 12 24 24m0-24L12 36"/>', 32)}</button>
-    <div class="op-person"><svg class="op-person-art" viewBox="194 5 674 1509" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><image href="assets/gen/operator.png" width="1024" height="1536"/></svg></div>
+    <div class="op-person"><svg class="op-person-art" viewBox="175 16 676 1497" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><image href="assets/gen/operator.png" width="1024" height="1536"/></svg></div>
     <svg class="op-yellow-band" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><polygon class="op-band-landscape" points="1440,0 1920,0 1920,1080 1640,1080" fill="var(--yellow)"/><polygon class="op-band-portrait" points="720,0 1080,0 1080,1220 900,1220" fill="var(--yellow)"/></svg>
     <div class="op-outline-word"><svg class="op-outline-ink" aria-hidden="true"><text class="op-outline-text" x="0" y="0">ENDFIELD</text></svg></div>
     <div class="op-band-shine"></div>

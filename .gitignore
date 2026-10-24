@@ -16,3 +16,4 @@ Thumbs.db
 
 # 打磨过程中的截图与临时产物
 dev/shots/
+/demos/cases/industrial-protocol/assets/gen/_v1/
