@@ -1,0 +1,14 @@
+{
+  "documentsIdentical": 36,
+  "linkCallback": [
+    {
+      "resolved": "https://example.org",
+      "raw": "https://example.org"
+    },
+    {
+      "resolved": "resources/skills/test/references/a.md",
+      "raw": "references/a.md"
+    }
+  ],
+  "imagePathUnchanged": true
+}

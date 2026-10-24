@@ -1,0 +1,112 @@
+[
+  {
+    "file": "dev/shots/Tres/1440-videos.png",
+    "hash": "#videos",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/1440-videos-3d.png",
+    "hash": "#videos?cat=3d",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/1440-video-title.png",
+    "hash": "#video/0xcodez-474136",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/1440-video-post.png",
+    "hash": "#video/0xlangeai-597929",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/1440-skills.png",
+    "hash": "#skills",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/1440-skill-motion-showreel.png",
+    "hash": "#skill/motion-showreel",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/1440-skill-ai-handdrawn-video.png",
+    "hash": "#skill/ai-handdrawn-video",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/1440-skill-chapter-craft.png",
+    "hash": "#skill/web-video-presentation/references/CHAPTER-CRAFT.md",
+    "width": 1440,
+    "height": 900,
+    "minFontPx": 12,
+    "actualWidth": 1440,
+    "actualHeight": 900,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/390-videos.png",
+    "hash": "#videos",
+    "width": 390,
+    "height": 844,
+    "minFontPx": 12,
+    "actualWidth": 390,
+    "actualHeight": 844,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/390-video-title.png",
+    "hash": "#video/0xcodez-474136",
+    "width": 390,
+    "height": 844,
+    "minFontPx": 12,
+    "actualWidth": 390,
+    "actualHeight": 844,
+    "openedAndReviewed": true
+  },
+  {
+    "file": "dev/shots/Tres/390-skill-motion-showreel.png",
+    "hash": "#skill/motion-showreel",
+    "width": 390,
+    "height": 844,
+    "minFontPx": 12,
+    "actualWidth": 390,
+    "actualHeight": 844,
+    "openedAndReviewed": true
+  }
+]

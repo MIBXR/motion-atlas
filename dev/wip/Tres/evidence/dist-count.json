@@ -1,0 +1,18 @@
+{
+  "counts": [
+    {
+      "dir": "resources/opus-videos",
+      "files": 707
+    },
+    {
+      "dir": "resources/skills/garden-skills",
+      "files": 423
+    },
+    {
+      "dir": "resources/skills/agent-anime-skill",
+      "files": 7
+    }
+  ],
+  "expected": 1140,
+  "actual": 1140
+}

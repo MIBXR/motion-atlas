@@ -1,0 +1,5 @@
+{
+  "expected": "a\nb",
+  "actual": "a\r\nb",
+  "strictEqual": false
+}

@@ -1,0 +1,18 @@
+{
+  "command": "node --import ./dev/wip/T4a/tools/direct-browser.mjs scripts/smoke.mjs --base http://localhost:4328",
+  "afterVendoring": true,
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "result": "smoke 25/25 passed",
+      "log": "dev/wip/Tres/evidence/smoke-after-vendor-1.log"
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "result": "smoke 25/25 passed",
+      "log": "dev/wip/Tres/evidence/smoke-after-vendor-2.log"
+    }
+  ]
+}

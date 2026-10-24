@@ -25,7 +25,7 @@
   };
 
   const NAV = [
-    ['index.html', '首页'], ['cases.html', '案例库'], ['patterns.html', '巧思库'],
+    ['index.html', '首页'], ['cases.html', '案例库'], ['patterns.html', '巧思库'], ['resources.html', '资源库'],
     ['lab.html', '节奏实验室'], ['docs.html', '文档中心'], ['agent.html', 'Agent 工作流'],
   ];
 

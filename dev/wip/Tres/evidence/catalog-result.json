@@ -1,0 +1,122 @@
+{
+  "previousContentVersion": "c17ca94f5360cd2743996071ead92181a825a40ab5b5f1eeea8398c0299662a3",
+  "contentVersion": "38681a12b64127f11e5ac0a10507951bfe79a2e0079d59bd324ba550ea347d40",
+  "versionUsesOnlyCaseAndPatternBundles": true,
+  "removedBaselineManifestEntries": [
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/SOURCES.md",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/assembler.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/core.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/crusher.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/ground.webp",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/item-canister.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/item-crystal.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/item-module.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/item-ore.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/item-part.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/item-plate.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/operator.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/planter.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/pylon.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/refinery.png",
+      "exists": false
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/_v1/storage.png",
+      "exists": false
+    }
+  ],
+  "baselineIgnoredDirectory": "demos/cases/industrial-protocol/assets/gen/_v1/SOURCES.md",
+  "counts": {
+    "cases": 3,
+    "patterns": 22
+  },
+  "resources": {
+    "videos": {
+      "count": 703,
+      "data": "resources/opus-videos/data/videos.json",
+      "prompts": "resources/opus-videos/prompts/",
+      "license": "MIT（列表）；视频与提示词归各作者"
+    },
+    "skills": [
+      {
+        "id": "beautiful-article",
+        "path": "resources/skills/garden-skills/skills/beautiful-article/SKILL.md",
+        "license": "MIT"
+      },
+      {
+        "id": "gpt-image-2",
+        "path": "resources/skills/garden-skills/skills/gpt-image-2/SKILL.md",
+        "license": "MIT"
+      },
+      {
+        "id": "kb-retriever",
+        "path": "resources/skills/garden-skills/skills/kb-retriever/SKILL.md",
+        "license": "MIT"
+      },
+      {
+        "id": "motion-showreel",
+        "path": "resources/skills/garden-skills/skills/motion-showreel/SKILL.md",
+        "license": "MIT"
+      },
+      {
+        "id": "web-design-engineer",
+        "path": "resources/skills/garden-skills/skills/web-design-engineer/SKILL.md",
+        "license": "MIT"
+      },
+      {
+        "id": "web-video-presentation",
+        "path": "resources/skills/garden-skills/skills/web-video-presentation/SKILL.md",
+        "license": "MIT"
+      },
+      {
+        "id": "ai-handdrawn-video",
+        "path": "resources/skills/agent-anime-skill/skills/ai-handdrawn-video/SKILL.md",
+        "license": "未声明许可；上游 README：仅供个人娱乐，请勿进行商业用途。"
+      }
+    ]
+  },
+  "versionInputExpression": "const versionText = [...bundleSummaries.cases, ...bundleSummaries.patterns].map((b) => `${b.bundle}:${b.bundleSha256}`).sort().join('\\n');"
+}

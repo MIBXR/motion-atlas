@@ -157,6 +157,79 @@ function collectDocs(extra) {
   });
 }
 
+export const RESOURCE_DIRS = {
+  'opus-videos': 'resources/opus-videos',
+  'garden-skills': 'resources/skills/garden-skills',
+  'agent-anime-skill': 'resources/skills/agent-anime-skill',
+};
+export const RESOURCE_SKILLS = ['beautiful-article', 'gpt-image-2', 'kb-retriever', 'motion-showreel', 'web-design-engineer', 'web-video-presentation', 'ai-handdrawn-video'];
+
+function frontmatterValue(front, key) {
+  const lines = front.split('\n');
+  const index = lines.findIndex((line) => line.startsWith(key + ':'));
+  if (index === -1) return '';
+  const value = lines[index].slice(key.length + 1).trim();
+  if (/^[>|][+-]?$/.test(value)) {
+    const block = [];
+    for (const line of lines.slice(index + 1)) {
+      if (line.trim() && !/^\s/.test(line)) break;
+      block.push(line);
+    }
+    const indent = Math.min(...block.filter((line) => line.trim()).map((line) => line.match(/^ */)[0].length));
+    const body = block.map((line) => line.slice(indent));
+    let text = '';
+    for (let i = 0; i < body.length; i++) {
+      text += body[i];
+      const next = body[i + 1];
+      text += value[0] === '|' || next == null || /^\s/.test(body[i]) || /^\s/.test(next) ? '\n' :
+        body[i] && next ? ' ' : body[i] ? '' : '\n';
+    }
+    return value.endsWith('-') ? text.replace(/\n+$/, '') : value.endsWith('+') ? text : text.replace(/\n*$/, '\n');
+  }
+  if (value.startsWith('"') && value.endsWith('"')) return JSON.parse(value);
+  if (value.startsWith("'") && value.endsWith("'")) return value.slice(1, -1).replace(/''/g, "'");
+  return value;
+}
+
+export function buildResources() {
+  const manifests = Object.fromEntries(Object.entries(RESOURCE_DIRS).map(([name, dir]) => [name, JSON.parse(read(`${dir}/UPSTREAM.json`))]));
+  const { repo, url, commit, fetchedAt, license, notice } = manifests['opus-videos'];
+  const items = JSON.parse(read('resources/opus-videos/data/videos.json')).map((v) => {
+    let partial = 'none';
+    if (v.prompt_partial !== false) {
+      const md = read(`resources/opus-videos/prompts/${v.slug}.md`);
+      if (md.includes('The author shared only part of the prompt.')) partial = 'part';
+      else if (md.includes("The author didn't publish the full prompt.")) partial = 'post';
+      else throw new Error(`无法判定提示词完整度：${v.slug}`);
+    }
+    const prompt = Array.from(v.prompt.replace(/\s+/g, ' ').trim());
+    return {
+      slug: v.slug, title: v.title ?? null, author: v.author, authorUrl: v.author_url, postUrl: v.post_url,
+      remakeUrl: v.skillry_url, category: v.category, tags: v.tech_tags, partial, poster: v.poster_url, added: v.added,
+      excerpt: prompt.slice(0, 200).join('') + (prompt.length > 200 ? '…' : ''),
+    };
+  }).sort((a, b) => b.added.localeCompare(a.added) || a.slug.localeCompare(b.slug));
+  const skills = [];
+  for (const name of ['garden-skills', 'agent-anime-skill']) {
+    const upstream = manifests[name];
+    for (const file of walk(RESOURCE_DIRS[name]).filter((p) => p.endsWith('/SKILL.md') && !/\/(references|assets|templates)\//.test(p))) {
+      const front = read(file).replace(/\r\n/g, '\n').match(/^---\n([\s\S]*?)\n---(?:\n|$)/)?.[1];
+      if (!front) throw new Error(`缺少 YAML frontmatter：${file}`);
+      const dir = path.posix.dirname(file);
+      skills.push({
+        id: frontmatterValue(front, 'name'), repo: name, dir, description: frontmatterValue(front, 'description'),
+        upstream: { repo: upstream.repo, url: upstream.url, commit: upstream.commit, license: upstream.license, notice: upstream.notice },
+        files: walk(dir).map((p) => ({ path: p.slice(dir.length + 1), bytes: fs.statSync(path.join(ROOT, p)).size })),
+      });
+    }
+  }
+  skills.sort((a, b) => Number(a.repo !== 'garden-skills') - Number(b.repo !== 'garden-skills') || a.id.localeCompare(b.id));
+  if (skills.length !== 7 || skills.some((s) => !RESOURCE_SKILLS.includes(s.id) || !s.description.trim()) || new Set(skills.map((s) => s.id)).size !== 7) {
+    throw new Error(`资源 Skill 应恰为指定的 7 个且 description 非空，实际：${skills.map((s) => s.id).join(', ')}`);
+  }
+  return { videos: { upstream: { repo, url, commit, fetchedAt, license, notice }, items }, skills };
+}
+
 /** 计算全部生成物，返回 { files: {path: content}, kitTargets: [dir], errors } */
 export function buildAll() {
   const entries = loadEntries();
@@ -175,10 +248,12 @@ export function buildAll() {
   // 站点数据
   const site = { schemaVersion: SCHEMA_VERSION, taxonomy: TAXONOMY, cases, patterns };
   files['data/catalog.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA = ${JSON.stringify(site)};\n`;
+  const resources = buildResources();
+  files['data/resources.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA_RES = ${JSON.stringify(resources)};\n`;
   // README 计数块（先于文档集合生成，文档中心读到的是更新后的 README）
   if (exists('README.md')) {
     const readme = read('README.md');
-    const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**\n<!-- counts:end -->`;
+    const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**　·　**${resources.videos.items.length} 条视频提示词**　·　**${resources.skills.length} 个 Skill**\n<!-- counts:end -->`;
     files['README.md'] = readme.replace(/<!-- counts:start -->[\s\S]*?<!-- counts:end -->/, block);
   }
   const docs = collectDocs(files);
@@ -237,6 +312,10 @@ export function buildAll() {
       kit: kitFile,
     },
     counts: { cases: cases.length, patterns: patterns.length },
+    resources: {
+      videos: { count: resources.videos.items.length, data: 'resources/opus-videos/data/videos.json', prompts: 'resources/opus-videos/prompts/', license: resources.videos.upstream.license },
+      skills: resources.skills.map((s) => ({ id: s.id, path: `${s.dir}/SKILL.md`, license: s.upstream.license })),
+    },
     cases: bundleSummaries.cases,
     patterns: bundleSummaries.patterns,
   };

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "guide",
+    "width": 1440,
+    "height": 900,
+    "bytesIdentical": true,
+    "differingPixels": 0,
+    "openedBefore": true,
+    "openedAfter": true
+  },
+  {
+    "name": "pipeline",
+    "width": 1440,
+    "height": 900,
+    "bytesIdentical": true,
+    "differingPixels": 0,
+    "openedBefore": true,
+    "openedAfter": true
+  },
+  {
+    "name": "archive-os",
+    "width": 1440,
+    "height": 900,
+    "bytesIdentical": true,
+    "differingPixels": 0,
+    "openedBefore": true,
+    "openedAfter": true
+  }
+]

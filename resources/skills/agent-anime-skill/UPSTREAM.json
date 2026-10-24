@@ -1,0 +1,52 @@
+{
+  "name": "agent-anime-skill",
+  "repo": "waterpro/agent-anime-skill",
+  "url": "https://github.com/waterpro/agent-anime-skill",
+  "commit": "c643fe2409322d9d879c55e173d18ef876e7221d",
+  "fetchedAt": "2026-10-24",
+  "license": "未声明许可；上游 README：仅供个人娱乐，请勿进行商业用途。",
+  "notice": [
+    "仅供个人娱乐，请勿进行商业用途。",
+    "若有人使用此skill进行侵权行为，与本人无关，自行承担法律风险。"
+  ],
+  "excluded": [
+    ".git/"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 139,
+      "sha256": "5bf96f44b13bfeb4a7cd0cb824bfb736d690cbbb9c6e74fcfe899ead04f583f9"
+    },
+    {
+      "path": "skills/ai-handdrawn-video/SKILL.md",
+      "bytes": 6521,
+      "sha256": "df9a5984d8dd877874877a037b91af75cda7d3329dfff7a462194e4a1ae55cf9"
+    },
+    {
+      "path": "skills/ai-handdrawn-video/agents/openai.yaml",
+      "bytes": 305,
+      "sha256": "85de8d29cfb2bb8b80b6e84dc693abacc2598c3baa118becf330e36e9e939d0e"
+    },
+    {
+      "path": "skills/ai-handdrawn-video/references/character-and-motion.md",
+      "bytes": 8678,
+      "sha256": "da0f8a316a52c6259812dcca6aafe7c2b15610e10404fccdc0840aa1f7fc2e37"
+    },
+    {
+      "path": "skills/ai-handdrawn-video/references/full-production-plan.md",
+      "bytes": 10701,
+      "sha256": "4feb7663574dfa5e22f70a5334d8027c5873a38f2c11cdd70700ca1735675459"
+    },
+    {
+      "path": "skills/ai-handdrawn-video/references/production-and-review.md",
+      "bytes": 9317,
+      "sha256": "f4ec077eb96dc9fd139b019c6925eb3ed47f66719a4ba15c29c5af8f5bc43b41"
+    },
+    {
+      "path": "skills/ai-handdrawn-video/references/timeline-and-compositing.md",
+      "bytes": 8113,
+      "sha256": "9821614c4459f0133a850e839d267ab5380be648f903109b92aed4a4dbb0be76"
+    }
+  ]
+}

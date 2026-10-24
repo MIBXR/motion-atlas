@@ -1,0 +1,54 @@
+{
+  "videos": 703,
+  "partial": {
+    "none": 496,
+    "part": 5,
+    "post": 202
+  },
+  "tags": 13,
+  "skills": [
+    {
+      "id": "beautiful-article",
+      "repo": "garden-skills",
+      "files": 58,
+      "markdown": 41
+    },
+    {
+      "id": "gpt-image-2",
+      "repo": "garden-skills",
+      "files": 103,
+      "markdown": 97
+    },
+    {
+      "id": "kb-retriever",
+      "repo": "garden-skills",
+      "files": 8,
+      "markdown": 6
+    },
+    {
+      "id": "motion-showreel",
+      "repo": "garden-skills",
+      "files": 68,
+      "markdown": 41
+    },
+    {
+      "id": "web-design-engineer",
+      "repo": "garden-skills",
+      "files": 39,
+      "markdown": 37
+    },
+    {
+      "id": "web-video-presentation",
+      "repo": "garden-skills",
+      "files": 95,
+      "markdown": 15
+    },
+    {
+      "id": "ai-handdrawn-video",
+      "repo": "agent-anime-skill",
+      "files": 6,
+      "markdown": 5
+    }
+  ],
+  "fetched": "2026-10-24"
+}

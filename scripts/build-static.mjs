@@ -7,7 +7,7 @@ const output = path.join(ROOT, 'dist');
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
 
-for (const directory of ['agent', 'assets', 'data', 'demos', 'docs', 'entries', 'kit', 'previews', 'prompts']) {
+for (const directory of ['agent', 'assets', 'data', 'demos', 'docs', 'entries', 'kit', 'previews', 'prompts', 'resources']) {
   fs.cpSync(path.join(ROOT, directory), path.join(output, directory), { recursive: true });
 }
 for (const file of fs.readdirSync(ROOT).filter((name) => /\.(html|md)$/.test(name))) {

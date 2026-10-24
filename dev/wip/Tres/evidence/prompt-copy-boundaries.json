@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "0xcodez-474136",
+    "partial": "none",
+    "argumentEqualsJSON": true,
+    "strictEqual": false,
+    "equalAfterCRLFToLF": true,
+    "originalLength": 700,
+    "copiedLength": 708,
+    "originalLF": 8,
+    "copiedCRLF": 8
+  },
+  {
+    "slug": "charliie-334026",
+    "partial": "part",
+    "argumentEqualsJSON": true,
+    "strictEqual": true,
+    "equalAfterCRLFToLF": true,
+    "originalLength": 35,
+    "copiedLength": 35,
+    "originalLF": 0,
+    "copiedCRLF": 0
+  },
+  {
+    "slug": "0xlangeai-597929",
+    "partial": "post",
+    "argumentEqualsJSON": true,
+    "strictEqual": false,
+    "equalAfterCRLFToLF": true,
+    "originalLength": 106,
+    "copiedLength": 110,
+    "originalLF": 4,
+    "copiedCRLF": 4
+  },
+  {
+    "slug": "ajith-io-615243",
+    "partial": "none",
+    "argumentEqualsJSON": true,
+    "strictEqual": false,
+    "equalAfterCRLFToLF": true,
+    "originalLength": 319,
+    "copiedLength": 322,
+    "originalLF": 3,
+    "copiedCRLF": 3
+  },
+  {
+    "slug": "0xlangeai-178533",
+    "partial": "post",
+    "argumentEqualsJSON": true,
+    "strictEqual": false,
+    "equalAfterCRLFToLF": true,
+    "originalLength": 22,
+    "copiedLength": 24,
+    "originalLF": 2,
+    "copiedCRLF": 2
+  }
+]

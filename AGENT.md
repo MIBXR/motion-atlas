@@ -6,6 +6,7 @@
 
 1. **检索**：读 `agent/catalog.json`（摘要、标签、关联、资料包路径与哈希），或运行
    `node scripts/atlas.mjs search "<关键词>" --json`。可用 `--kind cases|patterns`、`--carrier video|console|showcase`、`--type <巧思类型>` 缩小范围。
+   `agent/catalog.json` 的 `resources` 字段列出资源库的视频提示词数据与 Skill 路径（外部收录，许可各异，使用前看对应 `UPSTREAM.json`）。
 2. **读取**：打开 `agent/cases/<id>.json` 或 `agent/patterns/<id>.json`。资料包里有完整条目（`entry` / `pattern`）、Prompt 文档（`documents.prompt`）、研究笔记（`documents.research`）、入口（`entrypoint`）与文件清单（`files[]`，含 sha256）。`catalog.json` 的 `bundleSha256` 变化即代表资料包内容变化。
 3. **注意证据等级**：`observed` 可以当作实测数值使用；`inferred` 是推断，复刻原作时必须提示用户核验；`original` 是本库原创。
 4. **组合**：巧思的 `composition.role` 为 `foundation`（骨架，一个作品通常只有一个）、`support`（支撑）、`accent`（点睛，同一时刻不超过两个）。检查 `pairsWellWith` 与 `conflicts`。

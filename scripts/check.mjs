@@ -2,9 +2,42 @@
 // 只读检查：条目、kit 副本、生成物、预览与网站界面 12px 下限。
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, buildAll, kitStatus, walk } from './lib/catalog.mjs';
+import { ROOT, buildAll, kitStatus, walk, RESOURCE_DIRS, sha } from './lib/catalog.mjs';
 
 const errors = [], warnings = [];
+for (const [name, dir] of Object.entries(RESOURCE_DIRS)) {
+  const file = `${dir}/UPSTREAM.json`;
+  try {
+    const upstream = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+    for (const key of ['name', 'repo', 'url', 'commit', 'fetchedAt', 'license', 'notice', 'excluded', 'files']) {
+      if (!Object.hasOwn(upstream, key)) errors.push(`R1 ${file} 缺少 ${key}`);
+    }
+    if (upstream.name !== name) errors.push(`R1 ${file} name 应为 ${name}`);
+    if (!Array.isArray(upstream.files)) errors.push(`R1 ${file} files 应为数组`);
+    else {
+      const listed = new Set(upstream.files.map((f) => `${dir}/${f.path}`));
+      for (const f of upstream.files) {
+        const rel = `${dir}/${f.path}`, abs = path.join(ROOT, rel);
+        if (!fs.existsSync(abs)) { errors.push(`R2 清单文件不存在 ${rel}`); continue; }
+        const bytes = fs.readFileSync(abs);
+        if (bytes.length !== f.bytes) errors.push(`R2 bytes 不一致 ${rel}`);
+        if (sha(bytes) !== f.sha256) errors.push(`R2 sha256 不一致 ${rel}`);
+      }
+      for (const rel of walk(dir)) if (rel !== file && !listed.has(rel)) errors.push(`R2 清单之外的文件 ${rel}`);
+    }
+  } catch (e) { errors.push(`R1 ${file} 读取失败：${e.message}`); }
+}
+const videoFile = path.join(ROOT, 'resources/opus-videos/data/videos.json');
+if (fs.existsSync(videoFile)) {
+  const slugs = new Set(JSON.parse(fs.readFileSync(videoFile, 'utf8')).map((v) => v.slug));
+  const prompts = new Set(walk('resources/opus-videos/prompts').filter((p) => p.endsWith('.md')).map((p) => p.slice('resources/opus-videos/prompts/'.length, -3)));
+  for (const slug of slugs) if (!prompts.has(slug)) errors.push(`R3 缺少 prompts/${slug}.md`);
+  for (const slug of prompts) if (!slugs.has(slug)) errors.push(`R3 prompts/${slug}.md 没有对应的视频 slug`);
+}
+if (errors.length) {
+  console.error(`检查失败（${errors.length}）：\n- ` + errors.join('\n- '));
+  process.exit(1);
+}
 const { files, kitTargets, errors: entryErrors, cases, patterns } = buildAll();
 errors.push(...entryErrors);
 

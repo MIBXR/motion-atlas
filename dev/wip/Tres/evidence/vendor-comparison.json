@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "name": "opus-videos",
+      "equal": 707,
+      "different": 0,
+      "missing": [],
+      "extra": [],
+      "differentPaths": []
+    },
+    {
+      "name": "garden-skills",
+      "equal": 423,
+      "different": 0,
+      "missing": [],
+      "extra": [],
+      "differentPaths": []
+    },
+    {
+      "name": "agent-anime-skill",
+      "equal": 7,
+      "different": 0,
+      "missing": [],
+      "extra": [],
+      "differentPaths": []
+    }
+  ],
+  "equal": 1137,
+  "different": 0
+}

@@ -1,0 +1,433 @@
+{
+  "assertions": [
+    {
+      "label": "(a) 视频列表无控制台错误",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "label": "(a) 共 703 条",
+      "ok": true
+    },
+    {
+      "label": "(a) 首屏 48 张卡",
+      "ok": true
+    },
+    {
+      "label": "(b) cat=3d",
+      "ok": true,
+      "detail": {
+        "actual": 117,
+        "expected": 117
+      }
+    },
+    {
+      "label": "(b) tag=shader",
+      "ok": true,
+      "detail": {
+        "actual": 33,
+        "expected": 33
+      }
+    },
+    {
+      "label": "(b) full=post",
+      "ok": true,
+      "detail": {
+        "actual": 23,
+        "expected": 23
+      }
+    },
+    {
+      "label": "(c) 703 份提示词文件全部 200",
+      "ok": true,
+      "detail": {
+        "count": 703,
+        "failed": []
+      }
+    },
+    {
+      "label": "(d) 0xcodez-474136 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) 0xcodez-474136 · 复制原文",
+      "ok": false,
+      "detail": {
+        "originalLength": 700,
+        "copiedLength": 708,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) charliie-334026 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) charliie-334026 · 复制原文",
+      "ok": true,
+      "detail": {
+        "originalLength": 35,
+        "copiedLength": 35,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) 0xlangeai-597929 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) 0xlangeai-597929 · 复制原文",
+      "ok": false,
+      "detail": {
+        "originalLength": 106,
+        "copiedLength": 110,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) ajith-io-615243 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) ajith-io-615243 · 复制原文",
+      "ok": false,
+      "detail": {
+        "originalLength": 319,
+        "copiedLength": 322,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) 0xlangeai-178533 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) 0xlangeai-178533 · 复制原文",
+      "ok": false,
+      "detail": {
+        "originalLength": 22,
+        "copiedLength": 24,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(e) 所有 Skill Markdown 阅读视图与站内链接/图片",
+      "ok": true,
+      "detail": {
+        "skills": 7,
+        "markdownCount": 242,
+        "linkCount": 353,
+        "uniqueURLs": 253,
+        "known404": 3,
+        "unexpected404": []
+      }
+    },
+    {
+      "label": "(f) Markdown 提取前后 guide · 1440×900",
+      "ok": true,
+      "detail": {
+        "differingPixels": 0,
+        "documentHTMLIdentical": true
+      }
+    },
+    {
+      "label": "(f) Markdown 提取前后 pipeline · 1440×900",
+      "ok": true,
+      "detail": {
+        "differingPixels": 0,
+        "documentHTMLIdentical": true
+      }
+    },
+    {
+      "label": "(f) Markdown 提取前后 archive-os · 1440×900",
+      "ok": true,
+      "detail": {
+        "differingPixels": 0,
+        "documentHTMLIdentical": true
+      }
+    },
+    {
+      "label": "(g) 390×844 #videos",
+      "ok": true,
+      "detail": {
+        "scrollWidth": 390
+      }
+    },
+    {
+      "label": "(g) 390×844 #video/0xcodez-474136",
+      "ok": true,
+      "detail": {
+        "scrollWidth": 390
+      }
+    },
+    {
+      "label": "(g) 390×844 #skill/motion-showreel",
+      "ok": true,
+      "detail": {
+        "scrollWidth": 390
+      }
+    },
+    {
+      "label": "分页追加 48 张",
+      "ok": true
+    },
+    {
+      "label": "详情返回恢复筛选、分页与滚动位置",
+      "ok": true,
+      "detail": {
+        "saved": {
+          "hash": "#videos",
+          "scroll": 620,
+          "cards": 96,
+          "detail": "#video/0xcodez-474136"
+        },
+        "restored": {
+          "hash": "#videos",
+          "scroll": 620,
+          "cards": 96
+        }
+      }
+    },
+    {
+      "label": "移动端筛选按钮展开侧栏",
+      "ok": true
+    },
+    {
+      "label": "筛选变化重置为 48 张",
+      "ok": true
+    },
+    {
+      "label": "搜索、作者排序与 replaceState 筛选 URL",
+      "ok": true,
+      "detail": {
+        "expected": 3,
+        "actual": 3,
+        "ordered": true,
+        "hash": "#videos?cat=3d&q=shader&sort=author"
+      }
+    },
+    {
+      "label": "Skill 来源 agent-anime-skill",
+      "ok": true
+    },
+    {
+      "label": "Skill 来源 garden-skills",
+      "ok": true
+    },
+    {
+      "label": "界面字号 1440 #videos",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #videos?cat=3d",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #video/0xcodez-474136",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #video/0xlangeai-597929",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #skills",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #skill/motion-showreel",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #skill/ai-handdrawn-video",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #skill/web-video-presentation/references/CHAPTER-CRAFT.md",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 390 #videos",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 390 #video/0xcodez-474136",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 390 #skill/motion-showreel",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "资源页全程无 JavaScript 控制台错误",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "missing": [
+    {
+      "path": "resources/skills/garden-skills/demo/web-design-engineer-demo/README.md",
+      "status": 404,
+      "known": true,
+      "sources": [
+        {
+          "skill": "web-design-engineer",
+          "file": "README.md",
+          "raw": "resources/skills/garden-skills/demo/web-design-engineer-demo/README.md"
+        },
+        {
+          "skill": "web-design-engineer",
+          "file": "README.zh-CN.md",
+          "raw": "resources/skills/garden-skills/demo/web-design-engineer-demo/README.md"
+        }
+      ]
+    },
+    {
+      "path": "resources/skills/garden-skills/skills/web-video-presentation/references/PRINCIPLES.md",
+      "status": 404,
+      "known": true,
+      "sources": [
+        {
+          "skill": "web-video-presentation",
+          "file": "README.md",
+          "raw": "#skill/web-video-presentation/references/PRINCIPLES.md"
+        },
+        {
+          "skill": "web-video-presentation",
+          "file": "README.zh-CN.md",
+          "raw": "#skill/web-video-presentation/references/PRINCIPLES.md"
+        }
+      ]
+    },
+    {
+      "path": "resources/skills/garden-skills/skills/web-video-presentation/references/PATTERNS.md",
+      "status": 404,
+      "known": true,
+      "sources": [
+        {
+          "skill": "web-video-presentation",
+          "file": "README.md",
+          "raw": "#skill/web-video-presentation/references/PATTERNS.md"
+        },
+        {
+          "skill": "web-video-presentation",
+          "file": "README.zh-CN.md",
+          "raw": "#skill/web-video-presentation/references/PATTERNS.md"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "dev/shots/Tres/1440-videos.png",
+      "hash": "#videos",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-videos-3d.png",
+      "hash": "#videos?cat=3d",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-video-title.png",
+      "hash": "#video/0xcodez-474136",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-video-post.png",
+      "hash": "#video/0xlangeai-597929",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-skills.png",
+      "hash": "#skills",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-skill-motion-showreel.png",
+      "hash": "#skill/motion-showreel",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-skill-ai-handdrawn-video.png",
+      "hash": "#skill/ai-handdrawn-video",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-skill-chapter-craft.png",
+      "hash": "#skill/web-video-presentation/references/CHAPTER-CRAFT.md",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/390-videos.png",
+      "hash": "#videos",
+      "width": 390,
+      "height": 844,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/390-video-title.png",
+      "hash": "#video/0xcodez-474136",
+      "width": 390,
+      "height": 844,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/390-skill-motion-showreel.png",
+      "hash": "#skill/motion-showreel",
+      "width": 390,
+      "height": 844,
+      "minFontPx": 12
+    }
+  ],
+  "consoleErrors": []
+}

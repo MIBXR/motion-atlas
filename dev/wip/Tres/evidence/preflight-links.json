@@ -1,0 +1,44 @@
+{
+  "documents": 242,
+  "missing": [
+    {
+      "target": "resources/skills/garden-skills/demo/web-design-engineer-demo/README.md",
+      "sources": [
+        {
+          "source": "resources/skills/garden-skills/skills/web-design-engineer/README.md",
+          "href": "resources/skills/garden-skills/demo/web-design-engineer-demo/README.md"
+        },
+        {
+          "source": "resources/skills/garden-skills/skills/web-design-engineer/README.zh-CN.md",
+          "href": "resources/skills/garden-skills/demo/web-design-engineer-demo/README.md"
+        }
+      ]
+    },
+    {
+      "target": "resources/skills/garden-skills/skills/web-video-presentation/references/PRINCIPLES.md",
+      "sources": [
+        {
+          "source": "resources/skills/garden-skills/skills/web-video-presentation/README.md",
+          "href": "resources/skills/garden-skills/skills/web-video-presentation/references/PRINCIPLES.md"
+        },
+        {
+          "source": "resources/skills/garden-skills/skills/web-video-presentation/README.zh-CN.md",
+          "href": "resources/skills/garden-skills/skills/web-video-presentation/references/PRINCIPLES.md"
+        }
+      ]
+    },
+    {
+      "target": "resources/skills/garden-skills/skills/web-video-presentation/references/PATTERNS.md",
+      "sources": [
+        {
+          "source": "resources/skills/garden-skills/skills/web-video-presentation/README.md",
+          "href": "resources/skills/garden-skills/skills/web-video-presentation/references/PATTERNS.md"
+        },
+        {
+          "source": "resources/skills/garden-skills/skills/web-video-presentation/README.zh-CN.md",
+          "href": "resources/skills/garden-skills/skills/web-video-presentation/references/PATTERNS.md"
+        }
+      ]
+    }
+  ]
+}

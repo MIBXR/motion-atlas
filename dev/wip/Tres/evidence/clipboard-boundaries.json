@@ -1,0 +1,13 @@
+{
+  "input": "a\nb",
+  "calls": [
+    {
+      "text": "a\nb",
+      "rejected": false
+    }
+  ],
+  "throughSite": "a\r\nb",
+  "nativeAPI": "a\r\nb",
+  "withoutNewline": "plain",
+  "onlyCRLFChanged": true
+}

@@ -1,0 +1,2131 @@
+{
+  "name": "garden-skills",
+  "repo": "ConardLi/garden-skills",
+  "url": "https://github.com/ConardLi/garden-skills",
+  "commit": "7a6d5a72e4f44bb4cc0c23c01b3d97205c723b68",
+  "fetchedAt": "2026-10-24",
+  "license": "MIT",
+  "notice": [],
+  "excluded": [
+    ".git/",
+    ".github/",
+    "website/（上游宣传站点，18 MB）"
+  ],
+  "files": [
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "bytes": 2187,
+      "sha256": "3336529856ceff99b2b79fd42000cfc23212f8f90ef45fa95b506456eaae50a7"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 470,
+      "sha256": "f01fc05611be8631a18a44d3d3da5400bb38293ff0e897a1b95ff3c97cba3446"
+    },
+    {
+      "path": "CONTRIBUTING.ja-JP.md",
+      "bytes": 22239,
+      "sha256": "d5de5ddc60766c19cea35ce1a0fe6daf705c874d859987448d5a5b1082f46239"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 16393,
+      "sha256": "dfa047453c58631e9dc77e249a64e521d2ed1d4fa867c2e106292f24d948d03e"
+    },
+    {
+      "path": "CONTRIBUTING.zh-CN.md",
+      "bytes": 15901,
+      "sha256": "2682862f799e14faa263ad10b757f47105da7a612ff1c0a13e9d5bd43fa11d55"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1056,
+      "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+    },
+    {
+      "path": "README.ja-JP.md",
+      "bytes": 45789,
+      "sha256": "35bc31ed74924bc2c7f7d831b0237123920ece47eb846c8b5337d0ea009aafdb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 39095,
+      "sha256": "06d4629411d6e1aed32ba58a5d85097bd1800aeeeb409a2bc360d51c0c9510f5"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "bytes": 37924,
+      "sha256": "1e3af2e06e3de37c02908cd43977783e67bf34ae0d6cf921e02245683b05b516"
+    },
+    {
+      "path": "demo/web-design-demo/demo1-with-skill.html",
+      "bytes": 79464,
+      "sha256": "63fce4a1f4c934c6d420164bef5bc35a42a587da0e0d51be32b11bed30724c73"
+    },
+    {
+      "path": "demo/web-design-demo/demo1.html",
+      "bytes": 50037,
+      "sha256": "997d8b519413dfd9198701822cabc8297550a0d290815af177be05bb397e00a6"
+    },
+    {
+      "path": "demo/web-design-demo/demo2-with-skill.html",
+      "bytes": 66922,
+      "sha256": "de271f72d3bc77a303c23c2ee6fa9fcdffce168141650bf8890545a75b50b839"
+    },
+    {
+      "path": "demo/web-design-demo/demo2/index.html",
+      "bytes": 12833,
+      "sha256": "a659133e316176465656ad52d986b4d9e3150b3f07ebf7ed049a73c45d9e56f7"
+    },
+    {
+      "path": "demo/web-design-demo/demo2/script.js",
+      "bytes": 3858,
+      "sha256": "44ac94f7be8537f5498c9993edaecc383aa8aee0ffd3f397fe995a2ee68c31c7"
+    },
+    {
+      "path": "demo/web-design-demo/demo2/styles.css",
+      "bytes": 20078,
+      "sha256": "2bd1bc3d489affab176491cfbeafb4be950f5770030824c58e840c214292fc48"
+    },
+    {
+      "path": "dist/imgs/covers/beautiful-article.webp",
+      "bytes": 51976,
+      "sha256": "60e99394065551ebac3b81f53a3834f0bf322655b587d849b0235733879c374f"
+    },
+    {
+      "path": "dist/imgs/covers/gpt-image-2.webp",
+      "bytes": 71038,
+      "sha256": "8d4f9be4632c2066c734a6917cb54c3b353a0495e0e028e83b1cc6ced52f00a8"
+    },
+    {
+      "path": "dist/imgs/covers/kb-retriever.webp",
+      "bytes": 57534,
+      "sha256": "0bb9beefd2b6f32095b8eaff26d61288e1ef76a9235301f1271594f882dec670"
+    },
+    {
+      "path": "dist/imgs/covers/motion-showreel.webp",
+      "bytes": 40366,
+      "sha256": "57a438cc92414bfb4603de9e6783f229c047e54f0f947b54bd36b6ae153d4192"
+    },
+    {
+      "path": "dist/imgs/covers/web-design-engineer.webp",
+      "bytes": 52012,
+      "sha256": "948e702190691b7817982908213f9e0647b0cf0df718d56995d879ec150db8f3"
+    },
+    {
+      "path": "dist/imgs/covers/web-video-presentation.webp",
+      "bytes": 72954,
+      "sha256": "f9cf61b7220a638a3fb5c0d47b549e426d85abbd51cbd7efdb5d554ebcccc7f6"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/afterglow.webp",
+      "bytes": 589054,
+      "sha256": "66b6ce67acff12755188b5e6e1d37353e5bc0cf360945585bbd6f1175b11ea8a"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/banner.webp",
+      "bytes": 135766,
+      "sha256": "4af2ac9639b71422510fea44ba50e1cc53267e8eb1c8192a779afb0d765e3226"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/boink.webp",
+      "bytes": 123390,
+      "sha256": "ee823354ddae70213e30d1d6b861d2fbf4d7fb1132835a67a6bcc99df224894b"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/last-stroke.webp",
+      "bytes": 366150,
+      "sha256": "dce2afe1247ef05ecb7adbb0dbc1daab3bb5e1e333f16637444c8e244459ef46"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/promo.webp",
+      "bytes": 689312,
+      "sha256": "06d007500a6f8b04213bfcaf286950fb0520326290385b2c1b0a08974af74f64"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-comic-pop.webp",
+      "bytes": 29480,
+      "sha256": "261d656805d166a1624d167d01d3e13729f62f44ad51a9713ea03ee1cbc6311b"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-data-motion.webp",
+      "bytes": 7662,
+      "sha256": "202515c059db76a70eba1fe8b03ebc03cb63423941ebeacd912cb383cd61f252"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-editorial-collage.webp",
+      "bytes": 9156,
+      "sha256": "b8f017afc8445a6792c332eaff8ddfaeaf788f7fc8c09d4bf92f94e5d3fdac19"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-flat-vector.webp",
+      "bytes": 8104,
+      "sha256": "2dede2edc133efc0038f053392a3d0ab1cac71c8fb1e65e5482fe1e314403e2d"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-generative-geometry.webp",
+      "bytes": 25402,
+      "sha256": "d9661ef392ffe53a3412a7446c69b2caac0a7fabcc09531ee32a3d11b76b823e"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-glitch-digital.webp",
+      "bytes": 7298,
+      "sha256": "5b47850246d034cda2e701ec775e485e7996df0c065d32ac1e4f71fb6df7dae0"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-guochao.webp",
+      "bytes": 14096,
+      "sha256": "80ac2fc49a942aa1b5eb0a2f70f7295f72bbea7cbebb2d5feaecbab208a55ce7"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-ink-wash.webp",
+      "bytes": 5292,
+      "sha256": "d8ea3e095e7dfc5430755731b9321ef6a9a50099f1e2d744cf7a2adad8864abd"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-isometric-infographic.webp",
+      "bytes": 6842,
+      "sha256": "11579c53a88f21f8d4ee47da39cdf9252ead59c7d17536baac5141cce42172d3"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-liquid-shader.webp",
+      "bytes": 4624,
+      "sha256": "cc157da98252d976720ac0b830ca3589ef2c84673841d6aab35ae6078f4a649f"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-minimal-ui.webp",
+      "bytes": 2926,
+      "sha256": "7b31a73ce297b3f4ad5a3994c8f423898f54d35391039b45eaf3a9bf92ed463b"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-painterly.webp",
+      "bytes": 37168,
+      "sha256": "96e16a27e094f77ed757da0087578b025a7fffe594aea8309ab331eaf6ff7aff"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-paper-cut.webp",
+      "bytes": 3412,
+      "sha256": "b05f851834493ad9d0acf352249f9e28fe90635840b47fc079b9b6dc775cc5d2"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-pixel-game.webp",
+      "bytes": 9124,
+      "sha256": "ff078bcb50ca4d79bfb6da203334a3eddd5282c80c56974f08e341d03f526b47"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-risograph-print.webp",
+      "bytes": 31846,
+      "sha256": "995d74330717c3502a49b0af3a80fd7c9e1a69147e77c3e413587d8381b2f2ba"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-soft-organic.webp",
+      "bytes": 5914,
+      "sha256": "2d02f3377bed6e9e2f4a83b455adb8d730beaee604b337001b77755020063f54"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-swiss-editorial.webp",
+      "bytes": 7616,
+      "sha256": "596f401a886bef27f6a4874a800dd5c9b8ee08f39c5247c723ee9c76e54a156e"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/style-synthwave-neon.webp",
+      "bytes": 11110,
+      "sha256": "2df4164ef357197088b3fbc1a321e12968b5855511ecec3e7d0bcc06f61d3388"
+    },
+    {
+      "path": "dist/imgs/motion-showreel/umbra.webp",
+      "bytes": 160610,
+      "sha256": "64dfede528502cf0b5e34797168c2710f43da9d3573f9d74e07e1e236f0fadb9"
+    },
+    {
+      "path": "dist/prompts/claude-design-system-prompt.md",
+      "bytes": 73264,
+      "sha256": "5f4198196768d57d840efa5b34e80d304b9ffe97dfdde156b44c7ae5bc90b36f"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1084,
+      "sha256": "f5bd15fc0b6651abd0a504bc696713cda9cbe745efddb10e3a63b7afc8fef3ec"
+    },
+    {
+      "path": "scripts/release/cut-release.mjs",
+      "bytes": 17766,
+      "sha256": "ca205fb364b13428308eb529ad80b837d6e8b2fb031f8a8ef368444f8dd98041"
+    },
+    {
+      "path": "scripts/release/lib/skills.mjs",
+      "bytes": 8536,
+      "sha256": "8e70ef9ff75495870257d2f6fedb6f2d05b26c21bde62e30f49af3e58911c5c4"
+    },
+    {
+      "path": "scripts/release/list-skills.mjs",
+      "bytes": 1543,
+      "sha256": "5debd81c640ab141f29230bd1f0a5790b23189a92adc5fd8756d1931e7ade67a"
+    },
+    {
+      "path": "scripts/release/pack-skill.mjs",
+      "bytes": 7215,
+      "sha256": "1100435cf96582ebb294d060a9c43a9d822b5792251024bf73f69d08133a17ce"
+    },
+    {
+      "path": "scripts/release/update-readme.mjs",
+      "bytes": 5891,
+      "sha256": "288ff0c50a848ff94f99fa93c731ee490fa735173d3ad93172ade66a03acabe8"
+    },
+    {
+      "path": "skills/beautiful-article/README.md",
+      "bytes": 24181,
+      "sha256": "85a0ef24db463dc6ecae790eb25b3697e18c67b2778e34d3a50f38eb00142b52"
+    },
+    {
+      "path": "skills/beautiful-article/README.zh-CN.md",
+      "bytes": 23731,
+      "sha256": "8462ffd5fc262c2d0987be7c8aff2c75b8a072ef600ad2f3a43ef226afddfe66"
+    },
+    {
+      "path": "skills/beautiful-article/SKILL.md",
+      "bytes": 31482,
+      "sha256": "0ca56194c1c799ce1cee785f35d108b56564720f721803f4a7a57ffe6ecc0118"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/.npmrc",
+      "bytes": 37,
+      "sha256": "3a951f66e7e0f3e2dd1832473a871357c4a507b51100636b73bcf6ff0dd78b6c"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/article/Article.tsx",
+      "bytes": 2811,
+      "sha256": "a02f3730d2845f23f8ff0ce720a91993e36bcaf8c6d24d719261db2bd728ff0d"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/article/Cover.tsx",
+      "bytes": 7660,
+      "sha256": "51afad6a5c2a75be834e8698264eaefb42139361b815dbb1eca856385efb7242"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/article/main.tsx",
+      "bytes": 1173,
+      "sha256": "2bc9ba7f4ac3115069d4fb1ba151b98016c0fda9e6ae558e726b8cd47104409f"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/article/sections/01-opening.tsx",
+      "bytes": 1314,
+      "sha256": "f00bdebacaa3a4e7b5c05158af319da728a47520bc22caa083277ee2473fdbf8"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/index.html",
+      "bytes": 755,
+      "sha256": "19bcaa847b022558b889c182d028bb311aec44a2ddc3f6a5e64f3f4169960244"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/package.json",
+      "bytes": 783,
+      "sha256": "628df742e15474f9d781a11b68f028ca9cd231f6468159fc8d0e8f8fb4fe3a34"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/tsconfig.json",
+      "bytes": 512,
+      "sha256": "ca329057d3c7713f02730b987a9f3fdcae4841f7ce138efc8e1c61ad6838a2f4"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/tsconfig.node.json",
+      "bytes": 230,
+      "sha256": "6a0c11a7481d35c069b81bd115ac7b2b3890c62503b6a2306187da7c394b9d35"
+    },
+    {
+      "path": "skills/beautiful-article/assets/scaffold-template/vite.config.ts",
+      "bytes": 614,
+      "sha256": "8ace7f23452fd62a7c607e8a7f87c503e1f2717f1a6ce6d53eff3b57e63d326e"
+    },
+    {
+      "path": "skills/beautiful-article/manifest.json",
+      "bytes": 733,
+      "sha256": "4a77f1ef55cf5258ea49c8f445bfd8efbcdd333973a704870fe86ce40c67c9ce"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types.md",
+      "bytes": 3767,
+      "sha256": "55570c3d1a29a31f73596a0f0b12f91f1d52dbb2b4ef0caf14d9ae7ba29ea21e"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/briefing.md",
+      "bytes": 2177,
+      "sha256": "bbd04e897919e53fb56584dc371991306cc505156ae4b2bdc51252d7c28ef657"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/dialogue.md",
+      "bytes": 2181,
+      "sha256": "820aeb9cf78cd3bf615920d520b95c769a726cd397c68514a2cb16d144da052a"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/essay.md",
+      "bytes": 2129,
+      "sha256": "3aa0110c7e5737acc0d1f9832cdfa779fc7ac19a97a9693610698f27657f72e7"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/explainer.md",
+      "bytes": 2388,
+      "sha256": "43279d5105727217e0e5470bcca0782d988ebe6fa5b8bca9cc9988ca01169bd4"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/full-report.md",
+      "bytes": 2422,
+      "sha256": "8789076fb521053bda6a82794c6bebd10e1db229c8d0ec39b7c3b26fc8e16390"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/interactive-explainer.md",
+      "bytes": 5042,
+      "sha256": "5176ed41f04cf531a071122354ae9d5a30140229ac51d634d92abad31e37a52d"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/longform.md",
+      "bytes": 2325,
+      "sha256": "e2b1bf7f96c8e052c7fdbb6396d9fd078b5871990cf90822a828b937b3f5eab5"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/review.md",
+      "bytes": 2342,
+      "sha256": "9e2fd1fa4fec6f42a66e0e375748916d605d5d44a2e58e51c69249e4dad17a3c"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/tutorial.md",
+      "bytes": 2268,
+      "sha256": "49410d9f532ca6da9b46952e5f914e044dc0628a0cd34ccf37e5d02b272c2ba3"
+    },
+    {
+      "path": "skills/beautiful-article/references/article-types/visual-essay.md",
+      "bytes": 2504,
+      "sha256": "cd302f77c8c55f4189b7b831ff8d49befe595e18392469591b916c55ac7e6c9e"
+    },
+    {
+      "path": "skills/beautiful-article/references/asset-policy.md",
+      "bytes": 3833,
+      "sha256": "f02280053f6e6506915f1428df9beb4ed7d829c61f3bf92ace0c650f247db964"
+    },
+    {
+      "path": "skills/beautiful-article/references/component-policy.md",
+      "bytes": 5543,
+      "sha256": "d1f9beafb73ef3b2cf8e082511aae97b775680d2b907b0e645c10beb859b43fe"
+    },
+    {
+      "path": "skills/beautiful-article/references/cover.md",
+      "bytes": 11868,
+      "sha256": "e828a9805afdcbba141d4ae9f519d05faebcd821fa09bd5e97e419c649add5db"
+    },
+    {
+      "path": "skills/beautiful-article/references/harness.md",
+      "bytes": 2123,
+      "sha256": "06663300693cd78c12b53a1f15da13785965e27edb5fd24213543ff0cfd2d004"
+    },
+    {
+      "path": "skills/beautiful-article/references/html-output.md",
+      "bytes": 1988,
+      "sha256": "34d02ad04ebd2130cbdab56ee2354ec03976854af71003b0b055253347b359b7"
+    },
+    {
+      "path": "skills/beautiful-article/references/information-density.md",
+      "bytes": 3238,
+      "sha256": "e9c9c3cdfcbf240271bd08b62b937709ade2c895bacb6c5daec6815c264a1342"
+    },
+    {
+      "path": "skills/beautiful-article/references/layout.md",
+      "bytes": 2003,
+      "sha256": "f3f3aeacd6e7f01fafea4dc3a5278293c55ea581e1fa00c646d9f26cc963e379"
+    },
+    {
+      "path": "skills/beautiful-article/references/pdf-output.md",
+      "bytes": 10041,
+      "sha256": "086aeb02c374df76b1845e827b63ffeca6f15cde3b4a2883f337c0ffd70b9a91"
+    },
+    {
+      "path": "skills/beautiful-article/references/plan-template.md",
+      "bytes": 5851,
+      "sha256": "3044d628c60e8a71177f7fac8b5769bb99809d0c17ef5962d657df43b6a17643"
+    },
+    {
+      "path": "skills/beautiful-article/references/raw-policy.md",
+      "bytes": 4485,
+      "sha256": "f218b85e6d5cc4edee000c79daf9dbb5d2b64559897ef9b58a02827413bdb5b6"
+    },
+    {
+      "path": "skills/beautiful-article/references/repair-policy.md",
+      "bytes": 1236,
+      "sha256": "730a766ba9d6ab3556247ddf8fa52ce0868618bb504cbd8899f4177bbd87d06f"
+    },
+    {
+      "path": "skills/beautiful-article/references/review-checklist.md",
+      "bytes": 7312,
+      "sha256": "d7be3daf1a13482bbcfe6771402c1ce50e55189b02be244797a3b25af04c7894"
+    },
+    {
+      "path": "skills/beautiful-article/references/scaffold.md",
+      "bytes": 3602,
+      "sha256": "5aabed9074c8208f818c41c1007b3ca58a9e8e06015d47aa12d594793febe9bb"
+    },
+    {
+      "path": "skills/beautiful-article/references/section-build.md",
+      "bytes": 5405,
+      "sha256": "fd21f86889b637d168a1eba252a68af63c5c05c1a9a49f06b6211808764d574f"
+    },
+    {
+      "path": "skills/beautiful-article/references/source-to-markdown.md",
+      "bytes": 6401,
+      "sha256": "0a49b88724be106a175d04566a7990cd53c0b6bc2f00b889c8ef7deddf6e22bd"
+    },
+    {
+      "path": "skills/beautiful-article/references/theme-selection.md",
+      "bytes": 2301,
+      "sha256": "846ec067e96d69141532eeba04d5c7f5869ccd29f4e8af82dfac724ba328598d"
+    },
+    {
+      "path": "skills/beautiful-article/scripts/html-to-pdf.sh",
+      "bytes": 6377,
+      "sha256": "816d65186c1fe62f36de6f9915aa65cb7ee186b0960dc0d2859d94c3c6aa8c76"
+    },
+    {
+      "path": "skills/beautiful-article/scripts/pdf-print-overrides.css",
+      "bytes": 6457,
+      "sha256": "e708bfb3202c32240bae59645b8e62d26b611b495017adcdf1ad29f878e55039"
+    },
+    {
+      "path": "skills/beautiful-article/scripts/scaffold.sh",
+      "bytes": 7516,
+      "sha256": "1a5ffec7c4d0ce0bacaa3c47f50cbd0acb03cb8efdfc66e4391e0ed9f7ec1692"
+    },
+    {
+      "path": "skills/beautiful-article/scripts/source-to-markdown-markitdown.py",
+      "bytes": 3308,
+      "sha256": "96b580671dd1149ec86a7fe8630c7bc8f7b4e82578ba5a5291dcdeaa8df9d60b"
+    },
+    {
+      "path": "skills/beautiful-article/scripts/source-to-markdown.py",
+      "bytes": 5992,
+      "sha256": "195b9f40fde04d428731ba0402713eddb9164ee32466242c4cb14d8a395ed132"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/andy.md",
+      "bytes": 3426,
+      "sha256": "cd756c9de56d56d5e36fe2748a86b3401e96d6c1c133b9b208a093ef56de90b6"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/bayer.md",
+      "bytes": 3198,
+      "sha256": "bb279c6229cd7086fa1d59e4a96e2efec0aa429db616bfdc47c0d9d80ce6530c"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/bodoni.md",
+      "bytes": 3307,
+      "sha256": "82c64f37a6718289388abc816b6e5da8280d61ebc2cdf02762137a529d74f508"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/freddie.md",
+      "bytes": 3420,
+      "sha256": "3345e111dcb953e6d8a2fa61b07c1d867b00f6aed6aa6c0d5b306a275e56a291"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/fuller.md",
+      "bytes": 3276,
+      "sha256": "504d8ada4c732d5af1f17a2ee7cde4cb09aa7710a3422464157361a9875e8954"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/index.json",
+      "bytes": 5912,
+      "sha256": "b1a81f7876d530db3810e43c33d7441a1765f986f91dff07b8fd8941a65b8f92"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/knuth.md",
+      "bytes": 3603,
+      "sha256": "6bd396e483fbb45d77d3b3ce3fc98ab9cb2fef34039e5d9606a30d7b49d858c6"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/press.md",
+      "bytes": 3633,
+      "sha256": "5cd97ef28e1e4988c0c8f4796a3987f5d414eff0a0a5457c89537c8e0207ab2c"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/shannon.md",
+      "bytes": 3831,
+      "sha256": "5e6ed09283b58d02af7de178b51601f14bc7140863d2393a146a865405ca7afb"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/sottsass.md",
+      "bytes": 3420,
+      "sha256": "4df575a683a8617a9177019d15794561e2b52a5c747d52b5f25775d5a2a00d13"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/tufte.md",
+      "bytes": 3621,
+      "sha256": "4bed572a12b158eb496ff8ef2a992cef3ac6b0b474ae2e5547d86a8c555ca48f"
+    },
+    {
+      "path": "skills/beautiful-article/theme-profiles/vignelli.md",
+      "bytes": 3655,
+      "sha256": "c698715aa981bbba412a2f210380ebae7cab5279abf79e0c99507d7fd06bd403"
+    },
+    {
+      "path": "skills/gpt-image-2/README.md",
+      "bytes": 19179,
+      "sha256": "c163416da4980bd3e3554217e75d1baafd149a8c291e225381c2e5c7473ca954"
+    },
+    {
+      "path": "skills/gpt-image-2/README.zh-CN.md",
+      "bytes": 18942,
+      "sha256": "8a540009d045a9f1cf74b4cbbf22c482915d2adcb7d7e8db87bc0bc5a625e7bf"
+    },
+    {
+      "path": "skills/gpt-image-2/SKILL.md",
+      "bytes": 26643,
+      "sha256": "919cfb275970571cbf4b87657fbc8d5609076c45f6e07f678ac2ef4789b5feb1"
+    },
+    {
+      "path": "skills/gpt-image-2/manifest.json",
+      "bytes": 580,
+      "sha256": "dd60863029f900251bb1dc25a4a0d8f3d68cabdca7fcbdf47a1742a29016210f"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/graphical-abstract.md",
+      "bytes": 10415,
+      "sha256": "61ca88f20052a094a0b46269afdab1b840c12da6361356485e39f1e561699f17"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/mechanism-diagram.md",
+      "bytes": 11533,
+      "sha256": "ffe41e8b6163e56edc8e4295dbf94b621418ab65aa2e3339fdd93df6f6c650d6"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/method-pipeline-overview.md",
+      "bytes": 12888,
+      "sha256": "c88f74728f81a319befca4400b63c97cba58c66edaf762d13f6681e2097fc095"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/multi-condition-comparison.md",
+      "bytes": 11070,
+      "sha256": "3dacebddf1df7cf21e5ec4dc1a0804b2990984e34de255c1c4916e188ab098dd"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/neural-network-architecture.md",
+      "bytes": 9852,
+      "sha256": "26b52cd628e82567658f071b44ba0bcaa6045b985e42beeb731564a27e1f8719"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/publication-chart.md",
+      "bytes": 11594,
+      "sha256": "a4f8b9f5add1847c44d0e914d92a6f93dec701b56cae1bb27df47cb9d1d53206"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/qualitative-comparison-grid.md",
+      "bytes": 9664,
+      "sha256": "d60f7de2e3cf458aa263be12a779d40d464f0ef767a864957f14788e4f01d632"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/research-overview-poster.md",
+      "bytes": 11741,
+      "sha256": "b3ba9204b517539047aebd08edd90dda2891258f0e1977d0ee2e0c0692b58ce0"
+    },
+    {
+      "path": "skills/gpt-image-2/references/academic-figures/scientific-schematic.md",
+      "bytes": 11136,
+      "sha256": "47b79d0ed0a74698bd7b932c7b0c3aa90657198abeb0ea5e6a31ba3b6f5a93db"
+    },
+    {
+      "path": "skills/gpt-image-2/references/assets-and-props/game-screenshot-mockup.md",
+      "bytes": 5914,
+      "sha256": "5b50f87cd1edcfba4bb1eddf901f21d5d491f120e52a628a74d8c9c9f9c39628"
+    },
+    {
+      "path": "skills/gpt-image-2/references/assets-and-props/retro-skeuomorphic-icons.md",
+      "bytes": 5453,
+      "sha256": "91115b06ac25d93af7718fedeb2f73dbe69e0bb25d8ef8aa4d0f3c6b8278b717"
+    },
+    {
+      "path": "skills/gpt-image-2/references/avatars-and-profile/character-grid-portrait.md",
+      "bytes": 6682,
+      "sha256": "fda14e3fc645dd69d022ef220610a5c4d1241c8c4783fbce9c59f40d365c3a6a"
+    },
+    {
+      "path": "skills/gpt-image-2/references/avatars-and-profile/cultural-portrait-series.md",
+      "bytes": 5449,
+      "sha256": "1ccdb29eeff0498e939486ec18d33b9994cbd619a10960bc901eed0adbad4519"
+    },
+    {
+      "path": "skills/gpt-image-2/references/avatars-and-profile/sticker-set.md",
+      "bytes": 5406,
+      "sha256": "d64389e7810eb8ec72387c4994dd9e346319d42f34ad7cbee3ae8e52bc4ff341"
+    },
+    {
+      "path": "skills/gpt-image-2/references/avatars-and-profile/style-transfer-selfie.md",
+      "bytes": 5194,
+      "sha256": "67021faabdbd9e5d5db6851eb2e5bc6a650a76ef399a4f0949fdae0f93989461"
+    },
+    {
+      "path": "skills/gpt-image-2/references/avatars-and-profile/themed-3d-icon.md",
+      "bytes": 5122,
+      "sha256": "24265bb5cbe533fbe00f6a8ef1b52b4e4cc86df2c03fe65e37a8055f2f441f71"
+    },
+    {
+      "path": "skills/gpt-image-2/references/branding-and-packaging/beverage-label-design.md",
+      "bytes": 5226,
+      "sha256": "c880bba1457d58764f880c61d2a52291ce0ffadac6abd494dc5529fef53d57ea"
+    },
+    {
+      "path": "skills/gpt-image-2/references/branding-and-packaging/brand-identity-board.md",
+      "bytes": 5806,
+      "sha256": "1733cecdf4ce4d7c7663ff497363d6f7c91b00b67169f6b24a7456ef32c8a190"
+    },
+    {
+      "path": "skills/gpt-image-2/references/branding-and-packaging/character-merch-board.md",
+      "bytes": 15100,
+      "sha256": "ed28e9d2e146d3b19196c32426a0210fa3f5b145ba5d6304b6a509b267b801fa"
+    },
+    {
+      "path": "skills/gpt-image-2/references/branding-and-packaging/cosmetic-packaging.md",
+      "bytes": 5310,
+      "sha256": "9eecdcd4f91d2d589a42fb9ad3612390f00f62289529616bf89149d337fd88fc"
+    },
+    {
+      "path": "skills/gpt-image-2/references/branding-and-packaging/full-mascot-brand-doc.md",
+      "bytes": 13304,
+      "sha256": "bf3cc5ed9321b03c452a0ba99b98a6e05919513f056a90fafde9d314696ec30f"
+    },
+    {
+      "path": "skills/gpt-image-2/references/branding-and-packaging/mascot-brand-kit.md",
+      "bytes": 5593,
+      "sha256": "d379583698eb8738cec4e5ab4e70ffe039e2ea635210693e56a31de4b2c92225"
+    },
+    {
+      "path": "skills/gpt-image-2/references/editing-workflows/background-replacement.md",
+      "bytes": 3712,
+      "sha256": "4edbe89621aa52fd1f33a2fe914688a5dbd45c6307833b8d6a09ea02b2e1a064"
+    },
+    {
+      "path": "skills/gpt-image-2/references/editing-workflows/local-object-replacement.md",
+      "bytes": 3427,
+      "sha256": "d18ea3ca624fef8aaf5da1a20dc19d7d1c4255d0f66b19b54d50fa4071c016ae"
+    },
+    {
+      "path": "skills/gpt-image-2/references/editing-workflows/object-removal.md",
+      "bytes": 2896,
+      "sha256": "0abedd4277e7e7e8945df7690a67b9ca8c8a5664ea48e16247875cb912e97897"
+    },
+    {
+      "path": "skills/gpt-image-2/references/editing-workflows/portrait-local-edit.md",
+      "bytes": 3436,
+      "sha256": "5fbf8b04ba6e8591bf263a2b79d363584b9125a00c1d81a52bbc08340bcc22fe"
+    },
+    {
+      "path": "skills/gpt-image-2/references/editing-workflows/product-retouching.md",
+      "bytes": 3300,
+      "sha256": "8b3323ea1d0c17c7d720270a40cae2f16fa4a3dae9a32e81147543a90dde65ba"
+    },
+    {
+      "path": "skills/gpt-image-2/references/grids-and-collages/ad-banner-multi-grid.md",
+      "bytes": 10811,
+      "sha256": "a6432c129a2a7842cd0ca80209cbfacd666fcabe9c82c899b7f48ab1d7a75ede"
+    },
+    {
+      "path": "skills/gpt-image-2/references/grids-and-collages/anime-pitch-board.md",
+      "bytes": 5809,
+      "sha256": "f92c49d833ffb9598dc4edab42409309b67b8d89fb0cd7c65dbccd7ea00e764b"
+    },
+    {
+      "path": "skills/gpt-image-2/references/grids-and-collages/banner-grid-2x2.md",
+      "bytes": 5779,
+      "sha256": "ce3a9d792c1ca340c9a9d6345adc3d578dc3e703de36baebc1744c918b4e34f4"
+    },
+    {
+      "path": "skills/gpt-image-2/references/grids-and-collages/lookbook-grid.md",
+      "bytes": 5563,
+      "sha256": "ccd16629f135ba4d8bf549cc0718c63f7aabb6545a19e6997d19912589d666cc"
+    },
+    {
+      "path": "skills/gpt-image-2/references/grids-and-collages/mixed-style-multi-panel.md",
+      "bytes": 5762,
+      "sha256": "f3872fd9bdbfc7ab8ff24e7dc659258b9e94275d7a9723f5c8b17e52d64097a7"
+    },
+    {
+      "path": "skills/gpt-image-2/references/infographics/bento-grid-infographic.md",
+      "bytes": 8581,
+      "sha256": "af048433b53ae4b4460c1702c6c9bf77ee80800767dd2942dbe0908560ab915c"
+    },
+    {
+      "path": "skills/gpt-image-2/references/infographics/comparison-infographic.md",
+      "bytes": 7619,
+      "sha256": "b533820541a311c795539946ead29813675ee6207901fbbc0ecdc84dbf9e3549"
+    },
+    {
+      "path": "skills/gpt-image-2/references/infographics/hand-drawn-infographic.md",
+      "bytes": 8322,
+      "sha256": "b121a4d1ddb8b350c0c55768a665b56b651314787da1b1cd4b821bae25263a6a"
+    },
+    {
+      "path": "skills/gpt-image-2/references/infographics/kpi-dashboard-infographic.md",
+      "bytes": 9048,
+      "sha256": "7ccea40450833ef5434eb61e788c9e2b23f638a824090067256aa27b488419a9"
+    },
+    {
+      "path": "skills/gpt-image-2/references/infographics/legend-heavy-infographic.md",
+      "bytes": 6713,
+      "sha256": "70cfe7ca7fa91e816c340019f60433ba6b3d40ec59b6d90565328eebe00209c7"
+    },
+    {
+      "path": "skills/gpt-image-2/references/infographics/step-by-step-infographic.md",
+      "bytes": 8151,
+      "sha256": "5e26bfcab7cb31ae7ec4e0742c665ce695eec0d7faabf3eb1945a8d946c43c65"
+    },
+    {
+      "path": "skills/gpt-image-2/references/maps/food-map.md",
+      "bytes": 7140,
+      "sha256": "4398cdf127d5522daf0310baa7cc2b6870176d5825a4ba657497760652f2290e"
+    },
+    {
+      "path": "skills/gpt-image-2/references/maps/illustrated-city-map.md",
+      "bytes": 5029,
+      "sha256": "076ee40e4cd1606d286096584fe001fefd23da8a376ff45907d6d18ae5f471b8"
+    },
+    {
+      "path": "skills/gpt-image-2/references/maps/itinerary-day-trip-map.md",
+      "bytes": 13874,
+      "sha256": "ad253e8d13242afbb6a80044ff6e797a8c2980c2e7bf9b1498851404f7f6203a"
+    },
+    {
+      "path": "skills/gpt-image-2/references/maps/store-distribution-map.md",
+      "bytes": 5549,
+      "sha256": "bb05d08f79ab0e4c4fceebf779da95f8b3d077559d3506a522f6565396b78f53"
+    },
+    {
+      "path": "skills/gpt-image-2/references/maps/travel-route-map.md",
+      "bytes": 5933,
+      "sha256": "8706c423fa7b4a76232fcc654fa8c5f0a02647db85788f6e46513d2a0ad670a0"
+    },
+    {
+      "path": "skills/gpt-image-2/references/portraits-and-characters/character-sheet.md",
+      "bytes": 5480,
+      "sha256": "32426e263b5fbda8ce5dc2a96ccd3dfa39f9bf7dbcdd95c7f35a7366e1e4467e"
+    },
+    {
+      "path": "skills/gpt-image-2/references/portraits-and-characters/founder-portrait.md",
+      "bytes": 5102,
+      "sha256": "0ae8fe272a99238cf6b11c1173589a25ca3f8f82e5198664f71e8f0275d4db91"
+    },
+    {
+      "path": "skills/gpt-image-2/references/portraits-and-characters/pose-reference-sheet.md",
+      "bytes": 12743,
+      "sha256": "d932dfd53fd5a6ea8ffedf209e28b8d4d1dce2e64569c18176fcb7af526eabec"
+    },
+    {
+      "path": "skills/gpt-image-2/references/portraits-and-characters/professional-portrait.md",
+      "bytes": 4733,
+      "sha256": "7beec1f57c9026e53e677922944dbd9827eac7d1a67707a73df9fd9781f180df"
+    },
+    {
+      "path": "skills/gpt-image-2/references/portraits-and-characters/virtual-host.md",
+      "bytes": 5006,
+      "sha256": "124e0459ed055f574b96bd03ef5f8324f03c1724d28ce7971dc9bb64a2253e71"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/banner-hero.md",
+      "bytes": 4756,
+      "sha256": "f3af9cf212221fcd9a1db971324c0ddc35b415a47a5a09231478081e2e150acf"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/biomimetic-concept-poster.md",
+      "bytes": 11323,
+      "sha256": "0c5b40e43011b8676e2919a3cfd0c9e3ad30d092c38b78975cf81ee71026a55b"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/brand-poster.md",
+      "bytes": 4502,
+      "sha256": "73d32becf5f9e327ed6353a3082d423dcfd0f084fa67ffafe64251df424a2287"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/campaign-kv.md",
+      "bytes": 4932,
+      "sha256": "f3dd910e365ef5c85ab2b396cfea6ac6ae80643e85e94c50a82d72ff2219f9c4"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/character-catalog-poster.md",
+      "bytes": 13349,
+      "sha256": "eeda3ddaa89e34a09d5fbdf58b2540888e36058cbc905f4676f4a6599a43d0f9"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/editorial-cover.md",
+      "bytes": 5241,
+      "sha256": "60f78a851537e93ba9e2f98e10aab62731bcc6981ad9a0524698a0cd7ae189c5"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/lineup-comparison-poster.md",
+      "bytes": 12319,
+      "sha256": "03a9570a6f4036cdf306db3020e3a0172c73f2d58de3a3eaeed53362596e4fc9"
+    },
+    {
+      "path": "skills/gpt-image-2/references/poster-and-campaigns/vintage-editorial-infographic.md",
+      "bytes": 12978,
+      "sha256": "dbd0d4a56cab17cb5bc7ce3a5eb3535f6205f5c1bd4008f12ef857072b160854"
+    },
+    {
+      "path": "skills/gpt-image-2/references/product-visuals/ecommerce-marketing-board.md",
+      "bytes": 14111,
+      "sha256": "541a46756c251403f82ea75f4255047d7fc675d81d6205a6c34b9e64beafe44c"
+    },
+    {
+      "path": "skills/gpt-image-2/references/product-visuals/exploded-view-poster.md",
+      "bytes": 8041,
+      "sha256": "3f69f86ccf62f39715c817fa926cd4ea4a4cc75283db09611801efa357537af2"
+    },
+    {
+      "path": "skills/gpt-image-2/references/product-visuals/lifestyle-product-scene.md",
+      "bytes": 7331,
+      "sha256": "79d0e60611ec2e53c028d8da709525c77a8acb61078afa02aa66c8862498f3cb"
+    },
+    {
+      "path": "skills/gpt-image-2/references/product-visuals/packaging-showcase.md",
+      "bytes": 7209,
+      "sha256": "1671f364cee13e4cded2f3ff05fb21b784ab540178491e4496ea4a4dbea8cf72"
+    },
+    {
+      "path": "skills/gpt-image-2/references/product-visuals/premium-studio-product.md",
+      "bytes": 6896,
+      "sha256": "644e3370635904c2cc174e535bf5edccf66df869d3609bac8f65a76aa8db2acf"
+    },
+    {
+      "path": "skills/gpt-image-2/references/product-visuals/white-background-product.md",
+      "bytes": 5876,
+      "sha256": "6ceb72cb7d5b549c983201f1f82606de279e425780b3a62ccb9c2aaedd1742e5"
+    },
+    {
+      "path": "skills/gpt-image-2/references/prompt-writing.md",
+      "bytes": 24019,
+      "sha256": "55aaa6cc36edd7fad9efb8d0b87c58b7f3e757ddd645c5d2c92892223c0823c8"
+    },
+    {
+      "path": "skills/gpt-image-2/references/scenes-and-illustrations/concept-scene.md",
+      "bytes": 4570,
+      "sha256": "ac30c69f6ee672163991f38dc0d41b5b9f44205c2f98da783d163323e4dcecb6"
+    },
+    {
+      "path": "skills/gpt-image-2/references/scenes-and-illustrations/healing-scene.md",
+      "bytes": 4511,
+      "sha256": "485653dc0f6d0eadd0956413e4acda33f14ff99105a281a12cf306ff2ee61830"
+    },
+    {
+      "path": "skills/gpt-image-2/references/scenes-and-illustrations/minimalist-mood-scene.md",
+      "bytes": 4428,
+      "sha256": "faf8f4f5fd7b33d64f5df6d83159434c12ce0033c7480a37f2c9e8e9ae34d622"
+    },
+    {
+      "path": "skills/gpt-image-2/references/scenes-and-illustrations/picture-book-scene.md",
+      "bytes": 4531,
+      "sha256": "145062588b33fc9cd006b6cafaf929f9e82694f23718ed93f935c3622e41018a"
+    },
+    {
+      "path": "skills/gpt-image-2/references/slides-and-visual-docs/dense-explainer-slides.md",
+      "bytes": 5597,
+      "sha256": "8fd39231ef9bc014eba3962d1ef80cb79a991131a432b27a3c6b64cc3331cd4a"
+    },
+    {
+      "path": "skills/gpt-image-2/references/slides-and-visual-docs/educational-diagram-slide.md",
+      "bytes": 5238,
+      "sha256": "ebd49ba9c5d2bda80722f096d0addf7abcb8bd75c91e821b493940ba9a785e70"
+    },
+    {
+      "path": "skills/gpt-image-2/references/slides-and-visual-docs/policy-style-slide.md",
+      "bytes": 5845,
+      "sha256": "480ff8760b07032a7da4bdcf2708be32c07d8f991953679ec63d3b1933c742b9"
+    },
+    {
+      "path": "skills/gpt-image-2/references/slides-and-visual-docs/visual-report-page.md",
+      "bytes": 5982,
+      "sha256": "fe8cc8b554d6722d7cee4e66ddca28645da67d88110400d0b798f106720b65c7"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/anime-key-visual.md",
+      "bytes": 4809,
+      "sha256": "8acdf797c015fc3294d96565518fd210ed9786f4efa791443785f1293efc8403"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/character-relationship-diagram.md",
+      "bytes": 5773,
+      "sha256": "0cbd34b8566c968e0ba3ab7dc94c550a77ae9b958e785cbcef6ca328a8dcea3d"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/cinematic-storyboard-grid.md",
+      "bytes": 11912,
+      "sha256": "cce18dd4debda83475cb8ea2bb3db2b2db4269707b1e2d2c1a3e82ac9907382d"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/four-panel-comic.md",
+      "bytes": 5842,
+      "sha256": "b7a4ca472efadd0500999751b160be4426fc0b49d33b07275bb9dd629960a97b"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/manga-spread-page.md",
+      "bytes": 5819,
+      "sha256": "81d90e59c68ce7692c1e926170cd555042a4ee68b740bb4000a3d706a6bfaee6"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/process-photo-board.md",
+      "bytes": 14365,
+      "sha256": "5f384bc2dfbbb8507af0d9069aca32489e5fd8758acbb7d59a7ab284ef37fef6"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/product-tvc-storyboard.md",
+      "bytes": 11306,
+      "sha256": "93fb7086f66c21ed50811aa2a0d55943f148de7d6ce01f22611c3b78cc7bebfa"
+    },
+    {
+      "path": "skills/gpt-image-2/references/storyboards-and-sequences/recipe-process-flowchart.md",
+      "bytes": 5805,
+      "sha256": "b11bc1d36a02ed329adf42ddae0c323b88a9b571701d13dfba60eb477154c8df"
+    },
+    {
+      "path": "skills/gpt-image-2/references/technical-diagrams/er-diagram.md",
+      "bytes": 11000,
+      "sha256": "dc4939ab555f599c20b912c882d0dc397682eb2315727068fd18693a5714ff74"
+    },
+    {
+      "path": "skills/gpt-image-2/references/technical-diagrams/flowchart-decision.md",
+      "bytes": 10158,
+      "sha256": "70f5aeef00dd593c3cd47cb524c1a05dd81957af0d12c2b81ffa1918b49b0c9b"
+    },
+    {
+      "path": "skills/gpt-image-2/references/technical-diagrams/mind-map-tech.md",
+      "bytes": 9889,
+      "sha256": "d30fb09ff244d5ea3643777d379292848c1dd247c3f751871c6be6b9fb4db86f"
+    },
+    {
+      "path": "skills/gpt-image-2/references/technical-diagrams/network-topology.md",
+      "bytes": 11430,
+      "sha256": "a769de2f0b68e8e3e24284490889b543540420e076b48c0ecb26f5b5f1c4b5f7"
+    },
+    {
+      "path": "skills/gpt-image-2/references/technical-diagrams/sequence-diagram.md",
+      "bytes": 10805,
+      "sha256": "f6488c0079f60f350d9da6df6bf4e65d131428c10da85b2cbef0497b2d86ae16"
+    },
+    {
+      "path": "skills/gpt-image-2/references/technical-diagrams/state-machine.md",
+      "bytes": 10134,
+      "sha256": "a0137ca24c4d344ba016b8adcda31261132e0ffebd0bfa12a6c40c08352ba845"
+    },
+    {
+      "path": "skills/gpt-image-2/references/technical-diagrams/system-architecture.md",
+      "bytes": 11788,
+      "sha256": "2f895f08764722a7c03cde5fdc456982ae337cf3d7200d2ddc273e5bf0ba9175"
+    },
+    {
+      "path": "skills/gpt-image-2/references/typography-and-text-layout/bilingual-layout-visual.md",
+      "bytes": 5549,
+      "sha256": "e129d4e257ce2fa72930c52404df30e2ea46a942596b4cf4148f820eed01df3f"
+    },
+    {
+      "path": "skills/gpt-image-2/references/typography-and-text-layout/title-safe-poster.md",
+      "bytes": 4766,
+      "sha256": "d04d9a577c7f9339bd90e7dc5de7daa2d34f4a05ddf124ce53a3c89189844987"
+    },
+    {
+      "path": "skills/gpt-image-2/references/ui-mockups/chat-interface-scene.md",
+      "bytes": 9044,
+      "sha256": "9a08934a9127ea3b48150bbd65e24f24d2f64eba2ad3a1a1653433cc3a1281fc"
+    },
+    {
+      "path": "skills/gpt-image-2/references/ui-mockups/landing-page-case-study.md",
+      "bytes": 12686,
+      "sha256": "7dec05654c16ecf64cefb3e02482da21dd89f9161cbf91ae5dcf6f9d6befb7d2"
+    },
+    {
+      "path": "skills/gpt-image-2/references/ui-mockups/live-commerce-ui.md",
+      "bytes": 8688,
+      "sha256": "bb0d9e4239c5c4f424c98c00c763aa9d81d1253912027146855cbab53c67571b"
+    },
+    {
+      "path": "skills/gpt-image-2/references/ui-mockups/product-card-overlay.md",
+      "bytes": 8502,
+      "sha256": "7f0dd67907a6727b2dcf907626b7fe7cc9b8d27cc7b7a8490e89fa3c9e1641e1"
+    },
+    {
+      "path": "skills/gpt-image-2/references/ui-mockups/short-video-cover-ui.md",
+      "bytes": 7545,
+      "sha256": "f0a80b72a29f357ba034f5cf3c0af4432ba661f11830c100d99ba6971baa3729"
+    },
+    {
+      "path": "skills/gpt-image-2/references/ui-mockups/social-interface-mockup.md",
+      "bytes": 9366,
+      "sha256": "f7ba0ebc53de30f60cd1d3e91fd76090d59de3e0cc19e37c361a3361de573fc1"
+    },
+    {
+      "path": "skills/gpt-image-2/scripts/check-mode.js",
+      "bytes": 2213,
+      "sha256": "6467befad28db01bbe2a26bef1cd8a96de5fd3cdb36bc1ae8d2d1628eed36ee4"
+    },
+    {
+      "path": "skills/gpt-image-2/scripts/edit.js",
+      "bytes": 7078,
+      "sha256": "5cdce6440827630b4338fa858876e9529b07b1ad643f33bd8575d41fffa040d6"
+    },
+    {
+      "path": "skills/gpt-image-2/scripts/generate.js",
+      "bytes": 5681,
+      "sha256": "4893f188d34ab6299e20807ca699b1101b351a2e6f6ab0b78610b89bb5856f46"
+    },
+    {
+      "path": "skills/gpt-image-2/scripts/package.json",
+      "bytes": 67,
+      "sha256": "b39127467e51666a46e095604e724554ea6cc58136232ba874a5e7d1064d275d"
+    },
+    {
+      "path": "skills/gpt-image-2/scripts/shared.js",
+      "bytes": 6324,
+      "sha256": "fb5aa330daf5e777081b1a1930c538feac746981c4c987c84fb3c98df5302be8"
+    },
+    {
+      "path": "skills/kb-retriever/README.md",
+      "bytes": 7249,
+      "sha256": "a109ba0034799b31aab3a83764d670af87419a861fb7830b544c8ac21bfaf5ab"
+    },
+    {
+      "path": "skills/kb-retriever/README.zh-CN.md",
+      "bytes": 6714,
+      "sha256": "dedd9b3fa4a2de90cb1eea9bb78d8d50c3b082e9fa3fbb9304625651bc2dc6ae"
+    },
+    {
+      "path": "skills/kb-retriever/SKILL.md",
+      "bytes": 13984,
+      "sha256": "9329fac8ad1935b4eaf973605fa16fd7458db94430aa82de82182114c0039c5f"
+    },
+    {
+      "path": "skills/kb-retriever/manifest.json",
+      "bytes": 546,
+      "sha256": "37db739b17760fe6192e4a81e5f39555a90c62008c75fad2719365fcac0af3ee"
+    },
+    {
+      "path": "skills/kb-retriever/references/excel_analysis.md",
+      "bytes": 2745,
+      "sha256": "ffc645d573d9621c27199ba8929a9dda598ad9a90870df18a2b4f9e1edf47aed"
+    },
+    {
+      "path": "skills/kb-retriever/references/excel_reading.md",
+      "bytes": 1742,
+      "sha256": "220db9c345ffe35c63b75a2f30a0260478d52ccb1a0c2b735a43b2a4edcd149f"
+    },
+    {
+      "path": "skills/kb-retriever/references/pdf_reading.md",
+      "bytes": 9486,
+      "sha256": "a32341ca678840426a9e711267549bdc712017edd058caffe89739970bf0cf83"
+    },
+    {
+      "path": "skills/kb-retriever/scripts/convert_pdf_to_images.py",
+      "bytes": 1123,
+      "sha256": "095a0105a718af75ede309cb03f84a20c81d17f1727f7686fd4b294f1f40294f"
+    },
+    {
+      "path": "skills/motion-showreel/README.md",
+      "bytes": 15855,
+      "sha256": "485dd76bd621935fdbfb21a95f6454f7281ff26b5de3920e3c26e5f9bf1053a9"
+    },
+    {
+      "path": "skills/motion-showreel/README.zh-CN.md",
+      "bytes": 15740,
+      "sha256": "89c7d988e0840db16b9a7c0f1d8ad9dea70348a783acc7c91a3b14f4d1d26309"
+    },
+    {
+      "path": "skills/motion-showreel/SKILL.md",
+      "bytes": 20007,
+      "sha256": "dca0fd8d037e9d016f20578c91641fdd094e9fe9df733be6f55c3297fdb391fa"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/build.sh",
+      "bytes": 4029,
+      "sha256": "340adc46a9e2da2f8777f022628c08f5e00a8689b05b41c9ab0551b277353060"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/index.html",
+      "bytes": 4732,
+      "sha256": "28ce604190f74e2d0cfb8daf5e64c90d8402fd0c6eb9e04850f27829f7c57ea2"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/motion.js",
+      "bytes": 13717,
+      "sha256": "7b4831e12701871770577f581d3fb815b650188e4ea046717a9cf0695000f472"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/package.json",
+      "bytes": 64,
+      "sha256": "d240111b957fdbde27c1eb651cb9773b1cc600c7580f6c8832042bff4d5354ea"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/score.layer.mjs",
+      "bytes": 1402,
+      "sha256": "630ccea4bb231fcd5166e372ad7ffa272087d555097fc5ceb6308273c214b88c"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/score.mjs",
+      "bytes": 2404,
+      "sha256": "f16900ad54a99e981cc38f61375f119ea6c193707ad1d37e5c78f7e2c4eebbef"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/score.tone.js",
+      "bytes": 2791,
+      "sha256": "572e87427894ae97bf556c196bf0b88ddf17cab6d6d8e42484e10353d023cc06"
+    },
+    {
+      "path": "skills/motion-showreel/assets/starter/timeline.js",
+      "bytes": 1805,
+      "sha256": "33cc41c0ae9d2db2572febee7c01d1b2031dc8e58b1d39f90d3de5e00bc0ea5b"
+    },
+    {
+      "path": "skills/motion-showreel/manifest.json",
+      "bytes": 1007,
+      "sha256": "c216658752ac898a4f94ff4dd0e159f53b46c079459fa4d0e1e06dae8592d158"
+    },
+    {
+      "path": "skills/motion-showreel/references/brief-template.md",
+      "bytes": 5627,
+      "sha256": "0849711efa7c183f03089c47b72cdeb8e40ddd66e35c63f02cee473d3173989c"
+    },
+    {
+      "path": "skills/motion-showreel/references/craft.md",
+      "bytes": 20171,
+      "sha256": "a2f4ba76b4876c3281ba7402352bec0d65177ed3f6032a99efb56a12ee67698b"
+    },
+    {
+      "path": "skills/motion-showreel/references/field-notes.md",
+      "bytes": 2067,
+      "sha256": "b9fc46f5f9780af257d7dae2910ecfb0e5179a83432a17496b01600bd76dd580"
+    },
+    {
+      "path": "skills/motion-showreel/references/formats.md",
+      "bytes": 8284,
+      "sha256": "be2b9f2432c34769d7ddd6d423369e9c98025ec509f6ed2b88087c72d2be36c2"
+    },
+    {
+      "path": "skills/motion-showreel/references/recipes.md",
+      "bytes": 17295,
+      "sha256": "717f9ac7c01316a9efb0166f16d133bff60d630016ff0be272bb9e174eabed29"
+    },
+    {
+      "path": "skills/motion-showreel/references/review.md",
+      "bytes": 12006,
+      "sha256": "149b9d5fe71a318bcc027120abcf635726e5c3ce4699f61137666fff86c7ccda"
+    },
+    {
+      "path": "skills/motion-showreel/references/sound.md",
+      "bytes": 27458,
+      "sha256": "ca8c83533983b75e9040d697d18d92f4416080459d9e11351b7078a420e0f229"
+    },
+    {
+      "path": "skills/motion-showreel/references/stack.md",
+      "bytes": 9985,
+      "sha256": "a4a1e02507301669eca9f3b909a301253db9df6985509fb244413a5a0134b38b"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/INDEX.md",
+      "bytes": 8177,
+      "sha256": "5ffbb95e1a7d3e67377bae883b429666554b49ec692a2a64d766833de3f49006"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/_template.md",
+      "bytes": 3503,
+      "sha256": "66aea11db5d0e75c173e06bd155d65f2a46686c9b4e0531d5b796547a7e22b86"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/cinematic-title.md",
+      "bytes": 6112,
+      "sha256": "ce2b9e3744ebc31f24b0c4cc16f851bd1cbf3bbaa2f4ea035a821bc3aed00b8f"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/comic-pop.md",
+      "bytes": 7807,
+      "sha256": "d2f27046a3da1abe5ba574cc9dc39d215a1d3a2bc12b944390d01ee4d26c362a"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/crayon-storybook.md",
+      "bytes": 5772,
+      "sha256": "9ce3bbb290a0325a9976853e395fbd07376654d38c309c18b90bc536f0d7ee41"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/crt-vhs.md",
+      "bytes": 6179,
+      "sha256": "35c860029083b8e5be0c9632180993cb2d1a71968249451057eb3a2409383576"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/dark-keynote.md",
+      "bytes": 6087,
+      "sha256": "e5c26833025f3449aa5e37f5fb033c919dad4812ae9b04cf8fd001b712380e23"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/data-motion.md",
+      "bytes": 6485,
+      "sha256": "ab618ebcb2d4d19ebe9fc23881fc3fa6ddc400257179c4b591bee2a10bfa5162"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/editorial-collage.md",
+      "bytes": 5712,
+      "sha256": "f4e5bcec7ede466974b54d49448435f9b9f9e6636426fc1845f74cb540e29116"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/flat-vector.md",
+      "bytes": 7336,
+      "sha256": "8c1d7c97552e62a7ce51815e6c188c301e2c233334a730ed1c318f46e81bca18"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/generative-geometry.md",
+      "bytes": 5515,
+      "sha256": "c54ab0b286e318e82f6592b0a84d2e29d66dcfc4d62a7fb1997b4aabd72d18d6"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/glass-material.md",
+      "bytes": 7255,
+      "sha256": "4376395f157d36536b2f1e6234febd85debca0369011e7f2f3286f173761bf66"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/glitch-digital.md",
+      "bytes": 7824,
+      "sha256": "e20b4a6b19e049d7541db92a62387f7731f0aa066cb6284960a2bf29166aec8a"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/guochao.md",
+      "bytes": 7791,
+      "sha256": "c1859f31f1f90a775701d92c607ece4cd1bcc6cf7c34ad9d5e4ea60e4a5b308b"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/ink-wash.md",
+      "bytes": 5830,
+      "sha256": "169d8f2800bf3978ee60b2c9b30c50d8d97526798334f3aaed6fcfd3f82faae0"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/isometric-infographic.md",
+      "bytes": 5887,
+      "sha256": "8807346fadac591bcaaeab20ad961367a6fa2026b66a6099461b046f64bc54c6"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/kinetic-brutalist.md",
+      "bytes": 6001,
+      "sha256": "e11d97eb089eea4ee99cda8528a2a5e1a648f24d2527929c74c7f529d1111d3e"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/liquid-shader.md",
+      "bytes": 5864,
+      "sha256": "ffacd9ace86fcb01594cc1b51bf80c9671dfd1a67bf5d1a677b7a20349666c8b"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/minimal-ui.md",
+      "bytes": 6263,
+      "sha256": "b60f2e9d3d7c2ceb311ad19bf9db1975fdfcd636c900d75a555a2ae7f827df01"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/mixed-media-era.md",
+      "bytes": 9223,
+      "sha256": "5c76c3cb39702a776b608d6f38fe86806e96b58a6e21927564a66c473fa6f0ca"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/painterly.md",
+      "bytes": 7553,
+      "sha256": "a86fde9fbc04be95bc956b71f4d22cc5da97cae0029e10440e4e411e2a50520f"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/paper-cut.md",
+      "bytes": 5684,
+      "sha256": "5c81f31fb38a347add802345e6791a4984c74bf3fdbf1e37ab04a0b23e85572e"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/particle-field.md",
+      "bytes": 5826,
+      "sha256": "1f7098c3ae09db858913b06b69dca6ae7a0e20d5fa0fef39eee0380f96ad38e3"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/pixel-game.md",
+      "bytes": 6147,
+      "sha256": "1e5a6485988c946ef8aef4c972ad8d8c3ea8e053a193f6d8ec9d299a2d259a53"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/risograph-print.md",
+      "bytes": 6050,
+      "sha256": "bfb0b148e60e4f338f3c4b757203859678dc36017cf1d3d002c68e84eb00ed7b"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/soft-3d-toy.md",
+      "bytes": 5682,
+      "sha256": "1b32438f87cc961dca5af69a787d5863c91c865d83cad9110baa0ab69df43924"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/soft-organic.md",
+      "bytes": 7175,
+      "sha256": "487ee9f4cce19b12b56a79403c07c8a0780aa648e211207ee94d87f8578177fd"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/swiss-editorial.md",
+      "bytes": 6974,
+      "sha256": "28c6c0ca5804e97aa1f3b59d1cb7ba1ca80408cfb39177e8aedf1d5d1687beda"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/synthwave-neon.md",
+      "bytes": 8710,
+      "sha256": "02f0d33a81c998aa48cc6f9c5183f0db5ad6441dbf481a20cb76b35f7466aaac"
+    },
+    {
+      "path": "skills/motion-showreel/references/styles/terminal-ascii.md",
+      "bytes": 5759,
+      "sha256": "1b4ce90ef93b1faa51380714bc72249047a310b1c94144e7d88659b4a8bc383a"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/audio.mjs",
+      "bytes": 19222,
+      "sha256": "10de3630acc931c2f8128adaf831a8b93a23d663253b79e7b26cbf12347619e4"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/check-env.mjs",
+      "bytes": 2302,
+      "sha256": "0746f418addacdda2e7abf7d1e2c0f867faadee4acd36cdd577bde5d664516a0"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/inspect.mjs",
+      "bytes": 23251,
+      "sha256": "e769c1429c4340fe7b6d2a82b8352273ce8921534f54d903fffe5a6537f6d117"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/lib/browser.mjs",
+      "bytes": 8319,
+      "sha256": "f6c6971139e58e6b8f942bb70b3cd5c3a33d893aa1a1d919073b6e6586d5198c"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/lib/fft.mjs",
+      "bytes": 1508,
+      "sha256": "5b0ea953cc794e6072e11767a5b6ce624e97190d11eba8970062030a7a62866b"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/lib/frames.mjs",
+      "bytes": 10214,
+      "sha256": "9a13611de551c5e3e5ff9139ada2d460fca36829bc90f809096a411c6fc3037d"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/lib/project.mjs",
+      "bytes": 2721,
+      "sha256": "dc2665e7163bb912d36e9153d88204633f2716631c8cf00968f522443e6e14d2"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/lib/synth.mjs",
+      "bytes": 41387,
+      "sha256": "1da0f25dbff3e538e42685238be26f59f8229599656a79ef1181fe0677d1f534"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/lib/text-hook.mjs",
+      "bytes": 7366,
+      "sha256": "e1df9b84735f25058bddb58ef41f9a6d6d88a0f9a87c3a401962a74477a385ee"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/lib/tone-render.mjs",
+      "bytes": 5892,
+      "sha256": "2edf2eefbaeb3d8518e050fcae0e0be85678d41e4cf2a3b29975c4b7ed57da94"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/package-lock.json",
+      "bytes": 3066,
+      "sha256": "9976cfec587feba41e3bde014b08426df9321606b48d148972c8c48eb67cb6ec"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/package.json",
+      "bytes": 397,
+      "sha256": "dcc8b5cecd78c09c672ffca1f70cc190ee79a6c5dd559e915fc9e603b71d21d0"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/render.mjs",
+      "bytes": 25027,
+      "sha256": "9bd5e3b23259cec83b7422acd12ff785ab7ffdfbb01ce59599f882c82756dd91"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/scaffold.sh",
+      "bytes": 2666,
+      "sha256": "29cb2cae05c6d6b58fadf02222746ddb63888e28c23351cec04a3a231234a664"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/setup.sh",
+      "bytes": 1544,
+      "sha256": "07de840b2bc9b7888a48261561c03dd88eff1fe06cea53eda6eaab4f1d62da3c"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/test/fixtures/page/index.html",
+      "bytes": 907,
+      "sha256": "bb79b662849de02cfd3fca20054008ac2e1b188d359af19ac9548dcb83343f78"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/test/fixtures/text/index.html",
+      "bytes": 2168,
+      "sha256": "2f5dd72f8105198294f8c3ea047085de002ebe2ac72e22f299799c2b82317ad0"
+    },
+    {
+      "path": "skills/motion-showreel/scripts/test/tools.test.mjs",
+      "bytes": 31026,
+      "sha256": "41765e40b04a0fa2a8065c0971c0cb1a97037901f4246d6ac512ea58ccf0cded"
+    },
+    {
+      "path": "skills/web-design-engineer/README.md",
+      "bytes": 28270,
+      "sha256": "8d9fe5ec8b6d86cfae3cef731b6c83ae70a40e0931259aa4b4eae01399f797e2"
+    },
+    {
+      "path": "skills/web-design-engineer/README.zh-CN.md",
+      "bytes": 27553,
+      "sha256": "54c8aef0bf453c39dcc96c9fa1d74321bea9464abedf72af421e56af02cc58d9"
+    },
+    {
+      "path": "skills/web-design-engineer/SKILL.md",
+      "bytes": 35406,
+      "sha256": "00633aa430281e9921c35bb181ab233879d2a21e999d605fc330258a54e26df1"
+    },
+    {
+      "path": "skills/web-design-engineer/agents/openai.yaml",
+      "bytes": 288,
+      "sha256": "783ab8fa074706aa2adb2168ab0e8a0a58014c9f3b5c93328f8654ca63ce92ac"
+    },
+    {
+      "path": "skills/web-design-engineer/manifest.json",
+      "bytes": 609,
+      "sha256": "d777b1d11b64d50f2b9f6de08529abf7a79f039d40c8fbab0f7119e393451a52"
+    },
+    {
+      "path": "skills/web-design-engineer/references/advanced-patterns.md",
+      "bytes": 14722,
+      "sha256": "e25a37f18e9c578ce24c90ba7b95025eb28c2c75bb03df91b365af9fb8f304d8"
+    },
+    {
+      "path": "skills/web-design-engineer/references/block-library.md",
+      "bytes": 1767,
+      "sha256": "b24ebc20fb171c0462dfebc7a180598c3f9009d64bb692811109ae61375929c8"
+    },
+    {
+      "path": "skills/web-design-engineer/references/browser-acceptance.md",
+      "bytes": 4643,
+      "sha256": "59b6bd23d41f8ae1fa05b6dece2384c1195f5c3ccae7ff2c2aae94930a963751"
+    },
+    {
+      "path": "skills/web-design-engineer/references/critique-guide.md",
+      "bytes": 10446,
+      "sha256": "2f57cce5a9d65be8a24978080d9e99f6d0c7929279f142ca86bde0cca1c23dcb"
+    },
+    {
+      "path": "skills/web-design-engineer/references/design-calibration.md",
+      "bytes": 6139,
+      "sha256": "754086f26f7f880cb23559a16b446847c72673a8428087bc539da2d9137fd8e3"
+    },
+    {
+      "path": "skills/web-design-engineer/references/design-directions.md",
+      "bytes": 14105,
+      "sha256": "6ca039cdb5452c3ecdf95b7f846cf949c601d4cb8ea20854d0ccf0cd7fcd94d4"
+    },
+    {
+      "path": "skills/web-design-engineer/references/failure-patterns.md",
+      "bytes": 7119,
+      "sha256": "7c87f57f090180d1731c974f5f9a45b8704b9a134f482b883a021ab4a88ea66d"
+    },
+    {
+      "path": "skills/web-design-engineer/references/redesign-protocol.md",
+      "bytes": 4181,
+      "sha256": "3c79fc6fde3bed3ca046f43d99ca58be74e36e9c69b7076a7322f8140a980294"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/INDEX.md",
+      "bytes": 12177,
+      "sha256": "2eac072037914205fcf219228e68683d1882a525ff5776dcd4ecb52ce4b62435"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/active-theory.md",
+      "bytes": 2581,
+      "sha256": "3bca2379cbe0fcf1be9f84de5b0291f1a6d4aeede42fe97e4b682cb29371d170"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/aesop.md",
+      "bytes": 2796,
+      "sha256": "94a5d2f1d0613953d7390646322e907bf8139816dd7669916bb73f4ed532146d"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/apple-hig.md",
+      "bytes": 3076,
+      "sha256": "94f511fabd22f65591679b7dfa101b96973f3c2060516adbecdfbb1f4f7e36cc"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/are-na.md",
+      "bytes": 2230,
+      "sha256": "623804a342c853774bb824bb281e5df3d515dcef3cc9e77c7914ed5d6547ce94"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/balenciaga-post-2017.md",
+      "bytes": 2361,
+      "sha256": "21412888d7e6225e70bad89c8b0b2ed69da0730a7c560359f61490f293ee8b16"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/bloomberg-businessweek-turley.md",
+      "bytes": 2585,
+      "sha256": "42d3beaf6892e2299e73190e2645b14e25acd8bc89b35e9403194151c854fb37"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/bloomberg-terminal.md",
+      "bytes": 2772,
+      "sha256": "1ec2e502b3f1137ae0c85f24848f8387b95bed1428fcbbdaff1e77d5d1a84b9d"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/dieter-rams-braun.md",
+      "bytes": 2602,
+      "sha256": "ab2eb763c711877601c1c672b9e3c3a980fe3d0512197c83e05f942941f4cdd3"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/field-io.md",
+      "bytes": 2921,
+      "sha256": "c765ad82f53d440a8cda70df8dd0c8e799d194da4d6d2fd73e1839c49ccc357f"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/headspace-meditation.md",
+      "bytes": 2675,
+      "sha256": "4940e6ee8f132b7695b719b4eb894dbeef8369294e53c9434e12e49ad8197f4a"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/linear.md",
+      "bytes": 3174,
+      "sha256": "06c554638918c6ebcc0ff2d9b0841fe6d6077bccbcc71051aef5ad1f7fa576be"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/mailchimp-freddie.md",
+      "bytes": 2540,
+      "sha256": "1b06325763809c4b0656527f3ce6c25f3160c001c6fd2ab94de6af300150e3e0"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/mid-century-modern.md",
+      "bytes": 2723,
+      "sha256": "281f5acfca37d69bd02cdc37f33e3b2f5dbf3390c57a2629fb24e4ba3db0a0c9"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/monocle-magazine.md",
+      "bytes": 2620,
+      "sha256": "df9c7c4713dd84725fe544fb8335377ef841e9371359d133efbdbef3bc4075b2"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/muji-kenya-hara.md",
+      "bytes": 2713,
+      "sha256": "a447bfbea3db9ec5bea0dc55c6aa3c4426fc4d4d018f1b1f893957a1701a8a1b"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/notion-pre-ai.md",
+      "bytes": 2867,
+      "sha256": "1b85ae5aa77ee1b0a523b3557045678c022e748f6bd427248f19052d00f8cbe1"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/nyt-the-daily.md",
+      "bytes": 2691,
+      "sha256": "d7a3b8a3969b62b19a917fc1e0e0602acdfeb6f16dfdb4c9d4d6a208261c300a"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/pentagram.md",
+      "bytes": 2835,
+      "sha256": "e42a40687b0b7f06ac23ecd747cfe0fa902c60e2d6b3b553ab2ab7996fa75a7f"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/raycast.md",
+      "bytes": 3238,
+      "sha256": "b22651b5b35a67b2ec06217d1554c193912177c2eb56406fe6dafc171f3304c6"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/resn-storytelling.md",
+      "bytes": 2441,
+      "sha256": "88602c9962d8630d0c06ac4e72b732bc4dbedd8e4ef9ed4fe9cac0dbfea0ac1e"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/stripe-press.md",
+      "bytes": 2880,
+      "sha256": "f5b3863bc4f8fcd7b803eedbb8884f8b97c76a2e082c2627d635605d779a5644"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/tufte-dataink.md",
+      "bytes": 2591,
+      "sha256": "28d0503016076db52508cb1d05406939f8c765e58fe13e57806f0417b9f9bcc9"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/vercel-mesh.md",
+      "bytes": 2975,
+      "sha256": "04b8710a6ffe26619ac53804f2c5fd59c2641727b9ed8e638cbb52d75b16be5d"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/vignelli-swiss-helvetica.md",
+      "bytes": 2517,
+      "sha256": "c249bc06c32d6fa8daeee4c9e51dfb587f0a88726d6afc6679767d8e9300e203"
+    },
+    {
+      "path": "skills/web-design-engineer/references/style-recipes/y2k-retrofuturism.md",
+      "bytes": 2750,
+      "sha256": "0f9495838f2477ade046e092bbbedf04c83f82f48ce89505ff514546ef69ef2b"
+    },
+    {
+      "path": "skills/web-video-presentation/README.md",
+      "bytes": 17939,
+      "sha256": "32f07fadcabc1549e20d20a07ec59659fb9373158f19b68db10472251a2d12e0"
+    },
+    {
+      "path": "skills/web-video-presentation/README.zh-CN.md",
+      "bytes": 17563,
+      "sha256": "0cc2561fca3f36d9488ecc7b4be62636c2863f55af4c9172fb77bb7dab0712e6"
+    },
+    {
+      "path": "skills/web-video-presentation/SKILL.md",
+      "bytes": 23239,
+      "sha256": "0197b0dcbaad0a018ed645cb6ea241dda54c509d920a1b49ba3d516cc0f57f34"
+    },
+    {
+      "path": "skills/web-video-presentation/manifest.json",
+      "bytes": 629,
+      "sha256": "658704633c765694b3d41e1ab33fce35b48761115389d3d0b635b4b6b76c5b9e"
+    },
+    {
+      "path": "skills/web-video-presentation/references/AUDIO.md",
+      "bytes": 11126,
+      "sha256": "99923bf8b90fc710c827dd4de3477f6376ef5d62618c199a491450f726bc1aaf"
+    },
+    {
+      "path": "skills/web-video-presentation/references/CHAPTER-CRAFT.md",
+      "bytes": 10676,
+      "sha256": "017012946c8dec0fd15f0d3e8beaff276e313c3ee8193d7ea5d6aee6b3838290"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/README.md",
+      "bytes": 5155,
+      "sha256": "f54c15e8f46f8ed3b8bd1a060fb9f798d85afccec5acbe7cc104a5319a695a11"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/case-tech-review/README.md",
+      "bytes": 2917,
+      "sha256": "df1cdc8b1ef482a2edae827538ef9dd8e9bf825a2932d0f71eb1ac2138756da2"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/case-tech-review/outline-snippet.md",
+      "bytes": 6516,
+      "sha256": "ff268394991ec450d11f9eaae1774b0a005004b90e522911fe58addbe257b1f0"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/hook-chapter/README.md",
+      "bytes": 3863,
+      "sha256": "d7e06d181ff298a4a14d23709ccaee08caadbebdc878bcf4aa1de62dfd7698d9"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/hook-chapter/chapter.css",
+      "bytes": 4882,
+      "sha256": "c2029c3d0b445fe22eb3228056d3a76490065f4199cd864a1259ba7d164973da"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/hook-chapter/chapter.tsx",
+      "bytes": 4529,
+      "sha256": "80ee23cc04e0e403fe944e093aed2e9b907a8967e3701ebc828839c90db07a82"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/list-reveal/README.md",
+      "bytes": 3660,
+      "sha256": "68229245fbb70a85ac1f57c151d831c1dd62970c7ed43d8df1e9c876f3573ead"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/list-reveal/chapter.css",
+      "bytes": 3508,
+      "sha256": "20243a77cb581cec0e93ca38ffafc93083c9188db00686c54d4f465cf2fea2e1"
+    },
+    {
+      "path": "skills/web-video-presentation/references/EXAMPLES/list-reveal/chapter.tsx",
+      "bytes": 3549,
+      "sha256": "03ab7568f9d411e056084353af915a2df71a0e8b724633064db143c8fb466a53"
+    },
+    {
+      "path": "skills/web-video-presentation/references/OUTLINE-FORMAT.md",
+      "bytes": 8523,
+      "sha256": "ca0c3b3128a8bb3aced7be72013a484af13fd475622b8daf58db35f0ecc7bfea"
+    },
+    {
+      "path": "skills/web-video-presentation/references/RECORDING.md",
+      "bytes": 2988,
+      "sha256": "22c5957614d53f0e4e9f4b38e2ba47700bcad0a99688421b0a74072cd67463b9"
+    },
+    {
+      "path": "skills/web-video-presentation/references/SCRIPT-STYLE.md",
+      "bytes": 17950,
+      "sha256": "c0334ca9ee5409c65e25cdd2aa0c3c7499cef52f240453bad50c5c9d9a374453"
+    },
+    {
+      "path": "skills/web-video-presentation/references/THEMES.md",
+      "bytes": 23359,
+      "sha256": "e056b937952b41b154fc3c2782388c3e3acd278feb36e30825160d4503f37937"
+    },
+    {
+      "path": "skills/web-video-presentation/scripts/scaffold.sh",
+      "bytes": 9537,
+      "sha256": "42da66790da184fc9e6eea0af5ddfbc8cec74b382943e5e6f2a28402509594f7"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/index.html",
+      "bytes": 302,
+      "sha256": "55b51cdbec03bd52a44505ea7ed21a454fbe845ee7b774a68b5ae3568e833c97"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/scripts/extract-narrations.ts",
+      "bytes": 4717,
+      "sha256": "0bb12ecd80dbba8280473f18ea0bfc9ebbd01de3eb939becc05e5ead22eb8a39"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/scripts/synthesize-audio.sh",
+      "bytes": 5119,
+      "sha256": "bb91adcdf02baa15ff0a0a51a6f1c505a1c694a25c29e595ccfdbab1c1e96cd4"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/scripts/tts-providers/README.md",
+      "bytes": 11950,
+      "sha256": "c380c1b1abcdd11c1d63e3c6a4ee669cca3c6b1c00cf64d88f7128a28b01c1d2"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/scripts/tts-providers/minimax.sh",
+      "bytes": 1771,
+      "sha256": "0799cd8af0a576889e845d9487ea472f5a5b695e7899b8a71ca3199ecb658e76"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/scripts/tts-providers/openai.sh",
+      "bytes": 2636,
+      "sha256": "969fe614c04124e7550f353971f959c90abf740f4b922257738b384744fa67bb"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/App.tsx",
+      "bytes": 2487,
+      "sha256": "b878c2a0f869f947a3160ef588483cd897ffd543f9ad810c839e598b46c41fde"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/chapters/01-example/Example.css",
+      "bytes": 1990,
+      "sha256": "4a03b1ece0f0e104af8dc68142bd54899afc68984b2485de5972fe9939955759"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/chapters/01-example/Example.tsx",
+      "bytes": 3878,
+      "sha256": "249e88bb06603e2dc57e28862e336999867b297dff44e86907efb4543b090627"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/chapters/01-example/narrations.ts",
+      "bytes": 1280,
+      "sha256": "b53f769d6822df09f769b5ef84058b62b8f72fa35dc4ee1c18f286fa9a27ec2d"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/AutoStartGate.css",
+      "bytes": 1209,
+      "sha256": "f355a9e3188375bccda040695a2bf0f7ad306872f4d6c8eacd73b70e2cb6a69c"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/AutoStartGate.tsx",
+      "bytes": 1014,
+      "sha256": "056e5ab163e297914047667bead412a9ad9903d7ee26426c0c6a2b517a6e02db"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/AutoToggle.css",
+      "bytes": 1062,
+      "sha256": "22591190849c1fe6a94df656c85951b85f51c81c0caa633a261c73d5fc8fa2d8"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/AutoToggle.tsx",
+      "bytes": 898,
+      "sha256": "883cbc3218cc1afcf30074381091bb60f635b24cc5c7ed153f4920f192297cf6"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/MaskReveal.tsx",
+      "bytes": 797,
+      "sha256": "ba780d748f5e3842c4ad2cbb5fa7b3e0593dad80994cc3e643c42fe4b60b5c87"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/ProgressBar.css",
+      "bytes": 2501,
+      "sha256": "db88926183b97fd92de79ef4970ef0401c6b76ca49ea0394e43e396b695b3736"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/ProgressBar.tsx",
+      "bytes": 3837,
+      "sha256": "56f3296aa9e27345ca07f88d4babd39a029f8aa93845500516a7fe1527624bae"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/components/Stage.tsx",
+      "bytes": 1507,
+      "sha256": "911ed9d9a4c707e31529079ac5ff895f062541e5fab6d58514830429ac858fa0"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/hooks/useAudioPlayer.ts",
+      "bytes": 3768,
+      "sha256": "b07c8ee988df4e9fd54c69d42ed65ba5275875862f3ebc1e273a37274036b7f0"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/hooks/useAutoMode.ts",
+      "bytes": 2473,
+      "sha256": "28263924cf2d67866f77c8b62eebe0bd85a44bb45e43bafbd2337e3c160373d9"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/hooks/useStageScale.ts",
+      "bytes": 843,
+      "sha256": "3fb2020290ec46496b71eb924c0f07c90af40128192dbfcf2623a4cf6648a6d5"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/hooks/useStepper.ts",
+      "bytes": 5192,
+      "sha256": "5b82b58e9f7407ebaf6b0698f7c59eae729124b5d76334bfecf4e276b2538f21"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/main.tsx",
+      "bytes": 209,
+      "sha256": "daedab8e601d5b57b2e2bf1b61a85ca18894c350e267b4ef260fec4f300e6318"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/registry/chapters.ts",
+      "bytes": 833,
+      "sha256": "af0d9d5c2a52c2e1fa66739510399639118bdad4d15655d532084bb28886b61d"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/registry/types.ts",
+      "bytes": 704,
+      "sha256": "6e38715f23f5ca3db8c586a42a52672fbf6b5f46da6f914fa0f5af4bc057af0c"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/styles/animations.css",
+      "bytes": 2320,
+      "sha256": "693294e6768c3c13a93327a1c6e2a0551b78b6313eaac9cac875c2582f63c48b"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/styles/base.css",
+      "bytes": 15271,
+      "sha256": "dac976230c99efb135aff87a3cf585f29acb80261891817d2db333b5e296a30d"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/src/styles/fonts.css",
+      "bytes": 2129,
+      "sha256": "cb8929f702a320a40b0059f01ab6877a7421653d51141bc46d42ce11aacbbc08"
+    },
+    {
+      "path": "skills/web-video-presentation/templates/vite.config.ts",
+      "bytes": 196,
+      "sha256": "810719bf806eaa6d6606e8c67a1a9a9e21322a4252a451af4d525d66bae3cc96"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/bauhaus-bold/theme.json",
+      "bytes": 750,
+      "sha256": "20f4a8233b8bcecdf6e2c937ff2c238770d350b74c8fbea2c5adda761b31c1ee"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/bauhaus-bold/tokens.css",
+      "bytes": 2767,
+      "sha256": "0aede01b0d14e71e0b37692049b7bbfcd141a53fee61e75b946304011cef4348"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/blueprint/theme.json",
+      "bytes": 744,
+      "sha256": "7e4e8d2c792c64e55cf511043a89468d13ece710d0d91e1cf7f3168330204b6a"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/blueprint/tokens.css",
+      "bytes": 2957,
+      "sha256": "c476536059664185cc60c651cebb99c04f1608cc10a6b05048522019a96b2632"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/bold-signal/theme.json",
+      "bytes": 956,
+      "sha256": "1fbffbda998c0179d8bd87b15a2a82b171c040c12338aa6a6228f7d9b7eac6d6"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/bold-signal/tokens.css",
+      "bytes": 3184,
+      "sha256": "002ca2bd4f5fa1d21dbdc057f8d9c48e2f6c71282076d55d8dd613b7b4e61114"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/chalk-garden/theme.json",
+      "bytes": 705,
+      "sha256": "f50c352369618e1b01ba284b8f542474fb2589f6bd95696f80af58dc3f7f95fa"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/chalk-garden/tokens.css",
+      "bytes": 2917,
+      "sha256": "7a99ecc4ada743860877d0f0071d41da4ac8e83eaf07fa301564b4f58e5c6abf"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/creative-voltage/theme.json",
+      "bytes": 970,
+      "sha256": "136066e8e97e9316fc4d094737604ef626e21106e393da9abfb7d5023e72102a"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/creative-voltage/tokens.css",
+      "bytes": 3087,
+      "sha256": "c2f56ca264dcd6fdc093e27880e2ca8e3a2e83e22b02e5cee8cb3f2eb68deee5"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/dark-botanical/theme.json",
+      "bytes": 911,
+      "sha256": "cb4b995ac0996ae67b9ba8f5cb709d360381085b5d0c0b5ad27132231ba21b00"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/dark-botanical/tokens.css",
+      "bytes": 3211,
+      "sha256": "518da7d93c98d3242cba2270be9956a22facc5b48c6f5ff9c5a684c166dc8d75"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/dune/theme.json",
+      "bytes": 879,
+      "sha256": "b593255bd028e4c16cddf16b1bf8e95fc7787d9e4a1cbc32cdf3f48932a021ad"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/dune/tokens.css",
+      "bytes": 2920,
+      "sha256": "2a8f8df4fcc7a17b383d64931ce626c8b717bb6fa88532bd6f97319227adfbbc"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/electric-studio/theme.json",
+      "bytes": 885,
+      "sha256": "28e124ddbcb2a4e8273fe674a37e83e4f4a131d40d162fc5adfcd804a080284b"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/electric-studio/tokens.css",
+      "bytes": 3013,
+      "sha256": "1f0ea463a6fcf13eeeeb8e79da0951d81bd9f8a5e3a1c1a924e49ef684fa5043"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/forest-ink/theme.json",
+      "bytes": 902,
+      "sha256": "a72fe675cd649f7ae5f418998effc04d0e0407efcef755cae538604a30745720"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/forest-ink/tokens.css",
+      "bytes": 3337,
+      "sha256": "3d63acd8b506c821c184625bb6d0c5cd6367ffb85e82e47cee6cb82682054844"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/indigo-porcelain/theme.json",
+      "bytes": 953,
+      "sha256": "081fb1ab7f17bb9c2c1b87c1c0a6df4b3f69c1acbc5247377b3a4f8f86c0ef8a"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/indigo-porcelain/tokens.css",
+      "bytes": 2931,
+      "sha256": "ac310495631842c3800b63c0a035d94e33b183c35c281a2bdf1bf104809d86ba"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/kraft-paper/theme.json",
+      "bytes": 869,
+      "sha256": "ecbc33e14aeb818df1d084e8a7ae6cc55f51957107f2e69d6a1b85802a3edc00"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/kraft-paper/tokens.css",
+      "bytes": 3241,
+      "sha256": "54158e812cca4ad90cd278ddd2bd0baf2da5a36d90f9cfc67790e9bd204693b6"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/midnight-press/theme.json",
+      "bytes": 623,
+      "sha256": "2d41e34d5d0c49e8352d669db60840cdcdbd6009c21f1d29d15b3669d0be7a02"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/midnight-press/tokens.css",
+      "bytes": 2455,
+      "sha256": "f388bba2c4527a90be90a6f1187482db99e8f7e7238f2a60603f1577b9eb6eef"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/monochrome-print/theme.json",
+      "bytes": 818,
+      "sha256": "bbab1927b255de6aaa5467257093398062a5b7065acd39f5b7dd56b726c13827"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/monochrome-print/tokens.css",
+      "bytes": 2754,
+      "sha256": "dbff690178ea717adbd20c6c915154e0c4710a8cad3d76cd0b456eca9a4c1a68"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/neon-cyber/theme.json",
+      "bytes": 874,
+      "sha256": "8b194abf44014a5c206b0f273986d17890d1fdd2a9f2f3e91046305f9139e8f8"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/neon-cyber/tokens.css",
+      "bytes": 3451,
+      "sha256": "eedaee8a96bf1dab2a06f9a51c971f544e45fffd31e7c70e1748437c1c9110f3"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/newsroom/theme.json",
+      "bytes": 734,
+      "sha256": "e1c513b80d6a4fe59a8672475239855804a8e74bc9a5926f525abe1d4ec320e9"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/newsroom/tokens.css",
+      "bytes": 3052,
+      "sha256": "ff35cefdb8e72e183f5ff6f6899c54c00b535ddf9c5ed7d3ce305bef6bcbc70a"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/paper-press/theme.json",
+      "bytes": 637,
+      "sha256": "ef3bc141b59c2fe609f4015d4da7f061e195f12e90c23db4174fbcd544e3ee61"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/paper-press/tokens.css",
+      "bytes": 2920,
+      "sha256": "78a2573ffcb2c35a1bb08a91b49e323c5dfb27e7f4a9a2f7c740c05534b8ddec"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/pastel-dream/theme.json",
+      "bytes": 908,
+      "sha256": "ba090145c4d7f70ebd8f7cf5db69d612d5c86ab9f55c80a3987b44806d6dc34f"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/pastel-dream/tokens.css",
+      "bytes": 3415,
+      "sha256": "6695efab5a6f3dcc2598a538206e2fef791e2ba36df00f00e2be1dde30dcf56e"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/split-canvas/theme.json",
+      "bytes": 888,
+      "sha256": "2d38e4741eeeaf6a9d2e224874c37c735c33b3a7fab8b98f19d2a61ca2a7cca9"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/split-canvas/tokens.css",
+      "bytes": 3100,
+      "sha256": "f9e0591b7e70f5eb9c5f55a47763484d602c8d59d1ba13921670ebd205015810"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/sunset-zine/theme.json",
+      "bytes": 745,
+      "sha256": "df62f8eb52388307fc1a0c69d9db058b346dce0c719703244b0ee055cfb25f86"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/sunset-zine/tokens.css",
+      "bytes": 3120,
+      "sha256": "96716707b131cc0a9700aca568900e89f1e5a92d648c694487c1eaee96dd9268"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/swiss-ikb/theme.json",
+      "bytes": 1048,
+      "sha256": "37dbcf4c0041b4373fbd45c950f4cd737b9b8b09dd0c9727ff865da51aaad55f"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/swiss-ikb/tokens.css",
+      "bytes": 3735,
+      "sha256": "c74f6b113a57cd6f3a9aa99f8de4637f8c5c0d31c47843a5907803c47ab6a13b"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/terminal-green/theme.json",
+      "bytes": 780,
+      "sha256": "9756cfc4cf37f80b18c503ded006cf54dcfa82e0c142737a1b71487152eed552"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/terminal-green/tokens.css",
+      "bytes": 3098,
+      "sha256": "a523f289f54460dbdaf4047fe5f1e08621bfb8ddcf8acc2353eb346d0c83145d"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/vintage-editorial/theme.json",
+      "bytes": 970,
+      "sha256": "5ead00885a6a132dd57ded7f1edbc66918074b39979acb81f47d708d0cd37971"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/vintage-editorial/tokens.css",
+      "bytes": 3274,
+      "sha256": "203bc5373a07ba39343204aebc847d6034ebdf3a696a7487db32ade791b64298"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/warm-keynote/theme.json",
+      "bytes": 681,
+      "sha256": "3b2936d031724e5b3f1634054fec07861b571e0d081a0443a1d20b9dd0cc8902"
+    },
+    {
+      "path": "skills/web-video-presentation/themes/warm-keynote/tokens.css",
+      "bytes": 2849,
+      "sha256": "d162c58064435c9956acaab6919b582c15fa215fd5dd44d48561ad7805e978f9"
+    }
+  ]
+}
