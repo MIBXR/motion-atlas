@@ -1,0 +1,288 @@
+[
+  {
+    "name": "ground",
+    "prompt": "Top-down orthographic view of a grassy industrial construction site on an alien plateau, short green grass with subtle variation, a few bare dirt patches and small grey stones, soft overcast daylight, no shadows from large objects, no buildings, no text, seamless tileable texture, realistic game environment texture\n\nTechnical output: 2048×2048 pixels, square texture, seamless along both axes.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-990e4f7a-15ca-406c-88d4-7d3b1b76d027.png",
+    "attempt": 1,
+    "file": "ground.png",
+    "target": "ground.webp",
+    "requested": [
+      2048,
+      2048
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgb24"
+    }
+  },
+  {
+    "name": "core",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a large square protocol core with a white triangular truss frame on top and a glowing pale core in the center\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel. Geometric requirement: the top white truss is a single three-sided triangular frame with exactly three corners, enclosing the glowing core. Camera points straight down at 90 degrees.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-03199a53-87b5-4400-ac73-71a82d5d2193.png",
+    "attempt": 2,
+    "history": [
+      {
+        "attempt": 1,
+        "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a large square protocol core with a white triangular truss frame on top and a glowing pale core in the center\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+        "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-26c8c23a-b280-4ac2-97f6-89b0adeba72a.png"
+      },
+      {
+        "attempt": 2,
+        "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a large square protocol core with a white triangular truss frame on top and a glowing pale core in the center\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel. Geometric requirement: the top white truss is a single three-sided triangular frame with exactly three corners, enclosing the glowing core. Camera points straight down at 90 degrees.",
+        "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-03199a53-87b5-4400-ac73-71a82d5d2193.png"
+      }
+    ],
+    "reason": "Initial truss was four-way instead of triangular.",
+    "file": "core.png",
+    "target": "core.png",
+    "requested": [
+      512,
+      512
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "refinery",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a refinery furnace with a circular glowing orange furnace opening in the middle and vent grilles on both sides\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-1e248fb7-8243-4ea7-a34e-7b2e01eb0361.png",
+    "attempt": 1,
+    "file": "refinery.png",
+    "target": "refinery.png",
+    "requested": [
+      512,
+      512
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "assembler",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, an assembler machine with a round mechanical gear housing in the middle and horizontal vent slats above and below\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-a523e065-1ec7-44f7-901b-c770eeafd65c.png",
+    "attempt": 1,
+    "file": "assembler.png",
+    "target": "assembler.png",
+    "requested": [
+      512,
+      512
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "crusher",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a crusher with two round side-by-side grinding rollers in the middle\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-34554555-2277-4a27-b1ae-4a9456d37d2f.png",
+    "attempt": 1,
+    "file": "crusher.png",
+    "target": "crusher.png",
+    "requested": [
+      512,
+      512
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "storage",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a storage container with a 2x2 grid of hatches on top\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-44171663-2b6e-41c3-bc30-859afc97d9be.png",
+    "attempt": 1,
+    "file": "storage.png",
+    "target": "storage.png",
+    "requested": [
+      512,
+      512
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "planter",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a planter unit with three rows of small green seedlings under a transparent cover\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-d40386f7-c7ad-41ad-9ab2-c7c19b6919f3.png",
+    "attempt": 1,
+    "file": "planter.png",
+    "target": "planter.png",
+    "requested": [
+      512,
+      512
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "pylon",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a power pylon with a thin vertical mast and a diamond-shaped emitter on top, cables around the base\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel. Camera projection: exact 90-degree overhead floor-plan sprite; the optical axis points straight down along the mast's vertical world axis. Only top-facing surfaces are visible. The mast projects as a central cross-section, with the diamond emitter directly centered over the square base. The shaft has no visible length in this overhead projection.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-fa69c416-3d5b-4d16-8f1a-fecdf691e480.png",
+    "attempt": 3,
+    "history": [
+      {
+        "attempt": 1,
+        "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a power pylon with a thin vertical mast and a diamond-shaped emitter on top, cables around the base\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+        "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-5c97077d-d78f-40e4-9433-65e6acf0fb69.png"
+      },
+      {
+        "attempt": 2,
+        "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a power pylon with a thin vertical mast and a diamond-shaped emitter on top, cables around the base\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel. Camera geometry: strict overhead plan view, optical axis points vertically down at the ground from directly above the mast, no isometric tilt or front elevation. The mast and emitter project over the center of the base.",
+        "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-c192b4de-b30f-429b-9026-38ef1ad8826c.png"
+      },
+      {
+        "attempt": 3,
+        "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a power pylon with a thin vertical mast and a diamond-shaped emitter on top, cables around the base\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel. Camera projection: exact 90-degree overhead floor-plan sprite; the optical axis points straight down along the mast's vertical world axis. Only top-facing surfaces are visible. The mast projects as a central cross-section, with the diamond emitter directly centered over the square base. The shaft has no visible length in this overhead projection.",
+        "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-fa69c416-3d5b-4d16-8f1a-fecdf691e480.png"
+      }
+    ],
+    "reason": "Initial and first regeneration showed an oblique elevation instead of an overhead view.",
+    "file": "pylon.png",
+    "target": "pylon.png",
+    "requested": [
+      512,
+      512
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "operator",
+    "prompt": "Original anime-style full-body character illustration, a young field engineer standing front-facing in a relaxed pose, short dark hair, wearing a long grey technical coat over a light hoodie with small lemon-yellow accent straps, a visor pushed up on the head, clean cel shading, neutral expression, transparent background, no text, no logo, not based on any existing character\n\nTechnical output: 1024×1536 pixels, portrait 2:3, PNG with a real transparent alpha channel. Include the entire standing body, head, hands, and feet within the frame.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-bc28270d-604c-42d6-805c-037d2670bf6d.png",
+    "attempt": 1,
+    "file": "operator.png",
+    "target": "operator.png",
+    "requested": [
+      1024,
+      1536
+    ],
+    "size": {
+      "width": 1024,
+      "height": 1536,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "item-crystal",
+    "prompt": "Game inventory icon, isometric 3/4 view of a single purple energy crystal, clean soft shading, subtle rim light, transparent background, no text\n\nTechnical output: 128×128 pixels, square PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-4ef9ab76-a60f-4592-9cef-c63a47c9bd9a.png",
+    "attempt": 1,
+    "file": "item-crystal.png",
+    "target": "item-crystal.png",
+    "requested": [
+      128,
+      128
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "item-part",
+    "prompt": "Game inventory icon, isometric 3/4 view of a single small machined metal part, clean soft shading, subtle rim light, transparent background, no text\n\nTechnical output: 128×128 pixels, square PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-73d16f72-ff18-43ed-912d-085ed8adb4f5.png",
+    "attempt": 1,
+    "file": "item-part.png",
+    "target": "item-part.png",
+    "requested": [
+      128,
+      128
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "item-canister",
+    "prompt": "Game inventory icon, isometric 3/4 view of a single sealed white canister, clean soft shading, subtle rim light, transparent background, no text\n\nTechnical output: 128×128 pixels, square PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-25e51663-182f-4012-8991-c1cd94e9e771.png",
+    "attempt": 1,
+    "file": "item-canister.png",
+    "target": "item-canister.png",
+    "requested": [
+      128,
+      128
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "item-module",
+    "prompt": "Game inventory icon, isometric 3/4 view of a single compact electronic module, clean soft shading, subtle rim light, transparent background, no text\n\nTechnical output: 128×128 pixels, square PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-7154658d-025f-4810-98c6-875f5b7dc67c.png",
+    "attempt": 1,
+    "file": "item-module.png",
+    "target": "item-module.png",
+    "requested": [
+      128,
+      128
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "item-ore",
+    "prompt": "Game inventory icon, isometric 3/4 view of a single rough grey ore chunk, clean soft shading, subtle rim light, transparent background, no text\n\nTechnical output: 128×128 pixels, square PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-28116fc8-bfe9-4d2e-b666-36e9eea5bd38.png",
+    "attempt": 1,
+    "file": "item-ore.png",
+    "target": "item-ore.png",
+    "requested": [
+      128,
+      128
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  },
+  {
+    "name": "item-plate",
+    "prompt": "Game inventory icon, isometric 3/4 view of a single flat alloy plate, clean soft shading, subtle rim light, transparent background, no text\n\nTechnical output: 128×128 pixels, square PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-368be520-a3e7-401f-aff8-7bb06b49f02e.png",
+    "attempt": 1,
+    "file": "item-plate.png",
+    "target": "item-plate.png",
+    "requested": [
+      128,
+      128
+    ],
+    "size": {
+      "width": 1254,
+      "height": 1254,
+      "pix_fmt": "rgba"
+    }
+  }
+]

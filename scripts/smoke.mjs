@@ -90,6 +90,20 @@ const GPU_PROBE = `(() => {
     for (const frame of doc.querySelectorAll('iframe')) if (frame.contentDocument) inspect(frame.contentDocument);
   }
   inspect(document);
+  if (!renderers.size) {
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 1;
+    const gl = canvas.getContext('webgl');
+    try {
+      if (!gl) throw new Error('无法创建 WebGL renderer 探针');
+      const debug = gl.getExtension('WEBGL_debug_renderer_info');
+      if (!debug) throw new Error('无法读取 WebGL UNMASKED_RENDERER_WEBGL');
+      renderers.add(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL));
+    } finally {
+      gl?.getExtension('WEBGL_lose_context')?.loseContext();
+      canvas.remove();
+    }
+  }
   return [...renderers].join(' / ');
 })()`;
 

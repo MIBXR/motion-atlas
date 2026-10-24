@@ -1,0 +1,56 @@
+[
+  {
+    "name": "ground",
+    "prompt": "Top-down orthographic view of a grassy industrial construction site on an alien plateau, short green grass with subtle variation, a few bare dirt patches and small grey stones, soft overcast daylight, no shadows from large objects, no buildings, no text, seamless tileable texture, realistic game environment texture\n\nTechnical output: 2048×2048 pixels, square texture, seamless along both axes.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-990e4f7a-15ca-406c-88d4-7d3b1b76d027.png",
+    "attempt": 1
+  },
+  {
+    "name": "core",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a large square protocol core with a white triangular truss frame on top and a glowing pale core in the center\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-26c8c23a-b280-4ac2-97f6-89b0adeba72a.png",
+    "attempt": 1
+  },
+  {
+    "name": "refinery",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a refinery furnace with a circular glowing orange furnace opening in the middle and vent grilles on both sides\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-1e248fb7-8243-4ea7-a34e-7b2e01eb0361.png",
+    "attempt": 1
+  },
+  {
+    "name": "assembler",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, an assembler machine with a round mechanical gear housing in the middle and horizontal vent slats above and below\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-a523e065-1ec7-44f7-901b-c770eeafd65c.png",
+    "attempt": 1
+  },
+  {
+    "name": "crusher",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a crusher with two round side-by-side grinding rollers in the middle\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-34554555-2277-4a27-b1ae-4a9456d37d2f.png",
+    "attempt": 1
+  },
+  {
+    "name": "storage",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a storage container with a 2x2 grid of hatches on top\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-44171663-2b6e-41c3-bc30-859afc97d9be.png",
+    "attempt": 1
+  },
+  {
+    "name": "planter",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a planter unit with three rows of small green seedlings under a transparent cover\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-d40386f7-c7ad-41ad-9ab2-c7c19b6919f3.png",
+    "attempt": 1
+  },
+  {
+    "name": "pylon",
+    "prompt": "Orthographic top-down view of a compact futuristic industrial machine for a factory-building game, white and light grey panels with dark grey recessed areas, small lemon-yellow accent stripes, clean sci-fi industrial design, soft top-left lighting, transparent background, no text, no logos, centered, fills 90% of the frame, a power pylon with a thin vertical mast and a diamond-shaped emitter on top, cables around the base\n\nTechnical output: 512×512 pixels, PNG with a real transparent alpha channel.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-5c97077d-d78f-40e4-9433-65e6acf0fb69.png",
+    "attempt": 1
+  },
+  {
+    "name": "operator",
+    "prompt": "Original anime-style full-body character illustration, a young field engineer standing front-facing in a relaxed pose, short dark hair, wearing a long grey technical coat over a light hoodie with small lemon-yellow accent straps, a visor pushed up on the head, clean cel shading, neutral expression, transparent background, no text, no logo, not based on any existing character\n\nTechnical output: 1024×1536 pixels, portrait 2:3, PNG with a real transparent alpha channel. Include the entire standing body, head, hands, and feet within the frame.",
+    "path": "C:\\Users\\mibxr\\.codex\\generated_images\\01a166b2-12c7-75b0-ad08-94bf09822c6a\\exec-bc28270d-604c-42d6-805c-037d2670bf6d.png",
+    "attempt": 1
+  }
+]

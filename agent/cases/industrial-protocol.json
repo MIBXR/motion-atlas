@@ -4,243 +4,318 @@
   "id": "industrial-protocol",
   "entry": {
     "id": "industrial-protocol",
+    "renderer": "gpu",
     "order": 4,
-    "title": "工业协议 · 终末地式设施操作台",
-    "subtitle": "INDUSTRIAL PROTOCOL / PANEL · FLOW · DEPLOY",
+    "title": "终末地 · 集成工业协议",
+    "en": "Endfield · AIC Protocol",
+    "subtitle": "Endfield · AIC Protocol",
     "carriers": [
-      "console",
+      "video",
       "showcase"
     ],
     "source": "game",
-    "evidence": "inferred",
-    "capturedAt": "2026-10-14",
+    "evidence": "adapted",
+    "capturedAt": "2026-10-23",
     "tags": [
-      "工业机能",
-      "安全黄",
-      "切角面板",
-      "危险条纹",
-      "字符解码",
-      "长按确认"
+      "终末地",
+      "集成工业",
+      "蓝图建造",
+      "设备收取",
+      "干员升级",
+      "横竖构图",
+      "合成音效"
     ],
-    "summary": "米灰工业表面、石墨黑与安全黄，切角面板、注册标记、刻度与危险条纹构成“管理员终端”；分段加载后各区块以吸附缓动就位，产线物料沿传送带流动，设备蓝图逐线描出，部署需按住确认，换页用一条发光扫描线。",
-    "focus": "《明日方舟：终末地》以“工业机能 + 未来科幻”的界面建立玩家“管理员”的身份：三角形元素与工业徽章贯穿系统界面，Logo 衍生图形在终端、配装站、角色面板反复出现；集成工业（工厂）系统让玩家在菜单里规划产线。本条目整理公开评析中的设计语言，用原创设施、产线与干员名称做成可迁移的操作台 Demo；实机动效参数待录像核验。",
-    "accent": "#ffd400",
-    "background": "#e6e6e1",
+    "summary": "复刻《明日方舟：终末地》集成工业系统的界面与交互：工业模式 HUD、蓝图放置与建造、设备面板收取、干员升级与蓝图分享。",
+    "focus": "以官方实机视频的界面观察为依据，按60秒设计规格编排标题、工业HUD、三设备蓝图、配件机生产与收取、管理员升级、蓝图分享和收尾。横屏1920×1080、竖屏1080×1920各自构图，地面、设施实体、六类物品和中央人物采用内置image_gen.imagegen生成的15张风格化位图，功能SVG与程序叠层保留。界面参考游戏，未使用官方美术文件或以官方美术图片作为生图输入。",
+    "accent": "#ffe400",
+    "background": "#e8e9e8",
     "timeline": true,
     "kit": true,
-    "previewAt": 8.4,
-    "energy": [
-      0.3,
-      0.45,
-      0.6,
-      0.5,
-      0.45,
-      0.55,
-      0.6,
-      0.75,
-      0.85,
-      0.6,
-      0.65,
-      0.55,
-      0.6,
-      0.55,
-      0.5,
-      0.4,
-      0.35
-    ],
+    "previewAt": 20,
+    "energy": [],
     "rhythm": {
-      "duration": 17,
+      "duration": 60,
       "beats": [
         {
-          "t": 0.2,
-          "label": "分段加载",
-          "note": "三角徽记 + 标题字符解码；24 段进度条带随机跳变，当前段为安全黄。"
+          "t": 0,
+          "label": "标题",
+          "note": "黑底字标在0.4–1.0s上升显现；1.0–3.4s加载线填满，亮黄斜带转入工地。"
         },
         {
-          "t": 2.2,
-          "label": "界面装配",
-          "note": "加载层自下而上裁切退场；顶栏、侧栏、内容区、详情区、底栏以 420ms snap 缓动从各自边缘就位，资源数字计数。"
+          "t": 4,
+          "label": "工业模式",
+          "note": "俯视工地推近；模式、资源、按键或触控提示、设备栏、任务依时入场。5.0s从探索切到工业。"
         },
         {
-          "t": 3,
-          "label": "产线运转",
-          "note": "物料方块沿传送带流动，带纹同速推进，节点指示灯闪烁。"
+          "t": 10,
+          "label": "放置蓝图",
+          "note": "选中配件机；512px蓝图包含配件机A、粉碎机、仓储箱和两段64px传送带，跟随光标、旋转90°并吸附网格。"
         },
         {
-          "t": 4.6,
-          "label": "选择设备",
-          "note": "节点四角黄色括号回弹出现；右侧名称解码、蓝图逐线描出、三项分段条依次填充。"
+          "t": 14.4,
+          "label": "建造",
+          "note": "14.6/14.9/15.2s依次建造三台设备，线框、扫描实体化、黄色角标逐步成形。16.0–18.5s铺带，18.5s起物料以80px/s流动。"
         },
         {
-          "t": 6.4,
-          "label": "按住部署",
-          "note": "按住期间黄色从左填满（1.2s），松开过早回落；满格锁定为完成态。"
+          "t": 24,
+          "label": "设备面板",
+          "note": "点击配件机A，浅色半透明面板展开；每2秒生产一次，共两轮完整与第三轮75%，输入9→7、输出0→2。"
         },
         {
-          "t": 7.8,
-          "label": "部署完成",
-          "note": "绿色描边印章倾斜盖下，设备产量提升、相关传送带加速，日志更新。"
+          "t": 32,
+          "label": "全部收取",
+          "note": "按钮下沉；两枚配件沿弧线飞入背包第三格，数量20→22，输出归零；35.0s关闭面板。"
         },
         {
-          "t": 9.4,
-          "label": "扫描线换页",
-          "note": "发光黄线从左扫到右：线左是新页、线右是旧页；新页标题解码、卡片 snap 错峰上浮。"
+          "t": 36,
+          "label": "干员",
+          "note": "亮黄斜带揭开浅灰干员界面；中央女性管理员立绘、背景浅剪影、头像页签、属性、四技能与黄色等级带。"
         },
         {
-          "t": 12.2,
-          "label": "仓储",
-          "note": "同一扫描线换页；行数据从左侧错峰滑入。"
+          "t": 39.6,
+          "label": "等级提升",
+          "note": "经验从70%填满；等级20→21，攻击342→358、生命2341→2420、防御326→335，经验回到12%；四技能依次描出黄环。"
         },
         {
-          "t": 14.6,
-          "label": "回到产线",
-          "note": "已部署状态保留，产线继续以加速运转。"
+          "t": 48,
+          "label": "分享蓝图",
+          "note": "回到工地后切蓝图纸，白色条带展开分享弹窗；51.6s复制EF01-7KQ2-M9A3-ZT58，53.0s确认。"
+        },
+        {
+          "t": 56,
+          "label": "收尾",
+          "note": "蓝图纸淡回运行中的工地，镜头拉远到0.86，HUD隐去，右下字标出现，59.4–60.0s淡黑。"
         }
       ]
     },
+    "markers": [
+      {
+        "t": 0,
+        "label": "标题"
+      },
+      {
+        "t": 4,
+        "label": "工业模式"
+      },
+      {
+        "t": 10,
+        "label": "放置蓝图"
+      },
+      {
+        "t": 14.4,
+        "label": "建造"
+      },
+      {
+        "t": 24,
+        "label": "设备面板"
+      },
+      {
+        "t": 32,
+        "label": "全部收取"
+      },
+      {
+        "t": 36,
+        "label": "干员"
+      },
+      {
+        "t": 39.6,
+        "label": "等级提升"
+      },
+      {
+        "t": 48,
+        "label": "分享蓝图"
+      },
+      {
+        "t": 56,
+        "label": "收尾"
+      }
+    ],
     "layers": [
       {
-        "name": "底层",
-        "role": "米灰底 + 40px 细网格，像工程图纸。"
+        "name": "工地",
+        "role": "Canvas 2D平铺原创草地位图，保留网格、边界、传送带与运送物料；面板遮挡期间保持运行。"
       },
       {
-        "name": "框架层",
-        "role": "石墨黑顶栏（右下切角）、侧栏按钮（右下切角）、内容区与详情区（对角切角 + 注册标记）、底栏（危险条纹 + 日志）。"
+        "name": "设施",
+        "role": "原创设施位图叠加SVG机械动效、黄色角标、状态灯与名牌，蓝图虚影保留内部线框；种植机中心y900，供电桩中心y520。横屏以Zz表示待机；竖屏以蓝灯和0.7透明度设施图像表示待机，名牌只在新设施成形时于左侧12px处短暂显示，唤醒后灯色变绿、设施图像恢复。"
       },
       {
-        "name": "内容层",
-        "role": "产线节点图（SVG）/ 干员卡片 / 仓储表格；换页时由扫描线裁切。"
+        "name": "HUD",
+        "role": "DOM/CSS模式标签、资源胶囊、任务、设备栏及横屏按键提示或竖屏触控圆钮。"
       },
       {
-        "name": "详情层",
-        "role": "设备名称、深色蓝图（浅蓝线框 + 虚线网格）、分段指标条、按住部署按钮与印章。"
+        "name": "设备与终端",
+        "role": "浅色配件机面板、六类原创物品位图、背包、生产与收取；中央女性管理员立绘、背景浅剪影、头像、属性、技能和等级。"
       },
       {
-        "name": "启动层",
-        "role": "三角徽记、解码标题、分段进度条与百分比。"
+        "name": "分享与转场",
+        "role": "浅灰蓝图纸、详情、贯屏白色分享条带、亮黄斜带及字标。"
       }
     ],
     "composition": {
-      "color": "米灰 #e6e6e1 / 面板 #f4f4f0 / 石墨 #1d1f22 构成 90% 面积；安全黄 #ffd400 只用于“当前、警示、进行中”；完成用绿色，蓝图用浅蓝线。",
-      "typography": "DIN 类窄体（Bahnschrift）做标题与数值、等宽字体做编码与日志、中文黑体做名称；大量大写英文编码 + 中文名称的双语标注。",
-      "layout": "严格的模块化网格：顶栏 / 左侧栏 / 中央内容 / 右侧详情 / 底栏；每个模块都有切角与标记，像设备上的铭牌。",
-      "imagery": "无照片：设备以几何图标与线框蓝图表现，干员卡片以深色块 + 几何暗纹 + 稀有度条表现。",
-      "motion": "机械、准确：snap 缓动（快进硬停）、错峰装配、字符解码、匀速传送带；没有弹性夸张，唯一的回弹留给“完成”印章与选中括号。",
-      "sound": "原作有系统确认音与工业环境音；Demo 默认静音，开启后合成加载滴答、装配气流、选择、蓄力上扬与完成双音。",
-      "rhythm": "启动 2.4s 内完成加载与装配；之后以“持续运转（传送带）+ 离散事件（选择/部署/换页）”交替，离散事件间隔 1.5–3 秒。",
-      "coherence": "所有模块共享切角语言、注册标记与安全黄的单一语义，切换模块时只有内容变化，框架保持不动——“同一台设备上的不同屏幕”。"
+      "color": "近黑#17191b、深面板rgba(28,30,33,.86)、浅玻璃rgba(236,238,238,.88)、纸灰#e8e9e8、白#f7f7f5；柠檬黄#ffe400为主强调，传送带#f2a51c，虚影#2d8cff，工作#5fd38a，待机#4aa8ff。",
+      "typography": "Barlow Semi Condensed 400/600/700，字标为700斜体；Noto Sans SC 400/500/700。横/竖字号：微标签16/28、正文20/34、小标题26/42、面板标题34/52、大数字64/96、等级220/200、描边字160/150px。",
+      "layout": "横屏1920×1080、竖屏1080×1920。S4横屏等级块左x1500，数字顶250、LEVEL顶500、经验条(1500,532)260×8、按钮(1500,568)260×64，描边字目标外框(1780,80)120×920，提示条中心(960,120)。竖屏人物高900、中心x400、头顶330；等级块左720，数字顶800、LEVEL顶1010、经验条(720,1046)宽300、按钮(720,1080)300×80，描边字目标外框(950,110)120×680，提示条中心(540,200)，信息卡(40,1240)1000×640。设备面板为竖屏底部弹层，蓝图详情移到底部，分享按钮上下排列。",
+      "imagery": "统一使用风格化平面着色、简化形状与清晰轮廓，白灰炭黑配柠檬黄；人物为女性管理员外观的文本生成立绘。内置image_gen.imagegen按文本生成15张风格化位图：地面2048×2048无损WebP、7张设施512×512 RGBA PNG、6张物品128×128 RGBA PNG、人物1024×1536 RGBA PNG；FFmpeg仅归一尺寸与PNG/WebP格式并保留内容和Alpha。地面平铺，设施实体及S3物品使用位图；S4中央人物为按文本生成的女性管理员立绘，背景浅剪影和头像保留。功能SVG、机械动效与状态叠层、蓝图虚影、蓝图纸、传送带和运送物料保持代码绘制；带体40px、两侧深边4px、白V纹样。官方视频只作界面参考，游戏截图、官方角色立绘、图标和logo均未作为生图输入或成片素材。",
+      "motion": "加载easeInOutSine；HUD与面板easeOutCubic；模式和角标easeOutBack；光标三次贝塞尔easeInOutCubic；蓝图弹簧刚度180/阻尼22；设备白线描形、扫描实体化、黄角标回弹；人物呼吸4秒一周期，缩放1±0.01、倾斜±1°。",
+      "sound": "MotionKit.audio时间轴合成音谱覆盖加载、HUD、放置、建造、生产、收取、升级、复制和收尾；13.0s为click，增益0.9；18.5–56.0s每2秒sub，增益0.2。",
+      "rhythm": "60秒：S0 0–4、S1 4–10、S2 10–24、S3 24–36、S4 36–48、S5 48–56、S6 56–60；事件与音谱使用同一时间轴。",
+      "coherence": "全案共享柠檬黄、黑白胶囊、//标题、五色细条、自绘圆形几何图标和设施角标；横竖共享状态、文案和时刻。"
     },
     "tokens": {
       "palette": [
-        "#e6e6e1",
-        "#f4f4f0",
-        "#1d1f22",
-        "#6b6e70",
-        "#c9cbc6",
-        "#ffd400",
-        "#2fbf71",
-        "#9fd3ff"
+        "#17191b",
+        "rgba(28,30,33,.86)",
+        "rgba(236,238,238,.88)",
+        "#e8e9e8",
+        "#f7f7f5",
+        "#8b8f93",
+        "#c8cacb",
+        "#ffe400",
+        "#e9c500",
+        "#f2a51c",
+        "#2d8cff",
+        "#5fd38a",
+        "#4aa8ff"
       ],
-      "type": "Bahnschrift / DIN 类窄体 + 等宽编码 + 中文黑体",
+      "colors": {
+        "ink": "#17191b",
+        "panel": "rgba(28,30,33,.86)",
+        "glass": "rgba(236,238,238,.88)",
+        "paper": "#e8e9e8",
+        "white": "#f7f7f5",
+        "grey": "#8b8f93",
+        "line": "#c8cacb",
+        "yellow": "#ffe400",
+        "yellow-deep": "#e9c500",
+        "belt": "#f2a51c",
+        "ghost": "#2d8cff",
+        "ok": "#5fd38a",
+        "zz": "#4aa8ff"
+      },
+      "brand": [
+        "#ff4d4d",
+        "#ffb000",
+        "#00c2ff",
+        "#6b5bff",
+        "#39d98a"
+      ],
+      "type": "Barlow Semi Condensed + Noto Sans SC（Google Fonts，OFL）",
+      "fontSizes": {
+        "landscape": {
+          "micro": 16,
+          "body": 20,
+          "subtitle": 26,
+          "panel": 34,
+          "number": 64,
+          "level": 220,
+          "outline": 160
+        },
+        "portrait": {
+          "micro": 28,
+          "body": 34,
+          "subtitle": 42,
+          "panel": 52,
+          "number": 96,
+          "level": 200,
+          "outline": 150
+        }
+      },
       "motion": [
         {
-          "name": "snap",
-          "value": "cubic-bezier(.2,.9,.1,1)：装配 420ms、页签指示 350ms、卡片 320ms"
+          "name": "loading",
+          "value": "1.0–3.4s 0→100%，easeInOutSine"
         },
         {
-          "name": "assemble-stagger",
-          "value": "顶栏 → 侧栏（60ms/项）→ 内容 → 详情 → 底栏，约 0.1s 递进"
-        },
-        {
-          "name": "scramble",
-          "value": "24fps 随机字符刷新，阈值 = 位置×0.7 + 随机×0.3，时长 0.6–1.2s"
-        },
-        {
-          "name": "conveyor",
-          "value": "物料 90px/s（部署后 150px/s），每条带 4 个，带纹同速"
+          "name": "hud",
+          "value": "4.6/5.4/5.8/6.2/6.6s入场；模式5.0s切换，0.25s easeOutBack"
         },
         {
           "name": "blueprint",
-          "value": "8 条线框各 450ms inOutCubic，错峰 70ms"
+          "value": "512px三设备蓝图；13.0s旋转90°/0.25s，13.6s吸附/0.12s；弹簧180/22"
         },
         {
-          "name": "hold",
-          "value": "1.2s 线性填充，松开 300ms 回落；完成印章 350ms outBack"
+          "name": "construction",
+          "value": "14.6/14.9/15.2s起，每台1.0s；线框0.4s、扫描0.4s、角标0.2s"
         },
         {
-          "name": "scanline",
-          "value": "500ms inOutQuart，3px 黄线 + 外发光"
+          "name": "conveyor",
+          "value": "64px/段，0.12s/段铺设；18.5s起80px/s，物料间隔0.5s"
+        },
+        {
+          "name": "production",
+          "value": "25.5–31.0s，2.0s/轮；第三轮停75%；32.1s起飞行0.4s/枚，间隔0.15s"
+        },
+        {
+          "name": "upgrade",
+          "value": "39.6–40.4s填经验；40.4–40.8s等级20→21；40.8–42.0s属性滚动"
+        },
+        {
+          "name": "share",
+          "value": "50.0–50.4s条带展开；51.6s复制，53.0s确认，53.2–53.6s收起"
+        },
+        {
+          "name": "outro",
+          "value": "56.6–59.0s镜头1→0.86；57.4s字标；59.4–60.0s淡黑"
         }
       ]
     },
     "observations": [
       {
-        "at": "17173 评析 · 工业风视觉语言",
-        "what": "界面中的核心符号是三角形元素与工业徽章；Logo 及衍生图形在终端、配装站、角色信息面板等关键界面反复复用，强化“管理员”身份认同。"
+        "at": "官方视频01 · 01:39–02:46 · 本地联系表01-02",
+        "what": "干员页为浅灰底、中央人物、顶部头像、左侧属性和圆形技能；右侧黄斜带上叠竖排ENDFIELD与20/LEVEL/40。"
       },
       {
-        "at": "同上 · 菜单与多平台",
-        "what": "PC 端承载更密集的信息与快捷操作栏，移动端缩放重组并把关键按钮放在拇指区域；手柄与键鼠侧重焦点切换与快捷键。"
+        "at": "官方视频01 · 09:12–10:36 · 本地联系表01-07",
+        "what": "探索/工业标签可切换；工业状态显示资源胶囊和底部物品栏，右下使用圆形技能按钮。"
       },
       {
-        "at": "GameWith / 攻略 · 集成工业",
-        "what": "工厂规划在 AIC Plan 界面与建造模式中进行，包含模拟、研究升级与蓝图（Schematics）导入导出。"
+        "at": "官方视频03 · 00:43.350",
+        "what": "蓝图模式有//标题和彩条；草地俯视、三角协议核心、蓝色虚影、黄色角标深色设备、待机Zz及橙黄传送带。"
       },
       {
-        "at": "Design Atlas · endfield-industrial（官网八章研究）",
-        "what": "官网同样采用白底工业档案、点云射线与分层切换，可作为网页端对照。"
+        "at": "官方视频03 · 00:45.583",
+        "what": "配件机半透明白灰面板叠在工地上，背包在左，设备输入输出与配方在右，黄色全部收取按钮及底部生产进度。"
       }
     ],
     "interaction": [
-      "点击顶栏页签切换模块（扫描线换页），点击产线节点选择设备，按住 DEPLOY（或聚焦后按住空格/回车）1.2 秒部署。",
-      "自动演示由时间轴驱动，任何点击切到实时交互；站内刻度条或重播回到自动演示。",
-      "声音默认关闭；减少动态时不自动播放，停在部署完成的完整构图。",
-      "SVG 内的文字会按画布实际缩放换算字号，保证最终渲染 ≥12px。"
+      "影片时间轴演示模式切换、蓝图跟随/旋转/吸附/确认、生产收取、等级提升及分享复制确认；所有画面由render(t)确定，任意seek可复现。",
+      "横屏显示24px鼠标箭头；竖屏显示56px触控点与按下扩散环，以旋转/确认/取消圆钮替代键盘提示。",
+      "字体与15张风格化位图通过MotionKit.preload加载，资源ready后开始；motion:ready报告sound:true。",
+      "prefers-reduced-motion下镜头推拉与斜带扫屏改为淡入淡出，其余时间轴照常。"
     ],
     "useCases": [
-      "工业/能源/物流监控台",
-      "游戏内建造与管理界面",
-      "B 端设备管理后台的品牌化外观",
-      "展会设备展示屏",
-      "科幻影视 FUI"
+      "游戏界面复刻研究",
+      "手游界面影片",
+      "集成工业交互演示",
+      "横竖屏动效适配"
     ],
     "avoid": [
-      "温暖亲和的消费品牌",
-      "以图片为主的内容浏览",
-      "需要高信息密度表格且不允许装饰的严肃系统"
+      "把示意产线作为真实游戏配方或数值指南",
+      "将生图人物与设施位图误认为官方美术素材"
     ],
     "constraints": [
-      "证据等级为“公开资料推断”：未实机录制《明日方舟：终末地》，动效时长为本地拟合；请按 docs/methodology.md 用实机录像核验后更新。",
-      "不使用鹰角网络/GRYPHLINE 的标志、角色、术语（如源石、AIC 等）与美术；设施、干员与资源名称均为原创。",
-      "产线图为示意，不包含真实游戏的配方与数值。"
+      "界面复刻自游戏，未使用游戏美术素材。",
+      "版式、交互、动效、配色、字体风格参考真实游戏；官方视频仅用于界面观察，不将游戏截图、官方角色立绘、图标或logo作为生图输入或成片素材，不使用官方字体文件。",
+      "地面、设施与物品为原创工业素材，中央人物按女性管理员外观文本生成，均使用内置image_gen.imagegen；FFmpeg仅归一尺寸及PNG/WebP格式，保留内容与Alpha。功能SVG、状态叠层、蓝图虚影、蓝图纸、背景浅剪影及头像保留代码绘制；字体为Google Fonts上的OFL字体。",
+      "60秒场景时序、设备数量、尺寸和数值来自本案例设计规格，没有将这些参数标为原游戏动效的测量值。",
+      "本地参考视频、抽帧与联系表仅供样式核对，不纳入仓库。"
     ],
-    "prompt": "做一个“工业协议”风格的设施操作台（HTML/CSS/JS，可 seek）：米灰底 #e6e6e1 + 40px 细网格，面板 #f4f4f0，石墨 #1d1f22，安全黄 #ffd400 只表示“当前/进行中/警示”，完成用绿色。字体：Bahnschrift/DIN 类窄体 + 等宽编码 + 中文黑体。布局：石墨黑顶栏（三角徽记 + 终端名 + 4 个页签 + 资源计数，右下切角，当前页签下方 4px 黄色指示条以 350ms snap 移动）、左侧子菜单（右下切角，当前项反黑 + 右侧黄条）、中央内容（对角切角）、右侧详情（对角切角 + 四角十字注册标记）、底栏（危险斜纹 + 坐标 + 滚动日志 + 时钟）。①启动：三角徽记 + 标题字符解码（24fps 随机字符，按位置逐个解出）+ 24 段进度条（当前段黄色，带随机跳变）→ 加载层自下而上裁切退场，各区块以 cubic-bezier(.2,.9,.1,1) 420ms 从各自边缘错峰装配，资源数字计数。②产线：SVG 节点图（切角白盒、几何图标、编码、名称、OUTPUT/min、闪烁指示灯），节点间是带圆角的正交传送带（灰色粗底 + 黑色虚线带纹按速度推进），物料方块按 (t×速度/长度 + i/数量) mod 1 沿路径取点。③选择设备：四角黄色括号 outBack 回弹；右侧名称解码、深色蓝图 8 条浅蓝线框（pathLength=1）错峰 70ms 描出、三项 10 格分段条依次填充。④按住部署：按住时黄色从左线性填满 1.2s，松开过早 300ms 回落，满格锁定为 DEPLOYED 并盖下倾斜绿色印章，相关产线加速。⑤换页：3px 黄色发光扫描线 500ms inOutQuart 从左扫到右，线左新页、线右旧页（两侧 clip-path），新页标题解码、卡片 snap 错峰上浮。SVG 文字按实际缩放换算保证 ≥12px；声音默认关闭；减少动态停在完成态。",
-    "videoPrompt": "Industrial sci-fi management terminal UI, 1920×1080, 16 seconds. Off-white industrial panels with chamfered 45-degree corners, graphite black header bar, a single safety-yellow accent, crosshair registration marks, tick rulers and yellow-black hazard stripes, a thin engineering grid background. A triangle emblem appears and a monospace title decodes from random characters while a 24-segment progress bar fills. The loader slices away upward and UI modules snap into place from their edges with mechanical precision. A production-line node graph runs: small black square items flow along orthogonal conveyor belts between machine nodes with blinking green lamps. A machine is selected with yellow corner brackets popping in; on the right a dark blueprint panel draws light-blue wireframe lines one by one and segmented meters fill. A long-press button fills with yellow from left to right and a green \"DEPLOYED\" stamp slams down at an angle. Then a glowing yellow scanline sweeps across the content area revealing a new page of dark operator cards. Precise, mechanical, calm; no glow overload; no neon.",
-    "negativePrompt": "不要赛博朋克霓虹与紫粉渐变；不要圆润的消费级卡片与大阴影；不要让黄色泛滥成背景色；不要弹性夸张的动画；不要使用原作的标志、角色、术语与美术。",
+    "prompt": "按60秒时间轴制作《明日方舟：终末地》集成工业系统界面影片，横1920×1080、竖1080×1920，MotionKit.stage固定舞台，render(t)纯函数。0–4黑底ENDFIELD/终末地字标和加载线；4–10草地俯视工地、黄黑建造边界、模式/资源/任务/设备栏HUD；10–24放置512px蓝图：配件机A128+传送带64+粉碎机128+传送带64+仓储箱128，三次贝塞尔光标跟随、13s旋转90°、13.6s吸附、14.4s确认，三台依14.6/14.9/15.2s线框扫描成形，铺带连核心→A→粉碎→仓储→B，18.5s起80px/s运料；24–36配件机浅色半透明面板，背包、输入输出、2秒生产进度、32s全部收取，两件弧线飞入背包20→22；36–48浅灰干员页，中央女性管理员立绘、背景浅剪影与头像、右侧亮黄斜带、等级20→21与属性滚动、四技能描黄环，人物以4秒周期缩放1±0.01并倾斜±1°；48–56蓝图纸与贯屏白色分享弹窗，复制EF01-7KQ2-M9A3-ZT58并确认；56–60回工地拉远、右下字标、淡黑。统一ink#17191b/paper#e8e9e8/yellow#ffe400/belt#f2a51c/ghost#2d8cff，品牌五段彩条。字体Barlow Semi Condensed与Noto Sans SC及15张风格化位图经MotionKit.preload；字号按本条目横竖阶梯。内置image_gen.imagegen按文本生成地面2048×2048无损WebP、7张设施512×512 RGBA PNG、6张物品128×128 RGBA PNG、人物1024×1536 RGBA PNG，FFmpeg仅归一尺寸与格式。竖屏重排为触控圆钮、底部设备面板与干员信息卡、下方蓝图详情；界面DOM/CSS，地面平铺位图，设施实体、S3物品及S4中央人物使用位图；功能SVG、机械动效与状态叠层、蓝图虚影、蓝图纸、背景浅剪影和头像保留代码绘制，传送带与运送物料由Canvas绘制。MotionKit.audio合成音谱同轴，sound:true；13s click gain.9。减少动态时仅镜头和扫带改淡入淡出。界面参考游戏，官方视频仅作界面观察，未使用官方美术文件或以官方美术图片作为生图输入。",
+    "videoPrompt": "A 60-second Arknights: Endfield integrated industrial UI film in landscape 1920×1080 and portrait 1080×1920. Black ENDFIELD title and loading line, overhead grassy industrial site with lemon-yellow hazard border, industrial HUD, blue three-machine blueprint placement and construction, orange conveyors with moving materials, translucent accessory-machine production and collection panel, pale operator screen with a text-generated female Endministrator and yellow level-up band, blueprint-paper sharing modal, industrial-site pullback and fade to black. Use 15 clean stylized images generated from text with the built-in image_gen.imagegen: a 2048×2048 lossless WebP ground texture, seven 512×512 RGBA facility PNGs, six 128×128 RGBA inventory PNGs, and a 1024×1536 RGBA character PNG. FFmpeg only normalizes dimensions and PNG/WebP format while preserving content and alpha. Preserve functional SVG icons, procedural overlays, blueprint ghosts and paper, the background silhouette and avatar tabs. Animate the central character with a four-second breathing cycle, scale 1±0.01 and tilt ±1 degree. Recreate the referenced interface layout and interaction with OFL Barlow Semi Condensed and Noto Sans SC fonts and synchronized synthesized interface sounds. Official videos are interface references only; no game screenshots or official character, icon, or logo artwork is used as image-generation input or final imagery, and no official font assets are used.",
+    "negativePrompt": "不使用游戏截图、官方角色立绘、图标、logo或字体文件，不将官方美术作为生图输入；不把60秒设计时序标为原游戏动效实测；不加入规格外的界面文案、场景或构图。",
     "migration": [
       {
-        "field": "config.js → brand / palette",
-        "how": "终端名称、站点代码、版本号；纸色、面板、石墨、灰、细线、安全黄、警示与完成色。"
+        "field": "config.js → tokens / brand / fontSizes",
+        "how": "全案色值、五段彩条、横竖字号与Google Fonts配置。"
       },
       {
-        "field": "config.js → tabs",
-        "how": "模块页签（英文 + 中文）与每个模块的子菜单。"
+        "field": "config.js → machines / blueprint",
+        "how": "已有设施、三设备蓝图、512px总长、64px网格、建造时刻与产线顺序。"
       },
       {
-        "field": "config.js → machines / links",
-        "how": "产线节点（坐标、编码、名称、产量、图标）与连接关系，传送带路径自动生成。"
-      },
-      {
-        "field": "config.js → operators / resources",
-        "how": "卡片内容与顶栏资源计数。"
-      },
-      {
-        "field": "config.js → holdDuration / autopilot",
-        "how": "长按确认时长；自动演示事件（选择、按住、换页）的时刻。"
-      },
-      {
-        "field": "style.css → --cut",
-        "how": "切角尺寸；改成 0 即得到直角版本。"
+        "field": "config.js → markers / scenes / score",
+        "how": "60秒场景、十个标记与合成声音事件。"
       }
     ],
     "demo": "demos/cases/industrial-protocol/index.html",
@@ -254,42 +329,128 @@
     ],
     "sources": [
       {
-        "title": "17173 · 明日方舟：终末地 评析专题",
-        "url": "https://news.17173.com/z/arknights2026/content/01202026/181744280.shtml",
-        "type": "资料 · 评析",
-        "note": "工业机能美学、三角形元素与工业徽章、Logo 衍生图形复用、多平台布局适配。"
+        "title": "《明日方舟：终末地》「再次测试」实机展示",
+        "url": "https://www.bilibili.com/video/BV1fJq9YJEnw/",
+        "type": "官方视频",
+        "note": "仅作界面参考：本地01-02联系表用于干员页，01-07用于探索/工业HUD；不作为生图输入或成片美术素材。"
       },
       {
-        "title": "GameWith · Arknights: Endfield 集成工业指南",
-        "url": "https://gamewith.net/akendfield/72372",
-        "type": "资料 · 攻略",
-        "note": "工厂规划界面入口、模拟与研究升级、蓝图导入流程。"
+        "title": "Arknights: Endfield PlayStation®5 Gameplay Demo",
+        "url": "https://www.youtube.com/watch?v=2GjOGijE9fM",
+        "type": "官方视频",
+        "note": "仅作系统界面上下文参考；本地视频02，不作为生图输入或成片美术素材。"
       },
       {
-        "title": "Design Atlas · 终末地 白底工业档案",
-        "url": "https://mibxr-design-atlas.mibxranime.chatgpt.site/cases.html#style/endfield-industrial",
-        "type": "实例 · 姊妹库",
-        "note": "官网研究（网页端设计语言）对照。"
+        "title": "Arknights: Endfield Gameplay Preview — Advance and Expand",
+        "url": "https://www.youtube.com/watch?v=PpyzMnjSuZo",
+        "type": "官方视频",
+        "note": "仅作界面参考：00:43.350蓝图俯视及00:45.583配件机面板为主要对照帧；不作为生图输入或成片美术素材。"
+      },
+      {
+        "title": "风格化生图素材与完整提示词",
+        "url": "demos/cases/industrial-protocol/assets/gen/SOURCES.md",
+        "type": "素材记录",
+        "note": "15张风格化位图的用途、image_gen.imagegen完整提示词、原生与最终尺寸、重生成次数及FFmpeg归一化说明。"
       }
     ],
     "preview": "previews/cases/industrial-protocol.jpg",
-    "previewPortrait": null
+    "previewPortrait": "previews/cases/industrial-protocol-portrait.jpg"
   },
   "documents": {
-    "prompt": "# 工业协议 · 终末地式设施操作台 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/industrial-protocol.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/industrial-protocol.md)。\n\n## 实现 Prompt\n\n做一个“工业协议”风格的设施操作台（HTML/CSS/JS，可 seek）：米灰底 #e6e6e1 + 40px 细网格，面板 #f4f4f0，石墨 #1d1f22，安全黄 #ffd400 只表示“当前/进行中/警示”，完成用绿色。字体：Bahnschrift/DIN 类窄体 + 等宽编码 + 中文黑体。布局：石墨黑顶栏（三角徽记 + 终端名 + 4 个页签 + 资源计数，右下切角，当前页签下方 4px 黄色指示条以 350ms snap 移动）、左侧子菜单（右下切角，当前项反黑 + 右侧黄条）、中央内容（对角切角）、右侧详情（对角切角 + 四角十字注册标记）、底栏（危险斜纹 + 坐标 + 滚动日志 + 时钟）。①启动：三角徽记 + 标题字符解码（24fps 随机字符，按位置逐个解出）+ 24 段进度条（当前段黄色，带随机跳变）→ 加载层自下而上裁切退场，各区块以 cubic-bezier(.2,.9,.1,1) 420ms 从各自边缘错峰装配，资源数字计数。②产线：SVG 节点图（切角白盒、几何图标、编码、名称、OUTPUT/min、闪烁指示灯），节点间是带圆角的正交传送带（灰色粗底 + 黑色虚线带纹按速度推进），物料方块按 (t×速度/长度 + i/数量) mod 1 沿路径取点。③选择设备：四角黄色括号 outBack 回弹；右侧名称解码、深色蓝图 8 条浅蓝线框（pathLength=1）错峰 70ms 描出、三项 10 格分段条依次填充。④按住部署：按住时黄色从左线性填满 1.2s，松开过早 300ms 回落，满格锁定为 DEPLOYED 并盖下倾斜绿色印章，相关产线加速。⑤换页：3px 黄色发光扫描线 500ms inOutQuart 从左扫到右，线左新页、线右旧页（两侧 clip-path），新页标题解码、卡片 snap 错峰上浮。SVG 文字按实际缩放换算保证 ≥12px；声音默认关闭；减少动态停在完成态。\n\n## 视频生成 Prompt\n\nIndustrial sci-fi management terminal UI, 1920×1080, 16 seconds. Off-white industrial panels with chamfered 45-degree corners, graphite black header bar, a single safety-yellow accent, crosshair registration marks, tick rulers and yellow-black hazard stripes, a thin engineering grid background. A triangle emblem appears and a monospace title decodes from random characters while a 24-segment progress bar fills. The loader slices away upward and UI modules snap into place from their edges with mechanical precision. A production-line node graph runs: small black square items flow along orthogonal conveyor belts between machine nodes with blinking green lamps. A machine is selected with yellow corner brackets popping in; on the right a dark blueprint panel draws light-blue wireframe lines one by one and segmented meters fill. A long-press button fills with yellow from left to right and a green \"DEPLOYED\" stamp slams down at an angle. Then a glowing yellow scanline sweeps across the content area revealing a new page of dark operator cards. Precise, mechanical, calm; no glow overload; no neon.\n\n## 负向约束\n\n不要赛博朋克霓虹与紫粉渐变；不要圆润的消费级卡片与大阴影；不要让黄色泛滥成背景色；不要弹性夸张的动画；不要使用原作的标志、角色、术语与美术。\n\n## 动效 Token\n\n- **snap**：cubic-bezier(.2,.9,.1,1)：装配 420ms、页签指示 350ms、卡片 320ms\n- **assemble-stagger**：顶栏 → 侧栏（60ms/项）→ 内容 → 详情 → 底栏，约 0.1s 递进\n- **scramble**：24fps 随机字符刷新，阈值 = 位置×0.7 + 随机×0.3，时长 0.6–1.2s\n- **conveyor**：物料 90px/s（部署后 150px/s），每条带 4 个，带纹同速\n- **blueprint**：8 条线框各 450ms inOutCubic，错峰 70ms\n- **hold**：1.2s 线性填充，松开 300ms 回落；完成印章 350ms outBack\n- **scanline**：500ms inOutQuart，3px 黄线 + 外发光\n\n## 制作约束\n\n- 证据等级为“公开资料推断”：未实机录制《明日方舟：终末地》，动效时长为本地拟合；请按 docs/methodology.md 用实机录像核验后更新。\n- 不使用鹰角网络/GRYPHLINE 的标志、角色、术语（如源石、AIC 等）与美术；设施、干员与资源名称均为原创。\n- 产线图为示意，不包含真实游戏的配方与数值。\n\n## 迁移\n\n- `config.js → brand / palette`：终端名称、站点代码、版本号；纸色、面板、石墨、灰、细线、安全黄、警示与完成色。\n- `config.js → tabs`：模块页签（英文 + 中文）与每个模块的子菜单。\n- `config.js → machines / links`：产线节点（坐标、编码、名称、产量、图标）与连接关系，传送带路径自动生成。\n- `config.js → operators / resources`：卡片内容与顶栏资源计数。\n- `config.js → holdDuration / autopilot`：长按确认时长；自动演示事件（选择、按住、换页）的时刻。\n- `style.css → --cut`：切角尺寸；改成 0 即得到直角版本。\n\n[打开 Demo](../../demos/cases/industrial-protocol/index.html) · [在库中查看](../../cases.html#case/industrial-protocol)\n",
-    "research": "# 工业协议：终末地式实机菜单研究\n\n- 对象：《明日方舟：终末地》实机系统界面（终端、编队、配装、集成工业/工厂规划）\n- 整理日期：2026-10-14\n- 证据等级：**公开资料推断，待核验**。本会话未能实机录制；以下整理媒体评析与攻略中对界面的描述，Demo 的参数为本地拟合。\n- 关联：Design Atlas 已收录终末地官网的八章研究（endfield-industrial），网页端设计语言可对照。\n\n## 设计语言要点\n\n| 维度 | 公开资料中的描述 | Demo 的转译 |\n| --- | --- | --- |\n| 符号 | 三角形元素与工业徽章贯穿界面，奠定“机能美学”的理性基础 | 三角徽记、黄色三角角标 |\n| 品牌复用 | Logo 及衍生图形在终端、配装站、角色信息面板等关键系统界面复用 | 同一徽记出现在加载、顶栏 |\n| 身份 | 强化玩家“管理员”身份：你是工业实体的一员 | 终端口吻的编码、日志、资源计数 |\n| 美术方向 | 工业机能 + 未来科幻；锈蚀金属、管线、流线灯光、全息投影并存 | 米灰工业面板、蓝图线框、扫描线发光 |\n| 多平台 | PC 承载密集信息与快捷栏；移动端缩放重组、关键按钮在拇指区 | 窄屏改为纵向堆叠、页签横向滚动 |\n| 工厂系统 | AIC 规划、模拟、研究升级、蓝图导入导出 | 产线节点图、设备蓝图、长按部署 |\n\n## 节奏\n\n“持续运转 + 离散事件”：传送带与指示灯永远匀速运行，构成背景节奏；选择、部署、换页是离散的“snap”事件。两者对比让界面既安静又有生命。\n\n## 核验建议\n\n1. 录制 1080p60：打开菜单、切换模块、进入工厂规划、选择设备、执行需要确认的操作、返回。\n2. 按 docs/methodology.md 取帧：每次切换前后 1 秒以 1/60 秒取帧。\n3. 记录：模块入场方向与时长、切换是否有扫描/遮罩、文字是否解码或打字、确认操作是长按还是弹窗、完成反馈的形式。\n4. 把实测写回条目 `tokens.motion` 与 Demo `config.js`，并把证据等级改为 observed。\n\n## 已知差异\n\n- 原作为 3D 游戏界面与全息投影，Demo 为 2D 网页近似。\n- 原作术语（源石、AIC 等）与角色名称未使用，全部替换为原创。\n- 产线数值与配方为示意。\n\n## 验证记录\n\n- 2026-10-14：Edge 无头 1600×900 下截取 10 个时刻，覆盖加载、装配、选择、按住、部署完成、扫描线换页、干员卡片、仓储与回到产线。\n- 发现并修复：按住时长恰好等于阈值时浮点误差导致未判定完成（加入容差）；SVG 节点文字缩放后低于 12px（按画布缩放换算字号）；示例数据误用原作角色名与术语（全部替换为原创）。\n"
+    "prompt": "# 终末地 · 集成工业协议 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/industrial-protocol.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/industrial-protocol.md)。\n\n## 实现 Prompt\n\n按60秒时间轴制作《明日方舟：终末地》集成工业系统界面影片，横1920×1080、竖1080×1920，MotionKit.stage固定舞台，render(t)纯函数。0–4黑底ENDFIELD/终末地字标和加载线；4–10草地俯视工地、黄黑建造边界、模式/资源/任务/设备栏HUD；10–24放置512px蓝图：配件机A128+传送带64+粉碎机128+传送带64+仓储箱128，三次贝塞尔光标跟随、13s旋转90°、13.6s吸附、14.4s确认，三台依14.6/14.9/15.2s线框扫描成形，铺带连核心→A→粉碎→仓储→B，18.5s起80px/s运料；24–36配件机浅色半透明面板，背包、输入输出、2秒生产进度、32s全部收取，两件弧线飞入背包20→22；36–48浅灰干员页，中央女性管理员立绘、背景浅剪影与头像、右侧亮黄斜带、等级20→21与属性滚动、四技能描黄环，人物以4秒周期缩放1±0.01并倾斜±1°；48–56蓝图纸与贯屏白色分享弹窗，复制EF01-7KQ2-M9A3-ZT58并确认；56–60回工地拉远、右下字标、淡黑。统一ink#17191b/paper#e8e9e8/yellow#ffe400/belt#f2a51c/ghost#2d8cff，品牌五段彩条。字体Barlow Semi Condensed与Noto Sans SC及15张风格化位图经MotionKit.preload；字号按本条目横竖阶梯。内置image_gen.imagegen按文本生成地面2048×2048无损WebP、7张设施512×512 RGBA PNG、6张物品128×128 RGBA PNG、人物1024×1536 RGBA PNG，FFmpeg仅归一尺寸与格式。竖屏重排为触控圆钮、底部设备面板与干员信息卡、下方蓝图详情；界面DOM/CSS，地面平铺位图，设施实体、S3物品及S4中央人物使用位图；功能SVG、机械动效与状态叠层、蓝图虚影、蓝图纸、背景浅剪影和头像保留代码绘制，传送带与运送物料由Canvas绘制。MotionKit.audio合成音谱同轴，sound:true；13s click gain.9。减少动态时仅镜头和扫带改淡入淡出。界面参考游戏，官方视频仅作界面观察，未使用官方美术文件或以官方美术图片作为生图输入。\n\n## 视频生成 Prompt\n\nA 60-second Arknights: Endfield integrated industrial UI film in landscape 1920×1080 and portrait 1080×1920. Black ENDFIELD title and loading line, overhead grassy industrial site with lemon-yellow hazard border, industrial HUD, blue three-machine blueprint placement and construction, orange conveyors with moving materials, translucent accessory-machine production and collection panel, pale operator screen with a text-generated female Endministrator and yellow level-up band, blueprint-paper sharing modal, industrial-site pullback and fade to black. Use 15 clean stylized images generated from text with the built-in image_gen.imagegen: a 2048×2048 lossless WebP ground texture, seven 512×512 RGBA facility PNGs, six 128×128 RGBA inventory PNGs, and a 1024×1536 RGBA character PNG. FFmpeg only normalizes dimensions and PNG/WebP format while preserving content and alpha. Preserve functional SVG icons, procedural overlays, blueprint ghosts and paper, the background silhouette and avatar tabs. Animate the central character with a four-second breathing cycle, scale 1±0.01 and tilt ±1 degree. Recreate the referenced interface layout and interaction with OFL Barlow Semi Condensed and Noto Sans SC fonts and synchronized synthesized interface sounds. Official videos are interface references only; no game screenshots or official character, icon, or logo artwork is used as image-generation input or final imagery, and no official font assets are used.\n\n## 负向约束\n\n不使用游戏截图、官方角色立绘、图标、logo或字体文件，不将官方美术作为生图输入；不把60秒设计时序标为原游戏动效实测；不加入规格外的界面文案、场景或构图。\n\n## 动效 Token\n\n- **loading**：1.0–3.4s 0→100%，easeInOutSine\n- **hud**：4.6/5.4/5.8/6.2/6.6s入场；模式5.0s切换，0.25s easeOutBack\n- **blueprint**：512px三设备蓝图；13.0s旋转90°/0.25s，13.6s吸附/0.12s；弹簧180/22\n- **construction**：14.6/14.9/15.2s起，每台1.0s；线框0.4s、扫描0.4s、角标0.2s\n- **conveyor**：64px/段，0.12s/段铺设；18.5s起80px/s，物料间隔0.5s\n- **production**：25.5–31.0s，2.0s/轮；第三轮停75%；32.1s起飞行0.4s/枚，间隔0.15s\n- **upgrade**：39.6–40.4s填经验；40.4–40.8s等级20→21；40.8–42.0s属性滚动\n- **share**：50.0–50.4s条带展开；51.6s复制，53.0s确认，53.2–53.6s收起\n- **outro**：56.6–59.0s镜头1→0.86；57.4s字标；59.4–60.0s淡黑\n\n## 制作约束\n\n- 界面复刻自游戏，未使用游戏美术素材。\n- 版式、交互、动效、配色、字体风格参考真实游戏；官方视频仅用于界面观察，不将游戏截图、官方角色立绘、图标或logo作为生图输入或成片素材，不使用官方字体文件。\n- 地面、设施与物品为原创工业素材，中央人物按女性管理员外观文本生成，均使用内置image_gen.imagegen；FFmpeg仅归一尺寸及PNG/WebP格式，保留内容与Alpha。功能SVG、状态叠层、蓝图虚影、蓝图纸、背景浅剪影及头像保留代码绘制；字体为Google Fonts上的OFL字体。\n- 60秒场景时序、设备数量、尺寸和数值来自本案例设计规格，没有将这些参数标为原游戏动效的测量值。\n- 本地参考视频、抽帧与联系表仅供样式核对，不纳入仓库。\n\n## 迁移\n\n- `config.js → tokens / brand / fontSizes`：全案色值、五段彩条、横竖字号与Google Fonts配置。\n- `config.js → machines / blueprint`：已有设施、三设备蓝图、512px总长、64px网格、建造时刻与产线顺序。\n- `config.js → markers / scenes / score`：60秒场景、十个标记与合成声音事件。\n\n[打开 Demo](../../demos/cases/industrial-protocol/index.html) · [在库中查看](../../cases.html#case/industrial-protocol)\n",
+    "research": "# 终末地 · 集成工业协议\n\n本案例复刻《明日方舟：终末地》集成工业系统的界面与交互，以60秒横、竖两套构图演示工业模式HUD、蓝图放置与建造、配件机生产与收取、干员升级和蓝图分享。地面、设施和物品为原创工业素材，中央人物按女性管理员外观文本生成，均使用内置 `image_gen.imagegen` 生成的风格化位图；界面参考游戏，未使用游戏美术素材，也未向生图工具提供官方美术作为输入。\n\n界面观察来自本地保存的官方实机视频、抽帧和联系表；制作参数来自用户的T7设计规格。本文区分参考画面中可见的界面事实与本案例采用的时序、尺寸及数值，不把设计参数写成原游戏动效实测。\n\n## 参考来源\n\n| 编号 | 官方视频 | 本案例使用的参考 |\n| --- | --- | --- |\n| 01 | [《明日方舟：终末地》「再次测试」实机展示](https://www.bilibili.com/video/BV1fJq9YJEnw/) | 01:39–02:46干员界面；09:12–10:36探索/工业HUD；标题字标 |\n| 02 | [Arknights: Endfield PlayStation®5 Gameplay Demo](https://www.youtube.com/watch?v=2GjOGijE9fM) | 系统界面的实机上下文 |\n| 03 | [Arknights: Endfield Gameplay Preview — Advance and Expand](https://www.youtube.com/watch?v=PpyzMnjSuZo) | 00:43.350放置蓝图俯视；00:45.583配件机面板 |\n\n参考素材位于主工作区的 `dev/shots/T7/refs/`，主工作区为本工作树上两级目录。`videos.json` 记录视频来源；`frames/03/000043.350.jpg`、`frames/03/000045.583.jpg`、`sheets/01-02.jpg` 和 `sheets/01-07.jpg` 为主要对照材料。三条官方视频仅用于界面版式与交互观察；参考视频、游戏抽帧及联系表只在本地使用，不纳入仓库或成片，也不作为生图输入。生图素材的用途、完整提示词、原生与最终尺寸及生成记录见 [SOURCES.md](../../demos/cases/industrial-protocol/assets/gen/SOURCES.md)。\n\n## 界面观察\n\n### 标题与工业HUD\n\n标题为黑底白色 `ENDFIELD` 字标，上方有小号 `ARKNIGHTS`，右侧为“终末地”方块。探索和工业模式使用左上标签切换，工业模式显示顶部资源计数胶囊和底部物品栏；场景设施使用图标与中文名称标牌。右下圆形按钮、胶囊与黄色选中态贯穿操作层。\n\n### 放置蓝图\n\n03号视频00:43.350可见左上 `//放置蓝图` 和品牌细彩条；俯视草地上有带三角形结构的大型协议核心，四边带黄色三角箭头。蓝图设备与连接带为半透明蓝色虚影；已建设施为深色方块，四角有黄色角标，中心为图标和名称缩写，待机时头顶有蓝色 `Zz`。传送带为橙黄色。顶部资源显示 `2065/3460`、`100%`；右侧为移动镜头、缩放、旋转、确认和取消的键鼠提示。\n\n### 配件机面板\n\n03号视频00:45.583可见半透明白灰设备窗口叠在俯视地图上。左上设备图标与“配件机”“耗电功率值: 20”同列，下方为开/关切换。左栏背包为物品格，容量 `24/35`，数量置于格角，底部色条区分稀有度，下面是仓库投放区。右栏为设备示意图、输入输出格、生产时间和配方条，黄色“全部收取”胶囊在右下；面板底部有进度与“生产中”状态。\n\n### 干员界面\n\n01号视频01:39–02:46的干员界面使用浅灰底，中央人物，顶部一排头像页签。左侧信息包括名字、星级、属性方块和一排圆形技能。右侧亮黄色斜带从右上切入，带内竖排巨大 `ENDFIELD` 描边字，叠加大号 `20` 和 `LEVEL/40`。\n\n### 蓝图纸与分享弹窗\n\n研究笔记中的蓝图俯视/分享观察包括浅灰网格纸、白色设备、深色圆形图标、点状黄色传送带与带箭头的深色分流节点。详情为深灰面板与设施缩略图格，右下有白色字标和彩条。分享类弹窗使用横贯画面的白色条带，压暗背景，居中标题、浅灰输入框和复制图标；深灰取消、亮黄确认均为胶囊，左端带一条细横线。\n\n## 本案例的表达与参数\n\n全组位图采用平面着色、简化形状、清晰轮廓和白灰炭黑/柠檬黄点缀；中央人物为短黑发、护目镜、灰色技术外套的女性管理员，生成输入只使用文本。\n\n- 版式、交互、动效、配色及字体风格参考真实游戏。15张风格化位图用于地面、设施实体、S3六类物品和S4中央人物，均由内置 `image_gen.imagegen` 按文本提示生成；未输入游戏截图、官方角色立绘、图标或logo图片。功能SVG、设施状态与机械动效叠层、蓝图虚影、蓝图纸、人物背景浅剪影与头像保留代码绘制。\n- FFmpeg仅做尺寸归一化及PNG/WebP格式转换，保留画面内容与Alpha；地面为2048×2048无损WebP，7张设施为512×512 RGBA PNG，6张物品为128×128 RGBA PNG，人物为1024×1536 RGBA PNG。人物呼吸采用4秒周期、缩放1±0.01及倾斜±1°。\n- 字体使用Google Fonts的OFL字体Barlow Semi Condensed 400/600/700（字标700斜体）与Noto Sans SC 400/500/700，经 `MotionKit.preload` 加载。不使用官方字体文件。\n- 两套固定舞台为1920×1080、1080×1920；竖屏使用触控点、右下操作圆钮、底部设备弹层与干员卡片，以及下方蓝图详情。\n- S4横屏黄带多边形为(1440,0)、(1920,0)、(1920,1080)、(1640,1080)；等级块左x1500，220px数字框顶250，LEVEL/40顶500，经验条(1500,532)260×8，按钮(1500,568)260×64，提示条中心(960,120)。160px旋转描边字的目标外框为(1780,80)120×920。\n- S4竖屏人物高900，水平中心x400、头顶y330；黄带为(720,0)、(1080,0)、(1080,1220)、(900,1220)。等级块左x720，200px数字框顶800，LEVEL/40顶1010，经验条(720,1046)宽300，按钮(720,1080)300×80；提示条中心(540,200)，信息卡(40,1240)1000×640。150px旋转描边字的目标外框为(950,110)120×680。LEVEL/40不得与人物相交，旋转字必须完整显示。\n- 地面以原创草地贴图平铺，Canvas保留网格、边界遮罩、传送带和运送物料。设施实体使用风格化位图，叠加黄色角标、进出料三角、蓝/绿状态灯及炉口、齿轮、双辊、电弧等代码动效；蓝图虚影保留对应内部线框。传送带宽40px、两侧深边各4px，白色V箭头以80px/s移动，物料带2px深色描边。\n- 三设备蓝图依次为配件机A 128、传送带64、粉碎机128、传送带64、仓储箱128，总长512px；一格为64px。三台分别于14.6/14.9/15.2s成形，产线连接协议核心 → A → 粉碎机 → 仓储箱 → B。\n- 数值、配方和时序是本案例的设计参数：资源2065→2214，生产输入9→7、输出0→2，收取背包20→22；等级20→21，攻击342→358、生命2341→2420、防御326→335。它们不是游戏规则指南。\n- 音效由kit已有音色合成，13.0s旋转事件为 `click`、增益0.9；不使用官方音乐或音效。`motion:ready` 要求 `sound:true`，全长导出带音轨。\n- 画面由 `render(t)` 决定，位图经 `MotionKit.preload` 加载，程序动效随时间确定。`prefers-reduced-motion` 仅将镜头推拉与斜带扫屏替换为淡入淡出，其余时序照常。\n\n- 工作中的粉碎机双辊分别以1.2秒一圈正反转，待机静止。\n- 建造标题与任务背后使用左深右透明的渐变衬底：横屏(0,96)560×124，竖屏按舞台比例换算为(0,170.667)315×220.444。右侧按键提示每行使用深色胶囊，内边距6px 12px、圆角6，右缘距舞台48px。\n- 条目声明renderer:gpu。横屏以Zz表示待机；竖屏隐藏Zz，以蓝色状态灯和设施图像0.7透明度表示待机。精炼炉/配件机B/供电桩在19.0/19.4/19.8秒开始0.3秒蓝绿灯色及设施图像0.7→1插值，外圈旋转细环出现。\n\n- 静态地面贴图及设施位图采用保留层；完整带体按画幅离屏缓存，静止flow不重画。动态帧只更新变化属性，光标路径不读取布局。\n\n- 世界坐标中种植机中心为(300,900)，供电桩中心为(1560,520)，横竖共享；其他设施位置保持设计参数。\n- 竖屏地图名牌默认隐藏。配件机A、粉碎机、仓储箱在14.6/14.9/15.2秒成形开始时，名牌0.2秒淡入、满显1.2秒、0.3秒淡出；名牌位于设施左侧，右缘距设施左缘12px，垂直居中。横屏名牌持续显示于设施下方。\n\n## 视觉token\n\n| token | 值 |\n| --- | --- |\n| ink / panel / glass | `#17191b` / `rgba(28,30,33,.86)` / `rgba(236,238,238,.88)` |\n| paper / white / grey / line | `#e8e9e8` / `#f7f7f5` / `#8b8f93` / `#c8cacb` |\n| yellow / yellow-deep | `#ffe400` / `#e9c500` |\n| belt / ghost / ok / zz | `#f2a51c` / `#2d8cff` / `#5fd38a` / `#4aa8ff` |\n| 品牌五段彩条 | `#ff4d4d`、`#ffb000`、`#00c2ff`、`#6b5bff`、`#39d98a`；高4px，横宽64px、竖宽96px |\n\n| 用途 | 横屏px | 竖屏px |\n| --- | ---: | ---: |\n| 微标签 | 16 | 28 |\n| 正文 | 20 | 34 |\n| 小标题 | 26 | 42 |\n| 面板标题 | 34 | 52 |\n| 大数字 | 64 | 96 |\n| 等级巨字 | 220 | 200 |\n| ENDFIELD描边字 | 160 | 150 |\n\n## 场景与标记\n\n| 场景 | 秒 | 内容 |\n| --- | --- | --- |\n| S0 | 0–4 | 字标、加载与黄带 |\n| S1 | 4–10 | 俯视工地、工业HUD |\n| S2 | 10–24 | 蓝图放置、旋转吸附、三设备建造、铺带与产线连通 |\n| S3 | 24–36 | 配件机面板、生产、全部收取与关闭 |\n| S4 | 36–48 | 干员页、等级与属性提升、技能亮环 |\n| S5 | 48–56 | 蓝图纸、分享码复制与确认 |\n| S6 | 56–60 | 工地拉远、字标与淡黑 |\n\n时间轴标记：0标题、4工业模式、10放置蓝图、14.4建造、24设备面板、32全部收取、36干员、39.6等级提升、48分享蓝图、56收尾。\n\n## 验证记录\n\n| 检查 | 当前证据 |\n| --- | --- |\n| 素材 | 15 张风格化素材：地面2048²无损WebP，7设施512² PNG，6物品128² PNG，女性人物1024×1536 PNG；14张PNG有真实透明区域。完整提示词及23次生成记录见SOURCES.md。 |\n| 重生成 | 七台设施与人物各重生成1次，地面与物品0次；整组风格、人物面部/双手及透明边缘已查看。 |\n| 预加载与画面 | 两画幅各15图完整加载、实体位图8、虚影位图0；48张截图经场景拼图逐张检查，页面errors/warnings为0。人物原矩形与4秒呼吸保持。 |\n| 对照 | S1 7秒、S3 29秒、S4 42秒横屏v1/v2对照在dev/shots/T7/imagegen/compare-v2/，已查看；素材总览为assets-review-v2.png。 |\n| smoke | 原命令连续3次退出0，1/1 passed；Intel Iris Xe/D3D11；NODE_OPTIONS和BROWSER_PATH未设置，只有旧字号警告。 |\n| 成片 | 横竖均60.000秒/30fps/1800帧，H.264+AAC 48kHz双声道；各解码查看6帧。WAV峰值-3.236dBFS、削波0。证据dev/shots/T7/imagegen/render-v2/final-media.json。 |\n\n详细命令、数据和截图索引见本地dev/reports/T7.md。当前成片在dev/shots/T7/imagegen/render-v2/；v1素材归档于assets/gen/_v1/并由Git忽略。\n"
   },
   "entrypoint": "demos/cases/industrial-protocol/index.html",
   "files": [
     {
+      "path": "demos/cases/industrial-protocol/assets/gen/SOURCES.md",
+      "bytes": 36979,
+      "sha256": "a2d3cc728730aef30f1a5670f1a709283822f93b3445e1ccb9d950cc1788b5b4"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/assembler.png",
+      "bytes": 286390,
+      "sha256": "7b608e5a0acb9a4d1f61c3e75e514f7aed8e48270b8dcf89015359a7bce17692"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/core.png",
+      "bytes": 314559,
+      "sha256": "f487b2817ef632544f47c3733ec7e9bd9ff81191368d9e21d835eb0830c1cf7f"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/crusher.png",
+      "bytes": 271608,
+      "sha256": "a211b483644f3312bcb1aceeec3ef1c078269255d2e6cb098399224ea61ddf07"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/ground.webp",
+      "bytes": 2144956,
+      "sha256": "a985862db2b6d84e9fa044fe2a364ac6b92a0cf81688e08db1273b4e60ae450b"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/item-canister.png",
+      "bytes": 19425,
+      "sha256": "c7d46f2a7e88fa018098f81cfe6e4331144b83a34a1a6718d6b54eb7df36a021"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/item-crystal.png",
+      "bytes": 16360,
+      "sha256": "7b9563d406f3d510111c7a0d7f1beb0711321bb501fff21a1403d54921d4f9f9"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/item-module.png",
+      "bytes": 22264,
+      "sha256": "200d0a26d083fb51d439714488a8f9c54f617ff4a446ba16aab16d9e5247f478"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/item-ore.png",
+      "bytes": 20537,
+      "sha256": "035cc2c9f2bda7c639fab05bb22df3fd40bc3021cbf6d0d496925a87cba53ba2"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/item-part.png",
+      "bytes": 19820,
+      "sha256": "29d2b252a4964e803f1e96b5838d78054e2b3663624273e758c774a2131c2351"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/item-plate.png",
+      "bytes": 14434,
+      "sha256": "7d26f6733cf58bb95e2a7ff265702e84ace0afb2fb22c91d10b5b31f325d59a5"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/operator.png",
+      "bytes": 1609518,
+      "sha256": "8a1d0e43e3db71237002b5b7ebc860d26fbc8273efe66e7f6acf47457e7669ac"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/planter.png",
+      "bytes": 298015,
+      "sha256": "008f2e69c2f416c5dcab3540e050a8976335dea9c264e98786260872f98e7f78"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/pylon.png",
+      "bytes": 313743,
+      "sha256": "32a5c49cbb5513e16faede7a123464b06dd71d9b1086f6e2b96b50a067a90cf1"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/refinery.png",
+      "bytes": 292675,
+      "sha256": "d97702fd4a9a149e9d86431ceb58021c84886e82b143d1a1aa103d46d45034e8"
+    },
+    {
+      "path": "demos/cases/industrial-protocol/assets/gen/storage.png",
+      "bytes": 272941,
+      "sha256": "2a199aad5d19b9dbd4d3c37213eb768a6ca6d122704d7abb2cf9132b85820bc9"
+    },
+    {
       "path": "demos/cases/industrial-protocol/config.js",
-      "bytes": 2375,
-      "sha256": "53b34cb51e4989677ab724d69e1d5108b73d8b8e418fcb81661ca3aba139ef4b"
+      "bytes": 7259,
+      "sha256": "665b69376d91577d5fef708117e1967cd72d788168db3a5b4a6c69f578fa48a0"
     },
     {
       "path": "demos/cases/industrial-protocol/index.html",
-      "bytes": 3479,
-      "sha256": "a0ccef5cc342de9ffbbaac8b6c7faee74095a6c9f9a633c6c7076bfdd91a6239"
+      "bytes": 1111,
+      "sha256": "35ea47b4f62e4bf8efc69b0acbac10b0eec26faf1b8d5fa2788f2d9ffdc0f71c"
     },
     {
       "path": "demos/cases/industrial-protocol/motion-kit.js",
@@ -298,18 +459,23 @@
     },
     {
       "path": "demos/cases/industrial-protocol/script.js",
-      "bytes": 19257,
-      "sha256": "3f17ea281893aafb923e268739b2bf81ef1d6cc9822c9440b13ef90d1783c890"
+      "bytes": 51209,
+      "sha256": "31cb4aa8bc72916fd94bdda7a50a833f21e5427b7df31a02aa3ad7905310eccd"
     },
     {
       "path": "demos/cases/industrial-protocol/style.css",
-      "bytes": 10392,
-      "sha256": "8d65220e68bbb599fc7ad13cf9f34ba2a1663d38c0d30fc578117af6dc6e6e97"
+      "bytes": 38200,
+      "sha256": "f838aa37485e170a778c6ed18e3100d97113fd27baddea6362f34388a16f9f94"
     },
     {
       "path": "previews/cases/industrial-protocol.jpg",
-      "bytes": 96251,
-      "sha256": "2d23f4286aab5f6e6440bb604ba9daddae8c8b426ab362b7f8c9aa86ca74a407"
+      "bytes": 139775,
+      "sha256": "2161f3744aadf5dd889ef4ce15fce07a6558864ceb192f088060d80f102ecd61"
+    },
+    {
+      "path": "previews/cases/industrial-protocol-portrait.jpg",
+      "bytes": 111565,
+      "sha256": "f7a58c67163b2abba915f5674c8dcc820c0078e7ef7b7d018721cc0f7d871cfe"
     }
   ]
 }

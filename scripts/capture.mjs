@@ -47,7 +47,18 @@ async function checkRenderer(page, renderers) {
         return gl.getParameter(info.UNMASKED_RENDERER_WEBGL);
       }
     }
-    throw new Error('未找到 WebGL canvas');
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 1;
+    const gl = canvas.getContext('webgl');
+    try {
+      if (!gl) throw new Error('无法创建 WebGL renderer 探针');
+      const info = gl.getExtension('WEBGL_debug_renderer_info');
+      if (!info) throw new Error('无法读取 WebGL UNMASKED_RENDERER_WEBGL');
+      return gl.getParameter(info.UNMASKED_RENDERER_WEBGL);
+    } finally {
+      gl?.getExtension('WEBGL_lose_context')?.loseContext();
+      canvas.remove();
+    }
   })()`);
   renderers.add(renderer);
   if (/swiftshader|llvmpipe|software|microsoft basic render/i.test(renderer)) {
