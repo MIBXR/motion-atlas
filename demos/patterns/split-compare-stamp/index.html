@@ -1,94 +1,152 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>分屏对比与时间戳盖章 — Motion Atlas 巧思</title>
-<style>
-  :root { --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
-  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: #05070b; }
-  .layer { position: absolute; inset: 0; overflow: hidden; }
-  .layer img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .left { clip-path: inset(0 100% 0 0); }
-  .label { position: absolute; top: clamp(24px, 8vh, 80px); padding: 7px 11px; background: rgba(10,12,16,.78); color: #fff; font: 600 12px/1 var(--f-mono); letter-spacing: .22em; }
-  .left .label { left: clamp(16px, 4vw, 60px); } .right .label { left: calc(50% + 24px); }
-  .divider { position: absolute; top: 0; bottom: 0; left: 0; width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 12px rgba(0,0,0,.5); cursor: ew-resize; touch-action: none; }
-  .divider::after { content: ""; position: absolute; top: 50%; left: 50%; width: 34px; height: 34px; margin: -17px; border-radius: 50%; border: 2px solid #fff; background: rgba(10,12,16,.5); }
-  .divider:focus-visible { outline: 3px solid #ffb38a; outline-offset: 4px; }
-  .stamp { position: absolute; right: 7%; bottom: 12%; padding: 10px 16px; border: 3px solid #fff; border-radius: 4px; color: #fff; font: 700 clamp(14px, 1.8vw, 28px)/1 var(--f-mono); letter-spacing: .08em; background: rgba(0,0,0,.28); }
-  .hint { position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%); color: rgba(255,255,255,.75); font: 12px/1 var(--f-mono); letter-spacing: .12em; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>split-compare-stamp — Motion Atlas Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- 地图资源尽早开始下载（与 config.js 的 map.lib / map.style 保持一致）：与页面脚本并行，缩短可播放前的等待 -->
 </head>
 <body>
-<div class="layer right"><img id="now" alt="现在（程序化示意）"><span class="label" id="lr"></span></div>
-<div class="layer left" id="left"><img id="then" alt="过去（旧明信片风格示意）"><span class="label" id="ll"></span></div>
-<div class="divider" id="divider" role="slider" tabindex="0" aria-label="对比分割线" aria-valuemin="0" aria-valuemax="100"></div>
-<span class="stamp" id="stamp"></span>
-<p class="hint" id="hint">动画结束后可拖动分割线</p>
-<script src="motion-kit.js"></script>
-<script>
-/* ===== CONFIG：改这里即可迁移 ===== */
-const CONFIG = {
-  then: '', now: '',             // 两张对齐构图的图片；留空用程序化示意
-  leftLabel: 'POSTCARD · 1930s', rightLabel: 'REAL · 2026', stamp: '10.01 · 16:50 CST',
-  tWipe: 0.6, wipeDur: 0.7, split: 50, // 分割线停在百分比
-  tStamp: 1.5, stampDur: 0.38, stampFrom: 1.45, stampRotate: -4,
-  duration: 6,
-};
-/* ================================== */
-const MK = MotionKit, $ = (s) => document.querySelector(s);
-function scene(style) {
-  const c = document.createElement('canvas'); c.width = 1600; c.height = 1000; const g = c.getContext('2d'); const r = MK.rng(5);
-  const sky = g.createLinearGradient(0, 0, 0, 600); sky.addColorStop(0, '#7ea3c4'); sky.addColorStop(1, '#f1d6b8'); g.fillStyle = sky; g.fillRect(0, 0, 1600, 600);
-  const hill = (base, amp, col) => { g.fillStyle = col; g.beginPath(); g.moveTo(0, 1000); for (let x = 0; x <= 1600; x += 20) g.lineTo(x, base - Math.sin(x / 200 + 1) * amp - r() * 12); g.lineTo(1600, 1000); g.fill(); };
-  hill(540, 60, '#9aa9b4'); hill(590, 40, '#7d8b94');
-  g.fillStyle = '#56626a'; for (let i = 0; i < 5; i++) g.fillRect(1100 - (44 - i * 7), 520 - i * 36, (44 - i * 7) * 2, 28);
-  const w = g.createLinearGradient(0, 600, 0, 1000); w.addColorStop(0, '#cab9a6'); w.addColorStop(1, '#5d6f80'); g.fillStyle = w; g.fillRect(0, 600, 1600, 400);
-  if (style === 'postcard') {
-    const t = document.createElement('canvas'); t.width = 1600; t.height = 1000; const tg = t.getContext('2d');
-    tg.filter = 'sepia(.85) contrast(.82) brightness(1.08)'; tg.drawImage(c, 0, 0);
-    g.fillStyle = '#efe4cf'; g.fillRect(0, 0, 1600, 1000); g.drawImage(t, 56, 56, 1488, 888);
-    const img = g.getImageData(0, 0, 1600, 1000); for (let i = 0; i < img.data.length; i += 4) { const n = (r() - 0.5) * 34; img.data[i] += n; img.data[i + 1] += n; img.data[i + 2] += n; } g.putImageData(img, 0, 0);
-  }
-  return c.toDataURL('image/jpeg', 0.88);
-}
-$('#then').src = CONFIG.then || scene('postcard');
-$('#now').src = CONFIG.now || scene('photo');
-$('#ll').textContent = CONFIG.leftLabel; $('#lr').textContent = CONFIG.rightLabel; $('#stamp').textContent = CONFIG.stamp;
-let manual = null; // 用户拖动后的位置（百分比）
-function apply(x) {
-  $('#left').style.clipPath = `inset(0 ${100 - x}% 0 0)`;
-  $('#divider').style.left = `${x}%`;
-  $('#divider').style.opacity = x > 0.2 ? 1 : 0;
-  $('#divider').setAttribute('aria-valuenow', Math.round(x));
-}
-function render(t) {
-  const x = manual ?? MK.seg(t, CONFIG.tWipe, CONFIG.wipeDur, MK.ease.outQuart) * CONFIG.split;
-  apply(x);
-  $('#lr').style.opacity = MK.seg(t, 0.2, 0.3);
-  $('#ll').style.opacity = MK.seg(t, CONFIG.tWipe + 0.35, 0.3);
-  const k = MK.seg(t, CONFIG.tStamp, CONFIG.stampDur, MK.ease.outBack);
-  $('#stamp').style.opacity = MK.clamp(k * 3);
-  $('#stamp').style.transform = `rotate(${CONFIG.stampRotate}deg) scale(${CONFIG.stampFrom - (CONFIG.stampFrom - 1) * k})`;
-  $('#hint').style.opacity = MK.seg(t, 2.6, 0.5) * (manual == null ? 1 : 0);
-}
-// 拖动 / 键盘调节分割线
-const div = $('#divider');
-const fromX = (cx) => MK.clamp(cx / innerWidth, 0, 1) * 100;
-div.addEventListener('pointerdown', (e) => { div.setPointerCapture(e.pointerId); tl.pause(); manual = fromX(e.clientX); render(tl.time); });
-div.addEventListener('pointermove', (e) => { if (div.hasPointerCapture(e.pointerId)) { manual = fromX(e.clientX); render(tl.time); } });
-div.addEventListener('keydown', (e) => {
-  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-  e.preventDefault(); e.stopPropagation(); tl.pause();
-  manual = MK.clamp((manual ?? CONFIG.split) + (e.key === 'ArrowRight' ? 5 : -5), 0, 100); render(tl.time);
-});
-const tl = MK.timeline({ duration: CONFIG.duration, render, loop: false, markers: [{ t: CONFIG.tWipe, label: '分割线滑入' }, { t: CONFIG.tStamp, label: '盖章' }] });
-tl.on((t, playing) => { if (playing && t < 0.05) manual = null; });
-MK.expose(tl);
-MK.controls(tl);
-const P = MK.params();
-tl.seek(P.t ?? (MK.prefersReducedMotion() ? CONFIG.duration : 0));
-if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
-</script>
+  <!--
+    固定画幅舞台：MotionKit.stage() 把 #stage 设为 1920×1080 / 1080×1920 并整体等比缩放，内部一律用舞台像素。
+    层级（下 → 上）：太空 / 底图 → 地图降级遮罩 → 色调层 → 地图锚定图形（SVG：航线、节点、引线）→ 地图标签 →
+    卡片 → 全屏回忆 / 对比 → 压暗层 → 章节装饰 → 事件文字 → HUD → 收尾 → 颗粒与暗角
+  -->
+  <main id="stage" class="stage" aria-label="地图巡礼影像：关西三日">
+    <div id="plates" class="plates" aria-hidden="true"></div>
+    <canvas id="space" class="space" aria-hidden="true"></canvas>
+    <div id="map" class="map" aria-hidden="true"></div>
+    <div id="fallback" class="map-fallback" aria-hidden="true"></div>
+    <div id="veil" class="veil" aria-hidden="true"><span class="veil-tag">SYNCING MAP</span></div>
+    <div id="wash" class="wash" aria-hidden="true"></div>
+
+    <svg id="geo" class="geo" aria-hidden="true"></svg>
+    <i class="hud-fade top" aria-hidden="true"></i><i class="hud-fade bottom" aria-hidden="true"></i>
+    <div id="labels" class="labels" aria-hidden="true"></div>
+
+    <div id="cards" class="cards" aria-hidden="true"></div>
+
+    <section id="flashback" class="flashback" aria-hidden="true">
+      <div class="fb-media"></div>
+      <i class="fb-frame"></i>
+      <span class="fb-tag"></span>
+      <div class="fb-vtext"></div>
+      <p class="fb-en"><span class="fb-en-text"></span><i class="fb-caret"></i></p>
+      <p class="fb-caption"></p>
+    </section>
+
+    <section id="compare" class="compare" aria-hidden="true">
+      <div class="cmp-a"><div class="cmp-media"></div><span class="cmp-label"></span></div>
+      <div class="cmp-b"><div class="cmp-media"></div><span class="cmp-label"></span></div>
+      <i class="cmp-divider"><i class="cmp-knob"></i></i>
+      <i class="cmp-frame"></i>
+      <span class="cmp-stamp"></span>
+    </section>
+
+    <div id="scrim" class="scrim" aria-hidden="true"></div>
+
+    <div id="decor" class="decor" aria-hidden="true">
+      <svg class="frame-svg"><path class="fr-line"/></svg>
+      <i class="fr-c tl"></i><i class="fr-c tr"></i><i class="fr-c bl"></i><i class="fr-c br"></i>
+      <canvas class="halftone"></canvas>
+      <div class="tape"><i></i></div>
+    </div>
+
+    <section id="intro" class="intro-title" aria-hidden="true">
+      <div class="it-cjk"></div>
+      <div class="it-side">
+        <i class="it-rule"></i>
+        <h1 class="it-en"></h1>
+        <p class="it-sub"></p>
+      </div>
+    </section>
+
+    <section id="loc" class="loc-title" aria-hidden="true">
+      <div class="lt-cjk"></div>
+      <div class="lt-side"><i class="lt-rule"></i><h2 class="lt-en"></h2><p class="lt-sub"></p></div>
+    </section>
+
+    <section id="daycard" class="daycard" aria-hidden="true">
+      <div class="dc-row"><span class="dc-day">DAY</span><span class="dc-num"><i></i></span></div>
+      <p class="dc-date"></p>
+    </section>
+
+    <div id="chapter" class="chapter-tag" aria-hidden="true"><span class="ct-chip"></span><b class="ct-title"></b></div>
+
+    <div id="alert" class="alert" aria-hidden="true">
+      <div class="al-bar">
+        <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10v5M12 17.6v.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <b class="al-title"></b><span class="al-detail"></span>
+      </div>
+      <span class="al-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6l-7 6 7 6zM20 6l-7 6 7 6z" fill="currentColor"/></svg><span class="al-chip-text"></span></span>
+    </div>
+
+    <div id="toast" class="toast" aria-hidden="true">
+      <span class="ts-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 11h8M8 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span class="ts-body"><b class="ts-text"></b><span class="ts-sub"></span></span>
+    </div>
+
+    <figure id="note" class="note" aria-hidden="true">
+      <svg class="nt-doodle" viewBox="0 0 360 150" aria-hidden="true"></svg>
+      <p class="nt-text"></p>
+      <figcaption class="nt-sign"></figcaption>
+    </figure>
+
+    <header class="hud hud-top" aria-hidden="true">
+      <div class="hud-day">
+        <p class="hd-title"><b>DAY</b> <span class="hd-n"><i>01</i></span> <small>/ <span class="hd-total"></span></small></p>
+        <p class="hd-date"></p>
+      </div>
+      <svg class="compass" viewBox="-30 -30 60 60" aria-hidden="true">
+        <circle class="cp-ring" r="26"/>
+        <g class="cp-ticks"></g>
+        <g class="cp-needle"><path class="cp-n" d="M0 -20 L5 0 L-5 0Z"/><path class="cp-s" d="M0 20 L5 0 L-5 0Z"/></g>
+        <circle class="cp-hub" r="2.6"/>
+      </svg>
+      <div class="hud-geo"><p class="hg-coord"></p><p class="hg-elev"></p></div>
+      <div class="hud-clock"><span class="hc-time">00:00</span><span class="hc-tz"></span></div>
+    </header>
+    <svg id="hudgfx" class="hudgfx" aria-hidden="true"></svg>
+
+    <div id="badge" class="badge" aria-hidden="true">
+      <span class="bd-avatar"><svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M8 13l5 5h14l5-5v15a9 9 0 0 1-9 9h-6a9 9 0 0 1-9-9z" fill="#f2a94b"/>
+        <path d="M8 13l5 5h-5zM32 13l-5 5h5z" fill="#d9792c"/>
+        <circle cx="15.5" cy="25" r="1.9" fill="#16171a"/><circle cx="24.5" cy="25" r="1.9" fill="#16171a"/>
+        <path d="M18.4 29h3.2l-1.6 1.5z" fill="#c9452e"/>
+        <path d="M5 27h6M5 30.5h6M29 27h6M29 30.5h6" stroke="#16171a" stroke-width="1.2" stroke-linecap="round"/>
+      </svg></span>
+      <span class="bd-label"></span>
+      <b class="bd-n"><i>×0</i></b>
+    </div>
+
+    <footer class="hud hud-bottom" aria-hidden="true">
+      <div class="np">
+        <p class="np-head"><svg class="np-eq" viewBox="0 0 30 22" aria-hidden="true"><rect x="0" width="4" y="8" height="14"/><rect x="6.5" width="4" y="3" height="19"/><rect x="13" width="4" y="10" height="12"/><rect x="19.5" width="4" y="5" height="17"/><rect x="26" width="4" y="12" height="10"/></svg><span>NOW PLAYING</span></p>
+        <p class="np-track"><b class="np-title"></b> — <span class="np-artist"></span></p>
+        <p class="np-lyric"><span class="np-lyric-text"></span></p>
+        <p class="np-sub"></p>
+      </div>
+      <div class="scale" aria-hidden="true"><i class="sc-bar"><i></i><i></i></i><span class="sc-text"></span></div>
+    </footer>
+    <p class="attrib"></p>
+
+    <i class="outro-bg" aria-hidden="true"></i>
+    <section id="outro" class="outro" aria-hidden="true">
+      <ul class="ou-stats"></ul>
+      <p class="ou-fin"><span class="ou-fin-text"></span> <small class="ou-handle"></small></p>
+      <div class="ou-credits"></div>
+    </section>
+
+    <i id="grain" class="grain" aria-hidden="true"></i>
+    <i class="vignette" aria-hidden="true"></i>
+  </main>
+
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script src="paths.js"></script>
+  <script src="scenes.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -11,26 +11,26 @@
     "console",
     "showcase"
   ],
-  "summary": "把日序、坐标、时间、音乐与进度固定在四个角，中央留给世界；信息持续更新，画面就有了“系统在运行”的感觉。",
-  "mechanism": "左上日序与日期、右上坐标/海拔/缩放与大号时钟、左下正在播放与双语歌词、右下旅程步进器；顶部一条贯穿细线按进度填充强调色。数值由时间轨道驱动：时钟在同一天内连续推进、跨天时跳变；日序变化时数字从下方滚入。",
-  "trigger": "时间推进 / 旅程进度变化",
-  "effect": "信息层稳定而持续变化，观众随时知道“现在是哪天、几点、在哪、走到哪”。",
+  "summary": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。",
+  "mechanism": "仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawHud、cameraAt、clockAt、stepAtX、ruleX 按 caseT 求值。",
+  "trigger": "播放、暂停或 seek 到巧思时间 t。",
+  "effect": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。",
   "timing": [
     {
-      "name": "日序滚入",
-      "value": "460ms outCubic"
+      "name": "顶部 HUD 入场",
+      "value": "0s"
     },
     {
-      "name": "歌词打字",
-      "value": "700ms 线性，副行延迟 400ms 淡入"
+      "name": "跨天",
+      "value": "6.6s"
     },
     {
-      "name": "进度细线",
-      "value": "与步进器共用同一进度值，inOutCubic"
+      "name": "时长",
+      "value": "13.8s"
     },
     {
-      "name": "字号",
-      "value": "标签 12px 等宽、时钟 26–44px、日序 16–24px"
+      "name": "声音 voice",
+      "value": "click、kick、sub"
     }
   ],
   "useCases": [
@@ -44,7 +44,7 @@
     "需要大面积正文阅读的页面"
   ],
   "accessibility": {
-    "reducedMotion": "数值直接更新、不做滚入；时间轴静止在信息完整的一帧。",
+    "reducedMotion": "可使用时间轴暂停在完整帧。",
     "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
   },
   "composition": {
@@ -56,18 +56,102 @@
       "vertical-title-blur"
     ],
     "conflicts": [],
-    "notes": "四角各管一类信息，不要在同一角堆叠第二套系统；全屏图片时 HUD 改白字并加上下压暗层。"
+    "notes": "仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。"
   },
-  "prompt": "为【影像/操作台】加一套四角 HUD：左上“DAY 01 / 03”（日序数字用强调色，变化时 460ms 从下方滚入）+ 12px 等宽日期；右上 12px 等宽纬经度与“ELEV · Z”缩放，旁边 26–44px 等宽大号时钟 + 时区角标；左下 NOW PLAYING（均衡器小图标）+ 曲名 — 艺人 + 一行加粗歌词与一行灰色译文（打字推进）；右下 4 站旅程步进器（节点实心表示已到达，连线按进度填充）；顶部贯穿一条 1px 细线，按旅程进度填充 3px 强调色。所有数值由时间轨道驱动、可 seek；中央完全留空给画面。所有文字 ≥12px。",
+  "prompt": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。复用地图巡礼的 drawHud、cameraAt、clockAt、stepAtX、ruleX 与对应 CSS。仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。片段：caseT 7→13.6；caseT 35.8→42.4；时长 13.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
   "demo": "demos/patterns/corner-hud/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage",
-      "observation": "全片持续显示 DAY xx / 07、日期、坐标、ELEV·Z、JST 时钟、YUI SPOTTED 计数、NOW PLAYING 与双语歌词、SEOUL–KANSAI–KYOTO–TOKYO 步进器。",
+      "observation": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。",
       "evidence": "observed",
-      "locator": "0:16.5、1:14.5、2:08.5"
+      "locator": "caseT 7→13.6；caseT 35.8→42.4"
     }
   ],
-  "previewAt": 7.2
+  "previewAt": 7.2,
+  "markers": [
+    {
+      "t": 0,
+      "label": "顶部 HUD 入场"
+    },
+    {
+      "t": 6.6,
+      "label": "跨天"
+    }
+  ],
+  "sound": {
+    "voices": [
+      "click",
+      "kick",
+      "sub"
+    ],
+    "score": "demos/patterns/corner-hud/score.json",
+    "description": "MotionKit.audio.attach 挂接事件：click、kick、sub。"
+  },
+  "tokens": {
+    "palette": [
+      "#f1eee7",
+      "#16171a",
+      "#d9562c",
+      "#e23b3b"
+    ],
+    "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
+    "css": {
+      "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+      "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+      "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+      "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+      "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+      "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+      "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+      "--paper": "#f1eee7",
+      "--ink": "#16171a",
+      "--ink-map": "#16171a",
+      "--muted": "rgba(22, 23, 26, .62)",
+      "--line": "rgba(22, 23, 26, .26)",
+      "--accent": "#d9562c",
+      "--accent-soft": "rgba(217, 86, 44, .22)",
+      "--surface": "rgba(250, 249, 245, .94)",
+      "--alert": "#e23b3b"
+    },
+    "motion": [
+      {
+        "name": "顶部 HUD 入场",
+        "value": "0s"
+      },
+      {
+        "name": "跨天",
+        "value": "6.6s"
+      },
+      {
+        "name": "时长",
+        "value": "13.8s"
+      }
+    ]
+  },
+  "migration": [
+    {
+      "field": "复制的函数",
+      "how": "drawHud、cameraAt、clockAt、stepAtX、ruleX"
+    },
+    {
+      "field": "依赖",
+      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+    },
+    {
+      "field": "需要的数据",
+      "how": "config.js 的 tracks.camera / clock / day / progress / lyrics、stepper 与横竖 layout。"
+    },
+    {
+      "field": "config.js → segments / markers",
+      "how": "caseT 7→13.6；caseT 35.8→42.4"
+    },
+    {
+      "field": "score.json",
+      "how": "事件 voice：click、kick、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+    }
+  ]
 }

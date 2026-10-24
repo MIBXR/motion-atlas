@@ -10,22 +10,26 @@
     "video",
     "showcase"
   ],
-  "summary": "大号数字逐行出现并快速计数，右侧配等宽小字标签，最后以衬线“— fin.”与署名收束；像游戏结算界面，给旅程一个“分数”。",
-  "mechanism": "每行错峰 320ms，450ms 上移淡入；数字 900ms outQuart 从 0 计到目标值（前段快速跳数、末尾放慢落定），支持前缀 × 与后缀 km；结尾文字逐字模糊入场（60ms 错峰），致谢最后淡入。",
-  "trigger": "片尾 / 展示结束",
-  "effect": "把叙事中的线索（天数、地点、计数）总结成可感知的成就。",
+  "summary": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
+  "mechanism": "drawOutro 的统计行、数值计数与 fin.。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawOutro、blurIn 按 caseT 求值。",
+  "trigger": "播放、暂停或 seek 到巧思时间 t。",
+  "effect": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
   "timing": [
     {
-      "name": "行错峰",
-      "value": "320ms"
-    },
-    {
-      "name": "计数",
-      "value": "900ms outQuart，千分位格式"
+      "name": "统计",
+      "value": "0.65s"
     },
     {
       "name": "fin.",
-      "value": "逐字 500ms，错峰 60ms，模糊 12px"
+      "value": "2.4s"
+    },
+    {
+      "name": "时长",
+      "value": "5.2s"
+    },
+    {
+      "name": "声音 voice",
+      "value": "blip、tick、bell、shimmer、sub"
     }
   ],
   "useCases": [
@@ -38,7 +42,7 @@
     "数字没有实际意义时（会显得空洞）"
   ],
   "accessibility": {
-    "reducedMotion": "数字直接显示最终值。",
+    "reducedMotion": "可使用时间轴暂停在完整帧。",
     "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
   },
   "composition": {
@@ -48,18 +52,104 @@
       "corner-hud"
     ],
     "conflicts": [],
-    "notes": "背景保留全程鸟瞰地图或路线，数字与路线互相印证。"
+    "notes": "drawOutro 的统计行、数值计数与 fin.。"
   },
-  "prompt": "实现片尾数据堆叠：左侧垂直列表，每行“大号数字（DIN 类 800 字重，34–86px，等宽数字）+ 12px 等宽标签（字距 .22em）”；第 i 行在 t0 + i×320ms 以 450ms 上移 14px 淡入，数字 900ms outQuart 从 0 计数到目标值（支持“×”前缀与“ km”后缀、千分位）。最后一行下方用衬线体写“标题 — fin.”，逐字 60ms 错峰模糊入场，再淡入署名与 12px 致谢。背景保留淡化的完整路线。",
+  "prompt": "收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
   "demo": "demos/patterns/outro-stat-stack/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage",
-      "observation": "7 DAYS · 2 COUNTRIES / 5 WORKS VISITED / 3 NOTES LEFT / ×19 SIGHTINGS / 1,159 km + 衬线「聖地巡礼 — fin.」与署名、音乐与动画出处。",
+      "observation": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
       "evidence": "observed",
-      "locator": "2:30.5"
+      "locator": "caseT 55.6→60"
     }
   ],
-  "previewAt": 4.2
+  "previewAt": 4.2,
+  "markers": [
+    {
+      "t": 0.65,
+      "label": "统计"
+    },
+    {
+      "t": 2.4,
+      "label": "fin."
+    }
+  ],
+  "sound": {
+    "voices": [
+      "blip",
+      "tick",
+      "bell",
+      "shimmer",
+      "sub"
+    ],
+    "score": "demos/patterns/outro-stat-stack/score.json",
+    "description": "MotionKit.audio.attach 挂接事件：blip、tick、bell、shimmer、sub。"
+  },
+  "tokens": {
+    "palette": [
+      "#f1eee7",
+      "#16171a",
+      "#d9562c",
+      "#e23b3b"
+    ],
+    "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
+    "css": {
+      "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+      "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+      "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+      "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+      "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+      "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+      "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+      "--paper": "#f1eee7",
+      "--ink": "#16171a",
+      "--ink-map": "#16171a",
+      "--muted": "rgba(22, 23, 26, .62)",
+      "--line": "rgba(22, 23, 26, .26)",
+      "--accent": "#d9562c",
+      "--accent-soft": "rgba(217, 86, 44, .22)",
+      "--surface": "rgba(250, 249, 245, .94)",
+      "--alert": "#e23b3b"
+    },
+    "motion": [
+      {
+        "name": "统计",
+        "value": "0.65s"
+      },
+      {
+        "name": "fin.",
+        "value": "2.4s"
+      },
+      {
+        "name": "时长",
+        "value": "5.2s"
+      }
+    ]
+  },
+  "migration": [
+    {
+      "field": "复制的函数",
+      "how": "drawOutro、blurIn"
+    },
+    {
+      "field": "依赖",
+      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+    },
+    {
+      "field": "需要的数据",
+      "how": "config.js 的 tracks.outro 与横竖 layout；58s 底图包含已完成路线和标记圆点。"
+    },
+    {
+      "field": "config.js → segments / markers",
+      "how": "caseT 55.6→60"
+    },
+    {
+      "field": "score.json",
+      "how": "事件 voice：blip、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+    }
+  ]
 }

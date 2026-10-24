@@ -30,7 +30,6 @@
     "background": "#e8e5e1",
     "timeline": true,
     "kit": true,
-    "fontFloor": "reference",
     "renderer": "gpu",
     "previewAt": 14,
     "energy": [],
@@ -114,7 +113,7 @@
       "imagery": "原版档案 GLB 与可拆解 GLB 原样复用；档案文本来自 content/archives.json，下载文本来自 app/archives/。来源：vendor/rhinelabui/src/scene.ts、model-viewer.ts、data.ts。",
       "layout": "横屏舞台 1920×1080，竖屏 1080×1920；iframe 的实际宽高交给原版 viewport-layout 决定桌面或 portrait 布局，portrait 分界为宽高比 < 1.05。来源：vendor/rhinelabui/src/viewport-layout.ts。",
       "sound": "三轨原创配乐与原版音效合成均由上游 audio.ts 调度；逐字输入使用三个 38ms 原 PV 采样。来源：vendor/rhinelabui/src/audio.ts、typing-samples.ts、licenses/audio/README.md。",
-      "typography": "保留原版字号与 MiSans 分片字体，不放大。字体包为 misans-webfont@4.3.1，Version 4.003。来源：vendor/rhinelabui/src/fonts.css、licenses/fonts/NOTICE.txt。字号检查使用 fontFloor:reference。"
+      "typography": "保留原版字号与 MiSans 分片字体，不放大。字体包为 misans-webfont@4.3.1，Version 4.003。来源：vendor/rhinelabui/src/fonts.css、licenses/fonts/NOTICE.txt。舞台字号按设计决定，不设下限；网站界面 ≥ 12px。"
     },
     "tokens": {
       "palette": [
@@ -206,7 +205,7 @@
     ],
     "constraints": [
       "忠实复用上游源码、模型、字体、音频与档案内容。上游修改边界及逐文件原因见 vendor/rhinelabui/UPSTREAM.md。",
-      "原版字号按 fontFloor:reference 豁免，不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。",
+      "舞台字号按设计决定，不设下限；网站界面 ≥ 12px。不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。",
       "《明日方舟》及莱茵生命相关名称、标志、设定、原片和音频采样的权利归各自权利人所有。许可全文与免责声明见 demos/cases/archive-os/LICENSES.md。"
     ],
     "prompt": "将 LBEILC/RhineLabUI 提交 12cc5e4 忠实移植为 Motion Atlas 案例。源码、两份 GLB、MiSans 字体、三轨配乐、合成音效、逐字输入采样与四十份档案内容原样复用；仅接入固定画幅、60Hz 虚拟时钟、输入胶片与统一音轨。开场自然运行至首次 detail，之后按胶片表演示页签、360° 查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏 1920×1080、竖屏 1080×1920，由原版 viewport-layout 排版。保留上游视觉、字号、文案、动效参数、缓动与音量声像。",
@@ -271,8 +270,8 @@
     "previewPortrait": "previews/cases/archive-os-portrait.jpg"
   },
   "documents": {
-    "prompt": "# 莱茵生命档案终端 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/archive-os.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/archive-os.md)。\n\n## 实现 Prompt\n\n将 LBEILC/RhineLabUI 提交 12cc5e4 忠实移植为 Motion Atlas 案例。源码、两份 GLB、MiSans 字体、三轨配乐、合成音效、逐字输入采样与四十份档案内容原样复用；仅接入固定画幅、60Hz 虚拟时钟、输入胶片与统一音轨。开场自然运行至首次 detail，之后按胶片表演示页签、360° 查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏 1920×1080、竖屏 1080×1920，由原版 viewport-layout 排版。保留上游视觉、字号、文案、动效参数、缓动与音量声像。\n\n## 视频生成 Prompt\n\nA faithful port of LBEILC/RhineLabUI at commit 12cc5e4. Preserve the original white opening, Rhine Lab identity, five-column archive array, diagonal decryption, document tabs, 360-degree model viewer, frosted and clear glass, six-part exploded structure and reassembly. Reuse the original models, typefaces, archive texts, music and sound. Use landscape 1920×1080 or portrait 1080×1920 through the original viewport layout. Follow the recorded film inputs without redesigning any visual or motion parameter.\n\n## 负向约束\n\n不要改造原版视觉、布局、字号、文案、动效参数、缓动、模型、字体、档案或声音；不要增添外层 UI、文字与装饰；不要裁剪或加速开场；不要修改胶片动作序列。\n\n## 动效 Token\n\n- **boot-window**：25fps 离散帧窗；应用内部时间 0 对应参考 PV 5s。来源：vendor/rhinelabui/src/boot-motion.ts。\n- **orbit**：临界阻尼速率 3.7。来源：vendor/rhinelabui/src/scene.ts、motion.ts。\n- **select-lift**：常规选中抬起临界阻尼速率 4.2。来源：vendor/rhinelabui/src/scene.ts。\n- **roll**：滚动时长 460ms。来源：vendor/rhinelabui/src/main.ts。\n- **idle**：交互停止 2.5s 后进入空闲呼吸。来源：vendor/rhinelabui/src/scene.ts。\n- **decrypt**：交互解密进度按 (39.56−34.12)/1.5 = 3.6267s 运行。来源：vendor/rhinelabui/src/decryption.ts 的 DECRYPTION_START、DECRYPTION_END、INTERACTIVE_RATE。\n- **quality**：performance / original / high / ultra 四种上游画质预设；默认 original。来源：vendor/rhinelabui/src/render-quality.ts。\n\n## 制作约束\n\n- 忠实复用上游源码、模型、字体、音频与档案内容。上游修改边界及逐文件原因见 vendor/rhinelabui/UPSTREAM.md。\n- 原版字号按 fontFloor:reference 豁免，不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。\n- 《明日方舟》及莱茵生命相关名称、标志、设定、原片和音频采样的权利归各自权利人所有。许可全文与免责声明见 demos/cases/archive-os/LICENSES.md。\n\n## 迁移\n\n- `vendor/rhinelabui/src/、content/`：上游源码与档案内容快照；仅修改 UPSTREAM.md 登记的协议接入点。\n- `vendor/rhinelabui/film/`：虚拟时钟、输入时间表与原版声音离线渲染。\n- `demos/cases/archive-os/app/`：Vite 产物与上游 public/ 的全部运行时资源。\n- `demos/cases/archive-os/script.js`：MotionKit 舞台、时间轴、iframe 胶片重建、手动模式与单事件音轨。\n\n[打开 Demo](../../demos/cases/archive-os/index.html) · [在库中查看](../../cases.html#case/archive-os)\n",
-    "research": "# 莱茵生命档案终端：RhineLabUI 移植记录\n\n本案例复用 [LBEILC / RhineLabUI](https://github.com/LBEILC/RhineLabUI) 提交 `12cc5e4013acb9408f753ff71de6b8492299b7c8` 的源码、模型、字体、音频和档案内容。移植边界是 Motion Atlas 的舞台、时间轴、预加载与统一音频协议；原版视觉、排版、字号、文案、动效参数、缓动和交互行为由上游实现负责。\n\n上游来源为只读目录 `C:/Users/mibxr/AppData/Local/Temp/mmref/RhineLabUI`；对照运行副本位于本任务指定的 `reference-runtime`。源码快照、许可与逐文件接入登记见 [UPSTREAM.md](../../vendor/rhinelabui/UPSTREAM.md)，运行时资源集中存放在 `demos/cases/archive-os/app/`。上游 `public/` 不在 vendor 中重复保存；`art/`、`docs/`、`reference/`、`verification/`、`wallpaper/` 和部署配置不属于本案例快照。\n\n## 上游架构\n\n| 来源文件 | 当前职责 |\n| --- | --- |\n| `src/main.ts` | 应用模式、档案阅读、页签、检索、收藏、偏好与键盘操作。 |\n| `src/boot.ts`、`src/boot-motion.ts`、`src/boot-lettering.ts` | 白底开场、文字输入、品牌标志、身份接入、权限验证与开场帧窗。 |\n| `src/scene.ts`、`src/archive-loop.ts`、`src/motion.ts` | Three.js 档案场景、循环位置、选中抬起、抽取、归位、波形与阻尼。 |\n| `src/decryption.ts`、`src/document-decryption.ts` | 模型对角解密与正文同步揭示。 |\n| `src/model-viewer.ts` | 独立模型查看器、玻璃状态、旋转、平移、缩放、复位、六组结构拆解与重组。 |\n| `src/viewport-layout.ts` | 根据真实视口选择 desktop、compact 或 portrait 布局及模型取景。 |\n| `src/render-quality.ts`、`src/quality-renderer.ts` | performance、original、high、ultra 预设及渲染管线。 |\n| `src/audio.ts`、`src/typing-samples.ts` | 三轨配乐、交互合成音、开场音与逐字输入采样。 |\n| `content/archives.json`、`src/data.ts` | 页面档案数据与阵列位置映射。五列分别为工程研究、生命科学、机构档案、能量研究、特别项目，各八份，共四十份档案。 |\n\n开场的离散视觉帧窗为 25fps，应用内部时间 0 对应参考 PV 的 5s，来源为 `src/boot-motion.ts`。列镜头与阵列轨道在常规选择过渡中使用临界阻尼速率 3.7，常规选中抬起使用 4.2；交互停止 2.5s 后进入空闲呼吸，来源为 `src/scene.ts` 与 `src/motion.ts`。数字滚动时长为 460ms，来源为 `src/main.ts`。交互解密的源码进度时长为 `(39.56 - 34.12) / 1.5 = 3.6267s`，来源为 `src/decryption.ts`；该值是源码推导值。\n\n## 接入边界与文件\n\n上游文件的每处接入修改使用 `// MOTION-ATLAS:` 标记；逐文件清单、原因和原任务条目号统一登记在 [UPSTREAM.md](../../vendor/rhinelabui/UPSTREAM.md)。接入范围为虚拟时钟、仅跳过 GPU 绘制的门控、胶片模式入口、可注入的音频上下文与时间源、相对资源路径和 URL 画质映射。CSS、档案数据、模型、字体和上游音频资源保持原版内容。\n\n| 接入位置 | 职责 |\n| --- | --- |\n| `vendor/rhinelabui/film/` | 虚拟时钟、胶片输入时间表与原版声音离线渲染。 |\n| `vendor/rhinelabui/build.mjs` | 构建相对路径 Vite 产物；`--sync-assets` 将只读上游 public 资源同步至 app。 |\n| `demos/cases/archive-os/index.html`、`script.js`、`config.js`、`style.css` | MotionKit 舞台、同源 iframe、时间轴协议、预加载、手动模式与完整音轨事件。外层不添加 UI、文字或装饰。 |\n| `kit/motion-kit.js` | `audio.dsp.sample()` 登记采样声部；`sustainedAt` 对带 `resume:true` 和 `dur` 的函数音色提供 offset 接续。 |\n| `scripts/check.mjs`、`scripts/smoke.mjs` | 读取条目 `fontFloor:reference`，保留上游字号；运行时最小字号来自 iframe 可见文本计算字号乘舞台缩放比。 |\n| `scripts/smoke.mjs`、`scripts/capture.mjs` | 读取条目 `renderer:gpu`，独立启动GPU浏览器并核验实际renderer；smoke等待seek/play完成后开始原播放计时窗口。 |\n\n逐文件接入清单与 UPSTREAM.md 一致；文件名以下均相对 `vendor/rhinelabui/`：\n\n| 文件 | 要求条目 | 当前接入及必要性 |\n| --- | --- | --- |\n| `src/main.ts` | §3.3、§3.6、§4.2、§6.1 | film入口、白底F0、原版post-entry focus、quality映射及离线声音；字体与双GLB完成后，frame(0)结束才ready。非film沿用原入口。 |\n| `src/scene.ts` | §3.2、§4.2 | 共享assembly GLB Promise以供film资源加载；查看器仍在打开时克隆原模型；GPU门控位于状态更新之后，跳绘时使绘制缓存失效。 |\n| `src/model-viewer.ts` | §3.2 | 仅门控composer/renderer绘制，保留原查看器创建、分组、生命周期、控制与状态更新。 |\n| `src/shared-depth.ts` | §3.2 | 为AO、深度override和Bokeh三个只绘制的pass添加GPU门控。 |\n| `src/wallpaper.ts` | §3.3 | film=1时isWallpaper为false，不启用壁纸宿主。 |\n| `src/audio.ts` | §3.3、§3.4、§6.1、§6.5 | 音频统一通过原发声入口，注入BaseAudioContext和now()；film自动播放不创建实时输出，手动模式按宿主开关恢复；OfflineAudioContext使用原合成、三轨配乐、增益、声像和采样排程；暴露离线渲染及实际声部事件记录。 |\n| `index.html` | §3.1、§3.5 | 在应用包之前同步加载clock-shim.js；manifest、图标使用相对public路径。 |\n| `vite.config.ts` | §3.5、§5 | base为./、publicDir为false、outDir指向app、emptyOutDir为false；模型映射使用原public文件名，Novecento存在性从app资源目录判断，保证运行资源只存一份。 |\n\n新增文件：\n\n| 文件 | 要求条目 | 当前接入及必要性 |\n| --- | --- | --- |\n| `film/clock-shim.js` | §3.1、§4.2及同钟对照授权 | film模式安装60Hz驱动/实时虚拟时钟、固定日期、mulberry32随机数及Web Animations/CSS动画采样。显式opt-in `__filmClockRequested` / `__filmClockStartFrame` 供只读原版CDP使用相同F0/60Hz时钟对齐；正常film起点仍为0，不改变其行为。 |\n| `film/app.ts` | §3.3、§4.2 | ready、字体/双GLB/首帧进度、原rhine.stats与页签/查看器状态及失败传播，不添加UI。 |\n| `film/sequence.js` | §4.3、§4.4 | 提供自然开场后的A/B动作、九个标记、键盘/点击/拖拽派发及状态快照；横竖使用相同动作时刻。仅有film时钟时临时使programmatic focus附focusVisible:false，避免合成指针继承键盘焦点外框；cancel进入手动时恢复原生focus，不修改原CSS或事件处理器。 |\n| `film/render-audio.mjs` | §6.1 | 驱动完整胶片，在注入的OfflineAudioContext渲染48kHz双声道WAV，并以libvorbis q=6编码完整OGG音轨。 |\n| `build.mjs` | §3.5、§5 | 清理上次Vite index与带哈希JS/CSS，保留原public资源；--sync-assets同步全部运行时资源；构建后将产物CSS的/fonts/解析为../fonts/，复制clock/sequence并输出产物清单及大小。上游src/fonts.css保持原样。 |\n| `scripts/patch-rolling-number.mjs` | §5必要补充 | 按上游原字节复制package.json既有postinstall调用的安装脚本，使npm ci完成与上游一致的依赖补丁。 |\n| `UPSTREAM.md` | §2、§3 | 记录固定上游来源、快照边界与当前逐文件接入清单。 |\n\n依赖在 `vendor/rhinelabui/` 中由上游 package-lock 锁定。`npm run build:archive` 生成 app 构建产物；站点构建直接使用入库产物，不依赖重新构建上游应用。静态站点部署目录包含 app，源码快照 vendor 不进入 dist。\n\n## 胶片驱动\n\n舞台支持横屏 1920×1080 与竖屏 1080×1920，iframe 的实际宽高恰好等于舞台尺寸。原版 `viewport-layout.ts` 根据宽高比选择布局：低于 1.05 为 portrait。外层通过 `app/index.html?film=1&quality=<q>` 加载应用；quality 对应上游已有四档预设，默认 original。\n\n外层在首次iframe加载前以临时WebGL canvas识别SwiftShader、llvmpipe、Software或Microsoft Basic Render；软件GL且URL未显式指定quality时使用原版performance预设，显式quality始终优先，__motion提供只读quality与softwareGL供验证。\n\n加载阶段完成字体、双GLB与白底首帧；WebGL程序按原版首次绘制路径创建，查看器在打开时创建。条目renderer:gpu声明smoke/capture使用独立GPU浏览器，核验并打印实际renderer，实际软件渲染判失败；其他条目保持默认环境。\n\n外层以原生performance.now和独立墙钟累加器维护胶片时间，timeline的render、seek、play、pause、on(fn)与setRate读取统一时间。播放每个host RAF取target=floor(wall*60)，完整更新全部中间状态步并跳过中间GPU绘制，只绘制目标步；不设30步推进上限。pause冻结当前实际frame/60并清除播放队列；pause与seek递增播放请求序号，异步重建后仅最新且未取消的请求能够startPlay。seek与离线render路径保持原固定步重建和目标帧绘制，seek的Promise等待目标步完成。\n\nseek/play可以返回Promise；smoke等待seek(0)和play()完成后，再记录起始时刻并执行原1500ms播放窗口与0.5s推进门槛。\n\n胶片时刻以 1/60s 为固定网格，输入目标量化为 `round(t*60)`。虚拟时钟在每步中先按到期顺序执行定时器，再执行一轮 RAF。日期纪元为 2026-01-01T00:00:00Z，随机数使用种子 0x5EED 的 mulberry32。前进定位跳过中间 GPU 绘制并保留所有状态更新，在目标步绘制；后退或手动操作后的定位重新加载 iframe 并从零步进。连续 seek 合并为最后一个目标，加载期间报告 `motion:loading`。\n\n胶片输入期间，仅当iframe存在film虚拟时钟时，对原有programmatic focus临时附加focusVisible:false，使合成指针不会继承键盘可见焦点样式；原CSS和事件处理器保持不变。退出胶片输入时恢复原生focus。\n\n暂停时的真实键盘、鼠标或触摸输入进入手动状态，应用时钟跟随真实时间，交互保留原版功能。下一次播放或定位重建胶片。画幅切换以另一尺寸重新加载 iframe 并恢复当前时刻。\n\n开场从白底第一帧自然运行，不发送输入，不跳过，不加速。A 为驱动模式中应用首次进入 detail 的固定步时刻，向上取整至 0.1s；B=A+27.6s，整部 duration=A+42.6s。实测 A=35.0s（第2100步），阵列视觉阶段在22.0s（第1320步）开始；B=62.6s，duration=77.6s。来源：[opening.json](../../dev/shots/T5r/opening.json)。阵列视觉阶段开始时 mode 仍为 boot，首次 detail 自然读取 X-001。\n\n| 相对时刻 | 输入 |\n| --- | --- |\n| A+7.5s / +10s / +12.5s | 研究记录 / 访问日志 / 概述页签。 |\n| A+14s / +15.7s / +17.4s | 打开查看器 / 磨砂 / 清晰。 |\n| A+19.1s | 拆解档案。 |\n| A+20.9s 至 +21.9s | 从查看器画布中心拖拽，40 步，每步 25ms；每步位移 x=舞台宽×6/1600、y=舞台高×1/900。 |\n| A+22.5s / +23.35s / +25.15s | 复位 / 重组 / 关闭查看器。 |\n| A+25.6s | Escape 返回阵列。 |\n| B / +1s | ArrowDown 两次。 |\n| B+2s / +3s / +4s | ArrowRight 三次。 |\n| B+5s / +6s / +7s / +8s | ArrowUp、ArrowUp、ArrowDown、ArrowDown。 |\n| B+9s / +9.35s / +10.4s / +11.4s / +12.4s | ArrowLeft 三次，再 ArrowUp 两次。 |\n| B+15s | 胶片结束。 |\n\n标记为开场、档案阵列、自动读取、页签、360° 查看器、拆解、重组、返回阵列、四向浏览。各标记绝对时刻为0、22.0、35.0、42.5、49.0、54.1、58.35、60.6、62.6s，来源为 `film/sequence.js` 与实测 `opening.json`。\n\n\n横竖画幅的浏览轨迹一致，实际结果见 [sequence.json](../../dev/shots/T5r/sequence.json)。表中列与行使用原版界面的一基编号：\n\n| 胶片时刻 F | 输入 | 实际选中 | 列 / 行 |\n| --- | --- | --- | --- |\n| 62.6s | ArrowDown | X-006 | 03 / 02 |\n| 63.6s | ArrowDown | X-013 | 03 / 03 |\n| 64.6s | ArrowRight | X-004 | 04 / 01 |\n| 65.6s | ArrowRight | X-008 | 05 / 01 |\n| 66.6s | ArrowRight | X-002 | 01 / 01 |\n| 67.6s | ArrowUp | X-022 | 01 / 08 |\n| 68.6s | ArrowUp | X-021 | 01 / 07 |\n| 69.6s | ArrowDown | X-022 | 01 / 08 |\n| 70.6s | ArrowDown | X-002 | 01 / 01 |\n| 71.6s | ArrowLeft | X-008 | 05 / 01 |\n| 71.95s | ArrowLeft | X-004 | 04 / 01 |\n| 73s | ArrowLeft | X-013 | 03 / 03 |\n| 74s | ArrowUp | X-006 | 03 / 02 |\n| 75s | ArrowUp | X-001 | 03 / 01 |\n\n66.6s 的右移完成列05→01，71.6s 的左移完成列01→05；67.6s 的上移完成行01→08，70.6s 的下移完成行08→01。73.0s 返回第03列时恢复该列记忆的 X-013，75.0s 回到 X-001。两种画幅均记录到上述循环，浏览器错误均为0。\n\n## 声音生成与播放\n\n`film/render-audio.mjs` 通过无头浏览器加载 `?film=1&audio=offline`，向上游音频注入长度为整部 duration 的 OfflineAudioContext。音频 now() 返回胶片时刻；驱动器以固定步完成全部动作，中间跳过 GPU 绘制，所有声音按胶片时刻排程。随后 startRendering() 输出 48kHz 双声道 WAV，由 ffmpeg 的 libvorbis、q=6 编码为 `demos/cases/archive-os/film-audio.ogg`。配乐、合成算法、采样、音量和声像均来自上游 `audio.ts`。\n\n外层通过 `MotionKit.audio.attach` 挂单个完整音轨事件，事件带 duration、`resume:true` 与 music 总线。函数音色使用 `dsp.sample` 和 offset 播放同一解码音轨；播放、暂停、跳转与 `renderWav` 走 kit 的统一链路，主链路保留 -1dBFS 天花板。站点关闭声音时 kit 静音，手动状态同时关闭应用自身 sound 与 music 偏好，打开时恢复。\n\n入库音轨为77.6s、48kHz、双声道Vorbis，libvorbis q=6，文件大小1,333,228字节。已核对106个发声事件，其中10个开场cue、71个逐字输入短音、25个交互音；三轨配乐与声像核对见 [verification.json](../../dev/shots/T5r/audio/verification.json)，编码规格见 [ffprobe.json](../../dev/shots/T5r/audio/ffprobe.json)。\n\n三轨配乐为上游原创程序编配，逐字输入使用原 PV 约 6.864–6.986s 的三个 38ms 短音。原音与衍生片段不属于原创配乐的 MIT 授权范围，来源见 `vendor/rhinelabui/licenses/audio/README.md`。\n\n## 许可与署名\n\n上游作者创作且有权授权的内容采用 MIT，署名为 Copyright (c) 2026 LBEILC；PR15 署名保留 LBEILC / RhineLabUI、PacificSauryMan 及原文辅助工具说明。MiSans、Rolling Number 等第三方资源遵守各自许可证。\n\nMIT、PR15、MiSans NOTICE、Rolling Number、音频来源及上游 README 的第三方权利原文集中在 [LICENSES.md](../../demos/cases/archive-os/LICENSES.md)。MiSans PDF 位于 [app/fonts/MiSans-license.pdf](../../demos/cases/archive-os/app/fonts/MiSans-license.pdf)。\n\n本案例为 RhineLabUI 的移植，属非官方作品；《明日方舟》及莱茵生命相关名称、标志、设定、原片与原片音频采样的权利归各自权利人所有。\n\n## 验证记录\n\n本记录的源码事实已由本地只读上游与 vendor 快照核对；档案数据核实为四十份、五列各八份。驱动使用真实 Intel Iris Xe / ANGLE D3D11；22.0s阵列视觉阶段、35.0s首次detail、横竖双向循环及浏览器错误0的证据分别保存在 `opening.json` 与 `sequence.json`。LICENSES.md 的 MIT、MiSans NOTICE、Rolling Number、PR15 与 README 两段第三方说明已与只读上游原文比对一致。\n\n驱动实测的 A、阵列视觉阶段时刻、duration、选中项、34 张逐拍对照、seek 确定性、性能、ready/download、三次专用 smoke、全量 smoke、构建、预览、MP4、音频和手动模式，统一以 [T5r 报告](../../dev/reports/T5r.md) 的实际结果与证据路径为准。本文件不将尚未执行的验收项记为通过。\n"
+    "prompt": "# 莱茵生命档案终端 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/archive-os.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/archive-os.md)。\n\n## 实现 Prompt\n\n将 LBEILC/RhineLabUI 提交 12cc5e4 忠实移植为 Motion Atlas 案例。源码、两份 GLB、MiSans 字体、三轨配乐、合成音效、逐字输入采样与四十份档案内容原样复用；仅接入固定画幅、60Hz 虚拟时钟、输入胶片与统一音轨。开场自然运行至首次 detail，之后按胶片表演示页签、360° 查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏 1920×1080、竖屏 1080×1920，由原版 viewport-layout 排版。保留上游视觉、字号、文案、动效参数、缓动与音量声像。\n\n## 视频生成 Prompt\n\nA faithful port of LBEILC/RhineLabUI at commit 12cc5e4. Preserve the original white opening, Rhine Lab identity, five-column archive array, diagonal decryption, document tabs, 360-degree model viewer, frosted and clear glass, six-part exploded structure and reassembly. Reuse the original models, typefaces, archive texts, music and sound. Use landscape 1920×1080 or portrait 1080×1920 through the original viewport layout. Follow the recorded film inputs without redesigning any visual or motion parameter.\n\n## 负向约束\n\n不要改造原版视觉、布局、字号、文案、动效参数、缓动、模型、字体、档案或声音；不要增添外层 UI、文字与装饰；不要裁剪或加速开场；不要修改胶片动作序列。\n\n## 动效 Token\n\n- **boot-window**：25fps 离散帧窗；应用内部时间 0 对应参考 PV 5s。来源：vendor/rhinelabui/src/boot-motion.ts。\n- **orbit**：临界阻尼速率 3.7。来源：vendor/rhinelabui/src/scene.ts、motion.ts。\n- **select-lift**：常规选中抬起临界阻尼速率 4.2。来源：vendor/rhinelabui/src/scene.ts。\n- **roll**：滚动时长 460ms。来源：vendor/rhinelabui/src/main.ts。\n- **idle**：交互停止 2.5s 后进入空闲呼吸。来源：vendor/rhinelabui/src/scene.ts。\n- **decrypt**：交互解密进度按 (39.56−34.12)/1.5 = 3.6267s 运行。来源：vendor/rhinelabui/src/decryption.ts 的 DECRYPTION_START、DECRYPTION_END、INTERACTIVE_RATE。\n- **quality**：performance / original / high / ultra 四种上游画质预设；默认 original。来源：vendor/rhinelabui/src/render-quality.ts。\n\n## 制作约束\n\n- 忠实复用上游源码、模型、字体、音频与档案内容。上游修改边界及逐文件原因见 vendor/rhinelabui/UPSTREAM.md。\n- 舞台字号按设计决定，不设下限；网站界面 ≥ 12px。不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。\n- 《明日方舟》及莱茵生命相关名称、标志、设定、原片和音频采样的权利归各自权利人所有。许可全文与免责声明见 demos/cases/archive-os/LICENSES.md。\n\n## 迁移\n\n- `vendor/rhinelabui/src/、content/`：上游源码与档案内容快照；仅修改 UPSTREAM.md 登记的协议接入点。\n- `vendor/rhinelabui/film/`：虚拟时钟、输入时间表与原版声音离线渲染。\n- `demos/cases/archive-os/app/`：Vite 产物与上游 public/ 的全部运行时资源。\n- `demos/cases/archive-os/script.js`：MotionKit 舞台、时间轴、iframe 胶片重建、手动模式与单事件音轨。\n\n[打开 Demo](../../demos/cases/archive-os/index.html) · [在库中查看](../../cases.html#case/archive-os)\n",
+    "research": "# 莱茵生命档案终端：RhineLabUI 移植记录\n\n本案例复用 [LBEILC / RhineLabUI](https://github.com/LBEILC/RhineLabUI) 提交 `12cc5e4013acb9408f753ff71de6b8492299b7c8` 的源码、模型、字体、音频和档案内容。移植边界是 Motion Atlas 的舞台、时间轴、预加载与统一音频协议；原版视觉、排版、字号、文案、动效参数、缓动和交互行为由上游实现负责。\n\n上游来源为只读目录 `C:/Users/mibxr/AppData/Local/Temp/mmref/RhineLabUI`；对照运行副本位于本任务指定的 `reference-runtime`。源码快照、许可与逐文件接入登记见 [UPSTREAM.md](../../vendor/rhinelabui/UPSTREAM.md)，运行时资源集中存放在 `demos/cases/archive-os/app/`。上游 `public/` 不在 vendor 中重复保存；`art/`、`docs/`、`reference/`、`verification/`、`wallpaper/` 和部署配置不属于本案例快照。\n\n## 上游架构\n\n| 来源文件 | 当前职责 |\n| --- | --- |\n| `src/main.ts` | 应用模式、档案阅读、页签、检索、收藏、偏好与键盘操作。 |\n| `src/boot.ts`、`src/boot-motion.ts`、`src/boot-lettering.ts` | 白底开场、文字输入、品牌标志、身份接入、权限验证与开场帧窗。 |\n| `src/scene.ts`、`src/archive-loop.ts`、`src/motion.ts` | Three.js 档案场景、循环位置、选中抬起、抽取、归位、波形与阻尼。 |\n| `src/decryption.ts`、`src/document-decryption.ts` | 模型对角解密与正文同步揭示。 |\n| `src/model-viewer.ts` | 独立模型查看器、玻璃状态、旋转、平移、缩放、复位、六组结构拆解与重组。 |\n| `src/viewport-layout.ts` | 根据真实视口选择 desktop、compact 或 portrait 布局及模型取景。 |\n| `src/render-quality.ts`、`src/quality-renderer.ts` | performance、original、high、ultra 预设及渲染管线。 |\n| `src/audio.ts`、`src/typing-samples.ts` | 三轨配乐、交互合成音、开场音与逐字输入采样。 |\n| `content/archives.json`、`src/data.ts` | 页面档案数据与阵列位置映射。五列分别为工程研究、生命科学、机构档案、能量研究、特别项目，各八份，共四十份档案。 |\n\n开场的离散视觉帧窗为 25fps，应用内部时间 0 对应参考 PV 的 5s，来源为 `src/boot-motion.ts`。列镜头与阵列轨道在常规选择过渡中使用临界阻尼速率 3.7，常规选中抬起使用 4.2；交互停止 2.5s 后进入空闲呼吸，来源为 `src/scene.ts` 与 `src/motion.ts`。数字滚动时长为 460ms，来源为 `src/main.ts`。交互解密的源码进度时长为 `(39.56 - 34.12) / 1.5 = 3.6267s`，来源为 `src/decryption.ts`；该值是源码推导值。\n\n## 接入边界与文件\n\n上游文件的每处接入修改使用 `// MOTION-ATLAS:` 标记；逐文件清单、原因和原任务条目号统一登记在 [UPSTREAM.md](../../vendor/rhinelabui/UPSTREAM.md)。接入范围为虚拟时钟、仅跳过 GPU 绘制的门控、胶片模式入口、可注入的音频上下文与时间源、相对资源路径和 URL 画质映射。CSS、档案数据、模型、字体和上游音频资源保持原版内容。\n\n| 接入位置 | 职责 |\n| --- | --- |\n| `vendor/rhinelabui/film/` | 虚拟时钟、胶片输入时间表与原版声音离线渲染。 |\n| `vendor/rhinelabui/build.mjs` | 构建相对路径 Vite 产物；`--sync-assets` 将只读上游 public 资源同步至 app。 |\n| `demos/cases/archive-os/index.html`、`script.js`、`config.js`、`style.css` | MotionKit 舞台、同源 iframe、时间轴协议、预加载、手动模式与完整音轨事件。外层不添加 UI、文字或装饰。 |\n| `kit/motion-kit.js` | `audio.dsp.sample()` 登记采样声部；`sustainedAt` 对带 `resume:true` 和 `dur` 的函数音色提供 offset 接续。 |\n| `scripts/check.mjs`、`scripts/smoke.mjs` | 舞台字号按设计决定，不设下限；网站界面 ≥ 12px。运行时最小字号来自 iframe 可见文本计算字号乘舞台缩放比。 |\n| `scripts/smoke.mjs`、`scripts/capture.mjs` | 读取条目 `renderer:gpu`，独立启动GPU浏览器并核验实际renderer；smoke等待seek/play完成后开始原播放计时窗口。 |\n\n逐文件接入清单与 UPSTREAM.md 一致；文件名以下均相对 `vendor/rhinelabui/`：\n\n| 文件 | 要求条目 | 当前接入及必要性 |\n| --- | --- | --- |\n| `src/main.ts` | §3.3、§3.6、§4.2、§6.1 | film入口、白底F0、原版post-entry focus、quality映射及离线声音；字体与双GLB完成后，frame(0)结束才ready。非film沿用原入口。 |\n| `src/scene.ts` | §3.2、§4.2 | 共享assembly GLB Promise以供film资源加载；查看器仍在打开时克隆原模型；GPU门控位于状态更新之后，跳绘时使绘制缓存失效。 |\n| `src/model-viewer.ts` | §3.2 | 仅门控composer/renderer绘制，保留原查看器创建、分组、生命周期、控制与状态更新。 |\n| `src/shared-depth.ts` | §3.2 | 为AO、深度override和Bokeh三个只绘制的pass添加GPU门控。 |\n| `src/wallpaper.ts` | §3.3 | film=1时isWallpaper为false，不启用壁纸宿主。 |\n| `src/audio.ts` | §3.3、§3.4、§6.1、§6.5 | 音频统一通过原发声入口，注入BaseAudioContext和now()；film自动播放不创建实时输出，手动模式按宿主开关恢复；OfflineAudioContext使用原合成、三轨配乐、增益、声像和采样排程；暴露离线渲染及实际声部事件记录。 |\n| `index.html` | §3.1、§3.5 | 在应用包之前同步加载clock-shim.js；manifest、图标使用相对public路径。 |\n| `vite.config.ts` | §3.5、§5 | base为./、publicDir为false、outDir指向app、emptyOutDir为false；模型映射使用原public文件名，Novecento存在性从app资源目录判断，保证运行资源只存一份。 |\n\n新增文件：\n\n| 文件 | 要求条目 | 当前接入及必要性 |\n| --- | --- | --- |\n| `film/clock-shim.js` | §3.1、§4.2及同钟对照授权 | film模式安装60Hz驱动/实时虚拟时钟、固定日期、mulberry32随机数及Web Animations/CSS动画采样。显式opt-in `__filmClockRequested` / `__filmClockStartFrame` 供只读原版CDP使用相同F0/60Hz时钟对齐；正常film起点仍为0，不改变其行为。 |\n| `film/app.ts` | §3.3、§4.2 | ready、字体/双GLB/首帧进度、原rhine.stats与页签/查看器状态及失败传播，不添加UI。 |\n| `film/sequence.js` | §4.3、§4.4 | 提供自然开场后的A/B动作、九个标记、键盘/点击/拖拽派发及状态快照；横竖使用相同动作时刻。仅有film时钟时临时使programmatic focus附focusVisible:false，避免合成指针继承键盘焦点外框；cancel进入手动时恢复原生focus，不修改原CSS或事件处理器。 |\n| `film/render-audio.mjs` | §6.1 | 驱动完整胶片，在注入的OfflineAudioContext渲染48kHz双声道WAV，并以libvorbis q=6编码完整OGG音轨。 |\n| `build.mjs` | §3.5、§5 | 清理上次Vite index与带哈希JS/CSS，保留原public资源；--sync-assets同步全部运行时资源；构建后将产物CSS的/fonts/解析为../fonts/，复制clock/sequence并输出产物清单及大小。上游src/fonts.css保持原样。 |\n| `scripts/patch-rolling-number.mjs` | §5必要补充 | 按上游原字节复制package.json既有postinstall调用的安装脚本，使npm ci完成与上游一致的依赖补丁。 |\n| `UPSTREAM.md` | §2、§3 | 记录固定上游来源、快照边界与当前逐文件接入清单。 |\n\n依赖在 `vendor/rhinelabui/` 中由上游 package-lock 锁定。`npm run build:archive` 生成 app 构建产物；站点构建直接使用入库产物，不依赖重新构建上游应用。静态站点部署目录包含 app，源码快照 vendor 不进入 dist。\n\n## 胶片驱动\n\n舞台支持横屏 1920×1080 与竖屏 1080×1920，iframe 的实际宽高恰好等于舞台尺寸。原版 `viewport-layout.ts` 根据宽高比选择布局：低于 1.05 为 portrait。外层通过 `app/index.html?film=1&quality=<q>` 加载应用；quality 对应上游已有四档预设，默认 original。\n\n外层在首次iframe加载前以临时WebGL canvas识别SwiftShader、llvmpipe、Software或Microsoft Basic Render；软件GL且URL未显式指定quality时使用原版performance预设，显式quality始终优先，__motion提供只读quality与softwareGL供验证。\n\n加载阶段完成字体、双GLB与白底首帧；WebGL程序按原版首次绘制路径创建，查看器在打开时创建。条目renderer:gpu声明smoke/capture使用独立GPU浏览器，核验并打印实际renderer，实际软件渲染判失败；其他条目保持默认环境。\n\n外层以原生performance.now和独立墙钟累加器维护胶片时间，timeline的render、seek、play、pause、on(fn)与setRate读取统一时间。播放每个host RAF取target=floor(wall*60)，完整更新全部中间状态步并跳过中间GPU绘制，只绘制目标步；不设30步推进上限。pause冻结当前实际frame/60并清除播放队列；pause与seek递增播放请求序号，异步重建后仅最新且未取消的请求能够startPlay。seek与离线render路径保持原固定步重建和目标帧绘制，seek的Promise等待目标步完成。\n\nseek/play可以返回Promise；smoke等待seek(0)和play()完成后，再记录起始时刻并执行原1500ms播放窗口与0.5s推进门槛。\n\n胶片时刻以 1/60s 为固定网格，输入目标量化为 `round(t*60)`。虚拟时钟在每步中先按到期顺序执行定时器，再执行一轮 RAF。日期纪元为 2026-01-01T00:00:00Z，随机数使用种子 0x5EED 的 mulberry32。前进定位跳过中间 GPU 绘制并保留所有状态更新，在目标步绘制；后退或手动操作后的定位重新加载 iframe 并从零步进。连续 seek 合并为最后一个目标，加载期间报告 `motion:loading`。\n\n胶片输入期间，仅当iframe存在film虚拟时钟时，对原有programmatic focus临时附加focusVisible:false，使合成指针不会继承键盘可见焦点样式；原CSS和事件处理器保持不变。退出胶片输入时恢复原生focus。\n\n暂停时的真实键盘、鼠标或触摸输入进入手动状态，应用时钟跟随真实时间，交互保留原版功能。下一次播放或定位重建胶片。画幅切换以另一尺寸重新加载 iframe 并恢复当前时刻。\n\n开场从白底第一帧自然运行，不发送输入，不跳过，不加速。A 为驱动模式中应用首次进入 detail 的固定步时刻，向上取整至 0.1s；B=A+27.6s，整部 duration=A+42.6s。实测 A=35.0s（第2100步），阵列视觉阶段在22.0s（第1320步）开始；B=62.6s，duration=77.6s。来源：[opening.json](../../dev/shots/T5r/opening.json)。阵列视觉阶段开始时 mode 仍为 boot，首次 detail 自然读取 X-001。\n\n| 相对时刻 | 输入 |\n| --- | --- |\n| A+7.5s / +10s / +12.5s | 研究记录 / 访问日志 / 概述页签。 |\n| A+14s / +15.7s / +17.4s | 打开查看器 / 磨砂 / 清晰。 |\n| A+19.1s | 拆解档案。 |\n| A+20.9s 至 +21.9s | 从查看器画布中心拖拽，40 步，每步 25ms；每步位移 x=舞台宽×6/1600、y=舞台高×1/900。 |\n| A+22.5s / +23.35s / +25.15s | 复位 / 重组 / 关闭查看器。 |\n| A+25.6s | Escape 返回阵列。 |\n| B / +1s | ArrowDown 两次。 |\n| B+2s / +3s / +4s | ArrowRight 三次。 |\n| B+5s / +6s / +7s / +8s | ArrowUp、ArrowUp、ArrowDown、ArrowDown。 |\n| B+9s / +9.35s / +10.4s / +11.4s / +12.4s | ArrowLeft 三次，再 ArrowUp 两次。 |\n| B+15s | 胶片结束。 |\n\n标记为开场、档案阵列、自动读取、页签、360° 查看器、拆解、重组、返回阵列、四向浏览。各标记绝对时刻为0、22.0、35.0、42.5、49.0、54.1、58.35、60.6、62.6s，来源为 `film/sequence.js` 与实测 `opening.json`。\n\n\n横竖画幅的浏览轨迹一致，实际结果见 [sequence.json](../../dev/shots/T5r/sequence.json)。表中列与行使用原版界面的一基编号：\n\n| 胶片时刻 F | 输入 | 实际选中 | 列 / 行 |\n| --- | --- | --- | --- |\n| 62.6s | ArrowDown | X-006 | 03 / 02 |\n| 63.6s | ArrowDown | X-013 | 03 / 03 |\n| 64.6s | ArrowRight | X-004 | 04 / 01 |\n| 65.6s | ArrowRight | X-008 | 05 / 01 |\n| 66.6s | ArrowRight | X-002 | 01 / 01 |\n| 67.6s | ArrowUp | X-022 | 01 / 08 |\n| 68.6s | ArrowUp | X-021 | 01 / 07 |\n| 69.6s | ArrowDown | X-022 | 01 / 08 |\n| 70.6s | ArrowDown | X-002 | 01 / 01 |\n| 71.6s | ArrowLeft | X-008 | 05 / 01 |\n| 71.95s | ArrowLeft | X-004 | 04 / 01 |\n| 73s | ArrowLeft | X-013 | 03 / 03 |\n| 74s | ArrowUp | X-006 | 03 / 02 |\n| 75s | ArrowUp | X-001 | 03 / 01 |\n\n66.6s 的右移完成列05→01，71.6s 的左移完成列01→05；67.6s 的上移完成行01→08，70.6s 的下移完成行08→01。73.0s 返回第03列时恢复该列记忆的 X-013，75.0s 回到 X-001。两种画幅均记录到上述循环，浏览器错误均为0。\n\n## 声音生成与播放\n\n`film/render-audio.mjs` 通过无头浏览器加载 `?film=1&audio=offline`，向上游音频注入长度为整部 duration 的 OfflineAudioContext。音频 now() 返回胶片时刻；驱动器以固定步完成全部动作，中间跳过 GPU 绘制，所有声音按胶片时刻排程。随后 startRendering() 输出 48kHz 双声道 WAV，由 ffmpeg 的 libvorbis、q=6 编码为 `demos/cases/archive-os/film-audio.ogg`。配乐、合成算法、采样、音量和声像均来自上游 `audio.ts`。\n\n外层通过 `MotionKit.audio.attach` 挂单个完整音轨事件，事件带 duration、`resume:true` 与 music 总线。函数音色使用 `dsp.sample` 和 offset 播放同一解码音轨；播放、暂停、跳转与 `renderWav` 走 kit 的统一链路，主链路保留 -1dBFS 天花板。站点关闭声音时 kit 静音，手动状态同时关闭应用自身 sound 与 music 偏好，打开时恢复。\n\n入库音轨为77.6s、48kHz、双声道Vorbis，libvorbis q=6，文件大小1,333,228字节。已核对106个发声事件，其中10个开场cue、71个逐字输入短音、25个交互音；三轨配乐与声像核对见 [verification.json](../../dev/shots/T5r/audio/verification.json)，编码规格见 [ffprobe.json](../../dev/shots/T5r/audio/ffprobe.json)。\n\n三轨配乐为上游原创程序编配，逐字输入使用原 PV 约 6.864–6.986s 的三个 38ms 短音。原音与衍生片段不属于原创配乐的 MIT 授权范围，来源见 `vendor/rhinelabui/licenses/audio/README.md`。\n\n## 许可与署名\n\n上游作者创作且有权授权的内容采用 MIT，署名为 Copyright (c) 2026 LBEILC；PR15 署名保留 LBEILC / RhineLabUI、PacificSauryMan 及原文辅助工具说明。MiSans、Rolling Number 等第三方资源遵守各自许可证。\n\nMIT、PR15、MiSans NOTICE、Rolling Number、音频来源及上游 README 的第三方权利原文集中在 [LICENSES.md](../../demos/cases/archive-os/LICENSES.md)。MiSans PDF 位于 [app/fonts/MiSans-license.pdf](../../demos/cases/archive-os/app/fonts/MiSans-license.pdf)。\n\n本案例为 RhineLabUI 的移植，属非官方作品；《明日方舟》及莱茵生命相关名称、标志、设定、原片与原片音频采样的权利归各自权利人所有。\n\n## 验证记录\n\n本记录的源码事实已由本地只读上游与 vendor 快照核对；档案数据核实为四十份、五列各八份。驱动使用真实 Intel Iris Xe / ANGLE D3D11；22.0s阵列视觉阶段、35.0s首次detail、横竖双向循环及浏览器错误0的证据分别保存在 `opening.json` 与 `sequence.json`。LICENSES.md 的 MIT、MiSans NOTICE、Rolling Number、PR15 与 README 两段第三方说明已与只读上游原文比对一致。\n\n驱动实测的 A、阵列视觉阶段时刻、duration、选中项、34 张逐拍对照、seek 确定性、性能、ready/download、三次专用 smoke、全量 smoke、构建、预览、MP4、音频和手动模式，统一以 [T5r 报告](../../dev/reports/T5r.md) 的实际结果与证据路径为准。本文件不将尚未执行的验收项记为通过。\n"
   },
   "entrypoint": "demos/cases/archive-os/index.html",
   "files": [
@@ -283,203 +282,203 @@
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-001.txt",
-      "bytes": 878,
-      "sha256": "cb5cb95ba53616c078b4696be719f80355acddbbebfbf3610691f7bf7a028d04"
+      "bytes": 860,
+      "sha256": "9fda95b79d5372e8264a0b293850582d759a7d76566fcec0a901a659f20b5d80"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-002.txt",
-      "bytes": 886,
-      "sha256": "92c8f0c7109fa7d831154d3e72111652b1a575dc2ca708a9dfbf9fb8f2491d8c"
+      "bytes": 868,
+      "sha256": "31475824b241ecfd0704435fb5fd27b758e154f1d5c6b56bee531df386d8a1dd"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-003.txt",
-      "bytes": 817,
-      "sha256": "2b5c580f7465d9cabc2e2806824f635f76b253b48234b7f637c9ec9db5273bfe"
+      "bytes": 799,
+      "sha256": "58782188b51b24ba7a57fabc987108d0a0e7182b01edb535481aa51fb65c77bd"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-004.txt",
-      "bytes": 831,
-      "sha256": "b044340fd09e413b41d7da3980ee5ca8196c836157faefbf180522d06f56e27f"
+      "bytes": 813,
+      "sha256": "d5b442509fefad60e99e5700a02983714c9900fcd668b6e0bc2daad448657f39"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-005.txt",
-      "bytes": 860,
-      "sha256": "4ac24c7f0d0c7a429609ffe1276278200fca00ad3aa14e3eb64d2615798d9fbc"
+      "bytes": 842,
+      "sha256": "456f8987eb013a86aadccef59e078f8ecddf03cf3c333a70236534e8d37d6fc5"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-006.txt",
-      "bytes": 849,
-      "sha256": "e605b7a2ff9975d8c7ced5c059d965f54a857a0817d040ca757a6509b190cdac"
+      "bytes": 831,
+      "sha256": "eda86119a10f540126a412e69d6e4781b80671dcc7f7ab341c7886efaba52eaf"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-007.txt",
-      "bytes": 797,
-      "sha256": "3097f04657020f0c1caf7c98a9ed91fb17d84e8b2b94a6a10840255a0b1a1220"
+      "bytes": 779,
+      "sha256": "2b287b78fe52991e2db2321bbccd34eaa218440f82fe86706b42abe67d3615a0"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-008.txt",
-      "bytes": 841,
-      "sha256": "7dbe445baf6625fdc8cacde50ae94402e2517b9c32dc410ef0dece2659bc7944"
+      "bytes": 823,
+      "sha256": "af33c488acf150d9027ccf96c5ca6fd63771e51832107eea16f1d41cd1b97919"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-009.txt",
-      "bytes": 853,
-      "sha256": "d288f9ac4279b48c74598e21f51d000614f142b52b3dfc015ff576046aa3f027"
+      "bytes": 835,
+      "sha256": "fff2abf3d878a01c74eb0c1257981e6daf90e9c40904551b5124200328297098"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-010.txt",
-      "bytes": 836,
-      "sha256": "6b254a28850e5e93afa4002cddf5e6083c6261895979687697b29d531212cbb7"
+      "bytes": 818,
+      "sha256": "f5059b40cb34b4ce70f18f2c697bb9d08c0f2c2a5d6efebf014204bc3ab92b89"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-011.txt",
-      "bytes": 817,
-      "sha256": "cb7e9441a6e1eca334752946e79e1a0a3ad742fa2727b3d8ac0f768373753e49"
+      "bytes": 799,
+      "sha256": "0293644198cc60896a02957c81e5ddee78e31ada4397e6fd2722bdebe73c3561"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-012.txt",
-      "bytes": 856,
-      "sha256": "73478711112990572c9a6bc21aafba2ab339b8b53e976f475841fa17ee7f6703"
+      "bytes": 838,
+      "sha256": "a1d326324dc419625c401bac81b316b95699beb3fdbae600261b5b22bccd0ed5"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-013.txt",
-      "bytes": 858,
-      "sha256": "b46c37e3a33758b0f7ffb284b63abbbf986fcc27ff167cb6d3d0afdcaedee56e"
+      "bytes": 840,
+      "sha256": "1a3b5250dc4395d9dbfd16389cac032dd3fada0bad55f39d6f91b1c73e6f5764"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-014.txt",
-      "bytes": 849,
-      "sha256": "124e1dd340d48fdbfc488e1c6ef037b565fd2ce526a158284c2933e08584c5db"
+      "bytes": 831,
+      "sha256": "edad5ee16671b1cd86953367e8cecaf8663c3a3ac8f345cde7d781178c2717fc"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-015.txt",
-      "bytes": 825,
-      "sha256": "89266bfa9bc13b89dad1cd499228f6192d056854d15920ece0628000a5e4a7a3"
+      "bytes": 807,
+      "sha256": "de8b7d0c69fffa4d75474f8eb7707e9715f28506746bbb7644e39dd3552bf51b"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-016.txt",
-      "bytes": 862,
-      "sha256": "9efdd857874bd491ec3f252fdaef3311285f099d0dfde49d86e089c9edd350a7"
+      "bytes": 844,
+      "sha256": "0a69d432ca59de6fae38c5cf92a2f9f40551524bac1d4db0d23abdb925da15ae"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-017.txt",
-      "bytes": 855,
-      "sha256": "a80d544ba143e144745ba01d2f1294f9582077d9f61cc0eb53abdb782edb2863"
+      "bytes": 837,
+      "sha256": "1f2d6f40d76b4b60a40d32fb501b7087ca5bf28c2212eb9a565533e7eff96b4f"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-018.txt",
-      "bytes": 851,
-      "sha256": "f3b8fba2aaa361b90e703bb266b39e743783924170146c22916bcfdcbb7eb3b7"
+      "bytes": 833,
+      "sha256": "204a44c9628d158011b42d99777df7b861225da2bdbbc40fa9935b7ec9eeed04"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-019.txt",
-      "bytes": 785,
-      "sha256": "db9c7df9d94f49203bddadf250df5ce49e112dddc163307a250d5eaedd82c121"
+      "bytes": 767,
+      "sha256": "c006c8571bb9c1db353ff7d5672cc1b4530d508576a7f5694c243c81d6b7a59d"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-020.txt",
-      "bytes": 824,
-      "sha256": "45387f8cf50bf0ed09adecafb6349a1ce08bc5bb4ae6024e96a1d9bc57260f11"
+      "bytes": 806,
+      "sha256": "6188373ef44fc7f313c10e4dacb7eab9fe8908dfa9551136b46bd1f146b0b54d"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-021.txt",
-      "bytes": 850,
-      "sha256": "58a3f53a36e49e1a856b63e04bbc019711a80db837cc3ce2685273e1d7b900b4"
+      "bytes": 832,
+      "sha256": "74ccc437b5b4934247c0dfe8048e3b32cf28f550fb9c27cd1cccbedbbbbe871f"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-022.txt",
-      "bytes": 836,
-      "sha256": "249a7bd14354177ddc3d4c599b2bea3c6b925589576cde6fd1bad34fe470a377"
+      "bytes": 818,
+      "sha256": "823269da2ef1743b035c672a60b09c344e2409dfc66f3917d2feafedd7378fd5"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-023.txt",
-      "bytes": 844,
-      "sha256": "256ef8778813a6c0e09408083d6d760e39e6fa8f0bebba7e662d8bf0cce11ff2"
+      "bytes": 826,
+      "sha256": "e6dcb23395cdce7a92948b822464959761bcf4305e492eb8f5e4728cd7c1269e"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-024.txt",
-      "bytes": 833,
-      "sha256": "7ce0f8278f8a634f78a455e21412ed4b163db501a17d3c72a536590f2925b30d"
+      "bytes": 815,
+      "sha256": "86a0d7f2890d81196e0c9fc8a45c7c900d285a06cd1ef39b66c83d2f912606b6"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-025.txt",
-      "bytes": 822,
-      "sha256": "29773d1cf840f0d2c03019ae1eb478c37fd5f5f44ec3dfa13ce82b83cd7ebb25"
+      "bytes": 804,
+      "sha256": "cfc8bd8efe826387d07ab5bfa3d49cc1bfe1e051ec78d04c46e4f180d04968f6"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-026.txt",
-      "bytes": 816,
-      "sha256": "0dd767eb73a06a10b77d476c9ef9923a38a506f6be90e219311ae9619f34eb0b"
+      "bytes": 798,
+      "sha256": "a4c46569652bfb04a23f699bd9a91fe15d11843fb9f705747639a41ba41013ad"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-027.txt",
-      "bytes": 800,
-      "sha256": "33659bb815e822f7dab660574bc9c68cc7cde27b5166552fc558e8d71db8afd4"
+      "bytes": 782,
+      "sha256": "f81ef4a3da8ff1b692d63a2aa970869d0b0228f19fa01fbbf692466d52cb95bb"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-028.txt",
-      "bytes": 799,
-      "sha256": "23dbae5f2244ed7f22bcc5983bc44186c1a796ed1f65a5578736282623ca8517"
+      "bytes": 781,
+      "sha256": "11319a1d9c147b60ed0d0d85e210a2b06d15028de2d6b290e921767a0771cb1a"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-029.txt",
-      "bytes": 824,
-      "sha256": "be9a77204f0c597e58c37096b7e89ade72feccdee7427b504c775e52c1465551"
+      "bytes": 806,
+      "sha256": "a93250b82f2a0d81b263460e524ef1a816675f6afc9d4501970b64c6c7697180"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-030.txt",
-      "bytes": 865,
-      "sha256": "ac74a71b3fe48336b6046a274dcf93698eadbc31674aadd861521e00334c7e18"
+      "bytes": 847,
+      "sha256": "50a453b5d94015a7286d6312f1335e91683ab981341e63a8cf39985f1dddaffe"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-031.txt",
-      "bytes": 823,
-      "sha256": "1f2229bb3498a02fcbcc1995180c8ada9e42c4e87375390e8110673a62706f4c"
+      "bytes": 805,
+      "sha256": "f4a400b64fee4080c38d16adabd96e67f40937ff2cdcaeb043fce66944a425ca"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-032.txt",
-      "bytes": 806,
-      "sha256": "5d1faf8379853dd1e4c9aed6c35c612b5c6bf8e5a129336e999b1cdd57f3aef4"
+      "bytes": 788,
+      "sha256": "2482e87ce1995d28de18e1eec7f6b9dbbd70e0706ea94a4bbb522b60a03be50c"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-033.txt",
-      "bytes": 850,
-      "sha256": "816ca1e65faf8ba090b6c4ec69eb069d60d0cc1ae434619896768a30a9d1f40d"
+      "bytes": 832,
+      "sha256": "df76c72a21bdc4cba875777e60a5e51f13975ae5d52901b99b4212b76e61c51c"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-034.txt",
-      "bytes": 855,
-      "sha256": "f9d0f35952f90d8474f646006cb46381920bf6b6c62849547553d5e5d8f71103"
+      "bytes": 837,
+      "sha256": "db9afb89ed94c5c69c8c09a2db8b38908aa005770d0a042cf1ad85e48eb9b412"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-035.txt",
-      "bytes": 836,
-      "sha256": "1765a974daf8f373c81876256755d6c6aec43bc065005e9cbf8dd1e066caa720"
+      "bytes": 818,
+      "sha256": "f8ca0a09636f0816929c103371b46c3d0b52105907dad70d1a9fe7fa004ffbe9"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-036.txt",
-      "bytes": 852,
-      "sha256": "6d53bb025b2db04a6fa663192ca96a460a6c2af1e0d192ac9d4f69deca9e3783"
+      "bytes": 834,
+      "sha256": "3512adf0bd2b6b1899bff758bcc4561fde975a64af4740fdb71646a6f5bbf957"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-037.txt",
-      "bytes": 827,
-      "sha256": "b2279ca855b56e06498826cd339e9ddcdf65207ada0adca1109a7bbc3d46f785"
+      "bytes": 809,
+      "sha256": "697060cab6dabc09508b6faefed235030360b7ba757123dfb29f0b4ed0a8a416"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-038.txt",
-      "bytes": 839,
-      "sha256": "3a16631d3b1f5a42e87b2005b40533a28acb67435fd3687dafc2367e175e7b8e"
+      "bytes": 821,
+      "sha256": "6f2ff6289fc9f3ea9738ce5af56236dcb859e33323c19ec8d274a7a038546191"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-039.txt",
-      "bytes": 833,
-      "sha256": "03a09efd1aef90e67fa65854b5ac006beb7ed55076c5e9f5315d5aa182cdf98a"
+      "bytes": 815,
+      "sha256": "1bf2b9a6f0c1983d6e28f8a5842b960ebed25ae61fc2ac46191ef56a30132e6d"
     },
     {
       "path": "demos/cases/archive-os/app/archives/RHINE-LAB-X-040.txt",
-      "bytes": 842,
-      "sha256": "0e25b0ed18d2f87b11ee596ef2b4b3a7c8f9287b9cae9ad76ade693ce7f47f7d"
+      "bytes": 824,
+      "sha256": "e0d2210e0183f0776a3ed6c164eb95ec86b72f58669b2c951e0f849a8f6b833d"
     },
     {
       "path": "demos/cases/archive-os/app/assets/archive-assembly.glb",
@@ -493,8 +492,8 @@
     },
     {
       "path": "demos/cases/archive-os/app/assets/boot-lettering-notice.txt",
-      "bytes": 1727,
-      "sha256": "0857d56d47f6bf21f8c38ae484e11479db783ecace37e760dc0550705e5a3471"
+      "bytes": 1697,
+      "sha256": "0743c39c41e743736963730741bf310632a42a1b82e7c7d81ea6479f21210729"
     },
     {
       "path": "demos/cases/archive-os/app/assets/index-BlM3wgKX.js",
@@ -508,8 +507,8 @@
     },
     {
       "path": "demos/cases/archive-os/app/audio/README.md",
-      "bytes": 961,
-      "sha256": "bb1925b08823f91a88b5570b6d52605aa76bb99823eb5dd7d3ff0c3192e980d1"
+      "bytes": 949,
+      "sha256": "21842877cb3b71649ec5b4def829dc52b216cf47bc66b9df9478a4b6608675cd"
     },
     {
       "path": "demos/cases/archive-os/app/audio/atmosphere.ogg",
@@ -533,8 +532,8 @@
     },
     {
       "path": "demos/cases/archive-os/app/audio/score.json",
-      "bytes": 557,
-      "sha256": "f785c794122b3b61dcd9a14168b9be8ab12e10199f3e4ca099f825ed2d733dce"
+      "bytes": 533,
+      "sha256": "479860ea01240da7ea3053fc841b55f53cb4c259d61a9741676f68b4ebc4060c"
     },
     {
       "path": "demos/cases/archive-os/app/audio/typing-preview.wav",
@@ -543,13 +542,13 @@
     },
     {
       "path": "demos/cases/archive-os/app/audio/typing-source.json",
-      "bytes": 740,
-      "sha256": "bce9d9bdf2b5b060bee054ec870b68231f9563db08ff8c867fed17ea41d99326"
+      "bytes": 711,
+      "sha256": "f5e2196eb8fd4110c66d20dca842de0e70f9f3166e50a0ea67ce9ce3ea289aa4"
     },
     {
       "path": "demos/cases/archive-os/app/favicon.svg",
-      "bytes": 296,
-      "sha256": "4665a3df0bc167056eaf568e5a0faa4182d59fc02d7ab5996e223b662adea073"
+      "bytes": 295,
+      "sha256": "c495851e461b6e24687eced8e517b2dad0f93bdc3a61f9a7d575ce0e31182513"
     },
     {
       "path": "demos/cases/archive-os/app/film/clock-shim.js",
@@ -568,13 +567,13 @@
     },
     {
       "path": "demos/cases/archive-os/app/fonts/NOTICE.txt",
-      "bytes": 943,
-      "sha256": "70e73fad111dd2c6de6bf101c900f3efa6ed59b98bbfe6508fca0308c2e87ec7"
+      "bytes": 929,
+      "sha256": "68056442ee9108f4898b193b18d1f6f3aa34c782901ec27ba85875627e2a02ff"
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/UPSTREAM-README.md",
-      "bytes": 4816,
-      "sha256": "e583b1778a58e065f0abcad2592a4b6069a4688990bec788ca6387f9c42b45c7"
+      "bytes": 4733,
+      "sha256": "084502087c6b8e0bd028adfe4dbccc83e00c4c203f09abc34593e56e85e367b6"
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/bold/0.woff2",
@@ -1523,8 +1522,8 @@
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/bold/upstream.css.txt",
-      "bytes": 145624,
-      "sha256": "d78ea850fee5553ac558aa3a8f86a975b1b18c84f2aeb355bfc0be19423da062"
+      "bytes": 145399,
+      "sha256": "f0bffc2e5b50f926908c47dda387ea596e5acdf58aa7064a5231bc7014acbd6d"
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/demibold/0.woff2",
@@ -2468,8 +2467,8 @@
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/demibold/upstream.css.txt",
-      "bytes": 148978,
-      "sha256": "1980b406a02aac342a3fc54b29973972ed562b463f94de94162b349824c8b4f7"
+      "bytes": 148750,
+      "sha256": "d2d7485f78a2322a6e02e2a6755d5844e5df4ba4a6f5be74bd4d92ddf2956fc1"
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/light/0.woff2",
@@ -3413,8 +3412,8 @@
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/light/upstream.css.txt",
-      "bytes": 147814,
-      "sha256": "316eda6d1fe3f8956b348effe75f0f17d58624c20961a74e765a41a3cd8fc400"
+      "bytes": 147586,
+      "sha256": "2e29594b828cda669299514523e969af0888a93c8c5154c7acf7f00feeed9590"
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/regular/0.woff2",
@@ -4358,13 +4357,13 @@
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/regular/upstream.css.txt",
-      "bytes": 145370,
-      "sha256": "cf7a351fc44ed8d06d87211f3740c4e09d1ff14d3858e01ddfee78072beed020"
+      "bytes": 145146,
+      "sha256": "5d3a32d5487f850ba3892e57e276ee88488e6ecced55e6f33e4a94cd459dadd3"
     },
     {
       "path": "demos/cases/archive-os/app/fonts/misans-webfont-4.3.1/source.json",
-      "bytes": 118234,
-      "sha256": "4fac5e72df871dbedceb7ab83a38878f50015fadcd04ba96154a61eee84e794a"
+      "bytes": 114457,
+      "sha256": "ff2250bc0646c0b609eb1fb569b0488d8d37efdcd186cb1bc1fd9869fa208fb1"
     },
     {
       "path": "demos/cases/archive-os/app/icons/app-icon.svg",
@@ -4398,23 +4397,23 @@
     },
     {
       "path": "demos/cases/archive-os/app/licenses/rolling-number.txt",
-      "bytes": 1089,
-      "sha256": "eec0989c3e8c8234c9c9af074a6e9800eda4c34f4f355c9476d42dcabd7f7f7a"
+      "bytes": 1068,
+      "sha256": "4994c24b5bbb85529407e8cd0211efcf819236899d2c911cbdb18c00f231273a"
     },
     {
       "path": "demos/cases/archive-os/app/manifest.webmanifest",
-      "bytes": 642,
-      "sha256": "b75190694bc7a412d802ed8f4772a3c953321159b6759b97fbcbd411de8c12f9"
+      "bytes": 625,
+      "sha256": "32ecc6788074a0bb53f7ef022913e370018b82e8639db472fed237a79868cc07"
     },
     {
       "path": "demos/cases/archive-os/app/update.html",
-      "bytes": 1826,
-      "sha256": "51169d7cb05e52868fe4113800fb6e3e299b1794c35468e9c5965c9543b72725"
+      "bytes": 1792,
+      "sha256": "d1fd06cc814fd3da1019bfdb2e9429e991e2bcee05d620850d945de69f215cd9"
     },
     {
       "path": "demos/cases/archive-os/app/update.js",
-      "bytes": 2102,
-      "sha256": "9b3f95b9f2711ec90c697b2a1cbf7f0721b94b34b3e9db6755ad2285a22ad8d5"
+      "bytes": 2057,
+      "sha256": "fd5be7d2e373e77709f654474621d49ccafa6db2f2c9e449236d54bee996aff1"
     },
     {
       "path": "demos/cases/archive-os/config.js",

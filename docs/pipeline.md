@@ -7,7 +7,7 @@
 - **预加载** `MotionKit.preload()`：资源就绪后才宣告 ready，进度可被站点显示。
 - **宿主通信**：站点用 postMessage 切换画幅、开关声音，Demo 回报就绪、画幅、加载进度与声音状态。
 
-地图巡礼与档案终端使用这套固定舞台、预加载与乐谱协议。其余七个案例和全部三十八个巧思仍保留自适应布局及原有音效调用，由 kit 兼容；共享基础设施就绪不表示这些 Demo 已迁移。
+地图巡礼、莱茵生命档案终端与地图巡礼的 12 个巧思使用这套固定舞台、预加载与乐谱协议；终末地工业协议及其 5 个巧思、档案终端的 5 个巧思仍保留自适应布局及原有音效调用，由 kit 兼容。
 
 参考模板：`demos/_template/case/`（案例：`index.html` / `style.css` / `script.js` / `config.js`）与 `demos/_template/pattern/index.html`（巧思单文件）。模板不是条目、不进入站点，直接引用 `kit/motion-kit.js`。
 
@@ -85,7 +85,7 @@ CSS 写法（横竖两套构图）：
 
 另有 CSS 变量 `--stage-w`、`--stage-h`、`--stage-scale`（挂在 `<html>` 上）。
 
-**字号下限**（舞台像素）：横屏 ≥ 24px、竖屏 ≥ 36px（横屏舞台在 ≥ 960px 宽的显示尺寸下 ≥ 12px；竖屏在 390px 宽的手机上约 13px）。`check.mjs` 静态检查，`smoke.mjs` 运行时按舞台坐标复查。
+舞台字号按设计决定，不设下限；网站界面 ≥ 12px。`check.mjs` 检查网站界面，`smoke.mjs` 报告舞台内可见文字的最小字号。
 
 **常见注意**：
 
@@ -302,7 +302,7 @@ Demo → 父页面：
 `scripts/render.mjs` 用本机的 Edge 或 Chrome（无头模式，通过 DevTools 协议控制，无需安装依赖）打开 Demo，等 `__motion.ready`，按帧率逐帧 `seek` 并截图：
 
 ```bash
-node scripts/render.mjs demos/cases/beat-lyric/index.html --fps 30
+node scripts/render.mjs demos/cases/map-pilgrimage/index.html --fps 30
 node scripts/render.mjs demos/_template/case/index.html --orient portrait --fps 30 --audio
 node scripts/render.mjs demos/_template/case/index.html --audio-only
 ```
@@ -324,7 +324,7 @@ node scripts/render.mjs demos/_template/case/index.html --audio-only
 如果 `ffmpeg` 在 PATH 上，渲染结束后自动合成 `<out>.mp4`（H.264、yuv420p、CRF 18；有 WAV 时 AAC 192k 一起封装）。没有 ffmpeg 时脚本会打印完整的合成命令，例如：
 
 ```bash
-ffmpeg -y -framerate 30 -i renders/beat-lyric/frame-%05d.png -i renders/beat-lyric.wav -c:v libx264 -pix_fmt yuv420p -crf 18 -c:a aac -b:a 192k -shortest renders/beat-lyric.mp4
+ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-pilgrimage.wav -c:v libx264 -pix_fmt yuv420p -crf 18 -c:a aac -b:a 192k -shortest renders/map-pilgrimage.mp4
 ```
 
 旧 Demo（没有挂乐谱）使用 `--audio` 时会提示跳过；迁移到乐谱后即可导出声音。
@@ -339,8 +339,8 @@ ffmpeg -y -framerate 30 -i renders/beat-lyric/frame-%05d.png -i renders/beat-lyr
 
 | 脚本 | 说明 |
 | --- | --- |
-| `node scripts/check.mjs [--verbose]` | 静态检查。字号：站点页面与 kit ≥ 12px；Demo 目录中已迁移（代码调用了 `MotionKit.stage(` / `MK.stage(`）的按舞台下限——横屏 24px、选择器含 `portrait` 的规则 36px（Canvas 的 `ctx.font` 与 SVG `font-size` 属性按 24px 粗查）；未迁移的旧 Demo 仍以 12px 为错误线，低于 24px 的按目录汇总为警告 |
-| `node scripts/smoke.mjs [--only ids] [--url 页面]… [--orient both\|landscape\|portrait] [--strict-fonts]` | 运行时检查。所有 Demo：全时间轴 seek、播放 1.5 秒、无异常与 console.error。使用 stage() 的 Demo 额外：两种画幅各跑一遍（`?orient=` 是否生效、舞台尺寸）、运行中切换画幅后时刻保持、在标记点与 10%–90% 时刻遍历舞台内可见文字，按“计算字号 × 变换比例”（舞台坐标，HTML 沿祖先 transform 累乘，SVG 按屏幕框 / 用户坐标框）检查横屏 ≥ 24px、竖屏 ≥ 36px——默认只报告，`--strict-fonts` 时计为失败。旧 Demo 跳过画幅与字号检查 |
+| `node scripts/check.mjs [--verbose]` | 静态检查条目、kit 副本、生成物与预览。舞台字号按设计决定，不设下限；网站界面 ≥ 12px |
+| `node scripts/smoke.mjs [--only ids] [--url 页面]… [--orient both\|landscape\|portrait] [--strict-fonts]` | 所有 Demo：全时间轴 seek、播放 1.5 秒、无异常与 console.error。使用 stage() 的 Demo 额外检查画幅、舞台尺寸、切换画幅后的时刻保持，并报告可见文字的最小字号。舞台字号不设下限；`--strict-fonts` 保留为兼容参数，不影响结果。旧 Demo 跳过固定画幅与舞台字号采样 |
 | `node scripts/capture.mjs [--only ids] [--orient both\|landscape\|portrait] [--out 目录] [--url 页面 --t 秒]` | 预览图：横屏 1280×720 → `previews/<kind>/<id>.jpg`；Demo 支持竖屏时再出 720×1280 → `previews/<kind>/<id>-portrait.jpg`（时刻用条目的 `previewAtPortrait`，缺省同 `previewAt`）。站点数据里对应 `preview` 与 `previewPortrait` |
 | `node scripts/shot.mjs <url> --orient portrait --t 3 --t 5 --out a.png` | 截图：`--orient` 给 URL 加 `?orient=` 并把视口默认设为舞台尺寸；可用 `--w/--h` 检查缩放与黑边 |
 
@@ -350,7 +350,7 @@ ffmpeg -y -framerate 30 -i renders/beat-lyric/frame-%05d.png -i renders/beat-lyr
 
 ## 十一、可交互 Demo 的双时钟
 
-操作台类 Demo（档案终端、工业协议、任务指挥台）既要能被操作，又要能被录制。做法：
+操作台类 Demo（档案终端、工业协议）既要能被操作，又要能被录制。做法：
 
 - 界面状态由**事件列表**推导：`state = derive(events.filter(e => e.t <= t))`。
 - 自动驾驶：预设一份事件表，时间轴播放时按 `t` 取事件，演示完整流程；声音写在乐谱里。

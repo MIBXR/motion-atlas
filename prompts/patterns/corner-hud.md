@@ -4,13 +4,27 @@
 
 ## 实现 Prompt
 
-为【影像/操作台】加一套四角 HUD：左上“DAY 01 / 03”（日序数字用强调色，变化时 460ms 从下方滚入）+ 12px 等宽日期；右上 12px 等宽纬经度与“ELEV · Z”缩放，旁边 26–44px 等宽大号时钟 + 时区角标；左下 NOW PLAYING（均衡器小图标）+ 曲名 — 艺人 + 一行加粗歌词与一行灰色译文（打字推进）；右下 4 站旅程步进器（节点实心表示已到达，连线按进度填充）；顶部贯穿一条 1px 细线，按旅程进度填充 3px 强调色。所有数值由时间轨道驱动、可 seek；中央完全留空给画面。所有文字 ≥12px。
+日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。复用地图巡礼的 drawHud、cameraAt、clockAt、stepAtX、ruleX 与对应 CSS。仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。片段：caseT 7→13.6；caseT 35.8→42.4；时长 13.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。
 
 ## 参数
 
-- **日序滚入**：460ms outCubic
-- **歌词打字**：700ms 线性，副行延迟 400ms 淡入
-- **进度细线**：与步进器共用同一进度值，inOutCubic
-- **字号**：标签 12px 等宽、时钟 26–44px、日序 16–24px
+- **顶部 HUD 入场**：0s
+- **跨天**：6.6s
+- **时长**：13.8s
+- **声音 voice**：click、kick、sub
+
+## 动效 Token
+
+- **顶部 HUD 入场**：0s
+- **跨天**：6.6s
+- **时长**：13.8s
+
+## 迁移
+
+- `复制的函数`：drawHud、cameraAt、clockAt、stepAtX、ruleX
+- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
+- `需要的数据`：config.js 的 tracks.camera / clock / day / progress / lyrics、stepper 与横竖 layout。
+- `config.js → segments / markers`：caseT 7→13.6；caseT 35.8→42.4
+- `score.json`：事件 voice：click、kick、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。
 
 [打开 Demo](../../demos/patterns/corner-hud/index.html) · [在库中查看](../../patterns.html#pattern/corner-hud)

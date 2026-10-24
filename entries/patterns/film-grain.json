@@ -10,26 +10,30 @@
     "showcase",
     "console"
   ],
-  "summary": "预生成几帧噪声、按帧号选帧叠加，配合暗角、扫描线与轻微闪烁；同一时刻永远是同一张颗粒，逐帧渲染也不会“跳”。",
-  "mechanism": "320×180 的噪声画布放大覆盖全屏（image-rendering: pixelated），mix-blend-mode: overlay；frames 帧循环，帧号 = floor(t × fps)；闪烁亮度用以帧号为种子的伪随机；暗角是径向渐变；扫描线是 1px/3px 重复渐变。回忆段把强度从 0.07 提到 0.15 左右。",
-  "trigger": "常驻 / 回忆段加重",
-  "effect": "数码画面有了“胶片/录像”的质感，并把不同来源的素材统一在一起。",
+  "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
+  "mechanism": "地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。以巧思时间 t 映射到案例时刻 caseT，复制函数 render、sceneCanvas、paintScene、grainPass、vignette 按 caseT 求值。",
+  "trigger": "播放、暂停或 seek 到巧思时间 t。",
+  "effect": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
   "timing": [
     {
-      "name": "强度",
-      "value": "常态 0.07–0.12，回忆 0.15–0.25（overlay）"
+      "name": "地图上的颗粒",
+      "value": "0s"
     },
     {
-      "name": "换帧",
-      "value": "12fps，6 帧循环"
+      "name": "照片颗粒",
+      "value": "2.5s"
     },
     {
-      "name": "暗角",
-      "value": "0.3–0.45"
+      "name": "插画颗粒",
+      "value": "5s"
     },
     {
-      "name": "闪烁",
-      "value": "±4% 亮度"
+      "name": "时长",
+      "value": "7.5s"
+    },
+    {
+      "name": "声音 voice",
+      "value": "vinyl"
     }
   ],
   "useCases": [
@@ -42,8 +46,8 @@
     "大量小字区域（降低可读性）"
   ],
   "accessibility": {
-    "reducedMotion": "颗粒停在一帧，关闭闪烁。",
-    "keyboard": "参数面板为原生滑杆。"
+    "reducedMotion": "可使用时间轴暂停在完整帧。",
+    "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
   },
   "composition": {
     "role": "support",
@@ -52,18 +56,108 @@
       "split-compare-stamp"
     ],
     "conflicts": [],
-    "notes": "颗粒放在所有层之上但不拦截指针；HUD 小字区域保持低强度。"
+    "notes": "地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。"
   },
-  "prompt": "叠加可复现的胶片颗粒：预生成 6 帧 320×180 灰度噪声（固定种子），放在全屏 canvas 上（image-rendering: pixelated，mix-blend-mode: overlay，pointer-events: none），每帧显示 frames[floor(t×12) % 6]，透明度常态 0.07–0.12、回忆段 0.2；加 0.3–0.45 的径向暗角、可选 1px/3px 扫描线；亮度闪烁 ±4% 用 rng(帧号) 计算而不是 Math.random()。提供强度/fps/暗角/扫描线/闪烁五个滑杆。",
+  "prompt": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 7.5s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。",
   "demo": "demos/patterns/film-grain/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage",
-      "observation": "全片带轻颗粒，动画回忆段颗粒明显加重，实景与动画素材因此统一。",
+      "observation": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
       "evidence": "observed",
-      "locator": "0:22.7、0:55.2"
+      "locator": "地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56"
     }
   ],
-  "previewAt": 1.2
+  "previewAt": 1.2,
+  "markers": [
+    {
+      "t": 0,
+      "label": "地图上的颗粒"
+    },
+    {
+      "t": 2.5,
+      "label": "照片颗粒"
+    },
+    {
+      "t": 5,
+      "label": "插画颗粒"
+    }
+  ],
+  "sound": {
+    "voices": [
+      "vinyl"
+    ],
+    "score": "demos/patterns/film-grain/score.json",
+    "description": "MotionKit.audio.attach 挂接事件：vinyl。"
+  },
+  "tokens": {
+    "palette": [
+      "#f1eee7",
+      "#16171a",
+      "#d9562c",
+      "#e23b3b"
+    ],
+    "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
+    "css": {
+      "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+      "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+      "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+      "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+      "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+      "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+      "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+      "--paper": "#f1eee7",
+      "--ink": "#16171a",
+      "--ink-map": "#16171a",
+      "--muted": "rgba(22, 23, 26, .62)",
+      "--line": "rgba(22, 23, 26, .26)",
+      "--accent": "#d9562c",
+      "--accent-soft": "rgba(217, 86, 44, .22)",
+      "--surface": "rgba(250, 249, 245, .94)",
+      "--alert": "#e23b3b"
+    },
+    "motion": [
+      {
+        "name": "地图上的颗粒",
+        "value": "0s"
+      },
+      {
+        "name": "照片颗粒",
+        "value": "2.5s"
+      },
+      {
+        "name": "插画颗粒",
+        "value": "5s"
+      },
+      {
+        "name": "时长",
+        "value": "7.5s"
+      }
+    ]
+  },
+  "migration": [
+    {
+      "field": "复制的函数",
+      "how": "render、sceneCanvas、paintScene、grainPass、vignette"
+    },
+    {
+      "field": "依赖",
+      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+    },
+    {
+      "field": "需要的数据",
+      "how": "案例舞台颗粒纹理生成与 floor(t×12) 定位代码、grain / vignette CSS；10.4s 地图底图；scenes.js 的 window 照片和 kamo 回忆插画。"
+    },
+    {
+      "field": "config.js → segments / markers",
+      "how": "地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56"
+    },
+    {
+      "field": "score.json",
+      "how": "事件 voice：vinyl；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+    }
+  ]
 }

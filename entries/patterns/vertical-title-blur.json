@@ -10,30 +10,34 @@
     "showcase",
     "console"
   ],
-  "summary": "粗黑竖排汉字自上而下逐字由模糊变清晰，横线描出，英文标题带模糊前沿打出：一组同时有“东方字形”和“系统输出”气质的标题。",
-  "mechanism": "汉字逐字错峰 140ms，每字 500ms：透明 0→1、模糊 14px→0、上移 10px→0。横线从左向右 scaleX 描出。英文按字符推进，前沿 2 个字符带 6px 模糊，像正在“对焦”。字幕模式改为白色衬线、更慢的错峰（300ms），配合斜体英文。",
-  "trigger": "章节开始 / 抵达地点 / 回忆字幕",
-  "effect": "标题出现有方向和速度感，阅读顺序被动画引导：先汉字、再英文、最后小字。",
+  "summary": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
+  "mechanism": "片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 按 caseT 求值。",
+  "trigger": "播放、暂停或 seek 到巧思时间 t。",
+  "effect": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
   "timing": [
     {
-      "name": "字间错峰",
-      "value": "140–160ms（字幕 300ms）"
+      "name": "片名",
+      "value": "0s"
     },
     {
-      "name": "单字时长",
-      "value": "500ms outCubic"
+      "name": "地点标题",
+      "value": "4.2s"
     },
     {
-      "name": "初始模糊",
-      "value": "14px（字幕 10px）"
+      "name": "回忆竖排字幕",
+      "value": "7.9s"
     },
     {
-      "name": "英文打字",
-      "value": "约 45ms/字符，前沿 2 字符模糊"
+      "name": "fin.",
+      "value": "12s"
     },
     {
-      "name": "离场",
-      "value": "450ms 整体模糊 10px + 透明"
+      "name": "时长",
+      "value": "14.1s"
+    },
+    {
+      "name": "声音 voice",
+      "value": "key、tick、bell、shimmer、sub"
     }
   ],
   "useCases": [
@@ -47,7 +51,7 @@
     "需要即时读取的操作提示"
   ],
   "accessibility": {
-    "reducedMotion": "直接显示完整标题，不做模糊与逐字。",
+    "reducedMotion": "可使用时间轴暂停在完整帧。",
     "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
   },
   "composition": {
@@ -58,18 +62,120 @@
       "card-expand-fullscreen"
     ],
     "conflicts": [],
-    "notes": "同屏只保留一组模糊入场标题；与卡片同时出现时放在对角（标题左上、卡片右侧）。"
+    "notes": "片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。"
   },
-  "prompt": "实现“竖排汉字模糊入场 + 英文打字”标题：汉字 writing-mode: vertical-rl，900 字重，每字独立 span；第 i 个字在 start + i×140ms 开始，500ms outCubic 内 opacity 0→1、filter blur(14px)→0、translateY(-10px)→0。汉字右侧一条 3px 横线 450ms scaleX 0→1，下方英文标题按字符打出（约 45ms/字符），正在出现的前两个字符带 6px 模糊。离场时整组 450ms 模糊到 10px 并淡出。提供字幕变体：白色衬线、字间 300ms、斜体英文副句。全部动画是时间 t 的纯函数。",
+  "prompt": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 14.1s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
   "demo": "demos/patterns/vertical-title-blur/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage",
-      "observation": "「聖地巡礼」「関西」「西宮北口」「京都」等竖排地名逐字模糊入场，英文地名从左向右打出且前沿模糊；回忆段竖排日文字幕逐字揭示。",
+      "observation": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
       "evidence": "observed",
-      "locator": "0:06.4、0:16.5、0:21.5、0:55.5"
+      "locator": "caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60"
     }
   ],
-  "previewAt": 2.6
+  "previewAt": 2.6,
+  "markers": [
+    {
+      "t": 0,
+      "label": "片名"
+    },
+    {
+      "t": 4.2,
+      "label": "地点标题"
+    },
+    {
+      "t": 7.9,
+      "label": "回忆竖排字幕"
+    },
+    {
+      "t": 12,
+      "label": "fin."
+    }
+  ],
+  "sound": {
+    "voices": [
+      "key",
+      "tick",
+      "bell",
+      "shimmer",
+      "sub"
+    ],
+    "score": "demos/patterns/vertical-title-blur/score.json",
+    "description": "MotionKit.audio.attach 挂接事件：key、tick、bell、shimmer、sub。"
+  },
+  "tokens": {
+    "palette": [
+      "#f1eee7",
+      "#16171a",
+      "#d9562c",
+      "#e23b3b"
+    ],
+    "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
+    "css": {
+      "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+      "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+      "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+      "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+      "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+      "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+      "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+      "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+      "--paper": "#f1eee7",
+      "--ink": "#16171a",
+      "--ink-map": "#16171a",
+      "--muted": "rgba(22, 23, 26, .62)",
+      "--line": "rgba(22, 23, 26, .26)",
+      "--accent": "#d9562c",
+      "--accent-soft": "rgba(217, 86, 44, .22)",
+      "--surface": "rgba(250, 249, 245, .94)",
+      "--alert": "#e23b3b"
+    },
+    "motion": [
+      {
+        "name": "片名",
+        "value": "0s"
+      },
+      {
+        "name": "地点标题",
+        "value": "4.2s"
+      },
+      {
+        "name": "回忆竖排字幕",
+        "value": "7.9s"
+      },
+      {
+        "name": "fin.",
+        "value": "12s"
+      },
+      {
+        "name": "时长",
+        "value": "14.1s"
+      }
+    ]
+  },
+  "migration": [
+    {
+      "field": "复制的函数",
+      "how": "drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene"
+    },
+    {
+      "field": "依赖",
+      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+    },
+    {
+      "field": "需要的数据",
+      "how": "config.js 的 meta、tracks.locTitle / flashback / outro、横竖 layout；scenes.js 的回忆插画。"
+    },
+    {
+      "field": "config.js → segments / markers",
+      "how": "caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60"
+    },
+    {
+      "field": "score.json",
+      "how": "事件 voice：key、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+    }
+  ]
 }

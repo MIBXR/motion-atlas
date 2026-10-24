@@ -14,22 +14,34 @@
       "console",
       "showcase"
     ],
-    "summary": "把画面写成 render(t) 纯函数、把所有时间写进轨道：同一份代码既能实时播放，也能被拖动、跳到节拍，或逐帧截图渲染成视频。",
-    "mechanism": "MotionKit.timeline({duration, render}) 管理播放与 seek；所有动画用 seg/env/keyframes 从 t 推导，不用 setTimeout/CSS 动画；随机数用固定种子、颗粒按帧号选帧；expose() 暴露 window.__motion 供站点刻度条与 scripts/render.mjs 使用；?render=1 时 seek 可等待异步资源（如地图瓦片）。",
-    "trigger": "播放 / 拖动 / 逐帧渲染",
-    "effect": "节奏可精确调整到每一帧，影像与交互共用一套代码。",
+    "summary": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。",
+    "mechanism": "顶部 HUD（日序、日期、进度线、指南针、坐标、海拔、缩放与时钟）、kix 卡片与引线、MIKAN 徽章、控制条上方右对齐的署名，以及舞台内随 caseT 更新的复制控制条。以巧思时间 t 映射到案例时刻 caseT，复制函数 render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls 按 caseT 求值。",
+    "trigger": "播放、暂停或 seek 到巧思时间 t。",
+    "effect": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。",
     "timing": [
       {
-        "name": "协议",
-        "value": "window.__motion = { duration, markers, seek(t)→Promise, play, pause, on }"
+        "name": "播放",
+        "value": "0s"
       },
       {
-        "name": "URL",
-        "value": "?embed 隐藏控制条 · ?render 关闭自动播放 · ?t=秒 定位"
+        "name": "倒拖",
+        "value": "2s"
       },
       {
-        "name": "渲染",
-        "value": "node scripts/render.mjs <url> --fps 30 → PNG 序列（有 ffmpeg 时合成 MP4）"
+        "name": "前跳",
+        "value": "3.4s"
+      },
+      {
+        "name": "再倒拖",
+        "value": "5s"
+      },
+      {
+        "name": "时长",
+        "value": "7s"
+      },
+      {
+        "name": "声音 voice",
+        "value": "shutter、paper、confirm、stamp、sparkle、tick"
       }
     ],
     "useCases": [
@@ -41,7 +53,7 @@
       "依赖真实用户输入、不可预测的物理模拟（需另行录制）"
     ],
     "accessibility": {
-      "reducedMotion": "不自动播放；时间轴可手动拖动查看。",
+      "reducedMotion": "可使用时间轴暂停在完整帧。",
       "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
     },
     "composition": {
@@ -51,22 +63,125 @@
         "corner-hud"
       ],
       "conflicts": [],
-      "notes": "交互型作品可只对“演示模式”使用时间轴，真实交互仍走事件驱动。"
+      "notes": "顶部 HUD（日序、日期、进度线、指南针、坐标、海拔、缩放与时钟）、kix 卡片与引线、MIKAN 徽章、控制条上方右对齐的署名，以及舞台内随 caseT 更新的复制控制条。"
     },
-    "prompt": "用“时间轴纯函数”组织这段动效：定义 CONFIG.tracks（每条轨道是按时间排列的事件/关键帧），写 render(t) 只根据 t 计算全部 DOM/Canvas 状态（进度用 clamp((t-start)/dur) 再套缓动；关键帧之间插值），禁止 setTimeout、CSS animation 与 Math.random()（改用固定种子随机数，颗粒按 floor(t×fps) 选帧）。用 timeline 控制播放/暂停/seek，并暴露 window.__motion = { duration, markers, seek(t)→Promise, play, pause, on(fn) }；支持 ?embed 隐藏控制条、?render=1 关闭自动播放（seek 等待异步资源完成）、?t=秒 直接定位；空格/方向键控制播放与跳转。",
+    "prompt": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。复用地图巡礼的 render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls 与对应 CSS。顶部 HUD（日序、日期、进度线、指南针、坐标、海拔、缩放与时钟）、kix 卡片与引线、MIKAN 徽章、控制条上方右对齐的署名，以及舞台内随 caseT 更新的复制控制条。片段：caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/seekable-timeline/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage",
-        "observation": "参考视频由 Agent 程序化剪辑而成，画面元素与时间高度对齐；本库以 render(t) 协议复现，以便拖动、跳拍与逐帧渲染。",
-        "evidence": "adapted",
-        "locator": "全片"
+        "observation": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。",
+        "evidence": "observed",
+        "locator": "caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4"
       }
     ],
     "previewAt": 2.8,
+    "markers": [
+      {
+        "t": 0,
+        "label": "播放"
+      },
+      {
+        "t": 2,
+        "label": "倒拖"
+      },
+      {
+        "t": 3.4,
+        "label": "前跳"
+      },
+      {
+        "t": 5,
+        "label": "再倒拖"
+      }
+    ],
+    "sound": {
+      "voices": [
+        "shutter",
+        "paper",
+        "confirm",
+        "stamp",
+        "sparkle",
+        "tick"
+      ],
+      "score": "demos/patterns/seekable-timeline/score.json",
+      "description": "MotionKit.audio.attach 挂接卡片、MIKAN 计数、印章与拖动提示事件：shutter、paper、confirm、stamp、sparkle、tick；无独立步进器声音。"
+    },
+    "tokens": {
+      "palette": [
+        "#f1eee7",
+        "#16171a",
+        "#d9562c",
+        "#e23b3b"
+      ],
+      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
+      "css": {
+        "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+        "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+        "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+        "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+        "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+        "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+        "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+        "--paper": "#f1eee7",
+        "--ink": "#16171a",
+        "--ink-map": "#16171a",
+        "--muted": "rgba(22, 23, 26, .62)",
+        "--line": "rgba(22, 23, 26, .26)",
+        "--accent": "#d9562c",
+        "--accent-soft": "rgba(217, 86, 44, .22)",
+        "--surface": "rgba(250, 249, 245, .94)",
+        "--alert": "#e23b3b"
+      },
+      "motion": [
+        {
+          "name": "播放",
+          "value": "0s"
+        },
+        {
+          "name": "倒拖",
+          "value": "2s"
+        },
+        {
+          "name": "前跳",
+          "value": "3.4s"
+        },
+        {
+          "name": "再倒拖",
+          "value": "5s"
+        },
+        {
+          "name": "时长",
+          "value": "7s"
+        }
+      ]
+    },
+    "migration": [
+      {
+        "field": "复制的函数",
+        "how": "render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls"
+      },
+      {
+        "field": "依赖",
+        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+      },
+      {
+        "field": "需要的数据",
+        "how": "config.js 的顶部 HUD / kix 卡片 / mascot 轨道、tracks.camera 与横竖 layout；13s 底图屏幕锚点；七段拖动曲线和复制的控制条结构 / CSS。"
+      },
+      {
+        "field": "config.js → segments / markers",
+        "how": "caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4"
+      },
+      {
+        "field": "score.json",
+        "how": "事件 voice：shutter、paper、confirm、stamp、sparkle、tick；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      }
+    ],
     "preview": "previews/patterns/seekable-timeline.jpg",
-    "previewPortrait": null
+    "previewPortrait": "previews/patterns/seekable-timeline-portrait.jpg"
   },
   "sourceCases": [
     {
@@ -75,14 +190,19 @@
     }
   ],
   "documents": {
-    "prompt": "# 可逐帧定位的时间轴 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/seekable-timeline.json) 自动生成。\n\n## 实现 Prompt\n\n用“时间轴纯函数”组织这段动效：定义 CONFIG.tracks（每条轨道是按时间排列的事件/关键帧），写 render(t) 只根据 t 计算全部 DOM/Canvas 状态（进度用 clamp((t-start)/dur) 再套缓动；关键帧之间插值），禁止 setTimeout、CSS animation 与 Math.random()（改用固定种子随机数，颗粒按 floor(t×fps) 选帧）。用 timeline 控制播放/暂停/seek，并暴露 window.__motion = { duration, markers, seek(t)→Promise, play, pause, on(fn) }；支持 ?embed 隐藏控制条、?render=1 关闭自动播放（seek 等待异步资源完成）、?t=秒 直接定位；空格/方向键控制播放与跳转。\n\n## 参数\n\n- **协议**：window.__motion = { duration, markers, seek(t)→Promise, play, pause, on }\n- **URL**：?embed 隐藏控制条 · ?render 关闭自动播放 · ?t=秒 定位\n- **渲染**：node scripts/render.mjs <url> --fps 30 → PNG 序列（有 ffmpeg 时合成 MP4）\n\n[打开 Demo](../../demos/patterns/seekable-timeline/index.html) · [在库中查看](../../patterns.html#pattern/seekable-timeline)\n"
+    "prompt": "# 可逐帧定位的时间轴 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/seekable-timeline.json) 自动生成。\n\n## 实现 Prompt\n\n所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。复用地图巡礼的 render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls 与对应 CSS。顶部 HUD（日序、日期、进度线、指南针、坐标、海拔、缩放与时钟）、kix 卡片与引线、MIKAN 徽章、控制条上方右对齐的署名，以及舞台内随 caseT 更新的复制控制条。片段：caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **播放**：0s\n- **倒拖**：2s\n- **前跳**：3.4s\n- **再倒拖**：5s\n- **时长**：7s\n- **声音 voice**：shutter、paper、confirm、stamp、sparkle、tick\n\n## 动效 Token\n\n- **播放**：0s\n- **倒拖**：2s\n- **前跳**：3.4s\n- **再倒拖**：5s\n- **时长**：7s\n\n## 迁移\n\n- `复制的函数`：render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。\n- `需要的数据`：config.js 的顶部 HUD / kix 卡片 / mascot 轨道、tracks.camera 与横竖 layout；13s 底图屏幕锚点；七段拖动曲线和复制的控制条结构 / CSS。\n- `config.js → segments / markers`：caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4\n- `score.json`：事件 voice：shutter、paper、confirm、stamp、sparkle、tick；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/seekable-timeline/index.html) · [在库中查看](../../patterns.html#pattern/seekable-timeline)\n"
   },
   "entrypoint": "demos/patterns/seekable-timeline/index.html",
   "files": [
     {
+      "path": "demos/patterns/seekable-timeline/config.js",
+      "bytes": 27261,
+      "sha256": "e6df6e76e10b9e1ed82bc59577dae8ca8c4951842f2b9277ab2ef81d1b4653c8"
+    },
+    {
       "path": "demos/patterns/seekable-timeline/index.html",
-      "bytes": 5487,
-      "sha256": "8ec53b8584c24c3b35fb677a16afb8b34aae358c600fcb39274993f52aa0a7ad"
+      "bytes": 7647,
+      "sha256": "08c2509f22860cadc15515fef39c1022ead5bcccbc04222278147c23e489e59c"
     },
     {
       "path": "demos/patterns/seekable-timeline/motion-kit.js",
@@ -90,9 +210,49 @@
       "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
     },
     {
+      "path": "demos/patterns/seekable-timeline/paths.js",
+      "bytes": 8047,
+      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+    },
+    {
+      "path": "demos/patterns/seekable-timeline/plates/landscape-13-map.webp",
+      "bytes": 144342,
+      "sha256": "19ca802f89aae6be6b34c2a0b6d3be1a54212a0e1cd15b2cc49e740dceee8aa3"
+    },
+    {
+      "path": "demos/patterns/seekable-timeline/plates/portrait-13-map.webp",
+      "bytes": 131920,
+      "sha256": "4e827336ce679d32787c357b439e944b9d53834345aadc06208375e32b8254a8"
+    },
+    {
+      "path": "demos/patterns/seekable-timeline/scenes.js",
+      "bytes": 35275,
+      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+    },
+    {
+      "path": "demos/patterns/seekable-timeline/score.json",
+      "bytes": 1032,
+      "sha256": "dac16eac9025241f4957177a8d856b7feba3bd91b831deb5f595c59c0b7981f9"
+    },
+    {
+      "path": "demos/patterns/seekable-timeline/script.js",
+      "bytes": 145551,
+      "sha256": "1eb3c46eb25c39832d76f8398fc2647c8f8b74e87f7d29d0d748711c41099c4f"
+    },
+    {
+      "path": "demos/patterns/seekable-timeline/style.css",
+      "bytes": 41282,
+      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+    },
+    {
       "path": "previews/patterns/seekable-timeline.jpg",
-      "bytes": 47583,
-      "sha256": "1a62e8b36dd0bc8490c8ab0e7ae8b0fdd41b8f1ad4dca4700bd57f8893fd8905"
+      "bytes": 126400,
+      "sha256": "12e19c9134d11fff296e6f3d895561262899c41f6bdbabc3fd8d0183b351aea4"
+    },
+    {
+      "path": "previews/patterns/seekable-timeline-portrait.jpg",
+      "bytes": 136541,
+      "sha256": "d8f7c367b959ef2bcfe83bcc72d11a1ec018dcd2344c8a9821967d2dbcbb372b"
     }
   ]
 }

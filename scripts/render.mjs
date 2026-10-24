@@ -18,7 +18,7 @@ const has = (k) => args.includes(k);
 const VALUED = new Set(['--fps', '--w', '--h', '--from', '--to', '--out', '--format', '--port', '--orient', '--sample-rate']);
 const target = args.find((a, i) => !a.startsWith('--') && (i === 0 || !VALUED.has(args[i - 1])));
 if (!target) {
-  console.error('用法：node scripts/render.mjs demos/cases/beat-lyric/index.html [--orient landscape|portrait --fps 30 --from 0 --to 10 --out renders/x --format png|jpeg --audio --audio-only --no-encode]');
+  console.error('用法：node scripts/render.mjs demos/cases/map-pilgrimage/index.html [--orient landscape|portrait --fps 30 --from 0 --to 10 --out renders/x --format png|jpeg --audio --audio-only --no-encode]');
   process.exit(1);
 }
 const orient = get('--orient', 'landscape');

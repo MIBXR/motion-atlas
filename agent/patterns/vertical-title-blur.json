@@ -14,30 +14,34 @@
       "showcase",
       "console"
     ],
-    "summary": "粗黑竖排汉字自上而下逐字由模糊变清晰，横线描出，英文标题带模糊前沿打出：一组同时有“东方字形”和“系统输出”气质的标题。",
-    "mechanism": "汉字逐字错峰 140ms，每字 500ms：透明 0→1、模糊 14px→0、上移 10px→0。横线从左向右 scaleX 描出。英文按字符推进，前沿 2 个字符带 6px 模糊，像正在“对焦”。字幕模式改为白色衬线、更慢的错峰（300ms），配合斜体英文。",
-    "trigger": "章节开始 / 抵达地点 / 回忆字幕",
-    "effect": "标题出现有方向和速度感，阅读顺序被动画引导：先汉字、再英文、最后小字。",
+    "summary": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
+    "mechanism": "片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 按 caseT 求值。",
+    "trigger": "播放、暂停或 seek 到巧思时间 t。",
+    "effect": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
     "timing": [
       {
-        "name": "字间错峰",
-        "value": "140–160ms（字幕 300ms）"
+        "name": "片名",
+        "value": "0s"
       },
       {
-        "name": "单字时长",
-        "value": "500ms outCubic"
+        "name": "地点标题",
+        "value": "4.2s"
       },
       {
-        "name": "初始模糊",
-        "value": "14px（字幕 10px）"
+        "name": "回忆竖排字幕",
+        "value": "7.9s"
       },
       {
-        "name": "英文打字",
-        "value": "约 45ms/字符，前沿 2 字符模糊"
+        "name": "fin.",
+        "value": "12s"
       },
       {
-        "name": "离场",
-        "value": "450ms 整体模糊 10px + 透明"
+        "name": "时长",
+        "value": "14.1s"
+      },
+      {
+        "name": "声音 voice",
+        "value": "key、tick、bell、shimmer、sub"
       }
     ],
     "useCases": [
@@ -51,7 +55,7 @@
       "需要即时读取的操作提示"
     ],
     "accessibility": {
-      "reducedMotion": "直接显示完整标题，不做模糊与逐字。",
+      "reducedMotion": "可使用时间轴暂停在完整帧。",
       "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
     },
     "composition": {
@@ -62,22 +66,124 @@
         "card-expand-fullscreen"
       ],
       "conflicts": [],
-      "notes": "同屏只保留一组模糊入场标题；与卡片同时出现时放在对角（标题左上、卡片右侧）。"
+      "notes": "片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。"
     },
-    "prompt": "实现“竖排汉字模糊入场 + 英文打字”标题：汉字 writing-mode: vertical-rl，900 字重，每字独立 span；第 i 个字在 start + i×140ms 开始，500ms outCubic 内 opacity 0→1、filter blur(14px)→0、translateY(-10px)→0。汉字右侧一条 3px 横线 450ms scaleX 0→1，下方英文标题按字符打出（约 45ms/字符），正在出现的前两个字符带 6px 模糊。离场时整组 450ms 模糊到 10px 并淡出。提供字幕变体：白色衬线、字间 300ms、斜体英文副句。全部动画是时间 t 的纯函数。",
+    "prompt": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 14.1s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/vertical-title-blur/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage",
-        "observation": "「聖地巡礼」「関西」「西宮北口」「京都」等竖排地名逐字模糊入场，英文地名从左向右打出且前沿模糊；回忆段竖排日文字幕逐字揭示。",
+        "observation": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
         "evidence": "observed",
-        "locator": "0:06.4、0:16.5、0:21.5、0:55.5"
+        "locator": "caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60"
       }
     ],
     "previewAt": 2.6,
+    "markers": [
+      {
+        "t": 0,
+        "label": "片名"
+      },
+      {
+        "t": 4.2,
+        "label": "地点标题"
+      },
+      {
+        "t": 7.9,
+        "label": "回忆竖排字幕"
+      },
+      {
+        "t": 12,
+        "label": "fin."
+      }
+    ],
+    "sound": {
+      "voices": [
+        "key",
+        "tick",
+        "bell",
+        "shimmer",
+        "sub"
+      ],
+      "score": "demos/patterns/vertical-title-blur/score.json",
+      "description": "MotionKit.audio.attach 挂接事件：key、tick、bell、shimmer、sub。"
+    },
+    "tokens": {
+      "palette": [
+        "#f1eee7",
+        "#16171a",
+        "#d9562c",
+        "#e23b3b"
+      ],
+      "type": "案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。",
+      "css": {
+        "--f-sans": "\"Segoe UI Variable Text\", \"Segoe UI\", \"Helvetica Neue\", \"Yu Gothic UI\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-display": "\"Bahnschrift\", \"DIN Alternate\", \"Barlow\", \"Segoe UI\", sans-serif",
+        "--f-mono": "\"Cascadia Mono\", \"JetBrains Mono\", \"SF Mono\", Consolas, monospace",
+        "--f-ja": "\"Yu Gothic UI\", \"Yu Gothic\", \"YuGothic\", \"Hiragino Kaku Gothic ProN\", \"Noto Sans JP\", \"Microsoft YaHei UI\", sans-serif",
+        "--f-zh": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Noto Sans SC\", \"Source Han Sans SC\", sans-serif",
+        "--f-mincho": "\"Yu Mincho\", \"YuMincho\", \"Hiragino Mincho ProN\", \"Noto Serif JP\", \"SimSun\", serif",
+        "--f-serif": "\"Georgia\", \"Yu Mincho\", \"Noto Serif JP\", serif",
+        "--f-hand": "\"Ink Free\", \"Segoe Print\", \"Bradley Hand\", cursive",
+        "--f-hand-ja": "\"UD Digi Kyokasho N-R\", \"UD デジタル 教科書体 N-R\", \"Yu Mincho\", serif",
+        "--paper": "#f1eee7",
+        "--ink": "#16171a",
+        "--ink-map": "#16171a",
+        "--muted": "rgba(22, 23, 26, .62)",
+        "--line": "rgba(22, 23, 26, .26)",
+        "--accent": "#d9562c",
+        "--accent-soft": "rgba(217, 86, 44, .22)",
+        "--surface": "rgba(250, 249, 245, .94)",
+        "--alert": "#e23b3b"
+      },
+      "motion": [
+        {
+          "name": "片名",
+          "value": "0s"
+        },
+        {
+          "name": "地点标题",
+          "value": "4.2s"
+        },
+        {
+          "name": "回忆竖排字幕",
+          "value": "7.9s"
+        },
+        {
+          "name": "fin.",
+          "value": "12s"
+        },
+        {
+          "name": "时长",
+          "value": "14.1s"
+        }
+      ]
+    },
+    "migration": [
+      {
+        "field": "复制的函数",
+        "how": "drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene"
+      },
+      {
+        "field": "依赖",
+        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+      },
+      {
+        "field": "需要的数据",
+        "how": "config.js 的 meta、tracks.locTitle / flashback / outro、横竖 layout；scenes.js 的回忆插画。"
+      },
+      {
+        "field": "config.js → segments / markers",
+        "how": "caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60"
+      },
+      {
+        "field": "score.json",
+        "how": "事件 voice：key、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      }
+    ],
     "preview": "previews/patterns/vertical-title-blur.jpg",
-    "previewPortrait": null
+    "previewPortrait": "previews/patterns/vertical-title-blur-portrait.jpg"
   },
   "sourceCases": [
     {
@@ -86,14 +192,19 @@
     }
   ],
   "documents": {
-    "prompt": "# 竖排汉字模糊入场 + 英文打字 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/vertical-title-blur.json) 自动生成。\n\n## 实现 Prompt\n\n实现“竖排汉字模糊入场 + 英文打字”标题：汉字 writing-mode: vertical-rl，900 字重，每字独立 span；第 i 个字在 start + i×140ms 开始，500ms outCubic 内 opacity 0→1、filter blur(14px)→0、translateY(-10px)→0。汉字右侧一条 3px 横线 450ms scaleX 0→1，下方英文标题按字符打出（约 45ms/字符），正在出现的前两个字符带 6px 模糊。离场时整组 450ms 模糊到 10px 并淡出。提供字幕变体：白色衬线、字间 300ms、斜体英文副句。全部动画是时间 t 的纯函数。\n\n## 参数\n\n- **字间错峰**：140–160ms（字幕 300ms）\n- **单字时长**：500ms outCubic\n- **初始模糊**：14px（字幕 10px）\n- **英文打字**：约 45ms/字符，前沿 2 字符模糊\n- **离场**：450ms 整体模糊 10px + 透明\n\n[打开 Demo](../../demos/patterns/vertical-title-blur/index.html) · [在库中查看](../../patterns.html#pattern/vertical-title-blur)\n"
+    "prompt": "# 竖排汉字模糊入场 + 英文打字 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/vertical-title-blur.json) 自动生成。\n\n## 实现 Prompt\n\n竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 14.1s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **片名**：0s\n- **地点标题**：4.2s\n- **回忆竖排字幕**：7.9s\n- **fin.**：12s\n- **时长**：14.1s\n- **声音 voice**：key、tick、bell、shimmer、sub\n\n## 动效 Token\n\n- **片名**：0s\n- **地点标题**：4.2s\n- **回忆竖排字幕**：7.9s\n- **fin.**：12s\n- **时长**：14.1s\n\n## 迁移\n\n- `复制的函数`：drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。\n- `需要的数据`：config.js 的 meta、tracks.locTitle / flashback / outro、横竖 layout；scenes.js 的回忆插画。\n- `config.js → segments / markers`：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60\n- `score.json`：事件 voice：key、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/vertical-title-blur/index.html) · [在库中查看](../../patterns.html#pattern/vertical-title-blur)\n"
   },
   "entrypoint": "demos/patterns/vertical-title-blur/index.html",
   "files": [
     {
+      "path": "demos/patterns/vertical-title-blur/config.js",
+      "bytes": 26332,
+      "sha256": "4303803a4b175a0a1b103e634b3a5defbf6a39fea81cfaeb4f14d4a9cfc5a956"
+    },
+    {
       "path": "demos/patterns/vertical-title-blur/index.html",
-      "bytes": 5653,
-      "sha256": "3396c3051a0ca6ff47aa87e6ec7c37929f8eae3a8c1ffe893c7e8465bffb463f"
+      "bytes": 7649,
+      "sha256": "d5a2f90c2cdb1b053a0091ca6ce9470170c37f3e23943816e23396386fbce52b"
     },
     {
       "path": "demos/patterns/vertical-title-blur/motion-kit.js",
@@ -101,9 +212,69 @@
       "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
     },
     {
+      "path": "demos/patterns/vertical-title-blur/paths.js",
+      "bytes": 8047,
+      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/plates/landscape-19.7-map.webp",
+      "bytes": 384100,
+      "sha256": "bb463b62eaddef49e0b0f4e3978fb835f1717f72981228210f6e834e2b59c450"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/plates/landscape-5.95-map.webp",
+      "bytes": 13944,
+      "sha256": "122bc0620b0318212bb81e6db2a2b025589fa3fdd6897ef4978a2506d6a5c386"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/plates/landscape-58-map-routes-markers.webp",
+      "bytes": 234960,
+      "sha256": "6473f840232416b598d4d18e13f4b869ca80f16aa9e8110343d5fe0a849ebf2c"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/plates/portrait-19.7-map.webp",
+      "bytes": 309360,
+      "sha256": "1141475d173311441c9a637410a517e59972781b06858bde00f217fdb1ee09c4"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/plates/portrait-5.95-map.webp",
+      "bytes": 12608,
+      "sha256": "34bd5bf2375435c541b1aba6d6e2bbc1684b981f9a8b0228a5df278cc78ddaa3"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/plates/portrait-58-map-routes-markers.webp",
+      "bytes": 149778,
+      "sha256": "ea982aac9be3dbd36227ec2c72155399b17dc21f9153b1fc1176c44e01f9cd40"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/scenes.js",
+      "bytes": 35275,
+      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/score.json",
+      "bytes": 5638,
+      "sha256": "8339f62fb121906ce449b0b108bb845a49f4638d0a7d2725ca8e1dbcd573a341"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/script.js",
+      "bytes": 145553,
+      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+    },
+    {
+      "path": "demos/patterns/vertical-title-blur/style.css",
+      "bytes": 41282,
+      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+    },
+    {
       "path": "previews/patterns/vertical-title-blur.jpg",
-      "bytes": 29676,
-      "sha256": "87d704835d67c84040d4d42ac01077c2ebe58a44bebbc6fee8b74b61183c8d48"
+      "bytes": 102601,
+      "sha256": "df2ffe6a5cbf8cb25ef7e441bcf9a65b8fd8996ceca90eb289f171a1019b47ba"
+    },
+    {
+      "path": "previews/patterns/vertical-title-blur-portrait.jpg",
+      "bytes": 106999,
+      "sha256": "00eac50f10caaf253b2ba561e501d865e9abb718c75f827a928b771013fdb53c"
     }
   ]
 }

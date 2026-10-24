@@ -4,13 +4,31 @@
 
 ## 实现 Prompt
 
-在【地图/示意图】上实现路线描画：路线点集按累计弧长截断到进度 p（inOutQuad），航线用二次贝塞尔弧（控制点沿垂线偏移 bend×距离）+ 9/7 虚线，地面路线先画 9px 白色描边再画 4px 强调色；描画期间在截断点显示白底黑边头部圆点。标记：16px 白底黑边圆点内嵌强调色，450ms outBack 从 0.6 缩放回弹出现；右侧等宽标签 550ms 打字，汉字随后淡入；两个 1.5px 脉冲环每 2 秒放大到 2.6 倍并淡出，相位相差半周期。接真实地图时把路线放进 MapLibre GeoJSON line 图层。
+路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。复用地图巡礼的 cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt 与对应 CSS。三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。片段：kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65；时长 10.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。
 
 ## 参数
 
-- **描画**：按段时长 inOutQuad；航线约 3s、地面 2.5–3.5s
-- **标记回弹**：450ms outBack，缩放 0.6→1
-- **脉冲**：周期 2s，两环相位差 0.5，最大 2.6×
-- **标签**：打字 550ms，汉字 +600ms 淡入
+- **机场**：0s
+- **描画**：0.6s
+- **第二段**：4s
+- **步行**：7.2s
+- **时长**：10.6s
+- **声音 voice**：sonar、whoosh、clack、blip、chime、tick
+
+## 动效 Token
+
+- **机场**：0s
+- **描画**：0.6s
+- **第二段**：4s
+- **步行**：7.2s
+- **时长**：10.6s
+
+## 迁移
+
+- `复制的函数`：cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt
+- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。
+- `需要的数据`：config.js 的 stops、tracks.routes / markers、tracks.camera；paths.js 的 haruka / naraLine / walk1 几何；横竖 S1 / S2 / S3 固定镜头。
+- `config.js → segments / markers`：kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65
+- `score.json`：事件 voice：sonar、whoosh、clack、blip、chime、tick；保持 inventory 中全部音色参数，t 映射为巧思时刻。
 
 [打开 Demo](../../demos/patterns/route-draw-marker/index.html) · [在库中查看](../../patterns.html#pattern/route-draw-marker)

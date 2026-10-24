@@ -1,133 +1,152 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>四角信息 HUD — Motion Atlas 巧思</title>
-<style>
-  :root { --paper: #f2efe8; --ink: #16171a; --muted: rgba(22,23,26,.62); --line: rgba(22,23,26,.2); --accent: #d9632b;
-    --pad: clamp(16px, 3.4vw, 60px); --f-sans: "Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-    --f-display: "Bahnschrift","DIN Alternate","Segoe UI","PingFang SC",sans-serif; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
-  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: var(--paper); color: var(--ink); font-family: var(--f-sans); }
-  p, ol { margin: 0; padding: 0; }
-  .world { position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 72px 72px; opacity: .55; }
-  .world::after { content: ""; position: absolute; left: 30%; top: 22%; width: 46%; height: 52%; border-radius: 48% 52% 40% 60%; background: rgba(110,140,165,.18); }
-  .hud { position: absolute; left: var(--pad); right: var(--pad); }
-  .top { top: clamp(18px, 3vw, 50px); display: grid; grid-template-columns: 1fr auto auto; gap: 12px 28px; align-items: start; }
-  .day { font: 700 clamp(16px, 1.5vw, 24px)/1 var(--f-display); letter-spacing: .06em; }
-  .day .n { display: inline-block; color: var(--accent); overflow: hidden; height: 1em; vertical-align: top; }
-  .day .n i { display: block; font-style: normal; }
-  .day small { font: 500 13px/1 var(--f-mono); color: var(--muted); }
-  .date { margin-top: 8px; font: 12px/1 var(--f-mono); letter-spacing: .18em; color: var(--muted); }
-  .under { display: block; margin-top: 14px; width: 120px; height: 3px; background: var(--ink); opacity: .7; }
-  .geo { text-align: right; font: 12px/1.6 var(--f-mono); letter-spacing: .08em; color: var(--muted); }
-  .clock { font: 600 clamp(26px, 2.6vw, 44px)/1 var(--f-mono); font-variant-numeric: tabular-nums; }
-  .clock sup { margin-left: 4px; font-size: 12px; color: var(--accent); vertical-align: top; letter-spacing: .1em; }
-  .rule { grid-column: 1 / -1; position: relative; height: 1px; background: var(--line); }
-  .rule i { position: absolute; left: 0; top: -1px; height: 3px; background: var(--accent); }
-  .bottom { bottom: clamp(16px, 2.6vw, 44px); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 16px 24px; }
-  .np-head { display: flex; align-items: center; gap: 10px; font: 600 12px/1 var(--f-mono); letter-spacing: .24em; color: var(--muted); }
-  .np-head svg { width: 20px; height: 16px; fill: var(--accent); }
-  .track { margin-top: 8px; font-size: 14px; color: var(--muted); } .track b { color: var(--ink); }
-  .lyric { margin-top: 22px; font: 700 clamp(15px, 1.5vw, 24px)/1.25 var(--f-sans); min-height: 1.25em; }
-  .sub { margin-top: 6px; font-size: clamp(13px, 1.05vw, 17px); color: var(--muted); min-height: 1.3em; }
-  .stepper { list-style: none; position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(64px, 9vw, 160px); }
-  .stepper::before, .stepper .fill { content: ""; position: absolute; top: 9px; left: 6px; height: 3px; background: var(--line); }
-  .stepper::before { right: calc(clamp(64px, 9vw, 160px) - 6px); }
-  .stepper .fill { background: var(--ink); }
-  .stepper li { position: relative; padding-top: 22px; font: 600 12px/1 var(--f-mono); letter-spacing: .14em; color: var(--muted); }
-  .stepper li::before { content: ""; position: absolute; left: 0; top: 3px; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--line); background: var(--paper); }
-  .stepper li.on { color: var(--ink); } .stepper li.on::before { background: var(--ink); border-color: var(--ink); }
-  @media (max-width: 720px) { .geo { display: none; } .top { grid-template-columns: 1fr auto; } .bottom { grid-template-columns: 1fr; } .stepper { grid-auto-columns: minmax(0, 1fr); } .stepper li { letter-spacing: .04em; } .stepper::before { right: calc(25% - 6px); } }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>corner-hud — Motion Atlas Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- 地图资源尽早开始下载（与 config.js 的 map.lib / map.style 保持一致）：与页面脚本并行，缩短可播放前的等待 -->
 </head>
 <body>
-<div class="world" aria-hidden="true"></div>
-<header class="hud top" aria-label="行程信息">
-  <div><p class="day"><b>DAY</b> <span class="n"><i>01</i></span> <small>/ <span class="total"></span></small></p><p class="date"></p><i class="under"></i></div>
-  <div class="geo"><p class="coord"></p><p class="elev"></p></div>
-  <div class="clock"><span class="time"></span><sup class="tz"></sup></div>
-  <i class="rule"><i></i></i>
-</header>
-<footer class="hud bottom">
-  <div>
-    <p class="np-head"><svg viewBox="0 0 20 16" aria-hidden="true"><rect x="1" width="3"/><rect x="6" width="3"/><rect x="11" width="3"/><rect x="16" width="3"/></svg><span>NOW PLAYING</span></p>
-    <p class="track"><b class="title"></b> — <span class="artist"></span></p>
-    <p class="lyric"></p><p class="sub"></p>
-  </div>
-  <ol class="stepper"><i class="fill"></i></ol>
-</footer>
-<script src="motion-kit.js"></script>
-<script>
-/* ===== CONFIG：改这里即可迁移 ===== */
-const CONFIG = {
-  duration: 12,
-  totalDays: 3,
-  tz: 'CST',
-  accent: '#d9632b',
-  days: [{ t: 0, n: 1, date: 'THU · OCT 01 2026' }, { t: 6, n: 2, date: 'FRI · OCT 02 2026' }],
-  clock: [{ t: 0, m: 9 * 60 + 12 }, { t: 5.9, m: 21 * 60 + 40 }, { t: 6, m: 8 * 60 + 5 }, { t: 12, m: 18 * 60 }], // 分钟，可跨天跳变
-  coords: [{ t: 0, lat: 30.2427, lng: 120.1446, z: 11.2, elev: 7 }, { t: 12, lat: 31.315, lng: 120.631, z: 12.4, elev: 4 }],
-  stops: ['BEIJING', 'HANGZHOU', 'SUZHOU', 'SHANGHAI'],
-  progress: [{ t: 0, v: 1 }, { t: 6, v: 1 }, { t: 9, v: 2 }, { t: 12, v: 2 }],
-  music: { title: 'Paper Lanterns', artist: 'Motion Atlas Original' },
-  lyrics: [
-    { t: 0.4, text: 'Paper lanterns on the water line', sub: '水面上一排纸灯笼' },
-    { t: 4.0, text: 'Every bridge I cross remembers me', sub: '走过的每一座桥都记得我' },
-    { t: 8.0, text: 'Count the gables, count the boats', sub: '数一数山墙，数一数小船' },
-  ],
-};
-/* ================================== */
-const MK = MotionKit, $ = (s) => document.querySelector(s);
-document.documentElement.style.setProperty('--accent', CONFIG.accent);
-$('.total').textContent = MK.pad(CONFIG.totalDays);
-$('.tz').textContent = CONFIG.tz;
-$('.title').textContent = CONFIG.music.title;
-$('.artist').textContent = CONFIG.music.artist;
-const stepper = $('.stepper');
-stepper.insertAdjacentHTML('beforeend', CONFIG.stops.map((s) => `<li>${s}</li>`).join(''));
-const lis = stepper.querySelectorAll('li');
-const lastBefore = (list, t) => list.filter((x) => t >= x.t).pop() || list[0];
-const lerpList = (list, t, key) => {
-  for (let i = 0; i < list.length - 1; i++) if (t <= list[i + 1].t) return MK.lerp(list[i][key], list[i + 1][key], MK.ease.inOutCubic(MK.invLerp(list[i].t, list[i + 1].t, t)));
-  return list[list.length - 1][key];
-};
-function render(t) {
-  // 日序：变化时数字从下方滚入（460ms）
-  const d = lastBefore(CONFIG.days, t);
-  const k = MK.seg(t, d.t, 0.46, MK.ease.outCubic);
-  $('.day .n').innerHTML = `<i style="transform:translateY(${(1 - k) * 100}%)">${MK.pad(d.n)}</i>`;
-  $('.date').textContent = d.date;
-  // 时钟：同一天内连续推进；相邻关键帧间隔 < 0.2s 视为跨天跳变
-  let m = CONFIG.clock[0].m;
-  for (let i = 0; i < CONFIG.clock.length - 1; i++) {
-    const a = CONFIG.clock[i], b = CONFIG.clock[i + 1];
-    if (t >= a.t && t < b.t) m = b.t - a.t < 0.2 ? a.m : MK.lerp(a.m, b.m, (t - a.t) / (b.t - a.t));
-    if (t >= b.t) m = b.m;
-  }
-  $('.time').textContent = `${MK.pad(m / 60 % 24)}:${MK.pad(m % 60)}`;
-  const lat = lerpList(CONFIG.coords, t, 'lat'), lng = lerpList(CONFIG.coords, t, 'lng');
-  $('.coord').textContent = `${lat.toFixed(4)}°N ${lng.toFixed(4)}°E`;
-  $('.elev').textContent = `ELEV ${Math.round(lerpList(CONFIG.coords, t, 'elev'))} M · Z ${lerpList(CONFIG.coords, t, 'z').toFixed(1)}`;
-  // 进度：顶部细线 + 步进器
-  const p = lerpList(CONFIG.progress, t, 'v'), ratio = p / (CONFIG.stops.length - 1);
-  $('.rule i').style.width = `${ratio * 100}%`;
-  lis.forEach((li, i) => li.classList.toggle('on', p >= i - 0.02));
-  $('.fill').style.width = innerWidth <= 720 ? `calc(75% * ${ratio})` : `calc((100% - clamp(64px, 9vw, 160px)) * ${ratio})`;
-  // 歌词：打字 + 副行淡入；均衡器柱高由时间决定（可复现）
-  const ly = CONFIG.lyrics.filter((x) => t >= x.t).pop();
-  $('.lyric').textContent = ly ? MK.typeText(ly.text, MK.seg(t, ly.t, 0.7, MK.ease.linear)) : '···';
-  $('.sub').textContent = ly ? ly.sub : '';
-  $('.sub').style.opacity = ly ? MK.seg(t, ly.t + 0.4, 0.4) : 0;
-  document.querySelectorAll('.np-head rect').forEach((r, i) => { const h = 3 + 12 * (0.5 + 0.5 * Math.sin(t * (6 + i * 1.9) + i)); r.setAttribute('y', 16 - h); r.setAttribute('height', h); });
-}
-const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: 0, label: 'DAY 01' }, { t: 4, label: '歌词换行' }, { t: 6, label: '跨天' }, { t: 9, label: '抵达下一站' }] });
-MK.expose(tl);
-MK.controls(tl, { accent: CONFIG.accent });
-const P = MK.params();
-tl.seek(P.t ?? (MK.prefersReducedMotion() ? 5 : 0));
-if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
-addEventListener('resize', () => tl.seek(tl.time));
-</script>
+  <!--
+    固定画幅舞台：MotionKit.stage() 把 #stage 设为 1920×1080 / 1080×1920 并整体等比缩放，内部一律用舞台像素。
+    层级（下 → 上）：太空 / 底图 → 地图降级遮罩 → 色调层 → 地图锚定图形（SVG：航线、节点、引线）→ 地图标签 →
+    卡片 → 全屏回忆 / 对比 → 压暗层 → 章节装饰 → 事件文字 → HUD → 收尾 → 颗粒与暗角
+  -->
+  <main id="stage" class="stage" aria-label="地图巡礼影像：关西三日">
+    <div id="plates" class="plates" aria-hidden="true"></div>
+    <canvas id="space" class="space" aria-hidden="true"></canvas>
+    <div id="map" class="map" aria-hidden="true"></div>
+    <div id="fallback" class="map-fallback" aria-hidden="true"></div>
+    <div id="veil" class="veil" aria-hidden="true"><span class="veil-tag">SYNCING MAP</span></div>
+    <div id="wash" class="wash" aria-hidden="true"></div>
+
+    <svg id="geo" class="geo" aria-hidden="true"></svg>
+    <i class="hud-fade top" aria-hidden="true"></i><i class="hud-fade bottom" aria-hidden="true"></i>
+    <div id="labels" class="labels" aria-hidden="true"></div>
+
+    <div id="cards" class="cards" aria-hidden="true"></div>
+
+    <section id="flashback" class="flashback" aria-hidden="true">
+      <div class="fb-media"></div>
+      <i class="fb-frame"></i>
+      <span class="fb-tag"></span>
+      <div class="fb-vtext"></div>
+      <p class="fb-en"><span class="fb-en-text"></span><i class="fb-caret"></i></p>
+      <p class="fb-caption"></p>
+    </section>
+
+    <section id="compare" class="compare" aria-hidden="true">
+      <div class="cmp-a"><div class="cmp-media"></div><span class="cmp-label"></span></div>
+      <div class="cmp-b"><div class="cmp-media"></div><span class="cmp-label"></span></div>
+      <i class="cmp-divider"><i class="cmp-knob"></i></i>
+      <i class="cmp-frame"></i>
+      <span class="cmp-stamp"></span>
+    </section>
+
+    <div id="scrim" class="scrim" aria-hidden="true"></div>
+
+    <div id="decor" class="decor" aria-hidden="true">
+      <svg class="frame-svg"><path class="fr-line"/></svg>
+      <i class="fr-c tl"></i><i class="fr-c tr"></i><i class="fr-c bl"></i><i class="fr-c br"></i>
+      <canvas class="halftone"></canvas>
+      <div class="tape"><i></i></div>
+    </div>
+
+    <section id="intro" class="intro-title" aria-hidden="true">
+      <div class="it-cjk"></div>
+      <div class="it-side">
+        <i class="it-rule"></i>
+        <h1 class="it-en"></h1>
+        <p class="it-sub"></p>
+      </div>
+    </section>
+
+    <section id="loc" class="loc-title" aria-hidden="true">
+      <div class="lt-cjk"></div>
+      <div class="lt-side"><i class="lt-rule"></i><h2 class="lt-en"></h2><p class="lt-sub"></p></div>
+    </section>
+
+    <section id="daycard" class="daycard" aria-hidden="true">
+      <div class="dc-row"><span class="dc-day">DAY</span><span class="dc-num"><i></i></span></div>
+      <p class="dc-date"></p>
+    </section>
+
+    <div id="chapter" class="chapter-tag" aria-hidden="true"><span class="ct-chip"></span><b class="ct-title"></b></div>
+
+    <div id="alert" class="alert" aria-hidden="true">
+      <div class="al-bar">
+        <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10v5M12 17.6v.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <b class="al-title"></b><span class="al-detail"></span>
+      </div>
+      <span class="al-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6l-7 6 7 6zM20 6l-7 6 7 6z" fill="currentColor"/></svg><span class="al-chip-text"></span></span>
+    </div>
+
+    <div id="toast" class="toast" aria-hidden="true">
+      <span class="ts-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 11h8M8 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span class="ts-body"><b class="ts-text"></b><span class="ts-sub"></span></span>
+    </div>
+
+    <figure id="note" class="note" aria-hidden="true">
+      <svg class="nt-doodle" viewBox="0 0 360 150" aria-hidden="true"></svg>
+      <p class="nt-text"></p>
+      <figcaption class="nt-sign"></figcaption>
+    </figure>
+
+    <header class="hud hud-top" aria-hidden="true">
+      <div class="hud-day">
+        <p class="hd-title"><b>DAY</b> <span class="hd-n"><i>01</i></span> <small>/ <span class="hd-total"></span></small></p>
+        <p class="hd-date"></p>
+      </div>
+      <svg class="compass" viewBox="-30 -30 60 60" aria-hidden="true">
+        <circle class="cp-ring" r="26"/>
+        <g class="cp-ticks"></g>
+        <g class="cp-needle"><path class="cp-n" d="M0 -20 L5 0 L-5 0Z"/><path class="cp-s" d="M0 20 L5 0 L-5 0Z"/></g>
+        <circle class="cp-hub" r="2.6"/>
+      </svg>
+      <div class="hud-geo"><p class="hg-coord"></p><p class="hg-elev"></p></div>
+      <div class="hud-clock"><span class="hc-time">00:00</span><span class="hc-tz"></span></div>
+    </header>
+    <svg id="hudgfx" class="hudgfx" aria-hidden="true"></svg>
+
+    <div id="badge" class="badge" aria-hidden="true">
+      <span class="bd-avatar"><svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M8 13l5 5h14l5-5v15a9 9 0 0 1-9 9h-6a9 9 0 0 1-9-9z" fill="#f2a94b"/>
+        <path d="M8 13l5 5h-5zM32 13l-5 5h5z" fill="#d9792c"/>
+        <circle cx="15.5" cy="25" r="1.9" fill="#16171a"/><circle cx="24.5" cy="25" r="1.9" fill="#16171a"/>
+        <path d="M18.4 29h3.2l-1.6 1.5z" fill="#c9452e"/>
+        <path d="M5 27h6M5 30.5h6M29 27h6M29 30.5h6" stroke="#16171a" stroke-width="1.2" stroke-linecap="round"/>
+      </svg></span>
+      <span class="bd-label"></span>
+      <b class="bd-n"><i>×0</i></b>
+    </div>
+
+    <footer class="hud hud-bottom" aria-hidden="true">
+      <div class="np">
+        <p class="np-head"><svg class="np-eq" viewBox="0 0 30 22" aria-hidden="true"><rect x="0" width="4" y="8" height="14"/><rect x="6.5" width="4" y="3" height="19"/><rect x="13" width="4" y="10" height="12"/><rect x="19.5" width="4" y="5" height="17"/><rect x="26" width="4" y="12" height="10"/></svg><span>NOW PLAYING</span></p>
+        <p class="np-track"><b class="np-title"></b> — <span class="np-artist"></span></p>
+        <p class="np-lyric"><span class="np-lyric-text"></span></p>
+        <p class="np-sub"></p>
+      </div>
+      <div class="scale" aria-hidden="true"><i class="sc-bar"><i></i><i></i></i><span class="sc-text"></span></div>
+    </footer>
+    <p class="attrib"></p>
+
+    <i class="outro-bg" aria-hidden="true"></i>
+    <section id="outro" class="outro" aria-hidden="true">
+      <ul class="ou-stats"></ul>
+      <p class="ou-fin"><span class="ou-fin-text"></span> <small class="ou-handle"></small></p>
+      <div class="ou-credits"></div>
+    </section>
+
+    <i id="grain" class="grain" aria-hidden="true"></i>
+    <i class="vignette" aria-hidden="true"></i>
+  </main>
+
+  <script src="motion-kit.js"></script>
+  <script src="config.js"></script>
+  <script src="paths.js"></script>
+  <script src="scenes.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

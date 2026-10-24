@@ -4,12 +4,33 @@
 
 ## 实现 Prompt
 
-实现收集计数徽章：右上角白色胶囊（头像 + 12px 等宽标签 + 粗体 ×N），计数由事件时刻列表推导；最近一次事件后经过 k 秒时，数字在 300ms 内从下方滚入、徽章 scale(1 + 0.14·e^(-7k))、头像外圈 2px 强调色环放大并淡出。下方图鉴托盘 N 个 3:4 槽位，空位为虚线 + 问号，事件发生时依次 420ms outBack 填入缩略图与名字并换成强调色描边。徽章 role=status 播报当前数量，提供手动 +1 与重置按钮。
+每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。
 
 ## 参数
 
-- **数字滚入**：300ms outCubic
-- **回弹**：幅度 0.14，衰减系数 7（约 0.5s 收敛）
-- **槽位点亮**：420ms outBack，缩放 0.9→1
+- **徽章出现**：0s
+- **×1 + 关空**：0.8s
+- **×2 + 京都**：2.2s
+- **×3 + 奈良**：3.4s
+- **×4 + 大阪**：4.6s
+- **时长**：6.6s
+- **声音 voice**：confirm、stamp、sparkle
+
+## 动效 Token
+
+- **徽章出现**：0s
+- **×1 + 关空**：0.8s
+- **×2 + 京都**：2.2s
+- **×3 + 奈良**：3.4s
+- **×4 + 大阪**：4.6s
+- **时长**：6.6s
+
+## 迁移
+
+- `复制的函数`：drawHud、stepAtX、ruleX、stampXY
+- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
+- `需要的数据`：config.js 的 mascot、stepper、tracks.counter / stamps / progress 与横竖 layout。
+- `config.js → segments / markers`：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6
+- `score.json`：事件 voice：confirm、stamp、sparkle；保持 inventory 中全部音色参数，t 映射为巧思时刻。
 
 [打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)
