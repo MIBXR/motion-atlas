@@ -54,6 +54,13 @@
       "prompts": "resources/opus-videos/prompts/",
       "license": "MIT（列表）；视频与提示词归各作者"
     },
+    "styles": {
+      "count": 59,
+      "ready": 24,
+      "path": "resources/lemo-opuscar/styles/",
+      "player": "demos/styles/player/?style=<slug>",
+      "license": "代码与文档 MIT；样片成片与静帧 CC BY 4.0（署名 LemoLab，附仓库链接，注明改动）；第三方素材见各 demo/CREDITS；game-show、paper-lantern、news-package 的配音不在 CC BY 4.0 范围内，不得复用"
+    },
     "skills": [
       {
         "id": "beautiful-article",

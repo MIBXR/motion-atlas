@@ -1,0 +1,22 @@
+[
+  {
+    "path": "core/lib.js",
+    "status": 404,
+    "bytes": 9
+  },
+  {
+    "path": "core/assets/polyhaven/walnut_diff.jpg",
+    "status": 404,
+    "bytes": 9
+  },
+  {
+    "path": "resources/lemo-opuscar/core/lib.js",
+    "status": 200,
+    "bytes": 2782
+  },
+  {
+    "path": "resources/lemo-opuscar/core/assets/polyhaven/walnut_diff.jpg",
+    "status": 200,
+    "bytes": 2418767
+  }
+]

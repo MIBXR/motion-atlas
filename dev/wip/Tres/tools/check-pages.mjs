@@ -22,7 +22,7 @@ function check(label, ok, detail) {
   evidence.assertions.push({ label, ok: !!ok, detail });
   console.log(`${ok ? 'PASS' : 'FAIL'} ${label}${detail == null ? '' : ' · ' + JSON.stringify(detail)}`);
 }
-const browser = await launch({ width: 1440, height: 900, args: ['--no-proxy-server'] });
+const browser = await launch({ width: 1440, height: 900, args: ['--enable-gpu', '--use-angle=d3d11', '--ignore-gpu-blocklist', '--no-proxy-server'] });
 try {
   const page = await browser.newPage();
   page.on('Runtime.exceptionThrown', (e) => evidence.consoleErrors.push(e.exceptionDetails.exception?.description || e.exceptionDetails.text));
@@ -63,14 +63,14 @@ try {
     await page.waitFor('document.querySelector(".toast-msg.show")?.textContent === "已复制"');
     const copied = await page.eval('navigator.clipboard.readText()');
     const original = upstreamVideos.find((v) => v.slug === item.slug).prompt;
-    check(`(d) ${item.slug} · 复制原文`, copied === original, { originalLength: original.length, copiedLength: copied.length, equalAfterCRLFToLF: copied.replace(/\r\n/g, '\n') === original });
+    check(`(d) ${item.slug} · 复制原文`, copied.replace(/\r\n/g, '\n') === original, { originalLength: original.length, copiedLength: copied.length, equalAfterCRLFToLF: copied.replace(/\r\n/g, '\n') === original });
     await page.eval('document.querySelector(".toast-msg")?.classList.remove("show")');
   }
   const statuses = new Map(), missing = new Map();
   let markdownCount = 0, linkCount = 0;
   for (const skill of resources.skills) {
     for (const file of skill.files.filter((f) => /\.md$/i.test(f.path))) {
-      await route(`#skill/${skill.id}/${file.path}`, '.doc-path', skill.dir.replace('resources/skills/', '') + '/' + file.path);
+      await route(`#skill/${skill.id}/${file.path}`, '.doc-path', skill.repo + ' / ' + `${skill.dir}/${file.path}`.replace(`resources/skills/${skill.repo}/`, ''));
       markdownCount++;
       const urls = await page.eval(`(() => [...document.querySelectorAll('#doc a[href], #doc img[src]')].map(el => {
         const raw = el.getAttribute(el.tagName === 'IMG' ? 'src' : 'href');
@@ -133,14 +133,72 @@ try {
     await page.eval(`document.querySelector('[data-group="repo"][data-value="${repo}"]').click()`);
     check(`Skill 来源 ${repo}`, await page.eval('document.querySelectorAll("#grid .card").length') === expected);
   }
+  await page.viewport(1440, 900);
+  await route('#styles', '#grid');
+  check('(h) 风格列表共 59 种', await page.eval('document.querySelector("#result-count").textContent') === '共 59 种');
+  await page.eval('document.querySelector(\'[data-group="status"][data-value="ready"]\').click()');
+  check('(h) 可逐帧播放 24 种', await page.eval('document.querySelector("#result-count").textContent') === '共 24 种');
+  await route('#styles?sort=name&q=poster', '#grid');
+  const styleFilters = await page.eval(`(() => {
+    const items = MA_RES.styles.items.filter(s => [s.cn, s.en, s.film, s.lineCn, s.line].some(text => text.toLowerCase().includes('poster'))).sort((a, b) => a.cn.localeCompare(b.cn, 'zh'));
+    return { expected: items.length, actual: Number(document.querySelector('#result-count').textContent.split(' ')[1]), ordered: [...document.querySelectorAll('#grid .card-title a')].every((a, i) => a.getAttribute('href') === '#style/' + items[i].slug) };
+  })()`);
+  check('(h) 风格搜索与中文名称排序', styleFilters.actual === styleFilters.expected && styleFilters.ordered, styleFilters);
+  await route('#styles', '#grid');
+  const category = resources.styles.items[0].categoryCn;
+  await page.eval(`document.querySelector('[data-group="cat"][data-value="${category}"]').click()`);
+  check('(h) 风格类别筛选', await page.eval('Number(document.querySelector("#result-count").textContent.split(" ")[1])') === resources.styles.items.filter(s => s.categoryCn === category).length);
+  await route('#style/swiss-motion', '.doc-path', '/STYLE.md');
+  await page.waitFor('document.querySelector(".style-player")?.dataset.ready === "true"', 195000);
+  const swiss = resources.styles.items.find(s => s.slug === 'swiss-motion');
+  const initialStyle = await page.eval('({ time: document.querySelector("#style-frame").contentWindow.__motion.time, text: document.querySelector("#style-time").textContent })');
+  const expectedTime = `${Math.floor(swiss.frameSec / 60)}:${(Math.round(swiss.frameSec * 10) / 10 % 60).toFixed(1).padStart(4, '0')}`;
+  check('(i) 初始画面定位 frameSec，时间文本对应', Math.abs(initialStyle.time - swiss.frameSec) <= .05 && initialStyle.text.startsWith(expectedTime), { ...initialStyle, frameSec: swiss.frameSec, expectedTime });
+  await page.eval('document.querySelector("#style-play").click()');
+  await page.eval('new Promise(r => setTimeout(r, 2000))');
+  const playedStyle = await page.eval('(() => { const m = document.querySelector("#style-frame").contentWindow.__motion; m.pause(); return m.time; })()');
+  check('(i) 播放 2 秒时间增加至少 1.5 秒', playedStyle - initialStyle.time >= 1.5, { before: initialStyle.time, after: playedStyle });
+  await page.eval('document.querySelector("#style-range").scrollIntoView({ block: "center", behavior: "instant" })');
+  const track = await page.eval('(() => { const r = document.querySelector("#style-range").getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; })()');
+  await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', ...track, button: 'left', clickCount: 1 });
+  await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...track, button: 'left', clickCount: 1 });
+  const scrubbedStyle = await page.eval('(() => { const m = document.querySelector("#style-frame").contentWindow.__motion; return { time: m.time, duration: m.duration }; })()');
+  check('(i) 拖动条 50% 定位误差不超过 0.05 秒', Math.abs(scrubbedStyle.time - scrubbedStyle.duration / 2) <= .05, scrubbedStyle);
+  check('(i) 声音默认关闭', await page.eval('document.querySelector("#style-sound").textContent') === '声音关');
+  await page.eval('document.querySelector("#style-sound").click()');
+  await page.waitFor('document.querySelector("#style-sound").textContent === "声音开"');
+  check('(i) iframe 声音回报更新按钮', await page.eval('document.querySelector("#style-frame").contentWindow.MotionKit.audio.enabled') === true);
+  await page.eval('document.querySelector("#style-sound").click()');
+  await page.waitFor('document.querySelector("#style-sound").textContent === "声音关"');
+  await route('#style/backrooms', '.doc-path', '/STYLE.md');
+  await page.waitFor('document.querySelector(".style-player > img")?.complete');
+  check('(j) backrooms 海报与待构建说明', await page.eval('document.querySelector(".style-player > img").naturalWidth > 0 && !document.querySelector("#style-frame") && document.querySelector(".res-notice").textContent.includes("这个样片依赖上游的预处理步骤（Python / Node 构建），暂时不能在浏览器里逐帧播放，将在后续补齐。先看成片：")'));
+  const styleDocuments = await page.eval(`(async () => {
+    const items = MA_RES.styles.items.flatMap(s => ['STYLE.md', 'DEMO.md'].map(file => s.dir + '/' + file)), results = [];
+    for (let i = 0; i < items.length; i += 24) results.push(...await Promise.all(items.slice(i, i + 24).map(async file => ({ file, status: (await fetch(file)).status }))));
+    return results;
+  })()`);
+  check('(k) 59 个风格 STYLE.md / DEMO.md 全部 200', styleDocuments.length === 118 && styleDocuments.every(r => r.status === 200), { count: styleDocuments.length, failed: styleDocuments.filter(r => r.status !== 200) });
+  await page.viewport(390, 844);
+  for (const hash of ['#styles', '#style/swiss-motion']) {
+    await route(hash, hash === '#styles' ? '#grid' : '.doc-path', hash === '#styles' ? null : '/STYLE.md');
+    if (hash.startsWith('#style/')) await page.waitFor('document.querySelector(".style-player")?.dataset.ready === "true"', 195000);
+    const width = await page.eval('document.documentElement.scrollWidth');
+    check(`(l) 390×844 ${hash}`, width <= 390, { scrollWidth: width });
+  }
+  const mobileControls = await page.eval('({ time: document.querySelector("#style-time").textContent, rangeWidth: document.querySelector("#style-range").getBoundingClientRect().width })');
+  check('(l) 移动端时间为 m:ss，拖动条至少 120px', !mobileControls.time.includes('.') && mobileControls.rangeWidth >= 120, mobileControls);
   const shots = [
     ['videos', '#videos'], ['videos-3d', '#videos?cat=3d'], ['video-title', `#video/${chosen[0].slug}`], ['video-post', `#video/${chosen[2].slug}`],
     ['skills', '#skills'], ['skill-motion-showreel', '#skill/motion-showreel'], ['skill-ai-handdrawn-video', '#skill/ai-handdrawn-video'], ['skill-chapter-craft', '#skill/web-video-presentation/references/CHAPTER-CRAFT.md'],
   ];
   async function screenshot(name, hash, width, height) {
     await page.viewport(width, height);
-    const selector = hash.startsWith('#video/') ? '#doc h2' : hash.startsWith('#skill/') ? '.doc-path' : '#grid';
+    const selector = hash.startsWith('#video/') ? '#doc h2' : hash.startsWith('#skill/') || hash.startsWith('#style/') ? '.doc-path' : '#grid';
     await route(hash, selector, hash.startsWith('#skill/') ? hash.endsWith('.md') ? 'CHAPTER-CRAFT.md' : '/SKILL.md' : null);
+    if (hash.startsWith('#style/') && await page.eval('!!document.querySelector("#style-frame")')) await page.waitFor('document.querySelector(".style-player")?.dataset.ready === "true"', 195000);
+    await page.eval('scrollTo({ top: 0, behavior: "instant" })');
+    if (/^#style\/[^/]+\/.+/.test(hash)) await page.eval('scrollTo({ top: scrollY + document.querySelector(".style-docs").getBoundingClientRect().top - document.querySelector("#site-header").getBoundingClientRect().height - 16, behavior: "instant" })');
     await page.eval('document.fonts.ready.then(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))))');
     await page.eval(`Promise.race([Promise.all([...document.querySelectorAll('img')].filter(img => img.getBoundingClientRect().top < innerHeight && !img.complete).map(img => new Promise(resolve => { img.addEventListener('load', resolve, { once: true }); img.addEventListener('error', resolve, { once: true }); }))), new Promise(r => setTimeout(r, 8000))])`);
     const minFontPx = await page.eval(`Math.min(...[...document.querySelectorAll('body *')].filter(el => [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) && el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().height > 0).map(el => parseFloat(getComputedStyle(el).fontSize)))`);
@@ -152,6 +210,13 @@ try {
   }
   for (const [name, hash] of shots) await screenshot(name, hash, 1440, 900);
   for (const [name, hash] of shots.filter(([n]) => ['videos', 'video-title', 'skill-motion-showreel'].includes(n))) await screenshot(name, hash, 390, 844);
+  const styleShots = [
+    ['styles', '#styles'], ['styles-ready', '#styles?status=ready'], ['style-swiss-motion', '#style/swiss-motion'],
+    ['style-pictogram-motion', '#style/pictogram-motion'], ['style-backrooms', '#style/backrooms'],
+    ['style-swiss-demo', '#style/swiss-motion/DEMO.md'], ['style-swiss-credits', '#style/swiss-motion/demo/CREDITS'],
+  ];
+  for (const [name, hash] of styleShots) await screenshot(name, hash, 1440, 900);
+  for (const [name, hash] of styleShots.filter(([name]) => ['styles', 'style-swiss-motion'].includes(name))) await screenshot(name, hash, 390, 844);
   check('资源页全程无 JavaScript 控制台错误', evidence.consoleErrors.length === 0, evidence.consoleErrors);
   assert.ok(evidence.assertions.every((a) => a.ok), '页面检查存在失败断言');
 } finally {

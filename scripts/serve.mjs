@@ -21,6 +21,7 @@ http.createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
   let file = path.normalize(path.join(root, decodeURIComponent(url.pathname)));
   if (!file.startsWith(root)) { res.writeHead(403); res.end('forbidden'); return; }
+  if (!fs.existsSync(file) && url.pathname.startsWith('/core/')) file = path.join(root, 'resources/lemo-opuscar', decodeURIComponent(url.pathname));
   if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
   if (!fs.existsSync(file)) { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); res.end('not found'); return; }
   const stat = fs.statSync(file);

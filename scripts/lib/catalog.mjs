@@ -158,6 +158,7 @@ function collectDocs(extra) {
 }
 
 export const RESOURCE_DIRS = {
+  'lemo-opuscar': 'resources/lemo-opuscar',
   'opus-videos': 'resources/opus-videos',
   'garden-skills': 'resources/skills/garden-skills',
   'agent-anime-skill': 'resources/skills/agent-anime-skill',
@@ -227,7 +228,24 @@ export function buildResources() {
   if (skills.length !== 7 || skills.some((s) => !RESOURCE_SKILLS.includes(s.id) || !s.description.trim()) || new Set(skills.map((s) => s.id)).size !== 7) {
     throw new Error(`资源 Skill 应恰为指定的 7 个且 description 非空，实际：${skills.map((s) => s.id).join(', ')}`);
   }
-  return { videos: { upstream: { repo, url, commit, fetchedAt, license, notice }, items }, skills };
+  const lemo = manifests['lemo-opuscar'], status = JSON.parse(read('scripts/lemo-status.json'));
+  const styleItems = fs.readdirSync(path.join(ROOT, 'resources/lemo-opuscar/styles'), { withFileTypes: true })
+    .filter(entry => entry.isDirectory() && !entry.name.startsWith('_')).map(entry => {
+      const slug = entry.name, dir = `resources/lemo-opuscar/styles/${slug}`;
+      const s = JSON.parse(read(`${dir}/style.json`)), state = status[slug];
+      return {
+        slug, num: s.num, en: s.en, cn: s.cn, categoryCn: s.category_cn, categoryEn: s.category_en,
+        film: s.film, line: s.line, lineCn: s.line_cn, uses: s.uses, frameSec: s.frame_sec, dur: s.dur,
+        status: state.status, heavy: Boolean(state.heavy), audio: exists(`resources/lemo-opuscar/audio/${slug}.ogg`),
+        poster: `${dir}/poster.jpg`, dir,
+        docs: ['STYLE.md', 'DEMO.md', 'demo/CREDITS'].filter(file => exists(`${dir}/${file}`)),
+        player: state.status === 'ready' ? `demos/styles/player/?style=${slug}` : null,
+        filmUrl: state.film ? `https://github.com/${lemo.repo}/releases/download/films/${state.film}` : null,
+        treeUrl: `https://github.com/${lemo.repo}/tree/${lemo.commit}/styles/${slug}`,
+      };
+    }).sort((a, b) => Number(a.num) - Number(b.num));
+  const styles = { upstream: Object.fromEntries(['repo', 'url', 'commit', 'fetchedAt', 'license', 'notice'].map(key => [key, lemo[key]])), items: styleItems };
+  return { videos: { upstream: { repo, url, commit, fetchedAt, license, notice }, items }, styles, skills };
 }
 
 /** 计算全部生成物，返回 { files: {path: content}, kitTargets: [dir], errors } */
@@ -253,7 +271,7 @@ export function buildAll() {
   // README 计数块（先于文档集合生成，文档中心读到的是更新后的 README）
   if (exists('README.md')) {
     const readme = read('README.md');
-    const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**　·　**${resources.videos.items.length} 条视频提示词**　·　**${resources.skills.length} 个 Skill**\n<!-- counts:end -->`;
+    const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**　·　**${resources.styles.items.length} 种代码片风格**　·　**${resources.videos.items.length} 条视频提示词**　·　**${resources.skills.length} 个 Skill**\n<!-- counts:end -->`;
     files['README.md'] = readme.replace(/<!-- counts:start -->[\s\S]*?<!-- counts:end -->/, block);
   }
   const docs = collectDocs(files);
@@ -314,6 +332,7 @@ export function buildAll() {
     counts: { cases: cases.length, patterns: patterns.length },
     resources: {
       videos: { count: resources.videos.items.length, data: 'resources/opus-videos/data/videos.json', prompts: 'resources/opus-videos/prompts/', license: resources.videos.upstream.license },
+      styles: { count: resources.styles.items.length, ready: resources.styles.items.filter(s => s.status === 'ready').length, path: 'resources/lemo-opuscar/styles/', player: 'demos/styles/player/?style=<slug>', license: resources.styles.upstream.license },
       skills: resources.skills.map((s) => ({ id: s.id, path: `${s.dir}/SKILL.md`, license: s.upstream.license })),
     },
     cases: bundleSummaries.cases,

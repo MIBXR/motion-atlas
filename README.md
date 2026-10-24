@@ -5,7 +5,7 @@
 **在线浏览：[Motion Atlas](https://motion-atlas.mibxranime.chatgpt.site)**
 
 <!-- counts:start -->
-**3 个案例**　·　**22 个巧思**　·　**3 个可逐帧渲染的影像 Demo**　·　**703 条视频提示词**　·　**7 个 Skill**
+**3 个案例**　·　**22 个巧思**　·　**3 个可逐帧渲染的影像 Demo**　·　**59 种代码片风格**　·　**703 条视频提示词**　·　**7 个 Skill**
 <!-- counts:end -->
 
 ![地图巡礼 Demo 截图](previews/cases/map-pilgrimage.jpg)
@@ -50,6 +50,7 @@
 | 资源 | 内容 | 上游 | 许可 |
 | --- | --- | --- | --- |
 | 视频提示词 | 703 条 Claude Opus 5.5 视频的提示词，附原帖与复刻链接 | [yihui-dev/awesome-opus5-5-videos](https://github.com/yihui-dev/awesome-opus5-5-videos) | 列表 MIT；视频与提示词归各作者 |
+| 代码片风格 | 59 种风格的规范、样片说明与样片源码；24 个样片可在站内逐帧播放 | [lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar) | 代码与文档 MIT；成片与静帧 CC BY 4.0（LemoLab） |
 | Skills | 6 个 Skill，含 motion-showreel、web-video-presentation | [ConardLi/garden-skills](https://github.com/ConardLi/garden-skills) | MIT |
 | Skills | ai-handdrawn-video：AI 手书 / PV 制作流程 | [waterpro/agent-anime-skill](https://github.com/waterpro/agent-anime-skill) | 未声明许可；上游注明仅供个人娱乐、请勿商业用途 |
 

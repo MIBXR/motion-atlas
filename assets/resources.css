@@ -25,6 +25,26 @@
 .res-file-bytes { color: var(--muted); font: 12px/1.5 var(--f-mono); margin-left: 8px; }
 .res-skill-docs .doc-path { justify-content: space-between; }
 .res-skill-docs .doc { overflow-wrap: anywhere; }
+.res-style { max-width: 1440px; }
+.res-style > p { margin: 12px 0; }
+.res-muted { color: var(--muted); }
+.res-style-line { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.style-player { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #080808; }
+.style-player iframe, .style-player > img { display: block; width: 100%; height: 100%; border: 0; object-fit: cover; }
+.style-loader { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; background: #080808; font-size: 14px; }
+.style-loader[hidden] { display: none; }
+.style-controls { display: flex; align-items: center; gap: 12px; height: 44px; }
+.style-controls button { display: inline-flex; align-items: center; justify-content: center; flex: none; min-height: 32px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: 13px/1.4 var(--f-sans); cursor: pointer; white-space: nowrap; }
+.style-controls button:disabled { cursor: wait; opacity: .5; }
+#style-time { flex: none; font: 13px/1.4 var(--f-mono); white-space: nowrap; }
+#style-range { flex: 1; width: 0; min-width: 120px; accent-color: var(--accent); }
+.style-docs { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0 12px; }
+.res-style .doc-path { display: flex; justify-content: space-between; gap: 16px; }
+.res-style .doc > pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 390px) {
+  .style-controls { gap: 4px; }
+  .style-controls button { padding: 4px 6px; }
+}
 @media (min-width: 901px) {
   [data-page="resources"] .lib { grid-template-columns: 248px minmax(0, 1fr); gap: 32px; }
   [data-page="resources"] .lib-side { position: sticky; display: grid; max-height: calc(100vh - var(--header-h) - 48px); }

@@ -1,0 +1,32 @@
+{
+  "branch": "feat/resources",
+  "head": "5a4f287199794be06eec42769f06d88ae98dac77",
+  "staged": [],
+  "changed": [
+    ".gitignore",
+    "README.md",
+    "agent/catalog.json",
+    "assets/resources.css",
+    "assets/resources.js",
+    "data/docs.js",
+    "data/resources.js",
+    "dev/wip/Tres/evidence/check-pages.json",
+    "dev/wip/Tres/tools/check-pages.mjs",
+    "docs/resources.md",
+    "scripts/build-static.mjs",
+    "scripts/check.mjs",
+    "scripts/lib/catalog.mjs",
+    "scripts/serve.mjs",
+    "scripts/smoke.mjs",
+    "scripts/vendor-resources.mjs"
+  ],
+  "forbiddenChanges": [],
+  "distMatches": {
+    "assets/resources.js": true,
+    "assets/resources.css": true,
+    "demos/styles/player/index.html": true,
+    "demos/styles/player/player.js": true,
+    "demos/styles/player/player.css": true,
+    "scripts/lemo-status.json": true
+  }
+}

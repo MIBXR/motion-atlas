@@ -1,0 +1,33 @@
+{
+  "stoppedAt": "1.3a",
+  "ignoredCount": 84,
+  "matchedRule": [
+    "resources/lemo-opuscar/.gitignore:99:styles/*/demo/**/*.ttf"
+  ],
+  "rootIgnoreEqual": true,
+  "groups": {
+    "git": {
+      "count": 2126,
+      "bytes": 89216570
+    },
+    "pack": {
+      "count": 84,
+      "bytes": 72446464
+    },
+    "film-audio": {
+      "count": 56,
+      "bytes": 50948665
+    }
+  },
+  "manifestBytes": 445804,
+  "totalFiles": 2267,
+  "totalBytes": 213057503,
+  "audioCount": 56,
+  "smoke": {
+    "interrupted": true,
+    "passedRows": 8,
+    "failedRows": 0,
+    "finalResult": null
+  },
+  "timestamp": "2026-10-24T05:55:28.970Z"
+}

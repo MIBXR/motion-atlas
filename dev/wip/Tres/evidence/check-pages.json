@@ -51,7 +51,7 @@
     },
     {
       "label": "(d) 0xcodez-474136 · 复制原文",
-      "ok": false,
+      "ok": true,
       "detail": {
         "originalLength": 700,
         "copiedLength": 708,
@@ -77,7 +77,7 @@
     },
     {
       "label": "(d) 0xlangeai-597929 · 复制原文",
-      "ok": false,
+      "ok": true,
       "detail": {
         "originalLength": 106,
         "copiedLength": 110,
@@ -90,7 +90,7 @@
     },
     {
       "label": "(d) ajith-io-615243 · 复制原文",
-      "ok": false,
+      "ok": true,
       "detail": {
         "originalLength": 319,
         "copiedLength": 322,
@@ -103,7 +103,7 @@
     },
     {
       "label": "(d) 0xlangeai-178533 · 复制原文",
-      "ok": false,
+      "ok": true,
       "detail": {
         "originalLength": 22,
         "copiedLength": 24,
@@ -215,6 +215,95 @@
       "ok": true
     },
     {
+      "label": "(h) 风格列表共 59 种",
+      "ok": true
+    },
+    {
+      "label": "(h) 可逐帧播放 24 种",
+      "ok": true
+    },
+    {
+      "label": "(h) 风格搜索与中文名称排序",
+      "ok": true,
+      "detail": {
+        "expected": 2,
+        "actual": 2,
+        "ordered": true
+      }
+    },
+    {
+      "label": "(h) 风格类别筛选",
+      "ok": true
+    },
+    {
+      "label": "(i) 初始画面定位 frameSec，时间文本对应",
+      "ok": true,
+      "detail": {
+        "time": 31.68,
+        "text": "0:31.7 / 0:44.0",
+        "frameSec": 31.68,
+        "expectedTime": "0:31.7"
+      }
+    },
+    {
+      "label": "(i) 播放 2 秒时间增加至少 1.5 秒",
+      "ok": true,
+      "detail": {
+        "before": 31.68,
+        "after": 33.69739999999997
+      }
+    },
+    {
+      "label": "(i) 拖动条 50% 定位误差不超过 0.05 秒",
+      "ok": true,
+      "detail": {
+        "time": 22,
+        "duration": 44
+      }
+    },
+    {
+      "label": "(i) 声音默认关闭",
+      "ok": true
+    },
+    {
+      "label": "(i) iframe 声音回报更新按钮",
+      "ok": true
+    },
+    {
+      "label": "(j) backrooms 海报与待构建说明",
+      "ok": true
+    },
+    {
+      "label": "(k) 59 个风格 STYLE.md / DEMO.md 全部 200",
+      "ok": true,
+      "detail": {
+        "count": 118,
+        "failed": []
+      }
+    },
+    {
+      "label": "(l) 390×844 #styles",
+      "ok": true,
+      "detail": {
+        "scrollWidth": 390
+      }
+    },
+    {
+      "label": "(l) 390×844 #style/swiss-motion",
+      "ok": true,
+      "detail": {
+        "scrollWidth": 390
+      }
+    },
+    {
+      "label": "(l) 移动端时间为 m:ss，拖动条至少 120px",
+      "ok": true,
+      "detail": {
+        "time": "0:31 / 0:44",
+        "rangeWidth": 173.203125
+      }
+    },
+    {
       "label": "界面字号 1440 #videos",
       "ok": true,
       "detail": {
@@ -286,6 +375,69 @@
     },
     {
       "label": "界面字号 390 #skill/motion-showreel",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #styles",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #styles?status=ready",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #style/swiss-motion",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #style/pictogram-motion",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #style/backrooms",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #style/swiss-motion/DEMO.md",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 1440 #style/swiss-motion/demo/CREDITS",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 390 #styles",
+      "ok": true,
+      "detail": {
+        "minFontPx": 12
+      }
+    },
+    {
+      "label": "界面字号 390 #style/swiss-motion",
       "ok": true,
       "detail": {
         "minFontPx": 12
@@ -424,6 +576,69 @@
     {
       "file": "dev/shots/Tres/390-skill-motion-showreel.png",
       "hash": "#skill/motion-showreel",
+      "width": 390,
+      "height": 844,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-styles.png",
+      "hash": "#styles",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-styles-ready.png",
+      "hash": "#styles?status=ready",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-style-swiss-motion.png",
+      "hash": "#style/swiss-motion",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-style-pictogram-motion.png",
+      "hash": "#style/pictogram-motion",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-style-backrooms.png",
+      "hash": "#style/backrooms",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-style-swiss-demo.png",
+      "hash": "#style/swiss-motion/DEMO.md",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/1440-style-swiss-credits.png",
+      "hash": "#style/swiss-motion/demo/CREDITS",
+      "width": 1440,
+      "height": 900,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/390-styles.png",
+      "hash": "#styles",
+      "width": 390,
+      "height": 844,
+      "minFontPx": 12
+    },
+    {
+      "file": "dev/shots/Tres/390-style-swiss-motion.png",
+      "hash": "#style/swiss-motion",
       "width": 390,
       "height": 844,
       "minFontPx": 12

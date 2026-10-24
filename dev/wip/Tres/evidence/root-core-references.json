@@ -1,0 +1,338 @@
+[
+  {
+    "file": "styles/crayon-book/demo/chars.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/crayon-book/demo/crayon.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/crayon-book/demo/end.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/crayon-book/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/crayon-book/demo/world.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/dataviz/demo/engine.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/dataviz/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/climax.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/cross.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/face.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/glyph.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/hero.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/ink.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/land.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/main.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/passage.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/seal.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/shots.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/subs.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/wave.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/ink-wash/demo/world.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_ascii.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_blue.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_boss.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_crayon.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_crayon.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_ink.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_pixel.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_riso.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_riso.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/g_swiss.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/hud.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/microgame/demo/stage.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/one-line/demo/cam.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/one-line/demo/geom.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/one-line/demo/hands.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/one-line/demo/ink.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/one-line/demo/main.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/one-line/demo/paper.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/one-line/demo/subs.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/papercut-red/demo/fold.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/papercut-red/demo/main.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/papercut-red/demo/world.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/risograph/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/risograph/demo/scenes.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/risograph/demo/scenes2.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/rubber-hose/demo/bg.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/rubber-hose/demo/cast.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/rubber-hose/demo/chars.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/rubber-hose/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/rubber-hose/demo/scenes.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/rubber-hose/demo/toon.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/shadow-puppet/demo/backstage.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/shadow-puppet/demo/main.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/shadow-puppet/demo/scenery.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/shadow-puppet/demo/stage.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/shadow-puppet/demo/suns.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/spy-titles/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/spy-titles/demo/frames.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/spy-titles/demo/glyph.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/spy-titles/demo/paper.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/spy-titles/demo/scenes.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/stained-glass/demo/glass.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/stained-glass/demo/scene.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/stained-glass/demo/story.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/stained-glass/demo/subs.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/stained-glass/demo/test.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/stained-glass/demo/window.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/whiteboard/demo/engine/wb.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/whiteboard/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/engine/filter.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/engine/hatch.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/engine/index.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/engine/knife.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/film.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/film.js",
+    "url": "/core/assets/polyhaven/walnut_diff.jpg"
+  },
+  {
+    "file": "styles/woodcut/demo/fx.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/hands.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/interior.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/shots.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/shots2.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/trans.js",
+    "url": "/core/lib.js"
+  },
+  {
+    "file": "styles/woodcut/demo/world.js",
+    "url": "/core/lib.js"
+  }
+]

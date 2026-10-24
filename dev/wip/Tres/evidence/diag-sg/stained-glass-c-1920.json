@@ -1,0 +1,908 @@
+{
+  "style": "stained-glass",
+  "case": {
+    "id": "c-1920",
+    "scan": "unawaited",
+    "width": 1920,
+    "height": 1080,
+    "render": true
+  },
+  "measuredAt": "2026-10-24T08:03:17.918Z",
+  "url": "http://localhost:4328/demos/styles/player/?style=stained-glass&render=1&orient=landscape",
+  "browser": {
+    "exe": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "version": {
+      "protocolVersion": "1.3",
+      "product": "Edg/155.0.4283.62",
+      "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "jsVersion": "15.5.9.7"
+    },
+    "launchOptions": {
+      "width": 1920,
+      "height": 1080,
+      "args": [
+        "--enable-gpu",
+        "--use-angle=d3d11",
+        "--ignore-gpu-blocklist"
+      ]
+    },
+    "preload": "dev/wip/T4a/tools/direct-browser.mjs",
+    "gpu": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "environment": {
+    "parentOrigin": 1792828993581.9,
+    "iframeOrigin": 1792828993626.5,
+    "iframe": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/index.html",
+    "parentViewport": [
+      1920,
+      1080
+    ],
+    "iframeViewport": [
+      1920,
+      1080
+    ],
+    "visibility": "visible",
+    "longtaskSupported": true
+  },
+  "readyMs": 923,
+  "duration": 56.5,
+  "scan": {
+    "start": 2211.800000011921,
+    "end": 2212.100000023842,
+    "seeks": 284
+  },
+  "reset": {
+    "start": 2248.400000035763,
+    "end": 2271.400000035763,
+    "time": 0
+  },
+  "start": {
+    "at": 2596.600000023842,
+    "time": 0
+  },
+  "timer": {
+    "scheduledAt": 2597.900000035763,
+    "firedAt": 4099.400000035763
+  },
+  "read": {
+    "at": 4102,
+    "time": 0.2
+  },
+  "elapsedMs": 1505.3999999761581,
+  "timerDelayMs": 1501.5,
+  "smokePass": false,
+  "errors": [],
+  "parent": {
+    "raf": [
+      {
+        "timestampMs": 181.69999997615832,
+        "callbackMs": 186.19999998807907
+      },
+      {
+        "timestampMs": 982.499999976158,
+        "callbackMs": 984.8999999761581
+      }
+    ],
+    "rafCount": 2,
+    "maxRafGapMs": 800.7999999999997,
+    "firstRafMs": 186.19999998807907,
+    "lastRafMs": 984.8999999761581,
+    "longtasks": [],
+    "top10Longtasks": []
+  },
+  "iframe": {
+    "raf": [
+      {
+        "timestampMs": 181.30009763240832,
+        "callbackMs": 220.60009765625
+      },
+      {
+        "timestampMs": 982.100097632408,
+        "callbackMs": 1073.10009765625
+      }
+    ],
+    "rafCount": 2,
+    "maxRafGapMs": 800.7999999999997,
+    "firstRafMs": 220.60009765625,
+    "lastRafMs": 1073.10009765625,
+    "longtasks": [],
+    "top10Longtasks": []
+  },
+  "renders": {
+    "calls": [
+      {
+        "id": 2,
+        "t": 0.1,
+        "phase": "play",
+        "start": 2783.199999988079,
+        "returned": 2816.900000035763,
+        "async": false,
+        "end": 2816.900000035763,
+        "startMs": 186.5999999642372,
+        "endMs": 220.30000001192093,
+        "syncMs": 33.700000047683716,
+        "durationMs": 33.700000047683716
+      },
+      {
+        "id": 3,
+        "t": 0.2,
+        "phase": "play",
+        "start": 3581.5,
+        "returned": 3669.600000023842,
+        "async": false,
+        "end": 3669.600000023842,
+        "startMs": 984.8999999761581,
+        "endMs": 1073,
+        "syncMs": 88.10000002384186,
+        "durationMs": 88.10000002384186
+      }
+    ],
+    "allPhases": [
+      {
+        "id": 0,
+        "t": 56.5,
+        "phase": "scan",
+        "start": 2212.199999988079,
+        "returned": 2247.5,
+        "async": false,
+        "end": 2247.5
+      },
+      {
+        "id": 1,
+        "t": 0,
+        "phase": "reset",
+        "start": 2248.400000035763,
+        "returned": 2271.400000035763,
+        "async": false,
+        "end": 2271.400000035763
+      },
+      {
+        "id": 2,
+        "t": 0.1,
+        "phase": "play",
+        "start": 2783.199999988079,
+        "returned": 2816.900000035763,
+        "async": false,
+        "end": 2816.900000035763
+      },
+      {
+        "id": 3,
+        "t": 0.2,
+        "phase": "play",
+        "start": 3581.5,
+        "returned": 3669.600000023842,
+        "async": false,
+        "end": 3669.600000023842
+      },
+      {
+        "id": 4,
+        "t": 0.2,
+        "phase": "pause",
+        "start": 4103.800000011921,
+        "returned": 4193.400000035763,
+        "async": false,
+        "end": 4193.400000035763
+      }
+    ],
+    "timeline": [
+      {
+        "at": 2596.600000023842,
+        "time": 0,
+        "playing": true
+      },
+      {
+        "at": 2783.100000023842,
+        "time": 0.1,
+        "playing": true
+      },
+      {
+        "at": 3581.5,
+        "time": 0.2,
+        "playing": true
+      }
+    ],
+    "count": 2,
+    "totalSyncMs": 121.80000007152557,
+    "maxSyncMs": 88.10000002384186
+  },
+  "profile": {
+    "startUs": 504269317177,
+    "endUs": 504270822727,
+    "sampledMs": 1505.654,
+    "samples": 919,
+    "top10Self": [
+      {
+        "function": "(idle)",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 1377.9189999999992,
+        "inclusiveMs": 1377.9189999999992,
+        "samples": 830
+      },
+      {
+        "function": "fill",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 18.736,
+        "inclusiveMs": 18.736,
+        "samples": 13
+      },
+      {
+        "function": "texImage2D",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 15.903999999999998,
+        "inclusiveMs": 15.903999999999998,
+        "samples": 10
+      },
+      {
+        "function": "piece",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/glass.js",
+        "line": 110,
+        "column": 8,
+        "selfMs": 13.102,
+        "inclusiveMs": 88.34100000000002,
+        "samples": 9
+      },
+      {
+        "function": "save",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 9.205,
+        "inclusiveMs": 9.205,
+        "samples": 6
+      },
+      {
+        "function": "brush",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/glass.js",
+        "line": 61,
+        "column": 22,
+        "selfMs": 7.898000000000001,
+        "inclusiveMs": 16.535,
+        "samples": 5
+      },
+      {
+        "function": "(program)",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 7.388,
+        "inclusiveMs": 7.388,
+        "samples": 10
+      },
+      {
+        "function": "(garbage collector)",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 7.144,
+        "inclusiveMs": 7.144,
+        "samples": 2
+      },
+      {
+        "function": "paint",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/window.js",
+        "line": 171,
+        "column": 81,
+        "selfMs": 4.955,
+        "inclusiveMs": 4.955,
+        "samples": 3
+      },
+      {
+        "function": "stroke",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 4.9510000000000005,
+        "inclusiveMs": 4.9510000000000005,
+        "samples": 3
+      }
+    ],
+    "top10Inclusive": [
+      {
+        "function": "renderScene",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/scene.js",
+        "line": 21,
+        "column": 28,
+        "selfMs": 0,
+        "inclusiveMs": 112.555,
+        "samples": 0
+      },
+      {
+        "function": "window.render",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/main.js",
+        "line": 19,
+        "column": 17,
+        "selfMs": 0,
+        "inclusiveMs": 112.555,
+        "samples": 0
+      },
+      {
+        "function": "frame.contentWindow.render",
+        "file": "(V8/native)",
+        "line": 26,
+        "column": 40,
+        "selfMs": 0,
+        "inclusiveMs": 112.555,
+        "samples": 0
+      },
+      {
+        "function": "(anonymous)",
+        "file": "http://localhost:4328/demos/styles/player/player.js",
+        "line": 50,
+        "column": 30,
+        "selfMs": 0,
+        "inclusiveMs": 112.555,
+        "samples": 0
+      },
+      {
+        "function": "drawLancet",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/window.js",
+        "line": 233,
+        "column": 27,
+        "selfMs": 1.658,
+        "inclusiveMs": 96.65100000000002,
+        "samples": 1
+      },
+      {
+        "function": "piece",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/glass.js",
+        "line": 110,
+        "column": 8,
+        "selfMs": 13.102,
+        "inclusiveMs": 88.34100000000002,
+        "samples": 9
+      },
+      {
+        "function": "mosaic",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/window.js",
+        "line": 168,
+        "column": 16,
+        "selfMs": 2.734,
+        "inclusiveMs": 67.84,
+        "samples": 2
+      },
+      {
+        "function": "vineCurl",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/window.js",
+        "line": 49,
+        "column": 25,
+        "selfMs": 4.825,
+        "inclusiveMs": 18.833,
+        "samples": 3
+      },
+      {
+        "function": "paint",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/window.js",
+        "line": 181,
+        "column": 102,
+        "selfMs": 0,
+        "inclusiveMs": 18.833,
+        "samples": 0
+      },
+      {
+        "function": "fill",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 18.736,
+        "inclusiveMs": 18.736,
+        "samples": 13
+      }
+    ]
+  },
+  "trace": {
+    "pid": 7292,
+    "tid": 14820,
+    "startUs": 504269317177,
+    "endUs": 504270822727,
+    "performanceToTraceUs": 504266720577,
+    "eventsByInclusiveMs": [
+      {
+        "name": "RunTask",
+        "count": 33,
+        "overlapMs": 126.906,
+        "maxMs": 88.729
+      },
+      {
+        "name": "ThreadControllerImpl::RunTask",
+        "count": 33,
+        "overlapMs": 126.42699999999999,
+        "maxMs": 88.673
+      },
+      {
+        "name": "Edge_RunTask",
+        "count": 30,
+        "overlapMs": 126.287,
+        "maxMs": 88.668
+      },
+      {
+        "name": "FireAnimationFrame",
+        "count": 6,
+        "overlapMs": 122.838,
+        "maxMs": 88.07
+      },
+      {
+        "name": "MinorGC",
+        "count": 11,
+        "overlapMs": 5.652,
+        "maxMs": 1.27
+      },
+      {
+        "name": "V8.GC_SCAVENGER",
+        "count": 11,
+        "overlapMs": 4.965,
+        "maxMs": 1.156
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE",
+        "count": 11,
+        "overlapMs": 4.821,
+        "maxMs": 1.134
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+        "count": 11,
+        "overlapMs": 1.3930000000000002,
+        "maxMs": 0.256
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        "count": 11,
+        "overlapMs": 1.2109999999999999,
+        "maxMs": 0.258
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+        "count": 11,
+        "overlapMs": 1.062,
+        "maxMs": 0.285
+      },
+      {
+        "name": "FunctionCall",
+        "count": 7,
+        "overlapMs": 0.9630000000000001,
+        "maxMs": 0.288
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "count": 11,
+        "overlapMs": 0.701,
+        "maxMs": 0.107
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+        "count": 11,
+        "overlapMs": 0.5549999999999999,
+        "maxMs": 0.116
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+        "count": 11,
+        "overlapMs": 0.52,
+        "maxMs": 0.097
+      },
+      {
+        "name": "Receive mojo message",
+        "count": 4,
+        "overlapMs": 0.519,
+        "maxMs": 0.57
+      },
+      {
+        "name": "EvaluateScript",
+        "count": 3,
+        "overlapMs": 0.456,
+        "maxMs": 0.499
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        "count": 11,
+        "overlapMs": 0.3940000000000001,
+        "maxMs": 0.152
+      },
+      {
+        "name": "TimerFire",
+        "count": 1,
+        "overlapMs": 0.316,
+        "maxMs": 0.316
+      },
+      {
+        "name": "Commit",
+        "count": 2,
+        "overlapMs": 0.2,
+        "maxMs": 0.114
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        "count": 11,
+        "overlapMs": 0.17600000000000002,
+        "maxMs": 0.128
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+        "count": 11,
+        "overlapMs": 0.139,
+        "maxMs": 0.035
+      },
+      {
+        "name": "PrePaint",
+        "count": 2,
+        "overlapMs": 0.128,
+        "maxMs": 0.078
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+        "count": 11,
+        "overlapMs": 0.122,
+        "maxMs": 0.019
+      },
+      {
+        "name": "BlinkScheduler_PerformMicrotaskCheckpoint",
+        "count": 26,
+        "overlapMs": 0.10800000000000001,
+        "maxMs": 0.06
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+        "count": 11,
+        "overlapMs": 0.077,
+        "maxMs": 0.014
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SWEEP_ARRAY_BUFFERS",
+        "count": 4,
+        "overlapMs": 0.053000000000000005,
+        "maxMs": 0.023
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE",
+        "count": 11,
+        "overlapMs": 0.041999999999999996,
+        "maxMs": 0.006
+      },
+      {
+        "name": "V8.GC_SCAVENGER_COMPLETE_SWEEP_ARRAY_BUFFERS",
+        "count": 3,
+        "overlapMs": 0.04,
+        "maxMs": 0.019
+      },
+      {
+        "name": "V8.GC_TIME_TO_SAFEPOINT",
+        "count": 10,
+        "overlapMs": 0.038000000000000006,
+        "maxMs": 0.016
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+        "count": 11,
+        "overlapMs": 0.035,
+        "maxMs": 0.011
+      },
+      {
+        "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+        "count": 9,
+        "overlapMs": 0.027000000000000003,
+        "maxMs": 0.012
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE",
+        "count": 11,
+        "overlapMs": 0.025,
+        "maxMs": 0.004
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+        "count": 8,
+        "overlapMs": 0.014,
+        "maxMs": 0.003
+      },
+      {
+        "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+        "count": 7,
+        "overlapMs": 0.013,
+        "maxMs": 0.003
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+        "count": 8,
+        "overlapMs": 0.010000000000000002,
+        "maxMs": 0.002
+      },
+      {
+        "name": "ComputeWeaknessProcessor start",
+        "count": 8,
+        "overlapMs": 0.010000000000000002,
+        "maxMs": 0.002
+      },
+      {
+        "name": "Parallel scavenge started",
+        "count": 8,
+        "overlapMs": 0.009000000000000001,
+        "maxMs": 0.002
+      },
+      {
+        "name": "ClearWeaknessProcessor start",
+        "count": 8,
+        "overlapMs": 0.009000000000000001,
+        "maxMs": 0.002
+      },
+      {
+        "name": "Layerize",
+        "count": 2,
+        "overlapMs": 0.007,
+        "maxMs": 0.004
+      },
+      {
+        "name": "UpdateLayer",
+        "count": 2,
+        "overlapMs": 0.003,
+        "maxMs": 0.002
+      },
+      {
+        "name": "Closed mojo endpoint",
+        "count": 1,
+        "overlapMs": 0.003,
+        "maxMs": 0.003
+      }
+    ],
+    "longest10": [
+      {
+        "name": "RunTask",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 984.837,
+        "durationMs": 88.729,
+        "args": {}
+      },
+      {
+        "name": "ThreadControllerImpl::RunTask",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 984.858,
+        "durationMs": 88.673,
+        "args": {
+          "src_file": "cc/trees/proxy_impl.cc",
+          "src_func": "ScheduledActionSendBeginMainFrame",
+          "src_line": 849
+        }
+      },
+      {
+        "name": "Edge_RunTask",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 984.862,
+        "durationMs": 88.668,
+        "args": {
+          "Callback Location": "ScheduledActionSendBeginMainFrame@cc\\trees\\proxy_impl.cc:849",
+          "Event Name": "ThreadControllerImpl::RunTask"
+        }
+      },
+      {
+        "name": "FireAnimationFrame",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 985.002,
+        "durationMs": 88.07,
+        "args": {
+          "data": {
+            "frame": "5D9CB2AB8D12DBBE0227606D63FCBEA0",
+            "id": 4
+          }
+        }
+      },
+      {
+        "name": "RunTask",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 186.015,
+        "durationMs": 34.919,
+        "args": {}
+      },
+      {
+        "name": "ThreadControllerImpl::RunTask",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 186.019,
+        "durationMs": 34.891,
+        "args": {
+          "src_file": "cc/trees/proxy_impl.cc",
+          "src_func": "ScheduledActionSendBeginMainFrame",
+          "src_line": 849
+        }
+      },
+      {
+        "name": "Edge_RunTask",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 186.026,
+        "durationMs": 34.884,
+        "args": {
+          "Callback Location": "ScheduledActionSendBeginMainFrame@cc\\trees\\proxy_impl.cc:849",
+          "Event Name": "ThreadControllerImpl::RunTask"
+        }
+      },
+      {
+        "name": "FireAnimationFrame",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 186.348,
+        "durationMs": 34.123,
+        "args": {
+          "data": {
+            "frame": "5D9CB2AB8D12DBBE0227606D63FCBEA0",
+            "id": 2
+          }
+        }
+      },
+      {
+        "name": "MinorGC",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 1010.562,
+        "durationMs": 1.27,
+        "args": {
+          "type": "allocation failure",
+          "usedHeapSizeAfter": 4239796,
+          "usedHeapSizeBefore": 6294280
+        }
+      },
+      {
+        "name": "V8.GC_SCAVENGER",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 1010.605,
+        "durationMs": 1.156,
+        "args": {
+          "epoch": 84
+        }
+      }
+    ],
+    "mainLongtasksTop10": [
+      {
+        "name": "RunTask",
+        "pid": 7292,
+        "tid": 14820,
+        "startMs": 984.837,
+        "durationMs": 88.729,
+        "args": {}
+      }
+    ],
+    "gpuTasksTop10": [
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 201.801,
+        "durationMs": 635.501,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 841.101,
+        "durationMs": 139.299,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 132.726,
+        "durationMs": 28.811,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 62779392
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 162.705,
+        "durationMs": 19.968,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 186.813,
+        "durationMs": 14.57,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 182.834,
+        "durationMs": 0.977,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 161.845,
+        "durationMs": 0.825,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 201.444,
+        "durationMs": 0.344,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 980.727,
+        "durationMs": 0.183,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      },
+      {
+        "name": "GPUTask",
+        "pid": 32844,
+        "tid": 23320,
+        "startMs": 184.18,
+        "durationMs": 0.131,
+        "args": {
+          "data": {
+            "renderer_pid": 7292,
+            "used_bytes": 65925120
+          }
+        }
+      }
+    ]
+  }
+}

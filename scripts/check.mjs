@@ -28,6 +28,25 @@ for (const [name, dir] of Object.entries(RESOURCE_DIRS)) {
   } catch (e) { errors.push(`R1 ${file} 读取失败：${e.message}`); }
 }
 const videoFile = path.join(ROOT, 'resources/opus-videos/data/videos.json');
+const lemoDir = path.join(ROOT, 'resources/lemo-opuscar');
+if (fs.existsSync(lemoDir)) {
+  const status = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/lemo-status.json'), 'utf8'));
+  const slugs = fs.readdirSync(path.join(lemoDir, 'styles'), { withFileTypes: true }).filter(entry => entry.isDirectory() && !entry.name.startsWith('_')).map(entry => entry.name).sort();
+  if (JSON.stringify(Object.keys(status).sort()) !== JSON.stringify(slugs)) errors.push('R6 状态表与风格目录集合不一致');
+  for (const [state, count] of [['ready', 24], ['needs-assets', 17], ['needs-build', 18]]) {
+    if (Object.values(status).filter(s => s.status === state).length !== count) errors.push(`R6 ${state} 应为 ${count}`);
+  }
+  for (const slug of slugs) {
+    const expected = !['game-show', 'paper-lantern', 'news-package'].includes(slug);
+    if (fs.existsSync(path.join(lemoDir, 'audio', `${slug}.ogg`)) !== expected) errors.push(`R7 ${slug} 音轨${expected ? '缺失' : '不应收录'}`);
+  }
+  const runtimeFiles = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/lemo-runtime-files.json'), 'utf8'));
+  const ready = Object.keys(status).filter(slug => status[slug].status === 'ready').sort();
+  if (JSON.stringify(Object.keys(runtimeFiles).sort()) !== JSON.stringify(ready)) errors.push('R8 依赖清单与 ready 集合不一致');
+  for (const slug of ready) for (const file of runtimeFiles[slug] || []) {
+    if (!fs.existsSync(path.join(lemoDir, file))) errors.push(`R8 ${slug} 缺少同源依赖 ${file}`);
+  }
+}
 if (fs.existsSync(videoFile)) {
   const slugs = new Set(JSON.parse(fs.readFileSync(videoFile, 'utf8')).map((v) => v.slug));
   const prompts = new Set(walk('resources/opus-videos/prompts').filter((p) => p.endsWith('.md')).map((p) => p.slice('resources/opus-videos/prompts/'.length, -3)));

@@ -1,0 +1,117 @@
+{
+  "assertions": [
+    {
+      "label": "(a) 视频列表无控制台错误",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "label": "(a) 共 703 条",
+      "ok": true
+    },
+    {
+      "label": "(a) 首屏 48 张卡",
+      "ok": true
+    },
+    {
+      "label": "(b) cat=3d",
+      "ok": true,
+      "detail": {
+        "actual": 117,
+        "expected": 117
+      }
+    },
+    {
+      "label": "(b) tag=shader",
+      "ok": true,
+      "detail": {
+        "actual": 33,
+        "expected": 33
+      }
+    },
+    {
+      "label": "(b) full=post",
+      "ok": true,
+      "detail": {
+        "actual": 23,
+        "expected": 23
+      }
+    },
+    {
+      "label": "(c) 703 份提示词文件全部 200",
+      "ok": true,
+      "detail": {
+        "count": 703,
+        "failed": []
+      }
+    },
+    {
+      "label": "(d) 0xcodez-474136 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) 0xcodez-474136 · 复制原文",
+      "ok": true,
+      "detail": {
+        "originalLength": 700,
+        "copiedLength": 708,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) charliie-334026 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) charliie-334026 · 复制原文",
+      "ok": true,
+      "detail": {
+        "originalLength": 35,
+        "copiedLength": 35,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) 0xlangeai-597929 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) 0xlangeai-597929 · 复制原文",
+      "ok": true,
+      "detail": {
+        "originalLength": 106,
+        "copiedLength": 110,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) ajith-io-615243 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) ajith-io-615243 · 复制原文",
+      "ok": true,
+      "detail": {
+        "originalLength": 319,
+        "copiedLength": 322,
+        "equalAfterCRLFToLF": true
+      }
+    },
+    {
+      "label": "(d) 0xlangeai-178533 · Prompt h2 / 代码块",
+      "ok": true
+    },
+    {
+      "label": "(d) 0xlangeai-178533 · 复制原文",
+      "ok": true,
+      "detail": {
+        "originalLength": 22,
+        "copiedLength": 24,
+        "equalAfterCRLFToLF": true
+      }
+    }
+  ],
+  "missing": [],
+  "screenshots": [],
+  "consoleErrors": []
+}

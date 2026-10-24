@@ -1,0 +1,256 @@
+[
+  {
+    "run": 1,
+    "code": 1,
+    "line": "smoke 23/24 passed",
+    "jobs": [
+      {
+        "slug": "art-deco",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–58.36s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "ascii-crt",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59.8s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "blueprint",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–46.67s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "cel-anime-80s",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "crayon-book",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–52s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "dataviz",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–50s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "ink-wash",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–48s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "iso-infographic",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–58.8s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "living-screencast",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59.4s · 最小字号 8px · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "microgame",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59.83s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "one-line",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–47.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "papercut-red",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–49s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "pictogram-motion",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–161.6s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "pixel-rpg",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–54.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "risograph",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–40s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "rubber-hose",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–50s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "shadow-puppet",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–54.4s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "silent-film",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–54.22s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "spy-titles",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–44.09s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "stained-glass",
+        "ok": false,
+        "detail": "✗ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–56.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过 \n    播放 1.5 秒后时间只从 0 走到 0.1"
+      },
+      {
+        "slug": "swiss-motion",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–44s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "urban-sketch",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–32.4s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "whiteboard",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–111s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "woodcut",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–58.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过 \nsmoke 23/24 passed"
+      }
+    ]
+  },
+  {
+    "run": 2,
+    "code": 1,
+    "line": "smoke 23/24 passed",
+    "jobs": [
+      {
+        "slug": "art-deco",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–58.36s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "ascii-crt",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59.8s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "blueprint",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–46.67s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "cel-anime-80s",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "crayon-book",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–52s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "dataviz",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–50s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "ink-wash",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–48s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "iso-infographic",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–58.8s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "living-screencast",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59.4s · 最小字号 8px · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "microgame",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–59.83s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "one-line",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–47.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "papercut-red",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–49s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "pictogram-motion",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–161.6s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "pixel-rpg",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–54.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "risograph",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–40s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "rubber-hose",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–50s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "shadow-puppet",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–54.4s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "silent-film",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–54.22s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "spy-titles",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–44.09s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "stained-glass",
+        "ok": false,
+        "detail": "✗ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–56.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过 \n    播放 1.5 秒后时间只从 0 走到 0.11669999999999983"
+      },
+      {
+        "slug": "swiss-motion",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–44s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "urban-sketch",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–32.4s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "whiteboard",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–111s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过"
+      },
+      {
+        "slug": "woodcut",
+        "ok": true,
+        "detail": "✓ demos/styles/player/ landscape WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | landscape seek 0–58.5s · 最小字号 — · 乐谱 | portrait WebGL ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11) | portrait：Demo 不支持，跳过 \nsmoke 23/24 passed"
+      }
+    ]
+  }
+]

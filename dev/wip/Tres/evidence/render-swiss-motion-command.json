@@ -1,0 +1,16 @@
+[
+  "C:\\nvm4w\\nodejs\\node.exe",
+  "--import",
+  "./dev/wip/Tres/tools/gpu-browser.mjs",
+  "scripts/render.mjs",
+  "http://localhost:4328/demos/styles/player/?style=swiss-motion",
+  "--from",
+  "0",
+  "--to",
+  "8",
+  "--audio",
+  "--format",
+  "jpeg",
+  "--out",
+  "dev/shots/Tres/audio/swiss-motion"
+]

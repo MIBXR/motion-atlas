@@ -1,0 +1,127 @@
+{
+  "reference": "web-film",
+  "viewed": [
+    "crayon-book",
+    "ink-wash",
+    "one-line",
+    "whiteboard",
+    "shadow-puppet",
+    "papercut-red",
+    "risograph",
+    "woodcut",
+    "swiss-motion",
+    "spy-titles",
+    "art-deco",
+    "blueprint",
+    "stained-glass",
+    "pictogram-motion",
+    "ascii-crt",
+    "dataviz",
+    "iso-infographic",
+    "rubber-hose",
+    "cel-anime-80s",
+    "pixel-rpg",
+    "microgame",
+    "silent-film",
+    "urban-sketch",
+    "living-screencast"
+  ],
+  "observations": [
+    {
+      "slug": "crayon-book",
+      "observation": "四个时刻的构图、文字与蜡笔纹理对应，主要可见细小边缘和压缩差异。"
+    },
+    {
+      "slug": "ink-wash",
+      "observation": "四个时刻的水墨人物、山水构图和字幕位置对应，细线与浅色纸纹有轻微差异。"
+    },
+    {
+      "slug": "one-line",
+      "observation": "线条人物、面部特写和字幕在四行中对应，局部笔画边缘与位置有轻微差异。"
+    },
+    {
+      "slug": "whiteboard",
+      "observation": "时钟、白板笔、刻度与字幕对应，主要可见浅色背景和运动模糊的细微差异。"
+    },
+    {
+      "slug": "shadow-puppet",
+      "observation": "皮影人物、太阳和字幕构图对应，frameSec 的手臂与太阳轮廓有细微位置差异。"
+    },
+    {
+      "slug": "papercut-red",
+      "observation": "年兽、村落、红纸和字幕在四个时刻对应，细碎纸屑和边缘有轻微差异。"
+    },
+    {
+      "slug": "risograph",
+      "observation": "四行的骑行人物、街景、河岸与字幕对应，印刷网点纹理和细节清晰度差异较明显。"
+    },
+    {
+      "slug": "woodcut",
+      "observation": "49.140s 的山体、塔身密集刻线有轻微位置错位，后三个时刻的主要构图更接近。"
+    },
+    {
+      "slug": "swiss-motion",
+      "observation": "海报文字、网格、红色圆形和游标位置对应，字体边缘与细线有轻微差异。"
+    },
+    {
+      "slug": "spy-titles",
+      "observation": "11.023s 的巨型标题字母有水平位置差异，部分时刻的追逐人物和钥匙姿态也不同。"
+    },
+    {
+      "slug": "art-deco",
+      "observation": "29.181s 的黑白棋盘格地面对位有偏移，人物动作和道具角度也有细微差异。"
+    },
+    {
+      "slug": "blueprint",
+      "observation": "机器线稿、云、标题栏与字幕对应，背景纸纹和细线明暗有轻微差异。"
+    },
+    {
+      "slug": "stained-glass",
+      "observation": "四个取样时刻的彩窗、骑士、龙与投影构图对应，光照和细线边缘略有差异。"
+    },
+    {
+      "slug": "pictogram-motion",
+      "observation": "构图和动作对应，但播放器主标签为中文（手球、铁饼、冲浪），成片对应位置为日文。"
+    },
+    {
+      "slug": "ascii-crt",
+      "observation": "终端内容、月球与日志构图对应，29.900s 的终端文字位置有小幅差异。"
+    },
+    {
+      "slug": "dataviz",
+      "observation": "温度条纹、折线、铅笔和文字标注对应，纸纹及细线有轻微差异。"
+    },
+    {
+      "slug": "iso-infographic",
+      "observation": "港口、农场、包装箱与厨房构图对应，29.400s 箱内小图形的显现状态略有不同。"
+    },
+    {
+      "slug": "rubber-hose",
+      "observation": "杯子、水龙头、下水口和字幕的构图与人物姿态基本对应。"
+    },
+    {
+      "slug": "cel-anime-80s",
+      "observation": "人物与摩托构图对应，霓虹街景的平移位置和雨线在前两行有小幅差异。"
+    },
+    {
+      "slug": "pixel-rpg",
+      "observation": "像素角色、战斗菜单、存档界面与文字对应，颜色和像素边缘有细微差异。"
+    },
+    {
+      "slug": "microgame",
+      "observation": "四个小游戏的构图和提示对应，网点纹理、运动物体与高度数字有小幅差异。"
+    },
+    {
+      "slug": "silent-film",
+      "observation": "黑白人物、字幕卡和场景对应，胶片划痕及人物局部姿态略有差异。"
+    },
+    {
+      "slug": "urban-sketch",
+      "observation": "8.100s 的野餐毯、人物和上色区域存在可见位置偏移，另外三个时刻的构图更接近。"
+    },
+    {
+      "slug": "living-screencast",
+      "observation": "终端、菜单、代码修改与字幕对应，像素角色的高度和局部文字边缘略有差异。"
+    }
+  ]
+}

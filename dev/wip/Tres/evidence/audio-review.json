@@ -1,0 +1,8 @@
+{
+  "viewed": ["swiss-motion", "pixel-rpg"],
+  "observations": [
+    {"slug":"swiss-motion","observation":"主要瞬态与语音包络的起止位置对应，未见明显整体平移；振幅有差异。"},
+    {"slug":"pixel-rpg","observation":"主包络和后半段语音段的位置对应，未见明显累计漂移；起始瞬态形状及振幅有差异。"}
+  ],
+  "layout": "上半部为上游 web Release，下半部为本次渲染 MP4；只做目视抽查，不将其扩大为全部样片的音画对齐结论。"
+}

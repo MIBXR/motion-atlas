@@ -1,0 +1,298 @@
+{
+  "archive-lighttable": {
+    "status": "needs-assets",
+    "film": "archive-lighttable.mp4",
+    "web": "archive-lighttable.mp4"
+  },
+  "art-deco": {
+    "status": "ready",
+    "film": "art-deco.mp4",
+    "web": "art-deco.mp4"
+  },
+  "ascii-crt": {
+    "status": "ready",
+    "film": "ascii-crt.mp4",
+    "web": "ascii-crt.mp4"
+  },
+  "backrooms": {
+    "status": "needs-build",
+    "film": "backrooms.mp4",
+    "web": "backrooms.mp4"
+  },
+  "blueprint": {
+    "status": "ready",
+    "film": "blueprint.mp4",
+    "web": "blueprint.mp4"
+  },
+  "brick-toy": {
+    "status": "needs-build",
+    "film": "brick-toy.mp4",
+    "web": "brick-toy.mp4"
+  },
+  "briefing-board": {
+    "status": "needs-assets",
+    "film": "briefing-board.mp4",
+    "web": "briefing-board.mp4"
+  },
+  "caption-news": {
+    "status": "needs-assets",
+    "film": "caption-news.mp4",
+    "web": "caption-news.mp4"
+  },
+  "cel-anime-80s": {
+    "status": "ready",
+    "film": "cel-anime-80s.mp4",
+    "web": "cel-anime-80s.mp4"
+  },
+  "city-symphony": {
+    "status": "needs-build",
+    "film": "city-symphony.mp4",
+    "web": "city-symphony.mp4"
+  },
+  "countdown": {
+    "status": "needs-assets",
+    "film": "countdown.mp4",
+    "web": "countdown.mp4"
+  },
+  "crayon-book": {
+    "status": "ready",
+    "film": "crayon-book.mp4",
+    "web": "crayon-book.mp4"
+  },
+  "dark-keynote": {
+    "status": "needs-assets",
+    "film": "dark-keynote.mp4",
+    "web": "dark-keynote.mp4"
+  },
+  "data-physical": {
+    "status": "needs-build",
+    "film": "data-physical.mp4",
+    "web": "data-physical.mp4"
+  },
+  "dataviz": {
+    "status": "ready",
+    "film": "dataviz.mp4",
+    "web": "dataviz.mp4"
+  },
+  "engraving": {
+    "status": "needs-assets",
+    "film": "engraving.mp4",
+    "web": "engraving.mp4"
+  },
+  "game-show": {
+    "status": "needs-assets",
+    "film": "game-show.mp4",
+    "web": "game-show.mp4"
+  },
+  "glass-product": {
+    "status": "needs-build",
+    "film": "glass-product.mp4",
+    "web": "glass-product.mp4"
+  },
+  "halftone-dossier": {
+    "status": "needs-assets",
+    "film": "halftone-dossier.mp4",
+    "web": "halftone-dossier.mp4"
+  },
+  "hd-2d": {
+    "status": "needs-build",
+    "film": "hd-2d.mp4",
+    "web": "hd-2d.mp4"
+  },
+  "hologram-hud": {
+    "status": "needs-assets",
+    "film": "hologram-hud.mp4",
+    "web": "hologram-hud.mp4"
+  },
+  "impasto": {
+    "status": "needs-assets",
+    "film": "impasto.mp4",
+    "web": "impasto.mp4"
+  },
+  "ink-wash": {
+    "status": "ready",
+    "film": "ink-wash.mp4",
+    "web": "ink-wash.mp4"
+  },
+  "iso-infographic": {
+    "status": "ready",
+    "film": "iso-infographic.mp4",
+    "web": "iso-infographic.mp4"
+  },
+  "kino-montage": {
+    "status": "needs-build",
+    "film": "kino-montage.mp4",
+    "web": "kino-montage.mp4"
+  },
+  "lidar-survey": {
+    "status": "needs-build",
+    "film": "lidar-survey.mp4",
+    "web": "lidar-survey.mp4"
+  },
+  "living-screencast": {
+    "status": "ready",
+    "film": "living-screencast.mp4",
+    "web": "living-screencast.mp4"
+  },
+  "lowpoly-island": {
+    "status": "needs-build",
+    "film": "lowpoly-island.mp4",
+    "web": "lowpoly-island.mp4"
+  },
+  "microgame": {
+    "status": "ready",
+    "film": "microgame.mp4",
+    "web": "microgame.mp4"
+  },
+  "microscope": {
+    "status": "needs-build",
+    "film": "microscope.mp4",
+    "web": "microscope.mp4"
+  },
+  "midcentury-toon": {
+    "status": "needs-assets",
+    "film": "midcentury-toon.mp4",
+    "web": "midcentury-toon.mp4"
+  },
+  "news-package": {
+    "status": "needs-build",
+    "film": "news-package.mp4",
+    "web": "news-package.mp4"
+  },
+  "newsreel": {
+    "status": "needs-assets",
+    "film": "newsreel.mp4",
+    "web": "newsreel.mp4"
+  },
+  "one-line": {
+    "status": "ready",
+    "film": "one-line.mp4",
+    "web": "one-line.mp4"
+  },
+  "paper-lantern": {
+    "status": "needs-build",
+    "film": "paper-lantern.mp4",
+    "web": "paper-lantern.mp4"
+  },
+  "paper-popup": {
+    "status": "needs-build",
+    "film": "paper-popup.mp4",
+    "web": "paper-popup.mp4"
+  },
+  "papercut-red": {
+    "status": "ready",
+    "film": "papercut-red.mp4",
+    "web": "papercut-red.mp4"
+  },
+  "pictogram-motion": {
+    "status": "ready",
+    "film": "pictogram-motion.mp4",
+    "web": "pictogram-motion.mp4"
+  },
+  "pixel-rpg": {
+    "status": "ready",
+    "film": "pixel-rpg.mp4",
+    "web": "pixel-rpg.mp4"
+  },
+  "risograph": {
+    "status": "ready",
+    "film": "risograph.mp4",
+    "web": "risograph.mp4"
+  },
+  "rubber-hose": {
+    "status": "ready",
+    "film": "rubber-hose.mp4",
+    "web": "rubber-hose.mp4"
+  },
+  "satellite-briefing": {
+    "status": "needs-build",
+    "film": "satellite-briefing.mp4",
+    "web": "satellite-briefing.mp4"
+  },
+  "scifi-toon": {
+    "status": "needs-assets",
+    "film": "scifi-toon.mp4",
+    "web": "scifi-toon.mp4"
+  },
+  "shadow-puppet": {
+    "status": "ready",
+    "film": "shadow-puppet.mp4",
+    "web": "shadow-puppet.mp4"
+  },
+  "silent-film": {
+    "status": "ready",
+    "film": "silent-film.mp4",
+    "web": "silent-film.mp4"
+  },
+  "silkscreen-poster": {
+    "status": "needs-assets",
+    "film": "silkscreen-poster.mp4",
+    "web": "silkscreen-poster.mp4"
+  },
+  "spy-titles": {
+    "status": "ready",
+    "film": "spy-titles.mp4",
+    "web": "spy-titles.mp4"
+  },
+  "stained-glass": {
+    "status": "ready",
+    "heavy": true,
+    "film": "stained-glass.mp4",
+    "web": "stained-glass.mp4"
+  },
+  "swiss-motion": {
+    "status": "ready",
+    "film": "swiss-motion.mp4",
+    "web": "swiss-motion.mp4"
+  },
+  "teardown": {
+    "status": "needs-build",
+    "film": "teardown.mp4",
+    "web": "teardown.mp4"
+  },
+  "telestrator": {
+    "status": "needs-assets",
+    "film": "telestrator.mp4",
+    "web": "telestrator.mp4"
+  },
+  "tilt-shift": {
+    "status": "needs-build",
+    "film": "tilt-shift.mp4",
+    "web": "tilt-shift.mp4"
+  },
+  "ukiyoe": {
+    "status": "needs-assets",
+    "film": "ukiyoe.mp4",
+    "web": "ukiyoe.mp4"
+  },
+  "urban-sketch": {
+    "status": "ready",
+    "film": "urban-sketch.mp4",
+    "web": "urban-sketch.mp4"
+  },
+  "visual-investigation": {
+    "status": "needs-build",
+    "film": "visual-investigation.mp4",
+    "web": "visual-investigation.mp4"
+  },
+  "watercolor": {
+    "status": "needs-assets",
+    "film": "watercolor.mp4",
+    "web": "watercolor.mp4"
+  },
+  "white-model": {
+    "status": "needs-build",
+    "film": "white-model.mp4",
+    "web": "white-model.mp4"
+  },
+  "whiteboard": {
+    "status": "ready",
+    "film": "whiteboard.mp4",
+    "web": "whiteboard.mp4"
+  },
+  "woodcut": {
+    "status": "ready",
+    "film": "woodcut.mp4",
+    "web": "woodcut.mp4"
+  }
+}

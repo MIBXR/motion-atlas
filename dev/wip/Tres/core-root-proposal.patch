@@ -1,0 +1,15 @@
+*** Begin Patch
+*** Update File: scripts/serve.mjs
+@@
+-  let file = path.normalize(path.join(root, decodeURIComponent(url.pathname)));
++  const pathname = decodeURIComponent(url.pathname);
++  const lemoRoot = ['/core/lib.js', '/core/assets/polyhaven/walnut_diff.jpg'].includes(pathname);
++  let file = path.normalize(path.join(root, lemoRoot ? '/resources/lemo-opuscar' + pathname : pathname));
+*** Update File: scripts/build-static.mjs
+@@
+ fs.copyFileSync(path.join(ROOT, 'scripts/lemo-status.json'), path.join(output, 'scripts/lemo-status.json'));
++for (const file of ['core/lib.js', 'core/assets/polyhaven/walnut_diff.jpg']) {
++  fs.mkdirSync(path.dirname(path.join(output, file)), { recursive: true });
++  fs.copyFileSync(path.join(ROOT, 'resources/lemo-opuscar', file), path.join(output, file));
++}
+*** End Patch

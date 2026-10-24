@@ -5,7 +5,7 @@
 //   - 运行时字号：报告舞台内可见文字的最小字号，不设下限；--strict-fonts 仅作为兼容参数。
 // 未使用 stage() 的旧 Demo 只做 seek / 播放错误检查。需要先启动 npm start。
 // 用法：node scripts/smoke.mjs [--only id1,id2] [--url <页面>]… [--orient both|landscape|portrait] [--strict-fonts]
-//        [--base http://localhost:4321] [--w 1280 --h 720] [--step 0.2]
+//        [--base http://localhost:4321] [--w 1280 --h 720] [--step 0.2] [--ready-timeout 60]
 import { launch } from './lib/cdp.mjs';
 import { loadEntries } from './lib/catalog.mjs';
 
@@ -17,6 +17,7 @@ const only = get('--only', '') ? new Set(get('--only').split(',')) : null;
 const urls = all('--url');
 const w = Number(get('--w', 1280)), h = Number(get('--h', 720));
 const step = Number(get('--step', 0.2));
+const readyTimeout = Number(get('--ready-timeout', 60)) * 1000;
 const orientArg = get('--orient', 'both');
 const ORIENTS = orientArg === 'both' ? ['landscape', 'portrait'] : [orientArg];
 if (!ORIENTS.every((o) => o === 'landscape' || o === 'portrait')) { console.error('--orient 只能是 both / landscape / portrait'); process.exit(1); }
@@ -24,7 +25,7 @@ if (!ORIENTS.every((o) => o === 'landscape' || o === 'portrait')) { console.erro
 const { cases, patterns } = loadEntries();
 const jobs = [
   ...(urls.length && !only ? [] : [...cases, ...patterns].filter((e) => !only || only.has(e.id)).map((e) => ({ id: e.id, url: `${base}/${e.demo}`, renderer: e.renderer }))),
-  ...urls.map((u) => ({ id: u.replace(/^https?:\/\/[^/]+\//, '').replace(/\/index\.html.*$|\?.*$/, ''), url: /^https?:/.test(u) ? u : `${base}/${u.replace(/^\//, '')}` })),
+  ...urls.map((u) => ({ id: u.replace(/^https?:\/\/[^/]+\//, '').replace(/\/index\.html.*$|\?.*$/, ''), url: /^https?:/.test(u) ? u : `${base}/${u.replace(/^\//, '')}`, ...(args.includes('--gpu') ? { renderer: 'gpu' } : {}) })),
 ];
 
 // 在页面里执行：遍历舞台内可见文字，返回 [{px, text}]（px 为舞台坐标下的字号）
@@ -118,8 +119,8 @@ async function openPage(runner, url, vw, vh) {
   page.on('Runtime.consoleAPICalled', (p) => { if (p.type === 'error') errors.push(p.args.map((a) => a.value ?? a.description).join(' ')); });
   await page.send('Page.addScriptToEvaluateOnNewDocument', { source: "addEventListener('motion:ready', (e) => { window.__smokeReady = e.detail; });" });
   await page.goto(url, 45000);
-  const hasMotion = await page.eval('new Promise(r => { let n = 0; const iv = setInterval(() => { if (window.__motion || ++n > 150) { clearInterval(iv); r(!!window.__motion); } }, 100); })', 25000);
-  if (hasMotion) await page.eval('Promise.resolve(window.__motion.ready).then(() => true)', 60000);
+  const hasMotion = await page.eval(`new Promise(r => { let n = 0; const iv = setInterval(() => { if (window.__motion || ++n >= ${readyTimeout / 100}) { clearInterval(iv); r(!!window.__motion); } }, 100); })`, readyTimeout);
+  if (hasMotion) await page.eval('Promise.resolve(window.__motion.ready).then(() => true)', readyTimeout);
   return { page, errors, hasMotion };
 }
 

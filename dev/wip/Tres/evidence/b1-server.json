@@ -1,0 +1,16 @@
+{
+  "reused": true,
+  "base": "http://localhost:4328",
+  "results": [
+    {
+      "path": "data/resources.js",
+      "status": 200,
+      "identical": true
+    },
+    {
+      "path": "demos/styles/player/player.js",
+      "status": 200,
+      "identical": true
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "groups": {
+    "git": {
+      "files": 2126,
+      "bytes": 89216570
+    },
+    "film-audio": {
+      "files": 56,
+      "bytes": 50948665
+    },
+    "pack": {
+      "files": 84,
+      "bytes": 72446464
+    }
+  },
+  "files": 2267,
+  "bytes": 213057503,
+  "manifestBytes": 445804,
+  "largest": [
+    {
+      "path": "styles/pictogram-motion/demo/fonts/NotoSansSCwght.ttf",
+      "bytes": 17772300,
+      "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "origin": "pack:demo-pictogram-motion.tar"
+    },
+    {
+      "path": "styles/pictogram-motion/demo/fonts/NotoSansJPwght.ttf",
+      "bytes": 9589900,
+      "sha256": "c2f3b4d463500a2ddcd3849cded1fceeb9fd6d1c32e6cbecd568453ba50fc68f",
+      "origin": "pack:demo-pictogram-motion.tar"
+    },
+    {
+      "path": "styles/ink-wash/demo/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857936,
+      "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+      "origin": "pack:demo-ink-wash.tar"
+    },
+    {
+      "path": "styles/papercut-red/demo/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857052,
+      "sha256": "7aeadc89ef360fd53085a83a08c0062b08dae43d0b70c367c4170bf1f1f53696",
+      "origin": "pack:demo-papercut-red.tar"
+    },
+    {
+      "path": "styles/shadow-puppet/demo/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857052,
+      "sha256": "7aeadc89ef360fd53085a83a08c0062b08dae43d0b70c367c4170bf1f1f53696",
+      "origin": "pack:demo-shadow-puppet.tar"
+    },
+    {
+      "path": "styles/crayon-book/demo/fonts/gaegu_Gaegu-Regular.ttf",
+      "bytes": 3165816,
+      "sha256": "aa52c98336f7c62e2896fc8b12b56a75d5b476d88a2f104b0980f4f7ce0adfc3",
+      "origin": "pack:demo-crayon-book.tar"
+    },
+    {
+      "path": "styles/crayon-book/demo/fonts/gaegu_Gaegu-Bold.ttf",
+      "bytes": 2962664,
+      "sha256": "cc38a4af9506a45254d1ce07c589ec473d9e5f0be319e5a77b17c214903f8c1c",
+      "origin": "pack:demo-crayon-book.tar"
+    },
+    {
+      "path": "audio/pictogram-motion.ogg",
+      "bytes": 2930777,
+      "sha256": "a88ffac107ad7c232321a06769fd57c915946e8b416dc73833b672143303626e",
+      "origin": "film-audio:web/pictogram-motion.mp4"
+    },
+    {
+      "path": "core/assets/polyhaven/walnut_rough.jpg",
+      "bytes": 2865130,
+      "sha256": "9a4df282cf8ea10e005c2c28abc77ee5287793738c1e1db619b600c9e9caa4f8",
+      "origin": "git"
+    },
+    {
+      "path": "styles/cel-anime-80s/demo/fonts/DelaGothicOne-Regular.ttf",
+      "bytes": 2508848,
+      "sha256": "4ff87a0965f1b0505e5a2c58424bc6ad3cff27e56a82f21c2fc9d6b0e3857ee2",
+      "origin": "pack:demo-cel-anime-80s.tar"
+    }
+  ]
+}

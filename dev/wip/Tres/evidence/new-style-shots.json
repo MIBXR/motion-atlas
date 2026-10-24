@@ -1,0 +1,22 @@
+[
+  {
+    "file": "dev/shots/Tres/1440-style-crayon-book.png",
+    "hash": "#style/crayon-book",
+    "width": 1440,
+    "height": 900,
+    "time": 43.68,
+    "duration": 52,
+    "minFontPx": 12,
+    "ready": "true"
+  },
+  {
+    "file": "dev/shots/Tres/1440-style-urban-sketch.png",
+    "hash": "#style/urban-sketch",
+    "width": 1440,
+    "height": 900,
+    "time": 16.2,
+    "duration": 32.4,
+    "minFontPx": 12,
+    "ready": "true"
+  }
+]

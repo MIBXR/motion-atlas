@@ -1,0 +1,11 @@
+const fs = require('node:fs'), path = require('node:path');
+const main = path.resolve('../..'), base = path.join(main, 'dev/shots/Tnew');
+const data = JSON.parse(fs.readFileSync(path.join(base, 'survey2/lemo-runtime.json'), 'utf8'));
+console.log('runtime', data.length, Object.keys(data[0]));
+for (const x of data) console.log(JSON.stringify({ slug: x.slug, ready: x.ready, status: x.status, classification: x.classification, film: x.film, web: x.web, pack: x.pack, requestKeys: Object.keys(x).filter(k => /file|request|release/i.test(k)) }));
+console.log('ready example', JSON.stringify(data.find(x => x.slug === 'swiss-motion'), null, 2).slice(-14000));
+console.log('survey2 files', fs.readdirSync(path.join(base, 'survey2')));
+console.log('root files', fs.readdirSync(path.join(base, 'refs/2-lemo-opuscar')));
+console.log('style', fs.readFileSync(path.join(base, 'refs/2-lemo-opuscar/styles/swiss-motion/style.json'), 'utf8'));
+console.log('license lines', fs.readFileSync(path.join(base, 'refs/2-lemo-opuscar/README.md'), 'utf8').split(/\r?\n/).slice(362, 373).join('\n'));
+console.log('main AGENTS', fs.existsSync(path.join(main, 'AGENTS.md')) ? fs.readFileSync(path.join(main, 'AGENTS.md'), 'utf8') : 'none');

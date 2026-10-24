@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-24T08:07:44.487Z",
+  "cwd": "C:\\Users\\mibxr\\AppData\\Roaming\\Claude\\scratch-workspaces\\9e36bc74-d352-41a7-b6ca-788357b63e8c\\7cffb294-5977-496c-8759-32aaf513ef28\\scratch-2026-10-14-be6220\\.worktrees\\resources",
+  "node": "v22.14.0",
+  "base": "http://localhost:4328",
+  "checks": [
+    {
+      "file": "kit/motion-kit.js",
+      "status": 200,
+      "identical": true
+    },
+    {
+      "file": "demos/styles/player/player.js",
+      "status": 200,
+      "identical": true
+    },
+    {
+      "file": "resources/lemo-opuscar/styles/stained-glass/demo/main.js",
+      "status": 200,
+      "identical": true
+    },
+    {
+      "file": "resources/lemo-opuscar/styles/swiss-motion/demo/main.js",
+      "status": 200,
+      "identical": true
+    }
+  ]
+}

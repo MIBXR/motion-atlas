@@ -1,0 +1,32 @@
+{
+  "files": 46,
+  "mismatches": [],
+  "http": [
+    {
+      "file": "lib.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "file": "fonts/fonts.css",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "file": "post/crt.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "file": "assets/polyhaven/walnut_diff.jpg",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "file": "assets/polyhaven/tea_set_01/tea_set_01.gltf",
+      "status": 200,
+      "matches": true
+    }
+  ],
+  "missingStatus": 404
+}

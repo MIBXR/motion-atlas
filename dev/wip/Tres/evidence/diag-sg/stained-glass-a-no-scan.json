@@ -1,0 +1,779 @@
+{
+  "style": "stained-glass",
+  "case": {
+    "id": "a-no-scan",
+    "scan": "none",
+    "width": 1280,
+    "height": 720,
+    "render": true
+  },
+  "measuredAt": "2026-10-24T07:59:49.308Z",
+  "url": "http://localhost:4328/demos/styles/player/?style=stained-glass&render=1&orient=landscape",
+  "browser": {
+    "exe": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "version": {
+      "protocolVersion": "1.3",
+      "product": "Edg/155.0.4283.62",
+      "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "jsVersion": "15.5.9.7"
+    },
+    "launchOptions": {
+      "width": 1280,
+      "height": 720,
+      "args": [
+        "--enable-gpu",
+        "--use-angle=d3d11",
+        "--ignore-gpu-blocklist"
+      ]
+    },
+    "preload": "dev/wip/T4a/tools/direct-browser.mjs",
+    "gpu": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "environment": {
+    "parentOrigin": 1792828785168.2,
+    "iframeOrigin": 1792828785217.4,
+    "iframe": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/index.html",
+    "parentViewport": [
+      1280,
+      720
+    ],
+    "iframeViewport": [
+      1920,
+      1080
+    ],
+    "visibility": "visible",
+    "longtaskSupported": true
+  },
+  "readyMs": 924,
+  "duration": 56.5,
+  "scan": {
+    "start": 2115.600000023842,
+    "end": 2115.600000023842,
+    "seeks": 0
+  },
+  "reset": {
+    "start": 2147.800000011921,
+    "end": 2174.5,
+    "time": 0
+  },
+  "start": {
+    "at": 2377.100000023842,
+    "time": 0
+  },
+  "timer": {
+    "scheduledAt": 2378,
+    "firedAt": 3879.300000011921
+  },
+  "read": {
+    "at": 3885.800000011921,
+    "time": 0.24389999997615816
+  },
+  "elapsedMs": 1508.699999988079,
+  "timerDelayMs": 1501.300000011921,
+  "smokePass": false,
+  "errors": [],
+  "parent": {
+    "raf": [
+      {
+        "timestampMs": 43.89999997615814,
+        "callbackMs": 47
+      },
+      {
+        "timestampMs": 460.89999997615814,
+        "callbackMs": 461.80000001192093
+      },
+      {
+        "timestampMs": 1278.599999976158,
+        "callbackMs": 1288.699999988079
+      }
+    ],
+    "rafCount": 3,
+    "maxRafGapMs": 817.6999999999998,
+    "firstRafMs": 47,
+    "lastRafMs": 1288.699999988079,
+    "longtasks": [],
+    "top10Longtasks": []
+  },
+  "iframe": {
+    "raf": [
+      {
+        "timestampMs": 43.29995114803296,
+        "callbackMs": 85.69995111227036
+      },
+      {
+        "timestampMs": 460.29995114803296,
+        "callbackMs": 541.2999511361122
+      },
+      {
+        "timestampMs": 1277.9999511480332,
+        "callbackMs": 1388.3999511003494
+      }
+    ],
+    "rafCount": 3,
+    "maxRafGapMs": 817.7000000000003,
+    "firstRafMs": 85.69995111227036,
+    "lastRafMs": 1388.3999511003494,
+    "longtasks": [],
+    "top10Longtasks": []
+  },
+  "renders": {
+    "calls": [
+      {
+        "id": 2,
+        "t": 0.04389999997615814,
+        "phase": "play",
+        "start": 2424.400000035763,
+        "returned": 2462.7000000476837,
+        "async": false,
+        "end": 2462.7000000476837,
+        "startMs": 47.30000001192093,
+        "endMs": 85.60000002384186,
+        "syncMs": 38.30000001192093,
+        "durationMs": 38.30000001192093
+      },
+      {
+        "id": 3,
+        "t": 0.14389999997615815,
+        "phase": "play",
+        "start": 2838.900000035763,
+        "returned": 2918.300000011921,
+        "async": false,
+        "end": 2918.300000011921,
+        "startMs": 461.80000001192093,
+        "endMs": 541.1999999880791,
+        "syncMs": 79.39999997615814,
+        "durationMs": 79.39999997615814
+      },
+      {
+        "id": 4,
+        "t": 0.24389999997615816,
+        "phase": "play",
+        "start": 3665.800000011921,
+        "returned": 3765.300000011921,
+        "async": false,
+        "end": 3765.300000011921,
+        "startMs": 1288.699999988079,
+        "endMs": 1388.199999988079,
+        "syncMs": 99.5,
+        "durationMs": 99.5
+      }
+    ],
+    "allPhases": [
+      {
+        "id": 0,
+        "t": 0,
+        "phase": "scan",
+        "start": 2115.800000011921,
+        "returned": 2143.300000011921,
+        "async": false,
+        "end": 2143.300000011921
+      },
+      {
+        "id": 1,
+        "t": 0,
+        "phase": "reset",
+        "start": 2147.800000011921,
+        "returned": 2174.5,
+        "async": false,
+        "end": 2174.5
+      },
+      {
+        "id": 2,
+        "t": 0.04389999997615814,
+        "phase": "play",
+        "start": 2424.400000035763,
+        "returned": 2462.7000000476837,
+        "async": false,
+        "end": 2462.7000000476837
+      },
+      {
+        "id": 3,
+        "t": 0.14389999997615815,
+        "phase": "play",
+        "start": 2838.900000035763,
+        "returned": 2918.300000011921,
+        "async": false,
+        "end": 2918.300000011921
+      },
+      {
+        "id": 4,
+        "t": 0.24389999997615816,
+        "phase": "play",
+        "start": 3665.800000011921,
+        "returned": 3765.300000011921,
+        "async": false,
+        "end": 3765.300000011921
+      },
+      {
+        "id": 5,
+        "t": 0.24389999997615816,
+        "phase": "pause",
+        "start": 3887.900000035763,
+        "returned": 3982.7000000476837,
+        "async": false,
+        "end": 3982.7000000476837
+      }
+    ],
+    "timeline": [
+      {
+        "at": 2377.100000023842,
+        "time": 0,
+        "playing": true
+      },
+      {
+        "at": 2424.400000035763,
+        "time": 0.04389999997615814,
+        "playing": true
+      },
+      {
+        "at": 2838.900000035763,
+        "time": 0.14389999997615815,
+        "playing": true
+      },
+      {
+        "at": 3665.800000011921,
+        "time": 0.24389999997615816,
+        "playing": true
+      }
+    ],
+    "count": 3,
+    "totalSyncMs": 217.19999998807907,
+    "maxSyncMs": 99.5
+  },
+  "profile": {
+    "startUs": 504060683880,
+    "endUs": 504062192712,
+    "sampledMs": 1508.832,
+    "samples": 951,
+    "top10Self": [
+      {
+        "function": "(idle)",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 1285.296000000001,
+        "inclusiveMs": 1285.296000000001,
+        "samples": 805
+      },
+      {
+        "function": "texImage2D",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 40.357,
+        "inclusiveMs": 40.357,
+        "samples": 26
+      },
+      {
+        "function": "piece",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/glass.js",
+        "line": 110,
+        "column": 8,
+        "selfMs": 30.235000000000007,
+        "inclusiveMs": 147.52200000000005,
+        "samples": 19
+      },
+      {
+        "function": "brush",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/glass.js",
+        "line": 61,
+        "column": 22,
+        "selfMs": 17.099,
+        "inclusiveMs": 21.733000000000004,
+        "samples": 10
+      },
+      {
+        "function": "fill",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 15.725999999999999,
+        "inclusiveMs": 15.725999999999999,
+        "samples": 8
+      },
+      {
+        "function": "createLinearGradient",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 12.233,
+        "inclusiveMs": 12.233,
+        "samples": 6
+      },
+      {
+        "function": "(garbage collector)",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 11.278,
+        "inclusiveMs": 11.278,
+        "samples": 7
+      },
+      {
+        "function": "save",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 9.837,
+        "inclusiveMs": 9.837,
+        "samples": 6
+      },
+      {
+        "function": "(program)",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 7.6499999999999995,
+        "inclusiveMs": 7.6499999999999995,
+        "samples": 13
+      },
+      {
+        "function": "setTransform",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 7.606,
+        "inclusiveMs": 7.606,
+        "samples": 3
+      }
+    ],
+    "top10Inclusive": [
+      {
+        "function": "frame.contentWindow.render",
+        "file": "(V8/native)",
+        "line": 26,
+        "column": 40,
+        "selfMs": 1.28,
+        "inclusiveMs": 204.29000000000008,
+        "samples": 1
+      },
+      {
+        "function": "(anonymous)",
+        "file": "http://localhost:4328/demos/styles/player/player.js",
+        "line": 50,
+        "column": 30,
+        "selfMs": 0,
+        "inclusiveMs": 204.29000000000008,
+        "samples": 0
+      },
+      {
+        "function": "renderScene",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/scene.js",
+        "line": 21,
+        "column": 28,
+        "selfMs": 0,
+        "inclusiveMs": 203.01000000000008,
+        "samples": 0
+      },
+      {
+        "function": "window.render",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/main.js",
+        "line": 19,
+        "column": 17,
+        "selfMs": 0,
+        "inclusiveMs": 203.01000000000008,
+        "samples": 0
+      },
+      {
+        "function": "drawLancet",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/window.js",
+        "line": 233,
+        "column": 27,
+        "selfMs": 0,
+        "inclusiveMs": 159.918,
+        "samples": 0
+      },
+      {
+        "function": "piece",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/glass.js",
+        "line": 110,
+        "column": 8,
+        "selfMs": 30.235000000000007,
+        "inclusiveMs": 147.52200000000005,
+        "samples": 19
+      },
+      {
+        "function": "mosaic",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/window.js",
+        "line": 168,
+        "column": 16,
+        "selfMs": 2.949,
+        "inclusiveMs": 109.951,
+        "samples": 2
+      },
+      {
+        "function": "render",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/comp.js",
+        "line": 157,
+        "column": 18,
+        "selfMs": 1.592,
+        "inclusiveMs": 41.949,
+        "samples": 1
+      },
+      {
+        "function": "texImage2D",
+        "file": "(V8/native)",
+        "line": null,
+        "column": null,
+        "selfMs": 40.357,
+        "inclusiveMs": 40.357,
+        "samples": 26
+      },
+      {
+        "function": "up",
+        "file": "http://localhost:4328/resources/lemo-opuscar/styles/stained-glass/demo/comp.js",
+        "line": 152,
+        "column": 14,
+        "selfMs": 0,
+        "inclusiveMs": 40.357,
+        "samples": 0
+      }
+    ]
+  },
+  "trace": {
+    "pid": 21828,
+    "tid": 19532,
+    "startUs": 504060683880,
+    "endUs": 504062192712,
+    "performanceToTraceUs": 504058306780,
+    "eventsByInclusiveMs": [
+      {
+        "name": "RunTask",
+        "count": 48,
+        "overlapMs": 223.23399999999995,
+        "maxMs": 100.645
+      },
+      {
+        "name": "ThreadControllerImpl::RunTask",
+        "count": 48,
+        "overlapMs": 222.48499999999993,
+        "maxMs": 100.439
+      },
+      {
+        "name": "Edge_RunTask",
+        "count": 45,
+        "overlapMs": 222.293,
+        "maxMs": 100.435
+      },
+      {
+        "name": "FireAnimationFrame",
+        "count": 9,
+        "overlapMs": 218.328,
+        "maxMs": 99.571
+      },
+      {
+        "name": "MinorGC",
+        "count": 15,
+        "overlapMs": 8.858,
+        "maxMs": 1.292
+      },
+      {
+        "name": "V8.GC_SCAVENGER",
+        "count": 15,
+        "overlapMs": 7.647000000000001,
+        "maxMs": 1.169
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE",
+        "count": 15,
+        "overlapMs": 7.404000000000001,
+        "maxMs": 1.145
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+        "count": 15,
+        "overlapMs": 2.085,
+        "maxMs": 0.331
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        "count": 15,
+        "overlapMs": 1.947,
+        "maxMs": 0.277
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+        "count": 15,
+        "overlapMs": 1.6880000000000002,
+        "maxMs": 0.297
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "count": 15,
+        "overlapMs": 1.133,
+        "maxMs": 0.15
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+        "count": 15,
+        "overlapMs": 1.04,
+        "maxMs": 0.151
+      },
+      {
+        "name": "FunctionCall",
+        "count": 10,
+        "overlapMs": 1.011,
+        "maxMs": 0.194
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+        "count": 15,
+        "overlapMs": 0.838,
+        "maxMs": 0.092
+      },
+      {
+        "name": "Receive mojo message",
+        "count": 5,
+        "overlapMs": 0.5760000000000001,
+        "maxMs": 0.574
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        "count": 15,
+        "overlapMs": 0.563,
+        "maxMs": 0.142
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+        "count": 12,
+        "overlapMs": 0.526,
+        "maxMs": 0.144
+      },
+      {
+        "name": "EvaluateScript",
+        "count": 3,
+        "overlapMs": 0.497,
+        "maxMs": 0.522
+      },
+      {
+        "name": "Commit",
+        "count": 3,
+        "overlapMs": 0.371,
+        "maxMs": 0.176
+      },
+      {
+        "name": "TimerFire",
+        "count": 1,
+        "overlapMs": 0.361,
+        "maxMs": 0.361
+      },
+      {
+        "name": "PrePaint",
+        "count": 3,
+        "overlapMs": 0.201,
+        "maxMs": 0.091
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+        "count": 15,
+        "overlapMs": 0.18600000000000005,
+        "maxMs": 0.017
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+        "count": 15,
+        "overlapMs": 0.159,
+        "maxMs": 0.051
+      },
+      {
+        "name": "V8.GC_TIME_TO_SAFEPOINT",
+        "count": 13,
+        "overlapMs": 0.135,
+        "maxMs": 0.056
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        "count": 15,
+        "overlapMs": 0.107,
+        "maxMs": 0.023
+      },
+      {
+        "name": "V8.GC_SCAVENGER_COMPLETE_SWEEP_ARRAY_BUFFERS",
+        "count": 5,
+        "overlapMs": 0.07600000000000001,
+        "maxMs": 0.02
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE",
+        "count": 15,
+        "overlapMs": 0.07400000000000001,
+        "maxMs": 0.008
+      },
+      {
+        "name": "BlinkScheduler_PerformMicrotaskCheckpoint",
+        "count": 34,
+        "overlapMs": 0.06400000000000002,
+        "maxMs": 0.006
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+        "count": 15,
+        "overlapMs": 0.046000000000000006,
+        "maxMs": 0.006
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SWEEP_ARRAY_BUFFERS",
+        "count": 6,
+        "overlapMs": 0.043,
+        "maxMs": 0.014
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE",
+        "count": 15,
+        "overlapMs": 0.04100000000000001,
+        "maxMs": 0.006
+      },
+      {
+        "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+        "count": 15,
+        "overlapMs": 0.038000000000000006,
+        "maxMs": 0.007
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+        "count": 15,
+        "overlapMs": 0.032,
+        "maxMs": 0.006
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+        "count": 12,
+        "overlapMs": 0.024000000000000007,
+        "maxMs": 0.009
+      },
+      {
+        "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+        "count": 13,
+        "overlapMs": 0.024,
+        "maxMs": 0.007
+      },
+      {
+        "name": "Layerize",
+        "count": 3,
+        "overlapMs": 0.021,
+        "maxMs": 0.012
+      },
+      {
+        "name": "ClearWeaknessProcessor start",
+        "count": 13,
+        "overlapMs": 0.019000000000000003,
+        "maxMs": 0.004
+      },
+      {
+        "name": "Parallel scavenge started",
+        "count": 13,
+        "overlapMs": 0.018000000000000002,
+        "maxMs": 0.002
+      },
+      {
+        "name": "ComputeWeaknessProcessor start",
+        "count": 12,
+        "overlapMs": 0.013000000000000001,
+        "maxMs": 0.002
+      },
+      {
+        "name": "UpdateLayer",
+        "count": 3,
+        "overlapMs": 0.006,
+        "maxMs": 0.003
+      },
+      {
+        "name": "Closed mojo endpoint",
+        "count": 2,
+        "overlapMs": 0.004,
+        "maxMs": 0.003
+      }
+    ],
+    "longest10": [
+      {
+        "name": "RunTask",
+        "startMs": 1288.633,
+        "durationMs": 100.645,
+        "args": {}
+      },
+      {
+        "name": "ThreadControllerImpl::RunTask",
+        "startMs": 1288.636,
+        "durationMs": 100.439,
+        "args": {
+          "src_file": "cc/trees/proxy_impl.cc",
+          "src_func": "ScheduledActionSendBeginMainFrame",
+          "src_line": 849
+        }
+      },
+      {
+        "name": "Edge_RunTask",
+        "startMs": 1288.64,
+        "durationMs": 100.435,
+        "args": {
+          "Callback Location": "ScheduledActionSendBeginMainFrame@cc\\trees\\proxy_impl.cc:849",
+          "Event Name": "ThreadControllerImpl::RunTask"
+        }
+      },
+      {
+        "name": "FireAnimationFrame",
+        "startMs": 1288.822,
+        "durationMs": 99.571,
+        "args": {
+          "data": {
+            "frame": "40A3A2F479AAF612D95BD4CB681419C5",
+            "id": 6
+          }
+        }
+      },
+      {
+        "name": "RunTask",
+        "startMs": 461.694,
+        "durationMs": 80.073,
+        "args": {}
+      },
+      {
+        "name": "ThreadControllerImpl::RunTask",
+        "startMs": 461.744,
+        "durationMs": 79.984,
+        "args": {
+          "src_file": "cc/trees/proxy_impl.cc",
+          "src_func": "ScheduledActionSendBeginMainFrame",
+          "src_line": 849
+        }
+      },
+      {
+        "name": "Edge_RunTask",
+        "startMs": 461.747,
+        "durationMs": 79.981,
+        "args": {
+          "Callback Location": "ScheduledActionSendBeginMainFrame@cc\\trees\\proxy_impl.cc:849",
+          "Event Name": "ThreadControllerImpl::RunTask"
+        }
+      },
+      {
+        "name": "FireAnimationFrame",
+        "startMs": 461.899,
+        "durationMs": 79.456,
+        "args": {
+          "data": {
+            "frame": "40A3A2F479AAF612D95BD4CB681419C5",
+            "id": 4
+          }
+        }
+      },
+      {
+        "name": "RunTask",
+        "startMs": 46.889,
+        "durationMs": 39.202,
+        "args": {}
+      },
+      {
+        "name": "ThreadControllerImpl::RunTask",
+        "startMs": 46.891,
+        "durationMs": 39.179,
+        "args": {
+          "src_file": "cc/trees/proxy_impl.cc",
+          "src_func": "ScheduledActionSendBeginMainFrame",
+          "src_line": 849
+        }
+      }
+    ]
+  }
+}

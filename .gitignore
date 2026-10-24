@@ -1,6 +1,6 @@
 # 逐帧渲染输出与参考视频取帧（参考素材只在本地分析，不提交）
-renders/
-frames/
+/renders/
+/frames/
 *.mp4
 *.mov
 *.webm
@@ -17,3 +17,8 @@ Thumbs.db
 # 打磨过程中的截图与临时产物
 dev/shots/
 /demos/cases/industrial-protocol/assets/gen/_v1/
+
+!resources/**/*.mp4
+!resources/**/*.mov
+!resources/**/*.webm
+!resources/**/*.log

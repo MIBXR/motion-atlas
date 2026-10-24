@@ -1,0 +1,1667 @@
+{
+  "reference": "web-film",
+  "gpuArgs": [
+    "--enable-gpu",
+    "--use-angle=d3d11",
+    "--ignore-gpu-blocklist",
+    "--no-proxy-server"
+  ],
+  "results": [
+    {
+      "slug": "crayon-book",
+      "status": "rendered",
+      "frameSec": 43.68,
+      "web": "crayon-book.mp4",
+      "duration": 52,
+      "readyMs": 621,
+      "points": [
+        {
+          "t": 43.68,
+          "mad": 3.6027391975308642,
+          "renderMs": 46.09999996423721,
+          "time": 43.68,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/crayon-book-0-player.png",
+          "player": "dev/shots/Tres/fidelity/crayon-book-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/crayon-book-0-film.png"
+        },
+        {
+          "t": 13,
+          "mad": 2.2102417695473253,
+          "renderMs": 20.80000001192093,
+          "time": 13,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/crayon-book-1-player.png",
+          "player": "dev/shots/Tres/fidelity/crayon-book-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/crayon-book-1-film.png"
+        },
+        {
+          "t": 26,
+          "mad": 4.189356995884774,
+          "renderMs": 60.30000001192093,
+          "time": 26,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/crayon-book-2-player.png",
+          "player": "dev/shots/Tres/fidelity/crayon-book-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/crayon-book-2-film.png"
+        },
+        {
+          "t": 39,
+          "mad": 4.218132716049383,
+          "renderMs": 43.60000002384186,
+          "time": 39,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/crayon-book-3-player.png",
+          "player": "dev/shots/Tres/fidelity/crayon-book-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/crayon-book-3-film.png"
+        }
+      ],
+      "maxMad": 4.218132716049383,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/crayon-book.jpg"
+    },
+    {
+      "slug": "ink-wash",
+      "status": "rendered",
+      "frameSec": 34.56,
+      "web": "ink-wash.mp4",
+      "duration": 48,
+      "readyMs": 11044,
+      "points": [
+        {
+          "t": 34.56,
+          "mad": 1.8403112139917694,
+          "renderMs": 98.89999997615814,
+          "time": 34.56,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ink-wash-0-player.png",
+          "player": "dev/shots/Tres/fidelity/ink-wash-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ink-wash-0-film.png"
+        },
+        {
+          "t": 12,
+          "mad": 0.9791126543209877,
+          "renderMs": 236.19999998807907,
+          "time": 12,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ink-wash-1-player.png",
+          "player": "dev/shots/Tres/fidelity/ink-wash-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ink-wash-1-film.png"
+        },
+        {
+          "t": 24,
+          "mad": 1.4645164609053498,
+          "renderMs": 470.0999999642372,
+          "time": 24,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ink-wash-2-player.png",
+          "player": "dev/shots/Tres/fidelity/ink-wash-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ink-wash-2-film.png"
+        },
+        {
+          "t": 36,
+          "mad": 1.360216049382716,
+          "renderMs": 81.10000002384186,
+          "time": 36,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ink-wash-3-player.png",
+          "player": "dev/shots/Tres/fidelity/ink-wash-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ink-wash-3-film.png"
+        }
+      ],
+      "maxMad": 1.8403112139917694,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/ink-wash.jpg"
+    },
+    {
+      "slug": "one-line",
+      "status": "rendered",
+      "frameSec": 39.9,
+      "web": "one-line.mp4",
+      "duration": 47.5,
+      "readyMs": 10366,
+      "points": [
+        {
+          "t": 39.9,
+          "mad": 2.460725308641975,
+          "renderMs": 47,
+          "time": 39.9,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/one-line-0-player.png",
+          "player": "dev/shots/Tres/fidelity/one-line-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/one-line-0-film.png"
+        },
+        {
+          "t": 11.875,
+          "mad": 0.9064068930041153,
+          "renderMs": 13.699999988079071,
+          "time": 11.875,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/one-line-1-player.png",
+          "player": "dev/shots/Tres/fidelity/one-line-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/one-line-1-film.png"
+        },
+        {
+          "t": 23.75,
+          "mad": 1.012908950617284,
+          "renderMs": 6.5,
+          "time": 23.75,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/one-line-2-player.png",
+          "player": "dev/shots/Tres/fidelity/one-line-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/one-line-2-film.png"
+        },
+        {
+          "t": 35.625,
+          "mad": 0.9197505144032921,
+          "renderMs": 22.399999976158142,
+          "time": 35.625,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/one-line-3-player.png",
+          "player": "dev/shots/Tres/fidelity/one-line-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/one-line-3-film.png"
+        }
+      ],
+      "maxMad": 2.460725308641975,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/one-line.jpg"
+    },
+    {
+      "slug": "whiteboard",
+      "status": "rendered",
+      "frameSec": 55.5,
+      "web": "whiteboard.mp4",
+      "duration": 111,
+      "readyMs": 824,
+      "points": [
+        {
+          "t": 55.5,
+          "mad": 0.9488323045267489,
+          "renderMs": 14.699999988079071,
+          "time": 55.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/whiteboard-0-player.png",
+          "player": "dev/shots/Tres/fidelity/whiteboard-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/whiteboard-0-film.png"
+        },
+        {
+          "t": 27.75,
+          "mad": 0.8601491769547325,
+          "renderMs": 13.199999988079071,
+          "time": 27.75,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/whiteboard-1-player.png",
+          "player": "dev/shots/Tres/fidelity/whiteboard-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/whiteboard-1-film.png"
+        },
+        {
+          "t": 55.5,
+          "mad": 0.9488323045267489,
+          "renderMs": 5.199999988079071,
+          "time": 55.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/whiteboard-2-player.png",
+          "player": "dev/shots/Tres/fidelity/whiteboard-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/whiteboard-2-film.png"
+        },
+        {
+          "t": 83.25,
+          "mad": 0.7672067901234568,
+          "renderMs": 28.5,
+          "time": 83.25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/whiteboard-3-player.png",
+          "player": "dev/shots/Tres/fidelity/whiteboard-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/whiteboard-3-film.png"
+        }
+      ],
+      "maxMad": 0.9488323045267489,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/whiteboard.jpg"
+    },
+    {
+      "slug": "shadow-puppet",
+      "status": "rendered",
+      "frameSec": 21.76,
+      "web": "shadow-puppet.mp4",
+      "duration": 54.4,
+      "readyMs": 998,
+      "points": [
+        {
+          "t": 21.76,
+          "mad": 6.663341049382716,
+          "renderMs": 6.400000035762787,
+          "time": 21.76,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/shadow-puppet-0-player.png",
+          "player": "dev/shots/Tres/fidelity/shadow-puppet-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/shadow-puppet-0-film.png"
+        },
+        {
+          "t": 13.6,
+          "mad": 2.227445987654321,
+          "renderMs": 2.399999976158142,
+          "time": 13.6,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/shadow-puppet-1-player.png",
+          "player": "dev/shots/Tres/fidelity/shadow-puppet-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/shadow-puppet-1-film.png"
+        },
+        {
+          "t": 27.2,
+          "mad": 1.5113528806584362,
+          "renderMs": 8.800000011920929,
+          "time": 27.2,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/shadow-puppet-2-player.png",
+          "player": "dev/shots/Tres/fidelity/shadow-puppet-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/shadow-puppet-2-film.png"
+        },
+        {
+          "t": 40.8,
+          "mad": 2.6990329218106996,
+          "renderMs": 6.199999988079071,
+          "time": 40.8,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/shadow-puppet-3-player.png",
+          "player": "dev/shots/Tres/fidelity/shadow-puppet-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/shadow-puppet-3-film.png"
+        }
+      ],
+      "maxMad": 6.663341049382716,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/shadow-puppet.jpg"
+    },
+    {
+      "slug": "papercut-red",
+      "status": "rendered",
+      "frameSec": 35.28,
+      "web": "papercut-red.mp4",
+      "duration": 49,
+      "readyMs": 1984,
+      "points": [
+        {
+          "t": 35.28,
+          "mad": 3.4869238683127572,
+          "renderMs": 963.9000000357628,
+          "time": 35.28,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/papercut-red-0-player.png",
+          "player": "dev/shots/Tres/fidelity/papercut-red-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/papercut-red-0-film.png"
+        },
+        {
+          "t": 12.25,
+          "mad": 1.6124794238683127,
+          "renderMs": 3.800000011920929,
+          "time": 12.25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/papercut-red-1-player.png",
+          "player": "dev/shots/Tres/fidelity/papercut-red-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/papercut-red-1-film.png"
+        },
+        {
+          "t": 24.5,
+          "mad": 1.3282818930041151,
+          "renderMs": 24.399999976158142,
+          "time": 24.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/papercut-red-2-player.png",
+          "player": "dev/shots/Tres/fidelity/papercut-red-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/papercut-red-2-film.png"
+        },
+        {
+          "t": 36.75,
+          "mad": 2.4203935185185186,
+          "renderMs": 6.400000035762787,
+          "time": 36.75,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/papercut-red-3-player.png",
+          "player": "dev/shots/Tres/fidelity/papercut-red-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/papercut-red-3-film.png"
+        }
+      ],
+      "maxMad": 3.4869238683127572,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/papercut-red.jpg"
+    },
+    {
+      "slug": "risograph",
+      "status": "rendered",
+      "frameSec": 28.8,
+      "web": "risograph.mp4",
+      "duration": 40,
+      "readyMs": 640,
+      "points": [
+        {
+          "t": 28.8,
+          "mad": 6.988557098765432,
+          "renderMs": 27.5,
+          "time": 28.8,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/risograph-0-player.png",
+          "player": "dev/shots/Tres/fidelity/risograph-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/risograph-0-film.png"
+        },
+        {
+          "t": 10,
+          "mad": 8.097024176954733,
+          "renderMs": 13.199999988079071,
+          "time": 10,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/risograph-1-player.png",
+          "player": "dev/shots/Tres/fidelity/risograph-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/risograph-1-film.png"
+        },
+        {
+          "t": 20,
+          "mad": 11.981358024691358,
+          "renderMs": 7.300000011920929,
+          "time": 20,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/risograph-2-player.png",
+          "player": "dev/shots/Tres/fidelity/risograph-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/risograph-2-film.png"
+        },
+        {
+          "t": 30,
+          "mad": 8.084591049382716,
+          "renderMs": 4.800000011920929,
+          "time": 30,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/risograph-3-player.png",
+          "player": "dev/shots/Tres/fidelity/risograph-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/risograph-3-film.png"
+        }
+      ],
+      "maxMad": 11.981358024691358,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/risograph.jpg"
+    },
+    {
+      "slug": "woodcut",
+      "status": "rendered",
+      "frameSec": 49.14,
+      "web": "woodcut.mp4",
+      "duration": 58.5,
+      "readyMs": 2686,
+      "points": [
+        {
+          "t": 49.14,
+          "mad": 20.739526748971194,
+          "renderMs": 268,
+          "time": 49.14,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/woodcut-0-player.png",
+          "player": "dev/shots/Tres/fidelity/woodcut-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/woodcut-0-film.png"
+        },
+        {
+          "t": 14.625,
+          "mad": 3.062361111111111,
+          "renderMs": 414.69999998807907,
+          "time": 14.625,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/woodcut-1-player.png",
+          "player": "dev/shots/Tres/fidelity/woodcut-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/woodcut-1-film.png"
+        },
+        {
+          "t": 29.25,
+          "mad": 1.5795036008230452,
+          "renderMs": 508.60000002384186,
+          "time": 29.25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/woodcut-2-player.png",
+          "player": "dev/shots/Tres/fidelity/woodcut-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/woodcut-2-film.png"
+        },
+        {
+          "t": 43.875,
+          "mad": 2.658101851851852,
+          "renderMs": 527.9000000357628,
+          "time": 43.875,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/woodcut-3-player.png",
+          "player": "dev/shots/Tres/fidelity/woodcut-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/woodcut-3-film.png"
+        }
+      ],
+      "maxMad": 20.739526748971194,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/woodcut.jpg"
+    },
+    {
+      "slug": "swiss-motion",
+      "status": "rendered",
+      "frameSec": 31.68,
+      "web": "swiss-motion.mp4",
+      "duration": 44,
+      "readyMs": 386,
+      "points": [
+        {
+          "t": 31.68,
+          "mad": 0.820164609053498,
+          "renderMs": 23.19999998807907,
+          "time": 31.68,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/swiss-motion-0-player.png",
+          "player": "dev/shots/Tres/fidelity/swiss-motion-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/swiss-motion-0-film.png"
+        },
+        {
+          "t": 11,
+          "mad": 1.9767592592592593,
+          "renderMs": 59.5,
+          "time": 11,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/swiss-motion-1-player.png",
+          "player": "dev/shots/Tres/fidelity/swiss-motion-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/swiss-motion-1-film.png"
+        },
+        {
+          "t": 22,
+          "mad": 0.6880864197530864,
+          "renderMs": 2.800000011920929,
+          "time": 22,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/swiss-motion-2-player.png",
+          "player": "dev/shots/Tres/fidelity/swiss-motion-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/swiss-motion-2-film.png"
+        },
+        {
+          "t": 33,
+          "mad": 0.968587962962963,
+          "renderMs": 1.600000023841858,
+          "time": 33,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/swiss-motion-3-player.png",
+          "player": "dev/shots/Tres/fidelity/swiss-motion-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/swiss-motion-3-film.png"
+        }
+      ],
+      "maxMad": 1.9767592592592593,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/swiss-motion.jpg"
+    },
+    {
+      "slug": "spy-titles",
+      "status": "rendered",
+      "frameSec": 26.46,
+      "web": "spy-titles.mp4",
+      "duration": 44.090909090909086,
+      "readyMs": 444,
+      "points": [
+        {
+          "t": 26.46,
+          "mad": 8.048112139917695,
+          "renderMs": 20,
+          "time": 26.46,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/spy-titles-0-player.png",
+          "player": "dev/shots/Tres/fidelity/spy-titles-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/spy-titles-0-film.png"
+        },
+        {
+          "t": 11.022727272727272,
+          "mad": 18.960979938271606,
+          "renderMs": 13.099999964237213,
+          "time": 11.022727272727272,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/spy-titles-1-player.png",
+          "player": "dev/shots/Tres/fidelity/spy-titles-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/spy-titles-1-film.png"
+        },
+        {
+          "t": 22.045454545454543,
+          "mad": 2.7350154320987654,
+          "renderMs": 1.199999988079071,
+          "time": 22.045454545454543,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/spy-titles-2-player.png",
+          "player": "dev/shots/Tres/fidelity/spy-titles-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/spy-titles-2-film.png"
+        },
+        {
+          "t": 33.06818181818181,
+          "mad": 3.445491255144033,
+          "renderMs": 18.80000001192093,
+          "time": 33.06818181818181,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/spy-titles-3-player.png",
+          "player": "dev/shots/Tres/fidelity/spy-titles-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/spy-titles-3-film.png"
+        }
+      ],
+      "maxMad": 18.960979938271606,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/spy-titles.jpg"
+    },
+    {
+      "slug": "art-deco",
+      "status": "rendered",
+      "frameSec": 17.52,
+      "web": "art-deco.mp4",
+      "duration": 58.363,
+      "readyMs": 472,
+      "points": [
+        {
+          "t": 17.52,
+          "mad": 3.14616512345679,
+          "renderMs": 54.19999998807907,
+          "time": 17.52,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/art-deco-0-player.png",
+          "player": "dev/shots/Tres/fidelity/art-deco-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/art-deco-0-film.png"
+        },
+        {
+          "t": 14.59075,
+          "mad": 1.8503600823045268,
+          "renderMs": 17.900000035762787,
+          "time": 14.59075,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/art-deco-1-player.png",
+          "player": "dev/shots/Tres/fidelity/art-deco-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/art-deco-1-film.png"
+        },
+        {
+          "t": 29.1815,
+          "mad": 22.13247942386831,
+          "renderMs": 11.699999988079071,
+          "time": 29.1815,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/art-deco-2-player.png",
+          "player": "dev/shots/Tres/fidelity/art-deco-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/art-deco-2-film.png"
+        },
+        {
+          "t": 43.77225,
+          "mad": 3.1879218106995886,
+          "renderMs": 8.400000035762787,
+          "time": 43.77225,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/art-deco-3-player.png",
+          "player": "dev/shots/Tres/fidelity/art-deco-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/art-deco-3-film.png"
+        }
+      ],
+      "maxMad": 22.13247942386831,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/art-deco.jpg"
+    },
+    {
+      "slug": "blueprint",
+      "status": "rendered",
+      "frameSec": 33.62,
+      "web": "blueprint.mp4",
+      "duration": 46.66666666666667,
+      "readyMs": 2993,
+      "points": [
+        {
+          "t": 33.62,
+          "mad": 1.987420267489712,
+          "renderMs": 99.39999997615814,
+          "time": 33.62,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/blueprint-0-player.png",
+          "player": "dev/shots/Tres/fidelity/blueprint-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/blueprint-0-film.png"
+        },
+        {
+          "t": 11.666666666666668,
+          "mad": 1.3707741769547326,
+          "renderMs": 23.30000001192093,
+          "time": 11.666666666666668,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/blueprint-1-player.png",
+          "player": "dev/shots/Tres/fidelity/blueprint-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/blueprint-1-film.png"
+        },
+        {
+          "t": 23.333333333333336,
+          "mad": 1.6747170781893004,
+          "renderMs": 30.19999998807907,
+          "time": 23.333333333333336,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/blueprint-2-player.png",
+          "player": "dev/shots/Tres/fidelity/blueprint-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/blueprint-2-film.png"
+        },
+        {
+          "t": 35,
+          "mad": 1.8094778806584362,
+          "renderMs": 32.299999952316284,
+          "time": 35,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/blueprint-3-player.png",
+          "player": "dev/shots/Tres/fidelity/blueprint-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/blueprint-3-film.png"
+        }
+      ],
+      "maxMad": 1.987420267489712,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/blueprint.jpg"
+    },
+    {
+      "slug": "stained-glass",
+      "status": "rendered",
+      "frameSec": 40.68,
+      "web": "stained-glass.mp4",
+      "duration": 56.5,
+      "readyMs": 2016,
+      "points": [
+        {
+          "t": 40.68,
+          "mad": 2.9322582304526748,
+          "renderMs": 70.59999996423721,
+          "time": 40.68,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/stained-glass-0-player.png",
+          "player": "dev/shots/Tres/fidelity/stained-glass-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/stained-glass-0-film.png"
+        },
+        {
+          "t": 14.125,
+          "mad": 2.3788425925925925,
+          "renderMs": 105.19999998807907,
+          "time": 14.125,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/stained-glass-1-player.png",
+          "player": "dev/shots/Tres/fidelity/stained-glass-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/stained-glass-1-film.png"
+        },
+        {
+          "t": 28.25,
+          "mad": 1.5586085390946502,
+          "renderMs": 9.199999988079071,
+          "time": 28.25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/stained-glass-2-player.png",
+          "player": "dev/shots/Tres/fidelity/stained-glass-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/stained-glass-2-film.png"
+        },
+        {
+          "t": 42.375,
+          "mad": 2.9748328189300413,
+          "renderMs": 92.30000001192093,
+          "time": 42.375,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/stained-glass-3-player.png",
+          "player": "dev/shots/Tres/fidelity/stained-glass-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/stained-glass-3-film.png"
+        }
+      ],
+      "maxMad": 2.9748328189300413,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/stained-glass.jpg"
+    },
+    {
+      "slug": "pictogram-motion",
+      "status": "rendered",
+      "frameSec": 65.44,
+      "web": "pictogram-motion.mp4",
+      "duration": 161.60000000000002,
+      "readyMs": 1214,
+      "points": [
+        {
+          "t": 65.44,
+          "mad": 2.308212448559671,
+          "renderMs": 28,
+          "time": 65.44,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pictogram-motion-0-player.png",
+          "player": "dev/shots/Tres/fidelity/pictogram-motion-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pictogram-motion-0-film.png"
+        },
+        {
+          "t": 40.400000000000006,
+          "mad": 2.2445781893004115,
+          "renderMs": 27.599999964237213,
+          "time": 40.400000000000006,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pictogram-motion-1-player.png",
+          "player": "dev/shots/Tres/fidelity/pictogram-motion-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pictogram-motion-1-film.png"
+        },
+        {
+          "t": 80.80000000000001,
+          "mad": 1.8154269547325104,
+          "renderMs": 4.899999976158142,
+          "time": 80.80000000000001,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pictogram-motion-2-player.png",
+          "player": "dev/shots/Tres/fidelity/pictogram-motion-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pictogram-motion-2-film.png"
+        },
+        {
+          "t": 121.20000000000002,
+          "mad": 2.4510956790123455,
+          "renderMs": 14.800000011920929,
+          "time": 121.20000000000002,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pictogram-motion-3-player.png",
+          "player": "dev/shots/Tres/fidelity/pictogram-motion-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pictogram-motion-3-film.png"
+        }
+      ],
+      "maxMad": 2.4510956790123455,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/pictogram-motion.jpg"
+    },
+    {
+      "slug": "ascii-crt",
+      "status": "rendered",
+      "frameSec": 50.23,
+      "web": "ascii-crt.mp4",
+      "duration": 59.8,
+      "readyMs": 2263,
+      "points": [
+        {
+          "t": 50.23,
+          "mad": 1.6972608024691358,
+          "renderMs": 649.5999999642372,
+          "time": 50.23,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ascii-crt-0-player.png",
+          "player": "dev/shots/Tres/fidelity/ascii-crt-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ascii-crt-0-film.png"
+        },
+        {
+          "t": 14.95,
+          "mad": 1.6647247942386831,
+          "renderMs": 17.700000047683716,
+          "time": 14.95,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ascii-crt-1-player.png",
+          "player": "dev/shots/Tres/fidelity/ascii-crt-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ascii-crt-1-film.png"
+        },
+        {
+          "t": 29.9,
+          "mad": 4.056064814814815,
+          "renderMs": 3.5,
+          "time": 29.9,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ascii-crt-2-player.png",
+          "player": "dev/shots/Tres/fidelity/ascii-crt-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ascii-crt-2-film.png"
+        },
+        {
+          "t": 44.849999999999994,
+          "mad": 1.4100051440329218,
+          "renderMs": 54.700000047683716,
+          "time": 44.849999999999994,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/ascii-crt-3-player.png",
+          "player": "dev/shots/Tres/fidelity/ascii-crt-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/ascii-crt-3-film.png"
+        }
+      ],
+      "maxMad": 4.056064814814815,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/ascii-crt.jpg"
+    },
+    {
+      "slug": "dataviz",
+      "status": "rendered",
+      "frameSec": 42,
+      "web": "dataviz.mp4",
+      "duration": 50,
+      "readyMs": 499,
+      "points": [
+        {
+          "t": 42,
+          "mad": 1.3307896090534979,
+          "renderMs": 56.5,
+          "time": 42,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/dataviz-0-player.png",
+          "player": "dev/shots/Tres/fidelity/dataviz-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/dataviz-0-film.png"
+        },
+        {
+          "t": 12.5,
+          "mad": 1.217633744855967,
+          "renderMs": 21.599999964237213,
+          "time": 12.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/dataviz-1-player.png",
+          "player": "dev/shots/Tres/fidelity/dataviz-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/dataviz-1-film.png"
+        },
+        {
+          "t": 25,
+          "mad": 1.1903446502057613,
+          "renderMs": 21.899999976158142,
+          "time": 25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/dataviz-2-player.png",
+          "player": "dev/shots/Tres/fidelity/dataviz-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/dataviz-2-film.png"
+        },
+        {
+          "t": 37.5,
+          "mad": 1.2229552469135803,
+          "renderMs": 13.900000035762787,
+          "time": 37.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/dataviz-3-player.png",
+          "player": "dev/shots/Tres/fidelity/dataviz-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/dataviz-3-film.png"
+        }
+      ],
+      "maxMad": 1.3307896090534979,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/dataviz.jpg"
+    },
+    {
+      "slug": "iso-infographic",
+      "status": "rendered",
+      "frameSec": 35.28,
+      "web": "iso-infographic.mp4",
+      "duration": 58.8,
+      "readyMs": 498,
+      "points": [
+        {
+          "t": 35.28,
+          "mad": 1.7703549382716048,
+          "renderMs": 32.09999996423721,
+          "time": 35.28,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/iso-infographic-0-player.png",
+          "player": "dev/shots/Tres/fidelity/iso-infographic-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/iso-infographic-0-film.png"
+        },
+        {
+          "t": 14.7,
+          "mad": 1.4968518518518519,
+          "renderMs": 28.400000035762787,
+          "time": 14.7,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/iso-infographic-1-player.png",
+          "player": "dev/shots/Tres/fidelity/iso-infographic-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/iso-infographic-1-film.png"
+        },
+        {
+          "t": 29.4,
+          "mad": 1.9971810699588477,
+          "renderMs": 23.099999964237213,
+          "time": 29.4,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/iso-infographic-2-player.png",
+          "player": "dev/shots/Tres/fidelity/iso-infographic-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/iso-infographic-2-film.png"
+        },
+        {
+          "t": 44.099999999999994,
+          "mad": 1.19119341563786,
+          "renderMs": 29.399999976158142,
+          "time": 44.099999999999994,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/iso-infographic-3-player.png",
+          "player": "dev/shots/Tres/fidelity/iso-infographic-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/iso-infographic-3-film.png"
+        }
+      ],
+      "maxMad": 1.9971810699588477,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/iso-infographic.jpg"
+    },
+    {
+      "slug": "rubber-hose",
+      "status": "rendered",
+      "frameSec": 30,
+      "web": "rubber-hose.mp4",
+      "duration": 50,
+      "readyMs": 483,
+      "points": [
+        {
+          "t": 30,
+          "mad": 0.9743364197530864,
+          "renderMs": 12,
+          "time": 30,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/rubber-hose-0-player.png",
+          "player": "dev/shots/Tres/fidelity/rubber-hose-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/rubber-hose-0-film.png"
+        },
+        {
+          "t": 12.5,
+          "mad": 1.1328780864197532,
+          "renderMs": 16.5,
+          "time": 12.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/rubber-hose-1-player.png",
+          "player": "dev/shots/Tres/fidelity/rubber-hose-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/rubber-hose-1-film.png"
+        },
+        {
+          "t": 25,
+          "mad": 0.9218158436213991,
+          "renderMs": 14.699999988079071,
+          "time": 25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/rubber-hose-2-player.png",
+          "player": "dev/shots/Tres/fidelity/rubber-hose-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/rubber-hose-2-film.png"
+        },
+        {
+          "t": 37.5,
+          "mad": 1.0845216049382715,
+          "renderMs": 10.200000047683716,
+          "time": 37.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/rubber-hose-3-player.png",
+          "player": "dev/shots/Tres/fidelity/rubber-hose-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/rubber-hose-3-film.png"
+        }
+      ],
+      "maxMad": 1.1328780864197532,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/rubber-hose.jpg"
+    },
+    {
+      "slug": "cel-anime-80s",
+      "status": "rendered",
+      "frameSec": 17.7,
+      "web": "cel-anime-80s.mp4",
+      "duration": 59,
+      "readyMs": 892,
+      "points": [
+        {
+          "t": 17.7,
+          "mad": 7.426653806584362,
+          "renderMs": 15.800000011920929,
+          "time": 17.7,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/cel-anime-80s-0-player.png",
+          "player": "dev/shots/Tres/fidelity/cel-anime-80s-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/cel-anime-80s-0-film.png"
+        },
+        {
+          "t": 14.75,
+          "mad": 3.4054012345679014,
+          "renderMs": 13.199999988079071,
+          "time": 14.75,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/cel-anime-80s-1-player.png",
+          "player": "dev/shots/Tres/fidelity/cel-anime-80s-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/cel-anime-80s-1-film.png"
+        },
+        {
+          "t": 29.5,
+          "mad": 1.6547865226337448,
+          "renderMs": 21,
+          "time": 29.5,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/cel-anime-80s-2-player.png",
+          "player": "dev/shots/Tres/fidelity/cel-anime-80s-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/cel-anime-80s-2-film.png"
+        },
+        {
+          "t": 44.25,
+          "mad": 1.995354938271605,
+          "renderMs": 82.60000002384186,
+          "time": 44.25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/cel-anime-80s-3-player.png",
+          "player": "dev/shots/Tres/fidelity/cel-anime-80s-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/cel-anime-80s-3-film.png"
+        }
+      ],
+      "maxMad": 7.426653806584362,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/cel-anime-80s.jpg"
+    },
+    {
+      "slug": "pixel-rpg",
+      "status": "rendered",
+      "frameSec": 27.25,
+      "web": "pixel-rpg.mp4",
+      "duration": 54.5,
+      "readyMs": 512,
+      "points": [
+        {
+          "t": 27.25,
+          "mad": 2.8491023662551442,
+          "renderMs": 29.19999998807907,
+          "time": 27.25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pixel-rpg-0-player.png",
+          "player": "dev/shots/Tres/fidelity/pixel-rpg-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pixel-rpg-0-film.png"
+        },
+        {
+          "t": 13.625,
+          "mad": 0.9585108024691358,
+          "renderMs": 4.699999988079071,
+          "time": 13.625,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pixel-rpg-1-player.png",
+          "player": "dev/shots/Tres/fidelity/pixel-rpg-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pixel-rpg-1-film.png"
+        },
+        {
+          "t": 27.25,
+          "mad": 2.8491023662551442,
+          "renderMs": 19.200000047683716,
+          "time": 27.25,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pixel-rpg-2-player.png",
+          "player": "dev/shots/Tres/fidelity/pixel-rpg-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pixel-rpg-2-film.png"
+        },
+        {
+          "t": 40.875,
+          "mad": 0.965460390946502,
+          "renderMs": 28.099999964237213,
+          "time": 40.875,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/pixel-rpg-3-player.png",
+          "player": "dev/shots/Tres/fidelity/pixel-rpg-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/pixel-rpg-3-film.png"
+        }
+      ],
+      "maxMad": 2.8491023662551442,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/pixel-rpg.jpg"
+    },
+    {
+      "slug": "microgame",
+      "status": "rendered",
+      "frameSec": 23.92,
+      "web": "microgame.mp4",
+      "duration": 59.82680527520344,
+      "readyMs": 678,
+      "points": [
+        {
+          "t": 23.92,
+          "mad": 4.331779835390947,
+          "renderMs": 263,
+          "time": 23.92,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/microgame-0-player.png",
+          "player": "dev/shots/Tres/fidelity/microgame-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/microgame-0-film.png"
+        },
+        {
+          "t": 14.95670131880086,
+          "mad": 1.240380658436214,
+          "renderMs": 79.09999996423721,
+          "time": 14.95670131880086,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/microgame-1-player.png",
+          "player": "dev/shots/Tres/fidelity/microgame-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/microgame-1-film.png"
+        },
+        {
+          "t": 29.91340263760172,
+          "mad": 0.9951774691358025,
+          "renderMs": 11.699999988079071,
+          "time": 29.91340263760172,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/microgame-2-player.png",
+          "player": "dev/shots/Tres/fidelity/microgame-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/microgame-2-film.png"
+        },
+        {
+          "t": 44.87010395640258,
+          "mad": 7.004465020576132,
+          "renderMs": 594.5,
+          "time": 44.87010395640258,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/microgame-3-player.png",
+          "player": "dev/shots/Tres/fidelity/microgame-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/microgame-3-film.png"
+        }
+      ],
+      "maxMad": 7.004465020576132,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/microgame.jpg"
+    },
+    {
+      "slug": "silent-film",
+      "status": "rendered",
+      "frameSec": 39.02,
+      "web": "silent-film.mp4",
+      "duration": 54.2159,
+      "readyMs": 1085,
+      "points": [
+        {
+          "t": 39.02,
+          "mad": 2.20201646090535,
+          "renderMs": 725,
+          "time": 39.02,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/silent-film-0-player.png",
+          "player": "dev/shots/Tres/fidelity/silent-film-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/silent-film-0-film.png"
+        },
+        {
+          "t": 13.553975,
+          "mad": 1.1678215020576133,
+          "renderMs": 15.699999988079071,
+          "time": 13.553975,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/silent-film-1-player.png",
+          "player": "dev/shots/Tres/fidelity/silent-film-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/silent-film-1-film.png"
+        },
+        {
+          "t": 27.10795,
+          "mad": 1.9077289094650205,
+          "renderMs": 18.600000023841858,
+          "time": 27.10795,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/silent-film-2-player.png",
+          "player": "dev/shots/Tres/fidelity/silent-film-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/silent-film-2-film.png"
+        },
+        {
+          "t": 40.661925,
+          "mad": 4.679621913580247,
+          "renderMs": 259.69999998807907,
+          "time": 40.661925,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/silent-film-3-player.png",
+          "player": "dev/shots/Tres/fidelity/silent-film-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/silent-film-3-film.png"
+        }
+      ],
+      "maxMad": 4.679621913580247,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/silent-film.jpg"
+    },
+    {
+      "slug": "urban-sketch",
+      "status": "rendered",
+      "frameSec": 16.2,
+      "web": "urban-sketch.mp4",
+      "duration": 32.4,
+      "readyMs": 58866,
+      "points": [
+        {
+          "t": 16.2,
+          "mad": 2.7966409465020576,
+          "renderMs": 90.69999998807907,
+          "time": 16.2,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/urban-sketch-0-player.png",
+          "player": "dev/shots/Tres/fidelity/urban-sketch-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/urban-sketch-0-film.png"
+        },
+        {
+          "t": 8.1,
+          "mad": 16.015162037037037,
+          "renderMs": 70.5,
+          "time": 8.1,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/urban-sketch-1-player.png",
+          "player": "dev/shots/Tres/fidelity/urban-sketch-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/urban-sketch-1-film.png"
+        },
+        {
+          "t": 16.2,
+          "mad": 2.7966409465020576,
+          "renderMs": 85.09999996423721,
+          "time": 16.2,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/urban-sketch-2-player.png",
+          "player": "dev/shots/Tres/fidelity/urban-sketch-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/urban-sketch-2-film.png"
+        },
+        {
+          "t": 24.299999999999997,
+          "mad": 5.859992283950617,
+          "renderMs": 77,
+          "time": 24.299999999999997,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/urban-sketch-3-player.png",
+          "player": "dev/shots/Tres/fidelity/urban-sketch-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/urban-sketch-3-film.png"
+        }
+      ],
+      "maxMad": 16.015162037037037,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/urban-sketch.jpg"
+    },
+    {
+      "slug": "living-screencast",
+      "status": "rendered",
+      "frameSec": 5.94,
+      "web": "living-screencast.mp4",
+      "duration": 59.4,
+      "readyMs": 477,
+      "points": [
+        {
+          "t": 5.94,
+          "mad": 1.0103986625514403,
+          "renderMs": 4.100000023841858,
+          "time": 5.94,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/living-screencast-0-player.png",
+          "player": "dev/shots/Tres/fidelity/living-screencast-0-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/living-screencast-0-film.png"
+        },
+        {
+          "t": 14.85,
+          "mad": 1.6301234567901235,
+          "renderMs": 175,
+          "time": 14.85,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/living-screencast-1-player.png",
+          "player": "dev/shots/Tres/fidelity/living-screencast-1-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/living-screencast-1-film.png"
+        },
+        {
+          "t": 29.7,
+          "mad": 0.6247710905349795,
+          "renderMs": 21,
+          "time": 29.7,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/living-screencast-2-player.png",
+          "player": "dev/shots/Tres/fidelity/living-screencast-2-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/living-screencast-2-film.png"
+        },
+        {
+          "t": 44.55,
+          "mad": 0.763559670781893,
+          "renderMs": 12.300000011920929,
+          "time": 44.55,
+          "stage": [
+            1920,
+            1080
+          ],
+          "iframeQuery": "",
+          "frame": "dev/shots/Tres/fidelity/living-screencast-3-player.png",
+          "player": "dev/shots/Tres/fidelity/living-screencast-3-player-480.png",
+          "reference": "dev/shots/Tres/fidelity/living-screencast-3-film.png"
+        }
+      ],
+      "maxMad": 1.6301234567901235,
+      "errors": [],
+      "pair": "dev/shots/Tres/fidelity/living-screencast.jpg"
+    }
+  ]
+}

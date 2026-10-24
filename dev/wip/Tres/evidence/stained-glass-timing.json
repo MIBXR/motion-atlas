@@ -1,0 +1,24 @@
+{
+  "slug": "stained-glass",
+  "viewport": [
+    1280,
+    720
+  ],
+  "gpuArgs": [
+    "--enable-gpu",
+    "--use-angle=d3d11",
+    "--ignore-gpu-blocklist",
+    "--no-proxy-server"
+  ],
+  "readyMs": 910,
+  "frames": [
+    {
+      "t": 0,
+      "renderMs": 27.69999998807907
+    },
+    {
+      "t": 0.1,
+      "renderMs": 25.700000047683716
+    }
+  ]
+}

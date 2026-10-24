@@ -1,0 +1,32 @@
+{
+  "viewed": [
+    "dev/shots/Tres/1440-styles.png",
+    "dev/shots/Tres/1440-styles-ready.png",
+    "dev/shots/Tres/1440-style-swiss-motion.png",
+    "dev/shots/Tres/1440-style-pictogram-motion.png",
+    "dev/shots/Tres/1440-style-backrooms.png",
+    "dev/shots/Tres/1440-style-swiss-demo.png",
+    "dev/shots/Tres/1440-style-swiss-credits.png",
+    "dev/shots/Tres/390-styles.png",
+    "dev/shots/Tres/390-style-swiss-motion.png",
+    "dev/shots/Tres/1440-videos.png",
+    "dev/shots/Tres/1440-videos-3d.png",
+    "dev/shots/Tres/1440-video-title.png",
+    "dev/shots/Tres/1440-video-post.png",
+    "dev/shots/Tres/1440-skills.png",
+    "dev/shots/Tres/1440-skill-motion-showreel.png",
+    "dev/shots/Tres/1440-skill-ai-handdrawn-video.png",
+    "dev/shots/Tres/1440-skill-chapter-craft.png",
+    "dev/shots/Tres/390-videos.png",
+    "dev/shots/Tres/390-video-title.png",
+    "dev/shots/Tres/390-skill-motion-showreel.png",
+    "dev/shots/Tres/1440-style-crayon-book.png",
+    "dev/shots/Tres/1440-style-urban-sketch.png"
+  ],
+  "notes": [
+    "22 张当前页面截图均逐张打开查看，包含 B1 原九张及新增 crayon-book / urban-sketch 就绪截图。",
+    "新增两片均在播放器 ready 后显示 frameSec；桌面全宽 16:9 播放区需纵向滚动到控制条。",
+    "390×844 的风格列表和 Swiss 详情没有横向溢出，原生界面最小字号为 12px。",
+    "Swiss DEMO 中带行内代码标签的目录链接显示为字面量，按主任务决定保留共享渲染器限制。"
+  ]
+}

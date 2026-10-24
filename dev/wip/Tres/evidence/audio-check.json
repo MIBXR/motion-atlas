@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "swiss-motion",
+    "file": "dev/shots/Tres/audio/swiss-motion.mp4",
+    "video": {
+      "codec": "h264",
+      "duration": "8.000000",
+      "width": 1920,
+      "height": 1080
+    },
+    "audio": {
+      "codec": "aac",
+      "duration": "8.000000",
+      "channels": 2,
+      "sampleRate": "48000"
+    },
+    "duration": 8,
+    "waveform": "dev/shots/Tres/audio/swiss-motion.png",
+    "waveformTop": "web Release",
+    "waveformBottom": "Motion Atlas render"
+  },
+  {
+    "slug": "pixel-rpg",
+    "file": "dev/shots/Tres/audio/pixel-rpg.mp4",
+    "video": {
+      "codec": "h264",
+      "duration": "8.000000",
+      "width": 1920,
+      "height": 1080
+    },
+    "audio": {
+      "codec": "aac",
+      "duration": "8.000000",
+      "channels": 2,
+      "sampleRate": "48000"
+    },
+    "duration": 8,
+    "waveform": "dev/shots/Tres/audio/pixel-rpg.png",
+    "waveformTop": "web Release",
+    "waveformBottom": "Motion Atlas render"
+  }
+]

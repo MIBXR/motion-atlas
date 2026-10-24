@@ -1,0 +1,548 @@
+{
+  "git": 2126,
+  "pack": 84,
+  "mismatches": [],
+  "durations": [
+    {
+      "slug": "archive-lighttable",
+      "film": "archive-lighttable.mp4",
+      "styleDur": 40,
+      "filmDur": 40,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "art-deco",
+      "film": "art-deco.mp4",
+      "styleDur": 58.4,
+      "filmDur": 58.375,
+      "delta": -0.02499999999999858,
+      "audio": true
+    },
+    {
+      "slug": "ascii-crt",
+      "film": "ascii-crt.mp4",
+      "styleDur": 59.8,
+      "filmDur": 59.791667,
+      "delta": -0.008333000000000368,
+      "audio": true
+    },
+    {
+      "slug": "backrooms",
+      "film": "backrooms.mp4",
+      "styleDur": 59.7,
+      "filmDur": 59.712,
+      "delta": 0.012000000000000455,
+      "audio": true
+    },
+    {
+      "slug": "blueprint",
+      "film": "blueprint.mp4",
+      "styleDur": 46.7,
+      "filmDur": 46.666667,
+      "delta": -0.03333300000000605,
+      "audio": true
+    },
+    {
+      "slug": "brick-toy",
+      "film": "brick-toy.mp4",
+      "styleDur": 54,
+      "filmDur": 54.016,
+      "delta": 0.015999999999998238,
+      "audio": true
+    },
+    {
+      "slug": "briefing-board",
+      "film": "briefing-board.mp4",
+      "styleDur": 40,
+      "filmDur": 40,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "caption-news",
+      "film": "caption-news.mp4",
+      "styleDur": 59.5,
+      "filmDur": 59.52,
+      "delta": 0.020000000000003126,
+      "audio": true
+    },
+    {
+      "slug": "cel-anime-80s",
+      "film": "cel-anime-80s.mp4",
+      "styleDur": 59,
+      "filmDur": 59.008,
+      "delta": 0.008000000000002672,
+      "audio": true
+    },
+    {
+      "slug": "city-symphony",
+      "film": "city-symphony.mp4",
+      "styleDur": 52,
+      "filmDur": 52.01,
+      "delta": 0.00999999999999801,
+      "audio": true
+    },
+    {
+      "slug": "countdown",
+      "film": "countdown.mp4",
+      "styleDur": 59.5,
+      "filmDur": 59.52,
+      "delta": 0.020000000000003126,
+      "audio": true
+    },
+    {
+      "slug": "crayon-book",
+      "film": "crayon-book.mp4",
+      "styleDur": 52,
+      "filmDur": 52.01,
+      "delta": 0.00999999999999801,
+      "audio": true
+    },
+    {
+      "slug": "dark-keynote",
+      "film": "dark-keynote.mp4",
+      "styleDur": 42,
+      "filmDur": 42.005,
+      "delta": 0.005000000000002558,
+      "audio": true
+    },
+    {
+      "slug": "data-physical",
+      "film": "data-physical.mp4",
+      "styleDur": 39.4,
+      "filmDur": 39.381,
+      "delta": -0.01899999999999835,
+      "audio": true
+    },
+    {
+      "slug": "dataviz",
+      "film": "dataviz.mp4",
+      "styleDur": 50,
+      "filmDur": 50.005,
+      "delta": 0.005000000000002558,
+      "audio": true
+    },
+    {
+      "slug": "engraving",
+      "film": "engraving.mp4",
+      "styleDur": 40,
+      "filmDur": 40,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "game-show",
+      "film": "game-show.mp4",
+      "styleDur": 148.8,
+      "filmDur": 148.8,
+      "delta": 0,
+      "audio": false
+    },
+    {
+      "slug": "glass-product",
+      "film": "glass-product.mp4",
+      "styleDur": 32,
+      "filmDur": 32,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "halftone-dossier",
+      "film": "halftone-dossier.mp4",
+      "styleDur": 30,
+      "filmDur": 30.016,
+      "delta": 0.015999999999998238,
+      "audio": true
+    },
+    {
+      "slug": "hd-2d",
+      "film": "hd-2d.mp4",
+      "styleDur": 76.5,
+      "filmDur": 76.501,
+      "delta": 0.0010000000000047748,
+      "audio": true
+    },
+    {
+      "slug": "hologram-hud",
+      "film": "hologram-hud.mp4",
+      "styleDur": 39,
+      "filmDur": 39.018,
+      "delta": 0.018000000000000682,
+      "audio": true
+    },
+    {
+      "slug": "impasto",
+      "film": "impasto.mp4",
+      "styleDur": 39.7,
+      "filmDur": 39.666667,
+      "delta": -0.03333300000000605,
+      "audio": true
+    },
+    {
+      "slug": "ink-wash",
+      "film": "ink-wash.mp4",
+      "styleDur": 48,
+      "filmDur": 48,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "iso-infographic",
+      "film": "iso-infographic.mp4",
+      "styleDur": 58.8,
+      "filmDur": 58.791667,
+      "delta": -0.008333000000000368,
+      "audio": true
+    },
+    {
+      "slug": "kino-montage",
+      "film": "kino-montage.mp4",
+      "styleDur": 60,
+      "filmDur": 60,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "lidar-survey",
+      "film": "lidar-survey.mp4",
+      "styleDur": 40,
+      "filmDur": 40,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "living-screencast",
+      "film": "living-screencast.mp4",
+      "styleDur": 59.4,
+      "filmDur": 59.4,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "lowpoly-island",
+      "film": "lowpoly-island.mp4",
+      "styleDur": 53,
+      "filmDur": 53.013,
+      "delta": 0.012999999999998124,
+      "audio": true
+    },
+    {
+      "slug": "microgame",
+      "film": "microgame.mp4",
+      "styleDur": 59.8,
+      "filmDur": 59.833333,
+      "delta": 0.03333300000000605,
+      "audio": true
+    },
+    {
+      "slug": "microscope",
+      "film": "microscope.mp4",
+      "styleDur": 39.5,
+      "filmDur": 39.509,
+      "delta": 0.009000000000000341,
+      "audio": true
+    },
+    {
+      "slug": "midcentury-toon",
+      "film": "midcentury-toon.mp4",
+      "styleDur": 40,
+      "filmDur": 40,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "news-package",
+      "film": "news-package.mp4",
+      "styleDur": 53.5,
+      "filmDur": 53.504,
+      "delta": 0.003999999999997783,
+      "audio": false
+    },
+    {
+      "slug": "newsreel",
+      "film": "newsreel.mp4",
+      "styleDur": 54.6,
+      "filmDur": 54.583333,
+      "delta": -0.01666699999999821,
+      "audio": true
+    },
+    {
+      "slug": "one-line",
+      "film": "one-line.mp4",
+      "styleDur": 47.5,
+      "filmDur": 47.5,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "paper-lantern",
+      "film": "paper-lantern.mp4",
+      "styleDur": 121.8,
+      "filmDur": 121.766667,
+      "delta": -0.03333299999999895,
+      "audio": false
+    },
+    {
+      "slug": "paper-popup",
+      "film": "paper-popup.mp4",
+      "styleDur": 133,
+      "filmDur": 133.013,
+      "delta": 0.01300000000000523,
+      "audio": true
+    },
+    {
+      "slug": "papercut-red",
+      "film": "papercut-red.mp4",
+      "styleDur": 49,
+      "filmDur": 49.002,
+      "delta": 0.0020000000000024443,
+      "audio": true
+    },
+    {
+      "slug": "pictogram-motion",
+      "film": "pictogram-motion.mp4",
+      "styleDur": 163.6,
+      "filmDur": 163.605,
+      "delta": 0.0049999999999954525,
+      "audio": true
+    },
+    {
+      "slug": "pixel-rpg",
+      "film": "pixel-rpg.mp4",
+      "styleDur": 54.5,
+      "filmDur": 54.506,
+      "delta": 0.006000000000000227,
+      "audio": true
+    },
+    {
+      "slug": "risograph",
+      "film": "risograph.mp4",
+      "styleDur": 40,
+      "filmDur": 40,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "rubber-hose",
+      "film": "rubber-hose.mp4",
+      "styleDur": 50,
+      "filmDur": 50.005,
+      "delta": 0.005000000000002558,
+      "audio": true
+    },
+    {
+      "slug": "satellite-briefing",
+      "film": "satellite-briefing.mp4",
+      "styleDur": 37.8,
+      "filmDur": 37.791667,
+      "delta": -0.008333000000000368,
+      "audio": true
+    },
+    {
+      "slug": "scifi-toon",
+      "film": "scifi-toon.mp4",
+      "styleDur": 57.5,
+      "filmDur": 57.514,
+      "delta": 0.014000000000002899,
+      "audio": true
+    },
+    {
+      "slug": "shadow-puppet",
+      "film": "shadow-puppet.mp4",
+      "styleDur": 54.4,
+      "filmDur": 54.4,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "silent-film",
+      "film": "silent-film.mp4",
+      "styleDur": 54.2,
+      "filmDur": 54.208333,
+      "delta": 0.008333000000000368,
+      "audio": true
+    },
+    {
+      "slug": "silkscreen-poster",
+      "film": "silkscreen-poster.mp4",
+      "styleDur": 38.4,
+      "filmDur": 38.416667,
+      "delta": 0.01666699999999821,
+      "audio": true
+    },
+    {
+      "slug": "spy-titles",
+      "film": "spy-titles.mp4",
+      "styleDur": 44.1,
+      "filmDur": 44.083333,
+      "delta": -0.01666699999999821,
+      "audio": true
+    },
+    {
+      "slug": "stained-glass",
+      "film": "stained-glass.mp4",
+      "styleDur": 56.5,
+      "filmDur": 56.512,
+      "delta": 0.012000000000000455,
+      "audio": true
+    },
+    {
+      "slug": "swiss-motion",
+      "film": "swiss-motion.mp4",
+      "styleDur": 44,
+      "filmDur": 44,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "teardown",
+      "film": "teardown.mp4",
+      "styleDur": 38.8,
+      "filmDur": 38.75,
+      "delta": -0.04999999999999716,
+      "audio": true
+    },
+    {
+      "slug": "telestrator",
+      "film": "telestrator.mp4",
+      "styleDur": 54.4,
+      "filmDur": 54.4,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "tilt-shift",
+      "film": "tilt-shift.mp4",
+      "styleDur": 38,
+      "filmDur": 38.016,
+      "delta": 0.015999999999998238,
+      "audio": true
+    },
+    {
+      "slug": "ukiyoe",
+      "film": "ukiyoe.mp4",
+      "styleDur": 44,
+      "filmDur": 44.01,
+      "delta": 0.00999999999999801,
+      "audio": true
+    },
+    {
+      "slug": "urban-sketch",
+      "film": "urban-sketch.mp4",
+      "styleDur": 32.4,
+      "filmDur": 32.405,
+      "delta": 0.005000000000002558,
+      "audio": true
+    },
+    {
+      "slug": "visual-investigation",
+      "film": "visual-investigation.mp4",
+      "styleDur": 60,
+      "filmDur": 60.01,
+      "delta": 0.00999999999999801,
+      "audio": true
+    },
+    {
+      "slug": "watercolor",
+      "film": "watercolor.mp4",
+      "styleDur": 113.6,
+      "filmDur": 113.6,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "white-model",
+      "film": "white-model.mp4",
+      "styleDur": 40,
+      "filmDur": 40,
+      "delta": 0,
+      "audio": true
+    },
+    {
+      "slug": "whiteboard",
+      "film": "whiteboard.mp4",
+      "styleDur": 111,
+      "filmDur": 111.018,
+      "delta": 0.018000000000000682,
+      "audio": true
+    },
+    {
+      "slug": "woodcut",
+      "film": "woodcut.mp4",
+      "styleDur": 58.5,
+      "filmDur": 58.517,
+      "delta": 0.017000000000003013,
+      "audio": true
+    }
+  ],
+  "bytes": {
+    "git": 89216570,
+    "film-audio": 50948665,
+    "pack": 72446464
+  },
+  "largest": [
+    {
+      "path": "styles/pictogram-motion/demo/fonts/NotoSansSCwght.ttf",
+      "bytes": 17772300,
+      "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "origin": "pack:demo-pictogram-motion.tar"
+    },
+    {
+      "path": "styles/pictogram-motion/demo/fonts/NotoSansJPwght.ttf",
+      "bytes": 9589900,
+      "sha256": "c2f3b4d463500a2ddcd3849cded1fceeb9fd6d1c32e6cbecd568453ba50fc68f",
+      "origin": "pack:demo-pictogram-motion.tar"
+    },
+    {
+      "path": "styles/ink-wash/demo/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857936,
+      "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+      "origin": "pack:demo-ink-wash.tar"
+    },
+    {
+      "path": "styles/papercut-red/demo/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857052,
+      "sha256": "7aeadc89ef360fd53085a83a08c0062b08dae43d0b70c367c4170bf1f1f53696",
+      "origin": "pack:demo-papercut-red.tar"
+    },
+    {
+      "path": "styles/shadow-puppet/demo/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857052,
+      "sha256": "7aeadc89ef360fd53085a83a08c0062b08dae43d0b70c367c4170bf1f1f53696",
+      "origin": "pack:demo-shadow-puppet.tar"
+    },
+    {
+      "path": "styles/crayon-book/demo/fonts/gaegu_Gaegu-Regular.ttf",
+      "bytes": 3165816,
+      "sha256": "aa52c98336f7c62e2896fc8b12b56a75d5b476d88a2f104b0980f4f7ce0adfc3",
+      "origin": "pack:demo-crayon-book.tar"
+    },
+    {
+      "path": "styles/crayon-book/demo/fonts/gaegu_Gaegu-Bold.ttf",
+      "bytes": 2962664,
+      "sha256": "cc38a4af9506a45254d1ce07c589ec473d9e5f0be319e5a77b17c214903f8c1c",
+      "origin": "pack:demo-crayon-book.tar"
+    },
+    {
+      "path": "audio/pictogram-motion.ogg",
+      "bytes": 2930777,
+      "sha256": "a88ffac107ad7c232321a06769fd57c915946e8b416dc73833b672143303626e",
+      "origin": "film-audio:web/pictogram-motion.mp4"
+    },
+    {
+      "path": "core/assets/polyhaven/walnut_rough.jpg",
+      "bytes": 2865130,
+      "sha256": "9a4df282cf8ea10e005c2c28abc77ee5287793738c1e1db619b600c9e9caa4f8",
+      "origin": "git"
+    },
+    {
+      "path": "styles/cel-anime-80s/demo/fonts/DelaGothicOne-Regular.ttf",
+      "bytes": 2508848,
+      "sha256": "4ff87a0965f1b0505e5a2c58424bc6ad3cff27e56a82f21c2fc9d6b0e3857ee2",
+      "origin": "pack:demo-cel-anime-80s.tar"
+    }
+  ],
+  "totalBytes": 213057503,
+  "manifestBytes": 445804
+}
