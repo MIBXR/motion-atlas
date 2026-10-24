@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "Motion Atlas",
   "description": "多媒体动态视觉参考库：影像视频、交互操作台、交互展示台的案例、巧思、节奏表、Prompt 与可迁移 Demo。",
-  "contentVersion": "8698d63d25bbbe28f3f35d853e83fd429ea618903d296e843cb4e40b35f2a1fa",
+  "contentVersion": "609f5f709b537dc83092c9d2e3881f054322c4458fa60002e21831b4f1ad483b",
   "taxonomy": {
     "carriers": {
       "video": "影像视频",
@@ -38,8 +38,9 @@
     }
   },
   "protocol": {
-    "seek": "Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn) }。",
-    "urlParams": "?embed 隐藏控制条；?render 关闭自动播放供逐帧渲染；?t=秒 定位到指定时刻。",
+    "seek": "Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示未迁移到固定画幅的旧 Demo。",
+    "urlParams": "?embed 隐藏控制条；?render 关闭自动播放供逐帧渲染；?t=秒 定位到指定时刻；?orient=landscape|portrait 固定画幅；?autoplay=0 不自动播放；?sound=1 尝试开启声音。",
+    "stage": "固定画幅舞台：横屏 1920×1080 / 竖屏 1080×1920，整体等比缩放；声音为乐谱（MotionKit.audio），可离线导出 WAV。见 docs/pipeline.md。",
     "kit": "kit/motion-kit.js"
   },
   "counts": {
@@ -50,7 +51,7 @@
     {
       "id": "map-pilgrimage",
       "title": "地图巡礼 · 游戏过场式旅行影像",
-      "summary": "以真实地图为“交互基地”，四角 HUD 记录日序、坐标、时间与音乐；镜头沿路线推进，在卡片、全屏实拍、动画回忆与分屏对比之间切换，把一段旅行剪成游戏过场。",
+      "summary": "以真实地图为“交互基地”，四角 HUD 记录日序、坐标、时间与音乐；镜头沿关西三日的铁路推进（上海 → 关西机场 → 京都 → 奈良 → 大阪），在照片卡片、全屏实景、插画回忆与分屏对比之间切换，配一段 120 BPM 的原创乐谱，把一段旅行剪成游戏过场。横竖两套构图，地图瓦片像视频一样边播边缓冲。",
       "carriers": [
         "video",
         "showcase"
@@ -63,7 +64,9 @@
         "HUD 四角",
         "昼夜切换",
         "分屏对比",
-        "竖排汉字"
+        "竖排汉字",
+        "日本 · 关西",
+        "渐进缓冲"
       ],
       "useCases": [
         "旅行 / 巡礼 Vlog",
@@ -94,12 +97,12 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/map-pilgrimage.json",
-      "bundleSha256": "8aafdd40b29c6326a1818978f89cefbf2d5422faa60a064917208094e660d62b"
+      "bundleSha256": "94614bc7abc88854b605429ee0677222b1a84e0157b72ffd69d0699bef5abe3d"
     },
     {
       "id": "archive-os",
-      "title": "白色档案终端 · 莱茵式 Analysis OS",
-      "summary": "暖灰白底、细线与紧凑排字，一整片透明档案块组成可浏览的阵列：开机逐字验证身份，切换时选中块抬起并向四周传出波浪，读取时对角线合拢、盖板由磨砂变清晰、正文遮挡条依次退开。",
+      "title": "莱茵生命档案终端",
+      "summary": "RhineLabUI 的完整移植：白底开场、五列循环档案阵列、对角解密、360° 查看器与结构拆解，原版模型、字体与配乐。",
       "carriers": [
         "console",
         "showcase"
@@ -107,24 +110,24 @@
       "source": "reference",
       "evidence": "observed",
       "tags": [
-        "暖灰白",
-        "档案阵列",
-        "开机序列",
-        "滚动编号",
-        "解密揭示",
-        "空闲呼吸"
+        "RhineLabUI 移植",
+        "白底开场",
+        "五列循环档案",
+        "对角解密",
+        "360° 查看器",
+        "结构拆解",
+        "原版配乐"
       ],
       "useCases": [
-        "数据档案 / 资料库浏览",
+        "数据档案与研究记录",
         "产品与展品陈列台",
-        "游戏内终端与图鉴",
+        "数字资料馆与图形化目录",
         "品牌发布会交互屏",
-        "桌面壁纸与工作台"
+        "可渲染的终端风格影像"
       ],
       "avoid": [
         "需要高信息密度表格的后台",
-        "高饱和、强情绪的品牌",
-        "低性能设备上的大规模 3D"
+        "需要同时阅读多份长文档的资料工作台"
       ],
       "patternIds": [
         "boot-typing",
@@ -136,7 +139,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/archive-os.json",
-      "bundleSha256": "5cbcf0ae19b58e064cd4630f4aa20228fb15870158b3eba11d0f14006c523de6"
+      "bundleSha256": "c3617fe7db7ad966f168ef657b23a7a77f58d065395a682fc2e2bf3a1ec1b3d6"
     },
     {
       "id": "phantom-battle",
@@ -177,7 +180,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/phantom-battle.json",
-      "bundleSha256": "810520b906b642fc07c3906266e496f914a2d8abd59694c6f4610f4ba42b06dc"
+      "bundleSha256": "baa6fba9739d4484e08d54a1f1aaa5236f3ffcac9a873b7b72792af68c5ab9e4"
     },
     {
       "id": "industrial-protocol",
@@ -218,7 +221,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/industrial-protocol.json",
-      "bundleSha256": "a2e42643a54360720f576e810bb0aff0be3d0310232e01d66a2d7cda4d9aa99d"
+      "bundleSha256": "dc2a487f4b92d93fc6ba7c69cabf2f2056484813b4625cb06d4c2a43f4b66c6b"
     },
     {
       "id": "broadcast-pack",
@@ -257,7 +260,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/broadcast-pack.json",
-      "bundleSha256": "fc1af9dca72e34cfb28226d297d0ccf137332eca43bcc66e374cdeac05a57f0c"
+      "bundleSha256": "f887e83bc0209dbd07163154770ee515ea0071faef5f7e09f1b06c338bccdf5e"
     },
     {
       "id": "beat-lyric",
@@ -294,7 +297,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/beat-lyric.json",
-      "bundleSha256": "204ea3f1c884592f3b17ef77362b60e4a381862d931e232f433cc454e7940866"
+      "bundleSha256": "b6f119be2d6d5b146c4b34aced4a4a804f84996b25255dd60e6861e8004d2b39"
     },
     {
       "id": "mission-fui",
@@ -334,7 +337,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mission-fui.json",
-      "bundleSha256": "df69f69f9d11ef258d290e2e4ea438d1ad35b071a8f8758fc5cb17a065f11574"
+      "bundleSha256": "39b6d1b07e51d9128f480ba9c1ac0ee83d64039cf03c438aa154927173a51b84"
     },
     {
       "id": "gacha-reveal",
@@ -371,7 +374,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/gacha-reveal.json",
-      "bundleSha256": "59fc5acc90716920bb0223e9dc3992606e2251fce503273621992d21885962e7"
+      "bundleSha256": "a7c7dc5377c96f5e475f4949055a2fa549c6dc0d74ed6b6c874081f25d735393"
     },
     {
       "id": "ink-scroll",
@@ -408,7 +411,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/ink-scroll.json",
-      "bundleSha256": "c323aa3faa2d1fe0c1e0de18827440c48465a754b2cbd5c7ced2a07afbbf7719"
+      "bundleSha256": "941747d7b7757a98bf5d279345bd140507c91428869c74287ff323d0d58028d4"
     }
   ],
   "patterns": [
@@ -436,7 +439,7 @@
         "vertical-title-blur"
       ],
       "bundle": "agent/patterns/corner-hud.json",
-      "bundleSha256": "3203b07d59725a7c08c47ffe5965d3cb5fdabbb3e852806a188098ddb2fc930b"
+      "bundleSha256": "b0e135e97ac049ebc14d901a05f58b5844d2c87101bf451b2aaeb362410ed489"
     },
     {
       "id": "vertical-title-blur",
@@ -460,7 +463,7 @@
         "card-expand-fullscreen"
       ],
       "bundle": "agent/patterns/vertical-title-blur.json",
-      "bundleSha256": "6e8788d5cf65669287ecb8228fc595314f43dab9408cdedce79821b9269e4970"
+      "bundleSha256": "655f5fc9185cb032d093d20dfc8a385c28ca780b69ef8e5efb23444e060ac71f"
     },
     {
       "id": "route-draw-marker",
@@ -484,7 +487,7 @@
         "card-expand-fullscreen"
       ],
       "bundle": "agent/patterns/route-draw-marker.json",
-      "bundleSha256": "99e7de2abcae8ec23b0716720eb04dcb2683ec1ad54c8cd6d1d62e6eefa2a805"
+      "bundleSha256": "abe24fac50c987e828ff1b83b0c58551a40c40a560899c36c8d11f12e0a0c972"
     },
     {
       "id": "day-night-flip",
@@ -508,7 +511,7 @@
         "route-draw-marker"
       ],
       "bundle": "agent/patterns/day-night-flip.json",
-      "bundleSha256": "032f27b97d449b58a1b7d5517e36008a535a42723644e4dc50e4089ae4029efb"
+      "bundleSha256": "f582b4debd272a4add7e24f6f9e5571e98ec6324c7558100896211d9fb670565"
     },
     {
       "id": "card-expand-fullscreen",
@@ -531,7 +534,7 @@
         "split-compare-stamp"
       ],
       "bundle": "agent/patterns/card-expand-fullscreen.json",
-      "bundleSha256": "e1e8ed961f25bfcc938fd94ee2e174c7daa7cd9141afc5bf41f3ffa3bdfa811b"
+      "bundleSha256": "25ce9c6949798aff018a2a74ea2e07063951d23a2b55c8768e303b1b669b8d28"
     },
     {
       "id": "chapter-frame",
@@ -556,7 +559,7 @@
         "vertical-title-blur"
       ],
       "bundle": "agent/patterns/chapter-frame.json",
-      "bundleSha256": "856fcb630478b94c337d85e3e536ca3f7256fc38845ee1d65c54ee4ef61e73fb"
+      "bundleSha256": "f5d9b6aa2d905c0109d2ff011813e6a18907490b09dc367956f4f75f88fe33bd"
     },
     {
       "id": "split-compare-stamp",
@@ -580,7 +583,7 @@
         "film-grain"
       ],
       "bundle": "agent/patterns/split-compare-stamp.json",
-      "bundleSha256": "c67a2580863d3b8b7c808c359cf7c8a3a4dfe9655b6651430f67a0a032a7b2e6"
+      "bundleSha256": "e5d0db7e6e1f5c676690ebae34311858b7999951564547474e9e52e5b6588f1c"
     },
     {
       "id": "collect-counter",
@@ -604,7 +607,7 @@
         "outro-stat-stack"
       ],
       "bundle": "agent/patterns/collect-counter.json",
-      "bundleSha256": "783d9da0692b77e164151cf3fb3fdec6718d87ecb2c9ff104aecae5cbfc7be50"
+      "bundleSha256": "0353cce4c2afab56319ccbaf01ffff2b6776847f750f25d46f85bcfebeaa86d5"
     },
     {
       "id": "alert-reroute",
@@ -627,7 +630,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/alert-reroute.json",
-      "bundleSha256": "f7e28c0a6c8b4bcd13d33e110b564cb92d78fe68146ddab8b8073622adb12f76"
+      "bundleSha256": "3b1bf47bec0f03eb977430a297b358ce7b27cf6704d4717ca813b12eb2a66a4c"
     },
     {
       "id": "outro-stat-stack",
@@ -650,7 +653,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/outro-stat-stack.json",
-      "bundleSha256": "e9b45d8930a8fc7072d9462688ad60fc68b7b366ecef20c97abb61f8a0f50748"
+      "bundleSha256": "35054f0241ed6ec3a2a668b3c83f2aae34b7399404c14639b61e518df5c81f23"
     },
     {
       "id": "seekable-timeline",
@@ -673,7 +676,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/seekable-timeline.json",
-      "bundleSha256": "bd2d05270c14c046a1e1c2054c0758607c2d48efd856a8d79d9daea3502aa1f1"
+      "bundleSha256": "b0b8ee75807fea21ae0ae1e9a6c10a125ddd9ef9329ee2f9d4b7ff57deb63b36"
     },
     {
       "id": "film-grain",
@@ -696,7 +699,7 @@
         "split-compare-stamp"
       ],
       "bundle": "agent/patterns/film-grain.json",
-      "bundleSha256": "96b07562f92bb7d76063c6c8033ea00dee2d32fc200b597920d4e274d5c5dab3"
+      "bundleSha256": "4cf6bb6eeb1ac0bae93687e3f8a78d4ae7809be608e02761077908dd68604150"
     },
     {
       "id": "boot-typing",
@@ -722,7 +725,7 @@
         "wave-array"
       ],
       "bundle": "agent/patterns/boot-typing.json",
-      "bundleSha256": "360d9277b9afc122403765f57d27a6b828e9120714b100aac3d1ba42c0b39678"
+      "bundleSha256": "3ea904cd746103baddf091382fdbc71fb791f8e7504553579998baad5d857dc6"
     },
     {
       "id": "rolling-digits",
@@ -747,7 +750,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/rolling-digits.json",
-      "bundleSha256": "630f0f69c51584f0030eda13db45176777c6da9a0630894baed90894aba85393"
+      "bundleSha256": "99f103d750c251eafad7972c7c3f04e9504c8b85c92a926928d4257326768792"
     },
     {
       "id": "decrypt-reveal",
@@ -772,7 +775,7 @@
         "card-flip-sheen"
       ],
       "bundle": "agent/patterns/decrypt-reveal.json",
-      "bundleSha256": "4cd8bbb4b6a38a40c5968334572947c7124329e2fb2b2a01a7cc854c3657cadd"
+      "bundleSha256": "1444adbbd590412e337dfd1d1d810aebfae6188b161d1963d4b308f179d806a5"
     },
     {
       "id": "wave-array",
@@ -795,7 +798,7 @@
         "idle-breathing"
       ],
       "bundle": "agent/patterns/wave-array.json",
-      "bundleSha256": "cced942782250a644c2dc8a1018bdf74f7a27d29f6d69a129fb0909412554622"
+      "bundleSha256": "fd46d3f9c00b2e37d9c324dca7f9bfca9029b7add7348d7a116c0338128b511b"
     },
     {
       "id": "idle-breathing",
@@ -817,7 +820,7 @@
         "rolling-digits"
       ],
       "bundle": "agent/patterns/idle-breathing.json",
-      "bundleSha256": "6691717710efbbe00d62dc5abfab38b1f4681bc9f3693cf4f0a882033bffe7ad"
+      "bundleSha256": "a92014d926d6cec19b78536e6250d4719da415365317119e163dcd7428cd33ee"
     },
     {
       "id": "skew-menu",
@@ -841,7 +844,7 @@
         "cutin-slash"
       ],
       "bundle": "agent/patterns/skew-menu.json",
-      "bundleSha256": "9243dc2f4ae793b4a7415809a69f124795b56c070f4f75048724bb962fd1c066"
+      "bundleSha256": "e6b1ec53925c2b7684c57e039d6824d81f3542553a58be1463ee466a4c09fc0e"
     },
     {
       "id": "cutin-slash",
@@ -864,7 +867,7 @@
         "stinger-bars"
       ],
       "bundle": "agent/patterns/cutin-slash.json",
-      "bundleSha256": "96bbc65db100ee94ea4953fd221a2073880351ea5db1b74eabf4bf4f0bfc3aa0"
+      "bundleSha256": "8f5f6398f02551ddf98f60d45491eda370bb6a1c1e38ceba12305246bce1f567"
     },
     {
       "id": "ransom-type",
@@ -889,7 +892,7 @@
         "impact-pop"
       ],
       "bundle": "agent/patterns/ransom-type.json",
-      "bundleSha256": "87e9cc022097ebf1de56f1135c7f1f3eca41de4923a5be071982fc9481451618"
+      "bundleSha256": "21a4aab9922be2ef3b19900e80a98823dc80fcc945d7385b1afb9b5767fb5c5d"
     },
     {
       "id": "impact-pop",
@@ -913,7 +916,7 @@
         "ransom-type"
       ],
       "bundle": "agent/patterns/impact-pop.json",
-      "bundleSha256": "3d2f89550b6d437a1432250051831de2a7228f871a98759000c77592da9d76c6"
+      "bundleSha256": "aa202870ce33888fb05ecfeff79baa6718e34601582ba4406a744b950bd613b5"
     },
     {
       "id": "shape-wipe",
@@ -936,7 +939,7 @@
         "impact-pop"
       ],
       "bundle": "agent/patterns/shape-wipe.json",
-      "bundleSha256": "54e323df824818eb5ffe5c08d3ec32faa962c38fd8122d1546f2920cd839f5e9"
+      "bundleSha256": "8988dbfde08d69586f97c81b0714fc472bb29b1eb7c952c7989e3214a0b3e0bd"
     },
     {
       "id": "chamfer-panel",
@@ -959,7 +962,7 @@
         "hold-confirm"
       ],
       "bundle": "agent/patterns/chamfer-panel.json",
-      "bundleSha256": "eb76516ad399b6e2c83f9b2506bd7550272fcb7273721ec24e90e490d53eaee8"
+      "bundleSha256": "b76178d3eaca3014b4e10e3e77614bc56373928eda7d2a133c5091e698c9f212"
     },
     {
       "id": "text-scramble",
@@ -983,7 +986,7 @@
         "boot-typing"
       ],
       "bundle": "agent/patterns/text-scramble.json",
-      "bundleSha256": "d77afc8e3db2ee453b5059ab7825cc446f5c639ef693214659d804dd45220e01"
+      "bundleSha256": "9dab975e675de602ab58beffc12e77ca2f875125d7b325f8a10cf8453eecaf74"
     },
     {
       "id": "conveyor-flow",
@@ -1007,7 +1010,7 @@
         "hold-confirm"
       ],
       "bundle": "agent/patterns/conveyor-flow.json",
-      "bundleSha256": "50852f7340a136826e202fc82e154d838d4e0155d09f9d560a2427a97531b967"
+      "bundleSha256": "6b2edeffa9a62b6e6545966744086e0a5dfbd744dfda72ae777f97cecb56e157"
     },
     {
       "id": "hold-confirm",
@@ -1029,7 +1032,7 @@
         "conveyor-flow"
       ],
       "bundle": "agent/patterns/hold-confirm.json",
-      "bundleSha256": "f33f0ffa87a55ef764d7662894d49c38c7990a3a619a4d21c3798c274ed35e8e"
+      "bundleSha256": "babb4aaac86dbf477575faeb8975963eeedf158a5fff9566deec39b85d0eb2c1"
     },
     {
       "id": "scanline-wipe",
@@ -1052,7 +1055,7 @@
         "text-scramble"
       ],
       "bundle": "agent/patterns/scanline-wipe.json",
-      "bundleSha256": "942df841ef3da2d48418200c75f1e60420278d4d52df34d815ac9dee402a4ee8"
+      "bundleSha256": "2d91a410843c9b193d71582290dbd8821a3d0e6fc3f60938a55e48946e1e51e4"
     },
     {
       "id": "lower-third",
@@ -1075,7 +1078,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/lower-third.json",
-      "bundleSha256": "de0c353e6beef042ead7a17655d3bc3bce06fcc3ac9b555ad0bb272b44fd0d27"
+      "bundleSha256": "ae49cc1ff7bb5aee608db6719db5457d67e4dde4bd6cf9a41b84e5a6ef76d95d"
     },
     {
       "id": "stinger-bars",
@@ -1098,7 +1101,7 @@
         "cutin-slash"
       ],
       "bundle": "agent/patterns/stinger-bars.json",
-      "bundleSha256": "c251f76694cec32904d608757e90af2434341c373d59259ccad92d7a77a06a2c"
+      "bundleSha256": "41495bc86433b01676a96f3ee7af1e2e7bc10718a8e08dbbff878db9e2d3c5ed"
     },
     {
       "id": "beat-clock",
@@ -1124,7 +1127,7 @@
         "stinger-bars"
       ],
       "bundle": "agent/patterns/beat-clock.json",
-      "bundleSha256": "648e9506cb5de8e2307cf78416313ed4160e5a53f121379632b66bd2e34a8e3e"
+      "bundleSha256": "1603d14fed232511d3746b9d86f8ebb5f5b0ee6312b10cb149718878410ba46b"
     },
     {
       "id": "word-slam",
@@ -1147,7 +1150,7 @@
         "ransom-type"
       ],
       "bundle": "agent/patterns/word-slam.json",
-      "bundleSha256": "e8aeec73a8dd9375bec196f58f2d3d811333ad7cd8b9c49d55d1ea9aeb9eac90"
+      "bundleSha256": "b8b34e3ff6b92d1e6372f6e3944c4e482d2bdc2a91a1a3ed4deed6f1c2ab9694"
     },
     {
       "id": "radar-sweep",
@@ -1170,7 +1173,7 @@
         "alert-state"
       ],
       "bundle": "agent/patterns/radar-sweep.json",
-      "bundleSha256": "e4cd1ba4edf53e72e31dcd51465c65779f72dfc001dcf3bb4db4de3a4de492c2"
+      "bundleSha256": "9562e7c1dd2f7686b048ae18c44bbc3ca3a2c160c3a5388b0c455b7e751e9440"
     },
     {
       "id": "target-lock",
@@ -1193,7 +1196,7 @@
         "text-scramble"
       ],
       "bundle": "agent/patterns/target-lock.json",
-      "bundleSha256": "1526a01bda00d2e25ba37b6d6efd09ebaaf51a5bf235af3e2eec80b77fa9f0f1"
+      "bundleSha256": "c2e3bc42296bf8ed3c8404f4c8af956eb8b2a9a0a5a770576a16e1460c3d491d"
     },
     {
       "id": "alert-state",
@@ -1218,7 +1221,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/alert-state.json",
-      "bundleSha256": "ca277cc811097715f9e23e05f3b334df9ae6f3e6da7c15d558e55fef3a0bf5cd"
+      "bundleSha256": "8986d8b5b2d64ba883d7a32355757b5804f61ae59baa714ca914bd8fd7e01f3a"
     },
     {
       "id": "charge-release",
@@ -1242,7 +1245,7 @@
         "impact-pop"
       ],
       "bundle": "agent/patterns/charge-release.json",
-      "bundleSha256": "ad75f07f2c648be1970226a7aafedfa99f3dfe0e97edf8e078703312c61f06cc"
+      "bundleSha256": "3f0a1c13456458995b4a52218a8efc92a03dc36b236666d50aca3e90ec25dcac"
     },
     {
       "id": "card-flip-sheen",
@@ -1266,7 +1269,7 @@
         "decrypt-reveal"
       ],
       "bundle": "agent/patterns/card-flip-sheen.json",
-      "bundleSha256": "3017643cc370470bf2e4b585d2a6fc82696b01dbc6bb83071e1394fa6d821543"
+      "bundleSha256": "90734dedfe81c967875d40ce713109735d45a479bcf52beebc0e32ccbf957add"
     },
     {
       "id": "ink-bleed",
@@ -1289,7 +1292,7 @@
         "vertical-title-blur"
       ],
       "bundle": "agent/patterns/ink-bleed.json",
-      "bundleSha256": "bcc8cc3b7b287047b404f9a5d917a05e49e99959cdae5dfdf7b1bb9f250e3932"
+      "bundleSha256": "83a3f23f9253fc5b361b7d1a80a113c4c1a9d40249a1c92a8875ea4148333323"
     },
     {
       "id": "seal-stamp",
@@ -1311,7 +1314,7 @@
         "hold-confirm"
       ],
       "bundle": "agent/patterns/seal-stamp.json",
-      "bundleSha256": "c352a1ca07d9fd5369beb404d4f0b31008de990f95af6777a58223e60b9b7e83"
+      "bundleSha256": "534cd3f485497b7ae09b27ad2fecd679f3e33ed0cb74063cc9701bcce81ca12f"
     }
   ]
 }

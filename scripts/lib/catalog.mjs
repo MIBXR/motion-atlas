@@ -163,8 +163,9 @@ export function buildAll() {
   const errors = validate(entries);
   const files = {};
   const kitTargets = [];
-  const cases = entries.cases.map((c) => ({ ...clean(c), preview: previewFor('cases', c.id) }));
-  const patterns = entries.patterns.map((p) => ({ ...clean(p), preview: previewFor('patterns', p.id) }));
+  // preview：横屏预览（1280×720）；previewPortrait：竖屏预览（720×1280，Demo 迁移到固定画幅舞台并支持竖屏后才有）
+  const cases = entries.cases.map((c) => ({ ...clean(c), preview: previewFor('cases', c.id), previewPortrait: previewFor('cases', `${c.id}-portrait`) }));
+  const patterns = entries.patterns.map((p) => ({ ...clean(p), preview: previewFor('patterns', p.id), previewPortrait: previewFor('patterns', `${p.id}-portrait`) }));
   for (const e of [...entries.cases, ...entries.patterns]) if (e.kit) kitTargets.push(demoDir(e.demo));
 
   // Prompt 文档
@@ -195,7 +196,7 @@ export function buildAll() {
         research: c.research && exists(c.research) ? read(c.research) : null,
       },
       entrypoint: c.demo,
-      files: fileManifest([...demoFiles, ...(c.preview ? [c.preview] : [])]),
+      files: fileManifest([...demoFiles, ...(c.preview ? [c.preview] : []), ...(c.previewPortrait ? [c.previewPortrait] : [])]),
     };
     const json = JSON.stringify(bundle, null, 2) + '\n';
     files[`agent/cases/${c.id}.json`] = json;
@@ -212,7 +213,7 @@ export function buildAll() {
       sourceCases: (p.sources || []).map((s) => ({ caseId: s.caseId, bundle: `agent/cases/${s.caseId}.json` })),
       documents: { prompt: files[`prompts/patterns/${p.id}.md`] },
       entrypoint: p.demo,
-      files: fileManifest([...demoFiles, ...(p.preview ? [p.preview] : [])]),
+      files: fileManifest([...demoFiles, ...(p.preview ? [p.preview] : []), ...(p.previewPortrait ? [p.previewPortrait] : [])]),
     };
     const json = JSON.stringify(bundle, null, 2) + '\n';
     files[`agent/patterns/${p.id}.json`] = json;
@@ -230,8 +231,9 @@ export function buildAll() {
     contentVersion: sha(Buffer.from(versionText)),
     taxonomy: TAXONOMY,
     protocol: {
-      seek: 'Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn) }。',
-      urlParams: '?embed 隐藏控制条；?render 关闭自动播放供逐帧渲染；?t=秒 定位到指定时刻。',
+      seek: 'Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示未迁移到固定画幅的旧 Demo。',
+      urlParams: '?embed 隐藏控制条；?render 关闭自动播放供逐帧渲染；?t=秒 定位到指定时刻；?orient=landscape|portrait 固定画幅；?autoplay=0 不自动播放；?sound=1 尝试开启声音。',
+      stage: '固定画幅舞台：横屏 1920×1080 / 竖屏 1080×1920，整体等比缩放；声音为乐谱（MotionKit.audio），可离线导出 WAV。见 docs/pipeline.md。',
       kit: kitFile,
     },
     counts: { cases: cases.length, patterns: patterns.length },

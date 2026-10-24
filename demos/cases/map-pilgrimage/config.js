@@ -1,186 +1,272 @@
 /*
  * 地图巡礼 · 迁移入口
- * 只改这个文件就能换成你自己的旅程：地点、日期、路线、卡片素材、章节、节奏（时间点）。
- * 所有 t / at 单位为秒；“轨道”思路同剪辑软件：每条轨道是一串按时间排列的事件。
- * 素材：stop.media 或 card.media 填图片路径（相对本目录）即用真实照片；留空则用 scenes.js 生成原创画面。
+ * 只改这个文件（和 paths.js 的路线几何）就能换成你自己的旅程：地点、日期、路线、卡片、章节、节奏与声音。
+ * 约定：
+ *  - 所有 t 单位为秒；配乐 120 BPM（1 拍 = 0.5 秒，1 小节 = 2 秒），段落起点尽量落在小节线上，画面与乐谱读同一张时间表。
+ *  - “轨道”思路同剪辑软件：每条轨道是一串按时间排列的事件。
+ *  - 镜头关键帧 f 是“地点出现在画面上的位置”（横屏舞台像素），fp 是竖屏的位置；zp 是竖屏相对横屏的缩放差。
+ *  - 版式坐标是舞台像素（横屏 1920×1080 / 竖屏 1080×1920），几何（步进器、印章、规尺刻度）由 script.js 的同一组函数计算。
+ *  - 照片卡片的画面由 scenes.js 程序生成；有真实照片时在 cards[].media 填图片路径即可。
  */
 window.CONFIG = {
   meta: {
-    titleCJK: '江南巡游',
-    titleEN: "JIANGNAN WALK '26",
-    subline: 'BEIJING → HANGZHOU → SUZHOU → SHANGHAI · 10.01 – 10.03',
+    titleCJK: '関西周遊',
+    titleEN: "KANSAI LOOP '26",
+    subline: 'SHANGHAI → KANSAI · KYOTO · NARA · OSAKA · 10.01 – 10.03',
     handle: '@motion_atlas',
-    tz: 'CST',
+    tz: 'JST',
     totalDays: 3,
-    duration: 56,
+    duration: 60,
+    bpm: 120,
   },
 
-  // 底图：OpenFreeMap 免费无需密钥；离线或加载失败时自动退回网格底图
+  // 底图：OpenFreeMap（无需密钥）+ AWS Terrain Tiles 山体阴影；离线或加载失败时自动退回纸面网格
   map: {
     style: 'https://tiles.openfreemap.org/styles/positron',
     lib: 'https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js',
     css: 'https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css',
-    attribution: '© OpenStreetMap contributors · OpenFreeMap · © OpenMapTiles',
+    dem: 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
+    demMaxZoom: 10,
+    attribution: '© OpenStreetMap contributors · OpenFreeMap · OpenMapTiles · Terrain Tiles',
+    attributionShort: '© OpenStreetMap contributors · OpenFreeMap',
   },
 
   palette: {
-    paper: '#f2efe8', // 白天底色
-    ink: '#16171a',
-    nightPaper: '#090c12',
-    nightInk: '#e9edf2',
-    accent: '#d9632b', // 默认强调色；章节会临时替换
-    alert: '#e5483b',
+    paper: '#f1eee7', ink: '#16171a', nightPaper: '#0b1019', nightInk: '#e9edf3',
+    accent: '#d9562c', // 朱：默认强调色（路线、日序、步进器）；章节会临时替换
+    alert: '#e23b3b',
+    space: '#05070c',
   },
 
-  mascot: { label: 'CAT SPOTTED' },
+  // 底图逐图层配色：[白天, 夜晚]；中途经过去饱和的灰（不是整体反色）
+  mapPalette: {
+    bg: ['#efece5', '#111824'], water: ['#bdd0dc', '#0a0f17'], green: ['#e1e6d6', '#121b1e'], ice: ['#f6f5f1', '#141b25'],
+    landuse: ['#e9e5dc', '#141b26'], building: ['#ddd7cb', '#1a2231'], aero: ['#e5e1d8', '#18202c'], casing: ['#dad4c9', '#0d131c'],
+    road: ['#ffffff', '#273245'], motorway: ['#fffdf8', '#5b4934'], rail: ['#9d978c', '#40506a'], boundary: ['#b2aca1', '#3e495b'],
+    extrusion: ['#efebe3', '#1e2839'], shade: ['#5f5644', '#000000'], light: ['#ffffff', '#3b5172'],
+  },
+
+  mascot: { label: 'MIKAN SPOTTED', name: 'MIKAN' },
 
   music: {
-    title: 'Paper Lanterns',
+    title: 'Kansai Loop',
     artist: 'Motion Atlas Original',
+    // 歌词式旅行字幕：英文一行 + 中文一行，在小节线上换行
     lyrics: [
-      { t: 8.4, text: 'Paper lanterns on the water line', sub: '水面上一排纸灯笼' },
-      { t: 14.0, text: 'Every bridge I cross remembers me', sub: '走过的每一座桥都记得我' },
-      { t: 19.8, text: 'Rain at noon, and sunlight after three', sub: '正午下雨，三点以后放晴' },
-      { t: 29.4, text: 'Night comes down the way it always does', sub: '夜晚照旧落下来' },
-      { t: 35.0, text: 'Count the gables, count the boats', sub: '数一数山墙，数一数小船' },
-      { t: 41.6, text: 'Wrong train, right city, anyway', sub: '坐错了车，城市却没错' },
-      { t: 47.0, text: 'All the lights along the river say goodbye', sub: '江边的灯一起说再见' },
+      { t: 8.0, text: 'Window seat, the sea turns into land', sub: '靠窗的位置，海慢慢变成陆地' },
+      { t: 14.0, text: 'Haruka hums the whole way north', sub: '特急一路向北，轻轻哼着' },
+      { t: 18.0, text: 'A thousand gates, one quiet climb', sub: '一千座鸟居，一段安静的上坡' },
+      { t: 24.0, text: 'The river runs, the water never stays', sub: '河一直在流，水却不是原来的水' },
+      { t: 33.0, text: 'Lanterns on Pontocho, rain on the stones', sub: '先斗町的灯笼，石板上的雨' },
+      { t: 37.0, text: 'Morning trains and bowing deer', sub: '早班车，和会鞠躬的鹿' },
+      { t: 44.0, text: 'Wrong platform, right adventure', sub: '站错了站台，走对了旅途' },
+      { t: 48.6, text: 'Neon on the canal says hello', sub: '运河上的霓虹打了个招呼' },
+      { t: 54.0, text: 'Three days, one loop, all the way home', sub: '三天，一个圈，一路回家' },
     ],
   },
 
   days: [
-    { n: 0, date: 'WED · SEP 30 2026' },
     { n: 1, date: 'THU · OCT 01 2026' },
     { n: 2, date: 'FRI · OCT 02 2026' },
     { n: 3, date: 'SAT · OCT 03 2026' },
   ],
 
+  // 地点：name 英文、ja 日文、lngLat 经纬度、elev 海拔（米）；路线的端点会对齐到这里
   stops: {
-    beijing: { name: 'BEIJING', code: 'PEK', cjk: '北京', lngLat: [116.5975, 40.0801], elev: 35 },
-    hangzhou: { name: 'HANGZHOU', code: 'HGH', cjk: '杭州', place: 'WEST LAKE', lngLat: [120.1446, 30.2427], elev: 7, scene: 'lake' },
-    suzhou: { name: 'SUZHOU', code: 'SZH', cjk: '苏州', place: 'PINGJIANG ROAD', lngLat: [120.631, 31.315], elev: 4, scene: 'canal' },
-    shanghai: { name: 'SHANGHAI', code: 'SHA', cjk: '上海', place: 'THE BUND', lngLat: [121.4903, 31.2397], elev: 6, scene: 'skyline' },
+    pvg: { name: 'SHANGHAI · PVG', ja: '上海浦東', lngLat: [121.8052, 31.1443], elev: 4, side: -1 },
+    kix: { name: 'KANSAI · KIX', ja: '関西空港', lngLat: [135.24433, 34.4364], elev: 5, sideP: 0 }, // sideP：竖屏标签位置（0 = 节点正下方）
+    kyoto: { name: 'KYOTO STA.', ja: '京都駅', lngLat: [135.75878, 34.98513], elev: 29 },
+    inari: { name: 'FUSHIMI INARI', ja: '伏見稲荷', lngLat: [135.7727, 34.9671], elev: 38, minZoom: 12 },
+    kamo: { name: 'KAMO RIVER · SANJO', ja: '鴨川', lngLat: [135.7716, 35.0088], elev: 40, minZoom: 12 },
+    jrNara: { name: 'JR NARA', ja: '奈良駅', lngLat: [135.81901, 34.68079], elev: 64, minZoom: 13, node: true },
+    naraPark: { name: 'NARA PARK', ja: '奈良公園', lngLat: [135.8398, 34.6853], elev: 95 },
+    kintetsuNara: { name: 'KINTETSU-NARA', ja: '近鉄奈良', lngLat: [135.82849, 34.68408], elev: 70, minZoom: 13, node: true },
+    saidaiji: { name: 'YAMATO-SAIDAIJI', ja: '大和西大寺', lngLat: [135.78265, 34.69375], elev: 76, minZoom: 11 },
+    takanohara: { name: 'TAKANOHARA · WRONG WAY', ja: '高の原', lngLat: [135.7917, 34.7244], elev: 96, minZoom: 11, alert: true },
+    namba: { name: 'OSAKA NAMBA', ja: '大阪難波', lngLat: [135.49778, 34.66717], elev: 3, minZoom: 13, node: true },
+    dotonbori: { name: 'DOTONBORI', ja: '道頓堀', lngLat: [135.50125, 34.66876], elev: 3 },
   },
 
-  // 右下角旅程步进器的站点顺序
-  stepper: ['beijing', 'hangzhou', 'suzhou', 'shanghai'],
+  // 旅程步进器（右下）与车站印章：四段
+  stepper: [
+    { id: 'kix', label: 'KIX', stamp: '関空', icon: 'plane' },
+    { id: 'kyoto', label: 'KYOTO', stamp: '京都', icon: 'torii' },
+    { id: 'naraPark', label: 'NARA', stamp: '奈良', icon: 'deer' },
+    { id: 'dotonbori', label: 'OSAKA', stamp: '大阪', icon: 'bridge' },
+  ],
 
-  // 章节主题：标签 + 标题 + 强调色 + 四角框线
+  // 章节：标签 + 标题 + 强调色 + 装饰（frame 四角框线 / tape 底部斜纹胶带 + 网点）
   chapters: {
-    poetry: { tag: 'POETRY TRAIL', title: '苏轼 · 饮湖上初晴后雨', accent: '#1f8f84' },
-    garden: { tag: 'GARDEN CITY', title: '平江路 · 水巷与园林', accent: '#3d58c8' },
+    river: { tag: 'CHAPTER 01', title: '方丈記 · Kamo River', accent: '#2a8fae', decor: 'frame' },
+    deer: { tag: 'CHAPTER 02', title: '鹿の国 · Nara Park', accent: '#c98a2a', decor: 'tape' },
   },
 
   tracks: {
-    // 镜头：center[lng,lat] zoom pitch bearing；相邻关键帧之间缓入缓出
+    // 镜头：c 中心 [lng,lat]、z 缩放、p 俯仰、b 方位；f / fp 为地点在横 / 竖屏上的位置；e 为到达这一帧的缓动
     camera: [
-      { t: 0, center: [106, 33], zoom: 1.35, pitch: 0, bearing: 0 },
-      { t: 3.4, center: [113, 34], zoom: 2.3, pitch: 0, bearing: 0 },
-      { t: 8.0, center: [117.4, 35.6], zoom: 3.3, pitch: 0, bearing: 0 },
-      { t: 9.8, center: [119.2, 33.0], zoom: 4.6, pitch: 10, bearing: -4 },
-      { t: 11.6, center: [120.15, 30.25], zoom: 11.0, pitch: 45, bearing: -12 },
-      { t: 20, center: [120.142, 30.246], zoom: 11.6, pitch: 52, bearing: -22 },
-      { t: 29.4, center: [120.15, 30.25], zoom: 11.8, pitch: 55, bearing: -30 },
-      { t: 32.0, center: [120.42, 30.8], zoom: 8.4, pitch: 28, bearing: -6 },
-      { t: 34.6, center: [120.631, 31.315], zoom: 12.6, pitch: 55, bearing: 10 },
-      { t: 37.8, center: [120.625, 31.312], zoom: 12.9, pitch: 56, bearing: 18 },
-      { t: 38.8, center: [120.5, 31.35], zoom: 10.0, pitch: 38, bearing: 0 },
-      { t: 41.4, center: [120.52, 31.34], zoom: 9.8, pitch: 38, bearing: 0 },
-      { t: 44.2, center: [121.4903, 31.2397], zoom: 13.6, pitch: 60, bearing: 32 },
-      { t: 48.6, center: [121.488, 31.237], zoom: 14.2, pitch: 62, bearing: 44 },
-      { t: 51.2, center: [118.4, 34.6], zoom: 4.6, pitch: 0, bearing: 0 },
-      { t: 56, center: [118.2, 34.6], zoom: 4.45, pitch: 0, bearing: 0 },
+      { t: 0, c: [124.0, 30.5], z: 1.55, p: 0, b: 0, f: [960, 560], fp: [540, 820], zp: -0.25 },
+      { t: 3.0, c: [126.0, 31.6], z: 1.75, p: 0, b: 0, f: [1420, 560], fp: [540, 1180], zp: -0.25 },
+      { t: 7.8, c: [127.6, 32.4], z: 1.95, p: 0, b: 0, f: [1460, 560], fp: [540, 1300], zp: -0.3 },
+      // 航线：一口气从地球推到关西机场（中间不停留：快速推拉的帧用已就绪的上级瓦片，不必下载 z2–z8 的大块世界瓦片）
+      { t: 11.6, c: [135.2440, 34.4310], z: 11.1, p: 42, b: -16, f: [640, 600], fp: [540, 700], e: 'out' },
+      { t: 14.0, c: [135.2440, 34.4310], z: 11.35, p: 46, b: -22, f: [640, 600], fp: [540, 700] },
+      { t: 14.8, c: [135.50, 34.71], z: 9.0, p: 18, b: 0, f: [900, 470], fp: [540, 760], zp: -0.6 },
+      { t: 16.4, c: [135.51, 34.72], z: 9.1, p: 20, b: 0, f: [900, 470], fp: [540, 760], zp: -0.6 },
+      { t: 17.8, c: [135.7727, 34.9671], z: 14.05, p: 48, b: -10, f: [720, 680], fp: [540, 760], e: 'out' },
+      { t: 21.6, c: [135.7727, 34.9671], z: 14.25, p: 52, b: -16, f: [720, 680], fp: [540, 760] },
+      { t: 22.4, c: [135.7727, 34.9671], z: 14.3, p: 52, b: -16, f: [720, 680], fp: [540, 760] }, // 全屏遮住期间换到鴨川
+      { t: 23.2, c: [135.7716, 35.0088], z: 15.1, p: 55, b: 10, f: [700, 580], fp: [600, 880] },
+      { t: 33.0, c: [135.7714, 35.0076], z: 15.45, p: 57, b: 18, f: [700, 580], fp: [600, 880] },
+      { t: 36.6, c: [135.7714, 35.0076], z: 15.55, p: 57, b: 20, f: [700, 580], fp: [600, 880] },
+      { t: 37.4, c: [135.80, 34.835], z: 10.15, p: 28, b: 0, f: [800, 560], fp: [540, 760], zp: -0.75 },
+      { t: 39.2, c: [135.80, 34.825], z: 10.25, p: 30, b: 0, f: [800, 560], fp: [540, 760], zp: -0.75 },
+      { t: 40.6, c: [135.8372, 34.6852], z: 15.15, p: 54, b: -12, f: [640, 600], fp: [540, 700], e: 'out' },
+      { t: 44.0, c: [135.8368, 34.6853], z: 15.35, p: 55, b: -18, f: [640, 600], fp: [540, 700] },
+      { t: 44.8, c: [135.7870, 34.7090], z: 12.35, p: 34, b: 0, f: [760, 520], fp: [540, 760] },
+      { t: 46.6, c: [135.7870, 34.7095], z: 12.45, p: 36, b: -4, f: [760, 520], fp: [540, 760] },
+      { t: 47.4, c: [135.64, 34.69], z: 10.55, p: 25, b: 0, f: [800, 600], fp: [540, 760], zp: -0.75 },
+      { t: 48.6, c: [135.63, 34.69], z: 10.65, p: 26, b: 0, f: [800, 600], fp: [540, 760], zp: -0.75 },
+      { t: 50.0, c: [135.50125, 34.66876], z: 15.6, p: 58, b: 28, f: [640, 620], fp: [540, 700], e: 'out' },
+      { t: 53.8, c: [135.50125, 34.6690], z: 15.9, p: 60, b: 38, f: [640, 620], fp: [540, 700] },
+      { t: 55.2, c: [135.56, 34.72], z: 8.95, p: 0, b: 0, f: [1420, 540], fp: [500, 1408], zp: -0.85, e: 'inOut' }, // 竖屏焦点略偏左上：奈良公园标签整段放得下在右侧、关西机场标签放得下在节点下方，收尾拉远途中不换边
+      { t: 60, c: [135.56, 34.72], z: 8.9, p: 0, b: 0, f: [1420, 540], fp: [500, 1408], zp: -0.85 }, // 收尾只留极轻的拉远（0.05 级）：标签整段不换边
     ],
-    // 昼夜：0 白天 → 1 夜晚；中途会经过“灰”的过渡
+    // 昼夜：0 白天 → 1 夜晚
     night: [
-      { t: 0, v: 1 }, { t: 3.3, v: 1 }, { t: 4.2, v: 0 },
-      { t: 28.8, v: 0 }, { t: 29.8, v: 1 },
-      { t: 32.8, v: 1 }, { t: 33.7, v: 0 },
-      { t: 41.4, v: 0 }, { t: 42.6, v: 1 },
-      { t: 50.6, v: 1 }, { t: 51.6, v: 0 },
+      { t: 0, v: 1 }, { t: 3.0, v: 1 }, { t: 4.0, v: 0 },
+      { t: 32.8, v: 0 }, { t: 33.8, v: 1 },
+      { t: 36.6, v: 1 }, { t: 37.5, v: 0 },
+      { t: 47.6, v: 0 }, { t: 48.6, v: 1 },
+      { t: 54.6, v: 1 }, { t: 55.5, v: 0 },
     ],
-    // 时钟（当地时间）；同一时刻连续两帧可表示跨天跳变
+    // 当地时间（JST）；同一时刻相邻两项可表示跨天跳变
     clock: [
-      { t: 0, time: '06:10' }, { t: 7.8, time: '06:40' }, { t: 11.2, time: '09:12' },
-      { t: 20, time: '13:40' }, { t: 28.6, time: '17:10' }, { t: 32.9, time: '21:30' },
-      { t: 33.0, time: '08:20' }, { t: 41.3, time: '16:55' }, { t: 41.4, time: '18:40' },
-      { t: 50, time: '22:15' }, { t: 50.1, time: '07:50' }, { t: 56, time: '07:52' },
+      { t: 0, time: '10:35' }, { t: 8.0, time: '10:50' }, { t: 11.6, time: '13:25' }, { t: 14.0, time: '13:58' },
+      { t: 17.8, time: '15:20' }, { t: 24.0, time: '16:40' }, { t: 32.8, time: '18:45' }, { t: 36.5, time: '22:10' },
+      { t: 36.6, time: '08:30' }, { t: 40.6, time: '09:40' }, { t: 44.0, time: '15:05' }, { t: 47.4, time: '16:20' },
+      { t: 50.0, time: '19:30' }, { t: 54.5, time: '21:40' }, { t: 54.6, time: '07:50' }, { t: 60, time: '07:56' },
     ],
-    // DAY 计数（阶梯变化）
-    day: [{ t: 0, n: 0 }, { t: 11.2, n: 1 }, { t: 33.0, n: 2 }, { t: 41.6, n: 3 }],
-    // 大号日序卡：DAY 描边 + 数字实心
-    dayCard: [{ t: 33.0, n: 2, dur: 2.0 }, { t: 41.6, n: 3, dur: 2.0 }],
-    // 旅程进度（0 = 第一站 … 3 = 最后一站），连续值
+    day: [{ t: 0, n: 1 }, { t: 36.6, n: 2 }, { t: 54.6, n: 3 }],
+    // 大号日序卡：DAY 描边 + 数字实心滚入
+    dayCard: [{ t: 11.6, n: 1, dur: 2.0 }, { t: 37.0, n: 2, dur: 2.0 }, { t: 54.6, n: 3, dur: 1.4 }],
+    // 旅程进度（0 = 第一站 … 3 = 最后一站），连续值：与步进器、顶部规尺读同一个值
     progress: [
-      { t: 0, v: 0 }, { t: 7.8, v: 0 }, { t: 11.2, v: 1 }, { t: 31.6, v: 1 },
-      { t: 34.6, v: 2 }, { t: 41.6, v: 2 }, { t: 44.2, v: 3 }, { t: 56, v: 3 },
+      { t: 0, v: 0 }, { t: 14.6, v: 0 }, { t: 16.6, v: 1 }, { t: 37.4, v: 1 }, { t: 39.4, v: 2 },
+      { t: 47.0, v: 2 }, { t: 49.6, v: 3 }, { t: 60, v: 3 },
     ],
-    // 路线：from/to 或 path；style = dash（航线）| rail（地面）| alert（错误路线）
+    // 路线：style = flight（航线虚线 + 飞机）| rail（发光实线 + 车头）| walk（步行圆点）| wrong（错误路线）
+    // path 写经纬度数组，或写 paths.js 里的名字；from / to 指定端点对齐的站点
     routes: [
-      { id: 'flight', from: 'beijing', to: 'hangzhou', bend: 0.18, style: 'dash', t0: 8.2, t1: 11.3 },
-      { id: 'rail1', path: [[120.213, 30.291], [120.38, 30.6], [120.47, 30.95], [120.631, 31.315]], style: 'rail', t0: 31.0, t1: 34.5 },
-      { id: 'wrong', path: [[120.631, 31.315], [120.52, 31.36], [120.38, 31.39]], style: 'alert', t0: 38.2, t1: 39.6 },
-      { id: 'rail2', path: [[120.631, 31.315], [120.9, 31.33], [121.2, 31.28], [121.4903, 31.2397]], style: 'rail', t0: 41.0, t1: 44.1 },
+      { id: 'flight', from: 'pvg', to: 'kix', style: 'flight', bend: 0.16, t0: 8.0, t1: 11.3, tag: 'MU 515 · 2H 05M', follow: true }, // follow：飞机按屏幕位置跟随镜头（一口气推近时不被甩出画面）
+      { id: 'haruka', path: 'haruka', from: 'kix', to: 'kyoto', style: 'rail', t0: 14.6, t1: 16.6, tag: 'JR HARUKA · 75 MIN' },
+      { id: 'naraLine', path: 'naraLine', from: 'kyoto', to: 'jrNara', style: 'rail', t0: 37.4, t1: 39.4, tag: 'JR NARA LINE · 45 MIN' },
+      { id: 'walk1', path: 'jrNaraToPark', from: 'jrNara', to: 'naraPark', style: 'walk', t0: 39.4, t1: 40.8 },
+      { id: 'walk2', path: 'parkToKintetsu', from: 'naraPark', to: 'kintetsuNara', style: 'walk', t0: 44.0, t1: 44.6 },
+      { id: 'kintetsu', path: 'kintetsuToSaidaiji', from: 'kintetsuNara', to: 'saidaiji', style: 'rail', t0: 44.4, t1: 45.0 },
+      { id: 'wrong', path: 'wrong', from: 'saidaiji', to: 'takanohara', style: 'wrong', t0: 45.0, t1: 46.2 },
+      { id: 'reroute', path: 'reroute', from: 'saidaiji', to: 'namba', style: 'rail', t0: 47.0, t1: 49.6, tag: 'KINTETSU NARA LINE · 40 MIN' },
+      { id: 'walk3', path: 'nambaToDotonbori', from: 'namba', to: 'dotonbori', style: 'walk', t0: 49.6, t1: 50.4 },
     ],
     // 地图标记出现时刻（站点 id）
     markers: [
-      { stop: 'beijing', t: 1.0 }, { stop: 'hangzhou', t: 1.6 },
-      { stop: 'suzhou', t: 33.9 }, { stop: 'shanghai', t: 43.7 },
+      { stop: 'pvg', t: 1.0 }, { stop: 'kix', t: 1.5 },
+      { stop: 'kyoto', t: 16.6 }, { stop: 'inari', t: 18.4 }, { stop: 'kamo', t: 24.4 },
+      { stop: 'jrNara', t: 39.4 }, { stop: 'naraPark', t: 40.8 }, { stop: 'kintetsuNara', t: 44.4 },
+      { stop: 'saidaiji', t: 45.0 }, { stop: 'takanohara', t: 46.2 }, { stop: 'namba', t: 49.6 }, { stop: 'dotonbori', t: 50.4 },
     ],
     // 地点标题：竖排汉字逐字模糊入场 + 英文打字
     locTitle: [
-      { stop: 'hangzhou', t: 11.6, dur: 3.9 },
-      { stop: 'suzhou', t: 35.3, dur: 2.8 },
-      { stop: 'shanghai', t: 44.3, dur: 3.4 },
+      { t: 18.0, dur: 3.0, cjk: '京都', en: 'KYOTO · FUSHIMI', sub: '京都駅 → 伏見稲荷' },
+      { t: 24.4, dur: 1.0, cjk: '鴨川', en: 'KAMO RIVER', sub: '三条大橋 · SANJO' },
+      { t: 40.8, dur: 2.8, cjk: '奈良', en: 'NARA PARK', sub: '奈良公園 · 東大寺' },
+      { t: 50.2, dur: 3.0, cjk: '大阪', en: 'OSAKA · DOTONBORI', sub: '道頓堀 · 戎橋' },
     ],
-    // 照片卡片：expand 定义“卡片→全屏→回到卡片”
+    // 照片卡片：scene 为 scenes.js 的场景；expand 定义“卡片 → 全屏 → 回到卡片”
     cards: [
-      { stop: 'hangzhou', t: 12.4, until: 20.4, caption: 'WEST LAKE · SU CAUSEWAY', expand: { t: 15.8, hold: 3.0 } },
-      { stop: 'suzhou', t: 35.6, until: 38.2, caption: 'PINGJIANG ROAD · CANAL' },
-      { stop: 'shanghai', t: 44.9, until: 49.2, caption: 'THE BUND · RIVERSIDE', portrait: true },
+      { stop: 'kix', t: 12.0, until: 15.0, scene: 'window', caption: 'KANSAI INTL. AIRPORT', time: '13:25' },
+      { stop: 'inari', t: 18.6, until: 24.4, scene: 'torii', caption: 'FUSHIMI INARI · SENBON TORII', time: '15:55', expand: { t: 21.0, hold: 2.2 } },
+      { stop: 'naraPark', t: 41.2, until: 44.0, scene: 'deer', caption: 'NARA PARK · TODAI-JI', time: '09:52' },
+      { stop: 'dotonbori', t: 50.6, until: 54.0, scene: 'neon', caption: 'DOTONBORI · EBISU BRIDGE', time: '19:42', portrait: true },
     ],
-    counter: [{ t: 14.4, n: 1 }, { t: 36.4, n: 2 }, { t: 46.4, n: 3 }],
-    // 收集托盘：三个印章位依次点亮
-    collect: [
-      { t: 13.4, label: '西湖', stop: 'hangzhou' },
-      { t: 36.0, label: '平江', stop: 'suzhou' },
-      { t: 45.6, label: '外滩', stop: 'shanghai' },
-    ],
+    counter: [{ t: 12.8, n: 1 }, { t: 19.4, n: 2 }, { t: 42.0, n: 3 }, { t: 51.4, n: 4 }],
+    // 车站印章：与步进器同列，按到达依次盖下
+    stamps: [{ t: 13.2, i: 0 }, { t: 19.8, i: 1 }, { t: 42.4, i: 2 }, { t: 51.8, i: 3 }],
     chapter: [
-      { key: 'poetry', t: 20.6, until: 28.6 },
-      { key: 'garden', t: 35.4, until: 38.0 },
+      { key: 'river', t: 24.4, until: 33.0 },
+      { key: 'deer', t: 40.8, until: 44.0 },
     ],
     // 全屏回忆：插画风格 + 回忆框 + 竖排字幕逐字
     flashback: [
       {
-        t: 21.6, until: 25.2, scene: 'lake', tag: 'ARCHIVE · AD 1089',
-        vtext: '欲把西湖比西子', en: 'Compare West Lake to Xi Shi, the beauty of old.',
-        caption: 'Su Causeway — where the poem still holds',
+        t: 25.6, until: 29.2, scene: 'kamo', tag: 'FLASHBACK · 方丈記 1212',
+        vtext: ['ゆく河の流れは', '絶えずして'], en: 'The flowing river never ceases — and yet the water is never the same.',
+        caption: 'Kamo River — Kamo no Chōmei, Hōjōki (1212)',
       },
     ],
-    // 分屏对比：先实景全屏，再由分割线从左滑到中线
+    // 分屏对比：先实景全屏，再由分割线滑到中线露出旧明信片
     compare: [
-      { t: 25.2, until: 28.9, scene: 'lake', left: 'POSTCARD · 1930s', right: 'REAL · 2026', stamp: '10.01 · 16:50 CST' },
+      { t: 29.2, until: 32.8, scene: 'kamo', left: 'POSTCARD · 1930s', right: 'REAL · 2026', stamp: '10.01 · 17:40 JST' },
     ],
-    toast: [{ t: 29.9, until: 32.0, text: 'TRAVEL NOTE · 2 NEW' }],
-    note: [{ t: 30.4, until: 32.6, text: 'Rain on the lake, then sun.\n苏轼 was right.', sign: '@motion_atlas · 10.01' }],
+    toast: [{ t: 34.0, until: 36.4, text: 'TRAVEL NOTE · 1 NEW', sub: 'PONTOCHO · KAMO RIVER' }],
+    note: [{ t: 34.4, until: 36.6, text: 'Rain stopped at Sanjō.\n川の音だけが残る。', sign: '@motion_atlas · 10.01' }],
     alert: [
-      { t: 38.1, until: 41.0, title: 'WRONG TRAIN', detail: 'G7215 · boarded at Suzhou · heading west to Nanjing', chip: 'REROUTING' },
+      { t: 45.0, until: 47.6, title: 'WRONG TRAIN', detail: 'KINTETSU KYOTO LINE · boarded at Yamato-Saidaiji · heading north', chip: 'REROUTING' },
     ],
     outro: {
-      t: 51.0,
+      t: 56.0,
       stats: [
-        { value: 3, label: 'DAYS · 4 CITIES' },
-        { value: 4, label: 'STOPS ON THE ROUTE' },
-        { value: 2, label: 'TRAVEL NOTES LEFT' },
-        { value: 3, prefix: '×', label: 'CATS SPOTTED' },
-        { value: 312, suffix: ' km', label: 'ON THE GROUND · +1,130 km IN THE AIR' },
+        { value: 3, label: 'DAYS · 4 STOPS' },
+        { value: 4, label: 'STATION STAMPS' },
+        { value: 4, prefix: '×', label: 'MIKAN SIGHTINGS' },
+        { value: 1, label: 'WRONG TRAIN' },
+        { value: 194, suffix: ' km', label: 'ON THE RAILS · +1,307 km IN THE AIR' },
       ],
-      fin: '江南巡游 — fin.',
+      fin: '関西周遊 — fin.',
       credits: [
-        'MUSIC · Motion Atlas Original — “Paper Lanterns”（示意，无音轨）',
-        'POEM · 苏轼《饮湖上初晴后雨》（公有领域）',
+        'MUSIC · “Kansai Loop” · Motion Atlas',
+        'TEXT · 鴨長明《方丈記》1212 · 公有领域',
       ],
+    },
+  },
+
+  // 声音：120 BPM；和弦与音阶（D 大调 + 日本阳音阶 D E G A B），各段落的鼓组开关
+  sound: {
+    chords: {
+      night: ['B1', 'F#2', 'B2', 'D3', 'A3', 'C#4'],
+      home: ['D2', 'A2', 'D3', 'F#3', 'A3', 'E4'],
+      four: ['G1', 'D2', 'G2', 'B2', 'D3', 'F#3', 'A3'],
+      five: ['A1', 'E2', 'A2', 'C#3', 'E3', 'G3', 'B3'],
+      six: ['B1', 'F#2', 'A2', 'D3', 'E3', 'A3'],
+      dream: ['G2', 'D3', 'A3', 'B3', 'E4', 'F#4'],
+    },
+    yo: ['D5', 'E5', 'G5', 'A5', 'B5', 'D6', 'E6'],
+    station: ['A5', 'D6', 'E6', 'A6'], // 原创到站提示：四音上行（每站移调）
+  },
+
+  // 版式几何（舞台像素）：步进器节点、印章、卡片区域；CSS 负责字号与配色
+  layout: {
+    landscape: {
+      margin: 64,
+      rule: { y: 116, x0: 64, x1: 1856 },
+      stepper: { y: 952, xs: [1292, 1468, 1644, 1820] },
+      stamps: { y: 866, r: 50 },
+      card: { x: 1032, y: 212, w: 824, h: 464 },
+      cardTall: { x: 1416, y: 200, w: 440, h: 516 },
+      tray: 'stepper',
+      // 地图标签避让区：顶部 HUD、左下正在播放、右下印章与步进器
+      avoid: [[0, 0, 1920, 128], [0, 812, 780, 268], [1220, 800, 700, 280], [1560, 128, 360, 70]],
+      outroZone: [0, 140, 1130, 820],
+    },
+    portrait: {
+      margin: 56,
+      rule: { y: 264, x0: 56, x1: 1024 },
+      stepper: { y: 1778, xs: [176, 418, 662, 904] },
+      stamps: { r: 44, xs: [980, 980, 980, 980], ys: [486, 590, 694, 798] }, // 竖屏：右侧一列（像护照上的印章栏）
+      card: { x: 56, y: 940, w: 968, h: 544 },
+      cardTall: { x: 300, y: 820, w: 480, h: 640 },
+      tray: 'top',
+      avoid: [[0, 0, 1080, 276], [0, 1590, 1080, 330], [620, 276, 460, 92], [924, 430, 156, 420]],
+      outroZone: [0, 300, 1080, 940],
     },
   },
 };

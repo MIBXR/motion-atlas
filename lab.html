@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>节奏实验室 · Motion Atlas</title>
-  <meta name="description" content="调缓动曲线、时长、错峰与 BPM 拍点，把结果导出为 CSS 变量、MotionKit 参数与 Prompt 片段。">
+  <meta name="description" content="跟着节拍器感受速度、拍号、细分与摇摆；听见事件吸附到网格前后的差别（A/B 对比、量化强度、首拍偏移、打拍录入）；把缓动曲线、时长与错峰对到拍子上；导出 CSS、MotionKit、Prompt 与 WAV。">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/lab.css">
@@ -13,64 +13,211 @@
   <header id="site-header"></header>
   <main class="lab">
     <header class="lab-head">
-      <p class="eyebrow">RHYTHM LAB · EASE / DURATION / STAGGER / BPM</p>
+      <p class="eyebrow">RHYTHM LAB · BEAT / QUANTIZE / EASE / EXPORT</p>
       <h1>把“手感”调成<em>数字</em>。</h1>
-      <p>动效的韵律由四个数决定：曲线、时长、错峰、拍子。在这里拖动曲线、改时长、设 BPM，立刻看到结果，并导出给代码或 Prompt。</p>
+      <p>节拍与音效是动效的一部分。先跟着节拍器听速度、拍号和细分，再看事件怎样吸附到网格上、听吸附前后的差别，然后把缓动曲线、时长与错峰对到拍子上，最后导出给代码、Prompt 或剪辑软件。</p>
+      <ol class="path" aria-label="学习路径">
+        <li><a href="#s-beat"><b>01</b><span>感受节拍</span></a></li>
+        <li><a href="#s-quant"><b>02</b><span>理解吸附</span></a></li>
+        <li><a href="#s-ease"><b>03</b><span>曲线 × 时长 × 拍子</span></a></li>
+        <li><a href="#s-export"><b>04</b><span>导出</span></a></li>
+      </ol>
     </header>
 
-    <section class="panel-grid">
-      <article class="pane">
-        <h2>缓动曲线 <small>CUBIC-BEZIER</small></h2>
-        <div class="presets" id="presets" role="group" aria-label="缓动预设"></div>
-        <div class="curve-wrap">
-          <svg id="curve" viewBox="-20 -60 340 420" aria-label="缓动曲线编辑器（可拖动两个控制点）">
-            <rect x="0" y="0" width="300" height="300" class="cv-box"/>
-            <path id="cvGrid" class="cv-grid"/>
-            <line id="h1" class="cv-handle-line"/><line id="h2" class="cv-handle-line"/>
-            <path id="cvPath" class="cv-path"/>
-            <circle id="p1" r="10" class="cv-pt" tabindex="0" role="slider" aria-label="控制点 1"/>
-            <circle id="p2" r="10" class="cv-pt" tabindex="0" role="slider" aria-label="控制点 2"/>
-            <circle id="cvDot" r="6" class="cv-dot"/>
-          </svg>
-          <div class="cv-vals">
-            <label>x1<input type="number" step="0.01" min="0" max="1" id="x1"></label><label>y1<input type="number" step="0.01" min="-1" max="2" id="y1"></label>
-            <label>x2<input type="number" step="0.01" min="0" max="1" id="x2"></label><label>y2<input type="number" step="0.01" min="-1" max="2" id="y2"></label>
+    <div class="transport" id="transport" role="group" aria-label="走带：播放、速度与声音">
+      <button class="tp-play" type="button" id="play" aria-pressed="false" data-playing="false"><span class="ic-play"></span><span class="ic-stop"></span><span class="tp-play-label">播放</span></button>
+      <div class="tp-bpm">
+        <button class="tp-step" type="button" id="bpmDown" aria-label="速度减 1"></button>
+        <label class="tp-bpm-field"><input type="number" id="bpmNum" min="40" max="240" step="1" inputmode="numeric" aria-label="速度（BPM）"><small>BPM</small></label>
+        <button class="tp-step" type="button" id="bpmUp" aria-label="速度加 1"></button>
+      </div>
+      <button class="btn tp-tap" type="button" id="tap" aria-describedby="tapInfo" aria-label="打拍测速（T）"></button>
+      <span class="tp-tapinfo" id="tapInfo" aria-live="polite"></span>
+      <div class="tp-lights" id="lights" aria-hidden="true"></div>
+      <output class="tp-pos" id="pos" aria-label="当前位置（小节.拍.细分）">—</output>
+      <div class="tp-sound">
+        <button class="btn tp-snd" type="button" id="snd" aria-pressed="false"></button>
+        <label class="tp-vol"><span class="sr-only">音量</span><input type="range" id="vol" min="0" max="100" step="1" aria-label="音量"></label>
+      </div>
+    </div>
+    <p class="keys" id="keys">快捷键：<span><kbd class="kbd">空格</kbd> 播放 / 停止</span><span><kbd class="kbd">T</kbd> 打拍测速</span><span><kbd class="kbd">J</kbd> 打拍板</span><span><kbd class="kbd">R</kbd> 录入一遍</span><span><kbd class="kbd">A</kbd> / <kbd class="kbd">B</kbd> 原始 / 吸附</span><span><kbd class="kbd">X</kbd> A/B 交替</span></p>
+
+    <!-- 01 感受节拍 -->
+    <section class="step" id="s-beat" aria-labelledby="h-beat">
+      <header class="step-head">
+        <span class="step-no">01</span>
+        <div><h2 id="h-beat">感受节拍 <small>METRONOME</small></h2>
+        <p>节拍器把时间切成等长的格子：小节重拍最重，拍次之，细分最轻。改速度、拍号、细分或摇摆都在下一个格子立刻生效，相位不跳、不重启。先在这里找到你的速度。</p></div>
+      </header>
+      <div class="beat-grid">
+        <div class="pane metro-pane">
+          <div class="metro-top">
+            <div class="metro-count" id="mCount" aria-hidden="true"></div>
+            <div class="metro-read" id="mRead"></div>
+          </div>
+          <div class="metro-bar" id="mBar" aria-hidden="true"><div class="metro-cells" id="mCells"></div><i class="metro-ball" id="mBall"></i></div>
+          <p class="metro-legend"><span class="lg lg-bar"></span>小节重拍 <span class="lg lg-acc"></span>次强拍 <span class="lg lg-beat"></span>拍 <span class="lg lg-sub"></span>细分</p>
+          <p class="hint" id="meterHint"></p>
+        </div>
+        <div class="pane ctrl-pane">
+          <div class="field-row"><span class="fl">速度</span><input type="range" id="bpm" min="40" max="240" step="1" aria-label="速度 BPM"><output id="bpmV"></output></div>
+          <div class="field-row"><span class="fl">拍号</span><div class="seg wrap" role="group" aria-label="拍号" id="meter"></div></div>
+          <div class="field-row"><span class="fl">细分</span><div class="seg" role="group" aria-label="细分（也是吸附网格）" data-bind="div"></div></div>
+          <div class="field-row"><span class="fl">摇摆</span><input type="range" min="0" max="100" step="1" data-bind="swing" aria-label="摇摆"><output data-out="swing"></output></div>
+          <p class="hint" data-hint="swing"></p>
+          <div class="field-row"><span class="fl">音色</span><div class="seg wrap" role="group" aria-label="节拍器音色" id="kit"></div></div>
+          <div class="levels" role="group" aria-label="三级音量">
+            <label><span class="lv-name"><span class="lg lg-bar"></span>重拍</span><input type="range" min="0" max="100" step="1" id="vBar"><output id="vBarV"></output></label>
+            <label><span class="lv-name"><span class="lg lg-beat"></span>拍</span><input type="range" min="0" max="100" step="1" id="vBeat"><output id="vBeatV"></output></label>
+            <label><span class="lv-name"><span class="lg lg-sub"></span>细分</span><input type="range" min="0" max="100" step="1" id="vSub"><output id="vSubV"></output></label>
           </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <article class="pane">
-        <h2>时长与错峰 <small>DURATION / STAGGER</small></h2>
-        <div class="sliders">
-          <label><span>时长</span><input type="range" id="dur" min="80" max="2000" step="10"><output id="durV"></output></label>
-          <label><span>错峰</span><input type="range" id="stag" min="0" max="300" step="5"><output id="stagV"></output></label>
-          <label><span>位移</span><input type="range" id="dist" min="20" max="100" step="1"><output id="distV"></output></label>
-          <label><span>数量</span><input type="range" id="count" min="1" max="12" step="1"><output id="countV"></output></label>
+    <!-- 02 理解吸附 -->
+    <section class="step" id="s-quant" aria-labelledby="h-quant">
+      <header class="step-head">
+        <span class="step-no">02</span>
+        <div><h2 id="h-quant">理解吸附 <small>QUANTIZE</small></h2>
+        <p>剪辑点、动作落点这些事件很少正好落在拍上。吸附就是把它们挪到最近的网格点：网格越细，保留的节奏越多；网格太粗会把切分抹平。打开 A/B 对比，听原始与吸附后的差别。</p></div>
+      </header>
+
+      <div class="pane q-pane">
+        <div class="q-ctrls">
+          <div class="field-row"><span class="fl">网格</span><div class="seg" role="group" aria-label="吸附网格（与节拍器细分同步）" data-bind="div"></div></div>
+          <div class="field-row"><span class="fl">摇摆</span><input type="range" min="0" max="100" step="1" data-bind="swing" aria-label="摇摆"><output data-out="swing"></output></div>
+          <div class="field-row"><span class="fl">首拍偏移</span><input type="range" id="offset" min="0" max="1000" step="5" aria-label="首拍偏移（毫秒）"><output id="offsetV"></output></div>
+          <div class="field-row"><span class="fl">量化强度</span><input type="range" id="strength" min="0" max="100" step="1" aria-label="量化强度"><output id="strengthV"></output></div>
+          <div class="field-row"><span class="fl">循环</span><div class="seg" role="group" aria-label="循环长度" id="bars"></div><span class="loop-len" id="loopLen"></span></div>
         </div>
-        <div class="preview" id="preview" aria-hidden="true"></div>
-        <div class="pv-tools"><button class="btn" type="button" id="replay"></button><label class="chk"><input type="checkbox" id="loop" checked>循环</label><span class="total" id="total"></span></div>
-      </article>
 
-      <article class="pane">
-        <h2>拍点与吸附 <small>BPM / QUANTIZE</small></h2>
-        <div class="sliders">
-          <label><span>BPM</span><input type="range" id="bpm" min="60" max="180" step="1"><output id="bpmV"></output></label>
-          <label><span>首拍偏移</span><input type="range" id="offset" min="0" max="1000" step="5"><output id="offsetV"></output></label>
+        <div class="examples">
+          <span class="fl">示例</span>
+          <div class="chips" role="group" aria-label="示例事件" id="examples"></div>
         </div>
-        <div class="seg" role="group" aria-label="吸附精度" id="div"><button type="button" data-d="1">拍</button><button type="button" data-d="2">半拍</button><button type="button" data-d="4">十六分</button></div>
-        <label class="ta-label" for="events">事件时刻（秒，逗号或换行分隔）</label>
-        <textarea id="events" rows="3"></textarea>
-        <div class="beatbar" id="beatbar" aria-hidden="true"></div>
-        <table class="qtable" id="qtable"></table>
-        <div class="pv-tools"><button class="btn" type="button" id="metro"></button><span class="total" id="beatInfo"></span></div>
-      </article>
+        <div class="ex-hint" id="exHint" aria-live="polite"></div>
 
-      <article class="pane export">
-        <h2>导出 <small>CSS · JS · PROMPT</small></h2>
-        <div class="tabs" role="tablist" id="exTabs"><button type="button" role="tab" aria-selected="true" data-k="css">CSS 变量</button><button type="button" role="tab" aria-selected="false" data-k="js">MotionKit</button><button type="button" role="tab" aria-selected="false" data-k="prompt">Prompt 片段</button></div>
-        <div class="prompt-box"><pre id="exOut"></pre><button class="btn" type="button" id="copyEx"></button></div>
-        <p class="note">设置会记在本浏览器里，方便下次继续调；换设备不会同步。</p>
-      </article>
+        <div class="tl-legend" aria-hidden="true"><span><i class="lg-a"></i>A 原始</span><span><i class="lg-b"></i>B 吸附后</span><span><i class="lg-early"></i>偏早 → 往后挪</span><span><i class="lg-late"></i>偏晚 → 往前挪</span><span class="tl-tip">拖动 A 点改时刻 · 点空白处添加 · 选中后 Delete 删除</span></div>
+        <div class="timeline" id="tlBox"><svg id="tl" role="group" aria-label="吸附时间线"></svg></div>
+
+        <div class="play-row">
+          <div class="field-row"><span class="fl">播放</span><div class="seg wrap" role="group" aria-label="事件播放方式" id="mode"></div></div>
+          <div class="field-row"><span class="fl">事件音色</span><select class="select" id="evVoice" aria-label="事件音色"></select></div>
+          <label class="chk"><input type="checkbox" id="startCue">循环起点提示音</label>
+          <span class="ab-now" id="abNow" aria-live="polite"></span>
+        </div>
+
+        <div class="demo-row">
+          <figure class="bounce" id="bounce">
+            <svg id="bnc" aria-hidden="true"></svg>
+            <figcaption>小球每落地一次 = 一个事件；圆灯在拍上闪。和圆灯同时落地是<b>在拍上</b>，落在两灯之间是<b>反拍（切分）</b>，差一点点则像“没踩准”的卡顿。</figcaption>
+          </figure>
+          <div class="rec-box">
+            <h3>打拍录入 <small>TAP &amp; RECORD</small></h3>
+            <p>跟着节拍器在打拍板上敲（或按 <kbd class="kbd">J</kbd>），实时显示早 / 晚多少毫秒。按“录入一遍”会从下一圈开头录一整圈，录完自动 A/B 交替播放：先听你敲的，再听吸附后的。</p>
+            <div class="rec-btns">
+              <button class="btn rec-btn" type="button" id="rec" aria-pressed="false"><span class="ic-rec"></span><span id="recLabel">录入一遍</span> <kbd class="kbd">R</kbd></button>
+              <button class="pad" type="button" id="pad" aria-describedby="padFb"><span>打拍板</span><kbd class="kbd">J</kbd></button>
+            </div>
+            <div class="rec-prog" id="recProg" aria-hidden="true"><i></i></div>
+            <p class="pad-fb" id="padFb" aria-live="polite">敲一下试试：显示与最近网格点的偏差。</p>
+            <div class="tap-hist" id="tapHist" aria-hidden="true"></div>
+            <div class="lat-row"><span class="fl">延迟补偿</span><input type="range" id="lat" min="-150" max="150" step="1" aria-label="输入延迟补偿（毫秒）"><output id="latV"></output><button class="btn ghost small" type="button" id="latCal">按平均偏差校准</button></div>
+          </div>
+        </div>
+
+        <details class="ev-edit">
+          <summary>编辑事件时刻（秒）· 吸附明细</summary>
+          <div class="ev-edit-body">
+            <label class="ta-label" for="events">事件时刻（秒，逗号或换行分隔；相对循环起点）</label>
+            <textarea id="events" rows="2" spellcheck="false"></textarea>
+            <div class="ev-actions"><button class="btn ghost small" type="button" id="applySnap">把事件改成吸附后的时刻</button><button class="btn ghost small" type="button" id="clearEv">清空事件</button><span class="q-stats" id="qStats"></span></div>
+            <div class="q-scroll"><table class="qtable" id="qtable"></table></div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 03 曲线 × 时长 × 拍子 -->
+    <section class="step" id="s-ease" aria-labelledby="h-ease">
+      <header class="step-head">
+        <span class="step-no">03</span>
+        <div><h2 id="h-ease">曲线 × 时长 × 拍子 <small>EASE / DURATION / STAGGER</small></h2>
+        <p>曲线决定性格，时长决定重量，错峰决定层次。打开“跟随节拍”后，预览每小节重播一次：选“落点踩重拍”时最后一个元素正好落在重拍上，起步有呼啸声，每个元素落定有一声提示音。</p></div>
+      </header>
+      <div class="ease-grid">
+        <article class="pane">
+          <h3 class="pane-h">缓动曲线 <small>CUBIC-BEZIER</small></h3>
+          <div class="presets" id="presets" role="group" aria-label="缓动预设"></div>
+          <div class="curve-wrap">
+            <svg id="curve" viewBox="-20 -60 340 420" aria-label="缓动曲线编辑器（可拖动两个控制点，方向键微调，Shift 加大步长）">
+              <rect x="0" y="0" width="300" height="300" class="cv-box"/>
+              <path id="cvGrid" class="cv-grid"/>
+              <line x1="0" y1="300" x2="300" y2="0" class="cv-lin"/>
+              <line id="h1" class="cv-handle-line"/><line id="h2" class="cv-handle-line"/>
+              <path id="cvPath" class="cv-path"/>
+              <line id="cvT" class="cv-t" y1="-60" y2="360"/>
+              <circle id="p1" r="11" class="cv-pt" tabindex="0" role="slider" aria-label="控制点 1（x1, y1）"/>
+              <circle id="p2" r="11" class="cv-pt" tabindex="0" role="slider" aria-label="控制点 2（x2, y2）"/>
+              <circle id="cvDot" r="6" class="cv-dot"/>
+            </svg>
+            <div class="cv-vals">
+              <label>x1<input type="number" step="0.01" min="0" max="1" id="x1"></label><label>y1<input type="number" step="0.01" min="-1" max="2" id="y1"></label>
+              <label>x2<input type="number" step="0.01" min="0" max="1" id="x2"></label><label>y2<input type="number" step="0.01" min="-1" max="2" id="y2"></label>
+              <p class="cv-css" id="cvCss"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="pane">
+          <h3 class="pane-h">时长与错峰 <small>DURATION / STAGGER</small></h3>
+          <div class="sliders">
+            <div class="field-row"><span class="fl">时长</span><input type="range" id="dur" min="80" max="2000" step="10" aria-label="时长（毫秒）"><output id="durV"></output></div>
+            <div class="field-row"><span class="fl">错峰</span><input type="range" id="stag" min="0" max="300" step="5" aria-label="错峰（毫秒）"><output id="stagV"></output></div>
+            <div class="field-row"><span class="fl">位移</span><input type="range" id="dist" min="20" max="100" step="1" aria-label="位移（%）"><output id="distV"></output></div>
+            <div class="field-row"><span class="fl">数量</span><input type="range" id="count" min="1" max="12" step="1" aria-label="数量"><output id="countV"></output></div>
+          </div>
+          <div class="chips snap-chips" role="group" aria-label="按拍设置时长与错峰">
+            <span class="fl">对到拍</span>
+            <button type="button" class="chip-btn" data-dur="0.25">时长 ¼ 拍</button><button type="button" class="chip-btn" data-dur="0.5">时长 ½ 拍</button><button type="button" class="chip-btn" data-dur="1">时长 1 拍</button><button type="button" class="chip-btn" data-stag="grid">错峰 = 网格步长</button>
+          </div>
+          <div class="preview" id="preview" aria-hidden="true"></div>
+          <div class="pv-tools">
+            <label class="chk"><input type="checkbox" id="sync">跟随节拍</label>
+            <div class="seg" role="group" aria-label="对齐方式" id="align"><button type="button" data-v="land">落点踩重拍</button><button type="button" data-v="start">起步踩重拍</button></div>
+            <label class="chk"><input type="checkbox" id="cue">提示音</label>
+            <label class="chk"><input type="checkbox" id="trail">频闪轨迹</label>
+            <label class="chk"><input type="checkbox" id="ghost">线性对照</label>
+            <button class="btn" type="button" id="replay"></button>
+          </div>
+          <p class="total" id="total"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 04 导出 -->
+    <section class="step" id="s-export" aria-labelledby="h-export">
+      <header class="step-head">
+        <span class="step-no">04</span>
+        <div><h2 id="h-export">导出 <small>CSS · JS · PROMPT · WAV</small></h2>
+        <p>导出内容和上面的全部参数同步：拍号、速度、细分、摇摆、量化强度、首拍偏移、吸附后的事件，以及曲线、时长与错峰。WAV 用和页面同一套合成音色离线渲染当前循环，可以直接拖进剪辑软件对拍。</p></div>
+      </header>
+      <div class="export-grid">
+        <article class="pane export">
+          <div class="tabs" role="tablist" id="exTabs"><button type="button" role="tab" aria-selected="true" data-k="css">CSS 变量</button><button type="button" role="tab" aria-selected="false" data-k="js">MotionKit</button><button type="button" role="tab" aria-selected="false" data-k="prompt">Prompt 片段</button></div>
+          <div class="prompt-box"><pre id="exOut" role="tabpanel" tabindex="0"></pre><button class="btn" type="button" id="copyEx"></button></div>
+        </article>
+        <article class="pane wav-pane">
+          <h3 class="pane-h">导出 WAV <small>OFFLINE RENDER</small></h3>
+          <p class="hint">渲染内容 = 当前能听到的：节拍器（按三级音量）、事件（按播放方式，A/B 交替时一圈原始、一圈吸附）、循环起点提示音、曲线提示音（跟随节拍时）。从循环起点（第 0 秒）开始，长度为整数圈，方便在剪辑软件里循环。</p>
+          <div class="field-row"><span class="fl">长度</span><div class="seg" role="group" aria-label="导出圈数" id="wavCycles"><button type="button" data-v="1">1 圈</button><button type="button" data-v="2">2 圈</button><button type="button" data-v="4">4 圈</button></div></div>
+          <p class="wav-sum" id="wavSum"></p>
+          <button class="btn primary" type="button" id="wavBtn"></button>
+          <p class="wav-res" id="wavRes" aria-live="polite"></p>
+        </article>
+      </div>
+      <p class="note">设置会记在本浏览器里，方便下次继续调；换设备不会同步。声音默认关闭，第一次点“播放”时开启。</p>
     </section>
   </main>
   <footer id="site-footer"></footer>

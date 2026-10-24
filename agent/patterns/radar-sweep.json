@@ -65,7 +65,8 @@
         "locator": "全片"
       }
     ],
-    "preview": "previews/patterns/radar-sweep.jpg"
+    "preview": "previews/patterns/radar-sweep.jpg",
+    "previewPortrait": null
   },
   "sourceCases": [
     {
@@ -85,8 +86,8 @@
     },
     {
       "path": "demos/patterns/radar-sweep/motion-kit.js",
-      "bytes": 18550,
-      "sha256": "dacf93d2624920bf3039fafdf24e7f24b8669549f62456d4dee072fdb6270118"
+      "bytes": 107961,
+      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
     },
     {
       "path": "previews/patterns/radar-sweep.jpg",
