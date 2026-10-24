@@ -2,8 +2,7 @@
 // 浏览器冒烟测试：逐个打开 Demo，按 0.2 秒步长 seek 全时间轴，再实际播放 1.5 秒，收集未捕获异常与 console.error。
 // 使用 MotionKit.stage() 的 Demo 额外检查：
 //   - 两种画幅（?orient=）各跑一遍：画幅与舞台尺寸是否正确；运行中切换画幅后时刻是否保持；
-//   - 运行时字号：在若干时刻遍历舞台内可见文字，按“计算字号 × 变换比例”（舞台坐标，不含舞台整体缩放）检查
-//     横屏 ≥ 24px、竖屏 ≥ 36px。默认只报告，--strict-fonts 时计为失败。
+//   - 运行时字号：报告舞台内可见文字的最小字号，不设下限；--strict-fonts 仅作为兼容参数。
 // 未使用 stage() 的旧 Demo 只做 seek / 播放错误检查。需要先启动 npm start。
 // 用法：node scripts/smoke.mjs [--only id1,id2] [--url <页面>]… [--orient both|landscape|portrait] [--strict-fonts]
 //        [--base http://localhost:4321] [--w 1280 --h 720] [--step 0.2]
@@ -19,14 +18,12 @@ const urls = all('--url');
 const w = Number(get('--w', 1280)), h = Number(get('--h', 720));
 const step = Number(get('--step', 0.2));
 const orientArg = get('--orient', 'both');
-const strictFonts = args.includes('--strict-fonts');
-const MIN = { landscape: Number(get('--min-landscape', 24)), portrait: Number(get('--min-portrait', 36)) };
 const ORIENTS = orientArg === 'both' ? ['landscape', 'portrait'] : [orientArg];
 if (!ORIENTS.every((o) => o === 'landscape' || o === 'portrait')) { console.error('--orient 只能是 both / landscape / portrait'); process.exit(1); }
 
 const { cases, patterns } = loadEntries();
 const jobs = [
-  ...(urls.length && !only ? [] : [...cases, ...patterns].filter((e) => !only || only.has(e.id)).map((e) => ({ id: e.id, url: `${base}/${e.demo}`, fontFloor: e.fontFloor, renderer: e.renderer }))),
+  ...(urls.length && !only ? [] : [...cases, ...patterns].filter((e) => !only || only.has(e.id)).map((e) => ({ id: e.id, url: `${base}/${e.demo}`, renderer: e.renderer }))),
   ...urls.map((u) => ({ id: u.replace(/^https?:\/\/[^/]+\//, '').replace(/\/index\.html.*$|\?.*$/, ''), url: /^https?:/.test(u) ? u : `${base}/${u.replace(/^\//, '')}` })),
 ];
 
@@ -62,9 +59,11 @@ const FONT_PROBE = `(() => {
   return out;
 })()`;
 
-const REFERENCE_FONT_PROBE = `(() => {
+const FRAME_FONT_PROBE = `(() => {
   const st = window.__motion.stage, scale = st.scale || 1;
-  const doc = st.root.querySelector('iframe').contentDocument, win = doc.defaultView, out = [];
+  const doc = st.root.querySelector('iframe')?.contentDocument;
+  if (!doc) return [];
+  const win = doc.defaultView, out = [];
   const opacityOf = (el) => { let op = 1; for (let e = el; e; e = e.parentElement) { op *= parseFloat(win.getComputedStyle(e).opacity); if (op < 0.05) return 0; } return op; };
   for (const el of doc.querySelectorAll('*')) {
     let text = '';
@@ -110,7 +109,6 @@ const GPU_PROBE = `(() => {
 
 const browser = jobs.some((job) => job.renderer !== 'gpu') ? await launch({ width: w, height: h }) : null;
 const failures = [];
-let fontWarn = 0;
 
 async function openPage(runner, url, vw, vh) {
   const page = await runner.newPage();
@@ -136,23 +134,19 @@ async function sweep(page, errors) {
   return D;
 }
 
-async function fontCheck(page, orient, D, reference) {
+async function fontCheck(page, orient, D) {
   const marks = await page.eval('(window.__motion.markers || []).map(m => m.t)');
   const times = [...new Set([...marks, ...[0.1, 0.3, 0.5, 0.7, 0.9].map((k) => k * D), Math.max(0, D - 0.01)].map((t) => Math.round(Math.min(D, Math.max(0, t)) * 100) / 100))].sort((a, b) => a - b).slice(0, 16);
-  const bad = new Map();
   let min = Infinity;
   for (const t of times) {
     await page.eval(`window.__motion.seek(${t})`, 30000);
-    const list = await page.eval(reference ? REFERENCE_FONT_PROBE : FONT_PROBE, 30000);
+    const list = await page.eval(`(${FONT_PROBE}).concat(${FRAME_FONT_PROBE})`, 30000);
     for (const f of list) {
       min = Math.min(min, f.px);
-      if (f.px < MIN[orient] - 0.05) {
-        const key = `${f.text}@${f.px}`;
-        if (!bad.has(key)) bad.set(key, { ...f, t });
-      }
+
     }
   }
-  return { min, bad: [...bad.values()] };
+  return { min };
 }
 
 try {
@@ -193,14 +187,8 @@ try {
           const want = portrait ? [1080, 1920] : [1920, 1080];
           if (size[0] !== want[0] || size[1] !== want[1] || size[2] !== orient) errs.push(`${orient} 舞台尺寸 ${size[0]}×${size[1]}（data-orient=${size[2]}），应为 ${want.join('×')}`);
           const D = await sweep(page, errs);
-          const referenceFonts = job.fontFloor === 'reference';
-          const fc = await fontCheck(page, orient, D, referenceFonts);
-          if (fc.bad.length && !referenceFonts) {
-            fontWarn++;
-            const msg = `${orient} 字号 < ${MIN[orient]}px ${fc.bad.length} 处：` + fc.bad.slice(0, 4).map((b) => `「${b.text}」${b.px}px@${b.t}s`).join('，');
-            if (strictFonts) errs.push(msg); else notes.push('⚠ ' + msg);
-          }
-          const fontNote = referenceFonts ? `字号沿用参考（最小 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}）` : `最小字号 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}`;
+          const fc = await fontCheck(page, orient, D);
+          const fontNote = `最小字号 ${Number.isFinite(fc.min) ? fc.min + 'px' : '—'}`;
           notes.push(`${orient} seek 0–${+D.toFixed(2)}s · ${fontNote}${info.sound ? info.score ? ' · 乐谱' : ' · 即时音效' : ' · 无声音'}`);
           // 运行中切换画幅：时刻保持、舞台尺寸跟随
           if (idx === 0 && info.orients.length > 1) {
@@ -226,5 +214,5 @@ try {
 } finally {
   if (browser) await browser.close();
 }
-console.log(`smoke ${jobs.length - failures.length}/${jobs.length} passed${fontWarn ? ` · ${fontWarn} 项字号警告${strictFonts ? '' : '（未计为失败，--strict-fonts 时失败）'}` : ''}`);
+console.log(`smoke ${jobs.length - failures.length}/${jobs.length} passed`);
 if (failures.length) process.exit(1);

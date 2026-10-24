@@ -218,7 +218,7 @@ export function updateEntry(id, config) {
   if(id==='seekable-timeline')entry.sound.description=`MotionKit.audio.attach 挂接卡片、MIKAN 计数、印章与拖动提示事件：${voices.join('、')}；无独立步进器声音。`;
   entry.tokens = {
     palette: [...new Set(Object.values(variables).filter((value) => /^#[0-9a-f]+$/i.test(value)))],
-    type: '案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；横屏 ≥24px、竖屏 ≥36px。',
+    type: '案例 CSS 的 --f-sans / --f-display / --f-mono / --f-ja / --f-zh / --f-mincho / --f-serif / --f-hand / --f-hand-ja；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。',
     css: variables,
     motion: timing.filter((item) => item.name !== '声音 voice'),
   };

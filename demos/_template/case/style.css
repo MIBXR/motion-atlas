@@ -3,7 +3,7 @@
  * 约定：
  *  1. 舞台尺寸由 MotionKit.stage() 写入（横屏 1920×1080 / 竖屏 1080×1920），这里不写 vw / vh / % / clamp() / 媒体查询来改变布局。
  *  2. 两套构图：公共样式写在普通选择器里，随画幅变化的位置与字号写在 [data-orient="landscape"] / [data-orient="portrait"] 下。
- *  3. 字号下限：横屏 24px、竖屏 36px（node scripts/check.mjs 静态检查，node scripts/smoke.mjs 在运行时按舞台坐标复查）。
+ *  3. 舞台字号按设计决定，不设下限。
  *  4. 层级：背景 .bg → 图形 .gfx → 文字 .txt → HUD .hud → 转场 .wipe / 收尾 .endcard → 质感 .grain。
  *     文字永不被线条压住：标签带衬底（--plate），引线终点停在衬底外缘。
  */
@@ -100,56 +100,62 @@
 /* =====================================================================
  * 横屏 1920×1080：左列文字（x = 160），右侧圆环（见 config.layout.landscape）
  * ===================================================================== */
-[data-orient="landscape"] .kicker { left: 160px; top: 318px; font-size: 28px; }
-[data-orient="landscape"] .title { left: 152px; top: 372px; font-size: 168px; }
-[data-orient="landscape"] .sub { left: 160px; top: 588px; font-size: 32px; }
-[data-orient="landscape"] .label b { font-size: 40px; }
-[data-orient="landscape"] .label small { font-size: 24px; }
-[data-orient="landscape"] .readout b { font-size: 132px; }
-[data-orient="landscape"] .readout small { font-size: 24px; }
+[data-orient="landscape"] .kicker { left: 160px; top: 318px; font-size: 21px; }
+[data-orient="landscape"] .title { left: 152px; top: 372px; font-size: 126px; }
+[data-orient="landscape"] .sub { left: 160px; top: 588px; font-size: 24px; }
+[data-orient="landscape"] .label b { font-size: 30px; }
+[data-orient="landscape"] .label small { font-size: 18px; }
+[data-orient="landscape"] .readout b { font-size: 99px; }
+[data-orient="landscape"] .readout small { font-size: 18px; }
 [data-orient="landscape"] .hud .corner { width: 44px; height: 44px; }
 [data-orient="landscape"] .hud .c-tl { left: 56px; top: 56px; }
 [data-orient="landscape"] .hud .c-tr { right: 56px; top: 56px; }
 [data-orient="landscape"] .hud .c-bl { left: 56px; bottom: 56px; }
 [data-orient="landscape"] .hud .c-br { right: 56px; bottom: 56px; }
-[data-orient="landscape"] .hud .brand { left: 96px; top: 84px; font-size: 24px; }
-[data-orient="landscape"] .hud .brand img { width: 32px; height: 32px; }
-[data-orient="landscape"] .hud .tc { right: 96px; top: 84px; font-size: 24px; }
-[data-orient="landscape"] .hud .fmt { left: 96px; bottom: 84px; font-size: 24px; }
+[data-orient="landscape"] .hud .brand { left: 96px; top: 84px; font-size: 18px; }
+[data-orient="landscape"] .hud .brand img { width: 24px; height: 24px; }
+[data-orient="landscape"] .hud .tc { right: 96px; top: 84px; font-size: 18px; }
+[data-orient="landscape"] .hud .fmt { left: 96px; bottom: 84px; font-size: 18px; }
 [data-orient="landscape"] .hud .sq { right: 96px; bottom: 88px; }
 [data-orient="landscape"] .hud .sq i { width: 18px; height: 18px; }
-[data-orient="landscape"] .endcard { gap: 22px; }
-[data-orient="landscape"] .endcard .ec-title { font-size: 120px; }
-[data-orient="landscape"] .endcard .ec-en { font-size: 28px; }
-[data-orient="landscape"] .endcard .ec-stamp { font-size: 48px; padding: 10px 22px; margin-top: 18px; }
+[data-orient="landscape"] .endcard { gap: 16.5px; }
+[data-orient="landscape"] .endcard .ec-title { font-size: 90px; }
+[data-orient="landscape"] .endcard .ec-en { font-size: 21px; }
+[data-orient="landscape"] .endcard .ec-stamp { font-size: 36px; padding: 7.5px 16.5px; margin-top: 13.5px; }
 
 /* =====================================================================
  * 竖屏 1080×1920：圆环在上（cy = 640），三个节点标签一排（y = 1060），文字块在下
  * ===================================================================== */
-[data-orient="portrait"] .kicker { left: 96px; top: 1290px; font-size: 36px; }
-[data-orient="portrait"] .title { left: 88px; top: 1350px; font-size: 200px; }
-[data-orient="portrait"] .sub { left: 96px; top: 1598px; font-size: 40px; }
-[data-orient="portrait"] .label b { font-size: 52px; }
-[data-orient="portrait"] .label small { font-size: 36px; }
-[data-orient="portrait"] .label { padding: 14px 22px 16px; border-left: 0; border-top: 4px solid var(--accent); text-align: center; }
-[data-orient="portrait"] .readout b { font-size: 168px; }
-[data-orient="portrait"] .readout small { font-size: 36px; }
+[data-orient="portrait"] .kicker { left: 96px; top: 1290px; font-size: 33px; }
+[data-orient="portrait"] .title { left: 88px; top: 1350px; font-size: 183.33333px; }
+[data-orient="portrait"] .sub { left: 96px; top: 1598px; font-size: 36.66667px; }
+[data-orient="portrait"] .label b { font-size: 47.66667px; }
+[data-orient="portrait"] .label small { font-size: 33px; }
+[data-orient="portrait"] .label { padding: 13px 20px 14.5px; border-left: 0; border-top: 3.5px solid var(--accent); text-align: center; }
+[data-orient="portrait"] .readout b { font-size: 154px; }
+[data-orient="portrait"] .readout small { font-size: 33px; }
 [data-orient="portrait"] .hud .corner { width: 60px; height: 60px; }
 [data-orient="portrait"] .hud .c-tl { left: 48px; top: 48px; }
 [data-orient="portrait"] .hud .c-tr { right: 48px; top: 48px; }
 [data-orient="portrait"] .hud .c-bl { left: 48px; bottom: 48px; }
 [data-orient="portrait"] .hud .c-br { right: 48px; bottom: 48px; }
-[data-orient="portrait"] .hud .brand { left: 96px; top: 112px; font-size: 36px; }
-[data-orient="portrait"] .hud .brand img { width: 44px; height: 44px; }
-[data-orient="portrait"] .hud .tc { right: 96px; top: 112px; font-size: 36px; }
-[data-orient="portrait"] .hud .fmt { left: 96px; bottom: 112px; font-size: 36px; }
+[data-orient="portrait"] .hud .brand { left: 96px; top: 112px; font-size: 33px; }
+[data-orient="portrait"] .hud .brand img { width: 40.5px; height: 40.5px; }
+[data-orient="portrait"] .hud .tc { right: 96px; top: 112px; font-size: 33px; }
+[data-orient="portrait"] .hud .fmt { left: 96px; bottom: 112px; font-size: 33px; }
 [data-orient="portrait"] .hud .sq { right: 96px; bottom: 118px; }
 [data-orient="portrait"] .hud .sq i { width: 26px; height: 26px; }
-[data-orient="portrait"] .endcard { gap: 30px; }
-[data-orient="portrait"] .endcard .ec-title { font-size: 140px; }
-[data-orient="portrait"] .endcard .ec-en { font-size: 40px; }
-[data-orient="portrait"] .endcard .ec-stamp { font-size: 64px; padding: 14px 30px; margin-top: 24px; }
+[data-orient="portrait"] .endcard { gap: 27.5px; }
+[data-orient="portrait"] .endcard .ec-title { font-size: 128.33333px; }
+[data-orient="portrait"] .endcard .ec-en { font-size: 36.66667px; }
+[data-orient="portrait"] .endcard .ec-stamp { font-size: 58.66667px; padding: 13px 27.5px; margin-top: 22px; }
 
 @media (prefers-reduced-motion: reduce) {
   .kicker .caret { display: none; }
 }
+
+[data-orient="landscape"] .label { padding: 7.5px 12px 9px; border-left-width: 3px; }
+[data-orient="landscape"] .hud .brand { gap: 10.5px; }
+[data-orient="portrait"] .hud .brand { gap: 13px; }
+[data-orient="landscape"] .endcard .ec-stamp { border-width: 3px; }
+[data-orient="portrait"] .endcard .ec-stamp { border-width: 3.5px; }

@@ -146,6 +146,15 @@
       </div>`;
     bindList();
     paintGrid();
+    sizeHeroLabels();
+  }
+
+  function sizeHeroLabels() {
+    const art = root.querySelector('.hero-art');
+    if (!art) return;
+    const matrix = art.getScreenCTM();
+    const size = Math.ceil(12 / Math.hypot(matrix.c, matrix.d) * 1000) / 1000;
+    art.querySelectorAll('[font-size]').forEach((label) => label.setAttribute('font-size', size));
   }
 
   function cardHTML(it, i) {
@@ -390,7 +399,7 @@
   /* ----- 尺寸 ----- */
   let layoutRaf = 0;
   function scheduleLayout() {
-    if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; layout(); });
+    if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); });
   }
   addEventListener('resize', scheduleLayout);
   function layout() {

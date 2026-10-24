@@ -50,9 +50,9 @@
 
   // 载体
   const CARRIER_DESC = {
-    video: ['可逐帧渲染成视频的影像：转场、HUD、字幕与镜头都写在时间轴上。', '地图巡礼 · 转播包 · 节拍字幕'],
-    console: ['可以操作的界面：选择、锁定、确认、换页都有方向、余波与回程。', '档案终端 · 战斗指令 · 指挥台'],
-    showcase: ['展示与揭示：展品如何出场、如何被浏览、如何收尾。', '抽卡舞台 · 水墨长卷 · 档案阵列'],
+    video: ['可逐帧渲染成视频的影像：转场、HUD、字幕与镜头都写在时间轴上。', '地图巡礼'],
+    console: ['可以操作的界面：选择、锁定、确认、换页都有方向、余波与回程。', '档案终端'],
+    showcase: ['展示与揭示：展品如何出场、如何被浏览、如何收尾。', '档案阵列'],
   };
   $('#carriers').innerHTML = Object.entries(TAX.carriers).map(([k, v]) => {
     const n = MA.cases.filter((c) => c.carriers.includes(k)).length;

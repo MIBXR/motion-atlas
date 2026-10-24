@@ -258,3 +258,36 @@
 - 2026-10-22T21:01:58.542Z：逐张看完昼夜切换10张原生效果PNG并保存review.json；时钟、日序与歌词按新映射显示。t0.5、t2、t5横竖六张存在HUD低对比，保留观察、不自行调色。未启动浏览器，非完整验收。
 - 2026-10-22T21:57:30.485Z：本轮局部报告已生成：24效果图、seek局部无碰撞、MAD双幅失败与6图低对比如实保留；完整验收未进行，GPU机制待合并。
 - 2026-10-22T22:07:36.853Z：本轮局部报告已生成：24效果图、seek局部无碰撞、MAD双幅失败与6图低对比如实保留；完整验收未进行，GPU机制待合并。
+- 2026-10-22T22:18:13.851Z：day-night t3.2 / case34.5 缩略RGB MAD 双画幅已测，结果 0.000000/0.000000，严格小于4=true；完整图/叶节点遮挡矩形/参与像素与分区覆盖/PNG mask/renderer/camera见 dev/shots/R2/day-night/mad/verification.json。
+- 2026-10-22T22:25:08.622Z：R2 step1 已将 day-night 的 fbVis/cmpVis/over 设为0并同步生成器；t3.2对case34.5 MAD横竖均0/255；六图逐张查看后t2明显低对比、t5偏弱。hud-state.json确认t2 ink=128/130/135、paper=126/127/128，opacity=1。按未覆盖设计选择的停止规则暂停，未进入Tdel/Tfont/完整验收；证据dev/shots/R2/day-night/。
+- 2026-10-22T22:34:39.010Z：同步十二巧思源码、配置与案例函数/CSS副本；保留score、entries和plates。
+- 2026-10-22T22:43:29.937Z：同步十二巧思源码、配置与案例函数/CSS副本；保留score、entries和plates。
+- 2026-10-22T22:43:55.069Z：day-night t3.2 / case34.5 缩略RGB MAD 双画幅已测，结果 0.000000/0.000000，严格小于4=true；完整图/叶节点遮挡矩形/参与像素与分区覆盖/PNG mask/renderer/camera见 dev/shots/R2/day-night/mad/verification.json。
+- 2026-10-22T23:50:10.186Z：corner-hud/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/corner-hud，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:50:53.948Z：vertical-title-blur/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/vertical-title-blur，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:51:39.638Z：route-draw-marker/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/route-draw-marker，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:51:58.167Z：day-night-flip/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/day-night-flip，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:52:05.243Z：card-expand-fullscreen/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/card-expand-fullscreen，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:52:25.202Z：chapter-frame/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/chapter-frame，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:52:30.893Z：split-compare-stamp/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/split-compare-stamp，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:53:12.966Z：collect-counter/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/collect-counter，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:53:26.342Z：alert-reroute/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/alert-reroute，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:53:33.877Z：outro-stat-stack/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/outro-stat-stack，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:54:21.959Z：seekable-timeline/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/seekable-timeline，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:54:37.610Z：film-grain/landscape 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/film-grain，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:55:01.028Z：corner-hud/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/corner-hud，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:55:31.810Z：vertical-title-blur/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/vertical-title-blur，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:56:04.456Z：route-draw-marker/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/route-draw-marker，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:56:22.598Z：day-night-flip/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/day-night-flip，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:56:29.574Z：card-expand-fullscreen/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/card-expand-fullscreen，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:56:49.060Z：chapter-frame/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/chapter-frame，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:56:55.149Z：split-compare-stamp/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/split-compare-stamp，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:57:34.734Z：collect-counter/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/collect-counter，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:57:47.646Z：alert-reroute/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/alert-reroute，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:57:54.383Z：outro-stat-stack/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/outro-stat-stack，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:58:43.689Z：seekable-timeline/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/seekable-timeline，对应caseT及指定组合差异见 parity/index.json。
+- 2026-10-22T23:58:58.815Z：film-grain/portrait 每段3时刻的巧思与原案例左右对照图已保存至 dev/shots/T4b/parity/film-grain，对应caseT及指定组合差异见 parity/index.json。
+2026-10-23T00:07:02.687Z Audio QA: 12/12 WAVs, 132/132 checks passed, 0 errors; dev/shots/T4b/audio/verification.json.
+- 2026-10-23T00:46:32.562Z：day-night t3.2 / case34.5 缩略RGB MAD 双画幅已测，结果 0.000000/0.000000，严格小于4=true；完整图/叶节点遮挡矩形/参与像素与分区覆盖/PNG mask/renderer/camera见 dev/shots/R2/day-night/mad/verification.json。
+- 2026-10-23T06:54:59.385Z：R2规定四步与最终验收已执行：HUD40/40；MAD横竖0；对照198/198和字号38/38已查看；四smoke各25/25、capture25/25、两MP4各23s/30fps/690帧、12WAV132/132、build3/22、check/build:site通过。网站4项SVG字号失败、竖屏章x规格冲突及8处范围外失效说明待用户决定，未标记R2全通过。
+- 2026-10-23T08:35:09.403Z：R2 三项裁定已落实：竖屏章 x980 右栏 / 0.917 / 底边不变，Tfont 计划已更正；两组 SVG 仅按实际缩放调整字号；指定八处说明按原句替换。站点 140/140；案例与 collect-counter 六张竖屏图重截、几何和逐图审阅 6/6；追加 smoke 25/25（archive-os、day-night-flip 自动 GPU，Intel Iris Xe / D3D11）；build 3/22、check、build:site 通过。首次截图浏览器连接关闭，独立重跑通过，失败日志保留。另有 12 个地图巧思 entries 的 tokens.type，以及 dev/wip/T4b/tools/scores-entries.mjs，仍写“横屏 ≥24px、竖屏 ≥36px。”。这些不在本次指定八处中，按用户要求保留原文，已询问是否同步替换；尚未修改。 完整文件清单 dev/shots/R2/closeout/changed-files.md。

@@ -30,7 +30,7 @@
 | `vendor/rhinelabui/build.mjs` | 构建相对路径 Vite 产物；`--sync-assets` 将只读上游 public 资源同步至 app。 |
 | `demos/cases/archive-os/index.html`、`script.js`、`config.js`、`style.css` | MotionKit 舞台、同源 iframe、时间轴协议、预加载、手动模式与完整音轨事件。外层不添加 UI、文字或装饰。 |
 | `kit/motion-kit.js` | `audio.dsp.sample()` 登记采样声部；`sustainedAt` 对带 `resume:true` 和 `dur` 的函数音色提供 offset 接续。 |
-| `scripts/check.mjs`、`scripts/smoke.mjs` | 读取条目 `fontFloor:reference`，保留上游字号；运行时最小字号来自 iframe 可见文本计算字号乘舞台缩放比。 |
+| `scripts/check.mjs`、`scripts/smoke.mjs` | 舞台字号按设计决定，不设下限；网站界面 ≥ 12px。运行时最小字号来自 iframe 可见文本计算字号乘舞台缩放比。 |
 | `scripts/smoke.mjs`、`scripts/capture.mjs` | 读取条目 `renderer:gpu`，独立启动GPU浏览器并核验实际renderer；smoke等待seek/play完成后开始原播放计时窗口。 |
 
 逐文件接入清单与 UPSTREAM.md 一致；文件名以下均相对 `vendor/rhinelabui/`：

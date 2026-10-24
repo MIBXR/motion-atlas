@@ -990,11 +990,12 @@
 
     // --- HUD 图形 ---
     hudgfx.innerHTML = '';
+    G.ruleGroup = svg('g', { class: 'hud-rule' }, hudgfx);
     const ry = half(L.rule.y);
-    G.ruleBase = svg('line', { class: 'rl-base', x1: L.rule.x0, y1: ry, x2: L.rule.x1, y2: ry }, hudgfx);
-    G.ruleFill = svg('rect', { class: 'rl-fill', x: L.rule.x0, y: L.rule.y - 2, width: 0, height: 4 }, hudgfx);
-    G.ruleTicks = C.stepper.map((_, i) => svg('line', { class: 'rl-tick', x1: ruleX(i), y1: L.rule.y + 6, x2: ruleX(i), y2: L.rule.y + 16 }, hudgfx));
-    G.ruleHead = svg('path', { class: 'rl-head', d: 'M0 -7 L7 0 L0 7 L-7 0 Z' }, hudgfx);
+    G.ruleBase = svg('line', { class: 'rl-base', x1: L.rule.x0, y1: ry, x2: L.rule.x1, y2: ry }, G.ruleGroup);
+    G.ruleFill = svg('rect', { class: 'rl-fill', x: L.rule.x0, y: L.rule.y - 2, width: 0, height: 4 }, G.ruleGroup);
+    G.ruleTicks = C.stepper.map((_, i) => svg('line', { class: 'rl-tick', x1: ruleX(i), y1: L.rule.y + 6, x2: ruleX(i), y2: L.rule.y + 16 }, G.ruleGroup));
+    G.ruleHead = svg('path', { class: 'rl-head', d: 'M0 -7 L7 0 L0 7 L-7 0 Z' }, G.ruleGroup);
     // 步进器：线、填充、节点、标签都由 stepX() 计算
     const sy = L.stepper.y;
     G.stepGroup = svg('g', { class: 'stepper-g' }, hudgfx);
@@ -1011,8 +1012,8 @@
     });
     // 印章：横屏与步进器同列（stampXY 与 stepX 同源）；竖屏排在右上
     G.stamps = C.stepper.map((st, i) => {
-      const { x, y } = stampXY(i), r = L.stamps.r;
-      const g = svg('g', { class: 'stamp', transform: `translate(${x} ${y})` }, hudgfx);
+      const { x, y } = stampXY(i), r = L.stamps.r, stampScale = portrait() ? 0.917 : 0.75;
+      const g = svg('g', { class: 'stamp', transform: `translate(${x} ${y + r * (1 - stampScale)}) scale(${stampScale})` }, hudgfx);
       const slot = svg('circle', { class: 'sp-slot', r }, g);
       const ghost = svg('text', { class: 'sp-ghost', y: 12, 'text-anchor': 'middle' }, g);
       ghost.textContent = st.stamp;
@@ -1056,7 +1057,7 @@
     for (const ce of cardEls) mountScene(ce.media, ce.c.scene, 'photo', ce.c);
     MAP.sceneO = O;
     $('.attrib').textContent = O === 'portrait' ? C.map.attributionShort : C.map.attribution;
-    (O === 'portrait' ? stageEl : $('.hud-bottom')).appendChild($('.attrib'));
+    stageEl.appendChild($('.attrib'));
     applyStaticLayout();
     measureMarkerLabels();
   }
@@ -1442,47 +1443,47 @@
       <button type="button" data-act="sound" aria-label="开启声音" aria-pressed="false"><span class="mk-i mk-i-on">${ICON.soundOn}</span><span class="mk-i mk-i-off">${ICON.soundOff}</span></button>`;
     const style=document.createElement('style');
     style.textContent=`
-      [data-orient="landscape"] .mk-controls{position:fixed;left:50%;bottom:25.84615px;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:14.76923px;
-        padding:11.07692px 18.46154px;border-radius:1844.30769px;background:rgba(14,15,18,.78);color:#f1efe9;backdrop-filter:blur(18.46154px);
-        font:24px/1 "Cascadia Mono","JetBrains Mono",Consolas,monospace;box-shadow:0 14.76923px 55.38462px rgba(0,0,0,.25);opacity:.3;transition:opacity .2s;
-        box-sizing:border-box;max-width:calc(100vw - 29.53846px)}
+      [data-orient="landscape"] .mk-controls{position:fixed;left:50%;bottom:19.38462px;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:11.07692px;
+        padding:8.30769px 13.84615px;border-radius:1383.23077px;background:rgba(14,15,18,.78);color:#f1efe9;backdrop-filter:blur(13.84615px);
+        font:18px/1 "Cascadia Mono","JetBrains Mono",Consolas,monospace;box-shadow:0 11.07692px 41.53846px rgba(0,0,0,.25);opacity:.3;transition:opacity .2s;
+        box-sizing:border-box;max-width:calc(100vw - 22.15385px)}
       [data-orient="landscape"] .mk-controls:hover,[data-orient="landscape"] .mk-controls:focus-within{opacity:1}
-      [data-orient="landscape"] .mk-controls button{all:unset;cursor:pointer;width:59.07692px;height:59.07692px;display:grid;place-items:center;border-radius:50%;flex:none}
+      [data-orient="landscape"] .mk-controls button{all:unset;cursor:pointer;width:44.30769px;height:44.30769px;display:grid;place-items:center;border-radius:50%;flex:none}
       [data-orient="landscape"] .mk-controls button[hidden]{display:none}
-      [data-orient="landscape"] .mk-controls button:focus-visible{outline:3.69231px solid ${accent};outline-offset:1.84615px}
+      [data-orient="landscape"] .mk-controls button:focus-visible{outline:2.76923px solid ${accent};outline-offset:1.38462px}
       [data-orient="landscape"] .mk-controls button:hover{background:rgba(255,255,255,.12)}
       [data-orient="landscape"] .mk-controls .mk-i{display:grid;place-items:center;pointer-events:none}
-      [data-orient="landscape"] .mk-controls svg{width:33.23077px;height:33.23077px;pointer-events:none}
+      [data-orient="landscape"] .mk-controls svg{width:24.92308px;height:24.92308px;pointer-events:none}
       [data-orient="landscape"] .mk-controls .mk-i-pause,[data-orient="landscape"] .mk-controls[data-playing] .mk-i-play{display:none}
       [data-orient="landscape"] .mk-controls[data-playing] .mk-i-pause{display:grid}
       [data-orient="landscape"] .mk-controls .mk-i-on,[data-orient="landscape"] .mk-controls[data-sound="on"] .mk-i-off,[data-orient="landscape"] .mk-controls[data-sound="blocked"] .mk-i-off{display:none}
       [data-orient="landscape"] .mk-controls[data-sound="on"] .mk-i-on,[data-orient="landscape"] .mk-controls[data-sound="blocked"] .mk-i-on{display:grid}
       [data-orient="landscape"] .mk-controls[data-sound="blocked"] [data-act="sound"]{opacity:.55}
       [data-orient="landscape"] .mk-controls[data-orient="landscape"] .mk-i-land,[data-orient="landscape"] .mk-controls[data-orient="portrait"] .mk-i-port{display:none}
-      [data-orient="landscape"] .mk-controls input{flex:1 1 664.61538px;width:auto;min-width:88.61538px;max-width:664.61538px;accent-color:${accent}}
-      [data-orient="landscape"] .mk-controls output{min-width:140.30769px;font-variant-numeric:tabular-nums}
-      @media (max-width:960px){[data-orient="landscape"] .mk-controls{gap:3.69231px;padding:7.38462px 11.07692px;bottom:14.76923px}[data-orient="landscape"] .mk-controls output{display:none}[data-orient="landscape"] .mk-controls button{width:55.38462px;height:55.38462px}}
+      [data-orient="landscape"] .mk-controls input{flex:1 1 498.46154px;width:auto;min-width:66.46154px;max-width:498.46154px;accent-color:${accent}}
+      [data-orient="landscape"] .mk-controls output{min-width:105.23077px;font-variant-numeric:tabular-nums}
+      @media (max-width:720px){[data-orient="landscape"] .mk-controls{gap:2.76923px;padding:5.53846px 8.30769px;bottom:11.07692px}[data-orient="landscape"] .mk-controls output{display:none}[data-orient="landscape"] .mk-controls button{width:41.53846px;height:41.53846px}}
 
-      [data-orient="portrait"] .mk-controls{position:fixed;left:50%;bottom:38.76923px;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:22.15385px;
-        padding:16.61538px 27.69231px;border-radius:2766.46154px;background:rgba(14,15,18,.78);color:#f1efe9;backdrop-filter:blur(27.69231px);
-        font:36px/1 "Cascadia Mono","JetBrains Mono",Consolas,monospace;box-shadow:0 22.15385px 83.07692px rgba(0,0,0,.25);opacity:.3;transition:opacity .2s;
-        box-sizing:border-box;max-width:calc(100vw - 44.30769px)}
+      [data-orient="portrait"] .mk-controls{position:fixed;left:50%;bottom:35.53846px;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:20.30769px;
+        padding:15.23077px 25.38462px;border-radius:2535.92308px;background:rgba(14,15,18,.78);color:#f1efe9;backdrop-filter:blur(25.38462px);
+        font:33px/1 "Cascadia Mono","JetBrains Mono",Consolas,monospace;box-shadow:0 20.30769px 76.15385px rgba(0,0,0,.25);opacity:.3;transition:opacity .2s;
+        box-sizing:border-box;max-width:calc(100vw - 40.61538px)}
       [data-orient="portrait"] .mk-controls:hover,[data-orient="portrait"] .mk-controls:focus-within{opacity:1}
-      [data-orient="portrait"] .mk-controls button{all:unset;cursor:pointer;width:88.61538px;height:88.61538px;display:grid;place-items:center;border-radius:50%;flex:none}
+      [data-orient="portrait"] .mk-controls button{all:unset;cursor:pointer;width:81.23077px;height:81.23077px;display:grid;place-items:center;border-radius:50%;flex:none}
       [data-orient="portrait"] .mk-controls button[hidden]{display:none}
-      [data-orient="portrait"] .mk-controls button:focus-visible{outline:5.53846px solid ${accent};outline-offset:2.76923px}
+      [data-orient="portrait"] .mk-controls button:focus-visible{outline:5.07692px solid ${accent};outline-offset:2.53846px}
       [data-orient="portrait"] .mk-controls button:hover{background:rgba(255,255,255,.12)}
       [data-orient="portrait"] .mk-controls .mk-i{display:grid;place-items:center;pointer-events:none}
-      [data-orient="portrait"] .mk-controls svg{width:49.84615px;height:49.84615px;pointer-events:none}
+      [data-orient="portrait"] .mk-controls svg{width:45.69231px;height:45.69231px;pointer-events:none}
       [data-orient="portrait"] .mk-controls .mk-i-pause,[data-orient="portrait"] .mk-controls[data-playing] .mk-i-play{display:none}
       [data-orient="portrait"] .mk-controls[data-playing] .mk-i-pause{display:grid}
       [data-orient="portrait"] .mk-controls .mk-i-on,[data-orient="portrait"] .mk-controls[data-sound="on"] .mk-i-off,[data-orient="portrait"] .mk-controls[data-sound="blocked"] .mk-i-off{display:none}
       [data-orient="portrait"] .mk-controls[data-sound="on"] .mk-i-on,[data-orient="portrait"] .mk-controls[data-sound="blocked"] .mk-i-on{display:grid}
       [data-orient="portrait"] .mk-controls[data-sound="blocked"] [data-act="sound"]{opacity:.55}
       [data-orient="portrait"] .mk-controls[data-orient="landscape"] .mk-i-land,[data-orient="portrait"] .mk-controls[data-orient="portrait"] .mk-i-port{display:none}
-      [data-orient="portrait"] .mk-controls input{flex:1 1 996.92308px;width:auto;min-width:132.92308px;max-width:996.92308px;accent-color:${accent}}
-      [data-orient="portrait"] .mk-controls output{min-width:210.46154px;font-variant-numeric:tabular-nums}
-      @media (max-width:1440px){[data-orient="portrait"] .mk-controls{gap:5.53846px;padding:11.07692px 16.61538px;bottom:22.15385px}[data-orient="portrait"] .mk-controls output{display:none}[data-orient="portrait"] .mk-controls button{width:83.07692px;height:83.07692px}}`+`\n.mk-controls{position:absolute!important;left:64px!important;right:64px!important;bottom:30px!important;transform:none!important;max-width:none!important}.mk-controls input{max-width:none!important}[data-orient="portrait"] .mk-controls{left:56px!important;right:56px!important;bottom:34px!important}`;
+      [data-orient="portrait"] .mk-controls input{flex:1 1 913.84615px;width:auto;min-width:121.84615px;max-width:913.84615px;accent-color:${accent}}
+      [data-orient="portrait"] .mk-controls output{min-width:192.92308px;font-variant-numeric:tabular-nums}
+      @media (max-width:1320px){[data-orient="portrait"] .mk-controls{gap:5.07692px;padding:10.15385px 15.23077px;bottom:20.30769px}[data-orient="portrait"] .mk-controls output{display:none}[data-orient="portrait"] .mk-controls button{width:76.15385px;height:76.15385px}}`+`\n.mk-controls{position:absolute!important;left:64px!important;right:64px!important;bottom:30px!important;transform:none!important;max-width:none!important}.mk-controls input{max-width:none!important}[data-orient="portrait"] .mk-controls{left:56px!important;right:56px!important;bottom:34px!important}`;
     document.head.appendChild(style);stageEl.appendChild(bar);patternBar=bar;
     const orientButton=bar.querySelector('[data-act="orient"]');
     orientButton.hidden=false;
@@ -1939,9 +1940,19 @@
   /* ---------- HUD ---------- */
   const alertK = (t) => { const a = T.alert.find((x) => t >= x.t - 0.05 && t <= x.until + 0.4); return a ? env(t, a.t, a.until, 0.25, 0.35) : 0; };
   function drawHud(t, cam, night, over, fbVis, cmpVis) {
+    const hudNight = night < 0.5 ? 0 : 1;
+    const hudAlpha = clamp(Math.abs(night - 0.5) / 0.25);
+    const hudInk = mix(mix(PAL.ink, PAL.nightInk, hudNight), WHITE, over);
+    for (const container of [TOP, BOTTOM, G.ruleGroup, G.stepGroup]) {
+      sty(container, '--ink', css(hudInk));
+      sty(container, '--muted', css(hudInk, 0.62));
+      sty(container, '--line', css(hudInk, 0.26));
+      sty(container, '--paper', css(mix(PAL.paper, PAL.nightPaper, hudNight)));
+    }
+    op(G.ruleGroup, hudAlpha);
     const hudIn = seg(t, 7.5, 0.8, ease.outCubic);
     const hudOut = seg(t, O_.t - 0.4, 0.8);
-    op(TOP, hudIn * (1 - fbVis));
+    op(TOP, hudIn * (1 - fbVis) * hudAlpha);
     sty(TOP, 'transform', `translateY(${f1((1 - hudIn) * -14)}px)`);
     op(el.hudDay, 1 - hudOut * 0.8);
     // 日序（滚动）
@@ -1987,7 +1998,8 @@
       attr(st.ink, 'transform', `rotate(${st.rot}) scale(${f2(on ? 1.5 - 0.5 * clamp(sk, 0, 1.2) : 1)})`);
       sty(st.ghost, 'opacity', on ? '0' : '0.32');
       st.slot.classList.toggle('on', !!on && sk > 0.35);
-      attr(st.g, 'transform', `translate(${x} ${y})`);
+      const stampScale = portrait() ? 0.917 : 0.75;
+      attr(st.g, 'transform', `translate(${x} ${y + L.stamps.r * (1 - stampScale)}) scale(${stampScale})`);
     });
     // 步进器：线、节点、标签由 stepX() 计算；填充末端 = stepAtX(进度)
     const sy = L.stepper.y;
@@ -2000,11 +2012,11 @@
       attr(n.pulse, 'r', String(f1(10 + f * 16)));
       sty(n.pulse, 'opacity', reached && Math.round(prog) === i ? String(f2((1 - f) * 0.6)) : '0');
     });
-    op(G.stepGroup, hudIn * (1 - Math.max(fbVis, cmpVis)));
+    op(G.stepGroup, hudIn * (1 - Math.max(fbVis, cmpVis)) * hudAlpha);
     op(G.ruleBase, hudIn * (1 - fbVis)); op(G.ruleFill, hudIn * (1 - fbVis)); op(G.ruleHead, hudIn * (1 - fbVis));
     G.ruleTicks.forEach((tk) => op(tk, hudIn * (1 - fbVis)));
     // 底部：正在播放、歌词、比例尺
-    op(BOTTOM, seg(t, 1.2, 0.8) * (1 - fbVis));
+    op(BOTTOM, seg(t, 1.2, 0.8) * (1 - fbVis) * hudAlpha);
     op(el.np, 1 - hudOut);
     const ly = stepAt(C.music.lyrics, t);
     txt(el.lyric, ly ? MK.typeText(ly.text, seg(t, ly.t, 0.8, ease.linear)) : '♪ · · ·');
@@ -2025,7 +2037,7 @@
     sty(el.scBar, 'width', `${f1(px)}px`);
     txt(el.scText, nice >= 1000 ? `${nice / 1000} km` : `${nice} m`);
     op(el.scale, hudIn * (1 - hudOut) * (cam.zoom > 4.5 ? 1 : 0));
-    op(el.attrib, O === 'portrait' ? 1 : seg(t, 1.2, 0.8) * (1 - fbVis) * 0.85);
+    op(el.attrib, 1);
   }
 
   /* ---------- 警示改道 ---------- */

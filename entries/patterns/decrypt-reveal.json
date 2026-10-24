@@ -46,8 +46,7 @@
     "role": "support",
     "pairsWellWith": [
       "boot-typing",
-      "rolling-digits",
-      "card-flip-sheen"
+      "rolling-digits"
     ],
     "conflicts": [],
     "notes": "遮挡条只覆盖视觉，正文文字始终在 DOM 中，屏幕阅读器不受影响。"

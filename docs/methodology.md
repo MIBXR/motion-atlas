@@ -66,7 +66,7 @@ node scripts/frames.mjs path/to/reference.mp4 --at 5.2,5.5,5.8,6.1 --full
 
 ## 五、游戏界面怎么核验
 
-P5 式战斗与工业协议控制台目前是 `inferred`。若要升级为 `observed`：
+工业协议控制台目前是 `inferred`。若要升级为 `observed`：
 
 1. 录制 1080p60 实机片段，每类事件（光标移动、确认、命中、切入、结算等）至少 3 次。
 2. 用 `scripts/frames.mjs --step 0.0167` 在事件起点前后各 0.5 秒逐帧取样。
@@ -87,9 +87,6 @@ P5 式战斗与工业协议控制台目前是 `inferred`。若要升级为 `obse
 | 哔哩哔哩【眩晕瘫坐 旅游时拍的素材给Opus5.5剪出来是这样】 <https://b23.tv/eBjaN0O> | 地图巡礼：用户提供的本地成片，逐帧实测 |
 | 哔哩哔哩 BV1e3Y36gEGr <https://www.bilibili.com/video/BV1e3Y36gEGr> | 档案终端：参考视频 |
 | RhineLabUI <https://github.com/LBEILC/RhineLabUI> | 档案终端：开源实现的结构与交互 |
-| Mechanics of Magic: Visual Design of Games – Persona 5 <https://mechanicsofmagic.com/2022/04/23/visual-design-of-games-persona-5/> | P5 式战斗：布局与信息层级分析 |
-| GameSpot: Persona 5's Menus Continue to Look Stunning <https://www.gamespot.com/articles/persona-5s-menus-continue-to-look-stunning/1100-6439532/> | P5 式战斗：菜单设计报道 |
-| DT Next 关于游戏菜单设计的报道 <https://www.dtnext.in/amp/story/edit/exuberant-video-game-menus-designed-with-da-vinci-in-mind-807823> | P5 式战斗：设计访谈转述 |
 | 17173 终末地专题 <https://news.17173.com/z/arknights2026/content/01202026/181744280.shtml> | 工业协议控制台：公开资料 |
 | GameWith 终末地攻略 <https://gamewith.net/akendfield/72372> | 工业协议控制台：系统与界面说明 |
 | OpenFreeMap <https://openfreemap.org/> | 地图巡礼 Demo 的矢量瓦片 |
