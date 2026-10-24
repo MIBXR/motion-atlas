@@ -8,7 +8,7 @@ $stop-that-shit change hash=allow -- 资源库第二阶段 B1：原样收录 lem
   - 本阶段 B1 收录全部 59 种风格的文档与源码，把 **24 个就绪样片**接入播放器。其余 35 个先展示海报与成片链接，在 B2 / B3 补齐，本阶段不碰。
 - **原样收录**：上游文件逐字节复制，不改写。唯一的派生物是从成片提取的音轨（第 1.3 节），它的来源与改动写进清单和页面署名。
 - 本文写死了结构、文案、参数与校验。遇到岔路时停下，写进报告的“待决定”一节。
-- 前置：第一阶段（`dev/wip/Tres/plan-a.md`）已完成，并通过主任务验收。本方案在它的基础上扩展，复用其中的：
+- 前置：第一阶段（`dev/wip/Tres/plan-a.md`）已完成，并通过主任务验收（提交 1d5935a；主任务另外修过 `assets/resources.js`：正文去掉 frontmatter 与重复的一级标题，`.doc-path` 不再重复 repo 名）。本方案在它的基础上扩展，复用其中的：
   - `vendor-resources.mjs`
   - `UPSTREAM.json`
   - `buildResources()`
@@ -114,6 +114,24 @@ ffmpeg 的查找方式同 `scripts/render.mjs` 的 `findFfmpeg()`。
 
 - 差值 > 0.1 s 的，音轨照样提取，并在报告里单列。
 - 不要裁剪或平移音轨。
+
+## 1.3a 忽略规则
+
+`.gitignore` 中的通配规则可能挡住收录文件。第一阶段已把 `dist/` 改为只匹配仓库根的 `/dist/`。本阶段再做以下修改：
+
+- 把 `renders/`、`frames/` 改为 `/renders/`、`/frames/`；
+- 在文件末尾追加：
+
+  ```
+  !resources/**/*.mp4
+  !resources/**/*.mov
+  !resources/**/*.webm
+  !resources/**/*.log
+  ```
+
+收录完成后运行 `git ls-files --others --ignored --exclude-standard resources`，输出必须为空。若仍有文件被忽略，停下并报告清单。
+
+本仓库已设 `git config core.longpaths true`。
 
 ## 1.4 运行
 
