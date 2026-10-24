@@ -181,6 +181,7 @@
         "how": "事件 voice：sonar、whoosh、clack、blip、chime、tick；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
       }
     ],
+    "renderer": "gpu",
     "preview": "previews/patterns/route-draw-marker.jpg",
     "previewPortrait": "previews/patterns/route-draw-marker-portrait.jpg"
   },
