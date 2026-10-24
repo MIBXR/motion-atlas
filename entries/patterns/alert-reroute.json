@@ -166,5 +166,6 @@
       "field": "score.json",
       "how": "事件 voice：blip、whoosh、error、glitch、clack、alarm、beep、stamp；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
     }
-  ]
+  ],
+  "renderer": "gpu"
 }
