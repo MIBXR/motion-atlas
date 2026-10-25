@@ -122,19 +122,18 @@
     const k = q.trim().toLowerCase();
     $('#docNav').innerHTML = groups.map((g) => {
       const list = g.docs.filter((d) => !k || d.title.toLowerCase().includes(k));
-      return list.length ? `<div class="side-group"><h2>${esc(g.name)}</h2><ul class="side-list">${list.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}">${esc(d.title)}</a></li>`).join('')}</ul></div>` : '';
+      return list.length ? `<details class="side-group" open><summary>${esc(g.name)}</summary><ul class="side-list">${list.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}">${esc(d.title)}</a></li>`).join('')}</ul></details>` : '';
     }).join('') || '<p class="doc-empty">没有匹配的文档</p>';
     markNav();
   }
   let current = null;
   function markNav() {
-    document.querySelectorAll('#docNav a').forEach((a) => (a.dataset.p === current ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+    document.querySelectorAll('#docNav a').forEach((a) => {
+      if (a.dataset.p === current) { a.setAttribute('aria-current', 'page'); a.closest('details').open = true; }
+      else a.removeAttribute('aria-current');
+    });
   }
-  const side = $('#doc-side');
-  const tog = $('.side-toggle');
   $('#doc-search-icon').outerHTML = ICONS.search;
-  tog.innerHTML = `${ICONS.menu}全部文档（${DOCS.length}）`;
-  tog.addEventListener('click', () => { const o = side.classList.toggle('open'); tog.setAttribute('aria-expanded', String(o)); });
   $('#docQ').addEventListener('input', (e) => drawNav(e.target.value));
 
   // ---------- 打开文档 ----------
@@ -158,7 +157,6 @@
     });
     document.title = `${d.title} · Motion Atlas`;
     current = path; markNav();
-    side.classList.remove('open'); tog.setAttribute('aria-expanded', 'false');
     const toc = heads.filter((h) => h.lv === 2 || h.lv === 3);
     $('#toc').innerHTML = toc.map((h) => `<a href="#doc/${esc(path)}::${esc(h.id)}" data-id="${esc(h.id)}"${h.lv === 3 ? ' class="sub"' : ''}>${esc(h.text)}</a>`).join('');
     const target = frag && document.getElementById(frag);

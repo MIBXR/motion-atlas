@@ -63,29 +63,32 @@
 
   const haystack = (it) => [it.id, it.title, it.subtitle, it.summary, ...(it.tags || []), ...(it.useCases || []), it.mechanism, it.trigger, it.effect,
     ...(it.carriers || []).map((c) => TAX.carriers[c]), ...(it.types || []).map((c) => TAX.types[c])].filter(Boolean).join(' ').toLowerCase();
-  function filtered() {
-    const words = state.query.toLowerCase().split(/\s+/).filter(Boolean);
+  function filtered(filters = state) {
+    const words = filters.query.toLowerCase().split(/\s+/).filter(Boolean);
     let list = items.filter((it) => {
-      if (state.carrier !== 'all' && !(it.carriers || []).includes(state.carrier)) return false;
-      if (KIND === 'patterns' && state.type !== 'all' && !(it.types || []).includes(state.type)) return false;
-      if (KIND === 'patterns' && state.caseId !== 'all' && !(it.sources || []).some((s) => s.caseId === state.caseId)) return false;
-      if (state.fav && !favs.has(KIND, it.id)) return false;
+      if (filters.carrier !== 'all' && !(it.carriers || []).includes(filters.carrier)) return false;
+      if (KIND === 'patterns' && filters.type !== 'all' && !(it.types || []).includes(filters.type)) return false;
+      if (KIND === 'patterns' && filters.caseId !== 'all' && !(it.sources || []).some((s) => s.caseId === filters.caseId)) return false;
+      if (filters.fav && !favs.has(KIND, it.id)) return false;
       if (words.length) { const h = haystack(it); if (!words.every((w) => h.includes(w))) return false; }
       return true;
     });
-    if (state.sort === 'title') list = [...list].sort((a, b) => a.title.localeCompare(b.title, 'zh'));
+    if (filters.sort === 'title') list = [...list].sort((a, b) => a.title.localeCompare(b.title, 'zh'));
     return list;
   }
 
   /* ---------- 列表 ---------- */
   function sideButton(group, value, label, count) {
-    const pressed = (group === 'fav' ? state.fav : state[group] === value && !state.fav) ? 'true' : 'false';
+    const pressed = (group === 'fav' ? state.fav : state[group] === value) ? 'true' : 'false';
     return `<li><button type="button" data-group="${group}" data-value="${esc(value)}" aria-pressed="${pressed}"><span>${esc(label)}</span><span class="count">${String(count).padStart(2, '0')}</span></button></li>`;
   }
   function renderList() {
     document.title = (KIND === 'cases' ? '案例库' : '巧思库') + ' · Motion Atlas';
     const carriers = Object.entries(TAX.carriers);
-    const side = `<div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
+    const group = KIND === 'cases' ? 'carrier' : 'type';
+    const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '载体' : '类型'}</summary><ul class="side-list">
+      ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : TAX.types)].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
+      </ul></details><div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
       <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
       <li><button type="button" data-tool="import"><span>导入收藏</span>${ICONS.upload}</button></li>
@@ -93,15 +96,14 @@
       </ul></div>`;
     const filterSelect = (id, label, all, values, value) => `<select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`;
     const filters = [
-      KIND === 'patterns' ? filterSelect('type-filter', '类型', '全部类型', Object.entries(TAX.types), state.type) : '',
-      filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier),
+      KIND === 'patterns' ? filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier) : '',
       KIND === 'patterns' ? filterSelect('case-filter', '所属案例', '全部案例', MA.cases.map(c => [c.id, c.title]), state.caseId) : '',
     ].join('');
     const sortOptions = [['order', '编号'], ['title', '名称']];
 
     root.innerHTML = `
       <div class="lib">
-        <aside class="lib-side" id="lib-side" aria-label="收藏与工具">${side}</aside>
+        <aside class="lib-side" id="lib-side" aria-label="${KIND === 'cases' ? '载体' : '类型'}与收藏工具">${side}</aside>
         <section>
           <header class="lib-head">
             <div>
@@ -114,10 +116,10 @@
             ${heroArt}
           </header>
           <div class="toolbar">
-            <button class="btn side-toggle" type="button" aria-expanded="false" aria-controls="lib-side">${ICONS.filter}<span>收藏与工具</span></button>
             <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
             ${filters}
-            <select class="select" id="sort" aria-label="排序">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
+            ${KIND === 'patterns' ? '<span class="toolbar-divider" aria-hidden="true"></span>' : ''}
+            <label class="sort-control"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>排序</span><select id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
           </div>
           <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : '每个巧思都有独立 Demo'}</span></div>
           <div class="grid" id="grid"></div>
@@ -126,11 +128,12 @@
     bindList();
     paintGrid();
     sizeHeroLabels();
+    window.Site.syncMenu();
   }
 
   function sizeHeroLabels() {
     const art = root.querySelector('.hero-art');
-    if (!art) return;
+    if (!art || !art.getClientRects().length) return;
     const matrix = art.getScreenCTM();
     const size = Math.ceil(12 / Math.hypot(matrix.c, matrix.d) * 1000) / 1000;
     art.querySelectorAll('[font-size]').forEach((label) => label.setAttribute('font-size', size));
@@ -158,7 +161,13 @@
     const grid = document.getElementById('grid');
     grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">没有符合条件的${KIND === 'cases' ? '案例' : '巧思'}。换个关键词，或清除筛选。</div>`;
     document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' : '当前筛选'} / ${list.length} 个条目`;
+    paintSideCounts();
     syncURL();
+  }
+  function paintSideCounts() {
+    document.querySelectorAll('.lib-side [data-group="carrier"], .lib-side [data-group="type"]').forEach((b) => {
+      b.querySelector('.count').textContent = String(filtered({ ...state, [b.dataset.group]: b.dataset.value }).length).padStart(2, '0');
+    });
   }
   function bindList() {
     root.querySelector('#lib-side').addEventListener('click', (e) => {
@@ -174,18 +183,16 @@
       const g = b.dataset.group;
       if (!g) return;
       if (g === 'fav') state.fav = !state.fav;
-      else { state[g] = b.dataset.value; state.fav = false; }
+      else state[g] = b.dataset.value;
       renderList();
     });
     const s = root.querySelector('#search');
     s.addEventListener('input', () => { state.query = s.value.trim(); paintGrid(); });
     root.querySelector('#sort').addEventListener('change', (e) => { state.sort = e.target.value; paintGrid(); });
-    for (const [id, key] of [['carrier-filter', 'carrier'], ['type-filter', 'type'], ['case-filter', 'caseId']]) {
+    for (const [id, key] of [['carrier-filter', 'carrier'], ['case-filter', 'caseId']]) {
       const select = root.querySelector('#' + id);
       if (select) select.addEventListener('change', (e) => { state[key] = e.target.value; paintGrid(); });
     }
-    const st = root.querySelector('.side-toggle');
-    st.addEventListener('click', () => { const open = root.querySelector('#lib-side').classList.toggle('open'); st.setAttribute('aria-expanded', String(open)); });
     root.querySelector('#grid').addEventListener('click', (e) => {
       const b = e.target.closest('[data-fav]');
       if (!b) return;
@@ -330,16 +337,8 @@
     const beatClick = (e) => { const b = e.target.closest('[data-t]'); if (b) seekTo(Number(b.dataset.t)); };
     d.strip.addEventListener('click', beatClick);
     d.side.addEventListener('click', beatClick);
-    // 节拍条：用户手动滚动后 4 秒内不自动跟随；竖向滚轮在横向溢出时转为横向滚动
-    for (const box of [d.strip, d.side]) ['pointerdown', 'wheel', 'touchstart'].forEach((t) => box.addEventListener(t, () => d.touchAt.set(box, performance.now()), { passive: true }));
-    d.strip.addEventListener('wheel', (e) => {
-      const s = d.strip;
-      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX) || s.scrollWidth <= s.clientWidth) return;
-      const max = s.scrollWidth - s.clientWidth;
-      if ((e.deltaY < 0 && s.scrollLeft <= 0) || (e.deltaY > 0 && s.scrollLeft >= max - 1)) return; // 到头了就让页面滚动
-      e.preventDefault();
-      s.scrollLeft += e.deltaY;
-    }, { passive: false });
+    // 竖向节拍列表手动滚动后 4 秒内不自动跟随。
+    ['pointerdown', 'wheel', 'touchstart'].forEach((t) => d.side.addEventListener(t, () => d.touchAt.set(d.side, performance.now()), { passive: true }));
     d.col.addEventListener('pointermove', poke, { passive: true });
     d.col.addEventListener('focusin', poke);
     bindTrack();
@@ -400,8 +399,8 @@
       const headH = header ? header.getBoundingClientRect().height : 0;
       const gap = parseFloat(colCS.rowGap) || 0;
       const colGap = parseFloat(getComputedStyle(d.grid).columnGap) || 0;
-      // 刻度条高度：节拍条（--strip-h）是否显示由画幅决定，先扣掉它得到不变的基础高度，避免显隐引起来回重算
-      const stripBlock = (parseFloat(scCS.getPropertyValue('--strip-h')) || 0) + (parseFloat(scCS.rowGap) || 0);
+      // 刻度条基础高度不含换行节拍点，显示节拍点时按实际高度预留空间。
+      const stripBlock = d.strip.offsetHeight + (parseFloat(scCS.rowGap) || 0);
       const stripShown = getComputedStyle(d.strip).display !== 'none';
       const scBase = d.sc.offsetHeight - (stripShown ? stripBlock : 0);
       const chrome = headH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
@@ -764,25 +763,24 @@
       const a = box.querySelector('[aria-current]');
       if (a) a.removeAttribute('aria-current');
       const b = idx >= 0 ? box.querySelector(`[data-i="${idx}"]`) : null;
-      if (b) { b.setAttribute('aria-current', 'true'); follow(box, b); }
+      if (b) { b.setAttribute('aria-current', 'true'); if (box === d.side) follow(box, b); }
     }
     const on = d.svg.querySelector('.tick.on');
     if (on) on.classList.remove('on');
     const tk = idx >= 0 ? d.svg.querySelector(`.tick[data-i="${idx}"]`) : null;
     if (tk) tk.classList.add('on');
   }
-  // 让当前节拍点留在列表的可见范围内：只滚动列表自身（scrollLeft / scrollTop），不滚动页面
+  // 只滚动竖向节拍列表自身，不滚动页面。
   function follow(box, item) {
     const d = det;
     if (!box.clientWidth || performance.now() - (d.touchAt.get(box) || 0) < 4000) return;
-    const horiz = box === d.strip;
-    const pos = horiz ? item.offsetLeft : item.offsetTop, size = horiz ? item.offsetWidth : item.offsetHeight;
-    const view = horiz ? box.clientWidth : box.clientHeight, cur = horiz ? box.scrollLeft : box.scrollTop, pad = 28;
+    const pos = item.offsetTop, size = item.offsetHeight;
+    const view = box.clientHeight, cur = box.scrollTop, pad = 28;
     let to = null;
     if (pos < cur + pad) to = pos - pad;
     else if (pos + size > cur + view - pad) to = pos + size - view + pad;
     if (to == null) return;
-    box.scrollTo({ [horiz ? 'left' : 'top']: Math.max(0, to), behavior: reducedMotion() ? 'auto' : 'smooth' });
+    box.scrollTo({ top: Math.max(0, to), behavior: reducedMotion() ? 'auto' : 'smooth' });
   }
 
   function bindTrack() {
@@ -962,13 +960,14 @@
   function route() {
     const m = location.hash.match(/^#(case|pattern)\/([\w-]+)/);
     const it = m && byId(items, m[2]);
-    if (it) renderDetail(it);
+    if (it) { renderDetail(it); window.Site.syncMenu(); }
     else { destroyDetail(); renderList(); }
   }
   addEventListener('hashchange', route);
   document.addEventListener('ma:favorites', () => {
-    const c = root.querySelector('[data-group="fav"] .count');
+    const c = document.querySelector('[data-group="fav"] .count');
     if (c) c.textContent = String(favs.all()[KIND].length).padStart(2, '0');
+    paintSideCounts();
   });
   route();
 })();

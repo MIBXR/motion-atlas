@@ -1,0 +1,171 @@
+[
+  {
+    "name": "docs-scrollbar-dark",
+    "file": "dev/shots/Tlayout/docs-scrollbar-dark.png",
+    "url": "http://localhost:4326/docs.html",
+    "viewport": [
+      1440,
+      420
+    ],
+    "scrollbar": {
+      "scrollHeight": 1358,
+      "clientHeight": 302,
+      "clientWidth": 216,
+      "offsetWidth": 228,
+      "color": "rgb(42, 45, 51) rgba(0, 0, 0, 0)",
+      "width": "thin"
+    }
+  },
+  {
+    "name": "docs-scrollbar-light",
+    "file": "dev/shots/Tlayout/docs-scrollbar-light.png",
+    "url": "http://localhost:4326/docs.html",
+    "viewport": [
+      1440,
+      420
+    ],
+    "scrollbar": {
+      "scrollHeight": 1358,
+      "clientHeight": 302,
+      "clientWidth": 216,
+      "offsetWidth": 228,
+      "color": "rgb(217, 211, 198) rgba(0, 0, 0, 0)",
+      "width": "thin"
+    }
+  },
+  {
+    "name": "cases-1440",
+    "file": "dev/shots/Tlayout/cases-1440.png",
+    "url": "http://localhost:4326/cases.html",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "name": "patterns-1440",
+    "file": "dev/shots/Tlayout/patterns-1440.png",
+    "url": "http://localhost:4326/patterns.html",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "name": "patterns-toolbar-1440",
+    "file": "dev/shots/Tlayout/patterns-toolbar-1440.png",
+    "url": "http://localhost:4326/patterns.html",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "name": "docs-1440",
+    "file": "dev/shots/Tlayout/docs-1440.png",
+    "url": "http://localhost:4326/docs.html",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "name": "cases-2560",
+    "file": "dev/shots/Tlayout/cases-2560.png",
+    "url": "http://localhost:4326/cases.html",
+    "viewport": [
+      2560,
+      900
+    ]
+  },
+  {
+    "name": "patterns-2560",
+    "file": "dev/shots/Tlayout/patterns-2560.png",
+    "url": "http://localhost:4326/patterns.html",
+    "viewport": [
+      2560,
+      900
+    ]
+  },
+  {
+    "name": "docs-2560",
+    "file": "dev/shots/Tlayout/docs-2560.png",
+    "url": "http://localhost:4326/docs.html",
+    "viewport": [
+      2560,
+      900
+    ]
+  },
+  {
+    "name": "archive-os-beats-1440",
+    "file": "dev/shots/Tlayout/archive-os-beats-1440.png",
+    "url": "http://localhost:4326/cases.html#case/archive-os",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "name": "map-pilgrimage-beats-1440",
+    "file": "dev/shots/Tlayout/map-pilgrimage-beats-1440.png",
+    "url": "http://localhost:4326/cases.html#case/map-pilgrimage",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "name": "cases-390",
+    "file": "dev/shots/Tlayout/cases-390.png",
+    "url": "http://localhost:4326/cases.html",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "cases-menu-390",
+    "file": "dev/shots/Tlayout/cases-menu-390.png",
+    "url": "http://localhost:4326/cases.html",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "site-nav-390",
+    "file": "dev/shots/Tlayout/site-nav-390.png",
+    "url": "http://localhost:4326/cases.html",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "patterns-390",
+    "file": "dev/shots/Tlayout/patterns-390.png",
+    "url": "http://localhost:4326/patterns.html",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "header-returned-390",
+    "file": "dev/shots/Tlayout/header-returned-390.png",
+    "url": "http://localhost:4326/patterns.html",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "docs-menu-390",
+    "file": "dev/shots/Tlayout/docs-menu-390.png",
+    "url": "http://localhost:4326/docs.html",
+    "viewport": [
+      390,
+      844
+    ]
+  }
+]

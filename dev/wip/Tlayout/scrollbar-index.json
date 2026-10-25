@@ -1,0 +1,36 @@
+[
+  {
+    "name": "docs-scrollbar-dark",
+    "file": "dev/shots/Tlayout/docs-scrollbar-dark.png",
+    "url": "http://localhost:4326/docs.html",
+    "viewport": [
+      1440,
+      420
+    ],
+    "scrollbar": {
+      "scrollHeight": 1358,
+      "clientHeight": 302,
+      "clientWidth": 216,
+      "offsetWidth": 228,
+      "color": "rgb(42, 45, 51) rgba(0, 0, 0, 0)",
+      "width": "thin"
+    }
+  },
+  {
+    "name": "docs-scrollbar-light",
+    "file": "dev/shots/Tlayout/docs-scrollbar-light.png",
+    "url": "http://localhost:4326/docs.html",
+    "viewport": [
+      1440,
+      420
+    ],
+    "scrollbar": {
+      "scrollHeight": 1358,
+      "clientHeight": 302,
+      "clientWidth": 216,
+      "offsetWidth": 228,
+      "color": "rgb(217, 211, 198) rgba(0, 0, 0, 0)",
+      "width": "thin"
+    }
+  }
+]
