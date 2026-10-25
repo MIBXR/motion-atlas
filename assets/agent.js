@@ -53,11 +53,11 @@
     L.push('', '要点摘录：');
     for (const x of sel) L.push(`【${x.e.title}】${x.e.prompt}`, '');
     const pairs = [...new Set(sel.flatMap((x) => (x.e.composition && x.e.composition.pairsWellWith) || []))].filter((id) => !S.sel.includes(id) && byId.has(id)).slice(0, 4);
-    L.push('约束：', '- 所有可见文字 ≥ 12px；功能图标用 SVG，不用 Emoji 或字符图标。', '- prefers-reduced-motion 时去掉位移、缩放、震动与闪烁，只保留透明度变化，长动画停在可读的关键帧。', '- 不使用任何第三方作品的画面、角色、名称、标志、音乐与字体文件。');
+    L.push('约束：', '- 普通网页文字 ≥ 12px；案例、巧思和画面内文字按设计需要决定字号；功能图标用 SVG。', '- prefers-reduced-motion 时去掉位移、缩放、震动与闪烁，只保留透明度变化，长动画停在可读的关键帧。', '- 不使用任何第三方作品的画面、角色、名称、标志、音乐与字体文件。');
     const neg = sel.map((x) => x.e.negativePrompt).filter(Boolean);
     if (neg.length) L.push(`- 避免：${neg.join('；')}`);
     if (pairs.length) L.push(`- 可选搭配：${pairs.map((id) => byId.get(id).e.title).join('、')}。`);
-    L.push('', '验收：', '- 按资料包里的节拍表（entry.rhythm.beats / 巧思 timing）在每个关键时刻截图核对。', '- 从 0 秒 seek 到结尾，控制台无报错；桌面与 390px 宽度下文字不溢出、不重叠。', '- 需要成片时：node scripts/render.mjs <入口 HTML> --fps 30。');
+    L.push('', '需要成片时：node scripts/render.mjs <入口 HTML> --fps 30。');
     return L.join('\n');
   }
 

@@ -79,18 +79,15 @@
   "files": [
     {
       "path": "demos/patterns/decrypt-reveal/index.html",
-      "bytes": 6424,
-      "sha256": "a3e9124b31aaaaaee167ae6867606ed6c40661f25a77911f89b855b12dae1ad0"
+      "bytes": 6424
     },
     {
       "path": "demos/patterns/decrypt-reveal/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "previews/patterns/decrypt-reveal.jpg",
-      "bytes": 37595,
-      "sha256": "77ce7087425b0cdd0a13ac76ccc980b1429b10e96b192e1a6581be6e4067205d"
+      "bytes": 37595
     }
   ]
 }

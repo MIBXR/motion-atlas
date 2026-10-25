@@ -1,6 +1,0 @@
-import fs from 'node:fs';
-import {launch} from '../../../../scripts/lib/cdp.mjs';
-const records=JSON.parse(fs.readFileSync('dev/wip/T7/imagegen/normalized.json','utf8')).assets;
-const sources=records.map(r=>({name:r.output.replace(/\\/g,'/').split('/').at(-1),src:`data:image/${r.name==='ground'?'webp':'png'};base64,`+fs.readFileSync(r.output).toString('base64')}));
-const b=await launch({width:1280,height:720});
-try{const p=await b.newPage();const png=await p.eval(`(async()=>{const files=${JSON.stringify(sources)},c=document.createElement('canvas');c.width=1500;c.height=Math.ceil(files.length/5)*340;const x=c.getContext('2d');for(let i=0;i<files.length;i++){const left=i%5*300,top=Math.floor(i/5)*340;x.fillStyle='#e8e9e8';x.fillRect(left,top,300,300);for(let y=0;y<300;y+=20)for(let a=0;a<300;a+=20)if((y/20+a/20)%2===0){x.fillStyle='#d9dada';x.fillRect(left+a,top+y,20,20)}const im=new Image();im.src=files[i].src;await im.decode();const k=Math.min(280/im.width,280/im.height);x.drawImage(im,left+(300-im.width*k)/2,top+(300-im.height*k)/2,im.width*k,im.height*k);x.fillStyle='#17191b';x.fillRect(left,top+300,300,40);x.fillStyle='white';x.font='18px Arial';x.fillText(files[i].name,left+12,top+326);}return c.toDataURL('image/png').split(',')[1]})()`);fs.writeFileSync('dev/shots/T7/imagegen/assets-review.png',Buffer.from(png,'base64'));}finally{await b.close()}

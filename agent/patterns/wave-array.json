@@ -79,18 +79,15 @@
   "files": [
     {
       "path": "demos/patterns/wave-array/index.html",
-      "bytes": 5659,
-      "sha256": "01ca8529f95bb922b0a753dbd798eb8ae667d5fb9c7fcdb9581bf767c445fda8"
+      "bytes": 5659
     },
     {
       "path": "demos/patterns/wave-array/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "previews/patterns/wave-array.jpg",
-      "bytes": 35829,
-      "sha256": "2ca523285ef369a672600564111fd3ab472643d80cf59ab5c75e38222cd3e9ae"
+      "bytes": 35829
     }
   ]
 }

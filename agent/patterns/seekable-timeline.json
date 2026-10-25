@@ -176,63 +176,51 @@
   "files": [
     {
       "path": "demos/patterns/seekable-timeline/config.js",
-      "bytes": 27261,
-      "sha256": "e6df6e76e10b9e1ed82bc59577dae8ca8c4951842f2b9277ab2ef81d1b4653c8"
+      "bytes": 27261
     },
     {
       "path": "demos/patterns/seekable-timeline/index.html",
-      "bytes": 7647,
-      "sha256": "08c2509f22860cadc15515fef39c1022ead5bcccbc04222278147c23e489e59c"
+      "bytes": 7647
     },
     {
       "path": "demos/patterns/seekable-timeline/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/seekable-timeline/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/seekable-timeline/plates/landscape-13-map.webp",
-      "bytes": 144342,
-      "sha256": "19ca802f89aae6be6b34c2a0b6d3be1a54212a0e1cd15b2cc49e740dceee8aa3"
+      "bytes": 144342
     },
     {
       "path": "demos/patterns/seekable-timeline/plates/portrait-13-map.webp",
-      "bytes": 131920,
-      "sha256": "4e827336ce679d32787c357b439e944b9d53834345aadc06208375e32b8254a8"
+      "bytes": 131920
     },
     {
       "path": "demos/patterns/seekable-timeline/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/seekable-timeline/score.json",
-      "bytes": 1032,
-      "sha256": "dac16eac9025241f4957177a8d856b7feba3bd91b831deb5f595c59c0b7981f9"
+      "bytes": 1032
     },
     {
       "path": "demos/patterns/seekable-timeline/script.js",
-      "bytes": 145551,
-      "sha256": "1eb3c46eb25c39832d76f8398fc2647c8f8b74e87f7d29d0d748711c41099c4f"
+      "bytes": 145530
     },
     {
       "path": "demos/patterns/seekable-timeline/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/seekable-timeline.jpg",
-      "bytes": 126400,
-      "sha256": "12e19c9134d11fff296e6f3d895561262899c41f6bdbabc3fd8d0183b351aea4"
+      "bytes": 126400
     },
     {
       "path": "previews/patterns/seekable-timeline-portrait.jpg",
-      "bytes": 136541,
-      "sha256": "d8f7c367b959ef2bcfe83bcc72d11a1ec018dcd2344c8a9821967d2dbcbb372b"
+      "bytes": 136541
     }
   ]
 }

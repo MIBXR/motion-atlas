@@ -259,7 +259,7 @@
     const link = document.createElement('link');
     link.rel = 'stylesheet'; link.href = C.map.css;
     document.head.appendChild(link);
-    // ?tilemirror=http://主机:端口：把 OpenFreeMap 与高程瓦片改走镜像（自建瓦片服务、离线演示、可重复的网络测试）；
+    // ?tilemirror=http://主机:端口：把 OpenFreeMap 与高程瓦片改走镜像（自建瓦片服务、离线演示、网络环境切换）；
     // ?demmirror= 单独指定高程瓦片的镜像（与线上一样分属两个主机，各用各的连接数）
     const qs = new URLSearchParams(location.search);
     const mirror = (qs.get('tilemirror') || '').replace(/\/$/, ''), demMirror = (qs.get('demmirror') || mirror).replace(/\/$/, '');
@@ -2097,7 +2097,7 @@
   }
 
   /* ---------- 地图就绪：渲染模式等待、实时模式降级 ---------- */
-  // 渲染模式：等这一帧的瓦片就绪再返回。连续多次 seek（冒烟测试的快速拖动、播放）共用同一个等待，
+  // 渲染模式：等这一帧的瓦片就绪再返回。连续多次 seek（快速拖动与播放）共用同一个等待，
   // 等待期间只检查“当前”镜头的瓦片，所以最后一次 seek 返回时画面一定是完整的
   let waitP = null;
   function renderWait() {

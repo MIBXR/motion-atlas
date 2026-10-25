@@ -50,7 +50,7 @@
 
 `node vendor/rhinelabui/build.mjs --sync-assets` 同步资源并构建；后续 `npm run build:archive` 复用app中的资源。app构建产物入库，`npm run build:site`直接复制部署目录，vendor不进入dist。
 
-胶片零点对应原版白底开场第一帧。驱动模式实测阵列视觉阶段第1320步=22.0s，首次detail第2100步=A35.0s；B=A+27.6=62.6s，duration=A+42.6=77.6s。自然读取X-001，之后按 `film/sequence.js` 派发固定动作。证据见仓库根目录 `dev/shots/T5r/opening.json`、`sequence.json`，完整验收记录见 `dev/reports/T5r.md`。
+胶片零点对应原版白底开场第一帧。阵列视觉阶段第1320步=22.0s，首次detail第2100步=A35.0s；B=A+27.6=62.6s，duration=A+42.6=77.6s。自然读取X-001，之后按 `film/sequence.js` 派发固定动作。
 
 外层以原生performance.now和独立墙钟累加器维护胶片时间，timeline的render、seek、play、pause、on(fn)与setRate读取统一时间。播放每个host RAF取target=floor(wall*60)，完整更新全部中间状态步并跳过中间GPU绘制，只绘制目标步；不设30步推进上限。pause冻结当前实际frame/60并清除播放队列。seek与离线render路径保持原固定步重建和目标帧绘制，seek的Promise等待目标步完成。
 

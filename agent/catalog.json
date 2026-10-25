@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "name": "Motion Atlas",
   "description": "动态视觉参考库：影像视频与交互操作台的案例、巧思、节拍表、Prompt 与可运行的 Demo。",
-  "contentVersion": "ca2af2efc4866c1c7f8f77475560ffbd88decb6011996378e47e47214733e4a3",
   "taxonomy": {
     "carriers": {
       "video": "影像视频",
@@ -81,8 +80,7 @@
         "film-grain"
       ],
       "seekable": true,
-      "bundle": "agent/cases/map-pilgrimage.json",
-      "bundleSha256": "f4955d0f583acbdf74c90bac3c4ff31e2f27c57b6c2c28fc83e555ea23c5f362"
+      "bundle": "agent/cases/map-pilgrimage.json"
     },
     {
       "id": "archive-os",
@@ -120,8 +118,7 @@
         "seekable-timeline"
       ],
       "seekable": true,
-      "bundle": "agent/cases/archive-os.json",
-      "bundleSha256": "fee39b5612b7ff1ae919f37f0a22192cedadcd7bc30dcb39eca8769d7bffa2a7"
+      "bundle": "agent/cases/archive-os.json"
     }
   ],
   "patterns": [
@@ -147,8 +144,7 @@
         "collect-counter",
         "vertical-title-blur"
       ],
-      "bundle": "agent/patterns/corner-hud.json",
-      "bundleSha256": "f25eb6ac0e5897e733486350d659347918941ab6f57d489d7b09525664c6276e"
+      "bundle": "agent/patterns/corner-hud.json"
     },
     {
       "id": "vertical-title-blur",
@@ -170,8 +166,7 @@
         "chapter-frame",
         "card-expand-fullscreen"
       ],
-      "bundle": "agent/patterns/vertical-title-blur.json",
-      "bundleSha256": "b43d9429b1e2ea3b5bee3704b34eca53a87101cc4abe4671dc9305f1a2f31dae"
+      "bundle": "agent/patterns/vertical-title-blur.json"
     },
     {
       "id": "route-draw-marker",
@@ -193,8 +188,7 @@
         "alert-reroute",
         "card-expand-fullscreen"
       ],
-      "bundle": "agent/patterns/route-draw-marker.json",
-      "bundleSha256": "38ec9f459f5092df4f71e622a11f1f2b6f3a0c435f8d682db54dc1da7fe625ef"
+      "bundle": "agent/patterns/route-draw-marker.json"
     },
     {
       "id": "day-night-flip",
@@ -216,8 +210,7 @@
         "corner-hud",
         "route-draw-marker"
       ],
-      "bundle": "agent/patterns/day-night-flip.json",
-      "bundleSha256": "3b21941a00130498eda3d25dc26ca9d8737e1fc732712976bc70df1723e7ce85"
+      "bundle": "agent/patterns/day-night-flip.json"
     },
     {
       "id": "card-expand-fullscreen",
@@ -238,8 +231,7 @@
         "vertical-title-blur",
         "split-compare-stamp"
       ],
-      "bundle": "agent/patterns/card-expand-fullscreen.json",
-      "bundleSha256": "800a0333e37e1d7ccc831bd4d04d3ba7fc51884550af46df9c6767bdbf2085fd"
+      "bundle": "agent/patterns/card-expand-fullscreen.json"
     },
     {
       "id": "chapter-frame",
@@ -262,8 +254,7 @@
         "route-draw-marker",
         "vertical-title-blur"
       ],
-      "bundle": "agent/patterns/chapter-frame.json",
-      "bundleSha256": "44ed1110bab23461f406fd4d42556c29f7e58fa2df31d21cec436cc4449f528f"
+      "bundle": "agent/patterns/chapter-frame.json"
     },
     {
       "id": "split-compare-stamp",
@@ -285,8 +276,7 @@
         "vertical-title-blur",
         "film-grain"
       ],
-      "bundle": "agent/patterns/split-compare-stamp.json",
-      "bundleSha256": "65ddd579c1e62a3fbcd1ecdffe293f2cfcdc447db38974643ef7d90153188b9c"
+      "bundle": "agent/patterns/split-compare-stamp.json"
     },
     {
       "id": "collect-counter",
@@ -308,8 +298,7 @@
         "corner-hud",
         "outro-stat-stack"
       ],
-      "bundle": "agent/patterns/collect-counter.json",
-      "bundleSha256": "96112cd148da1d6fdbb12c8f55c88344232ec340ed76bd4f3e91a8142b584028"
+      "bundle": "agent/patterns/collect-counter.json"
     },
     {
       "id": "alert-reroute",
@@ -331,8 +320,7 @@
         "route-draw-marker",
         "corner-hud"
       ],
-      "bundle": "agent/patterns/alert-reroute.json",
-      "bundleSha256": "5155802a1d2348248d1565a5fadf1b81061ebc93788cae769798109d3fea6b67"
+      "bundle": "agent/patterns/alert-reroute.json"
     },
     {
       "id": "outro-stat-stack",
@@ -353,8 +341,7 @@
         "collect-counter",
         "corner-hud"
       ],
-      "bundle": "agent/patterns/outro-stat-stack.json",
-      "bundleSha256": "22b45b483d65eb4ceec7f4e34540e2642522e5d9ec9bc19063fa7ae56a188d1e"
+      "bundle": "agent/patterns/outro-stat-stack.json"
     },
     {
       "id": "seekable-timeline",
@@ -375,8 +362,7 @@
         "film-grain",
         "corner-hud"
       ],
-      "bundle": "agent/patterns/seekable-timeline.json",
-      "bundleSha256": "ee74fb5218c161d8794664d7c1692a6dcd5d73822f85132ce255c1a99ae29a41"
+      "bundle": "agent/patterns/seekable-timeline.json"
     },
     {
       "id": "film-grain",
@@ -397,8 +383,7 @@
         "seekable-timeline",
         "split-compare-stamp"
       ],
-      "bundle": "agent/patterns/film-grain.json",
-      "bundleSha256": "6326029a774c136be7dd1a8001468b19b1726b8e1efe32f499dfa65cd81d5c93"
+      "bundle": "agent/patterns/film-grain.json"
     },
     {
       "id": "boot-typing",
@@ -422,8 +407,7 @@
         "decrypt-reveal",
         "wave-array"
       ],
-      "bundle": "agent/patterns/boot-typing.json",
-      "bundleSha256": "62b1dc59f0c8e509bd4e06e8aa5670599d62d304249f760fd54125edd9100488"
+      "bundle": "agent/patterns/boot-typing.json"
     },
     {
       "id": "rolling-digits",
@@ -446,8 +430,7 @@
         "boot-typing",
         "corner-hud"
       ],
-      "bundle": "agent/patterns/rolling-digits.json",
-      "bundleSha256": "dfc520fcd2fff2ad5cf3a9eb9ef774c3257d7576c93625b9e7b9d5e8ca30070c"
+      "bundle": "agent/patterns/rolling-digits.json"
     },
     {
       "id": "decrypt-reveal",
@@ -469,8 +452,7 @@
         "boot-typing",
         "rolling-digits"
       ],
-      "bundle": "agent/patterns/decrypt-reveal.json",
-      "bundleSha256": "c8a5b77d898694040d08d1ceba0ecceb126dcca982e40ff508d51287e1bed15a"
+      "bundle": "agent/patterns/decrypt-reveal.json"
     },
     {
       "id": "wave-array",
@@ -491,8 +473,7 @@
         "rolling-digits",
         "idle-breathing"
       ],
-      "bundle": "agent/patterns/wave-array.json",
-      "bundleSha256": "cf7f6a3384c53d44506239bae2391e9d1e9bd5ecfcc0c6c0012437e130c5eef4"
+      "bundle": "agent/patterns/wave-array.json"
     },
     {
       "id": "idle-breathing",
@@ -512,8 +493,7 @@
         "wave-array",
         "rolling-digits"
       ],
-      "bundle": "agent/patterns/idle-breathing.json",
-      "bundleSha256": "645ef089907f578b1e918fb4a57e549896056de0b0e8db884809f0e60b50ccc2"
+      "bundle": "agent/patterns/idle-breathing.json"
     }
   ]
 }

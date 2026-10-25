@@ -167,63 +167,51 @@
   "files": [
     {
       "path": "demos/patterns/card-expand-fullscreen/config.js",
-      "bytes": 26099,
-      "sha256": "312d15bd21afb122f2382a5755b42b2ef0a28a4e523630277d08b9e5b834e767"
+      "bytes": 26099
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/index.html",
-      "bytes": 7652,
-      "sha256": "07e24896b88a72a6b4ff68ede4fdfaf6c8012fb1fe28b79e10f6e7fd9371fd30"
+      "bytes": 7652
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/plates/landscape-20.4-map.webp",
-      "bytes": 422340,
-      "sha256": "bcbc975c5d68d5dda342585fdd638fcfd12029bdd8a5616dff592c7de6447419"
+      "bytes": 422340
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/plates/portrait-20.4-map.webp",
-      "bytes": 314310,
-      "sha256": "aa1009c7d9f032dffb07c3f5f120c1bb3ab74bfbdd2a14a5e623d60f8e0b7cac"
+      "bytes": 314310
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/score.json",
-      "bytes": 448,
-      "sha256": "18ca2763c2e1507cff7ec2b4b97f8bf22067455adcdf4d4d02f7cf6149e89a08"
+      "bytes": 448
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/card-expand-fullscreen/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/card-expand-fullscreen.jpg",
-      "bytes": 188221,
-      "sha256": "cd22630a06fed2a3a6e2e45d25d2aa9e1e7421a5d71451288996b432bd988930"
+      "bytes": 188221
     },
     {
       "path": "previews/patterns/card-expand-fullscreen-portrait.jpg",
-      "bytes": 189980,
-      "sha256": "45c4f41ca5233bb126d6ce3266284dbe21ac7a898035d1295ac11fae288c5840"
+      "bytes": 189980
     }
   ]
 }

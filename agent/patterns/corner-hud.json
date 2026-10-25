@@ -162,73 +162,59 @@
   "files": [
     {
       "path": "demos/patterns/corner-hud/config.js",
-      "bytes": 25875,
-      "sha256": "b93b462bee119986caa2d5eb5de885121df6a13953af2abfdaa4bc0f67b30e3a"
+      "bytes": 25875
     },
     {
       "path": "demos/patterns/corner-hud/index.html",
-      "bytes": 7640,
-      "sha256": "0197ecb4e839344765f99315fe65e47c3baf2a1c906758285c66412576a0dfb5"
+      "bytes": 7640
     },
     {
       "path": "demos/patterns/corner-hud/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/corner-hud/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/corner-hud/plates/landscape-10.4-map.webp",
-      "bytes": 141718,
-      "sha256": "433a3d60e4bf47c78dd68e3a720d913493137c1abb6719c50b4e2e63fd7756f0"
+      "bytes": 141718
     },
     {
       "path": "demos/patterns/corner-hud/plates/landscape-41-map.webp",
-      "bytes": 256236,
-      "sha256": "3e6afd5e956ee7117290467b2ecd2f9eff797458635b7b2ea9def380eafb52db"
+      "bytes": 256236
     },
     {
       "path": "demos/patterns/corner-hud/plates/portrait-10.4-map.webp",
-      "bytes": 178700,
-      "sha256": "b6ce9e9de60b29b32661da7e3abd5b966e7049285f12bd40b64efff13d97bac2"
+      "bytes": 178700
     },
     {
       "path": "demos/patterns/corner-hud/plates/portrait-41-map.webp",
-      "bytes": 263766,
-      "sha256": "c40cd2ca01c4ea4bb095c67c294ae4d3c3ad6d6f405c4c935837611af10a4e54"
+      "bytes": 263766
     },
     {
       "path": "demos/patterns/corner-hud/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/corner-hud/score.json",
-      "bytes": 565,
-      "sha256": "08a7887acd970fc5bc5154638545e33b304b20e2d468acb100d97ac6e09efb00"
+      "bytes": 565
     },
     {
       "path": "demos/patterns/corner-hud/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/corner-hud/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/corner-hud.jpg",
-      "bytes": 182211,
-      "sha256": "77c09d812587ca6a7b127b0fa81dc9cc18781614a8615f2baf73a7714a1a634c"
+      "bytes": 182211
     },
     {
       "path": "previews/patterns/corner-hud-portrait.jpg",
-      "bytes": 181954,
-      "sha256": "52c23a2154c54490adbdc67aa08da1d801f267e6bc0b1d566a655f266a50738f"
+      "bytes": 181954
     }
   ]
 }

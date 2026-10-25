@@ -164,63 +164,51 @@
   "files": [
     {
       "path": "demos/patterns/film-grain/config.js",
-      "bytes": 26114,
-      "sha256": "3213a1830c3a11f5a437c0329a1c38545cb81efc715280775196539b00534dfd"
+      "bytes": 26114
     },
     {
       "path": "demos/patterns/film-grain/index.html",
-      "bytes": 7640,
-      "sha256": "cdeebcafdbedeec27e00016ee3998e4b0f7c4e8df92161b8570f774fbd502f05"
+      "bytes": 7640
     },
     {
       "path": "demos/patterns/film-grain/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/film-grain/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/film-grain/plates/landscape-10.4-map.webp",
-      "bytes": 141718,
-      "sha256": "433a3d60e4bf47c78dd68e3a720d913493137c1abb6719c50b4e2e63fd7756f0"
+      "bytes": 141718
     },
     {
       "path": "demos/patterns/film-grain/plates/portrait-10.4-map.webp",
-      "bytes": 178700,
-      "sha256": "b6ce9e9de60b29b32661da7e3abd5b966e7049285f12bd40b64efff13d97bac2"
+      "bytes": 178700
     },
     {
       "path": "demos/patterns/film-grain/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/film-grain/score.json",
-      "bytes": 198,
-      "sha256": "59380c02f720d7557cfb967675dc99ad041c565159f0ef80002ec8a73862c466"
+      "bytes": 198
     },
     {
       "path": "demos/patterns/film-grain/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/film-grain/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/film-grain.jpg",
-      "bytes": 127319,
-      "sha256": "26860d75733bf9502a9c47f938c99425d753a40d6353de2be10ab22d1c561de0"
+      "bytes": 127319
     },
     {
       "path": "previews/patterns/film-grain-portrait.jpg",
-      "bytes": 149192,
-      "sha256": "52e7d00b672c52f10234501f1c081ca157659421b5cf2f1a5f235917e9aa609d"
+      "bytes": 149192
     }
   ]
 }
