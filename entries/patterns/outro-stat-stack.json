@@ -7,22 +7,13 @@
     "rhythm"
   ],
   "carriers": [
-    "video",
-    "showcase"
+    "video"
   ],
   "summary": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
-  "mechanism": "drawOutro 的统计行、数值计数与 fin.。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawOutro、blurIn 按 caseT 求值。",
-  "trigger": "播放、暂停或 seek 到巧思时间 t。",
-  "effect": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
+  "mechanism": "统计行依次堆叠，数值逐项计数。fin.随后出现，让旅程在读完结果后结束。",
+  "trigger": "旅程结束、回顾收获时",
+  "effect": "把旅程收获汇成一张能读完的结果页。",
   "timing": [
-    {
-      "name": "统计",
-      "value": "0.65s"
-    },
-    {
-      "name": "fin.",
-      "value": "2.4s"
-    },
     {
       "name": "时长",
       "value": "5.2s"
@@ -36,7 +27,7 @@
     "影像片尾",
     "年度回顾",
     "活动战报",
-    "展示台结束页"
+    "陈列界面结束页"
   ],
   "avoid": [
     "数字没有实际意义时（会显得空洞）"
@@ -52,17 +43,14 @@
       "corner-hud"
     ],
     "conflicts": [],
-    "notes": "drawOutro 的统计行、数值计数与 fin.。"
+    "notes": "统计行依次堆叠，数值逐项计数。fin.随后出现，让旅程在读完结果后结束。"
   },
   "prompt": "收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
   "demo": "demos/patterns/outro-stat-stack/index.html",
   "kit": true,
   "sources": [
     {
-      "caseId": "map-pilgrimage",
-      "observation": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
-      "evidence": "observed",
-      "locator": "caseT 55.6→60"
+      "caseId": "map-pilgrimage"
     }
   ],
   "previewAt": 4.2,
@@ -85,7 +73,7 @@
       "sub"
     ],
     "score": "demos/patterns/outro-stat-stack/score.json",
-    "description": "MotionKit.audio.attach 挂接事件：blip、tick、bell、shimmer、sub。"
+    "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
     "palette": [
@@ -132,24 +120,24 @@
   },
   "migration": [
     {
-      "field": "复制的函数",
-      "how": "drawOutro、blurIn"
+      "field": "动效函数",
+      "how": "配置统计行、数值计数与fin.入场。"
     },
     {
       "field": "依赖",
-      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+      "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
     },
     {
       "field": "需要的数据",
-      "how": "config.js 的 tracks.outro 与横竖 layout；58s 底图包含已完成路线和标记圆点。"
+      "how": "设置收尾与横竖布局；58s底图显示完成路线和标记。"
     },
     {
       "field": "config.js → segments / markers",
-      "how": "caseT 55.6→60"
+      "how": "55.6→60"
     },
     {
       "field": "score.json",
-      "how": "事件 voice：blip、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ]
 }

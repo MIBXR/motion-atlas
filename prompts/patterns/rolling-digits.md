@@ -1,6 +1,4 @@
-# 滚动数字与文字 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/rolling-digits.json) 自动生成。
+# 滚动数字与文字
 
 ## 实现 Prompt
 

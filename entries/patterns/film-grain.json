@@ -7,26 +7,13 @@
   ],
   "carriers": [
     "video",
-    "showcase",
     "console"
   ],
   "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
-  "mechanism": "地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。以巧思时间 t 映射到案例时刻 caseT，复制函数 render、sceneCanvas、paintScene、grainPass、vignette 按 caseT 求值。",
-  "trigger": "播放、暂停或 seek 到巧思时间 t。",
-  "effect": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
+  "mechanism": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。",
+  "trigger": "地图、照片与插画交替出现时",
+  "effect": "不同媒介保持连贯，回忆段更有时间感。",
   "timing": [
-    {
-      "name": "地图上的颗粒",
-      "value": "0s"
-    },
-    {
-      "name": "照片颗粒",
-      "value": "2.5s"
-    },
-    {
-      "name": "插画颗粒",
-      "value": "5s"
-    },
     {
       "name": "时长",
       "value": "7.5s"
@@ -56,17 +43,14 @@
       "split-compare-stamp"
     ],
     "conflicts": [],
-    "notes": "地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。"
+    "notes": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。"
   },
   "prompt": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 7.5s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。",
   "demo": "demos/patterns/film-grain/index.html",
   "kit": true,
   "sources": [
     {
-      "caseId": "map-pilgrimage",
-      "observation": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
-      "evidence": "observed",
-      "locator": "地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56"
+      "caseId": "map-pilgrimage"
     }
   ],
   "previewAt": 1.2,
@@ -89,7 +73,7 @@
       "vinyl"
     ],
     "score": "demos/patterns/film-grain/score.json",
-    "description": "MotionKit.audio.attach 挂接事件：vinyl。"
+    "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
     "palette": [
@@ -140,24 +124,24 @@
   },
   "migration": [
     {
-      "field": "复制的函数",
-      "how": "render、sceneCanvas、paintScene、grainPass、vignette"
+      "field": "动效函数",
+      "how": "配置场景绘制、颗粒与暗角。"
     },
     {
       "field": "依赖",
-      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+      "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
     },
     {
       "field": "需要的数据",
-      "how": "案例舞台颗粒纹理生成与 floor(t×12) 定位代码、grain / vignette CSS；10.4s 地图底图；scenes.js 的 window 照片和 kamo 回忆插画。"
+      "how": "颗粒按floor(t×12)定位；10.4s地图配机窗照片与回忆。"
     },
     {
       "field": "config.js → segments / markers",
-      "how": "地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56"
+      "how": "地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56"
     },
     {
       "field": "score.json",
-      "how": "事件 voice：vinyl；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ]
 }

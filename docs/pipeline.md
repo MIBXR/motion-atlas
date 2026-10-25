@@ -1,13 +1,13 @@
 # 渲染管线：舞台、时间轴、声音与预加载
 
-本库所有时间驱动的 Demo 都遵守同一个约定：**画面是时间的纯函数**。同一份代码可以实时播放、被站点刻度条拖动、被脚本逐帧渲染成视频，结果完全一致。Motion Kit v2 在此基础上提供四件事：
+本库所有按时间播放的Demo 都遵守同一个约定：**画面是时间的纯函数**。同一份代码可以实时播放、被站点刻度条拖动、被脚本逐帧渲染成视频，结果完全一致。Motion Kit v2 在此基础上提供四件事：
 
 - **固定画幅舞台** `MotionKit.stage()`：横屏 1920×1080、竖屏 1080×1920 两套构图，整体等比缩放（黑边），舞台内部只用像素。
 - **声音引擎** `MotionKit.audio`：零素材的 WebAudio 合成音色库 + 乐谱调度；同一份乐谱可离线渲染成 WAV。
 - **预加载** `MotionKit.preload()`：资源就绪后才宣告 ready，进度可被站点显示。
 - **宿主通信**：站点用 postMessage 切换画幅、开关声音，Demo 回报就绪、画幅、加载进度与声音状态。
 
-地图巡礼、莱茵生命档案终端与地图巡礼的 12 个巧思使用这套固定舞台、预加载与乐谱协议；终末地工业协议及其 5 个巧思、档案终端的 5 个巧思仍保留自适应布局及原有音效调用，由 kit 兼容。
+地图巡礼、莱茵生命档案终端与地图巡礼的12个巧思使用固定舞台、预加载与乐谱。档案终端的5个巧思使用自适应布局与即时音效。
 
 参考模板：`demos/_template/case/`（案例：`index.html` / `style.css` / `script.js` / `config.js`）与 `demos/_template/pattern/index.html`（巧思单文件）。模板不是条目、不进入站点，直接引用 `kit/motion-kit.js`。
 
@@ -85,7 +85,7 @@ CSS 写法（横竖两套构图）：
 
 另有 CSS 变量 `--stage-w`、`--stage-h`、`--stage-scale`（挂在 `<html>` 上）。
 
-舞台字号按设计决定，不设下限；网站界面 ≥ 12px。`check.mjs` 检查网站界面，`smoke.mjs` 报告舞台内可见文字的最小字号。
+网站界面文字≥12px。缩放后可在页面中检查实际字号。
 
 **常见注意**：
 
@@ -113,7 +113,7 @@ CSS 写法（横竖两套构图）：
 | `seek(t)` → Promise、`play()`、`pause()`、`toggle()`、`on()` | 同时间轴 |
 | `ready` | Promise：全部 `preload()` 完成后 resolve（没有预加载时下一轮事件循环即 resolve）。之后 `<html data-motion-ready="1">` 并向父页面发 `motion:ready` |
 | `progress` | 预加载进度 0–1 |
-| `orient` / `orients` / `setOrient(o)` / `stage` | 画幅；**`orients` 为空数组表示旧版自适应 Demo（未迁移）**，站点不应显示画幅切换 |
+| `orient` / `orients` / `setOrient(o)` / `stage` | 画幅；**`orients` 为空数组表示自适应Demo**，站点不应显示画幅切换 |
 | `audio` | 离线渲染接口（挂了乐谱时才有，否则为 `null`）：`renderWav({ from, to, sampleRate })` → `{ base64, sampleRate, channels, duration, peakDb, rmsDb, clipped, events }`；`events(from, to)` 列出事件 |
 | `kit` | kit 版本号 |
 | `meta` 里的字段 | 例如 `title`、`bpm`（旧 Demo 还会带 `sound`） |
@@ -130,7 +130,7 @@ CSS 写法（横竖两套构图）：
                                                                           主增益 0.65 → 压缩（-14dB, 3:1）→ 软削波天花板 → 输出
 ```
 
-- **峰值上限 -1 dBFS**：最后一级是 WaveShaper 软削波曲线：|x| ≤ 0.6（约 -4.4 dBFS）完全线性，之上用 tanh 软膝趋近 -1 dBFS，超出的输入被钳到曲线端点，所以输出峰值严格低于 -1 dBFS（压力测试：8 个冲击 + 8 个次低频 + 底鼓军鼓连打、事件增益 4 倍，峰值 -1.35 dBFS，无削波）。
+- **峰值上限 -1 dBFS**：最后一级是 WaveShaper 软削波曲线：|x| ≤ 0.6（约 -4.4 dBFS）完全线性，之上用 tanh 软膝趋近 -1 dBFS，超出的输入被钳到曲线端点，所以输出峰值严格低于 -1 dBFS。
 - **默认响度**：模板案例整段 RMS 约 -16 dBFS、短时（400ms）最大约 -10 dBFS、峰值约 -2.6 dBFS；单个音色在力度 1 时峰值大致落在：鼓与冲击 -5 ～ -10 dBFS，界面音 -14 ～ -18 dBFS，铺底与环境底按 RMS 约 -21 ～ -29 dBFS。新乐谱用 `gain`（0–1 为主）做相对平衡，不要靠拉高 `gain` 求响度。
 - `audio.setMix({ master, music, sfx, ui, bed, reverb, trim, sidechain })` 同时作用于实时与离线；默认 `master 0.65, music 0.8, sfx 0.9, ui 0.7, bed 0.7, reverb 0.3`。
 - **侧链闪避**：带 `duck`（0–1）的事件会在触发瞬间压低 bed 总线（pad、drone、air、wind），约 0.3 秒恢复；`kick`、`sub`、`impact`、`stamp`、`thud` 默认带闪避。
@@ -166,11 +166,11 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 
 **调度行为**（`attach`）：
 
-- 播放时按前瞻窗口（默认 120ms，`attach(tl, score, { lookahead })`）把时间轴时刻映射到 AudioContext 时刻排程，由时间轴每帧与一个 40ms 定时器共同驱动；时间轴掉帧导致偏移超过 80ms 时自动重新对齐。
-- **暂停、跳转（大于 1 帧）、画幅切换、页面转后台**：立即停止本乐谱已排程与正在发声的声部（12–15ms 淡出），连同它们送入的混响尾音一起换新，从新位置继续。实测暂停后 ≤ 60ms 输出为数字静音、活跃声部 0。
+- 播放时按前瞻窗口（默认 120ms，`attach(tl, score, { lookahead })`）把时间轴时刻映射到 AudioContext 时刻排程，由时间轴每帧与一个40ms定时器共同调度；时间轴掉帧导致偏移超过 80ms 时自动重新对齐。
+- **暂停、跳转（大于 1 帧）、画幅切换、页面转后台**：立即停止本乐谱已排程与正在发声的声部（12–15ms 淡出），连同它们送入的混响尾音一起换新，从新位置继续。暂停后≤60ms输出为数字静音，活跃声部为0。
 - 与当前帧相差不到 1 帧的 seek（例如窗口 resize 时 `seek(tl.time)` 重绘）不打断声音。
-- **持续音接续**：pad、drone、air、wind、riser、reverse、alarm 是“持续型”音色。播放、跳转、暂停后继续、切换画幅、开启声音时，开始于当前时刻之前、此刻仍应发声的持续事件会以 `offset` 从中途接上（快速淡入，扫频与渐强从对应进度继续）；离线渲染从中途开始时同样处理（实测与整段渲染同一区间的 RMS 相差 ≤ 0.1 dB）。
-- 支持 `tl.setRate()` 与 `loop`（循环回绕时继续排程开头的事件）；实测排程间隔误差 0.00ms（相对锚点按样本精度计算）。
+- **持续音接续**：pad、drone、air、wind、riser、reverse、alarm 是“持续型”音色。播放、跳转、暂停后继续、切换画幅、开启声音时，开始于当前时刻之前、此刻仍应发声的持续事件会以 `offset` 从中途接上（快速淡入，扫频与渐强从对应进度继续）；离线渲染从中途开始时同样处理（与整段导出的同一区间RMS相差≤0.1 dB）。
+- 支持 `tl.setRate()` 与 `loop`（循环回绕时继续排程开头的事件）；排程间隔误差0.00ms，按样本精度对齐锚点。
 
 **即时触发**（交互输入）：`audio.play('blip', { note: 'E6', vel: 0.8, pan: -0.3 })` → `{ stop(fade) }`（未开启声音时返回 null）。交互作品的自动驾驶演示仍从乐谱出声；真实输入用 `play()`。
 
@@ -217,7 +217,7 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 | `drone` 持续低音 | bed | 失谐锯齿 + 次八度正弦，低通呼吸 | `note/f`（55）、`dur`（6）、`fade`（1.2）、`release`（1.5）、`cutoff`（380）、`lfo`（0.08） |
 | `tone` / `noise` | sfx | 旧 API 的基础音色 | 见 4.6 |
 
-别名：`openhat`（= `hat` + `open`）、`ui-blip`（= `blip`）、`ping`（= `sonar`）、`reverse-swell` / `swell`（= `reverse`）。`dev/shots/T1/voices-gallery.wav`（本地生成，不提交）可以按顺序试听全部音色。
+别名：`openhat`（= `hat` + `open`）、`ui-blip`（= `blip`）、`ping`（= `sonar`）、`reverse-swell` / `swell`（= `reverse`）。
 
 ### 4.5 离线渲染
 
@@ -225,7 +225,7 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 
 ### 4.6 旧 API 兼容
 
-`MotionKit.sound()` 返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，与 `MotionKit.audio` 共用引擎、声音开关及混音链，所以站点的 `motion:sound` 对未迁移的 Demo 同样有效。旧 Demo 自己做的前瞻排程在暂停或跳转时也会被淡出。新 Demo 请使用乐谱。
+`MotionKit.sound()` 返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，与 `MotionKit.audio` 共用引擎、声音开关及混音链，所以站点的 `motion:sound` 对自适应Demo 同样有效。旧 Demo 自己做的前瞻排程在暂停或跳转时也会被淡出。新 Demo 请使用乐谱。
 
 `motion:ready.sound` 取乐谱、`expose()` 的声音元数据和 kit 的声音使用标记：创建 `sound()`、调用 `audio.play()` / `audio.attach()`，或给 `controls()` 传入声音对象都会登记。它表示 Demo 使用声音，不表示当前已开启；`__motion.audio` 只表示可离线导出的乐谱接口，不能用于判断旧版音效是否存在。仅在用户操作后才调用 `audio.play()` 的 Demo，应在 `expose(tl, { sound: true })` 中预先声明声音能力。
 
@@ -240,7 +240,7 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 | `preload.fetch(url, as = 'blob')` | 预取任意资源，结果存入 `preload.cache` |
 | `preload.wait(ms)` | 等待（调试进度显示用） |
 
-**地图巡礼的渐进缓冲**：实时播放先扫描全片镜头需求，按瓦片最早 / 最晚出现时刻排计划；下载窗口 45 秒进入 HTTP 缓存，解析窗口 10 秒进入 MapLibre 缓存，另设解析内存预算。快速推拉中能由必需上级覆盖的瓦片列为可选，优先为近期必需瓦片分配带宽。开头 6 秒就绪即开始；前方缓冲不足 0.5 秒时停在当前帧并显示 `BUFFERING MAP`，攒够 4 秒自动继续。切换画幅会重扫计划。渲染模式不走实时缓冲，`seek()` 等待瓦片和地图 idle 后截图。实现、采样规则与实测范围见 [地图研究笔记](research/map-pilgrimage.md)。
+**地图巡礼的渐进缓冲**：实时播放先扫描全片镜头需求，按瓦片最早 / 最晚出现时刻排计划；下载窗口 45 秒进入 HTTP 缓存，解析窗口 10 秒进入 MapLibre 缓存，另设解析内存预算。快速推拉中能由必需上级覆盖的瓦片列为可选，优先为近期必需瓦片分配带宽。开头 6 秒就绪即开始；前方缓冲不足 0.5 秒时停在当前帧并显示 `BUFFERING MAP`，攒够 4 秒自动继续。切换画幅会重扫计划。渲染模式不走实时缓冲，`seek()` 等待瓦片和地图 idle 后截图。
 
 **进度显示**：独立打开时 kit 在页面顶部显示一条细进度条；嵌入（`?embed`）时不显示，由站点根据 `motion:loading` 显示加载状态。进度同时写在 `<html data-motion-loading="0.500|done">` 并派发 `window` 事件 `motion:loading`（`detail.progress`）。
 
@@ -266,19 +266,7 @@ Demo → 父页面：
 | `{ type: 'motion:loading', progress }` | 预加载进度 0–1 |
 | `{ type: 'motion:sound', on, state }` | 声音状态变化：`state` 为 `off` / `on` / `blocked` |
 
-**站点开启声音的做法（实测结论）**——自动播放策略 `document-user-activation-required`、真实鼠标事件、无头 Edge：
-
-| 场景 | 结果 |
-| --- | --- |
-| 无手势，父页面脚本调用 iframe 的 `enable()` | `blocked`（AudioContext 保持 suspended） |
-| 父页面按钮的 click 里直接调用 `iframe.contentWindow.MotionKit.audio.enable()` | `on` |
-| 父页面按钮的 click 里 `postMessage({ type: 'motion:sound', on: true })` | `on` |
-| 父页面点击过之后，iframe 重新载入（切换 Demo），再 postMessage 开启（无新手势） | `on`（同源子框架继承父页面的粘性激活） |
-| 先被挡住（`blocked`），再在 iframe 内点击一次 | `on`（kit 的手势兜底） |
-| 跨源 iframe、无 `allow`，父页面点击后 postMessage | `blocked` |
-| 跨源 iframe + `allow="autoplay"`，点击后 postMessage（含重载后） | `on` |
-
-因此站点：① 保持同源嵌入，并给 iframe 加 `allow="autoplay"`（跨源或以后换域名时也有效）；② 声音开关的 click 里发 `motion:sound`（或直接调用），并在每次 iframe 载入完成、收到 `motion:ready` 后按用户上次的选择再发一次；③ 根据回报的 `state` 显示开关：`blocked` 时提示“点击舞台以启用声音”（kit 会在 iframe 内第一次点击时恢复）；④ 加载状态用 `motion:loading`，就绪用 `motion:ready`；⑤ 画幅切换按钮只在 `orients.length > 1` 时显示，发 `motion:orient` 后以回报的 `motion:orient` 为准。
+**开启声音**：点击声音按钮即可开启。若显示“待启用”，点击舞台或再次点击声音按钮。嵌入页面使用`allow="autoplay"`，通过`motion:sound`接收开关状态。画幅按钮只在Demo支持多种画幅时显示，切换后保持当前时刻。
 
 ## 七、URL 参数
 
@@ -327,7 +315,7 @@ node scripts/render.mjs demos/_template/case/index.html --audio-only
 ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-pilgrimage.wav -c:v libx264 -pix_fmt yuv420p -crf 18 -c:a aac -b:a 192k -shortest renders/map-pilgrimage.mp4
 ```
 
-旧 Demo（没有挂乐谱）使用 `--audio` 时会提示跳过；迁移到乐谱后即可导出声音。
+旧 Demo（没有挂乐谱）使用 `--audio` 时会提示跳过；挂接乐谱后即可导出声音。
 
 ### 性能提示
 
@@ -335,22 +323,21 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 - 地图类 Demo 每帧需要等瓦片空闲，渲染较慢；先用 `--fps 12` 预览节奏，再出正式版本。
 - 渲染时页面不会播放，所以“播放中才出现”的效果（例如运动模糊残影）需要在 render(t) 里用 `t` 计算，而不是依赖上一帧。
 
-## 十、检查、冒烟与预览图
+## 十、检查与预览图
 
 | 脚本 | 说明 |
 | --- | --- |
-| `node scripts/check.mjs [--verbose]` | 静态检查条目、kit 副本、生成物与预览。舞台字号按设计决定，不设下限；网站界面 ≥ 12px |
-| `node scripts/smoke.mjs [--only ids] [--url 页面]… [--orient both\|landscape\|portrait] [--strict-fonts]` | 所有 Demo：全时间轴 seek、播放 1.5 秒、无异常与 console.error。使用 stage() 的 Demo 额外检查画幅、舞台尺寸、切换画幅后的时刻保持，并报告可见文字的最小字号。舞台字号不设下限；`--strict-fonts` 保留为兼容参数，不影响结果。旧 Demo 跳过固定画幅与舞台字号采样 |
+| `node scripts/check.mjs [--verbose]` | 静态检查条目、kit 副本、生成物与预览。网站界面文字≥12px |
 | `node scripts/capture.mjs [--only ids] [--orient both\|landscape\|portrait] [--out 目录] [--url 页面 --t 秒]` | 预览图：横屏 1280×720 → `previews/<kind>/<id>.jpg`；Demo 支持竖屏时再出 720×1280 → `previews/<kind>/<id>-portrait.jpg`（时刻用条目的 `previewAtPortrait`，缺省同 `previewAt`）。站点数据里对应 `preview` 与 `previewPortrait` |
 | `node scripts/shot.mjs <url> --orient portrait --t 3 --t 5 --out a.png` | 截图：`--orient` 给 URL 加 `?orient=` 并把视口默认设为舞台尺寸；可用 `--w/--h` 检查缩放与黑边 |
 
-条目设置 `"renderer": "gpu"` 时，smoke 与 capture 为该条目单独启动带 GPU 参数的浏览器，输出实际 WebGL renderer；若实际仍为 SwiftShader、llvmpipe、Software 或 Microsoft Basic Render，则判失败，其余条目沿用默认浏览器配置。
+条目设置`"renderer": "gpu"`时，预览图工具使用GPU并输出WebGL renderer。若使用SwiftShader、llvmpipe、Software或Microsoft Basic Render，则检查失败。
 
 `seek` / `play` 可以返回 Promise；检查脚本会等待它们完成，再开始播放推进检查的计时。
 
 ## 十一、可交互 Demo 的双时钟
 
-操作台类 Demo（档案终端、工业协议）既要能被操作，又要能被录制。做法：
+操作台类 Demo（档案终端）既要能被操作，又要能被录制。做法：
 
 - 界面状态由**事件列表**推导：`state = derive(events.filter(e => e.t <= t))`。
 - 自动驾驶：预设一份事件表，时间轴播放时按 `t` 取事件，演示完整流程；声音写在乐谱里。

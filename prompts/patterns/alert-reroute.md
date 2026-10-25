@@ -1,6 +1,4 @@
-# 警示横幅与改道 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/alert-reroute.json) 自动生成。
+# 警示横幅与改道
 
 ## 实现 Prompt
 
@@ -8,9 +6,6 @@
 
 ## 参数
 
-- **警示**：0.2s
-- **错误终点**：1.5s
-- **改道**：2.2s
 - **时长**：6.2s
 - **声音 voice**：blip、whoosh、error、glitch、clack、alarm、beep、stamp
 
@@ -23,10 +18,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。
-- `需要的数据`：config.js 的 tracks.alert / routes / markers、stops 与 tracks.camera；paths.js 的 wrong / reroute 与已完成路线几何；横竖安全框判断后的固定镜头。
-- `config.js → segments / markers`：caseT 44.8→50.3
-- `score.json`：事件 voice：blip、whoosh、error、glitch、clack、alarm、beep、stamp；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置警示、改道提示、路线与标签。
+- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。
+- `需要的数据`：设置警示轨道、错误路线、地图与横竖布局。
+- `config.js → segments / markers`：44.8→50.3
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/alert-reroute/index.html) · [在库中查看](../../patterns.html#pattern/alert-reroute)

@@ -1,18 +1,12 @@
 {
   "schemaVersion": 1,
   "name": "Motion Atlas",
-  "description": "多媒体动态视觉参考库：影像视频、交互操作台、交互展示台的案例、巧思、节奏表、Prompt 与可迁移 Demo。",
-  "contentVersion": "38681a12b64127f11e5ac0a10507951bfe79a2e0079d59bd324ba550ea347d40",
+  "description": "动态视觉参考库：影像视频与交互操作台的案例、巧思、节拍表、Prompt 与可运行的 Demo。",
+  "contentVersion": "ca2af2efc4866c1c7f8f77475560ffbd88decb6011996378e47e47214733e4a3",
   "taxonomy": {
     "carriers": {
       "video": "影像视频",
-      "console": "交互操作台",
-      "showcase": "交互展示台"
-    },
-    "sources": {
-      "reference": "用户提供的参考",
-      "game": "游戏界面转译",
-      "original": "原创设计语言"
+      "console": "交互操作台"
     },
     "types": {
       "composition": "画面构成",
@@ -24,12 +18,6 @@
       "hud": "信息层 HUD",
       "texture": "质感与后期",
       "sound": "声音"
-    },
-    "evidence": {
-      "observed": "逐帧/源码实测",
-      "adapted": "本地转译",
-      "inferred": "公开资料推断·待核验",
-      "original": "原创设计"
     },
     "roles": {
       "foundation": "骨架：决定主视觉与信息层级",
@@ -44,20 +32,17 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 3,
-    "patterns": 22
+    "cases": 2,
+    "patterns": 17
   },
   "cases": [
     {
       "id": "map-pilgrimage",
       "title": "地图巡礼 · 游戏过场式旅行影像",
-      "summary": "以真实地图为“交互基地”，四角 HUD 记录日序、坐标、时间与音乐；镜头沿关西三日的铁路推进（上海 → 关西机场 → 京都 → 奈良 → 大阪），在照片卡片、全屏实景、插画回忆与分屏对比之间切换，配一段 120 BPM 的原创乐谱，把一段旅行剪成游戏过场。横竖两套构图，地图瓦片像视频一样边播边缓冲。",
+      "summary": "地图串起上海至关西的三日旅程。四角HUD持续报时，照片、回忆与分屏随120 BPM乐谱切换。",
       "carriers": [
-        "video",
-        "showcase"
+        "video"
       ],
-      "source": "reference",
-      "evidence": "observed",
       "tags": [
         "地图叙事",
         "游戏过场",
@@ -74,7 +59,7 @@
         "物流与路线回顾",
         "活动巡回纪录",
         "年度回顾影像",
-        "交互式行程展示台"
+        "交互式行程展示"
       ],
       "avoid": [
         "没有空间移动的内容",
@@ -97,26 +82,23 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/map-pilgrimage.json",
-      "bundleSha256": "bbb0e0061ce64337c00965f687e211bc63e2812a09117bf5a9dbd6303decb9ee"
+      "bundleSha256": "f4955d0f583acbdf74c90bac3c4ff31e2f27c57b6c2c28fc83e555ea23c5f362"
     },
     {
       "id": "archive-os",
       "title": "莱茵生命档案终端",
-      "summary": "RhineLabUI 的完整移植：白底开场、五列循环档案阵列、对角解密、360° 查看器与结构拆解，原版模型、字体与配乐。",
+      "summary": "白底开场后，五列档案循环展开。读取时对角解密，还能360°查看模型、拆解与重组结构。",
       "carriers": [
-        "console",
-        "showcase"
+        "console"
       ],
-      "source": "reference",
-      "evidence": "observed",
       "tags": [
-        "RhineLabUI 移植",
+        "RhineLabUI",
         "白底开场",
         "五列循环档案",
         "对角解密",
         "360° 查看器",
         "结构拆解",
-        "原版配乐"
+        "三轨配乐"
       ],
       "useCases": [
         "数据档案与研究记录",
@@ -139,47 +121,7 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/archive-os.json",
-      "bundleSha256": "e3790ec173ef6805cdc49d06d05f658da545ffb6ad51758a18d9faf38f4ba880"
-    },
-    {
-      "id": "industrial-protocol",
-      "title": "终末地 · 集成工业协议",
-      "summary": "复刻《明日方舟：终末地》集成工业系统的界面与交互：工业模式 HUD、蓝图放置与建造、设备面板收取、干员升级与蓝图分享。",
-      "carriers": [
-        "video",
-        "showcase"
-      ],
-      "source": "game",
-      "evidence": "adapted",
-      "tags": [
-        "终末地",
-        "集成工业",
-        "蓝图建造",
-        "设备收取",
-        "干员升级",
-        "横竖构图",
-        "合成音效"
-      ],
-      "useCases": [
-        "游戏界面复刻研究",
-        "手游界面影片",
-        "集成工业交互演示",
-        "横竖屏动效适配"
-      ],
-      "avoid": [
-        "把示意产线作为真实游戏配方或数值指南",
-        "将生图人物与设施位图误认为官方美术素材"
-      ],
-      "patternIds": [
-        "chamfer-panel",
-        "text-scramble",
-        "conveyor-flow",
-        "hold-confirm",
-        "scanline-wipe"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/industrial-protocol.json",
-      "bundleSha256": "3c1867ffd3d3c5524bd85e80f4815c60d9bd9972426589fd2abece3567019769"
+      "bundleSha256": "fee39b5612b7ff1ae919f37f0a22192cedadcd7bc30dcb39eca8769d7bffa2a7"
     }
   ],
   "patterns": [
@@ -193,8 +135,7 @@
       ],
       "carriers": [
         "video",
-        "console",
-        "showcase"
+        "console"
       ],
       "role": "foundation",
       "sourceCases": [
@@ -207,7 +148,7 @@
         "vertical-title-blur"
       ],
       "bundle": "agent/patterns/corner-hud.json",
-      "bundleSha256": "1374e050e3cc3af245812f0ca769d44b3343e5f638ae35b7b14ba4968709d6ee"
+      "bundleSha256": "f25eb6ac0e5897e733486350d659347918941ab6f57d489d7b09525664c6276e"
     },
     {
       "id": "vertical-title-blur",
@@ -218,7 +159,6 @@
       ],
       "carriers": [
         "video",
-        "showcase",
         "console"
       ],
       "role": "accent",
@@ -231,7 +171,7 @@
         "card-expand-fullscreen"
       ],
       "bundle": "agent/patterns/vertical-title-blur.json",
-      "bundleSha256": "1dea7e8bf0081008e66478d3de0e0d2a556f2da8dd90511bc75f40342af7bf84"
+      "bundleSha256": "b43d9429b1e2ea3b5bee3704b34eca53a87101cc4abe4671dc9305f1a2f31dae"
     },
     {
       "id": "route-draw-marker",
@@ -242,8 +182,7 @@
         "hud"
       ],
       "carriers": [
-        "video",
-        "showcase"
+        "video"
       ],
       "role": "support",
       "sourceCases": [
@@ -255,7 +194,7 @@
         "card-expand-fullscreen"
       ],
       "bundle": "agent/patterns/route-draw-marker.json",
-      "bundleSha256": "a86b0456bab34bf79ddef2c73fc039568ec524a900b34e2d392945ab8d7c7a1a"
+      "bundleSha256": "38ec9f459f5092df4f71e622a11f1f2b6f3a0c435f8d682db54dc1da7fe625ef"
     },
     {
       "id": "day-night-flip",
@@ -267,8 +206,7 @@
       ],
       "carriers": [
         "video",
-        "console",
-        "showcase"
+        "console"
       ],
       "role": "support",
       "sourceCases": [
@@ -279,7 +217,7 @@
         "route-draw-marker"
       ],
       "bundle": "agent/patterns/day-night-flip.json",
-      "bundleSha256": "ab562baf406378d869df352d01f2ef20ad397aa9acb160963cde6c600107bda3"
+      "bundleSha256": "3b21941a00130498eda3d25dc26ca9d8737e1fc732712976bc70df1723e7ce85"
     },
     {
       "id": "card-expand-fullscreen",
@@ -289,8 +227,7 @@
         "transition"
       ],
       "carriers": [
-        "video",
-        "showcase"
+        "video"
       ],
       "role": "support",
       "sourceCases": [
@@ -302,7 +239,7 @@
         "split-compare-stamp"
       ],
       "bundle": "agent/patterns/card-expand-fullscreen.json",
-      "bundleSha256": "053fd4eb875eaca066cc927a073d183662f1a7abd87249cf1c401cb0159ff5c9"
+      "bundleSha256": "800a0333e37e1d7ccc831bd4d04d3ba7fc51884550af46df9c6767bdbf2085fd"
     },
     {
       "id": "chapter-frame",
@@ -314,8 +251,7 @@
       ],
       "carriers": [
         "video",
-        "console",
-        "showcase"
+        "console"
       ],
       "role": "support",
       "sourceCases": [
@@ -327,7 +263,7 @@
         "vertical-title-blur"
       ],
       "bundle": "agent/patterns/chapter-frame.json",
-      "bundleSha256": "36b8531f4fbd4ffbf18c3bfee61dcc9043b1568f2b0e91b5858b399a6af5bb5c"
+      "bundleSha256": "44ed1110bab23461f406fd4d42556c29f7e58fa2df31d21cec436cc4449f528f"
     },
     {
       "id": "split-compare-stamp",
@@ -338,8 +274,7 @@
         "composition"
       ],
       "carriers": [
-        "video",
-        "showcase"
+        "video"
       ],
       "role": "accent",
       "sourceCases": [
@@ -351,7 +286,7 @@
         "film-grain"
       ],
       "bundle": "agent/patterns/split-compare-stamp.json",
-      "bundleSha256": "8002a7b9d601f57bf71e4137c1b5052995b6c45781fa9761811cb6b3d573396e"
+      "bundleSha256": "65ddd579c1e62a3fbcd1ecdffe293f2cfcdc447db38974643ef7d90153188b9c"
     },
     {
       "id": "collect-counter",
@@ -363,8 +298,7 @@
       ],
       "carriers": [
         "video",
-        "console",
-        "showcase"
+        "console"
       ],
       "role": "accent",
       "sourceCases": [
@@ -375,7 +309,7 @@
         "outro-stat-stack"
       ],
       "bundle": "agent/patterns/collect-counter.json",
-      "bundleSha256": "699e71519f9d6ac8fd833066396011e92258fa598d90dd28b2d2030c1bff5c1c"
+      "bundleSha256": "96112cd148da1d6fdbb12c8f55c88344232ec340ed76bd4f3e91a8142b584028"
     },
     {
       "id": "alert-reroute",
@@ -398,7 +332,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/alert-reroute.json",
-      "bundleSha256": "9fb89b399a9705b25bf907ce19f263014a200eb59c05622e4717dde41f316195"
+      "bundleSha256": "5155802a1d2348248d1565a5fadf1b81061ebc93788cae769798109d3fea6b67"
     },
     {
       "id": "outro-stat-stack",
@@ -409,8 +343,7 @@
         "rhythm"
       ],
       "carriers": [
-        "video",
-        "showcase"
+        "video"
       ],
       "role": "support",
       "sourceCases": [
@@ -421,7 +354,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/outro-stat-stack.json",
-      "bundleSha256": "9c7b739b21eb845582ed0d65016e5e808ee654848601119aa50ad607e9d6f956"
+      "bundleSha256": "22b45b483d65eb4ceec7f4e34540e2642522e5d9ec9bc19063fa7ae56a188d1e"
     },
     {
       "id": "seekable-timeline",
@@ -432,8 +365,7 @@
       ],
       "carriers": [
         "video",
-        "console",
-        "showcase"
+        "console"
       ],
       "role": "foundation",
       "sourceCases": [
@@ -444,7 +376,7 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/seekable-timeline.json",
-      "bundleSha256": "5453bc7ca0d48086ecefa57cfef35cd212695ef1159f90f53848b0faf9bf9e51"
+      "bundleSha256": "ee74fb5218c161d8794664d7c1692a6dcd5d73822f85132ce255c1a99ae29a41"
     },
     {
       "id": "film-grain",
@@ -455,7 +387,6 @@
       ],
       "carriers": [
         "video",
-        "showcase",
         "console"
       ],
       "role": "support",
@@ -467,12 +398,12 @@
         "split-compare-stamp"
       ],
       "bundle": "agent/patterns/film-grain.json",
-      "bundleSha256": "69f95ff68d31268a33debc6b01065b2c71f5a0f0344dc83534573de9a669d418"
+      "bundleSha256": "6326029a774c136be7dd1a8001468b19b1726b8e1efe32f499dfa65cd81d5c93"
     },
     {
       "id": "boot-typing",
       "title": "终端逐字开机序列",
-      "summary": "白场上逐字输入请求、停顿、黑底闪一下再清空，圆环与标志随后绘出，身份确认三行错峰打字——用“输入的节奏”建立系统的可信度。",
+      "summary": "白场逐字输入后闪黑清空，圆环与标志依次绘出，再打出三行身份确认，用输入节奏营造开机感。",
       "types": [
         "type-motion",
         "rhythm",
@@ -480,8 +411,7 @@
       ],
       "carriers": [
         "console",
-        "video",
-        "showcase"
+        "video"
       ],
       "role": "support",
       "sourceCases": [
@@ -493,19 +423,18 @@
         "wave-array"
       ],
       "bundle": "agent/patterns/boot-typing.json",
-      "bundleSha256": "3ea904cd746103baddf091382fdbc71fb791f8e7504553579998baad5d857dc6"
+      "bundleSha256": "62b1dc59f0c8e509bd4e06e8aa5670599d62d304249f760fd54125edd9100488"
     },
     {
       "id": "rolling-digits",
       "title": "滚动数字与文字",
-      "summary": "编号、计数、标题与分类在切换时沿输入方向滚动 460ms，带极轻的运动模糊；快速连按只显示“当前运动 → 最新目标”，不为中间值排队。",
+      "summary": "编号与标题沿输入方向滚动460ms，带轻微模糊。快速连按只转向最新目标，不为中间值排队。",
       "types": [
         "type-motion",
         "feedback"
       ],
       "carriers": [
         "console",
-        "showcase",
         "video"
       ],
       "role": "accent",
@@ -518,19 +447,18 @@
         "corner-hud"
       ],
       "bundle": "agent/patterns/rolling-digits.json",
-      "bundleSha256": "99f103d750c251eafad7972c7c3f04e9504c8b85c92a926928d4257326768792"
+      "bundleSha256": "dfc520fcd2fff2ad5cf3a9eb9ef774c3257d7576c93625b9e7b9d5e8ca30070c"
     },
     {
       "id": "decrypt-reveal",
       "title": "对角解密与磨砂转清",
-      "summary": "两条信号色对角线合拢、停留、收束；玻璃盖板自上而下由磨砂变清晰；右侧文档上的黑色遮挡条按阅读顺序依次退开——“读取”被做成一个可以看见的过程。",
+      "summary": "对角线合拢后收束，玻璃自上而下从磨砂转清。正文遮挡条按阅读顺序退开，让读取过程可见。",
       "types": [
         "transition",
         "texture"
       ],
       "carriers": [
         "console",
-        "showcase",
         "video"
       ],
       "role": "support",
@@ -542,19 +470,18 @@
         "rolling-digits"
       ],
       "bundle": "agent/patterns/decrypt-reveal.json",
-      "bundleSha256": "f5ff5a3e7141df2953179543c7829ed67032d2501b19d0bd6eee6342ad24c7a0"
+      "bundleSha256": "c8a5b77d898694040d08d1ceba0ecceb126dcca982e40ff508d51287e1bed15a"
     },
     {
       "id": "wave-array",
       "title": "阵列选择波浪",
-      "summary": "在一整片重复元素中选中一个：它以临界阻尼抬起，同时向四周传出一圈按距离延迟、指数衰减的余波——选择像投入水面的石子。",
+      "summary": "选中块以临界阻尼抬起，余波按距离延迟、衰减，整片阵列随一次选择起伏。",
       "types": [
         "feedback",
         "rhythm"
       ],
       "carriers": [
-        "console",
-        "showcase"
+        "console"
       ],
       "role": "foundation",
       "sourceCases": [
@@ -565,18 +492,17 @@
         "idle-breathing"
       ],
       "bundle": "agent/patterns/wave-array.json",
-      "bundleSha256": "fd46d3f9c00b2e37d9c324dca7f9bfca9029b7add7348d7a116c0338128b511b"
+      "bundleSha256": "cf7f6a3384c53d44506239bae2391e9d1e9bd5ecfcc0c6c0012437e130c5eef4"
     },
     {
       "id": "idle-breathing",
       "title": "空闲呼吸",
-      "summary": "停止操作 2.5 秒后，界面元素以两个不成整数比的周期（8s 与 13s）叠加缓慢起伏，相邻元素错相；任何操作立即渐退——界面“活着”，但不打扰。",
+      "summary": "停止操作2.5秒后，8s与13s周期叠加起伏，相邻元素错相。操作时渐退，画面保持轻微呼吸。",
       "types": [
         "rhythm"
       ],
       "carriers": [
-        "console",
-        "showcase"
+        "console"
       ],
       "role": "support",
       "sourceCases": [
@@ -587,123 +513,7 @@
         "rolling-digits"
       ],
       "bundle": "agent/patterns/idle-breathing.json",
-      "bundleSha256": "a92014d926d6cec19b78536e6250d4719da415365317119e163dcd7428cd33ee"
-    },
-    {
-      "id": "chamfer-panel",
-      "title": "切角工业面板",
-      "summary": "用 45° 切角、四角十字注册标记、刻度尺、安全黄三角角标和危险斜纹，把普通矩形面板变成“设备铭牌”；入场时切角从夸张收拢到标准尺寸。",
-      "types": [
-        "composition"
-      ],
-      "carriers": [
-        "console",
-        "showcase"
-      ],
-      "role": "foundation",
-      "sourceCases": [
-        "industrial-protocol"
-      ],
-      "pairsWellWith": [
-        "text-scramble",
-        "scanline-wipe",
-        "hold-confirm"
-      ],
-      "bundle": "agent/patterns/chamfer-panel.json",
-      "bundleSha256": "b76178d3eaca3014b4e10e3e77614bc56373928eda7d2a133c5091e698c9f212"
-    },
-    {
-      "id": "text-scramble",
-      "title": "字符解码",
-      "summary": "标题与编码先显示为随机字符，再按从左到右（带随机抖动）的阈值逐个“解出”，末尾跟一个块状光标；随机由帧号与位置决定，逐帧渲染也一致。",
-      "types": [
-        "type-motion"
-      ],
-      "carriers": [
-        "console",
-        "video",
-        "showcase"
-      ],
-      "role": "accent",
-      "sourceCases": [
-        "industrial-protocol"
-      ],
-      "pairsWellWith": [
-        "chamfer-panel",
-        "scanline-wipe",
-        "boot-typing"
-      ],
-      "bundle": "agent/patterns/text-scramble.json",
-      "bundleSha256": "9dab975e675de602ab58beffc12e77ca2f875125d7b325f8a10cf8453eecaf74"
-    },
-    {
-      "id": "conveyor-flow",
-      "title": "产线流动",
-      "summary": "节点之间的正交传送带上，物料方块匀速流动、带纹同速推进、节点指示灯闪烁、产量计数——持续运转的系统感来自“永不停的匀速”。",
-      "types": [
-        "hud",
-        "rhythm"
-      ],
-      "carriers": [
-        "console",
-        "showcase",
-        "video"
-      ],
-      "role": "support",
-      "sourceCases": [
-        "industrial-protocol"
-      ],
-      "pairsWellWith": [
-        "chamfer-panel",
-        "hold-confirm"
-      ],
-      "bundle": "agent/patterns/conveyor-flow.json",
-      "bundleSha256": "6b2edeffa9a62b6e6545966744086e0a5dfbd744dfda72ae777f97cecb56e157"
-    },
-    {
-      "id": "hold-confirm",
-      "title": "长按确认",
-      "summary": "不可逆操作需要按住：进度只在按住时增长，松开以 300ms 回落；满格瞬间锁定为完成态并盖章——比二次弹窗更有“物理”感。",
-      "types": [
-        "feedback"
-      ],
-      "carriers": [
-        "console",
-        "showcase"
-      ],
-      "role": "accent",
-      "sourceCases": [
-        "industrial-protocol"
-      ],
-      "pairsWellWith": [
-        "chamfer-panel",
-        "conveyor-flow"
-      ],
-      "bundle": "agent/patterns/hold-confirm.json",
-      "bundleSha256": "babb4aaac86dbf477575faeb8975963eeedf158a5fff9566deec39b85d0eb2c1"
-    },
-    {
-      "id": "scanline-wipe",
-      "title": "扫描线换页",
-      "summary": "一条发光的黄色扫描线从左扫到右：线左是新页、线右仍是旧页，像被设备重新扫描刷新；新页卡片在线经过后错峰上浮。",
-      "types": [
-        "transition"
-      ],
-      "carriers": [
-        "console",
-        "showcase",
-        "video"
-      ],
-      "role": "support",
-      "sourceCases": [
-        "industrial-protocol"
-      ],
-      "pairsWellWith": [
-        "chamfer-panel",
-        "text-scramble"
-      ],
-      "bundle": "agent/patterns/scanline-wipe.json",
-      "bundleSha256": "2d91a410843c9b193d71582290dbd8821a3d0e6fc3f60938a55e48946e1e51e4"
+      "bundleSha256": "645ef089907f578b1e918fb4a57e549896056de0b0e8db884809f0e60b50ccc2"
     }
   ]
 }

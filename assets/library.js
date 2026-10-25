@@ -12,7 +12,6 @@
   /* ---------- 小工具 ---------- */
   const fmtT = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${(s % 60).toFixed(2).padStart(5, '0')}`;
   const fmtB = (s) => fmtT(s).replace(/^00:/, ''); // 节拍点的短格式：不足一分钟时省略分钟
-  const evBadge = (ev) => `<span class="ev ev-${ev}">${esc(TAX.evidence[ev] || ev)}</span>`;
   const energyPath = (arr, w = 100, h = 26) => {
     if (!arr || !arr.length) return '';
     const pts = arr.map((v, i) => [(i / (arr.length - 1)) * w, h - 2 - v * (h - 4)]);
@@ -44,33 +43,30 @@
   const q = new URLSearchParams(location.search);
   const state = {
     carrier: q.get('carrier') || 'all',
-    source: q.get('source') || 'all',
     type: q.get('type') || 'all',
     caseId: q.get('case') || 'all',
     fav: q.get('fav') === '1',
     query: q.get('q') || '',
-    sort: q.get('sort') || 'curated',
+    sort: q.get('sort') === 'title' ? 'title' : 'order',
   };
   function syncURL() {
     const p = new URLSearchParams();
     if (state.carrier !== 'all') p.set('carrier', state.carrier);
-    if (KIND === 'cases' && state.source !== 'all') p.set('source', state.source);
     if (KIND === 'patterns' && state.type !== 'all') p.set('type', state.type);
     if (KIND === 'patterns' && state.caseId !== 'all') p.set('case', state.caseId);
     if (state.fav) p.set('fav', '1');
     if (state.query) p.set('q', state.query);
-    if (state.sort !== 'curated') p.set('sort', state.sort);
+    if (state.sort !== 'order') p.set('sort', state.sort);
     const s = p.toString();
     history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + location.hash);
   }
 
   const haystack = (it) => [it.id, it.title, it.subtitle, it.summary, ...(it.tags || []), ...(it.useCases || []), it.mechanism, it.trigger, it.effect,
-    ...(it.carriers || []).map((c) => TAX.carriers[c]), ...(it.types || []).map((c) => TAX.types[c]), TAX.sources?.[it.source]].filter(Boolean).join(' ').toLowerCase();
+    ...(it.carriers || []).map((c) => TAX.carriers[c]), ...(it.types || []).map((c) => TAX.types[c])].filter(Boolean).join(' ').toLowerCase();
   function filtered() {
     const words = state.query.toLowerCase().split(/\s+/).filter(Boolean);
     let list = items.filter((it) => {
       if (state.carrier !== 'all' && !(it.carriers || []).includes(state.carrier)) return false;
-      if (KIND === 'cases' && state.source !== 'all' && it.source !== state.source) return false;
       if (KIND === 'patterns' && state.type !== 'all' && !(it.types || []).includes(state.type)) return false;
       if (KIND === 'patterns' && state.caseId !== 'all' && !(it.sources || []).some((s) => s.caseId === state.caseId)) return false;
       if (state.fav && !favs.has(KIND, it.id)) return false;
@@ -78,10 +74,8 @@
       return true;
     });
     if (state.sort === 'title') list = [...list].sort((a, b) => a.title.localeCompare(b.title, 'zh'));
-    if (state.sort === 'energy') list = [...list].sort((a, b) => avg(b.energy) - avg(a.energy));
     return list;
   }
-  const avg = (a) => (a && a.length ? a.reduce((s, v) => s + v, 0) / a.length : 0);
 
   /* ---------- 列表 ---------- */
   function sideButton(group, value, label, count) {
@@ -91,53 +85,38 @@
   function renderList() {
     document.title = (KIND === 'cases' ? '案例库' : '巧思库') + ' · Motion Atlas';
     const carriers = Object.entries(TAX.carriers);
-    const countBy = (fn) => items.filter(fn).length;
-    let side = `<div class="side-group"><h2>${KIND === 'cases' ? '案例载体' : '巧思类型'}</h2><ul class="side-list">`;
-    if (KIND === 'cases') {
-      side += sideButton('carrier', 'all', '全部案例', items.length);
-      for (const [k, v] of carriers) side += sideButton('carrier', k, v, countBy((it) => it.carriers.includes(k)));
-      side += `</ul></div><div class="side-group"><h2>参考来源</h2><ul class="side-list">`;
-      side += sideButton('source', 'all', '全部来源', items.length);
-      for (const [k, v] of Object.entries(TAX.sources)) side += sideButton('source', k, v, countBy((it) => it.source === k));
-    } else {
-      side += sideButton('type', 'all', '全部巧思', items.length);
-      for (const [k, v] of Object.entries(TAX.types)) side += sideButton('type', k, v, countBy((it) => it.types.includes(k)));
-      side += `</ul></div><div class="side-group"><h2>适用载体</h2><ul class="side-list">`;
-      side += sideButton('carrier', 'all', '全部载体', items.length);
-      for (const [k, v] of carriers) side += sideButton('carrier', k, v, countBy((it) => it.carriers.includes(k)));
-    }
-    side += `</ul></div><div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
+    const side = `<div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
-      <li><button type="button" data-tool="export"><span>导出收藏备份</span>${ICONS.download}</button></li>
-      <li><button type="button" data-tool="import"><span>导入收藏备份</span>${ICONS.upload}</button></li>
+      <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
+      <li><button type="button" data-tool="import"><span>导入收藏</span>${ICONS.upload}</button></li>
       <li><a href="${KIND === 'cases' ? 'patterns.html' : 'cases.html'}"><span>${KIND === 'cases' ? '浏览巧思库' : '浏览案例库'}</span>${ICONS.arrow}</a></li>
-      </ul></div>
-      <p class="side-foot"><b>●</b> SEEKABLE / SOURCE-BACKED<br>Demo 可逐帧定位；证据等级见各条目</p>`;
-
-    const caseOptions = KIND === 'patterns'
-      ? `<select class="select" id="case-filter" aria-label="来源案例"><option value="all">全部来源案例</option>${MA.cases.map((c) => `<option value="${c.id}"${state.caseId === c.id ? ' selected' : ''}>${esc(c.title)}</option>`).join('')}</select>` : '';
-    const sortOptions = KIND === 'cases'
-      ? [['curated', '策展顺序'], ['energy', '能量强 → 弱'], ['title', '名称']]
-      : [['curated', '策展顺序'], ['title', '名称']];
+      </ul></div>`;
+    const filterSelect = (id, label, all, values, value) => `<select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`;
+    const filters = [
+      KIND === 'patterns' ? filterSelect('type-filter', '类型', '全部类型', Object.entries(TAX.types), state.type) : '',
+      filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier),
+      KIND === 'patterns' ? filterSelect('case-filter', '所属案例', '全部案例', MA.cases.map(c => [c.id, c.title]), state.caseId) : '',
+    ].join('');
+    const sortOptions = [['order', '编号'], ['title', '名称']];
 
     root.innerHTML = `
       <div class="lib">
-        <aside class="lib-side" id="lib-side" aria-label="${KIND === 'cases' ? '案例分类' : '巧思分类'}">${side}</aside>
+        <aside class="lib-side" id="lib-side" aria-label="收藏与工具">${side}</aside>
         <section>
           <header class="lib-head">
             <div>
               <p class="eyebrow">${KIND === 'cases' ? 'CASE COLLECTION · RHYTHM / MOTION / HUD' : 'PATTERN COLLECTION · ATOMIC MECHANISMS'}</p>
               <h1>${KIND === 'cases' ? '先看懂节拍，<br>再拿走<em>动势</em>。' : '一个触发，<br>一种<em>可借用</em>的结果。'}</h1>
               <p>${KIND === 'cases'
-                ? `${items.length} 个完整案例：拆成镜头、信息层、文字、转场与声音轨道，附节拍表、动效 Token、可复用 Prompt 与可逐帧定位的 Demo。`
-                : `${items.length} 个独立巧思：每项都有触发、结果、参数、组合边界、可复制 Prompt 和单文件 Demo，可以跨案例组合。`}</p>
+                ? `${items.length} 个案例：节拍表、动效参数、可复用 Prompt，以及能拖动逐帧查看的 Demo。`
+                : `${items.length} 个巧思：每个都有触发方式、效果、参数、可复制的 Prompt 和独立 Demo。`}</p>
             </div>
             ${heroArt}
           </header>
           <div class="toolbar">
-            <button class="btn side-toggle" type="button" aria-expanded="false" aria-controls="lib-side">${ICONS.filter}<span>分类与工具</span></button>
+            <button class="btn side-toggle" type="button" aria-expanded="false" aria-controls="lib-side">${ICONS.filter}<span>收藏与工具</span></button>
             <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
-            ${caseOptions}
+            ${filters}
             <select class="select" id="sort" aria-label="排序">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
           </div>
           <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : '每个巧思都有独立 Demo'}</span></div>
@@ -159,7 +138,7 @@
 
   function cardHTML(it, i) {
     const tagLine = KIND === 'cases'
-      ? [...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), `<span class="chip accent">${esc(TAX.sources[it.source])}</span>`].join('')
+      ? it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`).join('')
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)].join('');
     const label = KIND === 'cases' ? TAX.carriers[it.carriers[0]] : TAX.types[it.types[0]];
     const fav = favs.has(KIND, it.id);
@@ -177,7 +156,7 @@
   function paintGrid() {
     const list = filtered();
     const grid = document.getElementById('grid');
-    grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">没有符合条件的${KIND === 'cases' ? '案例' : '巧思'}。换个关键词，或清除分类筛选。</div>`;
+    grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">没有符合条件的${KIND === 'cases' ? '案例' : '巧思'}。换个关键词，或清除筛选。</div>`;
     document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' : '当前筛选'} / ${list.length} 个条目`;
     syncURL();
   }
@@ -201,8 +180,10 @@
     const s = root.querySelector('#search');
     s.addEventListener('input', () => { state.query = s.value.trim(); paintGrid(); });
     root.querySelector('#sort').addEventListener('change', (e) => { state.sort = e.target.value; paintGrid(); });
-    const cf = root.querySelector('#case-filter');
-    if (cf) cf.addEventListener('change', (e) => { state.caseId = e.target.value; paintGrid(); });
+    for (const [id, key] of [['carrier-filter', 'carrier'], ['type-filter', 'type'], ['case-filter', 'caseId']]) {
+      const select = root.querySelector('#' + id);
+      if (select) select.addEventListener('change', (e) => { state[key] = e.target.value; paintGrid(); });
+    }
     const st = root.querySelector('.side-toggle');
     st.addEventListener('click', () => { const open = root.querySelector('#lib-side').classList.toggle('open'); st.setAttribute('aria-expanded', String(open)); });
     root.querySelector('#grid').addEventListener('click', (e) => {
@@ -538,7 +519,7 @@
     if (!d || d.loaded || !Number.isFinite(p)) return;
     const pct = Math.round(Math.max(0, Math.min(1, p)) * 100);
     delete d.loader.dataset.indeterminate;
-    d.loader.querySelector('.ld-text').textContent = pct >= 100 ? '准备播放' : `正在预加载资源 ${pct}%`;
+    d.loader.querySelector('.ld-text').textContent = pct >= 100 ? '准备播放' : `正在载入 ${pct}%`;
     d.loader.querySelector('.ld-bar b').style.transform = `scaleX(${pct / 100})`;
   }
   function loadDone() {
@@ -558,7 +539,7 @@
     d.seg.hidden = d.orients.length < 2;
     d.badge.hidden = d.orients.length > 1;
     d.badge.textContent = legacy ? '16:9 · 自适应' : d.orients[0] === 'portrait' ? '仅竖屏 9:16' : '仅横屏 16:9';
-    d.badge.title = legacy ? '这个 Demo 尚未迁移到固定画幅：按 16:9 画框显示，内部排版随画框自适应。' : '这个 Demo 只提供一种画幅。';
+    d.badge.title = legacy ? '这个 Demo 按 16:9 显示，内容随画框自适应。' : '这个 Demo 只提供一种画幅。';
     paintOrient();
     layout();
   }
@@ -900,14 +881,12 @@
         <dl class="kv">${[['色彩', c.color], ['字体', c.typography], ['版式', c.layout], ['图像', c.imagery], ['动效', c.motion], ['声音', c.sound], ['节奏', c.rhythm], ['协调', c.coherence]].filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`),
       it.tokens?.motion ? sec('动效 Token', 'MOTION TOKENS', `<table class="token-table"><tbody>${it.tokens.motion.map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.value)}</td></tr>`).join('')}</tbody></table>`) : '',
       it.layers ? sec('画面分层', 'LAYERS', `<table class="token-table"><tbody>${it.layers.map((l) => `<tr><td>${esc(l.name)}</td><td>${esc(l.role)}</td></tr>`).join('')}</tbody></table>`) : '',
-      it.observations ? sec('逐帧观察', 'OBSERVED', `<table class="beat-table obs-table"><tbody>${it.observations.map((o) => `<tr><td>${esc(o.at)}</td><td>${esc(o.what)}</td></tr>`).join('')}</tbody></table>`) : '',
+      it.observations ? sec('画面细节', 'DETAILS', `<table class="beat-table obs-table"><tbody>${it.observations.map((o) => `<tr><td>${esc(o.at)}</td><td>${esc(o.what)}</td></tr>`).join('')}</tbody></table>`) : '',
       sec('交互与状态', 'INTERACTION', ul(it.interaction)),
       sec('可复用 Prompt', 'PROMPT', promptTabs(it)),
       it.migration ? sec('迁移指南', 'MIGRATE', `<table class="token-table"><tbody>${it.migration.map((m) => `<tr><td>${esc(m.field)}</td><td>${esc(m.how)}</td></tr>`).join('')}</tbody></table>`) : '',
       sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl><div style="margin-top:10px">${ul(it.constraints)}</div>`),
       sec('关联巧思', 'PATTERNS', relPatterns(it.patternIds)),
-      sec('来源与证据', 'SOURCES', `<p>${evBadge(it.evidence)} ${it.capturedAt ? `<span class="chip">采集 ${esc(it.capturedAt)}</span>` : ''} ${it.research ? `<a class="chip" href="docs.html#doc/${esc(it.research)}">阅读研究笔记</a>` : ''}</p>
-        <ul style="margin-top:10px">${(it.sources || []).map((s) => `<li>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>` : esc(s.title)}${s.type ? ` · ${esc(s.type)}` : ''}<br><small style="color:var(--muted)">${esc(s.note || '')}</small></li>`).join('')}</ul>`),
     ].join('');
   }
 
@@ -920,8 +899,7 @@
       sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl>`),
       sec('组合', 'COMPOSE', `<dl class="kv"><dt>职责</dt><dd>${esc(TAX.roles[comp.role] || comp.role || '—')}</dd><dt>搭配</dt><dd>${(comp.pairsWellWith || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd><dt>冲突</dt><dd>${(comp.conflicts || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd></dl>${comp.notes ? `<p style="margin-top:10px">${esc(comp.notes)}</p>` : ''}`),
       sec('可访问性', 'A11Y', `<dl class="kv"><dt>减少动态</dt><dd>${esc(it.accessibility?.reducedMotion || '—')}</dd><dt>键盘</dt><dd>${esc(it.accessibility?.keyboard || '—')}</dd></dl>`),
-      sec('来源', 'SOURCES', `<div class="rel-list">${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${c.preview ? `<img src="${esc(c.preview)}" alt="" loading="lazy">` : '<img alt="">'}<span><strong>${esc(c.title)}</strong><small>${esc(TAX.evidence[s.evidence] || s.evidence)}${s.locator ? ' · ' + esc(s.locator) : ''}</small></span></a>` : ''; }).join('')}</div>
-        <ul style="margin-top:12px">${(it.sources || []).map((s) => `<li>${evBadge(s.evidence)} ${esc(s.observation)}</li>`).join('')}</ul>`),
+      `<p>所属案例：${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${esc(c.title)}</a>` : ''; }).join('、')}</p>`,
     ].join('');
   }
 
@@ -931,7 +909,7 @@
     const isCase = KIND === 'cases';
     const idx = items.indexOf(it);
     const chips = isCase
-      ? [...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), `<span class="chip accent">${esc(TAX.sources[it.source])}</span>`, ...(it.tags || []).map((t) => `<span class="chip">${esc(t)}</span>`)]
+      ? [...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), ...(it.tags || []).map((t) => `<span class="chip">${esc(t)}</span>`)]
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)];
     const fav = favs.has(KIND, it.id);
     // 左列：舞台工具栏 + 舞台 + 刻度条（并排时吸顶，首屏完整可见）；右列：操作、标题与说明
@@ -949,7 +927,7 @@
               <p class="eyebrow">${String(idx + 1).padStart(2, '0')} / ${isCase ? 'CASE' : 'PATTERN'} · ${esc(it.id)}</p>
               <h1>${esc(it.title)}</h1>
               ${it.subtitle ? `<p class="sub">${esc(it.subtitle)}</p>` : ''}
-              <div class="chips">${chips.join('')} ${evBadge(it.evidence || (it.sources && it.sources[0] && it.sources[0].evidence) || 'original')}</div>
+              <div class="chips">${chips.join('')}</div>
             </header>
             <div class="notes">${isCase ? caseNotes(it) : patternNotes(it)}</div>
           </div>

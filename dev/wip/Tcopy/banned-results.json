@@ -1,0 +1,56 @@
+{
+  "scanned": 63,
+  "hitCount": 0,
+  "exceptionCount": 6,
+  "hits": [],
+  "exceptions": [
+    {
+      "file": "README.md",
+      "line": 93,
+      "column": 17,
+      "word": "smoke",
+      "text": "| `node scripts/smoke.mjs [--strict-fonts]` | 无头浏览器逐个 Demo 检查全时间轴与播放；固定舞台另测两画幅、切换保持时刻及",
+      "reason": "README命令行示例中的可执行脚本路径"
+    },
+    {
+      "file": "assets/lab.js",
+      "line": 49,
+      "column": 34,
+      "word": "dev/",
+      "text": "  // 校准目标（默认三级音量 100 / 75 / 45 时，dev/shots/T3/levels.txt 实测）：重拍峰值约 -9～-11 dBFS，拍比重拍低 4–6 dB 且音高更低，细分再低",
+      "reason": "assets JavaScript注释，不会呈现给访客"
+    },
+    {
+      "file": "assets/lab.js",
+      "line": 49,
+      "column": 58,
+      "word": "实测",
+      "text": "三级音量 100 / 75 / 45 时，dev/shots/T3/levels.txt 实测）：重拍峰值约 -9～-11 dBFS，拍比重拍低 4–6 dB 且音高更低，细分再低 6–9 dB；",
+      "reason": "assets JavaScript注释，不会呈现给访客"
+    },
+    {
+      "file": "assets/lab.js",
+      "line": 202,
+      "column": 27,
+      "word": "dev/",
+      "text": "  // “听到的”时钟与离线 WAV 都按它补偿（dev/reports/T3.md 有实测）。",
+      "reason": "assets JavaScript注释，不会呈现给访客"
+    },
+    {
+      "file": "assets/lab.js",
+      "line": 202,
+      "column": 46,
+      "word": "实测",
+      "text": "  // “听到的”时钟与离线 WAV 都按它补偿（dev/reports/T3.md 有实测）。",
+      "reason": "assets JavaScript注释，不会呈现给访客"
+    },
+    {
+      "file": "assets/lab.js",
+      "line": 1023,
+      "column": 35,
+      "word": "驱动",
+      "text": "  /* ---------- 帧循环：全部画面由“听到的”音乐位置驱动 ---------- */",
+      "reason": "assets JavaScript注释，不会呈现给访客"
+    }
+  ]
+}

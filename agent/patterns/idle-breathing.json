@@ -10,11 +10,10 @@
       "rhythm"
     ],
     "carriers": [
-      "console",
-      "showcase"
+      "console"
     ],
-    "summary": "停止操作 2.5 秒后，界面元素以两个不成整数比的周期（8s 与 13s）叠加缓慢起伏，相邻元素错相；任何操作立即渐退——界面“活着”，但不打扰。",
-    "mechanism": "空闲时长 = t − 最后一次输入；强度 = clamp((空闲 − 2.5) / 1.5)；位移 = 强度 × A × (0.6·sin(2πt/8 + iφ₁) + 0.4·sin(2πt/13 + iφ₂))。两个周期不成整数比，叠加后长时间不重复；相位按元素索引偏移形成“流动”。",
+    "summary": "停止操作2.5秒后，8s与13s周期叠加起伏，相邻元素错相。操作时渐退，画面保持轻微呼吸。",
+    "mechanism": "空闲时长=t−最后一次输入。强度=clamp((空闲−2.5)/1.5)。位移由8s与13s两个正弦周期叠加。权重分别为0.6与0.4，幅度为强度×A。相位分别加iφ₁与iφ₂，让相邻元素错相。",
     "trigger": "一段时间无操作",
     "effect": "静止画面里保有生命感，暗示“系统在等待你”。",
     "timing": [
@@ -37,7 +36,7 @@
     ],
     "useCases": [
       "待机画面",
-      "展示台/壁纸",
+      "待机陈列/壁纸",
       "游戏菜单",
       "操作台空闲态"
     ],
@@ -64,10 +63,7 @@
     "previewAt": 6.5,
     "sources": [
       {
-        "caseId": "archive-os",
-        "observation": "交互预览停止操作 2.5 秒后渐入呼吸起伏：8 秒与 13 秒周期叠加，最大单向位移约卡片高度的 2.8%，相邻卡片略微错相；切换档案、进入详情或开启减少动态效果时渐退。",
-        "evidence": "observed",
-        "locator": "DESIGN.md · 最新交互修订"
+        "caseId": "archive-os"
       }
     ],
     "preview": "previews/patterns/idle-breathing.jpg",
@@ -80,7 +76,7 @@
     }
   ],
   "documents": {
-    "prompt": "# 空闲呼吸 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/idle-breathing.json) 自动生成。\n\n## 实现 Prompt\n\n实现空闲呼吸：记录最后一次输入时刻；强度 = clamp((t − last − 2.5) / 1.5)；第 i 个元素位移 = 强度 × A × (0.6·sin(2πt/8 + 1.3i) + 0.4·sin(2πt/13 + 0.7i))，A 取元素高度的 2–3%；任何输入立即让强度归零（或在 300ms 内渐退）；prefers-reduced-motion 时完全关闭。附一个空闲计量条与呼吸曲线可视化便于调参。\n\n## 参数\n\n- **阈值**：2.5s 后开始，1.5s 渐入\n- **周期**：8s 与 13s，权重 0.6 / 0.4\n- **幅度**：约元素高度的 2–3%（Demo 14px 为演示放大）\n- **退出**：任何输入立即开始渐退\n\n[打开 Demo](../../demos/patterns/idle-breathing/index.html) · [在库中查看](../../patterns.html#pattern/idle-breathing)\n"
+    "prompt": "# 空闲呼吸\n\n## 实现 Prompt\n\n实现空闲呼吸：记录最后一次输入时刻；强度 = clamp((t − last − 2.5) / 1.5)；第 i 个元素位移 = 强度 × A × (0.6·sin(2πt/8 + 1.3i) + 0.4·sin(2πt/13 + 0.7i))，A 取元素高度的 2–3%；任何输入立即让强度归零（或在 300ms 内渐退）；prefers-reduced-motion 时完全关闭。附一个空闲计量条与呼吸曲线可视化便于调参。\n\n## 参数\n\n- **阈值**：2.5s 后开始，1.5s 渐入\n- **周期**：8s 与 13s，权重 0.6 / 0.4\n- **幅度**：约元素高度的 2–3%（Demo 14px 为演示放大）\n- **退出**：任何输入立即开始渐退\n\n[打开 Demo](../../demos/patterns/idle-breathing/index.html) · [在库中查看](../../patterns.html#pattern/idle-breathing)\n"
   },
   "entrypoint": "demos/patterns/idle-breathing/index.html",
   "files": [

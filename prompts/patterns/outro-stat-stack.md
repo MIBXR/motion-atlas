@@ -1,6 +1,4 @@
-# 结尾数据堆叠与计数 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/outro-stat-stack.json) 自动生成。
+# 结尾数据堆叠与计数
 
 ## 实现 Prompt
 
@@ -8,8 +6,6 @@
 
 ## 参数
 
-- **统计**：0.65s
-- **fin.**：2.4s
 - **时长**：5.2s
 - **声音 voice**：blip、tick、bell、shimmer、sub
 
@@ -21,10 +17,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawOutro、blurIn
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的 tracks.outro 与横竖 layout；58s 底图包含已完成路线和标记圆点。
-- `config.js → segments / markers`：caseT 55.6→60
-- `score.json`：事件 voice：blip、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置统计行、数值计数与fin.入场。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置收尾与横竖布局；58s底图显示完成路线和标记。
+- `config.js → segments / markers`：55.6→60
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/outro-stat-stack/index.html) · [在库中查看](../../patterns.html#pattern/outro-stat-stack)

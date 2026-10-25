@@ -144,8 +144,8 @@
     if (footer) {
       footer.className = 'site-footer';
       footer.innerHTML = `
-        <div><b>MOTION ATLAS</b> · 多媒体动态视觉参考库：案例、巧思、节奏、Prompt 与可迁移 Demo。<br>品牌与影像权利归各自所有者；本库 Demo 为原创转译与教学示范。</div>
-        <div class="links"><a href="docs.html#doc/docs/guide.md">使用指南</a><a href="docs.html#doc/docs/methodology.md">收录方法</a><a href="docs.html#doc/docs/pipeline.md">渲染管线</a><a href="agent/catalog.json">Agent 索引</a></div>`;
+        <div><b>MOTION ATLAS</b> · 动态视觉参考库：案例、巧思、节奏、Prompt 与可运行的 Demo。</div>
+        <div class="links"><a href="docs.html#doc/docs/guide.md">使用指南</a><a href="docs.html#doc/docs/methodology.md">条目结构</a><a href="docs.html#doc/docs/pipeline.md">渲染管线</a><a href="agent/catalog.json">Agent 索引</a></div>`;
     }
     const top = document.createElement('button');
     top.type = 'button';

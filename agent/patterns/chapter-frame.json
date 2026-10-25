@@ -12,26 +12,13 @@
     ],
     "carriers": [
       "video",
-      "console",
-      "showcase"
+      "console"
     ],
     "summary": "章节标签配框线或胶带网点入场，为一段旅程划出章节。",
-    "mechanism": "drawChapter 的章节标签、框线、四角方块、胶带与网点。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawChapter、applyStaticLayout 按 caseT 求值。",
-    "trigger": "播放、暂停或 seek 到巧思时间 t。",
-    "effect": "章节标签配框线或胶带网点入场，为一段旅程划出章节。",
+    "mechanism": "章节标签、标题与四角框线依次出现。框线描出后方块错峰回弹，强调色随章节切换。",
+    "trigger": "进入新的旅程章节时",
+    "effect": "用颜色与边框提示新段落开始。",
     "timing": [
-      {
-        "name": "鸭川框线入场",
-        "value": "0s"
-      },
-      {
-        "name": "框线退场",
-        "value": "1.65s"
-      },
-      {
-        "name": "奈良胶带与网点",
-        "value": "2.45s"
-      },
       {
         "name": "时长",
         "value": "7.05s"
@@ -44,7 +31,7 @@
     "useCases": [
       "多主题旅行影像",
       "游戏任务段落",
-      "展示台分区"
+      "陈列界面分区"
     ],
     "avoid": [
       "主题过多导致色彩失去意义（建议 ≤5 种）"
@@ -61,17 +48,14 @@
         "vertical-title-blur"
       ],
       "conflicts": [],
-      "notes": "drawChapter 的章节标签、框线、四角方块、胶带与网点。"
+      "notes": "章节标签、标题与四角框线依次出现。框线描出后方块错峰回弹，强调色随章节切换。"
     },
     "prompt": "章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；时长 7.05s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/chapter-frame/index.html",
     "kit": true,
     "sources": [
       {
-        "caseId": "map-pilgrimage",
-        "observation": "章节标签配框线或胶带网点入场，为一段旅程划出章节。",
-        "evidence": "observed",
-        "locator": "caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8"
+        "caseId": "map-pilgrimage"
       }
     ],
     "previewAt": 2.4,
@@ -95,7 +79,7 @@
         "confirm"
       ],
       "score": "demos/patterns/chapter-frame/score.json",
-      "description": "MotionKit.audio.attach 挂接事件：bell、confirm。"
+      "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
     },
     "tokens": {
       "palette": [
@@ -146,24 +130,24 @@
     },
     "migration": [
       {
-        "field": "复制的函数",
-        "how": "drawChapter、applyStaticLayout"
+        "field": "动效函数",
+        "how": "配置章节标签、标题、框线与胶带。"
       },
       {
         "field": "依赖",
-        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+        "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
       },
       {
         "field": "需要的数据",
-        "how": "config.js 的 chapters、tracks.chapter、横竖 layout；案例框线 SVG、胶带 CSS 和半色调画布。"
+        "how": "设置章节轨道、标题、配色、装饰与横竖布局。"
       },
       {
         "field": "config.js → segments / markers",
-        "how": "caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8"
+        "how": "24.2→25.85/33→33.8/40.6→44.8"
       },
       {
         "field": "score.json",
-        "how": "事件 voice：bell、confirm；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+        "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
     "preview": "previews/patterns/chapter-frame.jpg",
@@ -176,7 +160,7 @@
     }
   ],
   "documents": {
-    "prompt": "# 章节主题：标签、强调色与四角框线 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/chapter-frame.json) 自动生成。\n\n## 实现 Prompt\n\n章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；时长 7.05s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **鸭川框线入场**：0s\n- **框线退场**：1.65s\n- **奈良胶带与网点**：2.45s\n- **时长**：7.05s\n- **声音 voice**：bell、confirm\n\n## 动效 Token\n\n- **鸭川框线入场**：0s\n- **框线退场**：1.65s\n- **奈良胶带与网点**：2.45s\n- **时长**：7.05s\n\n## 迁移\n\n- `复制的函数`：drawChapter、applyStaticLayout\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。\n- `需要的数据`：config.js 的 chapters、tracks.chapter、横竖 layout；案例框线 SVG、胶带 CSS 和半色调画布。\n- `config.js → segments / markers`：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8\n- `score.json`：事件 voice：bell、confirm；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)\n"
+    "prompt": "# 章节主题：标签、强调色与四角框线\n\n## 实现 Prompt\n\n章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；时长 7.05s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：7.05s\n- **声音 voice**：bell、confirm\n\n## 动效 Token\n\n- **鸭川框线入场**：0s\n- **框线退场**：1.65s\n- **奈良胶带与网点**：2.45s\n- **时长**：7.05s\n\n## 迁移\n\n- `动效函数`：配置章节标签、标题、框线与胶带。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置章节轨道、标题、配色、装饰与横竖布局。\n- `config.js → segments / markers`：24.2→25.85/33→33.8/40.6→44.8\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)\n"
   },
   "entrypoint": "demos/patterns/chapter-frame/index.html",
   "files": [

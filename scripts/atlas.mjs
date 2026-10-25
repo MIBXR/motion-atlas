@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Motion Atlas 命令行：给人和 Agent 用的检索、查看与导出。零依赖。
 //   node scripts/atlas.mjs list [--kind cases|patterns] [--json]
-//   node scripts/atlas.mjs search <关键词…> [--kind cases|patterns] [--carrier video|console|showcase] [--type <巧思类型>] [--limit 8] [--json]
+//   node scripts/atlas.mjs search <关键词…> [--kind cases|patterns] [--carrier video|console] [--type <巧思类型>] [--limit 8] [--json]
 //   node scripts/atlas.mjs show <id> [--source] [--json]
 //   node scripts/atlas.mjs export <id> --out <目录> [--code-only] [--force]
 import fs from 'node:fs';
@@ -35,7 +35,7 @@ function usage() {
 
 // ---------- 检索：分词后在标题、摘要、标签、类型等字段中加权计分 ----------
 function haystack(kind, e) {
-  const tax = [...(e.carriers || []).map((k) => TAXONOMY.carriers[k]), ...(e.types || []).map((k) => TAXONOMY.types[k]), e.source && TAXONOMY.sources[e.source]];
+  const tax = [...(e.carriers || []).map((k) => TAXONOMY.carriers[k]), ...(e.types || []).map((k) => TAXONOMY.types[k])];
   return [
     [3, [e.id, e.title, e.subtitle].join(' ')],
     [2, [...(e.tags || []), ...tax, ...(e.carriers || []), ...(e.types || [])].join(' ')],
@@ -92,7 +92,7 @@ function show(id) {
   L.push(`# ${e.title}  (${e.id})`, label(kind, e), '');
   L.push(e.summary, '');
   if (kind === 'cases') {
-    L.push(`证据：${TAXONOMY.evidence[e.evidence]}　来源：${TAXONOMY.sources[e.source]}　可逐帧：${e.timeline ? '是' : '否'}`);
+    L.push(`可逐帧：${e.timeline ? '是' : '否'}`);
     if (e.rhythm?.beats?.length) L.push('', '## 节拍', ...e.rhythm.beats.map((b) => `- ${b.t.toFixed(2).padStart(6)}s  ${b.label}`));
     if (e.patternIds?.length) L.push('', `巧思：${e.patternIds.join(', ')}`);
   } else {
@@ -105,7 +105,6 @@ function show(id) {
   if (e.negativePrompt) L.push('', '## 负向约束', e.negativePrompt);
   if (e.migration?.length) L.push('', '## 迁移', ...e.migration.map((m) => `- ${m.field}：${m.how}`));
   L.push('', '## 文件', ...files.map((f) => `- ${f}`), '', `资料包：agent/${kind}/${e.id}.json`);
-  if (e.research) L.push(`研究笔记：${e.research}`);
   if (flags.has('--source')) {
     for (const f of files.filter((x) => /\.(html|css|js)$/.test(x) && !x.endsWith('motion-kit.js'))) {
       L.push('', `----- ${f} -----`, fs.readFileSync(path.join(ROOT, f), 'utf8'));

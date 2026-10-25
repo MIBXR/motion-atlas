@@ -44,12 +44,12 @@
     const base = sel.find((x) => x.kind === 'cases') || sel.find((x) => x.role === 'foundation') || sel[0];
     L.push(`任务：${brief ? `做「${brief}」` : '做一个动态视觉作品'}，参考下列 Motion Atlas 条目的结构、节奏与参数，内容与品牌换成我的。`, '');
     L.push('先读资料包（本地仓库内），再动手：');
-    for (const x of sel) L.push(`- agent/${x.kind}/${x.e.id}.json — ${x.e.title}（${x.kind === 'cases' ? `案例 · ${x.sub} · ${TAX.evidence[x.e.evidence]}` : `巧思 · ${ROLE_NAME[x.role]}`}）`);
+    for (const x of sel) L.push(`- agent/${x.kind}/${x.e.id}.json — ${x.e.title}（${x.kind === 'cases' ? `案例 · ${x.sub}` : `巧思 · ${ROLE_NAME[x.role]}`}）`);
     L.push('', '做法：');
     L.push(`1. 以「${base.e.title}」为底：运行 node scripts/atlas.mjs export ${base.e.id} --out <你的目录>，只改 ${base.kind === 'cases' ? 'config.js' : 'index.html 顶部的 CONFIG 块'}（文案、配色、时刻表），保留时间结构。`);
     const others = sel.filter((x) => x !== base);
     if (others.length) L.push(`2. 依次融入：${others.map((x) => `${x.e.title}（${ROLE_NAME[x.role]}）`).join('、')}——按各自资料包 documents.prompt 的“实现 Prompt”与“参数”实现，骨架决定版式，支撑占一个区域，点睛只在关键时刻出现。`);
-    L.push(`${others.length ? 3 : 2}. 时间驱动部分写成 render(t) 纯函数，并通过 MotionKit.expose() 暴露 window.__motion（见 docs/pipeline.md）；配置与逻辑分离，零依赖。`);
+    L.push(`${others.length ? 3 : 2}. 按时间播放的部分写成 render(t) 纯函数，并通过 MotionKit.expose() 暴露 window.__motion（见 docs/pipeline.md）；配置与逻辑分离，零依赖。`);
     L.push('', '要点摘录：');
     for (const x of sel) L.push(`【${x.e.title}】${x.e.prompt}`, '');
     const pairs = [...new Set(sel.flatMap((x) => (x.e.composition && x.e.composition.pairsWellWith) || []))].filter((id) => !S.sel.includes(id) && byId.has(id)).slice(0, 4);

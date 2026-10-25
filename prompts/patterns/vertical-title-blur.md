@@ -1,6 +1,4 @@
-# 竖排汉字模糊入场 + 英文打字 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/vertical-title-blur.json) 自动生成。
+# 竖排汉字模糊入场 + 英文打字
 
 ## 实现 Prompt
 
@@ -8,10 +6,6 @@
 
 ## 参数
 
-- **片名**：0s
-- **地点标题**：4.2s
-- **回忆竖排字幕**：7.9s
-- **fin.**：12s
 - **时长**：14.1s
 - **声音 voice**：key、tick、bell、shimmer、sub
 
@@ -25,10 +19,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的 meta、tracks.locTitle / flashback / outro、横竖 layout；scenes.js 的回忆插画。
-- `config.js → segments / markers`：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60
-- `score.json`：事件 voice：key、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置片名、地名、回忆、收尾的模糊与打字入场。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置片名、地点、回忆字幕、收尾与横竖布局。
+- `config.js → segments / markers`：3.8→8/17.9→21.6/25.5→29.6/57.9→60
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/vertical-title-blur/index.html) · [在库中查看](../../patterns.html#pattern/vertical-title-blur)

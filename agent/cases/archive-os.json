@@ -9,111 +9,147 @@
     "en": "Rhine Lab Archive Terminal",
     "subtitle": "Rhine Lab Archive Terminal",
     "carriers": [
-      "console",
-      "showcase"
+      "console"
     ],
-    "source": "reference",
-    "evidence": "observed",
-    "capturedAt": "2026-10-22",
     "tags": [
-      "RhineLabUI 移植",
+      "RhineLabUI",
       "白底开场",
       "五列循环档案",
       "对角解密",
       "360° 查看器",
       "结构拆解",
-      "原版配乐"
+      "三轨配乐"
     ],
-    "summary": "RhineLabUI 的完整移植：白底开场、五列循环档案阵列、对角解密、360° 查看器与结构拆解，原版模型、字体与配乐。",
-    "focus": "复用 RhineLabUI 上游 12cc5e4 的源码、两份 GLB、字体、音频与四十份档案内容，仅接入 Motion Atlas 固定画幅、60Hz 虚拟时钟和统一音轨；视觉、排版、文案、交互与动效参数来自上游。来源：vendor/rhinelabui/src/、content/archives.json、UPSTREAM.md。",
+    "summary": "白底开场后，五列档案循环展开。读取时对角解密，还能360°查看模型、拆解与重组结构。",
+    "focus": "四十份档案按五类排列：可以阅读、查看 3D 模型、拆解再重组结构。画面、声音与操作共用一条时间轴，随时可以暂停和拖动。",
     "accent": "#a27849",
     "background": "#e8e5e1",
     "timeline": true,
     "kit": true,
     "renderer": "gpu",
     "previewAt": 14,
-    "energy": [],
+    "energy": [
+      0.12,
+      0.18,
+      0.22,
+      0.26,
+      0.3,
+      0.32,
+      0.36,
+      0.4,
+      0.44,
+      0.5,
+      0.6,
+      0.82,
+      0.6,
+      0.52,
+      0.5,
+      0.48,
+      0.5,
+      0.7,
+      0.6,
+      0.55,
+      0.5,
+      0.62,
+      0.56,
+      0.54,
+      0.72,
+      0.66,
+      0.64,
+      0.92,
+      0.8,
+      0.84,
+      0.62,
+      0.78,
+      0.72,
+      0.8,
+      0.74,
+      0.8,
+      0.74,
+      0.7,
+      0.55
+    ],
     "rhythm": {
       "duration": 77.6,
       "beats": [
         {
           "t": 0,
           "label": "开场",
-          "note": "F=0 为原版白底开场第一帧，内部帧窗为 25fps。来源：vendor/rhinelabui/src/boot-motion.ts。"
+          "note": "白底开场，逐字输入以25fps呈现。"
         },
         {
           "t": 22,
           "label": "档案阵列",
-          "note": "驱动实测视觉阵列阶段在第1320步首次开始，即22.0s；此时应用 mode 仍为 boot。来源：dev/shots/T5r/opening.json、vendor/rhinelabui/src/main.ts。"
+          "note": "五列档案阵列展开。"
         },
         {
           "t": 35,
           "label": "自动读取",
-          "note": "驱动实测第2100步首次进入 detail，即 A=35.0s，原版自然读取 X-001。来源：dev/shots/T5r/opening.json、vendor/rhinelabui/src/main.ts。"
+          "note": "自动打开第一份档案 X-001，进入详情页。"
         },
         {
           "t": 42.5,
           "label": "页签",
-          "note": "A+7.5s 点击研究记录；之后访问日志、概述按原版 data-tab 派发。来源：vendor/rhinelabui/film/sequence.js、dev/shots/T5r/sequence.json。"
+          "note": "切换研究记录，再查看访问日志与概述。"
         },
         {
           "t": 49,
           "label": "360° 查看器",
-          "note": "A+14s 打开原版模型查看器。来源：vendor/rhinelabui/film/sequence.js、dev/shots/T5r/sequence.json。"
+          "note": "打开360°模型查看器。"
         },
         {
           "t": 54.1,
           "label": "拆解",
-          "note": "A+19.1s 点击原版拆解按钮，六组结构沿原版动画展开。来源：vendor/rhinelabui/film/sequence.js、src/model-viewer.ts、dev/shots/T5r/sequence.json。"
+          "note": "点击拆解，六组结构展开。"
         },
         {
           "t": 58.35,
           "label": "重组",
-          "note": "A+23.35s 点击原版重组按钮。来源：vendor/rhinelabui/film/sequence.js、dev/shots/T5r/sequence.json。"
+          "note": "点击重组，结构合拢。"
         },
         {
           "t": 60.6,
           "label": "返回阵列",
-          "note": "A+25.6s 按 Escape，mode 返回 archive。来源：vendor/rhinelabui/film/sequence.js、dev/shots/T5r/sequence.json。"
+          "note": "按Escape返回档案阵列。"
         },
         {
           "t": 62.6,
           "label": "四向浏览",
-          "note": "B=A+27.6=62.6s 开始固定方向键序列；横竖画幅均实测发生列05→01、01→05与行01→08、08→01循环。来源：vendor/rhinelabui/film/sequence.js、dev/shots/T5r/sequence.json。"
+          "note": "四向浏览，列05↔01、行01↔08首尾循环。"
         }
       ]
     },
     "layers": [
       {
         "name": "开场",
-        "role": "原版逐字输入、莱茵生命标志、身份接入与权限验证。来源：vendor/rhinelabui/src/boot.ts、boot-motion.ts、boot-lettering.ts。"
+        "role": "逐字输入后绘出莱茵生命标志，显示身份与权限。"
       },
       {
         "name": "实体档案阵列",
-        "role": "Three.js 场景复用 archive-cassette.glb；五类各八份档案保留原版内容与双向循环。来源：vendor/rhinelabui/src/scene.ts、archive-loop.ts、data.ts、content/archives.json。"
+        "role": "五类各八份档案组成3D阵列，支持双向循环。"
       },
       {
         "name": "档案阅读",
-        "role": "原版对角解密与正文同步揭示，保留概述、研究记录、访问日志页签。来源：vendor/rhinelabui/src/main.ts、decryption.ts、document-decryption.ts。"
+        "role": "对角解密与正文同步揭示，页签分为概述、研究记录、访问日志。"
       },
       {
         "name": "模型查看器",
-        "role": "独立 Three.js 查看器复用 archive-assembly.glb，支持清晰、磨砂、旋转、复位、六组结构拆解与重组。来源：vendor/rhinelabui/src/model-viewer.ts。"
+        "role": "模型可旋转、复位、切换清晰与磨砂，并拆解和重组六组结构。"
       },
       {
-        "name": "原版声音",
-        "role": "三轨程序配乐、交互合成音、开场音与逐字输入采样按胶片时刻离线渲染。来源：vendor/rhinelabui/src/audio.ts、typing-samples.ts、licenses/audio/README.md。"
+        "name": "声音",
+        "role": "三轨配乐、开场音、逐字短音与交互音随时间轴播放。"
       }
     ],
     "composition": {
-      "rhythm": "原版自然开场的视觉阵列阶段在22.0s开始，mode首次进入detail为A=35.0s；42.5s页签，49s查看器，54.1s拆解，58.35s重组，60.6s返回阵列，B=62.6s四向浏览，77.6s结束。来源：vendor/rhinelabui/film/sequence.js、dev/shots/T5r/opening.json、sequence.json。",
-      "color": "背景 #e8e5e1、文字 #080a08、选中标记 #a27849 沿用原版 CSS。来源：vendor/rhinelabui/src/style.css。",
-      "motion": "原版轨道与列镜头使用临界阻尼速率 3.7，常规选中抬起使用 4.2；空闲呼吸在交互停止 2.5s 后进入。来源：vendor/rhinelabui/src/scene.ts、motion.ts。数字滚动时长 460ms。来源：vendor/rhinelabui/src/main.ts。",
-      "coherence": "开场、档案、模型、文字、控制与声音均来自同一上游应用；外层页面只承载舞台、同源 iframe 与 Motion Atlas 协议。来源：vendor/rhinelabui/src/、demos/cases/archive-os/index.html。",
-      "imagery": "原版档案 GLB 与可拆解 GLB 原样复用；档案文本来自 content/archives.json，下载文本来自 app/archives/。来源：vendor/rhinelabui/src/scene.ts、model-viewer.ts、data.ts。",
-      "layout": "横屏舞台 1920×1080，竖屏 1080×1920；iframe 的实际宽高交给原版 viewport-layout 决定桌面或 portrait 布局，portrait 分界为宽高比 < 1.05。来源：vendor/rhinelabui/src/viewport-layout.ts。",
-      "sound": "三轨原创配乐与原版音效合成均由上游 audio.ts 调度；逐字输入使用三个 38ms 原 PV 采样。来源：vendor/rhinelabui/src/audio.ts、typing-samples.ts、licenses/audio/README.md。",
-      "typography": "保留原版字号与 MiSans 分片字体，不放大。字体包为 misans-webfont@4.3.1，Version 4.003。来源：vendor/rhinelabui/src/fonts.css、licenses/fonts/NOTICE.txt。舞台字号按设计决定，不设下限；网站界面 ≥ 12px。"
+      "rhythm": "22.0s展开阵列，35.0s读取档案。42.5s切页签，49s打开查看器。54.1s拆解，58.35s重组。60.6s返回，62.6s四向浏览，77.6s结束。",
+      "color": "背景#e8e5e1，文字#080a08，选中标记#a27849。",
+      "motion": "轨道与列镜头的临界阻尼速率为3.7。选中抬起速率为4.2。停止交互2.5s后进入空闲呼吸。数字滚动时长460ms。",
+      "coherence": "开场、档案、模型、文字与声音共享同一套界面语言。播放、定位和手动操作都在同一舞台里完成。",
+      "imagery": "档案与可拆解结构使用两份 GLB 模型。四十份档案可阅读，也可下载为文本。",
+      "layout": "横屏1920×1080，竖屏1080×1920。宽高比<1.05时切换为竖屏布局。",
+      "sound": "三轨配乐叠加交互合成音。逐字输入使用三个38ms短音轮替。",
+      "typography": "MiSans字体保持清楚的文字层级。字体包为misans-webfont@4.3.1。字体版本为4.003，网站界面文字≥12px。"
     },
     "tokens": {
       "palette": [
@@ -124,73 +160,73 @@
       "motion": [
         {
           "name": "boot-window",
-          "value": "25fps 离散帧窗；应用内部时间 0 对应参考 PV 5s。来源：vendor/rhinelabui/src/boot-motion.ts。"
+          "value": "开场以25fps离散播放。"
         },
         {
           "name": "orbit",
-          "value": "临界阻尼速率 3.7。来源：vendor/rhinelabui/src/scene.ts、motion.ts。"
+          "value": "临界阻尼速率3.7。"
         },
         {
           "name": "select-lift",
-          "value": "常规选中抬起临界阻尼速率 4.2。来源：vendor/rhinelabui/src/scene.ts。"
+          "value": "选中抬起的临界阻尼速率4.2。"
         },
         {
           "name": "roll",
-          "value": "滚动时长 460ms。来源：vendor/rhinelabui/src/main.ts。"
+          "value": "滚动时长460ms。"
         },
         {
           "name": "idle",
-          "value": "交互停止 2.5s 后进入空闲呼吸。来源：vendor/rhinelabui/src/scene.ts。"
+          "value": "交互停止2.5s后进入空闲呼吸。"
         },
         {
           "name": "decrypt",
-          "value": "交互解密进度按 (39.56−34.12)/1.5 = 3.6267s 运行。来源：vendor/rhinelabui/src/decryption.ts 的 DECRYPTION_START、DECRYPTION_END、INTERACTIVE_RATE。"
+          "value": "解密时长为(39.56−34.12)/1.5=3.6267s。"
         },
         {
           "name": "quality",
-          "value": "performance / original / high / ultra 四种上游画质预设；默认 original。来源：vendor/rhinelabui/src/render-quality.ts。"
+          "value": "画质分为performance、original、high、ultra。默认original。"
         }
       ],
-      "type": "MiSans 分片字体与原版 CSS 字号。来源：vendor/rhinelabui/src/fonts.css、style.css、licenses/fonts/NOTICE.txt。"
+      "type": "MiSans分片字体，文字层级随画面整体缩放。"
     },
     "observations": [
       {
-        "at": "源码 · content/archives.json / src/data.ts",
-        "what": "原版共四十份档案，工程研究、生命科学、机构档案、能量研究、特别项目五列各八份。"
+        "at": "档案阵列",
+        "what": "五列档案：工程研究、生命科学、机构档案、能量研究、特别项目，每列八份。"
       },
       {
-        "at": "源码 · src/motion.ts / src/scene.ts",
-        "what": "原版 damp() 使用解析临界阻尼步进，列镜头与阵列轨道的常规速率为 3.7，常规选中抬起速率为 4.2。"
+        "at": "选择与镜头",
+        "what": "选中的档案轻轻抬起，镜头沿阵列平滑跟随，停下时没有回弹。"
       },
       {
-        "at": "源码 · src/main.ts",
-        "what": "原版数字与标题滚动时长为 460ms；档案阅读、页签、检索、收藏与键盘操作保留在应用内。"
+        "at": "文字滚动",
+        "what": "编号与标题切换时滚动约 460ms，页签、检索、收藏随时可用。"
       },
       {
-        "at": "源码 · src/decryption.ts",
-        "what": "原片解密区间 34.12–39.56s，交互倍率 1.5；对应交互进度时长 3.6267s，属于源码推导值。"
+        "at": "解密",
+        "what": "读取档案时正文沿对角线逐块解密，约 3.6 秒完成。"
       },
       {
-        "at": "源码 · src/viewport-layout.ts",
-        "what": "宽高比低于 1.05 使用 portrait；外层固定画幅把实际尺寸传给 iframe。"
+        "at": "画幅",
+        "what": "横屏 1920×1080，画面整体等比缩放。"
       },
       {
-        "at": "LICENSE / PR15-ATTRIBUTION.md / licenses/audio/README.md",
-        "what": "保留 LBEILC / RhineLabUI 与 PacificSauryMan 的署名；原 PV 的逐字输入采样与第三方字体等遵守各自权利声明。"
+        "at": "逐字输入",
+        "what": "开机文字逐字打出，每个字都配一声短音。"
       },
       {
-        "at": "驱动实测 · dev/shots/T5r/opening.json / sequence.json",
-        "what": "阵列视觉阶段第1320步=22.0s；首次detail第2100步=A35.0s，读取X-001；B62.6s，duration77.6s。横竖画幅固定输入轨迹一致，浏览包含行列双向回绕，两轮序列均无浏览器错误。"
+        "at": "浏览节奏",
+        "what": "22 秒展开阵列，35 秒读取第一份档案，62.6 秒起四向循环浏览。"
       },
       {
-        "at": "音轨实测 · dev/shots/T5r/audio/verification.json / ffprobe.json",
-        "what": "完整原版音轨77.6s、48kHz、双声道Vorbis，三轨配乐；106个发声事件包含10个开场cue、71个逐字输入短音与25个交互音。音轨采样由原版算法与增益声像调度。"
+        "at": "声音",
+        "what": "开机、打字和每一次操作都有对应音效，全片 77.6 秒。"
       }
     ],
     "interaction": [
-      "胶片在 1/60s 网格上步进；向后定位、手动操作后的定位与画幅切换通过重新加载 iframe 重建。来源：vendor/rhinelabui/film/。",
-      "暂停后可在 iframe 内使用原版键盘、鼠标与触摸交互；之后播放或定位恢复胶片状态。来源：demos/cases/archive-os/script.js、vendor/rhinelabui/src/main.ts。",
-      "声音通过 MotionKit.audio 乐谱的单个完整音轨事件播放，暂停、跳转与离线导出使用相同音轨。来源：demos/cases/archive-os/script.js、kit/motion-kit.js。"
+      "按1/60s定位；向后跳转或切换画幅时重新载入画面。",
+      "暂停后可用键盘、鼠标或触摸操作；播放或定位恢复预设演示。",
+      "暂停、跳转与离线导出使用同一份完整音轨。"
     ],
     "useCases": [
       "数据档案与研究记录",
@@ -204,33 +240,32 @@
       "需要同时阅读多份长文档的资料工作台"
     ],
     "constraints": [
-      "忠实复用上游源码、模型、字体、音频与档案内容。上游修改边界及逐文件原因见 vendor/rhinelabui/UPSTREAM.md。",
-      "舞台字号按设计决定，不设下限；网站界面 ≥ 12px。不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。",
-      "《明日方舟》及莱茵生命相关名称、标志、设定、原片和音频采样的权利归各自权利人所有。许可全文与免责声明见 demos/cases/archive-os/LICENSES.md。"
+      "模型、字体、音频与四十份档案共同组成完整终端。",
+      "保持画面布局与排版，网站界面文字≥12px。",
+      "名称、标志与档案内容围绕莱茵生命展开。"
     ],
-    "prompt": "将 LBEILC/RhineLabUI 提交 12cc5e4 忠实移植为 Motion Atlas 案例。源码、两份 GLB、MiSans 字体、三轨配乐、合成音效、逐字输入采样与四十份档案内容原样复用；仅接入固定画幅、60Hz 虚拟时钟、输入胶片与统一音轨。开场自然运行至首次 detail，之后按胶片表演示页签、360° 查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏 1920×1080、竖屏 1080×1920，由原版 viewport-layout 排版。保留上游视觉、字号、文案、动效参数、缓动与音量声像。",
-    "videoPrompt": "A faithful port of LBEILC/RhineLabUI at commit 12cc5e4. Preserve the original white opening, Rhine Lab identity, five-column archive array, diagonal decryption, document tabs, 360-degree model viewer, frosted and clear glass, six-part exploded structure and reassembly. Reuse the original models, typefaces, archive texts, music and sound. Use landscape 1920×1080 or portrait 1080×1920 through the original viewport layout. Follow the recorded film inputs without redesigning any visual or motion parameter.",
-    "negativePrompt": "不要改造原版视觉、布局、字号、文案、动效参数、缓动、模型、字体、档案或声音；不要增添外层 UI、文字与装饰；不要裁剪或加速开场；不要修改胶片动作序列。",
+    "prompt": "制作莱茵生命档案终端：白底开场、五列循环档案阵列、对角解密、360°查看器与结构拆解。使用两份GLB、MiSans字体、三轨配乐、合成音效、逐字短音与四十份档案。固定画幅，60Hz时钟与统一音轨。开场后自动读取档案，再依次演示页签、360°查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏1920×1080、竖屏1080×1920，按画幅排版。保留视觉、字号、文案、动效参数、缓动与音量声像。",
+    "videoPrompt": "A Rhine Lab archive terminal with a white opening, Rhine Lab identity, a five-column archive array, diagonal decryption, document tabs, a 360-degree model viewer, frosted and clear glass, a six-part exploded structure and reassembly. Include two GLB models, MiSans type, forty archive texts, three music tracks and sound. Use landscape 1920×1080 or portrait 1080×1920 layouts. Show the opening, archive reading, tabs, model viewer, disassembly, reassembly and four-direction browsing in sequence.",
+    "negativePrompt": "保持视觉、布局、字号、文案、动效参数、缓动、模型、字体、档案和声音；不要增添外层UI、文字与装饰；不要裁剪或加速开场；保持动作序列。",
     "migration": [
       {
-        "field": "vendor/rhinelabui/src/、content/",
-        "how": "上游源码与档案内容快照；仅修改 UPSTREAM.md 登记的协议接入点。"
+        "field": "档案与外观",
+        "how": "档案内容、模型、字体与外观组成终端画面。"
       },
       {
-        "field": "vendor/rhinelabui/film/",
-        "how": "虚拟时钟、输入时间表与原版声音离线渲染。"
+        "field": "播放序列",
+        "how": "时间表控制输入与声音，支持离线导出。"
       },
       {
-        "field": "demos/cases/archive-os/app/",
-        "how": "Vite 产物与上游 public/ 的全部运行时资源。"
+        "field": "运行资源",
+        "how": "页面与模型、字体、声音等运行资源。"
       },
       {
-        "field": "demos/cases/archive-os/script.js",
-        "how": "MotionKit 舞台、时间轴、iframe 胶片重建、手动模式与单事件音轨。"
+        "field": "舞台与控制",
+        "how": "舞台、时间轴、定位、手动操作与完整音轨。"
       }
     ],
     "demo": "demos/cases/archive-os/index.html",
-    "research": "docs/research/archive-os.md",
     "patternIds": [
       "boot-typing",
       "rolling-digits",
@@ -239,39 +274,12 @@
       "idle-breathing",
       "seekable-timeline"
     ],
-    "sources": [
-      {
-        "title": "LBEILC/RhineLabUI · 12cc5e4",
-        "url": "https://github.com/LBEILC/RhineLabUI/tree/12cc5e4013acb9408f753ff71de6b8492299b7c8",
-        "note": "上游代码、模型、字体、声音与档案内容；本地只读来源与改动清单见 vendor/rhinelabui/UPSTREAM.md。",
-        "type": "一手源码"
-      },
-      {
-        "title": "RhineLabUI · LICENSE",
-        "url": "https://github.com/LBEILC/RhineLabUI/blob/12cc5e4013acb9408f753ff71de6b8492299b7c8/LICENSE",
-        "note": "Copyright (c) 2026 LBEILC；MIT 全文保留在案例 LICENSES.md。第三方权利不由 MIT 代为授权。",
-        "type": "一手资料 · 许可"
-      },
-      {
-        "title": "RhineLabUI · PR15-ATTRIBUTION.md",
-        "url": "https://github.com/LBEILC/RhineLabUI/blob/12cc5e4013acb9408f753ff71de6b8492299b7c8/PR15-ATTRIBUTION.md",
-        "note": "保留 LBEILC / RhineLabUI、PacificSauryMan 与原文辅助工具署名。",
-        "type": "一手资料 · 署名"
-      },
-      {
-        "title": "《明日方舟》特别映像「莱茵生命：访问」",
-        "url": "https://www.bilibili.com/video/BV1rr4y1b7sz/",
-        "note": "上游 README 所列参考 PV；本轮移植使用已提供的只读上游源码和对照运行副本。",
-        "type": "原作参考"
-      }
-    ],
     "previewAtPortrait": 14,
     "preview": "previews/cases/archive-os.jpg",
     "previewPortrait": "previews/cases/archive-os-portrait.jpg"
   },
   "documents": {
-    "prompt": "# 莱茵生命档案终端 · 复用 Prompt\n\n由 [结构化条目](../../entries/cases/archive-os.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/archive-os.md)。\n\n## 实现 Prompt\n\n将 LBEILC/RhineLabUI 提交 12cc5e4 忠实移植为 Motion Atlas 案例。源码、两份 GLB、MiSans 字体、三轨配乐、合成音效、逐字输入采样与四十份档案内容原样复用；仅接入固定画幅、60Hz 虚拟时钟、输入胶片与统一音轨。开场自然运行至首次 detail，之后按胶片表演示页签、360° 查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏 1920×1080、竖屏 1080×1920，由原版 viewport-layout 排版。保留上游视觉、字号、文案、动效参数、缓动与音量声像。\n\n## 视频生成 Prompt\n\nA faithful port of LBEILC/RhineLabUI at commit 12cc5e4. Preserve the original white opening, Rhine Lab identity, five-column archive array, diagonal decryption, document tabs, 360-degree model viewer, frosted and clear glass, six-part exploded structure and reassembly. Reuse the original models, typefaces, archive texts, music and sound. Use landscape 1920×1080 or portrait 1080×1920 through the original viewport layout. Follow the recorded film inputs without redesigning any visual or motion parameter.\n\n## 负向约束\n\n不要改造原版视觉、布局、字号、文案、动效参数、缓动、模型、字体、档案或声音；不要增添外层 UI、文字与装饰；不要裁剪或加速开场；不要修改胶片动作序列。\n\n## 动效 Token\n\n- **boot-window**：25fps 离散帧窗；应用内部时间 0 对应参考 PV 5s。来源：vendor/rhinelabui/src/boot-motion.ts。\n- **orbit**：临界阻尼速率 3.7。来源：vendor/rhinelabui/src/scene.ts、motion.ts。\n- **select-lift**：常规选中抬起临界阻尼速率 4.2。来源：vendor/rhinelabui/src/scene.ts。\n- **roll**：滚动时长 460ms。来源：vendor/rhinelabui/src/main.ts。\n- **idle**：交互停止 2.5s 后进入空闲呼吸。来源：vendor/rhinelabui/src/scene.ts。\n- **decrypt**：交互解密进度按 (39.56−34.12)/1.5 = 3.6267s 运行。来源：vendor/rhinelabui/src/decryption.ts 的 DECRYPTION_START、DECRYPTION_END、INTERACTIVE_RATE。\n- **quality**：performance / original / high / ultra 四种上游画质预设；默认 original。来源：vendor/rhinelabui/src/render-quality.ts。\n\n## 制作约束\n\n- 忠实复用上游源码、模型、字体、音频与档案内容。上游修改边界及逐文件原因见 vendor/rhinelabui/UPSTREAM.md。\n- 舞台字号按设计决定，不设下限；网站界面 ≥ 12px。不调整原版布局与排版。来源：scripts/check.mjs、scripts/smoke.mjs。\n- 《明日方舟》及莱茵生命相关名称、标志、设定、原片和音频采样的权利归各自权利人所有。许可全文与免责声明见 demos/cases/archive-os/LICENSES.md。\n\n## 迁移\n\n- `vendor/rhinelabui/src/、content/`：上游源码与档案内容快照；仅修改 UPSTREAM.md 登记的协议接入点。\n- `vendor/rhinelabui/film/`：虚拟时钟、输入时间表与原版声音离线渲染。\n- `demos/cases/archive-os/app/`：Vite 产物与上游 public/ 的全部运行时资源。\n- `demos/cases/archive-os/script.js`：MotionKit 舞台、时间轴、iframe 胶片重建、手动模式与单事件音轨。\n\n[打开 Demo](../../demos/cases/archive-os/index.html) · [在库中查看](../../cases.html#case/archive-os)\n",
-    "research": "# 莱茵生命档案终端：RhineLabUI 移植记录\n\n本案例复用 [LBEILC / RhineLabUI](https://github.com/LBEILC/RhineLabUI) 提交 `12cc5e4013acb9408f753ff71de6b8492299b7c8` 的源码、模型、字体、音频和档案内容。移植边界是 Motion Atlas 的舞台、时间轴、预加载与统一音频协议；原版视觉、排版、字号、文案、动效参数、缓动和交互行为由上游实现负责。\n\n上游来源为只读目录 `C:/Users/mibxr/AppData/Local/Temp/mmref/RhineLabUI`；对照运行副本位于本任务指定的 `reference-runtime`。源码快照、许可与逐文件接入登记见 [UPSTREAM.md](../../vendor/rhinelabui/UPSTREAM.md)，运行时资源集中存放在 `demos/cases/archive-os/app/`。上游 `public/` 不在 vendor 中重复保存；`art/`、`docs/`、`reference/`、`verification/`、`wallpaper/` 和部署配置不属于本案例快照。\n\n## 上游架构\n\n| 来源文件 | 当前职责 |\n| --- | --- |\n| `src/main.ts` | 应用模式、档案阅读、页签、检索、收藏、偏好与键盘操作。 |\n| `src/boot.ts`、`src/boot-motion.ts`、`src/boot-lettering.ts` | 白底开场、文字输入、品牌标志、身份接入、权限验证与开场帧窗。 |\n| `src/scene.ts`、`src/archive-loop.ts`、`src/motion.ts` | Three.js 档案场景、循环位置、选中抬起、抽取、归位、波形与阻尼。 |\n| `src/decryption.ts`、`src/document-decryption.ts` | 模型对角解密与正文同步揭示。 |\n| `src/model-viewer.ts` | 独立模型查看器、玻璃状态、旋转、平移、缩放、复位、六组结构拆解与重组。 |\n| `src/viewport-layout.ts` | 根据真实视口选择 desktop、compact 或 portrait 布局及模型取景。 |\n| `src/render-quality.ts`、`src/quality-renderer.ts` | performance、original、high、ultra 预设及渲染管线。 |\n| `src/audio.ts`、`src/typing-samples.ts` | 三轨配乐、交互合成音、开场音与逐字输入采样。 |\n| `content/archives.json`、`src/data.ts` | 页面档案数据与阵列位置映射。五列分别为工程研究、生命科学、机构档案、能量研究、特别项目，各八份，共四十份档案。 |\n\n开场的离散视觉帧窗为 25fps，应用内部时间 0 对应参考 PV 的 5s，来源为 `src/boot-motion.ts`。列镜头与阵列轨道在常规选择过渡中使用临界阻尼速率 3.7，常规选中抬起使用 4.2；交互停止 2.5s 后进入空闲呼吸，来源为 `src/scene.ts` 与 `src/motion.ts`。数字滚动时长为 460ms，来源为 `src/main.ts`。交互解密的源码进度时长为 `(39.56 - 34.12) / 1.5 = 3.6267s`，来源为 `src/decryption.ts`；该值是源码推导值。\n\n## 接入边界与文件\n\n上游文件的每处接入修改使用 `// MOTION-ATLAS:` 标记；逐文件清单、原因和原任务条目号统一登记在 [UPSTREAM.md](../../vendor/rhinelabui/UPSTREAM.md)。接入范围为虚拟时钟、仅跳过 GPU 绘制的门控、胶片模式入口、可注入的音频上下文与时间源、相对资源路径和 URL 画质映射。CSS、档案数据、模型、字体和上游音频资源保持原版内容。\n\n| 接入位置 | 职责 |\n| --- | --- |\n| `vendor/rhinelabui/film/` | 虚拟时钟、胶片输入时间表与原版声音离线渲染。 |\n| `vendor/rhinelabui/build.mjs` | 构建相对路径 Vite 产物；`--sync-assets` 将只读上游 public 资源同步至 app。 |\n| `demos/cases/archive-os/index.html`、`script.js`、`config.js`、`style.css` | MotionKit 舞台、同源 iframe、时间轴协议、预加载、手动模式与完整音轨事件。外层不添加 UI、文字或装饰。 |\n| `kit/motion-kit.js` | `audio.dsp.sample()` 登记采样声部；`sustainedAt` 对带 `resume:true` 和 `dur` 的函数音色提供 offset 接续。 |\n| `scripts/check.mjs`、`scripts/smoke.mjs` | 舞台字号按设计决定，不设下限；网站界面 ≥ 12px。运行时最小字号来自 iframe 可见文本计算字号乘舞台缩放比。 |\n| `scripts/smoke.mjs`、`scripts/capture.mjs` | 读取条目 `renderer:gpu`，独立启动GPU浏览器并核验实际renderer；smoke等待seek/play完成后开始原播放计时窗口。 |\n\n逐文件接入清单与 UPSTREAM.md 一致；文件名以下均相对 `vendor/rhinelabui/`：\n\n| 文件 | 要求条目 | 当前接入及必要性 |\n| --- | --- | --- |\n| `src/main.ts` | §3.3、§3.6、§4.2、§6.1 | film入口、白底F0、原版post-entry focus、quality映射及离线声音；字体与双GLB完成后，frame(0)结束才ready。非film沿用原入口。 |\n| `src/scene.ts` | §3.2、§4.2 | 共享assembly GLB Promise以供film资源加载；查看器仍在打开时克隆原模型；GPU门控位于状态更新之后，跳绘时使绘制缓存失效。 |\n| `src/model-viewer.ts` | §3.2 | 仅门控composer/renderer绘制，保留原查看器创建、分组、生命周期、控制与状态更新。 |\n| `src/shared-depth.ts` | §3.2 | 为AO、深度override和Bokeh三个只绘制的pass添加GPU门控。 |\n| `src/wallpaper.ts` | §3.3 | film=1时isWallpaper为false，不启用壁纸宿主。 |\n| `src/audio.ts` | §3.3、§3.4、§6.1、§6.5 | 音频统一通过原发声入口，注入BaseAudioContext和now()；film自动播放不创建实时输出，手动模式按宿主开关恢复；OfflineAudioContext使用原合成、三轨配乐、增益、声像和采样排程；暴露离线渲染及实际声部事件记录。 |\n| `index.html` | §3.1、§3.5 | 在应用包之前同步加载clock-shim.js；manifest、图标使用相对public路径。 |\n| `vite.config.ts` | §3.5、§5 | base为./、publicDir为false、outDir指向app、emptyOutDir为false；模型映射使用原public文件名，Novecento存在性从app资源目录判断，保证运行资源只存一份。 |\n\n新增文件：\n\n| 文件 | 要求条目 | 当前接入及必要性 |\n| --- | --- | --- |\n| `film/clock-shim.js` | §3.1、§4.2及同钟对照授权 | film模式安装60Hz驱动/实时虚拟时钟、固定日期、mulberry32随机数及Web Animations/CSS动画采样。显式opt-in `__filmClockRequested` / `__filmClockStartFrame` 供只读原版CDP使用相同F0/60Hz时钟对齐；正常film起点仍为0，不改变其行为。 |\n| `film/app.ts` | §3.3、§4.2 | ready、字体/双GLB/首帧进度、原rhine.stats与页签/查看器状态及失败传播，不添加UI。 |\n| `film/sequence.js` | §4.3、§4.4 | 提供自然开场后的A/B动作、九个标记、键盘/点击/拖拽派发及状态快照；横竖使用相同动作时刻。仅有film时钟时临时使programmatic focus附focusVisible:false，避免合成指针继承键盘焦点外框；cancel进入手动时恢复原生focus，不修改原CSS或事件处理器。 |\n| `film/render-audio.mjs` | §6.1 | 驱动完整胶片，在注入的OfflineAudioContext渲染48kHz双声道WAV，并以libvorbis q=6编码完整OGG音轨。 |\n| `build.mjs` | §3.5、§5 | 清理上次Vite index与带哈希JS/CSS，保留原public资源；--sync-assets同步全部运行时资源；构建后将产物CSS的/fonts/解析为../fonts/，复制clock/sequence并输出产物清单及大小。上游src/fonts.css保持原样。 |\n| `scripts/patch-rolling-number.mjs` | §5必要补充 | 按上游原字节复制package.json既有postinstall调用的安装脚本，使npm ci完成与上游一致的依赖补丁。 |\n| `UPSTREAM.md` | §2、§3 | 记录固定上游来源、快照边界与当前逐文件接入清单。 |\n\n依赖在 `vendor/rhinelabui/` 中由上游 package-lock 锁定。`npm run build:archive` 生成 app 构建产物；站点构建直接使用入库产物，不依赖重新构建上游应用。静态站点部署目录包含 app，源码快照 vendor 不进入 dist。\n\n## 胶片驱动\n\n舞台支持横屏 1920×1080 与竖屏 1080×1920，iframe 的实际宽高恰好等于舞台尺寸。原版 `viewport-layout.ts` 根据宽高比选择布局：低于 1.05 为 portrait。外层通过 `app/index.html?film=1&quality=<q>` 加载应用；quality 对应上游已有四档预设，默认 original。\n\n外层在首次iframe加载前以临时WebGL canvas识别SwiftShader、llvmpipe、Software或Microsoft Basic Render；软件GL且URL未显式指定quality时使用原版performance预设，显式quality始终优先，__motion提供只读quality与softwareGL供验证。\n\n加载阶段完成字体、双GLB与白底首帧；WebGL程序按原版首次绘制路径创建，查看器在打开时创建。条目renderer:gpu声明smoke/capture使用独立GPU浏览器，核验并打印实际renderer，实际软件渲染判失败；其他条目保持默认环境。\n\n外层以原生performance.now和独立墙钟累加器维护胶片时间，timeline的render、seek、play、pause、on(fn)与setRate读取统一时间。播放每个host RAF取target=floor(wall*60)，完整更新全部中间状态步并跳过中间GPU绘制，只绘制目标步；不设30步推进上限。pause冻结当前实际frame/60并清除播放队列；pause与seek递增播放请求序号，异步重建后仅最新且未取消的请求能够startPlay。seek与离线render路径保持原固定步重建和目标帧绘制，seek的Promise等待目标步完成。\n\nseek/play可以返回Promise；smoke等待seek(0)和play()完成后，再记录起始时刻并执行原1500ms播放窗口与0.5s推进门槛。\n\n胶片时刻以 1/60s 为固定网格，输入目标量化为 `round(t*60)`。虚拟时钟在每步中先按到期顺序执行定时器，再执行一轮 RAF。日期纪元为 2026-01-01T00:00:00Z，随机数使用种子 0x5EED 的 mulberry32。前进定位跳过中间 GPU 绘制并保留所有状态更新，在目标步绘制；后退或手动操作后的定位重新加载 iframe 并从零步进。连续 seek 合并为最后一个目标，加载期间报告 `motion:loading`。\n\n胶片输入期间，仅当iframe存在film虚拟时钟时，对原有programmatic focus临时附加focusVisible:false，使合成指针不会继承键盘可见焦点样式；原CSS和事件处理器保持不变。退出胶片输入时恢复原生focus。\n\n暂停时的真实键盘、鼠标或触摸输入进入手动状态，应用时钟跟随真实时间，交互保留原版功能。下一次播放或定位重建胶片。画幅切换以另一尺寸重新加载 iframe 并恢复当前时刻。\n\n开场从白底第一帧自然运行，不发送输入，不跳过，不加速。A 为驱动模式中应用首次进入 detail 的固定步时刻，向上取整至 0.1s；B=A+27.6s，整部 duration=A+42.6s。实测 A=35.0s（第2100步），阵列视觉阶段在22.0s（第1320步）开始；B=62.6s，duration=77.6s。来源：[opening.json](../../dev/shots/T5r/opening.json)。阵列视觉阶段开始时 mode 仍为 boot，首次 detail 自然读取 X-001。\n\n| 相对时刻 | 输入 |\n| --- | --- |\n| A+7.5s / +10s / +12.5s | 研究记录 / 访问日志 / 概述页签。 |\n| A+14s / +15.7s / +17.4s | 打开查看器 / 磨砂 / 清晰。 |\n| A+19.1s | 拆解档案。 |\n| A+20.9s 至 +21.9s | 从查看器画布中心拖拽，40 步，每步 25ms；每步位移 x=舞台宽×6/1600、y=舞台高×1/900。 |\n| A+22.5s / +23.35s / +25.15s | 复位 / 重组 / 关闭查看器。 |\n| A+25.6s | Escape 返回阵列。 |\n| B / +1s | ArrowDown 两次。 |\n| B+2s / +3s / +4s | ArrowRight 三次。 |\n| B+5s / +6s / +7s / +8s | ArrowUp、ArrowUp、ArrowDown、ArrowDown。 |\n| B+9s / +9.35s / +10.4s / +11.4s / +12.4s | ArrowLeft 三次，再 ArrowUp 两次。 |\n| B+15s | 胶片结束。 |\n\n标记为开场、档案阵列、自动读取、页签、360° 查看器、拆解、重组、返回阵列、四向浏览。各标记绝对时刻为0、22.0、35.0、42.5、49.0、54.1、58.35、60.6、62.6s，来源为 `film/sequence.js` 与实测 `opening.json`。\n\n\n横竖画幅的浏览轨迹一致，实际结果见 [sequence.json](../../dev/shots/T5r/sequence.json)。表中列与行使用原版界面的一基编号：\n\n| 胶片时刻 F | 输入 | 实际选中 | 列 / 行 |\n| --- | --- | --- | --- |\n| 62.6s | ArrowDown | X-006 | 03 / 02 |\n| 63.6s | ArrowDown | X-013 | 03 / 03 |\n| 64.6s | ArrowRight | X-004 | 04 / 01 |\n| 65.6s | ArrowRight | X-008 | 05 / 01 |\n| 66.6s | ArrowRight | X-002 | 01 / 01 |\n| 67.6s | ArrowUp | X-022 | 01 / 08 |\n| 68.6s | ArrowUp | X-021 | 01 / 07 |\n| 69.6s | ArrowDown | X-022 | 01 / 08 |\n| 70.6s | ArrowDown | X-002 | 01 / 01 |\n| 71.6s | ArrowLeft | X-008 | 05 / 01 |\n| 71.95s | ArrowLeft | X-004 | 04 / 01 |\n| 73s | ArrowLeft | X-013 | 03 / 03 |\n| 74s | ArrowUp | X-006 | 03 / 02 |\n| 75s | ArrowUp | X-001 | 03 / 01 |\n\n66.6s 的右移完成列05→01，71.6s 的左移完成列01→05；67.6s 的上移完成行01→08，70.6s 的下移完成行08→01。73.0s 返回第03列时恢复该列记忆的 X-013，75.0s 回到 X-001。两种画幅均记录到上述循环，浏览器错误均为0。\n\n## 声音生成与播放\n\n`film/render-audio.mjs` 通过无头浏览器加载 `?film=1&audio=offline`，向上游音频注入长度为整部 duration 的 OfflineAudioContext。音频 now() 返回胶片时刻；驱动器以固定步完成全部动作，中间跳过 GPU 绘制，所有声音按胶片时刻排程。随后 startRendering() 输出 48kHz 双声道 WAV，由 ffmpeg 的 libvorbis、q=6 编码为 `demos/cases/archive-os/film-audio.ogg`。配乐、合成算法、采样、音量和声像均来自上游 `audio.ts`。\n\n外层通过 `MotionKit.audio.attach` 挂单个完整音轨事件，事件带 duration、`resume:true` 与 music 总线。函数音色使用 `dsp.sample` 和 offset 播放同一解码音轨；播放、暂停、跳转与 `renderWav` 走 kit 的统一链路，主链路保留 -1dBFS 天花板。站点关闭声音时 kit 静音，手动状态同时关闭应用自身 sound 与 music 偏好，打开时恢复。\n\n入库音轨为77.6s、48kHz、双声道Vorbis，libvorbis q=6，文件大小1,333,228字节。已核对106个发声事件，其中10个开场cue、71个逐字输入短音、25个交互音；三轨配乐与声像核对见 [verification.json](../../dev/shots/T5r/audio/verification.json)，编码规格见 [ffprobe.json](../../dev/shots/T5r/audio/ffprobe.json)。\n\n三轨配乐为上游原创程序编配，逐字输入使用原 PV 约 6.864–6.986s 的三个 38ms 短音。原音与衍生片段不属于原创配乐的 MIT 授权范围，来源见 `vendor/rhinelabui/licenses/audio/README.md`。\n\n## 许可与署名\n\n上游作者创作且有权授权的内容采用 MIT，署名为 Copyright (c) 2026 LBEILC；PR15 署名保留 LBEILC / RhineLabUI、PacificSauryMan 及原文辅助工具说明。MiSans、Rolling Number 等第三方资源遵守各自许可证。\n\nMIT、PR15、MiSans NOTICE、Rolling Number、音频来源及上游 README 的第三方权利原文集中在 [LICENSES.md](../../demos/cases/archive-os/LICENSES.md)。MiSans PDF 位于 [app/fonts/MiSans-license.pdf](../../demos/cases/archive-os/app/fonts/MiSans-license.pdf)。\n\n本案例为 RhineLabUI 的移植，属非官方作品；《明日方舟》及莱茵生命相关名称、标志、设定、原片与原片音频采样的权利归各自权利人所有。\n\n## 验证记录\n\n本记录的源码事实已由本地只读上游与 vendor 快照核对；档案数据核实为四十份、五列各八份。驱动使用真实 Intel Iris Xe / ANGLE D3D11；22.0s阵列视觉阶段、35.0s首次detail、横竖双向循环及浏览器错误0的证据分别保存在 `opening.json` 与 `sequence.json`。LICENSES.md 的 MIT、MiSans NOTICE、Rolling Number、PR15 与 README 两段第三方说明已与只读上游原文比对一致。\n\n驱动实测的 A、阵列视觉阶段时刻、duration、选中项、34 张逐拍对照、seek 确定性、性能、ready/download、三次专用 smoke、全量 smoke、构建、预览、MP4、音频和手动模式，统一以 [T5r 报告](../../dev/reports/T5r.md) 的实际结果与证据路径为准。本文件不将尚未执行的验收项记为通过。\n"
+    "prompt": "# 莱茵生命档案终端\n\n## 实现 Prompt\n\n制作莱茵生命档案终端：白底开场、五列循环档案阵列、对角解密、360°查看器与结构拆解。使用两份GLB、MiSans字体、三轨配乐、合成音效、逐字短音与四十份档案。固定画幅，60Hz时钟与统一音轨。开场后自动读取档案，再依次演示页签、360°查看器、六组结构拆解、重组、返回阵列与四向循环浏览。横屏1920×1080、竖屏1080×1920，按画幅排版。保留视觉、字号、文案、动效参数、缓动与音量声像。\n\n## 视频生成 Prompt\n\nA Rhine Lab archive terminal with a white opening, Rhine Lab identity, a five-column archive array, diagonal decryption, document tabs, a 360-degree model viewer, frosted and clear glass, a six-part exploded structure and reassembly. Include two GLB models, MiSans type, forty archive texts, three music tracks and sound. Use landscape 1920×1080 or portrait 1080×1920 layouts. Show the opening, archive reading, tabs, model viewer, disassembly, reassembly and four-direction browsing in sequence.\n\n## 负向约束\n\n保持视觉、布局、字号、文案、动效参数、缓动、模型、字体、档案和声音；不要增添外层UI、文字与装饰；不要裁剪或加速开场；保持动作序列。\n\n## 动效 Token\n\n- **boot-window**：开场以25fps离散播放。\n- **orbit**：临界阻尼速率3.7。\n- **select-lift**：选中抬起的临界阻尼速率4.2。\n- **roll**：滚动时长460ms。\n- **idle**：交互停止2.5s后进入空闲呼吸。\n- **decrypt**：解密时长为(39.56−34.12)/1.5=3.6267s。\n- **quality**：画质分为performance、original、high、ultra。默认original。\n\n## 制作约束\n\n- 模型、字体、音频与四十份档案共同组成完整终端。\n- 保持画面布局与排版，网站界面文字≥12px。\n- 名称、标志与档案内容围绕莱茵生命展开。\n\n## 迁移\n\n- `档案与外观`：档案内容、模型、字体与外观组成终端画面。\n- `播放序列`：时间表控制输入与声音，支持离线导出。\n- `运行资源`：页面与模型、字体、声音等运行资源。\n- `舞台与控制`：舞台、时间轴、定位、手动操作与完整音轨。\n\n[打开 Demo](../../demos/cases/archive-os/index.html) · [在库中查看](../../cases.html#case/archive-os)\n"
   },
   "entrypoint": "demos/cases/archive-os/index.html",
   "files": [

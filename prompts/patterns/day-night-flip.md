@@ -1,6 +1,4 @@
-# 昼夜翻转：逐层插值 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/day-night-flip.json) 自动生成。
+# 昼夜翻转：逐层插值
 
 ## 实现 Prompt
 
@@ -8,9 +6,6 @@
 
 ## 参数
 
-- **白天**：0s
-- **入夜**：1.5s
-- **天亮**：4.5s
 - **时长**：7s
 - **声音 voice**：whoosh、sub、reverse、chime
 
@@ -23,10 +18,10 @@
 
 ## 迁移
 
-- `复制的函数`：dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。
-- `需要的数据`：config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。
-- `config.js → segments / markers`：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值
-- `score.json`：事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置昼夜配色、镜头、时钟与HUD。
+- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。
+- `需要的数据`：设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。
+- `config.js → segments / markers`：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)

@@ -1,6 +1,4 @@
-# 阵列选择波浪 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/wave-array.json) 自动生成。
+# 阵列选择波浪
 
 ## 实现 Prompt
 
@@ -9,7 +7,7 @@
 ## 参数
 
 - **抬起**：临界阻尼速率 4.2，26px
-- **余波**：A 9–10px · ω 7.5 · k 2.6 · 延迟 70ms/格 · 距离衰减 0.35
+- **余波**：A 9–10px，ω 7.5，k 2.6。延迟70ms/格，距离衰减0.35。
 - **叠加**：只叠加最近 3 次选择，避免长期累积
 
 [打开 Demo](../../demos/patterns/wave-array/index.html) · [在库中查看](../../patterns.html#pattern/wave-array)

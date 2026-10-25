@@ -1,6 +1,4 @@
-# 四角信息 HUD · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/corner-hud.json) 自动生成。
+# 四角信息 HUD
 
 ## 实现 Prompt
 
@@ -8,8 +6,6 @@
 
 ## 参数
 
-- **顶部 HUD 入场**：0s
-- **跨天**：6.6s
 - **时长**：13.8s
 - **声音 voice**：click、kick、sub
 
@@ -21,10 +17,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawHud、cameraAt、clockAt、stepAtX、ruleX
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的 tracks.camera / clock / day / progress / lyrics、stepper 与横竖 layout。
-- `config.js → segments / markers`：caseT 7→13.6；caseT 35.8→42.4
-- `score.json`：事件 voice：click、kick、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置镜头、时钟、步进器与规尺函数。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置日序、日期、进度、歌词、步进器与横竖布局。
+- `config.js → segments / markers`：7→13.6/35.8→42.4
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/corner-hud/index.html) · [在库中查看](../../patterns.html#pattern/corner-hud)
