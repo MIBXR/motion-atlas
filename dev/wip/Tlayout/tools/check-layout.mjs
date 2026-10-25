@@ -50,15 +50,16 @@ try {
         const article = document.querySelector('.doc');
         return { width: innerWidth, viewport: document.documentElement.clientWidth, scrollbar: innerWidth - document.documentElement.clientWidth,
           columns, mainWidth: article ? columns[1] : document.querySelector('.lib > section').getBoundingClientRect().width,
-          articleWidth: article?.getBoundingClientRect().width, articleMax: article && getComputedStyle(article).maxWidth,
+          articleWidth: article?.getBoundingClientRect().width, articleCenter: article && (article.getBoundingClientRect().left + article.getBoundingClientRect().right) / 2, articleMax: article && getComputedStyle(article).maxWidth,
           side: { x: r.x, y: r.y, width: r.width, overflowX: getComputedStyle(side).overflowX, scrollWidth: side.scrollWidth, clientWidth: side.clientWidth } };
       })()`);
       measurements.push({ kind, ...m });
-      const expected = width - m.scrollbar - 64 - 228 - 32 - (kind === 'docs' ? 232 : 0);
+      const expected = width - m.scrollbar - 64 - 228 - 32 - (kind === 'docs' ? 260 : 0);
       check('a', `${kind} ${width} main column (${m.mainWidth} / ${expected})`, Math.abs(m.mainWidth - expected) <= 1);
       if (kind === 'docs') {
         check('a', `docs ${width} article max width`, m.articleMax, '860px');
         check('a', `docs ${width} article inside middle column`, Math.abs(m.articleWidth - Math.min(860, m.mainWidth)) <= 1);
+        check('a', `docs ${width} article centered on page (${m.articleCenter} / ${m.viewport / 2})`, Math.abs(m.articleCenter - m.viewport / 2) <= 1);
       }
       sides.push([m.side.x, m.side.y, m.side.width]);
       check('c', `${kind} ${width} sidebar overflow-x`, m.side.overflowX, 'hidden');

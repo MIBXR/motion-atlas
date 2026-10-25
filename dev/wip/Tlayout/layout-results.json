@@ -59,7 +59,7 @@
     },
     {
       "section": "a",
-      "name": "docs 1440 main column (869 / 869)",
+      "name": "docs 1440 main column (841 / 841)",
       "pass": true,
       "actual": true,
       "expected": true
@@ -74,6 +74,13 @@
     {
       "section": "a",
       "name": "docs 1440 article inside middle column",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 1440 article centered on page (712.5 / 712.5)",
       "pass": true,
       "actual": true,
       "expected": true
@@ -187,7 +194,7 @@
     },
     {
       "section": "a",
-      "name": "docs 1920 main column (1349 / 1349)",
+      "name": "docs 1920 main column (1321 / 1321)",
       "pass": true,
       "actual": true,
       "expected": true
@@ -202,6 +209,13 @@
     {
       "section": "a",
       "name": "docs 1920 article inside middle column",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 1920 article centered on page (952.5 / 952.5)",
       "pass": true,
       "actual": true,
       "expected": true
@@ -315,7 +329,7 @@
     },
     {
       "section": "a",
-      "name": "docs 2560 main column (1989 / 1989)",
+      "name": "docs 2560 main column (1961 / 1961)",
       "pass": true,
       "actual": true,
       "expected": true
@@ -330,6 +344,13 @@
     {
       "section": "a",
       "name": "docs 2560 article inside middle column",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 2560 article centered on page (1272.5 / 1272.5)",
       "pass": true,
       "actual": true,
       "expected": true
@@ -1410,6 +1431,7 @@
         1101
       ],
       "mainWidth": 1101,
+      "articleCenter": null,
       "articleMax": null,
       "side": {
         "x": 32,
@@ -1430,6 +1452,7 @@
         1101
       ],
       "mainWidth": 1101,
+      "articleCenter": null,
       "articleMax": null,
       "side": {
         "x": 32,
@@ -1447,11 +1470,12 @@
       "scrollbar": 15,
       "columns": [
         228,
-        869,
-        200
+        841,
+        228
       ],
-      "mainWidth": 869,
-      "articleWidth": 860,
+      "mainWidth": 841,
+      "articleWidth": 841,
+      "articleCenter": 712.5,
       "articleMax": "860px",
       "side": {
         "x": 32,
@@ -1472,6 +1496,7 @@
         1581
       ],
       "mainWidth": 1581,
+      "articleCenter": null,
       "articleMax": null,
       "side": {
         "x": 32,
@@ -1492,6 +1517,7 @@
         1581
       ],
       "mainWidth": 1581,
+      "articleCenter": null,
       "articleMax": null,
       "side": {
         "x": 32,
@@ -1509,11 +1535,12 @@
       "scrollbar": 15,
       "columns": [
         228,
-        1349,
-        200
+        1321,
+        228
       ],
-      "mainWidth": 1349,
+      "mainWidth": 1321,
       "articleWidth": 860,
+      "articleCenter": 952.5,
       "articleMax": "860px",
       "side": {
         "x": 32,
@@ -1534,6 +1561,7 @@
         2221
       ],
       "mainWidth": 2221,
+      "articleCenter": null,
       "articleMax": null,
       "side": {
         "x": 32,
@@ -1554,6 +1582,7 @@
         2221
       ],
       "mainWidth": 2221,
+      "articleCenter": null,
       "articleMax": null,
       "side": {
         "x": 32,
@@ -1571,11 +1600,12 @@
       "scrollbar": 15,
       "columns": [
         228,
-        1989,
-        200
+        1961,
+        228
       ],
-      "mainWidth": 1989,
+      "mainWidth": 1961,
       "articleWidth": 860,
+      "articleCenter": 1272.5,
       "articleMax": "860px",
       "side": {
         "x": 32,
