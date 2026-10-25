@@ -1,6 +1,4 @@
-# 卡片展开为全屏 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/card-expand-fullscreen.json) 自动生成。
+# 卡片展开为全屏
 
 ## 实现 Prompt
 
@@ -8,9 +6,6 @@
 
 ## 参数
 
-- **出卡**：0s
-- **展开**：2.6s
-- **收回**：5.4s
 - **时长**：6.6s
 - **声音 voice**：shutter、paper、whoosh、impact
 
@@ -23,10 +18,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的 inari、tracks.cards 与 expand、横竖 layout；20.4s 底图对应的横竖屏幕锚点；scenes.js 的 torii 照片画布。
-- `config.js → segments / markers`：caseT 18.4→24.6
-- `score.json`：事件 voice：shutter、paper、whoosh、impact；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置卡片、引线、场景绘制与镜头。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置20.4s底图锚点、鸟居照片、卡片与展开轨道、横竖布局。
+- `config.js → segments / markers`：18.4→24.6
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/card-expand-fullscreen/index.html) · [在库中查看](../../patterns.html#pattern/card-expand-fullscreen)

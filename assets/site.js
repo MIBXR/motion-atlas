@@ -100,6 +100,100 @@
   }
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  let syncMenu = () => {};
+
+  function bindMenu(header) {
+    const toggle = header.querySelector('.nav-toggle');
+    const nav = header.querySelector('.site-nav');
+    const navHome = document.createComment('');
+    nav.before(navHome);
+    const panel = document.createElement('div');
+    panel.id = 'mobile-menu';
+    panel.className = 'mobile-menu';
+    panel.hidden = true;
+    panel.tabIndex = -1;
+    panel.setAttribute('aria-label', '菜单');
+    panel.innerHTML = `<div class="menu-views" role="group" aria-label="菜单内容"><button class="btn" type="button" data-view="page">本页目录</button><button class="btn" type="button" data-view="site">全站导航</button></div><div class="menu-page"></div><div class="menu-site"></div>`;
+    header.after(panel);
+    const views = panel.querySelector('.menu-views');
+    const pageHost = panel.querySelector('.menu-page');
+    const siteHost = panel.querySelector('.menu-site');
+    const mobile = matchMedia('(max-width: 980px)');
+    let side = null, sideHome = null, open = false, lastY = scrollY;
+    function setView(view) {
+      pageHost.hidden = view !== 'page';
+      siteHost.hidden = view !== 'site';
+      views.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
+      panel.scrollTop = 0;
+    }
+    function close(restoreFocus = true) {
+      if (!open) return;
+      open = false;
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) toggle.focus({ preventScroll: true });
+    }
+    function sync() {
+      if (side && !sideHome.isConnected) { side.remove(); side = null; sideHome = null; }
+      const next = document.querySelector('.lib > .lib-side, .docs > .lib-side');
+      if (next && next !== side) {
+        side = next;
+        sideHome = document.createComment('');
+        side.before(sideHome);
+      }
+      views.hidden = !side;
+      if (mobile.matches) {
+        siteHost.append(nav);
+        if (side) pageHost.append(side);
+      } else {
+        navHome.after(nav);
+        if (side) sideHome.after(side);
+      }
+      setView(side ? 'page' : 'site');
+    }
+    function show() {
+      if (!mobile.matches) return;
+      sync();
+      pageHost.querySelectorAll('details').forEach((d) => { d.open = true; });
+      open = true;
+      panel.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      header.classList.remove('is-hidden');
+      panel.focus({ preventScroll: true });
+    }
+    toggle.addEventListener('click', () => open ? close() : show());
+    views.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-view]');
+      if (b) setView(b.dataset.view);
+    });
+    panel.addEventListener('click', (e) => {
+      if (e.target.closest('[data-group], #docNav a, .menu-site a')) close();
+    }, true);
+    document.addEventListener('click', (e) => {
+      if (open && !panel.contains(e.target) && !toggle.contains(e.target)) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && open) { e.preventDefault(); close(); }
+    });
+    mobile.addEventListener('change', () => {
+      const focused = panel.contains(document.activeElement);
+      close(mobile.matches);
+      sync();
+      header.classList.remove('is-hidden');
+      lastY = scrollY;
+      if (!mobile.matches && focused) nav.querySelector('a[aria-current], a').focus({ preventScroll: true });
+    });
+    header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
+    addEventListener('scroll', () => {
+      const y = Math.max(0, scrollY);
+      if (!mobile.matches || open || y <= 80) header.classList.remove('is-hidden');
+      else if (y > lastY) header.classList.add('is-hidden');
+      else if (y < lastY - 8) header.classList.remove('is-hidden');
+      if (y > lastY || y < lastY - 8 || y <= 80 || open) lastY = y;
+    }, { passive: true });
+    syncMenu = sync;
+    sync();
+  }
 
   /* ---------- 顶栏与页脚 ---------- */
   function renderShell() {
@@ -116,8 +210,8 @@
           ${NAV.map(([href, label]) => `<a href="${href}"${href === page ? ' aria-current="page"' : ''}>${label}</a>`).join('')}
         </nav>
         <div class="header-tools">
+          <button class="icon-btn nav-toggle" type="button" aria-label="菜单" aria-expanded="false" aria-controls="mobile-menu">${ICONS.menu}<span>菜单</span></button>
           <button class="icon-btn theme-btn" type="button"></button>
-          <button class="icon-btn nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="site-nav">${ICONS.menu}</button>
         </div>`;
       const tb = header.querySelector('.theme-btn');
       const paint = () => {
@@ -133,19 +227,14 @@
         paint();
         document.dispatchEvent(new CustomEvent('ma:theme'));
       });
-      const nt = header.querySelector('.nav-toggle');
-      nt.addEventListener('click', () => {
-        const nav = header.querySelector('.site-nav');
-        const open = nav.classList.toggle('open');
-        nt.setAttribute('aria-expanded', String(open));
-      });
+      bindMenu(header);
     }
     const footer = document.getElementById('site-footer');
     if (footer) {
       footer.className = 'site-footer';
       footer.innerHTML = `
-        <div><b>MOTION ATLAS</b> · 多媒体动态视觉参考库：案例、巧思、节奏、Prompt 与可迁移 Demo。<br>品牌与影像权利归各自所有者；本库 Demo 为原创转译与教学示范。</div>
-        <div class="links"><a href="docs.html#doc/docs/guide.md">使用指南</a><a href="docs.html#doc/docs/methodology.md">收录方法</a><a href="docs.html#doc/docs/pipeline.md">渲染管线</a><a href="agent/catalog.json">Agent 索引</a></div>`;
+        <div><b>MOTION ATLAS</b> · 动态视觉参考库：案例、巧思、节奏、Prompt 与可运行的 Demo。</div>
+        <div class="links"><a href="docs.html#doc/docs/guide.md">使用指南</a><a href="docs.html#doc/docs/methodology.md">条目结构</a><a href="docs.html#doc/docs/pipeline.md">渲染管线</a><a href="agent/catalog.json">Agent 索引</a></div>`;
     }
     const top = document.createElement('button');
     top.type = 'button';
@@ -157,7 +246,7 @@
     addEventListener('scroll', () => top.classList.toggle('show', scrollY > innerHeight), { passive: true });
   }
 
-  window.Site = { ICONS, store, favs, toast, copy, esc, renderShell };
+  window.Site = { ICONS, store, favs, toast, copy, esc, renderShell, syncMenu: () => syncMenu() };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderShell);
   else renderShell();
 })();

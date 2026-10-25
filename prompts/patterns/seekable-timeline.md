@@ -1,6 +1,4 @@
-# 可逐帧定位的时间轴 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/seekable-timeline.json) 自动生成。
+# 可逐帧定位的时间轴
 
 ## 实现 Prompt
 
@@ -8,10 +6,6 @@
 
 ## 参数
 
-- **播放**：0s
-- **倒拖**：2s
-- **前跳**：3.4s
-- **再倒拖**：5s
 - **时长**：7s
 - **声音 voice**：shutter、paper、confirm、stamp、sparkle、tick
 
@@ -25,10 +19,10 @@
 
 ## 迁移
 
-- `复制的函数`：render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的顶部 HUD / kix 卡片 / mascot 轨道、tracks.camera 与横竖 layout；13s 底图屏幕锚点；七段拖动曲线和复制的控制条结构 / CSS。
-- `config.js → segments / markers`：caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4
-- `score.json`：事件 voice：shutter、paper、confirm、stamp、sparkle、tick；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置HUD、卡片、引线、镜头、时钟与控制条。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置顶部HUD、kix卡片与MIKAN；13s底图配七段拖动。
+- `config.js → segments / markers`：12→14/14→12.6/12.6→13.4/13.4→15.5/15.5→16.6/16.6→13/13→14.4
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/seekable-timeline/index.html) · [在库中查看](../../patterns.html#pattern/seekable-timeline)

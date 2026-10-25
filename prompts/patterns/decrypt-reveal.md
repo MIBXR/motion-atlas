@@ -1,6 +1,4 @@
-# 对角解密与磨砂转清 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/decrypt-reveal.json) 自动生成。
+# 对角解密与磨砂转清
 
 ## 实现 Prompt
 

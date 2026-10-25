@@ -1,6 +1,4 @@
-# 空闲呼吸 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/idle-breathing.json) 自动生成。
+# 空闲呼吸
 
 ## 实现 Prompt
 

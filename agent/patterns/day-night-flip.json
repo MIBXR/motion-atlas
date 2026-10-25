@@ -12,26 +12,13 @@
     ],
     "carriers": [
       "video",
-      "console",
-      "showcase"
+      "console"
     ],
     "summary": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
-    "mechanism": "地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。以巧思时间 t 映射到案例时刻 caseT，复制函数 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 按 caseT 求值。",
-    "trigger": "播放、暂停或 seek 到巧思时间 t。",
-    "effect": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
+    "mechanism": "地图、3D建筑与HUD逐层插值昼夜配色，叠加暖色光。",
+    "trigger": "一天结束、进入夜晚时",
+    "effect": "不用字幕也能看出一天过去了。",
     "timing": [
-      {
-        "name": "白天",
-        "value": "0s"
-      },
-      {
-        "name": "入夜",
-        "value": "1.5s"
-      },
-      {
-        "name": "天亮",
-        "value": "4.5s"
-      },
       {
         "name": "时长",
         "value": "7s"
@@ -44,7 +31,7 @@
     "useCases": [
       "旅行影像跨天",
       "指挥台日夜模式",
-      "展示台主题切换"
+      "陈列界面主题切换"
     ],
     "avoid": [
       "频繁来回切换造成闪烁"
@@ -60,17 +47,14 @@
         "route-draw-marker"
       ],
       "conflicts": [],
-      "notes": "地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。"
+      "notes": "地图、3D建筑与HUD逐层插值昼夜配色，叠加暖色光。"
     },
     "prompt": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。片段：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
     "demo": "demos/patterns/day-night-flip/index.html",
     "kit": true,
     "sources": [
       {
-        "caseId": "map-pilgrimage",
-        "observation": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
-        "evidence": "observed",
-        "locator": "caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值"
+        "caseId": "map-pilgrimage"
       }
     ],
     "previewAt": 4,
@@ -96,7 +80,7 @@
         "chime"
       ],
       "score": "demos/patterns/day-night-flip/score.json",
-      "description": "MotionKit.audio.attach 挂接事件：whoosh、sub、reverse、chime。"
+      "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
     },
     "tokens": {
       "palette": [
@@ -147,24 +131,24 @@
     },
     "migration": [
       {
-        "field": "复制的函数",
-        "how": "dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint"
+        "field": "动效函数",
+        "how": "配置昼夜配色、镜头、时钟与HUD。"
       },
       {
         "field": "依赖",
-        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。"
+        "how": "配置MapLibre 5.6.0、样式、图层与地图镜像。"
       },
       {
         "field": "需要的数据",
-        "how": "config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。"
+        "how": "设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。"
       },
       {
         "field": "config.js → segments / markers",
-        "how": "caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值"
+        "how": "31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值"
       },
       {
         "field": "score.json",
-        "how": "事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+        "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
     "renderer": "gpu",
@@ -178,7 +162,7 @@
     }
   ],
   "documents": {
-    "prompt": "# 昼夜翻转：逐层插值 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/day-night-flip.json) 自动生成。\n\n## 实现 Prompt\n\n地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。片段：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n- **声音 voice**：whoosh、sub、reverse、chime\n\n## 动效 Token\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n\n## 迁移\n\n- `复制的函数`：dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。\n- `需要的数据`：config.js 的 map / mapPalette、tracks.night / camera / clock、HUD 轨道与横竖 layout；固定镜头为案例 34.5s。\n- `config.js → segments / markers`：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值\n- `score.json`：事件 voice：whoosh、sub、reverse、chime；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
+    "prompt": "# 昼夜翻转：逐层插值\n\n## 实现 Prompt\n\n地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。片段：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：7s\n- **声音 voice**：whoosh、sub、reverse、chime\n\n## 动效 Token\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n\n## 迁移\n\n- `动效函数`：配置昼夜配色、镜头、时钟与HUD。\n- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。\n- `需要的数据`：设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。\n- `config.js → segments / markers`：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
   },
   "entrypoint": "demos/patterns/day-night-flip/index.html",
   "files": [

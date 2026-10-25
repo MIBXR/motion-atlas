@@ -1,6 +1,4 @@
-# 地图巡礼 · 游戏过场式旅行影像 · 复用 Prompt
-
-由 [结构化条目](../../entries/cases/map-pilgrimage.json) 自动生成。观察与边界见 [研究笔记](../../docs/research/map-pilgrimage.md)。
+# 地图巡礼 · 游戏过场式旅行影像
 
 ## 实现 Prompt
 
@@ -16,38 +14,38 @@
 
 ## 动效 Token
 
-- **blur-in 逐字**：550ms outCubic，字间 160ms，模糊 18px → 0，上移 14px → 0（地名标题同参数）
+- **blur-in 逐字**：550ms outCubic，字间160ms。模糊18px→0，上移14px→0。地名标题使用同样参数。
 - **type-in 打字**：按字符推进，前沿字符带 7px 模糊
-- **card-in**：550ms outCubic 浮入，400ms inCubic 离场；图片持续 Ken Burns
-- **card-expand**：600ms inOutCubic 展开，停 2.2s（Ken Burns 1.04→1.10），550ms 收回；HUD 转白字 + 上下压暗
+- **card-in**：550ms outCubic浮入，400ms inCubic离场。图片持续Ken Burns推近。
+- **card-expand**：600ms inOutCubic展开。停2.2s，Ken Burns缩放1.04→1.10。550ms收回，HUD转白字，上下压暗。
 - **day-night**：约 1s，逐图层插值；中途经过去饱和的灰，不整体反色
-- **chapter-frame**：标签 350ms 擦出 + 标题 700ms 打字；框线 800ms inOutCubic 描出，四角方块 120ms 错峰 300ms outBack
-- **split-compare**：分割线 750ms outQuart 滑到中线；时间戳 360ms outBack 盖章
+- **chapter-frame**：标签350ms擦出，标题700ms打字。框线800ms inOutCubic描出。四角方块120ms错峰，300ms outBack。
+- **split-compare**：分割线750ms outQuart滑到中线。时间戳360ms outBack盖章。
 - **stamp**：车站印章与步进器同列，按到达依次盖下（回弹 + 印章音）
 - **stat-stack**：每行 320ms 错峰计数，衬线 fin. 在 2s 后
-- **buffering**：前方缓冲 < 0.5s 暂停并显示 BUFFERING MAP xx%，攒够 4s 继续
+- **buffering**：缓冲<0.5s时暂停，显示BUFFERING MAP xx%。攒够4s继续。
 
 ## 制作约束
 
-- 参考视频为 B 站公开作品，Demo 只学习结构与节奏，画面、文字、地点、乐谱全部替换为原创或公有领域内容；不使用任何动画作品名称或画面。
-- 参考视频中的动画截图与音乐属于各自权利人，本库不收录其帧画面。
-- 底图使用 OpenFreeMap（OpenStreetMap 数据）与 AWS Terrain Tiles，必须保留署名；关西各镜头点位已逐级实测（建筑挤出、道路、水系、铁路、地名完整）。
-- 程序化“照片”只用于示意；正式作品请在 config.js 填入有权使用的真实照片。
-- 固定画幅：横屏 1920×1080、竖屏 1080×1920 两套构图，整体等比缩放；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。
-- 全片瓦片约 730 块 / 130MB（横屏），其中约 290 块 / 66MB 为“必需”；10Mbps 网络下会有 1–2 次数秒的缓冲暂停（实测见研究笔记）。
+- 画面、文字、地点与乐谱共同呈现关西三日旅程。
+- 照片、明信片与插画按画幅绘制。
+- OpenFreeMap底图与AWS高程显示建筑、铁路、水系和地名。
+- 在config.js填入照片，即可替换程序场景。
+- 横屏1920×1080、竖屏1080×1920等比缩放，网站文字≥12px。
+- 约730块/130MB；约290块/66MB必需。10Mbps缓冲1–2次。
 
 ## 迁移
 
-- `config.js → meta`：片名（竖排汉字 + 英文）、副标题、时区、总天数、时长与 BPM。
-- `config.js → stops`：每个地点的英文名、日文 / 中文名、经纬度、海拔、最小显示缩放；路线端点会对齐到这里。
-- `config.js → tracks.camera`：镜头关键帧：c 中心、z 缩放、p 俯仰、b 方位、f / fp 为地点在横 / 竖屏上的位置、zp 竖屏缩放差、e 缓动。长距离移动用一段 ease-out 一口气推近（快速推拉帧的瓦片会降级，缓冲更省）。
-- `paths.js`：铁路与步行几何（经纬度数组）。可以从矢量瓦片的 transportation 图层（class = rail）提取，或用任何 GeoJSON 线。
-- `config.js → tracks.*`：night / clock / day / dayCard / progress / routes / markers / locTitle / cards / counter / stamps / chapter / flashback / compare / toast / note / alert / outro 轨道，改时间即改节奏；画面与乐谱同时跟着变。
-- `config.js → chapters / stepper`：章节标签、标题、强调色与装饰（frame 四角框线 / tape 斜纹胶带）；步进器四站与印章文字。
-- `config.js → sound`：和弦、阳音阶与到站提示音；乐谱由 script.js 的 buildScore() 按轨道生成。
-- `config.js → layout`：横 / 竖两套版式几何（规尺、步进器、印章、卡片区域、标签避让区、收尾统计区），舞台像素坐标。
-- `config.js → palette / mapPalette / map`：纸色、墨色、夜色与强调色；底图逐图层的白天 / 夜晚配色；底图样式、MapLibre 版本、高程瓦片。
-- `scenes.js`：仅在没有真实照片时使用；cards[].media 填图片路径即用真实照片。
-- `script.js → BUF_CFG`：实时缓冲参数：开头门槛 gate、解析窗口 ahead、下载窗口 fetchAhead、内存预算 budgetMB、暂停 / 继续阈值 stall / resume。
+- `config.js → meta`：设置片名、副标题、时区、总天数、时长与BPM。
+- `config.js → stops`：设置地点名称、经纬度、海拔与最小缩放，路线端点自动对齐。
+- `config.js → tracks.camera`：c中心、z缩放、p俯仰、b方位、f/fp取景、zp竖屏缩放、e缓动。
+- `paths.js`：设置铁路与步行经纬度，可用rail图层或GeoJSON线。
+- `config.js → tracks.*`：调整各事件轨道时刻，画面与乐谱同步改变节奏。
+- `config.js → chapters / stepper`：设置章节标题、强调色、框线或胶带，以及四站步进器与印章。
+- `config.js → sound`：设置和弦、阳音阶与到站提示音，按轨道生成乐谱。
+- `config.js → layout`：分别设置横竖规尺、步进器、印章、卡片、避让区与统计区。
+- `config.js → palette / mapPalette / map`：设置纸色、墨色、夜色、强调色与地图昼夜配色、样式和高程。
+- `scenes.js`：cards[].media填图片路径，即可换成真实照片。
+- `script.js → BUF_CFG`：设置开头门槛、解析与下载范围、内存预算、暂停与继续阈值。
 
 [打开 Demo](../../demos/cases/map-pilgrimage/index.html) · [在库中查看](../../cases.html#case/map-pilgrimage)

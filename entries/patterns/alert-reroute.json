@@ -11,22 +11,10 @@
     "console"
   ],
   "summary": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。",
-  "mechanism": "警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project 按 caseT 求值。",
-  "trigger": "播放、暂停或 seek 到巧思时间 t。",
-  "effect": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。",
+  "mechanism": "误乘横幅擦入，错误路线变红并画叉。改道胶囊闪烁，与警报和提示音同步。",
+  "trigger": "行程出错、需要改道时",
+  "effect": "先看出哪里出了错，再跟上新的方向。",
   "timing": [
-    {
-      "name": "警示",
-      "value": "0.2s"
-    },
-    {
-      "name": "错误终点",
-      "value": "1.5s"
-    },
-    {
-      "name": "改道",
-      "value": "2.2s"
-    },
     {
       "name": "时长",
       "value": "6.2s"
@@ -56,17 +44,14 @@
       "corner-hud"
     ],
     "conflicts": [],
-    "notes": "警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。"
+    "notes": "误乘横幅擦入，错误路线变红并画叉。改道胶囊闪烁，与警报和提示音同步。"
   },
   "prompt": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。复用地图巡礼的 drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project 与对应 CSS。警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。片段：caseT 44.8→50.3；时长 6.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
   "demo": "demos/patterns/alert-reroute/index.html",
   "kit": true,
   "sources": [
     {
-      "caseId": "map-pilgrimage",
-      "observation": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。",
-      "evidence": "observed",
-      "locator": "caseT 44.8→50.3"
+      "caseId": "map-pilgrimage"
     }
   ],
   "previewAt": 2.6,
@@ -96,7 +81,7 @@
       "stamp"
     ],
     "score": "demos/patterns/alert-reroute/score.json",
-    "description": "MotionKit.audio.attach 挂接事件：blip、whoosh、error、glitch、clack、alarm、beep、stamp。"
+    "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
     "palette": [
@@ -147,24 +132,24 @@
   },
   "migration": [
     {
-      "field": "复制的函数",
-      "how": "drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project"
+      "field": "动效函数",
+      "how": "配置警示、改道提示、路线与标签。"
     },
     {
       "field": "依赖",
-      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。实时地图使用案例 MapLibre 5.6.0、样式 URL、自定义图层与 tilemirror / demmirror 参数。"
+      "how": "配置MapLibre 5.6.0、样式、图层与地图镜像。"
     },
     {
       "field": "需要的数据",
-      "how": "config.js 的 tracks.alert / routes / markers、stops 与 tracks.camera；paths.js 的 wrong / reroute 与已完成路线几何；横竖安全框判断后的固定镜头。"
+      "how": "设置警示轨道、错误路线、地图与横竖布局。"
     },
     {
       "field": "config.js → segments / markers",
-      "how": "caseT 44.8→50.3"
+      "how": "44.8→50.3"
     },
     {
       "field": "score.json",
-      "how": "事件 voice：blip、whoosh、error、glitch、clack、alarm、beep、stamp；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ],
   "renderer": "gpu"

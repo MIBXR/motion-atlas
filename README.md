@@ -1,11 +1,11 @@
-# Motion Atlas · 多媒体动态视觉参考库
+# Motion Atlas · 动态视觉参考库
 
-面向**影像视频、交互操作台、交互展示台**的动态设计参考库。每个案例都拆成镜头、信息层、文字、转场与声音轨道，附节拍表、能量曲线、动效 Token、可复用 Prompt，以及可以拖动、跳拍、逐帧渲染成视频的零依赖 Demo。
+面向**影像视频与交互操作台**的动态设计参考库。每个案例都拆成镜头、信息层、文字、转场与声音轨道，附节拍表、能量曲线、动效 Token、可复用 Prompt，以及可以拖动、跳拍、逐帧渲染成视频的零依赖 Demo。
 
 **在线浏览：[Motion Atlas](https://motion-atlas.mibxranime.chatgpt.site)**
 
 <!-- counts:start -->
-**3 个案例**　·　**22 个巧思**　·　**3 个可逐帧渲染的影像 Demo**
+**2 个案例**　·　**17 个巧思**　·　**2 个可逐帧渲染的影像 Demo**
 <!-- counts:end -->
 
 ![地图巡礼 Demo 截图](previews/cases/map-pilgrimage.jpg)
@@ -16,17 +16,14 @@
 
 ### 案例
 
-| 案例 | 载体 | 证据 | 时长 |
-| --- | --- | --- | --- |
-| [地图巡礼 · 游戏过场式旅行影像](demos/cases/map-pilgrimage/) | 影像视频 / 交互展示台 | 逐帧实测 | 60s |
-| [白色档案终端 · 循环档案](demos/cases/archive-os/) | 交互操作台 / 交互展示台 | 逐帧/源码实测 | 64s |
-| [工业协议 · 终末地式设施操作台](demos/cases/industrial-protocol/) | 交互操作台 / 交互展示台 | 公开资料推断·待核验 | 17s |
+| 案例 | 载体 | 时长 |
+| --- | --- | --- |
+| [地图巡礼 · 游戏过场式旅行影像](demos/cases/map-pilgrimage/) | 影像视频 | 60s |
+| [莱茵生命档案终端](demos/cases/archive-os/) | 交互操作台 | 77.6s |
 
-三个案例都来自用户提供的参考或真实存在的界面：地图巡礼转译自用户提供的参考，莱茵生命档案终端是 RhineLabUI（MIT）的忠实移植，终末地工业协议转译自《明日方舟：终末地》的界面语言。
+地图巡礼是一支 60 秒的旅行影像：从上海飞抵关西机场，走访京都伏见稻荷、鸭川、奈良公园与大阪道顿堀，横屏、竖屏两套构图。莱茵生命档案终端是一个可以操作的档案界面：开机、浏览档案阵列、读取档案、查看 3D 模型与四向翻阅，横屏构图。
 
-地图巡礼与档案终端采用**横屏 1920×1080 / 竖屏 1080×1920 两套固定画幅构图**，整体等比缩放，配有可离线导出的原创合成乐谱。地图巡礼从上海飞抵关西机场，走访京都伏见稻荷、鸭川、奈良公园与大阪道顿堀；地图瓦片按镜头计划渐进下载、解析，缓冲不足时暂停等待。档案终端以 FIELDWORK 为原创品牌，提供五类四十份档案、双轴首尾循环、四向过渡与读取解密，字体预加载后开始。
-
-地图巡礼、莱茵生命档案终端以及地图巡礼的 12 个巧思使用固定舞台、预加载与乐谱。终末地工业协议案例及其 5 个巧思、档案终端的 5 个巧思仍是自适应布局与原有音效调用，由共享 kit 兼容，将在后续迭代迁移。
+两个案例都整体等比缩放，配有合成乐谱，Demo 可以拖动、跳拍、逐帧导出成视频。地图巡礼的 12 个巧思使用固定舞台与乐谱；档案终端的 5 个巧思为自适应布局。
 
 ### 巧思
 
@@ -34,14 +31,14 @@
 
 | 类型 | 数量 | 例子 |
 | --- | --- | --- |
-| 转场 | 6 | 卡片展开为全屏、昼夜逐层插值 |
-| 节奏与时序 | 6 | 可 seek 时间轴、空闲呼吸 |
-| 交互反馈 | 5 | 长按确认 |
-| 文字动效 | 5 | 竖排模糊标题、字符解码、滚动数字 |
-| 画面构成 | 5 | 四角 HUD、章节框线、分屏对比盖章、切角面板 |
-| 信息层 HUD | 5 | 路线描绘、收集计数 |
-| 质感与后期 | 2 | 胶片颗粒、解码扫描 |
-| 声音 / 镜头 | 1 / 1 | 打字音；路线跟随镜头 |
+| 转场 | 5 | 卡片展开为全屏、昼夜逐层插值 |
+| 节奏与时序 | 5 | 可seek时间轴、空闲呼吸 |
+| 交互反馈 | 4 | 滚动数字、阵列选择波浪 |
+| 文字动效 | 4 | 竖排模糊标题、终端逐字开机 |
+| 画面构成 | 4 | 四角HUD、章节框线、分屏对比盖章 |
+| 信息层HUD | 4 | 路线描绘、收集计数 |
+| 质感与后期 | 2 | 胶片颗粒、磨砂转清 |
+| 声音 / 镜头 | 1 / 1 | 打字音、路线跟随镜头 |
 
 ## 快速开始
 
@@ -55,7 +52,7 @@ node scripts/serve.mjs --port 4321
 
 - **案例库 / 巧思库**：筛选、收藏（可导出 JSON 备份）、内嵌 Demo、首屏刻度条与节拍点、加载进度、声音开关、全屏与三段 Prompt；支持固定画幅的 Demo 可切换横竖构图并保持当前时刻。
 - **节奏实验室**：用多音色节拍器、拍号 / 细分 / 摇摆练节拍，以 A/B 对比、打拍录入、首拍偏移与量化强度理解吸附；曲线、时长和错峰可对齐拍子，导出 CSS 变量、MotionKit 乐谱代码、Prompt 与 WAV。
-- **文档中心**：指南、节奏方法、Prompt 写法、渲染管线、收录方法、3 篇研究笔记与全部 Prompt。
+- **文档中心**：指南、节奏方法、Prompt写法、条目结构、渲染管线与全部Prompt。
 - **Agent 工作流**：资料格式、CLI 与指令生成器。
 
 ## 复用
@@ -78,12 +75,12 @@ node scripts/render.mjs demos/cases/archive-os/index.html --orient portrait --fp
 
 ```text
 entries/            案例与巧思条目（唯一内容源）
-demos/              可运行 Demo；时间驱动的 Demo 遵守 render(t) 协议
+demos/              可运行 Demo；按时间播放的 Demo 遵守 render(t) 协议
 kit/motion-kit.js   共享运行时：固定画幅、时间轴、缓动、节拍、合成乐谱、预加载、控制条
-docs/               指南、方法与研究笔记
+docs/               指南与使用方法
 prompts/ agent/ data/   由 entries 生成（勿手改）
 previews/           Demo 实际截图
-scripts/            serve / build / check / smoke / capture / shot / render / frames / atlas
+scripts/            本地播放、构建、检查、截图、视频导出与命令行工具
 ```
 
 ## 维护命令
@@ -92,16 +89,9 @@ scripts/            serve / build / check / smoke / capture / shot / render / fr
 | --- | --- |
 | `node scripts/build.mjs` | 校验条目、同步 kit 副本，生成站点数据、Prompt 文档、Agent 资料包与本文件的计数 |
 | `npm run build:site` | 生成完整静态站点到 `dist/`，用于 Sites 发布；站点配置见 `.openai/hosting.json` |
-| `node scripts/check.mjs` | 只读检查：条目与引用、kit 副本、生成物是否最新、预览图；舞台字号按设计决定，不设下限；网站界面 ≥ 12px。 |
-| `node scripts/smoke.mjs [--strict-fonts]` | 无头浏览器逐个 Demo 检查全时间轴与播放；固定舞台另测两画幅、切换保持时刻及运行时字号，`--strict-fonts` 将字号警告计为失败 |
+| `node scripts/check.mjs` | 只读检查：条目与引用、kit 副本、生成物是否最新、预览图；网站界面文字≥12px。 |
+| `node scripts/smoke.mjs [--strict-fonts]` | 无头浏览器逐个 Demo 检查全时间轴与播放；固定舞台另测两画幅、切换保持时刻及运行时字号；`--strict-fonts`为兼容参数，不影响结果 |
 | `node scripts/capture.mjs` | 重新截取预览图（需先启动本地服务器） |
 | `node scripts/frames.mjs <video>` | 参考视频取帧，生成带时间码的接触表 |
 
 新增条目的流程见 [CONTRIBUTING.md](CONTRIBUTING.md)，给 Agent 的说明见 [AGENT.md](AGENT.md)。
-
-## 证据与版权
-
-- 每条资料标注证据等级：逐帧/源码实测、本地转译、公开资料推断·待核验、原创设计。终末地式游戏界面案例目前为“推断”，核验方法见 [docs/methodology.md](docs/methodology.md)。
-- 仓库不包含任何第三方的画面、角色、标志、音乐或字体文件。Demo 中的人物、地点与插画为程序绘制的原创内容，游戏专有名词已替换为原创名称。品牌与作品权利归各自所有者。
-- 地图 Demo 使用 [OpenFreeMap](https://openfreemap.org/) 矢量瓦片与 [MapLibre GL JS](https://maplibre.org/)，地图数据 © OpenStreetMap 贡献者。
-- 参考来源与链接列在 [docs/methodology.md](docs/methodology.md#七来源) 与各篇研究笔记中。

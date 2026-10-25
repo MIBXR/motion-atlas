@@ -9,13 +9,11 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const SCHEMA_VERSION = 1;
 
 export const TAXONOMY = {
-  carriers: { video: '影像视频', console: '交互操作台', showcase: '交互展示台' },
-  sources: { reference: '用户提供的参考', game: '游戏界面转译', original: '原创设计语言' },
+  carriers: { video: '影像视频', console: '交互操作台' },
   types: {
     composition: '画面构成', 'type-motion': '文字动效', transition: '转场', camera: '镜头与空间',
     feedback: '交互反馈', rhythm: '节奏与时序', hud: '信息层 HUD', texture: '质感与后期', sound: '声音',
   },
-  evidence: { observed: '逐帧/源码实测', adapted: '本地转译', inferred: '公开资料推断·待核验', original: '原创设计' },
   roles: { foundation: '骨架：决定主视觉与信息层级', support: '支撑：承担一个区域的交互或信息', accent: '点睛：短时、局部的强调' },
 };
 
@@ -60,7 +58,7 @@ export function loadEntries() {
   return { cases, patterns };
 }
 
-const CASE_REQUIRED = ['id', 'title', 'carriers', 'source', 'evidence', 'summary', 'prompt', 'demo', 'composition', 'sources'];
+const CASE_REQUIRED = ['id', 'title', 'carriers', 'summary', 'prompt', 'demo', 'composition'];
 const PATTERN_REQUIRED = ['id', 'title', 'types', 'carriers', 'summary', 'mechanism', 'trigger', 'effect', 'prompt', 'demo', 'sources', 'composition', 'accessibility'];
 
 export function validate({ cases, patterns }) {
@@ -74,10 +72,7 @@ export function validate({ cases, patterns }) {
     ids.add(c.id);
     if (`entries/cases/${c.id}.json` !== c._file) errors.push(`${c._file}: 文件名应为 ${c.id}.json`);
     for (const k of c.carriers || []) if (!TAXONOMY.carriers[k]) errors.push(`${c._file}: 未知载体 ${k}`);
-    if (!TAXONOMY.sources[c.source]) errors.push(`${c._file}: 未知来源 ${c.source}`);
-    if (!TAXONOMY.evidence[c.evidence]) errors.push(`${c._file}: 未知证据等级 ${c.evidence}`);
     if (c.demo && !exists(c.demo)) errors.push(`${c._file}: Demo 不存在 ${c.demo}`);
-    if (c.research && !exists(c.research)) errors.push(`${c._file}: 研究笔记不存在 ${c.research}`);
     for (const pid of c.patternIds || []) if (!patIds.has(pid)) errors.push(`${c._file}: 关联巧思不存在 ${pid}`);
     for (const b of c.rhythm?.beats || []) if (typeof b.t !== 'number' || !b.label) errors.push(`${c._file}: 节拍需要数值 t 与 label`);
     if (c.energy && c.energy.some((v) => typeof v !== 'number' || v < 0 || v > 1)) errors.push(`${c._file}: energy 取值应在 0–1`);
@@ -91,17 +86,16 @@ export function validate({ cases, patterns }) {
     for (const k of p.carriers || []) if (!TAXONOMY.carriers[k]) errors.push(`${p._file}: 未知载体 ${k}`);
     if (p.demo && !exists(p.demo)) errors.push(`${p._file}: Demo 不存在 ${p.demo}`);
     for (const s of p.sources || []) {
-      if (!caseIds.has(s.caseId)) errors.push(`${p._file}: 来源案例不存在 ${s.caseId}`);
-      if (!TAXONOMY.evidence[s.evidence]) errors.push(`${p._file}: 未知证据等级 ${s.evidence}`);
+      if (!caseIds.has(s.caseId)) errors.push(`${p._file}: 所属案例不存在 ${s.caseId}`);
     }
     const comp = p.composition || {};
     if (comp.role && !TAXONOMY.roles[comp.role]) errors.push(`${p._file}: 未知组合职责 ${comp.role}`);
     for (const id of [...(comp.pairsWellWith || []), ...(comp.conflicts || [])]) if (!patIds.has(id)) errors.push(`${p._file}: 组合关系引用不存在 ${id}`);
   }
-  // 反向关联：巧思的来源案例应在该案例 patternIds 中
+  // 巧思应包含在所属案例的 patternIds 中。
   for (const p of patterns) for (const s of p.sources || []) {
     const c = cases.find((x) => x.id === s.caseId);
-    if (c && !(c.patternIds || []).includes(p.id)) errors.push(`${c._file}: patternIds 缺少 ${p.id}（其来源指向本案例）`);
+    if (c && !(c.patternIds || []).includes(p.id)) errors.push(`${c._file}: patternIds 缺少 ${p.id}`);
   }
   return errors;
 }
@@ -119,8 +113,7 @@ function previewFor(kind, id) {
 
 function promptDoc(kind, e) {
   const L = [];
-  L.push(`# ${e.title} · 复用 Prompt`, '');
-  L.push(`由 [结构化条目](../../entries/${kind}/${e.id}.json) 自动生成。${e.research ? `观察与边界见 [研究笔记](../../${e.research})。` : ''}`, '');
+  L.push(`# ${e.title}`, '');
   L.push('## 实现 Prompt', '', e.prompt, '');
   if (e.videoPrompt) L.push('## 视频生成 Prompt', '', e.videoPrompt, '');
   if (e.negativePrompt) L.push('## 负向约束', '', e.negativePrompt, '');
@@ -133,15 +126,14 @@ function promptDoc(kind, e) {
 }
 
 const DOC_GROUPS = [
-  ['docs/research/', '案例研究'],
-  ['prompts/', '复用 Prompt'],
-  ['docs/', '指南与方法'],
-  ['', '项目说明'],
+  ['docs/', '指南'],
+  ['prompts/cases/', '案例 Prompt'],
+  ['prompts/patterns/', '巧思 Prompt'],
 ];
-const GUIDE_ORDER = ['docs/guide.md', 'docs/rhythm.md', 'docs/prompting.md', 'docs/pipeline.md', 'docs/methodology.md', 'README.md', 'AGENT.md', 'CONTRIBUTING.md'];
+const GUIDE_ORDER = ['docs/guide.md', 'docs/rhythm.md', 'docs/prompting.md', 'docs/methodology.md', 'docs/pipeline.md'];
 
 function collectDocs(extra) {
-  const files = [...walk('docs').filter((f) => f.endsWith('.md')), ...['README.md', 'AGENT.md', 'CONTRIBUTING.md'].filter(exists)];
+  const files = fs.readdirSync(path.join(ROOT, 'docs')).filter((f) => f.endsWith('.md')).map((f) => `docs/${f}`);
   const docs = files.map((p) => ({ path: p, content: extra[p] ?? read(p) }));
   for (const [p, content] of Object.entries(extra)) if (p.startsWith('prompts/') && p.endsWith('.md')) docs.push({ path: p, content });
   return docs.map((d) => {
@@ -193,7 +185,6 @@ export function buildAll() {
       schemaVersion: SCHEMA_VERSION, kind: 'case', id: c.id, entry: c,
       documents: {
         prompt: files[`prompts/cases/${c.id}.md`],
-        research: c.research && exists(c.research) ? read(c.research) : null,
       },
       entrypoint: c.demo,
       files: fileManifest([...demoFiles, ...(c.preview ? [c.preview] : []), ...(c.previewPortrait ? [c.previewPortrait] : [])]),
@@ -201,7 +192,7 @@ export function buildAll() {
     const json = JSON.stringify(bundle, null, 2) + '\n';
     files[`agent/cases/${c.id}.json`] = json;
     bundleSummaries.cases.push({
-      id: c.id, title: c.title, summary: c.summary, carriers: c.carriers, source: c.source, evidence: c.evidence, tags: c.tags || [],
+      id: c.id, title: c.title, summary: c.summary, carriers: c.carriers, tags: c.tags || [],
       useCases: c.useCases || [], avoid: c.avoid || [], patternIds: c.patternIds || [], seekable: !!c.timeline,
       bundle: `agent/cases/${c.id}.json`, bundleSha256: sha(Buffer.from(json)),
     });
@@ -227,7 +218,7 @@ export function buildAll() {
   const catalog = {
     schemaVersion: SCHEMA_VERSION,
     name: 'Motion Atlas',
-    description: '多媒体动态视觉参考库：影像视频、交互操作台、交互展示台的案例、巧思、节奏表、Prompt 与可迁移 Demo。',
+    description: '动态视觉参考库：影像视频与交互操作台的案例、巧思、节拍表、Prompt 与可运行的 Demo。',
     contentVersion: sha(Buffer.from(versionText)),
     taxonomy: TAXONOMY,
     protocol: {

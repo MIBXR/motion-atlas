@@ -1,6 +1,4 @@
-# 分屏对比与时间戳盖章 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/split-compare-stamp.json) 自动生成。
+# 分屏对比与时间戳盖章
 
 ## 实现 Prompt
 
@@ -8,8 +6,6 @@
 
 ## 参数
 
-- **分屏**：0s
-- **盖章**：1.65s
 - **时长**：4.8s
 - **声音 voice**：whoosh、stamp、sub
 
@@ -21,10 +17,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawCompare、mountScene、sceneCanvas、paintScene
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的 tracks.compare 与横竖 layout；scenes.js 的 postcard / photo 两侧画布。
-- `config.js → segments / markers`：caseT 29→33.4
-- `score.json`：事件 voice：whoosh、stamp、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置分屏、两侧场景、边框与印章。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。
+- `config.js → segments / markers`：29→33.4
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)

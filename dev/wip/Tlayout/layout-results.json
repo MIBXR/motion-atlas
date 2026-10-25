@@ -1,0 +1,1696 @@
+{
+  "browser": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+  "results": [
+    {
+      "section": "a",
+      "name": "cases 1440 main column (1101 / 1101)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "cases 1440 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "cases 1440 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "a",
+      "name": "patterns 1440 main column (1101 / 1101)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "patterns 1440 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "patterns 1440 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "patterns 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "a",
+      "name": "docs 1440 main column (841 / 841)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 1440 article max width",
+      "pass": true,
+      "actual": "860px",
+      "expected": "860px"
+    },
+    {
+      "section": "a",
+      "name": "docs 1440 article inside middle column",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 1440 article centered on page (712.5 / 712.5)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "docs 1440 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "docs 1440 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "b",
+      "name": "1440 cases/patterns/sidebar exact alignment",
+      "pass": true,
+      "actual": [
+        32,
+        92,
+        228
+      ],
+      "expected": [
+        32,
+        92,
+        228
+      ]
+    },
+    {
+      "section": "b",
+      "name": "1440 cases/docs/sidebar exact alignment",
+      "pass": true,
+      "actual": [
+        32,
+        92,
+        228
+      ],
+      "expected": [
+        32,
+        92,
+        228
+      ]
+    },
+    {
+      "section": "a",
+      "name": "cases 1920 main column (1581 / 1581)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "cases 1920 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "cases 1920 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases 1920 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "a",
+      "name": "patterns 1920 main column (1581 / 1581)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "patterns 1920 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "patterns 1920 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "patterns 1920 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "a",
+      "name": "docs 1920 main column (1321 / 1321)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 1920 article max width",
+      "pass": true,
+      "actual": "860px",
+      "expected": "860px"
+    },
+    {
+      "section": "a",
+      "name": "docs 1920 article inside middle column",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 1920 article centered on page (952.5 / 952.5)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "docs 1920 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "docs 1920 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs 1920 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "b",
+      "name": "1920 cases/patterns/sidebar exact alignment",
+      "pass": true,
+      "actual": [
+        32,
+        92,
+        228
+      ],
+      "expected": [
+        32,
+        92,
+        228
+      ]
+    },
+    {
+      "section": "b",
+      "name": "1920 cases/docs/sidebar exact alignment",
+      "pass": true,
+      "actual": [
+        32,
+        92,
+        228
+      ],
+      "expected": [
+        32,
+        92,
+        228
+      ]
+    },
+    {
+      "section": "a",
+      "name": "cases 2560 main column (2221 / 2221)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "cases 2560 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "cases 2560 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases 2560 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "a",
+      "name": "patterns 2560 main column (2221 / 2221)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "patterns 2560 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "patterns 2560 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "patterns 2560 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "a",
+      "name": "docs 2560 main column (1961 / 1961)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 2560 article max width",
+      "pass": true,
+      "actual": "860px",
+      "expected": "860px"
+    },
+    {
+      "section": "a",
+      "name": "docs 2560 article inside middle column",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "a",
+      "name": "docs 2560 article centered on page (1272.5 / 1272.5)",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "docs 2560 sidebar overflow-x",
+      "pass": true,
+      "actual": "hidden",
+      "expected": "hidden"
+    },
+    {
+      "section": "c",
+      "name": "docs 2560 sidebar has no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs 2560 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "b",
+      "name": "2560 cases/patterns/sidebar exact alignment",
+      "pass": true,
+      "actual": [
+        32,
+        92,
+        228
+      ],
+      "expected": [
+        32,
+        92,
+        228
+      ]
+    },
+    {
+      "section": "b",
+      "name": "2560 cases/docs/sidebar exact alignment",
+      "pass": true,
+      "actual": [
+        32,
+        92,
+        228
+      ],
+      "expected": [
+        32,
+        92,
+        228
+      ]
+    },
+    {
+      "section": "d",
+      "name": "archive-os 1440 beat list no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "d",
+      "name": "archive-os 1440 all beat buttons present",
+      "pass": true,
+      "actual": 9,
+      "expected": 9
+    },
+    {
+      "section": "d",
+      "name": "archive-os 1440 all beat buttons inside container",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "d",
+      "name": "archive-os 1440 wrap and gaps",
+      "pass": true,
+      "actual": [
+        "wrap",
+        "6px"
+      ],
+      "expected": [
+        "wrap",
+        "6px"
+      ]
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 1440 beat list no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 1440 all beat buttons present",
+      "pass": true,
+      "actual": 19,
+      "expected": 19
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 1440 all beat buttons inside container",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 1440 wrap and gaps",
+      "pass": true,
+      "actual": [
+        "wrap",
+        "6px"
+      ],
+      "expected": [
+        "wrap",
+        "6px"
+      ]
+    },
+    {
+      "section": "d",
+      "name": "archive-os 390 beat list no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "d",
+      "name": "archive-os 390 all beat buttons present",
+      "pass": true,
+      "actual": 9,
+      "expected": 9
+    },
+    {
+      "section": "d",
+      "name": "archive-os 390 all beat buttons inside container",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "d",
+      "name": "archive-os 390 wrap and gaps",
+      "pass": true,
+      "actual": [
+        "wrap",
+        "6px"
+      ],
+      "expected": [
+        "wrap",
+        "6px"
+      ]
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 390 beat list no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 390 all beat buttons present",
+      "pass": true,
+      "actual": 19,
+      "expected": 19
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 390 all beat buttons inside container",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "d",
+      "name": "map-pilgrimage 390 wrap and gaps",
+      "pass": true,
+      "actual": [
+        "wrap",
+        "6px"
+      ],
+      "expected": [
+        "wrap",
+        "6px"
+      ]
+    },
+    {
+      "section": "e",
+      "name": "cases.html 1440 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "cases.html 1440 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases.html 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "patterns.html 1440 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "patterns.html 1440 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "patterns.html 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "cases.html#case/archive-os 1440 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/archive-os 1440 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/archive-os 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "cases.html#case/map-pilgrimage 1440 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/map-pilgrimage 1440 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/map-pilgrimage 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "docs.html#doc/docs/guide.md 1440 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/guide.md 1440 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/guide.md 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "docs.html#doc/docs/pipeline.md 1440 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/pipeline.md 1440 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/pipeline.md 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "1440 Prompt route loaded",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "e",
+      "name": "docs.html#doc/prompts/cases/map-pilgrimage.md 1440 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/prompts/cases/map-pilgrimage.md 1440 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/prompts/cases/map-pilgrimage.md 1440 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "cases.html 390 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "cases.html 390 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases.html 390 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "patterns.html 390 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "patterns.html 390 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "patterns.html 390 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "cases.html#case/archive-os 390 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/archive-os 390 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/archive-os 390 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "cases.html#case/map-pilgrimage 390 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/map-pilgrimage 390 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/map-pilgrimage 390 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "docs.html#doc/docs/guide.md 390 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/guide.md 390 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/guide.md 390 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "docs.html#doc/docs/pipeline.md 390 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/pipeline.md 390 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/docs/pipeline.md 390 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "e",
+      "name": "390 Prompt route loaded",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "e",
+      "name": "docs.html#doc/prompts/cases/map-pilgrimage.md 390 unauthorized horizontal scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/prompts/cases/map-pilgrimage.md 390 document no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs.html#doc/prompts/cases/map-pilgrimage.md 390 visible text >= 12px",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "f",
+      "name": "cases menu button SVG and label",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "g",
+      "name": "cases first card y=502.1875 < 844",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases menu visible and default directory",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases all menu details open",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases sidebar node reused",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "cases mobile sidebar no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases mobile menu no unauthorized scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "f",
+      "name": "cases site navigation visible",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases selection closes menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases focus returns to menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases selection changes results",
+      "pass": true,
+      "actual": [
+        "archive-os"
+      ],
+      "expected": [
+        "archive-os"
+      ]
+    },
+    {
+      "section": "f",
+      "name": "cases header hides while scrolling down past 80",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases upward scroll restores header",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases menu clickable after scrolling",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases open menu keeps header visible",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases Escape closes menu and restores focus",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases outside click closes menu and restores focus",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases button toggles menu closed",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases desktop restores sidebar as first element",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases desktop restores site navigation",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "cases mobile document <= 390px",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns menu button SVG and label",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "g",
+      "name": "patterns first card y=554.1875 < 844",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns menu visible and default directory",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns all menu details open",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns sidebar node reused",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "patterns mobile sidebar no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "patterns mobile menu no unauthorized scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "f",
+      "name": "patterns site navigation visible",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns selection closes menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns focus returns to menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns selection changes results",
+      "pass": true,
+      "actual": [
+        "outro-stat-stack",
+        "seekable-timeline",
+        "boot-typing",
+        "wave-array",
+        "idle-breathing"
+      ],
+      "expected": [
+        "outro-stat-stack",
+        "seekable-timeline",
+        "boot-typing",
+        "wave-array",
+        "idle-breathing"
+      ]
+    },
+    {
+      "section": "f",
+      "name": "patterns header hides while scrolling down past 80",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns upward scroll restores header",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns menu clickable after scrolling",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns open menu keeps header visible",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns Escape closes menu and restores focus",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns outside click closes menu and restores focus",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns button toggles menu closed",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns desktop restores sidebar as first element",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns desktop restores site navigation",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "patterns mobile document <= 390px",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs menu button SVG and label",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs menu visible and default directory",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs all menu details open",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs sidebar node reused",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "c",
+      "name": "docs mobile sidebar no horizontal overflow",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "docs mobile menu no unauthorized scrollers",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "f",
+      "name": "docs site navigation visible",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs selection closes menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs focus returns to menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs selection changes document",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs header hides while scrolling down past 80",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs upward scroll restores header",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs menu clickable after scrolling",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs open menu keeps header visible",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs Escape closes menu and restores focus",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs outside click closes menu and restores focus",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs button toggles menu closed",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs desktop restores sidebar as first element",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs desktop restores site navigation",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "f",
+      "name": "docs mobile document <= 390px",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "cases summary collapses",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "cases summary expands",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "cases summary keyboard focus ring",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "patterns summary collapses",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "patterns summary expands",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "patterns summary keyboard focus ring",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "docs summary collapses",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "docs summary expands",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "docs summary keyboard focus ring",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "h",
+      "name": "current document group opens on navigation",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "index.html site-only mobile menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "lab.html site-only mobile menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "agent.html site-only mobile menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "cases.html#case/archive-os site-only mobile menu",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "reduced motion disables header transition",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "section": "extra",
+      "name": "runtime exceptions",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "section": "extra",
+      "name": "local HTTP failures",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    }
+  ],
+  "measurements": [
+    {
+      "kind": "cases",
+      "width": 1440,
+      "viewport": 1425,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        1101
+      ],
+      "mainWidth": 1101,
+      "articleCenter": null,
+      "articleMax": null,
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 226,
+        "clientWidth": 226
+      }
+    },
+    {
+      "kind": "patterns",
+      "width": 1440,
+      "viewport": 1425,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        1101
+      ],
+      "mainWidth": 1101,
+      "articleCenter": null,
+      "articleMax": null,
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 226,
+        "clientWidth": 226
+      }
+    },
+    {
+      "kind": "docs",
+      "width": 1440,
+      "viewport": 1425,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        841,
+        228
+      ],
+      "mainWidth": 841,
+      "articleWidth": 841,
+      "articleCenter": 712.5,
+      "articleMax": "860px",
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 216,
+        "clientWidth": 216
+      }
+    },
+    {
+      "kind": "cases",
+      "width": 1920,
+      "viewport": 1905,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        1581
+      ],
+      "mainWidth": 1581,
+      "articleCenter": null,
+      "articleMax": null,
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 226,
+        "clientWidth": 226
+      }
+    },
+    {
+      "kind": "patterns",
+      "width": 1920,
+      "viewport": 1905,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        1581
+      ],
+      "mainWidth": 1581,
+      "articleCenter": null,
+      "articleMax": null,
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 226,
+        "clientWidth": 226
+      }
+    },
+    {
+      "kind": "docs",
+      "width": 1920,
+      "viewport": 1905,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        1321,
+        228
+      ],
+      "mainWidth": 1321,
+      "articleWidth": 860,
+      "articleCenter": 952.5,
+      "articleMax": "860px",
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 216,
+        "clientWidth": 216
+      }
+    },
+    {
+      "kind": "cases",
+      "width": 2560,
+      "viewport": 2545,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        2221
+      ],
+      "mainWidth": 2221,
+      "articleCenter": null,
+      "articleMax": null,
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 226,
+        "clientWidth": 226
+      }
+    },
+    {
+      "kind": "patterns",
+      "width": 2560,
+      "viewport": 2545,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        2221
+      ],
+      "mainWidth": 2221,
+      "articleCenter": null,
+      "articleMax": null,
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 226,
+        "clientWidth": 226
+      }
+    },
+    {
+      "kind": "docs",
+      "width": 2560,
+      "viewport": 2545,
+      "scrollbar": 15,
+      "columns": [
+        228,
+        1961,
+        228
+      ],
+      "mainWidth": 1961,
+      "articleWidth": 860,
+      "articleCenter": 1272.5,
+      "articleMax": "860px",
+      "side": {
+        "x": 32,
+        "y": 92,
+        "width": 228,
+        "overflowX": "hidden",
+        "scrollWidth": 216,
+        "clientWidth": 216
+      }
+    },
+    {
+      "id": "archive-os",
+      "width": 1440,
+      "beats": {
+        "clientWidth": 967,
+        "scrollWidth": 967,
+        "wrap": "wrap",
+        "gap": "6px",
+        "count": 9,
+        "expected": 9,
+        "outside": []
+      }
+    },
+    {
+      "id": "map-pilgrimage",
+      "width": 1440,
+      "beats": {
+        "clientWidth": 967,
+        "scrollWidth": 967,
+        "wrap": "wrap",
+        "gap": "6px",
+        "count": 19,
+        "expected": 19,
+        "outside": []
+      }
+    },
+    {
+      "id": "archive-os",
+      "width": 390,
+      "beats": {
+        "clientWidth": 300,
+        "scrollWidth": 300,
+        "wrap": "wrap",
+        "gap": "6px",
+        "count": 9,
+        "expected": 9,
+        "outside": []
+      }
+    },
+    {
+      "id": "map-pilgrimage",
+      "width": 390,
+      "beats": {
+        "clientWidth": 300,
+        "scrollWidth": 300,
+        "wrap": "wrap",
+        "gap": "6px",
+        "count": 19,
+        "expected": 19,
+        "outside": []
+      }
+    },
+    {
+      "kind": "cases",
+      "mobileScrollRequested": 1500,
+      "mobileScrollReached": 672
+    },
+    {
+      "kind": "patterns",
+      "mobileScrollRequested": 1500,
+      "mobileScrollReached": 1500
+    },
+    {
+      "kind": "docs",
+      "mobileScrollRequested": 1500,
+      "mobileScrollReached": 1500
+    }
+  ],
+  "pending": [
+    {
+      "item": "8.4(f)",
+      "page": "cases",
+      "requested": 1500,
+      "actual": 672,
+      "reason": "Natural page height does not permit scrollY=1500; tested upward recovery from the natural bottom."
+    }
+  ]
+}

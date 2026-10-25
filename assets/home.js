@@ -50,9 +50,8 @@
 
   // 载体
   const CARRIER_DESC = {
-    video: ['可逐帧渲染成视频的影像：转场、HUD、字幕与镜头都写在时间轴上。', '地图巡礼'],
-    console: ['可以操作的界面：选择、锁定、确认、换页都有方向、余波与回程。', '档案终端'],
-    showcase: ['展示与揭示：展品如何出场、如何被浏览、如何收尾。', '档案阵列'],
+    video: ['只能看的影像：转场、HUD、字幕与镜头都写在时间轴上，可以逐帧导出成视频。', '地图巡礼'],
+    console: ['可以操作的界面：选择、确认、翻页都有清楚的反馈，随时可以暂停。', '档案终端'],
   };
   $('#carriers').innerHTML = Object.entries(TAX.carriers).map(([k, v]) => {
     const n = MA.cases.filter((c) => c.carriers.includes(k)).length;
@@ -64,7 +63,7 @@
     const fav = favs.has('cases', c.id);
     return `<article class="card"><div class="card-media">${c.preview ? `<img src="${esc(c.preview)}" alt="${esc(c.title)} Demo 实际截图" loading="lazy">` : '<span class="ph">PREVIEW</span>'}<span class="card-index">${String(i + 1).padStart(2, '0')} / ${esc(TAX.carriers[c.carriers[0]])}</span></div>
       <div class="card-body"><div class="card-title"><a href="cases.html#case/${c.id}">${esc(c.title)}</a><button class="fav-btn" type="button" data-fav="${c.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(c.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
-      <p class="card-sum">${esc(c.summary)}</p><div class="card-tags">${c.carriers.map((k) => `<span class="chip">${esc(TAX.carriers[k])}</span>`).join('')}<span class="chip accent">${esc(TAX.sources[c.source])}</span></div></div></article>`;
+      <p class="card-sum">${esc(c.summary)}</p><div class="card-tags">${c.carriers.map((k) => `<span class="chip">${esc(TAX.carriers[k])}</span>`).join('')}</div></div></article>`;
   }).join('');
   $('#caseGrid').addEventListener('click', (e) => {
     const b = e.target.closest('[data-fav]');

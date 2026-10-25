@@ -7,30 +7,13 @@
   ],
   "carriers": [
     "video",
-    "showcase",
     "console"
   ],
   "summary": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
-  "mechanism": "片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 按 caseT 求值。",
-  "trigger": "播放、暂停或 seek 到巧思时间 t。",
-  "effect": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
+  "mechanism": "片名与地点标题从模糊中逐字显影。回忆插画配竖排字幕，收尾以fin.落幕。各段共用模糊与打字的入场节奏。",
+  "trigger": "片名、地名或回忆字幕出现时",
+  "effect": "地名有登场感，章节更容易记住。",
   "timing": [
-    {
-      "name": "片名",
-      "value": "0s"
-    },
-    {
-      "name": "地点标题",
-      "value": "4.2s"
-    },
-    {
-      "name": "回忆竖排字幕",
-      "value": "7.9s"
-    },
-    {
-      "name": "fin.",
-      "value": "12s"
-    },
     {
       "name": "时长",
       "value": "14.1s"
@@ -44,7 +27,7 @@
     "片名与章节标题",
     "地名卡",
     "回忆字幕",
-    "展示台展品名"
+    "陈列界面展品名"
   ],
   "avoid": [
     "长段落",
@@ -62,17 +45,14 @@
       "card-expand-fullscreen"
     ],
     "conflicts": [],
-    "notes": "片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。"
+    "notes": "片名与地点标题从模糊中逐字显影。回忆插画配竖排字幕，收尾以fin.落幕。各段共用模糊与打字的入场节奏。"
   },
   "prompt": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 14.1s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
   "demo": "demos/patterns/vertical-title-blur/index.html",
   "kit": true,
   "sources": [
     {
-      "caseId": "map-pilgrimage",
-      "observation": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
-      "evidence": "observed",
-      "locator": "caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60"
+      "caseId": "map-pilgrimage"
     }
   ],
   "previewAt": 2.6,
@@ -103,7 +83,7 @@
       "sub"
     ],
     "score": "demos/patterns/vertical-title-blur/score.json",
-    "description": "MotionKit.audio.attach 挂接事件：key、tick、bell、shimmer、sub。"
+    "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
     "palette": [
@@ -158,24 +138,24 @@
   },
   "migration": [
     {
-      "field": "复制的函数",
-      "how": "drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene"
+      "field": "动效函数",
+      "how": "配置片名、地名、回忆、收尾的模糊与打字入场。"
     },
     {
       "field": "依赖",
-      "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+      "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
     },
     {
       "field": "需要的数据",
-      "how": "config.js 的 meta、tracks.locTitle / flashback / outro、横竖 layout；scenes.js 的回忆插画。"
+      "how": "设置片名、地点、回忆字幕、收尾与横竖布局。"
     },
     {
       "field": "config.js → segments / markers",
-      "how": "caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60"
+      "how": "3.8→8/17.9→21.6/25.5→29.6/57.9→60"
     },
     {
       "field": "score.json",
-      "how": "事件 voice：key、tick、bell、shimmer、sub；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+      "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ]
 }

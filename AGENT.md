@@ -5,9 +5,8 @@
 ## 用本库做参考
 
 1. **检索**：读 `agent/catalog.json`（摘要、标签、关联、资料包路径与哈希），或运行
-   `node scripts/atlas.mjs search "<关键词>" --json`。可用 `--kind cases|patterns`、`--carrier video|console|showcase`、`--type <巧思类型>` 缩小范围。
-2. **读取**：打开 `agent/cases/<id>.json` 或 `agent/patterns/<id>.json`。资料包里有完整条目（`entry` / `pattern`）、Prompt 文档（`documents.prompt`）、研究笔记（`documents.research`）、入口（`entrypoint`）与文件清单（`files[]`，含 sha256）。`catalog.json` 的 `bundleSha256` 变化即代表资料包内容变化。
-3. **注意证据等级**：`observed` 可以当作实测数值使用；`inferred` 是推断，复刻原作时必须提示用户核验；`original` 是本库原创。
+   `node scripts/atlas.mjs search "<关键词>" --json`。可用 `--kind cases|patterns`、`--carrier video|console`、`--type <巧思类型>` 缩小范围。
+2. **读取**：打开 `agent/cases/<id>.json` 或 `agent/patterns/<id>.json`。资料包里有完整条目（`entry` / `pattern`）、Prompt 文档（`documents.prompt`）、入口（`entrypoint`）与文件清单（`files[]`，含 sha256）。`catalog.json` 的 `bundleSha256` 变化即代表资料包内容变化。
 4. **组合**：巧思的 `composition.role` 为 `foundation`（骨架，一个作品通常只有一个）、`support`（支撑）、`accent`（点睛，同一时刻不超过两个）。检查 `pairsWellWith` 与 `conflicts`。
 5. **导出**：`node scripts/atlas.mjs export <id> --out <目录>` 得到可运行 Demo、`PROMPT.md`、`README.md` 与 `entry.json`。迁移时只改 `config.js`（案例）或 `index.html` 顶部的 `CONFIG`（巧思）。
 6. **出片**：时间驱动的 Demo 暴露 `window.__motion`；`node scripts/render.mjs <入口> --fps 30` 逐帧渲染。

@@ -1,6 +1,4 @@
-# 章节主题：标签、强调色与四角框线 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/chapter-frame.json) 自动生成。
+# 章节主题：标签、强调色与四角框线
 
 ## 实现 Prompt
 
@@ -8,9 +6,6 @@
 
 ## 参数
 
-- **鸭川框线入场**：0s
-- **框线退场**：1.65s
-- **奈良胶带与网点**：2.45s
 - **时长**：7.05s
 - **声音 voice**：bell、confirm
 
@@ -23,10 +18,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawChapter、applyStaticLayout
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的 chapters、tracks.chapter、横竖 layout；案例框线 SVG、胶带 CSS 和半色调画布。
-- `config.js → segments / markers`：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8
-- `score.json`：事件 voice：bell、confirm；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置章节标签、标题、框线与胶带。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置章节轨道、标题、配色、装饰与横竖布局。
+- `config.js → segments / markers`：24.2→25.85/33→33.8/40.6→44.8
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)

@@ -10,26 +10,13 @@
       "transition"
     ],
     "carriers": [
-      "video",
-      "showcase"
+      "video"
     ],
     "summary": "照片卡片由引线牵出，展开到全屏停留，再收回原位。",
-    "mechanism": "inari 标记、引线、照片卡片、全屏展开与收回。以巧思时间 t 映射到案例时刻 caseT，复制函数 drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene 按 caseT 求值。",
-    "trigger": "播放、暂停或 seek 到巧思时间 t。",
-    "effect": "照片卡片由引线牵出，展开到全屏停留，再收回原位。",
+    "mechanism": "照片卡片在地图上浮入，引线连接地点。卡片展开占满画面，停留后收回，HUD持续可见。",
+    "trigger": "需要停下来细看一处风景时",
+    "effect": "从路线总览转向现场细节，再回到旅程。",
     "timing": [
-      {
-        "name": "出卡",
-        "value": "0s"
-      },
-      {
-        "name": "展开",
-        "value": "2.6s"
-      },
-      {
-        "name": "收回",
-        "value": "5.4s"
-      },
       {
         "name": "时长",
         "value": "6.6s"
@@ -41,7 +28,7 @@
     ],
     "useCases": [
       "影像高光",
-      "展示台展品放大",
+      "陈列界面展品放大",
       "操作台详情查看"
     ],
     "avoid": [
@@ -60,17 +47,14 @@
         "split-compare-stamp"
       ],
       "conflicts": [],
-      "notes": "inari 标记、引线、照片卡片、全屏展开与收回。"
+      "notes": "照片卡片在地图上浮入，引线连接地点。卡片展开占满画面，停留后收回，HUD持续可见。"
     },
     "prompt": "照片卡片由引线牵出，展开到全屏停留，再收回原位。复用地图巡礼的 drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene 与对应 CSS。inari 标记、引线、照片卡片、全屏展开与收回。片段：caseT 18.4→24.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/card-expand-fullscreen/index.html",
     "kit": true,
     "sources": [
       {
-        "caseId": "map-pilgrimage",
-        "observation": "照片卡片由引线牵出，展开到全屏停留，再收回原位。",
-        "evidence": "observed",
-        "locator": "caseT 18.4→24.6"
+        "caseId": "map-pilgrimage"
       }
     ],
     "previewAt": 1.6,
@@ -96,7 +80,7 @@
         "impact"
       ],
       "score": "demos/patterns/card-expand-fullscreen/score.json",
-      "description": "MotionKit.audio.attach 挂接事件：shutter、paper、whoosh、impact。"
+      "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
     },
     "tokens": {
       "palette": [
@@ -147,24 +131,24 @@
     },
     "migration": [
       {
-        "field": "复制的函数",
-        "how": "drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene"
+        "field": "动效函数",
+        "how": "配置卡片、引线、场景绘制与镜头。"
       },
       {
         "field": "依赖",
-        "how": "MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。"
+        "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
       },
       {
         "field": "需要的数据",
-        "how": "config.js 的 inari、tracks.cards 与 expand、横竖 layout；20.4s 底图对应的横竖屏幕锚点；scenes.js 的 torii 照片画布。"
+        "how": "设置20.4s底图锚点、鸟居照片、卡片与展开轨道、横竖布局。"
       },
       {
         "field": "config.js → segments / markers",
-        "how": "caseT 18.4→24.6"
+        "how": "18.4→24.6"
       },
       {
         "field": "score.json",
-        "how": "事件 voice：shutter、paper、whoosh、impact；保持 inventory 中全部音色参数，t 映射为巧思时刻。"
+        "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
     "preview": "previews/patterns/card-expand-fullscreen.jpg",
@@ -177,7 +161,7 @@
     }
   ],
   "documents": {
-    "prompt": "# 卡片展开为全屏 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/card-expand-fullscreen.json) 自动生成。\n\n## 实现 Prompt\n\n照片卡片由引线牵出，展开到全屏停留，再收回原位。复用地图巡礼的 drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene 与对应 CSS。inari 标记、引线、照片卡片、全屏展开与收回。片段：caseT 18.4→24.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **出卡**：0s\n- **展开**：2.6s\n- **收回**：5.4s\n- **时长**：6.6s\n- **声音 voice**：shutter、paper、whoosh、impact\n\n## 动效 Token\n\n- **出卡**：0s\n- **展开**：2.6s\n- **收回**：5.4s\n- **时长**：6.6s\n\n## 迁移\n\n- `复制的函数`：drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene\n- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。\n- `需要的数据`：config.js 的 inari、tracks.cards 与 expand、横竖 layout；20.4s 底图对应的横竖屏幕锚点；scenes.js 的 torii 照片画布。\n- `config.js → segments / markers`：caseT 18.4→24.6\n- `score.json`：事件 voice：shutter、paper、whoosh、impact；保持 inventory 中全部音色参数，t 映射为巧思时刻。\n\n[打开 Demo](../../demos/patterns/card-expand-fullscreen/index.html) · [在库中查看](../../patterns.html#pattern/card-expand-fullscreen)\n"
+    "prompt": "# 卡片展开为全屏\n\n## 实现 Prompt\n\n照片卡片由引线牵出，展开到全屏停留，再收回原位。复用地图巡礼的 drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene 与对应 CSS。inari 标记、引线、照片卡片、全屏展开与收回。片段：caseT 18.4→24.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：6.6s\n- **声音 voice**：shutter、paper、whoosh、impact\n\n## 动效 Token\n\n- **出卡**：0s\n- **展开**：2.6s\n- **收回**：5.4s\n- **时长**：6.6s\n\n## 迁移\n\n- `动效函数`：配置卡片、引线、场景绘制与镜头。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置20.4s底图锚点、鸟居照片、卡片与展开轨道、横竖布局。\n- `config.js → segments / markers`：18.4→24.6\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/card-expand-fullscreen/index.html) · [在库中查看](../../patterns.html#pattern/card-expand-fullscreen)\n"
   },
   "entrypoint": "demos/patterns/card-expand-fullscreen/index.html",
   "files": [

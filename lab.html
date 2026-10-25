@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>节奏实验室 · Motion Atlas</title>
-  <meta name="description" content="跟着节拍器感受速度、拍号、细分与摇摆；听见事件吸附到网格前后的差别（A/B 对比、量化强度、首拍偏移、打拍录入）；把缓动曲线、时长与错峰对到拍子上；导出 CSS、MotionKit、Prompt 与 WAV。">
+  <meta name="description" content="跟着节拍器感受速度、拍号、细分与摇摆；听见事件吸附到网格前后的差别（A/B 对比、量化强度、首拍偏移、打拍录入）；把缓动曲线、时长与错峰对到拍子上；导出 CSS、JS 代码、Prompt 与 WAV。">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/lab.css">
@@ -15,7 +15,7 @@
     <header class="lab-head">
       <p class="eyebrow">RHYTHM LAB · BEAT / QUANTIZE / EASE / EXPORT</p>
       <h1>把“手感”调成<em>数字</em>。</h1>
-      <p>节拍与音效是动效的一部分。先跟着节拍器听速度、拍号和细分，再看事件怎样吸附到网格上、听吸附前后的差别，然后把缓动曲线、时长与错峰对到拍子上，最后导出给代码、Prompt 或剪辑软件。</p>
+      <p>先用节拍器听速度、拍号与细分，再比较事件吸附前后的差别。把曲线、时长和错峰对齐拍子，导出代码、Prompt或WAV。</p>
       <ol class="path" aria-label="学习路径">
         <li><a href="#s-beat"><b>01</b><span>感受节拍</span></a></li>
         <li><a href="#s-quant"><b>02</b><span>理解吸附</span></a></li>
@@ -144,7 +144,7 @@
       <header class="step-head">
         <span class="step-no">03</span>
         <div><h2 id="h-ease">曲线 × 时长 × 拍子 <small>EASE / DURATION / STAGGER</small></h2>
-        <p>曲线决定性格，时长决定重量，错峰决定层次。打开“跟随节拍”后，预览每小节重播一次：选“落点踩重拍”时最后一个元素正好落在重拍上，起步有呼啸声，每个元素落定有一声提示音。</p></div>
+        <p>曲线决定性格，时长决定重量，错峰决定层次。开启“跟随节拍”，预览每小节重播。选“落点踩重拍”，最后一个元素在重拍落定。起步有呼啸，每次落定有提示音。</p></div>
       </header>
       <div class="ease-grid">
         <article class="pane">
@@ -201,7 +201,7 @@
       <header class="step-head">
         <span class="step-no">04</span>
         <div><h2 id="h-export">导出 <small>CSS · JS · PROMPT · WAV</small></h2>
-        <p>导出内容和上面的全部参数同步：拍号、速度、细分、摇摆、量化强度、首拍偏移、吸附后的事件，以及曲线、时长与错峰。WAV 用和页面同一套合成音色离线渲染当前循环，可以直接拖进剪辑软件对拍。</p></div>
+        <p>导出会带上当前节拍、事件、曲线、时长与错峰参数。WAV使用同一套音色，可拖进剪辑软件对拍。</p></div>
       </header>
       <div class="export-grid">
         <article class="pane export">
@@ -210,7 +210,7 @@
         </article>
         <article class="pane wav-pane">
           <h3 class="pane-h">导出 WAV <small>OFFLINE RENDER</small></h3>
-          <p class="hint">渲染内容 = 当前能听到的：节拍器（按三级音量）、事件（按播放方式，A/B 交替时一圈原始、一圈吸附）、循环起点提示音、曲线提示音（跟随节拍时）。从循环起点（第 0 秒）开始，长度为整数圈，方便在剪辑软件里循环。</p>
+          <p class="hint">WAV包含当前节拍器、事件、循环起点与曲线提示音。节拍器保持三级音量，A/B交替按圈切换。曲线跟随节拍时加入提示音。从第0秒导出整数圈，方便循环使用。</p>
           <div class="field-row"><span class="fl">长度</span><div class="seg" role="group" aria-label="导出圈数" id="wavCycles"><button type="button" data-v="1">1 圈</button><button type="button" data-v="2">2 圈</button><button type="button" data-v="4">4 圈</button></div></div>
           <p class="wav-sum" id="wavSum"></p>
           <button class="btn primary" type="button" id="wavBtn"></button>

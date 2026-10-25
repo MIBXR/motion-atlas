@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motion Atlas · 多媒体动态视觉参考库</title>
-  <meta name="description" content="面向影像视频、交互操作台与交互展示台的动态视觉参考库：案例、巧思、节拍表、可复用 Prompt 与可逐帧渲染的 Demo。">
+  <title>Motion Atlas · 动态视觉参考库</title>
+  <meta name="description" content="面向影像视频与交互操作台的动态视觉参考库：案例、巧思、节拍表、可复用 Prompt 与可逐帧渲染的 Demo。">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/home.css">
@@ -14,9 +14,9 @@
   <main id="home">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">MOTION ATLAS · 多媒体动态视觉参考库</p>
+        <p class="eyebrow">MOTION ATLAS · 动态视觉参考库</p>
         <h1>让画面有<em>节拍</em>，<br>让界面会呼吸。</h1>
-        <p class="lead">为视频生成、交互操作台与交互展示台收集可学习的动态设计：每个案例都拆成镜头、信息层、文字、转场与声音轨道，附节拍表、动效 Token、可复用 Prompt，以及可以拖动、跳拍、逐帧渲染的 Demo。</p>
+        <p class="lead">拆解影像与界面里的动态设计：每个案例都配节拍表、动效参数、可复用的 Prompt，以及能拖动、逐帧播放的 Demo。</p>
         <div class="cta"><a class="btn primary" href="cases.html">浏览案例库</a><a class="btn" href="patterns.html">打开巧思库</a><a class="btn ghost" href="lab.html">节奏实验室</a></div>
         <p class="stats" id="stats"></p>
       </div>
@@ -27,18 +27,18 @@
     </section>
 
     <section class="band">
-      <header class="sec-head"><p class="eyebrow">THREE CARRIERS</p><h2>三种载体，一套节奏语言</h2></header>
+      <header class="sec-head"><p class="eyebrow">TWO CARRIERS</p><h2>两种载体，一套节奏语言</h2></header>
       <div class="carriers" id="carriers"></div>
     </section>
 
     <section class="band">
-      <header class="sec-head"><p class="eyebrow">FROM REFERENCE TO RENDER</p><h2>从参考到成片的五步</h2></header>
+      <header class="sec-head"><p class="eyebrow">HOW A CASE IS BUILT</p><h2>一个案例怎么拆</h2></header>
       <ol class="steps">
-        <li><b>01</b><h3>逐帧观察</h3><p>取帧、读 HUD、记录每个转场的起止时刻；区分实测、转译与推断。</p></li>
+        <li><b>01</b><h3>逐帧观察</h3><p>逐帧看画面，记下每个转场、每层信息出现和消失的时刻。</p></li>
         <li><b>02</b><h3>拆成轨道</h3><p>镜头、信息层、文字、事件、声音各一条轨道，写成节拍表与能量曲线。</p></li>
-        <li><b>03</b><h3>抽出巧思</h3><p>每个触发与结果单独成条：参数、组合边界、减少动态策略。</p></li>
-        <li><b>04</b><h3>Prompt + Demo</h3><p>实现 Prompt、视频生成 Prompt、负向约束，配一份零依赖、改配置即可迁移的 Demo。</p></li>
-        <li><b>05</b><h3>渲染与迁移</h3><p>render(t) 协议：同一份代码实时播放、拖动刻度、逐帧导出为视频。</p></li>
+        <li><b>03</b><h3>抽出巧思</h3><p>每个能复用的手法单独成条：怎么触发、什么效果、参数多少、能和谁搭配。</p></li>
+        <li><b>04</b><h3>Prompt + Demo</h3><p>实现 Prompt、视频生成 Prompt 和负向约束，配一份改配置就能复用的 Demo。</p></li>
+        <li><b>05</b><h3>渲染与迁移</h3><p>同一份代码可以实时播放、拖动定位，也能逐帧导出成视频。</p></li>
       </ol>
     </section>
 
@@ -53,7 +53,7 @@
     </section>
 
     <section class="band agent">
-      <div><p class="eyebrow">FOR AGENTS</p><h2>给 Agent 的同一套资料</h2><p>结构化索引、完整资料包（条目、Prompt、研究笔记、带 SHA256 的文件清单）与零依赖 CLI：检索、读取、导出可运行 Demo。</p><a class="btn" href="agent.html">Agent 工作流</a></div>
+      <div><p class="eyebrow">FOR AGENTS</p><h2>给 Agent 的同一套资料</h2><p>结构化索引、每个条目的完整资料包和命令行工具：检索、读取、导出可运行的 Demo。</p><a class="btn" href="agent.html">Agent 工作流</a></div>
       <pre class="code"><code>node scripts/atlas.mjs search "转场 地图" --limit 5
 node scripts/atlas.mjs show map-pilgrimage --source
 node scripts/atlas.mjs export split-compare-stamp --out ../my-demo

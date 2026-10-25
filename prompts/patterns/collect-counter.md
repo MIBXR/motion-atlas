@@ -1,6 +1,4 @@
-# 收集计数徽章与图鉴托盘 · 复用 Prompt
-
-由 [结构化条目](../../entries/patterns/collect-counter.json) 自动生成。
+# 收集计数徽章与图鉴托盘
 
 ## 实现 Prompt
 
@@ -8,11 +6,6 @@
 
 ## 参数
 
-- **徽章出现**：0s
-- **×1 + 关空**：0.8s
-- **×2 + 京都**：2.2s
-- **×3 + 奈良**：3.4s
-- **×4 + 大阪**：4.6s
 - **时长**：6.6s
 - **声音 voice**：confirm、stamp、sparkle
 
@@ -27,10 +20,10 @@
 
 ## 迁移
 
-- `复制的函数`：drawHud、stepAtX、ruleX、stampXY
-- `依赖`：MotionKit.stage / timeline / expose / preload / audio；案例 CSS 变量、横竖选择器、颗粒与暗角。
-- `需要的数据`：config.js 的 mascot、stepper、tracks.counter / stamps / progress 与横竖 layout。
-- `config.js → segments / markers`：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6
-- `score.json`：事件 voice：confirm、stamp、sparkle；保持 inventory 中全部音色参数，t 映射为巧思时刻。
+- `动效函数`：配置计数、徽章、角色托盘与回弹。
+- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
+- `需要的数据`：设置计数与角色事件、镜头和横竖布局。
+- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6
+- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)

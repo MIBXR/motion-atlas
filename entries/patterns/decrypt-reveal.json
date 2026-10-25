@@ -8,11 +8,10 @@
   ],
   "carriers": [
     "console",
-    "showcase",
     "video"
   ],
-  "summary": "两条信号色对角线合拢、停留、收束；玻璃盖板自上而下由磨砂变清晰；右侧文档上的黑色遮挡条按阅读顺序依次退开——“读取”被做成一个可以看见的过程。",
-  "mechanism": "对角线是两条 SVG 路径（vector-effect: non-scaling-stroke），用 dashoffset 从 0 到全长再到负值实现“合拢→收束”；磨砂层是 backdrop-filter: blur 的覆盖层，用 clip-path: inset(p% 0 0 0) 自上而下切掉，并有一条高光边沿跟随；每个文本块内放一条绝对定位的黑色遮挡条，transform-origin 右侧，scaleX 1→0，按 80ms 错峰。",
+  "summary": "对角线合拢后收束，玻璃自上而下从磨砂转清。正文遮挡条按阅读顺序退开，让读取过程可见。",
+  "mechanism": "两条SVG对角线用dashoffset合拢后收束。路径保持non-scaling-stroke。磨砂层使用backdrop-filter: blur。用clip-path: inset(p% 0 0 0)自上而下切掉。高光边沿跟随切口。正文覆盖黑条，以右侧为原点scaleX 1→0，按80ms错峰。",
   "trigger": "打开档案 / 解锁内容",
   "effect": "把等待变成揭示，内容的价值感与保密感同时成立。",
   "timing": [
@@ -57,10 +56,7 @@
   "previewAt": 1.6,
   "sources": [
     {
-      "caseId": "archive-os",
-      "observation": "模型与正文同步解密：对角解密线合拢、保持并收束，盖板自上而下由磨砂变清晰；右侧文档的遮挡条随之退开，露出标题、资料字段与正文。",
-      "evidence": "observed",
-      "locator": "README · 新版效果"
+      "caseId": "archive-os"
     }
   ]
 }

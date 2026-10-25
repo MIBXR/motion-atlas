@@ -11,11 +11,10 @@
       "rhythm"
     ],
     "carriers": [
-      "console",
-      "showcase"
+      "console"
     ],
-    "summary": "在一整片重复元素中选中一个：它以临界阻尼抬起，同时向四周传出一圈按距离延迟、指数衰减的余波——选择像投入水面的石子。",
-    "mechanism": "每块的高度 = 选中抬起（临界阻尼阶跃，取消选中时以当时高度衰减回落）+ 最近三次选择的余波之和；余波 z = A·sin(ωτ)·e^(−kτ)/(1+f·d)，τ = t − t₀ − delay·d，d = 行距 + 0.8×列距。全部是事件序列在时刻 t 的解析函数，可快速反向、可 seek。",
+    "summary": "选中块以临界阻尼抬起，余波按距离延迟、衰减，整片阵列随一次选择起伏。",
+    "mechanism": "块高度由选中抬起与最近三次选择的余波相加。取消选择时，从当前高度衰减回落。余波z=A·sin(ωτ)·e^(−kτ)/(1+f·d)。τ=t−t₀−delay·d，d=行距+0.8×列距。状态由时刻t计算，可反向操作与定位。",
     "trigger": "选择变化（键盘/点击）",
     "effect": "整片阵列都对一次选择作出反应，焦点清晰且有“物理”感。",
     "timing": [
@@ -25,7 +24,7 @@
       },
       {
         "name": "余波",
-        "value": "A 9–10px · ω 7.5 · k 2.6 · 延迟 70ms/格 · 距离衰减 0.35"
+        "value": "A 9–10px，ω 7.5，k 2.6。延迟70ms/格，距离衰减0.35。"
       },
       {
         "name": "叠加",
@@ -61,10 +60,7 @@
     "previewAt": 2.55,
     "sources": [
       {
-        "caseId": "archive-os",
-        "observation": "选中卡片两侧在回传后继续起伏，按距选中位置的距离延迟并衰减；用户对比后确认采用原始基线：完整正负波谷的选中波浪，选中与波浪同时开始，升降阻尼速率 4.2。",
-        "evidence": "observed",
-        "locator": "DESIGN.md · 参考与既有规范 / 当前采用：原始基线动效"
+        "caseId": "archive-os"
       }
     ],
     "preview": "previews/patterns/wave-array.jpg",
@@ -77,7 +73,7 @@
     }
   ],
   "documents": {
-    "prompt": "# 阵列选择波浪 · 复用 Prompt\n\n由 [结构化条目](../../entries/patterns/wave-array.json) 自动生成。\n\n## 实现 Prompt\n\n实现阵列选择波浪：CSS 3D（perspective 1500px，rotateX 58° rotateZ -36°）排列 7×9 块（顶/正/侧三面），每块 translateZ 由解析函数计算：选中块 z += L·(1 − (1 + wτ)e^(−wτ))（w=4.2，L=26px），取消选中后以当时高度按 (1 + wτ)e^(−wτ) 回落；对最近 3 次选择，其他块 z += 10·sin(7.5τ)·e^(−2.6τ)/(1 + 0.35d)，τ = t − t₀ − 0.07d，d = |Δ行| + 0.8|Δ列|。方向键与点击产生选择事件；整个状态由事件序列在时刻 t 推导，可 seek。透明度不要加在 preserve-3d 容器上。\n\n## 参数\n\n- **抬起**：临界阻尼速率 4.2，26px\n- **余波**：A 9–10px · ω 7.5 · k 2.6 · 延迟 70ms/格 · 距离衰减 0.35\n- **叠加**：只叠加最近 3 次选择，避免长期累积\n\n[打开 Demo](../../demos/patterns/wave-array/index.html) · [在库中查看](../../patterns.html#pattern/wave-array)\n"
+    "prompt": "# 阵列选择波浪\n\n## 实现 Prompt\n\n实现阵列选择波浪：CSS 3D（perspective 1500px，rotateX 58° rotateZ -36°）排列 7×9 块（顶/正/侧三面），每块 translateZ 由解析函数计算：选中块 z += L·(1 − (1 + wτ)e^(−wτ))（w=4.2，L=26px），取消选中后以当时高度按 (1 + wτ)e^(−wτ) 回落；对最近 3 次选择，其他块 z += 10·sin(7.5τ)·e^(−2.6τ)/(1 + 0.35d)，τ = t − t₀ − 0.07d，d = |Δ行| + 0.8|Δ列|。方向键与点击产生选择事件；整个状态由事件序列在时刻 t 推导，可 seek。透明度不要加在 preserve-3d 容器上。\n\n## 参数\n\n- **抬起**：临界阻尼速率 4.2，26px\n- **余波**：A 9–10px，ω 7.5，k 2.6。延迟70ms/格，距离衰减0.35。\n- **叠加**：只叠加最近 3 次选择，避免长期累积\n\n[打开 Demo](../../demos/patterns/wave-array/index.html) · [在库中查看](../../patterns.html#pattern/wave-array)\n"
   },
   "entrypoint": "demos/patterns/wave-array/index.html",
   "files": [

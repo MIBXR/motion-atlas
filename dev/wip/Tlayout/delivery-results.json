@@ -1,0 +1,108 @@
+[
+  {
+    "name": "HTTP bytes assets/site.js",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes assets/site.js",
+    "pass": true
+  },
+  {
+    "name": "HTTP bytes assets/site.css",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes assets/site.css",
+    "pass": true
+  },
+  {
+    "name": "HTTP bytes assets/docs.css",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes assets/docs.css",
+    "pass": true
+  },
+  {
+    "name": "HTTP bytes assets/library.js",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes assets/library.js",
+    "pass": true
+  },
+  {
+    "name": "HTTP bytes assets/docs.js",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes assets/docs.js",
+    "pass": true
+  },
+  {
+    "name": "HTTP bytes docs.html",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes docs.html",
+    "pass": true
+  },
+  {
+    "name": "HTTP bytes cases.html",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes cases.html",
+    "pass": true
+  },
+  {
+    "name": "HTTP bytes patterns.html",
+    "pass": true,
+    "detail": 200
+  },
+  {
+    "name": "dist bytes patterns.html",
+    "pass": true
+  },
+  {
+    "name": "HEAD unchanged",
+    "pass": true
+  },
+  {
+    "name": "branch unchanged",
+    "pass": true
+  },
+  {
+    "name": "index untouched",
+    "pass": true
+  },
+  {
+    "name": "protected paths unchanged",
+    "pass": true
+  },
+  {
+    "name": "tracked change scope",
+    "pass": true,
+    "detail": [
+      "assets/docs.css",
+      "assets/docs.js",
+      "assets/library.js",
+      "assets/site.css",
+      "assets/site.js",
+      "dev/wip/Tcopy/tools/check-filters.mjs",
+      "docs.html"
+    ]
+  },
+  {
+    "name": "17 requested screenshots",
+    "pass": true,
+    "detail": 17
+  }
+]
