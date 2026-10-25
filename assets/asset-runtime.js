@@ -35,9 +35,9 @@
     if (typeof args[1] === 'string') args[1] = css(args[1]);
     return Reflect.construct(Target, args, NewTarget);
   } });
-  const prepare = scope => {
+  const prepare = (scope, descendants = true) => {
     const elements = scope.nodeType === 1 ? [scope] : [];
-    if (scope.querySelectorAll) elements.push(...scope.querySelectorAll('img,video,audio,source,[style]'));
+    if (descendants && scope.querySelectorAll) elements.push(...scope.querySelectorAll('img,video,audio,source,[style]'));
     for (const element of elements) {
       for (const attribute of ['src', 'poster']) {
         if (!/^(?:img|video|audio|source)$/i.test(element.localName) || !element.hasAttribute(attribute)) continue;
@@ -56,7 +56,7 @@
   };
   new MutationObserver(rows => {
     for (const row of rows) {
-      if (row.type === 'attributes') prepare(row.target);
+      if (row.type === 'attributes') prepare(row.target, false);
       else for (const node of row.addedNodes) if (node.nodeType === 1) prepare(node);
     }
   }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src', 'poster', 'style'] });
