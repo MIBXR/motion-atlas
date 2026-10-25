@@ -76,8 +76,7 @@ node scripts/serve.mjs --port 4321
 
 | 命令 | 作用 |
 | --- | --- |
-| `node scripts/build.mjs` | 校验条目、同步 kit 副本，生成站点数据、Prompt 文档与 Agent 资料包 |
-| `node scripts/check.mjs` | 只检查不写入：条目、kit 副本、生成物是否最新、预览图。网站界面文字≥12px。 |
+| `node scripts/build.mjs` | 同步 kit 副本，生成站点数据、Prompt 文档与 Agent 资料包 |
 | `node scripts/capture.mjs` | 按条目里的 `previewAt` 重新截取预览图 |
 | `node scripts/render.mjs <url或路径>` | 逐帧渲染按时间播放的Demo |
 | `node scripts/atlas.mjs search <关键词>` | 命令行检索；`show`、`export` 见 [Agent 工作流](../agent.html) |

@@ -159,63 +159,51 @@
   "files": [
     {
       "path": "demos/patterns/split-compare-stamp/config.js",
-      "bytes": 25703,
-      "sha256": "b23fbf717d37638e8b6ddfe27977d5b34f5922b9fbd86b1df9031c371f81d475"
+      "bytes": 25703
     },
     {
       "path": "demos/patterns/split-compare-stamp/index.html",
-      "bytes": 7649,
-      "sha256": "132bdb7798f4802ea5e3971b40c065f7d55dba2df3409740e5fb134b7c943684"
+      "bytes": 7649
     },
     {
       "path": "demos/patterns/split-compare-stamp/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/split-compare-stamp/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/split-compare-stamp/plates/landscape-24.6-map.webp",
-      "bytes": 483390,
-      "sha256": "2a951267c2d6bc87af159e1bf44f7cc9fc5f14f1110d5a61500f609616081190"
+      "bytes": 483390
     },
     {
       "path": "demos/patterns/split-compare-stamp/plates/portrait-24.6-map.webp",
-      "bytes": 547812,
-      "sha256": "5bc3569e6315a506c2002b23fe154894f388e805bff502f4e61b18054a813143"
+      "bytes": 547812
     },
     {
       "path": "demos/patterns/split-compare-stamp/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/split-compare-stamp/score.json",
-      "bytes": 379,
-      "sha256": "f93aa80bb8b2a9ceaa1d969f5ebe2e9514996557f5be1ef8e1a91c6015548228"
+      "bytes": 379
     },
     {
       "path": "demos/patterns/split-compare-stamp/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/split-compare-stamp/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/split-compare-stamp.jpg",
-      "bytes": 183553,
-      "sha256": "1e14a9d53928228560697ef6c0460b70b8ff2f90c3f3f9febccbb96e0a3233b0"
+      "bytes": 183553
     },
     {
       "path": "previews/patterns/split-compare-stamp-portrait.jpg",
-      "bytes": 180049,
-      "sha256": "5a7d2e1b2f721c2abf6c43cf940cceca92d808fd4f85bc17317bd03c71935032"
+      "bytes": 180049
     }
   ]
 }

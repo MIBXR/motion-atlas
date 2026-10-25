@@ -82,18 +82,15 @@
   "files": [
     {
       "path": "demos/patterns/idle-breathing/index.html",
-      "bytes": 5087,
-      "sha256": "4bb0f65a5c3b89a7071cda6ff4724adf73c6c265cd76b4cf69cde83f7abdc295"
+      "bytes": 5087
     },
     {
       "path": "demos/patterns/idle-breathing/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "previews/patterns/idle-breathing.jpg",
-      "bytes": 18758,
-      "sha256": "ca62b81d6a46012c7313dd7b4528906350689533ca891fb6d70f2420cca02ff0"
+      "bytes": 18758
     }
   ]
 }

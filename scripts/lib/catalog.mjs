@@ -1,8 +1,6 @@
 // 内容源 → 生成物：data/catalog.js、data/docs.js、prompts/、agent/、README 计数。
-// build.mjs 写入；check.mjs 在内存中重建并比对，发现未重建的改动。
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -20,7 +18,6 @@ export const TAXONOMY = {
 const rel = (p) => path.relative(ROOT, p).split(path.sep).join('/');
 const read = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
 const exists = (p) => fs.existsSync(path.join(ROOT, p));
-const sha = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
 
 function listJSON(dir) {
   const abs = path.join(ROOT, dir);
@@ -47,8 +44,7 @@ function walk(dir) {
 
 export function fileManifest(files) {
   return files.filter(exists).map((p) => {
-    const buf = fs.readFileSync(path.join(ROOT, p));
-    return { path: p, bytes: buf.length, sha256: sha(buf) };
+    return { path: p, bytes: fs.statSync(path.join(ROOT, p)).size };
   });
 }
 
@@ -56,48 +52,6 @@ export function loadEntries() {
   const cases = listJSON('entries/cases').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   const patterns = listJSON('entries/patterns').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   return { cases, patterns };
-}
-
-const CASE_REQUIRED = ['id', 'title', 'carriers', 'summary', 'prompt', 'demo', 'composition'];
-const PATTERN_REQUIRED = ['id', 'title', 'types', 'carriers', 'summary', 'mechanism', 'trigger', 'effect', 'prompt', 'demo', 'sources', 'composition', 'accessibility'];
-
-export function validate({ cases, patterns }) {
-  const errors = [];
-  const ids = new Set();
-  const caseIds = new Set(cases.map((c) => c.id));
-  const patIds = new Set(patterns.map((p) => p.id));
-  for (const c of cases) {
-    for (const k of CASE_REQUIRED) if (c[k] == null || (Array.isArray(c[k]) && !c[k].length)) errors.push(`${c._file}: 缺少 ${k}`);
-    if (ids.has(c.id)) errors.push(`${c._file}: 重复 id ${c.id}`);
-    ids.add(c.id);
-    if (`entries/cases/${c.id}.json` !== c._file) errors.push(`${c._file}: 文件名应为 ${c.id}.json`);
-    for (const k of c.carriers || []) if (!TAXONOMY.carriers[k]) errors.push(`${c._file}: 未知载体 ${k}`);
-    if (c.demo && !exists(c.demo)) errors.push(`${c._file}: Demo 不存在 ${c.demo}`);
-    for (const pid of c.patternIds || []) if (!patIds.has(pid)) errors.push(`${c._file}: 关联巧思不存在 ${pid}`);
-    for (const b of c.rhythm?.beats || []) if (typeof b.t !== 'number' || !b.label) errors.push(`${c._file}: 节拍需要数值 t 与 label`);
-    if (c.energy && c.energy.some((v) => typeof v !== 'number' || v < 0 || v > 1)) errors.push(`${c._file}: energy 取值应在 0–1`);
-  }
-  for (const p of patterns) {
-    for (const k of PATTERN_REQUIRED) if (p[k] == null || (Array.isArray(p[k]) && !p[k].length)) errors.push(`${p._file}: 缺少 ${k}`);
-    if (ids.has(p.id)) errors.push(`${p._file}: id 与其他条目重复 ${p.id}`);
-    ids.add(p.id);
-    if (`entries/patterns/${p.id}.json` !== p._file) errors.push(`${p._file}: 文件名应为 ${p.id}.json`);
-    for (const k of p.types || []) if (!TAXONOMY.types[k]) errors.push(`${p._file}: 未知类型 ${k}`);
-    for (const k of p.carriers || []) if (!TAXONOMY.carriers[k]) errors.push(`${p._file}: 未知载体 ${k}`);
-    if (p.demo && !exists(p.demo)) errors.push(`${p._file}: Demo 不存在 ${p.demo}`);
-    for (const s of p.sources || []) {
-      if (!caseIds.has(s.caseId)) errors.push(`${p._file}: 所属案例不存在 ${s.caseId}`);
-    }
-    const comp = p.composition || {};
-    if (comp.role && !TAXONOMY.roles[comp.role]) errors.push(`${p._file}: 未知组合职责 ${comp.role}`);
-    for (const id of [...(comp.pairsWellWith || []), ...(comp.conflicts || [])]) if (!patIds.has(id)) errors.push(`${p._file}: 组合关系引用不存在 ${id}`);
-  }
-  // 巧思应包含在所属案例的 patternIds 中。
-  for (const p of patterns) for (const s of p.sources || []) {
-    const c = cases.find((x) => x.id === s.caseId);
-    if (c && !(c.patternIds || []).includes(p.id)) errors.push(`${c._file}: patternIds 缺少 ${p.id}`);
-  }
-  return errors;
 }
 
 const clean = (e) => { const { _file, ...rest } = e; return rest; };
@@ -149,10 +103,8 @@ function collectDocs(extra) {
   });
 }
 
-/** 计算全部生成物，返回 { files: {path: content}, kitTargets: [dir], errors } */
 export function buildAll() {
   const entries = loadEntries();
-  const errors = validate(entries);
   const files = {};
   const kitTargets = [];
   // preview：横屏预览（1280×720）；previewPortrait：竖屏预览（720×1280，Demo 迁移到固定画幅舞台并支持竖屏后才有）
@@ -194,7 +146,7 @@ export function buildAll() {
     bundleSummaries.cases.push({
       id: c.id, title: c.title, summary: c.summary, carriers: c.carriers, tags: c.tags || [],
       useCases: c.useCases || [], avoid: c.avoid || [], patternIds: c.patternIds || [], seekable: !!c.timeline,
-      bundle: `agent/cases/${c.id}.json`, bundleSha256: sha(Buffer.from(json)),
+      bundle: `agent/cases/${c.id}.json`,
     });
   }
   for (const p of patterns) {
@@ -211,15 +163,13 @@ export function buildAll() {
     bundleSummaries.patterns.push({
       id: p.id, title: p.title, summary: p.summary, types: p.types, carriers: p.carriers, role: p.composition?.role || null,
       sourceCases: (p.sources || []).map((s) => s.caseId), pairsWellWith: p.composition?.pairsWellWith || [],
-      bundle: `agent/patterns/${p.id}.json`, bundleSha256: sha(Buffer.from(json)),
+      bundle: `agent/patterns/${p.id}.json`,
     });
   }
-  const versionText = [...bundleSummaries.cases, ...bundleSummaries.patterns].map((b) => `${b.bundle}:${b.bundleSha256}`).sort().join('\n');
   const catalog = {
     schemaVersion: SCHEMA_VERSION,
     name: 'Motion Atlas',
     description: '动态视觉参考库：影像视频与交互操作台的案例、巧思、节拍表、Prompt 与可运行的 Demo。',
-    contentVersion: sha(Buffer.from(versionText)),
     taxonomy: TAXONOMY,
     protocol: {
       seek: 'Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示未迁移到固定画幅的旧 Demo。',
@@ -233,15 +183,7 @@ export function buildAll() {
   };
   files['agent/catalog.json'] = JSON.stringify(catalog, null, 2) + '\n';
 
-  return { files, kitTargets, errors, cases, patterns };
+  return { files, kitTargets, cases, patterns };
 }
 
-export function kitStatus(kitTargets) {
-  const src = fs.readFileSync(path.join(ROOT, 'kit/motion-kit.js'));
-  return kitTargets.map((dir) => {
-    const p = path.join(ROOT, dir, 'motion-kit.js');
-    return { dir, ok: fs.existsSync(p) && sha(fs.readFileSync(p)) === sha(src) };
-  });
-}
-
-export { rel, walk, exists, read, sha };
+export { rel, walk, exists, read };

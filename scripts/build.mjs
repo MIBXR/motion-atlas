@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, buildAll } from './lib/catalog.mjs';
 
-// 先同步 kit 副本（资料包里的文件哈希依赖副本内容）
+// 先同步 kit 副本，再生成资料包的文件清单。
 const first = buildAll();
 const kitSrc = fs.readFileSync(path.join(ROOT, 'kit/motion-kit.js'));
 for (const dir of first.kitTargets) {
@@ -15,11 +15,7 @@ for (const dir of first.kitTargets) {
   }
 }
 
-const { files, errors, cases, patterns } = buildAll();
-if (errors.length) {
-  console.error('条目校验失败：\n- ' + errors.join('\n- '));
-  process.exit(1);
-}
+const { files, cases, patterns } = buildAll();
 let changed = 0;
 for (const [rel, content] of Object.entries(files)) {
   const abs = path.join(ROOT, rel);

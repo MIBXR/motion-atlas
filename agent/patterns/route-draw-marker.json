@@ -178,53 +178,43 @@
   "files": [
     {
       "path": "demos/patterns/route-draw-marker/config.js",
-      "bytes": 26781,
-      "sha256": "24055de2a9100388ebdab6a545aaa1af11b06617185d9f3f4cc34bc804617b06"
+      "bytes": 26781
     },
     {
       "path": "demos/patterns/route-draw-marker/index.html",
-      "bytes": 7647,
-      "sha256": "f80c372ad5737e0bb8faaece0a78624ff40f0ad45a43c5168471e1c72a0a005b"
+      "bytes": 7647
     },
     {
       "path": "demos/patterns/route-draw-marker/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/route-draw-marker/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/route-draw-marker/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/route-draw-marker/score.json",
-      "bytes": 3787,
-      "sha256": "856d50445c2a292099690d17fae9af2a6d16235f8bb3f73794df3b47496ce8fa"
+      "bytes": 3787
     },
     {
       "path": "demos/patterns/route-draw-marker/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/route-draw-marker/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/route-draw-marker.jpg",
-      "bytes": 259275,
-      "sha256": "83015c71211c212abcf2af3dac24886e029500815c7d2d60fe060a2dbd845e29"
+      "bytes": 259275
     },
     {
       "path": "previews/patterns/route-draw-marker-portrait.jpg",
-      "bytes": 184568,
-      "sha256": "11915439671117c77875d2889216768d87eb1303c9bcdba659fa1e079dbc2196"
+      "bytes": 184568
     }
   ]
 }

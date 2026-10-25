@@ -160,63 +160,51 @@
   "files": [
     {
       "path": "demos/patterns/outro-stat-stack/config.js",
-      "bytes": 25713,
-      "sha256": "d6086b2ddb678d419335caae5d8ecbd2e3bba0b2b564ac776390ee5b23e15272"
+      "bytes": 25713
     },
     {
       "path": "demos/patterns/outro-stat-stack/index.html",
-      "bytes": 7646,
-      "sha256": "8908eae4d3b8328a17abef811f9fa2df4e3c325de518c9b0c253d190846a992d"
+      "bytes": 7646
     },
     {
       "path": "demos/patterns/outro-stat-stack/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/outro-stat-stack/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/outro-stat-stack/plates/landscape-58-map-routes-markers.webp",
-      "bytes": 234960,
-      "sha256": "6473f840232416b598d4d18e13f4b869ca80f16aa9e8110343d5fe0a849ebf2c"
+      "bytes": 234960
     },
     {
       "path": "demos/patterns/outro-stat-stack/plates/portrait-58-map-routes-markers.webp",
-      "bytes": 149778,
-      "sha256": "ea982aac9be3dbd36227ec2c72155399b17dc21f9153b1fc1176c44e01f9cd40"
+      "bytes": 149778
     },
     {
       "path": "demos/patterns/outro-stat-stack/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/outro-stat-stack/score.json",
-      "bytes": 1866,
-      "sha256": "17476b3ce6de0f29b6df47f350b7874d028099a499c1bc6d1021f15918c70602"
+      "bytes": 1866
     },
     {
       "path": "demos/patterns/outro-stat-stack/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/outro-stat-stack/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/outro-stat-stack.jpg",
-      "bytes": 153147,
-      "sha256": "be3733252579956beb8103a79f3f6b47d9ccde4aced8149766ee8f29a1f13dfb"
+      "bytes": 153147
     },
     {
       "path": "previews/patterns/outro-stat-stack-portrait.jpg",
-      "bytes": 149870,
-      "sha256": "7e743f5dc3b72d4813b47491cdab21bbb0c1446eef5cf53960cbe1547f7df69b"
+      "bytes": 149870
     }
   ]
 }

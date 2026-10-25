@@ -199,7 +199,7 @@
    * 位置 p = p0 + (t − t0) / 每拍秒数；t 来自 AudioContext（出声时）或 performance.now()（静音时）。
    * 改速度 / 拍号：以“此刻 + 15ms”为锚点重设 (t0, p0)，相位连续；已排程但晚于锚点的声音全部取消，从锚点起按新参数重排。 */
   // PROC：kit 主链路里 DynamicsCompressorNode 的固定预读延迟（浏览器实现为 6ms），声音实际比排程时刻晚这么多；
-  // “听到的”时钟与离线 WAV 都按它补偿（dev/reports/T3.md 有实测）。
+  // “听到的”时钟与离线 WAV 都按它补偿。
   const LOOK = 0.15, SAFE = 0.015, PROC = 0.006;
   const T = { run: false, src: 'perf', t0: 0, p0: 0, bar: 0, cursor: 0, pend: [], rec: null, abPhase: 0 };
   const LOG = [];

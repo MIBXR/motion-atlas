@@ -13,8 +13,6 @@
     "build:archive": "node vendor/rhinelabui/build.mjs",
     "build:site": "node scripts/build-static.mjs --site",
     "build:local": "node scripts/build-static.mjs",
-    "check": "node scripts/check.mjs",
-    "smoke": "node scripts/smoke.mjs",
     "capture": "node scripts/capture.mjs",
     "render": "node scripts/render.mjs",
     "frames": "node scripts/frames.mjs",

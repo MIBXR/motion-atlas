@@ -178,83 +178,67 @@
   "files": [
     {
       "path": "demos/patterns/vertical-title-blur/config.js",
-      "bytes": 26332,
-      "sha256": "4303803a4b175a0a1b103e634b3a5defbf6a39fea81cfaeb4f14d4a9cfc5a956"
+      "bytes": 26332
     },
     {
       "path": "demos/patterns/vertical-title-blur/index.html",
-      "bytes": 7649,
-      "sha256": "d5a2f90c2cdb1b053a0091ca6ce9470170c37f3e23943816e23396386fbce52b"
+      "bytes": 7649
     },
     {
       "path": "demos/patterns/vertical-title-blur/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/vertical-title-blur/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/vertical-title-blur/plates/landscape-19.7-map.webp",
-      "bytes": 384100,
-      "sha256": "bb463b62eaddef49e0b0f4e3978fb835f1717f72981228210f6e834e2b59c450"
+      "bytes": 384100
     },
     {
       "path": "demos/patterns/vertical-title-blur/plates/landscape-5.95-map.webp",
-      "bytes": 13944,
-      "sha256": "122bc0620b0318212bb81e6db2a2b025589fa3fdd6897ef4978a2506d6a5c386"
+      "bytes": 13944
     },
     {
       "path": "demos/patterns/vertical-title-blur/plates/landscape-58-map-routes-markers.webp",
-      "bytes": 234960,
-      "sha256": "6473f840232416b598d4d18e13f4b869ca80f16aa9e8110343d5fe0a849ebf2c"
+      "bytes": 234960
     },
     {
       "path": "demos/patterns/vertical-title-blur/plates/portrait-19.7-map.webp",
-      "bytes": 309360,
-      "sha256": "1141475d173311441c9a637410a517e59972781b06858bde00f217fdb1ee09c4"
+      "bytes": 309360
     },
     {
       "path": "demos/patterns/vertical-title-blur/plates/portrait-5.95-map.webp",
-      "bytes": 12608,
-      "sha256": "34bd5bf2375435c541b1aba6d6e2bbc1684b981f9a8b0228a5df278cc78ddaa3"
+      "bytes": 12608
     },
     {
       "path": "demos/patterns/vertical-title-blur/plates/portrait-58-map-routes-markers.webp",
-      "bytes": 149778,
-      "sha256": "ea982aac9be3dbd36227ec2c72155399b17dc21f9153b1fc1176c44e01f9cd40"
+      "bytes": 149778
     },
     {
       "path": "demos/patterns/vertical-title-blur/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/vertical-title-blur/score.json",
-      "bytes": 5638,
-      "sha256": "8339f62fb121906ce449b0b108bb845a49f4638d0a7d2725ca8e1dbcd573a341"
+      "bytes": 5638
     },
     {
       "path": "demos/patterns/vertical-title-blur/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/vertical-title-blur/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/vertical-title-blur.jpg",
-      "bytes": 102601,
-      "sha256": "df2ffe6a5cbf8cb25ef7e441bcf9a65b8fd8996ceca90eb289f171a1019b47ba"
+      "bytes": 102601
     },
     {
       "path": "previews/patterns/vertical-title-blur-portrait.jpg",
-      "bytes": 106999,
-      "sha256": "00eac50f10caaf253b2ba561e501d865e9abb718c75f827a928b771013fdb53c"
+      "bytes": 106999
     }
   ]
 }

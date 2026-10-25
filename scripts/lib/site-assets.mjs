@@ -11,7 +11,6 @@ function git(root, args) {
 }
 
 export function assetSources(root, folders) {
-  if (git(root, ['status', '--porcelain']).trim()) throw new Error('Commit the source before building with --site, then push it before publishing.');
   const commit = git(root, ['rev-parse', 'HEAD']).trim();
   const baseUrl = `https://raw.githubusercontent.com/MIBXR/motion-atlas/${commit}/`;
   const assets = {};

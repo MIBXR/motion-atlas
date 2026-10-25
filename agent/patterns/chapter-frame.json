@@ -166,73 +166,59 @@
   "files": [
     {
       "path": "demos/patterns/chapter-frame/config.js",
-      "bytes": 26144,
-      "sha256": "9ff597d7cd0579cb21a4fce56cf7c75f32d57486a9c0bb4105ad670f238d7f6e"
+      "bytes": 26144
     },
     {
       "path": "demos/patterns/chapter-frame/index.html",
-      "bytes": 7643,
-      "sha256": "39b9b69c48f0dc1680269409cccaf91a5719806d2e60924eb454e6a4fc771748"
+      "bytes": 7643
     },
     {
       "path": "demos/patterns/chapter-frame/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/chapter-frame/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/chapter-frame/plates/landscape-24.6-map.webp",
-      "bytes": 483390,
-      "sha256": "2a951267c2d6bc87af159e1bf44f7cc9fc5f14f1110d5a61500f609616081190"
+      "bytes": 483390
     },
     {
       "path": "demos/patterns/chapter-frame/plates/landscape-41-map.webp",
-      "bytes": 256236,
-      "sha256": "3e6afd5e956ee7117290467b2ecd2f9eff797458635b7b2ea9def380eafb52db"
+      "bytes": 256236
     },
     {
       "path": "demos/patterns/chapter-frame/plates/portrait-24.6-map.webp",
-      "bytes": 547812,
-      "sha256": "5bc3569e6315a506c2002b23fe154894f388e805bff502f4e61b18054a813143"
+      "bytes": 547812
     },
     {
       "path": "demos/patterns/chapter-frame/plates/portrait-41-map.webp",
-      "bytes": 263766,
-      "sha256": "c40cd2ca01c4ea4bb095c67c294ae4d3c3ad6d6f405c4c935837611af10a4e54"
+      "bytes": 263766
     },
     {
       "path": "demos/patterns/chapter-frame/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/chapter-frame/score.json",
-      "bytes": 451,
-      "sha256": "2075a4de9af6dc7a33c3a527cc623d3f3b3a9810e0e8b2dabe6f6e975d5cbae9"
+      "bytes": 451
     },
     {
       "path": "demos/patterns/chapter-frame/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/chapter-frame/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/chapter-frame.jpg",
-      "bytes": 257992,
-      "sha256": "0019514605e439306747a4a99dee41026f24c9d398ed1f2dc5d56315dea2e855"
+      "bytes": 257992
     },
     {
       "path": "previews/patterns/chapter-frame-portrait.jpg",
-      "bytes": 244438,
-      "sha256": "3510f5847a310d64cac014cbf61670a5dfcc67b3bfba670be566c7f3c1502e16"
+      "bytes": 244438
     }
   ]
 }

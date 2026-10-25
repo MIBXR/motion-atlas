@@ -183,93 +183,75 @@
   "files": [
     {
       "path": "demos/patterns/collect-counter/config.js",
-      "bytes": 26559,
-      "sha256": "8a3c6676f4606f951054bacf20e9be0ba9220c908c8d011c036af51cee4b343e"
+      "bytes": 26559
     },
     {
       "path": "demos/patterns/collect-counter/index.html",
-      "bytes": 7645,
-      "sha256": "be47135fa3cb4ab6fd0d6eee735d51dbbd815d3c1d2b77f515940f4974ad29cb"
+      "bytes": 7645
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "demos/patterns/collect-counter/paths.js",
-      "bytes": 8047,
-      "sha256": "cb6fdc137e562b3df7f7f44fad5719011bfd23d5112ec0b7e24673d0569b62ed"
+      "bytes": 8047
     },
     {
       "path": "demos/patterns/collect-counter/plates/landscape-10.4-map.webp",
-      "bytes": 141718,
-      "sha256": "433a3d60e4bf47c78dd68e3a720d913493137c1abb6719c50b4e2e63fd7756f0"
+      "bytes": 141718
     },
     {
       "path": "demos/patterns/collect-counter/plates/landscape-20.4-map.webp",
-      "bytes": 422340,
-      "sha256": "bcbc975c5d68d5dda342585fdd638fcfd12029bdd8a5616dff592c7de6447419"
+      "bytes": 422340
     },
     {
       "path": "demos/patterns/collect-counter/plates/landscape-41-map.webp",
-      "bytes": 256236,
-      "sha256": "3e6afd5e956ee7117290467b2ecd2f9eff797458635b7b2ea9def380eafb52db"
+      "bytes": 256236
     },
     {
       "path": "demos/patterns/collect-counter/plates/landscape-51.6-map.webp",
-      "bytes": 240404,
-      "sha256": "9498a8968d41ef4cb51bb573add8535474eb43d5faef37994d7e313681e26475"
+      "bytes": 240404
     },
     {
       "path": "demos/patterns/collect-counter/plates/portrait-10.4-map.webp",
-      "bytes": 178700,
-      "sha256": "b6ce9e9de60b29b32661da7e3abd5b966e7049285f12bd40b64efff13d97bac2"
+      "bytes": 178700
     },
     {
       "path": "demos/patterns/collect-counter/plates/portrait-20.4-map.webp",
-      "bytes": 314310,
-      "sha256": "aa1009c7d9f032dffb07c3f5f120c1bb3ab74bfbdd2a14a5e623d60f8e0b7cac"
+      "bytes": 314310
     },
     {
       "path": "demos/patterns/collect-counter/plates/portrait-41-map.webp",
-      "bytes": 263766,
-      "sha256": "c40cd2ca01c4ea4bb095c67c294ae4d3c3ad6d6f405c4c935837611af10a4e54"
+      "bytes": 263766
     },
     {
       "path": "demos/patterns/collect-counter/plates/portrait-51.6-map.webp",
-      "bytes": 269560,
-      "sha256": "3f0435103d3ffc1d11f07262c5040f7d5837a626b3b5a141836619731fb20a98"
+      "bytes": 269560
     },
     {
       "path": "demos/patterns/collect-counter/scenes.js",
-      "bytes": 35275,
-      "sha256": "f0a0293601b0b9179c64072d997dfb74564fa80b2bfc468351c268d852ce86dd"
+      "bytes": 35275
     },
     {
       "path": "demos/patterns/collect-counter/score.json",
-      "bytes": 1115,
-      "sha256": "0ef7b7bc00b64e960005e51288aea3195045911462fe633adaa5498df2c3639d"
+      "bytes": 1115
     },
     {
       "path": "demos/patterns/collect-counter/script.js",
-      "bytes": 145553,
-      "sha256": "8e09d2ae0e644db406b0c761ea9dee6c1bd56ef69e7ad7d3d83f4280b3f135af"
+      "bytes": 145532
     },
     {
       "path": "demos/patterns/collect-counter/style.css",
-      "bytes": 41282,
-      "sha256": "f260518afe9cef3712ca111571619781d3a4411052db1d6fdbbf74168cc39f88"
+      "bytes": 41282
     },
     {
       "path": "previews/patterns/collect-counter.jpg",
-      "bytes": 175536,
-      "sha256": "28f8d8f14a9e9692e8e3843b588d4deb9c35c9547917896533033bbf161760ff"
+      "bytes": 175536
     },
     {
       "path": "previews/patterns/collect-counter-portrait.jpg",
-      "bytes": 190211,
-      "sha256": "6a2526b9d549b2a970540161303360f5effb15d207882ece6871a165c8aa869e"
+      "bytes": 190211
     }
   ]
 }

@@ -87,16 +87,14 @@ scripts/            本地播放、构建、检查、截图、视频导出与命
 
 | 命令 | 作用 |
 | --- | --- |
-| `node scripts/build.mjs` | 校验条目、同步 kit 副本，生成站点数据、Prompt 文档、Agent 资料包与本文件的计数 |
+| `node scripts/build.mjs` | 同步 kit 副本，生成站点数据、Prompt 文档、Agent 资料包与本文件的计数 |
 | `npm run build:site` | 使用 `--site` 生成发布站点到 `dist/`；≥128 KiB 的媒体从固定 Git 提交的 GitHub 地址加载 |
 | `npm run build:local` | 生成包含全部素材的 `dist/`，供完整本地分发 |
-| `node scripts/check.mjs` | 只读检查：条目与引用、kit 副本、生成物是否最新、预览图；网站界面文字≥12px。 |
-| `node scripts/smoke.mjs [--strict-fonts]` | 无头浏览器逐个 Demo 检查全时间轴与播放；固定舞台另测两画幅、切换保持时刻及运行时字号；`--strict-fonts`为兼容参数，不影响结果 |
 | `node scripts/capture.mjs` | 重新截取预览图（需先启动本地服务器） |
 | `node scripts/frames.mjs <video>` | 参考视频取帧，生成带时间码的接触表 |
 
 新增条目的流程见 [CONTRIBUTING.md](CONTRIBUTING.md)，给 Agent 的说明见 [AGENT.md](AGENT.md)。
 
-发布前先运行 `npm run build` 与 `npm run check`，提交并推送源码，再运行 `npm run build:site`（等同于 `node scripts/build-static.mjs --site`）。站点配置见 `.openai/hosting.json`。发布包中的 `assets/asset-sources.js` 自动记录本次提交和大素材地址；新增的大图、音视频、字体与模型会自动纳入，JS、CSS 和小素材随站点部署。源码和完整本地包保留原始素材。
+发布前先运行 `npm run build`，提交并推送源码，再运行 `npm run build:site`（等同于 `node scripts/build-static.mjs --site`）。站点配置见 `.openai/hosting.json`。发布包中的 `assets/asset-sources.js` 自动记录本次提交和大素材地址；新增的大图、音视频、字体与模型会自动纳入，JS、CSS 和小素材随站点部署。源码和完整本地包保留原始素材。
 
 发布模式的 `MotionAtlasAssets.resolve(url)` 负责素材地址解析，兼容现有图片、字体和 `fetch` 加载；MotionKit 继续负责预加载、缓存、进度与就绪通知。外部地图瓦片及其他未列入清单的请求沿用原地址。发布模式需要联网访问 GitHub 素材。

@@ -89,18 +89,15 @@
   "files": [
     {
       "path": "demos/patterns/boot-typing/index.html",
-      "bytes": 5650,
-      "sha256": "b7bef9cc97cb87eef68d919040f1e3981a9c9bda72931244af9ef7c29bc97690"
+      "bytes": 5650
     },
     {
       "path": "demos/patterns/boot-typing/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "previews/patterns/boot-typing.jpg",
-      "bytes": 24343,
-      "sha256": "a84a91886fbb091f1e96f26ca38f3565ac3ee35c89ccd562dfe308d1e52a036a"
+      "bytes": 24343
     }
   ]
 }

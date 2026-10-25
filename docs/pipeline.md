@@ -323,17 +323,16 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 - 地图类 Demo 每帧需要等瓦片空闲，渲染较慢；先用 `--fps 12` 预览节奏，再出正式版本。
 - 渲染时页面不会播放，所以“播放中才出现”的效果（例如运动模糊残影）需要在 render(t) 里用 `t` 计算，而不是依赖上一帧。
 
-## 十、检查与预览图
+## 十、预览图与截图
 
 | 脚本 | 说明 |
 | --- | --- |
-| `node scripts/check.mjs [--verbose]` | 静态检查条目、kit 副本、生成物与预览。网站界面文字≥12px |
 | `node scripts/capture.mjs [--only ids] [--orient both\|landscape\|portrait] [--out 目录] [--url 页面 --t 秒]` | 预览图：横屏 1280×720 → `previews/<kind>/<id>.jpg`；Demo 支持竖屏时再出 720×1280 → `previews/<kind>/<id>-portrait.jpg`（时刻用条目的 `previewAtPortrait`，缺省同 `previewAt`）。站点数据里对应 `preview` 与 `previewPortrait` |
 | `node scripts/shot.mjs <url> --orient portrait --t 3 --t 5 --out a.png` | 截图：`--orient` 给 URL 加 `?orient=` 并把视口默认设为舞台尺寸；可用 `--w/--h` 检查缩放与黑边 |
 
-条目设置`"renderer": "gpu"`时，预览图工具使用GPU并输出WebGL renderer。若使用SwiftShader、llvmpipe、Software或Microsoft Basic Render，则检查失败。
+条目设置`"renderer": "gpu"`时，预览图工具使用GPU并输出WebGL renderer。
 
-`seek` / `play` 可以返回 Promise；检查脚本会等待它们完成，再开始播放推进检查的计时。
+`seek` / `play` 可以返回 Promise，供截图和渲染工具等待画面就绪。
 
 ## 十一、可交互 Demo 的双时钟
 

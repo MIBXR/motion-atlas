@@ -81,18 +81,15 @@
   "files": [
     {
       "path": "demos/patterns/rolling-digits/index.html",
-      "bytes": 6374,
-      "sha256": "58f468b5ed65c3e41e6450639a41189484c9a3d113c94ebbe3336c66820483e3"
+      "bytes": 6374
     },
     {
       "path": "demos/patterns/rolling-digits/motion-kit.js",
-      "bytes": 107961,
-      "sha256": "334681a56239d41d7b74cf7080a9616619f5211050e0a239f658198c918258b0"
+      "bytes": 107961
     },
     {
       "path": "previews/patterns/rolling-digits.jpg",
-      "bytes": 17701,
-      "sha256": "026f2a072e5bd90b651bcd610dc081dfe4ea748b344f91378144518779934585"
+      "bytes": 17701
     }
   ]
 }

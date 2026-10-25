@@ -228,22 +228,9 @@ npm run preview
 
 原片时间轴使用 160 个阵列位置；交互模式使用固定的可见窗口与外围卡片补位，让有限的档案内容可以持续循环。
 
-### 修改与复核
+### 修改与预览
 
-修改档案内容从 [`content/archives.json`](content/archives.json) 入手，字段与操作步骤见 [档案修改说明](content/README.md)。`npm run dev` 与 `npm run build` 会先校验数据，再更新 `public/archives/` 中的文本导出；开发过程中修改数据后，可执行 `npm run export:archives` 同步下载文件。`npm run check:content` 检查数据规则与导出一致性。
-
-```sh
-node scripts/check-motion.mjs
-node scripts/check-loop.mjs
-node scripts/check-appearance.mjs
-node scripts/check-assembly.mjs
-node scripts/check-decryption.mjs
-node scripts/check-shell.mjs
-node scripts/check-internal-optics.mjs
-node scripts/check-quality.mjs
-```
-
-这些脚本检查运动、循环位置、外观、装配结构、解密轨迹、外壳、内构与画质参数。视觉效果仍需在浏览器中实际查看，尤其是快速切换、模型归位、文档揭示及查看器进出过渡。
+修改档案内容从 [`content/archives.json`](content/archives.json) 入手，字段与操作步骤见 [档案修改说明](content/README.md)。在 Motion Atlas 根目录运行 `npm run build:archive` 生成档案终端页面，再通过根目录静态服务器查看。
 
 | 本地调试路径 | 用途 |
 | --- | --- |
