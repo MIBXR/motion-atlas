@@ -169,7 +169,7 @@ export function buildAll() {
   const catalog = {
     schemaVersion: SCHEMA_VERSION,
     name: 'Motion Atlas',
-    description: '动态视觉参考库：影像视频与交互操作台的案例、巧思、节拍表、Prompt 与可运行的 Demo。',
+    description: '影像与操作台参考库：按时间线播放的影像视频、交互操作台与展示台的案例、巧思、节拍表、Prompt 与可运行的 Demo。',
     taxonomy: TAXONOMY,
     protocol: {
       seek: 'Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示未迁移到固定画幅的旧 Demo。',

@@ -2,7 +2,7 @@
   "name": "motion-atlas",
   "version": "1.0.0",
   "private": true,
-  "description": "多媒体动态视觉参考库：影像视频、交互操作台与交互展示台的案例、巧思、节拍表、可复用 Prompt 与可逐帧渲染的 Demo。",
+  "description": "影像与操作台参考库：收录按时间线播放的视频、交互操作台与展示台，拆解镜头、节拍、转场与声音，附可复用 Prompt 与可逐帧渲染的 Demo。",
   "type": "module",
   "engines": {
     "node": ">=22"

@@ -42,7 +42,7 @@
     const L = [];
     const brief = S.brief.trim();
     const base = sel.find((x) => x.kind === 'cases') || sel.find((x) => x.role === 'foundation') || sel[0];
-    L.push(`任务：${brief ? `做「${brief}」` : '做一个动态视觉作品'}，参考下列 Motion Atlas 条目的结构、节奏与参数，内容与品牌换成我的。`, '');
+    L.push(`任务：${brief ? `做「${brief}」` : '做一个影像或操作台作品'}，参考下列 Motion Atlas 条目的结构、节奏与参数，内容与品牌换成我的。`, '');
     L.push('先读资料包（本地仓库内），再动手：');
     for (const x of sel) L.push(`- agent/${x.kind}/${x.e.id}.json — ${x.e.title}（${x.kind === 'cases' ? `案例 · ${x.sub}` : `巧思 · ${ROLE_NAME[x.role]}`}）`);
     L.push('', '做法：');
