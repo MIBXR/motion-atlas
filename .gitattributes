@@ -3,3 +3,9 @@
 *.jpg binary
 *.png binary
 *.webp binary
+
+# 原样归档的脚本与第三方许可保留原始换行。
+demos/cases/keeling-curve/motion.js -text
+demos/cases/keeling-curve/preview.js -text
+demos/cases/keeling-curve/fonts/IBMPlexMono-OFL.txt -text
+demos/cases/keeling-curve/audio/*/License.txt -text

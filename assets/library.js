@@ -17,10 +17,13 @@
   /* ---------- 小工具 ---------- */
   const fmtT = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${(s % 60).toFixed(2).padStart(5, '0')}`;
   const fmtB = (s) => fmtT(s).replace(/^00:/, ''); // 节拍点的短格式：不足一分钟时省略分钟
-  const energyPath = (arr, w = 100, h = 26) => {
-    if (!arr || !arr.length) return '';
-    const pts = arr.map((v, i) => [(i / (arr.length - 1)) * w, h - 2 - v * (h - 4)]);
-    const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(2)} ${p[1].toFixed(2)}`).join('');
+  const energyPoints = (it, duration = it.rhythm?.duration) => it.energySegments?.length && duration
+    ? it.energySegments.flatMap((s) => [[s.t0 / duration, s.from], [s.t1 / duration, s.to]])
+    : (it.energy || []).map((v, i, arr) => [i / Math.max(1, arr.length - 1), v]);
+  const energyPath = (it, w = 100, h = 26) => {
+    const pts = energyPoints(it).map(([t, v]) => [t * w, h - 2 - v * (h - 4)]);
+    if (!pts.length) return '';
+    const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0]} ${p[1]}`).join('');
     return `<svg class="energy" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="${line}L${w} ${h}L0 ${h}Z"/><path class="stroke" d="${line}" vector-effect="non-scaling-stroke"/></svg>`;
   };
   const heroArt = KIND === 'cases'
@@ -161,7 +164,7 @@
         <div class="card-title"><a href="#${hashKind}/${it.id}">${esc(it.title)}</a>
           <button class="fav-btn" type="button" data-fav="${it.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(it.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
         <p class="card-sum">${esc(it.summary)}</p>
-        ${KIND === 'cases' && it.energy ? energyPath(it.energy) : ''}
+        ${KIND === 'cases' ? energyPath(it) : ''}
         <div class="card-tags">${tagLine}</div>
       </div></article>`;
   }
@@ -748,9 +751,8 @@
     const D = d.D;
     const W = 1000, H = 48;
     d.svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    const e = d.it.energy || [];
-    const pts = e.map((v, i) => [(i / Math.max(1, e.length - 1)) * W, H - 6 - v * (H - 14)]);
-    const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join('');
+    const pts = energyPoints(d.it, D).map(([t, v]) => [t * W, H - 6 - v * (H - 14)]);
+    const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0]} ${p[1]}`).join('');
     d.svg.innerHTML = `<rect class="base" x="0" y="${H - 5}" width="${W}" height="2"/>
       ${line ? `<path class="e-fill" d="${line}L${W} ${H}L0 ${H}Z"/><path class="e-line" d="${line}" vector-effect="non-scaling-stroke"/>` : ''}
       ${D ? beats.map((b, i) => { const x = ((b.t / D) * W).toFixed(2); return `<line class="tick" data-i="${i}" x1="${x}" x2="${x}" y1="2" y2="${H - 5}" vector-effect="non-scaling-stroke"/>`; }).join('') : ''}`;
@@ -873,9 +875,10 @@
         <figcaption class="card-body"><span class="chip accent">${galleryKinds[image.kind]}</span><p class="card-sum">${esc(image.caption)}</p><p class="resource-credit">作者产出效果，未复刻</p>${sourceUrl ? `<a class="resource-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}${license ? `<p class="resource-credit">${esc(license)}</p>` : ''}</figcaption></figure>`;
     }).join('')}</div>`;
     const related = it.relatedEntries.length ? `<ul>${it.relatedEntries.map((relation) => {
-      const entry = byId(MA[relation.kind], relation.id);
-      const hash = relation.kind === 'cases' ? 'case' : 'pattern';
-      return `<li><a href="${relation.kind}.html#${hash}/${esc(relation.id)}">${esc(entry.title)}</a>：${esc(relation.note)}</li>`;
+      const kind = { case: 'cases', pattern: 'patterns' }[relation.kind] || relation.kind;
+      const entry = byId(MA[kind], relation.id);
+      const hash = kind === 'cases' ? 'case' : 'pattern';
+      return `<li><a href="${kind}.html#${hash}/${esc(relation.id)}">${esc(entry.title)}</a>：${esc(relation.note)}</li>`;
     }).join('')}</ul>` : '<p>本库暂无由此 skill 产出的复刻案例</p>';
     return [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
@@ -933,7 +936,7 @@
     return [
       sec('概述', 'OVERVIEW', `<p>${esc(it.summary)}</p>${it.focus ? `<p>${esc(it.focus)}</p>` : ''}`),
       beats.length ? sec('节奏结构', `BEAT SHEET · ${it.rhythm.duration ? it.rhythm.duration + 's' : ''}${it.rhythm.bpm ? ' · ' + it.rhythm.bpm + ' BPM' : ''}`,
-        `<table class="beat-table"><thead><tr><th>时间</th><th>节拍</th><th>发生了什么</th></tr></thead><tbody>${beats.map((b) => `<tr><td><button type="button" data-seek="${b.t}">${fmtT(b.t).replace(/^00:/, '')}</button></td><td>${esc(b.label)}</td><td>${esc(b.note || '')}</td></tr>`).join('')}</tbody></table>`) : '',
+        `<table class="beat-table"><thead><tr><th>时间</th><th>节拍</th><th>发生了什么</th></tr></thead><tbody>${beats.map((b) => `<tr><td><button type="button" data-seek="${b.t}">${fmtT(b.t).replace(/^00:/, '')}</button></td><td>${esc(b.label)}</td><td>${esc(b.note || '')}</td></tr>`).join('')}</tbody></table>${it.energyNote ? `<p>${esc(it.energyNote)}</p>` : ''}`) : '',
       sec('构成', 'COMPOSITION', `${it.tokens?.palette ? `<div class="swatches" style="margin-bottom:14px">${it.tokens.palette.map((p) => `<span class="swatch"><i style="background:${esc(p)}"></i>${esc(p)}</span>`).join('')}</div>` : ''}
         <dl class="kv">${[['色彩', c.color], ['字体', c.typography], ['版式', c.layout], ['图像', c.imagery], ['动效', c.motion], ['声音', c.sound], ['节奏', c.rhythm], ['协调', c.coherence]].filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`),
       it.tokens?.motion ? sec('动效 Token', 'MOTION TOKENS', `<table class="token-table"><tbody>${it.tokens.motion.map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.value)}</td></tr>`).join('')}</tbody></table>`) : '',

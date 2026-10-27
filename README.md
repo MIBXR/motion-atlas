@@ -5,7 +5,7 @@
 **在线浏览：[Motion Atlas](https://motion-atlas.mibxranime.chatgpt.site)**
 
 <!-- counts:start -->
-**2 个案例**　·　**17 个巧思**　·　**2 个资源**　·　**2 个可逐帧渲染的影像 Demo**
+**3 个案例**　·　**17 个巧思**　·　**2 个资源**　·　**3 个可逐帧渲染的影像 Demo**
 <!-- counts:end -->
 
 ![地图巡礼 Demo 截图](previews/cases/map-pilgrimage.jpg)

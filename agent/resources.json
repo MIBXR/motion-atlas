@@ -22,7 +22,13 @@
         "把效果图当成已提供源码的可复刻案例"
       ],
       "skillPath": "agent-skills/motion-showreel/",
-      "relatedEntries": [],
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "keeling-curve",
+          "note": "用本 skill 按其完整工作流实际制作的 20 秒数据短片，配乐与音效来自公开素材库"
+        }
+      ],
       "bundle": "agent/resources/motion-showreel.json"
     },
     {
