@@ -6,7 +6,7 @@
   const $ = (s) => document.querySelector(s);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  $('#stats').innerHTML = `<b>${MA.cases.length}</b> 个完整案例 · <b>${MA.patterns.length}</b> 个独立巧思 · <b>${MA.cases.filter((c) => c.timeline).length}</b> 个可逐帧渲染的 Demo`;
+  $('#stats').innerHTML = `<b>${MA.cases.length}</b> 个完整案例 · <b>${MA.patterns.length}</b> 个独立巧思 · <b>${MA.resources.length}</b> 个创作资源 · <b>${MA.cases.filter((c) => c.timeline).length}</b> 个可逐帧渲染的 Demo`;
 
   // 监视器：轮播案例预览；时间码随轮播推进
   const withPrev = MA.cases.filter((c) => c.preview);

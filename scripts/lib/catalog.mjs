@@ -51,7 +51,8 @@ export function fileManifest(files) {
 export function loadEntries() {
   const cases = listJSON('entries/cases').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   const patterns = listJSON('entries/patterns').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
-  return { cases, patterns };
+  const resources = listJSON('entries/resources').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => a.id.localeCompare(b.id));
+  return { cases, patterns, resources };
 }
 
 const clean = (e) => { const { _file, ...rest } = e; return rest; };
@@ -110,6 +111,7 @@ export function buildAll() {
   // preview：横屏预览（1280×720）；previewPortrait：竖屏预览（720×1280，Demo 迁移到固定画幅舞台并支持竖屏后才有）
   const cases = entries.cases.map((c) => ({ ...clean(c), preview: previewFor('cases', c.id), previewPortrait: previewFor('cases', `${c.id}-portrait`) }));
   const patterns = entries.patterns.map((p) => ({ ...clean(p), preview: previewFor('patterns', p.id), previewPortrait: previewFor('patterns', `${p.id}-portrait`) }));
+  const resources = entries.resources.map((r) => ({ ...clean(r), preview: r.gallery[0]?.path || null }));
   for (const e of [...entries.cases, ...entries.patterns]) if (e.kit) kitTargets.push(demoDir(e.demo));
 
   // Prompt 文档
@@ -119,17 +121,18 @@ export function buildAll() {
   // 站点数据
   const site = { schemaVersion: SCHEMA_VERSION, taxonomy: TAXONOMY, cases, patterns };
   files['data/catalog.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA = ${JSON.stringify(site)};\n`;
+  files['data/resources.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA.resources = ${JSON.stringify(resources)};\n`;
   // README 计数块（先于文档集合生成，文档中心读到的是更新后的 README）
   if (exists('README.md')) {
     const readme = read('README.md');
-    const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**\n<!-- counts:end -->`;
+    const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${resources.length} 个资源**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**\n<!-- counts:end -->`;
     files['README.md'] = readme.replace(/<!-- counts:start -->[\s\S]*?<!-- counts:end -->/, block);
   }
   const docs = collectDocs(files);
   files['data/docs.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA_DOCS = ${JSON.stringify(docs)};\n`;
 
   // Agent 资料包
-  const bundleSummaries = { cases: [], patterns: [] };
+  const bundleSummaries = { cases: [], patterns: [], resources: [] };
   const kitFile = 'kit/motion-kit.js';
   for (const c of cases) {
     const demoFiles = walk(demoDir(c.demo));
@@ -166,6 +169,30 @@ export function buildAll() {
       bundle: `agent/patterns/${p.id}.json`,
     });
   }
+  for (const r of resources) {
+    const snapshotFiles = walk(r.skillPath.replace(/\/$/, ''));
+    const bundle = {
+      schemaVersion: SCHEMA_VERSION, kind: 'resources', id: r.id, resource: r,
+      documents: {
+        skill: read(`${r.skillPath}SKILL.md`),
+        readme: read(`${r.skillPath}README.md`),
+        readmeZh: read(`${r.skillPath}README.zh-CN.md`),
+        references: Object.fromEntries(snapshotFiles.filter((p) => p.endsWith('.md') && !['SKILL.md', 'README.md', 'README.zh-CN.md'].some((name) => p === r.skillPath + name)).map((p) => [p, read(p)])),
+      },
+      entrypoint: `${r.skillPath}SKILL.md`,
+      files: fileManifest([`entries/resources/${r.id}.json`, ...snapshotFiles, ...r.gallery.map((g) => g.path)]),
+    };
+    files[`agent/resources/${r.id}.json`] = JSON.stringify(bundle, null, 2) + '\n';
+    bundleSummaries.resources.push({
+      id: r.id, title: r.title, summary: r.summary, type: r.type,
+      carrierNote: r.carrierNote, useCases: r.useCases, avoid: r.avoid,
+      skillPath: r.skillPath, relatedEntries: r.relatedEntries,
+      bundle: `agent/resources/${r.id}.json`,
+    });
+  }
+  files['agent/resources.json'] = JSON.stringify({
+    schemaVersion: SCHEMA_VERSION, kind: 'resources', count: resources.length, resources: bundleSummaries.resources,
+  }, null, 2) + '\n';
   const catalog = {
     schemaVersion: SCHEMA_VERSION,
     name: 'Motion Atlas',
@@ -177,13 +204,15 @@ export function buildAll() {
       stage: '固定画幅舞台：横屏 1920×1080 / 竖屏 1080×1920，整体等比缩放；声音为乐谱（MotionKit.audio），可离线导出 WAV。见 docs/pipeline.md。',
       kit: kitFile,
     },
-    counts: { cases: cases.length, patterns: patterns.length },
+    counts: { cases: cases.length, patterns: patterns.length, resources: resources.length },
+    resourceCatalog: 'agent/resources.json',
     cases: bundleSummaries.cases,
     patterns: bundleSummaries.patterns,
+    resources: bundleSummaries.resources,
   };
   files['agent/catalog.json'] = JSON.stringify(catalog, null, 2) + '\n';
 
-  return { files, kitTargets, cases, patterns };
+  return { files, kitTargets, cases, patterns, resources };
 }
 
 export { rel, walk, exists, read };

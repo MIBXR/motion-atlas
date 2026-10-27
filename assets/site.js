@@ -25,7 +25,7 @@
   };
 
   const NAV = [
-    ['index.html', '首页'], ['cases.html', '案例库'], ['patterns.html', '巧思库'],
+    ['index.html', '首页'], ['cases.html', '案例库'], ['patterns.html', '巧思库'], ['resources.html', '资源库'],
     ['lab.html', '节奏实验室'], ['docs.html', '文档中心'], ['agent.html', 'Agent 工作流'],
   ];
 
@@ -44,9 +44,9 @@
   let theme = store.get('ma-theme', 'system');
   applyTheme(theme);
 
-  /* ---------- 收藏：案例与巧思共用一个备份文件 ---------- */
+  /* ---------- 收藏：各库共用一个备份文件 ---------- */
   const favs = {
-    all() { return store.get('ma-favorites', { cases: [], patterns: [] }); },
+    all() { return { cases: [], patterns: [], resources: [], ...store.get('ma-favorites', {}) }; },
     has(kind, id) { return this.all()[kind].includes(id); },
     toggle(kind, id) {
       const f = this.all();
@@ -68,8 +68,8 @@
         const data = JSON.parse(txt);
         const inc = data.favorites || data;
         const f = this.all();
-        const known = window.MA || { cases: [], patterns: [] };
-        for (const kind of ['cases', 'patterns']) {
+        const known = window.MA || { cases: [], patterns: [], resources: [] };
+        for (const kind of ['cases', 'patterns', 'resources']) {
           const ids = new Set(known[kind].map((x) => x.id));
           for (const id of inc[kind] || []) if (ids.has(id) && !f[kind].includes(id)) f[kind].push(id);
         }
@@ -233,7 +233,7 @@
     if (footer) {
       footer.className = 'site-footer';
       footer.innerHTML = `
-        <div><b>MOTION ATLAS</b> · 影像与操作台参考库：案例、巧思、节奏、Prompt 与可运行的 Demo。</div>
+        <div><b>MOTION ATLAS</b> · 影像与操作台参考库：案例、巧思、资源、节奏、Prompt 与可运行的 Demo。</div>
         <div class="links"><a href="docs.html#doc/docs/guide.md">使用指南</a><a href="docs.html#doc/docs/methodology.md">条目结构</a><a href="docs.html#doc/docs/pipeline.md">渲染管线</a><a href="agent/catalog.json">Agent 索引</a></div>`;
     }
     const top = document.createElement('button');

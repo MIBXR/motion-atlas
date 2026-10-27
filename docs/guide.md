@@ -35,6 +35,7 @@ Motion Atlas 是一个面向**按时间线播放的影像视频、交互操作�
 | [首页](../index.html) | 概览、载体入口、案例与巧思类型入口 |
 | [案例库](../cases.html) | 2 个完整作品：可按载体筛选；详情页提供首屏刻度条、节拍表、加载进度、声音开关、全屏与 Prompt；固定画幅案例支持横竖切换 |
 | [巧思库](../patterns.html) | 从案例里拆出来的单个技巧：触发、结果、参数、组合关系、减少动态策略 |
+| [资源库](../resources.html) | 视频制作 skill 与工具：工作流、适用边界、作者效果图（未复刻）、原文快照、安装与许可；支持收藏与备份 |
 | [节奏实验室](../lab.html) | 多音色节拍器、A/B 吸附对比、打拍录入、曲线与拍子；导出 CSS 变量、MotionKit 乐谱代码、Prompt 与 WAV |
 | 文档中心 | 本页所在处：指南、案例 Prompt 与巧思 Prompt |
 | [Agent 工作流](../agent.html) | 给编码 Agent 的结构化索引、资料包与 CLI |
@@ -106,6 +107,8 @@ node scripts/serve.mjs --port 4321
 ```text
 entries/cases/*.json      案例条目（唯一内容源）
 entries/patterns/*.json   巧思条目
+entries/resources/*.json  资源条目
+agent-skills/<id>/        上游 skill 固定提交的原样快照与许可
 demos/cases/<id>/         案例 Demo：index.html、style.css、script.js、config.js、motion-kit.js
 demos/patterns/<id>/      巧思 Demo：单文件 index.html + motion-kit.js
 kit/motion-kit.js         共享运行时（Demo 内为同步副本）
