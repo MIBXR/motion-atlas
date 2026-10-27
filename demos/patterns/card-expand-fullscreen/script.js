@@ -270,7 +270,7 @@
     styleP.then((st) => Object.values(st.sources || {}).forEach((src) => { if (src.url) fetch(src.url).catch(() => {}); })).catch(() => {});
     await loadScript(C.map.lib, 30000);
     // MapLibre 5 默认只用 1 个 worker 解析瓦片；预取时要并行解析几百块瓦片，开到 2–4 个
-    try { window.maplibregl.setWorkerCount(clamp(Math.floor((navigator.hardwareConcurrency || 4) / 2), 2, 4)); } catch (e) { /* 旧版本 */ }
+    window.maplibregl.setWorkerCount(clamp(Math.floor((navigator.hardwareConcurrency || 4) / 2), 2, 4));
     const cam = cameraAt(0);
     MAP.softGL = softwareGL();
     const softwarePreview = MAP.softGL && (!P.render || stage.scale < 1);
@@ -291,7 +291,7 @@
       map.once('error', (e) => { if (!map.isStyleLoaded()) rej(e.error || new Error('map error')); });
       setTimeout(() => rej(new Error('map timeout')), 30000);
     });
-    try { map.setProjection({ type: 'globe' }); } catch (e) { /* 旧版本不支持地球投影 */ }
+    map.setProjection({ type: 'globe' });
     if (softwarePreview) {
       // MapLibre 5.6 的精度读回会同步等待 GPU；软件预览保留首测结果，避免重复阻塞整条流水线。
       const settlePrecision = () => {
@@ -303,7 +303,7 @@
       };
       map.on('render', settlePrecision);
     }
-    try { map.setSky({ 'atmosphere-blend': ['interpolate', ['linear'], ['zoom'], 0, 0.9, 4, 0.6, 6, 0] }); } catch (e) { /* 无天空 */ }
+    map.setSky({ 'atmosphere-blend': ['interpolate', ['linear'], ['zoom'], 0, 0.9, 4, 0.6, 6, 0] });
     const style = map.getStyle();
     for (const l of style.layers) if (l.type === 'symbol') map.setLayoutProperty(l.id, 'visibility', 'none');
     // 平面建筑只到 z14（之后由 3D 建筑接替），省掉 z14 瓦片里重复的一份几何
@@ -345,7 +345,7 @@
   function pixelRatioFor(scale) {
     return clamp((P.render ? 1 : window.devicePixelRatio || 1) * scale, 0.5, 2);
   }
-  stage.on('resize', (s) => { if (MAP.map) { try { MAP.map.setPixelRatio(pixelRatioFor(s)); } catch (e) { /* 旧版本 */ } } });
+  stage.on('resize', (s) => { if (MAP.map) { MAP.map.setPixelRatio(pixelRatioFor(s)); } });
 
   /* ---------- 路线图层：实线用 line-gradient 按进度描出（同步，无延迟）；虚线 / 圆点用 setData ---------- */
   const STEP = (p, on, off = 'rgba(0,0,0,0)') => (p >= 1 ? on : p <= 0 ? off : ['step', ['line-progress'], on, Math.max(1e-6, p), off]);
