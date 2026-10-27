@@ -54,6 +54,9 @@
     "sources": [
       {
         "caseId": "map-pilgrimage"
+      },
+      {
+        "caseId": "archive-os"
       }
     ],
     "previewAt": 2.8,
@@ -167,6 +170,10 @@
     {
       "caseId": "map-pilgrimage",
       "bundle": "agent/cases/map-pilgrimage.json"
+    },
+    {
+      "caseId": "archive-os",
+      "bundle": "agent/cases/archive-os.json"
     }
   ],
   "documents": {

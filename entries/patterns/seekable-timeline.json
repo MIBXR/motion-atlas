@@ -50,6 +50,9 @@
   "sources": [
     {
       "caseId": "map-pilgrimage"
+    },
+    {
+      "caseId": "archive-os"
     }
   ],
   "previewAt": 2.8,

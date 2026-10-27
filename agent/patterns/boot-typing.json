@@ -15,30 +15,26 @@
       "console",
       "video"
     ],
-    "summary": "白场逐字输入后闪黑清空，圆环与标志依次绘出，再打出三行身份确认，用输入节奏营造开机感。",
-    "mechanism": "预先计算字符时刻，渲染与音效共用时刻表。行完成时黑底反色闪180ms后清空。圆环依次描出，标志笔画随后显现。输入中光标常亮，完成后闪烁。短音以三种音高轮替，并限制最短间隔。",
-    "trigger": "页面载入 / 重新初始化",
-    "effect": "在任何内容出现前先建立“系统正在启动、正在识别你”的仪式感。",
+    "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。",
+    "mechanism": "直接复用当前案例的 bootMotion、单轮廓标志轨道与逐字字形。时间 t 先加 5 秒再换算为 25fps 原片帧号；权限文本使用非均匀字符数量表，身份、请求、处理和省略号按各自采样帧揭示。标志的前后端沿同一条轮廓移动，同时改变线宽、位置及加减符号。扫描和欢迎阶段继续使用同一份轨道，声音直接读取案例 film-audio.ogg 的开场片段。",
+    "trigger": "时间轴从 0 秒播放或外部 seek 到开场任意时刻。",
+    "effect": "权限请求、RHINE·LAB 标志、ID CONFIRMED : JOYCE MOORE、扫描与欢迎按当前案例节拍依次出现。",
     "timing": [
       {
-        "name": "每字间隔",
-        "value": "45ms（身份行 30–32ms）"
+        "name": "权限",
+        "value": "1.8s 开始，2.48s 揭完；4.08s 隐藏"
       },
       {
-        "name": "停顿",
-        "value": "冒号后 250–350ms，省略号每点 120ms"
+        "name": "标志",
+        "value": "4.16s 显示；帧 229–264 沿单轮廓描绘，随后移向左侧"
       },
       {
-        "name": "反色闪",
-        "value": "180ms"
+        "name": "身份",
+        "value": "6.28–8.56s；请求 9.68–10.56s；处理 11.92–13.28s"
       },
       {
-        "name": "圆环",
-        "value": "900ms inOutCubic，第二环延迟 450ms"
-      },
-      {
-        "name": "短音",
-        "value": "38ms 方波，三音高轮替，最短间隔 24ms"
+        "name": "扫描与欢迎",
+        "value": "14.48s 扫描；17.76s 欢迎；21.56–21.92s 缩小、失焦并淡出"
       }
     ],
     "useCases": [
@@ -48,11 +44,11 @@
       "待机唤醒"
     ],
     "avoid": [
-      "每次访问都强制观看（提供跳过与只播放一次）"
+      "频繁重复的登录操作；该完整开场约 21.92 秒。"
     ],
     "accessibility": {
-      "reducedMotion": "直接显示完整文字与标志，不做逐字与闪烁。",
-      "keyboard": "空格播放/暂停；提供跳过入口。"
+      "reducedMotion": "直接定位到 20.5 秒的静态欢迎画面；声音默认关闭。",
+      "keyboard": "空格播放或暂停；时间轴支持外部 seek。"
     },
     "composition": {
       "role": "support",
@@ -62,17 +58,46 @@
         "wave-array"
       ],
       "conflicts": [],
-      "notes": "开机层结束时整体失焦、缩小并淡出，让下一层自然接管。"
+      "notes": "作为完整开机支撑层；欢迎画面在 21.56–21.92 秒缩小、失焦并淡出，可在约 22 秒接入档案阵列。"
     },
-    "prompt": "实现终端逐字开机序列：先按“每字间隔 + 特定字符后停顿”预计算每个字符的出现时刻（如每字 45ms、冒号后停 350ms），渲染与音效共用这份时刻表；输入中显示块状光标，完成后黑底反色闪 180ms 再清空；随后两个圆环以 stroke-dashoffset 900ms 依次描出（第二环延迟 450ms），标志笔画显现；再错峰打出三行身份确认（每字 30ms）。逐字短音用 38ms 方波、三种音高轮替、最短间隔 24ms，默认静音。全部是时间 t 的纯函数，提供跳过与减少动态下的静态完成态。",
+    "prompt": "实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音原样复制 film-audio.ogg，仅播放 0–21.92 秒，默认关闭。所有资源放在 Demo 内；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。",
     "demo": "demos/patterns/boot-typing/index.html",
     "kit": true,
-    "previewAt": 6.4,
+    "previewAt": 8.6,
     "sources": [
       {
         "caseId": "archive-os"
       }
     ],
+    "parameters": [
+      {
+        "name": "时间基准",
+        "value": "25fps；原片帧号 floor((t+5)×25+0.00001)；开场 21.92s",
+        "source": "vendor/rhinelabui/src/boot-motion.ts:20-24,137-138"
+      },
+      {
+        "name": "权限逐字表",
+        "value": "帧 170–187；字符数 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26",
+        "source": "vendor/rhinelabui/src/boot-motion.ts:24-26,60-68"
+      },
+      {
+        "name": "身份与处理帧表",
+        "value": "ID 282–295；JOYCE 321–339；请求 367–389；处理 423–440；省略号 449/453/457",
+        "source": "vendor/rhinelabui/src/boot-motion.ts:36-46"
+      },
+      {
+        "name": "单轮廓",
+        "value": "轮廓绘制帧 229–264，线宽 0.25→26；符号缩放帧 246–256",
+        "source": "vendor/rhinelabui/src/boot-logo-tracks.ts:3-42,114-144"
+      },
+      {
+        "name": "声音",
+        "value": "原样复用案例 film-audio.ogg；其中逐字音为 48kHz、三段 38ms 采样按实际揭字轮替",
+        "source": "demos/cases/archive-os/film-audio.ogg；vendor/rhinelabui/src/typing-rhythm.ts:5-29；vendor/rhinelabui/src/audio.ts:36-55,238-241"
+      }
+    ],
+    "videoPrompt": "制作 21.92 秒、25fps 帧表驱动的 RHINE LAB 开场。1.8 秒逐字出现 ACCESS PERMISSION REQUIRED，4.16 秒起沿一条共享轮廓描绘标志并移动，6.28 秒起确认 JOYCE MOORE 身份，9.68 秒起请求、11.92 秒起处理，14.48 秒扫描、17.76 秒欢迎，21.56 秒开始缩小失焦并于 21.92 秒结束。字形、材质色彩、轮廓轨迹与声音均使用当前 archive-os 文件。",
+    "negativePrompt": "不要双独立圆环，不要均匀每字间隔，不要 LUMEN、K. ARLEN 或 ANALYSIS OS 请求文案，不要方波替代逐字采样，不要添加块状闪烁光标或 180ms 反色闪，不要跨目录依赖案例。",
     "preview": "previews/patterns/boot-typing.jpg",
     "previewPortrait": null
   },
@@ -83,21 +108,125 @@
     }
   ],
   "documents": {
-    "prompt": "# 终端逐字开机序列\n\n## 实现 Prompt\n\n实现终端逐字开机序列：先按“每字间隔 + 特定字符后停顿”预计算每个字符的出现时刻（如每字 45ms、冒号后停 350ms），渲染与音效共用这份时刻表；输入中显示块状光标，完成后黑底反色闪 180ms 再清空；随后两个圆环以 stroke-dashoffset 900ms 依次描出（第二环延迟 450ms），标志笔画显现；再错峰打出三行身份确认（每字 30ms）。逐字短音用 38ms 方波、三种音高轮替、最短间隔 24ms，默认静音。全部是时间 t 的纯函数，提供跳过与减少动态下的静态完成态。\n\n## 参数\n\n- **每字间隔**：45ms（身份行 30–32ms）\n- **停顿**：冒号后 250–350ms，省略号每点 120ms\n- **反色闪**：180ms\n- **圆环**：900ms inOutCubic，第二环延迟 450ms\n- **短音**：38ms 方波，三音高轮替，最短间隔 24ms\n\n[打开 Demo](../../demos/patterns/boot-typing/index.html) · [在库中查看](../../patterns.html#pattern/boot-typing)\n"
+    "prompt": "# 终端逐字开机序列\n\n## 实现 Prompt\n\n实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音原样复制 film-audio.ogg，仅播放 0–21.92 秒，默认关闭。所有资源放在 Demo 内；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。\n\n## 视频生成 Prompt\n\n制作 21.92 秒、25fps 帧表驱动的 RHINE LAB 开场。1.8 秒逐字出现 ACCESS PERMISSION REQUIRED，4.16 秒起沿一条共享轮廓描绘标志并移动，6.28 秒起确认 JOYCE MOORE 身份，9.68 秒起请求、11.92 秒起处理，14.48 秒扫描、17.76 秒欢迎，21.56 秒开始缩小失焦并于 21.92 秒结束。字形、材质色彩、轮廓轨迹与声音均使用当前 archive-os 文件。\n\n## 负向约束\n\n不要双独立圆环，不要均匀每字间隔，不要 LUMEN、K. ARLEN 或 ANALYSIS OS 请求文案，不要方波替代逐字采样，不要添加块状闪烁光标或 180ms 反色闪，不要跨目录依赖案例。\n\n## 参数\n\n- **权限**：1.8s 开始，2.48s 揭完；4.08s 隐藏\n- **标志**：4.16s 显示；帧 229–264 沿单轮廓描绘，随后移向左侧\n- **身份**：6.28–8.56s；请求 9.68–10.56s；处理 11.92–13.28s\n- **扫描与欢迎**：14.48s 扫描；17.76s 欢迎；21.56–21.92s 缩小、失焦并淡出\n\n[打开 Demo](../../demos/patterns/boot-typing/index.html) · [在库中查看](../../patterns.html#pattern/boot-typing)\n"
   },
   "entrypoint": "demos/patterns/boot-typing/index.html",
   "files": [
     {
+      "path": "demos/patterns/boot-typing/boot-lettering-notice.txt",
+      "bytes": 1697
+    },
+    {
+      "path": "demos/patterns/boot-typing/compiled.css",
+      "bytes": 1710
+    },
+    {
+      "path": "demos/patterns/boot-typing/compiled.js",
+      "bytes": 65352
+    },
+    {
+      "path": "demos/patterns/boot-typing/film-audio.ogg",
+      "bytes": 1333228
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts.css",
+      "bytes": 4975
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/bold/0.woff2",
+      "bytes": 41840
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/bold/2.woff2",
+      "bytes": 3312
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/demibold/0.woff2",
+      "bytes": 41404
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/demibold/2.woff2",
+      "bytes": 3372
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/light/0.woff2",
+      "bytes": 41164
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/light/2.woff2",
+      "bytes": 3376
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/regular/0.woff2",
+      "bytes": 36932
+    },
+    {
+      "path": "demos/patterns/boot-typing/fonts/misans-webfont-4.3.1/regular/2.woff2",
+      "bytes": 3364
+    },
+    {
       "path": "demos/patterns/boot-typing/index.html",
-      "bytes": 5650
+      "bytes": 598
     },
     {
       "path": "demos/patterns/boot-typing/motion-kit.js",
       "bytes": 107961
     },
     {
+      "path": "demos/patterns/boot-typing/script.js",
+      "bytes": 3029
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/asset-url.ts",
+      "bytes": 48
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot-lettering-art.json",
+      "bytes": 29697
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot-lettering.css",
+      "bytes": 1871
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot-lettering.ts",
+      "bytes": 4331
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot-logo-tracks.ts",
+      "bytes": 3724
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot-motion.ts",
+      "bytes": 4192
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot-orbit-tracks.ts",
+      "bytes": 4835
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot-tracks.ts",
+      "bytes": 7402
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/boot.ts",
+      "bytes": 11417
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/brand.ts",
+      "bytes": 1620
+    },
+    {
+      "path": "demos/patterns/boot-typing/source/theme-ui.ts",
+      "bytes": 28
+    },
+    {
+      "path": "demos/patterns/boot-typing/style.css",
+      "bytes": 6049
+    },
+    {
       "path": "previews/patterns/boot-typing.jpg",
-      "bytes": 24343
+      "bytes": 23116
     }
   ]
 }

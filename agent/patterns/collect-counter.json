@@ -5,7 +5,7 @@
   "pattern": {
     "id": "collect-counter",
     "order": 17,
-    "title": "收集计数徽章与图鉴托盘",
+    "title": "收集计数徽章与收集物托盘",
     "types": [
       "feedback",
       "hud"
@@ -14,8 +14,8 @@
       "video",
       "console"
     ],
-    "summary": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
-    "mechanism": "计数变化时数字上滚，徽章回弹。角色托盘逐格点亮，与旅程进度一起累积。",
+    "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。",
+    "mechanism": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。",
     "trigger": "到站、盖章或发现角色时",
     "effect": "每次抵达都有积累感，进度看得见。",
     "timing": [
@@ -29,10 +29,10 @@
       }
     ],
     "useCases": [
-      "旅行吉祥物出现次数",
-      "展会打卡",
-      "任务进度",
-      "收藏型陈列界面"
+      "打卡与签到",
+      "任务或关卡进度",
+      "收藏与图鉴陈列",
+      "旅行或展会集章"
     ],
     "avoid": [
       "计数与叙事无关时（会显得廉价）"
@@ -48,7 +48,7 @@
         "outro-stat-stack"
       ],
       "conflicts": [],
-      "notes": "计数变化时数字上滚，徽章回弹。角色托盘逐格点亮，与旅程进度一起累积。"
+      "notes": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。"
     },
     "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/collect-counter/index.html",
@@ -148,7 +148,7 @@
     "migration": [
       {
         "field": "动效函数",
-        "how": "配置计数、徽章、角色托盘与回弹。"
+        "how": "配置计数、徽章、收集物托盘（来源为车站印章）与回弹。"
       },
       {
         "field": "依赖",
@@ -156,7 +156,7 @@
       },
       {
         "field": "需要的数据",
-        "how": "设置计数与角色事件、镜头和横竖布局。"
+        "how": "设置计数与收集事件（来源为车站印章）、镜头和横竖布局。"
       },
       {
         "field": "config.js → segments / markers",
@@ -177,7 +177,7 @@
     }
   ],
   "documents": {
-    "prompt": "# 收集计数徽章与图鉴托盘\n\n## 实现 Prompt\n\n每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：6.6s\n- **声音 voice**：confirm、stamp、sparkle\n\n## 动效 Token\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：6.6s\n\n## 迁移\n\n- `动效函数`：配置计数、徽章、角色托盘与回弹。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置计数与角色事件、镜头和横竖布局。\n- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
+    "prompt": "# 收集计数徽章与收集物托盘\n\n## 实现 Prompt\n\n每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：6.6s\n- **声音 voice**：confirm、stamp、sparkle\n\n## 动效 Token\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：6.6s\n\n## 迁移\n\n- `动效函数`：配置计数、徽章、收集物托盘（来源为车站印章）与回弹。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置计数与收集事件（来源为车站印章）、镜头和横竖布局。\n- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
   },
   "entrypoint": "demos/patterns/collect-counter/index.html",
   "files": [

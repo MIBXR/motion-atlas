@@ -294,7 +294,7 @@
     {
       "id": "split-compare-stamp",
       "title": "分屏对比与时间戳盖章",
-      "summary": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。",
+      "summary": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。",
       "types": [
         "transition",
         "composition"
@@ -315,8 +315,8 @@
     },
     {
       "id": "collect-counter",
-      "title": "收集计数徽章与图鉴托盘",
-      "summary": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。",
+      "title": "收集计数徽章与收集物托盘",
+      "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。",
       "types": [
         "feedback",
         "hud"
@@ -391,7 +391,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "archive-os"
       ],
       "pairsWellWith": [
         "film-grain",
@@ -423,7 +424,7 @@
     {
       "id": "boot-typing",
       "title": "终端逐字开机序列",
-      "summary": "白场逐字输入后闪黑清空，圆环与标志依次绘出，再打出三行身份确认，用输入节奏营造开机感。",
+      "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。",
       "types": [
         "type-motion",
         "rhythm",
@@ -447,7 +448,7 @@
     {
       "id": "rolling-digits",
       "title": "滚动数字与文字",
-      "summary": "编号与标题沿输入方向滚动460ms，带轻微模糊。快速连按只转向最新目标，不为中间值排队。",
+      "summary": "编号与文字按字符滚动 460ms。临界阻尼滚轮在连按时读取当前位置与速度，接向最新目标。",
       "types": [
         "type-motion",
         "feedback"
@@ -470,7 +471,7 @@
     {
       "id": "decrypt-reveal",
       "title": "对角解密与磨砂转清",
-      "summary": "对角线合拢后收束，玻璃自上而下从磨砂转清。正文遮挡条按阅读顺序退开，让读取过程可见。",
+      "summary": "GLB 档案的一条模型空间对角线从两端接通再收束，约3.6267秒完成物理解密；玻璃转清后，正文按实际折行逐行移走遮罩。",
       "types": [
         "transition",
         "texture"
@@ -492,7 +493,7 @@
     {
       "id": "wave-array",
       "title": "阵列选择波浪",
-      "summary": "选中块以临界阻尼抬起，余波按距离延迟、衰减，整片阵列随一次选择起伏。",
+      "summary": "选择 GLB 档案时，循环阵列叠加带正负位移的行进波；欧氏距离决定波峰位置，选中模型同步抬起。",
       "types": [
         "feedback",
         "rhythm"

@@ -13,7 +13,7 @@
     "carriers": [
       "video"
     ],
-    "summary": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。",
+    "summary": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。",
     "mechanism": "两侧插画以分割线分开，边框组织画面。时间戳以印章动作落下，让两个时刻的景象并排对照。",
     "trigger": "同一地点的今昔需要对照时",
     "effect": "同一地点的时间差异一眼可见。",
@@ -50,7 +50,7 @@
       "conflicts": [],
       "notes": "两侧插画以分割线分开，边框组织画面。时间戳以印章动作落下，让两个时刻的景象并排对照。"
     },
-    "prompt": "旧明信片与今日实景左右对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+    "prompt": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
     "demo": "demos/patterns/split-compare-stamp/index.html",
     "kit": true,
     "sources": [
@@ -153,7 +153,7 @@
     }
   ],
   "documents": {
-    "prompt": "# 分屏对比与时间戳盖章\n\n## 实现 Prompt\n\n旧明信片与今日实景左右对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：4.8s\n- **声音 voice**：whoosh、stamp、sub\n\n## 动效 Token\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n\n## 迁移\n\n- `动效函数`：配置分屏、两侧场景、边框与印章。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。\n- `config.js → segments / markers`：29→33.4\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
+    "prompt": "# 分屏对比与时间戳盖章\n\n## 实现 Prompt\n\n旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：4.8s\n- **声音 voice**：whoosh、stamp、sub\n\n## 动效 Token\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n\n## 迁移\n\n- `动效函数`：配置分屏、两侧场景、边框与印章。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。\n- `config.js → segments / markers`：29→33.4\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
   },
   "entrypoint": "demos/patterns/split-compare-stamp/index.html",
   "files": [
