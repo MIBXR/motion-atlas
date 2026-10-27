@@ -31,7 +31,7 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 2,
+    "cases": 3,
     "patterns": 17,
     "resources": 2
   },
@@ -121,6 +121,39 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/archive-os.json"
+    },
+    {
+      "id": "keeling-curve",
+      "title": "基林曲线 · 莫纳罗亚 CO₂ 数据短片",
+      "summary": "20 秒展开莫纳罗亚 CO₂ 真实月均曲线，再推近 2025 年的季节锯齿，拉远并列年均两端：长期趋势，持续上升；起伏，是季节。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "真实数据",
+        "基林曲线",
+        "季节起伏",
+        "长期趋势",
+        "尺度转换",
+        "中文数据短片",
+        "公开音频素材",
+        "motion-showreel"
+      ],
+      "useCases": [
+        "公开时间序列的数据短片",
+        "长期趋势与周期变化的双尺度解释",
+        "中文科学传播影像",
+        "需要来源、单位与数据口径并列呈现的动态图表"
+      ],
+      "avoid": [
+        "无法追溯来源的数字叙事",
+        "把莫纳罗亚观测序列当作全球平均",
+        "需要逐字阅读长篇解释的内容",
+        "需要竖屏重新排版的交付"
+      ],
+      "patternIds": [],
+      "seekable": true,
+      "bundle": "agent/cases/keeling-curve.json"
     }
   ],
   "patterns": [
@@ -518,7 +551,13 @@
         "把效果图当成已提供源码的可复刻案例"
       ],
       "skillPath": "agent-skills/motion-showreel/",
-      "relatedEntries": [],
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "keeling-curve",
+          "note": "用本 skill 按其完整工作流实际制作的 20 秒数据短片，配乐与音效来自公开素材库"
+        }
+      ],
       "bundle": "agent/resources/motion-showreel.json"
     },
     {

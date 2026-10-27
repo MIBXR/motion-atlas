@@ -38,7 +38,13 @@
   },
   "install": "按来源集合 README，可使用 skills CLI 安装单个 skill：\nnpx skills add ConardLi/garden-skills -s motion-showreel\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。安装后在 skill 目录执行一次：\nsh scripts/setup.sh\n需要 Node 18+ 与 PATH 中的 ffmpeg；初始化脚本不安装系统软件。也可按来源 README，将 skill 目录复制到 Agent 会扫描的技能目录。",
   "skillPath": "agent-skills/motion-showreel/",
-  "relatedEntries": [],
+  "relatedEntries": [
+    {
+      "kind": "case",
+      "id": "keeling-curve",
+      "note": "用本 skill 按其完整工作流实际制作的 20 秒数据短片，配乐与音效来自公开素材库"
+    }
+  ],
   "gallery": [
     {
       "path": "assets/resources/motion-showreel/afterglow.webp",
