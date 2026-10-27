@@ -11,7 +11,7 @@
     "console"
   ],
   "summary": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。",
-  "mechanism": "误乘横幅擦入，错误路线变红并画叉。改道胶囊闪烁，与警报和提示音同步。",
+  "mechanism": "误乘横幅擦入，错误路线变红并画叉。改道胶囊单次淡入，省略号循环，与警报和提示音同步。",
   "trigger": "行程出错、需要改道时",
   "effect": "先看出哪里出了错，再跟上新的方向。",
   "timing": [
@@ -44,7 +44,7 @@
       "corner-hud"
     ],
     "conflicts": [],
-    "notes": "误乘横幅擦入，错误路线变红并画叉。改道胶囊闪烁，与警报和提示音同步。"
+    "notes": "误乘横幅擦入，错误路线变红并画叉。改道胶囊单次淡入，省略号循环，与警报和提示音同步。"
   },
   "prompt": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。复用地图巡礼的 drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project 与对应 CSS。警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。片段：caseT 44.8→50.3；时长 6.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
   "demo": "demos/patterns/alert-reroute/index.html",

@@ -1230,7 +1230,7 @@
   function maskPattern() {
     stageEl.appendChild(el.attrib);
     attributionOrient = null;
-    const hud = ['corner-hud','day-night-flip','seekable-timeline'].includes(PC.id);
+    const hud = ['corner-hud','day-night-flip','seekable-timeline','card-expand-fullscreen'].includes(PC.id);
     const allowed = new Set(['plates','grain']);
     if (isLive) allowed.add('map');
     if (PC.id === 'day-night-flip') allowed.add('wash');
@@ -1238,7 +1238,7 @@
     if (PC.id === 'collect-counter') ['badge','hudgfx'].forEach(id=>allowed.add(id));
     if (PC.id === 'seekable-timeline') ['cards','geo','badge'].forEach(id=>allowed.add(id));
     if (PC.id === 'vertical-title-blur') ['intro','loc','flashback','outro'].forEach(id=>allowed.add(id));
-    if (PC.id === 'card-expand-fullscreen') ['cards','geo','labels'].forEach(id=>allowed.add(id));
+    if (PC.id === 'card-expand-fullscreen') ['cards','geo','labels','badge'].forEach(id=>allowed.add(id));
     if (PC.id === 'chapter-frame') ['chapter','decor'].forEach(id=>allowed.add(id));
     if (PC.id === 'split-compare-stamp') allowed.add('compare');
     if (PC.id === 'alert-reroute') ['geo','labels','alert'].forEach(id=>allowed.add(id));
@@ -1251,7 +1251,7 @@
       child.classList.toggle('pattern-off', !keep);
     }
     tagEls.forEach(tag=>tag.el.classList.add('pattern-off'));
-    G.stamps.forEach(st=>st.g.classList.toggle('pattern-off',PC.id!=='collect-counter'));
+    G.stamps.forEach(st=>st.g.classList.toggle('pattern-off',!['collect-counter','card-expand-fullscreen'].includes(PC.id)));
     if(PC.id==='seekable-timeline') {
       $('.hud-bottom').classList.add('pattern-off');
       $('.hud-fade.bottom').classList.add('pattern-off');
@@ -1354,7 +1354,7 @@
     }
     if(id==='chapter-frame')drawChapter(t,ch,chDef,chK,fbVis,cmpVis);
     if(id==='split-compare-stamp')drawCompare(t,cmpItem,cmpVis);
-    if(['corner-hud','day-night-flip','collect-counter','seekable-timeline'].includes(id))drawHud(hudT,cam,night,over,fbVis,cmpVis);
+    if(['corner-hud','day-night-flip','collect-counter','seekable-timeline','card-expand-fullscreen'].includes(id))drawHud(hudT,cam,night,over,fbVis,cmpVis);
     if(['card-expand-fullscreen','seekable-timeline'].includes(id)) {
       const active=drawCards(t,cam,accent,chDef,expandF);
       drawMarkers(t,cam,1-over,active);drawLeader();

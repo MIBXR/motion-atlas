@@ -1,91 +1,44 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>对角解密与磨砂转清 — Motion Atlas 巧思</title>
-<style>
-  :root { --paper: #eae5e1; --ink: #171713; --muted: #77756d; --line: #bdb8ad; --accent: #c8742f; --f: "Segoe UI Variable Display","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
-  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: radial-gradient(ellipse at 40% 45%, #f2eee9, var(--paper) 65%); color: var(--ink); font-family: var(--f); }
-  .stage { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 5vw; padding: 0 6vw; }
-  .glass { position: relative; justify-self: end; width: min(40vw, 560px); aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: linear-gradient(160deg, rgba(255,255,255,.8), rgba(240,236,230,.6)); box-shadow: 0 30px 80px rgba(80,70,55,.16), inset 0 0 0 1px rgba(255,255,255,.85); }
-  .glass svg.art { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .frost { position: absolute; inset: 0; backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px); background: rgba(246,243,238,.45); }
-  .edge { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(200,116,47,.8), transparent); }
-  .diag { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .diag path { fill: none; stroke: var(--accent); stroke-width: .6; vector-effect: non-scaling-stroke; }
-  .doc { max-width: 520px; }
-  .k { display: flex; justify-content: space-between; font: 600 12px/1 var(--f); letter-spacing: .1em; color: var(--muted); }
-  h1 { margin: 20px 0 0; font: 800 clamp(24px, 2.6vw, 40px)/1.1 var(--f); }
-  .cn { margin: 10px 0 0; padding-bottom: 16px; border-bottom: 2px solid var(--ink); font: 500 18px/1.3 var(--f); }
-  dl { margin: 18px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
-  dt { font: 600 12px/1.2 var(--f); color: var(--muted); letter-spacing: .06em; } dd { margin: 6px 0 0; font: 500 14px/1.3 var(--f); }
-  p.abs { margin: 18px 0 0; font: 400 15px/1.85 var(--f); color: #3c3b35; }
-  .m { position: relative; }
-  .bar { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: var(--ink); transform-origin: 100% 50%; }
-  @media (max-width: 720px) { .stage { grid-template-columns: 1fr; padding: 24px; align-content: center; gap: 28px; } .glass { justify-self: center; width: 86vw; } }
-</style>
+<title>对角解密与磨砂转清</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
+<script>
+const CONFIG = {
+  duration: 5.2,
+  decryptionStart: 34.12,
+  decryptionEnd: 39.56,
+  interactiveRate: 1.5,
+  documentDuration: 0.95,
+  arrayIdleSeconds: 10,
+  modelAsset: './assets/archive-cassette.glb',
+  background: '#eae5e1',
+  quality: 'original',
+  file: {
+    id: 'X-001', title: '莱茵生命', en: 'RHINE LAB, LLC.',
+    department: '总辖构件科', category: '机构档案', date: '跨期资料汇编',
+    lead: 'Kristen Wright / Saria', clearance: 'REFERENCE AREA',
+    abstract: '莱茵生命从克丽斯腾与塞雷娅共同创办的研究室发展而来。这里聚集着研究生命、能源与未知技术的人，也承受着资金、权力和成果应用的压力。理解这家机构，需要同时阅读它的实验记录与研究者的选择。'
+  }
+};
+window.CONFIG = CONFIG;
+</script>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="document-decryption.css">
+<link rel="stylesheet" href="decryption.css">
 </head>
 <body>
-<main class="stage">
-  <div class="glass" aria-hidden="true">
-    <svg class="art" viewBox="0 0 400 300">
-      <rect x="14" y="14" width="372" height="272" rx="10" fill="none" stroke="#c9c3b8" stroke-width="2"/>
-      <circle cx="160" cy="170" r="78" fill="none" stroke="#e7e2da" stroke-width="22"/>
-      <path d="M110 225a78 78 0 0 1-22-60" fill="none" stroke="#c8742f" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="288" cy="110" r="44" fill="none" stroke="#ebe6de" stroke-width="18"/>
-      <circle cx="288" cy="110" r="30" fill="none" stroke="#c8742f" stroke-width="9"/>
-      <path d="M238 170c30 0 46-14 50-30" fill="none" stroke="#e1dbd2" stroke-width="10" stroke-linecap="round"/>
-    </svg>
-    <div class="frost" id="frost"></div>
-    <i class="edge" id="edge"></i>
-    <svg class="diag" viewBox="0 0 100 100" preserveAspectRatio="none"><path id="d1" d="M0 0L100 100"/><path id="d2" d="M100 0L0 100"/></svg>
-  </div>
-  <article class="doc" aria-live="polite">
-    <p class="k"><span>FILE X-017</span><span>REFERENCE AREA</span></p>
-    <h1 class="m">LUMEN LAB, LLC.<i class="bar"></i></h1>
-    <p class="cn m">机构档案<i class="bar"></i></p>
-    <dl>
-      <div class="m"><dt>DEPARTMENT / 科室</dt><dd>总辖构件科</dd><i class="bar"></i></div>
-      <div class="m"><dt>COLLECTION / 编目范围</dt><dd>跨期资料汇编</dd><i class="bar"></i></div>
-      <div class="m"><dt>RELATED / 相关人物</dt><dd>K. Arlen / M. Ide</dd><i class="bar"></i></div>
-      <div class="m"><dt>STATUS / 状态</dt><dd>已归档 · 可读取</dd><i class="bar"></i></div>
-    </dl>
-    <p class="abs m">研究所从一间临时实验室发展而来，聚集着研究生命、能源与未知技术的人；理解它，需要同时阅读它的实验记录和研究者的选择。<i class="bar"></i></p>
-  </article>
+<main id="stage">
+  <div id="three-scene" aria-label="档案模型由磨砂转清"></div>
+  <div class="scene-atmosphere archive-atmosphere" aria-hidden="true"></div>
+  <svg id="inspection-marks" aria-hidden="true"><path id="inspection-lines"></path><g id="inspection-corners"></g><circle id="inspection-point" r="3"></circle></svg>
+  <div id="inspection-text" aria-hidden="true">解密状态<strong>读取权限已确认</strong></div>
+  <article id="detail-content" class="detail-content" aria-label="档案正文"></article>
 </main>
 <script src="motion-kit.js"></script>
-<script>
-/* ===== CONFIG：改这里即可迁移 =====
- * 三段同步：对角线合拢 → 盖板自上而下变清晰 → 正文遮挡条依次退开。 */
-const CONFIG = {
-  start: 0.5,
-  diagIn: [0.0, 0.45], diagHold: 1.1, diagOut: 0.35, // 相对 start
-  clear: [0.4, 1.3],   // 磨砂转清晰：开始、时长
-  bars: [0.5, 0.42, 0.08], // 遮挡条：开始、单条时长、错峰
-  hold: 2.6, duration: 5.4,
-};
-/* ================================== */
-const MK = MotionKit, $ = (s) => document.querySelector(s);
-const bars = [...document.querySelectorAll('.bar')];
-function render(t) {
-  const s = CONFIG.start;
-  const reset = MK.seg(t, s + CONFIG.hold + 1.4, 0.4); // 循环前重新加密
-  const dIn = MK.seg(t, s + CONFIG.diagIn[0], CONFIG.diagIn[1], MK.ease.inOutCubic);
-  const dOut = MK.seg(t, s + CONFIG.diagHold, CONFIG.diagOut, MK.ease.inCubic);
-  ['#d1', '#d2'].forEach((id) => { const el = $(id); el.style.strokeDasharray = '142 142'; el.style.strokeDashoffset = 142 * (1 - dIn) - 142 * dOut; el.style.opacity = 1 - dOut; });
-  const c = MK.seg(t, s + CONFIG.clear[0], CONFIG.clear[1], MK.ease.inOutCubic) * (1 - reset);
-  $('#frost').style.clipPath = `inset(${c * 100}% 0 0 0)`;
-  $('#edge').style.top = `${c * 100}%`;
-  $('#edge').style.opacity = c > 0.01 && c < 0.99 ? 1 : 0;
-  bars.forEach((b, i) => { const k = MK.seg(t, s + CONFIG.bars[0] + i * CONFIG.bars[2], CONFIG.bars[1], MK.ease.inOutCubic) * (1 - reset); b.style.transform = `scaleX(${1 - k})`; });
-}
-const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: [{ t: CONFIG.start, label: '对角线合拢' }, { t: CONFIG.start + CONFIG.clear[0], label: '盖板转清' }, { t: CONFIG.start + CONFIG.bars[0], label: '遮挡条退开' }] });
-MK.expose(tl);
-MK.controls(tl, { accent: '#c8742f' });
-const P = MK.params();
-tl.seek(P.t ?? (MK.prefersReducedMotion() ? 3.5 : 0));
-if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
-</script>
+<script type="module" src="runtime.js"></script>
 </body>
 </html>

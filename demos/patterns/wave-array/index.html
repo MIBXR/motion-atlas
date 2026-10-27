@@ -4,91 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>阵列选择波浪 — Motion Atlas 巧思</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
+<script>
+const CONFIG = {
+  duration: 15,
+  sourceStart: 62.6,
+  quality: null,
+  model: 'assets/archive-cassette.glb',
+  wave: { amplitude: 0.8, attack: 0.2, decay: 1.15, speed: 8, frequency: 0.58, width: 3.4, lifetime: 3.2 },
+  events: [
+    { t: 0, axis: 'row', direction: 1 }, { t: 1, axis: 'row', direction: 1 },
+    { t: 2, axis: 'lane', direction: 1 }, { t: 3, axis: 'lane', direction: 1 },
+    { t: 4, axis: 'lane', direction: 1 }, { t: 5, axis: 'row', direction: -1 },
+    { t: 6, axis: 'row', direction: -1 }, { t: 7, axis: 'row', direction: 1 },
+    { t: 8, axis: 'row', direction: 1 }, { t: 9, axis: 'lane', direction: -1 },
+    { t: 9.35, axis: 'lane', direction: -1 }, { t: 10.4, axis: 'lane', direction: -1 },
+    { t: 11.4, axis: 'row', direction: -1 }, { t: 12.4, axis: 'row', direction: -1 }
+  ]
+};
+window.WAVE_CONFIG = CONFIG;
+</script>
 <style>
-  :root { --paper: #eae5e1; --ink: #171713; --muted: #77756d; --accent: #c8742f; --f: "Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; --f-mono: "JetBrains Mono","Cascadia Mono",Consolas,monospace; }
-  * { box-sizing: border-box; } html, body { margin: 0; height: 100%; overflow: hidden; background: radial-gradient(ellipse at 50% 45%, #f2eee9, var(--paper) 65%); color: var(--ink); font-family: var(--f); }
-  .vp { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 50% 30%; }
-  .world { position: absolute; left: 50%; top: 52%; width: 0; height: 0; transform-style: preserve-3d; }
-  .b { position: absolute; transform-style: preserve-3d; cursor: pointer; }
-  .b i { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
-  .b .top { background: #f7f4ef; } .b .front { background: linear-gradient(180deg, #efebe5, #ddd6cc); } .b .side { background: linear-gradient(180deg, #d9d2c8, #c9c2b8); }
-  .b.sel .top { background: #fffdf8; box-shadow: inset 0 -3px 0 var(--accent); }
-  .readout { position: absolute; left: 24px; bottom: 70px; font: 12px/1.7 var(--f-mono); color: var(--muted); letter-spacing: .08em; }
-  .readout b { color: var(--ink); }
-  .hint { position: absolute; right: 24px; bottom: 70px; font: 12px/1.6 var(--f); color: var(--muted); text-align: right; }
+html,body{margin:0;height:100%;overflow:hidden;background:#eae5e1}
+iframe{display:block;border:0;width:100%;height:100%}
 </style>
 </head>
 <body>
-<div class="vp" aria-hidden="true"><div class="world" id="world"></div></div>
-<p class="readout" id="readout" aria-live="polite"></p>
-<p class="hint">方向键 / 点击方块选择<br>波浪随距离延迟并衰减</p>
+<main id="stage"><iframe id="array" title="GLB 档案阵列，方向键切列与选档，点击模型选择" allow="autoplay"></iframe></main>
 <script src="motion-kit.js"></script>
 <script>
-/* ===== CONFIG：改这里即可迁移 =====
- * 每次选择：选中块以临界阻尼抬起；其他块收到一圈按距离延迟、指数衰减的正弦波。 */
-const CONFIG = {
-  cols: 7, rows: 9, size: [96, 12, 70], pitch: [112, 24], // 块宽/厚/高 与 间距（px）
-  lift: 26, rate: 4.2,                          // 选中抬起与临界阻尼速率
-  amp: 10, freq: 7.5, decay: 2.6, delay: 0.07, falloff: 0.35, // 波浪
-  events: [{ t: 0.4, c: 3, r: 4 }, { t: 2.2, c: 4, r: 4 }, { t: 3.4, c: 4, r: 6 }, { t: 4.6, c: 1, r: 2 }],
-  duration: 7,
+const MK = MotionKit, stage = MK.stage(), frame = document.getElementById('array');
+const probe = document.createElement('canvas'), gl = probe.getContext('webgl2') || probe.getContext('webgl');
+const debug = gl?.getExtension('WEBGL_debug_renderer_info');
+const renderer = gl ? gl.getParameter(debug ? debug.UNMASKED_RENDERER_WEBGL : gl.RENDERER) : '';
+gl?.getExtension('WEBGL_lose_context')?.loseContext();
+const quality = new URLSearchParams(location.search).get('quality') ?? CONFIG.quality ?? (/swiftshader|llvmpipe|software|microsoft basic render/i.test(renderer) ? 'performance' : 'original');
+frame.width = stage.width; frame.height = stage.height;
+const initial = new Promise(resolve => frame.addEventListener('load', async () => {
+  await frame.contentWindow.waveDemo.ready; resolve();
+}, { once: true }));
+frame.src = `array.html?quality=${encodeURIComponent(quality)}`;
+MK.preload([{ label: '档案模型与材质', run: () => initial }], { timeout: 120000 });
+let target = 0, running;
+const tl = MK.timeline({ duration: CONFIG.duration, markers: CONFIG.events.map((e, i) => ({ t: e.t, label: `选择 ${i + 1}` })), render: t => {
+  target = t;
+  if (running) return running;
+  running = (async () => {
+    await initial;
+    for (;;) {
+      const at = target;
+      await frame.contentWindow.waveDemo.seek(at);
+      if (at === target) return at;
+    }
+  })().finally(() => { running = null; });
+  return running;
+} });
+const rawSeek = tl.seek;
+const rawPlay = tl.play;
+tl.seek = t => {
+  frame.contentWindow.waveDemo?.resetInput();
+  audioScore.set(score);
+  return rawSeek(t);
 };
-/* ================================== */
-const MK = MotionKit, world = document.getElementById('world');
-const [BW, BT, BH] = CONFIG.size, [PX, PY] = CONFIG.pitch;
-const blocks = [];
-for (let c = 0; c < CONFIG.cols; c++) for (let r = 0; r < CONFIG.rows; r++) {
-  const el = document.createElement('div');
-  el.className = 'b'; el.dataset.c = c; el.dataset.r = r;
-  el.innerHTML = `<i class="top" style="width:${BW}px;height:${BT}px;transform:translateZ(${BH}px)"></i><i class="front" style="width:${BW}px;height:${BH}px;transform:translateY(${BT}px) rotateX(90deg)"></i><i class="side" style="width:${BH}px;height:${BT}px;transform:rotateY(-90deg)"></i>`;
-  world.appendChild(el);
-  blocks.push({ el, c, r, x: (c - CONFIG.cols / 2) * PX, y: (r - CONFIG.rows / 2) * PY });
-}
-let extra = [];
-const w = CONFIG.rate;
-const crit = (tau) => (tau <= 0 ? 0 : 1 - (1 + w * tau) * Math.exp(-w * tau));
-function render(t) {
-  const ev = [...CONFIG.events, ...extra].filter((e) => e.t <= t).sort((a, b) => a.t - b.t);
-  const cur = ev[ev.length - 1];
-  const s = Math.min(1.2, innerWidth / 1100);
-  world.style.transform = `scale(${s}) rotateX(58deg) rotateZ(-36deg)`;
-  for (const b of blocks) {
-    let z = 0;
-    ev.forEach((e, i) => {
-      const end = ev[i + 1] ? ev[i + 1].t : Infinity;
-      if (e.c === b.c && e.r === b.r) {
-        if (t < end) z += CONFIG.lift * crit(t - e.t);
-        else { const v0 = CONFIG.lift * crit(end - e.t), tau = t - end; z += v0 * (1 + w * tau) * Math.exp(-w * tau); }
-      }
-      if (i >= ev.length - 3) {
-        const d = Math.abs(b.r - e.r) + 0.8 * Math.abs(b.c - e.c);
-        const tau = t - e.t - d * CONFIG.delay;
-        if (d > 0 && tau > 0) z += CONFIG.amp * Math.sin(CONFIG.freq * tau) * Math.exp(-CONFIG.decay * tau) / (1 + CONFIG.falloff * d);
-      }
-    });
-    b.el.style.transform = `translate3d(${b.x}px, ${b.y}px, ${z.toFixed(2)}px)`;
-    b.el.classList.toggle('sel', !!cur && cur.c === b.c && cur.r === b.r);
-  }
-  document.getElementById('readout').innerHTML = cur ? `SELECT <b>C${cur.c + 1} · R${cur.r + 1}</b><br>t − t₀ = ${(t - cur.t).toFixed(2)} s` : 'SELECT —';
-}
-const tl = MK.timeline({ duration: CONFIG.duration, render, loop: true, markers: CONFIG.events.map((e, i) => ({ t: e.t, label: `选择 ${i + 1}` })) });
-tl.on((t) => { if (t < 0.05) extra = []; });
-function select(c, r) { extra.push({ t: tl.time, c, r }); if (!tl.playing) tl.play(); }
-world.addEventListener('click', (e) => { const b = e.target.closest('.b'); if (b) select(Number(b.dataset.c), Number(b.dataset.r)); });
-addEventListener('keydown', (e) => {
-  const map = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
-  if (!map[e.key]) return;
-  e.preventDefault(); e.stopImmediatePropagation();
-  const ev = [...CONFIG.events, ...extra].filter((x) => x.t <= tl.time).sort((a, b) => a.t - b.t);
-  const cur = ev[ev.length - 1] || { c: 3, r: 4 };
-  select((cur.c + map[e.key][0] + CONFIG.cols) % CONFIG.cols, (cur.r + map[e.key][1] + CONFIG.rows) % CONFIG.rows);
+tl.play = () => { frame.contentWindow.waveDemo?.resetInput(); audioScore.set(score); return rawPlay(); };
+window.WAVE_MANUAL = event => {
+  if (tl.time >= tl.duration) tl.seek(0);
+  frame.contentWindow.waveDemo.addInput(tl.time, event);
+  audioScore.set([]);
+  MK.audio.play('archive-selection', { event });
+  rawPlay();
+};
+const arrows = { ArrowLeft: ['lane', -1], ArrowRight: ['lane', 1], ArrowUp: ['row', -1], ArrowDown: ['row', 1] };
+addEventListener('keydown', event => {
+  const move = arrows[event.key]; if (!move) return;
+  event.preventDefault(); event.stopImmediatePropagation();
+  window.WAVE_MANUAL({ axis: move[0], direction: move[1] });
 }, true);
-MK.expose(tl);
-MK.controls(tl, { accent: '#c8742f' });
-const P = MK.params();
-tl.seek(P.t ?? (MK.prefersReducedMotion() ? 6 : 0));
-if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
-addEventListener('resize', () => tl.seek(tl.time));
+stage.on('orient', () => { frame.width = stage.width; frame.height = stage.height; frame.contentWindow.waveDemo?.resize(); });
+MK.audio.define('archive-selection', (ctx, out, when, p) => frame.contentWindow.waveDemo.sound(ctx, out, when, p.event), { bus: 'ui', send: 0 });
+const score = CONFIG.events.map(event => ({ t: event.t, voice: 'archive-selection', event }));
+const audioScore = MK.audio.attach(tl, score);
+MK.expose(tl, { title: '阵列选择波浪', sourceTime: t => CONFIG.sourceStart + t });
+tl.ready = Promise.all([tl.ready, initial]).then(() => tl);
+MK.controls(tl, { accent: '#171713' });
+MK.start(tl, { reduced: CONFIG.duration });
 </script>
 </body>
 </html>
