@@ -1,12 +1,17 @@
-/* Motion Atlas · 案例库与巧思库（同一套浏览、筛选、详情与刻度条） */
+/* Motion Atlas · 案例库、巧思库与资源库（共用浏览、筛选和收藏） */
 (function () {
   'use strict';
   const { ICONS, favs, copy, esc, toast, store } = window.Site;
   const MA = window.MA;
-  const KIND = document.body.dataset.lib; // 'cases' | 'patterns'
+  const KIND = document.body.dataset.lib;
+  const isResource = KIND === 'resources';
+  const libName = KIND === 'cases' ? '案例库' : isResource ? '资源库' : '巧思库';
+  const itemName = KIND === 'cases' ? '案例' : isResource ? '资源' : '巧思';
+  const hashKind = KIND === 'cases' ? 'case' : isResource ? 'resource' : 'pattern';
+  const resourceTypes = { 'agent-skill': 'Agent Skill' };
   const TAX = MA.taxonomy;
   const root = document.getElementById('app');
-  const items = KIND === 'cases' ? MA.cases : MA.patterns;
+  const items = MA[KIND];
   const byId = (list, id) => list.find((x) => x.id === id);
 
   /* ---------- 小工具 ---------- */
@@ -52,7 +57,7 @@
   function syncURL() {
     const p = new URLSearchParams();
     if (state.carrier !== 'all') p.set('carrier', state.carrier);
-    if (KIND === 'patterns' && state.type !== 'all') p.set('type', state.type);
+    if (KIND !== 'cases' && state.type !== 'all') p.set('type', state.type);
     if (KIND === 'patterns' && state.caseId !== 'all') p.set('case', state.caseId);
     if (state.fav) p.set('fav', '1');
     if (state.query) p.set('q', state.query);
@@ -62,12 +67,14 @@
   }
 
   const haystack = (it) => [it.id, it.title, it.subtitle, it.summary, ...(it.tags || []), ...(it.useCases || []), it.mechanism, it.trigger, it.effect,
+    it.carrierNote, ...(it.workflow || []), ...(it.avoid || []), resourceTypes[it.type],
     ...(it.carriers || []).map((c) => TAX.carriers[c]), ...(it.types || []).map((c) => TAX.types[c])].filter(Boolean).join(' ').toLowerCase();
   function filtered(filters = state) {
     const words = filters.query.toLowerCase().split(/\s+/).filter(Boolean);
     let list = items.filter((it) => {
       if (filters.carrier !== 'all' && !(it.carriers || []).includes(filters.carrier)) return false;
       if (KIND === 'patterns' && filters.type !== 'all' && !(it.types || []).includes(filters.type)) return false;
+      if (isResource && filters.type !== 'all' && it.type !== filters.type) return false;
       if (KIND === 'patterns' && filters.caseId !== 'all' && !(it.sources || []).some((s) => s.caseId === filters.caseId)) return false;
       if (filters.fav && !favs.has(KIND, it.id)) return false;
       if (words.length) { const h = haystack(it); if (!words.every((w) => h.includes(w))) return false; }
@@ -83,16 +90,17 @@
     return `<li><button type="button" data-group="${group}" data-value="${esc(value)}" aria-pressed="${pressed}"><span>${esc(label)}</span><span class="count">${String(count).padStart(2, '0')}</span></button></li>`;
   }
   function renderList() {
-    document.title = (KIND === 'cases' ? '案例库' : '巧思库') + ' · Motion Atlas';
+    document.title = libName + ' · Motion Atlas';
     const carriers = Object.entries(TAX.carriers);
     const group = KIND === 'cases' ? 'carrier' : 'type';
     const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '载体' : '类型'}</summary><ul class="side-list">
-      ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : TAX.types)].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
+      ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : isResource ? resourceTypes : TAX.types)].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
       </ul></details><div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
       <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
       <li><button type="button" data-tool="import"><span>导入收藏</span>${ICONS.upload}</button></li>
       <li><a href="${KIND === 'cases' ? 'patterns.html' : 'cases.html'}"><span>${KIND === 'cases' ? '浏览巧思库' : '浏览案例库'}</span>${ICONS.arrow}</a></li>
+      ${isResource ? '<li><a href="patterns.html"><span>浏览巧思库</span>' + ICONS.arrow + '</a></li>' : '<li><a href="resources.html"><span>浏览资源库</span>' + ICONS.arrow + '</a></li>'}
       </ul></div>`;
     const filterSelect = (id, label, all, values, value) => `<select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`;
     const filters = [
@@ -107,21 +115,21 @@
         <section>
           <header class="lib-head">
             <div>
-              <p class="eyebrow">${KIND === 'cases' ? 'CASE COLLECTION · RHYTHM / MOTION / HUD' : 'PATTERN COLLECTION · ATOMIC MECHANISMS'}</p>
-              <h1>${KIND === 'cases' ? '先看懂节拍，<br>再拿走<em>动势</em>。' : '一个触发，<br>一种<em>可借用</em>的结果。'}</h1>
-              <p>${KIND === 'cases'
+              <p class="eyebrow">${KIND === 'cases' ? 'CASE COLLECTION · RHYTHM / MOTION / HUD' : isResource ? '资源库 · 工作流与实现手段' : 'PATTERN COLLECTION · ATOMIC MECHANISMS'}</p>
+              <h1>${KIND === 'cases' ? '先看懂节拍，<br>再拿走<em>动势</em>。' : isResource ? '找到<em>实现手段</em>，<br>让想法走向成片。' : '一个触发，<br>一种<em>可借用</em>的结果。'}</h1>
+              <p>${isResource ? `${items.length} 个资源：工作流、适用场景、作者效果图与固定版本的技能原文。` : KIND === 'cases'
                 ? `${items.length} 个案例：节拍表、动效参数、可复用 Prompt，以及能拖动逐帧查看的 Demo。`
                 : `${items.length} 个巧思：每个都有触发方式、效果、参数、可复制的 Prompt 和独立 Demo。`}</p>
             </div>
-            ${heroArt}
+            ${isResource ? '' : heroArt}
           </header>
           <div class="toolbar">
-            <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
+            <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : isResource ? '搜索资源、工作流、适用场景…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
             ${filters}
             ${KIND === 'patterns' ? '<span class="toolbar-divider" aria-hidden="true"></span>' : ''}
             <label class="sort-control"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>排序</span><select id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
           </div>
-          <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : '每个巧思都有独立 Demo'}</span></div>
+          <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : isResource ? '作者产出效果，未复刻' : '每个巧思都有独立 Demo'}</span></div>
           <div class="grid" id="grid"></div>
         </section>
       </div>`;
@@ -140,16 +148,17 @@
   }
 
   function cardHTML(it, i) {
-    const tagLine = KIND === 'cases'
+    const tagLine = isResource ? `<span class="chip accent">${esc(resourceTypes[it.type])}</span>` : KIND === 'cases'
       ? it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`).join('')
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)].join('');
-    const label = KIND === 'cases' ? TAX.carriers[it.carriers[0]] : TAX.types[it.types[0]];
+    const label = KIND === 'cases' ? TAX.carriers[it.carriers[0]] : isResource ? resourceTypes[it.type] : TAX.types[it.types[0]];
+    const preview = isResource ? it.gallery[0]?.path : it.preview;
     const fav = favs.has(KIND, it.id);
     return `<article class="card">
-      <div class="card-media">${it.preview ? `<img src="${esc(it.preview)}" alt="${esc(it.title)} Demo 实际截图" loading="lazy">` : '<span class="ph">PREVIEW</span>'}
+      <div class="card-media">${preview ? `<img src="${esc(preview)}" alt="${esc(it.title)} ${isResource ? '作者产出效果，未复刻' : 'Demo 实际截图'}" loading="lazy">` : '<span class="ph">预览图</span>'}
         <span class="card-index">${String(i + 1).padStart(2, '0')} / ${esc(label)}</span></div>
       <div class="card-body">
-        <div class="card-title"><a href="#${KIND === 'cases' ? 'case' : 'pattern'}/${it.id}">${esc(it.title)}</a>
+        <div class="card-title"><a href="#${hashKind}/${it.id}">${esc(it.title)}</a>
           <button class="fav-btn" type="button" data-fav="${it.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(it.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
         <p class="card-sum">${esc(it.summary)}</p>
         ${KIND === 'cases' && it.energy ? energyPath(it.energy) : ''}
@@ -159,7 +168,7 @@
   function paintGrid() {
     const list = filtered();
     const grid = document.getElementById('grid');
-    grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">没有符合条件的${KIND === 'cases' ? '案例' : '巧思'}。换个关键词，或清除筛选。</div>`;
+    grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">没有符合条件的${itemName}。换个关键词，或清除筛选。</div>`;
     document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' : '当前筛选'} / ${list.length} 个条目`;
     paintSideCounts();
     syncURL();
@@ -855,6 +864,56 @@
   const ul = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>—</p>');
   const promptBox = (id, text) => `<div class="prompt-box"><pre id="${id}">${esc(text)}</pre><button class="btn" type="button" data-copy="${id}">${ICONS.copy}<span>复制</span></button></div>`;
 
+  function resourceNotes(it) {
+    const galleryKinds = { style: '风格样张', work: '作品节选', theme: '主题预览' };
+    const gallery = `<div class="grid resource-gallery">${it.gallery.map((image) => {
+      const sourceUrl = image.sourceUrl || image.url;
+      const license = typeof image.license === 'string' ? image.license : image.license?.notes || image.license?.name;
+      return `<figure class="card"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
+        <figcaption class="card-body"><span class="chip accent">${galleryKinds[image.kind]}</span><p class="card-sum">${esc(image.caption)}</p><p class="resource-credit">作者产出效果，未复刻</p>${sourceUrl ? `<a class="resource-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}${license ? `<p class="resource-credit">${esc(license)}</p>` : ''}</figcaption></figure>`;
+    }).join('')}</div>`;
+    const related = it.relatedEntries.length ? `<ul>${it.relatedEntries.map((relation) => {
+      const entry = byId(MA[relation.kind], relation.id);
+      const hash = relation.kind === 'cases' ? 'case' : 'pattern';
+      return `<li><a href="${relation.kind}.html#${hash}/${esc(relation.id)}">${esc(entry.title)}</a>：${esc(relation.note)}</li>`;
+    }).join('')}</ul>` : '<p>本库暂无由此 skill 产出的复刻案例</p>';
+    return [
+      sec('说明', '', `<p>${esc(it.summary)}</p>`),
+      sec('为什么归入本库', '', `<p>${esc(it.carrierNote)}</p>`),
+      sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`),
+      sec('适合与避用', '', `<h3>适合</h3>${ul(it.useCases)}<h3>避用</h3>${ul(it.avoid)}`),
+      sec('效果图画廊', '', gallery),
+      sec('关联条目', '', related),
+      sec('skill 原文入口', '', `<ul><li><a href="${esc(it.skillPath)}SKILL.md">技能原文（SKILL.md）</a></li><li><a href="${esc(it.skillPath)}README.zh-CN.md">中文说明（README.zh-CN.md）</a></li><li><a href="${esc(it.skillPath)}README.md">原版说明（README.md）</a></li></ul>`),
+      sec('安装方式', '', promptBox('resource-install', it.install)),
+      sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd><a href="${esc(it.upstream.url)}">${esc(it.upstream.repository)}</a></dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd><dt>版本</dt><dd>${esc(it.upstream.version)}</dd><dt>技能许可</dt><dd><a href="${esc(it.license.url)}">${esc(it.license.name)}</a></dd></dl><p>${esc(it.license.notes)}</p><p><a href="${esc(it.skillPath)}LICENSE">快照附带许可原文</a></p><ul>${it.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.title || source.label)}</a></li>`).join('')}</ul>`),
+    ].join('');
+  }
+
+  function renderResource(it) {
+    destroyDetail();
+    document.title = `${it.title} · Motion Atlas`;
+    const fav = favs.has(KIND, it.id);
+    root.innerHTML = `<div class="detail resource-detail"><div class="info-col">
+      <div class="detail-actions"><a class="btn" href="#">${ICONS.back}<span>资源库</span></a><button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button><a class="btn" href="agent/resources/${it.id}.json" download>${ICONS.download}<span>资料包 JSON</span></a></div>
+      <header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 资源 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(resourceTypes[it.type])}</span></div></header>
+      <div class="notes">${resourceNotes(it)}</div></div></div>`;
+    bindDetailFavorite(it);
+    root.querySelector('[data-copy]').addEventListener('click', () => copy(it.install, '安装方式已复制'));
+    window.scrollTo(0, 0);
+  }
+
+  function bindDetailFavorite(it) {
+    root.querySelector('[data-act="fav"]').addEventListener('click', (e) => {
+      const b = e.currentTarget;
+      const on = favs.toggle(KIND, it.id);
+      b.setAttribute('aria-pressed', String(on));
+      b.setAttribute('aria-label', on ? '取消收藏' : '收藏');
+      b.innerHTML = `${on ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${on ? '已收藏' : '收藏'}</span>`;
+      b.title = on ? '取消收藏' : '收藏';
+    });
+  }
+
   function promptTabs(it) {
     const tabs = [['impl', '实现 Prompt', it.prompt]];
     if (it.videoPrompt) tabs.push(['video', '视频生成 Prompt', it.videoPrompt]);
@@ -933,13 +992,7 @@
       </div>`;
     window.scrollTo(0, 0);
     mountStage(it);
-    root.querySelector('[data-act="fav"]').addEventListener('click', (e) => {
-      const b = e.currentTarget;
-      const on = favs.toggle(KIND, it.id);
-      b.setAttribute('aria-pressed', String(on));
-      b.innerHTML = `${on ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${on ? '已收藏' : '收藏'}</span>`;
-      b.title = on ? '取消收藏' : '收藏';
-    });
+    bindDetailFavorite(it);
     root.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => copy(document.getElementById(b.dataset.copy).textContent, 'Prompt 已复制')));
     root.querySelectorAll('.tabs').forEach((tabs) => tabs.addEventListener('click', (e) => {
       const b = e.target.closest('[data-tab]');
@@ -958,9 +1011,9 @@
 
   /* ---------- 路由 ---------- */
   function route() {
-    const m = location.hash.match(/^#(case|pattern)\/([\w-]+)/);
+    const m = location.hash.match(/^#(case|pattern|resource)\/([\w-]+)/);
     const it = m && byId(items, m[2]);
-    if (it) { renderDetail(it); window.Site.syncMenu(); }
+    if (it) { if (isResource) renderResource(it); else renderDetail(it); window.Site.syncMenu(); }
     else { destroyDetail(); renderList(); }
   }
   addEventListener('hashchange', route);

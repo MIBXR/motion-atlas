@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "resources",
+  "count": 2,
+  "resources": [
+    {
+      "id": "motion-showreel",
+      "title": "motion-showreel · 代码渲染短视频",
+      "summary": "把图形、文字与界面动画编排为确定性时间线，逐帧渲染并交付 MP4 与可编辑源码。",
+      "type": "agent-skill",
+      "carrierNote": "用 render(t) 逐帧渲染出 MP4，最终形态是视频，因此归入本库。",
+      "useCases": [
+        "动效作品集、产品宣传片与发布预告",
+        "动态图文、界面动效演示和卡点排版",
+        "标志演绎、片头、频道短片与生成艺术循环",
+        "使用用户口播稿或录音制作最长 20 分钟的分章讲解视频"
+      ],
+      "avoid": [
+        "实拍制作、写实人物表演或一般视频剪辑",
+        "需要真实物理精度、复杂毛发或布料的写实场景",
+        "把点击推进的现场演示或普通网页当作本工具的主要产物",
+        "把效果图当成已提供源码的可复刻案例"
+      ],
+      "skillPath": "agent-skills/motion-showreel/",
+      "relatedEntries": [],
+      "bundle": "agent/resources/motion-showreel.json"
+    },
+    {
+      "id": "web-video-presentation",
+      "title": "web-video-presentation · 网页演示录屏",
+      "summary": "把文章或口播稿变成按步骤推进的横屏网页演示，再通过录屏产出视频。",
+      "type": "agent-skill",
+      "carrierNote": "演示网页按步推进，但它的目的是录制成视频，最终形态是视频，因此归入本库。",
+      "useCases": [
+        "把文章或口播稿制作成视频平台的讲解内容",
+        "可录屏的产品演示、教程与视觉主题演讲",
+        "每屏聚焦一个观点、每次点击推进一个口播节拍的动态演示",
+        "需要统一主题并可选择合成口播音频的分章内容"
+      ],
+      "avoid": [
+        "把主题预览图当成完整页面源码或已复刻案例",
+        "需要直接交付 MP4、由确定性时间函数逐帧渲染的制作需求",
+        "没有原文、口播稿或素材大纲，却要求该 skill 代为构思全部内容",
+        "一般响应式网站或以自由浏览为主的网页应用"
+      ],
+      "skillPath": "agent-skills/web-video-presentation/",
+      "relatedEntries": [],
+      "bundle": "agent/resources/web-video-presentation.json"
+    }
+  ]
+}

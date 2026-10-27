@@ -5,7 +5,7 @@
 **在线浏览：[Motion Atlas](https://motion-atlas.mibxranime.chatgpt.site)**
 
 <!-- counts:start -->
-**2 个案例**　·　**17 个巧思**　·　**2 个可逐帧渲染的影像 Demo**
+**2 个案例**　·　**17 个巧思**　·　**2 个资源**　·　**2 个可逐帧渲染的影像 Demo**
 <!-- counts:end -->
 
 ![地图巡礼 Demo 截图](previews/cases/map-pilgrimage.jpg)
@@ -58,6 +58,12 @@
 | 质感与后期 | 2 | 胶片颗粒、磨砂转清 |
 | 声音 / 镜头 | 1 / 1 | 打字音、路线跟随镜头 |
 
+### 资源库
+
+[资源库](resources.html)收录用于制作视频、但没有完整可复刻作品源码的 skill 与工具。`motion-showreel` 用 `render(t)` 逐帧渲染短视频，`web-video-presentation` 制作按步推进、用于录屏的网页演示。效果图展示作者产出，未复刻；skill 原文按固定提交保存在 `agent-skills/<id>/`，附上游许可。
+
+Agent 先读 `agent/resources.json` 的摘要与资料包路径，再读 `agent/resources/<id>.json` 中的 `resource`、工作流、文档原文与文件清单。目录也登记在 `agent/catalog.json` 的 `resourceCatalog`，数量在 `counts.resources`。安装与使用前核对资源适用范围和图片的单独许可。
+
 ## 快速开始
 
 需要 Node.js 22+ 与本机的 Edge 或 Chrome（截图、渲染、取帧脚本用），无需安装依赖。
@@ -69,6 +75,7 @@ node scripts/serve.mjs --port 4321
 打开 <http://localhost:4321/>：
 
 - **案例库 / 巧思库**：筛选、收藏（可导出 JSON 备份）、内嵌 Demo、首屏刻度条与节拍点、加载进度、声音开关、全屏与三段 Prompt；支持固定画幅的 Demo 可切换横竖构图并保持当前时刻。
+- **资源库**：工作流、适合与避用、作者效果图、skill 原文、安装与许可；收藏可与案例、巧思一起备份。
 - **节奏实验室**：用多音色节拍器、拍号 / 细分 / 摇摆练节拍，以 A/B 对比、打拍录入、首拍偏移与量化强度理解吸附；曲线、时长和错峰可对齐拍子，导出 CSS 变量、MotionKit 乐谱代码、Prompt 与 WAV。
 - **文档中心**：指南、节奏方法、Prompt写法、条目结构、渲染管线与全部Prompt。
 - **Agent 工作流**：资料格式、CLI 与指令生成器。
@@ -92,12 +99,14 @@ node scripts/render.mjs demos/cases/archive-os/index.html --orient portrait --fp
 ## 目录
 
 ```text
-entries/            案例与巧思条目（唯一内容源）
+entries/            案例、巧思与资源条目（唯一内容源）
+agent-skills/       资源库的上游 skill 原样快照与许可
 demos/              可运行 Demo；按时间播放的 Demo 遵守 render(t) 协议
 kit/motion-kit.js   共享运行时：固定画幅、时间轴、缓动、节拍、合成乐谱、预加载、控制条
 docs/               指南与使用方法
 prompts/ agent/ data/   由 entries 生成（勿手改）
 previews/           Demo 实际截图
+assets/resources/   资源库作者效果图（未复刻）
 scripts/            本地播放、构建、检查、截图、视频导出与命令行工具
 ```
 
