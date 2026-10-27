@@ -3,7 +3,7 @@
   'use strict';
 
   const ICONS = {
-    logo: '<svg viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="8" fill="var(--accent)"/><path d="M7 23h20M7 11h20" stroke="var(--accent-ink)" stroke-width="1.6" stroke-linecap="round" opacity=".5"/><path d="M10 23v-3M14 23v-5M18 23v-2M22 23v-6M26 23v-3" stroke="var(--accent-ink)" stroke-width="1.6" stroke-linecap="round"/><path d="M15 6l7 5-7 5z" fill="var(--accent-ink)"/></svg>',
+    logo: '<svg viewBox="0 0 96 96" aria-hidden="true"><path fill="var(--accent)" fill-rule="evenodd" d="M8 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z M32 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z"/></svg>',
     sun: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7L7 17M17 7l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
     moon: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
     system: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
@@ -197,7 +197,9 @@
 
   /* ---------- 顶栏与页脚 ---------- */
   function renderShell() {
-    const page = (location.pathname.split('/').pop() || 'index.html');
+    // 线上站点会把 cases.html 重定向为 /cases，比较前统一去掉 .html
+    const pageKey = (p) => (p.split('/').pop() || 'index').replace(/\.html$/, '');
+    const page = pageKey(location.pathname) + '.html';
     const header = document.getElementById('site-header');
     if (header) {
       header.className = 'site-header';
