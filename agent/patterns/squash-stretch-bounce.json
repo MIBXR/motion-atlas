@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "squash-stretch-bounce",
+  "pattern": {
+    "id": "squash-stretch-bounce",
+    "order": 40,
+    "title": "预备、拉伸与压扁回弹",
+    "types": [
+      "rhythm"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "重放圆点落地、蓄力弹射与图标接力中的拉伸、压扁和回弹。",
+    "mechanism": "圆点起跳前压缩，飞行中沿速度方向拉伸，落地时压扁再回弹，组成从预备到落定的一整套弹跳形变。",
+    "trigger": "圆点开始下落、进入起跳预备或到达落地节点时。",
+    "effect": "圆点的横纵尺寸、旋转和接触位置随起跳、速度与碰撞阶段联动。",
+    "timing": [
+      {
+        "name": "下落拉伸",
+        "value": "g=2040；a=-0.12；R0=74；k=min(g*(t-a)/1500,1)*.16；sy=1+k，sx=1/(1+k)。"
+      },
+      {
+        "name": "首次触地",
+        "value": "15/30=.500秒；3帧压缩sy=1-.4*sin(πu)、sx=1+.36*sin(πu)；回跳高78。"
+      },
+      {
+        "name": "再次触地",
+        "value": "24/30=.800秒；2.5帧压缩幅.2/.18。"
+      },
+      {
+        "name": "起跳预备",
+        "value": "27/30–31/30=.900–1.033秒；sy*=1-.3*a，sx*=1+.24*a；y=GY-R0*sy。"
+      },
+      {
+        "name": "弧线弹射",
+        "value": "31/30–40/30=1.033–1.333秒；E.outQt；dt=1/240；st=clamp(speed/5200)*.42；sx=1+st，sy=1/(1+st)。"
+      },
+      {
+        "name": "连续接力预备",
+        "value": "a/o=171/173、185/188、200/203帧；an=E.outQ(inv(a,o,t))；sy乘1-.3*an，sx乘1+.2*an。"
+      },
+      {
+        "name": "连续接力落地",
+        "value": "180/30=6.000、195/30=6.500秒；land=kick(t,上一落地,3.5,.4)；sy乘1-.22*land，sx乘1+.2*land；y补偿R_D*(1-sy)。"
+      }
+    ],
+    "useCases": [
+      "开场圆点弹跳",
+      "圆点弹射成太阳",
+      "图标接力落点"
+    ],
+    "avoid": [
+      "竖屏重排",
+      "片段边界无缝循环"
+    ],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览帧。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "本巧思按所列原片区间顺序重放。"
+    },
+    "prompt": "复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 依次重放圆点下落弹射与图标接力片段。保留原片的起跳前压缩、飞行速度导向拉伸、触地压扁与回弹：g=2040，R0=74；首次压缩3帧，回跳高78；弹射用 E.outQt；速度拉伸 st=clamp(speed/5200)*.42；接力落地用 kick(t,上一落地,3.5,.4)。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
+    "demo": "demos/patterns/squash-stretch-bounce/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "mg-flat-vector"
+      }
+    ],
+    "previewAt": 0.5333333333333333,
+    "markers": [
+      {
+        "t": 0,
+        "label": "落球拉伸"
+      },
+      {
+        "t": 0.5,
+        "label": "触地压扁"
+      },
+      {
+        "t": 0.9,
+        "label": "起跳预备"
+      },
+      {
+        "t": 1.0333333333333334,
+        "label": "弧线弹射"
+      },
+      {
+        "t": 1.5333333333333334,
+        "label": "接力片段"
+      },
+      {
+        "t": 1.7333333333333334,
+        "label": "接力蓄力"
+      },
+      {
+        "t": 2.033333333333333,
+        "label": "落地回弹"
+      },
+      {
+        "t": 2.533333333333333,
+        "label": "再次回弹"
+      },
+      {
+        "t": 2.700000000000001,
+        "label": "下一跳蓄力"
+      }
+    ],
+    "sound": {
+      "description": "成品音轨按所选原片区间与画面同步播放，声音默认关闭。"
+    },
+    "tokens": {
+      "palette": [
+        "#2B2BFF",
+        "#FF5A4E",
+        "#FFC62B",
+        "#2EE6A8",
+        "#FFF6E9",
+        "#151433"
+      ],
+      "type": "Fredoka 600、700；Resource Han Rounded CN Bold 700。"
+    },
+    "migration": [
+      {
+        "field": "config.js → segments",
+        "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
+      },
+      {
+        "field": "config.js → markers / reduced",
+        "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
+      }
+    ],
+    "preview": "previews/patterns/squash-stretch-bounce.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "mg-flat-vector",
+      "bundle": "agent/cases/mg-flat-vector.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 预备、拉伸与压扁回弹\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 依次重放圆点下落弹射与图标接力片段。保留原片的起跳前压缩、飞行速度导向拉伸、触地压扁与回弹：g=2040，R0=74；首次压缩3帧，回跳高78；弹射用 E.outQt；速度拉伸 st=clamp(speed/5200)*.42；接力落地用 kick(t,上一落地,3.5,.4)。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。\n\n## 参数\n\n- **下落拉伸**：g=2040；a=-0.12；R0=74；k=min(g*(t-a)/1500,1)*.16；sy=1+k，sx=1/(1+k)。\n- **首次触地**：15/30=.500秒；3帧压缩sy=1-.4*sin(πu)、sx=1+.36*sin(πu)；回跳高78。\n- **再次触地**：24/30=.800秒；2.5帧压缩幅.2/.18。\n- **起跳预备**：27/30–31/30=.900–1.033秒；sy*=1-.3*a，sx*=1+.24*a；y=GY-R0*sy。\n- **弧线弹射**：31/30–40/30=1.033–1.333秒；E.outQt；dt=1/240；st=clamp(speed/5200)*.42；sx=1+st，sy=1/(1+st)。\n- **连续接力预备**：a/o=171/173、185/188、200/203帧；an=E.outQ(inv(a,o,t))；sy乘1-.3*an，sx乘1+.2*an。\n- **连续接力落地**：180/30=6.000、195/30=6.500秒；land=kick(t,上一落地,3.5,.4)；sy乘1-.22*land，sx乘1+.2*land；y补偿R_D*(1-sy)。\n\n## 迁移\n\n- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/squash-stretch-bounce/index.html) · [在库中查看](../../patterns.html#pattern/squash-stretch-bounce)\n"
+  },
+  "entrypoint": "demos/patterns/squash-stretch-bounce/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/squash-stretch-bounce/LICENSES.md",
+      "bytes": 105
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/config.js",
+      "bytes": 1221
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/index.html",
+      "bytes": 722
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/motion-kit.js",
+      "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/replay.js",
+      "bytes": 6633
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/LICENSES.md",
+      "bytes": 1724
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/audio.py",
+      "bytes": 7718
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/audio/film.m4a",
+      "bytes": 346596
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/cues.json",
+      "bytes": 906
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/fidelity.md",
+      "bytes": 3867
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/fonts/Fredoka-OFL.txt",
+      "bytes": 4388
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/fonts/Fredoka[wdth,wght].ttf",
+      "bytes": 159184
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/fonts/ResourceHanRounded-OFL.txt",
+      "bytes": 4504
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/fonts/ResourceHanRoundedCN-Bold.ttf",
+      "bytes": 13978508
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/fonts/fonts.css",
+      "bytes": 376
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/index.html",
+      "bytes": 76805
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/motion-adapter.js",
+      "bytes": 5409
+    },
+    {
+      "path": "demos/patterns/squash-stretch-bounce/sources/mg-flat-vector/motion-kit.js",
+      "bytes": 107961
+    },
+    {
+      "path": "previews/patterns/squash-stretch-bounce.jpg",
+      "bytes": 21086
+    }
+  ]
+}

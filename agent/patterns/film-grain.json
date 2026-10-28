@@ -13,14 +13,14 @@
       "video",
       "console"
     ],
-    "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
-    "mechanism": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。",
+    "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。",
+    "mechanism": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。包豪斯片的纸面印刷颗粒随帧号换位，并与径向暗角叠在几何构成上。",
     "trigger": "地图、照片与插画交替出现时",
     "effect": "不同媒介保持连贯，回忆段更有时间感。",
     "timing": [
       {
         "name": "时长",
-        "value": "7.5s"
+        "value": "17.5s"
       },
       {
         "name": "声音 voice",
@@ -30,7 +30,8 @@
     "useCases": [
       "影像统一质感",
       "回忆/档案段",
-      "复古操作台"
+      "复古操作台",
+      "包豪斯几何海报的纸面印刷颗粒逐帧换位与径向暗角。"
     ],
     "avoid": [
       "需要高清细节的产品图",
@@ -49,12 +50,15 @@
       "conflicts": [],
       "notes": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。"
     },
-    "prompt": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 7.5s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。",
+    "prompt": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 17.5s：原有三段 7.5s，之后接几何包豪斯全片 10s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。",
     "demo": "demos/patterns/film-grain/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage"
+      },
+      {
+        "caseId": "mg-bauhaus"
       }
     ],
     "previewAt": 1.2,
@@ -122,7 +126,7 @@
         },
         {
           "name": "时长",
-          "value": "7.5s"
+          "value": "17.5s"
         }
       ]
     },
@@ -155,24 +159,36 @@
     {
       "caseId": "map-pilgrimage",
       "bundle": "agent/cases/map-pilgrimage.json"
+    },
+    {
+      "caseId": "mg-bauhaus",
+      "bundle": "agent/cases/mg-bauhaus.json"
     }
   ],
   "documents": {
-    "prompt": "# 可复现的胶片颗粒与暗角\n\n## 实现 Prompt\n\n动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 7.5s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：7.5s\n- **声音 voice**：vinyl\n\n## 动效 Token\n\n- **地图上的颗粒**：0s\n- **照片颗粒**：2.5s\n- **插画颗粒**：5s\n- **时长**：7.5s\n\n## 迁移\n\n- `动效函数`：配置场景绘制、颗粒与暗角。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：颗粒按floor(t×12)定位；10.4s地图配机窗照片与回忆。\n- `config.js → segments / markers`：地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/film-grain/index.html) · [在库中查看](../../patterns.html#pattern/film-grain)\n"
+    "prompt": "# 可复现的胶片颗粒与暗角\n\n## 实现 Prompt\n\n动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 17.5s：原有三段 7.5s，之后接几何包豪斯全片 10s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：17.5s\n- **声音 voice**：vinyl\n\n## 动效 Token\n\n- **地图上的颗粒**：0s\n- **照片颗粒**：2.5s\n- **插画颗粒**：5s\n- **时长**：17.5s\n\n## 迁移\n\n- `动效函数`：配置场景绘制、颗粒与暗角。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：颗粒按floor(t×12)定位；10.4s地图配机窗照片与回忆。\n- `config.js → segments / markers`：地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/film-grain/index.html) · [在库中查看](../../patterns.html#pattern/film-grain)\n"
   },
   "entrypoint": "demos/patterns/film-grain/index.html",
   "files": [
+    {
+      "path": "demos/patterns/film-grain/LICENSES.md",
+      "bytes": 196
+    },
     {
       "path": "demos/patterns/film-grain/config.js",
       "bytes": 26114
     },
     {
       "path": "demos/patterns/film-grain/index.html",
-      "bytes": 7640
+      "bytes": 729
     },
     {
       "path": "demos/patterns/film-grain/motion-kit.js",
       "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/film-grain/original.html",
+      "bytes": 7640
     },
     {
       "path": "demos/patterns/film-grain/paths.js",
@@ -187,6 +203,14 @@
       "bytes": 178700
     },
     {
+      "path": "demos/patterns/film-grain/replay-config.js",
+      "bytes": 802
+    },
+    {
+      "path": "demos/patterns/film-grain/replay.js",
+      "bytes": 6633
+    },
+    {
       "path": "demos/patterns/film-grain/scenes.js",
       "bytes": 35275
     },
@@ -197,6 +221,78 @@
     {
       "path": "demos/patterns/film-grain/script.js",
       "bytes": 145359
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/LICENSES.md",
+      "bytes": 2043
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/audio.py",
+      "bytes": 9493
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/audio/film.m4a",
+      "bytes": 426687
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/cues.json",
+      "bytes": 3988
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/fidelity.md",
+      "bytes": 4310
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/film.js",
+      "bytes": 45502
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/fonts/NotoSansSC-OFL.txt",
+      "bytes": 4301
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/fonts/NotoSansSC-VF.ttf",
+      "bytes": 17773132
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/fonts/Poppins-Black.ttf",
+      "bytes": 153440
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/fonts/Poppins-OFL.txt",
+      "bytes": 4385
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/fonts/Poppins-SemiBold.ttf",
+      "bytes": 157312
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/fonts/fonts.css",
+      "bytes": 504
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/index.html",
+      "bytes": 569
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/motion-adapter.js",
+      "bytes": 5395
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/motion-kit.js",
+      "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/shared/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
+      "path": "demos/patterns/film-grain/sources/mg-bauhaus/shared/assets/textures/paper/Paper001_4K_color.jpg",
+      "bytes": 3684106
     },
     {
       "path": "demos/patterns/film-grain/style.css",
