@@ -33,8 +33,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 9,
-    "patterns": 42,
+    "cases": 12,
+    "patterns": 55,
     "resources": 2
   },
   "resourceCatalog": "agent/resources.json",
@@ -287,6 +287,104 @@
       "bundle": "agent/cases/mg-line-art.json"
     },
     {
+      "id": "mg-morph",
+      "title": "形状变形 · morphe. — One Shape, Every Story",
+      "summary": "墨滴成为咖啡杯，再沿太阳、海上落日、海鸥、纸飞机、定位钉和爱心的链条连续变形，最后组成 morphe. 字标。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "形状变形",
+        "中介形状",
+        "图形叙事",
+        "色域擦除",
+        "字标"
+      ],
+      "useCases": [
+        "图形叙事",
+        "形变品牌片",
+        "产品发布会动效"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "morph-primitive-bridge",
+        "sea-mask-sunset",
+        "shape-docks-wordmark",
+        "analytic-motion-blur",
+        "shape-wipe-transition",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-morph.json"
+    },
+    {
+      "id": "mg-paperclip",
+      "title": "贴纸科普 · How Many Elements Hide in a Phone?",
+      "summary": "照片贴纸与扁平部件铺在大画布上，镜头串起手机拆解、70/118 元素周期表、分类柱图和产地地图，最后拉远显露整张手机屏幕，70 贴纸飞出落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "贴纸科普",
+        "大画布",
+        "连续运镜",
+        "元素周期表",
+        "数据图表"
+      ],
+      "useCases": [
+        "硬核科普视频",
+        "财经知识视频",
+        "企业宣传片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "analytic-motion-blur",
+        "sticker-slap-shadow",
+        "explode-parts-leaders",
+        "element-flight-regroup",
+        "anchor-pullback-phone",
+        "collect-counter",
+        "route-draw-marker"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "id": "mg-aurora-glass",
+      "title": "极光与玻璃拟态 · Aurora — Think in Light",
+      "summary": "极光色斑缓慢漂移，磨砂玻璃卡片展示对话、声波和控件；Focus 控钮拉出玻璃珠，成为滑过回复的折射透镜，再收成 Aurora 字标中的 o。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "极光渐变",
+        "玻璃拟态",
+        "折射透镜",
+        "产品发布",
+        "呼吸节奏"
+      ],
+      "useCases": [
+        "科技品牌片",
+        "AI 产品发布片",
+        "玻璃拟态产品演示"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "shape-docks-wordmark",
+        "bezier-aurora-drift",
+        "layered-frosted-glass",
+        "metaball-lens-glide",
+        "envelope-radiating-waveform",
+        "card-depth-arrival-parting",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-aurora-glass.json"
+    },
+    {
       "id": "mg-bauhaus",
       "title": "几何包豪斯 · KONSTRUKTION · 20 Beats",
       "summary": "圆、三角、矩形在 120px 网格上逐拍搭建，经过旋转、翻牌与列对滑动的级联波，定格为二十拍包豪斯海报。",
@@ -396,7 +494,7 @@
     {
       "id": "route-draw-marker",
       "title": "路线描画与标记脉冲",
-      "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。等距城市中，数据弧线从核心向屋顶生长，到达后屋顶标记循环扩圈。",
+      "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。等距城市中，数据弧线从核心向屋顶生长，到达后屋顶标记循环扩圈。 手机科普片中，矿石产地路线画向深圳组装点，箭头落定后数据包循环前进，汇点回弹扩圈。",
       "types": [
         "camera",
         "hud"
@@ -407,7 +505,8 @@
       "role": "support",
       "sourceCases": [
         "map-pilgrimage",
-        "mg-isometric"
+        "mg-isometric",
+        "mg-paperclip"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -507,7 +606,7 @@
     {
       "id": "collect-counter",
       "title": "收集计数徽章与收集物托盘",
-      "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。",
+      "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。",
       "types": [
         "feedback",
         "hud"
@@ -518,7 +617,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "mg-paperclip"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -594,7 +694,7 @@
     {
       "id": "film-grain",
       "title": "可复现的胶片颗粒与暗角",
-      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。线条片在午夜蓝与金线画面上叠加逐帧换位颗粒和径向暗角。",
+      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。线条片在午夜蓝与金线画面上叠加逐帧换位颗粒和径向暗角。 形变片的纸纹与逐帧软颗粒、极光片的颗粒和暗角分别覆盖整片；极光片还叠加三角分布抖动。",
       "types": [
         "texture"
       ],
@@ -606,7 +706,9 @@
       "sourceCases": [
         "map-pilgrimage",
         "mg-bauhaus",
-        "mg-line-art"
+        "mg-line-art",
+        "mg-morph",
+        "mg-aurora-glass"
       ],
       "pairsWellWith": [
         "seekable-timeline",
@@ -763,7 +865,7 @@
     {
       "id": "shape-wipe-transition",
       "title": "形状擦除转场",
-      "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。",
+      "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。 形变片从主体位置向外扩张色域，并同步裁切同色装饰和字幕完成全屏换景。",
       "types": [
         "transition"
       ],
@@ -772,7 +874,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "mg-flat-vector"
+        "mg-flat-vector",
+        "mg-morph"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/shape-wipe-transition.json"
@@ -1182,6 +1285,242 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/center-out-tracking-in.json"
+    },
+    {
+      "id": "morph-primitive-bridge",
+      "title": "简形桥接连续变形",
+      "summary": "主体、孔洞与子件经圆或胶囊中介连续变形，同时位移、旋转并挤压回弹。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-morph"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/morph-primitive-bridge.json"
+    },
+    {
+      "id": "sea-mask-sunset",
+      "title": "海面遮罩吞日",
+      "summary": "海面升起，以同一水平边界裁掉太阳下半部，光芒变成波浪，随后海水上涌占满画面。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-morph"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/sea-mask-sunset.json"
+    },
+    {
+      "id": "shape-docks-wordmark",
+      "title": "形体落位成字标",
+      "summary": "主体形状飞到字位、开合成字标中的一个字母，其余字母随后显现；先重放圆环伸展为 morphe，再重放透镜开成 Aurora 的 o。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-morph",
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/shape-docks-wordmark.json"
+    },
+    {
+      "id": "analytic-motion-blur",
+      "title": "解析运动模糊",
+      "summary": "以快门区间的位置解析生成拖影：圆形生成胶囊轮廓与透明度坡，镜头运动使用仿射偏移采样和速度相关高斯模糊。",
+      "types": [
+        "texture",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-morph",
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/analytic-motion-blur.json"
+    },
+    {
+      "id": "sticker-slap-shadow",
+      "title": "抬高旋转拍贴",
+      "summary": "抬高、放大、倾转的贴纸下落，阴影同步收紧，落定后以衰减摆动与挤压回弹消力。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/sticker-slap-shadow.json"
+    },
+    {
+      "id": "explode-parts-leaders",
+      "title": "拆件引线联动",
+      "summary": "部件从手机位置沿弧线飞到分解位，引线从锚点生长，端点与双语标签依次展开。",
+      "types": [
+        "composition",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/explode-parts-leaders.json"
+    },
+    {
+      "id": "element-flight-regroup",
+      "title": "同物飞排重组",
+      "summary": "同一元素在信息结构之间飞行换位：标签徽章飞入周期表格子，格子飞排成单位柱图，稀土柱条压成标签飞到产地地图。",
+      "types": [
+        "transition",
+        "composition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/element-flight-regroup.json"
+    },
+    {
+      "id": "anchor-pullback-phone",
+      "title": "锚点拉远显载体",
+      "summary": "以屏幕空间锚点约束两段拉远和旋转，先露局部屏幕，再揭示全部内容都在一部手机内。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/anchor-pullback-phone.json"
+    },
+    {
+      "id": "bezier-aurora-drift",
+      "title": "贝塞尔极光漂移",
+      "summary": "邻近色椭圆光斑沿闭合贝塞尔轨道漂移，结合视差与非线性混色形成连续光场。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/bezier-aurora-drift.json"
+    },
+    {
+      "id": "layered-frosted-glass",
+      "title": "玻璃逐层磨砂",
+      "summary": "每张玻璃卡片模糊其背后已合成的内容，再加入倾斜平面的边缘、高光与界面。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/layered-frosted-glass.json"
+    },
+    {
+      "id": "metaball-lens-glide",
+      "title": "拉丝玻璃珠与滑读透镜",
+      "summary": "控钮按压后以 SDF 平滑并合拉出玻璃珠，脱离后展开为胶囊透镜沿文字滑行放大，速度驱动弹簧拉伸。",
+      "types": [
+        "transition",
+        "feedback"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/metaball-lens-glide.json"
+    },
+    {
+      "id": "envelope-radiating-waveform",
+      "title": "音量包络放射声波",
+      "summary": "从发光球向两侧按距离延迟读取配乐的 100Hz 音量包络，条高随包络变化，球核同步呼吸。",
+      "types": [
+        "hud",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/envelope-radiating-waveform.json"
+    },
+    {
+      "id": "card-depth-arrival-parting",
+      "title": "卡片穿焦起落",
+      "summary": "卡片从纵深与下方倾斜进入并衰减回摆，浮动后沿独立轴向退开，失焦先于离场。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/card-depth-arrival-parting.json"
     }
   ],
   "resources": [

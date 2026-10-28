@@ -14,25 +14,30 @@
       "video",
       "console"
     ],
-    "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。",
-    "mechanism": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。",
+    "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。",
+    "mechanism": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。 手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。",
     "trigger": "到站、盖章或发现角色时",
     "effect": "每次抵达都有积累感，进度看得见。",
     "timing": [
       {
         "name": "时长",
-        "value": "6.6s"
+        "value": "8.2s"
       },
       {
         "name": "声音 voice",
         "value": "confirm、stamp、sparkle"
+      },
+      {
+        "name": "点亮级联同步计数",
+        "value": "L222: const R1=rng(19);const rest=[...USED.keys()].filter(Z=>!FIRST.includes(Z)).map(Z=>{const[r,c]=rc(Z);return{Z,k:c+.45*r+R1()*2.2};}).sort((a,b)=>a.k-b.k).map(o=>o.Z);；L224: rest.forEach((Z,i)=>litT.set(Z,lerp(EV.cascade[0],EV.cascade[1],1-Math.cbrt(1-(i+1)/rest.length))));；L260: if(o.lt!=null&&t>=o.lt){lit++;const q=P(t,o.lt,.16);const w=wob(t-o.lt,5,12);s*=1+.16*(1-q)*(o.lt===EV.first_lit?.94:1)+.02*w*(o.lt===EV.first_lit?2:1);"
       }
     ],
     "useCases": [
       "打卡与签到",
       "任务或关卡进度",
       "收藏与图鉴陈列",
-      "旅行或展会集章"
+      "旅行或展会集章",
+      "周期表点亮进度与元素数量同步，整十和终值用回弹强调。"
     ],
     "avoid": [
       "计数与叙事无关时（会显得廉价）"
@@ -50,12 +55,15 @@
       "conflicts": [],
       "notes": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。"
     },
-    "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+    "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 8.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 通过 index.html 内联 segments 在前 6.6 秒之后依次重放mg-paperclip 原片 3.1–4.7 秒，总时长 8.2 秒。手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。沿用同区间原片音轨，声音默认关闭。",
     "demo": "demos/patterns/collect-counter/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage"
+      },
+      {
+        "caseId": "mg-paperclip"
       }
     ],
     "previewAt": 6.2,
@@ -79,6 +87,10 @@
       {
         "t": 4.6,
         "label": "×4 + 大阪"
+      },
+      {
+        "t": 6.6,
+        "label": "贴纸科普"
       }
     ],
     "sound": {
@@ -141,7 +153,7 @@
         },
         {
           "name": "时长",
-          "value": "6.6s"
+          "value": "8.2s"
         }
       ]
     },
@@ -174,10 +186,14 @@
     {
       "caseId": "map-pilgrimage",
       "bundle": "agent/cases/map-pilgrimage.json"
+    },
+    {
+      "caseId": "mg-paperclip",
+      "bundle": "agent/cases/mg-paperclip.json"
     }
   ],
   "documents": {
-    "prompt": "# 收集计数徽章与收集物托盘\n\n## 实现 Prompt\n\n每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：6.6s\n- **声音 voice**：confirm、stamp、sparkle\n\n## 动效 Token\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：6.6s\n\n## 迁移\n\n- `动效函数`：配置计数、徽章、收集物托盘（来源为车站印章）与回弹。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置计数与收集事件（来源为车站印章）、镜头和横竖布局。\n- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
+    "prompt": "# 收集计数徽章与收集物托盘\n\n## 实现 Prompt\n\n每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 8.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 通过 index.html 内联 segments 在前 6.6 秒之后依次重放mg-paperclip 原片 3.1–4.7 秒，总时长 8.2 秒。手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。沿用同区间原片音轨，声音默认关闭。\n\n## 参数\n\n- **时长**：8.2s\n- **声音 voice**：confirm、stamp、sparkle\n- **点亮级联同步计数**：L222: const R1=rng(19);const rest=[...USED.keys()].filter(Z=>!FIRST.includes(Z)).map(Z=>{const[r,c]=rc(Z);return{Z,k:c+.45*r+R1()*2.2};}).sort((a,b)=>a.k-b.k).map(o=>o.Z);；L224: rest.forEach((Z,i)=>litT.set(Z,lerp(EV.cascade[0],EV.cascade[1],1-Math.cbrt(1-(i+1)/rest.length))));；L260: if(o.lt!=null&&t>=o.lt){lit++;const q=P(t,o.lt,.16);const w=wob(t-o.lt,5,12);s*=1+.16*(1-q)*(o.lt===EV.first_lit?.94:1)+.02*w*(o.lt===EV.first_lit?2:1);\n\n## 动效 Token\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：8.2s\n\n## 迁移\n\n- `动效函数`：配置计数、徽章、收集物托盘（来源为车站印章）与回弹。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置计数与收集事件（来源为车站印章）、镜头和横竖布局。\n- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
   },
   "entrypoint": "demos/patterns/collect-counter/index.html",
   "files": [
@@ -214,16 +230,148 @@
       "bytes": 7061
     },
     {
+      "path": "demos/cases/mg-paperclip/LICENSES.md",
+      "bytes": 3164
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
+      "bytes": 107762
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/battery.png",
+      "bytes": 233146
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/cobalt.png",
+      "bytes": 377499
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/lithium.png",
+      "bytes": 291448
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/meta.json",
+      "bytes": 384
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/pcb.png",
+      "bytes": 1296815
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/phone.png",
+      "bytes": 2104894
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/rareearth.png",
+      "bytes": 644720
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/tin.png",
+      "bytes": 538156
+    },
+    {
+      "path": "demos/cases/mg-paperclip/audio/film.m4a",
+      "bytes": 415520
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fidelity.md",
+      "bytes": 3788
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/cues.json",
+      "bytes": 3360
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/scene.js",
+      "bytes": 50392
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/setup.js",
+      "bytes": 2263
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/style.css",
+      "bytes": 2129
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-105-Heavy.ttf",
+      "bytes": 2536300
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-65-Medium.ttf",
+      "bytes": 8429388
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-85-Bold.ttf",
+      "bytes": 8371268
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-LICENSE.md",
+      "bytes": 5216
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/Inter-OFL.txt",
+      "bytes": 4377
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/Inter[opsz,wght].ttf",
+      "bytes": 876576
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/fonts.css",
+      "bytes": 698
+    },
+    {
+      "path": "demos/cases/mg-paperclip/index.html",
+      "bytes": 2075
+    },
+    {
+      "path": "demos/cases/mg-paperclip/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-paperclip/source/audio.py",
+      "bytes": 10203
+    },
+    {
+      "path": "demos/cases/mg-paperclip/source/tools/stickers.py",
+      "bytes": 4551
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/LICENSE",
+      "bytes": 731
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/dist/d3.min.js",
+      "bytes": 279706
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/topojson-client@3.1.0/LICENSE",
+      "bytes": 734
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
+      "bytes": 7169
+    },
+    {
       "path": "demos/patterns/collect-counter/config.js",
       "bytes": 1296
     },
     {
       "path": "demos/patterns/collect-counter/index.html",
-      "bytes": 7777
+      "bytes": 1792
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "demos/patterns/collect-counter/original.html",
+      "bytes": 7777
     },
     {
       "path": "demos/patterns/collect-counter/plates/landscape-10.4-map.webp",
@@ -271,7 +419,7 @@
     },
     {
       "path": "previews/patterns/collect-counter-portrait.jpg",
-      "bytes": 190211
+      "bytes": 190176
     },
     {
       "path": "previews/patterns/collect-counter.jpg",
