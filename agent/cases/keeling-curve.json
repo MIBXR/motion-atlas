@@ -468,7 +468,7 @@
     },
     {
       "path": "demos/cases/keeling-curve/film/motion.js",
-      "bytes": 13910
+      "bytes": 13717
     },
     {
       "path": "demos/cases/keeling-curve/film/scene.js",
@@ -536,7 +536,7 @@
     },
     {
       "path": "demos/cases/keeling-curve/source/preview.js",
-      "bytes": 12761
+      "bytes": 12572
     },
     {
       "path": "previews/cases/keeling-curve.jpg",
