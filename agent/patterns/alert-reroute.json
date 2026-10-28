@@ -172,24 +172,48 @@
   "entrypoint": "demos/patterns/alert-reroute/index.html",
   "files": [
     {
-      "path": "demos/patterns/alert-reroute/config.js",
-      "bytes": 25765
+      "path": "demos/cases/map-pilgrimage/film/config.js",
+      "bytes": 17491
     },
     {
-      "path": "demos/patterns/alert-reroute/index.html",
-      "bytes": 7643
-    },
-    {
-      "path": "demos/patterns/alert-reroute/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/alert-reroute/paths.js",
+      "path": "demos/cases/map-pilgrimage/film/paths.js",
       "bytes": 8047
     },
     {
-      "path": "demos/patterns/alert-reroute/scenes.js",
+      "path": "demos/cases/map-pilgrimage/film/scenes.js",
       "bytes": 35275
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/script.js",
+      "bytes": 130843
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/style.css",
+      "bytes": 40692
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 7995
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/source/research.md",
+      "bytes": 7061
+    },
+    {
+      "path": "demos/patterns/alert-reroute/config.js",
+      "bytes": 502
+    },
+    {
+      "path": "demos/patterns/alert-reroute/index.html",
+      "bytes": 7775
+    },
+    {
+      "path": "demos/patterns/alert-reroute/motion-kit.js",
+      "bytes": 119411
     },
     {
       "path": "demos/patterns/alert-reroute/score.json",
@@ -204,12 +228,12 @@
       "bytes": 41282
     },
     {
-      "path": "previews/patterns/alert-reroute.jpg",
-      "bytes": 196269
+      "path": "previews/patterns/alert-reroute-portrait.jpg",
+      "bytes": 183191
     },
     {
-      "path": "previews/patterns/alert-reroute-portrait.jpg",
-      "bytes": 184004
+      "path": "previews/patterns/alert-reroute.jpg",
+      "bytes": 195638
     }
   ]
 }

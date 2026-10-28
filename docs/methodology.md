@@ -1,6 +1,6 @@
 # 条目结构
 
-案例描述一个完整作品，巧思描述一种“触发 → 效果”的手法。两者都配有参数、Prompt和可运行的Demo。
+案例描述一个完整作品，巧思描述一种“触发 → 效果”的手法。两者都配有参数、Prompt和可运行的Demo。案例作品位于 `film/`，制作过程位于 `source/`；时间纯函数作品用 `MotionKit.mountFilm`，有自己时钟、状态或交互的作品自己接 MotionKit。
 
 ## 案例
 
@@ -34,7 +34,7 @@
 | 可访问性 | `accessibility` | 可访问性，了解减少动态与键盘操作 |
 | 所属案例 | `sources[].caseId` | 详情末尾的案例标题链接，打开完整作品 |
 
-巧思的`sources`只存`caseId`。对应案例的`patternIds`包含该巧思，形成双向关联。
+巧思的`sources`只存`caseId`。重放型用 `MotionKit.replay` 引用来源案例片段；拆分型保留机制代码，素材引用来源案例。对应案例的`patternIds`包含该巧思，形成双向关联。
 
 ## Demo与Prompt
 

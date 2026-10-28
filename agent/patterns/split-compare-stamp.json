@@ -158,20 +158,48 @@
   "entrypoint": "demos/patterns/split-compare-stamp/index.html",
   "files": [
     {
+      "path": "demos/cases/map-pilgrimage/film/config.js",
+      "bytes": 17491
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/paths.js",
+      "bytes": 8047
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/scenes.js",
+      "bytes": 35275
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/script.js",
+      "bytes": 130843
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/style.css",
+      "bytes": 40692
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 7995
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/source/research.md",
+      "bytes": 7061
+    },
+    {
       "path": "demos/patterns/split-compare-stamp/config.js",
-      "bytes": 25703
+      "bytes": 440
     },
     {
       "path": "demos/patterns/split-compare-stamp/index.html",
-      "bytes": 7649
+      "bytes": 7781
     },
     {
       "path": "demos/patterns/split-compare-stamp/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/paths.js",
-      "bytes": 8047
+      "bytes": 119411
     },
     {
       "path": "demos/patterns/split-compare-stamp/plates/landscape-24.6-map.webp",
@@ -180,10 +208,6 @@
     {
       "path": "demos/patterns/split-compare-stamp/plates/portrait-24.6-map.webp",
       "bytes": 547812
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/scenes.js",
-      "bytes": 35275
     },
     {
       "path": "demos/patterns/split-compare-stamp/score.json",
@@ -198,12 +222,12 @@
       "bytes": 41282
     },
     {
-      "path": "previews/patterns/split-compare-stamp.jpg",
-      "bytes": 183553
-    },
-    {
       "path": "previews/patterns/split-compare-stamp-portrait.jpg",
       "bytes": 180049
+    },
+    {
+      "path": "previews/patterns/split-compare-stamp.jpg",
+      "bytes": 183553
     }
   ]
 }

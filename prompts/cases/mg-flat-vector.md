@@ -98,9 +98,9 @@ realised; the tech route; check numbers (duration, resolution, fps, loudness, tr
 
 ## 迁移
 
-- `index.html → C`：调整原作色板。
-- `index.html → WORD、CN 与英文标语`：替换品牌与标语，并配套相应字体文件。
-- `cues.json → frames、build、drop、outro`：调整画面节点与配乐阶段，保持同一时间表。
-- `motion-adapter.js`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
+- `film/scene.js → C`：调整原作色板。
+- `film/scene.js → WORD、CN 与英文标语`：替换品牌与标语，并配套相应字体文件。
+- `film/cues.json → frames、build、drop、outro`：调整画面节点与配乐阶段，保持同一时间表。
+- `index.html → MotionKit.mountFilm`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
 
 [打开 Demo](../../demos/cases/mg-flat-vector/index.html) · [在库中查看](../../cases.html#case/mg-flat-vector)

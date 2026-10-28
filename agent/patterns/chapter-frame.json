@@ -165,20 +165,48 @@
   "entrypoint": "demos/patterns/chapter-frame/index.html",
   "files": [
     {
+      "path": "demos/cases/map-pilgrimage/film/config.js",
+      "bytes": 17491
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/paths.js",
+      "bytes": 8047
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/scenes.js",
+      "bytes": 35275
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/script.js",
+      "bytes": 130843
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/style.css",
+      "bytes": 40692
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 7995
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/source/research.md",
+      "bytes": 7061
+    },
+    {
       "path": "demos/patterns/chapter-frame/config.js",
-      "bytes": 26144
+      "bytes": 881
     },
     {
       "path": "demos/patterns/chapter-frame/index.html",
-      "bytes": 7643
+      "bytes": 7775
     },
     {
       "path": "demos/patterns/chapter-frame/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/chapter-frame/paths.js",
-      "bytes": 8047
+      "bytes": 119411
     },
     {
       "path": "demos/patterns/chapter-frame/plates/landscape-24.6-map.webp",
@@ -197,10 +225,6 @@
       "bytes": 263766
     },
     {
-      "path": "demos/patterns/chapter-frame/scenes.js",
-      "bytes": 35275
-    },
-    {
       "path": "demos/patterns/chapter-frame/score.json",
       "bytes": 451
     },
@@ -213,12 +237,12 @@
       "bytes": 41282
     },
     {
-      "path": "previews/patterns/chapter-frame.jpg",
-      "bytes": 257992
-    },
-    {
       "path": "previews/patterns/chapter-frame-portrait.jpg",
       "bytes": 244438
+    },
+    {
+      "path": "previews/patterns/chapter-frame.jpg",
+      "bytes": 257992
     }
   ]
 }

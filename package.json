@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node scripts/serve.mjs --port 4321",
     "build": "node scripts/build.mjs",
-    "build:archive": "node vendor/rhinelabui/build.mjs",
+    "build:archive": "node demos/cases/archive-os/source/rhinelabui/build.mjs",
     "build:site": "node scripts/build-static.mjs --site",
     "build:local": "node scripts/build-static.mjs",
     "capture": "node scripts/capture.mjs",

@@ -98,9 +98,9 @@ realised; the tech route; check numbers (duration, resolution, fps, loudness, tr
 
 ## 迁移
 
-- `js/world.js → PAL、MAP 与模型定义`：调整城市配色、12×12 地块布局与模型参数。
-- `js/main.js → CAM、buildTitle、buildTags`：调整镜头轨道、品牌文字、标语与三张信息卡内容。
-- `cues.json`：调整地块、建筑、核心、数据卡与落版节点，画面与配乐共用时间表。
-- `motion-adapter.js`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
+- `film/world.js → PAL、MAP 与模型定义`：调整城市配色、12×12 地块布局与模型参数。
+- `film/main.js → CAM、buildTitle、buildTags`：调整镜头轨道、品牌文字、标语与三张信息卡内容。
+- `film/cues.json`：调整地块、建筑、核心、数据卡与落版节点，画面与配乐共用时间表。
+- `index.html → MotionKit.mountFilm`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
 
 [打开 Demo](../../demos/cases/mg-isometric/index.html) · [在库中查看](../../cases.html#case/mg-isometric)

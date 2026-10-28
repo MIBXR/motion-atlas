@@ -47,7 +47,7 @@ The final production cleanup also invalidates the shadow cache on WebGL context 
 
 ## MiSans
 
-字体使用 [MiSans 许可全文（PDF）](app/fonts/MiSans-license.pdf)，并保留 [NOTICE.txt](app/fonts/NOTICE.txt)。下列声明原文来自上游 `public/fonts/NOTICE.txt`。
+字体使用 [MiSans 许可全文（PDF）](../../cases/archive-os/film/app/fonts/MiSans-license.pdf)，并保留 [NOTICE.txt](../../cases/archive-os/film/app/fonts/NOTICE.txt)。下列声明原文来自上游 `public/fonts/NOTICE.txt`。
 
 ```text
 MiSans by Xiaomi / 小米科技有限责任公司
@@ -68,7 +68,7 @@ Font license: MiSans-license.pdf (retained separately from upstream tooling lice
 
 ## Rolling Number
 
-下列许可原文来自上游 `public/licenses/rolling-number.txt`；运行时副本见 [rolling-number.txt](app/licenses/rolling-number.txt)。
+下列许可原文来自上游 `public/licenses/rolling-number.txt`；运行时副本见 [rolling-number.txt](../../cases/archive-os/film/app/licenses/rolling-number.txt)。
 
 MIT License
 
@@ -94,7 +94,7 @@ SOFTWARE.
 
 ## 音频来源与权利
 
-下列说明原文来自上游 `public/audio/README.md`；运行时副本见 [audio/README.md](app/audio/README.md)。
+下列说明原文来自上游 `public/audio/README.md`；运行时副本见 [audio/README.md](../../cases/archive-os/film/app/audio/README.md)。
 
 ### Observatory / 观测室
 

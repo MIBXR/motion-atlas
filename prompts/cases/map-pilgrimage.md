@@ -30,22 +30,22 @@
 - 画面、文字、地点与乐谱共同呈现关西三日旅程。
 - 照片、明信片与插画按画幅绘制。
 - OpenFreeMap底图与AWS高程显示建筑、铁路、水系和地名。
-- 在config.js填入照片，即可替换程序场景。
+- 在film/config.js填入照片，即可替换程序场景。
 - 横屏1920×1080、竖屏1080×1920等比缩放，网站文字≥12px。
 - 约730块/130MB；约290块/66MB必需。10Mbps缓冲1–2次。
 
 ## 迁移
 
-- `config.js → meta`：设置片名、副标题、时区、总天数、时长与BPM。
-- `config.js → stops`：设置地点名称、经纬度、海拔与最小缩放，路线端点自动对齐。
-- `config.js → tracks.camera`：c中心、z缩放、p俯仰、b方位、f/fp取景、zp竖屏缩放、e缓动。
-- `paths.js`：设置铁路与步行经纬度，可用rail图层或GeoJSON线。
-- `config.js → tracks.*`：调整各事件轨道时刻，画面与乐谱同步改变节奏。
-- `config.js → chapters / stepper`：设置章节标题、强调色、框线或胶带，以及四站步进器与印章。
-- `config.js → sound`：设置和弦、阳音阶与到站提示音，按轨道生成乐谱。
-- `config.js → layout`：分别设置横竖规尺、步进器、印章、卡片、避让区与统计区。
-- `config.js → palette / mapPalette / map`：设置纸色、墨色、夜色、强调色与地图昼夜配色、样式和高程。
-- `scenes.js`：cards[].media填图片路径，即可换成真实照片。
-- `script.js → BUF_CFG`：设置开头门槛、解析与下载范围、内存预算、暂停与继续阈值。
+- `film/config.js → meta`：设置片名、副标题、时区、总天数、时长与BPM。
+- `film/config.js → stops`：设置地点名称、经纬度、海拔与最小缩放，路线端点自动对齐。
+- `film/config.js → tracks.camera`：c中心、z缩放、p俯仰、b方位、f/fp取景、zp竖屏缩放、e缓动。
+- `film/paths.js`：设置铁路与步行经纬度，可用rail图层或GeoJSON线。
+- `film/config.js → tracks.*`：调整各事件轨道时刻，画面与乐谱同步改变节奏。
+- `film/config.js → chapters / stepper`：设置章节标题、强调色、框线或胶带，以及四站步进器与印章。
+- `film/config.js → sound`：设置和弦、阳音阶与到站提示音，按轨道生成乐谱。
+- `film/config.js → layout`：分别设置横竖规尺、步进器、印章、卡片、避让区与统计区。
+- `film/config.js → palette / mapPalette / map`：设置纸色、墨色、夜色、强调色与地图昼夜配色、样式和高程。
+- `film/scenes.js`：cards[].media填图片路径，即可换成真实照片。
+- `film/script.js → BUF_CFG`：设置开头门槛、解析与下载范围、内存预算、暂停与继续阈值。
 
 [打开 Demo](../../demos/cases/map-pilgrimage/index.html) · [在库中查看](../../cases.html#case/map-pilgrimage)

@@ -14,7 +14,36 @@
 <body>
   <main id="stage"><output id="cue" hidden></output></main>
   <script src="motion-kit.js"></script>
-  <script src="config.js"></script>
-  <script type="module" src="replay.js"></script>
+  <script type="module">
+    const config = {
+      "title": "整像素多速视差",
+      "segments": [
+        {
+          "caseId": "mg-pixel",
+          "label": "像素艺术",
+          "from": 0,
+          "to": 10
+        }
+      ],
+      "markers": [
+        {
+          "t": 0,
+          "label": "像素艺术"
+        },
+        {
+          "t": 3.5333333333,
+          "label": "相机定机"
+        },
+        {
+          "t": 4.0666666667,
+          "label": "远山续移"
+        }
+      ],
+      "reduced": 3,
+      "root": "#stage",
+      "fps": 30
+    };
+    await MotionKit.replay(config);
+  </script>
 </body>
 </html>

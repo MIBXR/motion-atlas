@@ -2,7 +2,7 @@
 
 ## 实现 Prompt
 
-以原作 PIXEL QUEST 的 renderAt(t) 重放整像素多速视差，保留来源目录内的代码、字体与音轨。按 config.js 的 segments 以 1 倍速重放原片 0–10 秒，画面仍由原函数绘制。逻辑画布 320×180，输出 1920×1080，30fps，通常放大 6 倍；沿用原作 LINEAR 纹理过滤与 GLSL sharp：reg=0.5-0.5/sc，f=(cd-clamp(cd,-reg,reg))*sc+0.5。远山、中景、近丘、前景分别使用 floor(cx×0.125)、floor(cx×0.3)、floor(cx×0.55)、floor(cx×1.4)。相机按 hx-96 追随角色，末段由 254 到 260，f106 定机；远山叠加 floor(max(0,f-F_CAMSTOP)/16) 继续移动。声音重放原片同一区间，默认关闭；提供横屏、时间定位、播放暂停与减少动态偏好。
+以原作 PIXEL QUEST 的 renderAt(t) 重放整像素多速视差，保留来源目录内的代码、字体与音轨。按 index.html 内联配置 的 segments 以 1 倍速重放原片 0–10 秒，画面仍由原函数绘制。逻辑画布 320×180，输出 1920×1080，30fps，通常放大 6 倍；沿用原作 LINEAR 纹理过滤与 GLSL sharp：reg=0.5-0.5/sc，f=(cd-clamp(cd,-reg,reg))*sc+0.5。远山、中景、近丘、前景分别使用 floor(cx×0.125)、floor(cx×0.3)、floor(cx×0.55)、floor(cx×1.4)。相机按 hx-96 追随角色，末段由 254 到 260，f106 定机；远山叠加 floor(max(0,f-F_CAMSTOP)/16) 继续移动。声音重放原片同一区间，默认关闭；提供横屏、时间定位、播放暂停与减少动态偏好。
 
 ## 参数
 

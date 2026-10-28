@@ -201,40 +201,204 @@
   "entrypoint": "demos/patterns/route-draw-marker/index.html",
   "files": [
     {
-      "path": "demos/patterns/route-draw-marker/LICENSES.md",
-      "bytes": 151
+      "path": "demos/cases/map-pilgrimage/film/config.js",
+      "bytes": 17491
     },
     {
-      "path": "demos/patterns/route-draw-marker/config.js",
-      "bytes": 26781
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/index.html",
-      "bytes": 729
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/original.html",
-      "bytes": 7647
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/paths.js",
+      "path": "demos/cases/map-pilgrimage/film/paths.js",
       "bytes": 8047
     },
     {
-      "path": "demos/patterns/route-draw-marker/replay-config.js",
-      "bytes": 1034
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/replay.js",
-      "bytes": 6633
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/scenes.js",
+      "path": "demos/cases/map-pilgrimage/film/scenes.js",
       "bytes": 35275
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/script.js",
+      "bytes": 130843
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/style.css",
+      "bytes": 40692
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 7995
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/source/research.md",
+      "bytes": 7061
+    },
+    {
+      "path": "demos/cases/mg-isometric/LICENSES.md",
+      "bytes": 2687
+    },
+    {
+      "path": "demos/cases/mg-isometric/audio/film.m4a",
+      "bytes": 423677
+    },
+    {
+      "path": "demos/cases/mg-isometric/fidelity.md",
+      "bytes": 5634
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/anim.js",
+      "bytes": 3953
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/cues.json",
+      "bytes": 1240
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/main.js",
+      "bytes": 9762
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/render.js",
+      "bytes": 9205
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/setup.js",
+      "bytes": 216
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/style.css",
+      "bytes": 423
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/title.js",
+      "bytes": 8504
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/ui.js",
+      "bytes": 9547
+    },
+    {
+      "path": "demos/cases/mg-isometric/film/world.js",
+      "bytes": 80534
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/HarmonyOS-Sans-LICENSE.txt",
+      "bytes": 32768
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/HarmonyOS_Sans_SC_Bold.ttf",
+      "bytes": 8158996
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/HarmonyOS_Sans_SC_Medium.ttf",
+      "bytes": 8227312
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/JetBrainsMono-OFL.txt",
+      "bytes": 4399
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/JetBrainsMono[wght].ttf",
+      "bytes": 187208
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/Unbounded-800-static.ttf",
+      "bytes": 423680
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/Unbounded-OFL.txt",
+      "bytes": 4392
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/Unbounded[wght].ttf",
+      "bytes": 778272
+    },
+    {
+      "path": "demos/cases/mg-isometric/fonts/fonts.css",
+      "bytes": 700
+    },
+    {
+      "path": "demos/cases/mg-isometric/index.html",
+      "bytes": 2775
+    },
+    {
+      "path": "demos/cases/mg-isometric/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-isometric/source/audio.py",
+      "bytes": 14263
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/opentype.js@2.0.0/LICENSE",
+      "bytes": 1085
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/opentype.js@2.0.0/dist/opentype.mjs",
+      "bytes": 494695
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/LICENSE",
+      "bytes": 1081
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/build/three.core.js",
+      "bytes": 1458113
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/build/three.module.js",
+      "bytes": 662772
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/environments/RoomEnvironment.js",
+      "bytes": 4960
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 6470
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 15397
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
+      "bytes": 729
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1291
+    },
+    {
+      "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/utils/BufferGeometryUtils.js",
+      "bytes": 37712
+    },
+    {
+      "path": "demos/patterns/route-draw-marker/LICENSES.md",
+      "bytes": 155
+    },
+    {
+      "path": "demos/patterns/route-draw-marker/config.js",
+      "bytes": 1518
+    },
+    {
+      "path": "demos/patterns/route-draw-marker/index.html",
+      "bytes": 1902
+    },
+    {
+      "path": "demos/patterns/route-draw-marker/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/patterns/route-draw-marker/original.html",
+      "bytes": 7779
     },
     {
       "path": "demos/patterns/route-draw-marker/score.json",
@@ -245,160 +409,16 @@
       "bytes": 145359
     },
     {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/LICENSE",
-      "bytes": 1071
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/LICENSES.md",
-      "bytes": 2689
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/assets/fonts/Unbounded-800-static.ttf",
-      "bytes": 423680
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/audio/film.m4a",
-      "bytes": 423677
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/cues.json",
-      "bytes": 1240
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fidelity.md",
-      "bytes": 5691
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/HarmonyOS-Sans-LICENSE.txt",
-      "bytes": 32768
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/HarmonyOS_Sans_SC_Bold.ttf",
-      "bytes": 8158996
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/HarmonyOS_Sans_SC_Medium.ttf",
-      "bytes": 8227312
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/JetBrainsMono-OFL.txt",
-      "bytes": 4399
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/JetBrainsMono[wght].ttf",
-      "bytes": 187208
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/Unbounded-OFL.txt",
-      "bytes": 4392
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/Unbounded[wght].ttf",
-      "bytes": 778272
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/fonts/fonts.css",
-      "bytes": 700
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/index.html",
-      "bytes": 1094
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/js/anim.js",
-      "bytes": 3953
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/js/main.js",
-      "bytes": 9757
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/js/render.js",
-      "bytes": 9205
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/js/title.js",
-      "bytes": 8511
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/js/ui.js",
-      "bytes": 9547
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/js/world.js",
-      "bytes": 80534
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/motion-adapter.js",
-      "bytes": 6376
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/source/audio.py",
-      "bytes": 14263
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/opentype.js@2.0.0/LICENSE",
-      "bytes": 1085
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/opentype.js@2.0.0/dist/opentype.mjs",
-      "bytes": 494695
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/LICENSE",
-      "bytes": 1081
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/build/three.core.js",
-      "bytes": 1458113
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/build/three.module.js",
-      "bytes": 662772
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/examples/jsm/environments/RoomEnvironment.js",
-      "bytes": 4960
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/examples/jsm/geometries/RoundedBoxGeometry.js",
-      "bytes": 6470
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
-      "bytes": 4218
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
-      "bytes": 15397
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
-      "bytes": 729
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
-      "bytes": 1291
-    },
-    {
-      "path": "demos/patterns/route-draw-marker/sources/mg-isometric/vendor/three@0.186.1/examples/jsm/utils/BufferGeometryUtils.js",
-      "bytes": 37712
-    },
-    {
       "path": "demos/patterns/route-draw-marker/style.css",
       "bytes": 41282
     },
     {
-      "path": "previews/patterns/route-draw-marker.jpg",
-      "bytes": 209650
+      "path": "previews/patterns/route-draw-marker-portrait.jpg",
+      "bytes": 151877
     },
     {
-      "path": "previews/patterns/route-draw-marker-portrait.jpg",
-      "bytes": 151910
+      "path": "previews/patterns/route-draw-marker.jpg",
+      "bytes": 209650
     }
   ]
 }

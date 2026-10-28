@@ -6,10 +6,10 @@
 
 | 文件 | 删改内容 | 原因 |
 | --- | --- | --- |
-| `film.js` | 移除 `V5`、`NOLINK`、另一剪辑的中文标题、字体预载与测量；默认圆形、轴心、横线和背面蓝圆持续按原条件绘制，保留全部默认数值与 `mb` 参数。 | 另一版剪辑分支 |
-| `film.js` | 移除 `window.linkAt`、元素位置导出及其独占的卡片采样和投影辅助函数、数据。 | 开发工具 |
-| `index.html`、`film.js` | 字体样式改为 `fonts/fonts.css`，模块入口为 `./film.js`，`BASE` 为 `./`；加载独立适配层。 | 路径改写 |
-| `film.js` | 原共享纸纹与颗粒改为 `shared/assets/textures/paper/Paper001_4K_color.jpg`、`shared/assets/textures/grain/grain_fine_2048.png`。 | 路径改写 |
+| `film/film.js` | 移除 `V5`、`NOLINK`、另一剪辑的中文标题、字体预载与测量；默认圆形、轴心、横线和背面蓝圆持续按原条件绘制，保留全部默认数值与 `mb` 参数。 | 另一版剪辑分支 |
+| `film/film.js` | 移除 `window.linkAt`、元素位置导出及其独占的卡片采样和投影辅助函数、数据。 | 开发工具 |
+| `index.html`、`film/film.js` | 字体样式改为 `fonts/fonts.css`，模块入口为 `./film/film.js`，`BASE` 为 `./`；入口调用 `MotionKit.mountFilm`。 | 路径改写 |
+| `film/film.js` | 原共享纸纹与颗粒改为 `assets/textures/paper/Paper001_4K_color.jpg`、`assets/textures/grain/grain_fine_2048.png`。 | 路径改写 |
 | `fonts/fonts.css` | 保留默认片的 Noto Sans SC、Poppins 900/600 声明，URL 指向本地完整字体文件。 | 路径改写 |
 | `audio.py` → `source/audio.py` | 保存生成原作配乐的脚本，内容字节和内部路径保持不变。 | 移至 source |
 
@@ -17,15 +17,15 @@
 
 ## 适配层
 
-`motion-adapter.js` 等待原作模块初始化完成，再通过 `MotionKit.timeline` 调用原作 `window.renderAt(t)`，并用 `MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 接入本库。尺寸为 1920×1080、30fps、10 秒；Canvas 保持内部像素，通过 `MotionKit.stage` 等比居中，四周黑边，仅提供横屏。
+`index.html` 中的 `MotionKit.mountFilm` 等待原作模块初始化完成，再通过 `MotionKit.timeline` 调用原作 `window.renderAt(t)`，并用 `MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 接入本库。尺寸为 1920×1080、30fps、10 秒；Canvas 保持内部像素，通过 `MotionKit.stage` 等比居中，四周黑边，仅提供横屏。
 
-节点读取 `cues.json` 的网格起点、事件与四次级联波，控制条使用中文，支持播放、暂停、重播、拖动和倍速。声音默认关闭，开启后播放 `audio/film.m4a`，与跳转、暂停和倍速同步；音轨以 Audio Blob 加载。
+节点读取 `film/cues.json` 的网格起点、事件与四次级联波，控制条使用中文，支持播放、暂停、重播、拖动和倍速。声音默认关闭，开启后播放 `audio/film.m4a`，与跳转、暂停和倍速同步；音轨以 Audio Blob 加载。
 
 `?embed`、`?render` 隐藏控制条；`?render` 关闭自动播放和声音；`?t=秒` 定位。减少动态时显示 9.75 秒并暂停；`previewAt: 9.75` 时套印锁定与纸张位移已结束，字标、几何构成、小字和拍数完整。
 
 ## 已接受差异
 
-原作 `film.js` 设置 30fps、`motionBlur.samples: 8`、`shutter: 0.5`，即半帧曝光约 16.67ms；`harness/render.mjs` 按每帧八个子帧平均产生运动模糊。页面实时播放与 `?render` 单帧均直接调用原 `renderAt(t)`，没有该外部运动模糊。
+原作 `film/film.js` 设置 30fps、`motionBlur.samples: 8`、`shutter: 0.5`，即半帧曝光约 16.67ms；`harness/render.mjs` 按每帧八个子帧平均产生运动模糊。页面实时播放与 `?render` 单帧均直接调用原 `renderAt(t)`，没有该外部运动模糊。
 
 ## 与原片对照结果
 

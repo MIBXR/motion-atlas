@@ -75,16 +75,16 @@ async function shoot(browser, e, dir, orient, renderers) {
   const out = path.join(outRoot, dir, `${e.id}${portrait ? '-portrait' : ''}.jpg`);
   try {
     await page.goto(url, 45000);
-    const hasMotion = await page.eval('new Promise(r => { let n = 0; const iv = setInterval(() => { if (window.__motion || ++n > 120) { clearInterval(iv); r(!!window.__motion); } }, 100); })', 20000);
+    const hasMotion = await page.eval('new Promise(r => { let n = 0; const iv = setInterval(() => { if (window.__motion || ++n > 120) { clearInterval(iv); r(!!window.__motion); } }, 100); })', 120000);
     if (hasMotion) {
       await page.eval('Promise.resolve(window.__motion.ready).then(() => true)', 60000);
       if (e.renderer === 'gpu') await checkRenderer(page, renderers);
       const orients = await page.eval('window.__motion.orients || []');
       if (portrait && !orients.includes('portrait')) return 'skip';
       const t = (portrait ? e.previewAtPortrait : null) ?? e.previewAt ?? 0;
-      await page.eval(`window.__motion.pause(), window.__motion.seek(${t})`, 30000);
+      await page.eval(`window.__motion.pause(), window.__motion.seek(${t})`, 120000);
       await page.eval('new Promise(r => setTimeout(r, 700))');
-      await page.eval(`window.__motion.seek(${t})`, 30000);
+      await page.eval(`window.__motion.seek(${t})`, 120000);
     } else {
       if (portrait) return 'skip';
       if (e.previewScript) await page.eval(e.previewScript, 20000);

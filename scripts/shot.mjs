@@ -23,7 +23,7 @@ if (orient) u.searchParams.set('orient', orient);
 const browser = await launch({ width: w, height: h });
 try {
   const page = await browser.newPage();
-  await page.goto(u.href);
+  await page.goto(u.href, 120000);
   if (times.length) {
     await page.waitFor('window.__motion', 20000);
     await page.eval('Promise.resolve(window.__motion.ready).then(() => true)', 60000);

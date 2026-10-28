@@ -8,7 +8,7 @@
 - 固定提交：`49052d80bfaf9fa8412cc9710530e5e95a3b8d8c`。
 - 原目录：`demos/01-flat-vector/`。
 - 在线作品：https://vincentwei1021.github.io/mg-styles-15/#01-flat-vector 。
-- 代码、提示词与成片采用 MIT 许可，原文副本见 [LICENSE](LICENSE)。
+- 代码、提示词与成片采用 MIT 许可，原文副本见 [LICENSE](film/LICENSE)。
 
 ## 字体
 

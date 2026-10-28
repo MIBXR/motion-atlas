@@ -64,7 +64,7 @@
       "conflicts": [],
       "notes": "本巧思按所列原片区间顺序重放。"
     },
-    "prompt": "复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放原片158/24−0.2至9.075秒，全长2.6916666666666664秒。保留22个火团圆形在0、0.32、0.6、0.82、1的阶梯进度下迁移到rx=520、ry=262的花边徽章；黄色核心以[0,0.55,1]进度和[1,0.45,0.2]尺寸接到第一笔。沿用S=352、gap=18的手绘字形，火星沿E.out2(p)控制的中心线前缀逐笔书写；笔画节点为7.25至8.5秒、间隔0.125秒。保留标题影块、徽章和字面的回弹落定、HAND MADE与中文标语入场。沿用原作字体、纹理和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
+    "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放原片158/24−0.2至9.075秒，全长2.6916666666666664秒。保留22个火团圆形在0、0.32、0.6、0.82、1的阶梯进度下迁移到rx=520、ry=262的花边徽章；黄色核心以[0,0.55,1]进度和[1,0.45,0.2]尺寸接到第一笔。沿用S=352、gap=18的手绘字形，火星沿E.out2(p)控制的中心线前缀逐笔书写；笔画节点为7.25至8.5秒、间隔0.125秒。保留标题影块、徽章和字面的回弹落定、HAND MADE与中文标语入场。沿用原作字体、纹理和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
     "demo": "demos/patterns/spark-stroke-handletter/index.html",
     "kit": true,
     "timeline": true,
@@ -116,11 +116,11 @@
     },
     "migration": [
       {
-        "field": "config.js → segments",
+        "field": "index.html 内联配置 → segments",
         "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
       },
       {
-        "field": "config.js → markers / reduced",
+        "field": "index.html 内联配置 → markers / reduced",
         "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
       }
     ],
@@ -134,153 +134,145 @@
     }
   ],
   "documents": {
-    "prompt": "# 火星逐笔写字\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放原片158/24−0.2至9.075秒，全长2.6916666666666664秒。保留22个火团圆形在0、0.32、0.6、0.82、1的阶梯进度下迁移到rx=520、ry=262的花边徽章；黄色核心以[0,0.55,1]进度和[1,0.45,0.2]尺寸接到第一笔。沿用S=352、gap=18的手绘字形，火星沿E.out2(p)控制的中心线前缀逐笔书写；笔画节点为7.25至8.5秒、间隔0.125秒。保留标题影块、徽章和字面的回弹落定、HAND MADE与中文标语入场。沿用原作字体、纹理和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。\n\n## 参数\n\n- **徽章构成**：C0=[862,614]；BADGE={x:960,y:464,rx:520,ry:262}；N=22；sk=0.14*hs(k,7)。\n- **四张聚合**：morphP(t)=t<6.99?0:t<7.07?0.32:t<7.15?0.6:t<7.24?0.82:1。\n- **核心点笔**：e=[0,0.55,1][stp]；R=min(q.r*0.8,240)*[1,0.45,0.2][stp]。\n- **逐笔书写**：TITLE={cx:960,cy:440,S:352,gap:18}；prefix(full,E.out2(p)*0.999+0.001*p)；strokes=[7.25,7.375,7.5,7.625,7.75,7.875,8,8.125,8.25,8.375,8.5]。\n- **回弹落定**：settle=K(t1,[[8.5,0],[8.583,1.25,out2],[8.667,0.9],[8.75,1.0]])；标题缩放1+K(t1,[[8.5,0],[8.54,0.05,out2],[8.625,-0.02],[8.75,0.008],[8.875,0]])。\n- **重放时长**：原片158/24−0.2至9.075秒，巧思总时长2.6916666666666664秒。\n\n## 迁移\n\n- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/spark-stroke-handletter/index.html) · [在库中查看](../../patterns.html#pattern/spark-stroke-handletter)\n"
+    "prompt": "# 火星逐笔写字\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放原片158/24−0.2至9.075秒，全长2.6916666666666664秒。保留22个火团圆形在0、0.32、0.6、0.82、1的阶梯进度下迁移到rx=520、ry=262的花边徽章；黄色核心以[0,0.55,1]进度和[1,0.45,0.2]尺寸接到第一笔。沿用S=352、gap=18的手绘字形，火星沿E.out2(p)控制的中心线前缀逐笔书写；笔画节点为7.25至8.5秒、间隔0.125秒。保留标题影块、徽章和字面的回弹落定、HAND MADE与中文标语入场。沿用原作字体、纹理和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。\n\n## 参数\n\n- **徽章构成**：C0=[862,614]；BADGE={x:960,y:464,rx:520,ry:262}；N=22；sk=0.14*hs(k,7)。\n- **四张聚合**：morphP(t)=t<6.99?0:t<7.07?0.32:t<7.15?0.6:t<7.24?0.82:1。\n- **核心点笔**：e=[0,0.55,1][stp]；R=min(q.r*0.8,240)*[1,0.45,0.2][stp]。\n- **逐笔书写**：TITLE={cx:960,cy:440,S:352,gap:18}；prefix(full,E.out2(p)*0.999+0.001*p)；strokes=[7.25,7.375,7.5,7.625,7.75,7.875,8,8.125,8.25,8.375,8.5]。\n- **回弹落定**：settle=K(t1,[[8.5,0],[8.583,1.25,out2],[8.667,0.9],[8.75,1.0]])；标题缩放1+K(t1,[[8.5,0],[8.54,0.05,out2],[8.625,-0.02],[8.75,0.008],[8.875,0]])。\n- **重放时长**：原片158/24−0.2至9.075秒，巧思总时长2.6916666666666664秒。\n\n## 迁移\n\n- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/spark-stroke-handletter/index.html) · [在库中查看](../../patterns.html#pattern/spark-stroke-handletter)\n"
   },
   "entrypoint": "demos/patterns/spark-stroke-handletter/index.html",
   "files": [
     {
-      "path": "demos/patterns/spark-stroke-handletter/LICENSES.md",
-      "bytes": 129
+      "path": "demos/cases/mg-cel-boil/LICENSES.md",
+      "bytes": 3001
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/config.js",
-      "bytes": 797
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/index.html",
-      "bytes": 722
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/replay.js",
-      "bytes": 6633
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/LICENSE",
-      "bytes": 1071
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/LICENSES.md",
-      "bytes": 2996
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/assets/dust_ink_01.png",
+      "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
       "bytes": 28357
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/assets/dust_ink_02.png",
+      "path": "demos/cases/mg-cel-boil/assets/dust_ink_02.png",
       "bytes": 28707
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/assets/dust_ink_03.png",
+      "path": "demos/cases/mg-cel-boil/assets/dust_ink_03.png",
       "bytes": 25600
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/assets/dust_ink_04.png",
+      "path": "demos/cases/mg-cel-boil/assets/dust_ink_04.png",
       "bytes": 27879
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/assets/paper_base.jpg",
+      "path": "demos/cases/mg-cel-boil/assets/paper_base.jpg",
       "bytes": 483747
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/assets/paper_tooth.png",
+      "path": "demos/cases/mg-cel-boil/assets/paper_tooth.png",
       "bytes": 1791819
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/audio/film.m4a",
+      "path": "demos/cases/mg-cel-boil/audio/film.m4a",
       "bytes": 415190
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/cues.json",
+      "path": "demos/cases/mg-cel-boil/fidelity.md",
+      "bytes": 4518
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/film/cues.json",
       "bytes": 2188
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fidelity.md",
-      "bytes": 4467
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fonts/Caveat-OFL.txt",
-      "bytes": 4385
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fonts/Caveat[wght].ttf",
-      "bytes": 403648
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fonts/LXGWMarkerGothic-OFL.txt",
-      "bytes": 4406
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fonts/LXGWMarkerGothic-Regular.ttf",
-      "bytes": 3190368
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fonts/LongCang-Regular.ttf",
-      "bytes": 5162508
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fonts/Longcang-OFL.txt",
-      "bytes": 4390
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/fonts/fonts.css",
-      "bytes": 509
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/index.html",
-      "bytes": 1440
-    },
-    {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/js/engine.js",
+      "path": "demos/cases/mg-cel-boil/film/engine.js",
       "bytes": 13778
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/js/scene.js",
-      "bytes": 103098
+      "path": "demos/cases/mg-cel-boil/film/scene.js",
+      "bytes": 103103
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/motion-adapter.js",
-      "bytes": 5902
+      "path": "demos/cases/mg-cel-boil/film/setup.js",
+      "bytes": 764
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/motion-kit.js",
-      "bytes": 107961
+      "path": "demos/cases/mg-cel-boil/film/style.css",
+      "bytes": 137
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/source/audio.py",
+      "path": "demos/cases/mg-cel-boil/fonts/Caveat-OFL.txt",
+      "bytes": 4385
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/fonts/Caveat[wght].ttf",
+      "bytes": 403648
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-OFL.txt",
+      "bytes": 4406
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-Regular.ttf",
+      "bytes": 3190368
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/fonts/LongCang-Regular.ttf",
+      "bytes": 5162508
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/fonts/Longcang-OFL.txt",
+      "bytes": 4390
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/fonts/fonts.css",
+      "bytes": 509
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/index.html",
+      "bytes": 2446
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/audio.py",
       "bytes": 24290
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/source/gen_dust.py",
+      "path": "demos/cases/mg-cel-boil/source/gen_dust.py",
       "bytes": 707
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/source/gen_paper.py",
+      "path": "demos/cases/mg-cel-boil/source/gen_paper.py",
       "bytes": 2360
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/source/tools/hitmax.py",
+      "path": "demos/cases/mg-cel-boil/source/tools/hitmax.py",
       "bytes": 4168
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/vendor/opentype.js@2.0.0/LICENSE",
+      "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/LICENSE",
       "bytes": 1085
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/vendor/opentype.js@2.0.0/dist/opentype.mjs",
+      "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/dist/opentype.mjs",
       "bytes": 494695
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/vendor/simplex-noise@4.0.3/LICENSE",
+      "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/LICENSE",
       "bytes": 1069
     },
     {
-      "path": "demos/patterns/spark-stroke-handletter/sources/mg-cel-boil/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
+      "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
       "bytes": 18735
+    },
+    {
+      "path": "demos/patterns/spark-stroke-handletter/index.html",
+      "bytes": 1587
+    },
+    {
+      "path": "demos/patterns/spark-stroke-handletter/motion-kit.js",
+      "bytes": 119411
     },
     {
       "path": "previews/patterns/spark-stroke-handletter.jpg",

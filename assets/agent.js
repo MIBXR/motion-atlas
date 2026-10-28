@@ -46,10 +46,10 @@
     L.push('先读资料包（本地仓库内），再动手：');
     for (const x of sel) L.push(`- agent/${x.kind}/${x.e.id}.json — ${x.e.title}（${x.kind === 'cases' ? `案例 · ${x.sub}` : `巧思 · ${ROLE_NAME[x.role]}`}）`);
     L.push('', '做法：');
-    L.push(`1. 以「${base.e.title}」为底：运行 node scripts/atlas.mjs export ${base.e.id} --out <你的目录>，只改 ${base.kind === 'cases' ? 'config.js' : 'index.html 顶部的 CONFIG 块'}（文案、配色、时刻表），保留时间结构。`);
+    L.push(`1. 以「${base.e.title}」为底：运行 node scripts/atlas.mjs export ${base.e.id} --out <你的目录>，保留时间结构。时间纯函数作品改 film/ 并用 MotionKit.mountFilm；自有时钟作品自己接 MotionKit；重放巧思在 index.html 配置 MotionKit.replay 的片段。`);
     const others = sel.filter((x) => x !== base);
     if (others.length) L.push(`2. 依次融入：${others.map((x) => `${x.e.title}（${ROLE_NAME[x.role]}）`).join('、')}——按各自资料包 documents.prompt 的“实现 Prompt”与“参数”实现，骨架决定版式，支撑占一个区域，点睛只在关键时刻出现。`);
-    L.push(`${others.length ? 3 : 2}. 按时间播放的部分写成 render(t) 纯函数，并通过 MotionKit.expose() 暴露 window.__motion（见 docs/pipeline.md）；配置与逻辑分离，零依赖。`);
+    L.push(`${others.length ? 3 : 2}. 时间纯函数作品提供 renderAt(t) 与时长、尺寸并调用 MotionKit.mountFilm；自有时钟作品自己接 MotionKit 并提供 window.__motion（见 docs/pipeline.md）。`);
     L.push('', '要点摘录：');
     for (const x of sel) L.push(`【${x.e.title}】${x.e.prompt}`, '');
     const pairs = [...new Set(sel.flatMap((x) => (x.e.composition && x.e.composition.pairsWellWith) || []))].filter((id) => !S.sel.includes(id) && byId.has(id)).slice(0, 4);

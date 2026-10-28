@@ -102,7 +102,7 @@ node scripts/atlas.mjs show map-pilgrimage --source
 node scripts/atlas.mjs export split-compare-stamp --out ../my-demo
 ```
 
-命令只需 Node.js，无需安装依赖；导出包含可运行 Demo、`PROMPT.md`、`README.md` 与 `entry.json`。资源从独立目录读取；配套 [motion-atlas skill](https://github.com/MIBXR/mibxr-skills/tree/main/skills/motion-atlas) 与本仓库的资料格式一同使用。
+命令只需 Node.js，无需安装依赖；导出保留仓库相对树，巧思连同来源案例目录导出，并附 `PROMPT.md`、`README.md` 与 `entry.json`，入口路径见导出的 `README.md`。资源从独立目录读取；配套 [motion-atlas skill](https://github.com/MIBXR/mibxr-skills/tree/main/skills/motion-atlas) 与本仓库的资料格式一同使用。
 
 ## 资源库取材
 
@@ -186,8 +186,8 @@ node scripts/render.mjs demos/cases/archive-os/index.html --orient portrait --fp
 
 1. 打开完整案例与相关巧思，查看动作、节拍、参数和适用边界，再用上面的 CLI 导出需要的 Demo。
 2. 复制 Prompt，替换内容、配色、素材与尺寸，同时保留需要的约束和负向指令。
-3. 地图巡礼从 `config.js` 调整旅程、时间表与声音，路线几何另见 `paths.js`；巧思按各自实现调整 `config.js` 或 `index.html` 顶部的 `CONFIG`。
-4. 档案终端的 `config.js` 设置时间参数，内容改动按条目的 `migration` 阅读上游源码；基林曲线按同一字段定位 `timeline.js`、`scene.js`、数据与音频说明文件。
+3. 地图巡礼从 `film/config.js` 调整旅程、时间表与声音，路线几何另见 `film/paths.js`；重放型巧思在 `index.html` 配置 `MotionKit.replay` 的来源片段；拆分型按自身机制代码调整。
+4. 档案终端的 `film/config.js` 设置时间参数，内容改动按条目的 `migration` 阅读上游源码；基林曲线按同一字段定位 `film/timeline.js`、`film/scene.js` 与 `source/` 中的数据、音频说明；时间纯函数作品通过 `MotionKit.mountFilm` 接入。
 5. 在实际页面中检查目标画幅、拖动、节拍、声音与减少动态效果，再渲染所需片段。
 
 迁移入口以每个条目的 `migration` 为准；保留时间结构与动效参数时，也需重新核对新内容的阅读时长、素材授权与声画落点。
@@ -207,7 +207,9 @@ node scripts/render.mjs demos/cases/archive-os/index.html --orient portrait --fp
 ```text
 entries/                      案例、巧思与资源条目（唯一内容源）
 agent-skills/                 资源库的上游 skill 原样快照与许可
-demos/                        可运行 Demo；按时间播放的 Demo 遵守 render(t) 协议
+demos/cases/<id>/             index.html 入口；film/ 作品，assets/、fonts/、audio/、vendor/ 素材与库，source/ 制作资料
+demos/patterns/<id>/          重放型引用案例；拆分型保留机制代码，素材引用案例
+demos/_template/              case-film/、case-native/、pattern-replay/、pattern/
 kit/motion-kit.js             共享运行时：固定画幅、时间轴、缓动、节拍、合成乐谱、预加载、控制条
 docs/                         指南与使用方法
 docs/readme/                  README 封面
@@ -238,6 +240,6 @@ scripts/                      本地播放、构建、检查、截图、视频�
 
 新增案例与巧思按 [AGENT.md](AGENT.md) 和 [贡献指南](CONTRIBUTING.md) 的收录规范，不提交第三方画面、角色、标志、音乐、字体文件和参考视频取帧。参考视频的 `frames/`、`renders/` 仅供本地分析；资源库原文与作者效果图另按固定来源、逐项许可和“作者产出，未复刻”规则管理。
 
-用户自制或公开许可素材须保留各自来源与署名。基林曲线的 NOAA 数据归属及口径见 [DATA.md](demos/cases/keeling-curve/DATA.md) 与原始数据文件头；CC BY 4.0 音乐、CC0 音效的完整署名与许可见 [AUDIO.md](demos/cases/keeling-curve/AUDIO.md)、`audio/` 和片尾；OFL 字体许可保存在该 Demo 的 `fonts/` 中。
+用户自制或公开许可素材须保留各自来源与署名。基林曲线的 NOAA 数据归属及口径见 [DATA.md](demos/cases/keeling-curve/source/DATA.md) 与原始数据文件头；CC BY 4.0 音乐、CC0 音效的完整署名与许可见 [AUDIO.md](demos/cases/keeling-curve/source/AUDIO.md)、`audio/` 和片尾；OFL 字体许可保存在该 Demo 的 `fonts/` 中。
 
 档案终端移植自 RhineLabUI，相关名称、标志、设定、原片短音与第三方内容按 [许可、署名与免责声明](demos/cases/archive-os/LICENSES.md) 分别处理。上游代码的 MIT 许可不替代第三方权利人的授权；复用前仍需核对目标用途与各项素材许可。

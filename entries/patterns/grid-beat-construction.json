@@ -54,7 +54,7 @@
     "conflicts": [],
     "notes": ""
   },
-  "prompt": "用来源案例的原作renderAt(t)重放网格逐拍构成。保留120px模数、120BPM与每拍0.5秒；网格线对按L=0.125+d*0.125落笔，draw=0.25，使用io2。红圆用u=prog(t,-0.2,0.5)^2和dx=(1-u)*6*M加速落位；target1至target4分别在1.25–1.5、1.75–2、2.25–2.5、2.75–3秒预示落点，再由几何覆盖。红圆在2.75–3秒以sl=io2(prog(t,2.75,3))滑入接触位置。拍数按n=clamp(floor(snap(t)/cues.beat+1e-6)+1,1,20)跳变。按config.js的segments映射巧思时间与原片时间，保留原作字体、素材和同区间音轨，声音默认关闭。",
+  "prompt": "用来源案例的原作renderAt(t)重放网格逐拍构成。保留120px模数、120BPM与每拍0.5秒；网格线对按L=0.125+d*0.125落笔，draw=0.25，使用io2。红圆用u=prog(t,-0.2,0.5)^2和dx=(1-u)*6*M加速落位；target1至target4分别在1.25–1.5、1.75–2、2.25–2.5、2.75–3秒预示落点，再由几何覆盖。红圆在2.75–3秒以sl=io2(prog(t,2.75,3))滑入接触位置。拍数按n=clamp(floor(snap(t)/cues.beat+1e-6)+1,1,20)跳变。按index.html 内联配置的segments映射巧思时间与原片时间，保留原作字体、素材和同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/grid-beat-construction/index.html",
   "kit": true,
   "timeline": true,
