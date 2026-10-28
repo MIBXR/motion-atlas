@@ -1,0 +1,91 @@
+{
+  "id": "shared-cue-sheet",
+  "order": 51,
+  "title": "画音共用节拍表",
+  "types": [
+    "rhythm",
+    "sound"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "依次重放三片的密集节点段，在画面上用中文标出当前节点，并沿用原片音轨。",
+  "mechanism": "画面与配乐读取同一份 cues.json，将动作和对应音效定位在同一时间轴；三个来源依次重放，说明层显示当前节点的中文名称。",
+  "trigger": "共享时间表中的画面与声音节点到达时。",
+  "effect": "同一节点同时决定原片画面的动作位置与对应音轨时刻，节点说明随来源和时间更新。",
+  "timing": [
+    {
+      "name": "画面时间基准",
+      "value": "1920×1080、30fps；原作帧号除以30换算为秒。"
+    },
+    {
+      "name": "扁平矢量落点",
+      "value": "180、195、210、225帧；6、6.5、7、7.5秒。"
+    },
+    {
+      "name": "包豪斯级联",
+      "value": "120BPM；R1=6、R2=6.5、R3=7.2、R4=7.5秒，8秒定格。"
+    },
+    {
+      "name": "像素开箱节点",
+      "value": "6秒震箱；6.2、6.3秒箱盖跳动；6.4秒开箱；6.8秒接物；7.2秒片名。"
+    }
+  ],
+  "useCases": [
+    "原片动作与音效节点对照",
+    "多来源节拍表展示"
+  ],
+  "avoid": [
+    "片段边界无缝循环"
+  ],
+  "accessibility": {
+    "reducedMotion": "减少动态时停在预览帧，声音默认关闭。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "原片画面上叠加一行中文节点说明，三个来源按顺序重放。"
+  },
+  "prompt": "复制三个来源的原作、字体、素材与成品音轨，以 config.js 的 segments 依次重放密集节点段。保持1920×1080、30fps；画面调用原作 renderAt(t)，音轨使用同一时刻映射。扁平矢量保留180、195、210、225帧四个图标落点；包豪斯保留120BPM与6–8秒的级联；像素片保留6.4秒开箱、6.8秒接物和7.2秒片名。说明层使用中文显示当前 cue 名，声音默认关闭。",
+  "demo": "demos/patterns/shared-cue-sheet/index.html",
+  "kit": true,
+  "timeline": true,
+  "renderer": "gpu",
+  "sources": [
+    {
+      "caseId": "mg-flat-vector"
+    },
+    {
+      "caseId": "mg-bauhaus"
+    },
+    {
+      "caseId": "mg-pixel"
+    }
+  ],
+  "previewAt": 1.7,
+  "markers": [
+    {
+      "t": 0,
+      "label": "扁平矢量"
+    },
+    {
+      "t": 1.9,
+      "label": "几何包豪斯"
+    },
+    {
+      "t": 4.3,
+      "label": "像素艺术"
+    }
+  ],
+  "migration": [
+    {
+      "field": "config.js → segments / cues",
+      "how": "设置来源片段与中文节点名称，画面和原音轨使用同一时刻映射。"
+    }
+  ]
+}

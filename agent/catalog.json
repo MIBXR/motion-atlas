@@ -31,8 +31,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 3,
-    "patterns": 17,
+    "cases": 6,
+    "patterns": 29,
     "resources": 2
   },
   "resourceCatalog": "agent/resources.json",
@@ -154,6 +154,97 @@
       "patternIds": [],
       "seekable": true,
       "bundle": "agent/cases/keeling-curve.json"
+    },
+    {
+      "id": "mg-flat-vector",
+      "title": "扁平矢量 · popwise — One Dot",
+      "summary": "珊瑚色圆点成为太阳，带出扁平城市；镜头推进窗口，人物与手机提示接续，气泡擦除转入图标落点，最后汇成 popwise 与中英文标语。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "扁平矢量",
+        "几何角色",
+        "弹性缓动",
+        "形状擦除",
+        "品牌短片"
+      ],
+      "useCases": [
+        "SaaS 产品宣传",
+        "科普解说",
+        "企业年报视频",
+        "品牌解释短片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "squash-stretch-bounce",
+        "push-through-window",
+        "shape-wipe-transition",
+        "dot-drop-wordmark",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-flat-vector.json"
+    },
+    {
+      "id": "mg-bauhaus",
+      "title": "几何包豪斯 · KONSTRUKTION · 20 Beats",
+      "summary": "圆、三角、矩形在 120px 网格上逐拍搭建，经过旋转、翻牌与列对滑动的级联波，定格为二十拍包豪斯海报。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "几何构成",
+        "包豪斯",
+        "动态海报",
+        "三原色",
+        "网格",
+        "节拍驱动"
+      ],
+      "useCases": [],
+      "avoid": [],
+      "patternIds": [
+        "grid-beat-construction",
+        "flip-tile-cascade",
+        "misregistration-lock",
+        "shared-cue-sheet",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-bauhaus.json"
+    },
+    {
+      "id": "mg-pixel",
+      "title": "像素艺术 · PIXEL QUEST",
+      "summary": "320×180 的画布逐点绘制再放大：主角跑跳、收集金币、踩踏史莱姆、打开宝箱并举起水晶，昼夜光线由调色板轮换呈现，最后落下「PIXEL QUEST」片名。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "像素艺术",
+        "复古游戏",
+        "视差卷轴",
+        "色板轮换",
+        "芯片音乐",
+        "mg-styles-15"
+      ],
+      "useCases": [
+        "复古游戏标题片",
+        "8-bit 音乐影像",
+        "品牌怀旧营销"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "integer-pixel-parallax",
+        "stepped-palette-daynight",
+        "rpg-dialog-box",
+        "crt-boot-shell",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-pixel.json"
     }
   ],
   "patterns": [
@@ -403,7 +494,7 @@
     {
       "id": "film-grain",
       "title": "可复现的胶片颗粒与暗角",
-      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
+      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。",
       "types": [
         "texture"
       ],
@@ -413,7 +504,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "mg-bauhaus"
       ],
       "pairsWellWith": [
         "seekable-timeline",
@@ -530,6 +622,227 @@
         "rolling-digits"
       ],
       "bundle": "agent/patterns/idle-breathing.json"
+    },
+    {
+      "id": "squash-stretch-bounce",
+      "title": "预备、拉伸与压扁回弹",
+      "summary": "重放圆点落地、蓄力弹射与图标接力中的拉伸、压扁和回弹。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-flat-vector"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/squash-stretch-bounce.json"
+    },
+    {
+      "id": "push-through-window",
+      "title": "穿窗推镜",
+      "summary": "从城市主窗连续推进到室内，重放预备拉回、穿窗过冲、速度条、闪白与到达镜震。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-flat-vector"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/push-through-window.json"
+    },
+    {
+      "id": "shape-wipe-transition",
+      "title": "形状擦除转场",
+      "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-flat-vector"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/shape-wipe-transition.json"
+    },
+    {
+      "id": "dot-drop-wordmark",
+      "title": "圆点落字成标",
+      "summary": "重放柱条接成字干、圆点升空悬停和落字，随后以逐字受震、镜头推震与扩散强调完成字标。",
+      "types": [
+        "type-motion",
+        "camera",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-flat-vector"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/dot-drop-wordmark.json"
+    },
+    {
+      "id": "grid-beat-construction",
+      "title": "网格逐拍构成",
+      "summary": "在网格上逐拍落下几何，反拍准星预示落点，拍数随节拍跳变。",
+      "types": [
+        "composition",
+        "rhythm",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-bauhaus"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/grid-beat-construction.json"
+    },
+    {
+      "id": "flip-tile-cascade",
+      "title": "方片翻牌级联波",
+      "summary": "方片按空间延迟翻转，以梯形与明暗表现卡面，切到背面三原色图形后向心归位。",
+      "types": [
+        "transition",
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-bauhaus"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/flip-tile-cascade.json"
+    },
+    {
+      "id": "misregistration-lock",
+      "title": "套印漂移与锁版",
+      "summary": "四色版保持微偏套准，随翻牌漂开、主击对齐与定格松版变化，最后在末拍锁定并增墨。",
+      "types": [
+        "texture",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-bauhaus"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/misregistration-lock.json"
+    },
+    {
+      "id": "integer-pixel-parallax",
+      "title": "整像素多速视差",
+      "summary": "320×180 像素地景分层卷动，相机追随角色后停下，远山继续按整像素步进。",
+      "types": [
+        "camera",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/integer-pixel-parallax.json"
+    },
+    {
+      "id": "stepped-palette-daynight",
+      "title": "色板阶梯昼夜",
+      "summary": "环境色板按阶梯换成午后、金色、日落与暮夜配色，星点显现并闪烁，最后夜色从外围向水晶收拢。",
+      "types": [
+        "transition",
+        "composition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/stepped-palette-daynight.json"
+    },
+    {
+      "id": "rpg-dialog-box",
+      "title": "像素对话框",
+      "summary": "像素对话框分级展开，框内映射宝箱名牌、头像和尾角，欢迎语逐字显示，读完提示出现后分级收起。",
+      "types": [
+        "hud",
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/rpg-dialog-box.json"
+    },
+    {
+      "id": "crt-boot-shell",
+      "title": "显像管开机与屏幕外壳",
+      "summary": "中心亮点拉成扫描线并展开，经过短促滚屏与交错行摆后，弧屏、边缘遮罩、扫描线和磷光辉光持续覆盖画面。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/crt-boot-shell.json"
+    },
+    {
+      "id": "shared-cue-sheet",
+      "title": "画音共用节拍表",
+      "summary": "依次重放三片的密集节点段，在画面上用中文标出当前节点，并沿用原片音轨。",
+      "types": [
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-flat-vector",
+        "mg-bauhaus",
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/shared-cue-sheet.json"
     }
   ],
   "resources": [

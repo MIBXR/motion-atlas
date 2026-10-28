@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "shape-wipe-transition",
+  "pattern": {
+    "id": "shape-wipe-transition",
+    "order": 42,
+    "title": "形状擦除转场",
+    "types": [
+      "transition"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。",
+    "mechanism": "气泡预备后以彗星形、胶囊、半圆依次擦过全屏完成场景切换。",
+    "trigger": "气泡进入预备段，随后依次到达三段擦除与半圆砸落节点时。",
+    "effect": "通知气泡从室内信息元素变成覆盖画面的形状，连续色场擦除接入下一场景。",
+    "timing": [
+      {
+        "name": "气泡预备",
+        "value": "144/30–150/30=4.800–5.000秒；sx乘1+.12*an，sy乘1-.18*an；上提段145/30=4.833秒起。"
+      },
+      {
+        "name": "彗星气泡",
+        "value": "150/30–160/30=5.000–5.333秒；圆半径58；k=exp(lerp(log(1.12),log(34),E.ioQ(u1)))；尾长84→204；旋转175*E.outC(u1)。"
+      },
+      {
+        "name": "薄荷胶囊",
+        "value": "154/30–163/30=5.133–5.433秒；3000×1500、rx750；k=exp(lerp(log(.03),0,E.ioQ(u2)))；rot=25*(1-E.outB(u2,1.6))。"
+      },
+      {
+        "name": "奶油半圆",
+        "value": "158/30–164/30=5.267–5.467秒；半径1700；y=-110-2300*(1-E.inQ(u3))+40*kick(tc,slam,3.5,.4)；sy=1-.06*kick；rot=7*(1-u3)。"
+      }
+    ],
+    "useCases": [
+      "室内场景切换",
+      "气泡元素带动转场",
+      "连续纯色色场擦除"
+    ],
+    "avoid": [
+      "竖屏重排",
+      "片段边界无缝循环"
+    ],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览帧。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "本巧思按所列原片区间顺序重放。"
+    },
+    "prompt": "复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
+    "demo": "demos/patterns/shape-wipe-transition/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "mg-flat-vector"
+      }
+    ],
+    "previewAt": 0.7333333333333334,
+    "markers": [
+      {
+        "t": 0,
+        "label": "室内气泡"
+      },
+      {
+        "t": 0.20000000000000018,
+        "label": "气泡预备"
+      },
+      {
+        "t": 0.40000000000000036,
+        "label": "彗星擦除"
+      },
+      {
+        "t": 0.5333333333333341,
+        "label": "胶囊擦除"
+      },
+      {
+        "t": 0.666666666666667,
+        "label": "半圆砸落"
+      },
+      {
+        "t": 0.8666666666666671,
+        "label": "砸落余震"
+      }
+    ],
+    "sound": {
+      "description": "成品音轨按所选原片区间与画面同步播放，声音默认关闭。"
+    },
+    "tokens": {
+      "palette": [
+        "#2B2BFF",
+        "#FF5A4E",
+        "#FFC62B",
+        "#2EE6A8",
+        "#FFF6E9",
+        "#151433"
+      ],
+      "type": "Fredoka 600、700；Resource Han Rounded CN Bold 700。"
+    },
+    "migration": [
+      {
+        "field": "config.js → segments",
+        "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
+      },
+      {
+        "field": "config.js → markers / reduced",
+        "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
+      }
+    ],
+    "preview": "previews/patterns/shape-wipe-transition.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "mg-flat-vector",
+      "bundle": "agent/cases/mg-flat-vector.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 形状擦除转场\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。\n\n## 参数\n\n- **气泡预备**：144/30–150/30=4.800–5.000秒；sx乘1+.12*an，sy乘1-.18*an；上提段145/30=4.833秒起。\n- **彗星气泡**：150/30–160/30=5.000–5.333秒；圆半径58；k=exp(lerp(log(1.12),log(34),E.ioQ(u1)))；尾长84→204；旋转175*E.outC(u1)。\n- **薄荷胶囊**：154/30–163/30=5.133–5.433秒；3000×1500、rx750；k=exp(lerp(log(.03),0,E.ioQ(u2)))；rot=25*(1-E.outB(u2,1.6))。\n- **奶油半圆**：158/30–164/30=5.267–5.467秒；半径1700；y=-110-2300*(1-E.inQ(u3))+40*kick(tc,slam,3.5,.4)；sy=1-.06*kick；rot=7*(1-u3)。\n\n## 迁移\n\n- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/shape-wipe-transition/index.html) · [在库中查看](../../patterns.html#pattern/shape-wipe-transition)\n"
+  },
+  "entrypoint": "demos/patterns/shape-wipe-transition/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/shape-wipe-transition/LICENSES.md",
+      "bytes": 105
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/config.js",
+      "bytes": 797
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/index.html",
+      "bytes": 722
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
+      "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/replay.js",
+      "bytes": 6633
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/LICENSES.md",
+      "bytes": 1724
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/audio.py",
+      "bytes": 7718
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/audio/film.m4a",
+      "bytes": 346596
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/cues.json",
+      "bytes": 906
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fidelity.md",
+      "bytes": 3867
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/Fredoka-OFL.txt",
+      "bytes": 4388
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/Fredoka[wdth,wght].ttf",
+      "bytes": 159184
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/ResourceHanRounded-OFL.txt",
+      "bytes": 4504
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/ResourceHanRoundedCN-Bold.ttf",
+      "bytes": 13978508
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/fonts.css",
+      "bytes": 376
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/index.html",
+      "bytes": 76805
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/motion-adapter.js",
+      "bytes": 5409
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/motion-kit.js",
+      "bytes": 107961
+    },
+    {
+      "path": "previews/patterns/shape-wipe-transition.jpg",
+      "bytes": 13531
+    }
+  ]
+}

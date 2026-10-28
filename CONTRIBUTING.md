@@ -20,6 +20,13 @@
 5. 主题相同、表现形式不同的作品可以分别出现在两个库里，各自是独立条目，互不引用。
 6. 画幅不是判据：原作即使是固定画幅，复刻时也可以调整或拓展。各判据冲突时，以“谁掌握时间”为准。例如一个固定画幅、但完全由观看者拖拽操作、没有时间线的网页光照演示，不属于本库。
 
+## 收录原则
+
+- **案例驱动**：不把 skill 或教程的文字直接搬进库。找出其中真实的 Demo 或作品，忠实复刻后收录；没有现成作品、但能实践的，自己做一个作为真实案例收录。
+- **忠实复刻**：直接复用原作的代码、美术、字体、音频、品牌内容与文案，不简化，不臆造替代场景、插画或配色。附原作许可证，写清出处与署名。验收时在相同视口下与原作并排截图对照。
+- **语言**：网页上的说明文字一律用中文。保留原语言的只有被复刻作品本身的原文，以及作为素材收录的 skill、prompt 原文。
+- **声音**：新做的作品不用 AI 合成声音。用一条连续的公开音乐打底（如 Incompetech / Kevin MacLeod，CC BY 4.0），在 3–4 个关键节点放短音效（如 Kenney.nl，CC0），音量压在音乐之下。复刻作品沿用原作声音。
+
 ## 新增一个案例
 
 1. **条目结构**：按[条目结构](docs/methodology.md)整理节拍、分层、参数、Prompt和Demo。
@@ -27,6 +34,7 @@
    - 内容（文案、配色、时刻表）全部放进 `config.js`。
    - 画面写成 `render(t)`，用 `MotionKit.timeline` 包装并 `MotionKit.expose()`；`<script src="motion-kit.js">` 引用同目录副本，条目里设 `"kit": true`，构建会自动同步。
    - 遵守 `?embed`、`?render`、`?t=` 参数；画面文字按设计需要决定字号；图标用 SVG；支持减少动态；声音默认关闭。
+   - 复刻已有作品时，保留原作的文件结构与代码，只改写资源路径，再加一层适配脚本接上 `MotionKit` 的时间轴、参数与控制条。路径改写与适配写进 `fidelity.md`，原作、字体、库与音频的出处和许可写进 `LICENSES.md`。
 3. **条目**：写 `entries/cases/<id>.json`。必填：`id`、`title`、`carriers`、`summary`、`prompt`、`demo`、`composition`。建议填写：`rhythm.beats`、`energy`、`layers`、`tokens`、`interaction`、`videoPrompt`、`negativePrompt`、`migration`、`patternIds`、`previewAt`。
 4. **巧思**：把案例里每个“触发 → 结果”的技巧写成 `entries/patterns/<pid>.json` 与 `demos/patterns/<pid>/index.html`（顶部 `CONFIG` 块），在巧思的`sources`里只写`{ caseId }`，并把 `<pid>` 加进案例的 `patternIds`。
 5. **构建与预览图**：
@@ -62,7 +70,7 @@ node scripts/build.mjs                  # 让站点数据带上新预览图
 
 ## 风格约定
 
-- 代码零依赖（地图 Demo 例外：MapLibre 从固定版本 CDN 加载）。
+- 第三方库按固定版本放进案例的 `vendor/`，附许可证；地图 Demo 的 MapLibre 从固定版本 CDN 加载。
 - 注释写“为什么”，不写“做了什么”。
 - Prompt 写数字，不写形容词：曲线、时长、错峰、缩放幅度、像素。
-- 案例与巧思不提交第三方素材；游戏专有名词替换为原创名称。资源库的作者效果图按“资源库”一节记录来源与许可。
+- 第三方素材（画面、字体、音乐、贴图）附许可证后可以提交，出处写进案例的 `LICENSES.md`。资源库的作者效果图按“资源库”一节记录来源与许可。

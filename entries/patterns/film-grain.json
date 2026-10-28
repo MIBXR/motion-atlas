@@ -9,14 +9,14 @@
     "video",
     "console"
   ],
-  "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。",
-  "mechanism": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。",
+  "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。",
+  "mechanism": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。包豪斯片的纸面印刷颗粒随帧号换位，并与径向暗角叠在几何构成上。",
   "trigger": "地图、照片与插画交替出现时",
   "effect": "不同媒介保持连贯，回忆段更有时间感。",
   "timing": [
     {
       "name": "时长",
-      "value": "7.5s"
+      "value": "17.5s"
     },
     {
       "name": "声音 voice",
@@ -26,7 +26,8 @@
   "useCases": [
     "影像统一质感",
     "回忆/档案段",
-    "复古操作台"
+    "复古操作台",
+    "包豪斯几何海报的纸面印刷颗粒逐帧换位与径向暗角。"
   ],
   "avoid": [
     "需要高清细节的产品图",
@@ -45,12 +46,15 @@
     "conflicts": [],
     "notes": "地图、机窗照片与回忆插画依次铺满画面。颗粒与暗角叠在各段上，让不同画面保持一致质感。"
   },
-  "prompt": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 7.5s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。",
+  "prompt": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。复用地图巡礼的 render、sceneCanvas、paintScene、grainPass、vignette 与对应 CSS。地图、kix 照片画布与回忆插画三段全屏底，以及案例颗粒和暗角。片段：地图固定 caseT 10.4；kix 照片画布固定 caseT 13.5；回忆插画画布固定 caseT 27.56；时长 17.5s：原有三段 7.5s，之后接几何包豪斯全片 10s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定地图底图与给定 caseT 的程序画布，声音由 score.json 挂接。",
   "demo": "demos/patterns/film-grain/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage"
+    },
+    {
+      "caseId": "mg-bauhaus"
     }
   ],
   "previewAt": 1.2,
@@ -118,7 +122,7 @@
       },
       {
         "name": "时长",
-        "value": "7.5s"
+        "value": "17.5s"
       }
     ]
   },
