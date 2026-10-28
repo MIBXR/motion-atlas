@@ -14,9 +14,6 @@ window.DEMO = { width: 1920, height: 1080, fps: 30, duration: 10, motionBlur: { 
 // ============================================================ utilities
 const NS = 'http://www.w3.org/2000/svg';
 const S = document.getElementById('S');
-// reel v5 (?v5=1): title 「扁平矢量」 replaces the wordmark, window.linkAt(t), ?nolink=dot,cap,rays,coin. Default path untouched.
-const QS = new URLSearchParams(location.search), V5 = QS.get('v5') === '1';
-const NOLINK = new Set(V5 ? (QS.get('nolink') || '').split(',').map(s => s.trim()).filter(Boolean) : []);
 const C = { U:'#2B2BFF', UD:'#1F1FCC', UL:'#4D4DFF', UT:'#3B3BFF', UP:'#A3A3FF', CO:'#FF5A4E', COD:'#E0433A', COL:'#FF8C82',
   SU:'#FFC62B', SUD:'#F0A91A', SUE:'#D98F00', MI:'#2EE6A8', MID:'#1FC28C', CR:'#FFF6E9', CRD:'#F1E3CC', CRS:'#E6D3B8',
   INK:'#151433', INKW:'#2A2962', SK:'#FFB48C', SKD:'#F2976E' };
@@ -63,7 +60,6 @@ const FR = cues.frames; const F = n => n / 30; const T = k => FR[k] / 30;
 await Promise.all([
   document.fonts.load("700 200px 'Fredoka'", 'popwıse'), document.fonts.load("600 40px 'Fredoka'", 'EVERY DAY'),
   document.fonts.load("700 120px 'Fredoka'", '¥'), document.fonts.load("700 60px 'Resource Han Rounded'", '每天，聪明一点点'),
-  ...(V5 ? [document.fonts.load("900 260px 'Resource Han Rounded'", '扁平矢量'), document.fonts.load("600 46px 'Fredoka'", 'FLAT VECTOR')] : []),
 ]);
 await document.fonts.ready;
 const cv = document.createElement('canvas').getContext('2d');
@@ -323,41 +319,14 @@ const DECO = [
 ];   // R2: corner decor removed
 // wordmark
 const WORD = 'popwıse'; let WF = 250; { const w0 = meas(`700 ${WF}px Fredoka`, WORD).width; WF = WF * 900 / w0; }
-// v5 title 「扁平矢量」 (Resource Han Rounded Heavy, the film's own CJK family): the coral dot IS the 丶 of 扁 and the TL bar
-// morphs into 扁's top bar (the match cut of the wordmark, re-targeted). The 丶 and the bar are found by rasterising 扁 once.
-function title5() {
-  const chars = [...'扁平矢量'], fs = 260, font = `900 ${fs}px 'Resource Han Rounded'`, ls = 14;
-  const mm = chars.map(c => meas(font, c)), gw = mm.map(m => m.width), tot = gw.reduce((a, b) => a + b, 0) + ls * (chars.length - 1);
-  const asc = Math.max(...mm.map(m => m.actualBoundingBoxAscent)), des = Math.max(...mm.map(m => m.actualBoundingBoxDescent));
-  const base = Math.round(505 + (asc - des) / 2);                 // ink centred on y 505
-  let xx = 960 - tot / 2; const cx = gw.map(w => { const c = xx + w / 2; xx += w + ls; return c; });
-  const W2 = Math.ceil(gw[0]) + 40, H2 = fs + 60, ox = 20, oy = Math.round(fs * .95);
-  const c2 = document.createElement('canvas'); c2.width = W2; c2.height = H2; const x2 = c2.getContext('2d'); x2.font = font; x2.fillStyle = '#000'; x2.fillText(chars[0], ox, oy);
-  const d = x2.getImageData(0, 0, W2, H2).data, ink = (x, y) => d[(y * W2 + x) * 4 + 3] > 127;
-  const runs = y => { const r = []; let s = -1; for (let x = 0; x <= W2; x++) { const h = x < W2 && ink(x, y); if (h && s < 0) s = x; if (!h && s >= 0) { r.push([s, x - 1]); s = -1; } } return r; };
-  let y = 0; while (y < H2 && !runs(y).length) y++; const top = y; let dx0 = 1e9, dx1 = -1;
-  for (; y < H2; y++) { const r = runs(y); if (r.length === 1 && r[0][1] - r[0][0] > gw[0] * .45) break; r.forEach(([a, b]) => { dx0 = Math.min(dx0, a); dx1 = Math.max(dx1, b); }); }
-  const barTop = y; let bx0 = 1e9, bx1 = -1;
-  for (; y < H2; y++) { const r = runs(y); if (r.length !== 1) break; bx0 = Math.min(bx0, r[0][0]); bx1 = Math.max(bx1, r[0][1]); }
-  const barBot = y, PX = x => cx[0] - gw[0] / 2 + (x - ox), PY = y => base + (y - oy), lx = x => f3(x - ox - gw[0] / 2), ly = y => f3(y - oy);
-  const r = Math.round(fs * .125), bar = { x0: PX(bx0), x1: PX(bx1 + 1), y0: PY(barTop), y1: PY(barBot) };
-  const clip = el('clipPath', { id: 'v5cut' }, defs);   // everything except the 丶 (glyph-local: origin = glyph centre x, baseline)
-  el('path', { d: `M-600 -700 H600 V400 H-600 Z M${lx(dx0 - 4)} ${ly(top - 8)} H${lx(dx1 + 5)} V${f3(ly(barTop) + .5)} H${lx(dx0 - 4)} Z`, 'clip-rule': 'evenodd' }, clip);
-  const bl = { x: (bar.x0 + bar.x1) / 2 - cx[0], y: (bar.y0 + bar.y1) / 2 - base };
-  const inkB = { x0: cx[0] - gw[0] / 2 - mm[0].actualBoundingBoxLeft, x1: cx[3] - gw[3] / 2 + mm[3].actualBoundingBoxRight, y0: base - asc, y1: base + des };
-  const mk = parent => chars.map((ch, i) => { const g = G(parent), gi = G(g); const tx = el('text', { x: f3(-gw[i] / 2), y: 0, fill: C.CR, style: `font:${font}` }, gi); tx.textContent = ch;
-    if (i === 0) tx.setAttribute('clip-path', 'url(#v5cut)'); return { g, gi, cx: cx[i], t0: F(244 + i), i }; });
-  return { base, cx, r, dx: PX((dx0 + dx1 + 1) / 2), dy: bar.y0 - r - 2, bar, bl, ink: inkB, enB: Math.round(inkB.y1 + 96), mk, fs };
-}
-const T5 = V5 ? title5() : null;
-const wfont = `700 ${WF}px Fredoka`, WBASE = V5 ? T5.base : 548;
+const wfont = `700 ${WF}px Fredoka`, WBASE = 548;
 const WTOT = meas(wfont, WORD).width, WX0 = 960 - WTOT / 2;
 const wmG = G(LOGO);
-const LET = V5 ? T5.mk(wmG) : [...WORD].map((ch, i) => { const pre = meas(wfont, WORD.slice(0, i)).width, w = meas(wfont, ch).width; const g = G(wmG);
+const LET = [...WORD].map((ch, i) => { const pre = meas(wfont, WORD.slice(0, i)).width, w = meas(wfont, ch).width; const g = G(wmG);
   const tx = el('text', { x: -w / 2, y: 0, fill: C.CR, style: `font:${wfont}` }, g); tx.textContent = ch; return { g, cx: WX0 + pre + w / 2, t0: T('letters') + F(Math.max(0, Math.abs(i - 4) - 1)), i }; });
 const mI = meas(wfont, 'ı'), mX = meas(wfont, 'x');
-const DOT_R = V5 ? T5.r : WF * 0.15;
-const TIT = V5 ? { x: T5.dx, y: T5.dy } : { x: WX0 + meas(wfont, 'popw').width + (mI.actualBoundingBoxRight - mI.actualBoundingBoxLeft) / 2, y: WBASE - mX.actualBoundingBoxAscent - WF * 0.07 - DOT_R };
+const DOT_R = WF * 0.15;
+const TIT = { x: WX0 + meas(wfont, 'popw').width + (mI.actualBoundingBoxRight - mI.actualBoundingBoxLeft) / 2, y: WBASE - mX.actualBoundingBoxAscent - WF * 0.07 - DOT_R };
 const END_RINGS = [T('beatBob2')].map(t0 => { const c = el('circle', { cx: TIT.x, cy: TIT.y, r: 0, fill: 'none', stroke: C.CO }, LOGO); LOGO.insertBefore(c, wmG); return { t0, c }; });
 // tagline
 const CN = '每天 聪明一点点', cnFont = "700 70px 'Resource Han Rounded'", CNB = 716, CNLS = 7;
@@ -377,8 +346,7 @@ const CNDOTS = []; CNCH.forEach((c, ci) => { if (CN[ci] !== '点') return; DOTBO
   const g = G(c.g), inner = G(g); const tx = el('text', { x: 0, y: 0, fill: C.CO, stroke: C.CO, 'stroke-width': 1.4, 'clip-path': `url(#${id})`, style: `font:${cnFont}` }, inner); tx.textContent = '点';
   CNDOTS.push({ g, inner, cx: (b.x0 + b.x1) / 2, cy: (b.y0 + b.y1) / 2, sx: c.x + (b.x0 + b.x1) / 2, sy: CNB + (b.y0 + b.y1) / 2, t0: T('cnFlip') + F(CNDOTS.length) }); }); });
 const enG = G(enClipG); { const tx = el('text', { x: 960 + 4, y: 0, 'text-anchor': 'middle', fill: '#CFCFFF', style: "font:600 36px 'Fredoka'; letter-spacing:10px" }, enG); tx.textContent = 'EVERY DAY, A LITTLE WISER';
-  if (V5) { tx.setAttribute('x', 960 + 9); tx.setAttribute('style', "font:600 46px 'Fredoka'; letter-spacing:18px"); tx.textContent = 'FLAT VECTOR';   // v5: the EN style line replaces the tagline
-    const cr = cpE.firstChild; cr.setAttribute('y', T5.enB - 52); cr.setAttribute('height', 66); vis(tagG, false); } }
+}
 const landRays = [-168, -128, -100, -80, -52, -12].map((d, i) => ({ a: d * Math.PI / 180, len: [76, 104, 88, 110, 92, 72][i], ln: el('line', { stroke: C.SU, 'stroke-width': 14, 'stroke-linecap': 'round' }, LOGO) }));
 const dotL = el('circle', { cx: 0, cy: 0, r: 46, fill: C.CO }, LOGO);
 const bigR = el('circle', { cx: TIT.x, cy: TIT.y, r: 0, fill: 'none', stroke: C.CO }, LOGO); LOGO.insertBefore(bigR, wmG);
@@ -386,15 +354,11 @@ const SIG = [[C.CR, 0, 0], [C.MI, 1, 0], [C.SU, 1, 1], [C.CO, 0, 1]].map(([c, i,
 const spark = el('circle', { cx: 0, cy: 0, r: 13, fill: C.CO }, LOGO), sparkRing = el('circle', { cx: CNDOTS[0].sx, cy: CNDOTS[0].sy, r: 0, fill: 'none', stroke: C.CO }, LOGO);
 const TOPL = G(S); zipD.forEach(z => TOPL.appendChild(z));
 // R2 MATCH CUT: the TL bar + its coral cap become the wordmark's dotless i + tittle
-const IB = V5 ? T5.bar : (() => { const L = LET[4], w = meas(wfont, 'ı').width; return { x0: L.cx - w / 2 - mI.actualBoundingBoxLeft, x1: L.cx - w / 2 + mI.actualBoundingBoxRight, y0: WBASE - mI.actualBoundingBoxAscent, y1: WBASE + mI.actualBoundingBoxDescent }; })();
+const IB = (() => { const L = LET[4], w = meas(wfont, 'ı').width; return { x0: L.cx - w / 2 - mI.actualBoundingBoxLeft, x1: L.cx - w / 2 + mI.actualBoundingBoxRight, y0: WBASE - mI.actualBoundingBoxAscent, y1: WBASE + mI.actualBoundingBoxDescent }; })();
 const CL = { ca: T('collapseAntic'), c1: F(236), zd: F(3), x0: F(237), x1: F(245) }, ZIP0 = [0, F(235), F(236), F(237)];
 const morphP = t => E.ioC(inv(CL.x0, CL.x1, t));
-const stemBox = p => ({ x0: lerp(558, IB.x0, p), x1: lerp(642, IB.x1, p), y0: lerp(170, IB.y0, p), y1: lerp(460, IB.y1, p), rx: lerp(24, V5 ? (IB.y1 - IB.y0) * .45 : (IB.x1 - IB.x0) * .3, p) });
-function capPos(t) { const p = morphP(t), b = stemBox(p), r = lerp(R_D, DOT_R, p); return { x: V5 ? lerp((b.x0 + b.x1) / 2, TIT.x, p) : (b.x0 + b.x1) / 2, y: b.y0 - r - 2, r }; }
-// v5: 扁 squashes on the dot's anticipation / landing (60 % of the ı stem squash, about the baseline); the resting dot rides its top bar
-const stem5 = t => { const dl = T('dotLand2'), lau = T('dotRise'), an = t < lau ? E.outQ(inv(CL.x1, lau, t)) : 0; return .6 * (.12 * kick(t, dl, 3.5, .4) + .07 * an - .05 * kick(t, lau, 4, .4)); };
-const STEM5_OFF = F(248);   // v5: the morphing bar is hidden once 扁 has popped past its first overshoot
-const coinTh = t => 2 * Math.PI * E.ioQ(inv(QD[3].t0, QD[3].t0 + F(8), t));
+const stemBox = p => ({ x0: lerp(558, IB.x0, p), x1: lerp(642, IB.x1, p), y0: lerp(170, IB.y0, p), y1: lerp(460, IB.y1, p), rx: lerp(24, (IB.x1 - IB.x0) * .3, p) });
+function capPos(t) { const p = morphP(t), b = stemBox(p), r = lerp(R_D, DOT_R, p); return { x: (b.x0 + b.x1) / 2, y: b.y0 - r - 2, r }; }
 
 // ============================================================ helpers for animated strokes
 function burstLine(ln, cx, cy, a, r0, r1, t, t0, dur = F(10)) {
@@ -585,7 +549,7 @@ function updIcons(t, cam, tr = t) {
       tf(q.face, 0, 0, sxF, R / 180); tf(q.rim, 20 * Math.sin(th) * R / 180, 0, sxF, R / 180); tf(q.cg, 480, 810); }
   });
 }
-// LOGO camera zoom and the cap / tittle dot as pure functions of t (used by updLogo and by the v5 linkAt)
+// LOGO camera zoom and the cap / tittle dot as pure functions of t
 function logoZ(t) { const dl = T('dotLand2'), push = t < dl ? .22 * E.inC(inv(T('dotDrop'), dl, t)) : .22 * (1 - spring(t - dl, 4.5, .48)); return (1 + push) * (1 + .045 * E.ioQ(inv(dl, 10.4, t))); }
 function logoDot(t, tr = t) {
   const dl = T('dotLand2'), dA = T('dotApex'), dD = T('dotDrop'), lau = T('dotRise'), land = kick(t, dl, 3.2, .38);
@@ -600,7 +564,6 @@ function logoDot(t, tr = t) {
   else { const bobs = [T('beatBob1'), T('beatBob2')]; let hop = 0, sq = land;
     bobs.forEach(tb => { const u = inv(tb, tb + F(9), t); if (u > 0 && u < 1) hop += 16 * hump(E.outQ(u)); sq += .6 * kick(t, tb + F(9), 3.2, .4) - .35 * kick(t, tb - F(2), 5, .5) * (t < tb + F(1) ? 1 : 0); });
     sy = 1 - .32 * sq; sx = 1 + .3 * sq; y = TIT.y - hop + r * (1 - sy); }
-  if (V5 && !fly && td >= CL.x1) y += (WBASE - IB.y0) * stem5(t);   // v5: the resting dot rides 扁's squashing top bar
   return { x, y, r, sx, sy, rot };
 }
 function updLogo(t, tr = t) {
@@ -611,89 +574,26 @@ function updLogo(t, tr = t) {
     LOGO.setAttribute('transform', `translate(${f3(PC.x)} ${f3(PC.y)}) scale(${z.toFixed(5)}) translate(${f3(-PC.x)} ${f3(-PC.y)})`); }
   if (t < CL.x1) { const u = E.outQt(inv(CL.x0, CL.x1, t)); lbg.setAttribute('x', 0); lbg.setAttribute('y', 0); lbg.setAttribute('width', f3(lerp(960, 1920, u))); lbg.setAttribute('height', f3(lerp(540, 1080, u))); }
   else { lbg.setAttribute('x', -400); lbg.setAttribute('y', -400); lbg.setAttribute('width', 2720); lbg.setAttribute('height', 1880); }
-  const stemEnd = V5 ? STEM5_OFF : CL.x1;
-  vis(stemR, t < stemEnd); if (t < stemEnd) { const b = stemBox(morphP(t)); stemR.setAttribute('x', f3(b.x0)); stemR.setAttribute('y', f3(b.y0)); stemR.setAttribute('width', f3(b.x1 - b.x0)); stemR.setAttribute('height', f3(b.y1 - b.y0)); stemR.setAttribute('rx', f3(b.rx)); }
-  const st5 = V5 ? stem5(t) : 0;
-  if (V5 && t < stemEnd) stemR.setAttribute('transform', `translate(${f3(LET[0].cx)} ${WBASE}) scale(${(1 + .5 * st5).toFixed(5)} ${(1 - st5).toFixed(5)}) translate(${f3(-LET[0].cx)} ${-WBASE})`);
+  vis(stemR, t < CL.x1); if (t < CL.x1) { const b = stemBox(morphP(t)); stemR.setAttribute('x', f3(b.x0)); stemR.setAttribute('y', f3(b.y0)); stemR.setAttribute('width', f3(b.x1 - b.x0)); stemR.setAttribute('height', f3(b.y1 - b.y0)); stemR.setAttribute('rx', f3(b.rx)); }
   const land = kick(t, dl, 3.2, .38), an = t < lau ? E.outQ(inv(CL.x1, lau, t)) : 0;
   LET.forEach(L => {
-    if (V5 && L.i === 0) {   // 扁 grows out of the bar (pop anchored on the bar centre), then squashes about the baseline under the dot
-      const [s, k] = pop(t, L.t0, 5, .65, .1, .5), sc = Math.max(s, 0), px = sc / (1 + k * .5), py = sc * (1 + k); vis(L.g, t >= L.t0);
-      tf(L.g, L.cx, WBASE, 1 + .5 * st5, 1 - st5); tf(L.gi, T5.bl.x * (1 - px), T5.bl.y * (1 - py), px, py); return; }
     if (L.i === 4) { vis(L.g, t >= CL.x1); const stem = .12 * kick(t, dl, 3.5, .4) + .07 * an - .05 * kick(t, lau, 4, .4); tf(L.g, L.cx, WBASE, 1 + .5 * stem, 1 - stem); return; }
-    const [s, k] = pop(t, L.t0, 5, .65, .1, .5); vis(L.g, t >= L.t0); const dip = 10 * kick(t, dl + F(Math.abs(L.i - (V5 ? 0 : 4))), 3.2, .4);
+    const [s, k] = pop(t, L.t0, 5, .65, .1, .5); vis(L.g, t >= L.t0); const dip = 10 * kick(t, dl + F(Math.abs(L.i - 4)), 3.2, .4);
     const sc = Math.max(s, 0); tf(L.g, L.cx, WBASE + dip, sc / (1 + k * .5), sc * (1 + k)); });
   { const D = logoDot(t, tr); dotL.setAttribute('r', f3(D.r)); tf(dotL, D.x, D.y, D.sx, D.sy, D.rot); }
   ring(bigR, t, dl, 60, 1100, 24, F(10));
   END_RINGS.forEach(o => ring(o.c, t, o.t0, DOT_R + 14, DOT_R + 170, 18, F(12)));
   landRays.forEach(lr => burstLine(lr.ln, TIT.x, TIT.y + DOT_R * .5, lr.a, DOT_R + 20, DOT_R + 20 + lr.len, t, dl, F(5)));
   // 9.0: the tittle flicks a small coral dot into 点点; the 8 dots flip coral (1 f stagger, 115 % spring pop)
-  if (V5) { vis(spark, false); vis(sparkRing, false); }   // v5: no tagline, no spark
-  else { const s0 = T('beatBob1'), s1 = T('cnFlip'), P0 = { x: TIT.x, y: TIT.y - 24 }, P1 = { x: CNDOTS[0].sx, y: CNDOTS[0].sy }, ts = tr >= s0 && tr < s1 ? tr : t, fl = ts >= s0 && ts < s1; vis(spark, fl);
+  { const s0 = T('beatBob1'), s1 = T('cnFlip'), P0 = { x: TIT.x, y: TIT.y - 24 }, P1 = { x: CNDOTS[0].sx, y: CNDOTS[0].sy }, ts = tr >= s0 && tr < s1 ? tr : t, fl = ts >= s0 && ts < s1; vis(spark, fl);
     if (fl) { const u = inv(s0, s1, ts), p = arcP(P0, P1, 110, u), p2 = arcP(P0, P1, 110, Math.min(1, u + .06)), st = 1 + clamp(Math.hypot(p2.x - p.x, p2.y - p.y) / 40) * .4; tf(spark, p.x, p.y, st, 1 / st, Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI); }
     ring(sparkRing, t, s1, 18, 84, 10, F(9)); }
   CNDOTS.forEach(d => { const on = t >= d.t0; vis(d.g, on); if (!on) return; const sc = Math.max(spring(t - d.t0, 3.4, .5), 0);
     tf(d.g, d.cx, d.cy - 5 * kick(t, d.t0, 3, .45), sc, sc); d.inner.setAttribute('transform', `translate(${-d.cx} ${-d.cy})`); });
   CNCH.forEach(c => { const u = E.outB(inv(c.t0, c.t0 + F(11), t), 1.4); tf(c.g, c.x, CNB + 100 * (1 - u)); });
-  { const te = V5 ? T('tagCN') : T('tagEN'), u = E.outB(inv(te, te + F(12), t), 1.2); tf(enG, 0, (V5 ? T5.enB : 792) + 50 * (1 - u)); }
+  { const te = T('tagEN'), u = E.outB(inv(te, te + F(12), t), 1.2); tf(enG, 0, 792 + 50 * (1 - u)); }
   SIG.forEach(o => { const s = Math.max(pop(t, o.t0, 3.2, .45, 0)[0], 0); vis(o.c, s > .01); tf(o.c, o.x, o.y, s, s); });
 }
-// ============================================================ reel v5: link elements (pure functions of t, 1920x1080 px) + ?nolink
-// 'dot' = the film's one coral hero dot, whichever shape it currently is: ball -> sun -> notification bubble -> circle wipe ->
-// grid dot -> coral coin face -> TL bar cap -> the 丶 of 扁 (v5 title).
-function camFor(t) { const tq = crisp(t, 0), fr = Math.round(t * 30), cam = { ...camera(t > 3.2 && t < 3.66 ? crisp(t, .45) : tq) };   // = renderAt's camera
-  if (fr === 112) { cam.s *= 1.03; cam.cy -= 9 / cam.s; } else if (fr === 113) { cam.s *= .988; cam.cx += 7 / cam.s; } return cam; }
-const w2s = (cam, x, y) => ({ x: (x - cam.cx) * cam.s + 960, y: (y - cam.cy) * cam.s + 540 });
-const i2s = (cam, lx, ly) => localToScreen(cam, 860 + 1.15 * (lx - 860), -153 + 1.15 * (ly + 153));   // interior coords (INT group, incl. its 1.15 zoom)
-const lz = (t, x, y) => { const z = logoZ(t), P = { x: TIT.x, y: (IB.y0 + IB.y1) / 2 }; return { x: P.x + (x - P.x) * z, y: P.y + (y - P.y) * z, z }; };
-const R2 = v => Math.round(v * 100) / 100;
-const inFrame = (x, y, r) => r > .5 && x + r > 0 && x - r < 1920 && y + r > 0 && y - r < 1080;
-const circ = (id, x, y, rx, ry, rot, a, note, extra = {}) => ({ id, type: 'circle', x: R2(x), y: R2(y), r: R2(Math.sqrt(Math.abs(rx * ry))), rx: R2(Math.abs(rx)), ry: R2(Math.abs(ry)), rot: R2(rot),
-  a: a && inFrame(x, y, Math.max(Math.abs(rx), Math.abs(ry))) ? 1 : 0, look: 'flat', fill: C.CO, stroke: C.CO, sw: 0, note, ...extra });
-const rectL = (id, x0, y0, x1, y1, a, note, extra = {}) => ({ id, type: 'rect', x: R2((x0 + x1) / 2), y: R2((y0 + y1) / 2), w: R2(x1 - x0), h: R2(y1 - y0), rot: 0, a, note, ...extra });
-function dotAt(t) {
-  const tq = crisp(t, 0), bt = T('ping') + F(1), wt = T('wipe'), cd = T('coreDot');
-  if (tq < 3.9) { const cam = camFor(t), b = ballA(t), p = w2s(cam, b.x, b.y);
-    return circ('dot', p.x, p.y, b.r * b.sx * cam.s, b.r * b.sy * cam.s, b.rot, 1, t < T('launch') ? 'coral ball: falls in (already falling at f0), bounces 0.50 / 0.80, crouches' : t < T('sunLand') ? 'coral ball flying up, growing into the sun' : 'coral sun (12 coral rays round it)'); }
-  if (tq < cd) { const cam = camFor(t), k2 = cam.s * 1.15 / 30;
-    if (tq < bt) { const p = i2s(cam, BUB.x, BUB.y - 84); return circ('dot', p.x, p.y, 0, 0, 0, 0, 'none: interior before the notification pops'); }
-    if (tq < wt) { const [s, k] = pop(tq, bt, 2.6, .38, .25), an = E.ioQ(inv(T('bubbleAntic'), wt, tq)), grow = E.inC(inv(wt, wt + F(3), tq));
-      const sx = Math.max(s, 0) / (1 + k) * (1 + .12 * an) * (1 + grow * .3), sy = Math.max(s, 0) * (1 + k) * (1 - .18 * an) * (1 + grow * .3), rot = 3 * Math.sin(2 * Math.PI * 1.2 * (tq - bt)) * (1 - an);
-      const by = BUB.y + 6 * an - 34 * E.outQ(inv(T('exclaim') + F(10), wt, tq)), th = rot * Math.PI / 180, p = i2s(cam, BUB.x + 84 * sy * Math.sin(th), by - 84 * sy * Math.cos(th));
-      return circ('dot', p.x, p.y, 58 * sx * k2, 58 * sy * k2, rot, 1, 'coral notification bubble (cream bell, small tail below)'); }
-    if (tq < T('wipe2')) { const u1 = inv(wt, wt + F(10), tq), k = Math.exp(lerp(Math.log(1.12), Math.log(34), E.ioQ(u1))), p = i2s(cam, BUB.x - 160 * E.ioQ(u1), BUB.y - 84 + 60 * E.ioQ(u1));
-      return circ('dot', p.x, p.y, 58 * k * k2, 58 * k * k2, 0, 1, 'the bubble swells into a full-frame coral circle wipe'); }
-    return circ('dot', 960, 540, R_D, R_D, 0, 0, 'none: mint capsule + cream half-disc wipes; the dot squirts out of the centre at 5.50'); }
-  if (tq < HOPS[3].l) { const hd = hero(t);
-    if (hd) return circ('dot', hd.x, hd.y, R_D * hd.sx, R_D * hd.sy, hd.rot, 1, 'coral grid dot (squirts 5.50-5.70, hops onto the beats 6.0 / 6.5 / 7.0 / 7.5)');
-    return circ('dot', QD[2].K.x, QD[2].K.y, R_D, R_D, 0, 0, 'none: inside the coral heart (7.00-7.27)'); }
-  if (coinTh(tq) < Math.PI / 2) { const [g] = pop(tq, QD[3].t0, 2.6, .48, 0), R = lerp(R_D, 180, Math.max(g, 0));
-    return circ('dot', 480, 810, Math.max(Math.abs(Math.cos(coinTh(tq))), .03) * R, R, 0, 1, 'coral disc growing, about to flip edge-on into the gold coin'); }
-  if (tq < CL.x0) return circ('dot', 600, capY(tq), R_D, R_D, 0, 1, 'coral cap on the tall cream bar (top-left quadrant); the other key dots zip into it 7.83-8.00');
-  const D = logoDot(tq, t), p = lz(tq, D.x, D.y);
-  return circ('dot', p.x, p.y, D.r * D.sx * p.z, D.r * D.sy * p.z, D.rot, 1, V5 ? 'coral dot = the 丶 of 扁 (rides the bar as it morphs, hops up 8.23, lands ON 8.50, bobs 9.0 / 9.5)' : 'tittle of popwise');
-}
-function linkExtras(t) {
-  const tq = crisp(t, 0), out = [];
-  if (tq < 3.5) { const cam = camFor(t), ge = lerp(0, 1900, E.outQ(inv(F(1.5), F(14), tq))), y = (GY - cam.cy) * cam.s + 540, x1 = ge >= 1899 ? 1920 : Math.min(1920, (ge - cam.cx) * cam.s + 960);
-    if (y > 0 && y < 1080 && x1 > 0) out.push({ id: 'horizon', type: 'line', x0: 0, y0: R2(y), x1: R2(x1), y1: R2(y), w: 0, a: 1, fill: C.CR, note: 'top edge of the cream ground (flat fill below, ultramarine sky above); sweeps in L->R 0.05-0.47 behind a sunflower lead bar' }); }
-  if (tq >= QD[0].t0 + F(1) && tq < CL.x0) { const b = barS(tq); if (b > .02) out.push(rectL('bar', 558, 440 - 270 * b, 642, 440, 1, 'tall cream bar of the top-left bar chart (its cap = the dot); morphs into the title bar 7.90-8.17', { fill: C.CR, rx: 24 })); }
-  else if (tq >= CL.x0 && tq < (V5 ? STEM5_OFF : CL.x1)) { const bb = stemBox(morphP(tq)), a = lz(tq, bb.x0, bb.y0), c = lz(tq, bb.x1, bb.y1); out.push(rectL('bar', a.x, a.y, c.x, c.y, 1, V5 ? 'cream bar morphing into the top bar of 扁' : 'cream bar morphing into the stem of the i', { fill: C.CR })); }
-  if (tq >= HOPS[1].o && tq < CL.x0 && !(tq >= QD[3].t0 && coinTh(tq) >= Math.PI / 2)) out.push(circ('cap', 600, capY(tq), R_D, R_D, 0, 1, 'coral cap left on the tall cream bar (becomes the main dot from 7.60)'));
-  if (tq >= QD[3].t0 && coinTh(tq) >= Math.PI / 2 && tq < CL.c1) { const [g] = pop(tq, QD[3].t0, 2.6, .48, 0), R = lerp(R_D, 180, Math.max(g, 0)), cs = 1 - E.inQ(inv(CL.ca, CL.c1, tq));
-    out.push(circ('coin', 480, 810, Math.max(Math.abs(Math.cos(coinTh(tq))), .03) * R * cs, R * cs, 0, 1, 'gold ¥ coin (flips edge-on 7.50-7.77, shrinks into a coral dot 7.77-7.87)', { fill: C.SU, stroke: C.SUD, sw: 16 })); }
-  if (V5 && tq >= LET[0].t0) { const sc = Math.min(...LET.map(L => Math.max(pop(tq, L.t0, 5, .65, .1, .5)[0], 0))), a = lz(tq, T5.ink.x0, T5.ink.y0), c = lz(tq, T5.ink.x1, T5.ink.y1);
-    out.push(rectL('title', a.x, a.y, c.x, c.y, sc > .9 ? 1 : 0, 'title 「扁平矢量」 ink box (cream Resource Han Rounded 900 on ultramarine), without the dot', { fill: C.CR })); }
-  return out;
-}
-function hideLinks(tq) {   // ?nolink=dot[,cap,rays,coin]: remove that element (and the ball's shadow + speed lines), nothing else moves
-  const capIsDot = tq >= QD[3].t0 && coinTh(tq) >= Math.PI / 2;
-  if (NOLINK.has('dot')) { [dotW, shadow, ...speedL, bubble, W1, heroD, QD[3].fDot, dotL].forEach(e => vis(e, false)); if (capIsDot) vis(QD[0].keyD, false); }
-  if (NOLINK.has('cap') && !capIsDot) vis(QD[0].keyD, false);
-  if (NOLINK.has('rays')) rays.forEach(l => vis(l, false));
-  if (NOLINK.has('coin')) vis(QD[3].cg, false);
-}
-if (V5) window.linkAt = t => [dotAt(t), ...linkExtras(t)];
 window.renderAt = async (t) => {
   const tq = crisp(t, 0), fr = Math.round(t * 30);   // R2: everything is crisp (frame-quantised) except the camera push and the dot flights
   const cam = { ...camera(t > 3.2 && t < 3.66 ? crisp(t, .45) : tq) };
@@ -704,7 +604,6 @@ window.renderAt = async (t) => {
       const Q = (r, o) => `${f3(c.x + dx * r + nx * o)} ${f3(c.y + dy * r + ny * o)}`;
       k.p.setAttribute('d', `M${Q(ra, wi / 2)} L${Q(rb, w / 2)} A${f3(w / 2)} ${f3(w / 2)} 0 0 0 ${Q(rb, -w / 2)} L${Q(ra, -wi / 2)} A${f3(wi / 2)} ${f3(wi / 2)} 0 0 0 ${Q(ra, wi / 2)} Z`); }); }
   updWorld(tq, cam, t); updInterior(tq, cam); updIcons(tq, cam, t); updLogo(tq, t);
-  if (V5 && NOLINK.size) hideLinks(tq);
 };
 await window.renderAt(0);
 window.__ready = true;

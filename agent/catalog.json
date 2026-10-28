@@ -31,8 +31,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 6,
-    "patterns": 29,
+    "cases": 9,
+    "patterns": 42,
     "resources": 2
   },
   "resourceCatalog": "agent/resources.json",
@@ -156,6 +156,69 @@
       "bundle": "agent/cases/keeling-curve.json"
     },
     {
+      "id": "mg-cel-boil",
+      "title": "逐帧线条抖动 · HAND MADE",
+      "summary": "火柴在纸面划燃并翻转落定，火苗精灵醒来、跳跃与舞蹈；旋转蓄力后爆成烟火，火花逐笔写出「手作」与 HAND MADE，镜头拉回灯箱纸页。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "逐帧手绘",
+        "线条沸腾",
+        "曝光表",
+        "拖影帧",
+        "纸张质感"
+      ],
+      "useCases": [
+        "手绘品牌短片",
+        "逐帧动画片头",
+        "矢量主体的手绘特效层"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "cel-line-boil",
+        "smear-frame-strike",
+        "spark-stroke-handletter",
+        "flipbook-pullback",
+        "squash-stretch-bounce",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-cel-boil.json"
+    },
+    {
+      "id": "mg-isometric",
+      "title": "等距 2.5D · ISOPOLIS — Let the City Grow",
+      "summary": "蓝图先描出网格，地块逐圈落位，住宅、楼房、风机与轨道相继生长；核心塔伸展后发出激活波，让灰模城市转为彩色，数据弧线、无人机与信息卡接续，镜头拉远显出 ISOPOLIS 和「让城市自己生长」。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "等距投影",
+        "微缩城市",
+        "楼房生长",
+        "数据流",
+        "平行运镜"
+      ],
+      "useCases": [
+        "科技架构动画",
+        "应用功能演示",
+        "微缩智慧城短片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "blueprint-tile-drop-wave",
+        "staged-extrusion-build",
+        "core-ignition-wave",
+        "isometric-leader-card",
+        "route-draw-marker"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-isometric.json"
+    },
+    {
       "id": "mg-flat-vector",
       "title": "扁平矢量 · popwise — One Dot",
       "summary": "珊瑚色圆点成为太阳，带出扁平城市；镜头推进窗口，人物与手机提示接续，气泡擦除转入图标落点，最后汇成 popwise 与中英文标语。",
@@ -186,6 +249,40 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mg-flat-vector.json"
+    },
+    {
+      "id": "mg-line-art",
+      "title": "线条艺术 · ATELIER LINEA — One Line",
+      "summary": "香槟金线在午夜蓝底上从种子长成幼苗，卷须展开为屋梁，延伸出建筑、天际与海浪；线条抬升成圆环拱门并填成金色徽章，镜头拉远为 ATELIER LINEA 与“始于一线”的海报落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "线条动画",
+        "一笔画",
+        "线面转换",
+        "笔尖跟镜",
+        "品牌短片"
+      ],
+      "useCases": [
+        "奢侈品品牌片",
+        "金融品牌片",
+        "建筑品牌片",
+        "标志动画"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "continuous-line-narrative",
+        "pen-led-camera",
+        "fresh-ink-aging",
+        "line-ring-to-medallion",
+        "center-out-tracking-in",
+        "film-grain",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-line-art.json"
     },
     {
       "id": "mg-bauhaus",
@@ -297,7 +394,7 @@
     {
       "id": "route-draw-marker",
       "title": "路线描画与标记脉冲",
-      "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。",
+      "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。等距城市中，数据弧线从核心向屋顶生长，到达后屋顶标记循环扩圈。",
       "types": [
         "camera",
         "hud"
@@ -307,7 +404,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "mg-isometric"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -494,7 +592,7 @@
     {
       "id": "film-grain",
       "title": "可复现的胶片颗粒与暗角",
-      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。",
+      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。线条片在午夜蓝与金线画面上叠加逐帧换位颗粒和径向暗角。",
       "types": [
         "texture"
       ],
@@ -505,7 +603,8 @@
       "role": "support",
       "sourceCases": [
         "map-pilgrimage",
-        "mg-bauhaus"
+        "mg-bauhaus",
+        "mg-line-art"
       ],
       "pairsWellWith": [
         "seekable-timeline",
@@ -626,7 +725,7 @@
     {
       "id": "squash-stretch-bounce",
       "title": "预备、拉伸与压扁回弹",
-      "summary": "重放圆点落地、蓄力弹射与图标接力中的拉伸、压扁和回弹。",
+      "summary": "重放圆点落地、蓄力弹射与图标接力中的拉伸、压扁和回弹。逐帧火苗段追加醒来后的蹲压、拉长起跳、落地压扁与连续舞步。",
       "types": [
         "rhythm"
       ],
@@ -635,7 +734,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-flat-vector"
+        "mg-flat-vector",
+        "mg-cel-boil"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/squash-stretch-bounce.json"
@@ -827,7 +927,7 @@
     {
       "id": "shared-cue-sheet",
       "title": "画音共用节拍表",
-      "summary": "依次重放三片的密集节点段，在画面上用中文标出当前节点，并沿用原片音轨。",
+      "summary": "依次重放三片的密集节点段，在画面上用中文标出当前节点，并沿用原片音轨。 追加逐帧手绘的旋转、爆炸与逐笔书写，以及线条艺术的停笔续笔段。",
       "types": [
         "rhythm",
         "sound"
@@ -839,10 +939,247 @@
       "sourceCases": [
         "mg-flat-vector",
         "mg-bauhaus",
-        "mg-pixel"
+        "mg-pixel",
+        "mg-cel-boil",
+        "mg-line-art"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/shared-cue-sheet.json"
+    },
+    {
+      "id": "cel-line-boil",
+      "title": "逐张重画：线条沸腾与换纸",
+      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。",
+      "types": [
+        "texture",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-cel-boil"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/cel-line-boil.json"
+    },
+    {
+      "id": "smear-frame-strike",
+      "title": "拖影帧与多重残像",
+      "summary": "重放火柴后撤蓄力、划火拖影、多重残像、点火闪光、翻转抛起与摆动落定。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-cel-boil"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/smear-frame-strike.json"
+    },
+    {
+      "id": "spark-stroke-handletter",
+      "title": "火星逐笔写字",
+      "summary": "重放火团迁移为花边徽章、黄色核心接续笔尖、火星逐笔写字与标题回弹落定。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-cel-boil"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/spark-stroke-handletter.json"
+    },
+    {
+      "id": "flipbook-pullback",
+      "title": "拉远翻纸溯帧",
+      "summary": "重放落版后三步拉远灯箱、拇指翻阅旧画格，以及红铅笔圈注总张数与箭头。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-cel-boil"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/flipbook-pullback.json"
+    },
+    {
+      "id": "blueprint-tile-drop-wave",
+      "title": "蓝图落块波",
+      "summary": "蓝图先从中心扩开，地块按方形同心环与角向错峰倾斜落位，触地压扁并微回弹。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/blueprint-tile-drop-wave.json"
+    },
+    {
+      "id": "staged-extrusion-build",
+      "title": "分层伸展组装",
+      "summary": "土层向下伸展、楼房错峰组装、核心塔套筒升出，后续层段的位置随前层当前伸展量联动。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/staged-extrusion-build.json"
+    },
+    {
+      "id": "core-ignition-wave",
+      "title": "核心激活全城",
+      "summary": "核心下蹲蓄力后在主拍放光，方形激活波联动地块翻面、载物跳起和建筑由灰模扫描着色。",
+      "types": [
+        "rhythm",
+        "composition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/core-ignition-wave.json"
+    },
+    {
+      "id": "isometric-leader-card",
+      "title": "等轴引线数据卡",
+      "summary": "引线从世界锚点画出，数据卡沿等轴侧面弹性横展，数值与柱条随后生长，离场时卡片和引线同步收回。",
+      "types": [
+        "hud",
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/isometric-leader-card.json"
+    },
+    {
+      "id": "continuous-line-narrative",
+      "title": "一线连续成景",
+      "summary": "同一根金线从种子长成植物、建筑、海浪和圆环拱门，卷须展开为屋梁后继续描绘。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/continuous-line-narrative.json"
+    },
+    {
+      "id": "pen-led-camera",
+      "title": "笔尖牵引镜头与停笔节奏",
+      "summary": "镜头跟随笔尖，转角减速、停笔时刹停、续笔后追赶，最后拉远为完整海报。",
+      "types": [
+        "camera",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/pen-led-camera.json"
+    },
+    {
+      "id": "fresh-ink-aging",
+      "title": "新墨笔锋渐暗",
+      "summary": "新画金线与发光笔尖保持明亮，旧线按绘制年龄退成暗金，标志线保留高亮。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/fresh-ink-aging.json"
+    },
+    {
+      "id": "line-ring-to-medallion",
+      "title": "线环熔成金章",
+      "summary": "细线圆环收细蓄势后熔成镂空金章，过冲、镜头冲击与回声圈完成落章，光脉沿原线往返。",
+      "types": [
+        "transition",
+        "rhythm",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/line-ring-to-medallion.json"
+    },
+    {
+      "id": "center-out-tracking-in",
+      "title": "中轴散字收拢",
+      "summary": "衬线字标按离中轴的距离错峰从宽字距收拢，中文标语抬入，两侧细线随亮点向外描出。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/center-out-tracking-in.json"
     }
   ],
   "resources": [

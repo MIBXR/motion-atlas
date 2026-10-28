@@ -143,15 +143,11 @@
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/LICENSES.md",
-      "bytes": 2043
-    },
-    {
-      "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/audio.py",
-      "bytes": 9493
+      "bytes": 2050
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/audio/film.m4a",
@@ -159,15 +155,15 @@
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/cues.json",
-      "bytes": 3988
+      "bytes": 3719
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/fidelity.md",
-      "bytes": 4310
+      "bytes": 3476
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/film.js",
-      "bytes": 45502
+      "bytes": 35191
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/fonts/NotoSansSC-OFL.txt",
@@ -191,11 +187,11 @@
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/fonts/fonts.css",
-      "bytes": 504
+      "bytes": 486
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/index.html",
-      "bytes": 569
+      "bytes": 557
     },
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/motion-adapter.js",
@@ -212,6 +208,10 @@
     {
       "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/shared/assets/textures/paper/Paper001_4K_color.jpg",
       "bytes": 3684106
+    },
+    {
+      "path": "demos/patterns/grid-beat-construction/sources/mg-bauhaus/source/audio.py",
+      "bytes": 9344
     },
     {
       "path": "previews/patterns/grid-beat-construction.jpg",

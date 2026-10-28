@@ -7,10 +7,6 @@ const W = 1920, H = 1080, M = 120, Y0 = 60, CX = 960, CY = 540;
 window.DEMO = { width: W, height: H, fps: 30, duration: 10, motionBlur: { samples: 8, shutter: 0.5 } };
 const Q = new URLSearchParams(location.search);
 const MB = +(Q.get('mb') || window.DEMO.motionBlur.samples);          // harness samples per frame (slice for in-shader taps)
-// reel v5 (?v5=1): title bar 几何构成 · 包豪斯 on the poster + window.linkAt(t); ?nolink=dot,disc2,rule,pivot hides link
-// elements. Without v5 every code path below is the v4 film, unchanged.
-const V5 = Q.get('v5') === '1';
-const NOLINK = new Set(V5 ? (Q.get('nolink') || '').split(',').map(s => s.trim()).filter(Boolean) : []);
 const BASE = './';
 const cues = await (await fetch(BASE + 'cues.json')).json();
 const EV = Object.fromEntries(cues.events.map(e => [e.id, e]));
@@ -105,7 +101,7 @@ function drawGroup(t, opt = {}) {           // everything inside the central 8x8
   // off-beat construction targets (1.25 / 1.75 / 2.25 / 2.75): drawn first, the landing ink knocks them out
   for (let i = 1; i <= 4; i++) { const e = EV['target' + i]; if (snap(t) >= e.t && snap(t) < e.until) target(e.gx, e.gy); }
   const e1 = EV.circle_land;
-  if (t >= e1.t0 && (opt.keepDot || !NOLINK.has('dot'))) {        // v5 ?nolink=dot: the red disc is not printed
+  if (t >= e1.t0) {
     const u = in2(prog(t, e1.t0, e1.t));
     const dx = (1 - u) * 6 * M;
     const sl = io2(prog(t, EV.circle_slide.t0, EV.circle_slide.t));   // slides one module into contact
@@ -129,7 +125,7 @@ function drawGroup(t, opt = {}) {           // everything inside the central 8x8
   }
   // pivot: dot + ring stamp the frame centre at 3.00 (ring leaves after the turn); dot is off during the cascade
   if (snap(t) >= EV.pivot.t && !opt.noRule && !cascOn(t)) {
-    if (!NOLINK.has('pivot')) paint('K', P.circle(CX, CY, 20));
+    paint('K', P.circle(CX, CY, 20));
     const rr = io2(prog(t, EV.pivot.t, GT0));
     if (t < GT1 + 0.25 && rr > 0.001) paint('K', c => { const a0 = -Math.PI / 2, a1 = a0 + Math.PI * 2 * rr;
       c.arc(CX, CY, 60, a0, a1); c.arc(CX, CY, 56, a1, a0, true); c.closePath(); });
@@ -154,7 +150,7 @@ function drawOuter(t, opt = {}) {
   }
   // horizon rule y=540, x 360 -> trim (1800); off during the cascade (it would be torn by the remap), back on the freeze
   const er = EV.rule;
-  if (t >= er.t0 && !opt.noRule && !cascOn(t) && !NOLINK.has('rule')) {
+  if (t >= er.t0 && !opt.noRule && !cascOn(t)) {
     const u = io2(prog(t, er.t0, er.t));
     paint('K', P.rect(360, 537, (1800 - 360) * u, 6));
   }
@@ -194,7 +190,7 @@ const SH = [
 ];
 let FIELD = [];
 function buildField() {
-  renderPlates(DROP - 0.001, { noField: true, noRule: true, keepDot: true });   // field never depends on ?nolink
+  renderPlates(DROP - 0.001, { noField: true, noRule: true });
   const da = a.getImageData(0, 0, W, H).data, db = b.getImageData(0, 0, W, H).data;
   const [tx0, ty0, tx1, ty1] = cues.trim;
   for (let r = 0; r < 8; r++) for (let c = tx0 / M; c < tx1 / M; c++) {
@@ -239,12 +235,11 @@ function drawBack(nLab = 3) {
   const tri = [[120, 780], [600, 780], [360, 300]];
   paint('Y', P.poly(tri));                                    // ▲ 4x4 modules
   paint('R', P.rect(720, 300, 480, 480));                     // ■ 4x4
-  const disc2 = !NOLINK.has('disc2');                         // v5 ?nolink=disc2: the back-sheet blue disc is not printed
-  if (disc2) paint('B', P.circle(1560, 540, 240));            // ● Ø 4 modules
+  paint('B', P.circle(1560, 540, 240));            // ● Ø 4 modules
   const cc = CT[0]; cc.lineJoin = 'miter'; cc.lineWidth = 5;  // trap: colour spreads 2.5 px over the knocked-out black
   cc.strokeStyle = INK.Y[0]; cc.beginPath(); P.poly(tri)(cc); cc.stroke();
   cc.strokeStyle = INK.R[0]; cc.beginPath(); cc.rect(720, 300, 480, 480); cc.stroke();
-  if (disc2) { cc.strokeStyle = INK.B[0]; cc.beginPath(); P.circle(1560, 540, 240)(cc); cc.stroke(); }
+  cc.strokeStyle = INK.B[0]; cc.beginPath(); P.circle(1560, 540, 240)(cc); cc.stroke();
   const lab = [['GELB', '黄', 360], ['ROT', '红', 960], ['BLAU', '蓝', 1560]];
   for (const [de, zh, x] of lab.slice(0, nLab)) {              // knocked-out labels (paper shows through), stamped on 7.0
     text('P', de, x - 8, 900, '600 24px "Poppins"', 7.2, 'right');
@@ -286,33 +281,6 @@ function drawType(t) {
   }
 }
 
-// ---------------------------------------------------------------- reel v5 title: 几何构成 · 包豪斯
-// A black title bar ruled over the two bottom rows (x 360-1800, y 780-1020 = 12 x 2 modules), joined to the vertical bar,
-// carrying 几何构成 knocked out to paper and 包豪斯 in yellow ink (Alimama ShuHeiTi, 180 px em = 1.5 modules per glyph,
-// cells 420-1140 / 1200-1740). With the vertical Poppins BAUHAUS it locks up as an L. It is printed on the FRONT sheet
-// from the front reset (7.1, while every card shows its back), so the R4 cards turning home reveal it (7.5-7.92); it
-// freezes with the poster at 8.0, drifts with the plates 8.5-9.47 and is struck into register by the 9.5 press lock.
-const TB = { x0: 360, y0: 780, x1: 1800, y1: 1020, em: 180, font: '700 180px "Alimama ShuHeiTi"',
-  cells: [['几', 420], ['何', 600], ['构', 780], ['成', 960], ['包', 1200], ['豪', 1380], ['斯', 1560]] };
-let TBY = 0;                                                 // common baseline: ink of the 7 glyphs centred on y 900
-function measureTitleV5() {
-  a.font = TB.font; let A = 0, D = 0;
-  for (const [g] of TB.cells) { const m = a.measureText(g); A = Math.max(A, m.actualBoundingBoxAscent); D = Math.max(D, m.actualBoundingBoxDescent); }
-  TBY = (TB.y0 + TB.y1) / 2 + (A - D) / 2;
-}
-const titleOn = t => V5 && snap(t) >= cues.frontReset;
-function drawTitleV5(t) {
-  if (!titleOn(t)) return;
-  CT = [a, b];
-  a.fillStyle = '#000'; a.fillRect(TB.x0, TB.y0 + 4, TB.x1 - TB.x0, TB.y1 - TB.y0 + 4);   // colours under the bar knocked out (4 px trap;
-  // +4 px below the trim so the semicircle's r 244 overhang does not peek out under the bar)
-  paint('K', P.rect(TB.x0, TB.y0, TB.x1 - TB.x0, TB.y1 - TB.y0));
-  TB.cells.forEach(([g, x], i) => text(i < 4 ? 'P' : 'Y', g, x + TB.em / 2, TBY, TB.font, 0, 'center'));
-  a.font = TB.font; a.textAlign = 'center'; a.lineJoin = 'miter'; a.lineWidth = 5; a.strokeStyle = INK.Y[0];   // yellow spreads 2.5 px (trap)
-  for (const [g, x] of TB.cells.slice(4)) a.strokeText(g, x + TB.em / 2, TBY);
-  a.textAlign = 'left';
-}
-
 function drawMarks(t) {
   for (const y of [30, 1050]) { paint('K', P.ring(CX, y, 10, 11.5)); paint('K', P.rect(CX - 18, y - 0.75, 36, 1.5)); paint('K', P.rect(CX - 0.75, y - 18, 1.5, 36)); }
   if (snap(t) >= EV.marks.t) for (const [x, y, sx] of [[120, 60, -1], [1800, 60, 1], [120, 1020, -1], [1800, 1020, 1]]) {
@@ -342,7 +310,6 @@ function renderPlates(t, opt = {}) {
   drawGroup(t, opt);
   drawOuter(t, opt);
   if (!opt.noField) drawField(t);
-  drawTitleV5(t);
   drawType(t);
   drawMarks(t);
 }
@@ -599,97 +566,12 @@ function present(t, k = 1) {
 
 window.renderAt = async (t) => { const tc = snap(t), k = shutK(t); t = tc + (t - tc) * k; renderPlates(t); present(t, k); };
 
-// ---------------------------------------------------------------- reel v5: link elements, a pure function of t
-// Positions are in output-frame px: the plate point is moved by that plate's misregistration (the shader samples p + off,
-// so the image sits at -off) and by the press camera (7.0 punch x1.03, 9.5 jolt 2 px).
-const L4 = (() => {
-  const [x0, y0, x1, y1] = cues.trim, r1 = RP.R1, [ox, oy] = r1.origin; let maxD = 1, mxR = 0, mnR = 1e9;
-  for (let y = y0 + 60; y < y1; y += 120) for (let x = x0 + 60; x < x1; x += 120) maxD = Math.max(maxD, Math.hypot(x - ox, y - oy));
-  for (let y = y0 + 120; y < y1; y += 240) for (let x = x0 + 120; x < x1; x += 240) { const r = Math.hypot(x - CX, y - CY); mxR = Math.max(mxR, r); mnR = Math.min(mnR, r); }
-  return { ox, oy, z1: r1.span / maxD, z2: RP.R2.span / ((x1 - 120 - x0) + (y1 - 120 - y0)), z3: RP.R3.span / (1680 - 240), z4: RP.R4.span / (mxR - mnR), mxR };
-})();
-const PLATE_OFF = { R: [1.3, -0.9, 0, 1], B: [-1.0, 1.2, 0, -1], Y: [0, 0, 1, 0], K: [0.5, 0.4, 0, 0] };   // reg x, reg y, spread x, spread y
-function toScreen(t, x, y, plate) {
-  const [reg, , spread] = registration(t), [cx, cy, z] = camera(t), o = PLATE_OFF[plate];
-  const px = x - (o[0] * reg + o[2] * spread) - cx, py = y - (o[1] * reg + o[3] * spread) - cy;
-  return [CX + (px - CX) * z, CY + (py - CY) * z, z];
-}
-const r1Ang = (t, x, y) => 90 * io2(clamp((t - RP.R1.start - Math.hypot(x - L4.ox, y - L4.oy) * L4.z1) / RP.R1.dur));
-const r2Cos = (t, x, y) => Math.cos(Math.PI * io2(clamp((t - RP.R2.start - ((x - 120) + (y - 60)) * L4.z2) / RP.R2.dur)));
-const r4Cos = (t, x, y) => -Math.cos(Math.PI * io2(clamp((t - RP.R4.start - (L4.mxR - Math.hypot(x - CX, y - CY)) * L4.z4) / RP.R4.dur)));
-const sstep = (e0, e1, x) => { const u = clamp((x - e0) / (e1 - e0)); return u * u * (3 - 2 * u); };
-const mean = (xs, f) => xs.reduce((s, c) => s + f(c), 0) / xs.length;
-// the front sheet's share of cards at rest (R4 turning home) / the back sheet's share of cards at rest (R2)
-const frontHome = (t, cards) => t < RP.R4.start ? 0 : mean(cards, ([x, y]) => sstep(0.9, 1, r4Cos(t, x, y)));
-const DOT_TILES = [660, 780, 900, 1020].flatMap(x => [120, 240, 360, 480].map(y => [x, y]));
-const DOT_CARDS = [[720, 180], [960, 180], [720, 420], [960, 420]];
-const BAND_CARDS = [480, 720, 960, 1200, 1440, 1680].map(x => [x, 900]);
-const DISC2_CARDS = [[1440, 420], [1680, 420], [1440, 660], [1680, 660]];
-function dotCentre(t) {                                      // red disc, plate coords (group transform applied)
-  const e1 = EV.circle_land, u = in2(prog(t, e1.t0, e1.t)), sl = io2(prog(t, EV.circle_slide.t0, EV.circle_slide.t));
-  const lx = 840 + (1 - u) * 6 * M, ly = 300 - M * (1 - sl), th = groupAngle(t), c = Math.cos(th), s = Math.sin(th);
-  return [CX + c * (lx - CX) - s * (ly - CY), CY + s * (lx - CX) + c * (ly - CY)];
-}
-function dotVis(t) {
-  if (t < EV.circle_land.t0) return 0;
-  if (!cascOn(t)) return 1;
-  if (t < RP.R4.start) return t >= cues.frontReset ? 0 : 1 - clamp(mean(DOT_TILES, ([x, y]) => r1Ang(t, x, y)) / 15);   // R1 breaks it
-  return frontHome(t, DOT_CARDS);                            // R4: its 4 cards turn home, whole again on the 8.0 freeze
-}
-function linkAtV5(t) {
-  const els = [];
-  const [dx, dy, z] = toScreen(t, ...dotCentre(t), 'R');
-  els.push({ id: 'dot', type: 'circle', x: +dx.toFixed(1), y: +dy.toFixed(1), r: +(240 * z).toFixed(1), a: +dotVis(t).toFixed(3),
-    look: 'grain-flat', fill: '#EB3F33', stroke: '#EB3F33', sw: 0,   // fill = measured print colour (ink #E03C31 on cream)
-    note: 'Bauhaus red disc Ø480 (primary red ink on cream paper: tooth, mottling, grain, 1-4 px plate misregistration)' });
-  // back sheet: the giant blue disc of the ▲■● triad (6.97-7.2 whole; R3 shears it from 7.2)
-  if (cascOn(t) && t >= RP.R2.start) {
-    let av = t < RP.R4.start ? mean(DISC2_CARDS, ([x, y]) => sstep(0.9, 1, -r2Cos(t, x, y))) : 0;
-    const sh = Math.max(...[1440, 1680].map(cx => io2(clamp((t - RP.R3.start - (1680 - cx) * L4.z3) / RP.R3.dur))));
-    av *= 1 - clamp(sh * RP.R3.dy / 8);
-    const [bx, by, bz] = toScreen(t, 1560, 540, 'B');
-    els.push({ id: 'disc2', type: 'circle', x: +bx.toFixed(1), y: +by.toFixed(1), r: +(240 * bz).toFixed(1), a: +av.toFixed(3),
-      look: 'grain-flat', fill: '#0942A3', stroke: '#0942A3', sw: 0, note: 'back-sheet blue disc of the giant ▲■● triad, on black' });
-  }
-  // pivot dot: black point on the horizon at the frame centre (the rotation pivot), stamps at 3.0
-  if (snap(t) >= EV.pivot.t && !cascOn(t)) {
-    const [px, py, pz] = toScreen(t, CX, CY, 'K');
-    els.push({ id: 'pivot', type: 'circle', x: +px.toFixed(1), y: +py.toFixed(1), r: +(20 * pz).toFixed(1), a: 1,
-      look: 'grain-flat', fill: '#1C1A12', stroke: '#1C1A12', sw: 0, note: 'black pivot dot on the horizon rule (frame centre)' });
-  }
-  // horizon rule y 540, ruled 360 -> 1800 over 5.0-5.25; off in the cascade, back on the 8.0 freeze
-  if (t >= EV.rule.t0 && !cascOn(t)) {
-    const u = io2(prog(t, EV.rule.t0, EV.rule.t)), [x0, y0] = toScreen(t, 360, 540, 'K'), [x1, y1, rz] = toScreen(t, 360 + 1440 * u, 540, 'K');
-    els.push({ id: 'rule', type: 'line', x0: +x0.toFixed(1), y0: +y0.toFixed(1), x1: +x1.toFixed(1), y1: +y1.toFixed(1), w: +(6 * rz).toFixed(1),
-      a: u > 0.01 ? 1 : 0, fill: '#1C1A12', note: 'horizon rule (6 px black), draws left to right' });
-  }
-  // black bar: extends 8 modules at 0.75-1.0 (horizontal along the top while the group is turned), swings upright 3.25-4.0
-  if (t >= EV.bar_land.t0) {
-    const u = in2(prog(t, EV.bar_land.t0, EV.bar_land.t)), th = groupAngle(t), c = Math.cos(th), s = Math.sin(th);
-    const R = (x, y) => [CX + c * (x - CX) - s * (y - CY), CY + s * (x - CX) + c * (y - CY)];
-    const [ax, ay] = toScreen(t, ...R(1380, 60), 'K'), [bx, by, bz] = toScreen(t, ...R(1380, 60 + 960 * u), 'K');
-    els.push({ id: 'bar', type: 'line', x0: +ax.toFixed(1), y0: +ay.toFixed(1), x1: +bx.toFixed(1), y1: +by.toFixed(1), w: +(120 * bz).toFixed(1),
-      a: cascOn(t) ? 0 : 1, fill: '#1C1A12', note: 'black bar 120 px wide (centre line); breaks into cards 6.0-8.0' });
-  }
-  // v5 title block: black bar with 几何构成 (paper) + 包豪斯 (yellow)
-  if (titleOn(t)) {
-    const [tx, ty, tz] = toScreen(t, (TB.x0 + TB.x1) / 2, (TB.y0 + TB.y1) / 2, 'K');
-    els.push({ id: 'title', type: 'rect', x: +tx.toFixed(1), y: +ty.toFixed(1), w: +((TB.x1 - TB.x0) * tz).toFixed(1), h: +((TB.y1 - TB.y0) * tz).toFixed(1), rot: 0,
-      a: +(cascOn(t) ? frontHome(t, BAND_CARDS) : 1).toFixed(3), fill: '#1C1A12',
-      note: 'title bar 几何构成 · 包豪斯 (x 360-1800, y 780-1020), revealed by the R4 cards, then static' });
-  }
-  return els;
-}
-if (V5) window.linkAt = linkAtV5;
-
 await document.fonts.load(`900 172px "Poppins"`, 'BAUHAUS');
 await document.fonts.load(`600 24px "Poppins"`, 'FORM');
 await document.fonts.load(`600 13px "Poppins"`, 'BOGEN');
 await document.fonts.load(`700 26px "Noto Sans SC"`, '形式色彩功能黄红蓝');
-if (V5) await document.fonts.load(TB.font, '几何构成包豪斯');
 await document.fonts.ready;
 measureType();
-if (V5) measureTitleV5();
 drawBack(0); backN = 0;
 txC = tex(4, cC, false); txD = tex(5, cD, false);
 buildField();

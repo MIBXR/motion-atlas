@@ -2,14 +2,6 @@
 // Indexed 320x180 frame (semantic slots -> per-stage LUT -> QUEST-32 master palette), WebGL2 CRT pass x6.
 // Every frame is a pure function of the frame number f = round(t*30).
 const W = 320, H = 180, FPS = 30;
-const Q = new URLSearchParams(location.search);
-const SHEET = Q.has('sheet');
-const NOCRT = Q.has('nocrt') || SHEET;
-// reel v5 (?v5=1): 「像素风」 title logo, round crystal ORB = the reel dot, window.linkAt(t), ?nolink=dot,sun,pool,title
-const V5 = Q.get('v5') === '1';
-const NOLINK = new Set(V5 ? (Q.get('nolink') || '').split(',').map(s => s.trim()).filter(Boolean) : []);
-let linkPass = false;                                   // linkAt() redraws the frame with every element present
-const hidden = id => !linkPass && NOLINK.has(id);
 const cues = await (await fetch('./cues.json')).json();
 const F = t => Math.round(t * FPS);
 
@@ -89,11 +81,8 @@ function makeLUT(f, st = null, out = null) {
   const sp = Math.floor(f / 4);
   for (let k = 0; k < 4; k++) lut[STS[k]] = STAR_SEQ[(k + sp) & 3];
   for (let g = 0; g < 2; g++) for (let k = 0; k < 8; k++) { const w = WAT[WFSEQ[g][(k - f) & 7]]; lut[WFG[g][k]] = t ? mixIdx(w[a], w[b], t) : w[a]; }
-  if (V5 && (f === FLASH || f === FLASH + 1)) { const k = f === FLASH ? 0.5 : 0.25; for (let s = 0; s < 64; s++) lut[s] = mixIdx(lut[s], 15, k); }   // v5: palette lift, no white wash
-  else {
   if (f === FLASH) { for (let s = 0; s < NSLOT; s++) lut[s] = s === M(0) ? 0 : 8; }
   if (f === FLASH + 1) { for (let s = 0; s < 64; s++) lut[s] = 15; }
-  }
   return lut;
 }
 
@@ -250,8 +239,6 @@ const CHEST_OPEN = O(['...iILLLLLLLLIi...', '..iIeLLLLLLLLeIi..', '..ihLLLLLLLLL
 const TAIL = outline(outline(outline(spr(['nnnnnnn', '.nnnnnn', '..nnnnn', '...nnnn', '....nnn', '.....nn', '......n']), M(3)), M(8)), M(0));
 const BUBBLE_Q = O(['..wwwww..', '.wwBBBww.', 'wwBwwwBww', 'wwwwwwBww', 'wwwwBBwww', 'wwwwBwwww', 'wwwwwwwww', '.wwwBwww.', '..wwww...', '..ww.....', '..w......']);
 const GEM = O(['...w...', '..zwv..', '.zzvvc.', 'zzzvvcC', '.zvvcC.', '..vcC..', '...C...']);
-// v5: the crystal is a round ORB (9 px disc + 1 px outline = 11 logical px), lit from the top left
-const ORB = O(['..zzvvc..', '.zwwzvvc.', 'zwwwzvvcc', 'zwwzvvvcc', 'zzvvvvccb', 'vvvvvccbb', 'vvvvccbbC', '.vvccbCC.', '..cbbCC..']);
 const SPARK = [
   spr(['.u.', 'uwu', '.u.']),
   spr(['..w..', '..u..', 'wuwuw', '..u..', '..w..']),
@@ -316,35 +303,7 @@ function buildLogo() {
     if (n(x - 1, y) || n(x + 1, y) || n(x, y - 1) || n(x, y + 1)) o2[y * w + x] = M(0); }
   return { w, h, d: o2, fill };
 }
-const LOGO0 = buildLogo(), LOGO = LOGO0;
-// v5 title 「像素风」: Fusion Pixel 12 glyph bitmaps, 1 font px = C5×C5 logical px, same fill ramp / top bevel / drop / outline
-const C5 = 4, EXT5 = 2, SP5 = 1, Y5 = 18, RIB5 = 72;
-function buildLogo5(str) {
-  const gs = [...str].map(ch => glyph(ch, 'Fusion Pixel 12', 12)), cols = []; let t = 99, b = -1;
-  for (const g of gs) { let l = 99, r = -1; for (let y = 0; y < g.h; y++) for (let x = 0; x < g.w; x++) if (g.m[y * g.w + x]) { t = Math.min(t, y); b = Math.max(b, y); l = Math.min(l, x); r = Math.max(r, x); } cols.push([l, r]); }
-  const LH = (b - t + 1) * C5, gw = cols.map(([l, r]) => (r - l + 1) * C5);
-  const w = gw.reduce((a, c) => a + c, 0) + (gs.length - 1) * (1 + SP5) * C5 + 2, h = LH + EXT5 + 2;
-  const mask = new Uint8Array(w * h), fill = new Uint8Array(w * h), row = new Int16Array(w * h).fill(-1);
-  let ox = 1;
-  gs.forEach((g, gi) => { const [l, r] = cols[gi];
-    for (let j = t; j <= b; j++) for (let i = l; i <= r; i++) if (g.m[j * g.w + i])
-      for (let yy = 0; yy < C5; yy++) for (let xx = 0; xx < C5; xx++) { const p = (1 + (j - t) * C5 + yy) * w + ox + (i - l) * C5 + xx; mask[p] = 1; row[p] = (j - t) * C5 + yy; }
-    ox += gw[gi] + (1 + SP5) * C5; });
-  const out = new Uint8Array(w * h), at = (x, y) => x >= 0 && y >= 0 && x < w && y < h && mask[y * w + x], sc = 28 / LH;
-  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { if (!mask[y * w + x]) continue; const r = row[y * w + x] * sc; let c;
-    if (r < 2) c = M(15); else if (r < 10) c = M(14); else if (r < 14) c = ((x + y) & 1) ? M(14) : M(13); else if (r < 21) c = M(13); else if (r < 24) c = ((x + y) & 1) ? M(13) : M(12); else c = M(12);
-    if (!at(x, y - 1)) c = M(15); else if (!at(x - 1, y) && r < 16) c = M(15);
-    out[y * w + x] = c; fill[y * w + x] = 1; }
-  for (let y = h - 1; y >= 0; y--) for (let x = 0; x < w; x++) if (mask[y * w + x]) for (let d = 1; d <= EXT5; d++) { const yy = y + d; if (yy < h && !mask[yy * w + x] && !out[yy * w + x]) out[yy * w + x] = d < EXT5 ? M(26) : M(9); }
-  const o2 = out.slice();
-  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (!out[y * w + x]) { const n = (xx, yy) => xx >= 0 && yy >= 0 && xx < w && yy < h && out[yy * w + xx];
-    if (n(x - 1, y) || n(x + 1, y) || n(x, y - 1) || n(x, y + 1)) o2[y * w + x] = M(0); }
-  const cn = []; for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (mask[y * w + x] && !at(x, y - 1) && !at(x - 1, y)) cn.push([x, y]);   // top-left stroke corners → glint spots
-  cn.sort((a, b2) => a[0] - b2[0]); const glint = [0.04, 0.78, 0.36, 0.96, 0.58].map(u => cn[Math.min(cn.length - 1, Math.floor(u * cn.length))]);
-  return { w, h, d: o2, fill, glint, gh: LH };
-}
-const LOGO5 = V5 ? buildLogo5('像素风') : null;
-
+const LOGO0 = buildLogo();
 // ------------------------------------------------------------------ background layers (precomputed slot bitmaps)
 function layer(w, fn) { const d = new Uint8Array(w * H); for (let y = 0; y < H; y++) for (let x = 0; x < w; x++) d[y * w + x] = fn(x, y) || 0; return { w, d }; }
 function blitLayer(L, off, y0 = 0, y1 = H) { for (let y = y0; y < y1; y++) { const r = y * L.w + off, o = y * W; for (let x = 0; x < W; x++) { const s = L.d[r + x]; if (s) IB[o + x] = s; } } }
@@ -493,7 +452,7 @@ function drawSky(f) {
     if (s.big) { px(s.x - 1, s.y, M(3)); px(s.x + 1, s.y, M(3)); px(s.x, s.y - 1, M(3)); px(s.x, s.y + 1, M(3)); } }
   // sun
   const sy = Math.round(44 + f * 0.41), sx = 236;
-  if (sy < 140 && !hidden('sun')) for (let y = sy - 22; y <= sy + 22; y++) for (let x = sx - 22; x <= sx + 22; x++) { const d = Math.hypot(x - sx, y - sy), b = bay(x, y);
+  if (sy < 140) for (let y = sy - 22; y <= sy + 22; y++) for (let x = sx - 22; x <= sx + 22; x++) { const d = Math.hypot(x - sx, y - sy), b = bay(x, y);
     if (d <= 10) px(x, y, E.sun); else if (d <= 16 && b < 0.5 - (d - 10) * 0.02) px(x, y, E.sunG); else if (d <= 22 && b < 0.25 - (d - 16) * 0.025) px(x, y, E.sunG); }
   // clouds
   const off = Math.floor(cam(f) * 0.06) + Math.floor(f / 4);
@@ -598,22 +557,17 @@ function gemPos(f) {
   const x0 = CHEST_X - CAM_END + 10, y0 = GROUND - 12, top = y0 - 34;
   if (tau <= 6) { const u = tau / 6; return [x0, Math.round(y0 - 34 * (1 - (1 - u) * (1 - u)))]; }
   if (f < FCHEER) return [x0, top];
-  const hold = [HERO_SX + 8, GROUND - 19 - 4 - (V5 ? 1 : 0)];     // v5: the bigger orb sits 1 px higher
+  const hold = [HERO_SX + 8, GROUND - 19 - 4];
   if (f < FGET) { const u = (f - FCHEER + 1) / (FGET - FCHEER + 1); return [Math.round(x0 + (hold[0] - x0) * u), Math.round(top + (hold[1] - 2 - top) * u - 12 * u * (1 - u))]; }
   const [, p] = heroPose(f); return [hold[0], hold[1] + p.bob];
 }
 function drawGem(f) {
   const g = gemPos(f); if (!g) return; const [gx, gy] = g;
-  if (V5) { if (!hidden('dot')) blit(ORB, gx - 5, gy - 5);
-    if (f >= FGET) for (const sd of [-1, 1]) { const x0 = sd < 0 ? gx - 5 : gx + 4, xo = sd < 0 ? x0 - 1 : x0 + 2;   // 2x2 hands on the orb's lower sides (kept with nolink=dot)
-      px(x0, gy + 2, M(28)); px(x0 + 1, gy + 2, M(28)); px(x0, gy + 3, M(25)); px(x0 + 1, gy + 3, M(25)); px(xo, gy + 2, M(0)); px(xo, gy + 3, M(0)); px(x0, gy + 1, M(0)); px(x0 + 1, gy + 1, M(0)); }
-    return; }
   blit(GEM, gx - 4, gy - 4);
   if (f >= FGET) for (const sd of [-1, 1]) { const x0 = sd < 0 ? gx - 4 : gx + 3;                 // 2x2 hands wrapped on the lower facets
     px(x0, gy, M(28)); px(x0 + 1, gy, M(28)); px(x0, gy + 1, M(25)); px(x0 + 1, gy + 1, M(25)); px(sd < 0 ? x0 - 1 : x0 + 2, gy, M(0)); px(sd < 0 ? x0 - 1 : x0 + 2, gy + 1, M(0)); px(x0, gy - 1, M(0)); px(x0 + 1, gy - 1, M(0)); }
 }
 function drawStar(f) {
-  if (hidden('dot')) return;                              // the orb's star / sparkles leave with it
   const g = gemPos(f); if (!g) return; const [gx, gy] = g;
   const sl = starLen(f); if (sl) { const a0 = (Math.floor(f / 4) & 3) * Math.PI / 8;
     for (let q = 0; q < 4; q++) { const ca = Math.cos(a0 + q * Math.PI / 2), sa = Math.sin(a0 + q * Math.PI / 2);
@@ -674,12 +628,12 @@ function drawBox(f) {
 }
 function drawLogo(f) {
   if (f < fLogo - 12) return 0;
-  const LOGO = V5 ? LOGO5 : LOGO0;
-  const X = (W - LOGO.w) >> 1, Y = V5 ? Y5 : 16;
+  const LOGO = LOGO0;
+  const X = (W - LOGO.w) >> 1, Y = 16;
   const BOUNCE = { 0: 0, 1: -5, 2: -2, 3: 0 };
   const i = f - (fLogo - 12), dy = f < fLogo ? Math.round(-128 * (1 - (i / 12) ** 2)) : (BOUNCE[Math.floor((f - fLogo) / 2)] ?? 0);   // gravity: spacing grows every frame
   const flash = f === fLogo ? M(8) : f === fLogo + 1 ? M(15) : 0;
-  const shineS = f >= fShine && f < fShine + 12 ? -30 + (f - fShine) * (V5 ? 20 : 18) : -999;
+  const shineS = f >= fShine && f < fShine + 12 ? -30 + (f - fShine) * 18 : -999;
   const SQT = { 0: [6, 6], 1: [3, 3], 2: [-4, -2], 3: [-4, -2] }, [SQ, SW] = SQT[f - fLogo] || [0, 0];   // squash 6/12 px, stretch +4 on the rebound
   const LHs = LOGO.h - SQ, LWs = LOGO.w + 2 * SW;
   for (let jj = 0; jj < LHs; jj++) { const j = Math.floor(jj * LOGO.h / LHs), y = Y + dy + SQ + jj; if (y < 0 || y >= H) continue;
@@ -691,24 +645,21 @@ function drawLogo(f) {
       for (let y = Math.floor(yb - r); y <= yb + r; y++) for (let x = Math.floor(pcx - r * 1.4); x <= pcx + r * 1.4; x++) { const d = Math.hypot((x - pcx) / 1.4, y - yb);
         if (d <= r && bay(x, y) < dens * (1 - d / (r + 1) * 0.5)) px(x, y, d < r * 0.5 && a < 5 ? M(15) : M(31)); } } }
   // glints in the hold
-  if (f >= fSub + 6) { const G = V5 ? LOGO.glint.map(([gx, gy]) => [X + gx, Y + gy]) : [[X + 3, Y + 2], [X + LOGO.w - 26, Y + 38], [X + 58, Y + 1], [X + LOGO.w - 4, Y + 4], [X + 30, Y + 37]];
+  if (f >= fSub + 6) { const G = [[X + 3, Y + 2], [X + LOGO.w - 26, Y + 38], [X + 58, Y + 1], [X + LOGO.w - 4, Y + 4], [X + 30, Y + 37]];
     const g = Math.floor((f - fSub) / 9) % G.length, a = (f - fSub) % 9; if (a < 6) { const s = SPARK[a < 2 ? 0 : a < 4 ? 2 : 1]; blit(s, G[g][0] - (s.w >> 1), G[g][1] - (s.h >> 1)); } }
   if (f >= fLogo && f < fLogo + 9) { const a = f - fLogo, Yl = Y + dy;
-    const y1 = V5 ? LOGO.h - 4 : 64, y2 = V5 ? Math.round(LOGO.h * 0.25) : 18, y3 = V5 ? Math.round(LOGO.h * 0.65) : 46;
+    const y1 = 64, y2 = 18, y3 = 46;
     const EM = [[X + 12, Yl + y1, -2, 1], [X + LOGO.w - 12, Yl + y1, 2, 1], [X - 2, Yl + y2, -3, -1], [X + LOGO.w + 2, Yl + y2, 3, -1], [X + 44, Yl - 2, -1, -2], [X + LOGO.w - 44, Yl - 2, 1, -2], [X - 2, Yl + y3, -3, 1], [X + LOGO.w + 2, Yl + y3, 3, 1]];
     for (const [ex, ey, vx, vy] of EM) { const s = SPARK[a < 3 ? 2 : a < 6 ? 1 : 0]; blit(s, ex + vx * a - (s.w >> 1), ey + vy * a - (s.h >> 1)); } }
   return logoShake(f);
 }
 const logoShake = f => f >= fLogo && f < fLogo + 6 ? [3, -3, 2, -1, 1, 0][f - fLogo] : 0;
-const shakeAt = f => logoShake(f) || (f >= FLASH && f < FLASH + 4 ? [2, -2, 1, -1][f - FLASH] : 0) || ({ [LH1]: 0.5, [LH1 + 1]: -0.5, [LH2]: 1, [LH2 + 1]: -0.5 }[f] ?? 0);
 function drawRibbon(f) {
   if (f < fSub) return;
-  const k = f - fSub, full = 88, w = k < 1 ? 16 : k < 2 ? 40 : k < 3 ? 64 : full, cx = 160, y0 = V5 ? RIB5 : 88, h = 15, x0 = cx - (w >> 1);
+  const k = f - fSub, full = 88, w = k < 1 ? 16 : k < 2 ? 40 : k < 3 ? 64 : full, cx = 160, y0 = 88, h = 15, x0 = cx - (w >> 1);
   if (w === full) { for (const side of [-1, 1]) { const ex = side < 0 ? x0 - 10 : x0 + w; rect(ex, y0 + 4, 10, h, M(0)); rect(ex + 1, y0 + 5, 8, h - 2, M(26));
       for (let j = 0; j < 5; j++) for (let i = 0; i < 5 - j; i++) px(side < 0 ? ex + i : ex + 9 - i, y0 + 6 + j + 3, M(0)); } }
   rect(x0, y0, w, h, M(0)); rect(x0 + 1, y0 + 1, w - 2, h - 2, M(27)); rect(x0 + 1, y0 + 1, w - 2, 1, M(12)); rect(x0 + 1, y0 + h - 2, w - 2, 1, M(26));
-  if (V5) { const str = 'PIXEL ART', n = [2, 5, 7, 9][Math.min(3, Math.floor(k / 3))], tw = textW(str, 'Press Start 2P', 8);   // v5: small English line, the logo is the name
-    if (w === full) text(str, cx - (tw >> 1), y0 + 11, 'Press Start 2P', 8, M(8), M(26), 0, n); return; }
   const str = '像素冒险', n = Math.min(4, Math.floor(k / 3) + 1), tw = textW(str, 'Fusion Pixel 12', 12, 5);
   if (w === full) text(str, cx - (tw >> 1), y0 + 12, 'Fusion Pixel 12', 12, M(8), M(26), 5, n);
 }
@@ -735,23 +686,10 @@ function drawFrame(f) {
   drawFireflies(f);
   drawHUD(f);
   drawBox(f);
-  if (V5) { if (!hidden('title')) drawLogo(f); shakeY = shakeAt(f); } else
   shakeY = drawLogo(f) || (f >= FLASH && f < FLASH + 4 ? [2, -2, 1, -1][f - FLASH] : 0) || ({ [LH1]: 0.5, [LH1 + 1]: -0.5, [LH2]: 1, [LH2 + 1]: -0.5 }[f] ?? 0);
   drawRibbon(f);
   drawPress(f);
 }
-function drawSheet() {
-  IB.fill(M(7)); let x = 4, y = 4;
-  const put = s => { if (x + s.w > W - 4) { x = 4; y += 30; } blit(s, x, y); x += s.w + 3; };
-  RUN.forEach((p, i) => put(hero('run' + i, p, 'run' + (i % 3), false)));
-  for (const k of ['up', 'down', 'land', 'skid', 'idle0', 'idle1', 'cheer', 'get0', 'get1', 'flinch0', 'flinch1']) put(hero(k, POSE[k], POSE[k].tail || 'hang', false));
-  put(hero('idle0', POSE.idle0, 'hang', true));
-  x = 4; y += 30; COIN.forEach(put); [SLIME_A, SLIME_B, SLIME_F, CHEST, CHEST_TALK, CHEST_CRACK, CHEST_CRACK2, CHEST_HALF, CHEST_OPEN, GEM, BUBBLE, BUBBLE_Q, BUBBLE_S, ...SPARK, ...PUFF].forEach(put);
-  x = 4; y += 26; blit(LOGO, x, y);
-  text('欢迎来到像素世界！', 150, y + 14, 'Fusion Pixel 12', 12, M(0), 0, 1); text('神秘宝箱 像素冒险', 150, y + 30, 'Fusion Pixel 12', 12, M(26), 0, 5);
-  text('SCORE 001100', 150, y + 44, 'Press Start 2P', 8, M(0)); text('PRESS START', 150, y + 56, 'Press Start 2P', 8, M(3));
-}
-
 // ------------------------------------------------------------------ WebGL2 CRT
 const cv = document.getElementById('c');
 const gl = cv.getContext('webgl2', { preserveDrawingBuffer: true, antialias: false, alpha: false });
@@ -759,13 +697,12 @@ const vs = `#version 300 es
 in vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
 const fs = `#version 300 es
 precision highp float;
-uniform sampler2D uTex; uniform vec2 uSrc, uOut, uShake; uniform float uOn, uOnX, uCrt, uWhite, uGain, uRoll, uWob;
+uniform sampler2D uTex; uniform vec2 uSrc, uOut, uShake; uniform float uOn, uOnX, uWhite, uGain, uRoll, uWob;
 out vec4 o;
 vec3 sharp(vec2 uv){ vec2 t = uv*uSrc; vec2 fl = floor(t); vec2 s = t - fl; float sc = uOut.y/uSrc.y; float reg = 0.5 - 0.5/sc;
   vec2 cd = s - 0.5; vec2 f = (cd - clamp(cd, -reg, reg))*sc + 0.5; return texture(uTex, (fl + f)/uSrc).rgb; }
 void main(){
   vec2 uv = gl_FragCoord.xy/uOut; uv.y = 1.0 - uv.y;
-  if (uCrt < 0.5) { o = vec4(sharp(uv), 1.0); return; }
   vec2 c = uv*2.0 - 1.0; float k = 0.03;
   vec2 cc = c*(1.0 + k*dot(c,c))/(1.0 + k);
   vec2 u = cc*0.5 + 0.5;
@@ -828,14 +765,14 @@ const CB1 = c => { const l = lum(c); return l < 45 ? 3 : l < 90 ? 4 : l < 150 ? 
 window.DEMO = { width: 1920, height: 1080, fps: 30, duration: 10, motionBlur: { samples: 1, shutter: 0.5 } };
 window.renderAt = async (t) => {
   const f = Math.min(299, Math.max(0, Math.round(t * FPS)));
-  let lut;
-  if (SHEET) { drawSheet(); lut = makeLUT(0); } else { drawFrame(f); lut = makeLUT(f); }
-  const lw = SHEET || Q.has('nolight') ? null : lightAt(f), lt = V5 && hidden('pool') ? null : lw;   // lw: light centre (night front), lt: pool
-  const wv = SHEET ? null : waveR(f);                                          // night front rolling in toward the crystal
+  drawFrame(f);
+  const lut = makeLUT(f);
+  const lw = lightAt(f), lt = lw;
+  const wv = waveR(f);                                          // night front rolling in toward the crystal
   if (wv !== null) { makeLUT(f, [4, 5, 0.5], LUT_M); makeLUT(f, [5, 5, 0], LUT_N); }
   if (lt) for (let sl = 0; sl < NSLOT; sl++) { if (sl >= 64) { LUT_L1[sl] = LUT_L2[sl] = lut[sl]; continue; }
     const c = wv !== null ? LUT_N[sl] : lut[sl]; LUT_L1[sl] = PL1[sl] >= 0 ? PL1[sl] : CB1(c); LUT_L2[sl] = PL2[sl] >= 0 ? PL2[sl] : CB2(c); }
-  const z = SHEET ? 6 : zoomAt(f), cw = 1920 / z, ch = 1080 / z, [zx, zy] = cues.zoom_center;
+  const z = zoomAt(f), cw = 1920 / z, ch = 1080 / z, [zx, zy] = cues.zoom_center;
   const ox = clamp(Math.round(zx - cw / 2), 0, W - cw), oy = clamp(Math.round(zy - ch / 2), 0, H - ch);
   for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) { const X = x + ox, Y = y + oy, i = Y * W + X; let L = lut;
     let d = -1;
@@ -846,69 +783,10 @@ window.renderAt = async (t) => {
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, cw, ch, 0, gl.RGBA, gl.UNSIGNED_BYTE, RGBA);
   gl.uniform2f(U('uSrc'), cw, ch);
   gl.viewport(0, 0, cv.width, cv.height);
-  gl.uniform1f(U('uCrt'), NOCRT ? 0 : 1);
-  const pw = (k, d) => (f < PWR.on.length && !SHEET ? PWR[k][f] : d);
+  const pw = (k, d) => (f < PWR.on.length ? PWR[k][f] : d);
   gl.uniform1f(U('uOn'), pw('on', 1)); gl.uniform1f(U('uOnX'), pw('onx', 1)); gl.uniform1f(U('uWhite'), pw('wh', 0));
   gl.uniform1f(U('uGain'), pw('gain', 1)); gl.uniform1f(U('uRoll'), pw('roll', 0)); gl.uniform1f(U('uWob'), pw('wob', 0));
-  gl.uniform2f(U('uShake'), 0, SHEET ? 0 : shakeY);
+  gl.uniform2f(U('uShake'), 0, shakeY);
   gl.drawArrays(gl.TRIANGLES, 0, 3);
   gl.finish();
 };
-window.__frame = f => { drawFrame(f); return IB; };
-
-// ------------------------------------------------------------------ reel v5: link elements in 1920x1080 output px (pure in t)
-if (V5) {
-  const KB = 0.03;                                       // CRT barrel k (shader); 1 logical px = zoomAt(f) output px (6, or 8/10/12 in the push-in)
-  const crop = f => { const z = zoomAt(f), cw = 1920 / z, ch = 1080 / z, [zx, zy] = cues.zoom_center;
-    return [clamp(Math.round(zx - cw / 2), 0, W - cw), clamp(Math.round(zy - ch / 2), 0, H - ch), cw, ch]; };
-  const toOut = (X, Y, f) => {                           // logical (continuous) -> output px: zoom crop, shake, power-on roll, barrel inverse
-    const [ox, oy, cw, ch] = crop(f); const ux = (X - ox) / cw; let uy = (Y - oy) / ch;
-    if (NOCRT) return [ux * 1920, uy * 1080];
-    uy -= shakeAt(f) / ch; if (f < PWR.roll.length && PWR.roll[f]) uy = ((uy - PWR.roll[f]) % 1 + 1) % 1;
-    const tx = ux * 2 - 1, ty = uy * 2 - 1; let cx = tx, cy = ty;
-    for (let i = 0; i < 12; i++) { const k = (1 + KB) / (1 + KB * (cx * cx + cy * cy)); cx = tx * k; cy = ty * k; }
-    return [(cx * 0.5 + 0.5) * 1920, (cy * 0.5 + 0.5) * 1080];
-  };
-  const r1 = v => Math.round(v * 10) / 10;
-  const circ = (id, X, Y, r, f, ex) => { const [x, y] = toOut(X, Y, f), [xl] = toOut(X - r, Y, f), [xr] = toOut(X + r, Y, f), [, yt] = toOut(X, Y - r, f), [, yb] = toOut(X, Y + r, f);
-    return { id, type: 'circle', x: r1(x), y: r1(y), r: r1((xr - xl + yb - yt) / 4), ...ex }; };
-  const box = (id, X0, Y0, X1, Y1, f, ex) => { const [a, b] = toOut(X0, Y0, f), [c, d] = toOut(X1, Y1, f);
-    return { id, type: 'rect', x: r1((a + c) / 2), y: r1((b + d) / 2), w: r1(c - a), h: r1(d - b), rot: 0, ...ex }; };
-  const ORB_PAL = ['#0d0b1a', '#3d4a8a', '#4f6fc0', '#5b9bea', '#8cc8f5', '#c8ecff', '#ffffff'];
-  window.linkAt = (t) => {
-    const f = Math.min(299, Math.max(0, Math.round(t * FPS))), on = f >= 5, zpx = zoomAt(f), els = [];
-    const keepIB = IB.slice(), keepSh = shakeY; linkPass = true; drawFrame(f); linkPass = false;     // scratch redraw (sun occlusion), then restore
-    // dot: the crystal ORB (11 logical px incl. outline); before the burst: a=0 at the chest mouth where it pops out (6.43)
-    const g = gemPos(f), gp = g || [CHEST_X - CAM_END + 10, GROUND - 22];
-    els.push(circ('dot', gp[0] + 0.5, gp[1] + 0.5, 5.5, f, { a: g ? 1 : 0, look: 'pixel', fill: '#8cc8f5', stroke: '#0d0b1a', sw: r1(zpx),
-      grad: ['#ffffff', '#3d4a8a'], pixel: r1(zpx), palette: ORB_PAL,
-      note: g ? (f < FCHEER ? 'crystal orb rising out of the chest' : f < FGET ? 'crystal orb lobbing into the hero\'s hands' : 'crystal orb held overhead (item get), 4-point star + light pool') : 'crystal orb not out yet (pops out of the chest at 6.43)' }));
-    // sun: pixel disc r 10 logical + dithered halo; a = visible fraction of the solid disc (mountains / clouds / zoom crop)
-    const sy = Math.round(44 + f * 0.41), sx = 236; let tot = 0, vis = 0;
-    if (sy < 140) for (let y = sy - 10; y <= sy + 10; y++) for (let x = sx - 10; x <= sx + 10; x++) if (Math.hypot(x - sx, y - sy) <= 10) { tot++; if (y >= 0 && y < H && IB[y * W + x] === E.sun) vis++; }
-    if (tot) { const [ox, oy, cw, ch] = crop(f); const inView = sx + 10 > ox && sx - 10 < ox + cw && sy + 10 > oy && sy - 10 < oy + ch;
-      els.push(circ('sun', sx + 0.5, sy + 0.5, 10.5, f, { a: on && inView ? r1(vis / tot) : 0, look: 'pixel', fill: '#' + HEX[makeLUT(f)[E.sun]], stroke: '#' + HEX[makeLUT(f)[E.sunG]], sw: 0, pixel: r1(zpx),
-        halo: r1(22 * zpx), note: 'pixel sun, solid disc + 2-level dithered halo to r 22 logical; sinks behind the ridge' })); }
-    // pool: the orb's light (palette re-light, 2-level Bayer edge)
-    const lt = lightAt(f); if (lt) els.push(circ('pool', lt[0] + 0.5, lt[1] + 0.5, lt[2], f, { a: 1, look: 'pixel', fill: '#4f6fc0', stroke: '#3d4a8a', sw: 0, r_inner: r1(lt[3] * zpx), note: 'crystal light pool (blue palette re-light, dithered rim)' }));
-    // title 「像素风」 logo block
-    if (f >= fLogo - 12) { const L = LOGO5, X = (W - L.w) >> 1, i = f - (fLogo - 12);
-      const dy = f < fLogo ? Math.round(-128 * (1 - (i / 12) ** 2)) : ({ 0: 0, 1: -5, 2: -2, 3: 0 }[Math.floor((f - fLogo) / 2)] ?? 0), y0 = Y5 + dy;
-      const a = f >= fLogo ? 1 : clamp((y0 + L.h) / L.h, 0, 1);
-      els.push(box('title', X, y0, X + L.w, y0 + L.h, f, { a: r1(a), note: '「像素风」 pixel logo (Fusion Pixel 12 x4 cells)' })); }
-    if (f >= fSub + 3) els.push(box('ribbon', 160 - 54, RIB5, 160 + 54, RIB5 + 19, f, { a: 1, note: 'red ribbon "PIXEL ART"' }));
-    // chest (18x14 sprite + outline) while on screen
-    const chx = CHEST_X - cam(f); if (chx + 20 > 0 && chx < W) { const open = f >= FLASH; els.push(box('chest', chx, open ? 133 : 135, chx + 20, 151, f, { a: on ? 1 : 0, note: open ? 'open chest' : 'treasure chest' })); }
-    // dialogue box (text block) 4.6–5.8
-    { let h = 0; if (f >= fBoxO && f < fBoxC) h = f < fBoxO + 2 ? 10 : f < fBoxO + 4 ? 20 : 30; else if (f >= fBoxC && f < fBoxC + 3) h = [20, 10, 4][f - fBoxC];
-      if (h) els.push(box('dialog', 72, 99 - (h >> 1), 248, 99 - (h >> 1) + h, f, { a: h === 30 ? 1 : 0.5, note: 'dialogue box 神秘宝箱: 欢迎来到像素世界！' })); }
-    // ground: grass top row (horizon-like line)
-    { const [x0, y0] = toOut(8, 150, f), [x1, y1] = toOut(312, 150, f), [, ym] = toOut(160, 150, f);
-      if (ym > 0 && ym < 1080) els.push({ id: 'ground', type: 'line', x0: r1(x0), y0: r1(y0), x1: r1(x1), y1: r1(y1), ym: r1(ym), w: r1(zpx), a: on ? 1 : 0, note: 'grass top of the ground (y 150 logical)' }); }
-    // CRT power-on (f0 centre dot 36x14 px -> f1-f3 scan line -> opens by f5): an IN target at the very start
-    if (!NOCRT && f === 0) els.push({ id: 'crt', type: 'circle', x: 959.5, y: 539.5, r: 7, rx: 18, ry: 7, a: 1, look: 'glow', fill: '#ffffff', stroke: '#b8c2d9', sw: 0, note: 'CRT power-on dot (squashes to the scan line at f1)' });
-    else if (!NOCRT && f <= 3) els.push({ id: 'crt', type: 'line', x0: 40, y0: 539.5, x1: 1880, y1: 539.5, w: r1(PWR.on[f] * 1080), a: 1, note: 'CRT power-on scan line (opens to full picture by f5)' });
-    IB.set(keepIB); shakeY = keepSh;
-    return els;
-  };
-}

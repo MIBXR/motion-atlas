@@ -16,6 +16,14 @@ window.PATTERN_CONFIG = {
       "audio": "sources/mg-flat-vector/audio/film.m4a",
       "from": 5.5,
       "to": 7.2
+    },
+    {
+      "caseId": "mg-cel-boil",
+      "label": "逐帧线条抖动",
+      "source": "sources/mg-cel-boil/index.html",
+      "audio": "sources/mg-cel-boil/audio/film.m4a",
+      "from": 1.05,
+      "to": 5.7
     }
   ],
   "markers": [
@@ -54,6 +62,34 @@ window.PATTERN_CONFIG = {
     {
       "t": 2.700000000000001,
       "label": "下一跳蓄力"
+    },
+    {
+      "t": 3.2333333333333334,
+      "label": "火苗舞步"
+    },
+    {
+      "t": 3.9333333333333336,
+      "label": "下蹲预备"
+    },
+    {
+      "t": 4.183333333333334,
+      "label": "火苗拉伸"
+    },
+    {
+      "t": 4.683333333333334,
+      "label": "触地压扁"
+    },
+    {
+      "t": 5.183333333333334,
+      "label": "连续小跳"
+    },
+    {
+      "t": 5.933333333333334,
+      "label": "转身跳跃"
+    },
+    {
+      "t": 6.683333333333334,
+      "label": "亮相落定"
     }
   ],
   "reduced": 0.5333333333333333

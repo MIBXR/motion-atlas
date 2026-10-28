@@ -20,6 +20,14 @@ window.PATTERN_CONFIG = {
       "audio": "sources/mg-bauhaus/audio/film.m4a",
       "from": 0,
       "to": 10
+    },
+    {
+      "caseId": "mg-line-art",
+      "label": "线条艺术",
+      "source": "sources/mg-line-art/index.html",
+      "audio": "sources/mg-line-art/audio/film.m4a",
+      "from": 0,
+      "to": 10
     }
   ],
   "markers": [
@@ -38,6 +46,10 @@ window.PATTERN_CONFIG = {
     {
       "t": 7.5,
       "label": "几何包豪斯"
+    },
+    {
+      "t": 17.5,
+      "label": "线条艺术"
     }
   ],
   "reduced": 1.2

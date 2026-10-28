@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "cel-line-boil",
+  "pattern": {
+    "id": "cel-line-boil",
+    "order": 52,
+    "title": "逐张重画：线条沸腾与换纸",
+    "types": [
+      "texture",
+      "rhythm"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。",
+    "mechanism": "按曝光表一拍一、二、三取整绘制时间，循环噪声线稿变体让静止形体持续轻抖；同一绘制编号同时换纸齿采样区与尘点板。",
+    "trigger": "时间进入下一张曝光画格时。",
+    "effect": "线稿几何、纸齿位置与尘点板随绘制编号一起切换。",
+    "timing": [
+      {
+        "name": "曝光表",
+        "value": "SCHED=[[0,8,2],[8,24,1],[24,48,2],[48,60,1],[60,108,2],[108,120,3],[120,132,2],[132,168,1],[168,224,2],[224,230,1],[230,240,3]]；24fps。"
+      },
+      {
+        "name": "线稿变体",
+        "value": "bv=(D)=>(D.step===3?D.id%3:D.id%4)；boil(pts,seed,amp=2.4,scale=70)；z=seed*2.371+0.5。"
+      },
+      {
+        "name": "纸齿换位",
+        "value": "ox=floor(hs(v,51)*470)；oy=floor(hs(v,52)*310)；globalCompositeOperation=multiply；globalAlpha=0.5。"
+      },
+      {
+        "name": "尘点轮换",
+        "value": "IMG.dust[v%4]；globalAlpha=0.22；按v%2、v%3翻转。"
+      },
+      {
+        "name": "重放时长",
+        "value": "原片0–10秒，巧思总时长10秒。"
+      }
+    ],
+    "useCases": [
+      "逐帧手绘线稿的停留质感",
+      "纸纹与线稿共用曝光节奏"
+    ],
+    "avoid": [
+      "竖屏重排",
+      "片段边界无缝循环"
+    ],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览帧。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "本巧思按所列原片区间顺序重放。"
+    },
+    "prompt": "复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
+    "demo": "demos/patterns/cel-line-boil/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "mg-cel-boil"
+      }
+    ],
+    "previewAt": 9.75,
+    "markers": [
+      {
+        "t": 0,
+        "label": "一拍二"
+      },
+      {
+        "t": 0.3333333333333333,
+        "label": "一拍一"
+      },
+      {
+        "t": 1,
+        "label": "一拍二"
+      },
+      {
+        "t": 2,
+        "label": "快动作"
+      },
+      {
+        "t": 2.5,
+        "label": "舞段重画"
+      },
+      {
+        "t": 4.5,
+        "label": "一拍三"
+      },
+      {
+        "t": 5,
+        "label": "一拍二"
+      },
+      {
+        "t": 5.5,
+        "label": "旋转加密"
+      },
+      {
+        "t": 7,
+        "label": "烟火重画"
+      },
+      {
+        "t": 9.333333333333334,
+        "label": "翻页加密"
+      },
+      {
+        "t": 9.583333333333334,
+        "label": "结尾重画"
+      }
+    ],
+    "sound": {
+      "description": "成品音轨按所选原片区间与画面同步播放，声音默认关闭。"
+    },
+    "tokens": {
+      "palette": [
+        "#1c1613",
+        "#e5402b",
+        "#ffc425",
+        "#f4e9d0",
+        "#fff6e2",
+        "#d9573f"
+      ],
+      "type": "LXGW Marker Gothic 400；Caveat 500、600、700；Long Cang 400；手绘中文与英文标题。"
+    },
+    "migration": [
+      {
+        "field": "config.js → segments",
+        "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
+      },
+      {
+        "field": "config.js → markers / reduced",
+        "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
+      }
+    ],
+    "preview": "previews/patterns/cel-line-boil.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "mg-cel-boil",
+      "bundle": "agent/cases/mg-cel-boil.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 逐张重画：线条沸腾与换纸\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。\n\n## 参数\n\n- **曝光表**：SCHED=[[0,8,2],[8,24,1],[24,48,2],[48,60,1],[60,108,2],[108,120,3],[120,132,2],[132,168,1],[168,224,2],[224,230,1],[230,240,3]]；24fps。\n- **线稿变体**：bv=(D)=>(D.step===3?D.id%3:D.id%4)；boil(pts,seed,amp=2.4,scale=70)；z=seed*2.371+0.5。\n- **纸齿换位**：ox=floor(hs(v,51)*470)；oy=floor(hs(v,52)*310)；globalCompositeOperation=multiply；globalAlpha=0.5。\n- **尘点轮换**：IMG.dust[v%4]；globalAlpha=0.22；按v%2、v%3翻转。\n- **重放时长**：原片0–10秒，巧思总时长10秒。\n\n## 迁移\n\n- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/cel-line-boil/index.html) · [在库中查看](../../patterns.html#pattern/cel-line-boil)\n"
+  },
+  "entrypoint": "demos/patterns/cel-line-boil/index.html",
+  "files": [
+    {
+      "path": "demos/patterns/cel-line-boil/LICENSES.md",
+      "bytes": 129
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/config.js",
+      "bytes": 1025
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/index.html",
+      "bytes": 722
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/motion-kit.js",
+      "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/replay.js",
+      "bytes": 6633
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/LICENSES.md",
+      "bytes": 2996
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/assets/dust_ink_01.png",
+      "bytes": 28357
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/assets/dust_ink_02.png",
+      "bytes": 28707
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/assets/dust_ink_03.png",
+      "bytes": 25600
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/assets/dust_ink_04.png",
+      "bytes": 27879
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/assets/paper_base.jpg",
+      "bytes": 483747
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/assets/paper_tooth.png",
+      "bytes": 1791819
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/audio/film.m4a",
+      "bytes": 415190
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/cues.json",
+      "bytes": 2344
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fidelity.md",
+      "bytes": 4467
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fonts/Caveat-OFL.txt",
+      "bytes": 4385
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fonts/Caveat[wght].ttf",
+      "bytes": 403648
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fonts/LXGWMarkerGothic-OFL.txt",
+      "bytes": 4406
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fonts/LXGWMarkerGothic-Regular.ttf",
+      "bytes": 3190368
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fonts/LongCang-Regular.ttf",
+      "bytes": 5162508
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fonts/Longcang-OFL.txt",
+      "bytes": 4390
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/fonts/fonts.css",
+      "bytes": 509
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/index.html",
+      "bytes": 1440
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/js/engine.js",
+      "bytes": 14104
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/js/scene.js",
+      "bytes": 103098
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/motion-adapter.js",
+      "bytes": 5902
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/motion-kit.js",
+      "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/source/audio.py",
+      "bytes": 24697
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/source/gen_dust.py",
+      "bytes": 720
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/source/gen_paper.py",
+      "bytes": 2403
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/source/tools/hitmax.py",
+      "bytes": 4260
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/vendor/opentype.js@2.0.0/LICENSE",
+      "bytes": 1085
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/vendor/opentype.js@2.0.0/dist/opentype.mjs",
+      "bytes": 494695
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/vendor/simplex-noise@4.0.3/LICENSE",
+      "bytes": 1069
+    },
+    {
+      "path": "demos/patterns/cel-line-boil/sources/mg-cel-boil/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
+      "bytes": 18735
+    },
+    {
+      "path": "previews/patterns/cel-line-boil.jpg",
+      "bytes": 139961
+    }
+  ]
+}

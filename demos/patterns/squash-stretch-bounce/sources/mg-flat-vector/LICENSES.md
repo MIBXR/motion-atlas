@@ -21,7 +21,7 @@
 
 ## 配乐
 
-配乐由原作 `audio.py` 使用 [VCSL 乐器采样](https://github.com/sgossner/VCSL)（CC0）合成。`audio/film.m4a` 从固定提交的 `videos/01-flat-vector.mp4` 无损抽取 AAC 音轨，保留原片混音。
+配乐由原作 `source/audio.py` 使用 [VCSL 乐器采样](https://github.com/sgossner/VCSL)（CC0）合成。`audio/film.m4a` 从固定提交的 `videos/01-flat-vector.mp4` 无损抽取 AAC 音轨，保留原片混音。
 
 ```bash
 ffmpeg -i ../../sources/mg-styles-15/videos/01-flat-vector.mp4 -vn -c:a copy demos/cases/mg-flat-vector/audio/film.m4a

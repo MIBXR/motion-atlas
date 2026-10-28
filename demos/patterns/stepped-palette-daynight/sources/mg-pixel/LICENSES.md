@@ -21,7 +21,7 @@
 
 ## 配乐
 
-`audio/film.m4a` 从原片 `videos/20-pixel.mp4` 无损抽取 AAC 音轨，未重新合成或转码。原作 `audio.py` 使用其 `mgaudio` 工具包合成芯片音色配乐与 8-bit 音效，按原作 MIT 许可保留。参考项目的 VCSL 乐器采样库按 CC0 许可；本片的源码资料列出采样数量为零。
+`audio/film.m4a` 从原片 `videos/20-pixel.mp4` 无损抽取 AAC 音轨，未重新合成或转码。原作配乐脚本 `source/audio.py` 使用其 `mgaudio` 工具包合成芯片音色配乐与 8-bit 音效，按原作 MIT 许可保留。参考项目的 VCSL 乐器采样库按 CC0 许可；本片的源码资料列出采样数量为零。
 
 ## 素材与依赖
 
