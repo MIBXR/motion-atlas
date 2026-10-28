@@ -402,7 +402,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
-      "bytes": 107762
+      "bytes": 107761
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/battery.png",
@@ -418,7 +418,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/meta.json",
-      "bytes": 384
+      "bytes": 351
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/pcb.png",
@@ -446,11 +446,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-paperclip/film/cues.json",
-      "bytes": 3360
+      "bytes": 3076
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
@@ -502,11 +502,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
-      "bytes": 10203
+      "bytes": 10067
     },
     {
       "path": "demos/cases/mg-paperclip/source/tools/stickers.py",
-      "bytes": 4551
+      "bytes": 4468
     },
     {
       "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/LICENSE",

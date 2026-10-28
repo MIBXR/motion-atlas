@@ -132,11 +132,11 @@
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-morph/film/cues.json",
-      "bytes": 1671
+      "bytes": 1541
     },
     {
       "path": "demos/cases/mg-morph/film/glyphs.json",
@@ -168,7 +168,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4456
+      "bytes": 4363
     },
     {
       "path": "demos/cases/mg-morph/fonts/Outfit-OFL.txt",
@@ -196,11 +196,11 @@
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
-      "bytes": 8783
+      "bytes": 8665
     },
     {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
-      "bytes": 2435
+      "bytes": 2387
     },
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
@@ -208,7 +208,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
-      "bytes": 107762
+      "bytes": 107761
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/battery.png",
@@ -224,7 +224,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/meta.json",
-      "bytes": 384
+      "bytes": 351
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/pcb.png",
@@ -252,11 +252,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-paperclip/film/cues.json",
-      "bytes": 3360
+      "bytes": 3076
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
@@ -308,11 +308,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
-      "bytes": 10203
+      "bytes": 10067
     },
     {
       "path": "demos/cases/mg-paperclip/source/tools/stickers.py",
-      "bytes": 4551
+      "bytes": 4468
     },
     {
       "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/LICENSE",

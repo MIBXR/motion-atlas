@@ -271,11 +271,11 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/cues.json",
-      "bytes": 947
+      "bytes": 881
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/main.js",
@@ -335,7 +335,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/source/audio.py",
-      "bytes": 10716
+      "bytes": 10545
     },
     {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
@@ -499,11 +499,11 @@
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-morph/film/cues.json",
-      "bytes": 1671
+      "bytes": 1541
     },
     {
       "path": "demos/cases/mg-morph/film/glyphs.json",
@@ -535,7 +535,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4456
+      "bytes": 4363
     },
     {
       "path": "demos/cases/mg-morph/fonts/Outfit-OFL.txt",
@@ -563,11 +563,11 @@
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
-      "bytes": 8783
+      "bytes": 8665
     },
     {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
-      "bytes": 2435
+      "bytes": 2387
     },
     {
       "path": "demos/patterns/film-grain/LICENSES.md",

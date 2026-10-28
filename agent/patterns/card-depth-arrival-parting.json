@@ -116,11 +116,11 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/cues.json",
-      "bytes": 947
+      "bytes": 881
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/main.js",
@@ -180,7 +180,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/source/audio.py",
-      "bytes": 10716
+      "bytes": 10545
     },
     {
       "path": "demos/patterns/card-depth-arrival-parting/index.html",

@@ -115,11 +115,11 @@
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-morph/film/cues.json",
-      "bytes": 1671
+      "bytes": 1541
     },
     {
       "path": "demos/cases/mg-morph/film/glyphs.json",
@@ -151,7 +151,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4456
+      "bytes": 4363
     },
     {
       "path": "demos/cases/mg-morph/fonts/Outfit-OFL.txt",
@@ -179,11 +179,11 @@
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
-      "bytes": 8783
+      "bytes": 8665
     },
     {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
-      "bytes": 2435
+      "bytes": 2387
     },
     {
       "path": "demos/patterns/morph-primitive-bridge/index.html",
