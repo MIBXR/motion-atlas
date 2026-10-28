@@ -328,7 +328,7 @@
   "files": [
     {
       "path": "demos/cases/mg-line-art/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-line-art/LICENSES.md",
@@ -340,7 +340,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/cues.json",
-      "bytes": 3545
+      "bytes": 3214
     },
     {
       "path": "demos/cases/mg-line-art/fidelity.md",
@@ -388,7 +388,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/source/audio.py",
-      "bytes": 10115
+      "bytes": 9978
     },
     {
       "path": "previews/cases/mg-line-art.jpg",

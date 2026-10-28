@@ -492,7 +492,7 @@
   "files": [
     {
       "path": "demos/cases/mg-isometric/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-isometric/LICENSES.md",
@@ -508,7 +508,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/cues.json",
-      "bytes": 1348
+      "bytes": 1240
     },
     {
       "path": "demos/cases/mg-isometric/fidelity.md",
@@ -552,7 +552,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/js/anim.js",
-      "bytes": 4035
+      "bytes": 3953
     },
     {
       "path": "demos/cases/mg-isometric/js/main.js",
@@ -560,7 +560,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/js/render.js",
-      "bytes": 9407
+      "bytes": 9205
     },
     {
       "path": "demos/cases/mg-isometric/js/title.js",
@@ -568,11 +568,11 @@
     },
     {
       "path": "demos/cases/mg-isometric/js/ui.js",
-      "bytes": 9688
+      "bytes": 9547
     },
     {
       "path": "demos/cases/mg-isometric/js/world.js",
-      "bytes": 81933
+      "bytes": 80534
     },
     {
       "path": "demos/cases/mg-isometric/motion-adapter.js",
@@ -584,7 +584,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/source/audio.py",
-      "bytes": 14502
+      "bytes": 14263
     },
     {
       "path": "demos/cases/mg-isometric/vendor/opentype.js@2.0.0/LICENSE",
