@@ -6,7 +6,7 @@ frames/
 *.webm
 
 node_modules/
-dist/
+/dist/
 .DS_Store
 Thumbs.db
 *.log

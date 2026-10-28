@@ -163,7 +163,7 @@
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/LICENSES.md",
@@ -179,7 +179,7 @@
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/cues.json",
-      "bytes": 1348
+      "bytes": 1240
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/fidelity.md",
@@ -223,7 +223,7 @@
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/js/anim.js",
-      "bytes": 4035
+      "bytes": 3953
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/js/main.js",
@@ -231,7 +231,7 @@
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/js/render.js",
-      "bytes": 9407
+      "bytes": 9205
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/js/title.js",
@@ -239,11 +239,11 @@
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/js/ui.js",
-      "bytes": 9688
+      "bytes": 9547
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/js/world.js",
-      "bytes": 81933
+      "bytes": 80534
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/motion-adapter.js",
@@ -255,7 +255,7 @@
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/source/audio.py",
-      "bytes": 14502
+      "bytes": 14263
     },
     {
       "path": "demos/patterns/core-ignition-wave/sources/mg-isometric/vendor/opentype.js@2.0.0/LICENSE",

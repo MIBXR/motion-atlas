@@ -243,7 +243,7 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/LICENSES.md",
@@ -279,7 +279,7 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/cues.json",
-      "bytes": 2344
+      "bytes": 2188
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/fidelity.md",
@@ -319,7 +319,7 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/js/engine.js",
-      "bytes": 14104
+      "bytes": 13778
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/js/scene.js",
@@ -335,19 +335,19 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/source/audio.py",
-      "bytes": 24697
+      "bytes": 24290
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/source/gen_dust.py",
-      "bytes": 720
+      "bytes": 707
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/source/gen_paper.py",
-      "bytes": 2403
+      "bytes": 2360
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/source/tools/hitmax.py",
-      "bytes": 4260
+      "bytes": 4168
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-cel-boil/vendor/opentype.js@2.0.0/LICENSE",
@@ -423,7 +423,7 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-line-art/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-line-art/LICENSES.md",
@@ -435,7 +435,7 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-line-art/cues.json",
-      "bytes": 3545
+      "bytes": 3214
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-line-art/fidelity.md",
@@ -483,7 +483,7 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-line-art/source/audio.py",
-      "bytes": 10115
+      "bytes": 9978
     },
     {
       "path": "demos/patterns/shared-cue-sheet/sources/mg-pixel/LICENSE",
