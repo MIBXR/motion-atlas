@@ -412,7 +412,7 @@
       "how": "调整跳跃、金币、对话、开箱和标题的时刻，画面与配乐同步使用该时刻表。"
     },
     {
-      "field": "audio.py 与 audio/film.m4a",
+      "field": "source/audio.py 与 audio/film.m4a",
       "how": "为新作品合成芯片配乐与音效；本案例播放从原片抽取的音轨。"
     },
     {

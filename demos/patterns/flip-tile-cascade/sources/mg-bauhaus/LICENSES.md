@@ -18,6 +18,6 @@
 
 ## 配乐
 
-配乐由原作 `audio.py` 使用 VCSL 乐器采样（CC0）合成，`audio/film.m4a` 从原片 `videos/09-bauhaus.mp4` 无损抽取 AAC 音轨。原片及其自制音频采用上述 MIT 许可。VCSL 官方来源：[Versilian Community Sample Library](https://github.com/sgossner/VCSL)。
+配乐由原作 `source/audio.py` 使用 VCSL 乐器采样（CC0）合成，`audio/film.m4a` 从原片 `videos/09-bauhaus.mp4` 无损抽取 AAC 音轨。原片及其自制音频采用上述 MIT 许可。VCSL 官方来源：[Versilian Community Sample Library](https://github.com/sgossner/VCSL)。
 
 本案例没有 vendor 包。

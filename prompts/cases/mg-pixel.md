@@ -98,7 +98,7 @@ realised; the tech route; check numbers (duration, resolution, fps, loudness, tr
 
 - `film.js 的像素数组与色板`：替换角色、道具、片名与配色，保持整像素绘制、阶梯动作和有限色板。
 - `cues.json`：调整跳跃、金币、对话、开箱和标题的时刻，画面与配乐同步使用该时刻表。
-- `audio.py 与 audio/film.m4a`：为新作品合成芯片配乐与音效；本案例播放从原片抽取的音轨。
+- `source/audio.py 与 audio/film.m4a`：为新作品合成芯片配乐与音效；本案例播放从原片抽取的音轨。
 - `motion-adapter.js`：连接 Motion Atlas 时间轴、横屏缩放、中文控制条与音轨同步。
 
 [打开 Demo](../../demos/cases/mg-pixel/index.html) · [在库中查看](../../cases.html#case/mg-pixel)

@@ -2,11 +2,11 @@
 
 ## 实现 Prompt
 
-路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。复用地图巡礼的 cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt 与对应 CSS。三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。片段：kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65；时长 10.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。
+路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。复用地图巡礼的 cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt 与对应 CSS。三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。片段：kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65；时长 11.835s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。前10.6秒保留原有地图巡礼段，之后追加等距城市原片5.835–7.07秒的数据弧线段，追加1.235秒。数据弧线采用QuadraticBezierCurve3和TubeGeometry(curve,72,.021,8,false)，uT0=PULSE_T+.05+k*.035，uDur=.45，uSpeed=1.3+A.hash(k*7)*.6；到达后的屋顶环按ph=(u*.9)%1放大1+ph*2.2并淡出，沿用同区间原片音轨，声音默认关闭。
 
 ## 参数
 
-- **时长**：10.6s
+- **时长**：11.835s
 - **声音 voice**：sonar、whoosh、clack、blip、chime、tick
 
 ## 动效 Token
@@ -15,7 +15,7 @@
 - **描画**：0.6s
 - **第二段**：4s
 - **步行**：7.2s
-- **时长**：10.6s
+- **时长**：11.835s
 
 ## 迁移
 

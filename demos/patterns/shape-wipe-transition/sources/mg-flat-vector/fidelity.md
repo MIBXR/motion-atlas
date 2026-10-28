@@ -1,50 +1,34 @@
 # 扁平矢量接入与保真说明
 
-保留固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 的原作文件，仅改写资源路径并加载独立适配层，画面由原作 `window.renderAt(t)` 绘制。
+复刻以公开默认成片为准，复用固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 的画面、字体与音轨，保留默认画面数值逻辑并接入 Motion Atlas。
 
-## 原作文件
+## 相对原作的删改
 
-原目录 `demos/01-flat-vector/` 已提交的全部文件为 `index.html`、`audio.py`、`cues.json`，均按原相对路径复制。原作 MIT 许可见 [LICENSE](LICENSE)，字体与音轨来源见 [LICENSES.md](LICENSES.md)。
-
-## 路径改写与入口
-
-| 文件 | 原文 | 新文 |
+| 文件 | 删改内容 | 原因 |
 | --- | --- | --- |
-| `index.html` | `href="/assets/fonts/fonts.css"` | `href="fonts/fonts.css"` |
-| `index.html` | `fetch('/demos/01-flat-vector/cues.json')` | `fetch('./cues.json')` |
-| `fonts/fonts.css`，Resource Han Rounded 700 声明 | `url('/assets/fonts/cjk/resourcehanrounded/ResourceHanRoundedCN-Bold.ttf')` | `url('ResourceHanRoundedCN-Bold.ttf')` |
-| `fonts/fonts.css`，Fredoka 声明 | `url('/assets/fonts/latin/fredoka/Fredoka-VF.ttf')` | `url('Fredoka[wdth,wght].ttf')` |
+| `index.html` | 移除 `V5`、`NOLINK`、另一剪辑的中文标题、预载与字幕分支；混合表达式保留默认值，保留 popwise 字标、中文标语和全部默认画面数值。 | 另一版剪辑分支 |
+| `index.html` | 移除 `window.linkAt`、元素位置导出、`hideLinks` 及其独占辅助函数和数据。 | 开发工具 |
+| `index.html` | `/assets/fonts/fonts.css` 改为 `fonts/fonts.css`；`/demos/01-flat-vector/cues.json` 改为 `./cues.json`；加载独立适配层。 | 路径改写 |
+| `fonts/fonts.css` | 只声明默认片使用的 Resource Han Rounded 700 与 Fredoka；字体 URL 指向 `ResourceHanRoundedCN-Bold.ttf` 和官方完整文件 `Fredoka[wdth,wght].ttf`。 | 路径改写 |
+| `audio.py` → `source/audio.py` | 保存生成原作配乐的脚本，内容字节和内部路径保持不变。 | 移至 source |
 
-`fonts/fonts.css` 保留原作默认片用到的 Resource Han Rounded 700 与 Fredoka 两个 `@font-face` 块，仅改写 URL。完整 Fredoka 可变字体保留官方文件名 `Fredoka[wdth,wght].ttf`。
-
-`index.html` 在原作脚本之后、`</body>` 之前新增：
-
-```html
-<script src="motion-kit.js"></script>
-<script type="module" src="motion-adapter.js"></script>
-```
+原作、字体、纹理与音轨的来源和许可见 [LICENSES.md](LICENSES.md)。
 
 ## 适配层
 
-`motion-adapter.js` 等待原作 `window.__ready === true` 后接入。尺寸、帧率与时长取 `window.DEMO`：1920×1080、30fps、10 秒。`MotionKit.timeline` 的 `render(t)` 返回原作 `window.renderAt(t)` 的 Promise，并使用 `MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 接入本库。
+`motion-adapter.js` 等待原作就绪后，以 `MotionKit.timeline` 调用原作 `window.renderAt(t)`，并用 `MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 接入本库。尺寸为 1920×1080、30fps、10 秒；原 SVG 保持内部像素，通过 `MotionKit.stage` 等比居中，四周黑边，仅提供横屏。
 
-`MotionKit.stage` 固定原 SVG 的内部像素尺寸，仅通过根节点的 `translate` 与等比 `scale` 居中适配窗口，四周黑边；SVG 背景保留原作群青色。只提供 `landscape` 画幅。
+节点读取 `cues.json` 的画面帧与音乐阶段，控制条使用中文，支持播放、暂停、重播、拖动和倍速。声音默认关闭，开启后播放 `audio/film.m4a`，与跳转、暂停和倍速同步；音轨以 Audio Blob 加载。
 
-markers 与条目节拍取 `cues.json` 的画面帧节点及 `build`、`drop`、`outro` 阶段，label 译成不超过八字的中文。`bldStagger` 与 `bldCount` 分别是错峰帧数与建筑数量，作为原作参数保留。
+`?embed`、`?render` 隐藏控制条；`?render` 关闭自动播放和声音；`?t=秒` 定位。减少动态时显示 9.5 秒并暂停；`previewAt: 9.5` 时字标、中英文标语与汇合图形完整。
 
-控制条支持播放、暂停、重播、拖动、中文倍速选择与声音开关。声音默认关闭，开启后播放 `audio/film.m4a`；seek、暂停与变速同步音轨，播放时校正超过 0.1 秒的偏移。浏览器阻止声音时回报待启用状态，在页面内点击或按键后继续。
+## 已接受差异
 
-音轨原始字节加载为 `audio/mp4` Blob，等待媒体元数据就绪后启动时间轴，以支持静态服务下的音轨 seek。
+原片中圆点高速飞行与穿窗推镜处有沿速度方向的半透明拖尾：原作 `index.html` 声明 `motionBlur: { samples: 1, shutter: 0.5 }`，`harness/render.mjs` 支持用命令行 `--mb`、`--shutter` 覆盖并按子帧平均出片，拖尾来自这一渲染层。页面实时播放与 `?render` 单帧直接调用原 `renderAt(t)`，没有这层拖尾。
 
-`?embed` 与 `?render` 隐藏控制条，`?render` 关闭自动播放与音轨；`?t=秒` 指定时刻。减少动态偏好下默认显示 9.5 秒并暂停，运行中启用该偏好会暂停。
+## 与原片对照结果
 
-## 预览时刻
-
-`previewAt: 9.5`。此时 popwise、中文标语和英文标语均已入场，图形完成汇合，落版构图完整。
-
-## 与原片对照
-
-参考 MP4 用 ffmpeg 取帧，本页用 `scripts/shot.mjs` 在 1920×1080 定位截图，左右对照图保存在本批工作区 `compare/`。
+参考 MP4 用 ffmpeg 取帧，本页用 `scripts/shot.mjs` 在 1920×1080 定位截图，左右对照图保存在第一批工作区 `compare/`。
 
 | 时刻 | 逐张结论 |
 | --- | --- |

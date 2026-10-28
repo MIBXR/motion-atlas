@@ -152,15 +152,11 @@
     },
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/LICENSES.md",
-      "bytes": 1724
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/audio.py",
-      "bytes": 7718
+      "bytes": 1731
     },
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/audio/film.m4a",
@@ -172,7 +168,7 @@
     },
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fidelity.md",
-      "bytes": 3867
+      "bytes": 3386
     },
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/Fredoka-OFL.txt",
@@ -196,7 +192,7 @@
     },
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/index.html",
-      "bytes": 76805
+      "bytes": 63994
     },
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/motion-adapter.js",
@@ -205,6 +201,10 @@
     {
       "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/motion-kit.js",
       "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/source/audio.py",
+      "bytes": 7610
     },
     {
       "path": "previews/patterns/shape-wipe-transition.jpg",

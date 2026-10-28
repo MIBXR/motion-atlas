@@ -138,15 +138,11 @@
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/LICENSES.md",
-      "bytes": 1683
-    },
-    {
-      "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/audio.py",
-      "bytes": 11258
+      "bytes": 1702
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/audio/film.m4a",
@@ -154,15 +150,15 @@
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/cues.json",
-      "bytes": 929
+      "bytes": 888
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/fidelity.md",
-      "bytes": 3785
+      "bytes": 3563
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/film.js",
-      "bytes": 71873
+      "bytes": 58393
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/fonts/FusionPixel-OFL.txt",
@@ -198,7 +194,7 @@
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/index.html",
-      "bytes": 918
+      "bytes": 646
     },
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/motion-adapter.js",
@@ -207,6 +203,10 @@
     {
       "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/motion-kit.js",
       "bytes": 107961
+    },
+    {
+      "path": "demos/patterns/crt-boot-shell/sources/mg-pixel/source/audio.py",
+      "bytes": 11101
     },
     {
       "path": "previews/patterns/crt-boot-shell.jpg",

@@ -23,7 +23,7 @@
 ## 收录原则
 
 - **案例驱动**：不把 skill 或教程的文字直接搬进库。找出其中真实的 Demo 或作品，忠实复刻后收录；没有现成作品、但能实践的，自己做一个作为真实案例收录。
-- **忠实复刻**：直接复用原作的代码、美术、字体、音频、品牌内容与文案，不简化，不臆造替代场景、插画或配色。附原作许可证，写清出处与署名。验收时在相同视口下与原作并排截图对照。
+- **忠实复刻**：目标是成品与原作一致，不是逐行照搬原代码。复用原作的代码、美术、字体、音频、品牌内容与文案，不简化、不臆造；与成品无关的历史包袱（另一版剪辑的分支、开发调试工具、过程中间文件）不带进库。原作缺数据或代码与成品不符时，以公开成品为准尽量补全；确实无法复刻的部分可以降低标准，在 `fidelity.md` 写明。附原作许可证，写清出处与署名。验收时在相同视口下与原作并排截图对照。
 - **语言**：网页上的说明文字一律用中文。保留原语言的只有被复刻作品本身的原文，以及作为素材收录的 skill、prompt 原文。
 - **声音**：新做的作品不用 AI 合成声音。用一条连续的公开音乐打底（如 Incompetech / Kevin MacLeod，CC BY 4.0），在 3–4 个关键节点放短音效（如 Kenney.nl，CC0），音量压在音乐之下。复刻作品沿用原作声音。
 
@@ -34,7 +34,7 @@
    - 内容（文案、配色、时刻表）全部放进 `config.js`。
    - 画面写成 `render(t)`，用 `MotionKit.timeline` 包装并 `MotionKit.expose()`；`<script src="motion-kit.js">` 引用同目录副本，条目里设 `"kit": true`，构建会自动同步。
    - 遵守 `?embed`、`?render`、`?t=` 参数；画面文字按设计需要决定字号；图标用 SVG；支持减少动态；声音默认关闭。
-   - 复刻已有作品时，保留原作的文件结构与代码，只改写资源路径，再加一层适配脚本接上 `MotionKit` 的时间轴、参数与控制条。路径改写与适配写进 `fidelity.md`，原作、字体、库与音频的出处和许可写进 `LICENSES.md`。
+   - 复刻已有作品时，保留原作中成品用到的文件结构与代码，改写资源路径，再加一层适配脚本接上 `MotionKit` 的时间轴、参数与控制条；记录制作过程的脚本（配乐、素材生成）放在 `source/`。相对原作删改了什么、为什么写进 `fidelity.md`，原作、字体、库与音频的出处和许可写进 `LICENSES.md`。
 3. **条目**：写 `entries/cases/<id>.json`。必填：`id`、`title`、`carriers`、`summary`、`prompt`、`demo`、`composition`。建议填写：`rhythm.beats`、`energy`、`layers`、`tokens`、`interaction`、`videoPrompt`、`negativePrompt`、`migration`、`patternIds`、`previewAt`。
 4. **巧思**：把案例里每个“触发 → 结果”的技巧写成 `entries/patterns/<pid>.json` 与 `demos/patterns/<pid>/index.html`（顶部 `CONFIG` 块），在巧思的`sources`里只写`{ caseId }`，并把 `<pid>` 加进案例的 `patternIds`。
 5. **构建与预览图**：

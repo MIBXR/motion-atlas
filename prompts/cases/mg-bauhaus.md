@@ -99,7 +99,7 @@ realised; the tech route; check numbers (duration, resolution, fps, loudness, tr
 
 - `cues.json`：调整拍点、几何落位与四次级联波时，同步使用同一节点表组织画面与声音。
 - `film.js`：几何坐标、网格模数、色版、海报文字与印刷处理在此定义。
-- `audio.py`：读取 cues.json 合成极简点击电子节拍与落点音效。
+- `source/audio.py`：读取 cues.json 合成极简点击电子节拍与落点音效。
 - `motion-adapter.js`：接入本库的时间轴、中文控制条、固定横屏缩放与原片音轨同步。
 
 [打开 Demo](../../demos/cases/mg-bauhaus/index.html) · [在库中查看](../../cases.html#case/mg-bauhaus)
