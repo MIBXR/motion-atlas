@@ -15,7 +15,7 @@
 
 ## 迁移
 
-- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。
-- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。
+- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。
+- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。
 
 [打开 Demo](../../demos/patterns/staged-extrusion-build/index.html) · [在库中查看](../../patterns.html#pattern/staged-extrusion-build)

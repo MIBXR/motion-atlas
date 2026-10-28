@@ -2,7 +2,7 @@
 
 ## 实现 Prompt
 
-复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放原片0–1.45秒，全长1.45秒。保留后撤蓄力、f9扫掠四边形拖影和f10三重中间姿态，火柴头拖长back=L*1.1、r=27，残像u=0.25+k*0.25。保留点火闪光与STICK=262的翻转抛起，按RT数组减速旋转，落地以0.14、-0.07、0.025弧度衰减摆动。沿用原画面、字体与成品音轨，保持1920×1080、24fps，画面和音轨共用同一时刻映射，声音默认关闭。
+复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放原片0–1.45秒，全长1.45秒。保留后撤蓄力、f9扫掠四边形拖影和f10三重中间姿态，火柴头拖长back=L*1.1、r=27，残像u=0.25+k*0.25。保留点火闪光与STICK=262的翻转抛起，按RT数组减速旋转，落地以0.14、-0.07、0.025弧度衰减摆动。沿用原画面、字体与成品音轨，保持1920×1080、24fps，画面和音轨共用同一时刻映射，声音默认关闭。
 
 ## 参数
 
@@ -15,7 +15,7 @@
 
 ## 迁移
 
-- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。
-- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。
+- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。
+- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。
 
 [打开 Demo](../../demos/patterns/smear-frame-strike/index.html) · [在库中查看](../../patterns.html#pattern/smear-frame-strike)

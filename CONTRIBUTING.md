@@ -30,13 +30,23 @@
 ## 新增一个案例
 
 1. **条目结构**：按[条目结构](docs/methodology.md)整理节拍、分层、参数、Prompt和Demo。
-2. **Demo**：在 `demos/cases/<id>/` 建 `index.html`、`style.css`、`script.js`、`config.js`。
-   - 内容（文案、配色、时刻表）全部放进 `config.js`。
-   - 画面写成 `render(t)`，用 `MotionKit.timeline` 包装并 `MotionKit.expose()`；`<script src="motion-kit.js">` 引用同目录副本，条目里设 `"kit": true`，构建会自动同步。
-   - 遵守 `?embed`、`?render`、`?t=` 参数；画面文字按设计需要决定字号；图标用 SVG；支持减少动态；声音默认关闭。
-   - 复刻已有作品时，保留原作中成品用到的文件结构与代码，改写资源路径，再加一层适配脚本接上 `MotionKit` 的时间轴、参数与控制条；记录制作过程的脚本（配乐、素材生成）放在 `source/`。相对原作删改了什么、为什么写进 `fidelity.md`，原作、字体、库与音频的出处和许可写进 `LICENSES.md`。
+2. **Demo**：按统一格式建在 `demos/cases/<id>/`，只建立用到的目录。
+   ```text
+   demos/cases/<id>/
+   ├── index.html
+   ├── film/           作品代码、样式与作品许可原文 LICENSE
+   ├── assets/         图片、贴图、数据、模型
+   ├── fonts/          完整字体、许可原文与 fonts.css
+   ├── audio/          音轨、音效与音乐许可原文
+   ├── vendor/<库>@<版本>/  第三方库与各自 LICENSE
+   ├── motion-kit.js   构建同步副本
+   ├── source/         制作过程与上游源码，运行时不读
+   ├── fidelity.md     复刻作品的删改与已接受差异
+   └── LICENSES.md     出处与许可索引
+   ```
+   接入二选一：画面只取决于时刻 t 的作品交出 `renderAt(t)` 与时长、尺寸，调用 `MotionKit.mountFilm`；有自己时钟、状态或交互的作品自己接 MotionKit 并提供 `window.__motion`。复刻作品：成品用到的代码放 `film/`，制作过程放 `source/`，删改记录写 `fidelity.md`，许可写 `LICENSES.md`。模板见 `demos/_template/`。
 3. **条目**：写 `entries/cases/<id>.json`。必填：`id`、`title`、`carriers`、`summary`、`prompt`、`demo`、`composition`。建议填写：`rhythm.beats`、`energy`、`layers`、`tokens`、`interaction`、`videoPrompt`、`negativePrompt`、`migration`、`patternIds`、`previewAt`。
-4. **巧思**：把案例里每个“触发 → 结果”的技巧写成 `entries/patterns/<pid>.json` 与 `demos/patterns/<pid>/index.html`（顶部 `CONFIG` 块），在巧思的`sources`里只写`{ caseId }`，并把 `<pid>` 加进案例的 `patternIds`。
+4. **巧思**：把案例里每个“触发 → 结果”的技巧写成 `entries/patterns/<pid>.json` 与 `demos/patterns/<pid>/index.html`，在巧思的`sources`里只写`{ caseId }`，并把 `<pid>` 加进案例的 `patternIds`。只重放案例片段的巧思用 `MotionKit.replay` 引用案例目录，不复制案例文件；有自己机制代码的巧思保留代码，素材引用来源案例。
 5. **构建与预览图**：
 
 ```bash

@@ -1,6 +1,6 @@
 # 渲染管线：舞台、时间轴、声音与预加载
 
-本库所有按时间播放的Demo 都遵守同一个约定：**画面是时间的纯函数**。同一份代码可以实时播放、被站点刻度条拖动、被脚本逐帧渲染成视频，结果完全一致。Motion Kit v2 在此基础上提供四件事：
+本库按时间播放的 Demo 通过 `window.__motion` 提供定位与播放；时间纯函数作品的**画面只取决于时刻 t**，有自己时钟、状态或交互的作品负责重建相应画面。同一份代码可以实时播放、被站点刻度条拖动、被脚本逐帧渲染成视频，结果完全一致。Motion Kit v2 在此基础上提供四件事：
 
 - **固定画幅舞台** `MotionKit.stage()`：横屏 1920×1080、竖屏 1080×1920 两套构图，整体等比缩放（黑边），舞台内部只用像素。
 - **声音引擎** `MotionKit.audio`：零素材的 WebAudio 合成音色库 + 乐谱调度；同一份乐谱可离线渲染成 WAV。
@@ -9,7 +9,30 @@
 
 地图巡礼、莱茵生命档案终端与地图巡礼的12个巧思使用固定舞台、预加载与乐谱。档案终端的5个巧思使用自适应布局与即时音效。
 
-参考模板：`demos/_template/case/`（案例：`index.html` / `style.css` / `script.js` / `config.js`）与 `demos/_template/pattern/index.html`（巧思单文件）。模板不是条目、不进入站点，直接引用 `kit/motion-kit.js`。
+参考模板：`demos/_template/case-film/`（时间纯函数作品）、`case-native/`（作品自接 MotionKit）、`pattern-replay/`（片段重放）与 `pattern/`（拆分型单文件）。模板预览直接引用 `kit/motion-kit.js`；作为条目时改为加载同目录的 `motion-kit.js`，由构建同步。
+
+## mountFilm 与 replay
+
+画面只取决于时刻 t 的作品，把代码与样式放在 `film/`，由根 `index.html` 加载字体、`motion-kit.js` 与作品入口，再调用 `MotionKit.mountFilm(config)`。它创建舞台、时间轴、控制条与 `window.__motion`，并按 URL 参数启动，返回时间轴。
+
+| 配置 | 说明 |
+| --- | --- |
+| `film` | `{ renderAt(t) → void｜Promise, duration, width, height, fps }` |
+| `title`、`bpm` | 可选，写入 `__motion` |
+| `root` | 舞台根节点或选择器 |
+| `orients`、`sizes`、`background` | 传给 `MotionKit.stage` |
+| `markers` | `{ t, label }[]`；各案例在 `index.html` 从自己的 cues 换算 |
+| `accent` | 控制条强调色 |
+| `rates` | 播放速率，默认 `[0.5, 0.75, 1, 1.25, 1.5, 2]` |
+| `step` | `'seconds'`（默认）或 `'frames'`；后者按 `film.fps` 逐帧步进 |
+| `start` | `{ t: 0, reduced: <秒> }` |
+| `audio` | 可选 `{ src, mime }`；音轨后台加载，开启声音时等待；以时间轴为时钟，偏差超过 0.08 秒时校正，`?render` 下禁声 |
+
+`renderAt(t)` 的 Promise 负责作品资源就绪；媒体音轨不阻塞 `__motion.ready`。cue 数据结构属于案例；通用接入只接收换算好的 markers。
+
+只重放案例片段的巧思调用 `MotionKit.replay(config)`，由 `segments` 拼接片段并复用来源案例 iframe，返回外层时间轴。每条片段用 `caseId`、`from`、`to` 指定来源与时间范围；`title`、`accent`、`markers`、`fps`、`reduced` 配置外层播放，`overlay` 指定巧思自己的 cue 说明层。来源入口为 `../../cases/<id>/index.html?embed=1&render=1`；外层提供 `__motion`、控制条、URL 定位、声音同步及画幅与加载状态。重放型目录只放 `index.html` 与同步的 `motion-kit.js`；有自身机制的巧思保留机制代码，素材引用来源案例。
+
+有自己时钟、状态或交互的作品在 `film/` 内自己接 MotionKit，使用下面的舞台、时间轴与协议接口；地图巡礼的缓冲和档案终端的仿真、交互由作品控制。
 
 ## 一、约定
 
@@ -279,9 +302,11 @@ Demo → 父页面：
 | `?orient=landscape` / `?orient=portrait` | 固定画幅（也接受 `l` / `p`） |
 | `?sound=1` | 载入后尝试开启声音（仍受自动播放策略约束，见上表） |
 
-## 八、控制条 `MotionKit.controls(tl, { sound, accent, orient = true })`
+## 八、控制条 `MotionKit.controls(tl, { sound, accent, orient = true, rates, step = 'seconds' })`
 
 播放 / 暂停、从头播放、刻度、时间，外加画幅切换（舞台支持两种画幅时出现，SVG 图标显示“将切换到”的画幅）与声音开关（传入 `sound` 或时间轴挂了乐谱时出现；被策略挡住时半透明）。只在独立打开时创建（`?embed` / `?render` 不显示）。键盘：空格播放 / 暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上 / 下一个标记，Home 回到开头；焦点在按钮上时空格与回车交给按钮本身（避免双重切换）。
+
+`rates` 添加速率菜单；`step: 'frames'` 添加前后逐帧按钮，方向键暂停并按 fps 步进。
 
 按钮节点只创建一次，状态变化时切换属性（`data-playing`、`data-sound`、`data-orient`），使一次按下与抬起始终落在同一节点上。站点详情页（`assets/library.js`）同样保留稳定的播放按钮节点；舞台、工具栏与刻度条按视口高度布局，加载中允许定位，横竖切换保持当前时刻，全屏时提供浮层控制。
 
@@ -291,8 +316,8 @@ Demo → 父页面：
 
 ```bash
 node scripts/render.mjs demos/cases/map-pilgrimage/index.html --fps 30
-node scripts/render.mjs demos/_template/case/index.html --orient portrait --fps 30 --audio
-node scripts/render.mjs demos/_template/case/index.html --audio-only
+node scripts/render.mjs demos/_template/case-native/index.html --orient portrait --fps 30 --audio
+node scripts/render.mjs demos/_template/case-native/index.html --audio-only
 ```
 
 | 选项 | 默认 | 说明 |
@@ -357,6 +382,7 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 | `rng(seed)` | 可复现随机数 |
 | `typeText / scramble / count / pad` | 打字、解码、数字滚动、补零 |
 | `beats(bpm, offset)` | 拍点：`at`、`beatOf`、`pulse`、`quantize` |
+| `mountFilm / replay` | 时间纯函数作品接入 / 案例片段重放 |
 | `timeline / expose / start / controls / params` | 时间轴、协议暴露、启动、控制条、URL 参数 |
 | `stage(opts)` | 固定画幅舞台 |
 | `preload(tasks)` + `preload.image / font / fonts / fetch / wait / cache` | 预加载 |

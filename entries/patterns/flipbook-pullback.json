@@ -60,7 +60,7 @@
     "conflicts": [],
     "notes": "本巧思按所列原片区间顺序重放。"
   },
-  "prompt": "复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放原片218/24−0.2至232/24+0.2秒，全长0.9833333333333343秒。保留218、220、222帧依次缩至0.9、0.86、0.84的三步拉远，显露灯箱、定位尺与叠纸。224至229帧由拇指掀角翻页，按RIFFLE=[150,121,108,61,30,13]重放旧画格，再回到顶层标题；保留蓝色洋葱皮、透纸灯光和翻页音。张数由drawing(239).id+1-RIFFLE.length给出，圈注在218与220帧分两步完成，并接箭头。沿用原画面、字体与同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
+  "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放原片218/24−0.2至232/24+0.2秒，全长0.9833333333333343秒。保留218、220、222帧依次缩至0.9、0.86、0.84的三步拉远，显露灯箱、定位尺与叠纸。224至229帧由拇指掀角翻页，按RIFFLE=[150,121,108,61,30,13]重放旧画格，再回到顶层标题；保留蓝色洋葱皮、透纸灯光和翻页音。张数由drawing(239).id+1-RIFFLE.length给出，圈注在218与220帧分两步完成，并接箭头。沿用原画面、字体与同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
   "demo": "demos/patterns/flipbook-pullback/index.html",
   "kit": true,
   "timeline": true,
@@ -112,11 +112,11 @@
   },
   "migration": [
     {
-      "field": "config.js → segments",
+      "field": "index.html 内联配置 → segments",
       "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
     },
     {
-      "field": "config.js → markers / reduced",
+      "field": "index.html 内联配置 → markers / reduced",
       "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
     }
   ]

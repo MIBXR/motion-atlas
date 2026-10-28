@@ -167,24 +167,48 @@
   "entrypoint": "demos/patterns/day-night-flip/index.html",
   "files": [
     {
-      "path": "demos/patterns/day-night-flip/config.js",
-      "bytes": 25919
+      "path": "demos/cases/map-pilgrimage/film/config.js",
+      "bytes": 17491
     },
     {
-      "path": "demos/patterns/day-night-flip/index.html",
-      "bytes": 7644
-    },
-    {
-      "path": "demos/patterns/day-night-flip/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/day-night-flip/paths.js",
+      "path": "demos/cases/map-pilgrimage/film/paths.js",
       "bytes": 8047
     },
     {
-      "path": "demos/patterns/day-night-flip/scenes.js",
+      "path": "demos/cases/map-pilgrimage/film/scenes.js",
       "bytes": 35275
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/script.js",
+      "bytes": 130843
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/style.css",
+      "bytes": 40692
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 7995
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/source/research.md",
+      "bytes": 7061
+    },
+    {
+      "path": "demos/patterns/day-night-flip/config.js",
+      "bytes": 656
+    },
+    {
+      "path": "demos/patterns/day-night-flip/index.html",
+      "bytes": 7776
+    },
+    {
+      "path": "demos/patterns/day-night-flip/motion-kit.js",
+      "bytes": 119411
     },
     {
       "path": "demos/patterns/day-night-flip/score.json",
@@ -199,12 +223,12 @@
       "bytes": 41282
     },
     {
-      "path": "previews/patterns/day-night-flip.jpg",
-      "bytes": 166972
+      "path": "previews/patterns/day-night-flip-portrait.jpg",
+      "bytes": 187869
     },
     {
-      "path": "previews/patterns/day-night-flip-portrait.jpg",
-      "bytes": 187886
+      "path": "previews/patterns/day-night-flip.jpg",
+      "bytes": 166983
     }
   ]
 }

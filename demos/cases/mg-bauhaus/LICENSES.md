@@ -1,6 +1,6 @@
 # 许可与出处
 
-原作《KONSTRUKTION · 20 Beats（二十拍构成）》来自 [Vincentwei1021/mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)，作者 Vincentwei1021，固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c`。代码、提示词、文档和成片按 MIT 许可发布，许可原文见 [LICENSE](LICENSE)。
+原作《KONSTRUKTION · 20 Beats（二十拍构成）》来自 [Vincentwei1021/mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)，作者 Vincentwei1021，固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c`。代码、提示词、文档和成片按 MIT 许可发布，许可原文见 [LICENSE](film/LICENSE)。
 
 ## 字体
 
@@ -14,7 +14,7 @@
 
 ## 共享纹理
 
-`shared/assets/textures/paper/Paper001_4K_color.jpg` 与 `shared/assets/textures/grain/grain_fine_2048.png` 原样取自上述固定提交的 `assets/textures/`。根据原仓库 [README.zh-CN.md 的许可一节](https://github.com/Vincentwei1021/mg-styles-15/blob/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/README.zh-CN.md#许可)，第三方纸张纹理按 CC0 或公有领域提供，项目自制文件按 MIT 许可提供。
+`assets/textures/paper/Paper001_4K_color.jpg` 与 `assets/textures/grain/grain_fine_2048.png` 原样取自上述固定提交的 `assets/textures/`。根据原仓库 [README.zh-CN.md 的许可一节](https://github.com/Vincentwei1021/mg-styles-15/blob/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/README.zh-CN.md#许可)，第三方纸张纹理按 CC0 或公有领域提供，项目自制文件按 MIT 许可提供。
 
 ## 配乐
 

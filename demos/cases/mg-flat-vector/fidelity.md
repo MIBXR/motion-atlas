@@ -6,9 +6,9 @@
 
 | 文件 | 删改内容 | 原因 |
 | --- | --- | --- |
-| `index.html` | 移除 `V5`、`NOLINK`、另一剪辑的中文标题、预载与字幕分支；混合表达式保留默认值，保留 popwise 字标、中文标语和全部默认画面数值。 | 另一版剪辑分支 |
-| `index.html` | 移除 `window.linkAt`、元素位置导出、`hideLinks` 及其独占辅助函数和数据。 | 开发工具 |
-| `index.html` | `/assets/fonts/fonts.css` 改为 `fonts/fonts.css`；`/demos/01-flat-vector/cues.json` 改为 `./cues.json`；加载独立适配层。 | 路径改写 |
+| `film/scene.js` | 移除 `V5`、`NOLINK`、另一剪辑的中文标题、预载与字幕分支；混合表达式保留默认值，保留 popwise 字标、中文标语和全部默认画面数值。 | 另一版剪辑分支 |
+| `film/scene.js` | 移除 `window.linkAt`、元素位置导出、`hideLinks` 及其独占辅助函数和数据。 | 开发工具 |
+| `index.html`、`film/scene.js` | `/assets/fonts/fonts.css` 改为 `fonts/fonts.css`；`/demos/01-flat-vector/cues.json` 改为 `./film/cues.json`；入口调用 `MotionKit.mountFilm`。 | 路径改写 |
 | `fonts/fonts.css` | 只声明默认片使用的 Resource Han Rounded 700 与 Fredoka；字体 URL 指向 `ResourceHanRoundedCN-Bold.ttf` 和官方完整文件 `Fredoka[wdth,wght].ttf`。 | 路径改写 |
 | `audio.py` → `source/audio.py` | 保存生成原作配乐的脚本，内容字节和内部路径保持不变。 | 移至 source |
 
@@ -16,9 +16,9 @@
 
 ## 适配层
 
-`motion-adapter.js` 等待原作就绪后，以 `MotionKit.timeline` 调用原作 `window.renderAt(t)`，并用 `MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 接入本库。尺寸为 1920×1080、30fps、10 秒；原 SVG 保持内部像素，通过 `MotionKit.stage` 等比居中，四周黑边，仅提供横屏。
+`index.html` 中的 `MotionKit.mountFilm` 等待原作就绪后，以 `MotionKit.timeline` 调用原作 `window.renderAt(t)`，并用 `MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 接入本库。尺寸为 1920×1080、30fps、10 秒；原 SVG 保持内部像素，通过 `MotionKit.stage` 等比居中，四周黑边，仅提供横屏。
 
-节点读取 `cues.json` 的画面帧与音乐阶段，控制条使用中文，支持播放、暂停、重播、拖动和倍速。声音默认关闭，开启后播放 `audio/film.m4a`，与跳转、暂停和倍速同步；音轨以 Audio Blob 加载。
+节点读取 `film/cues.json` 的画面帧与音乐阶段，控制条使用中文，支持播放、暂停、重播、拖动和倍速。声音默认关闭，开启后播放 `audio/film.m4a`，与跳转、暂停和倍速同步；音轨以 Audio Blob 加载。
 
 `?embed`、`?render` 隐藏控制条；`?render` 关闭自动播放和声音；`?t=秒` 定位。减少动态时显示 9.5 秒并暂停；`previewAt: 9.5` 时字标、中英文标语与汇合图形完整。
 

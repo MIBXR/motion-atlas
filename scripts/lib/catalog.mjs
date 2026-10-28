@@ -35,6 +35,7 @@ function walk(dir) {
   if (!fs.existsSync(abs)) return [];
   const out = [];
   for (const e of fs.readdirSync(abs, { withFileTypes: true })) {
+    if (e.name === 'node_modules') continue;
     const p = `${dir}/${e.name}`;
     if (e.isDirectory()) out.push(...walk(p));
     else out.push(p);
@@ -64,6 +65,13 @@ function previewFor(kind, id) {
     if (exists(p)) return p;
   }
   return null;
+}
+
+export function entryFiles(e) {
+  const dirs = [demoDir(e.demo), ...(e.sources || []).map(s => `demos/cases/${s.caseId}`)];
+  const kind = e.demo.startsWith('demos/cases/') ? 'cases' : 'patterns';
+  const previews = [previewFor(kind, e.id), previewFor(kind, `${e.id}-portrait`)].filter(Boolean);
+  return [...new Set([...new Set(dirs)].flatMap(walk).concat(previews))].sort();
 }
 
 function promptDoc(kind, e) {
@@ -112,7 +120,9 @@ export function buildAll() {
   const cases = entries.cases.map((c) => ({ ...clean(c), preview: previewFor('cases', c.id), previewPortrait: previewFor('cases', `${c.id}-portrait`) }));
   const patterns = entries.patterns.map((p) => ({ ...clean(p), preview: previewFor('patterns', p.id), previewPortrait: previewFor('patterns', `${p.id}-portrait`) }));
   const resources = entries.resources.map((r) => ({ ...clean(r), preview: r.gallery[0]?.path || null }));
-  for (const e of [...entries.cases, ...entries.patterns]) if (e.kit) kitTargets.push(demoDir(e.demo));
+  for (const e of [...entries.cases, ...entries.patterns]) {
+    if (/\bsrc=["'](?:\.\/)?motion-kit\.js["']/.test(read(e.demo))) kitTargets.push(demoDir(e.demo));
+  }
 
   // Prompt 文档
   for (const c of cases) files[`prompts/cases/${c.id}.md`] = promptDoc('cases', c);
@@ -135,14 +145,14 @@ export function buildAll() {
   const bundleSummaries = { cases: [], patterns: [], resources: [] };
   const kitFile = 'kit/motion-kit.js';
   for (const c of cases) {
-    const demoFiles = walk(demoDir(c.demo));
+    const demoFiles = entryFiles(c);
     const bundle = {
       schemaVersion: SCHEMA_VERSION, kind: 'case', id: c.id, entry: c,
       documents: {
         prompt: files[`prompts/cases/${c.id}.md`],
       },
       entrypoint: c.demo,
-      files: fileManifest([...demoFiles, ...(c.preview ? [c.preview] : []), ...(c.previewPortrait ? [c.previewPortrait] : [])]),
+      files: fileManifest(demoFiles),
     };
     const json = JSON.stringify(bundle, null, 2) + '\n';
     files[`agent/cases/${c.id}.json`] = json;
@@ -153,13 +163,13 @@ export function buildAll() {
     });
   }
   for (const p of patterns) {
-    const demoFiles = walk(demoDir(p.demo));
+    const demoFiles = entryFiles(p);
     const bundle = {
       schemaVersion: SCHEMA_VERSION, kind: 'pattern', id: p.id, pattern: p,
       sourceCases: (p.sources || []).map((s) => ({ caseId: s.caseId, bundle: `agent/cases/${s.caseId}.json` })),
       documents: { prompt: files[`prompts/patterns/${p.id}.md`] },
       entrypoint: p.demo,
-      files: fileManifest([...demoFiles, ...(p.preview ? [p.preview] : []), ...(p.previewPortrait ? [p.previewPortrait] : [])]),
+      files: fileManifest(demoFiles),
     };
     const json = JSON.stringify(bundle, null, 2) + '\n';
     files[`agent/patterns/${p.id}.json`] = json;
@@ -199,9 +209,11 @@ export function buildAll() {
     description: '影像与操作台参考库：按时间线播放的影像视频、交互操作台与展示台的案例、巧思、节拍表、Prompt 与可运行的 Demo。',
     taxonomy: TAXONOMY,
     protocol: {
-      seek: 'Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示未迁移到固定画幅的旧 Demo。',
+      seek: 'Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示自适应布局。',
       urlParams: '?embed 隐藏控制条；?render 关闭自动播放供逐帧渲染；?t=秒 定位到指定时刻；?orient=landscape|portrait 固定画幅；?autoplay=0 不自动播放；?sound=1 尝试开启声音。',
       stage: '固定画幅舞台：横屏 1920×1080 / 竖屏 1080×1920，整体等比缩放；声音为乐谱（MotionKit.audio），可离线导出 WAV。见 docs/pipeline.md。',
+      mountFilm: '时间纯函数作品提供 renderAt(t)、时长、尺寸与 fps，通过 MotionKit.mountFilm 创建舞台、播放控制与 window.__motion。',
+      replay: 'MotionKit.replay 按 segments 引用来源案例片段，提供拼接时间轴、声音同步与宿主协议。',
       kit: kitFile,
     },
     counts: { cases: cases.length, patterns: patterns.length, resources: resources.length },

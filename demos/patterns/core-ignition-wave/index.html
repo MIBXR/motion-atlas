@@ -14,7 +14,52 @@
 <body>
   <main id="stage"><output id="cue" hidden></output></main>
   <script src="motion-kit.js"></script>
-  <script src="config.js"></script>
-  <script type="module" src="replay.js"></script>
+  <script type="module">
+    const config = {
+      "title": "核心激活全城",
+      "segments": [
+        {
+          "caseId": "mg-isometric",
+          "label": "核心激活全城",
+          "from": 5.7,
+          "to": 7.35
+        }
+      ],
+      "markers": [
+        {
+          "t": 0,
+          "label": "光环预热"
+        },
+        {
+          "t": 0.2,
+          "label": "下蹲预备"
+        },
+        {
+          "t": 0.285,
+          "label": "波前启动"
+        },
+        {
+          "t": 0.3,
+          "label": "主拍激活"
+        },
+        {
+          "t": 0.4,
+          "label": "地块翻面"
+        },
+        {
+          "t": 0.6,
+          "label": "着色展开"
+        },
+        {
+          "t": 1.45,
+          "label": "余波落定"
+        }
+      ],
+      "reduced": 0.6,
+      "root": "#stage",
+      "fps": 30
+    };
+    await MotionKit.replay(config);
+  </script>
 </body>
 </html>

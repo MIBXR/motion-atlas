@@ -6,17 +6,17 @@
 
 | 文件 | 删改内容 | 原因 |
 | --- | --- | --- |
-| `index.html`、`film.js` | 删除 `?v5=1`、`nolink`、`linkAt` 及像素风标题、圆形水晶球、独占字形构造与布局数据；条件表达式直接保留公开成片 PIXEL QUEST 的默认分支。 | 另一版剪辑分支 |
-| `film.js` | 删除 `?sheet`、`?nocrt`、`?nolight`、精灵图板 `drawSheet()` 与调试接口 `window.__frame`；默认成片使用完整 CRT、光池、夜色波与缩放。 | 开发工具 |
-| `index.html` | 字体表改为 `fonts/fonts.css`，原作入口改为 `./film.js`；在 `window.__ready = true` 后加载 `motion-adapter.js`，使用案例目录内资源并接入播放控制。 | 路径改写 |
-| `film.js`、`fonts/fonts.css` | 时刻表改为 `./cues.json`，只保留 Fusion Pixel 12、Press Start 2P 声明并使用同目录完整字体，资源随案例独立交付。 | 路径改写 |
+| `index.html`、`film/film.js` | 删除 `?v5=1`、`nolink`、`linkAt` 及像素风标题、圆形水晶球、独占字形构造与布局数据；条件表达式直接保留公开成片 PIXEL QUEST 的默认分支。 | 另一版剪辑分支 |
+| `film/film.js` | 删除 `?sheet`、`?nocrt`、`?nolight`、精灵图板 `drawSheet()` 与调试接口 `window.__frame`；默认成片使用完整 CRT、光池、夜色波与缩放。 | 开发工具 |
+| `index.html` | 字体表改为 `fonts/fonts.css`，原作入口改为 `./film/film.js`；在 `window.__ready = true` 后调用 `MotionKit.mountFilm`，使用案例目录内资源并接入播放控制。 | 路径改写 |
+| `film/film.js`、`fonts/fonts.css` | 时刻表改为 `./film/cues.json`，只保留 Fusion Pixel 12、Press Start 2P 声明并使用同目录完整字体，资源随案例独立交付。 | 路径改写 |
 | `audio.py` → `source/audio.py` | 配乐制作脚本原样保存，内部路径保持原文；播放使用 `audio/film.m4a`。 | 移至 source |
 
 ## 适配层说明
 
-`motion-adapter.js` 通过 `MotionKit.timeline` 调用原作 `window.renderAt(t)` 并返回原 Promise；时长、尺寸、帧率读取 `window.DEMO`。`MotionKit.stage` 保持原作 1920×1080 内部像素，仅提供横屏，通过 `translate` 与等比 `scale` 居中适配窗口，四周黑边。
+`index.html` 中的 `MotionKit.mountFilm` 通过 `MotionKit.timeline` 调用原作 `window.renderAt(t)` 并返回原 Promise；时长、尺寸、帧率读取 `window.DEMO`。`MotionKit.stage` 保持原作 1920×1080 内部像素，仅提供横屏，通过 `translate` 与等比 `scale` 居中适配窗口，四周黑边。
 
-`MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 提供自动播放、暂停、拖动、`?embed`、`?render`、`?t=秒` 与减少动态偏好；控制条和倍速选项为中文。时间轴标记读取 `cues.json` 的事件与色板节点。
+`MotionKit.expose`、`MotionKit.controls`、`MotionKit.start` 提供自动播放、暂停、拖动、`?embed`、`?render`、`?t=秒` 与减少动态偏好；控制条和倍速选项为中文。时间轴标记读取 `film/cues.json` 的事件与色板节点。
 
 声音默认关闭，开启后播放无损抽取的 `audio/film.m4a`；播放、暂停、跳转、结束与变速同步，播放偏差超过 80ms 时对齐。原始音轨字节先加载为 `audio/mp4` Blob，等待媒体元数据后启动。减少动态时显示 9.5 秒落版并暂停。
 

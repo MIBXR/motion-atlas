@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>巧思模板 · 锁定确认 — Motion Atlas</title>
   <!--
-    巧思模板（单文件，不是条目，不进入站点）。迁移约定：
-    - 只改顶部 CONFIG；舞台、乐谱、预加载、控制条的写法与案例模板相同（demos/_template/case）。
+    巧思模板（单文件，不是条目，不进入站点）。拆分型：
+    - 保留自身机制代码，素材引用 ../../cases/<id>/；舞台、乐谱与控制条写法见 case-native/。
     - 舞台像素：横屏 1920×1080、竖屏 1080×1920；两套构图写在 [data-orient] 规则与 CONFIG.layout 里。
     - 舞台字号按设计决定，不设下限。层级：背景 → 图形 → 文字 → HUD。
   -->
@@ -53,7 +53,7 @@
   </main>
   <script src="../../../kit/motion-kit.js"></script>
   <script>
-// ---------------- CONFIG：迁移时只改这里 ----------------
+// ---------------- 巧思配置 ----------------
 const CONFIG = {
   word: '目标锁定',
   stamp: ['CONFIRMED', '已确认'],

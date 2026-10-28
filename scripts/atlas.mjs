@@ -6,7 +6,7 @@
 //   node scripts/atlas.mjs export <id> --out <目录> [--code-only] [--force]
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, TAXONOMY, loadEntries, walk } from './lib/catalog.mjs';
+import { ROOT, TAXONOMY, loadEntries, entryFiles } from './lib/catalog.mjs';
 
 const argv = process.argv.slice(2);
 const [cmd, ...rest] = argv;
@@ -80,8 +80,7 @@ function printList(rows) {
 function show(id) {
   const hit = find(id) || die(`没有 id 为 ${id} 的条目。用 list 或 search 查找。`);
   const { kind, e } = hit;
-  const dir = path.posix.dirname(e.demo);
-  const files = walk(dir);
+  const files = entryFiles(e);
   if (asJSON) {
     const out = { kind, entry: strip(e), files };
     if (flags.has('--source')) out.source = Object.fromEntries(files.filter((f) => /\.(html|css|js)$/.test(f) && !f.endsWith('motion-kit.js')).map((f) => [f, fs.readFileSync(path.join(ROOT, f), 'utf8')]));
@@ -119,23 +118,22 @@ function exportDemo(id) {
   const outArg = get('--out') || die('请用 --out 指定导出目录。');
   const out = path.resolve(outArg);
   if (fs.existsSync(out) && fs.readdirSync(out).length && !flags.has('--force')) die(`${out} 不是空目录；确认覆盖请加 --force。`);
-  const dir = path.posix.dirname(e.demo);
   fs.mkdirSync(out, { recursive: true });
   const copied = [];
-  for (const f of walk(dir)) {
-    const to = path.join(out, path.posix.relative(dir, f));
+  for (const f of entryFiles(e)) {
+    const to = path.join(out, f);
     fs.mkdirSync(path.dirname(to), { recursive: true });
     fs.copyFileSync(path.join(ROOT, f), to);
-    copied.push(path.posix.relative(dir, f));
+    copied.push(f);
   }
   if (!flags.has('--code-only')) {
     const promptDoc = path.join(ROOT, 'prompts', kind, `${e.id}.md`);
     if (fs.existsSync(promptDoc)) fs.writeFileSync(path.join(out, 'PROMPT.md'), fs.readFileSync(promptDoc, 'utf8').replace(/\[([^\]]+)\]\(\.\.\/\.\.\/([^)]+)\)/g, '$1（Motion Atlas 仓库内 `$2`）'));
     const readme = [
       `# ${e.title}`, '', `从 Motion Atlas 导出（${kind === 'cases' ? '案例' : '巧思'} \`${e.id}\`）。`, '', e.summary, '',
-      '## 运行', '', '直接用浏览器打开 `index.html`；如有地图或异步资源，建议用任意静态服务器（例如 `npx serve .`）。', '',
+      '## 运行', '', `从导出目录启动静态服务器，入口为 \`${e.demo}\`。目录保留仓库相对树，巧思的来源案例在 demos/cases/。`, '',
       '## 迁移', '',
-      ...(e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 修改 `index.html` 顶部的 `CONFIG` 块：文案、颜色、时长与触发方式都集中在那里。']),
+      ...(e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 时间纯函数作品在 `film/` 修改内容并用 `MotionKit.mountFilm`；自有时钟作品自己接 MotionKit；重放型巧思在 `index.html` 配置来源片段。']),
       '', e.timeline ? '本 Demo 遵守 render(t) 协议：`window.__motion.seek(t)` 可定位任意时刻；`?render=1` 关闭自动播放，供逐帧渲染。' : '',
       '', '## 文件', '', ...copied.map((f) => `- ${f}`), '',
     ].join('\n');

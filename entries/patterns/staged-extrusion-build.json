@@ -29,11 +29,11 @@
   },
   "migration": [
     {
-      "field": "config.js → segments",
+      "field": "index.html 内联配置 → segments",
       "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
     },
     {
-      "field": "config.js → markers / reduced",
+      "field": "index.html 内联配置 → markers / reduced",
       "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
     }
   ],

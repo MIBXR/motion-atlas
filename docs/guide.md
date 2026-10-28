@@ -6,7 +6,7 @@ Motion Atlas 是一个面向**按时间线播放的影像视频、交互操作�
 
 1. **拆解**：镜头、信息层、文字、事件、声音分轨描述，附节拍表、能量曲线与动效 Token。
 2. **Prompt**：可直接复用的实现 Prompt（给代码模型）、视频生成 Prompt（给视频模型）与负向约束。
-3. **Demo**：零依赖的 HTML/CSS/JS，改 `config.js` 或文件顶部的 `CONFIG` 就能迁移；按时间播放的Demo 还能逐帧渲染成视频。
+3. **Demo**：HTML/CSS/JS，案例作品代码放在 `film/`；重放巧思在入口配置来源片段，拆分型保留自己的机制代码；按时间播放的Demo 还能逐帧渲染成视频。
 
 ## 收录边界
 
@@ -64,13 +64,13 @@ Motion Atlas 是一个面向**按时间线播放的影像视频、交互操作�
 
 1. 在案例库按“影像视频”筛选，挑一个节奏接近的案例，先看**节拍表**和**能量曲线**，确认起伏结构是你要的。
 2. 复制“视频生成 Prompt”，把主题、地点、配色换成你的内容；保留时长、节拍与镜头语言部分。
-3. 如果要用代码出片：复制 Demo 文件夹，改 `config.js` 里的文案、颜色、时刻表，然后用 `node scripts/render.mjs <demo>/index.html --fps 30` 渲染成帧序列（装有 ffmpeg 时自动合成 MP4）。详见 [渲染管线](pipeline.md)。
+3. 如果要用代码出片：用 CLI 导出 Demo，保留仓库相对树；在 `film/` 改文案、颜色与时刻表，时间纯函数作品用 `MotionKit.mountFilm` 接入，入口路径见导出的 `README.md`；启动静态服务后，用 `node scripts/render.mjs <入口URL> --fps 30` 渲染成帧序列（装有 ffmpeg 时自动合成 MP4）。详见 [渲染管线](pipeline.md)。
 
 ### 想做一个可操作的界面
 
 1. 在案例库按“交互操作台”筛选，读“交互”一栏：每个输入对应的反馈与时长。
 2. 去巧思库挑骨架（foundation）、支撑（support）与点睛（accent）三类巧思组合，一般 **1 个骨架 + 2–4 个支撑 + 1–2 个点睛** 就够了，更多会互相抢戏。
-3. 把巧思的实现 Prompt 拼进你的需求描述里，或直接把巧思 Demo 的 `CONFIG` 块与核心函数搬进项目。
+3. 把巧思的实现 Prompt 拼进你的需求描述里，或按巧思类型重放来源案例片段、复用自身机制代码。
 
 ### 想调手感
 
@@ -109,8 +109,9 @@ entries/cases/*.json      案例条目（唯一内容源）
 entries/patterns/*.json   巧思条目
 entries/resources/*.json  资源条目
 agent-skills/<id>/        上游 skill 固定提交的原样快照与许可
-demos/cases/<id>/         案例 Demo：index.html、style.css、script.js、config.js、motion-kit.js
-demos/patterns/<id>/      巧思 Demo：单文件 index.html + motion-kit.js
+demos/cases/<id>/         案例入口 index.html、作品 film/、素材 assets/、字体 fonts/、声音 audio/、库 vendor/、制作 source/ 与许可索引
+demos/patterns/<id>/      重放型 index.html + motion-kit.js；拆分型保留机制代码，素材引用案例
+demos/_template/          case-film/、case-native/、pattern-replay/、pattern/
 kit/motion-kit.js         共享运行时（Demo 内为同步副本）
 docs/                     指南与使用方法
 prompts/                  由条目生成的 Prompt 文档

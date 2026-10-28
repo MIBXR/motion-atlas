@@ -197,7 +197,7 @@
     "color": "白天纸色#f1eee7与墨色#16171a。夜晚深蓝黑#0b1019，默认强调朱色#d9562c。鸭川青#2a8fae、奈良琥珀#c98a2a随章节切换。警示使用红色#e23b3b，路线、描边与框线同步换色。",
     "typography": "竖排片名与地名用Yu Mincho / Noto Serif JP明朝体。英文标题用Segoe UI Variable / Helvetica。数据用Cascadia Mono / JetBrains Mono等宽字体。数据字距放宽，结尾改用衬线。网站界面文字≥12px。",
     "layout": "固定画幅，两套构图。横屏1920×1080，边距64，规尺y=116。卡片靠右，大小824×464，地名靠左。右下印章与步进器同列。竖屏1080×1920，HUD在顶部276px内，规尺y=264。印章在右侧，968×544卡片放到下半屏。步进器在底部，fp单独控制竖屏取景。",
-    "imagery": "场景包括关西机场机窗、千本鸟居、鸭川、奈良鹿与东大寺、道顿堀。每处各有照片、旧明信片、插画三种风格，按画幅重绘。可在config.js填入真实照片。",
+    "imagery": "场景包括关西机场机窗、千本鸟居、鸭川、奈良鹿与东大寺、道顿堀。每处各有照片、旧明信片、插画三种风格，按画幅重绘。可在film/config.js填入真实照片。",
     "motion": "镜头缓入缓出，长距离用单段ease-out推近。文字从模糊逐字变清晰。卡片550ms浮入、600ms展开。章节框线800ms描出，四角方块错峰回弹。盖章带回弹，结尾计数逐行堆叠。",
     "sound": "默认静音，开启后播放120 BPM整段乐谱。调式为D大调与日本阳音阶D E G A B。环境底叠加和弦、贝斯、半拍鼓组与拨弦。标记、文字、路线、卡片、印章与章节各配事件音。回忆段有黑胶与逐字钟，夜景配霓虹嗡鸣。结尾阳音阶上行后落到终止和弦。离线音轨峰值约-1.7 dBFS，无削波。导出视频时加--audio同步导出声音。",
     "rhythm": "120 BPM，1小节2秒，段落落在小节线上。约每4–6秒一个事件，每10–15秒一次地图与全屏切换。高光前后留1–2秒地图呼吸。",
@@ -323,7 +323,7 @@
     "画面、文字、地点与乐谱共同呈现关西三日旅程。",
     "照片、明信片与插画按画幅绘制。",
     "OpenFreeMap底图与AWS高程显示建筑、铁路、水系和地名。",
-    "在config.js填入照片，即可替换程序场景。",
+    "在film/config.js填入照片，即可替换程序场景。",
     "横屏1920×1080、竖屏1080×1920等比缩放，网站文字≥12px。",
     "约730块/130MB；约290块/66MB必需。10Mbps缓冲1–2次。"
   ],
@@ -332,47 +332,47 @@
   "negativePrompt": "不要整体反色做夜景；不要让多个全屏模式叠在一起；不要把 HUD 做成满屏发光科幻风；不要用卡通贴纸替代信息层；不要在高缩放时保留地图文字标注抢走注意力；不要让镜头连续快速甩动；不要让文字压在路线或标记上；不要横竖画幅共用一套自适应排版；不要使用动画作品名称、截图或无授权的照片与音乐；不要在地图没加载完时露白（缓冲时停在当前帧并提示）。",
   "migration": [
     {
-      "field": "config.js → meta",
+      "field": "film/config.js → meta",
       "how": "设置片名、副标题、时区、总天数、时长与BPM。"
     },
     {
-      "field": "config.js → stops",
+      "field": "film/config.js → stops",
       "how": "设置地点名称、经纬度、海拔与最小缩放，路线端点自动对齐。"
     },
     {
-      "field": "config.js → tracks.camera",
+      "field": "film/config.js → tracks.camera",
       "how": "c中心、z缩放、p俯仰、b方位、f/fp取景、zp竖屏缩放、e缓动。"
     },
     {
-      "field": "paths.js",
+      "field": "film/paths.js",
       "how": "设置铁路与步行经纬度，可用rail图层或GeoJSON线。"
     },
     {
-      "field": "config.js → tracks.*",
+      "field": "film/config.js → tracks.*",
       "how": "调整各事件轨道时刻，画面与乐谱同步改变节奏。"
     },
     {
-      "field": "config.js → chapters / stepper",
+      "field": "film/config.js → chapters / stepper",
       "how": "设置章节标题、强调色、框线或胶带，以及四站步进器与印章。"
     },
     {
-      "field": "config.js → sound",
+      "field": "film/config.js → sound",
       "how": "设置和弦、阳音阶与到站提示音，按轨道生成乐谱。"
     },
     {
-      "field": "config.js → layout",
+      "field": "film/config.js → layout",
       "how": "分别设置横竖规尺、步进器、印章、卡片、避让区与统计区。"
     },
     {
-      "field": "config.js → palette / mapPalette / map",
+      "field": "film/config.js → palette / mapPalette / map",
       "how": "设置纸色、墨色、夜色、强调色与地图昼夜配色、样式和高程。"
     },
     {
-      "field": "scenes.js",
+      "field": "film/scenes.js",
       "how": "cards[].media填图片路径，即可换成真实照片。"
     },
     {
-      "field": "script.js → BUF_CFG",
+      "field": "film/script.js → BUF_CFG",
       "how": "设置开头门槛、解析与下载范围、内存预算、暂停与继续阈值。"
     }
   ],

@@ -7,7 +7,7 @@
 - 仓库：https://github.com/Vincentwei1021/mg-styles-15 。
 - 固定提交：`49052d80bfaf9fa8412cc9710530e5e95a3b8d8c`。
 - 源码目录：`demos/20-pixel/`。
-- 许可：MIT，原文副本见本目录 `LICENSE`。
+- 许可：MIT，原文副本见本目录 `film/LICENSE`。
 - 在线作品：https://vincentwei1021.github.io/mg-styles-15/?lang=zh#20-pixel 。
 
 ## 字体
@@ -25,4 +25,4 @@
 
 ## 素材与依赖
 
-本片的角色、宝箱、金币、背景和像素片名均由 `film.js` 绘制；本片没有 vendor 包或共享贴图。
+本片的角色、宝箱、金币、背景和像素片名均由 `film/film.js` 绘制；本片没有 vendor 包或共享贴图。

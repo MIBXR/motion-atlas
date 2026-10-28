@@ -2,7 +2,7 @@
 
 ## 实现 Prompt
 
-复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。
+复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。
 
 ## 参数
 
@@ -14,7 +14,7 @@
 
 ## 迁移
 
-- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。
-- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。
+- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。
+- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。
 
 [打开 Demo](../../demos/patterns/cel-line-boil/index.html) · [在库中查看](../../patterns.html#pattern/cel-line-boil)

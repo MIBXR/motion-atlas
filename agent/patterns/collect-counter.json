@@ -182,20 +182,48 @@
   "entrypoint": "demos/patterns/collect-counter/index.html",
   "files": [
     {
+      "path": "demos/cases/map-pilgrimage/film/config.js",
+      "bytes": 17491
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/paths.js",
+      "bytes": 8047
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/scenes.js",
+      "bytes": 35275
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/script.js",
+      "bytes": 130843
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/style.css",
+      "bytes": 40692
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 7995
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/source/research.md",
+      "bytes": 7061
+    },
+    {
       "path": "demos/patterns/collect-counter/config.js",
-      "bytes": 26559
+      "bytes": 1296
     },
     {
       "path": "demos/patterns/collect-counter/index.html",
-      "bytes": 7645
+      "bytes": 7777
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/collect-counter/paths.js",
-      "bytes": 8047
+      "bytes": 119411
     },
     {
       "path": "demos/patterns/collect-counter/plates/landscape-10.4-map.webp",
@@ -230,10 +258,6 @@
       "bytes": 269560
     },
     {
-      "path": "demos/patterns/collect-counter/scenes.js",
-      "bytes": 35275
-    },
-    {
       "path": "demos/patterns/collect-counter/score.json",
       "bytes": 1115
     },
@@ -246,12 +270,12 @@
       "bytes": 41282
     },
     {
-      "path": "previews/patterns/collect-counter.jpg",
-      "bytes": 175536
-    },
-    {
       "path": "previews/patterns/collect-counter-portrait.jpg",
       "bytes": 190211
+    },
+    {
+      "path": "previews/patterns/collect-counter.jpg",
+      "bytes": 175536
     }
   ]
 }

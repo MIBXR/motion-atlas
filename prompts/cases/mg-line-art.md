@@ -95,9 +95,9 @@ realised; the tech route; check numbers (duration, resolution, fps, loudness, tr
 
 ## 迁移
 
-- `film.js → PIECES、WV`：调整连续路径的图形、浪花与衔接位置。
-- `film.js → GOLD、AGED、HOT、NAVY 与 drawText`：调整配色、品牌字标与标语，并配套相应字体文件。
-- `cues.json → draw、zoom、camera、fill、wordmark`：调整描绘、镜头、线面转换与文字节点，配乐读取同一时间表。
-- `motion-adapter.js`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
+- `film/film.js → PIECES、WV`：调整连续路径的图形、浪花与衔接位置。
+- `film/film.js → GOLD、AGED、HOT、NAVY 与 drawText`：调整配色、品牌字标与标语，并配套相应字体文件。
+- `film/cues.json → draw、zoom、camera、fill、wordmark`：调整描绘、镜头、线面转换与文字节点，配乐读取同一时间表。
+- `index.html → MotionKit.mountFilm`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
 
 [打开 Demo](../../demos/cases/mg-line-art/index.html) · [在库中查看](../../cases.html#case/mg-line-art)

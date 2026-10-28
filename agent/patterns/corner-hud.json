@@ -161,20 +161,48 @@
   "entrypoint": "demos/patterns/corner-hud/index.html",
   "files": [
     {
+      "path": "demos/cases/map-pilgrimage/film/config.js",
+      "bytes": 17491
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/paths.js",
+      "bytes": 8047
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/scenes.js",
+      "bytes": 35275
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/script.js",
+      "bytes": 130843
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/film/style.css",
+      "bytes": 40692
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/index.html",
+      "bytes": 7995
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/map-pilgrimage/source/research.md",
+      "bytes": 7061
+    },
+    {
       "path": "demos/patterns/corner-hud/config.js",
-      "bytes": 25875
+      "bytes": 612
     },
     {
       "path": "demos/patterns/corner-hud/index.html",
-      "bytes": 7640
+      "bytes": 7772
     },
     {
       "path": "demos/patterns/corner-hud/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/corner-hud/paths.js",
-      "bytes": 8047
+      "bytes": 119411
     },
     {
       "path": "demos/patterns/corner-hud/plates/landscape-10.4-map.webp",
@@ -193,10 +221,6 @@
       "bytes": 263766
     },
     {
-      "path": "demos/patterns/corner-hud/scenes.js",
-      "bytes": 35275
-    },
-    {
       "path": "demos/patterns/corner-hud/score.json",
       "bytes": 565
     },
@@ -209,12 +233,12 @@
       "bytes": 41282
     },
     {
-      "path": "previews/patterns/corner-hud.jpg",
-      "bytes": 182211
-    },
-    {
       "path": "previews/patterns/corner-hud-portrait.jpg",
       "bytes": 181954
+    },
+    {
+      "path": "previews/patterns/corner-hud.jpg",
+      "bytes": 182211
     }
   ]
 }

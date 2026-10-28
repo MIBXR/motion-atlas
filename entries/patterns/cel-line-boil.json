@@ -56,7 +56,7 @@
     "conflicts": [],
     "notes": "本巧思按所列原片区间顺序重放。"
   },
-  "prompt": "复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
+  "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
   "demo": "demos/patterns/cel-line-boil/index.html",
   "kit": true,
   "timeline": true,
@@ -128,11 +128,11 @@
   },
   "migration": [
     {
-      "field": "config.js → segments",
+      "field": "index.html 内联配置 → segments",
       "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
     },
     {
-      "field": "config.js → markers / reduced",
+      "field": "index.html 内联配置 → markers / reduced",
       "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
     }
   ]

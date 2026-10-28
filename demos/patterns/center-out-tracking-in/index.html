@@ -14,7 +14,48 @@
 <body>
   <main id="stage"><output id="cue" hidden></output></main>
   <script src="motion-kit.js"></script>
-  <script src="config.js"></script>
-  <script type="module" src="replay.js"></script>
+  <script type="module">
+    const config = {
+      "title": "中轴散字收拢",
+      "segments": [
+        {
+          "caseId": "mg-line-art",
+          "label": "线条艺术",
+          "from": 8.133,
+          "to": 9.85
+        }
+      ],
+      "markers": [
+        {
+          "t": 0,
+          "label": "字标入场前"
+        },
+        {
+          "t": 0.20000000000000107,
+          "label": "中轴起字"
+        },
+        {
+          "t": 0.6170000000000009,
+          "label": "标语抬入"
+        },
+        {
+          "t": 1.1170000000000009,
+          "label": "细线签章"
+        },
+        {
+          "t": 1.4670000000000005,
+          "label": "细线落定"
+        },
+        {
+          "t": 1.5170000000000012,
+          "label": "标语齐备"
+        }
+      ],
+      "reduced": 1.6170000000000009,
+      "root": "#stage",
+      "fps": 30
+    };
+    await MotionKit.replay(config);
+  </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 - 固定提交：`49052d80bfaf9fa8412cc9710530e5e95a3b8d8c`。
 - 原目录：`demos/05-cel-boil/`；原片：`videos/05-cel-boil.mp4`。
 - 在线页：[mg-styles-15](https://vincentwei1021.github.io/mg-styles-15/)。
-- 代码、Prompt、文档与原片采用 MIT 许可，原文副本见 [LICENSE](LICENSE)。
+- 代码、Prompt、文档与原片采用 MIT 许可，原文副本见 [LICENSE](film/LICENSE)。
 
 ## 字体
 

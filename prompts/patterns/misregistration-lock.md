@@ -2,7 +2,7 @@
 
 ## 实现 Prompt
 
-用来源案例的原作renderAt(t)重放套印漂移与锁版。保留plate A的RGB分色和plate B的黑墨通道、彩色镂空与黑套印；色边使用原作4px补缝及lineWidth=5的彩形描边。保留oY、oR、oB、oK的原偏移表达式，初始reg=1、dens=0.955。6.5秒至reveal-1/30，按reg=1+1.3*in2(prog(q,R2.start,reveal-1/30))漂开色版。7秒主击时偏移收至reg=0.15，并在首帧、次帧分别增加墨密度0.12、0.05。8.5秒至lock-1/30，以io2推进reg=1+0.4*u和spread=4.5*u。9.5秒锁版时reg=0.12、dens=0.985，首帧、次帧再加0.10、0.04，spread归0。按config.js的segments映射时间，保留原作字体、素材和同区间音轨，声音默认关闭。
+用来源案例的原作renderAt(t)重放套印漂移与锁版。保留plate A的RGB分色和plate B的黑墨通道、彩色镂空与黑套印；色边使用原作4px补缝及lineWidth=5的彩形描边。保留oY、oR、oB、oK的原偏移表达式，初始reg=1、dens=0.955。6.5秒至reveal-1/30，按reg=1+1.3*in2(prog(q,R2.start,reveal-1/30))漂开色版。7秒主击时偏移收至reg=0.15，并在首帧、次帧分别增加墨密度0.12、0.05。8.5秒至lock-1/30，以io2推进reg=1+0.4*u和spread=4.5*u。9.5秒锁版时reg=0.12、dens=0.985，首帧、次帧再加0.10、0.04，spread归0。按index.html 内联配置的segments映射时间，保留原作字体、素材和同区间音轨，声音默认关闭。
 
 ## 参数
 

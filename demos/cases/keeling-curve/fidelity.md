@@ -1,29 +1,16 @@
 # 基林曲线接入与保真说明
 
-本案例来自 garden-skills 的 motion-showreel skill，固定提交 `2b9a89340b70f632d31c0f1c69fce94a7912423e`，按其工作流制作。原作品为 20 秒、1920×1080 横屏数据短片；没有竖屏构图。
+本案例来自 garden-skills 的 motion-showreel skill，固定提交 `2b9a89340b70f632d31c0f1c69fce94a7912423e`，按其工作流制作。作品为 20 秒、1920×1080 横屏数据短片。
 
 ## 作品文件
 
-`scene.js`、`data.js`、`timeline.js`、`motion.js`、`preview.js`、`fonts/`、`assets/` 和最终混音 `audio/final.wav` 原样复制。`brief.md` 保留 skill 产出的原文，字体许可和 NOAA 原始数据文件头一并保留。
+画面、数据、时间表和绘制工具位于 `film/`；字体、NOAA 原始数据与最终混音分别位于 `fonts/`、`assets/` 和 `audio/final.wav`。`source/` 保存 brief、数据与配乐说明，以及制作预览脚本。画面由 `film/scene.js` 的 `render(t)` 绘制，舞台固定为 1920×1080。
 
-唯一入口改动位于 `index.html`：将加载 `preview.js`、`scene.js` 的两个 module 标签替换为加载 `motion-adapter.js` 的一个标签。原因是需要在原画面初始化前指定 1920×1080 画幅，再依次安装原画面、原预览控制条与本库协议。页面其余内容不变，画面仍由原 `render(t)` 绘制。
+## 播放接入
 
-不附带合成声部 `score.mjs`、制作工具、成片 MP4 或 QA 图。
+`index.html` 通过 `MotionKit.mountFilm` 提供 `window.__motion`、固定横屏、播放、暂停、定位、倍速、逐帧步进与声音开关。六段起点读取 `film/timeline.js` 的 `SHOTS`，三个音效标记读取 `EVENTS`。声音默认关闭，开启后按时间轴同步最终混音；渲染模式禁声。
 
-## 适配层
-
-`motion-adapter.js` 负责：
-
-- 暴露 `window.__motion` 的时长、九个标记、异步 seek、播放、暂停、状态与订阅接口。
-- 六段起点读取原 `SHOTS`，三个音效事件读取原 `EVENTS`，不改变时间轴。
-- 支持 `?embed`、`?render`、`?t=秒`；嵌入和渲染隐藏原控制条，固定横屏等比缩放。
-- 补充移动视口设置，使独立打开时控制条按实际屏宽排版；跳转时使用微秒精度，消除指针坐标换算的尾差。
-- 沿用原预览控制条及布局，将文字中文化、逐帧箭头换成 SVG，并补入声音开关。控制事件连接适配时钟；每帧调用原 `render(t)`，不修改原预览脚本。
-- 独立播放最终混音 WAV，默认声音关闭。播放、跳转和速度变化同步音轨；浏览器阻止声音时回报“待启用”，画面时间轴仍可运行。
-- `?render` 禁止自动播放和声音；`prefers-reduced-motion` 下不自动播放，未指定时刻时显示 18.5 秒落版，运行中启用减少动态会暂停。
-- 向宿主回报就绪、固定画幅、加载完成与声音状态，接收播放、暂停、跳转、画幅查询和声音消息。
-
-适配层不重绘文字、曲线、坐标或镜头，不修改配乐、三个音效及其混音。
+支持 `?embed`、`?render`、`?t=秒`；嵌入和渲染隐藏控制条。减少动态偏好下暂停，未指定时刻时显示 18.5 秒落版。
 
 ## 拆解与估计
 
@@ -33,4 +20,4 @@
 
 六段使用经用户指定的起止能量值和最终时间轴的实际秒数，段内线性插值、边界允许跳变。`energySegments` 是精确端点；`energy` 是每 0.5 秒的兼容采样。它们描述视觉运动与停留。
 
-数据来源和画面数值映射见 [DATA.md](DATA.md)，音乐、音效及署名见 [AUDIO.md](AUDIO.md)。
+数据来源和画面数值映射见 [DATA.md](source/DATA.md)，音乐、音效及署名见 [AUDIO.md](source/AUDIO.md)。

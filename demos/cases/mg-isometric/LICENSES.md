@@ -1,6 +1,6 @@
 # 许可与出处
 
-原作《ISOPOLIS — Let the City Grow（让城市自己生长）》来自 [Vincentwei1021/mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)，作者 Vincentwei1021，固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c`。代码、提示词、文档和成片按 MIT 许可发布，许可原文见 [LICENSE](LICENSE)。
+原作《ISOPOLIS — Let the City Grow（让城市自己生长）》来自 [Vincentwei1021/mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)，作者 Vincentwei1021，固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c`。代码、提示词、文档和成片按 MIT 许可发布，许可原文见 [LICENSE](film/LICENSE)。
 
 ## 字体
 
@@ -12,7 +12,7 @@
 | JetBrains Mono，可变字重，画面用 500 | [Google Fonts：JetBrainsMono[wght].ttf](https://raw.githubusercontent.com/google/fonts/6e4b84c976cadb3c49a40fd9a1c203e4f7fcf2da/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf)，字体版本 2.211，提交 `6e4b84c976cadb3c49a40fd9a1c203e4f7fcf2da` | SIL OFL 1.1，[JetBrainsMono-OFL.txt](fonts/JetBrainsMono-OFL.txt) |
 | Unbounded，可变字重，画面用 800 | [Google Fonts：Unbounded[wght].ttf](https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/unbounded/Unbounded%5Bwght%5D.ttf)，字体版本 1.701，提交 `8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5` | SIL OFL 1.1，[Unbounded-OFL.txt](fonts/Unbounded-OFL.txt) |
 
-完整原始可变字体保存在 `fonts/`，`assets/fonts/Unbounded-800-static.ttf` 由 Unbounded 在 `wght=800` 实例化，命令见 [fidelity.md](fidelity.md)。
+完整原始可变字体保存在 `fonts/`，`fonts/Unbounded-800-static.ttf` 由 Unbounded 在 `wght=800` 实例化，命令见 [fidelity.md](fidelity.md)。
 
 ## 固定版本库
 

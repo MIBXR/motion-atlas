@@ -2,7 +2,7 @@
 
 ## 实现 Prompt
 
-从当前archive-os裁出GLB阵列选择机制，原样复制ArchiveScene及所需模块、archive-cassette.glb、MiSans字形与选档/切列声音函数到独立目录。保持9×32循环对象池、列距5.2与行距0.62，以及当前材质、光照、相机和含速度归位。每次选择即时emit，最多6次；d = hypot(Δrow, 2.2Δlane)，位移=0.8 · smooth(age/0.2) · exp(−1.15age) · cos((d−8age)·0.58) · exp(−0.5((d−8age)/3.4)²)，保留负值，3.2s后清除，叠加clamp到±0.6世界单位。选中档案以速率4.2临界阻尼升高0.4世界单位。使用案例62.6–77.6s四向输入表；按60Hz事件回放推导render(t)，后退时重建状态，外部seek/play恢复自动驾驶。可调波参数与输入表集中在index.html顶部CONFIG；声音默认关闭，减少动态使用案例reducedMotion预设。
+从当前archive-os裁出GLB阵列选择机制，保留ArchiveScene及所需模块与选档/切列声音函数，模型和MiSans字形引用../../cases/archive-os/film/app/。保持9×32循环对象池、列距5.2与行距0.62，以及当前材质、光照、相机和含速度归位。每次选择即时emit，最多6次；d = hypot(Δrow, 2.2Δlane)，位移=0.8 · smooth(age/0.2) · exp(−1.15age) · cos((d−8age)·0.58) · exp(−0.5((d−8age)/3.4)²)，保留负值，3.2s后清除，叠加clamp到±0.6世界单位。选中档案以速率4.2临界阻尼升高0.4世界单位。使用案例62.6–77.6s四向输入表；按60Hz事件回放推导render(t)，后退时重建状态，外部seek/play恢复自动驾驶。可调波参数与输入表集中在index.html顶部CONFIG；声音默认关闭，减少动态使用案例reducedMotion预设。
 
 ## 视频生成 Prompt
 

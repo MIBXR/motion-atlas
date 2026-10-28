@@ -2,7 +2,7 @@
 
 ## 实现 Prompt
 
-实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音原样复制 film-audio.ogg，仅播放 0–21.92 秒，默认关闭。所有资源放在 Demo 内；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。
+实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音引用 ../../cases/archive-os/audio/film-audio.ogg，仅播放 0–21.92 秒，默认关闭。字体引用 ../../cases/archive-os/film/app/fonts/；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。
 
 ## 视频生成 Prompt
 

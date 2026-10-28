@@ -56,7 +56,7 @@
       "conflicts": [],
       "notes": "本巧思按所列原片区间顺序重放。"
     },
-    "prompt": "复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
+    "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
     "demo": "demos/patterns/shape-wipe-transition/index.html",
     "kit": true,
     "timeline": true,
@@ -108,11 +108,11 @@
     },
     "migration": [
       {
-        "field": "config.js → segments",
+        "field": "index.html 内联配置 → segments",
         "how": "设置重放原片的起止时刻，画面与音轨使用同一映射。"
       },
       {
-        "field": "config.js → markers / reduced",
+        "field": "index.html 内联配置 → markers / reduced",
         "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
       }
     ],
@@ -126,85 +126,81 @@
     }
   ],
   "documents": {
-    "prompt": "# 形状擦除转场\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 config.js 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。\n\n## 参数\n\n- **气泡预备**：144/30–150/30=4.800–5.000秒；sx乘1+.12*an，sy乘1-.18*an；上提段145/30=4.833秒起。\n- **彗星气泡**：150/30–160/30=5.000–5.333秒；圆半径58；k=exp(lerp(log(1.12),log(34),E.ioQ(u1)))；尾长84→204；旋转175*E.outC(u1)。\n- **薄荷胶囊**：154/30–163/30=5.133–5.433秒；3000×1500、rx750；k=exp(lerp(log(.03),0,E.ioQ(u2)))；rot=25*(1-E.outB(u2,1.6))。\n- **奶油半圆**：158/30–164/30=5.267–5.467秒；半径1700；y=-110-2300*(1-E.inQ(u3))+40*kick(tc,slam,3.5,.4)；sy=1-.06*kick；rot=7*(1-u3)。\n\n## 迁移\n\n- `config.js → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `config.js → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/shape-wipe-transition/index.html) · [在库中查看](../../patterns.html#pattern/shape-wipe-transition)\n"
+    "prompt": "# 形状擦除转场\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。\n\n## 参数\n\n- **气泡预备**：144/30–150/30=4.800–5.000秒；sx乘1+.12*an，sy乘1-.18*an；上提段145/30=4.833秒起。\n- **彗星气泡**：150/30–160/30=5.000–5.333秒；圆半径58；k=exp(lerp(log(1.12),log(34),E.ioQ(u1)))；尾长84→204；旋转175*E.outC(u1)。\n- **薄荷胶囊**：154/30–163/30=5.133–5.433秒；3000×1500、rx750；k=exp(lerp(log(.03),0,E.ioQ(u2)))；rot=25*(1-E.outB(u2,1.6))。\n- **奶油半圆**：158/30–164/30=5.267–5.467秒；半径1700；y=-110-2300*(1-E.inQ(u3))+40*kick(tc,slam,3.5,.4)；sy=1-.06*kick；rot=7*(1-u3)。\n\n## 迁移\n\n- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/shape-wipe-transition/index.html) · [在库中查看](../../patterns.html#pattern/shape-wipe-transition)\n"
   },
   "entrypoint": "demos/patterns/shape-wipe-transition/index.html",
   "files": [
     {
-      "path": "demos/patterns/shape-wipe-transition/LICENSES.md",
-      "bytes": 105
+      "path": "demos/cases/mg-flat-vector/LICENSES.md",
+      "bytes": 1736
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/config.js",
-      "bytes": 797
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/index.html",
-      "bytes": 722
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/replay.js",
-      "bytes": 6633
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/LICENSE",
-      "bytes": 1071
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/LICENSES.md",
-      "bytes": 1731
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/audio/film.m4a",
+      "path": "demos/cases/mg-flat-vector/audio/film.m4a",
       "bytes": 346596
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/cues.json",
+      "path": "demos/cases/mg-flat-vector/fidelity.md",
+      "bytes": 3455
+    },
+    {
+      "path": "demos/cases/mg-flat-vector/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-flat-vector/film/cues.json",
       "bytes": 906
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fidelity.md",
-      "bytes": 3386
+      "path": "demos/cases/mg-flat-vector/film/scene.js",
+      "bytes": 63462
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/Fredoka-OFL.txt",
+      "path": "demos/cases/mg-flat-vector/film/setup.js",
+      "bytes": 206
+    },
+    {
+      "path": "demos/cases/mg-flat-vector/film/style.css",
+      "bytes": 111
+    },
+    {
+      "path": "demos/cases/mg-flat-vector/fonts/Fredoka-OFL.txt",
       "bytes": 4388
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/Fredoka[wdth,wght].ttf",
+      "path": "demos/cases/mg-flat-vector/fonts/Fredoka[wdth,wght].ttf",
       "bytes": 159184
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/ResourceHanRounded-OFL.txt",
+      "path": "demos/cases/mg-flat-vector/fonts/ResourceHanRounded-OFL.txt",
       "bytes": 4504
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/ResourceHanRoundedCN-Bold.ttf",
+      "path": "demos/cases/mg-flat-vector/fonts/ResourceHanRoundedCN-Bold.ttf",
       "bytes": 13978508
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/fonts/fonts.css",
+      "path": "demos/cases/mg-flat-vector/fonts/fonts.css",
       "bytes": 376
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/index.html",
-      "bytes": 63994
+      "path": "demos/cases/mg-flat-vector/index.html",
+      "bytes": 2472
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/motion-adapter.js",
-      "bytes": 5409
+      "path": "demos/cases/mg-flat-vector/motion-kit.js",
+      "bytes": 119411
     },
     {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/shape-wipe-transition/sources/mg-flat-vector/source/audio.py",
+      "path": "demos/cases/mg-flat-vector/source/audio.py",
       "bytes": 7610
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/index.html",
+      "bytes": 1581
+    },
+    {
+      "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
+      "bytes": 119411
     },
     {
       "path": "previews/patterns/shape-wipe-transition.jpg",

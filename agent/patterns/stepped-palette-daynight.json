@@ -66,7 +66,7 @@
       "conflicts": [],
       "notes": "环境色槽、星点色槽和径向夜色前沿沿用原作的同一帧号与调色板。"
     },
-    "prompt": "以原作 PIXEL QUEST 的 renderAt(t) 重放色板阶梯昼夜，按 config.js 的 segments 以 1 倍速播放原片 0–10 秒，保留原片画面与同一区间音轨。保留 32 色主色板与 128 色槽，1.6、3.2、4.4 秒分别进入午后、金色和日落；每次用 4 帧完成两级 1/3、2/3 配色插值，再取最近主色。80 个星点按 early=R()<0.4 分组，f194 后开始显示并避开水晶光池；星点每 4 帧轮换 [8,31,29,31] 色阶。8.0、8.1、8.2、8.3 秒的夜色半径为 150、110、70、36，以 (d-wv)/12+0.5 和 Bayer 阈值在暮色、中间色与夜色之间切换。继续调用来源代码，声音默认关闭；使用横屏、时间定位、播放暂停与减少动态偏好。",
+    "prompt": "以原作 PIXEL QUEST 的 renderAt(t) 重放色板阶梯昼夜，按 index.html 内联配置 的 segments 以 1 倍速播放原片 0–10 秒，保留原片画面与同一区间音轨。保留 32 色主色板与 128 色槽，1.6、3.2、4.4 秒分别进入午后、金色和日落；每次用 4 帧完成两级 1/3、2/3 配色插值，再取最近主色。80 个星点按 early=R()<0.4 分组，f194 后开始显示并避开水晶光池；星点每 4 帧轮换 [8,31,29,31] 色阶。8.0、8.1、8.2、8.3 秒的夜色半径为 150、110、70、36，以 (d-wv)/12+0.5 和 Bayer 阈值在暮色、中间色与夜色之间切换。继续调用来源代码，声音默认关闭；使用横屏、时间定位、播放暂停与减少动态偏好。",
     "demo": "demos/patterns/stepped-palette-daynight/index.html",
     "kit": true,
     "timeline": true,
@@ -113,101 +113,93 @@
     }
   ],
   "documents": {
-    "prompt": "# 色板阶梯昼夜\n\n## 实现 Prompt\n\n以原作 PIXEL QUEST 的 renderAt(t) 重放色板阶梯昼夜，按 config.js 的 segments 以 1 倍速播放原片 0–10 秒，保留原片画面与同一区间音轨。保留 32 色主色板与 128 色槽，1.6、3.2、4.4 秒分别进入午后、金色和日落；每次用 4 帧完成两级 1/3、2/3 配色插值，再取最近主色。80 个星点按 early=R()<0.4 分组，f194 后开始显示并避开水晶光池；星点每 4 帧轮换 [8,31,29,31] 色阶。8.0、8.1、8.2、8.3 秒的夜色半径为 150、110、70、36，以 (d-wv)/12+0.5 和 Bayer 阈值在暮色、中间色与夜色之间切换。继续调用来源代码，声音默认关闭；使用横屏、时间定位、播放暂停与减少动态偏好。\n\n## 参数\n\n- **原片重放区间**：0–10 秒，1 倍速\n- **色板结构**：32 色主色板、128 色槽；每次过渡 4 帧，前 2 帧取 1/3、后 2 帧取 2/3，再映射回最近主色\n- **昼夜节点**：1.6 秒午后、3.2 秒金色、4.4 秒日落\n- **星点显现**：80 个星点，early=R()<0.4，大星概率 0.08；f194/30=6.4667 秒起显示，排除水晶光池半径加 3 的区域\n- **星点闪烁**：每 4 帧轮换 [8,31,29,31] 色阶；#ffffff、#b8c2d9、#4a5270、#b8c2d9\n- **夜色径向收拢**：8.0、8.1、8.2、8.3 秒依次取半径 150、110、70、36；边界按 (d-wv)/12+0.5 与 Bayer 阈值切换暮色、中间色、夜色\n\n[打开 Demo](../../demos/patterns/stepped-palette-daynight/index.html) · [在库中查看](../../patterns.html#pattern/stepped-palette-daynight)\n"
+    "prompt": "# 色板阶梯昼夜\n\n## 实现 Prompt\n\n以原作 PIXEL QUEST 的 renderAt(t) 重放色板阶梯昼夜，按 index.html 内联配置 的 segments 以 1 倍速播放原片 0–10 秒，保留原片画面与同一区间音轨。保留 32 色主色板与 128 色槽，1.6、3.2、4.4 秒分别进入午后、金色和日落；每次用 4 帧完成两级 1/3、2/3 配色插值，再取最近主色。80 个星点按 early=R()<0.4 分组，f194 后开始显示并避开水晶光池；星点每 4 帧轮换 [8,31,29,31] 色阶。8.0、8.1、8.2、8.3 秒的夜色半径为 150、110、70、36，以 (d-wv)/12+0.5 和 Bayer 阈值在暮色、中间色与夜色之间切换。继续调用来源代码，声音默认关闭；使用横屏、时间定位、播放暂停与减少动态偏好。\n\n## 参数\n\n- **原片重放区间**：0–10 秒，1 倍速\n- **色板结构**：32 色主色板、128 色槽；每次过渡 4 帧，前 2 帧取 1/3、后 2 帧取 2/3，再映射回最近主色\n- **昼夜节点**：1.6 秒午后、3.2 秒金色、4.4 秒日落\n- **星点显现**：80 个星点，early=R()<0.4，大星概率 0.08；f194/30=6.4667 秒起显示，排除水晶光池半径加 3 的区域\n- **星点闪烁**：每 4 帧轮换 [8,31,29,31] 色阶；#ffffff、#b8c2d9、#4a5270、#b8c2d9\n- **夜色径向收拢**：8.0、8.1、8.2、8.3 秒依次取半径 150、110、70、36；边界按 (d-wv)/12+0.5 与 Bayer 阈值切换暮色、中间色、夜色\n\n[打开 Demo](../../demos/patterns/stepped-palette-daynight/index.html) · [在库中查看](../../patterns.html#pattern/stepped-palette-daynight)\n"
   },
   "entrypoint": "demos/patterns/stepped-palette-daynight/index.html",
   "files": [
     {
-      "path": "demos/patterns/stepped-palette-daynight/LICENSES.md",
-      "bytes": 398
+      "path": "demos/cases/mg-pixel/LICENSES.md",
+      "bytes": 1712
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/config.js",
-      "bytes": 463
-    },
-    {
-      "path": "demos/patterns/stepped-palette-daynight/index.html",
-      "bytes": 722
-    },
-    {
-      "path": "demos/patterns/stepped-palette-daynight/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/stepped-palette-daynight/replay.js",
-      "bytes": 6633
-    },
-    {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/LICENSE",
-      "bytes": 1071
-    },
-    {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/LICENSES.md",
-      "bytes": 1702
-    },
-    {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/audio/film.m4a",
+      "path": "demos/cases/mg-pixel/audio/film.m4a",
       "bytes": 345394
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/cues.json",
+      "path": "demos/cases/mg-pixel/fidelity.md",
+      "bytes": 3617
+    },
+    {
+      "path": "demos/cases/mg-pixel/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-pixel/film/cues.json",
       "bytes": 888
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fidelity.md",
-      "bytes": 3563
+      "path": "demos/cases/mg-pixel/film/film.js",
+      "bytes": 58398
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/film.js",
-      "bytes": 58393
+      "path": "demos/cases/mg-pixel/film/setup.js",
+      "bytes": 385
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/FusionPixel-OFL.txt",
+      "path": "demos/cases/mg-pixel/film/style.css",
+      "bytes": 100
+    },
+    {
+      "path": "demos/cases/mg-pixel/fonts/FusionPixel-OFL.txt",
       "bytes": 4418
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/LICENSES/ark-pixel/OFL.txt",
+      "path": "demos/cases/mg-pixel/fonts/LICENSES/ark-pixel/OFL.txt",
       "bytes": 4412
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/LICENSES/cubic-11/OFL.txt",
+      "path": "demos/cases/mg-pixel/fonts/LICENSES/cubic-11/OFL.txt",
       "bytes": 5364
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/LICENSES/galmuri/LICENSE.txt",
+      "path": "demos/cases/mg-pixel/fonts/LICENSES/galmuri/LICENSE.txt",
       "bytes": 4360
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/PressStart2P-OFL.txt",
+      "path": "demos/cases/mg-pixel/fonts/PressStart2P-OFL.txt",
       "bytes": 4413
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/PressStart2P-Regular.ttf",
+      "path": "demos/cases/mg-pixel/fonts/PressStart2P-Regular.ttf",
       "bytes": 118204
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/fonts.css",
+      "path": "demos/cases/mg-pixel/fonts/fonts.css",
       "bytes": 369
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/fonts/fusion-pixel-12px-proportional-zh_hans.ttf",
+      "path": "demos/cases/mg-pixel/fonts/fusion-pixel-12px-proportional-zh_hans.ttf",
       "bytes": 7295572
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/index.html",
-      "bytes": 646
+      "path": "demos/cases/mg-pixel/index.html",
+      "bytes": 2004
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/motion-adapter.js",
-      "bytes": 5758
+      "path": "demos/cases/mg-pixel/motion-kit.js",
+      "bytes": 119411
     },
     {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/motion-kit.js",
-      "bytes": 107961
-    },
-    {
-      "path": "demos/patterns/stepped-palette-daynight/sources/mg-pixel/source/audio.py",
+      "path": "demos/cases/mg-pixel/source/audio.py",
       "bytes": 11101
+    },
+    {
+      "path": "demos/patterns/stepped-palette-daynight/index.html",
+      "bytes": 1474
+    },
+    {
+      "path": "demos/patterns/stepped-palette-daynight/motion-kit.js",
+      "bytes": 119411
     },
     {
       "path": "previews/patterns/stepped-palette-daynight.jpg",

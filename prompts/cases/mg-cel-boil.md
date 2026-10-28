@@ -95,9 +95,9 @@ realised; the tech route; check numbers (duration, resolution, fps, loudness, tr
 
 ## 迁移
 
-- `js/engine.js → PAL`：调整墨线、填色、纸面和红铅笔色板。
-- `js/scene.js → CHAR_SHOU、CHAR_ZUO、LET、TAG`：替换手绘字形与标语，并配套相应字体文件。
-- `cues.json → exposure 与动作节点`：调整曝光节奏和画音节点。
-- `motion-adapter.js`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
+- `film/engine.js → PAL`：调整墨线、填色、纸面和红铅笔色板。
+- `film/scene.js → CHAR_SHOU、CHAR_ZUO、LET、TAG`：替换手绘字形与标语，并配套相应字体文件。
+- `film/cues.json → exposure 与动作节点`：调整曝光节奏和画音节点。
+- `index.html → MotionKit.mountFilm`：接入 Motion Kit 时间轴、原片音轨与窗口缩放。
 
 [打开 Demo](../../demos/cases/mg-cel-boil/index.html) · [在库中查看](../../cases.html#case/mg-cel-boil)

@@ -1972,7 +1972,7 @@
       return tl;
     });
     def('ready', { value: ready, writable: true });
-    if (params().sound) audio.enable();
+    if (params().sound) (tl.__sound || audio).enable();
     return tl;
   }
 
@@ -1992,6 +1992,241 @@
       if (autoplay && p.autoplay && !reduce) tl.play();
       return tl;
     });
+  }
+
+
+  function loadMediaTrack({ src, mime = 'audio/mp4' }) {
+    const media = new Audio();
+    media.preload = 'auto';
+    media.muted = true;
+    const ready = (async () => {
+      const bytes = await (await fetch(src)).arrayBuffer();
+      const metadata = new Promise((resolve, reject) => {
+        media.addEventListener('loadedmetadata', resolve, { once: true });
+        media.addEventListener('error', () => reject(media.error), { once: true });
+      });
+      media.src = URL.createObjectURL(new Blob([bytes], { type: mime }));
+      await metadata;
+    })();
+    return { media, ready };
+  }
+
+  function playerSound(tl, synchronize) {
+    let enabled = false, state = 'off', revision = 0;
+    const bus = emitter();
+    const report = (next = state) => {
+      state = next;
+      bus.emit('change', enabled, state);
+      post({ type: 'motion:sound', on: enabled, state });
+    };
+    const sync = async () => {
+      const current = ++revision;
+      const valid = () => current === revision;
+      await synchronize(enabled, valid, next => { if (valid()) report(next); });
+    };
+    const set = on => {
+      enabled = !!on && !params().render;
+      report(enabled ? 'on' : 'off');
+      return sync();
+    };
+    const api = {
+      get enabled() { return enabled; },
+      get state() { return state; },
+      enable: () => set(true),
+      disable: () => set(false),
+      toggle: () => set(!enabled),
+      on: bus.on,
+      sync,
+    };
+    Object.defineProperties(tl, {
+      __sound: { value: api },
+      soundEnabled: { get: () => enabled },
+      soundState: { get: () => state },
+    });
+    for (const event of ['play', 'pause', 'seek', 'rate', 'end']) tl.on(event, () => { void sync(); });
+    for (const event of ['pointerdown', 'keydown']) {
+      global.addEventListener(event, () => { if (state === 'blocked') void set(true); }, true);
+    }
+    report();
+    return api;
+  }
+
+  function mountFilm(config) {
+    const film = config.film;
+    stage({
+      root: config.root,
+      orients: config.orients || ['landscape'],
+      sizes: config.sizes || { landscape: [film.width, film.height] },
+      background: config.background,
+    });
+    const tl = timeline({
+      duration: film.duration, fps: film.fps,
+      markers: [...(config.markers || [])].sort((a, b) => a.t - b.t),
+      render: t => film.renderAt(t),
+    });
+    const track = config.audio ? loadMediaTrack(config.audio) : null;
+    const snd = track ? playerSound(tl, async (enabled, valid, report) => {
+      const { media, ready } = track;
+      if (!enabled || !tl.playing) media.pause();
+      media.muted = !enabled;
+      if (!enabled) return;
+      await ready;
+      if (!valid()) return;
+      media.currentTime = tl.time;
+      media.playbackRate = tl.rate;
+      if (!tl.playing) return;
+      try {
+        await media.play();
+        if (valid()) report('on');
+      } catch (error) {
+        if (!valid() || error.name === 'AbortError') return;
+        if (error.name !== 'NotAllowedError') throw error;
+        report('blocked');
+      }
+    }) : null;
+    if (track) tl.on(t => {
+      const media = track.media;
+      if (snd.enabled && snd.state === 'on' && tl.playing && media.readyState >= 2 && !media.seeking && Math.abs(media.currentTime - t) > 0.08) media.currentTime = t;
+    });
+    expose(tl, {
+      title: config.title || document.title, sound: !!track,
+      ...(config.bpm == null ? {} : { bpm: config.bpm }),
+    });
+    controls(tl, {
+      sound: snd, accent: config.accent,
+      rates: config.rates || [0.5, 0.75, 1, 1.25, 1.5, 2],
+      step: config.step,
+    });
+    global.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', event => { if (event.matches) tl.pause(); });
+    start(tl, config.start);
+    return tl;
+  }
+
+  function replay(config) {
+    document.title = config.title;
+    const st = stage({ root: config.root, orients: config.orients || ['landscape'], sizes: config.sizes, background: config.background || '#000' });
+    const cue = typeof config.overlay === 'string' ? document.querySelector(config.overlay) : config.overlay;
+    let offset = 0;
+    const segments = config.segments.map(segment => {
+      const start = offset;
+      offset += segment.to - segment.from;
+      return { ...segment, source: segment.source || `../../cases/${segment.caseId}/index.html`, start, end: offset };
+    });
+    const records = new Map();
+    for (const segment of segments) {
+      if (records.has(segment.source)) continue;
+      const frame = document.createElement('iframe');
+      frame.title = segment.label;
+      frame.allow = 'autoplay';
+      frame.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+      st.root.insertBefore(frame, cue || null);
+      const loaded = new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+      const url = new URL(segment.source, location.href);
+      url.searchParams.set('embed', '1');
+      url.searchParams.set('render', '1');
+      frame.src = url.href;
+      const track = segment.legacy ? null : loadMediaTrack({ src: segment.audio || `../../cases/${segment.caseId}/audio/film.m4a` });
+      records.set(segment.source, { frame, loaded, segment, track, progress: 0 });
+    }
+    global.addEventListener('message', event => {
+      const record = [...records.values()].find(item => item.frame.contentWindow === event.source);
+      if (!record || event.data?.type !== 'motion:loading') return;
+      record.progress = event.data.progress;
+      post({ type: 'motion:loading', progress: [...records.values()].reduce((sum, item) => sum + item.progress, 0) / records.size });
+    });
+    const prepared = Promise.all([...records.values()].map(async record => {
+      await record.loaded;
+      record.window = record.frame.contentWindow;
+      while (!record.window.__motion) await new Promise(requestAnimationFrame);
+      await record.window.__motion.ready;
+      record.window.__motion.pause();
+      record.window.MotionKit.audio.disable();
+      await record.window.__motion.setOrient(st.orient);
+      if (record.track) await record.track.ready;
+      record.progress = 1;
+      await new Promise(requestAnimationFrame);
+    }));
+    preload([{ label: '原作画面与同段音轨', run: () => prepared }], { timeout: 120000 });
+    let orientReady = Promise.resolve();
+    st.on('orient', orient => {
+      orientReady = prepared.then(() => Promise.all([...records.values()].map(record => record.window.__motion.setOrient(orient))));
+    });
+    const mapped = time => {
+      const segment = segments.find(item => time < item.end - 0.000001) || segments[segments.length - 1];
+      return { segment, sourceTime: segment.from + Math.min(segment.to - segment.from, Math.max(0, time - segment.start)) };
+    };
+    let activeSource = null;
+    const tl = timeline({
+      duration: offset, fps: config.fps || 30, markers: config.markers || [],
+      async render(time) {
+        await prepared;
+        await orientReady;
+        const { segment, sourceTime } = mapped(time);
+        const record = records.get(segment.source);
+        for (const [source, item] of records) item.frame.style.visibility = source === segment.source ? 'visible' : 'hidden';
+        if (activeSource !== segment.source) {
+          activeSource = segment.source;
+          void snd.sync();
+        }
+        if (cue) {
+          const current = segment.cues.filter(item => item.t <= sourceTime + 0.000001).at(-1);
+          cue.hidden = false;
+          cue.textContent = segment.label + ' · ' + (current ? current.label : '片段开始');
+        }
+        const media = record.track?.media;
+        if (media && snd.enabled && tl.playing && !media.paused && !media.seeking && Math.abs(media.currentTime - sourceTime) > 0.08) media.currentTime = sourceTime;
+        return record.window.__motion.seek(sourceTime);
+      },
+    });
+    const snd = playerSound(tl, async (enabled, valid, report) => {
+      if (!enabled || !tl.playing) for (const record of records.values()) record.track?.media.pause();
+      await prepared;
+      if (!valid()) return;
+      const { segment, sourceTime } = mapped(tl.time);
+      const selected = records.get(segment.source);
+      for (const record of records.values()) {
+        if (record.segment.legacy) {
+          if (record !== selected || !enabled || !tl.playing) {
+            record.window.__motion.pause();
+            record.window.MotionKit.audio.disable();
+          }
+        } else if (record !== selected || !enabled || !tl.playing) {
+          record.track.media.pause();
+          record.track.media.muted = true;
+        }
+      }
+      if (segment.legacy) {
+        const original = selected.window.__motion;
+        original.setRate(tl.rate);
+        await original.seek(sourceTime);
+        if (!valid()) return;
+        if (enabled && tl.playing) {
+          selected.window.MotionKit.audio.enable();
+          original.play();
+          report(selected.window.MotionKit.audio.state);
+        }
+      } else {
+        const media = selected.track.media;
+        media.currentTime = sourceTime;
+        media.playbackRate = tl.rate;
+        media.muted = !enabled;
+        if (enabled && tl.playing) {
+          try {
+            await media.play();
+            if (valid()) report('on');
+          } catch (error) {
+            if (!valid() || error.name === 'AbortError') return;
+            if (error.name !== 'NotAllowedError') throw error;
+            report('blocked');
+          }
+        }
+      }
+    });
+    expose(tl, { title: config.title, sound: true });
+    controls(tl, { sound: snd, accent: config.accent, rates: config.rates });
+    global.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', event => { if (event.matches) tl.pause(); });
+    start(tl, { t: 0, reduced: config.reduced });
+    return tl;
   }
 
   /* =====================================================================
@@ -2015,7 +2250,7 @@
    * 按钮节点只创建一次，状态变化时只切换属性，不在每帧重写按钮内容（每帧替换子节点会让 pointerdown 与 pointerup
    * 落在不同节点上，导致 click 丢失）。
    */
-  function controls(tl, { sound: snd = null, accent = '#ff5b2e', orient = true } = {}) {
+  function controls(tl, { sound: snd = null, accent = '#ff5b2e', orient = true, rates = null, step = 'seconds' } = {}) {
     const p = params();
     if (snd) KIT.usesSound = true;
     const keys = (e) => {
@@ -2027,7 +2262,11 @@
       if (e.code === 'Space') { e.preventDefault(); tl.toggle(); }
       else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
         const dir = e.key === 'ArrowRight' ? 1 : -1;
-        if (e.shiftKey && tl.markers.length) {
+        if (step === 'frames') {
+          e.preventDefault();
+          tl.pause();
+          tl.seek(tl.time + dir / tl.fps);
+        } else if (e.shiftKey && tl.markers.length) {
           const ts = tl.markers.map((m) => m.t).sort((a, b) => a - b);
           const next = dir > 0 ? ts.find((v) => v > tl.time + 0.05) : [...ts].reverse().find((v) => v < tl.time - 0.05);
           if (next != null) tl.seek(next);
@@ -2044,6 +2283,7 @@
     bar.innerHTML = `
       <button type="button" data-act="toggle" aria-label="播放"><span class="mk-i mk-i-play">${ICON.play}</span><span class="mk-i mk-i-pause">${ICON.pause}</span></button>
       <button type="button" data-act="restart" aria-label="从头播放"><span class="mk-i">${ICON.restart}</span></button>
+      ${step === 'frames' ? '<button type="button" data-act="back" aria-label="上一帧"><span class="mk-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button><button type="button" data-act="next" aria-label="下一帧"><span class="mk-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button>' : ''}
       <input type="range" min="0" max="${tl.duration}" step="0.01" value="0" aria-label="时间">
       <output>${fmt(0)}</output>
       <button type="button" data-act="orient" aria-label="切换为竖屏" hidden><span class="mk-i mk-i-land">${ICON.landscape}</span><span class="mk-i mk-i-port">${ICON.portrait}</span></button>
@@ -2079,17 +2319,18 @@
     const out = bar.querySelector('output');
     let scrubbing = false, wasPlaying = false;
 
+    const soundSource = snd && 'state' in snd ? snd : audio;
     const syncSound = () => {
-      const s = audio.state;
+      const s = soundSource.state;
       if (bar.dataset.sound === s) return;
       bar.dataset.sound = s;
-      sBtn.setAttribute('aria-pressed', String(audio.enabled));
+      sBtn.setAttribute('aria-pressed', String(soundSource.enabled));
       sBtn.setAttribute('aria-label', s === 'off' ? '开启声音' : s === 'blocked' ? '声音已开启，等待页面内点击以启用' : '关闭声音');
     };
     const showSound = () => { if (sBtn.hidden) { sBtn.hidden = false; syncSound(); } };
     if (snd || tl.__score) showSound();
     audio.on('attach', (t) => { if (t === tl) showSound(); });
-    audio.on('change', syncSound);
+    soundSource.on('change', syncSound);
     syncSound();
 
     const syncOrient = () => {
@@ -2112,6 +2353,7 @@
       else if (act === 'restart') { tl.seek(0); tl.play(); }
       else if (act === 'sound') { if (snd && snd !== audio && typeof snd.toggle === 'function') snd.toggle(); else audio.toggle(); syncSound(); }
       else if (act === 'orient' && KIT.stage) KIT.stage.toggleOrient();
+      else if (act === 'back' || act === 'next') { tl.pause(); tl.seek(tl.time + (act === 'next' ? 1 : -1) / tl.fps); }
     });
     range.addEventListener('pointerdown', () => { scrubbing = true; wasPlaying = tl.playing; tl.pause(); });
     range.addEventListener('input', () => tl.seek(Number(range.value)));
@@ -2128,6 +2370,18 @@
         btn.setAttribute('aria-label', playing ? '暂停' : '播放');
       }
     });
+    if (rates && rates.length) {
+      const label = document.createElement('label');
+      label.textContent = '速度 ';
+      const select = document.createElement('select');
+      select.setAttribute('aria-label', '播放速度');
+      select.style.cssText = 'font:inherit;font-size:13px;color:inherit;background:#26272b;border:0;border-radius:4px;padding:5px 2px';
+      for (const rate of rates) select.add(new Option(`${rate} 倍`, String(rate), false, rate === tl.rate));
+      select.onchange = () => tl.setRate(Number(select.value));
+      tl.on('rate', rate => { select.value = String(rate); });
+      label.appendChild(select);
+      bar.appendChild(label);
+    }
     return bar;
   }
 
@@ -2140,18 +2394,19 @@
       const d = e.data;
       if (!d || typeof d.type !== 'string' || d.type.indexOf('motion:') !== 0) return;
       const tl = KIT.timeline;
+      const snd = tl && tl.__sound || audio;
       switch (d.type) {
         case 'motion:orient':
           if (KIT.stage) KIT.stage.setOrient(d.orient, 'host');
           else KIT.hostOrient = d.orient;
           break;
         case 'motion:sound':
-          if (d.on) audio.enable(); else audio.disable();
+          if (d.on) snd.enable(); else snd.disable();
           break;
         case 'motion:query':
           if (tl && KIT.readyState) post(readyMsg(tl));
           post({ type: 'motion:loading', progress: loadProgress() });
-          post({ type: 'motion:sound', on: audio.enabled, state: audio.state });
+          post({ type: 'motion:sound', on: snd.enabled, state: snd.state });
           break;
         case 'motion:play': if (tl) tl.play(); break;
         case 'motion:pause': if (tl) tl.pause(); break;
@@ -2201,6 +2456,6 @@
   global.MotionKit = {
     version: VERSION,
     clamp, lerp, invLerp, bezier, ease, seg, env, keyframes, rng, chars, typeText, scramble, count, pad, beats,
-    timeline, params, prefersReducedMotion, expose, controls, start, stage, preload, audio, sound, tween, follow, icons: ICON,
+    timeline, params, prefersReducedMotion, expose, controls, start, stage, preload, mountFilm, replay, audio, sound, tween, follow, icons: ICON,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

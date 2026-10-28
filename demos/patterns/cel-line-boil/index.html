@@ -14,7 +14,68 @@
 <body>
   <main id="stage"><output id="cue" hidden></output></main>
   <script src="motion-kit.js"></script>
-  <script src="config.js"></script>
-  <script type="module" src="replay.js"></script>
+  <script type="module">
+    const config = {
+      "title": "逐张重画：线条沸腾与换纸",
+      "segments": [
+        {
+          "caseId": "mg-cel-boil",
+          "label": "逐帧线条抖动",
+          "from": 0,
+          "to": 10
+        }
+      ],
+      "markers": [
+        {
+          "t": 0,
+          "label": "一拍二"
+        },
+        {
+          "t": 0.3333333333333333,
+          "label": "一拍一"
+        },
+        {
+          "t": 1,
+          "label": "一拍二"
+        },
+        {
+          "t": 2,
+          "label": "快动作"
+        },
+        {
+          "t": 2.5,
+          "label": "舞段重画"
+        },
+        {
+          "t": 4.5,
+          "label": "一拍三"
+        },
+        {
+          "t": 5,
+          "label": "一拍二"
+        },
+        {
+          "t": 5.5,
+          "label": "旋转加密"
+        },
+        {
+          "t": 7,
+          "label": "烟火重画"
+        },
+        {
+          "t": 9.333333333333334,
+          "label": "翻页加密"
+        },
+        {
+          "t": 9.583333333333334,
+          "label": "结尾重画"
+        }
+      ],
+      "reduced": 9.75,
+      "root": "#stage",
+      "fps": 24
+    };
+    await MotionKit.replay(config);
+  </script>
 </body>
 </html>
