@@ -280,11 +280,11 @@
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-hanazi/film/cues.json",
-      "bytes": 1232
+      "bytes": 1116
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
@@ -304,11 +304,11 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-LICENSE.txt",
-      "bytes": 2030
+      "bytes": 2016
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSans-OFL.txt",
-      "bytes": 4455
+      "bytes": 4425
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSansBold.ttf",
@@ -360,23 +360,23 @@
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep.py",
-      "bytes": 8920
+      "bytes": 8811
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2.py",
-      "bytes": 8320
+      "bytes": 8193
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2b.py",
-      "bytes": 4220
+      "bytes": 4162
     },
     {
       "path": "demos/cases/mg-hanazi/source/audio.py",
-      "bytes": 12216
+      "bytes": 12031
     },
     {
       "path": "demos/cases/mg-hanazi/source/cues.json",
-      "bytes": 1232
+      "bytes": 1116
     },
     {
       "path": "demos/patterns/split-compare-stamp/config.js",

@@ -1096,11 +1096,11 @@
     },
     {
       "path": "demos/cases/mg-3d-render/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-3d-render/film/cues.json",
-      "bytes": 1184
+      "bytes": 1125
     },
     {
       "path": "demos/cases/mg-3d-render/film/scene.js",
@@ -1116,7 +1116,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/fonts/DMSans-OFL.txt",
-      "bytes": 4482
+      "bytes": 4389
     },
     {
       "path": "demos/cases/mg-3d-render/fonts/DMSans[opsz,wght].ttf",
@@ -1172,39 +1172,39 @@
     },
     {
       "path": "demos/cases/mg-3d-render/source/assets/mesh/glyphs.json",
-      "bytes": 1236
+      "bytes": 1187
     },
     {
       "path": "demos/cases/mg-3d-render/source/audio.py",
-      "bytes": 10980
+      "bytes": 10817
     },
     {
       "path": "demos/cases/mg-3d-render/source/blender/common.py",
-      "bytes": 2434
+      "bytes": 2378
     },
     {
       "path": "demos/cases/mg-3d-render/source/blender/make_letters.py",
-      "bytes": 6423
+      "bytes": 6310
     },
     {
       "path": "demos/cases/mg-3d-render/source/blender/render.py",
-      "bytes": 3047
+      "bytes": 2997
     },
     {
       "path": "demos/cases/mg-3d-render/source/blender/scene.py",
-      "bytes": 35303
+      "bytes": 34690
     },
     {
       "path": "demos/cases/mg-3d-render/source/blender/sim.py",
-      "bytes": 29245
+      "bytes": 28728
     },
     {
       "path": "demos/cases/mg-3d-render/source/cues.json",
-      "bytes": 1184
+      "bytes": 1125
     },
     {
       "path": "demos/cases/mg-3d-render/source/out/events.json",
-      "bytes": 439610
+      "bytes": 419481
     },
     {
       "path": "demos/patterns/capsule-sweep-lift/index.html",
