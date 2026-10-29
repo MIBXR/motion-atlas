@@ -136,7 +136,7 @@
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/layout.json",
-      "bytes": 1777
+      "bytes": 1621
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/manicule.png",
@@ -216,11 +216,11 @@
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-collage/film/cues.json",
-      "bytes": 1389
+      "bytes": 1310
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
@@ -240,11 +240,11 @@
     },
     {
       "path": "demos/cases/mg-collage/fonts/AlimamaShuHeiTi-LICENSE.txt",
-      "bytes": 2030
+      "bytes": 2016
     },
     {
       "path": "demos/cases/mg-collage/fonts/Anton-OFL.txt",
-      "bytes": 4484
+      "bytes": 4391
     },
     {
       "path": "demos/cases/mg-collage/fonts/Anton-Regular.ttf",
@@ -264,7 +264,7 @@
     },
     {
       "path": "demos/cases/mg-collage/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4456
+      "bytes": 4363
     },
     {
       "path": "demos/cases/mg-collage/fonts/NotoSansSC-OFL.txt",
@@ -320,23 +320,23 @@
     },
     {
       "path": "demos/cases/mg-collage/source/audio.py",
-      "bytes": 10414
+      "bytes": 10279
     },
     {
       "path": "demos/cases/mg-collage/source/cues.json",
-      "bytes": 1389
+      "bytes": 1310
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep.py",
-      "bytes": 17010
+      "bytes": 16663
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep_birds.py",
-      "bytes": 830
+      "bytes": 819
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep_hand.py",
-      "bytes": 1821
+      "bytes": 1788
     },
     {
       "path": "demos/patterns/cutout-arc-flight-flutter/index.html",
