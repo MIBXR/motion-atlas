@@ -151,7 +151,7 @@
   "files": [
     {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
-      "bytes": 234
+      "bytes": 765
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/grain/grain_fine_2048.png",
@@ -167,7 +167,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/fidelity.md",
-      "bytes": 3471
+      "bytes": 4011
     },
     {
       "path": "demos/cases/mg-bauhaus/film/LICENSE",
@@ -226,8 +226,12 @@
       "bytes": 9344
     },
     {
+      "path": "demos/cases/mg-bauhaus/source/cues.json",
+      "bytes": 3719
+    },
+    {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 442
+      "bytes": 1181
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
@@ -259,7 +263,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 4474
+      "bytes": 5403
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
@@ -322,15 +326,35 @@
       "bytes": 119411
     },
     {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_01_3840x2160.png",
+      "bytes": 81508
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_02_3840x2160.png",
+      "bytes": 82662
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_03_3840x2160.png",
+      "bytes": 73739
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_04_3840x2160.png",
+      "bytes": 79891
+    },
+    {
       "path": "demos/cases/mg-cel-boil/source/audio.py",
       "bytes": 24290
     },
     {
-      "path": "demos/cases/mg-cel-boil/source/gen_dust.py",
+      "path": "demos/cases/mg-cel-boil/source/cues.json",
+      "bytes": 2188
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/tools/gen_dust.py",
       "bytes": 707
     },
     {
-      "path": "demos/cases/mg-cel-boil/source/gen_paper.py",
+      "path": "demos/cases/mg-cel-boil/source/tools/gen_paper.py",
       "bytes": 2360
     },
     {
@@ -355,7 +379,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 254
+      "bytes": 789
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
@@ -363,7 +387,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3398
+      "bytes": 3942
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
@@ -418,8 +442,12 @@
       "bytes": 7610
     },
     {
+      "path": "demos/cases/mg-flat-vector/source/cues.json",
+      "bytes": 906
+    },
+    {
       "path": "demos/cases/mg-line-art/LICENSES.md",
-      "bytes": 257
+      "bytes": 789
     },
     {
       "path": "demos/cases/mg-line-art/assets/textures/grain/grain_fine_2048.png",
@@ -431,7 +459,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/fidelity.md",
-      "bytes": 4754
+      "bytes": 5828
     },
     {
       "path": "demos/cases/mg-line-art/film/LICENSE",
@@ -482,12 +510,44 @@
       "bytes": 119411
     },
     {
+      "path": "demos/cases/mg-line-art/source/assets/fonts/fonts.css",
+      "bytes": 9135
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
       "path": "demos/cases/mg-line-art/source/audio.py",
       "bytes": 9978
     },
     {
+      "path": "demos/cases/mg-line-art/source/cues.json",
+      "bytes": 3214
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/film.js",
+      "bytes": 46982
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/index.html",
+      "bytes": 566
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/out/timing.json",
+      "bytes": 8840
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/tools/dump_timing.mjs",
+      "bytes": 2188
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/tools/retime.py",
+      "bytes": 4430
+    },
+    {
       "path": "demos/cases/mg-pixel/LICENSES.md",
-      "bytes": 165
+      "bytes": 694
     },
     {
       "path": "demos/cases/mg-pixel/audio/film.m4a",
@@ -495,7 +555,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/fidelity.md",
-      "bytes": 3570
+      "bytes": 4108
     },
     {
       "path": "demos/cases/mg-pixel/film/LICENSE",
@@ -562,6 +622,10 @@
       "bytes": 11101
     },
     {
+      "path": "demos/cases/mg-pixel/source/cues.json",
+      "bytes": 888
+    },
+    {
       "path": "demos/patterns/shared-cue-sheet/index.html",
       "bytes": 6297
     },
@@ -571,23 +635,23 @@
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19050
+      "bytes": 19199
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24092
+      "bytes": 24241
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20604
+      "bytes": 20753
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19017
+      "bytes": 19166
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 21645
+      "bytes": 21794
     },
     {
       "path": "entries/patterns/shared-cue-sheet.json",

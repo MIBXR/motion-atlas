@@ -168,7 +168,7 @@
   "files": [
     {
       "path": "demos/cases/mg-collage/LICENSES.md",
-      "bytes": 470
+      "bytes": 1208
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bfly_a.png",
@@ -272,7 +272,7 @@
     },
     {
       "path": "demos/cases/mg-collage/fidelity.md",
-      "bytes": 3309
+      "bytes": 4402
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
@@ -400,7 +400,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 517
+      "bytes": 1047
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -460,7 +460,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3555
+      "bytes": 4658
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -572,11 +572,11 @@
     },
     {
       "path": "entries/cases/mg-collage.json",
-      "bytes": 18834
+      "bytes": 18983
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18441
+      "bytes": 18590
     },
     {
       "path": "entries/patterns/punch-in-camera-shake.json",

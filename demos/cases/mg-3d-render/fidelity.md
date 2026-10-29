@@ -45,3 +45,11 @@ ffmpeg -framerate 24 -i <PNG目录>/%04d.png -c:v libwebp -quality 95 -frames:v 
 | 9.5 秒 | 正面 soft.、两行标语、字距、基线、前景渐进虚化与落版构图对应一致。 | `compare-9.5.png` |
 
 无头浏览器中，独立 Demo 与站点案例页均自动播放，实际鼠标拖动可定位，声音默认关闭并能切换，播放时音轨跟随时间轴；独立页 `?t=5&autoplay=0` 停在 5 秒，案例页 `#case/mg-3d-render?t=5` 在 iframe ready 后从 5 秒定位继续。一次开启声音后的声画采样差为demo 26.9ms、site 116.7ms；三片的两种入口均无浏览器脚本异常。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/04-3d-render && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
+
+配乐读取 `source/out/events.json`。模拟使用 `source/blender/sim.py` 与 `source/assets/mesh/` 的四个 PLY 和字形元数据，生成 `work/anim.npz`，供 `source/blender/scene.py` 使用。将 `source/assets/hdri/studio_small_09_2k.hdr` 放到复现根的同名路径；重做网格时，将案例 `fonts/Fredoka[wdth,wght].ttf` 放到复现根的 `assets/fonts/latin/fredoka/Fredoka-VF.ttf`。制作步骤见 `source/README.md`，网页最终合成使用本库 `scripts/render.mjs`。

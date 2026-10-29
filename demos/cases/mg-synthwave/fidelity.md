@@ -40,3 +40,9 @@ Mr Dafoe 只有一个字重，直接使用官方完整 `MrDafoe-Regular.ttf`，�
 | 9.5 秒 | 完整镀铬标题、霓虹手写、标语、扫光星芒、条纹落日和网格对应；原片近路桩与灯帽有子帧平均拖影，预览时刻尚未进入 STOP 与关机。 | `compare-9.5.png` |
 
 无头浏览器中，独立 Demo 和站点案例页的自动播放、暂停、实际指针拖动、`?t=5` 定位、声音开关与拖动后声音同步均通过。四次播放／拖动后的声画采样差为 42.5ms / 8.4ms / 50.3ms / 39.1ms；暂停时媒体同步暂停。定位截图及明细位于工作区 `compare/mg-synthwave/browser-standalone.png`、`browser-site.png` 与 `browser-results.json`。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/10-synthwave && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。

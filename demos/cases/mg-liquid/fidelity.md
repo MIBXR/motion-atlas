@@ -10,7 +10,7 @@
 | `film/main.js`、`film/js/scene.js`、`film/js/type.js`、`film/js/engine.js`、`film/js/shaders.js`；原 `js/links.js` | 删除 `V5`、`NOLINK`、中文液态字、另一版大液滴、调色与反射分支、连线标签和 `linkAt`；保留默认 drop、末滴液池与涟漪标语。 | 另一版剪辑分支 |
 | 原 `js/lookdev.js` → `film/js/state.js` | 仅保留作品实际读取的 `baseState`，删除静态 lookdev 排列和 `?look` 入口。 | 开发工具 |
 | `film/main.js`、`film/js/scene.js`、`film/js/engine.js`、`film/js/shaders.js` | 删除 `dbg`、`mb` 查询覆盖、状态与导出探针、派生 cue 导出和调试着色分支；保留成片自带的自适应片内时间采样。 | 开发工具 |
-| 原 `out/cues_derived.json` | 成片运行时不读取该音频制作派生文件，未带入案例。 | 过程文件 |
+| `source/out/cues_derived.json` | 保留配乐读取的派生时序，播放页面使用独立音轨。 | 制作依赖 |
 | `film/main.js`、`film/js/scene.js`、`fonts/fonts.css` | 运行 cues、字体和状态模块改为案例内相对路径；不加载未参与默认画面绘制的 Instrument Serif。 | 路径改写 |
 | `audio.py` → `source/audio.py` | 原样保存配乐与音效生成脚本。 | 移至 source |
 
@@ -49,3 +49,11 @@ C:/Users/mibxr/AppData/Local/Temp/atlas-work/mg-batch4/.venv/Scripts/python.exe 
 | 9.5 秒 | 完整 drop 字标、末滴落地形成的液珠、涟漪和双语标语对应；字形、文字位置、气泡与挂滴均对应。 | `compare-9.5.png` |
 
 无头浏览器中，独立 Demo 和站点案例页的自动播放、暂停、实际指针拖动、`?t=5` 定位、声音开关与拖动后声音同步均通过。四次播放／拖动后的声画采样差为 89.1ms / 39.4ms / 96.4ms / 15.8ms；暂停时媒体同步暂停。定位截图及明细位于工作区 `compare/mg-liquid/browser-standalone.png`、`browser-site.png` 与 `browser-results.json`。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/07-liquid && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
+
+配乐读取 `source/out/cues_derived.json` 的派生时序。该文件与 `source/cues.json` 一起放在复现案例目录，直接供原配乐脚本使用。派生逻辑保存在 `source/js/scene.js`，依赖 `source/js/lookdev.js` 的场景状态；`source/js/textsdf.js` 的 `buildLetterSDF` 使用本案例 `fonts/Fraunces-Liquid-72-900-Soft.ttf` 生成字形几何。word 的 drop 字样、生成与定位参数沿用 `film/main.js`，调用 `createFilm(cues, word)` 后，结果暴露为 `window.__cuesOut`。

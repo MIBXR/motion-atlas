@@ -230,7 +230,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/LICENSES.md",
-      "bytes": 283
+      "bytes": 816
     },
     {
       "path": "demos/cases/mg-3d-render/assets/.gitignore",
@@ -1206,7 +1206,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/fidelity.md",
-      "bytes": 4239
+      "bytes": 5281
     },
     {
       "path": "demos/cases/mg-3d-render/film/LICENSE",
@@ -1263,6 +1263,10 @@
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/README.md",
+      "bytes": 899
     },
     {
       "path": "demos/cases/mg-3d-render/source/assets/hdri/studio_small_09_2k.hdr",
@@ -1382,7 +1386,7 @@
     },
     {
       "path": "entries/cases/mg-3d-render.json",
-      "bytes": 16435
+      "bytes": 16584
     },
     {
       "path": "entries/patterns/vertical-title-blur.json",

@@ -123,7 +123,7 @@
   "files": [
     {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
-      "bytes": 234
+      "bytes": 765
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/grain/grain_fine_2048.png",
@@ -139,7 +139,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/fidelity.md",
-      "bytes": 3471
+      "bytes": 4011
     },
     {
       "path": "demos/cases/mg-bauhaus/film/LICENSE",
@@ -198,6 +198,10 @@
       "bytes": 9344
     },
     {
+      "path": "demos/cases/mg-bauhaus/source/cues.json",
+      "bytes": 3719
+    },
+    {
       "path": "demos/patterns/grid-beat-construction/index.html",
       "bytes": 1687
     },
@@ -207,7 +211,7 @@
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19050
+      "bytes": 19199
     },
     {
       "path": "entries/patterns/grid-beat-construction.json",

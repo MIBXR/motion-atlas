@@ -252,7 +252,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/LICENSES.md",
-      "bytes": 451
+      "bytes": 984
     },
     {
       "path": "demos/cases/mg-isometric/audio/film.m4a",
@@ -260,7 +260,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/fidelity.md",
-      "bytes": 5575
+      "bytes": 6117
     },
     {
       "path": "demos/cases/mg-isometric/film/LICENSE",
@@ -351,6 +351,10 @@
       "bytes": 14263
     },
     {
+      "path": "demos/cases/mg-isometric/source/cues.json",
+      "bytes": 1240
+    },
+    {
       "path": "demos/cases/mg-isometric/vendor/opentype.js@2.0.0/LICENSE",
       "bytes": 1085
     },
@@ -400,7 +404,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
-      "bytes": 378
+      "bytes": 911
     },
     {
       "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
@@ -444,7 +448,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/fidelity.md",
-      "bytes": 3710
+      "bytes": 4716
     },
     {
       "path": "demos/cases/mg-paperclip/film/LICENSE",
@@ -505,6 +509,10 @@
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
       "bytes": 10067
+    },
+    {
+      "path": "demos/cases/mg-paperclip/source/cues.json",
+      "bytes": 3076
     },
     {
       "path": "demos/cases/mg-paperclip/source/tools/stickers.py",
@@ -568,11 +576,11 @@
     },
     {
       "path": "entries/cases/mg-isometric.json",
-      "bytes": 24388
+      "bytes": 24537
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 17325
+      "bytes": 17474
     },
     {
       "path": "entries/patterns/route-draw-marker.json",

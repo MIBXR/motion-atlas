@@ -3884,7 +3884,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
-      "bytes": 282
+      "bytes": 812
     },
     {
       "path": "demos/cases/mg-liquid/audio/film.m4a",
@@ -3892,7 +3892,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 4808
+      "bytes": 5866
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
@@ -3983,6 +3983,26 @@
       "bytes": 11884
     },
     {
+      "path": "demos/cases/mg-liquid/source/cues.json",
+      "bytes": 1702
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/lookdev.js",
+      "bytes": 2622
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/scene.js",
+      "bytes": 56751
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/textsdf.js",
+      "bytes": 5558
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/out/cues_derived.json",
+      "bytes": 5548
+    },
+    {
       "path": "demos/patterns/wave-array/array.html",
       "bytes": 1153
     },
@@ -4028,7 +4048,7 @@
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 15668
+      "bytes": 15817
     },
     {
       "path": "entries/patterns/wave-array.json",

@@ -3880,7 +3880,7 @@
     },
     {
       "path": "demos/cases/mg-hud/LICENSES.md",
-      "bytes": 561
+      "bytes": 1088
     },
     {
       "path": "demos/cases/mg-hud/assets/land-50m.json",
@@ -3892,7 +3892,7 @@
     },
     {
       "path": "demos/cases/mg-hud/fidelity.md",
-      "bytes": 3565
+      "bytes": 4101
     },
     {
       "path": "demos/cases/mg-hud/film/LICENSE",
@@ -3993,6 +3993,10 @@
     {
       "path": "demos/cases/mg-hud/source/audio.py",
       "bytes": 7573
+    },
+    {
+      "path": "demos/cases/mg-hud/source/cues.json",
+      "bytes": 1411
     },
     {
       "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
@@ -4108,7 +4112,7 @@
     },
     {
       "path": "entries/cases/mg-hud.json",
-      "bytes": 18248
+      "bytes": 18397
     },
     {
       "path": "entries/patterns/boot-typing.json",

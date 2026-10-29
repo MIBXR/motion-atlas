@@ -469,5 +469,12 @@
       "scope": "配乐",
       "notes": "配乐由保存在 `source/audio.py` 的原作脚本使用 [VCSL 乐器采样](https://github.com/sgossner/VCSL)（CC0）合成。`audio/film.m4a` 从固定提交的 `videos/05-cel-boil.mp4` 无损抽取 AAC 音轨，保留原片混音。\n\n```bash\nffmpeg -i ../../sources/mg-styles-15/videos/05-cel-boil.mp4 -vn -c:a copy demos/cases/mg-cel-boil/audio/film.m4a\n```"
     }
+  ],
+  "relatedEntries": [
+    {
+      "kind": "material",
+      "id": "mg-styles-15",
+      "note": "提示词与配乐合成库所在素材"
+    }
   ]
 }
