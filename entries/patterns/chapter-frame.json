@@ -10,24 +10,29 @@
     "video",
     "console"
   ],
-  "summary": "章节标签配框线或胶带网点入场，为一段旅程划出章节。",
-  "mechanism": "章节标签、标题与四角框线依次出现。框线描出后方块错峰回弹，强调色随章节切换。",
+  "summary": "章节标签配框线或胶带网点入场，为一段旅程划出章节。 HUD 开机按层级错时描出边框、外环、刻度、面板与地球，开机日志随后上线。",
+  "mechanism": "章节标签、标题与四角框线依次出现。框线描出后方块错峰回弹，强调色随章节切换。 HUD 的边框、外环、刻度、面板和地球按开机节点错时描出，日志按同一层级依次上线。",
   "trigger": "进入新的旅程章节时",
   "effect": "用颜色与边框提示新段落开始。",
   "timing": [
     {
       "name": "时长",
-      "value": "7.05s"
+      "value": "9.45 秒"
     },
     {
       "name": "声音 voice",
       "value": "bell、confirm"
+    },
+    {
+      "name": "分层描线开机参数",
+      "value": "  \"boot\": {\n    \"frame\": 0.12,\n    \"ring_outer\": 0.4,\n    \"ring_ticks\": 0.55,\n    \"ring_inner\": 0.7,\n    \"panel_left\": 0.9,\n    \"panel_right\": 1.15,\n    \"hex\": 1.2,\n    \"globe\": 1.4,\n    \"log_lines\": [\n      0.4,\n      0.9,\n      1.4,\n      1.9\n  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));\n  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);"
     }
   ],
   "useCases": [
     "多主题旅行影像",
     "游戏任务段落",
-    "陈列界面分区"
+    "陈列界面分区",
+    "以层级错时描线组织 HUD 开机界面。"
   ],
   "avoid": [
     "主题过多导致色彩失去意义（建议 ≤5 种）"
@@ -46,12 +51,15 @@
     "conflicts": [],
     "notes": "章节标签、标题与四角框线依次出现。框线描出后方块错峰回弹，强调色随章节切换。"
   },
-  "prompt": "章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；时长 7.05s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+  "prompt": "章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；重放总时长 9.45s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 在原有 7.05 秒之后依次重放mg-hud 原片 0–2.4 秒；全部重放总时长 9.45 秒。HUD 的边框、外环、刻度、面板和地球按开机节点错时描出，日志按同一层级依次上线。参数沿用：  \"boot\": {\n    \"frame\": 0.12,\n    \"ring_outer\": 0.4,\n    \"ring_ticks\": 0.55,\n    \"ring_inner\": 0.7,\n    \"panel_left\": 0.9,\n    \"panel_right\": 1.15,\n    \"hex\": 1.2,\n    \"globe\": 1.4,\n    \"log_lines\": [\n      0.4,\n      0.9,\n      1.4,\n      1.9\n  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));\n  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);\n原有段的画面和时序保持原样，新增段沿用同区间原片音轨，声音默认关闭。",
   "demo": "demos/patterns/chapter-frame/index.html",
   "kit": true,
   "sources": [
     {
       "caseId": "map-pilgrimage"
+    },
+    {
+      "caseId": "mg-hud"
     }
   ],
   "previewAt": 2.4,
@@ -67,6 +75,10 @@
     {
       "t": 2.45,
       "label": "奈良胶带与网点"
+    },
+    {
+      "t": 7.05,
+      "label": "赛博朋克 HUD"
     }
   ],
   "sound": {

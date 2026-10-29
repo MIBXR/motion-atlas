@@ -33,8 +33,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 15,
-    "patterns": 68,
+    "cases": 18,
+    "patterns": 82,
     "materials": 2
   },
   "materialCatalog": "agent/materials.json",
@@ -383,6 +383,39 @@
       "bundle": "agent/cases/mg-paperclip.json"
     },
     {
+      "id": "mg-hud",
+      "title": "赛博朋克 HUD · KESTREL-9 · Target Acquired",
+      "summary": "青色 HUD 从中心分层开机，线框地球、雷达、遥测与候选目标依次上线；发现信号后括号向目标收拢，6.4 秒锁定并扩散橙色警报波，镜头穿入地图，显示目标与坐标。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "赛博朋克",
+        "HUD",
+        "线框地球",
+        "目标锁定",
+        "雷达扫描"
+      ],
+      "useCases": [
+        "科技数码测评",
+        "游戏剪辑",
+        "航天科普",
+        "AI 产品演示"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "crt-line-dot-shutdown",
+        "radar-sweep-persistent-blips",
+        "seeded-digit-scramble-settle",
+        "hud-lock-alert-wave",
+        "chapter-frame",
+        "boot-typing"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-hud.json"
+    },
+    {
       "id": "mg-collage",
       "title": "拼贴剪贴 · NOGGIN Quarterly",
       "summary": "巨手拍下老照片，人物下颌开合，剪刀沿虚线剪开头盖；火箭、地球、花鸟和蝴蝶从脑中飞出，手指撕开纸页，露出 NOGGIN 脑洞季刊落版。",
@@ -476,6 +509,39 @@
       "bundle": "agent/cases/mg-bauhaus.json"
     },
     {
+      "id": "mg-synthwave",
+      "title": "80 年代合成波 · NEON DRIVE — Midnight 1986",
+      "summary": "镜头沿霓虹网格公路追随跑车，条纹落日从地平线升起；磁带倒带与停顿后，NEON DRIVE 镀铬字落版，Midnight 霓虹手写字描出并点亮，最后显像管关机。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "合成波",
+        "霓虹网格",
+        "镀铬字",
+        "VHS",
+        "霓虹手写"
+      ],
+      "useCases": [
+        "音乐视频",
+        "潮流品牌片",
+        "合成波片头"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "velocity-neon-grid-smear",
+        "striped-sun-rise",
+        "neon-write-on-ignition",
+        "tape-rewind-chrome-slam",
+        "vhs-event-row-tear",
+        "specular-sweep-glint",
+        "crt-line-dot-shutdown"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-synthwave.json"
+    },
+    {
       "id": "mg-pixel",
       "title": "像素艺术 · PIXEL QUEST",
       "summary": "320×180 的画布逐点绘制再放大：主角跑跳、收集金币、踩踏史莱姆、打开宝箱并举起水晶，昼夜光线由调色板轮换呈现，最后落下「PIXEL QUEST」片名。",
@@ -505,6 +571,39 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mg-pixel.json"
+    },
+    {
+      "id": "mg-liquid",
+      "title": "液态动效 · drop. — It All Starts with a Drop",
+      "summary": "液滴落下并压扁飞溅，液团跳跃融合后掀起三层液浪；液浪退去，四团液体挤成横条并分裂为 drop 字标，最后一滴落地，以涟漪揭示双语标语。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "液态流动",
+        "SDF",
+        "融球",
+        "波浪转场",
+        "液体字标"
+      ],
+      "useCases": [
+        "音乐视频",
+        "食品饮料广告",
+        "转场包装"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "specular-sweep-glint",
+        "liquid-neck-leap",
+        "phase-offset-liquid-flood",
+        "liquid-bar-split-wordmark",
+        "drip-ripple-glyph-reveal",
+        "squash-stretch-bounce",
+        "wave-array"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-liquid.json"
     },
     {
       "id": "mg-hanazi",
@@ -660,7 +759,7 @@
     {
       "id": "chapter-frame",
       "title": "章节主题：标签、强调色与四角框线",
-      "summary": "章节标签配框线或胶带网点入场，为一段旅程划出章节。",
+      "summary": "章节标签配框线或胶带网点入场，为一段旅程划出章节。 HUD 开机按层级错时描出边框、外环、刻度、面板与地球，开机日志随后上线。",
       "types": [
         "composition",
         "transition"
@@ -671,7 +770,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "mg-hud"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -822,7 +922,7 @@
     {
       "id": "boot-typing",
       "title": "终端逐字开机序列",
-      "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。",
+      "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。 HUD 的开机日志和坐标按字符速率逐字出现，末尾方块光标按固定频率闪烁。",
       "types": [
         "type-motion",
         "rhythm",
@@ -834,7 +934,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "archive-os"
+        "archive-os",
+        "mg-hud"
       ],
       "pairsWellWith": [
         "rolling-digits",
@@ -891,7 +992,7 @@
     {
       "id": "wave-array",
       "title": "阵列选择波浪",
-      "summary": "选择 GLB 档案时，循环阵列叠加带正负位移的行进波；欧氏距离决定波峰位置，选中模型同步抬起。",
+      "summary": "选择 GLB 档案时，循环阵列叠加带正负位移的行进波；欧氏距离决定波峰位置，选中模型同步抬起。 液态字标在节拍和末滴落点触发后，按字母次序传播果冻挤压波。",
       "types": [
         "feedback",
         "rhythm"
@@ -901,7 +1002,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "archive-os"
+        "archive-os",
+        "mg-liquid"
       ],
       "pairsWellWith": [
         "rolling-digits",
@@ -932,7 +1034,7 @@
     {
       "id": "squash-stretch-bounce",
       "title": "预备、拉伸与压扁回弹",
-      "summary": "重放圆点落地、蓄力弹射与图标接力中的拉伸、压扁和回弹。逐帧火苗段追加醒来后的蹲压、拉长起跳、落地压扁与连续舞步。",
+      "summary": "重放圆点落地、蓄力弹射与图标接力中的拉伸、压扁和回弹。逐帧火苗段追加醒来后的蹲压、拉长起跳、落地压扁与连续舞步。 液态片的液滴触地压扁回弹，冠状液臂长出后断成延迟飞出的次级液滴。",
       "types": [
         "rhythm"
       ],
@@ -942,7 +1044,8 @@
       "role": "support",
       "sourceCases": [
         "mg-flat-vector",
-        "mg-cel-boil"
+        "mg-cel-boil",
+        "mg-liquid"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/squash-stretch-bounce.json"
@@ -1647,6 +1750,24 @@
       "bundle": "agent/patterns/soft-bed-letter-bounce.json"
     },
     {
+      "id": "velocity-neon-grid-smear",
+      "title": "网格速度拖影",
+      "summary": "透视霓虹网格随公路速度向镜头推进，横向线条按快门位移展宽并补偿亮度，路侧反光条同步拉长。",
+      "types": [
+        "texture",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/velocity-neon-grid-smear.json"
+    },
+    {
       "id": "capsule-sweep-lift",
       "title": "扫浪托起字母",
       "summary": "扫波到达胶囊阵列后，高斯波包同步驱动胶囊高度、倾斜与着色，反向扫波按阅读顺序托起字母。",
@@ -1663,6 +1784,24 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/capsule-sweep-lift.json"
+    },
+    {
+      "id": "striped-sun-rise",
+      "title": "条纹落日升起",
+      "summary": "横向镂空条纹的渐变落日从地平线后升起，下半圆条纹按相位卷动且向下加宽。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/striped-sun-rise.json"
     },
     {
       "id": "hang-slam-capsule-crown",
@@ -1683,6 +1822,25 @@
       "bundle": "agent/patterns/hang-slam-capsule-crown.json"
     },
     {
+      "id": "neon-write-on-ignition",
+      "title": "霓虹描写通电",
+      "summary": "发亮笔头沿真实字形路径推进并留下暗玻璃管，通电节点按逐帧电平闪烁，最后整字稳定发光。",
+      "types": [
+        "type-motion",
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/neon-write-on-ignition.json"
+    },
+    {
       "id": "macro-hero-focus-relay",
       "title": "镜头焦点接力",
       "summary": "各段相机 cue 到达后，镜头在微距、全字、金属球与正面落版之间换位，独立焦点跟随主角，片尾持续微推。",
@@ -1698,6 +1856,25 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/macro-hero-focus-relay.json"
+    },
+    {
+      "id": "tape-rewind-chrome-slam",
+      "title": "倒带冲入落版",
+      "summary": "磁带画面先倒退两帧并拖慢压暗，主拍时镀铬字标从放大态冲入，闪光、镜震和跑车加速同步释放。",
+      "types": [
+        "transition",
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/tape-rewind-chrome-slam.json"
     },
     {
       "id": "stepped-hand-placement",
@@ -1718,6 +1895,24 @@
       "bundle": "agent/patterns/stepped-hand-placement.json"
     },
     {
+      "id": "vhs-event-row-tear",
+      "title": "磁带行撕色偏",
+      "summary": "故障节点按固定帧种子选择行段错位，叠加色偏与一次垂直跳帧，随后恢复稳定画面。",
+      "types": [
+        "texture",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/vhs-event-row-tear.json"
+    },
+    {
       "id": "snip-rattle-pop-lid",
       "title": "剪盖蓄势爆开",
       "summary": "剪线印章到达后，剪刀逐段打开剪口，头盖三次抖动后悬停，再弹起并回落到纸钉铰链，同时迸出碎纸和 BANG。",
@@ -1734,6 +1929,44 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/snip-rattle-pop-lid.json"
+    },
+    {
+      "id": "specular-sweep-glint",
+      "title": "斜向扫光与星芒",
+      "summary": "窄高光带沿倾斜坐标扫过字标表面；镀铬字在指定字角同步绽出旋转星芒，厚液字保留液面上的窄高斯亮带。",
+      "types": [
+        "texture",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave",
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/specular-sweep-glint.json"
+    },
+    {
+      "id": "crt-line-dot-shutdown",
+      "title": "显像管线点收屏",
+      "summary": "整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave",
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/crt-line-dot-shutdown.json"
     },
     {
       "id": "cutout-arc-flight-flutter",
@@ -1753,6 +1986,24 @@
       "bundle": "agent/patterns/cutout-arc-flight-flutter.json"
     },
     {
+      "id": "liquid-neck-leap",
+      "title": "液团拉丝跃起",
+      "summary": "液团起跳时拉出细颈，细颈变细断裂、两端回弹，液团沿抛物线并入大液团或落下，引出后续液浪。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/liquid-neck-leap.json"
+    },
+    {
       "id": "pinch-rip-cylinder-peel",
       "title": "夹纸裂页翻卷",
       "summary": "手指夹住纸页上沿后，锯齿裂缝向下展开，左右纸半错一步沿圆柱翻卷，露出反面和下一张红纸。",
@@ -1768,6 +2019,24 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/pinch-rip-cylinder-peel.json"
+    },
+    {
+      "id": "phase-offset-liquid-flood",
+      "title": "三层液浪漫屏",
+      "summary": "三层不同方向和相位的波前依次漫屏，后沿退去时从液面边缘拉出四组字标种子。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/phase-offset-liquid-flood.json"
     },
     {
       "id": "punch-in-camera-shake",
@@ -1806,6 +2075,43 @@
       "bundle": "agent/patterns/layered-hanazi-spring-pop.json"
     },
     {
+      "id": "liquid-bar-split-wordmark",
+      "title": "液条断颈成字",
+      "summary": "液体在主拍前挤成横条，主拍沿字缝断颈，每段距离场切换为字形并弹开，碎滴与光环跟随冲量。",
+      "types": [
+        "type-motion",
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/liquid-bar-split-wordmark.json"
+    },
+    {
+      "id": "drip-ripple-glyph-reveal",
+      "title": "末滴涟漪显字",
+      "summary": "末滴落地后涟漪从落点传播，标语字形按距落点的距离延迟显现、抬入并去模糊。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/drip-ripple-glyph-reveal.json"
+    },
+    {
       "id": "focus-burst-caption-hit",
       "title": "集中线炸字主拍",
       "summary": "炸毛主拍到达后，集中线、放射底、爆炸框和震惊花字同时展开，冲击抖动后保留轻摆并在定格帧闪白。",
@@ -1842,6 +2148,24 @@
       "bundle": "agent/patterns/meter-needle-overrange.json"
     },
     {
+      "id": "radar-sweep-persistent-blips",
+      "title": "雷达扫掠显点",
+      "summary": "扫描扇区转过目标方位时，目标点发亮并按最近扫过的时间衰减，列表读数随首次扫过上线。",
+      "types": [
+        "hud",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/radar-sweep-persistent-blips.json"
+    },
+    {
       "id": "freeze-to-framed-card",
       "title": "定格退为相框",
       "summary": "定格 cue 到达后，保持主拍画面并略推，随后照片缩小、旋转、圆角裁切，白框与阴影展开，余振停稳。",
@@ -1858,6 +2182,43 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/freeze-to-framed-card.json"
+    },
+    {
+      "id": "seeded-digit-scramble-settle",
+      "title": "乱数跳变落定",
+      "summary": "等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。",
+      "types": [
+        "hud",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/seeded-digit-scramble-settle.json"
+    },
+    {
+      "id": "hud-lock-alert-wave",
+      "title": "锁定括号警报波",
+      "summary": "四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。",
+      "types": [
+        "hud",
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/hud-lock-alert-wave.json"
     }
   ],
   "materials": [

@@ -15,8 +15,8 @@
       "console",
       "video"
     ],
-    "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。",
-    "mechanism": "直接复用当前案例的 bootMotion、单轮廓标志轨道与逐字字形。时间 t 先加 5 秒再换算为 25fps 原片帧号；权限文本使用非均匀字符数量表，身份、请求、处理和省略号按各自采样帧揭示。标志的前后端沿同一条轮廓移动，同时改变线宽、位置及加减符号。扫描和欢迎阶段继续使用同一份轨道，声音直接读取案例 audio/film-audio.ogg 的开场片段。",
+    "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。 HUD 的开机日志和坐标按字符速率逐字出现，末尾方块光标按固定频率闪烁。",
+    "mechanism": "直接复用当前案例的 bootMotion、单轮廓标志轨道与逐字字形。时间 t 先加 5 秒再换算为 25fps 原片帧号；权限文本使用非均匀字符数量表，身份、请求、处理和省略号按各自采样帧揭示。标志的前后端沿同一条轮廓移动，同时改变线宽、位置及加减符号。扫描和欢迎阶段继续使用同一份轨道，声音直接读取案例 audio/film-audio.ogg 的开场片段。 HUD 以字符速率增加可见子串，坐标使用34字符每秒，末尾方块光标按2.5Hz闪烁。",
     "trigger": "时间轴从 0 秒播放或外部 seek 到开场任意时刻。",
     "effect": "权限请求、RHINE·LAB 标志、ID CONFIRMED : JOYCE MOORE、扫描与欢迎按当前案例节拍依次出现。",
     "timing": [
@@ -35,13 +35,22 @@
       {
         "name": "扫描与欢迎",
         "value": "14.48s 扫描；17.76s 欢迎；21.56–21.92s 缩小、失焦并淡出"
+      },
+      {
+        "name": "总时长",
+        "value": "25.77 秒"
+      },
+      {
+        "name": "日志逐字光标参数",
+        "value": "export function typed(t, t0, str, cps = 90) {\n  return str.slice(0, Math.floor((t - t0) * cps + 1e-6));\n  const ty = typed(t, K.coords, coord, 34);\n    if (blink(t, 2.5) || ty.length < coord.length) T('█', CX - cw / 2 + TW(ty, { s: 26, w: 500, ls: 2 }) + 6, CY + hh + 63, { s: 22, c: CYA });"
       }
     ],
     "useCases": [
       "操作台/终端开机",
       "游戏内系统登录",
       "发布会开场",
-      "待机唤醒"
+      "待机唤醒",
+      "逐字显示 HUD 日志和坐标，并在末尾显示闪烁光标。"
     ],
     "avoid": [
       "频繁重复的登录操作；该完整开场约 21.92 秒。"
@@ -60,13 +69,16 @@
       "conflicts": [],
       "notes": "作为完整开机支撑层；欢迎画面在 21.56–21.92 秒缩小、失焦并淡出，可在约 22 秒接入档案阵列。"
     },
-    "prompt": "实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音引用 ../../cases/archive-os/audio/film-audio.ogg，仅播放 0–21.92 秒，默认关闭。字体引用 ../../cases/archive-os/film/app/fonts/；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。",
+    "prompt": "实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音引用 ../../cases/archive-os/audio/film-audio.ogg，仅播放 0–21.92 秒，默认关闭。字体引用 ../../cases/archive-os/film/app/fonts/；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。 在原有 21.92 秒之后依次重放mg-hud 原片 0.2–2.4 秒；mg-hud 原片 7.05–8.7 秒；全部重放总时长 25.77 秒。HUD 以字符速率增加可见子串，坐标使用34字符每秒，末尾方块光标按2.5Hz闪烁。参数沿用：export function typed(t, t0, str, cps = 90) {\n  return str.slice(0, Math.floor((t - t0) * cps + 1e-6));\n  const ty = typed(t, K.coords, coord, 34);\n    if (blink(t, 2.5) || ty.length < coord.length) T('█', CX - cw / 2 + TW(ty, { s: 26, w: 500, ls: 2 }) + 6, CY + hh + 63, { s: 22, c: CYA });\n原有段的画面和时序保持原样，新增段沿用同区间原片音轨，声音默认关闭。",
     "demo": "demos/patterns/boot-typing/index.html",
     "kit": true,
     "previewAt": 8.6,
     "sources": [
       {
         "caseId": "archive-os"
+      },
+      {
+        "caseId": "mg-hud"
       }
     ],
     "parameters": [
@@ -98,6 +110,16 @@
     ],
     "videoPrompt": "制作 21.92 秒、25fps 帧表驱动的 RHINE LAB 开场。1.8 秒逐字出现 ACCESS PERMISSION REQUIRED，4.16 秒起沿一条共享轮廓描绘标志并移动，6.28 秒起确认 JOYCE MOORE 身份，9.68 秒起请求、11.92 秒起处理，14.48 秒扫描、17.76 秒欢迎，21.56 秒开始缩小失焦并于 21.92 秒结束。字形、材质色彩、轮廓轨迹与声音均使用当前 archive-os 文件。",
     "negativePrompt": "不要双独立圆环，不要均匀每字间隔，不要 LUMEN、K. ARLEN 或 ANALYSIS OS 请求文案，不要方波替代逐字采样，不要添加块状闪烁光标或 180ms 反色闪，不要跨目录依赖案例。",
+    "markers": [
+      {
+        "t": 21.92,
+        "label": "HUD 逐字开机日志"
+      },
+      {
+        "t": 24.12,
+        "label": "HUD 坐标逐字打印"
+      }
+    ],
     "preview": "previews/patterns/boot-typing.jpg",
     "previewPortrait": null
   },
@@ -105,10 +127,14 @@
     {
       "caseId": "archive-os",
       "bundle": "agent/cases/archive-os.json"
+    },
+    {
+      "caseId": "mg-hud",
+      "bundle": "agent/cases/mg-hud.json"
     }
   ],
   "documents": {
-    "prompt": "# 终端逐字开机序列\n\n## 实现 Prompt\n\n实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音引用 ../../cases/archive-os/audio/film-audio.ogg，仅播放 0–21.92 秒，默认关闭。字体引用 ../../cases/archive-os/film/app/fonts/；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。\n\n## 视频生成 Prompt\n\n制作 21.92 秒、25fps 帧表驱动的 RHINE LAB 开场。1.8 秒逐字出现 ACCESS PERMISSION REQUIRED，4.16 秒起沿一条共享轮廓描绘标志并移动，6.28 秒起确认 JOYCE MOORE 身份，9.68 秒起请求、11.92 秒起处理，14.48 秒扫描、17.76 秒欢迎，21.56 秒开始缩小失焦并于 21.92 秒结束。字形、材质色彩、轮廓轨迹与声音均使用当前 archive-os 文件。\n\n## 负向约束\n\n不要双独立圆环，不要均匀每字间隔，不要 LUMEN、K. ARLEN 或 ANALYSIS OS 请求文案，不要方波替代逐字采样，不要添加块状闪烁光标或 180ms 反色闪，不要跨目录依赖案例。\n\n## 参数\n\n- **权限**：1.8s 开始，2.48s 揭完；4.08s 隐藏\n- **标志**：4.16s 显示；帧 229–264 沿单轮廓描绘，随后移向左侧\n- **身份**：6.28–8.56s；请求 9.68–10.56s；处理 11.92–13.28s\n- **扫描与欢迎**：14.48s 扫描；17.76s 欢迎；21.56–21.92s 缩小、失焦并淡出\n\n[打开 Demo](../../demos/patterns/boot-typing/index.html) · [在库中查看](../../patterns.html#pattern/boot-typing)\n"
+    "prompt": "# 终端逐字开机序列\n\n## 实现 Prompt\n\n实现当前案例的约 21.92 秒终端开场：直接复用 bootMotion、bootLogoTrack、扫描轨道、BootSequence 与字形。以 floor((t+5)×25+0.00001) 取原片帧，权限帧 170–187 依 1,1,3,4,5,6,9,11,12,14,17,18,19,20,22,23,25,26 揭字；标志使用帧 229–264 的同一条轮廓前后端与 0.25→26 线宽，保留 RHINE·LAB。身份帧 282–339 保留 ID CONFIRMED : JOYCE MOORE；随后 REQUEST RECEIVED、START PROCESSING 及 449/453/457 帧的省略号，再在 14.48 秒进入扫描、17.76 秒进入欢迎。声音引用 ../../cases/archive-os/audio/film-audio.ogg，仅播放 0–21.92 秒，默认关闭。字体引用 ../../cases/archive-os/film/app/fonts/；render(t) 可任意 seek；减少动态时停在 20.5 秒欢迎画面。 在原有 21.92 秒之后依次重放mg-hud 原片 0.2–2.4 秒；mg-hud 原片 7.05–8.7 秒；全部重放总时长 25.77 秒。HUD 以字符速率增加可见子串，坐标使用34字符每秒，末尾方块光标按2.5Hz闪烁。参数沿用：export function typed(t, t0, str, cps = 90) {\n  return str.slice(0, Math.floor((t - t0) * cps + 1e-6));\n  const ty = typed(t, K.coords, coord, 34);\n    if (blink(t, 2.5) || ty.length < coord.length) T('█', CX - cw / 2 + TW(ty, { s: 26, w: 500, ls: 2 }) + 6, CY + hh + 63, { s: 22, c: CYA });\n原有段的画面和时序保持原样，新增段沿用同区间原片音轨，声音默认关闭。\n\n## 视频生成 Prompt\n\n制作 21.92 秒、25fps 帧表驱动的 RHINE LAB 开场。1.8 秒逐字出现 ACCESS PERMISSION REQUIRED，4.16 秒起沿一条共享轮廓描绘标志并移动，6.28 秒起确认 JOYCE MOORE 身份，9.68 秒起请求、11.92 秒起处理，14.48 秒扫描、17.76 秒欢迎，21.56 秒开始缩小失焦并于 21.92 秒结束。字形、材质色彩、轮廓轨迹与声音均使用当前 archive-os 文件。\n\n## 负向约束\n\n不要双独立圆环，不要均匀每字间隔，不要 LUMEN、K. ARLEN 或 ANALYSIS OS 请求文案，不要方波替代逐字采样，不要添加块状闪烁光标或 180ms 反色闪，不要跨目录依赖案例。\n\n## 参数\n\n- **权限**：1.8s 开始，2.48s 揭完；4.08s 隐藏\n- **标志**：4.16s 显示；帧 229–264 沿单轮廓描绘，随后移向左侧\n- **身份**：6.28–8.56s；请求 9.68–10.56s；处理 11.92–13.28s\n- **扫描与欢迎**：14.48s 扫描；17.76s 欢迎；21.56–21.92s 缩小、失焦并淡出\n- **总时长**：25.77 秒\n- **日志逐字光标参数**：export function typed(t, t0, str, cps = 90) {\n  return str.slice(0, Math.floor((t - t0) * cps + 1e-6));\n  const ty = typed(t, K.coords, coord, 34);\n    if (blink(t, 2.5) || ty.length < coord.length) T('█', CX - cw / 2 + TW(ty, { s: 26, w: 500, ls: 2 }) + 6, CY + hh + 63, { s: 22, c: CYA });\n\n[打开 Demo](../../demos/patterns/boot-typing/index.html) · [在库中查看](../../patterns.html#pattern/boot-typing)\n"
   },
   "entrypoint": "demos/patterns/boot-typing/index.html",
   "files": [
@@ -3853,6 +3879,178 @@
       "bytes": 661
     },
     {
+      "path": "demos/cases/mg-hud/LICENSES.md",
+      "bytes": 4082
+    },
+    {
+      "path": "demos/cases/mg-hud/assets/land-50m.json",
+      "bytes": 545534
+    },
+    {
+      "path": "demos/cases/mg-hud/audio/film.m4a",
+      "bytes": 418706
+    },
+    {
+      "path": "demos/cases/mg-hud/fidelity.md",
+      "bytes": 3655
+    },
+    {
+      "path": "demos/cases/mg-hud/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-hud/film/cues.json",
+      "bytes": 1411
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/holo.js",
+      "bytes": 17026
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/hud.js",
+      "bytes": 55288
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/post.js",
+      "bytes": 8773
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/util.js",
+      "bytes": 2285
+    },
+    {
+      "path": "demos/cases/mg-hud/film/main.js",
+      "bytes": 7461
+    },
+    {
+      "path": "demos/cases/mg-hud/film/setup.js",
+      "bytes": 101
+    },
+    {
+      "path": "demos/cases/mg-hud/film/style.css",
+      "bytes": 166
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/ChakraPetch-SemiBold.ttf",
+      "bytes": 78604
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS-Sans-LICENSE.txt",
+      "bytes": 32768
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Black.ttf",
+      "bytes": 8125608
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Bold.ttf",
+      "bytes": 8158996
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Medium.ttf",
+      "bytes": 8227312
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Regular.ttf",
+      "bytes": 8261128
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/JetBrainsMono[wght].ttf",
+      "bytes": 187208
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-Bold.ttf",
+      "bytes": 400680
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-SemiBold.ttf",
+      "bytes": 390340
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/chakrapetch-OFL.txt",
+      "bytes": 4396
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/fonts.css",
+      "bytes": 1397
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/jetbrainsmono-OFL.txt",
+      "bytes": 4399
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/rajdhani-OFL.txt",
+      "bytes": 4373
+    },
+    {
+      "path": "demos/cases/mg-hud/index.html",
+      "bytes": 2189
+    },
+    {
+      "path": "demos/cases/mg-hud/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hud/source/audio.py",
+      "bytes": 7573
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
+      "bytes": 731
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/dist/d3.min.js",
+      "bytes": 279706
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/LICENSE",
+      "bytes": 1081
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.core.js",
+      "bytes": 1458113
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.module.js",
+      "bytes": 662772
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 8501
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 4694
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 3228
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 15397
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
+      "bytes": 729
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1291
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/LICENSE",
+      "bytes": 734
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
+      "bytes": 7169
+    },
+    {
       "path": "demos/patterns/boot-typing/boot-lettering-notice.txt",
       "bytes": 1697
     },
@@ -3870,11 +4068,15 @@
     },
     {
       "path": "demos/patterns/boot-typing/index.html",
-      "bytes": 598
+      "bytes": 1616
     },
     {
       "path": "demos/patterns/boot-typing/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "demos/patterns/boot-typing/original.html",
+      "bytes": 598
     },
     {
       "path": "demos/patterns/boot-typing/script.js",

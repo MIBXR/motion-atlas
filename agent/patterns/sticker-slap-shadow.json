@@ -196,7 +196,7 @@
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/layout.json",
-      "bytes": 1621
+      "bytes": 1777
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/manicule.png",
@@ -276,11 +276,11 @@
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1092
     },
     {
       "path": "demos/cases/mg-collage/film/cues.json",
-      "bytes": 1310
+      "bytes": 1389
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
@@ -300,11 +300,11 @@
     },
     {
       "path": "demos/cases/mg-collage/fonts/AlimamaShuHeiTi-LICENSE.txt",
-      "bytes": 2016
+      "bytes": 2030
     },
     {
       "path": "demos/cases/mg-collage/fonts/Anton-OFL.txt",
-      "bytes": 4391
+      "bytes": 4484
     },
     {
       "path": "demos/cases/mg-collage/fonts/Anton-Regular.ttf",
@@ -324,7 +324,7 @@
     },
     {
       "path": "demos/cases/mg-collage/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4363
+      "bytes": 4456
     },
     {
       "path": "demos/cases/mg-collage/fonts/NotoSansSC-OFL.txt",
@@ -380,23 +380,23 @@
     },
     {
       "path": "demos/cases/mg-collage/source/audio.py",
-      "bytes": 10279
+      "bytes": 10414
     },
     {
       "path": "demos/cases/mg-collage/source/cues.json",
-      "bytes": 1310
+      "bytes": 1389
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep.py",
-      "bytes": 16663
+      "bytes": 17010
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep_birds.py",
-      "bytes": 819
+      "bytes": 830
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep_hand.py",
-      "bytes": 1788
+      "bytes": 1821
     },
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",

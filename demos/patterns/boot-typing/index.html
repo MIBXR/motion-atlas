@@ -1,6 +1,62 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"><meta name="viewport" content="width=device-width,initial-scale=1"><title>终端逐字开机序列 — Motion Atlas 巧思</title>
-<script>
-const CONFIG = window.CONFIG = { duration: 21.92, fps: 25, soundGain: 1 };
-</script>
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="compiled.css"></head><body><main id="stage"></main><script src="motion-kit.js"></script><script type="module" src="compiled.js"></script></body></html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>终端逐字开机序列 · Motion Atlas</title>
+  <style>
+    html,body{margin:0;background:#000;overflow:hidden}
+    #stage{background:#000}
+    #cue{position:absolute;left:24px;top:24px;z-index:2;padding:10px 16px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;font:22px/1.4 "Microsoft YaHei",sans-serif;pointer-events:none}
+    #cue[hidden]{display:none}
+  </style>
+</head>
+<body>
+  <main id="stage"><output id="cue" hidden></output></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    const config = {
+      "title": "终端逐字开机序列",
+      "segments": [
+        {
+          "caseId": "archive-os",
+          "label": "原有演示",
+          "source": "original.html",
+          "legacy": true,
+          "from": 0,
+          "to": 21.92
+        },
+        {
+          "caseId": "mg-hud",
+          "label": "HUD 逐字开机日志",
+          "from": 0.2,
+          "to": 2.4
+        },
+        {
+          "caseId": "mg-hud",
+          "label": "HUD 坐标逐字打印",
+          "from": 7.05,
+          "to": 8.7
+        }
+      ],
+      "markers": [
+        {
+          "t": 21.92,
+          "label": "HUD 逐字开机日志"
+        },
+        {
+          "t": 24.12,
+          "label": "HUD 坐标逐字打印"
+        }
+      ],
+      "reduced": 8.6,
+      "root": "#stage",
+      "orients": [
+        "landscape"
+      ],
+      "fps": 30
+    };
+    await MotionKit.replay(config);
+  </script>
+</body>
+</html>
