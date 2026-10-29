@@ -1,0 +1,1284 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "mg-3d-render",
+  "entry": {
+    "id": "mg-3d-render",
+    "order": 8,
+    "title": "3D 渲染 · soft. — Soft Landing",
+    "subtitle": "soft.「柔软着陆」",
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "mg-styles-15",
+      "3D 渲染",
+      "柔软材质",
+      "克隆阵列",
+      "物理模拟",
+      "产品片"
+    ],
+    "summary": "充气字母依次落在胶囊阵列上，金属球悬停后砸落，掀起环形冠状波；镜头拉回 soft. 字标与“柔软，自有分量”标语。",
+    "focus": "Blender Cycles 帧序列呈现软胶、金属与碰撞，页面叠加双重调色、前景渐进虚化、英文逐词入场和逐帧颗粒。",
+    "accent": "#FF8FC0",
+    "background": "#EFE2EA",
+    "timeline": true,
+    "kit": true,
+    "rhythm": {
+      "duration": 10,
+      "bpm": 120,
+      "beats": [
+        {
+          "t": 0.5,
+          "label": "首字落地",
+          "note": "s 在微距镜头中落地。"
+        },
+        {
+          "t": 1.5,
+          "label": "第二字落地",
+          "note": "o 落在胶囊阵列上。"
+        },
+        {
+          "t": 2,
+          "label": "第三字落地",
+          "note": "f 落地。"
+        },
+        {
+          "t": 2.5,
+          "label": "第四字落地",
+          "note": "t 落地，组成 soft。"
+        },
+        {
+          "t": 3.375,
+          "label": "字母再起",
+          "note": "字母按十六分音符依次抬升。"
+        },
+        {
+          "t": 5.3,
+          "label": "金属球入场",
+          "note": "金属球进入画面。"
+        },
+        {
+          "t": 5.8,
+          "label": "金属球悬停",
+          "note": "金属球在下砸前短暂悬停。"
+        },
+        {
+          "t": 6,
+          "label": "砸落主拍",
+          "note": "球接触胶囊床，页面叠加缩放冲击与四帧抖动。"
+        },
+        {
+          "t": 6.42,
+          "label": "冠状波悬停",
+          "note": "胶囊冠状波在顶点放慢。"
+        },
+        {
+          "t": 8,
+          "label": "标语入场",
+          "note": "Softness carries weight 与“柔软 自有分量”逐层入场。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "三维底片",
+        "role": "240 帧 Blender Cycles 画面以 24fps 读取，包含胶囊床、充气字母和金属球。"
+      },
+      {
+        "name": "调色与景深",
+        "role": "SVG 分量曲线调整影调，三层 backdrop blur 逐渐柔化前景。"
+      },
+      {
+        "name": "标语与后期",
+        "role": "DM Sans 英文逐词去模糊，中文和横线随后显现，逐帧颗粒与暗角覆盖画面。"
+      }
+    ],
+    "composition": {
+      "color": "粉色字母、淡紫胶囊床与反射金属球；页面底色 #EFE2EA，标语为 #4A2E4E。",
+      "typography": "Fredoka 700 的字形生成充气字母网格；DM Sans 600 排英文标语，Noto Sans SC 500 排中文。",
+      "layout": "1920×1080 横屏；镜头由胶囊微距拉回，沿字母与金属球运动，结尾字标和中英文标语居中。",
+      "imagery": "Blender Cycles 渲染三维实体，页面读取对应帧并合成调色、景深、文字和颗粒。",
+      "motion": "胶囊阵列的波浪与字母下落共用预计算模拟；金属球悬停后砸落，冠状波在顶点放慢，再追上时间线。",
+      "sound": "开启后播放原片 AAC 音轨；原作 audio.py 读取 cues.json 与 out/events.json，以 120BPM 配乐同步碰撞与标语。",
+      "rhythm": "0.5–2.5 秒四字依次落地，3.375 秒起再抬升，5.3 秒金属球进入，6 秒落点，8 秒标语入场。",
+      "coherence": "胶囊床、字母、金属球的重量与回弹贯穿画面，标语的“柔软”和“分量”对应材质与落点。"
+    },
+    "tokens": {
+      "palette": [
+        "#EFE2EA",
+        "#4A2E4E",
+        "#FF8FC0"
+      ],
+      "type": "Fredoka 700；DM Sans 600；Noto Sans SC 500。",
+      "motion": [
+        {
+          "name": "帧序列",
+          "value": "const FPS = 24, N = 240;"
+        },
+        {
+          "name": "落点冲击",
+          "value": "const pun = df >= 0 ? 0.035 * (1 - expoOut(df / 6)) : 0;"
+        },
+        {
+          "name": "四帧抖动",
+          "value": "const shk = [2, -1.5, 1, -0.5][df] || 0;"
+        },
+        {
+          "name": "英文错峰",
+          "value": "const u = prog(t, T0 + 0.07 * k, 0.9);"
+        }
+      ]
+    },
+    "interaction": [
+      "播放、暂停、重播与拖动时间；可切换播放速度。",
+      "声音默认关闭，开启后原片音轨与时间轴同步。",
+      "?embed 隐藏控制条，?render 用于逐帧渲染，?t=秒 定位画面。",
+      "减少动态偏好下显示 9.5 秒画面并暂停。"
+    ],
+    "useCases": [
+      "高端产品片",
+      "品牌 ident"
+    ],
+    "constraints": [
+      "原作：Vincentwei1021，https://github.com/Vincentwei1021/mg-styles-15，固定提交 49052d80bfaf9fa8412cc9710530e5e95a3b8d8c，MIT 许可。",
+      "10 秒，1920×1080，24fps；只提供横屏原作画幅，复刻公开成片的默认版本。"
+    ],
+    "prompt": "# 3D 渲染系（C4D/Blender 质感） 3D Render / CGI Motion Design\n\n**原片**：soft.「Soft Landing 柔软着陆」 · 1920×1080 · 24 fps · 10 秒 · AI 评审终评 7.71 / 10\n\n**源码**：[demos/04-3d-render/](../demos/04-3d-render/)\n\n## 怎么用\n\n1. 新建一个空文件夹，在里面打开一个能写代码、能执行命令的 AI 助手（例如 Claude Code）。本机需要能跑网页渲染（Node + Chrome）和 ffmpeg；这种风格建议的路线要用 Blender。\n2. 把下面「提示词」整段复制进去发送。\n3. 想换成自己的内容：改 `Creative seed` 里的故事、品牌名、文案和配色，或者改 `Output` 里的尺寸（比如竖屏 1080×1920）。不要删 `Signature features` 那一段，它是这种风格被一眼认出来的依据。\n4. 想再提高：成片出来后，另开一个 AI 用 [rubric.md](../rubric.md) 评审，把评审意见贴回给制作的 AI 再改一轮。原片就是这样改了两轮。\n\n## 提示词\n\n```text\nYou are the director, motion designer, engineer and sound designer of ONE 10-second motion-design film.\nThe goal is the most classic, yet most stunning form of this style — award-shortlist / high-end commercial quality. A clean,\ntemplate-looking result is a fail. Benchmarks: Buck, ManvsMachine, Ordinary Folk, Giant Ant, Territory Studio, Apple keynote\nmotion, Pentagram motion identities, top Behance/Motionographer features, top 抖音/B站 designer accounts.\n\n# Style\n3D 渲染系（C4D/Blender 质感） 3D Render / CGI Motion Design\n\n# Output (fixed)\n- 1920×1080, 24 fps, exactly 10.000 s (240 frames), H.264 MP4 with stereo AAC audio (48 kHz), mastered to −14 LUFS\n  integrated, true peak ≤ −1 dBTP. Final file: video.mp4.\n\n# Suggested technical route\nBlender 5.1.2 CLI (bpy script → Cycles on Metal GPU with OIDN denoise, or EEVEE if it holds quality) → PNG sequence → ffmpeg; optional HTML overlay pass for typography\n(You may choose a better route if it clearly raises quality; say why.)\n\n# Creative seed\n「Soft & Satisfying」The C4D/Octane pastel product-ident look (Maxon demo-reel vibe): soft candy materials, cloner arrays, physics-feel motion.\n- Pastel studio: infinite cyc backdrop, big soft area lights + HDRI (see /assets/hdri), shallow DOF (f/1.8 feel), 24 fps, real motion blur.\n- A MoGraph-style cloner field (geometry-nodes grid of glossy rounded pills/spheres) ripples with an effector wave; a hero object — inflated/bevelled 3D wordmark (e.g. \"SOFT\" or an invented brand) or a glossy jelly logo — drops in, squash-and-stretch jiggle (damped spring), collides with and displaces the cloner field.\n- Material trio: SSS gummy (candy pink / peach), glossy plastic (cream / lilac), frosted glass or chrome accent — with AO, soft reflections, subtle subsurface glow.\n- Camera: long-tail ease (80% of the move in the first 20%), ends on a clean hero composition held ~1s.\nSound: ASMR-satisfying soft thuds, squishes, bubbly pops, airy cinematic pad; hits frame-synced to impacts.\n\nYou are the director: you may change the concept, copy, story beats and brand names if you find a stronger idea, but the result must remain the CANONICAL, instantly-recognisable form of this style and must hit its signature features below.\n\n# Signature features and key techniques (the result is judged against these)\nCinema 4D + Redshift/Octane 或 Blender 渲染的实体质感动画：软胶、玻璃、金属、布料，配合克隆阵列和物理模拟。是高端产品片（手机、饮料、球鞋）和品牌 ident 的主流，Maxon 官方 Demo Reel 就是该风格的年度风向标。\n视觉特征 PBR真实材质, 浅景深, 柔和棚拍布光, 克隆器阵列, 软体碰撞, 糖果色软胶质感\n关键技法 MoGraph 核心：Cloner 克隆器 + Random/Plain Effector 做群体波浪式动画\n质感三件套：SSS 次表面散射（软胶感）+ AO + HDRI 三点布光\n运动多用长尾 ease：位移曲线前 20% 完成 80% 路程，收尾极慢，配 motion blur\n24/25fps 电影帧率 + 浅景深（f/1.8 感）区别于 2D 系的 30fps 利落感\n常见结构：产品为轴心，粒子/流体/布料围绕它做物理模拟编排\n\n# How to work\n1. Treatment. Write down one clear idea: a hook in the first 0.5 s (never open on more than 0.3 s of empty or black), an\n   escalation, one unmistakable hero moment at ~60–75 % of the runtime, and a composed end frame held ~0.8–1.2 s with living\n   micro-motion. Map every signature feature above to a moment. Keep one cue sheet (beats and hit times) that both the\n   picture and the sound read from.\n2. Key frames before motion. Build the look, render stills at 6–10 key times and actually look at them. Each still should be\n   poster-worthy: composition, hierarchy, negative space, type set properly (kerning, line-height, weight contrast, CJK\n   punctuation, ~5 % safe margins). Iterate until nothing looks default, generic, cramped or \"AI-template\".\n3. Motion. Build the choreography and preview at low resolution. Step through the fastest moves frame by frame: spacing,\n   easing, arcs, overlap, anticipation and follow-through, motion blur. No unintended dead spans; the energy follows the music.\n4. Sound. Write genre-correct music and sound design locked to the cue sheet. Check that visual hits land on audio onsets.\n   Master to the output spec.\n5. Final. Render at full resolution (motion blur where apt), then check: exactly 10.00 s, resolution, fps, audio present and at\n   the right loudness, no black frames, no fallback fonts or tofu, no clipped elements at the frame edges, no shimmer on thin\n   lines, no gradient banding. Fix and repeat until you would submit it to a festival.\n6. Write an honest self-critique: what is strongest, what is weakest, what you would do with more time.\n\n# Rules\n- Rendering must be deterministic: every frame is a pure function of time t. Seeded randomness only; physics and particles\n  precomputed or closed-form; no real-time clocks; no state-triggered CSS transitions. A reliable route: a web page that can\n  draw any time t on request, captured frame by frame with a headless browser and encoded with ffmpeg (or a Blender script\n  that renders a PNG sequence).\n- Assets: only CC0 / public domain / OFL / Apache / free-for-commercial-use. Record each source and licence in CREDITS.md.\n  No real brand trademarks; invent brand names.\n- On-screen text must be correct and natural: idiomatic Chinese, proper CJK punctuation, no typos.\n\n# Craft checklist (what a jury looks for)\n- Style authenticity: an expert names the style in one second; every signature technique is present and executed correctly.\n- Motion craft: purposeful easing (no linear unless mechanical by design), overlap and stagger, anticipation and\n  follow-through, arcs, squash and stretch where the style allows, consistent physics, motion blur where apt; transitions\n  carried by elements, not crossfades.\n- Rhythm: hits locked to the music; contrast between busy and calm; no monotony.\n- Design: strong composition, grid, typographic hierarchy, controlled palette; texture and finishing (grain, glow, vignette)\n  only where the style wants it; nothing looks accidental.\n- Technical polish: no jitter (unless intended), no popping, no aliasing, no banding, no fallback fonts, no half-loaded images.\n- Sound: genre-correct, musical, synced, mastered.\n\n# Before you deliver, score yourself honestly\n1–10 on style fidelity, concept wow, motion craft, design & typography, finish & texture, sound & sync, technical\n(6 = template-level, 8 = high-end agency, 9 = award shortlist). Aim for 9; fix whatever scores lowest first.\n\n# Deliver\nvideo.mp4, plus a short report: the concept in two sentences; a beat sheet with timecodes; how each signature feature is\nrealised; the tech route; check numbers (duration, resolution, fps, loudness, true peak); your honest top-3 weaknesses.\n```\n",
+    "migration": [
+      {
+        "field": "assets/frames/",
+        "how": "替换 24fps、240 帧的三维画面。"
+      },
+      {
+        "field": "source/blender/、source/assets/mesh/",
+        "how": "以原作场景、模拟和网格生成三维画面。"
+      },
+      {
+        "field": "film/cues.json、film/style.css",
+        "how": "调整落点、标语时刻和页面后期。"
+      },
+      {
+        "field": "index.html → MotionKit.mountFilm",
+        "how": "接入时间轴、原片音轨与窗口等比缩放。"
+      }
+    ],
+    "demo": "demos/cases/mg-3d-render/index.html",
+    "patternIds": [
+      "soft-bed-letter-bounce",
+      "capsule-sweep-lift",
+      "hang-slam-capsule-crown",
+      "macro-hero-focus-relay",
+      "vertical-title-blur",
+      "film-grain"
+    ],
+    "previewAt": 9.5,
+    "preview": "previews/cases/mg-3d-render.jpg",
+    "previewPortrait": null
+  },
+  "documents": {
+    "prompt": "# 3D 渲染 · soft. — Soft Landing\n\n## 实现 Prompt\n\n# 3D 渲染系（C4D/Blender 质感） 3D Render / CGI Motion Design\n\n**原片**：soft.「Soft Landing 柔软着陆」 · 1920×1080 · 24 fps · 10 秒 · AI 评审终评 7.71 / 10\n\n**源码**：[demos/04-3d-render/](../demos/04-3d-render/)\n\n## 怎么用\n\n1. 新建一个空文件夹，在里面打开一个能写代码、能执行命令的 AI 助手（例如 Claude Code）。本机需要能跑网页渲染（Node + Chrome）和 ffmpeg；这种风格建议的路线要用 Blender。\n2. 把下面「提示词」整段复制进去发送。\n3. 想换成自己的内容：改 `Creative seed` 里的故事、品牌名、文案和配色，或者改 `Output` 里的尺寸（比如竖屏 1080×1920）。不要删 `Signature features` 那一段，它是这种风格被一眼认出来的依据。\n4. 想再提高：成片出来后，另开一个 AI 用 [rubric.md](../rubric.md) 评审，把评审意见贴回给制作的 AI 再改一轮。原片就是这样改了两轮。\n\n## 提示词\n\n```text\nYou are the director, motion designer, engineer and sound designer of ONE 10-second motion-design film.\nThe goal is the most classic, yet most stunning form of this style — award-shortlist / high-end commercial quality. A clean,\ntemplate-looking result is a fail. Benchmarks: Buck, ManvsMachine, Ordinary Folk, Giant Ant, Territory Studio, Apple keynote\nmotion, Pentagram motion identities, top Behance/Motionographer features, top 抖音/B站 designer accounts.\n\n# Style\n3D 渲染系（C4D/Blender 质感） 3D Render / CGI Motion Design\n\n# Output (fixed)\n- 1920×1080, 24 fps, exactly 10.000 s (240 frames), H.264 MP4 with stereo AAC audio (48 kHz), mastered to −14 LUFS\n  integrated, true peak ≤ −1 dBTP. Final file: video.mp4.\n\n# Suggested technical route\nBlender 5.1.2 CLI (bpy script → Cycles on Metal GPU with OIDN denoise, or EEVEE if it holds quality) → PNG sequence → ffmpeg; optional HTML overlay pass for typography\n(You may choose a better route if it clearly raises quality; say why.)\n\n# Creative seed\n「Soft & Satisfying」The C4D/Octane pastel product-ident look (Maxon demo-reel vibe): soft candy materials, cloner arrays, physics-feel motion.\n- Pastel studio: infinite cyc backdrop, big soft area lights + HDRI (see /assets/hdri), shallow DOF (f/1.8 feel), 24 fps, real motion blur.\n- A MoGraph-style cloner field (geometry-nodes grid of glossy rounded pills/spheres) ripples with an effector wave; a hero object — inflated/bevelled 3D wordmark (e.g. \"SOFT\" or an invented brand) or a glossy jelly logo — drops in, squash-and-stretch jiggle (damped spring), collides with and displaces the cloner field.\n- Material trio: SSS gummy (candy pink / peach), glossy plastic (cream / lilac), frosted glass or chrome accent — with AO, soft reflections, subtle subsurface glow.\n- Camera: long-tail ease (80% of the move in the first 20%), ends on a clean hero composition held ~1s.\nSound: ASMR-satisfying soft thuds, squishes, bubbly pops, airy cinematic pad; hits frame-synced to impacts.\n\nYou are the director: you may change the concept, copy, story beats and brand names if you find a stronger idea, but the result must remain the CANONICAL, instantly-recognisable form of this style and must hit its signature features below.\n\n# Signature features and key techniques (the result is judged against these)\nCinema 4D + Redshift/Octane 或 Blender 渲染的实体质感动画：软胶、玻璃、金属、布料，配合克隆阵列和物理模拟。是高端产品片（手机、饮料、球鞋）和品牌 ident 的主流，Maxon 官方 Demo Reel 就是该风格的年度风向标。\n视觉特征 PBR真实材质, 浅景深, 柔和棚拍布光, 克隆器阵列, 软体碰撞, 糖果色软胶质感\n关键技法 MoGraph 核心：Cloner 克隆器 + Random/Plain Effector 做群体波浪式动画\n质感三件套：SSS 次表面散射（软胶感）+ AO + HDRI 三点布光\n运动多用长尾 ease：位移曲线前 20% 完成 80% 路程，收尾极慢，配 motion blur\n24/25fps 电影帧率 + 浅景深（f/1.8 感）区别于 2D 系的 30fps 利落感\n常见结构：产品为轴心，粒子/流体/布料围绕它做物理模拟编排\n\n# How to work\n1. Treatment. Write down one clear idea: a hook in the first 0.5 s (never open on more than 0.3 s of empty or black), an\n   escalation, one unmistakable hero moment at ~60–75 % of the runtime, and a composed end frame held ~0.8–1.2 s with living\n   micro-motion. Map every signature feature above to a moment. Keep one cue sheet (beats and hit times) that both the\n   picture and the sound read from.\n2. Key frames before motion. Build the look, render stills at 6–10 key times and actually look at them. Each still should be\n   poster-worthy: composition, hierarchy, negative space, type set properly (kerning, line-height, weight contrast, CJK\n   punctuation, ~5 % safe margins). Iterate until nothing looks default, generic, cramped or \"AI-template\".\n3. Motion. Build the choreography and preview at low resolution. Step through the fastest moves frame by frame: spacing,\n   easing, arcs, overlap, anticipation and follow-through, motion blur. No unintended dead spans; the energy follows the music.\n4. Sound. Write genre-correct music and sound design locked to the cue sheet. Check that visual hits land on audio onsets.\n   Master to the output spec.\n5. Final. Render at full resolution (motion blur where apt), then check: exactly 10.00 s, resolution, fps, audio present and at\n   the right loudness, no black frames, no fallback fonts or tofu, no clipped elements at the frame edges, no shimmer on thin\n   lines, no gradient banding. Fix and repeat until you would submit it to a festival.\n6. Write an honest self-critique: what is strongest, what is weakest, what you would do with more time.\n\n# Rules\n- Rendering must be deterministic: every frame is a pure function of time t. Seeded randomness only; physics and particles\n  precomputed or closed-form; no real-time clocks; no state-triggered CSS transitions. A reliable route: a web page that can\n  draw any time t on request, captured frame by frame with a headless browser and encoded with ffmpeg (or a Blender script\n  that renders a PNG sequence).\n- Assets: only CC0 / public domain / OFL / Apache / free-for-commercial-use. Record each source and licence in CREDITS.md.\n  No real brand trademarks; invent brand names.\n- On-screen text must be correct and natural: idiomatic Chinese, proper CJK punctuation, no typos.\n\n# Craft checklist (what a jury looks for)\n- Style authenticity: an expert names the style in one second; every signature technique is present and executed correctly.\n- Motion craft: purposeful easing (no linear unless mechanical by design), overlap and stagger, anticipation and\n  follow-through, arcs, squash and stretch where the style allows, consistent physics, motion blur where apt; transitions\n  carried by elements, not crossfades.\n- Rhythm: hits locked to the music; contrast between busy and calm; no monotony.\n- Design: strong composition, grid, typographic hierarchy, controlled palette; texture and finishing (grain, glow, vignette)\n  only where the style wants it; nothing looks accidental.\n- Technical polish: no jitter (unless intended), no popping, no aliasing, no banding, no fallback fonts, no half-loaded images.\n- Sound: genre-correct, musical, synced, mastered.\n\n# Before you deliver, score yourself honestly\n1–10 on style fidelity, concept wow, motion craft, design & typography, finish & texture, sound & sync, technical\n(6 = template-level, 8 = high-end agency, 9 = award shortlist). Aim for 9; fix whatever scores lowest first.\n\n# Deliver\nvideo.mp4, plus a short report: the concept in two sentences; a beat sheet with timecodes; how each signature feature is\nrealised; the tech route; check numbers (duration, resolution, fps, loudness, true peak); your honest top-3 weaknesses.\n```\n\n\n## 动效 Token\n\n- **帧序列**：const FPS = 24, N = 240;\n- **落点冲击**：const pun = df >= 0 ? 0.035 * (1 - expoOut(df / 6)) : 0;\n- **四帧抖动**：const shk = [2, -1.5, 1, -0.5][df] || 0;\n- **英文错峰**：const u = prog(t, T0 + 0.07 * k, 0.9);\n\n## 制作约束\n\n- 原作：Vincentwei1021，https://github.com/Vincentwei1021/mg-styles-15，固定提交 49052d80bfaf9fa8412cc9710530e5e95a3b8d8c，MIT 许可。\n- 10 秒，1920×1080，24fps；只提供横屏原作画幅，复刻公开成片的默认版本。\n\n## 迁移\n\n- `assets/frames/`：替换 24fps、240 帧的三维画面。\n- `source/blender/、source/assets/mesh/`：以原作场景、模拟和网格生成三维画面。\n- `film/cues.json、film/style.css`：调整落点、标语时刻和页面后期。\n- `index.html → MotionKit.mountFilm`：接入时间轴、原片音轨与窗口等比缩放。\n\n[打开 Demo](../../demos/cases/mg-3d-render/index.html) · [在库中查看](../../cases.html#case/mg-3d-render)\n"
+  },
+  "entrypoint": "demos/cases/mg-3d-render/index.html",
+  "files": [
+    {
+      "path": "demos/cases/mg-3d-render/LICENSES.md",
+      "bytes": 2576
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/.gitignore",
+      "bytes": 24
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0000.webp",
+      "bytes": 125356
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0001.webp",
+      "bytes": 124082
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0002.webp",
+      "bytes": 122330
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0003.webp",
+      "bytes": 120454
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0004.webp",
+      "bytes": 119216
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0005.webp",
+      "bytes": 116506
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0006.webp",
+      "bytes": 114212
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0007.webp",
+      "bytes": 111724
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0008.webp",
+      "bytes": 111566
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0009.webp",
+      "bytes": 114870
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0010.webp",
+      "bytes": 117052
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0011.webp",
+      "bytes": 114924
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0012.webp",
+      "bytes": 109620
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0013.webp",
+      "bytes": 105706
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0014.webp",
+      "bytes": 99230
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0015.webp",
+      "bytes": 98048
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0016.webp",
+      "bytes": 99588
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0017.webp",
+      "bytes": 99062
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0018.webp",
+      "bytes": 102924
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0019.webp",
+      "bytes": 105164
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0020.webp",
+      "bytes": 118364
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0021.webp",
+      "bytes": 127038
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0022.webp",
+      "bytes": 136008
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0023.webp",
+      "bytes": 144370
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0024.webp",
+      "bytes": 152528
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0025.webp",
+      "bytes": 161582
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0026.webp",
+      "bytes": 168616
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0027.webp",
+      "bytes": 176064
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0028.webp",
+      "bytes": 184734
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0029.webp",
+      "bytes": 193588
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0030.webp",
+      "bytes": 200054
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0031.webp",
+      "bytes": 206838
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0032.webp",
+      "bytes": 212616
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0033.webp",
+      "bytes": 216134
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0034.webp",
+      "bytes": 218714
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0035.webp",
+      "bytes": 220942
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0036.webp",
+      "bytes": 223424
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0037.webp",
+      "bytes": 228294
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0038.webp",
+      "bytes": 229694
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0039.webp",
+      "bytes": 231248
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0040.webp",
+      "bytes": 232936
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0041.webp",
+      "bytes": 236566
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0042.webp",
+      "bytes": 239694
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0043.webp",
+      "bytes": 239654
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0044.webp",
+      "bytes": 244806
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0045.webp",
+      "bytes": 245188
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0046.webp",
+      "bytes": 243354
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0047.webp",
+      "bytes": 242670
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0048.webp",
+      "bytes": 240466
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0049.webp",
+      "bytes": 241518
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0050.webp",
+      "bytes": 241654
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0051.webp",
+      "bytes": 246064
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0052.webp",
+      "bytes": 241686
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0053.webp",
+      "bytes": 243772
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0054.webp",
+      "bytes": 244080
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0055.webp",
+      "bytes": 245636
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0056.webp",
+      "bytes": 247254
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0057.webp",
+      "bytes": 246620
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0058.webp",
+      "bytes": 247260
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0059.webp",
+      "bytes": 243054
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0060.webp",
+      "bytes": 239778
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0061.webp",
+      "bytes": 243072
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0062.webp",
+      "bytes": 243562
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0063.webp",
+      "bytes": 236850
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0064.webp",
+      "bytes": 243766
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0065.webp",
+      "bytes": 243646
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0066.webp",
+      "bytes": 246792
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0067.webp",
+      "bytes": 241348
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0068.webp",
+      "bytes": 242284
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0069.webp",
+      "bytes": 246406
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0070.webp",
+      "bytes": 241958
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0071.webp",
+      "bytes": 241328
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0072.webp",
+      "bytes": 241486
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0073.webp",
+      "bytes": 246108
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0074.webp",
+      "bytes": 241932
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0075.webp",
+      "bytes": 244698
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0076.webp",
+      "bytes": 244302
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0077.webp",
+      "bytes": 242688
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0078.webp",
+      "bytes": 242864
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0079.webp",
+      "bytes": 243716
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0080.webp",
+      "bytes": 228264
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0081.webp",
+      "bytes": 240646
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0082.webp",
+      "bytes": 240264
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0083.webp",
+      "bytes": 242916
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0084.webp",
+      "bytes": 241778
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0085.webp",
+      "bytes": 242334
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0086.webp",
+      "bytes": 234844
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0087.webp",
+      "bytes": 235920
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0088.webp",
+      "bytes": 239760
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0089.webp",
+      "bytes": 239954
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0090.webp",
+      "bytes": 243144
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0091.webp",
+      "bytes": 244700
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0092.webp",
+      "bytes": 241564
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0093.webp",
+      "bytes": 251472
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0094.webp",
+      "bytes": 254910
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0095.webp",
+      "bytes": 250724
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0096.webp",
+      "bytes": 245228
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0097.webp",
+      "bytes": 239308
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0098.webp",
+      "bytes": 235308
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0099.webp",
+      "bytes": 225728
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0100.webp",
+      "bytes": 224826
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0101.webp",
+      "bytes": 215942
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0102.webp",
+      "bytes": 211316
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0103.webp",
+      "bytes": 206500
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0104.webp",
+      "bytes": 203524
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0105.webp",
+      "bytes": 199694
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0106.webp",
+      "bytes": 198438
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0107.webp",
+      "bytes": 196520
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0108.webp",
+      "bytes": 193622
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0109.webp",
+      "bytes": 191548
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0110.webp",
+      "bytes": 193572
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0111.webp",
+      "bytes": 196174
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0112.webp",
+      "bytes": 197772
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0113.webp",
+      "bytes": 203790
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0114.webp",
+      "bytes": 204344
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0115.webp",
+      "bytes": 206368
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0116.webp",
+      "bytes": 207990
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0117.webp",
+      "bytes": 208046
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0118.webp",
+      "bytes": 211020
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0119.webp",
+      "bytes": 211958
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0120.webp",
+      "bytes": 213394
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0121.webp",
+      "bytes": 215702
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0122.webp",
+      "bytes": 215676
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0123.webp",
+      "bytes": 218960
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0124.webp",
+      "bytes": 219130
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0125.webp",
+      "bytes": 220802
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0126.webp",
+      "bytes": 223096
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0127.webp",
+      "bytes": 224296
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0128.webp",
+      "bytes": 226994
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0129.webp",
+      "bytes": 228176
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0130.webp",
+      "bytes": 230870
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0131.webp",
+      "bytes": 233124
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0132.webp",
+      "bytes": 234702
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0133.webp",
+      "bytes": 237594
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0134.webp",
+      "bytes": 238566
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0135.webp",
+      "bytes": 240310
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0136.webp",
+      "bytes": 240318
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0137.webp",
+      "bytes": 240656
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0138.webp",
+      "bytes": 240534
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0139.webp",
+      "bytes": 241560
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0140.webp",
+      "bytes": 241832
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0141.webp",
+      "bytes": 244546
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0142.webp",
+      "bytes": 240788
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0143.webp",
+      "bytes": 234042
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0144.webp",
+      "bytes": 233008
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0145.webp",
+      "bytes": 229240
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0146.webp",
+      "bytes": 226420
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0147.webp",
+      "bytes": 224930
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0148.webp",
+      "bytes": 227400
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0149.webp",
+      "bytes": 228474
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0150.webp",
+      "bytes": 226860
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0151.webp",
+      "bytes": 223326
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0152.webp",
+      "bytes": 215908
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0153.webp",
+      "bytes": 216940
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0154.webp",
+      "bytes": 213748
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0155.webp",
+      "bytes": 212080
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0156.webp",
+      "bytes": 206850
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0157.webp",
+      "bytes": 208472
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0158.webp",
+      "bytes": 208948
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0159.webp",
+      "bytes": 212624
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0160.webp",
+      "bytes": 210552
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0161.webp",
+      "bytes": 213838
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0162.webp",
+      "bytes": 214402
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0163.webp",
+      "bytes": 215590
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0164.webp",
+      "bytes": 217228
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0165.webp",
+      "bytes": 220022
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0166.webp",
+      "bytes": 225338
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0167.webp",
+      "bytes": 227564
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0168.webp",
+      "bytes": 232804
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0169.webp",
+      "bytes": 234740
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0170.webp",
+      "bytes": 237726
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0171.webp",
+      "bytes": 241392
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0172.webp",
+      "bytes": 245242
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0173.webp",
+      "bytes": 246242
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0174.webp",
+      "bytes": 254988
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0175.webp",
+      "bytes": 254518
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0176.webp",
+      "bytes": 252570
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0177.webp",
+      "bytes": 253162
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0178.webp",
+      "bytes": 259486
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0179.webp",
+      "bytes": 257180
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0180.webp",
+      "bytes": 260458
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0181.webp",
+      "bytes": 256952
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0182.webp",
+      "bytes": 253258
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0183.webp",
+      "bytes": 253844
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0184.webp",
+      "bytes": 251960
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0185.webp",
+      "bytes": 259794
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0186.webp",
+      "bytes": 261412
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0187.webp",
+      "bytes": 262608
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0188.webp",
+      "bytes": 257440
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0189.webp",
+      "bytes": 265876
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0190.webp",
+      "bytes": 264688
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0191.webp",
+      "bytes": 266822
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0192.webp",
+      "bytes": 263740
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0193.webp",
+      "bytes": 262882
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0194.webp",
+      "bytes": 264762
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0195.webp",
+      "bytes": 265538
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0196.webp",
+      "bytes": 259894
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0197.webp",
+      "bytes": 263678
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0198.webp",
+      "bytes": 262468
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0199.webp",
+      "bytes": 261734
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0200.webp",
+      "bytes": 263166
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0201.webp",
+      "bytes": 259066
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0202.webp",
+      "bytes": 260560
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0203.webp",
+      "bytes": 263712
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0204.webp",
+      "bytes": 265670
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0205.webp",
+      "bytes": 266228
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0206.webp",
+      "bytes": 259366
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0207.webp",
+      "bytes": 260434
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0208.webp",
+      "bytes": 261024
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0209.webp",
+      "bytes": 260908
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0210.webp",
+      "bytes": 258714
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0211.webp",
+      "bytes": 260060
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0212.webp",
+      "bytes": 260356
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0213.webp",
+      "bytes": 257680
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0214.webp",
+      "bytes": 262080
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0215.webp",
+      "bytes": 260794
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0216.webp",
+      "bytes": 258402
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0217.webp",
+      "bytes": 258424
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0218.webp",
+      "bytes": 259732
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0219.webp",
+      "bytes": 258182
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0220.webp",
+      "bytes": 259046
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0221.webp",
+      "bytes": 260366
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0222.webp",
+      "bytes": 259532
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0223.webp",
+      "bytes": 261516
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0224.webp",
+      "bytes": 259290
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0225.webp",
+      "bytes": 260966
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0226.webp",
+      "bytes": 258368
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0227.webp",
+      "bytes": 259672
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0228.webp",
+      "bytes": 259148
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0229.webp",
+      "bytes": 259204
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0230.webp",
+      "bytes": 258942
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0231.webp",
+      "bytes": 259466
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0232.webp",
+      "bytes": 257576
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0233.webp",
+      "bytes": 257496
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0234.webp",
+      "bytes": 257664
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0235.webp",
+      "bytes": 258020
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0236.webp",
+      "bytes": 259668
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0237.webp",
+      "bytes": 259528
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0238.webp",
+      "bytes": 259236
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/frames/0239.webp",
+      "bytes": 259740
+    },
+    {
+      "path": "demos/cases/mg-3d-render/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
+      "path": "demos/cases/mg-3d-render/audio/film.m4a",
+      "bytes": 416742
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fidelity.md",
+      "bytes": 4317
+    },
+    {
+      "path": "demos/cases/mg-3d-render/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-3d-render/film/cues.json",
+      "bytes": 1125
+    },
+    {
+      "path": "demos/cases/mg-3d-render/film/scene.js",
+      "bytes": 4014
+    },
+    {
+      "path": "demos/cases/mg-3d-render/film/setup.js",
+      "bytes": 3681
+    },
+    {
+      "path": "demos/cases/mg-3d-render/film/style.css",
+      "bytes": 2885
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fonts/DMSans-OFL.txt",
+      "bytes": 4389
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fonts/DMSans[opsz,wght].ttf",
+      "bytes": 240164
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fonts/Fredoka-OFL.txt",
+      "bytes": 4388
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fonts/Fredoka[wdth,wght].ttf",
+      "bytes": 159184
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fonts/NotoSansSC-OFL.txt",
+      "bytes": 4301
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fonts/NotoSansSC-VF.ttf",
+      "bytes": 17773132
+    },
+    {
+      "path": "demos/cases/mg-3d-render/fonts/fonts.css",
+      "bytes": 338
+    },
+    {
+      "path": "demos/cases/mg-3d-render/index.html",
+      "bytes": 1644
+    },
+    {
+      "path": "demos/cases/mg-3d-render/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/assets/hdri/studio_small_09_2k.hdr",
+      "bytes": 6312947
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/assets/mesh/glyph_f.ply",
+      "bytes": 3839495
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/assets/mesh/glyph_o.ply",
+      "bytes": 4381047
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/assets/mesh/glyph_s.ply",
+      "bytes": 4036183
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/assets/mesh/glyph_t.ply",
+      "bytes": 3604654
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/assets/mesh/glyphs.json",
+      "bytes": 1187
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/audio.py",
+      "bytes": 10817
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/blender/common.py",
+      "bytes": 2378
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/blender/make_letters.py",
+      "bytes": 6310
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/blender/render.py",
+      "bytes": 2997
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/blender/scene.py",
+      "bytes": 34690
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/blender/sim.py",
+      "bytes": 28728
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/cues.json",
+      "bytes": 1125
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/out/events.json",
+      "bytes": 419481
+    },
+    {
+      "path": "previews/cases/mg-3d-render.jpg",
+      "bytes": 118594
+    }
+  ]
+}

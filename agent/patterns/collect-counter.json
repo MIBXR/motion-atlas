@@ -14,14 +14,14 @@
       "video",
       "console"
     ],
-    "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。",
-    "mechanism": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。 手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。",
+    "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。 综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。",
+    "mechanism": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。 手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。 综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。",
     "trigger": "到站、盖章或发现角色时",
     "effect": "每次抵达都有积累感，进度看得见。",
     "timing": [
       {
         "name": "时长",
-        "value": "8.2s"
+        "value": "9.533s"
       },
       {
         "name": "声音 voice",
@@ -30,6 +30,10 @@
       {
         "name": "点亮级联同步计数",
         "value": "L222: const R1=rng(19);const rest=[...USED.keys()].filter(Z=>!FIRST.includes(Z)).map(Z=>{const[r,c]=rc(Z);return{Z,k:c+.45*r+R1()*2.2};}).sort((a,b)=>a.k-b.k).map(o=>o.Z);；L224: rest.forEach((Z,i)=>litT.set(Z,lerp(EV.cascade[0],EV.cascade[1],1-Math.cbrt(1-(i+1)/rest.length))));；L260: if(o.lt!=null&&t>=o.lt){lit++;const q=P(t,o.lt,.16);const w=wob(t-o.lt,5,12);s*=1+.16*(1-q)*(o.lt===EV.first_lit?.94:1)+.02*w*(o.lt===EV.first_lit?2:1);"
+      },
+      {
+        "name": "追加原片区间",
+        "value": "mg-hanazi 原片 1.367–2.7 秒；const k = spring(ub, .5, 28); X(b, -54 + j * 52, 29 - 29 * k, 0, 1, k);\nconst h = addK(hand(t, 1, .8), kick(t, C.charge[2], 7, 12, 14))"
       }
     ],
     "useCases": [
@@ -37,7 +41,8 @@
       "任务或关卡进度",
       "收藏与图鉴陈列",
       "旅行或展会集章",
-      "周期表点亮进度与元素数量同步，整十和终值用回弹强调。"
+      "周期表点亮进度与元素数量同步，整十和终值用回弹强调。",
+      "综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。"
     ],
     "avoid": [
       "计数与叙事无关时（会显得廉价）"
@@ -55,7 +60,7 @@
       "conflicts": [],
       "notes": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。"
     },
-    "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 8.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 通过 index.html 内联 segments 在前 6.6 秒之后依次重放mg-paperclip 原片 3.1–4.7 秒，总时长 8.2 秒。手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。沿用同区间原片音轨，声音默认关闭。",
+    "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 9.533s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 通过 index.html 内联 segments 在前 6.6 秒之后依次重放mg-paperclip 原片 3.1–4.7 秒，总时长 9.533 秒。手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。沿用同区间原片音轨，声音默认关闭。 按 index.html 内联 segments 在原有 8.2 秒之后重放mg-hanazi 原片 1.367–2.7 秒，总时长 9.533 秒。综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。画面与音轨沿用同一映射，声音默认关闭。",
     "demo": "demos/patterns/collect-counter/index.html",
     "kit": true,
     "sources": [
@@ -64,6 +69,9 @@
       },
       {
         "caseId": "mg-paperclip"
+      },
+      {
+        "caseId": "mg-hanazi"
       }
     ],
     "previewAt": 6.2,
@@ -91,6 +99,22 @@
       {
         "t": 6.6,
         "label": "贴纸科普"
+      },
+      {
+        "t": 8.2,
+        "label": "综艺花字"
+      },
+      {
+        "t": 8.4,
+        "label": "快乐电池"
+      },
+      {
+        "t": 9.333,
+        "label": "凝视切镜"
+      },
+      {
+        "t": 9.4,
+        "label": "问号弹入"
       }
     ],
     "sound": {
@@ -179,6 +203,11 @@
         "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
+    "orients": [
+      "landscape",
+      "portrait"
+    ],
+    "previewAtPortrait": 8.8665,
     "preview": "previews/patterns/collect-counter.jpg",
     "previewPortrait": "previews/patterns/collect-counter-portrait.jpg"
   },
@@ -190,10 +219,14 @@
     {
       "caseId": "mg-paperclip",
       "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "caseId": "mg-hanazi",
+      "bundle": "agent/cases/mg-hanazi.json"
     }
   ],
   "documents": {
-    "prompt": "# 收集计数徽章与收集物托盘\n\n## 实现 Prompt\n\n每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 8.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 通过 index.html 内联 segments 在前 6.6 秒之后依次重放mg-paperclip 原片 3.1–4.7 秒，总时长 8.2 秒。手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。沿用同区间原片音轨，声音默认关闭。\n\n## 参数\n\n- **时长**：8.2s\n- **声音 voice**：confirm、stamp、sparkle\n- **点亮级联同步计数**：L222: const R1=rng(19);const rest=[...USED.keys()].filter(Z=>!FIRST.includes(Z)).map(Z=>{const[r,c]=rc(Z);return{Z,k:c+.45*r+R1()*2.2};}).sort((a,b)=>a.k-b.k).map(o=>o.Z);；L224: rest.forEach((Z,i)=>litT.set(Z,lerp(EV.cascade[0],EV.cascade[1],1-Math.cbrt(1-(i+1)/rest.length))));；L260: if(o.lt!=null&&t>=o.lt){lit++;const q=P(t,o.lt,.16);const w=wob(t-o.lt,5,12);s*=1+.16*(1-q)*(o.lt===EV.first_lit?.94:1)+.02*w*(o.lt===EV.first_lit?2:1);\n\n## 动效 Token\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：8.2s\n\n## 迁移\n\n- `动效函数`：配置计数、徽章、收集物托盘（来源为车站印章）与回弹。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置计数与收集事件（来源为车站印章）、镜头和横竖布局。\n- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
+    "prompt": "# 收集计数徽章与收集物托盘\n\n## 实现 Prompt\n\n每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 9.533s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 通过 index.html 内联 segments 在前 6.6 秒之后依次重放mg-paperclip 原片 3.1–4.7 秒，总时长 9.533 秒。手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。沿用同区间原片音轨，声音默认关闭。 按 index.html 内联 segments 在原有 8.2 秒之后重放mg-hanazi 原片 1.367–2.7 秒，总时长 9.533 秒。综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。画面与音轨沿用同一映射，声音默认关闭。\n\n## 参数\n\n- **时长**：9.533s\n- **声音 voice**：confirm、stamp、sparkle\n- **点亮级联同步计数**：L222: const R1=rng(19);const rest=[...USED.keys()].filter(Z=>!FIRST.includes(Z)).map(Z=>{const[r,c]=rc(Z);return{Z,k:c+.45*r+R1()*2.2};}).sort((a,b)=>a.k-b.k).map(o=>o.Z);；L224: rest.forEach((Z,i)=>litT.set(Z,lerp(EV.cascade[0],EV.cascade[1],1-Math.cbrt(1-(i+1)/rest.length))));；L260: if(o.lt!=null&&t>=o.lt){lit++;const q=P(t,o.lt,.16);const w=wob(t-o.lt,5,12);s*=1+.16*(1-q)*(o.lt===EV.first_lit?.94:1)+.02*w*(o.lt===EV.first_lit?2:1);\n- **追加原片区间**：mg-hanazi 原片 1.367–2.7 秒；const k = spring(ub, .5, 28); X(b, -54 + j * 52, 29 - 29 * k, 0, 1, k);\nconst h = addK(hand(t, 1, .8), kick(t, C.charge[2], 7, 12, 14))\n\n## 动效 Token\n\n- **徽章出现**：0s\n- **×1 + 关空**：0.8s\n- **×2 + 京都**：2.2s\n- **×3 + 奈良**：3.4s\n- **×4 + 大阪**：4.6s\n- **时长**：8.2s\n\n## 迁移\n\n- `动效函数`：配置计数、徽章、收集物托盘（来源为车站印章）与回弹。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置计数与收集事件（来源为车站印章）、镜头和横竖布局。\n- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)\n"
   },
   "entrypoint": "demos/patterns/collect-counter/index.html",
   "files": [
@@ -224,6 +257,170 @@
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hanazi/LICENSES.md",
+      "bytes": 3208
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
+      "bytes": 1358977
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B0.png",
+      "bytes": 1482239
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B1.png",
+      "bytes": 1488365
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B2.png",
+      "bytes": 1479775
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L06.png",
+      "bytes": 1403484
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L12.png",
+      "bytes": 1523388
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L135.png",
+      "bytes": 1555269
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/tux_r1.jpg",
+      "bytes": 1380121
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_dof.jpg",
+      "bytes": 525250
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear11.png",
+      "bytes": 2491551
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear16.png",
+      "bytes": 2492949
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear6.png",
+      "bytes": 2489969
+    },
+    {
+      "path": "demos/cases/mg-hanazi/audio/film.m4a",
+      "bytes": 423783
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fidelity.md",
+      "bytes": 3636
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/cues.json",
+      "bytes": 1116
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/scene.js",
+      "bytes": 48485
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/setup.js",
+      "bytes": 1432
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/style.css",
+      "bytes": 1332
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-Bold.ttf",
+      "bytes": 1375772
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-LICENSE.txt",
+      "bytes": 2016
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/DouyinSans-OFL.txt",
+      "bytes": 4425
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/DouyinSansBold.ttf",
+      "bytes": 1919404
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-OFL.txt",
+      "bytes": 4406
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-Regular.ttf",
+      "bytes": 3190368
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-LICENSE.txt",
+      "bytes": 11358
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ResourceHanRounded-OFL.txt",
+      "bytes": 4504
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ResourceHanRoundedCN-Heavy.ttf",
+      "bytes": 13688972
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-OFL.txt",
+      "bytes": 4398
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-Regular.ttf",
+      "bytes": 1514968
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/fonts.css",
+      "bytes": 1066
+    },
+    {
+      "path": "demos/cases/mg-hanazi/index.html",
+      "bytes": 1900
+    },
+    {
+      "path": "demos/cases/mg-hanazi/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep.py",
+      "bytes": 8811
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep_r2.py",
+      "bytes": 8193
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep_r2b.py",
+      "bytes": 4162
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/audio.py",
+      "bytes": 12031
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/cues.json",
+      "bytes": 1116
     },
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
@@ -359,7 +556,7 @@
     },
     {
       "path": "demos/patterns/collect-counter/index.html",
-      "bytes": 1792
+      "bytes": 2272
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
@@ -419,11 +616,11 @@
     },
     {
       "path": "previews/patterns/collect-counter-portrait.jpg",
-      "bytes": 190176
+      "bytes": 139244
     },
     {
       "path": "previews/patterns/collect-counter.jpg",
-      "bytes": 175509
+      "bytes": 175109
     }
   ]
 }

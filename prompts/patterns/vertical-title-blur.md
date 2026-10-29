@@ -2,12 +2,16 @@
 
 ## 实现 Prompt
 
-竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 14.1s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。
+竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 16s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 按 index.html 内联 segments 在原有 14.1 秒之后重放mg-3d-render 原片 7.8–9.7 秒，总时长 16 秒。三维片的英文标语逐词上移、去模糊并收字距，横线和中文随后显现。画面与音轨沿用同一映射，声音默认关闭。
 
 ## 参数
 
-- **时长**：14.1s
+- **时长**：16s
 - **声音 voice**：key、tick、bell、shimmer、sub
+- **追加原片区间**：mg-3d-render 原片 7.8–9.7 秒；const u = prog(t, T0 + 0.07 * k, 0.9);
+w.style.filter = `blur(${(1 - e) * 7}px)`;
+w.style.letterSpacing = `${0.26 + (1 - e) * 0.2}em`;
+const uz = prog(t, T0 + 0.30, 0.9), ez = expoOut(uz);
 
 ## 动效 Token
 
