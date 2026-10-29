@@ -502,591 +502,738 @@
   "files": [
     {
       "path": "demos/materials/motion-showreel/LICENSE",
-      "bytes": 1056
+      "bytes": 1056,
+      "role": "license"
     },
     {
       "path": "demos/materials/motion-showreel/README.md",
-      "bytes": 21213
+      "bytes": 21213,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/README.zh-CN.md",
-      "bytes": 21157
+      "bytes": 21157,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/SKILL.md",
-      "bytes": 32386
+      "bytes": 32386,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/assets/editor/editor.css",
-      "bytes": 20545
+      "bytes": 20545,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/editor/editor.js",
-      "bytes": 28650
+      "bytes": 28650,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/editor/index.html",
-      "bytes": 6861
+      "bytes": 6861,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/editor/progress.js",
-      "bytes": 12105
+      "bytes": 12105,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/editor/viewport.css",
-      "bytes": 340
+      "bytes": 340,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/editor/viewport.js",
-      "bytes": 10309
+      "bytes": 10309,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/build.sh",
-      "bytes": 5286
+      "bytes": 5286,
+      "role": "asset"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/index.html",
-      "bytes": 4783
+      "bytes": 4783,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/motion.js",
-      "bytes": 13717
+      "bytes": 13717,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/narration.js",
-      "bytes": 7311
+      "bytes": 7311,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/package.json",
-      "bytes": 64
+      "bytes": 64,
+      "role": "asset"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/preview.js",
-      "bytes": 12572
+      "bytes": 12572,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/score.layer.mjs",
-      "bytes": 1402
+      "bytes": 1402,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/score.mjs",
-      "bytes": 2404
+      "bytes": 2404,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/score.tone.js",
-      "bytes": 2791
+      "bytes": 2791,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/assets/starter/timeline.js",
-      "bytes": 1805
+      "bytes": 1805,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/manifest.json",
-      "bytes": 797
+      "bytes": 797,
+      "role": "asset"
     },
     {
       "path": "demos/materials/motion-showreel/references/brief-template.md",
-      "bytes": 9534
+      "bytes": 9534,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/craft.md",
-      "bytes": 22521
+      "bytes": 22521,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/editor.md",
-      "bytes": 7300
+      "bytes": 7300,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/formats.md",
-      "bytes": 9162
+      "bytes": 9162,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/long-form.md",
-      "bytes": 6190
+      "bytes": 6190,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/narration.md",
-      "bytes": 12666
+      "bytes": 12666,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/progress.md",
-      "bytes": 11143
+      "bytes": 11143,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/recipes.md",
-      "bytes": 17295
+      "bytes": 17295,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/review.md",
-      "bytes": 15015
+      "bytes": 15015,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/sound.md",
-      "bytes": 28109
+      "bytes": 28109,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/stack.md",
-      "bytes": 13558
+      "bytes": 13558,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/INDEX.md",
-      "bytes": 10177
+      "bytes": 10177,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/_template.md",
-      "bytes": 3503
+      "bytes": 3503,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/art-deco.md",
-      "bytes": 8276
+      "bytes": 8276,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/blueprint.md",
-      "bytes": 8335
+      "bytes": 8335,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/cel-anime-80s.md",
-      "bytes": 8448
+      "bytes": 8448,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/cinematic-title.md",
-      "bytes": 6112
+      "bytes": 6112,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/comic-pop.md",
-      "bytes": 7807
+      "bytes": 7807,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/concept-morph.md",
-      "bytes": 7563
+      "bytes": 7563,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/copperplate-engraving.md",
-      "bytes": 9703
+      "bytes": 9703,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/crayon-storybook.md",
-      "bytes": 5772
+      "bytes": 5772,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/crt-vhs.md",
-      "bytes": 6179
+      "bytes": 6179,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/dark-keynote.md",
-      "bytes": 6087
+      "bytes": 6087,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/data-motion.md",
-      "bytes": 6485
+      "bytes": 6485,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/editorial-collage.md",
-      "bytes": 5712
+      "bytes": 5712,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/flat-vector.md",
-      "bytes": 7336
+      "bytes": 7336,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/generative-geometry.md",
-      "bytes": 5515
+      "bytes": 5515,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/glass-material.md",
-      "bytes": 7255
+      "bytes": 7255,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/glitch-digital.md",
-      "bytes": 7824
+      "bytes": 7824,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/guochao.md",
-      "bytes": 7791
+      "bytes": 7791,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/hologram-hud.md",
-      "bytes": 8390
+      "bytes": 8390,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/illuminated-manuscript.md",
-      "bytes": 7850
+      "bytes": 7850,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/ink-wash.md",
-      "bytes": 5830
+      "bytes": 5830,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/isometric-infographic.md",
-      "bytes": 5887
+      "bytes": 5887,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/kinetic-brutalist.md",
-      "bytes": 6001
+      "bytes": 6001,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/liquid-shader.md",
-      "bytes": 5864
+      "bytes": 5864,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/minimal-ui.md",
-      "bytes": 6263
+      "bytes": 6263,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/mixed-media-era.md",
-      "bytes": 9223
+      "bytes": 9223,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/one-line.md",
-      "bytes": 8221
+      "bytes": 8221,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/painterly.md",
-      "bytes": 7553
+      "bytes": 7553,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/paper-cut.md",
-      "bytes": 5684
+      "bytes": 5684,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/particle-field.md",
-      "bytes": 5826
+      "bytes": 5826,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/pixel-diorama.md",
-      "bytes": 8637
+      "bytes": 8637,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/pixel-game.md",
-      "bytes": 6147
+      "bytes": 6147,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/risograph-print.md",
-      "bytes": 6050
+      "bytes": 6050,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/rubber-hose.md",
-      "bytes": 8634
+      "bytes": 8634,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/shadow-puppet.md",
-      "bytes": 8496
+      "bytes": 8496,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/soft-3d-toy.md",
-      "bytes": 5682
+      "bytes": 5682,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/soft-organic.md",
-      "bytes": 7175
+      "bytes": 7175,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/stained-glass.md",
-      "bytes": 8635
+      "bytes": 8635,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/swiss-editorial.md",
-      "bytes": 6974
+      "bytes": 6974,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/synthwave-neon.md",
-      "bytes": 8710
+      "bytes": 8710,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/terminal-ascii.md",
-      "bytes": 5759
+      "bytes": 5759,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/tilt-shift-miniature.md",
-      "bytes": 8390
+      "bytes": 8390,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/ukiyo-e.md",
-      "bytes": 8180
+      "bytes": 8180,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/references/styles/whiteboard-explainer.md",
-      "bytes": 7906
+      "bytes": 7906,
+      "role": "doc"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/audio.mjs",
-      "bytes": 22028
+      "bytes": 22028,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/build-long.mjs",
-      "bytes": 17565
+      "bytes": 17565,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/check-env.mjs",
-      "bytes": 2302
+      "bytes": 2302,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/editor.mjs",
-      "bytes": 11822
+      "bytes": 11822,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/inspect.mjs",
-      "bytes": 23952
+      "bytes": 23952,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/browser.mjs",
-      "bytes": 8319
+      "bytes": 8319,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/editor-media.mjs",
-      "bytes": 10233
+      "bytes": 10233,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/editor-model.mjs",
-      "bytes": 8648
+      "bytes": 8648,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/editor-progress.mjs",
-      "bytes": 17841
+      "bytes": 17841,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/fft.mjs",
-      "bytes": 1508
+      "bytes": 1508,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/frames.mjs",
-      "bytes": 10214
+      "bytes": 10214,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/narration-providers.mjs",
-      "bytes": 8325
+      "bytes": 8325,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/narration.mjs",
-      "bytes": 22669
+      "bytes": 22669,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/project.mjs",
-      "bytes": 2721
+      "bytes": 2721,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/synth.mjs",
-      "bytes": 41387
+      "bytes": 41387,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/text-hook.mjs",
-      "bytes": 7366
+      "bytes": 7366,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/lib/tone-render.mjs",
-      "bytes": 5892
+      "bytes": 5892,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/narration.mjs",
-      "bytes": 4058
+      "bytes": 4058,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/package-lock.json",
-      "bytes": 3066
+      "bytes": 3066,
+      "role": "asset"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/package.json",
-      "bytes": 393
+      "bytes": 393,
+      "role": "asset"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/preview.mjs",
-      "bytes": 6229
+      "bytes": 6229,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/progress.mjs",
-      "bytes": 4051
+      "bytes": 4051,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/render.mjs",
-      "bytes": 25446
+      "bytes": 25446,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/scaffold.sh",
-      "bytes": 3316
+      "bytes": 3316,
+      "role": "asset"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/setup.sh",
-      "bytes": 1544
+      "bytes": 1544,
+      "role": "asset"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/editor-layout.test.mjs",
-      "bytes": 11628
+      "bytes": 11628,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/editor-model.test.mjs",
-      "bytes": 7560
+      "bytes": 7560,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/editor-progress.test.mjs",
-      "bytes": 21663
+      "bytes": 21663,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/editor.test.mjs",
-      "bytes": 13463
+      "bytes": 13463,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/fixtures/page/index.html",
-      "bytes": 907
+      "bytes": 907,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/fixtures/text/index.html",
-      "bytes": 2168
+      "bytes": 2168,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/long.test.mjs",
-      "bytes": 11959
+      "bytes": 11959,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/narration-clock.test.mjs",
-      "bytes": 7451
+      "bytes": 7451,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/narration.test.mjs",
-      "bytes": 14231
+      "bytes": 14231,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/preview.test.mjs",
-      "bytes": 14356
+      "bytes": 14356,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/render-context.test.mjs",
-      "bytes": 3605
+      "bytes": 3605,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/starter.test.mjs",
-      "bytes": 3322
+      "bytes": 3322,
+      "role": "source"
     },
     {
       "path": "demos/materials/motion-showreel/scripts/test/tools.test.mjs",
-      "bytes": 31026
+      "bytes": 31026,
+      "role": "source"
     },
     {
       "path": "docs/materials/motion-showreel.md",
-      "bytes": 886
+      "bytes": 886,
+      "role": "doc"
     },
     {
       "path": "entries/materials/motion-showreel.json",
-      "bytes": 20722
+      "bytes": 20722,
+      "role": "entry"
     },
     {
       "path": "previews/materials/motion-showreel/afterglow.webp",
-      "bytes": 589054
+      "bytes": 589054,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/banner.webp",
-      "bytes": 135766
+      "bytes": 135766,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/boink.webp",
-      "bytes": 123390
+      "bytes": 123390,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/last-stroke.webp",
-      "bytes": 366150
+      "bytes": 366150,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/promo.webp",
-      "bytes": 689312
+      "bytes": 689312,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-art-deco.webp",
-      "bytes": 818276
+      "bytes": 818276,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-comic-pop.webp",
-      "bytes": 29480
+      "bytes": 29480,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-data-motion.webp",
-      "bytes": 7662
+      "bytes": 7662,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-editorial-collage.webp",
-      "bytes": 9156
+      "bytes": 9156,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-flat-vector.webp",
-      "bytes": 8104
+      "bytes": 8104,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-generative-geometry.webp",
-      "bytes": 25402
+      "bytes": 25402,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-glass-material.webp",
-      "bytes": 472206
+      "bytes": 472206,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-glitch-digital.webp",
-      "bytes": 7298
+      "bytes": 7298,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-guochao.webp",
-      "bytes": 14096
+      "bytes": 14096,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-hologram-hud.webp",
-      "bytes": 959504
+      "bytes": 959504,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-ink-wash.webp",
-      "bytes": 5292
+      "bytes": 5292,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-isometric-infographic.webp",
-      "bytes": 6842
+      "bytes": 6842,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-kinetic-brutalist.webp",
-      "bytes": 685268
+      "bytes": 685268,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-liquid-shader.webp",
-      "bytes": 4624
+      "bytes": 4624,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-minimal-ui.webp",
-      "bytes": 2926
+      "bytes": 2926,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-painterly.webp",
-      "bytes": 37168
+      "bytes": 37168,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-paper-cut.webp",
-      "bytes": 3412
+      "bytes": 3412,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-particle-field.webp",
-      "bytes": 989472
+      "bytes": 989472,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-pixel-game.webp",
-      "bytes": 9124
+      "bytes": 9124,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-risograph-print.webp",
-      "bytes": 31846
+      "bytes": 31846,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-soft-organic.webp",
-      "bytes": 5914
+      "bytes": 5914,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-swiss-editorial.webp",
-      "bytes": 7616
+      "bytes": 7616,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-synthwave-neon.webp",
-      "bytes": 11110
+      "bytes": 11110,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/style-ukiyo-e.webp",
-      "bytes": 1210766
+      "bytes": 1210766,
+      "role": "preview"
     },
     {
       "path": "previews/materials/motion-showreel/umbra.webp",
-      "bytes": 160610
+      "bytes": 160610,
+      "role": "preview"
     }
   ]
 }

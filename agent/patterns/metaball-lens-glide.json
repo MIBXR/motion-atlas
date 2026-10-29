@@ -104,111 +104,138 @@
   "files": [
     {
       "path": "demos/cases/mg-aurora-glass/LICENSES.md",
-      "bytes": 830
+      "bytes": 830,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-aurora-glass/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-aurora-glass/audio/film.m4a",
-      "bytes": 403616
+      "bytes": 403616,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fidelity.md",
-      "bytes": 4331
+      "bytes": 4331,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/cues.json",
-      "bytes": 881
+      "bytes": 881,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/main.js",
-      "bytes": 46607
+      "bytes": 46607,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/out/env.json",
-      "bytes": 7901
+      "bytes": 7901,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/setup.js",
-      "bytes": 153
+      "bytes": 153,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/shaders.js",
-      "bytes": 21381
+      "bytes": 21381,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/style.css",
-      "bytes": 138
+      "bytes": 138,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fonts/HarmonyOS-Sans-LICENSE.txt",
-      "bytes": 32768
+      "bytes": 32768,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fonts/HarmonyOS_Sans_SC_Light.ttf",
-      "bytes": 8336364
+      "bytes": 8336364,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fonts/Inter-OFL.txt",
-      "bytes": 4377
+      "bytes": 4377,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fonts/Inter[opsz,wght].ttf",
-      "bytes": 876576
+      "bytes": 876576,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fonts/Sora-OFL.txt",
-      "bytes": 4385
+      "bytes": 4385,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fonts/Sora[wght].ttf",
-      "bytes": 111400
+      "bytes": 111400,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-aurora-glass/fonts/fonts.css",
-      "bytes": 497
+      "bytes": 497,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-aurora-glass/index.html",
-      "bytes": 1904
+      "bytes": 1904,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-aurora-glass/source/audio.py",
-      "bytes": 10545
+      "bytes": 10545,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-aurora-glass/source/cues.json",
-      "bytes": 881
+      "bytes": 881,
+      "role": "process"
     },
     {
       "path": "demos/patterns/metaball-lens-glide/index.html",
-      "bytes": 1415
+      "bytes": 1415,
+      "role": "source"
     },
     {
       "path": "demos/patterns/metaball-lens-glide/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16301
+      "bytes": 16301,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/metaball-lens-glide.json",
-      "bytes": 3741
+      "bytes": 3741,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/metaball-lens-glide.jpg",
-      "bytes": 95644
+      "bytes": 95644,
+      "role": "preview"
     }
   ]
 }

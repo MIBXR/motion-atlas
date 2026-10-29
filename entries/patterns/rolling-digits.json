@@ -56,7 +56,7 @@
     "conflicts": [],
     "notes": "与档案阵列的同一次选择更新编号、行列计数、标题、权限与列名；共享 460ms 时长，数字方向由导航决定，文字保持默认正向。"
   },
-  "prompt": "实现当前 archive-os 的逐字符滚动：直接裁出案例 bundle 中的滚动库，使用 createRollingNumber/createRollingText，duration:460、motionBlur:true，文字 transition:direct、stagger:none。每个字符建独立 slot/reel/face，临界阻尼使用 49 点及 exp(-10h)；连续更新必须先通过 Bs.read 读取当前动画位置和速度，再向最新目标接续。数字按照上下、左右输入方向滚动；文字使用默认正向。数字 --rn-blur 为 0.35，文字为 0.2，SVG Gaussian blur 随字高和速度变化。档案数据保存在 archives.json，字体引用 ../../cases/archive-os/film/app/fonts/，声音引用 ../../cases/archive-os/audio/film-audio.ogg。自动驾驶复用案例 62.6 秒后的四向输入，9 秒及 9.35 秒连续切列；真实输入接管，seek 恢复自动驾驶；默认静音并支持减少动态。",
+  "prompt": "实现当前 archive-os 的逐字符滚动：直接裁出案例 bundle 中的滚动库，使用 createRollingNumber/createRollingText，duration:460、motionBlur:true，文字 transition:direct、stagger:none。每个字符建独立 slot/reel/face，临界阻尼使用 49 点及 exp(-10h)；连续更新必须先通过 Bs.read 读取当前动画位置和速度，再向最新目标接续。数字按照上下、左右输入方向滚动；文字使用默认正向。数字 --rn-blur 为 0.35，文字为 0.2，SVG Gaussian blur 随字高和速度变化。档案数据保存在 mechanism/archives.json，字体引用 ../../cases/archive-os/film/app/fonts/，声音引用 ../../cases/archive-os/audio/film-audio.ogg。自动驾驶复用案例 62.6 秒后的四向输入，9 秒及 9.35 秒连续切列；真实输入接管，seek 恢复自动驾驶；默认静音并支持减少动态。",
   "demo": "demos/patterns/rolling-digits/index.html",
   "kit": true,
   "previewAt": 9.5,
@@ -93,7 +93,7 @@
     },
     {
       "name": "内容与声音",
-      "value": "档案数据读取 archives.json，音轨读取 ../../cases/archive-os/audio/film-audio.ogg；自动声音读取案例 62.6–75.6s 片段",
+      "value": "档案数据读取 mechanism/archives.json，音轨读取 ../../cases/archive-os/audio/film-audio.ogg；自动声音读取案例 62.6–75.6s 片段",
       "source": "demos/cases/archive-os/source/rhinelabui/content/archives.json；demos/cases/archive-os/audio/film-audio.ogg"
     }
   ],

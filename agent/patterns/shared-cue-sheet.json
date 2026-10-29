@@ -151,515 +151,643 @@
   "files": [
     {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
-      "bytes": 765
+      "bytes": 765,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/paper/Paper001_4K_color.jpg",
-      "bytes": 3684106
+      "bytes": 3684106,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/audio/film.m4a",
-      "bytes": 426687
+      "bytes": 426687,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/fidelity.md",
-      "bytes": 4011
+      "bytes": 4011,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/cues.json",
-      "bytes": 3719
+      "bytes": 3719,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/film.js",
-      "bytes": 35182
+      "bytes": 35182,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/setup.js",
-      "bytes": 148
+      "bytes": 148,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/style.css",
-      "bytes": 172
+      "bytes": 172,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/NotoSansSC-OFL.txt",
-      "bytes": 4301
+      "bytes": 4301,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/NotoSansSC-VF.ttf",
-      "bytes": 17773132
+      "bytes": 17773132,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/Poppins-Black.ttf",
-      "bytes": 153440
+      "bytes": 153440,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/Poppins-OFL.txt",
-      "bytes": 4385
+      "bytes": 4385,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/Poppins-SemiBold.ttf",
-      "bytes": 157312
+      "bytes": 157312,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/fonts.css",
-      "bytes": 486
+      "bytes": 486,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/index.html",
-      "bytes": 1807
+      "bytes": 1807,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/source/audio.py",
-      "bytes": 9344
+      "bytes": 9344,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-bauhaus/source/cues.json",
-      "bytes": 3719
+      "bytes": 3719,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 1181
+      "bytes": 1181,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
-      "bytes": 28357
+      "bytes": 28357,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_02.png",
-      "bytes": 28707
+      "bytes": 28707,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_03.png",
-      "bytes": 25600
+      "bytes": 25600,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_04.png",
-      "bytes": 27879
+      "bytes": 27879,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/paper_base.jpg",
-      "bytes": 483747
+      "bytes": 483747,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/paper_tooth.png",
-      "bytes": 1791819
+      "bytes": 1791819,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/audio/film.m4a",
-      "bytes": 415190
+      "bytes": 415190,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 5403
+      "bytes": 5403,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/cues.json",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/engine.js",
-      "bytes": 13778
+      "bytes": 13778,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103103
+      "bytes": 103103,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/setup.js",
-      "bytes": 764
+      "bytes": 764,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/style.css",
-      "bytes": 137
+      "bytes": 137,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Caveat-OFL.txt",
-      "bytes": 4385
+      "bytes": 4385,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Caveat[wght].ttf",
-      "bytes": 403648
+      "bytes": 403648,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-OFL.txt",
-      "bytes": 4406
+      "bytes": 4406,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-Regular.ttf",
-      "bytes": 3190368
+      "bytes": 3190368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LongCang-Regular.ttf",
-      "bytes": 5162508
+      "bytes": 5162508,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Longcang-OFL.txt",
-      "bytes": 4390
+      "bytes": 4390,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/fonts.css",
-      "bytes": 509
+      "bytes": 509,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2446
+      "bytes": 2446,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_01_3840x2160.png",
-      "bytes": 81508
+      "bytes": 81508,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_02_3840x2160.png",
-      "bytes": 82662
+      "bytes": 82662,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_03_3840x2160.png",
-      "bytes": 73739
+      "bytes": 73739,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_04_3840x2160.png",
-      "bytes": 79891
+      "bytes": 79891,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/audio.py",
-      "bytes": 24290
+      "bytes": 24290,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/cues.json",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/gen_dust.py",
-      "bytes": 707
+      "bytes": 707,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/gen_paper.py",
-      "bytes": 2360
+      "bytes": 2360,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/hitmax.py",
-      "bytes": 4168
+      "bytes": 4168,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/LICENSE",
-      "bytes": 1085
+      "bytes": 1085,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/dist/opentype.mjs",
-      "bytes": 494695
+      "bytes": 494695,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/LICENSE",
-      "bytes": 1069
+      "bytes": 1069,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
-      "bytes": 18735
+      "bytes": 18735,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 789
+      "bytes": 789,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
-      "bytes": 346596
+      "bytes": 346596,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3942
+      "bytes": 3942,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/cues.json",
-      "bytes": 906
+      "bytes": 906,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/scene.js",
-      "bytes": 63462
+      "bytes": 63462,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/setup.js",
-      "bytes": 206
+      "bytes": 206,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/style.css",
-      "bytes": 111
+      "bytes": 111,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/Fredoka-OFL.txt",
-      "bytes": 4388
+      "bytes": 4388,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/Fredoka[wdth,wght].ttf",
-      "bytes": 159184
+      "bytes": 159184,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/ResourceHanRounded-OFL.txt",
-      "bytes": 4504
+      "bytes": 4504,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/ResourceHanRoundedCN-Bold.ttf",
-      "bytes": 13978508
+      "bytes": 13978508,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/fonts.css",
-      "bytes": 376
+      "bytes": 376,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-flat-vector/index.html",
-      "bytes": 2472
+      "bytes": 2472,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/source/audio.py",
-      "bytes": 7610
+      "bytes": 7610,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-flat-vector/source/cues.json",
-      "bytes": 906
+      "bytes": 906,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/LICENSES.md",
-      "bytes": 789
+      "bytes": 789,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-line-art/audio/film.m4a",
-      "bytes": 401088
+      "bytes": 401088,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-line-art/fidelity.md",
-      "bytes": 5828
+      "bytes": 5828,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-line-art/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/film/cues.json",
-      "bytes": 3214
+      "bytes": 3214,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-line-art/film/film.js",
-      "bytes": 33056
+      "bytes": 33056,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/film/setup.js",
-      "bytes": 207
+      "bytes": 207,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/film/style.css",
-      "bytes": 193
+      "bytes": 193,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/CormorantGaramond-OFL.txt",
-      "bytes": 4387
+      "bytes": 4387,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/CormorantGaramond[wght].ttf",
-      "bytes": 1195560
+      "bytes": 1195560,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/NotoSerifSC-OFL.txt",
-      "bytes": 4301
+      "bytes": 4301,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/NotoSerifSC-VF.ttf",
-      "bytes": 25125232
+      "bytes": 25125232,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/fonts.css",
-      "bytes": 352
+      "bytes": 352,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-line-art/index.html",
-      "bytes": 2089
+      "bytes": 2089,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/source/assets/fonts/fonts.css",
-      "bytes": 9135
+      "bytes": 9135,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/audio.py",
-      "bytes": 9978
+      "bytes": 9978,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/cues.json",
-      "bytes": 3214
+      "bytes": 3214,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/film.js",
-      "bytes": 46982
+      "bytes": 46982,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/index.html",
-      "bytes": 566
+      "bytes": 566,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/out/timing.json",
-      "bytes": 8840
+      "bytes": 8840,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/tools/dump_timing.mjs",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/tools/retime.py",
-      "bytes": 4430
+      "bytes": 4430,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-pixel/LICENSES.md",
-      "bytes": 694
+      "bytes": 694,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/audio/film.m4a",
-      "bytes": 345394
+      "bytes": 345394,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-pixel/fidelity.md",
-      "bytes": 4108
+      "bytes": 4108,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-pixel/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/film/cues.json",
-      "bytes": 888
+      "bytes": 888,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-pixel/film/film.js",
-      "bytes": 58398
+      "bytes": 58398,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/film/setup.js",
-      "bytes": 385
+      "bytes": 385,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/film/style.css",
-      "bytes": 100
+      "bytes": 100,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/FusionPixel-OFL.txt",
-      "bytes": 4418
+      "bytes": 4418,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/LICENSES/ark-pixel/OFL.txt",
-      "bytes": 4412
+      "bytes": 4412,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/LICENSES/cubic-11/OFL.txt",
-      "bytes": 5364
+      "bytes": 5364,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/LICENSES/galmuri/LICENSE.txt",
-      "bytes": 4360
+      "bytes": 4360,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/PressStart2P-OFL.txt",
-      "bytes": 4413
+      "bytes": 4413,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/PressStart2P-Regular.ttf",
-      "bytes": 118204
+      "bytes": 118204,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/fonts.css",
-      "bytes": 369
+      "bytes": 369,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/fusion-pixel-12px-proportional-zh_hans.ttf",
-      "bytes": 7295572
+      "bytes": 7295572,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-pixel/index.html",
-      "bytes": 2004
+      "bytes": 2004,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/source/audio.py",
-      "bytes": 11101
+      "bytes": 11101,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-pixel/source/cues.json",
-      "bytes": 888
+      "bytes": 888,
+      "role": "process"
     },
     {
       "path": "demos/patterns/shared-cue-sheet/index.html",
-      "bytes": 6297
+      "bytes": 6297,
+      "role": "source"
     },
     {
       "path": "demos/patterns/shared-cue-sheet/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19270
+      "bytes": 19270,
+      "role": "entry"
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24241
+      "bytes": 24241,
+      "role": "entry"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20753
+      "bytes": 20753,
+      "role": "entry"
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19166
+      "bytes": 19166,
+      "role": "entry"
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 21794
+      "bytes": 21794,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/shared-cue-sheet.json",
-      "bytes": 4240
+      "bytes": 4240,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/shared-cue-sheet.jpg",
-      "bytes": 27388
+      "bytes": 27388,
+      "role": "preview"
     }
   ]
 }

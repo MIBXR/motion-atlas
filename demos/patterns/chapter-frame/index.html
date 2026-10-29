@@ -4,62 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>章节主题：标签、强调色与四角框线 · Motion Atlas</title>
-  <style>
-    html,body{margin:0;background:#000;overflow:hidden}
-    #stage{background:#000}
-    #cue{position:absolute;left:24px;top:24px;z-index:2;padding:10px 16px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;font:22px/1.4 "Microsoft YaHei",sans-serif;pointer-events:none}
-    #cue[hidden]{display:none}
-  </style>
+  <link rel="stylesheet" href="mechanism/replay.css">
 </head>
 <body>
   <main id="stage"><output id="cue" hidden></output></main>
   <script src="motion-kit.js"></script>
-  <script type="module">
-    const config = {
-      "title": "章节主题：标签、强调色与四角框线",
-      "segments": [
-        {
-          "caseId": "map-pilgrimage",
-          "label": "原有演示",
-          "source": "original.html",
-          "legacy": true,
-          "from": 0,
-          "to": 7.05
-        },
-        {
-          "caseId": "mg-hud",
-          "label": "赛博朋克 HUD",
-          "from": 0,
-          "to": 2.4
-        }
-      ],
-      "markers": [
-        {
-          "t": 0,
-          "label": "鸭川框线入场"
-        },
-        {
-          "t": 1.65,
-          "label": "框线退场"
-        },
-        {
-          "t": 2.45,
-          "label": "奈良胶带与网点"
-        },
-        {
-          "t": 7.05,
-          "label": "赛博朋克 HUD"
-        }
-      ],
-      "reduced": 2.4,
-      "root": "#stage",
-      "orients": [
-        "landscape",
-        "portrait"
-      ],
-      "fps": 30
-    };
-    await MotionKit.replay(config);
-  </script>
+  <script type="module" src="mechanism/replay.js"></script>
 </body>
 </html>

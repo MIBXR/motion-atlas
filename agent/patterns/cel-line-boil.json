@@ -198,343 +198,428 @@
   "files": [
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 1181
+      "bytes": 1181,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
-      "bytes": 28357
+      "bytes": 28357,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_02.png",
-      "bytes": 28707
+      "bytes": 28707,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_03.png",
-      "bytes": 25600
+      "bytes": 25600,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_04.png",
-      "bytes": 27879
+      "bytes": 27879,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/paper_base.jpg",
-      "bytes": 483747
+      "bytes": 483747,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/paper_tooth.png",
-      "bytes": 1791819
+      "bytes": 1791819,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/audio/film.m4a",
-      "bytes": 415190
+      "bytes": 415190,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 5403
+      "bytes": 5403,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/cues.json",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/engine.js",
-      "bytes": 13778
+      "bytes": 13778,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103103
+      "bytes": 103103,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/setup.js",
-      "bytes": 764
+      "bytes": 764,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/style.css",
-      "bytes": 137
+      "bytes": 137,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Caveat-OFL.txt",
-      "bytes": 4385
+      "bytes": 4385,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Caveat[wght].ttf",
-      "bytes": 403648
+      "bytes": 403648,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-OFL.txt",
-      "bytes": 4406
+      "bytes": 4406,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-Regular.ttf",
-      "bytes": 3190368
+      "bytes": 3190368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LongCang-Regular.ttf",
-      "bytes": 5162508
+      "bytes": 5162508,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Longcang-OFL.txt",
-      "bytes": 4390
+      "bytes": 4390,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/fonts.css",
-      "bytes": 509
+      "bytes": 509,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2446
+      "bytes": 2446,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_01_3840x2160.png",
-      "bytes": 81508
+      "bytes": 81508,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_02_3840x2160.png",
-      "bytes": 82662
+      "bytes": 82662,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_03_3840x2160.png",
-      "bytes": 73739
+      "bytes": 73739,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_04_3840x2160.png",
-      "bytes": 79891
+      "bytes": 79891,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/audio.py",
-      "bytes": 24290
+      "bytes": 24290,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/cues.json",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/gen_dust.py",
-      "bytes": 707
+      "bytes": 707,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/gen_paper.py",
-      "bytes": 2360
+      "bytes": 2360,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/hitmax.py",
-      "bytes": 4168
+      "bytes": 4168,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/LICENSE",
-      "bytes": 1085
+      "bytes": 1085,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/dist/opentype.mjs",
-      "bytes": 494695
+      "bytes": 494695,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/LICENSE",
-      "bytes": 1069
+      "bytes": 1069,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
-      "bytes": 18735
+      "bytes": 18735,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 1047
+      "bytes": 1047,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
-      "bytes": 1358977
+      "bytes": 1358977,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B0.png",
-      "bytes": 1482239
+      "bytes": 1482239,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B1.png",
-      "bytes": 1488365
+      "bytes": 1488365,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B2.png",
-      "bytes": 1479775
+      "bytes": 1479775,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L06.png",
-      "bytes": 1403484
+      "bytes": 1403484,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L12.png",
-      "bytes": 1523388
+      "bytes": 1523388,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L135.png",
-      "bytes": 1555269
+      "bytes": 1555269,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/tux_r1.jpg",
-      "bytes": 1380121
+      "bytes": 1380121,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_dof.jpg",
-      "bytes": 525250
+      "bytes": 525250,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear11.png",
-      "bytes": 2491551
+      "bytes": 2491551,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear16.png",
-      "bytes": 2492949
+      "bytes": 2492949,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear6.png",
-      "bytes": 2489969
+      "bytes": 2489969,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/audio/film.m4a",
-      "bytes": 423783
+      "bytes": 423783,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 4658
+      "bytes": 4658,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/film/cues.json",
-      "bytes": 1116
+      "bytes": 1116,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485
+      "bytes": 48485,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432
+      "bytes": 1432,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/style.css",
-      "bytes": 1332
+      "bytes": 1332,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-Bold.ttf",
-      "bytes": 1375772
+      "bytes": 1375772,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-LICENSE.txt",
-      "bytes": 2016
+      "bytes": 2016,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSans-OFL.txt",
-      "bytes": 4425
+      "bytes": 4425,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSansBold.ttf",
-      "bytes": 1919404
+      "bytes": 1919404,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-OFL.txt",
-      "bytes": 4406
+      "bytes": 4406,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-Regular.ttf",
-      "bytes": 3190368
+      "bytes": 3190368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-LICENSE.txt",
-      "bytes": 11358
+      "bytes": 11358,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-Regular.ttf",
-      "bytes": 73320
+      "bytes": 73320,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ResourceHanRounded-OFL.txt",
-      "bytes": 4504
+      "bytes": 4504,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ResourceHanRoundedCN-Heavy.ttf",
-      "bytes": 13688972
+      "bytes": 13688972,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-OFL.txt",
-      "bytes": 4398
+      "bytes": 4398,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-Regular.ttf",
-      "bytes": 1514968
+      "bytes": 1514968,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/fonts.css",
-      "bytes": 1066
+      "bytes": 1066,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900
+      "bytes": 1900,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep.py",
-      "bytes": 8811
+      "bytes": 8811,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2.py",
-      "bytes": 8193
+      "bytes": 8193,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2b.py",
-      "bytes": 4162
+      "bytes": 4162,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/audio.py",
-      "bytes": 12031
+      "bytes": 12031,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/cues.json",
-      "bytes": 1116
+      "bytes": 1116,
+      "role": "process"
     },
     {
       "path": "demos/patterns/cel-line-boil/index.html",
-      "bytes": 2927
+      "bytes": 2927,
+      "role": "source"
     },
     {
       "path": "demos/patterns/cel-line-boil/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24241
+      "bytes": 24241,
+      "role": "entry"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18590
+      "bytes": 18590,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/cel-line-boil.json",
-      "bytes": 5551
+      "bytes": 5551,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/cel-line-boil-portrait.jpg",
-      "bytes": 132482
+      "bytes": 132482,
+      "role": "preview"
     },
     {
       "path": "previews/patterns/cel-line-boil.jpg",
-      "bytes": 142917
+      "bytes": 142917,
+      "role": "preview"
     }
   ]
 }

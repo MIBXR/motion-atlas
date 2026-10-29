@@ -231,243 +231,303 @@
   "files": [
     {
       "path": "demos/cases/mg-collage/LICENSES.md",
-      "bytes": 1208
+      "bytes": 1208,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bfly_a.png",
-      "bytes": 50435
+      "bytes": 50435,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bfly_b.png",
-      "bytes": 27175
+      "bytes": 27175,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bird_hawk.png",
-      "bytes": 85054
+      "bytes": 85054,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/earth.png",
-      "bytes": 129389
+      "bytes": 129389,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/flame0.png",
-      "bytes": 22356
+      "bytes": 22356,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/flame1.png",
-      "bytes": 24003
+      "bytes": 24003,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/layout.json",
-      "bytes": 1621
+      "bytes": 1621,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/manicule.png",
-      "bytes": 104212
+      "bytes": 104212,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/news_a.png",
-      "bytes": 639281
+      "bytes": 639281,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/news_b.png",
-      "bytes": 513923
+      "bytes": 513923,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/p_face.png",
-      "bytes": 622680
+      "bytes": 622680,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/p_jaw.png",
-      "bytes": 615929
+      "bytes": 615929,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/p_lid.png",
-      "bytes": 617436
+      "bytes": 617436,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/page_kraft.jpg",
-      "bytes": 505859
+      "bytes": 505859,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/page_red.jpg",
-      "bytes": 262771
+      "bytes": 262771,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/rocket.png",
-      "bytes": 60289
+      "bytes": 60289,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/rose_centi.png",
-      "bytes": 76740
+      "bytes": 76740,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/rose_purple.png",
-      "bytes": 94054
+      "bytes": 94054,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/space_wedge.png",
-      "bytes": 1454805
+      "bytes": 1454805,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/textures/dust/dust_01_3840x2160.png",
-      "bytes": 81508
+      "bytes": 81508,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/textures/dust/dust_03_3840x2160.png",
-      "bytes": 73739
+      "bytes": 73739,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/textures/grain/grain_film35_2048.png",
-      "bytes": 3168295
+      "bytes": 3168295,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/textures/washi/washi_solid_12.png",
-      "bytes": 645227
+      "bytes": 645227,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/assets/textures/washi/washi_solid_14.png",
-      "bytes": 458715
+      "bytes": 458715,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/audio/film.m4a",
-      "bytes": 420363
+      "bytes": 420363,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/fidelity.md",
-      "bytes": 4792
+      "bytes": 4792,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/film/cues.json",
-      "bytes": 1310
+      "bytes": 1310,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
-      "bytes": 54479
+      "bytes": 54479,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-collage/film/setup.js",
-      "bytes": 161
+      "bytes": 161,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-collage/film/style.css",
-      "bytes": 145
+      "bytes": 145,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-collage/fonts/AlimamaShuHeiTi-Bold.ttf",
-      "bytes": 1375772
+      "bytes": 1375772,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-collage/fonts/AlimamaShuHeiTi-LICENSE.txt",
-      "bytes": 2016
+      "bytes": 2016,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/fonts/Anton-OFL.txt",
-      "bytes": 4391
+      "bytes": 4391,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/fonts/Anton-Regular.ttf",
-      "bytes": 170812
+      "bytes": 170812,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-collage/fonts/BebasNeue-OFL.txt",
-      "bytes": 4337
+      "bytes": 4337,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/fonts/BebasNeue-Regular.ttf",
-      "bytes": 61400
+      "bytes": 61400,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-collage/fonts/IBMPlexMono-Medium.ttf",
-      "bytes": 136704
+      "bytes": 136704,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-collage/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4363
+      "bytes": 4363,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/fonts/NotoSansSC-OFL.txt",
-      "bytes": 4301
+      "bytes": 4301,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/fonts/NotoSansSC-VF.ttf",
-      "bytes": 17773132
+      "bytes": 17773132,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-collage/fonts/NotoSerifSC-OFL.txt",
-      "bytes": 4301
+      "bytes": 4301,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-collage/fonts/NotoSerifSC-VF.ttf",
-      "bytes": 25125232
+      "bytes": 25125232,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-collage/fonts/fonts.css",
-      "bytes": 1021
+      "bytes": 1021,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-collage/index.html",
-      "bytes": 1876
+      "bytes": 1876,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-collage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/clear.wav",
-      "bytes": 842684
+      "bytes": 842684,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/cough.wav",
-      "bytes": 459780
+      "bytes": 459780,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/crumple.wav",
-      "bytes": 2257058
+      "bytes": 2257058,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/pages.wav",
-      "bytes": 7483220
+      "bytes": 7483220,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/scissors.wav",
-      "bytes": 2096562
+      "bytes": 2096562,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/tape.wav",
-      "bytes": 1186248
+      "bytes": 1186248,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/audio.py",
-      "bytes": 10279
+      "bytes": 10279,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/cues.json",
-      "bytes": 1310
+      "bytes": 1310,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep.py",
-      "bytes": 16663
+      "bytes": 16663,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep_birds.py",
-      "bytes": 819
+      "bytes": 819,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-collage/source/work/prep_hand.py",
-      "bytes": 1788
+      "bytes": 1788,
+      "role": "process"
     },
     {
       "path": "entries/cases/mg-collage.json",
-      "bytes": 18983
+      "bytes": 18983,
+      "role": "entry"
     },
     {
       "path": "previews/cases/mg-collage.jpg",
-      "bytes": 279370
+      "bytes": 279370,
+      "role": "preview"
     }
   ]
 }

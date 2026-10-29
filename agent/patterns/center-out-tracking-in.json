@@ -134,123 +134,153 @@
   "files": [
     {
       "path": "demos/cases/mg-line-art/LICENSES.md",
-      "bytes": 789
+      "bytes": 789,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-line-art/audio/film.m4a",
-      "bytes": 401088
+      "bytes": 401088,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-line-art/fidelity.md",
-      "bytes": 5828
+      "bytes": 5828,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-line-art/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/film/cues.json",
-      "bytes": 3214
+      "bytes": 3214,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-line-art/film/film.js",
-      "bytes": 33056
+      "bytes": 33056,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/film/setup.js",
-      "bytes": 207
+      "bytes": 207,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/film/style.css",
-      "bytes": 193
+      "bytes": 193,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/CormorantGaramond-OFL.txt",
-      "bytes": 4387
+      "bytes": 4387,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/CormorantGaramond[wght].ttf",
-      "bytes": 1195560
+      "bytes": 1195560,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/NotoSerifSC-OFL.txt",
-      "bytes": 4301
+      "bytes": 4301,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/NotoSerifSC-VF.ttf",
-      "bytes": 25125232
+      "bytes": 25125232,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-line-art/fonts/fonts.css",
-      "bytes": 352
+      "bytes": 352,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-line-art/index.html",
-      "bytes": 2089
+      "bytes": 2089,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/source/assets/fonts/fonts.css",
-      "bytes": 9135
+      "bytes": 9135,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/audio.py",
-      "bytes": 9978
+      "bytes": 9978,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/cues.json",
-      "bytes": 3214
+      "bytes": 3214,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/film.js",
-      "bytes": 46982
+      "bytes": 46982,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/index.html",
-      "bytes": 566
+      "bytes": 566,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/out/timing.json",
-      "bytes": 8840
+      "bytes": 8840,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/tools/dump_timing.mjs",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-line-art/source/tools/retime.py",
-      "bytes": 4430
+      "bytes": 4430,
+      "role": "process"
     },
     {
       "path": "demos/patterns/center-out-tracking-in/index.html",
-      "bytes": 1570
+      "bytes": 1570,
+      "role": "source"
     },
     {
       "path": "demos/patterns/center-out-tracking-in/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19166
+      "bytes": 19166,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/center-out-tracking-in.json",
-      "bytes": 3922
+      "bytes": 3922,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/center-out-tracking-in.jpg",
-      "bytes": 36348
+      "bytes": 36348,
+      "role": "preview"
     }
   ]
 }

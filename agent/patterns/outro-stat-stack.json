@@ -49,7 +49,7 @@
       "conflicts": [],
       "notes": "统计行依次堆叠，数值逐项计数。fin.随后出现，让旅程在读完结果后结束。"
     },
-    "prompt": "收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+    "prompt": "收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。",
     "demo": "demos/patterns/outro-stat-stack/index.html",
     "kit": true,
     "sources": [
@@ -76,7 +76,7 @@
         "shimmer",
         "sub"
       ],
-      "score": "demos/patterns/outro-stat-stack/score.json",
+      "score": "demos/patterns/outro-stat-stack/mechanism/score.json",
       "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
     },
     "tokens": {
@@ -124,23 +124,23 @@
     },
     "migration": [
       {
-        "field": "script.js → drawOutro",
+        "field": "mechanism/script.js → drawOutro",
         "how": "修改统计行、数值计数与fin.入场的实现。"
       },
       {
-        "field": "index.html → script 与样式加载；script.js → layout、startPattern",
-        "how": "入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。"
+        "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
+        "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
       },
       {
         "field": "../../cases/map-pilgrimage/film/config.js → tracks.outro → t、stats、fin、credits；meta.handle；layout",
-        "how": "修改统计值、结尾文案与横竖布局；逐行时序在 script.js → drawOutro。"
+        "how": "修改统计值、结尾文案与横竖布局；逐行时序在 mechanism/script.js → drawOutro。"
       },
       {
-        "field": "config.js → segments / markers",
+        "field": "mechanism/config.js → segments / markers",
         "how": "设置本巧思片段映射与标记；地图来源时刻：55.6→60。"
       },
       {
-        "field": "score.json",
+        "field": "mechanism/score.json",
         "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
@@ -154,93 +154,114 @@
     }
   ],
   "documents": {
-    "prompt": "# 结尾数据堆叠与计数\n\n## 实现 Prompt\n\n收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：5.2s\n- **声音 voice**：blip、tick、bell、shimmer、sub\n\n## 动效 Token\n\n- **统计**：0.65s\n- **fin.**：2.4s\n- **时长**：5.2s\n\n## 迁移\n\n- `script.js → drawOutro`：修改统计行、数值计数与fin.入场的实现。\n- `index.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。\n- `../../cases/map-pilgrimage/film/config.js → tracks.outro → t、stats、fin、credits；meta.handle；layout`：修改统计值、结尾文案与横竖布局；逐行时序在 script.js → drawOutro。\n- `config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：55.6→60。\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/outro-stat-stack/index.html) · [在库中查看](../../patterns.html#pattern/outro-stat-stack)\n"
+    "prompt": "# 结尾数据堆叠与计数\n\n## 实现 Prompt\n\n收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。\n\n## 参数\n\n- **时长**：5.2s\n- **声音 voice**：blip、tick、bell、shimmer、sub\n\n## 动效 Token\n\n- **统计**：0.65s\n- **fin.**：2.4s\n- **时长**：5.2s\n\n## 迁移\n\n- `mechanism/script.js → drawOutro`：修改统计行、数值计数与fin.入场的实现。\n- `index.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。\n- `../../cases/map-pilgrimage/film/config.js → tracks.outro → t、stats、fin、credits；meta.handle；layout`：修改统计值、结尾文案与横竖布局；逐行时序在 mechanism/script.js → drawOutro。\n- `mechanism/config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：55.6→60。\n- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/outro-stat-stack/index.html) · [在库中查看](../../patterns.html#pattern/outro-stat-stack)\n"
   },
   "entrypoint": "demos/patterns/outro-stat-stack/index.html",
   "files": [
     {
       "path": "demos/cases/map-pilgrimage/fidelity.md",
-      "bytes": 2550
+      "bytes": 2550,
+      "role": "doc"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/config.js",
-      "bytes": 17491
+      "bytes": 17491,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/paths.js",
-      "bytes": 8047
+      "bytes": 8047,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/scenes.js",
-      "bytes": 35275
+      "bytes": 35275,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130843,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
-      "bytes": 40692
+      "bytes": 40692,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7995,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
-      "path": "demos/patterns/outro-stat-stack/config.js",
-      "bytes": 450
+      "path": "demos/patterns/outro-stat-stack/assets/plates/landscape-58-map-routes-markers.webp",
+      "bytes": 234960,
+      "role": "asset"
+    },
+    {
+      "path": "demos/patterns/outro-stat-stack/assets/plates/portrait-58-map-routes-markers.webp",
+      "bytes": 149778,
+      "role": "asset"
     },
     {
       "path": "demos/patterns/outro-stat-stack/index.html",
-      "bytes": 7778
+      "bytes": 7808,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/outro-stat-stack/mechanism/config.js",
+      "bytes": 450,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/outro-stat-stack/mechanism/score.json",
+      "bytes": 1866,
+      "role": "asset"
+    },
+    {
+      "path": "demos/patterns/outro-stat-stack/mechanism/script.js",
+      "bytes": 145376,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/outro-stat-stack/mechanism/style.css",
+      "bytes": 41282,
+      "role": "source"
     },
     {
       "path": "demos/patterns/outro-stat-stack/motion-kit.js",
-      "bytes": 119411
-    },
-    {
-      "path": "demos/patterns/outro-stat-stack/plates/landscape-58-map-routes-markers.webp",
-      "bytes": 234960
-    },
-    {
-      "path": "demos/patterns/outro-stat-stack/plates/portrait-58-map-routes-markers.webp",
-      "bytes": 149778
-    },
-    {
-      "path": "demos/patterns/outro-stat-stack/score.json",
-      "bytes": 1866
-    },
-    {
-      "path": "demos/patterns/outro-stat-stack/script.js",
-      "bytes": 145359
-    },
-    {
-      "path": "demos/patterns/outro-stat-stack/style.css",
-      "bytes": 41282
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "docs/cases/map-pilgrimage.md",
-      "bytes": 6454
+      "bytes": 6454,
+      "role": "doc"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 19707
+      "bytes": 19707,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/outro-stat-stack.json",
-      "bytes": 5065
+      "bytes": 5251,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/outro-stat-stack-portrait.jpg",
-      "bytes": 149870
+      "bytes": 149870,
+      "role": "preview"
     },
     {
       "path": "previews/patterns/outro-stat-stack.jpg",
-      "bytes": 153147
+      "bytes": 153147,
+      "role": "preview"
     }
   ]
 }
