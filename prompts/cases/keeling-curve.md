@@ -26,8 +26,8 @@
 
 - 成片 20 秒、1920×1080、30fps，只有横屏，不作无缝循环。
 - 制作方式：garden-skills 的 motion-showreel skill，固定提交 2b9a89340b70f632d31c0f1c69fce94a7912423e；原始 skill brief 随 Demo 原样保存。
-- 数据许可：NOAA GML 免费公开数据，发表需相应引用与署名；保留 Xin Lan（NOAA/GML）、Ralph Keeling（Scripps）及早期 C. David Keeling／Scripps 归属，具体要求见 DATA.md。
-- 声音许可：Dreams Become Real，Kevin MacLeod／Incompetech，CC BY 4.0，须保留完整署名并说明截取、淡入淡出与混音；Kenney Impact Sounds 和 UI Audio 为 CC0，包内 License.txt 随音轨保留，见 AUDIO.md。
+- 数据许可：NOAA GML 免费公开数据，发表需相应引用与署名；保留 Xin Lan（NOAA/GML）、Ralph Keeling（Scripps）及早期 C. David Keeling／Scripps 归属，具体要求见 source/DATA.md。
+- 声音许可：Dreams Become Real，Kevin MacLeod／Incompetech，CC BY 4.0，须保留完整署名并说明截取、淡入淡出与混音；Kenney Impact Sounds 和 UI Audio 为 CC0，包内 License.txt 随音轨保留，见 source/AUDIO.md。
 - 自托管 Noto Sans SC 与 IBM Plex Mono 附各自 OFL 许可。
 - 814 条月均记录只取 1958-03 至 2025-12；年均比较只用 annual 第 46／112 行。2022 年末至 2023 年中的临时代测记录按 NOAA 官方连续序列保留。
 - 画面保留 ppm、年均／月均口径、非零纵轴说明与来源；不补造 1958 年一二月，不生成无来源的中间数字。
@@ -36,10 +36,10 @@
 
 ## 迁移
 
-- `assets/co2_mm_mlo.txt、assets/co2_annmean_mlo.txt 与 film/data.js`：更换数据前核对字段、有效日期、缺测规则与引用要求，同时更新 DATA.md；月均线与年均度量分别读取，不能互换。
+- `assets/co2_mm_mlo.txt、assets/co2_annmean_mlo.txt 与 film/data.js`：更换数据前核对字段、有效日期、缺测规则与引用要求，同时更新 source/DATA.md；月均线与年均度量分别读取，不能互换。
 - `film/timeline.js → SHOTS、TIMES、EVENTS、AUDIO`：镜头边界、三个事件与音乐区间共用此表。迁移时保持视觉参考和实际音乐拍点的区别，重新核对瞬态偏移。
 - `film/scene.js → C、plot、full、close 与文字布局`：为新作品调整色彩、绘图区、两种坐标范围和文案；保持同一数据点身份、数值口径、单位与非零纵轴说明。本案例原文件保真保存。
-- `audio/ 与 AUDIO.md`：更换音乐或音效须先取得相应许可，更新完整署名、截取区间、淡入淡出及三个事件的同步说明。
+- `audio/；source/AUDIO.md；source/audio/production.json`：在 source/audio/ 更换原曲、音效与混音输入；截取、淡入淡出、播放起点与增益见 production.json，制作命令与署名见 source/AUDIO.md；运行音轨为 audio/final.wav。
 - `index.html → MotionKit.mountFilm`：负责本库时间线、控制条、声音同步和 URL 参数接入，画面继续调用原作品 render(t)。
 
 [打开 Demo](../../demos/cases/keeling-curve/index.html) · [在库中查看](../../cases.html#case/keeling-curve)

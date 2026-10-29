@@ -4,71 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>巧思原片重放</title>
-  <style>
-    html,body{margin:0;background:#000;overflow:hidden}
-    #stage{background:#000}
-    #cue{position:absolute;left:24px;top:24px;z-index:2;padding:10px 16px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;font:22px/1.4 "Microsoft YaHei",sans-serif;pointer-events:none}
-    #cue[hidden]{display:none}
-  </style>
 </head>
 <body>
   <main id="stage"><output id="cue" hidden></output></main>
   <script src="motion-kit.js"></script>
   <script type="module">
-    const config = {
-      "title": "竖排汉字模糊入场 + 英文打字",
-      "root": "#stage",
-      "orients": [
-        "landscape",
-        "portrait"
-      ],
-      "fps": 30,
-      "segments": [
-        {
-          "caseId": "map-pilgrimage",
-          "label": "地图巡礼",
-          "source": "original.html",
-          "from": 0,
-          "to": 14.1,
-          "legacy": true
-        },
-        {
-          "caseId": "mg-3d-render",
-          "label": "三维软床 · 逐词去糊落字",
-          "source": "../../cases/mg-3d-render/index.html",
-          "from": 7.8,
-          "to": 9.7
-        }
-      ],
-      "markers": [
-        {
-          "t": 0,
-          "label": "片名"
-        },
-        {
-          "t": 4.2,
-          "label": "地点标题"
-        },
-        {
-          "t": 7.9,
-          "label": "回忆竖排字幕"
-        },
-        {
-          "t": 12,
-          "label": "fin."
-        },
-        {
-          "t": 14.1,
-          "label": "三维软床"
-        },
-        {
-          "t": 14.3,
-          "label": "标语入场"
-        }
-      ],
-      "reduced": 2.6
-    };
-    await MotionKit.replay(config);
+    await MotionKit.load.prepare({ styles: ['mechanism/replay.css'], modules: ['./mechanism/replay.js'] });
+    await MotionKit.load.module('./mechanism/replay.js');
   </script>
 </body>
 </html>

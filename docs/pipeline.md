@@ -7,7 +7,7 @@
 - **预加载** `MotionKit.preload()`：资源就绪后才宣告 ready，进度可被站点显示。
 - **宿主通信**：站点用 postMessage 切换画幅、开关声音，Demo 回报就绪、画幅、加载进度与声音状态。
 
-参考模板：`kit/templates/case-film/`（时间纯函数作品）、`case-native/`（作品自接 MotionKit）、`pattern-replay/`（片段重放）与 `pattern/`（拆分型单文件）。模板预览直接引用 `kit/motion-kit.js`；作为条目时改为加载同目录的 `motion-kit.js`，由构建同步。
+参考模板位于 `scripts/templates/`：`case-film/`（时间纯函数作品）、`case-native/`（作品自接 MotionKit）、`pattern-replay/`（片段重放）、`pattern-split/`（入口与 `mechanism/`）和 `material-demo/`（可运行素材）。模板预览直接引用 `kit/motion-kit.js`；作为条目时改为加载同目录的 `motion-kit.js`，由构建同步。
 
 ## mountFilm 与 replay
 
@@ -28,7 +28,7 @@
 
 `renderAt(t)` 的 Promise 负责画面准备；媒体音轨纳入 `__motion.ready`。cue 数据结构属于案例；通用接入只接收换算好的 markers。
 
-只重放案例片段的巧思调用 `MotionKit.replay(config)`，由 `segments` 拼接片段并复用来源案例 iframe，返回外层时间轴。每条片段用 `caseId`、`from`、`to` 指定来源与时间范围；`title`、`accent`、`markers`、`fps`、`reduced` 配置外层播放，`overlay` 指定巧思自己的 cue 说明层。来源入口为 `../../cases/<id>/index.html?embed=1&render=1`；外层提供 `__motion`、控制条、URL 定位、声音同步及画幅与加载状态。重放型目录只放 `index.html` 与同步的 `motion-kit.js`；有自身机制的巧思保留机制代码，素材引用来源案例。
+只重放案例片段的巧思调用 `MotionKit.replay(config)`，由 `segments` 拼接片段并复用来源案例 iframe，返回外层时间轴。每条片段用 `caseId`、`from`、`to` 指定来源与时间范围；`title`、`accent`、`markers`、`fps`、`reduced` 配置外层播放，`overlay` 指定巧思自己的 cue 说明层。来源入口为 `../../cases/<id>/index.html?embed=1&render=1`；外层提供 `__motion`、控制条、URL 定位、声音同步及画幅与加载状态。巧思本体结构见 [CONTRIBUTING](../CONTRIBUTING.md#条目本体)。
 
 有自己时钟、状态或交互的作品在 `film/` 内自己接 MotionKit，使用下面的舞台、时间轴与协议接口；地图巡礼的缓冲和档案终端的仿真、交互由作品控制。
 
@@ -336,8 +336,8 @@ Demo → 父页面：
 
 ```bash
 node scripts/render.mjs demos/cases/map-pilgrimage/index.html --fps 30
-node scripts/render.mjs kit/templates/case-native/index.html --orient portrait --fps 30 --audio
-node scripts/render.mjs kit/templates/case-native/index.html --audio-only
+node scripts/render.mjs scripts/templates/case-native/index.html --orient portrait --fps 30 --audio
+node scripts/render.mjs scripts/templates/case-native/index.html --audio-only
 ```
 
 | 选项 | 默认 | 说明 |

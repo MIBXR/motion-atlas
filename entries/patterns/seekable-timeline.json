@@ -44,7 +44,7 @@
     "conflicts": [],
     "notes": "日序、日期、坐标与时钟随定位持续更新。卡片、引线与MIKAN徽章跟随时间变化。拖动舞台内控制条，可前后查看同一段画面。"
   },
-  "prompt": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。复用地图巡礼的 render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls 与对应 CSS。顶部 HUD（日序、日期、进度线、指南针、坐标、海拔、缩放与时钟）、kix 卡片与引线、MIKAN 徽章、控制条上方右对齐的署名，以及舞台内随 caseT 更新的复制控制条。片段：caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+  "prompt": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。复用地图巡礼的 render、drawHud、drawCards、drawLeader、cameraAt、clockAt、controls 与对应 CSS。顶部 HUD（日序、日期、进度线、指南针、坐标、海拔、缩放与时钟）、kix 卡片与引线、MIKAN 徽章、控制条上方右对齐的署名，以及舞台内随 caseT 更新的复制控制条。片段：caseT 12→14；caseT 14→12.6；caseT 12.6→13.4；caseT 13.4→15.5；caseT 15.5→16.6；caseT 16.6→13；caseT 13→14.4；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。",
   "demo": "demos/patterns/seekable-timeline/index.html",
   "kit": true,
   "sources": [
@@ -83,7 +83,7 @@
       "sparkle",
       "tick"
     ],
-    "score": "demos/patterns/seekable-timeline/score.json",
+    "score": "demos/patterns/seekable-timeline/mechanism/score.json",
     "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
@@ -139,23 +139,23 @@
   },
   "migration": [
     {
-      "field": "动效函数",
-      "how": "配置HUD、卡片、引线、镜头、时钟与控制条。"
+      "field": "mechanism/script.js → render、caseTime、buildSeekBar、drawHud、drawCards",
+      "how": "修改HUD、卡片、引线、镜头、时钟与控制条的实现。"
     },
     {
-      "field": "依赖",
-      "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
+      "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
     },
     {
-      "field": "需要的数据",
-      "how": "设置顶部HUD、kix卡片与MIKAN；13s底图配七段拖动。"
+      "field": "../../cases/map-pilgrimage/film/config.js → tracks.cards、tracks.camera、tracks.clock；music、layout",
+      "how": "修改卡片、镜头、HUD 与横竖布局；七段拖动时间映射在 mechanism/config.js → segments。"
     },
     {
-      "field": "config.js → segments / markers",
-      "how": "12→14/14→12.6/12.6→13.4/13.4→15.5/15.5→16.6/16.6→13/13→14.4"
+      "field": "mechanism/config.js → segments / markers",
+      "how": "设置本巧思片段映射与标记；地图来源时刻：12→14/14→12.6/12.6→13.4/13.4→15.5/15.5→16.6/16.6→13/13→14.4。"
     },
     {
-      "field": "score.json",
+      "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ]

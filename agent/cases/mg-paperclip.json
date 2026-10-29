@@ -236,143 +236,178 @@
   "files": [
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
-      "bytes": 911
+      "bytes": 911,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
-      "bytes": 107761
+      "bytes": 107761,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/battery.png",
-      "bytes": 233146
+      "bytes": 233146,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/cobalt.png",
-      "bytes": 377499
+      "bytes": 377499,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/lithium.png",
-      "bytes": 291448
+      "bytes": 291448,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/meta.json",
-      "bytes": 351
+      "bytes": 351,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/pcb.png",
-      "bytes": 1296815
+      "bytes": 1296815,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/phone.png",
-      "bytes": 2104894
+      "bytes": 2104894,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/rareearth.png",
-      "bytes": 644720
+      "bytes": 644720,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/assets/stickers/tin.png",
-      "bytes": 538156
+      "bytes": 538156,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/audio/film.m4a",
-      "bytes": 415520
+      "bytes": 415520,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/fidelity.md",
-      "bytes": 4716
+      "bytes": 4716,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-paperclip/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-paperclip/film/cues.json",
-      "bytes": 3076
+      "bytes": 3076,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50443
+      "bytes": 50443,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/film/setup.js",
-      "bytes": 2263
+      "bytes": 2263,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/film/style.css",
-      "bytes": 2129
+      "bytes": 2129,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-105-Heavy.ttf",
-      "bytes": 2536300
+      "bytes": 2536300,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-65-Medium.ttf",
-      "bytes": 8429388
+      "bytes": 8429388,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-85-Bold.ttf",
-      "bytes": 8371268
+      "bytes": 8371268,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-LICENSE.md",
-      "bytes": 5216
+      "bytes": 5216,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-paperclip/fonts/Inter-OFL.txt",
-      "bytes": 4377
+      "bytes": 4377,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-paperclip/fonts/Inter[opsz,wght].ttf",
-      "bytes": 876576
+      "bytes": 876576,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-paperclip/fonts/fonts.css",
-      "bytes": 698
+      "bytes": 698,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2456
+      "bytes": 2456,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
-      "bytes": 10067
+      "bytes": 10067,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-paperclip/source/cues.json",
-      "bytes": 3076
+      "bytes": 3076,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-paperclip/source/tools/stickers.py",
-      "bytes": 4468
+      "bytes": 4468,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/LICENSE",
-      "bytes": 731
+      "bytes": 731,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/dist/d3.min.js",
-      "bytes": 279706
+      "bytes": 279706,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-paperclip/vendor/topojson-client@3.1.0/LICENSE",
-      "bytes": 734
+      "bytes": 734,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-paperclip/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
-      "bytes": 7169
+      "bytes": 7169,
+      "role": "vendor"
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 17474
+      "bytes": 17474,
+      "role": "entry"
     },
     {
       "path": "previews/cases/mg-paperclip.jpg",
-      "bytes": 77589
+      "bytes": 77589,
+      "role": "preview"
     }
   ]
 }

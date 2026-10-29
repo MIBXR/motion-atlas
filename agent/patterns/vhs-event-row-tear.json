@@ -100,167 +100,208 @@
   "files": [
     {
       "path": "demos/cases/mg-synthwave/LICENSES.md",
-      "bytes": 1068
+      "bytes": 1068,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/audio/film.m4a",
-      "bytes": 403976
+      "bytes": 403976,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-synthwave/fidelity.md",
-      "bytes": 4597
+      "bytes": 4597,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-synthwave/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/film/cues.json",
-      "bytes": 1312
+      "bytes": 1312,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-synthwave/film/scene.js",
-      "bytes": 70681
+      "bytes": 70681,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/film/setup.js",
-      "bytes": 243
+      "bytes": 243,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/film/style.css",
-      "bytes": 166
+      "bytes": 166,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/Archivo-Italic[wdth,wght].ttf",
-      "bytes": 741368
+      "bytes": 741368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/Michroma-Regular.ttf",
-      "bytes": 64344
+      "bytes": 64344,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/MrDafoe-Regular.ttf",
-      "bytes": 47976
+      "bytes": 47976,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/VT323-Regular.ttf",
-      "bytes": 153116
+      "bytes": 153116,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/archivo-OFL.txt",
-      "bytes": 4388
+      "bytes": 4388,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/fonts.css",
-      "bytes": 636
+      "bytes": 636,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/michroma-OFL.txt",
-      "bytes": 4395
+      "bytes": 4395,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/mrdafoe-OFL.txt",
-      "bytes": 4398
+      "bytes": 4398,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/vt323-OFL.txt",
-      "bytes": 4367
+      "bytes": 4367,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/index.html",
-      "bytes": 1976
+      "bytes": 1976,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/source/audio.py",
-      "bytes": 11743
+      "bytes": 11743,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-synthwave/source/cues.json",
-      "bytes": 1312
+      "bytes": 1312,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/LICENSE",
-      "bytes": 1085
+      "bytes": 1085,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/dist/opentype.mjs",
-      "bytes": 494695
+      "bytes": 494695,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/simplex-noise@4.0.3/LICENSE",
-      "bytes": 1069
+      "bytes": 1069,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
-      "bytes": 18735
+      "bytes": 18735,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/LICENSE",
-      "bytes": 1081
+      "bytes": 1081,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/build/three.core.js",
-      "bytes": 1458113
+      "bytes": 1458113,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/build/three.module.js",
-      "bytes": 662772
+      "bytes": 662772,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
-      "bytes": 8501
+      "bytes": 8501,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
-      "bytes": 4694
+      "bytes": 4694,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
-      "bytes": 4218
+      "bytes": 4218,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/RenderPass.js",
-      "bytes": 4280
+      "bytes": 4280,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
-      "bytes": 3228
+      "bytes": 3228,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
-      "bytes": 15397
+      "bytes": 15397,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
-      "bytes": 729
+      "bytes": 729,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
-      "bytes": 1291
+      "bytes": 1291,
+      "role": "vendor"
     },
     {
       "path": "demos/patterns/vhs-event-row-tear/index.html",
-      "bytes": 1423
+      "bytes": 1423,
+      "role": "source"
     },
     {
       "path": "demos/patterns/vhs-event-row-tear/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16367
+      "bytes": 16367,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/vhs-event-row-tear.json",
-      "bytes": 3274
+      "bytes": 3274,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/vhs-event-row-tear.jpg",
-      "bytes": 138545
+      "bytes": 138545,
+      "role": "preview"
     }
   ]
 }

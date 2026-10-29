@@ -118,103 +118,128 @@
   "files": [
     {
       "path": "demos/cases/mg-pixel/LICENSES.md",
-      "bytes": 694
+      "bytes": 694,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/audio/film.m4a",
-      "bytes": 345394
+      "bytes": 345394,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-pixel/fidelity.md",
-      "bytes": 4108
+      "bytes": 4108,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-pixel/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/film/cues.json",
-      "bytes": 888
+      "bytes": 888,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-pixel/film/film.js",
-      "bytes": 58413
+      "bytes": 58413,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/film/setup.js",
-      "bytes": 385
+      "bytes": 385,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/film/style.css",
-      "bytes": 100
+      "bytes": 100,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/FusionPixel-OFL.txt",
-      "bytes": 4418
+      "bytes": 4418,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/LICENSES/ark-pixel/OFL.txt",
-      "bytes": 4412
+      "bytes": 4412,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/LICENSES/cubic-11/OFL.txt",
-      "bytes": 5364
+      "bytes": 5364,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/LICENSES/galmuri/LICENSE.txt",
-      "bytes": 4360
+      "bytes": 4360,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/PressStart2P-OFL.txt",
-      "bytes": 4413
+      "bytes": 4413,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/PressStart2P-Regular.ttf",
-      "bytes": 118204
+      "bytes": 118204,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/fonts.css",
-      "bytes": 369
+      "bytes": 369,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-pixel/fonts/fusion-pixel-12px-proportional-zh_hans.ttf",
-      "bytes": 7295572
+      "bytes": 7295572,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-pixel/index.html",
-      "bytes": 2128
+      "bytes": 2128,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/source/audio.py",
-      "bytes": 11101
+      "bytes": 11101,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-pixel/source/cues.json",
-      "bytes": 888
+      "bytes": 888,
+      "role": "process"
     },
     {
       "path": "demos/patterns/crt-boot-shell/index.html",
-      "bytes": 1429
+      "bytes": 1429,
+      "role": "source"
     },
     {
       "path": "demos/patterns/crt-boot-shell/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 21794
+      "bytes": 21794,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/crt-boot-shell.json",
-      "bytes": 3819
+      "bytes": 3819,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/crt-boot-shell.jpg",
-      "bytes": 191933
+      "bytes": 191933,
+      "role": "preview"
     }
   ]
 }

@@ -10,7 +10,7 @@ export async function loadBootWebfonts() {
   if (!__RHINE_NOVECENTO__) return false;
   const faces = ["Normal", "DemiBold", "Bold"].map(weight => new FontFace(
     `Rhine Novecento ${weight}`,
-    `url("${assetUrl(`../../cases/archive-os/film/app/fonts/novecento/webFonts/NovecentoSansWide${weight}/font.woff2`)}") format("woff2")`,
+    `url("${assetUrl(`../../../cases/archive-os/film/app/fonts/novecento/webFonts/NovecentoSansWide${weight}/font.woff2`)}") format("woff2")`,
     { weight: "400", style: "normal", display: "swap" },
   ));
   let timeout: ReturnType<typeof setTimeout> | undefined;

@@ -5,26 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>对角解密与磨砂转清</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
-<script>
-const CONFIG = {
-  duration: 5.2,
-  decryptionStart: 34.12,
-  decryptionEnd: 39.56,
-  interactiveRate: 1.5,
-  documentDuration: 0.95,
-  arrayIdleSeconds: 10,
-  modelAsset: '../../cases/archive-os/film/app/assets/archive-cassette.glb',
-  background: '#eae5e1',
-  quality: 'original',
-  file: {
-    id: 'X-001', title: '莱茵生命', en: 'RHINE LAB, LLC.',
-    department: '总辖构件科', category: '机构档案', date: '跨期资料汇编',
-    lead: 'Kristen Wright / Saria', clearance: 'REFERENCE AREA',
-    abstract: '莱茵生命从克丽斯腾与塞雷娅共同创办的研究室发展而来。这里聚集着研究生命、能源与未知技术的人，也承受着资金、权力和成果应用的压力。理解这家机构，需要同时阅读它的实验记录与研究者的选择。'
-  }
-};
-window.CONFIG = CONFIG;
-</script>
 </head>
 <body>
 <main id="stage">
@@ -36,11 +16,13 @@ window.CONFIG = CONFIG;
 </main>
 <script src="motion-kit.js"></script>
 <script type="module">
-const load=MotionKit.load, styles=["fonts.css","style.css","document-decryption.css","decryption.css"];
-load.register([...styles,'runtime.js',CONFIG.modelAsset]);
-const fontText=(await (await load.fetch('runtime.js')).text().then(text=>text.replace(/\\(?:u([0-9a-f]{4})|x([0-9a-f]{2}))/gi,(_,unicode,hex)=>String.fromCharCode(parseInt(unicode||hex,16)))) + JSON.stringify(CONFIG)) + (await Promise.all(["style.css","document-decryption.css","decryption.css"].map(src=>load.fetch(src).then(r=>r.text())))).join("\n");
-await load.prepare({styles,modules:['runtime.js'],data:[CONFIG.modelAsset],fontText});
-await load.module('runtime.js');
+const load=MotionKit.load, styles=["mechanism/fonts.css","mechanism/style.css","mechanism/document-decryption.css","mechanism/decryption.css"];
+load.register(["mechanism/config.js",...styles,"mechanism/runtime.js"]);
+await load.script("mechanism/config.js");
+load.register([CONFIG.modelAsset]);
+const fontText=(await (await load.fetch('mechanism/runtime.js')).text().then(text=>text.replace(/\\(?:u([0-9a-f]{4})|x([0-9a-f]{2}))/gi,(_,unicode,hex)=>String.fromCharCode(parseInt(unicode||hex,16)))) + JSON.stringify(CONFIG)) + (await Promise.all(["mechanism/style.css","mechanism/document-decryption.css","mechanism/decryption.css"].map(src=>load.fetch(src).then(r=>r.text())))).join("\n");
+await load.prepare({styles,modules:['mechanism/runtime.js'],data:[CONFIG.modelAsset],fontText});
+await load.module('mechanism/runtime.js');
 </script>
 </body>
 </html>

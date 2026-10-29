@@ -135,7 +135,7 @@ function exportDemo(id) {
       `# ${e.title}`, '', `从 Motion Atlas 导出（${kind === 'cases' ? '案例' : kind === 'materials' ? '素材' : '巧思'} \`${e.id}\`）。`, '', e.summary, '',
       kind === 'materials' ? '## 使用' : '## 运行', '', kind === 'materials' ? `入口为 \`${e.snapshotPath ? e.snapshotPath + e.snapshotEntry : e.demo}\`，按素材原文和使用说明操作。` : `从导出目录启动静态服务器，入口为 \`${e.demo}\`。目录保留仓库相对树，巧思的来源案例在 demos/cases/。`, '',
       kind === 'materials' ? '## 工作流' : '## 迁移', '',
-      ...(kind === 'materials' ? (e.workflow || []).map((step) => `- ${step}`) : e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 时间纯函数作品在 `film/` 修改内容并用 `MotionKit.mountFilm`；自有时钟作品自己接 MotionKit；重放型巧思在 `index.html` 配置来源片段。']),
+      ...(kind === 'materials' ? (e.workflow || []).map((step) => `- ${step}`) : e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 案例在 `film/` 修改作品；拆分型巧思在 `mechanism/` 修改机制，在 `source/` 读取可编辑源码与制作资料；重放型巧思在 `index.html` 配置来源片段。']),
       '', e.timeline ? '本 Demo 遵守 render(t) 协议：`window.__motion.seek(t)` 可定位任意时刻；`?render=1` 关闭自动播放，供逐帧渲染。' : '',
       '', '## 文件', '', ...copied.map((f) => `- ${f}`), '',
     ].join('\n');

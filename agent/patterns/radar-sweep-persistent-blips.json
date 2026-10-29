@@ -100,199 +100,248 @@
   "files": [
     {
       "path": "demos/cases/mg-hud/LICENSES.md",
-      "bytes": 1088
+      "bytes": 1088,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/assets/land-50m.json",
-      "bytes": 545534
+      "bytes": 545534,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hud/audio/film.m4a",
-      "bytes": 418706
+      "bytes": 418706,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hud/fidelity.md",
-      "bytes": 4101
+      "bytes": 4101,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-hud/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/film/cues.json",
-      "bytes": 1411
+      "bytes": 1411,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hud/film/js/holo.js",
-      "bytes": 17026
+      "bytes": 17026,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/film/js/hud.js",
-      "bytes": 55288
+      "bytes": 55288,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/film/js/post.js",
-      "bytes": 8773
+      "bytes": 8773,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/film/js/util.js",
-      "bytes": 2285
+      "bytes": 2285,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/film/main.js",
-      "bytes": 7491
+      "bytes": 7491,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/film/setup.js",
-      "bytes": 101
+      "bytes": 101,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/film/style.css",
-      "bytes": 166
+      "bytes": 166,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/fonts/ChakraPetch-SemiBold.ttf",
-      "bytes": 78604
+      "bytes": 78604,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/HarmonyOS-Sans-LICENSE.txt",
-      "bytes": 32768
+      "bytes": 32768,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Black.ttf",
-      "bytes": 8125608
+      "bytes": 8125608,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Bold.ttf",
-      "bytes": 8158996
+      "bytes": 8158996,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Medium.ttf",
-      "bytes": 8227312
+      "bytes": 8227312,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Regular.ttf",
-      "bytes": 8261128
+      "bytes": 8261128,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/JetBrainsMono[wght].ttf",
-      "bytes": 187208
+      "bytes": 187208,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/Rajdhani-Bold.ttf",
-      "bytes": 400680
+      "bytes": 400680,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/Rajdhani-SemiBold.ttf",
-      "bytes": 390340
+      "bytes": 390340,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/chakrapetch-OFL.txt",
-      "bytes": 4396
+      "bytes": 4396,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/fonts/fonts.css",
-      "bytes": 1397
+      "bytes": 1397,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hud/fonts/jetbrainsmono-OFL.txt",
-      "bytes": 4399
+      "bytes": 4399,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/fonts/rajdhani-OFL.txt",
-      "bytes": 4373
+      "bytes": 4373,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/index.html",
-      "bytes": 2336
+      "bytes": 2336,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/source/audio.py",
-      "bytes": 7573
+      "bytes": 7573,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hud/source/cues.json",
-      "bytes": 1411
+      "bytes": 1411,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
-      "bytes": 731
+      "bytes": 731,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/vendor/d3@7.9.0/dist/d3.min.js",
-      "bytes": 279706
+      "bytes": 279706,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/LICENSE",
-      "bytes": 1081
+      "bytes": 1081,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.core.js",
-      "bytes": 1458113
+      "bytes": 1458113,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.module.js",
-      "bytes": 662772
+      "bytes": 662772,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
-      "bytes": 8501
+      "bytes": 8501,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
-      "bytes": 4694
+      "bytes": 4694,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
-      "bytes": 4218
+      "bytes": 4218,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
-      "bytes": 3228
+      "bytes": 3228,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
-      "bytes": 15397
+      "bytes": 15397,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
-      "bytes": 729
+      "bytes": 729,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
-      "bytes": 1291
+      "bytes": 1291,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/LICENSE",
-      "bytes": 734
+      "bytes": 734,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
-      "bytes": 7169
+      "bytes": 7169,
+      "role": "vendor"
     },
     {
       "path": "demos/patterns/radar-sweep-persistent-blips/index.html",
-      "bytes": 1396
+      "bytes": 1396,
+      "role": "source"
     },
     {
       "path": "demos/patterns/radar-sweep-persistent-blips/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-hud.json",
-      "bytes": 18397
+      "bytes": 18397,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/radar-sweep-persistent-blips.json",
-      "bytes": 3194
+      "bytes": 3194,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/radar-sweep-persistent-blips.jpg",
-      "bytes": 131726
+      "bytes": 131726,
+      "role": "preview"
     }
   ]
 }

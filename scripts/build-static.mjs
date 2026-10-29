@@ -7,7 +7,7 @@ import './build.mjs';
 const args = process.argv.slice(2);
 if (args.length > 1 || args.some(arg => arg !== '--site')) throw new Error('Usage: node scripts/build-static.mjs [--site]');
 const site = args.includes('--site');
-const directories = ['agent', 'site', 'data', 'demos', 'docs', 'entries', 'kit', 'previews', 'prompts'];
+const directories = ['agent', 'site', 'data', 'demos', 'docs', 'entries', 'kit', 'scripts/templates', 'previews', 'prompts'];
 const snapshots = loadEntries().materials.filter(e => e.snapshotPath).map(e => e.snapshotPath);
 const sources = site ? assetSources(ROOT, directories, snapshots) : { assets: {} };
 const output = path.join(ROOT, 'dist');

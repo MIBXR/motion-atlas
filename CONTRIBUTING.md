@@ -30,9 +30,10 @@
 - **忠实复刻**：忠实复刻是验证过程，不是目的：检验在给定的素材、工作流与工具下能否复现参考作品；能 1:1 复现，说明这套过程正确、可复现。
   - **验收以 1:1 为准**：有明确参考或源码的，与原作在相同视口并排对照一致，差异写明原因；没有源码，或源码、制作过程不完整的，尽力复现，无法复现的差异写明原因。差异与原因写在 `fidelity.md`。
   - **素材可直接取用，成片不能替代实现**：图形、人物形象、图片、字体、音乐、音效、视频等组成画面的素材可以直接取自原作，以后也可以替换；画面的构成、动效、交互与时间线由本库代码实现，不把原作渲染好的成片画面当作复刻结果。原作的品牌内容与文案照用，许可与署名随文件保留。
+  - **网页删减与影像转译**：网页复刻可以按决定删减广告、繁杂交互与拿不到源码的部分，删减及原因写在 `fidelity.md`；官方影像网页转译以官方影像为素材，整帧画面可作为素材。
   - **生成类素材**：原作由脚本生成的素材（抠图、贴纸、纸纹、渲染帧等）直接使用原作已生成的版本，生成脚本及其输入保留在条目本体的 `source/`；本库自己重新生成并验证过的版本也可以保留。
-  - **原作代码保持原样**：不为“易改”重组原作代码结构，改动只限接入本库与去掉与成品无关的内容（其他剪辑分支、调试代码、无人读取的中间文件）。原作缺数据或源码与公开成品不符时，以公开成品为准补全。
-- **可修改**：修改范本时直接读改源码，不要求把内容抽成配置。条目的迁移指南（`migration`）写明常改的内容（路线、图片、文案、节拍、配色、素材）在哪个文件、哪一段。
+  - **有可用源码的作品，原作代码保持原样**：不为“易改”重组原作代码结构，改动只限接入本库与去掉与成品无关的内容（其他剪辑分支、调试代码、无人读取的中间文件）。原作缺数据或源码与公开成品不符时，以公开成品为准补全。网页的压缩打包代码由本库自行实现，具体实现范围写在 `fidelity.md`。
+- **可修改**：修改范本时直接读改源码，不要求把内容抽成配置。案例、巧思与素材的迁移指南（`migration`）均为可选；有可提炼的常改内容（路线、图片、文案、节拍、配色、素材）时，写明在哪个文件、哪一段。
 - **保留制作依赖**：收录是为了日后参考、学习和复现制作。成品运行所需之外，制作该作品必需的工具与依赖一并保留：配乐合成库与采样、素材生成脚本、模拟与渲染场景，以及这些脚本读取的数据。条目专属的放在条目本体的 `source/`；多个条目共用的作为素材收录在 `demos/materials/<id>/`，由条目引用。与本库已有工具完全等价的可以不收，在条目说明中写明对应关系。 要求是工具与依赖在库里取得到、写明怎么用，不要求每个案例都验证一键重跑。
 - **方法与决策记录**：有研究价值时，在 `docs/cases/<id>.md` 记录参考与来源、采用的工作流／skill／提示词、关键决定与理由、验证结论（达到 1:1 的部分、未达到的部分及原因）、怎么改。不强制每个案例都写，避免把范本框死在固定格式里。
 - **语言**：站点说明使用中文；被复刻作品自身的原文、素材收录的 skill 与 prompt 原文保留原语言。
@@ -55,8 +56,8 @@
 | `previews/` | 生成或截图 | `{cases,patterns,materials}/<id>.<ext>`；变体后缀 `-portrait`、`-mobile`、`-reference`；作者效果图放 `materials/<id>/` |
 | `data/` | 生成：站点运行时数据 | 按用途平铺 `cases.js`、`patterns.js`、`materials.js`、`docs.js`、`asset-sources.js` |
 | `site/` | 站点代码 | `shared/`、`pages/<页>/`、`runtime/`、`playground/`、`vendor/`、`icons/` |
-| `kit/` | Demo 运行时与制作模板 | `motion-kit.js`、`templates/` |
-| `scripts/` | 工具 | 构建、播放、截图、渲染、取帧与 CLI |
+| `kit/` | Demo 运行时 | `motion-kit.js` |
+| `scripts/` | 工具与制作模板 | 构建、播放、截图、渲染、取帧与 CLI；`templates/` 放条目模板 |
 | 根目录 | 页面与说明 | `index.html`、`cases.html`、`patterns.html`、`materials.html`、`lab.html`、`agent.html`、`docs.html`、`README.md`、`CONTRIBUTING.md`、`AGENTS.md`、`package.json`、`.gitattributes`、`.gitignore`、`.openai/` |
 
 ### 条目本体
@@ -74,9 +75,32 @@
 | `fidelity.md` | 复刻删改、已接受差异与对照结果 |
 | `LICENSES.md` | 第三方许可原文的索引 |
 
-巧思在 `demos/patterns/<id>/` 中组织：重放型保存入口与运行时副本；拆分型保留自身机制代码，素材与上游源码直接引用来源案例。技术接入与时间协议见[渲染管线](docs/pipeline.md#mountfilm-与-replay)。
+巧思在 `demos/patterns/<id>/` 中组织：
 
-素材在 `demos/materials/<id>/` 中组织：可运行素材保存样例页、`vendor/`、`fonts/` 等实际文件；文字素材保存固定提交的原文快照，目录内仅有原文文件，保留原语言与原字节。快照目录和主文档分别由 `snapshotPath`、`snapshotEntry` 指定。
+| 路径 | 内容 |
+| --- | --- |
+| `index.html` | 入口；重放型仅内联 `MotionKit.replay` 配置，拆分型加载 `mechanism/` |
+| `motion-kit.js` | 由构建同步的运行时副本 |
+| `mechanism/` | 拆分型的机制代码、配置、样式与子页面 |
+| `assets/` | 本巧思独有的素材；来源案例素材直接引用 |
+| `source/` | 机制的可编辑源码与制作资料 |
+| `LICENSES.md` | 本体包含自有第三方文件时提供的许可原文索引 |
+
+重放型仅包含入口与运行时副本；带有本地实现的为拆分型。技术接入与时间协议见[渲染管线](docs/pipeline.md#mountfilm-与-replay)。
+
+可运行素材在 `demos/materials/<id>/` 中组织：
+
+| 路径 | 内容 |
+| --- | --- |
+| `index.html` | 样例入口，可用 `?demo=` 切换样例 |
+| `demo/` | 样例代码、样式与各样例子目录 |
+| `vendor/<库>@<版本>/` | 固定版本运行库与各自许可原文 |
+| `fonts/` | 字体与许可原文 |
+| `source/` | 重建入口、依赖锁、source map、上游源码与 provenance 等制作资料 |
+| `fidelity.md` | 复刻型素材的对照结果（如有） |
+| `LICENSES.md` | 第三方许可原文的索引 |
+
+可运行素材的用法写入 `docs/materials/<id>.md`，本体内不放 README。文字素材保存固定提交的原文快照，目录内仅有上游原文文件与许可原文，保留原语言与原字节；快照目录和主文档分别由 `snapshotPath`、`snapshotEntry` 指定。
 
 素材类型及站点名称统一为：
 
@@ -113,20 +137,20 @@
 ### 案例
 
 1. 按收录边界确定完整作品，保存来源、固定版本与许可到 `entries/cases/<id>.json`。
-2. 在 `demos/cases/<id>/` 制作作品，按本体约定放置运行文件、素材与制作资料。模板位于 `kit/templates/case-film/`、`kit/templates/case-native/`。
+2. 在 `demos/cases/<id>/` 制作作品，按本体约定放置运行文件、素材与制作资料。模板位于 `scripts/templates/case-film/`、`scripts/templates/case-native/`。
 3. 在条目中填写节拍、构成、分层、参数、实现 Prompt 与关联巧思；研究写入 `docs/cases/<id>.md`，复刻对照写入本体的 `fidelity.md`，第三方许可入口写入 `LICENSES.md`。
 4. 按本节末的命令生成资料与预览，完成验收。
 
 ### 巧思
 
 1. 在 `entries/patterns/<id>.json` 说明机制、触发、结果、参数、组合职责及可访问性，`sources` 仅保存 `{ caseId }`，并把该 id 加入来源案例的 `patternIds`。
-2. 在 `demos/patterns/<id>/` 创建入口。模板位于 `kit/templates/pattern-replay/` 与 `kit/templates/pattern/`；复用来源案例的素材和上游源码。
+2. 在 `demos/patterns/<id>/` 创建入口。模板位于 `scripts/templates/pattern-replay/` 与 `scripts/templates/pattern-split/`；复用来源案例的素材和上游源码。
 3. 有单条研究时写入 `docs/patterns/<id>.md`；按本节末的命令生成资料与预览，完成验收。
 
 ### 素材
 
 1. 在 `entries/materials/<id>.json` 填写类型、来源、版本、许可、用途、适用／避用、工作流、安装方式与盘点证据。有真实案例时通过 `relatedEntries` 关联，暂无案例时填空数组。
-2. 把可运行样例或完整原文快照放入 `demos/materials/<id>/`。文字素材填写 `snapshotPath: "demos/materials/<id>/"` 与主文档 `snapshotEntry`，Agent Skill 的主文档为 `SKILL.md`。
+2. 把可运行样例或完整原文快照放入 `demos/materials/<id>/`，可运行样例使用 `scripts/templates/material-demo/`。文字素材填写 `snapshotPath: "demos/materials/<id>/"` 与主文档 `snapshotEntry`，Agent Skill 的主文档为 `SKILL.md`。
 3. 叙述性中文用法写入 `docs/materials/<id>.md`，在 `docs/materials/README.md` 增加入口；作者效果图放入 `previews/materials/<id>/`，逐图事实写入 `gallery`。
 4. 运行构建；可运行 Demo 按本节末的命令生成预览，文字快照直接打开主文档并核对资料包与导出。
 
@@ -174,7 +198,7 @@ node scripts/build.mjs
 | `composition`、`layers` | 视觉、声音构成与画面分层 |
 | `tokens` | `{ palette: [], type: '', motion: [{ name, value }] }` |
 | `interaction` | 操作与状态 |
-| `migration` | `[{ field, how }]`：可调整的配置项与使用方法 |
+| `migration` | 可选，`[{ field, how }]`：常改内容的位置与修改方法 |
 | `useCases`、`avoid`、`constraints` | 适用范围、避用与制作约束 |
 | `patternIds` | 关联巧思 id |
 | `renderer` | `gpu` 表示截图需要 GPU |

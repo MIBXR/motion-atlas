@@ -100,143 +100,178 @@
   "files": [
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
-      "bytes": 812
+      "bytes": 812,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/audio/film.m4a",
-      "bytes": 418545
+      "bytes": 418545,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 5866
+      "bytes": 5866,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/film/cues.json",
-      "bytes": 1702
+      "bytes": 1702,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/engine.js",
-      "bytes": 9243
+      "bytes": 9243,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/scene.js",
-      "bytes": 46421
+      "bytes": 46421,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/shaders.js",
-      "bytes": 28643
+      "bytes": 28643,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/state.js",
-      "bytes": 669
+      "bytes": 669,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/textsdf.js",
-      "bytes": 5558
+      "bytes": 5558,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/type.js",
-      "bytes": 2073
+      "bytes": 2073,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/main.js",
-      "bytes": 3456
+      "bytes": 3456,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/setup.js",
-      "bytes": 152
+      "bytes": 152,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/style.css",
-      "bytes": 143
+      "bytes": 143,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/Fraunces-Liquid-72-900-Soft.ttf",
-      "bytes": 72996
+      "bytes": 72996,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/Fraunces[SOFT,WONK,opsz,wght].ttf",
-      "bytes": 360440
+      "bytes": 360440,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/Inter[opsz,wght].ttf",
-      "bytes": 876576
+      "bytes": 876576,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/NotoSerifSC[wght].ttf",
-      "bytes": 25125512
+      "bytes": 25125512,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/fonts.css",
-      "bytes": 494
+      "bytes": 494,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/fraunces-OFL.txt",
-      "bytes": 4391
+      "bytes": 4391,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/inter-OFL.txt",
-      "bytes": 4377
+      "bytes": 4377,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/notoserifsc-OFL.txt",
-      "bytes": 4350
+      "bytes": 4350,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1721
+      "bytes": 1721,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/source/audio.py",
-      "bytes": 11884
+      "bytes": 11884,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/cues.json",
-      "bytes": 1702
+      "bytes": 1702,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/js/lookdev.js",
-      "bytes": 2622
+      "bytes": 2622,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/js/scene.js",
-      "bytes": 56751
+      "bytes": 56751,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/js/textsdf.js",
-      "bytes": 5558
+      "bytes": 5558,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/out/cues_derived.json",
-      "bytes": 5548
+      "bytes": 5548,
+      "role": "process"
     },
     {
       "path": "demos/patterns/drip-ripple-glyph-reveal/index.html",
-      "bytes": 1391
+      "bytes": 1391,
+      "role": "source"
     },
     {
       "path": "demos/patterns/drip-ripple-glyph-reveal/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 15817
+      "bytes": 15817,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/drip-ripple-glyph-reveal.json",
-      "bytes": 3235
+      "bytes": 3235,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/drip-ripple-glyph-reveal.jpg",
-      "bytes": 65500
+      "bytes": 65500,
+      "role": "preview"
     }
   ]
 }

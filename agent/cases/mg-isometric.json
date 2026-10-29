@@ -521,163 +521,203 @@
   "files": [
     {
       "path": "demos/cases/mg-isometric/LICENSES.md",
-      "bytes": 984
+      "bytes": 984,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-isometric/audio/film.m4a",
-      "bytes": 423677
+      "bytes": 423677,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-isometric/fidelity.md",
-      "bytes": 6117
+      "bytes": 6117,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-isometric/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-isometric/film/anim.js",
-      "bytes": 3953
+      "bytes": 3953,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/film/cues.json",
-      "bytes": 1240
+      "bytes": 1240,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-isometric/film/main.js",
-      "bytes": 9777
+      "bytes": 9777,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/film/render.js",
-      "bytes": 9205
+      "bytes": 9205,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/film/setup.js",
-      "bytes": 216
+      "bytes": 216,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/film/style.css",
-      "bytes": 423
+      "bytes": 423,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/film/title.js",
-      "bytes": 8519
+      "bytes": 8519,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/film/ui.js",
-      "bytes": 9547
+      "bytes": 9547,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/film/world.js",
-      "bytes": 80534
+      "bytes": 80534,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/HarmonyOS-Sans-LICENSE.txt",
-      "bytes": 32768
+      "bytes": 32768,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/HarmonyOS_Sans_SC_Bold.ttf",
-      "bytes": 8158996
+      "bytes": 8158996,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/HarmonyOS_Sans_SC_Medium.ttf",
-      "bytes": 8227312
+      "bytes": 8227312,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/JetBrainsMono-OFL.txt",
-      "bytes": 4399
+      "bytes": 4399,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/JetBrainsMono[wght].ttf",
-      "bytes": 187208
+      "bytes": 187208,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/Unbounded-800-static.ttf",
-      "bytes": 423680
+      "bytes": 423680,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/Unbounded-OFL.txt",
-      "bytes": 4392
+      "bytes": 4392,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/Unbounded[wght].ttf",
-      "bytes": 778272
+      "bytes": 778272,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-isometric/fonts/fonts.css",
-      "bytes": 700
+      "bytes": 700,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-isometric/index.html",
-      "bytes": 2932
+      "bytes": 2932,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/source/audio.py",
-      "bytes": 14263
+      "bytes": 14263,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-isometric/source/cues.json",
-      "bytes": 1240
+      "bytes": 1240,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/opentype.js@2.0.0/LICENSE",
-      "bytes": 1085
+      "bytes": 1085,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/opentype.js@2.0.0/dist/opentype.mjs",
-      "bytes": 494695
+      "bytes": 494695,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/LICENSE",
-      "bytes": 1081
+      "bytes": 1081,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/build/three.core.js",
-      "bytes": 1458113
+      "bytes": 1458113,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/build/three.module.js",
-      "bytes": 662772
+      "bytes": 662772,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/environments/RoomEnvironment.js",
-      "bytes": 4960
+      "bytes": 4960,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/geometries/RoundedBoxGeometry.js",
-      "bytes": 6470
+      "bytes": 6470,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
-      "bytes": 4218
+      "bytes": 4218,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
-      "bytes": 15397
+      "bytes": 15397,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
-      "bytes": 729
+      "bytes": 729,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
-      "bytes": 1291
+      "bytes": 1291,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-isometric/vendor/three@0.186.1/examples/jsm/utils/BufferGeometryUtils.js",
-      "bytes": 37712
+      "bytes": 37712,
+      "role": "vendor"
     },
     {
       "path": "entries/cases/mg-isometric.json",
-      "bytes": 24537
+      "bytes": 24537,
+      "role": "entry"
     },
     {
       "path": "previews/cases/mg-isometric.jpg",
-      "bytes": 87334
+      "bytes": 87334,
+      "role": "preview"
     }
   ]
 }

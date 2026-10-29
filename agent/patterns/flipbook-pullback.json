@@ -140,171 +140,213 @@
   "files": [
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 1181
+      "bytes": 1181,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
-      "bytes": 28357
+      "bytes": 28357,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_02.png",
-      "bytes": 28707
+      "bytes": 28707,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_03.png",
-      "bytes": 25600
+      "bytes": 25600,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_04.png",
-      "bytes": 27879
+      "bytes": 27879,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/paper_base.jpg",
-      "bytes": 483747
+      "bytes": 483747,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/paper_tooth.png",
-      "bytes": 1791819
+      "bytes": 1791819,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/audio/film.m4a",
-      "bytes": 415190
+      "bytes": 415190,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 5403
+      "bytes": 5403,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/cues.json",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/engine.js",
-      "bytes": 13778
+      "bytes": 13778,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103043
+      "bytes": 103043,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/setup.js",
-      "bytes": 764
+      "bytes": 764,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/film/style.css",
-      "bytes": 137
+      "bytes": 137,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Caveat-OFL.txt",
-      "bytes": 4385
+      "bytes": 4385,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Caveat[wght].ttf",
-      "bytes": 403648
+      "bytes": 403648,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-OFL.txt",
-      "bytes": 4406
+      "bytes": 4406,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LXGWMarkerGothic-Regular.ttf",
-      "bytes": 3190368
+      "bytes": 3190368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/LongCang-Regular.ttf",
-      "bytes": 5162508
+      "bytes": 5162508,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/Longcang-OFL.txt",
-      "bytes": 4390
+      "bytes": 4390,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/fonts/fonts.css",
-      "bytes": 509
+      "bytes": 509,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2718
+      "bytes": 2718,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_01_3840x2160.png",
-      "bytes": 81508
+      "bytes": 81508,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_02_3840x2160.png",
-      "bytes": 82662
+      "bytes": 82662,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_03_3840x2160.png",
-      "bytes": 73739
+      "bytes": 73739,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_04_3840x2160.png",
-      "bytes": 79891
+      "bytes": 79891,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/audio.py",
-      "bytes": 24290
+      "bytes": 24290,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/cues.json",
-      "bytes": 2188
+      "bytes": 2188,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/gen_dust.py",
-      "bytes": 707
+      "bytes": 707,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/gen_paper.py",
-      "bytes": 2360
+      "bytes": 2360,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/source/tools/hitmax.py",
-      "bytes": 4168
+      "bytes": 4168,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/LICENSE",
-      "bytes": 1085
+      "bytes": 1085,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/opentype.js@2.0.0/dist/opentype.mjs",
-      "bytes": 494695
+      "bytes": 494695,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/LICENSE",
-      "bytes": 1069
+      "bytes": 1069,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-cel-boil/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
-      "bytes": 18735
+      "bytes": 18735,
+      "role": "vendor"
     },
     {
       "path": "demos/patterns/flipbook-pullback/index.html",
-      "bytes": 1617
+      "bytes": 1617,
+      "role": "source"
     },
     {
       "path": "demos/patterns/flipbook-pullback/motion-kit.js",
-      "bytes": 133782
+      "bytes": 133782,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24241
+      "bytes": 24241,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/flipbook-pullback.json",
-      "bytes": 4074
+      "bytes": 4074,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/flipbook-pullback.jpg",
-      "bytes": 139961
+      "bytes": 139961,
+      "role": "preview"
     }
   ]
 }

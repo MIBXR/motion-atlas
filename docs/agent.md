@@ -18,7 +18,7 @@ node scripts/atlas.mjs search "<关键词>" --json
 | `agent/patterns/<id>.json` | 完整 `pattern`、`sourceCases`、Prompt、文档、入口和文件清单 |
 | `agent/materials/<id>.json` | 完整 `material`、使用说明、快照主文档与附属 Markdown、入口和文件清单 |
 
-`files[]` 提供仓库相对路径和字节数。读取 `entrypoint` 打开 Demo 或快照主文档；`documents` 提供可直接阅读的原文，`research`、`fidelity`、`licenses` 在对应文件存在时提供。
+`files[]` 提供仓库相对路径、字节数与 `role`：`source` 为运行代码，`process` 为 `source/` 制作资料，`license` 为 `LICENSES.md` 与许可原文，其余为 `vendor`、`font`、`preview`、`entry`、`doc`、`asset`。读取 `entrypoint` 打开 Demo 或快照主文档；`documents` 提供可直接阅读的原文，`research`、`fidelity`、`licenses` 在对应文件存在时提供。
 
 ## 组合与导出
 
