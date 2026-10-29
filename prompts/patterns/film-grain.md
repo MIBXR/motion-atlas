@@ -25,10 +25,10 @@ dustC[Math.floor(k / 2) % 2]
 
 ## 迁移
 
-- `动效函数`：配置场景绘制、颗粒与暗角。
-- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
-- `需要的数据`：颗粒按floor(t×12)定位；10.4s地图配机窗照片与回忆。
-- `config.js → segments / markers`：地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56
+- `script.js → drawGrain、render`：修改场景绘制、颗粒与暗角的实现。
+- `original.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → palette；tracks.flashback、tracks.compare；layout`：修改底色、回忆与分屏状态；颗粒刷新频率在 script.js → drawGrain，固定场景时刻在 render。
+- `index.html → config.segments / markers；config.js → segments / markers`：index.html 设置地图与追加案例的重放区间、顺序和标记；config.js 设置 original.html 地图片段。地图来源时刻：地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/film-grain/index.html) · [在库中查看](../../patterns.html#pattern/film-grain)

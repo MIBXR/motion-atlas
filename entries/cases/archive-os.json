@@ -245,20 +245,20 @@
   "negativePrompt": "保持视觉、布局、字号、文案、动效参数、缓动、模型、字体、档案和声音；不要增添外层UI、文字与装饰；不要裁剪或加速开场；保持动作序列。",
   "migration": [
     {
-      "field": "档案与外观",
-      "how": "档案内容、模型、字体与外观组成终端画面。"
+      "field": "source/rhinelabui/content/archives.json；source/rhinelabui/src/",
+      "how": "archives.json 修改四十份档案；src/scene.ts、src/model-viewer.ts 和相关样式修改场景、模型查看器与外观。"
     },
     {
-      "field": "播放序列",
-      "how": "时间表控制输入与声音，支持离线导出。"
+      "field": "source/rhinelabui/film/sequence.js → timeline、inputs、createSequence",
+      "how": "修改演示节拍与页签、查看器、拆解、重组、浏览动作；离线音频入口为同目录 render-audio.mjs。"
     },
     {
-      "field": "运行资源",
-      "how": "页面与模型、字体、声音等运行资源。"
+      "field": "film/app/；source/rhinelabui/art/",
+      "how": "film/app/ 保存模型、字体与声音；art/build_archive.py、art/build_assembly.py 和两个 Blender 工程用于制作模型，用法见 art/README.md。"
     },
     {
-      "field": "舞台与控制",
-      "how": "舞台、时间轴、定位、手动操作与完整音轨。"
+      "field": "film/config.js → ARCHIVE_FILM；film/script.js → loadFrame、seekFrame",
+      "how": "film/config.js 设置开场锚点 A、array；film/script.js 接入舞台、时间轴、定位、手动操作与完整音轨。"
     }
   ],
   "demo": "demos/cases/archive-os/index.html",
@@ -276,5 +276,6 @@
       "scope": "作品",
       "notes": "本案例移植自 [LBEILC / RhineLabUI](https://github.com/LBEILC/RhineLabUI)，上游提交 `12cc5e4`。\n\n本案例为 RhineLabUI 的移植，属非官方作品；《明日方舟》及莱茵生命相关名称、标志、设定、原片与原片音频采样的权利归各自权利人所有。"
     }
-  ]
+  ],
+  "fidelity": "demos/cases/archive-os/fidelity.md"
 }

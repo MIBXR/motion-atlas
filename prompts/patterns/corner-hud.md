@@ -17,10 +17,10 @@
 
 ## 迁移
 
-- `动效函数`：配置镜头、时钟、步进器与规尺函数。
-- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
-- `需要的数据`：设置日序、日期、进度、歌词、步进器与横竖布局。
-- `config.js → segments / markers`：7→13.6/35.8→42.4
+- `script.js → drawHud、clockAt、layout`：修改镜头、时钟、步进器与规尺函数的实现。
+- `index.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → meta、days、music.lyrics、stepper；tracks.day、tracks.clock、tracks.progress；layout`：修改日序、日期、歌词、时钟、步进器与横竖规尺。
+- `config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：7→13.6/35.8→42.4。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/corner-hud/index.html) · [在库中查看](../../patterns.html#pattern/corner-hud)

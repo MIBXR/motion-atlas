@@ -120,20 +120,20 @@
   },
   "migration": [
     {
-      "field": "动效函数",
-      "how": "配置统计行、数值计数与fin.入场。"
+      "field": "script.js → drawOutro",
+      "how": "修改统计行、数值计数与fin.入场的实现。"
     },
     {
-      "field": "依赖",
-      "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
+      "field": "index.html → script 与样式加载；script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。"
     },
     {
-      "field": "需要的数据",
-      "how": "设置收尾与横竖布局；58s底图显示完成路线和标记。"
+      "field": "../../cases/map-pilgrimage/film/config.js → tracks.outro → t、stats、fin、credits；meta.handle；layout",
+      "how": "修改统计值、结尾文案与横竖布局；逐行时序在 script.js → drawOutro。"
     },
     {
       "field": "config.js → segments / markers",
-      "how": "55.6→60"
+      "how": "设置本巧思片段映射与标记；地图来源时刻：55.6→60。"
     },
     {
       "field": "score.json",

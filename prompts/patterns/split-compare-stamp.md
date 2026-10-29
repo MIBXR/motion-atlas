@@ -20,10 +20,10 @@ kick(t, C.stamp, 14, 10, 13)
 
 ## 迁移
 
-- `动效函数`：配置分屏、两侧场景、边框与印章。
-- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
-- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。
-- `config.js → segments / markers`：29→33.4
+- `script.js → drawCompare、mountScene`：修改分屏、两侧场景、边框与印章的实现。
+- `original.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → tracks.compare → scene、left、right、stamp、t、until；layout`：修改对比场景、两侧标签、印章与时刻；程序画面在 ../../cases/map-pilgrimage/film/scenes.js → paintScene。
+- `index.html → config.segments / markers；config.js → segments / markers`：index.html 设置地图与追加案例的重放区间、顺序和标记；config.js 设置 original.html 地图片段。地图来源时刻：29→33.4。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)

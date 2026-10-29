@@ -23,10 +23,10 @@ const h = addK(hand(t, 1, .8), kick(t, C.charge[2], 7, 12, 14))
 
 ## 迁移
 
-- `动效函数`：配置计数、徽章、收集物托盘（来源为车站印章）与回弹。
-- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
-- `需要的数据`：设置计数与收集事件（来源为车站印章）、镜头和横竖布局。
-- `config.js → segments / markers`：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6
+- `script.js → drawHud`：修改计数、徽章、收集物托盘（来源为车站印章）与回弹的实现。
+- `original.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → tracks.counter、tracks.stamps；mascot、stepper、layout`：修改计数事件、徽章、收集印章与横竖布局。
+- `index.html → config.segments / markers；config.js → segments / markers`：index.html 设置地图与追加案例的重放区间、顺序和标记；config.js 设置 original.html 地图片段。地图来源时刻：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/collect-counter/index.html) · [在库中查看](../../patterns.html#pattern/collect-counter)

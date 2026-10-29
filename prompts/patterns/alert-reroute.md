@@ -18,10 +18,10 @@
 
 ## 迁移
 
-- `动效函数`：配置警示、改道提示、路线与标签。
-- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。
-- `需要的数据`：设置警示轨道、错误路线、地图与横竖布局。
-- `config.js → segments / markers`：44.8→50.3
+- `script.js → renderLive、drawAlert、drawRoutesSVG、drawPatternMarkers`：修改警示、改道提示、路线与标签的实现。
+- `index.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → tracks.alert、tracks.routes、tracks.markers；stops、map、layout`：修改警示文字、错误路线、地点与横竖布局。
+- `config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：44.8→50.3。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/alert-reroute/index.html) · [在库中查看](../../patterns.html#pattern/alert-reroute)

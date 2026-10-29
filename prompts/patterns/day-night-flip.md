@@ -18,10 +18,10 @@
 
 ## 迁移
 
-- `动效函数`：配置昼夜配色、镜头、时钟与HUD。
-- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。
-- `需要的数据`：设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。
-- `config.js → segments / markers`：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值
+- `script.js → renderLive、drawPattern、drawHud、paintLiveMap`：修改昼夜配色、镜头、时钟与HUD的实现。
+- `index.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → tracks.night、tracks.camera、tracks.clock；palette、mapPalette、layout`：修改昼夜轨道、地图配色、HUD 与横竖布局；固定镜头位置见 script.js → configureLiveCameras。
+- `config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)

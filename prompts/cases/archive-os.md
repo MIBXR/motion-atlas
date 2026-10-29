@@ -30,9 +30,9 @@ A Rhine Lab archive terminal with a white opening, Rhine Lab identity, a five-co
 
 ## 迁移
 
-- `档案与外观`：档案内容、模型、字体与外观组成终端画面。
-- `播放序列`：时间表控制输入与声音，支持离线导出。
-- `运行资源`：页面与模型、字体、声音等运行资源。
-- `舞台与控制`：舞台、时间轴、定位、手动操作与完整音轨。
+- `source/rhinelabui/content/archives.json；source/rhinelabui/src/`：archives.json 修改四十份档案；src/scene.ts、src/model-viewer.ts 和相关样式修改场景、模型查看器与外观。
+- `source/rhinelabui/film/sequence.js → timeline、inputs、createSequence`：修改演示节拍与页签、查看器、拆解、重组、浏览动作；离线音频入口为同目录 render-audio.mjs。
+- `film/app/；source/rhinelabui/art/`：film/app/ 保存模型、字体与声音；art/build_archive.py、art/build_assembly.py 和两个 Blender 工程用于制作模型，用法见 art/README.md。
+- `film/config.js → ARCHIVE_FILM；film/script.js → loadFrame、seekFrame`：film/config.js 设置开场锚点 A、array；film/script.js 接入舞台、时间轴、定位、手动操作与完整音轨。
 
 [打开 Demo](../../demos/cases/archive-os/index.html) · [在库中查看](../../cases.html#case/archive-os)

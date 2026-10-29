@@ -139,20 +139,20 @@
   },
   "migration": [
     {
-      "field": "动效函数",
-      "how": "配置分屏、两侧场景、边框与印章。"
+      "field": "script.js → drawCompare、mountScene",
+      "how": "修改分屏、两侧场景、边框与印章的实现。"
     },
     {
-      "field": "依赖",
-      "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
+      "field": "original.html → script 与样式加载；script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。"
     },
     {
-      "field": "需要的数据",
-      "how": "设置对比轨道、明信片与照片画布、横竖布局。"
+      "field": "../../cases/map-pilgrimage/film/config.js → tracks.compare → scene、left、right、stamp、t、until；layout",
+      "how": "修改对比场景、两侧标签、印章与时刻；程序画面在 ../../cases/map-pilgrimage/film/scenes.js → paintScene。"
     },
     {
-      "field": "config.js → segments / markers",
-      "how": "29→33.4"
+      "field": "index.html → config.segments / markers；config.js → segments / markers",
+      "how": "index.html 设置地图与追加案例的重放区间、顺序和标记；config.js 设置 original.html 地图片段。地图来源时刻：29→33.4。"
     },
     {
       "field": "score.json",

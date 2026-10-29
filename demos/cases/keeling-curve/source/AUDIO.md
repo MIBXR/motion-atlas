@@ -65,3 +65,24 @@ Credit (Kenney or www.kenney.nl) would be nice but is not mandatory.
 名义速度为 60 BPM。音乐拍点来自 `candidate-1-beats-60.json`，减去原曲切入点 7.162 秒；不将视觉时间表当作音乐拍点。三个固定事件最近的音乐拍点为 0.477、10.369、17.289 秒，拍点相对事件偏差分别为 −23、+23、−11 ms。
 
 混音由 motion-showreel 原工具输出，最终 WAV 的既有技术记录为 −14.5 LUFS、LRA 2.5 LU、真峰值 −1.5 dBTP。三个音效在各自瞬态中心 100 ms 的立体声 K 加权 RMS 窗口内，相对同刻音乐的母带后估计为 −3.412、−2.999、−3.043 dB；该短窗量测不是人工听感结论。母带后第三声瞬态估计为 17.299521 秒，其余两声为 0.500000、10.346000 秒。30fps 成片的首可见事件帧为 0.500000、10.366667、17.300000 秒，最大声画偏差 20.667 ms，小于一帧。
+
+## 制作输入与重混
+
+以下路径相对本 `source/` 目录，音源与分轨取自本作品的制作工作区：
+
+| 路径 | 用途 |
+| --- | --- |
+| `audio/candidates/Dreams Become Real.mp3` | Incompetech 公开下载的完整原曲，与音乐分轨沿用[现有署名与 CC BY 4.0 许可](../audio/Kevin-MacLeod-CC-BY-4.0.txt) |
+| `audio/candidates/candidate-1-beats-60.json` | 原曲的 60 BPM 拍点输入 |
+| `audio/kenney/impact-sounds/Audio/impactWood_light_001.ogg`、`impactSoft_medium_000.ogg` | 前两个事件的原始音效，沿用[现有 Impact Sounds 许可](../audio/kenney-impact-sounds/License.txt)，副本为同包 `License.txt` |
+| `audio/kenney/ui-audio/Audio/click1.ogg` | 来源落版的原始音效，沿用[现有 UI Audio 许可](../audio/kenney-ui-audio/License.txt)，副本为同包 `License.txt` |
+| `audio/bgm.wav`、`audio/sfx.wav` | 最终混音使用的 20 秒、48 kHz 立体声、24-bit PCM 母带前音乐与音效分轨 |
+| `audio/production.json` | 原曲截取、淡入淡出、三声播放起点与增益、最终混音参数 |
+
+在仓库根目录运行以下制作命令，`<工作区项目>` 为仓库外的输出目录。它使用[素材快照中的原混音工具](../../../materials/motion-showreel/scripts/narration.mjs)，读取保留的两条分轨，输出 `<工作区项目>/audio/final.wav`：
+
+```bash
+node demos/materials/motion-showreel/scripts/narration.mjs mix <工作区项目> --bgm demos/cases/keeling-curve/source/audio/bgm.wav --bgm-source user --bgm-gain 1 --sfx demos/cases/keeling-curve/source/audio/sfx.wav --sfx-source user --sfx-gain 1 --narration none --duration 20
+```
+
+制作工具执行两轨混音、限制与响度处理；原始音源重新制作分轨时，按 `production.json` 的截取、淡变、偏移和增益设置。

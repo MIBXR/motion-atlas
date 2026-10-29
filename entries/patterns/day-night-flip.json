@@ -127,20 +127,20 @@
   },
   "migration": [
     {
-      "field": "动效函数",
-      "how": "配置昼夜配色、镜头、时钟与HUD。"
+      "field": "script.js → renderLive、drawPattern、drawHud、paintLiveMap",
+      "how": "修改昼夜配色、镜头、时钟与HUD的实现。"
     },
     {
-      "field": "依赖",
-      "how": "配置MapLibre 5.6.0、样式、图层与地图镜像。"
+      "field": "index.html → script 与样式加载；script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。"
     },
     {
-      "field": "需要的数据",
-      "how": "设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。"
+      "field": "../../cases/map-pilgrimage/film/config.js → tracks.night、tracks.camera、tracks.clock；palette、mapPalette、layout",
+      "how": "修改昼夜轨道、地图配色、HUD 与横竖布局；固定镜头位置见 script.js → configureLiveCameras。"
     },
     {
       "field": "config.js → segments / markers",
-      "how": "31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值"
+      "how": "设置本巧思片段映射与标记；地图来源时刻：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值。"
     },
     {
       "field": "score.json",

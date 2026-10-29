@@ -50,10 +50,10 @@
 
 ## 迁移
 
-- `动效函数`：配置章节标签、标题、框线与胶带。
-- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
-- `需要的数据`：设置章节轨道、标题、配色、装饰与横竖布局。
-- `config.js → segments / markers`：24.2→25.85/33→33.8/40.6→44.8
+- `script.js → drawChapter`：修改章节标签、标题、框线与胶带的实现。
+- `original.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → chapters；tracks.chapter、layout`：修改章节标签、标题、强调色、框线与胶带。
+- `index.html → config.segments / markers；config.js → segments / markers`：index.html 设置地图与追加案例的重放区间、顺序和标记；config.js 设置 original.html 地图片段。地图来源时刻：24.2→25.85/33→33.8/40.6→44.8。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)
