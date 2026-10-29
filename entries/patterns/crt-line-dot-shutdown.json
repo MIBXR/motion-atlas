@@ -1,0 +1,95 @@
+{
+  "id": "crt-line-dot-shutdown",
+  "order": 84,
+  "title": "显像管线点收屏",
+  "types": [
+    "transition",
+    "texture"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "mg-styles-15",
+    "合成波",
+    "赛博朋克 HUD"
+  ],
+  "summary": "整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。",
+  "mechanism": "整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。",
+  "trigger": "各来源的显像管关机节点到达时",
+  "effect": "画面由整幅栅格压成亮线，再收为亮点和黑场。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "mg-synthwave 原片 9.467–9.966666667 秒；mg-hud 原片 9.5667–9.966666667 秒；1 倍速，总时长 0.899633333 秒。"
+    },
+    {
+      "name": "显像管线点收屏参数",
+      "value": "  if (fr >= st) return CUES.stop + (Math.floor(fr / 2) * 2 - st) / FPS * .5;           // STOP: tape winds down\nconst CRT = { 295: [1, .30, .25, 0], 296: [1, .0019, 1, .030], 297: [.26, .0019, 1.1, .022], 298: [.0073, .013, 1.3, .036], 299: [.0055, .010, .35, .012] };\n    col += vec3(1., .92, .98) * uCrtG * exp(-ly*ly / 1.1) * exp(-lx*lx / 5.);                 // the hot line / dot"
+    },
+    {
+      "name": "全息屏线点关机参数",
+      "value": "  bloom.radius = 0.45 - (t >= LOCK ? 0.2 * Math.exp(-(t - LOCK) * 4) : 0); v.uClose.value = prog(t, 9.7667, 0.2);\n  float cz = uClose, csy = 1.0, csx = 1.0;\n  if (cz > 0.0) { csy = max(pow(1.0 - min(cz / 0.6, 1.0), 2.2), 0.003); csx = cz > 0.6 ? max(1.0 - (cz - 0.6) / 0.4, 0.0) : 1.0; }\n  vec2 uv = cz > 0.0 ? vec2(0.5 + (vUv.x - 0.5) / max(csx, 1e-3), 0.5 + (vUv.y - 0.5) / csy) : vUv; float g = uGlitch;\n  // micro-glitch: horizontal slice displacement (seeded per frame)\n  float bnd = floor(uv.y * 54.0), hb = h11(bnd * 1.7 + uFrame * 13.1);\n  float sl = step(1.0 - 0.22 * g, hb);"
+    }
+  ],
+  "useCases": [
+    "显像管关机",
+    "线点收屏式片尾"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态偏好下暂停在巧思 0.399666667 秒，声音默认关闭。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+  },
+  "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-synthwave 原片 9.467–9.966666667 秒；mg-hud 原片 9.5667–9.966666667 秒；总时长 0.899633333 秒。整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。参数保持原作数值：  if (fr >= st) return CUES.stop + (Math.floor(fr / 2) * 2 - st) / FPS * .5;           // STOP: tape winds down\nconst CRT = { 295: [1, .30, .25, 0], 296: [1, .0019, 1, .030], 297: [.26, .0019, 1.1, .022], 298: [.0073, .013, 1.3, .036], 299: [.0055, .010, .35, .012] };\n    col += vec3(1., .92, .98) * uCrtG * exp(-ly*ly / 1.1) * exp(-lx*lx / 5.);                 // the hot line / dot\n  bloom.radius = 0.45 - (t >= LOCK ? 0.2 * Math.exp(-(t - LOCK) * 4) : 0); v.uClose.value = prog(t, 9.7667, 0.2);\n  float cz = uClose, csy = 1.0, csx = 1.0;\n  if (cz > 0.0) { csy = max(pow(1.0 - min(cz / 0.6, 1.0), 2.2), 0.003); csx = cz > 0.6 ? max(1.0 - (cz - 0.6) / 0.4, 0.0) : 1.0; }\n  vec2 uv = cz > 0.0 ? vec2(0.5 + (vUv.x - 0.5) / max(csx, 1e-3), 0.5 + (vUv.y - 0.5) / csy) : vUv; float g = uGlitch;\n  // micro-glitch: horizontal slice displacement (seeded per frame)\n  float bnd = floor(uv.y * 54.0), hb = h11(bnd * 1.7 + uFrame * 13.1);\n  float sl = step(1.0 - 0.22 * g, hb);\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
+  "migration": [
+    {
+      "field": "index.html 内联配置 → segments / markers",
+      "how": "调整来源片段与中文节点，画面和声音使用同一时刻映射。"
+    }
+  ],
+  "demo": "demos/patterns/crt-line-dot-shutdown/index.html",
+  "kit": true,
+  "timeline": true,
+  "renderer": "gpu",
+  "sources": [
+    {
+      "caseId": "mg-synthwave"
+    },
+    {
+      "caseId": "mg-hud"
+    }
+  ],
+  "previewAt": 0.399666667,
+  "markers": [
+    {
+      "t": 0,
+      "label": "合成波"
+    },
+    {
+      "t": 0.399666667,
+      "label": "机制画面 1"
+    },
+    {
+      "t": 0.466333333,
+      "label": "机制画面 2"
+    },
+    {
+      "t": 0.499666667,
+      "label": "赛博朋克 HUD"
+    },
+    {
+      "t": 0.832966667,
+      "label": "机制画面 3"
+    }
+  ]
+}

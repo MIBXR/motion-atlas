@@ -1,0 +1,442 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "crt-line-dot-shutdown",
+  "pattern": {
+    "id": "crt-line-dot-shutdown",
+    "order": 84,
+    "title": "显像管线点收屏",
+    "types": [
+      "transition",
+      "texture"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "mg-styles-15",
+      "合成波",
+      "赛博朋克 HUD"
+    ],
+    "summary": "整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。",
+    "mechanism": "整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。",
+    "trigger": "各来源的显像管关机节点到达时",
+    "effect": "画面由整幅栅格压成亮线，再收为亮点和黑场。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "mg-synthwave 原片 9.467–9.966666667 秒；mg-hud 原片 9.5667–9.966666667 秒；1 倍速，总时长 0.899633333 秒。"
+      },
+      {
+        "name": "显像管线点收屏参数",
+        "value": "  if (fr >= st) return CUES.stop + (Math.floor(fr / 2) * 2 - st) / FPS * .5;           // STOP: tape winds down\nconst CRT = { 295: [1, .30, .25, 0], 296: [1, .0019, 1, .030], 297: [.26, .0019, 1.1, .022], 298: [.0073, .013, 1.3, .036], 299: [.0055, .010, .35, .012] };\n    col += vec3(1., .92, .98) * uCrtG * exp(-ly*ly / 1.1) * exp(-lx*lx / 5.);                 // the hot line / dot"
+      },
+      {
+        "name": "全息屏线点关机参数",
+        "value": "  bloom.radius = 0.45 - (t >= LOCK ? 0.2 * Math.exp(-(t - LOCK) * 4) : 0); v.uClose.value = prog(t, 9.7667, 0.2);\n  float cz = uClose, csy = 1.0, csx = 1.0;\n  if (cz > 0.0) { csy = max(pow(1.0 - min(cz / 0.6, 1.0), 2.2), 0.003); csx = cz > 0.6 ? max(1.0 - (cz - 0.6) / 0.4, 0.0) : 1.0; }\n  vec2 uv = cz > 0.0 ? vec2(0.5 + (vUv.x - 0.5) / max(csx, 1e-3), 0.5 + (vUv.y - 0.5) / csy) : vUv; float g = uGlitch;\n  // micro-glitch: horizontal slice displacement (seeded per frame)\n  float bnd = floor(uv.y * 54.0), hb = h11(bnd * 1.7 + uFrame * 13.1);\n  float sl = step(1.0 - 0.22 * g, hb);"
+      }
+    ],
+    "useCases": [
+      "显像管关机",
+      "线点收屏式片尾"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态偏好下暂停在巧思 0.399666667 秒，声音默认关闭。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+    },
+    "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-synthwave 原片 9.467–9.966666667 秒；mg-hud 原片 9.5667–9.966666667 秒；总时长 0.899633333 秒。整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。参数保持原作数值：  if (fr >= st) return CUES.stop + (Math.floor(fr / 2) * 2 - st) / FPS * .5;           // STOP: tape winds down\nconst CRT = { 295: [1, .30, .25, 0], 296: [1, .0019, 1, .030], 297: [.26, .0019, 1.1, .022], 298: [.0073, .013, 1.3, .036], 299: [.0055, .010, .35, .012] };\n    col += vec3(1., .92, .98) * uCrtG * exp(-ly*ly / 1.1) * exp(-lx*lx / 5.);                 // the hot line / dot\n  bloom.radius = 0.45 - (t >= LOCK ? 0.2 * Math.exp(-(t - LOCK) * 4) : 0); v.uClose.value = prog(t, 9.7667, 0.2);\n  float cz = uClose, csy = 1.0, csx = 1.0;\n  if (cz > 0.0) { csy = max(pow(1.0 - min(cz / 0.6, 1.0), 2.2), 0.003); csx = cz > 0.6 ? max(1.0 - (cz - 0.6) / 0.4, 0.0) : 1.0; }\n  vec2 uv = cz > 0.0 ? vec2(0.5 + (vUv.x - 0.5) / max(csx, 1e-3), 0.5 + (vUv.y - 0.5) / csy) : vUv; float g = uGlitch;\n  // micro-glitch: horizontal slice displacement (seeded per frame)\n  float bnd = floor(uv.y * 54.0), hb = h11(bnd * 1.7 + uFrame * 13.1);\n  float sl = step(1.0 - 0.22 * g, hb);\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
+    "migration": [
+      {
+        "field": "index.html 内联配置 → segments / markers",
+        "how": "调整来源片段与中文节点，画面和声音使用同一时刻映射。"
+      }
+    ],
+    "demo": "demos/patterns/crt-line-dot-shutdown/index.html",
+    "kit": true,
+    "timeline": true,
+    "renderer": "gpu",
+    "sources": [
+      {
+        "caseId": "mg-synthwave"
+      },
+      {
+        "caseId": "mg-hud"
+      }
+    ],
+    "previewAt": 0.399666667,
+    "markers": [
+      {
+        "t": 0,
+        "label": "合成波"
+      },
+      {
+        "t": 0.399666667,
+        "label": "机制画面 1"
+      },
+      {
+        "t": 0.466333333,
+        "label": "机制画面 2"
+      },
+      {
+        "t": 0.499666667,
+        "label": "赛博朋克 HUD"
+      },
+      {
+        "t": 0.832966667,
+        "label": "机制画面 3"
+      }
+    ],
+    "preview": "previews/patterns/crt-line-dot-shutdown.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "mg-synthwave",
+      "bundle": "agent/cases/mg-synthwave.json"
+    },
+    {
+      "caseId": "mg-hud",
+      "bundle": "agent/cases/mg-hud.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 显像管线点收屏\n\n## 实现 Prompt\n\n通过 MotionKit.replay 以 1 倍速依次重放mg-synthwave 原片 9.467–9.966666667 秒；mg-hud 原片 9.5667–9.966666667 秒；总时长 0.899633333 秒。整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。参数保持原作数值：  if (fr >= st) return CUES.stop + (Math.floor(fr / 2) * 2 - st) / FPS * .5;           // STOP: tape winds down\nconst CRT = { 295: [1, .30, .25, 0], 296: [1, .0019, 1, .030], 297: [.26, .0019, 1.1, .022], 298: [.0073, .013, 1.3, .036], 299: [.0055, .010, .35, .012] };\n    col += vec3(1., .92, .98) * uCrtG * exp(-ly*ly / 1.1) * exp(-lx*lx / 5.);                 // the hot line / dot\n  bloom.radius = 0.45 - (t >= LOCK ? 0.2 * Math.exp(-(t - LOCK) * 4) : 0); v.uClose.value = prog(t, 9.7667, 0.2);\n  float cz = uClose, csy = 1.0, csx = 1.0;\n  if (cz > 0.0) { csy = max(pow(1.0 - min(cz / 0.6, 1.0), 2.2), 0.003); csx = cz > 0.6 ? max(1.0 - (cz - 0.6) / 0.4, 0.0) : 1.0; }\n  vec2 uv = cz > 0.0 ? vec2(0.5 + (vUv.x - 0.5) / max(csx, 1e-3), 0.5 + (vUv.y - 0.5) / csy) : vUv; float g = uGlitch;\n  // micro-glitch: horizontal slice displacement (seeded per frame)\n  float bnd = floor(uv.y * 54.0), hb = h11(bnd * 1.7 + uFrame * 13.1);\n  float sl = step(1.0 - 0.22 * g, hb);\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。\n\n## 参数\n\n- **原片重放区间**：mg-synthwave 原片 9.467–9.966666667 秒；mg-hud 原片 9.5667–9.966666667 秒；1 倍速，总时长 0.899633333 秒。\n- **显像管线点收屏参数**：  if (fr >= st) return CUES.stop + (Math.floor(fr / 2) * 2 - st) / FPS * .5;           // STOP: tape winds down\nconst CRT = { 295: [1, .30, .25, 0], 296: [1, .0019, 1, .030], 297: [.26, .0019, 1.1, .022], 298: [.0073, .013, 1.3, .036], 299: [.0055, .010, .35, .012] };\n    col += vec3(1., .92, .98) * uCrtG * exp(-ly*ly / 1.1) * exp(-lx*lx / 5.);                 // the hot line / dot\n- **全息屏线点关机参数**：  bloom.radius = 0.45 - (t >= LOCK ? 0.2 * Math.exp(-(t - LOCK) * 4) : 0); v.uClose.value = prog(t, 9.7667, 0.2);\n  float cz = uClose, csy = 1.0, csx = 1.0;\n  if (cz > 0.0) { csy = max(pow(1.0 - min(cz / 0.6, 1.0), 2.2), 0.003); csx = cz > 0.6 ? max(1.0 - (cz - 0.6) / 0.4, 0.0) : 1.0; }\n  vec2 uv = cz > 0.0 ? vec2(0.5 + (vUv.x - 0.5) / max(csx, 1e-3), 0.5 + (vUv.y - 0.5) / csy) : vUv; float g = uGlitch;\n  // micro-glitch: horizontal slice displacement (seeded per frame)\n  float bnd = floor(uv.y * 54.0), hb = h11(bnd * 1.7 + uFrame * 13.1);\n  float sl = step(1.0 - 0.22 * g, hb);\n\n## 迁移\n\n- `index.html 内联配置 → segments / markers`：调整来源片段与中文节点，画面和声音使用同一时刻映射。\n\n[打开 Demo](../../demos/patterns/crt-line-dot-shutdown/index.html) · [在库中查看](../../patterns.html#pattern/crt-line-dot-shutdown)\n"
+  },
+  "entrypoint": "demos/patterns/crt-line-dot-shutdown/index.html",
+  "files": [
+    {
+      "path": "demos/cases/mg-hud/LICENSES.md",
+      "bytes": 4082
+    },
+    {
+      "path": "demos/cases/mg-hud/assets/land-50m.json",
+      "bytes": 545534
+    },
+    {
+      "path": "demos/cases/mg-hud/audio/film.m4a",
+      "bytes": 418706
+    },
+    {
+      "path": "demos/cases/mg-hud/fidelity.md",
+      "bytes": 3655
+    },
+    {
+      "path": "demos/cases/mg-hud/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-hud/film/cues.json",
+      "bytes": 1411
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/holo.js",
+      "bytes": 17026
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/hud.js",
+      "bytes": 55288
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/post.js",
+      "bytes": 8773
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/util.js",
+      "bytes": 2285
+    },
+    {
+      "path": "demos/cases/mg-hud/film/main.js",
+      "bytes": 7461
+    },
+    {
+      "path": "demos/cases/mg-hud/film/setup.js",
+      "bytes": 101
+    },
+    {
+      "path": "demos/cases/mg-hud/film/style.css",
+      "bytes": 166
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/ChakraPetch-SemiBold.ttf",
+      "bytes": 78604
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS-Sans-LICENSE.txt",
+      "bytes": 32768
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Black.ttf",
+      "bytes": 8125608
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Bold.ttf",
+      "bytes": 8158996
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Medium.ttf",
+      "bytes": 8227312
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Regular.ttf",
+      "bytes": 8261128
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/JetBrainsMono[wght].ttf",
+      "bytes": 187208
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-Bold.ttf",
+      "bytes": 400680
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-SemiBold.ttf",
+      "bytes": 390340
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/chakrapetch-OFL.txt",
+      "bytes": 4396
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/fonts.css",
+      "bytes": 1397
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/jetbrainsmono-OFL.txt",
+      "bytes": 4399
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/rajdhani-OFL.txt",
+      "bytes": 4373
+    },
+    {
+      "path": "demos/cases/mg-hud/index.html",
+      "bytes": 2189
+    },
+    {
+      "path": "demos/cases/mg-hud/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hud/source/audio.py",
+      "bytes": 7573
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
+      "bytes": 731
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/dist/d3.min.js",
+      "bytes": 279706
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/LICENSE",
+      "bytes": 1081
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.core.js",
+      "bytes": 1458113
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.module.js",
+      "bytes": 662772
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 8501
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 4694
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 3228
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 15397
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
+      "bytes": 729
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1291
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/LICENSE",
+      "bytes": 734
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
+      "bytes": 7169
+    },
+    {
+      "path": "demos/cases/mg-synthwave/LICENSES.md",
+      "bytes": 2558
+    },
+    {
+      "path": "demos/cases/mg-synthwave/audio/film.m4a",
+      "bytes": 403976
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fidelity.md",
+      "bytes": 4139
+    },
+    {
+      "path": "demos/cases/mg-synthwave/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-synthwave/film/cues.json",
+      "bytes": 1312
+    },
+    {
+      "path": "demos/cases/mg-synthwave/film/scene.js",
+      "bytes": 70651
+    },
+    {
+      "path": "demos/cases/mg-synthwave/film/setup.js",
+      "bytes": 243
+    },
+    {
+      "path": "demos/cases/mg-synthwave/film/style.css",
+      "bytes": 166
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/Archivo-Italic[wdth,wght].ttf",
+      "bytes": 741368
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/Michroma-Regular.ttf",
+      "bytes": 64344
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/MrDafoe-Regular.ttf",
+      "bytes": 47976
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/VT323-Regular.ttf",
+      "bytes": 153116
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/archivo-OFL.txt",
+      "bytes": 4388
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/fonts.css",
+      "bytes": 636
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/michroma-OFL.txt",
+      "bytes": 4395
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/mrdafoe-OFL.txt",
+      "bytes": 4398
+    },
+    {
+      "path": "demos/cases/mg-synthwave/fonts/vt323-OFL.txt",
+      "bytes": 4367
+    },
+    {
+      "path": "demos/cases/mg-synthwave/index.html",
+      "bytes": 1824
+    },
+    {
+      "path": "demos/cases/mg-synthwave/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-synthwave/source/audio.py",
+      "bytes": 11743
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/LICENSE",
+      "bytes": 1085
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/dist/opentype.mjs",
+      "bytes": 494695
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/simplex-noise@4.0.3/LICENSE",
+      "bytes": 1069
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
+      "bytes": 18735
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/LICENSE",
+      "bytes": 1081
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/build/three.core.js",
+      "bytes": 1458113
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/build/three.module.js",
+      "bytes": 662772
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 8501
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 4694
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/RenderPass.js",
+      "bytes": 4280
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 3228
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 15397
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
+      "bytes": 729
+    },
+    {
+      "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1291
+    },
+    {
+      "path": "demos/patterns/crt-line-dot-shutdown/index.html",
+      "bytes": 1679
+    },
+    {
+      "path": "demos/patterns/crt-line-dot-shutdown/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "previews/patterns/crt-line-dot-shutdown.jpg",
+      "bytes": 12585
+    }
+  ]
+}

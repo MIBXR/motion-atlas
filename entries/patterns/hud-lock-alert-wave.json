@@ -1,0 +1,84 @@
+{
+  "id": "hud-lock-alert-wave",
+  "order": 91,
+  "title": "锁定括号警报波",
+  "types": [
+    "hud",
+    "transition",
+    "rhythm"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "mg-styles-15",
+    "赛博朋克 HUD"
+  ],
+  "summary": "四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。",
+  "mechanism": "四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。",
+  "trigger": "候选匹配并到达目标锁定主拍时",
+  "effect": "目标括号、标题、闪白和径向警报改色沿同一锁定事件展开。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "mg-hud 原片 5.7–8.1 秒；1 倍速，总时长 2.4 秒。"
+    },
+    {
+      "name": "锁定括号警报波参数",
+      "value": "  \"bracket_travel\": [\n    5.9,\n    6.1667\n  ]\n  u.uWave.value = t >= LOCK ? E.outC(prog(t, LOCK, K.wave_dur)) * 1350 : -1;\n  float inside = uWave < 0.0 ? 0.0 : 1.0 - smoothstep(uWave - 110.0, uWave, dw);\n  float ann = uWave < 0.0 ? 0.0 : exp(-pow((dw - uWave + 22.0) / 40.0, 2.0)) * (1.0 - smoothstep(900.0, 1300.0, uWave));   // re-ink glow = 40 px annulus, not a disc\n  // titles: LOCKED + 目标锁定 land clean on the impact frame (scale 1.15 → 1 over 3 frames, first frame white-hot); only the small lines scramble"
+    }
+  ],
+  "useCases": [
+    "目标锁定提示",
+    "锁定主拍接全局警报改色"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态偏好下暂停在巧思 0.8 秒，声音默认关闭。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+  },
+  "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-hud 原片 5.7–8.1 秒；总时长 2.4 秒。四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。参数保持原作数值：  \"bracket_travel\": [\n    5.9,\n    6.1667\n  ]\n  u.uWave.value = t >= LOCK ? E.outC(prog(t, LOCK, K.wave_dur)) * 1350 : -1;\n  float inside = uWave < 0.0 ? 0.0 : 1.0 - smoothstep(uWave - 110.0, uWave, dw);\n  float ann = uWave < 0.0 ? 0.0 : exp(-pow((dw - uWave + 22.0) / 40.0, 2.0)) * (1.0 - smoothstep(900.0, 1300.0, uWave));   // re-ink glow = 40 px annulus, not a disc\n  // titles: LOCKED + 目标锁定 land clean on the impact frame (scale 1.15 → 1 over 3 frames, first frame white-hot); only the small lines scramble\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
+  "migration": [
+    {
+      "field": "index.html 内联配置 → segments / markers",
+      "how": "调整来源片段与中文节点，画面和声音使用同一时刻映射。"
+    }
+  ],
+  "demo": "demos/patterns/hud-lock-alert-wave/index.html",
+  "kit": true,
+  "timeline": true,
+  "renderer": "gpu",
+  "sources": [
+    {
+      "caseId": "mg-hud"
+    }
+  ],
+  "previewAt": 0.8,
+  "markers": [
+    {
+      "t": 0,
+      "label": "赛博朋克 HUD"
+    },
+    {
+      "t": 0.4,
+      "label": "机制画面 1"
+    },
+    {
+      "t": 0.7,
+      "label": "机制画面 2"
+    },
+    {
+      "t": 1.0,
+      "label": "机制画面 3"
+    }
+  ]
+}

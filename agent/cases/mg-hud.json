@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "mg-hud",
+  "entry": {
+    "id": "mg-hud",
+    "order": 11,
+    "title": "赛博朋克 HUD · KESTREL-9 · Target Acquired",
+    "subtitle": "隼眼-9 · 目标锁定",
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "mg-styles-15",
+      "赛博朋克",
+      "HUD",
+      "线框地球",
+      "目标锁定",
+      "雷达扫描"
+    ],
+    "summary": "青色 HUD 从中心分层开机，线框地球、雷达、遥测与候选目标依次上线；发现信号后括号向目标收拢，6.4 秒锁定并扩散橙色警报波，镜头穿入地图，显示目标与坐标。",
+    "focus": "Three.js 线框地球与 Canvas 界面按统一时间计算；地球表面的目标坐标投影到括号、扫描与后期波心，文字在帧中心单独绘制并放在辉光之后。",
+    "accent": "#45E0FF",
+    "background": "#020A0D",
+    "timeline": true,
+    "kit": true,
+    "rhythm": {
+      "duration": 10,
+      "bpm": 120,
+      "beats": [
+        {
+          "t": 0,
+          "label": "系统开机",
+          "note": "显像管从中心展开。"
+        },
+        {
+          "t": 0.4,
+          "label": "外环展开",
+          "note": "外环描绘，开机日志逐行出现。"
+        },
+        {
+          "t": 0.9,
+          "label": "左栏上线",
+          "note": "导航和遥测面板按层级展开。"
+        },
+        {
+          "t": 1.15,
+          "label": "右栏上线",
+          "note": "信号分析与候选面板展开。"
+        },
+        {
+          "t": 1.4,
+          "label": "全息地球",
+          "note": "线框地球出现。"
+        },
+        {
+          "t": 2.4,
+          "label": "雷达扫描",
+          "note": "扫描与数字遥测开始更新。"
+        },
+        {
+          "t": 3.4,
+          "label": "卫星轨迹",
+          "note": "卫星、轨迹、覆盖范围和引线出现。"
+        },
+        {
+          "t": 4.4,
+          "label": "发现信号",
+          "note": "信号触发，地球转向目标。"
+        },
+        {
+          "t": 5.9,
+          "label": "括号收拢",
+          "note": "四角括号向目标吸附，锁定进度推进。"
+        },
+        {
+          "t": 6.4,
+          "label": "目标锁定",
+          "note": "标题落定，警报波由目标向外扩散。"
+        },
+        {
+          "t": 6.4333,
+          "label": "穿入地图",
+          "note": "相机穿入，近层界面让开并失焦。"
+        },
+        {
+          "t": 7.1,
+          "label": "地图解析",
+          "note": "地图情报与标题带展开。"
+        },
+        {
+          "t": 7.25,
+          "label": "坐标显示",
+          "note": "目标坐标逐字写出。"
+        },
+        {
+          "t": 9,
+          "label": "数据回传",
+          "note": "回传状态更新。"
+        },
+        {
+          "t": 9.7667,
+          "label": "系统关机",
+          "note": "显像管收为中心亮线和亮点。"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "name": "全息地球",
+        "role": "Three.js 绘制海岸线、经纬网、点阵陆地与卫星轨迹，Natural Earth 数据生成陆地遮罩。"
+      },
+      {
+        "name": "界面几何",
+        "role": "Canvas 绘制环形刻度、雷达、面板、波形、遥测、候选目标与锁定括号。"
+      },
+      {
+        "name": "文字信息",
+        "role": "等宽数字按固定种子跳变后落定，状态逐字打印；英文与中文锁定标题和坐标位于独立文字层。"
+      },
+      {
+        "name": "后期与声音",
+        "role": "青色线框随警报波转橙，叠加辉光、CRT、扫描线、色差与微故障；原片 AAC 音轨按时间轴同步。"
+      }
+    ],
+    "composition": {
+      "color": "深青黑 #020A0D，青色 #00E5FF 线框，锁定后由波形后期改为橙色警报。",
+      "typography": "JetBrains Mono 400–600 排数据；Rajdhani 600、700 排界面标签；Chakra Petch 600 排标题；HarmonyOS Sans SC 400、500、700、900 排中文。",
+      "layout": "1920×1080；中央全息地球与同心刻度，两侧面板分列，顶栏与底部规尺围住中部，锁定标题带横贯中心。",
+      "imagery": "线框地球、点阵陆地、雷达目标、卫星覆盖锥、海岸与城市标记。",
+      "motion": "分层描线启动，数字与扫描上线；地球转向目标，括号收拢吸附后警报波扩散，相机穿入地图并让开前景面板。",
+      "sound": "开启后播放原片 AAC 音轨；120BPM、D 弗里吉亚调式的 darksynth 脉冲与开机、扫描、目标锁定和警报音效共用 cues。",
+      "rhythm": "0–1.4 秒分层开机，2.4 秒数据与雷达启动，4.4 秒发现信号，5.9 秒括号汇聚，6.4 秒锁定，7.1 秒地图解析，9.7667 秒关机。",
+      "coherence": "同一目标的经纬度贯穿地球投影、扫描、候选目标、锁定括号、警报波心与坐标板；几何和文字分别处理辉光。"
+    },
+    "tokens": {
+      "palette": [
+        "#020A0D",
+        "#00E5FF",
+        "#0B7C8C",
+        "#FF6A00",
+        "#E8FEFF"
+      ],
+      "type": "JetBrains Mono；Rajdhani SemiBold、Bold；Chakra Petch SemiBold；HarmonyOS Sans SC 400、500、700、900。",
+      "motion": [
+        {
+          "name": "锁定主拍",
+          "value": "export const LOCK = 6.4;"
+        },
+        {
+          "name": "雷达周期",
+          "value": "\"radar_period\": 2.0"
+        },
+        {
+          "name": "警报波",
+          "value": "E.outC(prog(t, LOCK, K.wave_dur)) * 1350"
+        },
+        {
+          "name": "镜头穿入",
+          "value": "\"dive\": [6.4333, 7.1]"
+        }
+      ]
+    },
+    "interaction": [
+      "播放、暂停、重播与拖动时间；可切换播放速度。",
+      "声音默认关闭，开启后原片音轨与时间轴同步。",
+      "?embed 隐藏控制条，?render 用于逐帧渲染，?t=秒 定位画面。",
+      "减少动态偏好下显示 9.5 秒落版并暂停。"
+    ],
+    "useCases": [
+      "科技数码测评",
+      "游戏剪辑",
+      "航天科普",
+      "AI 产品演示"
+    ],
+    "constraints": [
+      "原作：Vincentwei1021，https://github.com/Vincentwei1021/mg-styles-15，固定提交 49052d80bfaf9fa8412cc9710530e5e95a3b8d8c，MIT 许可。",
+      "10 秒，1920×1080，30fps；只提供横屏原作画幅，复刻公开成片的默认版本。"
+    ],
+    "prompt": "You are the director, motion designer, engineer and sound designer of ONE 10-second motion-design film.\nThe goal is the most classic, yet most stunning form of this style — award-shortlist / high-end commercial quality. A clean,\ntemplate-looking result is a fail. Benchmarks: Buck, ManvsMachine, Ordinary Folk, Giant Ant, Territory Studio, Apple keynote\nmotion, Pentagram motion identities, top Behance/Motionographer features, top 抖音/B站 designer accounts.\n\n# Style\n赛博朋克 HUD / FUI Cyberpunk HUD / FUI (Fictional UI)\n\n# Output (fixed)\n- 1920×1080, 30 fps, exactly 10.000 s (300 frames), H.264 MP4 with stereo AAC audio (48 kHz), mastered to −14 LUFS\n  integrated, true peak ≤ −1 dBTP. Final file: video.mp4.\n\n# Suggested technical route\nHTML: SVG/Canvas FUI layers + Three.js wireframe hologram; seeded random data; glow/scanline post pass\n(You may choose a better route if it clearly raises quality; say why.)\n\n# Creative seed\n「目标锁定 TARGET ACQUIRED」Cyberpunk HUD / FUI, film-UI grade (Territory Studio-level density & restraint).\n- Deep teal-black; cyan #00E5FF linework with orange/red #FF6A00 alert state; hex grid, concentric rotating rings with ticks, radar sweep (conic) with blips, data columns (monospace numbers rolling 3–5 frames then settling), typewriter status lines with cursor, sparkline graphs, a central Three.js wireframe hologram (globe or drone) with scanlines.\n- Layered build-up: lines draw on in hierarchical staggered order → data comes alive → a target is found → lock brackets snap 1.4 → 1.0 (fast-out slow-in) → everything flips to alert orange with 'TARGET LOCKED / 目标锁定', coordinates \"N31°14′ E121°29′\".\n- Glow, slight chromatic aberration, scanlines, restrained micro-glitches.\nSound: darksynth pulse + HUD beeps, scan sweeps, ascending lock-on tone, alarm on lock.\n\nYou are the director: you may change the concept, copy, story beats and brand names if you find a stronger idea, but the result must remain the CANONICAL, instantly-recognisable form of this style and must hit its signature features below.\n\n# Signature features and key techniques (the result is judged against these)\n模拟科幻电影/游戏界面的抬头显示包装：青橙霓虹线框、目标锁定框、雷达扫描、数据流小字。在科技数码测评、游戏剪辑（赛博朋克2077、EVA 二创）、军事航天科普和 AI 产品演示中作为『科技感』的默认皮肤，B 站 AE HUD 案例教程播放量达 20 万。\n视觉特征 青色/橙色霓虹线框, 目标锁定框与十字准星, 雷达/环形扫描 loop, 等宽小字数据流与打字机文字, 六边形网格与辉光\n关键技法 线框生长：SVG stroke-dasharray/dashoffset 描边动画，元素按层级错帧展开\n环形雷达：conic-gradient 扫描扇区旋转 loop + 目标点闪烁\n数字滚动：随机数快速跳变 3~5 帧后落定真实值；文字打字机 + 光标闪烁\n锁定框：四角括号从大到小收缩吸附目标（scale 1.4→1.0 + 快出缓入）\n全局外发光（glow）+ 轻微色差 + 扫描线叠加统一质感\n\n# How to work\n1. Treatment. Write down one clear idea: a hook in the first 0.5 s (never open on more than 0.3 s of empty or black), an\n   escalation, one unmistakable hero moment at ~60–75 % of the runtime, and a composed end frame held ~0.8–1.2 s with living\n   micro-motion. Map every signature feature above to a moment. Keep one cue sheet (beats and hit times) that both the\n   picture and the sound read from.\n2. Key frames before motion. Build the look, render stills at 6–10 key times and actually look at them. Each still should be\n   poster-worthy: composition, hierarchy, negative space, type set properly (kerning, line-height, weight contrast, CJK\n   punctuation, ~5 % safe margins). Iterate until nothing looks default, generic, cramped or \"AI-template\".\n3. Motion. Build the choreography and preview at low resolution. Step through the fastest moves frame by frame: spacing,\n   easing, arcs, overlap, anticipation and follow-through, motion blur. No unintended dead spans; the energy follows the music.\n4. Sound. Write genre-correct music and sound design locked to the cue sheet. Check that visual hits land on audio onsets.\n   Master to the output spec.\n5. Final. Render at full resolution (motion blur where apt), then check: exactly 10.00 s, resolution, fps, audio present and at\n   the right loudness, no black frames, no fallback fonts or tofu, no clipped elements at the frame edges, no shimmer on thin\n   lines, no gradient banding. Fix and repeat until you would submit it to a festival.\n6. Write an honest self-critique: what is strongest, what is weakest, what you would do with more time.\n\n# Rules\n- Rendering must be deterministic: every frame is a pure function of time t. Seeded randomness only; physics and particles\n  precomputed or closed-form; no real-time clocks; no state-triggered CSS transitions. A reliable route: a web page that can\n  draw any time t on request, captured frame by frame with a headless browser and encoded with ffmpeg (or a Blender script\n  that renders a PNG sequence).\n- Assets: only CC0 / public domain / OFL / Apache / free-for-commercial-use. Record each source and licence in CREDITS.md.\n  No real brand trademarks; invent brand names.\n- On-screen text must be correct and natural: idiomatic Chinese, proper CJK punctuation, no typos.\n\n# Craft checklist (what a jury looks for)\n- Style authenticity: an expert names the style in one second; every signature technique is present and executed correctly.\n- Motion craft: purposeful easing (no linear unless mechanical by design), overlap and stagger, anticipation and\n  follow-through, arcs, squash and stretch where the style allows, consistent physics, motion blur where apt; transitions\n  carried by elements, not crossfades.\n- Rhythm: hits locked to the music; contrast between busy and calm; no monotony.\n- Design: strong composition, grid, typographic hierarchy, controlled palette; texture and finishing (grain, glow, vignette)\n  only where the style wants it; nothing looks accidental.\n- Technical polish: no jitter (unless intended), no popping, no aliasing, no banding, no fallback fonts, no half-loaded images.\n- Sound: genre-correct, musical, synced, mastered.\n\n# Before you deliver, score yourself honestly\n1–10 on style fidelity, concept wow, motion craft, design & typography, finish & texture, sound & sync, technical\n(6 = template-level, 8 = high-end agency, 9 = award shortlist). Aim for 9; fix whatever scores lowest first.\n\n# Deliver\nvideo.mp4, plus a short report: the concept in two sentences; a beat sheet with timecodes; how each signature feature is\nrealised; the tech route; check numbers (duration, resolution, fps, loudness, true peak); your honest top-3 weaknesses.",
+    "migration": [
+      {
+        "field": "film/js/util.js → TARGET、CND",
+        "how": "调整目标与候选经纬度。"
+      },
+      {
+        "field": "film/js/hud.js",
+        "how": "调整面板、遥测、标题与坐标文案。"
+      },
+      {
+        "field": "film/js/holo.js、film/js/post.js",
+        "how": "调整全息地球、镜头、警报波与模拟屏幕后期。"
+      },
+      {
+        "field": "film/cues.json",
+        "how": "调整开机、扫描、发现、锁定、地图解析和回传节点。"
+      },
+      {
+        "field": "index.html → MotionKit.mountFilm",
+        "how": "接入时间轴、原片音轨与窗口等比缩放。"
+      }
+    ],
+    "demo": "demos/cases/mg-hud/index.html",
+    "patternIds": [
+      "crt-line-dot-shutdown",
+      "radar-sweep-persistent-blips",
+      "seeded-digit-scramble-settle",
+      "hud-lock-alert-wave",
+      "chapter-frame",
+      "boot-typing"
+    ],
+    "previewAt": 9.5,
+    "preview": "previews/cases/mg-hud.jpg",
+    "previewPortrait": null
+  },
+  "documents": {
+    "prompt": "# 赛博朋克 HUD · KESTREL-9 · Target Acquired\n\n## 实现 Prompt\n\nYou are the director, motion designer, engineer and sound designer of ONE 10-second motion-design film.\nThe goal is the most classic, yet most stunning form of this style — award-shortlist / high-end commercial quality. A clean,\ntemplate-looking result is a fail. Benchmarks: Buck, ManvsMachine, Ordinary Folk, Giant Ant, Territory Studio, Apple keynote\nmotion, Pentagram motion identities, top Behance/Motionographer features, top 抖音/B站 designer accounts.\n\n# Style\n赛博朋克 HUD / FUI Cyberpunk HUD / FUI (Fictional UI)\n\n# Output (fixed)\n- 1920×1080, 30 fps, exactly 10.000 s (300 frames), H.264 MP4 with stereo AAC audio (48 kHz), mastered to −14 LUFS\n  integrated, true peak ≤ −1 dBTP. Final file: video.mp4.\n\n# Suggested technical route\nHTML: SVG/Canvas FUI layers + Three.js wireframe hologram; seeded random data; glow/scanline post pass\n(You may choose a better route if it clearly raises quality; say why.)\n\n# Creative seed\n「目标锁定 TARGET ACQUIRED」Cyberpunk HUD / FUI, film-UI grade (Territory Studio-level density & restraint).\n- Deep teal-black; cyan #00E5FF linework with orange/red #FF6A00 alert state; hex grid, concentric rotating rings with ticks, radar sweep (conic) with blips, data columns (monospace numbers rolling 3–5 frames then settling), typewriter status lines with cursor, sparkline graphs, a central Three.js wireframe hologram (globe or drone) with scanlines.\n- Layered build-up: lines draw on in hierarchical staggered order → data comes alive → a target is found → lock brackets snap 1.4 → 1.0 (fast-out slow-in) → everything flips to alert orange with 'TARGET LOCKED / 目标锁定', coordinates \"N31°14′ E121°29′\".\n- Glow, slight chromatic aberration, scanlines, restrained micro-glitches.\nSound: darksynth pulse + HUD beeps, scan sweeps, ascending lock-on tone, alarm on lock.\n\nYou are the director: you may change the concept, copy, story beats and brand names if you find a stronger idea, but the result must remain the CANONICAL, instantly-recognisable form of this style and must hit its signature features below.\n\n# Signature features and key techniques (the result is judged against these)\n模拟科幻电影/游戏界面的抬头显示包装：青橙霓虹线框、目标锁定框、雷达扫描、数据流小字。在科技数码测评、游戏剪辑（赛博朋克2077、EVA 二创）、军事航天科普和 AI 产品演示中作为『科技感』的默认皮肤，B 站 AE HUD 案例教程播放量达 20 万。\n视觉特征 青色/橙色霓虹线框, 目标锁定框与十字准星, 雷达/环形扫描 loop, 等宽小字数据流与打字机文字, 六边形网格与辉光\n关键技法 线框生长：SVG stroke-dasharray/dashoffset 描边动画，元素按层级错帧展开\n环形雷达：conic-gradient 扫描扇区旋转 loop + 目标点闪烁\n数字滚动：随机数快速跳变 3~5 帧后落定真实值；文字打字机 + 光标闪烁\n锁定框：四角括号从大到小收缩吸附目标（scale 1.4→1.0 + 快出缓入）\n全局外发光（glow）+ 轻微色差 + 扫描线叠加统一质感\n\n# How to work\n1. Treatment. Write down one clear idea: a hook in the first 0.5 s (never open on more than 0.3 s of empty or black), an\n   escalation, one unmistakable hero moment at ~60–75 % of the runtime, and a composed end frame held ~0.8–1.2 s with living\n   micro-motion. Map every signature feature above to a moment. Keep one cue sheet (beats and hit times) that both the\n   picture and the sound read from.\n2. Key frames before motion. Build the look, render stills at 6–10 key times and actually look at them. Each still should be\n   poster-worthy: composition, hierarchy, negative space, type set properly (kerning, line-height, weight contrast, CJK\n   punctuation, ~5 % safe margins). Iterate until nothing looks default, generic, cramped or \"AI-template\".\n3. Motion. Build the choreography and preview at low resolution. Step through the fastest moves frame by frame: spacing,\n   easing, arcs, overlap, anticipation and follow-through, motion blur. No unintended dead spans; the energy follows the music.\n4. Sound. Write genre-correct music and sound design locked to the cue sheet. Check that visual hits land on audio onsets.\n   Master to the output spec.\n5. Final. Render at full resolution (motion blur where apt), then check: exactly 10.00 s, resolution, fps, audio present and at\n   the right loudness, no black frames, no fallback fonts or tofu, no clipped elements at the frame edges, no shimmer on thin\n   lines, no gradient banding. Fix and repeat until you would submit it to a festival.\n6. Write an honest self-critique: what is strongest, what is weakest, what you would do with more time.\n\n# Rules\n- Rendering must be deterministic: every frame is a pure function of time t. Seeded randomness only; physics and particles\n  precomputed or closed-form; no real-time clocks; no state-triggered CSS transitions. A reliable route: a web page that can\n  draw any time t on request, captured frame by frame with a headless browser and encoded with ffmpeg (or a Blender script\n  that renders a PNG sequence).\n- Assets: only CC0 / public domain / OFL / Apache / free-for-commercial-use. Record each source and licence in CREDITS.md.\n  No real brand trademarks; invent brand names.\n- On-screen text must be correct and natural: idiomatic Chinese, proper CJK punctuation, no typos.\n\n# Craft checklist (what a jury looks for)\n- Style authenticity: an expert names the style in one second; every signature technique is present and executed correctly.\n- Motion craft: purposeful easing (no linear unless mechanical by design), overlap and stagger, anticipation and\n  follow-through, arcs, squash and stretch where the style allows, consistent physics, motion blur where apt; transitions\n  carried by elements, not crossfades.\n- Rhythm: hits locked to the music; contrast between busy and calm; no monotony.\n- Design: strong composition, grid, typographic hierarchy, controlled palette; texture and finishing (grain, glow, vignette)\n  only where the style wants it; nothing looks accidental.\n- Technical polish: no jitter (unless intended), no popping, no aliasing, no banding, no fallback fonts, no half-loaded images.\n- Sound: genre-correct, musical, synced, mastered.\n\n# Before you deliver, score yourself honestly\n1–10 on style fidelity, concept wow, motion craft, design & typography, finish & texture, sound & sync, technical\n(6 = template-level, 8 = high-end agency, 9 = award shortlist). Aim for 9; fix whatever scores lowest first.\n\n# Deliver\nvideo.mp4, plus a short report: the concept in two sentences; a beat sheet with timecodes; how each signature feature is\nrealised; the tech route; check numbers (duration, resolution, fps, loudness, true peak); your honest top-3 weaknesses.\n\n## 动效 Token\n\n- **锁定主拍**：export const LOCK = 6.4;\n- **雷达周期**：\"radar_period\": 2.0\n- **警报波**：E.outC(prog(t, LOCK, K.wave_dur)) * 1350\n- **镜头穿入**：\"dive\": [6.4333, 7.1]\n\n## 制作约束\n\n- 原作：Vincentwei1021，https://github.com/Vincentwei1021/mg-styles-15，固定提交 49052d80bfaf9fa8412cc9710530e5e95a3b8d8c，MIT 许可。\n- 10 秒，1920×1080，30fps；只提供横屏原作画幅，复刻公开成片的默认版本。\n\n## 迁移\n\n- `film/js/util.js → TARGET、CND`：调整目标与候选经纬度。\n- `film/js/hud.js`：调整面板、遥测、标题与坐标文案。\n- `film/js/holo.js、film/js/post.js`：调整全息地球、镜头、警报波与模拟屏幕后期。\n- `film/cues.json`：调整开机、扫描、发现、锁定、地图解析和回传节点。\n- `index.html → MotionKit.mountFilm`：接入时间轴、原片音轨与窗口等比缩放。\n\n[打开 Demo](../../demos/cases/mg-hud/index.html) · [在库中查看](../../cases.html#case/mg-hud)\n"
+  },
+  "entrypoint": "demos/cases/mg-hud/index.html",
+  "files": [
+    {
+      "path": "demos/cases/mg-hud/LICENSES.md",
+      "bytes": 4082
+    },
+    {
+      "path": "demos/cases/mg-hud/assets/land-50m.json",
+      "bytes": 545534
+    },
+    {
+      "path": "demos/cases/mg-hud/audio/film.m4a",
+      "bytes": 418706
+    },
+    {
+      "path": "demos/cases/mg-hud/fidelity.md",
+      "bytes": 3655
+    },
+    {
+      "path": "demos/cases/mg-hud/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-hud/film/cues.json",
+      "bytes": 1411
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/holo.js",
+      "bytes": 17026
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/hud.js",
+      "bytes": 55288
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/post.js",
+      "bytes": 8773
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/util.js",
+      "bytes": 2285
+    },
+    {
+      "path": "demos/cases/mg-hud/film/main.js",
+      "bytes": 7461
+    },
+    {
+      "path": "demos/cases/mg-hud/film/setup.js",
+      "bytes": 101
+    },
+    {
+      "path": "demos/cases/mg-hud/film/style.css",
+      "bytes": 166
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/ChakraPetch-SemiBold.ttf",
+      "bytes": 78604
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS-Sans-LICENSE.txt",
+      "bytes": 32768
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Black.ttf",
+      "bytes": 8125608
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Bold.ttf",
+      "bytes": 8158996
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Medium.ttf",
+      "bytes": 8227312
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Regular.ttf",
+      "bytes": 8261128
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/JetBrainsMono[wght].ttf",
+      "bytes": 187208
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-Bold.ttf",
+      "bytes": 400680
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-SemiBold.ttf",
+      "bytes": 390340
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/chakrapetch-OFL.txt",
+      "bytes": 4396
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/fonts.css",
+      "bytes": 1397
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/jetbrainsmono-OFL.txt",
+      "bytes": 4399
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/rajdhani-OFL.txt",
+      "bytes": 4373
+    },
+    {
+      "path": "demos/cases/mg-hud/index.html",
+      "bytes": 2189
+    },
+    {
+      "path": "demos/cases/mg-hud/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hud/source/audio.py",
+      "bytes": 7573
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
+      "bytes": 731
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/dist/d3.min.js",
+      "bytes": 279706
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/LICENSE",
+      "bytes": 1081
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.core.js",
+      "bytes": 1458113
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.module.js",
+      "bytes": 662772
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 8501
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 4694
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 3228
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 15397
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
+      "bytes": 729
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1291
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/LICENSE",
+      "bytes": 734
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
+      "bytes": 7169
+    },
+    {
+      "path": "previews/cases/mg-hud.jpg",
+      "bytes": 148188
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { createHolo, H0 } from './js/holo.js';
+import { initHUD, drawHUD } from './js/hud.js';
+import { VS, COMP_FS, FINAL_FS, TEXT_FS } from './js/post.js';
+import { prog, E, frameOf, LOCK, clamp } from './js/util.js';
+
+window.DEMO = { width: 1920, height: 1080, fps: 30, duration: 10, motionBlur: { samples: 1, shutter: 0.5 } };
+const W = 1920, H = 1080, dpr = window.devicePixelRatio || 1;
+const K = await (await fetch('./film/cues.json')).json();
+const topo = await (await fetch('./assets/land-50m.json')).json();
+
+// equirectangular land mask for the dotted-land layer
+const mc = document.createElement('canvas'); mc.width = 2048; mc.height = 1024;
+const mx = mc.getContext('2d', { willReadFrequently: true });
+const proj = d3.geoEquirectangular().scale(2048 / (2 * Math.PI)).translate([1024, 512]);
+mx.fillStyle = '#fff'; mx.beginPath(); d3.geoPath(proj, mx)(topojson.feature(topo, topo.objects.land)); mx.fill();
+const landMask = { w: 2048, h: 1024, data: mx.getImageData(0, 0, 2048, 1024).data };
+
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(dpr); renderer.setSize(W, H, false);
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace; renderer.toneMapping = THREE.NoToneMapping;
+document.querySelector('#stage').appendChild(renderer.domElement);
+
+const holo = createHolo(topo, landMask);
+const holoRT = new THREE.WebGLRenderTarget(W * dpr, H * dpr, { type: THREE.HalfFloatType, samples: 4 });
+
+const hud = document.createElement('canvas'); hud.width = W * dpr; hud.height = H * dpr;
+const txt = document.createElement('canvas'); txt.width = W * dpr; txt.height = H * dpr;
+initHUD(hud, K, dpr, txt);
+const txtTex = new THREE.CanvasTexture(txt); txtTex.colorSpace = THREE.NoColorSpace;
+txtTex.generateMipmaps = false; txtTex.minFilter = THREE.LinearFilter; txtTex.magFilter = THREE.LinearFilter;
+const hudTex = new THREE.CanvasTexture(hud); hudTex.colorSpace = THREE.NoColorSpace;
+hudTex.generateMipmaps = false; hudTex.minFilter = THREE.LinearFilter; hudTex.magFilter = THREE.LinearFilter;
+
+const comp = new THREE.ShaderMaterial({ vertexShader: VS, fragmentShader: COMP_FS, depthTest: false, depthWrite: false, uniforms: {
+  tHolo: { value: holoRT.texture }, tHud: { value: hudTex }, uRes: { value: new THREE.Vector2(W * dpr, H * dpr) },
+  uT: { value: 0 }, uWave: { value: -1 }, uHex: { value: 0 }, uFlash: { value: 0 }, uZoom: { value: 0 }, uScope: { value: 322 }, uGain: { value: 1 }, uHexS: { value: 1 }, uDive: { value: 0 },
+  uTgt: { value: new THREE.Vector2(960, 540) } } });
+const fin = new THREE.ShaderMaterial({ vertexShader: VS, fragmentShader: FINAL_FS, depthTest: false, depthWrite: false, uniforms: {
+  tDiffuse: { value: null }, uRes: { value: new THREE.Vector2(W * dpr, H * dpr) }, uT: { value: 0 }, uOpen: { value: 1 },
+  uGlitch: { value: 0 }, uFlash: { value: 0 }, uCA: { value: 0.0007 }, uFrame: { value: 0 }, uRoll: { value: 0.23 }, uClose: { value: 0 } } });
+
+const composer = new EffectComposer(renderer);
+composer.setPixelRatio(dpr); composer.setSize(W, H);
+const compPass = new ShaderPass(comp); const bloom = new UnrealBloomPass(new THREE.Vector2(W * dpr, H * dpr), 0.75, 0.45, 0.32);
+const finPass = new ShaderPass(fin);
+const tmat = new THREE.ShaderMaterial({ vertexShader: VS, fragmentShader: TEXT_FS, depthTest: false, depthWrite: false, uniforms: {
+  tDiffuse: { value: null }, tTxt: { value: txtTex }, uRes: { value: new THREE.Vector2(W * dpr, H * dpr) }, uWave: { value: -1 },
+  uTgt: { value: new THREE.Vector2(960, 540) } } });
+const txtPass = new ShaderPass(tmat);
+composer.addPass(compPass); composer.addPass(bloom); composer.addPass(txtPass);
+composer.addPass(finPass);
+
+// glitch events (frame-quantised): power-on, signal, lock + a few restrained micro-glitches
+const GL = [[0.0, 0.2, 1.0], [K.signal_detected, 0.14, 0.8], [LOCK + 1 / 30, 0.1, 0.45], [K.resolve, 0.067, 0.3], [2.93, 0.067, 0.35], [5.43, 0.067, 0.3], [8.13, 0.067, 0.3], [9.3, 0.034, 0.25]];
+const glitch = (t) => { let g = 0; for (const [t0, d, a] of GL) if (t >= t0 && t < t0 + d) g = Math.max(g, a * (1 - 0.5 * (t - t0) / d)); return g; };
+
+// hard-event frames are rendered with a closed shutter (all sub-samples at the frame centre): the impact frame must be one crisp state
+const HARD = new Set([frameOf(LOCK), frameOf(K.resolve), frameOf(K.signal_detected), frameOf(K.boot.ring_outer)]);
+// type + post-bloom vector layer: drawn ONCE per frame at the frame centre (no motion-blur double exposure of rolling digits)
+let lastTF = -1;
+window.renderAt = async (t) => {
+  { const fr = Math.round(t * 30); if (HARD.has(fr)) t = fr / 30; }
+  { const fq = frameOf(t); if (fq !== lastTF) { const tc = fq / 30; drawHUD(tc, holo.update(tc), 'txt'); txtTex.needsUpdate = true; lastTF = fq; } }
+  const S = holo.update(t);
+  renderer.setRenderTarget(holoRT); renderer.setClearColor(0x000000, 1); renderer.clear(); renderer.render(holo.scene, holo.camera);
+  renderer.setRenderTarget(null);
+  const HS = drawHUD(t, S, 'geo'); hudTex.needsUpdate = true;
+  const f = frameOf(t), fl = frameOf(LOCK);
+  const u = comp.uniforms, v0 = fin.uniforms;
+  u.uT.value = t; u.uZoom.value = S.zoom;
+  u.uWave.value = t >= LOCK ? E.outC(prog(t, LOCK, K.wave_dur)) * 1350 : -1;
+  u.uHex.value = t >= K.boot.hex ? E.outC(prog(t, K.boot.hex, 1.2)) * 1500 : 0;
+  u.uFlash.value = 0; v0.uFlash.value = f === fl ? 1.0 : f === fl + 1 ? 0.3 : f === frameOf(K.resolve) ? 0.45 : f === frameOf(K.signal_detected) ? 0.3 : 0;
+  // focus pull: hologram drops to 45 % while the brackets converge, returns on the impact
+  u.uGain.value = t < LOCK ? 1 - 0.55 * E.inOutC(prog(t, 6.10, 0.26)) : 1 + 0.55 * E.inOutC(prog(t, LOCK + 0.07, 0.3)) * (1 - E.inOutC(prog(t, 7.15, 0.55)));  // dive: the coast rushing past is the brightest layer
+  u.uHexS.value = 1 + 0.1 * HS.dive; u.uDive.value = HS.dive;
+  u.uTgt.value.set(S.target.x, H - S.target.y);
+  tmat.uniforms.uWave.value = u.uWave.value; tmat.uniforms.uTgt.value.copy(u.uTgt.value);
+  u.uScope.value = HS.scopeR;
+  const v = fin.uniforms;
+  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);
+  v.uCA.value = 0.0007 + (t >= LOCK + 1 / 30 ? 0.003 * Math.exp(-(t - LOCK - 1 / 30) * 7) : 0) + (t < 0.2 ? 0.002 * (1 - t / 0.2) : 0);
+  bloom.radius = 0.45 - (t >= LOCK ? 0.2 * Math.exp(-(t - LOCK) * 4) : 0); v.uClose.value = prog(t, 9.7667, 0.2);
+  bloom.strength = 0.75 + (t >= LOCK + 1 / 30 ? 0.18 * Math.exp(-(t - LOCK - 1 / 30) * 8) : 0) + (f === frameOf(K.boot.ring_outer) ? 0.9 : 0);
+  composer.render();
+  renderer.getContext().finish();
+};
+
+await document.fonts.load('500 20px "JetBrains Mono"'); await document.fonts.load('600 20px "JetBrains Mono"'); await document.fonts.load('400 20px "JetBrains Mono"');
+await document.fonts.load('600 14px Rajdhani'); await document.fonts.load('700 14px Rajdhani');
+await document.fonts.load('600 60px "Chakra Petch"');
+for (const w of [400, 500, 700, 900]) await document.fonts.load(`${w} 40px "HarmonyOS Sans SC"`, '目标锁定隼眼轨道光学系统自检导航遥测雷达扫描信号分析候选频谱数据链警报坐标');
+await document.fonts.ready;

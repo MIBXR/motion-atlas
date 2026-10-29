@@ -1,0 +1,83 @@
+{
+  "id": "seeded-digit-scramble-settle",
+  "order": 90,
+  "title": "乱数跳变落定",
+  "types": [
+    "hud",
+    "type-motion"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "mg-styles-15",
+    "赛博朋克 HUD"
+  ],
+  "summary": "等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。",
+  "mechanism": "等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。",
+  "trigger": "数据读数的上线节点到达时",
+  "effect": "数字先以固定帧种子离散替换字形，再落定当前数值。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "mg-hud 原片 2.2–9.7 秒；1 倍速，总时长 7.5 秒。"
+    },
+    {
+      "name": "乱数跳变落定参数",
+      "value": "export function roll(t, t0, final, id = 0, nFrames = 4) {\n  if (f >= nFrames) return final;\n    s += /[0-9]/.test(c) ? DIG[Math.floor(hash(id, i, f + 7) * 10)] : c;\n  const v = base + amp * (1 - (ey - y) / h);"
+    }
+  ],
+  "useCases": [
+    "遥测数字上线",
+    "候选匹配值与状态读数落定"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态偏好下暂停在巧思 0.233333333 秒，声音默认关闭。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+  },
+  "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-hud 原片 2.2–9.7 秒；总时长 7.5 秒。等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。参数保持原作数值：export function roll(t, t0, final, id = 0, nFrames = 4) {\n  if (f >= nFrames) return final;\n    s += /[0-9]/.test(c) ? DIG[Math.floor(hash(id, i, f + 7) * 10)] : c;\n  const v = base + amp * (1 - (ey - y) / h);\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
+  "migration": [
+    {
+      "field": "index.html 内联配置 → segments / markers",
+      "how": "调整来源片段与中文节点，画面和声音使用同一时刻映射。"
+    }
+  ],
+  "demo": "demos/patterns/seeded-digit-scramble-settle/index.html",
+  "kit": true,
+  "timeline": true,
+  "renderer": "gpu",
+  "sources": [
+    {
+      "caseId": "mg-hud"
+    }
+  ],
+  "previewAt": 0.233333333,
+  "markers": [
+    {
+      "t": 0,
+      "label": "赛博朋克 HUD"
+    },
+    {
+      "t": 0.233333333,
+      "label": "机制画面 1"
+    },
+    {
+      "t": 0.8,
+      "label": "机制画面 2"
+    },
+    {
+      "t": 5.3,
+      "label": "机制画面 3"
+    }
+  ]
+}

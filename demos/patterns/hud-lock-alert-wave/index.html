@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>锁定括号警报波 · Motion Atlas</title>
+  <style>
+    html,body{margin:0;background:#000;overflow:hidden}
+    #stage{background:#000}
+    #cue{position:absolute;left:24px;top:24px;z-index:2;padding:10px 16px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;font:22px/1.4 "Microsoft YaHei",sans-serif;pointer-events:none}
+    #cue[hidden]{display:none}
+  </style>
+</head>
+<body>
+  <main id="stage"><output id="cue" hidden></output></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    const config = {
+      "title": "锁定括号警报波",
+      "segments": [
+        {
+          "caseId": "mg-hud",
+          "label": "赛博朋克 HUD",
+          "from": 5.7,
+          "to": 8.1
+        }
+      ],
+      "markers": [
+        {
+          "t": 0,
+          "label": "赛博朋克 HUD"
+        },
+        {
+          "t": 0.4,
+          "label": "机制画面 1"
+        },
+        {
+          "t": 0.7,
+          "label": "机制画面 2"
+        },
+        {
+          "t": 1.0,
+          "label": "机制画面 3"
+        }
+      ],
+      "reduced": 0.8,
+      "root": "#stage",
+      "orients": [
+        "landscape"
+      ],
+      "fps": 30
+    };
+    await MotionKit.replay(config);
+  </script>
+</body>
+</html>
