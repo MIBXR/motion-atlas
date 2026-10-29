@@ -101,7 +101,7 @@
   "files": [
     {
       "path": "demos/cases/mg-synthwave/LICENSES.md",
-      "bytes": 535
+      "bytes": 1068
     },
     {
       "path": "demos/cases/mg-synthwave/audio/film.m4a",
@@ -109,7 +109,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/fidelity.md",
-      "bytes": 4055
+      "bytes": 4597
     },
     {
       "path": "demos/cases/mg-synthwave/film/LICENSE",
@@ -178,6 +178,10 @@
     {
       "path": "demos/cases/mg-synthwave/source/audio.py",
       "bytes": 11743
+    },
+    {
+      "path": "demos/cases/mg-synthwave/source/cues.json",
+      "bytes": 1312
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/LICENSE",
@@ -249,7 +253,7 @@
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16218
+      "bytes": 16367
     },
     {
       "path": "entries/patterns/neon-write-on-ignition.json",

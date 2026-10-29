@@ -223,5 +223,12 @@
       "scope": "配乐",
       "notes": "`audio/film.m4a` 从固定提交的 `videos/12-aurora-glass.mp4` 以 `ffmpeg -vn -c:a copy` 无损抽取 AAC 音轨，保留原片混音；成片与自制音频采用原作 MIT 许可。配乐生成过程原样保存在 `source/audio.py`，使用 [VCSL 乐器采样](https://github.com/sgossner/VCSL)（CC0）与原作合成器。"
     }
+  ],
+  "relatedEntries": [
+    {
+      "kind": "material",
+      "id": "mg-styles-15",
+      "note": "提示词与配乐合成库所在素材"
+    }
   ]
 }

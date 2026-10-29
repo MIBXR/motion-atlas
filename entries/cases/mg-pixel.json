@@ -446,5 +446,12 @@
       "scope": "素材与依赖",
       "notes": "本片的角色、宝箱、金币、背景和像素片名均由 `film/film.js` 绘制；本片没有 vendor 包或共享贴图。"
     }
+  ],
+  "relatedEntries": [
+    {
+      "kind": "material",
+      "id": "mg-styles-15",
+      "note": "提示词与配乐合成库所在素材"
+    }
   ]
 }

@@ -166,7 +166,7 @@
   "files": [
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 254
+      "bytes": 789
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
@@ -174,7 +174,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3398
+      "bytes": 3942
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
@@ -229,6 +229,10 @@
       "bytes": 7610
     },
     {
+      "path": "demos/cases/mg-flat-vector/source/cues.json",
+      "bytes": 906
+    },
+    {
       "path": "demos/patterns/dot-drop-wordmark/index.html",
       "bytes": 1835
     },
@@ -238,7 +242,7 @@
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20604
+      "bytes": 20753
     },
     {
       "path": "entries/patterns/dot-drop-wordmark.json",

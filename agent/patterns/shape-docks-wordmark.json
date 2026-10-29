@@ -116,7 +116,7 @@
   "files": [
     {
       "path": "demos/cases/mg-aurora-glass/LICENSES.md",
-      "bytes": 294
+      "bytes": 830
     },
     {
       "path": "demos/cases/mg-aurora-glass/assets/textures/grain/grain_fine_2048.png",
@@ -128,7 +128,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/fidelity.md",
-      "bytes": 4067
+      "bytes": 4710
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/LICENSE",
@@ -199,8 +199,12 @@
       "bytes": 10545
     },
     {
+      "path": "demos/cases/mg-aurora-glass/source/cues.json",
+      "bytes": 881
+    },
+    {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 303
+      "bytes": 832
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
@@ -212,7 +216,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4085
+      "bytes": 4869
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
@@ -283,6 +287,10 @@
       "bytes": 8665
     },
     {
+      "path": "demos/cases/mg-morph/source/cues.json",
+      "bytes": 1541
+    },
+    {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
       "bytes": 2387
     },
@@ -296,11 +304,11 @@
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16152
+      "bytes": 16301
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 15482
+      "bytes": 15631
     },
     {
       "path": "entries/patterns/shape-docks-wordmark.json",

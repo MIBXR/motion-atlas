@@ -140,7 +140,7 @@
   "files": [
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 442
+      "bytes": 1181
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
@@ -172,7 +172,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 4474
+      "bytes": 5403
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
@@ -235,15 +235,35 @@
       "bytes": 119411
     },
     {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_01_3840x2160.png",
+      "bytes": 81508
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_02_3840x2160.png",
+      "bytes": 82662
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_03_3840x2160.png",
+      "bytes": 73739
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/assets/textures/dust/dust_04_3840x2160.png",
+      "bytes": 79891
+    },
+    {
       "path": "demos/cases/mg-cel-boil/source/audio.py",
       "bytes": 24290
     },
     {
-      "path": "demos/cases/mg-cel-boil/source/gen_dust.py",
+      "path": "demos/cases/mg-cel-boil/source/cues.json",
+      "bytes": 2188
+    },
+    {
+      "path": "demos/cases/mg-cel-boil/source/tools/gen_dust.py",
       "bytes": 707
     },
     {
-      "path": "demos/cases/mg-cel-boil/source/gen_paper.py",
+      "path": "demos/cases/mg-cel-boil/source/tools/gen_paper.py",
       "bytes": 2360
     },
     {
@@ -276,7 +296,7 @@
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24092
+      "bytes": 24241
     },
     {
       "path": "entries/patterns/flipbook-pullback.json",

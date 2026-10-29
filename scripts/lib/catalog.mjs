@@ -106,11 +106,12 @@ const DOC_GROUPS = [
   ['prompts/cases/', '案例 Prompt'],
   ['prompts/patterns/', '巧思 Prompt'],
   ['prompts/materials/', '素材 Prompt'],
+  ['demos/materials/', '素材原文'],
 ];
 const GUIDE_ORDER = ['docs/guide.md', 'docs/rhythm.md', 'docs/prompting.md', 'docs/methodology.md', 'docs/pipeline.md'];
 
-function collectDocs(extra) {
-  const files = walk('docs').filter((f) => f.endsWith('.md'));
+function collectDocs(extra, materials) {
+  const files = [...walk('docs'), ...materials.flatMap(r => r.snapshotFiles || [])].filter((f) => f.endsWith('.md'));
   const docs = [...new Set([...files, ...Object.keys(extra).filter(p => /^(?:docs|prompts)\/.+\.md$/.test(p))])].map(p => ({ path: p, content: extra[p] ?? read(p) }));
   return docs.map((d) => {
     const m = d.content.match(/^#\s+(.+)$/m);
@@ -159,7 +160,7 @@ export function buildAll() {
     const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${materials.length} 个素材**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**\n<!-- counts:end -->`;
     files['README.md'] = readme.replace(/<!-- counts:start -->[\s\S]*?<!-- counts:end -->/, block);
   }
-  const docs = collectDocs(files);
+  const docs = collectDocs(files, materials);
   files['data/docs.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA_DOCS = ${JSON.stringify(docs)};\n`;
 
   // Agent 资料包

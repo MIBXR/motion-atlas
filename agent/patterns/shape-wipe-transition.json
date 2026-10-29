@@ -178,7 +178,7 @@
   "files": [
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 254
+      "bytes": 789
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
@@ -186,7 +186,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3398
+      "bytes": 3942
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
@@ -241,8 +241,12 @@
       "bytes": 7610
     },
     {
+      "path": "demos/cases/mg-flat-vector/source/cues.json",
+      "bytes": 906
+    },
+    {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 517
+      "bytes": 1047
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -302,7 +306,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3555
+      "bytes": 4658
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -406,7 +410,7 @@
     },
     {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 303
+      "bytes": 832
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
@@ -418,7 +422,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4085
+      "bytes": 4869
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
@@ -489,6 +493,10 @@
       "bytes": 8665
     },
     {
+      "path": "demos/cases/mg-morph/source/cues.json",
+      "bytes": 1541
+    },
+    {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
       "bytes": 2387
     },
@@ -502,15 +510,15 @@
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20604
+      "bytes": 20753
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18441
+      "bytes": 18590
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 15482
+      "bytes": 15631
     },
     {
       "path": "entries/patterns/shape-wipe-transition.json",

@@ -372,7 +372,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/LICENSES.md",
-      "bytes": 283
+      "bytes": 816
     },
     {
       "path": "demos/cases/mg-3d-render/assets/.gitignore",
@@ -1348,7 +1348,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/fidelity.md",
-      "bytes": 4239
+      "bytes": 5281
     },
     {
       "path": "demos/cases/mg-3d-render/film/LICENSE",
@@ -1405,6 +1405,10 @@
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/README.md",
+      "bytes": 899
     },
     {
       "path": "demos/cases/mg-3d-render/source/assets/hdri/studio_small_09_2k.hdr",
@@ -1464,7 +1468,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/LICENSES.md",
-      "bytes": 294
+      "bytes": 830
     },
     {
       "path": "demos/cases/mg-aurora-glass/assets/textures/grain/grain_fine_2048.png",
@@ -1476,7 +1480,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/fidelity.md",
-      "bytes": 4067
+      "bytes": 4710
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/LICENSE",
@@ -1547,8 +1551,12 @@
       "bytes": 10545
     },
     {
+      "path": "demos/cases/mg-aurora-glass/source/cues.json",
+      "bytes": 881
+    },
+    {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
-      "bytes": 234
+      "bytes": 765
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/grain/grain_fine_2048.png",
@@ -1564,7 +1572,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/fidelity.md",
-      "bytes": 3471
+      "bytes": 4011
     },
     {
       "path": "demos/cases/mg-bauhaus/film/LICENSE",
@@ -1623,8 +1631,12 @@
       "bytes": 9344
     },
     {
+      "path": "demos/cases/mg-bauhaus/source/cues.json",
+      "bytes": 3719
+    },
+    {
       "path": "demos/cases/mg-collage/LICENSES.md",
-      "bytes": 470
+      "bytes": 1208
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bfly_a.png",
@@ -1728,7 +1740,7 @@
     },
     {
       "path": "demos/cases/mg-collage/fidelity.md",
-      "bytes": 3309
+      "bytes": 4402
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
@@ -1856,7 +1868,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/LICENSES.md",
-      "bytes": 257
+      "bytes": 789
     },
     {
       "path": "demos/cases/mg-line-art/assets/textures/grain/grain_fine_2048.png",
@@ -1868,7 +1880,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/fidelity.md",
-      "bytes": 4754
+      "bytes": 5828
     },
     {
       "path": "demos/cases/mg-line-art/film/LICENSE",
@@ -1919,12 +1931,44 @@
       "bytes": 119411
     },
     {
+      "path": "demos/cases/mg-line-art/source/assets/fonts/fonts.css",
+      "bytes": 9135
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
       "path": "demos/cases/mg-line-art/source/audio.py",
       "bytes": 9978
     },
     {
+      "path": "demos/cases/mg-line-art/source/cues.json",
+      "bytes": 3214
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/film.js",
+      "bytes": 46982
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/index.html",
+      "bytes": 566
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/out/timing.json",
+      "bytes": 8840
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/tools/dump_timing.mjs",
+      "bytes": 2188
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/tools/retime.py",
+      "bytes": 4430
+    },
+    {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 303
+      "bytes": 832
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
@@ -1936,7 +1980,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4085
+      "bytes": 4869
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
@@ -2007,6 +2051,10 @@
       "bytes": 8665
     },
     {
+      "path": "demos/cases/mg-morph/source/cues.json",
+      "bytes": 1541
+    },
+    {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
       "bytes": 2387
     },
@@ -2060,27 +2108,27 @@
     },
     {
       "path": "entries/cases/mg-3d-render.json",
-      "bytes": 16435
+      "bytes": 16584
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16152
+      "bytes": 16301
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19050
+      "bytes": 19199
     },
     {
       "path": "entries/cases/mg-collage.json",
-      "bytes": 18834
+      "bytes": 18983
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19017
+      "bytes": 19166
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 15482
+      "bytes": 15631
     },
     {
       "path": "entries/patterns/film-grain.json",

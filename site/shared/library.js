@@ -884,7 +884,9 @@
       const hash = kind === 'cases' ? 'case' : 'pattern';
       return `<li><a href="${kind}.html#${hash}/${esc(relation.id)}">${esc(entry.title)}</a>：${esc(relation.note)}</li>`;
     }).join('')}</ul>` : `<p>本库暂无由此 ${it.type === 'agent-skill' ? 'skill' : '素材'} 产出的复刻案例</p>`;
-    const snapshotLinks = it.snapshotPath ? `<ul><li><a href="${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${[['README.zh-CN.md', '中文说明'], ['README.md', '原版说明']].filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
+    const references = [['README.zh-CN.md', '中文说明'], ['README.md', '原版说明']];
+    if (it.type === 'prompt-kit') references.push(['template.md', '提示词模板'], ['rubric.md', '评审量表'], ['lib/audio/README.md', 'mgaudio 配乐说明'], ...it.snapshotFiles.filter(file => file.startsWith(it.snapshotPath + 'prompts/') && file.endsWith('.md')).map(file => [file.slice(it.snapshotPath.length), '风格提示词']));
+    const snapshotLinks = it.snapshotPath ? `<ul><li><a href="docs.html#doc/${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${references.filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="docs.html#doc/${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
     return [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
       sec('为什么归入本库', '', `<p>${esc(it.carrierNote)}</p>`),
@@ -953,6 +955,7 @@
       it.migration ? sec('迁移指南', 'MIGRATE', `<table class="token-table"><tbody>${it.migration.map((m) => `<tr><td>${esc(m.field)}</td><td>${esc(m.how)}</td></tr>`).join('')}</tbody></table>`) : '',
       sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl><div style="margin-top:10px">${ul(it.constraints)}</div>`),
       sec('关联巧思', 'PATTERNS', relPatterns(it.patternIds)),
+      it.relatedEntries?.length ? sec('关联素材', 'MATERIALS', `<ul>${it.relatedEntries.filter(relation => relation.kind === 'material').map(relation => `<li><a href="materials.html#material/${esc(relation.id)}">${esc(byId(MA.materials, relation.id).title)}</a>：${esc(relation.note)}</li>`).join('')}</ul>`) : '',
       documentLinks(it),
     ].join('');
   }
