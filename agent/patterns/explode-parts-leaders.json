@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "explode-parts-leaders",
+  "pattern": {
+    "id": "explode-parts-leaders",
+    "order": 70,
+    "title": "拆件引线联动",
+    "types": [
+      "composition",
+      "hud"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "mg-styles-15",
+      "贴纸科普"
+    ],
+    "summary": "部件从手机位置沿弧线飞到分解位，引线从锚点生长，端点与双语标签依次展开。",
+    "mechanism": "部件从手机位置沿弧线飞到分解位，引线从锚点生长，端点与双语标签依次展开。",
+    "trigger": "拆解部件和对应引线的节点依次到达时",
+    "effect": "部件、锚点、引线与标签在同一画布坐标中形成拆解说明。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "mg-paperclip 原片 0.98–2.6 秒；1 倍速，巧思时长 1.62 秒。"
+      },
+      {
+        "name": "拆件引线联动",
+        "value": "L169: p.land=EV.parts[i]; p.lt=EV.leaders[i];；L198: const x=lerp(src.x,p.x,e), y=lerp(src.y,p.y,e)-arc*60; const w=wob(t-p.land,4,9);；L202: const lu=P(t,p.lt,.28);p.line.setAttribute('stroke-dashoffset',1-oC(lu));"
+      }
+    ],
+    "useCases": [
+      "手机部件拆解",
+      "部件锚点与双语标签说明"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态偏好下暂停在巧思 1.22 秒，声音默认关闭。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "按来源片段依次重放完整动作，保留原作的形体、镜头、字体与同段音轨。"
+    },
+    "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-paperclip 原片 0.98–2.6 秒；总时长 1.62 秒。部件从手机位置沿弧线飞到分解位，引线从锚点生长，端点与双语标签依次展开。直接调用来源案例的 renderAt(t)，保留原作参数、画面、字体与成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
+    "migration": [
+      {
+        "field": "index.html 内联配置 → segments / markers",
+        "how": "调整来源片段和标记；画面与音轨使用同一时刻映射。"
+      }
+    ],
+    "demo": "demos/patterns/explode-parts-leaders/index.html",
+    "kit": true,
+    "timeline": true,
+    "renderer": "gpu",
+    "sources": [
+      {
+        "caseId": "mg-paperclip"
+      }
+    ],
+    "previewAt": 1.22,
+    "markers": [
+      {
+        "t": 0,
+        "label": "贴纸科普"
+      },
+      {
+        "t": 0.42,
+        "label": "机制画面"
+      },
+      {
+        "t": 0.92,
+        "label": "机制画面"
+      },
+      {
+        "t": 1.42,
+        "label": "机制画面"
+      }
+    ],
+    "preview": "previews/patterns/explode-parts-leaders.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "mg-paperclip",
+      "bundle": "agent/cases/mg-paperclip.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 拆件引线联动\n\n## 实现 Prompt\n\n通过 MotionKit.replay 以 1 倍速重放以下片段：mg-paperclip 原片 0.98–2.6 秒；总时长 1.62 秒。部件从手机位置沿弧线飞到分解位，引线从锚点生长，端点与双语标签依次展开。直接调用来源案例的 renderAt(t)，保留原作参数、画面、字体与成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。\n\n## 参数\n\n- **原片重放区间**：mg-paperclip 原片 0.98–2.6 秒；1 倍速，巧思时长 1.62 秒。\n- **拆件引线联动**：L169: p.land=EV.parts[i]; p.lt=EV.leaders[i];；L198: const x=lerp(src.x,p.x,e), y=lerp(src.y,p.y,e)-arc*60; const w=wob(t-p.land,4,9);；L202: const lu=P(t,p.lt,.28);p.line.setAttribute('stroke-dashoffset',1-oC(lu));\n\n## 迁移\n\n- `index.html 内联配置 → segments / markers`：调整来源片段和标记；画面与音轨使用同一时刻映射。\n\n[打开 Demo](../../demos/patterns/explode-parts-leaders/index.html) · [在库中查看](../../patterns.html#pattern/explode-parts-leaders)\n"
+  },
+  "entrypoint": "demos/patterns/explode-parts-leaders/index.html",
+  "files": [
+    {
+      "path": "demos/cases/mg-paperclip/LICENSES.md",
+      "bytes": 3164
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
+      "bytes": 107761
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/battery.png",
+      "bytes": 233146
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/cobalt.png",
+      "bytes": 377499
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/lithium.png",
+      "bytes": 291448
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/meta.json",
+      "bytes": 351
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/pcb.png",
+      "bytes": 1296815
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/phone.png",
+      "bytes": 2104894
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/rareearth.png",
+      "bytes": 644720
+    },
+    {
+      "path": "demos/cases/mg-paperclip/assets/stickers/tin.png",
+      "bytes": 538156
+    },
+    {
+      "path": "demos/cases/mg-paperclip/audio/film.m4a",
+      "bytes": 415520
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fidelity.md",
+      "bytes": 3788
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/cues.json",
+      "bytes": 3076
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/scene.js",
+      "bytes": 50392
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/setup.js",
+      "bytes": 2263
+    },
+    {
+      "path": "demos/cases/mg-paperclip/film/style.css",
+      "bytes": 2129
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-105-Heavy.ttf",
+      "bytes": 2536300
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-65-Medium.ttf",
+      "bytes": 8429388
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-3-85-Bold.ttf",
+      "bytes": 8371268
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/AlibabaPuHuiTi-LICENSE.md",
+      "bytes": 5216
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/Inter-OFL.txt",
+      "bytes": 4377
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/Inter[opsz,wght].ttf",
+      "bytes": 876576
+    },
+    {
+      "path": "demos/cases/mg-paperclip/fonts/fonts.css",
+      "bytes": 698
+    },
+    {
+      "path": "demos/cases/mg-paperclip/index.html",
+      "bytes": 2075
+    },
+    {
+      "path": "demos/cases/mg-paperclip/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-paperclip/source/audio.py",
+      "bytes": 10067
+    },
+    {
+      "path": "demos/cases/mg-paperclip/source/tools/stickers.py",
+      "bytes": 4468
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/LICENSE",
+      "bytes": 731
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/d3@7.9.0/dist/d3.min.js",
+      "bytes": 279706
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/topojson-client@3.1.0/LICENSE",
+      "bytes": 734
+    },
+    {
+      "path": "demos/cases/mg-paperclip/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
+      "bytes": 7169
+    },
+    {
+      "path": "demos/patterns/explode-parts-leaders/index.html",
+      "bytes": 1393
+    },
+    {
+      "path": "demos/patterns/explode-parts-leaders/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "previews/patterns/explode-parts-leaders.jpg",
+      "bytes": 91241
+    }
+  ]
+}

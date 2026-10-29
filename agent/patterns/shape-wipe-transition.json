@@ -15,8 +15,8 @@
     "orients": [
       "landscape"
     ],
-    "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。",
-    "mechanism": "气泡预备后以彗星形、胶囊、半圆依次擦过全屏完成场景切换。",
+    "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。 形变片从主体位置向外扩张色域，并同步裁切同色装饰和字幕完成全屏换景。",
+    "mechanism": "气泡预备后以彗星形、胶囊、半圆依次擦过全屏完成场景切换。 形变片的换景从主体在色域节点的位置出发，以扩张圆形与速度相关羽化边缘接管全屏。",
     "trigger": "气泡进入预备段，随后依次到达三段擦除与半圆砸落节点时。",
     "effect": "通知气泡从室内信息元素变成覆盖画面的形状，连续色场擦除接入下一场景。",
     "timing": [
@@ -35,12 +35,21 @@
       {
         "name": "奶油半圆",
         "value": "158/30–164/30=5.267–5.467秒；半径1700；y=-110-2300*(1-E.inQ(u3))+40*kick(tc,slam,3.5,.4)；sy=1-.06*kick；rot=7*(1-u3)。"
+      },
+      {
+        "name": "总时长",
+        "value": "8.633333s"
+      },
+      {
+        "name": "主体扩张成色域",
+        "value": "L43: const EB = bez(0.42, 0, 0.12, 1);；L428: const FEATHER = 0.4 * 0.5 / FPS;；L430: function circleReg(t, t0, t1, o, r0 = 40, ease = EB) { if (t < t0) return null; if (t >= t1) return 'full';"
       }
     ],
     "useCases": [
       "室内场景切换",
       "气泡元素带动转场",
-      "连续纯色色场擦除"
+      "连续纯色色场擦除",
+      "以主体位置为原点扩张背景色域，衔接连续图形叙事。"
     ],
     "avoid": [
       "竖屏重排",
@@ -56,13 +65,16 @@
       "conflicts": [],
       "notes": "本巧思按所列原片区间顺序重放。"
     },
-    "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
+    "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。 通过 index.html 内联 segments 在前 1.233333 秒之后依次重放mg-morph 原片 1.42–8.82 秒，总时长 8.633333 秒。形变片的换景从主体在色域节点的位置出发，以扩张圆形与速度相关羽化边缘接管全屏。沿用同区间原片音轨，声音默认关闭。",
     "demo": "demos/patterns/shape-wipe-transition/index.html",
     "kit": true,
     "timeline": true,
     "sources": [
       {
         "caseId": "mg-flat-vector"
+      },
+      {
+        "caseId": "mg-morph"
       }
     ],
     "previewAt": 0.7333333333333334,
@@ -90,6 +102,10 @@
       {
         "t": 0.8666666666666671,
         "label": "砸落余震"
+      },
+      {
+        "t": 1.233333333,
+        "label": "形状变形"
       }
     ],
     "sound": {
@@ -123,10 +139,14 @@
     {
       "caseId": "mg-flat-vector",
       "bundle": "agent/cases/mg-flat-vector.json"
+    },
+    {
+      "caseId": "mg-morph",
+      "bundle": "agent/cases/mg-morph.json"
     }
   ],
   "documents": {
-    "prompt": "# 形状擦除转场\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。\n\n## 参数\n\n- **气泡预备**：144/30–150/30=4.800–5.000秒；sx乘1+.12*an，sy乘1-.18*an；上提段145/30=4.833秒起。\n- **彗星气泡**：150/30–160/30=5.000–5.333秒；圆半径58；k=exp(lerp(log(1.12),log(34),E.ioQ(u1)))；尾长84→204；旋转175*E.outC(u1)。\n- **薄荷胶囊**：154/30–163/30=5.133–5.433秒；3000×1500、rx750；k=exp(lerp(log(.03),0,E.ioQ(u2)))；rot=25*(1-E.outB(u2,1.6))。\n- **奶油半圆**：158/30–164/30=5.267–5.467秒；半径1700；y=-110-2300*(1-E.inQ(u3))+40*kick(tc,slam,3.5,.4)；sy=1-.06*kick；rot=7*(1-u3)。\n\n## 迁移\n\n- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/shape-wipe-transition/index.html) · [在库中查看](../../patterns.html#pattern/shape-wipe-transition)\n"
+    "prompt": "# 形状擦除转场\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。 通过 index.html 内联 segments 在前 1.233333 秒之后依次重放mg-morph 原片 1.42–8.82 秒，总时长 8.633333 秒。形变片的换景从主体在色域节点的位置出发，以扩张圆形与速度相关羽化边缘接管全屏。沿用同区间原片音轨，声音默认关闭。\n\n## 参数\n\n- **气泡预备**：144/30–150/30=4.800–5.000秒；sx乘1+.12*an，sy乘1-.18*an；上提段145/30=4.833秒起。\n- **彗星气泡**：150/30–160/30=5.000–5.333秒；圆半径58；k=exp(lerp(log(1.12),log(34),E.ioQ(u1)))；尾长84→204；旋转175*E.outC(u1)。\n- **薄荷胶囊**：154/30–163/30=5.133–5.433秒；3000×1500、rx750；k=exp(lerp(log(.03),0,E.ioQ(u2)))；rot=25*(1-E.outB(u2,1.6))。\n- **奶油半圆**：158/30–164/30=5.267–5.467秒；半径1700；y=-110-2300*(1-E.inQ(u3))+40*kick(tc,slam,3.5,.4)；sy=1-.06*kick；rot=7*(1-u3)。\n- **总时长**：8.633333s\n- **主体扩张成色域**：L43: const EB = bez(0.42, 0, 0.12, 1);；L428: const FEATHER = 0.4 * 0.5 / FPS;；L430: function circleReg(t, t0, t1, o, r0 = 40, ease = EB) { if (t < t0) return null; if (t >= t1) return 'full';\n\n## 迁移\n\n- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/shape-wipe-transition/index.html) · [在库中查看](../../patterns.html#pattern/shape-wipe-transition)\n"
   },
   "entrypoint": "demos/patterns/shape-wipe-transition/index.html",
   "files": [
@@ -195,8 +215,96 @@
       "bytes": 7610
     },
     {
+      "path": "demos/cases/mg-morph/LICENSES.md",
+      "bytes": 2319
+    },
+    {
+      "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
+      "bytes": 3684106
+    },
+    {
+      "path": "demos/cases/mg-morph/audio/film.m4a",
+      "bytes": 342366
+    },
+    {
+      "path": "demos/cases/mg-morph/fidelity.md",
+      "bytes": 4167
+    },
+    {
+      "path": "demos/cases/mg-morph/film/LICENSE",
+      "bytes": 1071
+    },
+    {
+      "path": "demos/cases/mg-morph/film/cues.json",
+      "bytes": 1541
+    },
+    {
+      "path": "demos/cases/mg-morph/film/glyphs.json",
+      "bytes": 24462
+    },
+    {
+      "path": "demos/cases/mg-morph/film/scene.js",
+      "bytes": 60312
+    },
+    {
+      "path": "demos/cases/mg-morph/film/setup.js",
+      "bytes": 257
+    },
+    {
+      "path": "demos/cases/mg-morph/film/style.css",
+      "bytes": 74
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/HarmonyOS-Sans-LICENSE.txt",
+      "bytes": 32768
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/HarmonyOS_Sans_SC_Medium.ttf",
+      "bytes": 8227312
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/IBMPlexMono-Medium.ttf",
+      "bytes": 136704
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/IBMPlexMono-OFL.txt",
+      "bytes": 4363
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/Outfit-OFL.txt",
+      "bytes": 4389
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/Outfit-SemiBold.ttf",
+      "bytes": 55384
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/Outfit[wght].ttf",
+      "bytes": 110884
+    },
+    {
+      "path": "demos/cases/mg-morph/fonts/fonts.css",
+      "bytes": 475
+    },
+    {
+      "path": "demos/cases/mg-morph/index.html",
+      "bytes": 2062
+    },
+    {
+      "path": "demos/cases/mg-morph/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-morph/source/audio.py",
+      "bytes": 8665
+    },
+    {
+      "path": "demos/cases/mg-morph/source/tools/glyphs.py",
+      "bytes": 2387
+    },
+    {
       "path": "demos/patterns/shape-wipe-transition/index.html",
-      "bytes": 1581
+      "bytes": 1813
     },
     {
       "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
