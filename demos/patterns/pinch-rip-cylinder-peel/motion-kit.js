@@ -574,8 +574,10 @@
           const { done, value } = await reader.read();
           if (done) break;
           chunks.push(value); r.loaded += value.byteLength;
+          if (r.loaded > r.total) r.total = r.loaded;
           reset();
         }
+        r.total = r.loaded; r.known = true;
         r.body = new Blob(chunks, { type: response.headers.get('Content-Type') || '' });
         r.headers = response.headers;
         r.downloaded = true;
