@@ -186,10 +186,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/patterns/split-compare-stamp/config.js",
       "bytes": 440
     },
@@ -220,6 +216,10 @@
     {
       "path": "demos/patterns/split-compare-stamp/style.css",
       "bytes": 41282
+    },
+    {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
     },
     {
       "path": "previews/patterns/split-compare-stamp-portrait.jpg",

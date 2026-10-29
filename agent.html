@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agent 工作流 · Motion Atlas</title>
   <meta name="description" content="给编码 Agent 的结构化索引、带 SHA256 文件清单的资料包、零依赖 CLI 与指令生成器。">
-  <link rel="icon" href="assets/favicon.svg?v=onion-1" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/site.css">
-  <link rel="stylesheet" href="assets/agent.css">
+  <link rel="icon" href="site/icons/favicon.svg?v=onion-1" type="image/svg+xml">
+  <link rel="stylesheet" href="site/shared/site.css">
+  <link rel="stylesheet" href="site/pages/agent/agent.css">
 </head>
 <body>
   <header id="site-header"></header>
@@ -16,7 +16,7 @@
       <p class="eyebrow">FOR AGENTS · INDEX / BUNDLE / CLI / RENDER</p>
       <h1>同一套资料，<em>机器也能读</em>。</h1>
       <p>人看站点，Agent 读 JSON。每个条目都有结构化索引、完整资料包（条目、Prompt、带 SHA256 的文件清单）和可运行的 Demo；CLI 负责检索、查看与导出，渲染脚本负责把结果变成视频。</p>
-      <div class="cta"><a class="btn primary" href="agent/catalog.json">打开 agent/catalog.json</a><a class="btn" href="docs.html#doc/AGENT.md">AGENT.md</a><a class="btn ghost" href="docs.html#doc/docs/pipeline.md">render(t) 协议</a></div>
+      <div class="cta"><a class="btn primary" href="agent/catalog.json">打开 agent/catalog.json</a><a class="btn" href="docs.html#doc/docs/agent.md">Agent 取材说明</a><a class="btn ghost" href="docs.html#doc/docs/pipeline.md">render(t) 协议</a></div>
     </header>
 
     <section class="ag-band">
@@ -73,8 +73,8 @@
   </main>
   <footer id="site-footer"></footer>
   <script src="data/catalog.js"></script>
-  <script src="data/resources.js"></script>
-  <script src="assets/site.js"></script>
-  <script src="assets/agent.js"></script>
+  <script src="data/materials.js"></script>
+  <script src="site/shared/site.js"></script>
+  <script src="site/pages/agent/agent.js"></script>
 </body>
 </html>

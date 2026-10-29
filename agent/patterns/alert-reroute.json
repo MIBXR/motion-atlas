@@ -200,10 +200,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/patterns/alert-reroute/config.js",
       "bytes": 502
     },
@@ -228,12 +224,16 @@
       "bytes": 41282
     },
     {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
+    },
+    {
       "path": "previews/patterns/alert-reroute-portrait.jpg",
       "bytes": 183191
     },
     {
       "path": "previews/patterns/alert-reroute.jpg",
-      "bytes": 195638
+      "bytes": 195599
     }
   ]
 }

@@ -47,7 +47,7 @@
   ],
   "gallery": [
     {
-      "path": "assets/resources/motion-showreel/afterglow.webp",
+      "path": "previews/materials/motion-showreel/afterglow.webp",
       "caption": "AFTERGLOW：合成波霓虹专辑片头，原片 19 秒；镜头穿过霓虹门，镀铬标题随重拍弹起。此处为约 4 秒的无声动画 WebP 节选，原片时长依据作者说明。",
       "kind": "work",
       "replicated": false,
@@ -55,7 +55,7 @@
       "license": "garden-skills 仓库 MIT；未披露的外部字体、音频与素材许可不据此推定。"
     },
     {
-      "path": "assets/resources/motion-showreel/boink.webp",
+      "path": "previews/materials/motion-showreel/boink.webp",
       "caption": "boink：软萌三维玩具风格，原片 18 秒；一镜到底呈现多米诺与果冻的连锁反应。此处为约 4 秒的无声动画 WebP 节选，原片时长依据作者说明。",
       "kind": "work",
       "replicated": false,
@@ -63,7 +63,7 @@
       "license": "garden-skills 仓库 MIT；未披露的外部字体、音频与素材许可不据此推定。"
     },
     {
-      "path": "assets/resources/motion-showreel/last-stroke.webp",
+      "path": "previews/materials/motion-showreel/last-stroke.webp",
       "caption": "最后一笔 LAST STROKE：自定义墨线火柴人风格，原片 30 秒；横穿敌人、静音一拍后墨点爆散成片名。此处为约 4 秒的无声动画 WebP 节选，原片时长依据作者说明。",
       "kind": "work",
       "replicated": false,
@@ -71,7 +71,7 @@
       "license": "garden-skills 仓库 MIT；未披露的外部字体、音频与素材许可不据此推定。"
     },
     {
-      "path": "assets/resources/motion-showreel/umbra.webp",
+      "path": "previews/materials/motion-showreel/umbra.webp",
       "caption": "UMBRA 本影：电影片头风格，原片 27 秒；以日全食、钻石环和宽银幕黑边构成片名显影。此处为约 4 秒的无声动画 WebP 节选，原片时长依据作者说明。",
       "kind": "work",
       "replicated": false,
@@ -79,7 +79,7 @@
       "license": "garden-skills 仓库 MIT；未披露的外部字体、音频与素材许可不据此推定。"
     },
     {
-      "path": "assets/resources/motion-showreel/promo.webp",
+      "path": "previews/materials/motion-showreel/promo.webp",
       "caption": "Motion Showreel 宣传片：多媒介混搭，原片 80 秒；橙点逐拍切换水墨、剪纸、孔版印刷等媒介，收束为 22 种风格墙。此处为约 4 秒的无声动画 WebP 节选，原片时长依据作者说明。",
       "kind": "work",
       "replicated": false,
@@ -87,7 +87,7 @@
       "license": "garden-skills 仓库 MIT；未披露的外部字体、音频与素材许可不据此推定。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-ukiyo-e.webp",
+      "path": "previews/materials/motion-showreel/style-ukiyo-e.webp",
       "caption": "浮世绘木版（ukiyo-e）风格样张；约 4 秒的无声动画 WebP。",
       "kind": "style",
       "replicated": false,
@@ -95,7 +95,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-glass-material.webp",
+      "path": "previews/materials/motion-showreel/style-glass-material.webp",
       "caption": "玻璃金属材质（glass-material）风格样张；约 4 秒的无声动画 WebP。",
       "kind": "style",
       "replicated": false,
@@ -103,7 +103,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-kinetic-brutalist.webp",
+      "path": "previews/materials/motion-showreel/style-kinetic-brutalist.webp",
       "caption": "粗野动态排版（kinetic-brutalist）风格样张；约 4 秒的无声动画 WebP。",
       "kind": "style",
       "replicated": false,
@@ -111,7 +111,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-swiss-editorial.webp",
+      "path": "previews/materials/motion-showreel/style-swiss-editorial.webp",
       "caption": "瑞士编辑（swiss-editorial）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -119,7 +119,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-ink-wash.webp",
+      "path": "previews/materials/motion-showreel/style-ink-wash.webp",
       "caption": "水墨（ink-wash）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -127,7 +127,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-risograph-print.webp",
+      "path": "previews/materials/motion-showreel/style-risograph-print.webp",
       "caption": "孔版印刷（risograph-print）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -135,7 +135,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-editorial-collage.webp",
+      "path": "previews/materials/motion-showreel/style-editorial-collage.webp",
       "caption": "杂志拼贴（editorial-collage）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -143,7 +143,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-isometric-infographic.webp",
+      "path": "previews/materials/motion-showreel/style-isometric-infographic.webp",
       "caption": "等距信息图（isometric-infographic）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -151,7 +151,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-liquid-shader.webp",
+      "path": "previews/materials/motion-showreel/style-liquid-shader.webp",
       "caption": "液态着色器（liquid-shader）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -159,7 +159,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-data-motion.webp",
+      "path": "previews/materials/motion-showreel/style-data-motion.webp",
       "caption": "数据动效（data-motion）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -167,7 +167,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-generative-geometry.webp",
+      "path": "previews/materials/motion-showreel/style-generative-geometry.webp",
       "caption": "生成几何（generative-geometry）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -175,7 +175,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-pixel-game.webp",
+      "path": "previews/materials/motion-showreel/style-pixel-game.webp",
       "caption": "像素游戏（pixel-game）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -183,7 +183,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-synthwave-neon.webp",
+      "path": "previews/materials/motion-showreel/style-synthwave-neon.webp",
       "caption": "合成波霓虹（synthwave-neon）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -191,7 +191,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-paper-cut.webp",
+      "path": "previews/materials/motion-showreel/style-paper-cut.webp",
       "caption": "剪纸（paper-cut）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -199,7 +199,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-minimal-ui.webp",
+      "path": "previews/materials/motion-showreel/style-minimal-ui.webp",
       "caption": "极简界面（minimal-ui）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -207,7 +207,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-comic-pop.webp",
+      "path": "previews/materials/motion-showreel/style-comic-pop.webp",
       "caption": "漫画分格（comic-pop）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -215,7 +215,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-flat-vector.webp",
+      "path": "previews/materials/motion-showreel/style-flat-vector.webp",
       "caption": "扁平插画（flat-vector）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -223,7 +223,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-guochao.webp",
+      "path": "previews/materials/motion-showreel/style-guochao.webp",
       "caption": "国潮纹样（guochao）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -231,7 +231,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-painterly.webp",
+      "path": "previews/materials/motion-showreel/style-painterly.webp",
       "caption": "油画笔触（painterly）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -239,7 +239,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-glitch-digital.webp",
+      "path": "previews/materials/motion-showreel/style-glitch-digital.webp",
       "caption": "数字故障（glitch-digital）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -247,7 +247,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-soft-organic.webp",
+      "path": "previews/materials/motion-showreel/style-soft-organic.webp",
       "caption": "柔光有机（soft-organic）风格样张；单帧 WebP 静帧预览，未提供该样张的时间线源码。",
       "kind": "style",
       "replicated": false,
@@ -255,7 +255,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-hologram-hud.webp",
+      "path": "previews/materials/motion-showreel/style-hologram-hud.webp",
       "caption": "全息空间界面（hologram-hud）风格样张；约 4 秒的无声动画 WebP。",
       "kind": "style",
       "replicated": false,
@@ -263,7 +263,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-particle-field.webp",
+      "path": "previews/materials/motion-showreel/style-particle-field.webp",
       "caption": "粒子场（particle-field）风格样张；约 4 秒的无声动画 WebP。",
       "kind": "style",
       "replicated": false,
@@ -271,7 +271,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/style-art-deco.webp",
+      "path": "previews/materials/motion-showreel/style-art-deco.webp",
       "caption": "装饰艺术（art-deco）风格样张；约 4 秒的无声动画 WebP。",
       "kind": "style",
       "replicated": false,
@@ -279,7 +279,7 @@
       "license": "garden-skills 仓库 MIT；样张所用外部资源许可未逐项披露。"
     },
     {
-      "path": "assets/resources/motion-showreel/banner.webp",
+      "path": "previews/materials/motion-showreel/banner.webp",
       "caption": "Motion Showreel 宣传总览横幅，静帧预览。",
       "kind": "style",
       "replicated": false,

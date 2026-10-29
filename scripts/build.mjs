@@ -15,7 +15,7 @@ for (const dir of first.kitTargets) {
   }
 }
 
-const { files, cases, patterns, resources } = buildAll();
+const { files, cases, patterns, materials } = buildAll();
 let changed = 0;
 for (const [rel, content] of Object.entries(files)) {
   const abs = path.join(ROOT, rel);
@@ -25,7 +25,7 @@ for (const [rel, content] of Object.entries(files)) {
   changed++;
 }
 // 清理已删除条目的旧生成物
-for (const dir of ['agent/cases', 'agent/patterns', 'agent/resources', 'prompts/cases', 'prompts/patterns']) {
+for (const dir of ['agent/cases', 'agent/patterns', 'agent/materials', 'prompts/cases', 'prompts/patterns']) {
   const abs = path.join(ROOT, dir);
   if (!fs.existsSync(abs)) continue;
   for (const f of fs.readdirSync(abs)) {
@@ -33,4 +33,4 @@ for (const dir of ['agent/cases', 'agent/patterns', 'agent/resources', 'prompts/
     if (!(rel in files)) { fs.rmSync(path.join(abs, f)); console.log('remove', rel); }
   }
 }
-console.log(`build ok · ${cases.length} cases · ${patterns.length} patterns · ${resources.length} resources · ${changed} files updated`);
+console.log(`build ok · ${cases.length} cases · ${patterns.length} patterns · ${materials.length} materials · ${changed} files updated`);

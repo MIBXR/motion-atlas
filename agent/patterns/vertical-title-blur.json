@@ -205,10 +205,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/patterns/vertical-title-blur/config.js",
       "bytes": 1069
     },
@@ -255,6 +251,10 @@
     {
       "path": "demos/patterns/vertical-title-blur/style.css",
       "bytes": 41282
+    },
+    {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
     },
     {
       "path": "previews/patterns/vertical-title-blur-portrait.jpg",

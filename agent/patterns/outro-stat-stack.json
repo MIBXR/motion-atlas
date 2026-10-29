@@ -187,10 +187,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/patterns/outro-stat-stack/config.js",
       "bytes": 450
     },
@@ -221,6 +217,10 @@
     {
       "path": "demos/patterns/outro-stat-stack/style.css",
       "bytes": 41282
+    },
+    {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
     },
     {
       "path": "previews/patterns/outro-stat-stack-portrait.jpg",

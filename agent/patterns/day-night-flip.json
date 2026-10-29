@@ -195,10 +195,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/patterns/day-night-flip/config.js",
       "bytes": 656
     },
@@ -221,6 +217,10 @@
     {
       "path": "demos/patterns/day-night-flip/style.css",
       "bytes": 41282
+    },
+    {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
     },
     {
       "path": "previews/patterns/day-night-flip-portrait.jpg",

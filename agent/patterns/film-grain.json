@@ -250,10 +250,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/cases/mg-aurora-glass/LICENSES.md",
       "bytes": 1858
     },
@@ -608,6 +604,10 @@
     {
       "path": "demos/patterns/film-grain/style.css",
       "bytes": 41282
+    },
+    {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
     },
     {
       "path": "previews/patterns/film-grain-portrait.jpg",

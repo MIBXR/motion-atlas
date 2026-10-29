@@ -226,10 +226,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
       "bytes": 3164
     },
@@ -418,12 +414,16 @@
       "bytes": 41282
     },
     {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
+    },
+    {
       "path": "previews/patterns/collect-counter-portrait.jpg",
       "bytes": 190176
     },
     {
       "path": "previews/patterns/collect-counter.jpg",
-      "bytes": 175536
+      "bytes": 175509
     }
   ]
 }

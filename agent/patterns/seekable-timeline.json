@@ -3522,10 +3522,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/archive-os/source/research.md",
-      "bytes": 2572
-    },
-    {
       "path": "demos/cases/archive-os/source/rhinelabui/LICENSE",
       "bytes": 1063
     },
@@ -3954,10 +3950,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/patterns/seekable-timeline/config.js",
       "bytes": 1998
     },
@@ -3988,6 +3980,14 @@
     {
       "path": "demos/patterns/seekable-timeline/style.css",
       "bytes": 41282
+    },
+    {
+      "path": "docs/research/archive-os.md",
+      "bytes": 2679
+    },
+    {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
     },
     {
       "path": "previews/patterns/seekable-timeline-portrait.jpg",
