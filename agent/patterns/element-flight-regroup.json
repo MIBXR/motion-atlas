@@ -110,7 +110,7 @@
   "files": [
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
-      "bytes": 3164
+      "bytes": 378
     },
     {
       "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
@@ -154,7 +154,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/fidelity.md",
-      "bytes": 3788
+      "bytes": 3710
     },
     {
       "path": "demos/cases/mg-paperclip/film/LICENSE",
@@ -243,6 +243,14 @@
     {
       "path": "demos/patterns/element-flight-regroup/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-paperclip.json",
+      "bytes": 17325
+    },
+    {
+      "path": "entries/patterns/element-flight-regroup.json",
+      "bytes": 4017
     },
     {
       "path": "previews/patterns/element-flight-regroup.jpg",

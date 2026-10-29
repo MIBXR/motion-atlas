@@ -1,5 +1,5 @@
-import artwork from "./boot-lettering-art.json";
-import "./boot-lettering.css";
+import artwork from "../../../cases/archive-os/source/rhinelabui/src/boot-lettering-art.json";
+import "../../../cases/archive-os/source/rhinelabui/src/boot-lettering.css";
 import { assetUrl } from "./asset-url";
 
 declare const __RHINE_NOVECENTO__: boolean;

@@ -183,7 +183,7 @@
   "files": [
     {
       "path": "demos/cases/archive-os/LICENSES.md",
-      "bytes": 5454
+      "bytes": 498
     },
     {
       "path": "demos/cases/archive-os/audio/film-audio.ogg",
@@ -3535,11 +3535,11 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5916
+      "bytes": 5583
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 1623
+      "bytes": 1762
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/content/README.md",
@@ -3922,6 +3922,10 @@
       "bytes": 661
     },
     {
+      "path": "demos/cases/map-pilgrimage/fidelity.md",
+      "bytes": 392
+    },
+    {
       "path": "demos/cases/map-pilgrimage/film/config.js",
       "bytes": 17491
     },
@@ -3982,12 +3986,24 @@
       "bytes": 41282
     },
     {
-      "path": "docs/research/archive-os.md",
-      "bytes": 2679
+      "path": "docs/cases/archive-os.md",
+      "bytes": 2473
     },
     {
-      "path": "docs/research/map-pilgrimage.md",
-      "bytes": 7066
+      "path": "docs/cases/map-pilgrimage.md",
+      "bytes": 6454
+    },
+    {
+      "path": "entries/cases/archive-os.json",
+      "bytes": 9252
+    },
+    {
+      "path": "entries/cases/map-pilgrimage.json",
+      "bytes": 19490
+    },
+    {
+      "path": "entries/patterns/seekable-timeline.json",
+      "bytes": 5623
     },
     {
       "path": "previews/patterns/seekable-timeline-portrait.jpg",

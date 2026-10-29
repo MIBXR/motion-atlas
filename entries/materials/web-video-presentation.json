@@ -36,7 +36,8 @@
     "notes": "skill 源码与文档按固定提交保存，并附原 LICENSE。23 张主题图与 1 张总览图来自 ConardLi/assets 的公开 CDN：作者 ConardLi 公开发布，许可未声明；这些外部图片不继承 garden-skills 的 MIT。截图中字体等外部资源的授权需按实际使用另行核实；本库仅展示作者效果，未复刻。"
   },
   "install": "按来源中文 README，把 skill 目录复制到 Agent 会扫描的目录，然后让 Agent 把文章或口播稿制作成网页视频演示。手动创建演示项目：\nbash skills/web-video-presentation/scripts/scaffold.sh ./presentation --theme=paper-press\n查看可用主题：\nbash skills/web-video-presentation/scripts/scaffold.sh --list-themes\n生成的 presentation/ 是 Vite、React 与 TypeScript 项目；启动后使用录屏工具录制 16:9 舞台。来源集合 README 也支持单独安装：\nnpx skills add ConardLi/garden-skills -s web-video-presentation\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。",
-  "skillPath": "agent-skills/web-video-presentation/",
+  "snapshotPath": "demos/materials/web-video-presentation/",
+  "snapshotEntry": "SKILL.md",
   "relatedEntries": [],
   "gallery": [
     {
@@ -253,5 +254,6 @@
       "title": "manifest.json：版本",
       "url": "https://github.com/ConardLi/garden-skills/blob/2b9a89340b70f632d31c0f1c69fce94a7912423e/skills/web-video-presentation/manifest.json"
     }
-  ]
+  ],
+  "research": "docs/materials/web-video-presentation.md"
 }

@@ -143,7 +143,7 @@
   "files": [
     {
       "path": "demos/cases/mg-isometric/LICENSES.md",
-      "bytes": 2687
+      "bytes": 451
     },
     {
       "path": "demos/cases/mg-isometric/audio/film.m4a",
@@ -151,7 +151,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/fidelity.md",
-      "bytes": 5634
+      "bytes": 5575
     },
     {
       "path": "demos/cases/mg-isometric/film/LICENSE",
@@ -296,6 +296,14 @@
     {
       "path": "demos/patterns/core-ignition-wave/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-isometric.json",
+      "bytes": 24388
+    },
+    {
+      "path": "entries/patterns/core-ignition-wave.json",
+      "bytes": 4109
     },
     {
       "path": "previews/patterns/core-ignition-wave.jpg",

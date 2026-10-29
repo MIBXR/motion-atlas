@@ -1,3 +1,3 @@
-# 来源与许可
+# 第三方许可索引
 
-包豪斯来源的原作、完整字体、共享纹理和原片音轨许可见 [来源许可](../../cases/mg-bauhaus/LICENSES.md)，许可证原文保存在来源案例目录中。
+[条目来源](../../../entries/patterns/film-grain.json) · [许可原文与索引](../../cases/mg-bauhaus/LICENSES.md)

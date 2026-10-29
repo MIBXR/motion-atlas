@@ -1,4 +1,4 @@
-// 内容源 → 生成物：data/catalog.js、data/docs.js、prompts/、agent/、README 计数。
+// entries/、demos/、docs/ → 站点数据、Prompt、Agent 资料包与案例索引。
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,6 +13,7 @@ export const TAXONOMY = {
     feedback: '交互反馈', rhythm: '节奏与时序', hud: '信息层 HUD', texture: '质感与后期', sound: '声音',
   },
   roles: { foundation: '骨架：决定主视觉与信息层级', support: '支撑：承担一个区域的交互或信息', accent: '点睛：短时、局部的强调' },
+  materialTypes: { 'component-library': '组件库', image: '图像', sound: '声音', font: '字体', poster: '海报', 'agent-skill': 'Agent Skill', 'prompt-kit': '提示词套件' },
 };
 
 const rel = (p) => path.relative(ROOT, p).split(path.sep).join('/');
@@ -53,6 +54,12 @@ export function loadEntries() {
   const cases = listJSON('entries/cases').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   const patterns = listJSON('entries/patterns').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   const materials = listJSON('entries/materials').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => a.id.localeCompare(b.id));
+  for (const e of materials) {
+    if (!Object.hasOwn(TAXONOMY.materialTypes, e.type)) throw new Error(`${e._file}: 未知素材类型 ${e.type}`);
+    if (e.snapshotPath) {
+      if (e.snapshotPath !== `demos/materials/${e.id}/` || !e.snapshotEntry || !exists(e.snapshotPath + e.snapshotEntry)) throw new Error(`${e._file}: 快照目录或主文档不存在`);
+    } else if (e.demo !== `demos/materials/${e.id}/index.html` || !exists(e.demo)) throw new Error(`${e._file}: 素材入口不存在`);
+  }
   return { cases, patterns, materials };
 }
 
@@ -68,12 +75,12 @@ function previewFor(kind, id) {
 }
 
 export function entryFiles(e) {
-  if (e.skillPath) return [`entries/materials/${e.id}.json`, ...walk(e.skillPath.replace(/\/$/, '')), ...e.gallery.map((image) => image.path)];
-  const dirs = [demoDir(e.demo), ...(e.sources || []).map(s => `demos/cases/${s.caseId}`)];
-  const kind = e.demo.startsWith('demos/cases/') ? 'cases' : 'patterns';
+  const kind = (e.snapshotPath || e.demo).split('/')[1];
+  const sourceIds = kind === 'patterns' ? (e.sources || []).map(s => s.caseId) : [];
+  const dirs = [(e.snapshotPath || demoDir(e.demo)).replace(/\/$/, ''), ...sourceIds.map(id => `demos/cases/${id}`)];
   const previews = [previewFor(kind, e.id), previewFor(kind, `${e.id}-portrait`)].filter(Boolean);
-  const research = [e.id, ...(e.sources || []).map(s => s.caseId)].map(id => `docs/research/${id}.md`).filter(exists);
-  return [...new Set([...new Set(dirs)].flatMap(walk).concat(previews, research))].sort();
+  const documents = [`docs/${kind}/${e.id}.md`, ...sourceIds.map(id => `docs/cases/${id}.md`), e.research].filter(p => p && exists(p));
+  return [...new Set([...new Set(dirs)].flatMap(walk).concat(`entries/${kind}/${e.id}.json`, sourceIds.map(id => `entries/cases/${id}.json`), previews, documents, (e.gallery || []).map(image => image.path), e.sourceFiles || []))].sort();
 }
 
 function promptDoc(kind, e) {
@@ -86,22 +93,25 @@ function promptDoc(kind, e) {
   if (e.tokens?.motion?.length) L.push('## 动效 Token', '', ...e.tokens.motion.map((t) => `- **${t.name}**：${t.value}`), '');
   if (e.constraints?.length) L.push('## 制作约束', '', ...e.constraints.map((c) => `- ${c}`), '');
   if (e.migration?.length) L.push('## 迁移', '', ...e.migration.map((m) => `- \`${m.field}\`：${m.how}`), '');
-  L.push(`[打开 Demo](../../${e.demo}) · [在库中查看](../../${kind === 'cases' ? 'cases.html#case' : 'patterns.html#pattern'}/${e.id})`, '');
+  const hash = { cases: 'case', patterns: 'pattern', materials: 'material' }[kind];
+  L.push(`[${e.snapshotPath ? '打开原文' : '打开 Demo'}](../../${e.snapshotPath ? e.snapshotPath + e.snapshotEntry : e.demo}) · [在库中查看](../../${kind}.html#${hash}/${e.id})`, '');
   return L.join('\n');
 }
 
 const DOC_GROUPS = [
   ['docs/', '指南'],
-  ['docs/research/', '研究'],
+  ['docs/cases/', '案例研究'],
+  ['docs/patterns/', '巧思说明'],
+  ['docs/materials/', '素材说明'],
   ['prompts/cases/', '案例 Prompt'],
   ['prompts/patterns/', '巧思 Prompt'],
+  ['prompts/materials/', '素材 Prompt'],
 ];
 const GUIDE_ORDER = ['docs/guide.md', 'docs/rhythm.md', 'docs/prompting.md', 'docs/methodology.md', 'docs/pipeline.md'];
 
 function collectDocs(extra) {
   const files = walk('docs').filter((f) => f.endsWith('.md'));
-  const docs = files.map((p) => ({ path: p, content: extra[p] ?? read(p) }));
-  for (const [p, content] of Object.entries(extra)) if (p.startsWith('prompts/') && p.endsWith('.md')) docs.push({ path: p, content });
+  const docs = [...new Set([...files, ...Object.keys(extra).filter(p => /^(?:docs|prompts)\/.+\.md$/.test(p))])].map(p => ({ path: p, content: extra[p] ?? read(p) }));
   return docs.map((d) => {
     const m = d.content.match(/^#\s+(.+)$/m);
     const group = DOC_GROUPS.filter(([pre]) => d.path.startsWith(pre)).at(-1)[1];
@@ -119,23 +129,31 @@ export function buildAll() {
   const entries = loadEntries();
   const files = {};
   const kitTargets = [];
-  // preview：横屏预览（1280×720）；previewPortrait：竖屏预览（720×1280，Demo 迁移到固定画幅舞台并支持竖屏后才有）
-  const cases = entries.cases.map((c) => ({ ...clean(c), preview: previewFor('cases', c.id), previewPortrait: previewFor('cases', `${c.id}-portrait`) }));
-  const patterns = entries.patterns.map((p) => ({ ...clean(p), preview: previewFor('patterns', p.id), previewPortrait: previewFor('patterns', `${p.id}-portrait`) }));
-  const materials = entries.materials.map((r) => ({ ...clean(r), preview: r.gallery[0]?.path || null }));
-  for (const e of [...entries.cases, ...entries.patterns]) {
+  const documentsFor = (kind, e) => Object.fromEntries([
+    ['research', `docs/${kind}/${e.id}.md`],
+    ['fidelity', `demos/${kind}/${e.id}/fidelity.md`],
+    ['licenses', `demos/${kind}/${e.id}/LICENSES.md`],
+  ].filter(([, p]) => exists(p)));
+  const cases = entries.cases.map(c => ({ ...clean(c), ...documentsFor('cases', c), preview: previewFor('cases', c.id), previewPortrait: previewFor('cases', `${c.id}-portrait`) }));
+  const patterns = entries.patterns.map(p => ({ ...clean(p), ...documentsFor('patterns', p), preview: previewFor('patterns', p.id), previewPortrait: previewFor('patterns', `${p.id}-portrait`) }));
+  const materials = entries.materials.map(r => ({ ...clean(r), ...documentsFor('materials', r), preview: r.preview || r.gallery?.[0]?.path || previewFor('materials', r.id), ...(r.snapshotPath ? { snapshotFiles: walk(r.snapshotPath.replace(/\/$/, '')) } : {}) }));
+  for (const e of [...entries.cases, ...entries.patterns, ...entries.materials].filter(e => e.demo)) {
     if (/\bsrc=["'](?:\.\/)?motion-kit\.js["']/.test(read(e.demo))) kitTargets.push(demoDir(e.demo));
   }
 
   // Prompt 文档
-  for (const c of cases) files[`prompts/cases/${c.id}.md`] = promptDoc('cases', c);
-  for (const p of patterns) files[`prompts/patterns/${p.id}.md`] = promptDoc('patterns', p);
+  for (const [kind, list] of Object.entries({ cases, patterns, materials })) {
+    for (const e of list) if (e.prompt) files[`prompts/${kind}/${e.id}.md`] = promptDoc(kind, e);
+  }
+  files['docs/cases/README.md'] = ['# 案例研究', '', '| 案例 | 资料 |', '| --- | --- |', ...cases.map(c => `| [${c.title}](../../cases.html#case/${c.id}) | ${c.research ? `[研究](${c.id}.md)` : `[条目](../../entries/cases/${c.id}.json)`} |`), ''].join('\n');
 
   // 站点数据
-  const site = { schemaVersion: SCHEMA_VERSION, taxonomy: TAXONOMY, cases, patterns };
-  files['data/catalog.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA = ${JSON.stringify(site)};\n`;
+  const site = { schemaVersion: SCHEMA_VERSION, taxonomy: TAXONOMY, cases };
+  files['data/cases.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA = ${JSON.stringify(site)};\n`;
+  files['data/patterns.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA.patterns = ${JSON.stringify(patterns)};\n`;
   files['data/materials.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA.materials = ${JSON.stringify(materials)};\n`;
-  // README 计数块（先于文档集合生成，文档中心读到的是更新后的 README）
+  files['data/asset-sources.js'] = '/* 由 scripts/build.mjs 生成，请勿手改 */\nglobalThis.MotionAtlasAssetSources = {"assets":{}};\n';
+  // README 计数块
   if (exists('README.md')) {
     const readme = read('README.md');
     const block = `<!-- counts:start -->\n**${cases.length} 个案例**　·　**${patterns.length} 个巧思**　·　**${materials.length} 个素材**　·　**${cases.filter((c) => c.timeline).length} 个可逐帧渲染的影像 Demo**\n<!-- counts:end -->`;
@@ -147,11 +165,13 @@ export function buildAll() {
   // Agent 资料包
   const bundleSummaries = { cases: [], patterns: [], materials: [] };
   const kitFile = 'kit/motion-kit.js';
+  const entryDocuments = e => Object.fromEntries(['research', 'fidelity', 'licenses'].filter(key => e[key]).map(key => [key, read(e[key])]));
   for (const c of cases) {
     const demoFiles = entryFiles(c);
     const bundle = {
       schemaVersion: SCHEMA_VERSION, kind: 'case', id: c.id, entry: c,
       documents: {
+        ...entryDocuments(c),
         prompt: files[`prompts/cases/${c.id}.md`],
       },
       entrypoint: c.demo,
@@ -170,7 +190,7 @@ export function buildAll() {
     const bundle = {
       schemaVersion: SCHEMA_VERSION, kind: 'pattern', id: p.id, pattern: p,
       sourceCases: (p.sources || []).map((s) => ({ caseId: s.caseId, bundle: `agent/cases/${s.caseId}.json` })),
-      documents: { prompt: files[`prompts/patterns/${p.id}.md`] },
+      documents: { ...entryDocuments(p), ...(p.prompt ? { prompt: files[`prompts/patterns/${p.id}.md`] } : {}) },
       entrypoint: p.demo,
       files: fileManifest(demoFiles),
     };
@@ -183,29 +203,28 @@ export function buildAll() {
     });
   }
   for (const r of materials) {
-    const snapshotFiles = walk(r.skillPath.replace(/\/$/, ''));
+    const snapshotDocuments = (r.snapshotFiles || []).filter(p => p.endsWith('.md') && p !== r.snapshotPath + r.snapshotEntry).map(p => [p, read(p)]);
     const bundle = {
       schemaVersion: SCHEMA_VERSION, kind: 'materials', id: r.id, material: r,
       documents: {
-        skill: read(`${r.skillPath}SKILL.md`),
-        readme: read(`${r.skillPath}README.md`),
-        readmeZh: read(`${r.skillPath}README.zh-CN.md`),
-        references: Object.fromEntries(snapshotFiles.filter((p) => p.endsWith('.md') && !['SKILL.md', 'README.md', 'README.zh-CN.md'].some((name) => p === r.skillPath + name)).map((p) => [p, read(p)])),
+        ...entryDocuments(r),
+        ...(r.snapshotPath ? { snapshot: read(r.snapshotPath + r.snapshotEntry), references: Object.fromEntries(snapshotDocuments) } : {}),
+        ...(r.prompt ? { prompt: files[`prompts/materials/${r.id}.md`] } : {}),
       },
-      entrypoint: `${r.skillPath}SKILL.md`,
+      entrypoint: r.snapshotPath ? r.snapshotPath + r.snapshotEntry : r.demo,
       files: fileManifest(entryFiles(r)),
     };
     files[`agent/materials/${r.id}.json`] = JSON.stringify(bundle, null, 2) + '\n';
     bundleSummaries.materials.push({
       id: r.id, title: r.title, summary: r.summary, type: r.type,
       carrierNote: r.carrierNote, useCases: r.useCases, avoid: r.avoid,
-      skillPath: r.skillPath, relatedEntries: r.relatedEntries,
+      snapshotPath: r.snapshotPath, snapshotEntry: r.snapshotEntry, demo: r.demo, relatedEntries: r.relatedEntries,
       bundle: `agent/materials/${r.id}.json`,
     });
   }
-  files['agent/materials.json'] = JSON.stringify({
-    schemaVersion: SCHEMA_VERSION, kind: 'materials', count: materials.length, materials: bundleSummaries.materials,
-  }, null, 2) + '\n';
+  for (const kind of ['cases', 'patterns', 'materials']) {
+    files[`agent/${kind}/index.json`] = JSON.stringify({ schemaVersion: SCHEMA_VERSION, kind, count: bundleSummaries[kind].length, [kind]: bundleSummaries[kind] }, null, 2) + '\n';
+  }
   const catalog = {
     schemaVersion: SCHEMA_VERSION,
     name: 'Motion Atlas',
@@ -220,7 +239,9 @@ export function buildAll() {
       kit: kitFile,
     },
     counts: { cases: cases.length, patterns: patterns.length, materials: materials.length },
-    materialCatalog: 'agent/materials.json',
+    caseCatalog: 'agent/cases/index.json',
+    patternCatalog: 'agent/patterns/index.json',
+    materialCatalog: 'agent/materials/index.json',
     cases: bundleSummaries.cases,
     patterns: bundleSummaries.patterns,
     materials: bundleSummaries.materials,

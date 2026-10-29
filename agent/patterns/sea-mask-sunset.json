@@ -100,7 +100,7 @@
   "files": [
     {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 2319
+      "bytes": 303
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
@@ -112,7 +112,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4167
+      "bytes": 4085
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
@@ -193,6 +193,14 @@
     {
       "path": "demos/patterns/sea-mask-sunset/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-morph.json",
+      "bytes": 15482
+    },
+    {
+      "path": "entries/patterns/sea-mask-sunset.json",
+      "bytes": 2912
     },
     {
       "path": "previews/patterns/sea-mask-sunset.jpg",

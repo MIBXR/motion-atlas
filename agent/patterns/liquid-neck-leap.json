@@ -104,7 +104,7 @@
   "files": [
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
-      "bytes": 2040
+      "bytes": 282
     },
     {
       "path": "demos/cases/mg-liquid/audio/film.m4a",
@@ -112,7 +112,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 4895
+      "bytes": 4808
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
@@ -209,6 +209,14 @@
     {
       "path": "demos/patterns/liquid-neck-leap/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-liquid.json",
+      "bytes": 15668
+    },
+    {
+      "path": "entries/patterns/liquid-neck-leap.json",
+      "bytes": 3926
     },
     {
       "path": "previews/patterns/liquid-neck-leap.jpg",

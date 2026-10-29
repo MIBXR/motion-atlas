@@ -8,7 +8,7 @@
   const libName = KIND === 'cases' ? '案例库' : isMaterial ? '素材库' : '巧思库';
   const itemName = KIND === 'cases' ? '案例' : isMaterial ? '素材' : '巧思';
   const hashKind = KIND === 'cases' ? 'case' : isMaterial ? 'material' : 'pattern';
-  const materialTypes = { 'agent-skill': 'Agent Skill' };
+  const materialTypes = MA.taxonomy.materialTypes;
   const TAX = MA.taxonomy;
   const root = document.getElementById('app');
   const items = MA[KIND];
@@ -97,7 +97,7 @@
     const carriers = Object.entries(TAX.carriers);
     const group = KIND === 'cases' ? 'carrier' : 'type';
     const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '载体' : '类型'}</summary><ul class="side-list">
-      ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : isMaterial ? materialTypes : TAX.types)].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
+      ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : isMaterial ? materialTypes : TAX.types).filter(([value]) => !isMaterial || items.some(it => it.type === value))].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
       </ul></details><div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
       <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
@@ -865,31 +865,37 @@
   const sec = (title, en, body) => `<section class="note-sec"><h2>${title}<small>${en}</small></h2>${body}</section>`;
   const ul = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>—</p>');
   const promptBox = (id, text) => `<div class="prompt-box"><pre id="${id}">${esc(text)}</pre><button class="btn" type="button" data-copy="${id}">${ICONS.copy}<span>复制</span></button></div>`;
+  const documentLinks = it => {
+    const links = [['research', '阅读说明与研究'], ['fidelity', '复刻对照'], ['licenses', '许可原文索引']].filter(([key]) => it[key]);
+    return links.length ? sec('相关文档', 'DOCUMENTS', `<ul>${links.map(([key, label]) => `<li><a href="${key === 'research' ? 'docs.html#doc/' : ''}${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
+  };
 
   function materialNotes(it) {
     const galleryKinds = { style: '风格样张', work: '作品节选', theme: '主题预览' };
-    const gallery = `<div class="grid material-gallery">${it.gallery.map((image) => {
+    const gallery = `<div class="grid material-gallery">${(it.gallery || []).map((image) => {
       const sourceUrl = image.sourceUrl || image.url;
       const license = typeof image.license === 'string' ? image.license : image.license?.notes || image.license?.name;
       return `<figure class="card"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
         <figcaption class="card-body"><span class="chip accent">${galleryKinds[image.kind]}</span><p class="card-sum">${esc(image.caption)}</p><p class="material-credit">作者产出效果，未复刻</p>${sourceUrl ? `<a class="material-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}${license ? `<p class="material-credit">${esc(license)}</p>` : ''}</figcaption></figure>`;
     }).join('')}</div>`;
-    const related = it.relatedEntries.length ? `<ul>${it.relatedEntries.map((relation) => {
+    const related = it.relatedEntries?.length ? `<ul>${it.relatedEntries.map((relation) => {
       const kind = { case: 'cases', pattern: 'patterns' }[relation.kind] || relation.kind;
       const entry = byId(MA[kind], relation.id);
       const hash = kind === 'cases' ? 'case' : 'pattern';
       return `<li><a href="${kind}.html#${hash}/${esc(relation.id)}">${esc(entry.title)}</a>：${esc(relation.note)}</li>`;
-    }).join('')}</ul>` : '<p>本库暂无由此 skill 产出的复刻案例</p>';
+    }).join('')}</ul>` : `<p>本库暂无由此 ${it.type === 'agent-skill' ? 'skill' : '素材'} 产出的复刻案例</p>`;
+    const snapshotLinks = it.snapshotPath ? `<ul><li><a href="${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${[['README.zh-CN.md', '中文说明'], ['README.md', '原版说明']].filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
     return [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
       sec('为什么归入本库', '', `<p>${esc(it.carrierNote)}</p>`),
-      sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`),
+      it.workflow?.length ? sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`) : '',
       sec('适合与避用', '', `<h3>适合</h3>${ul(it.useCases)}<h3>避用</h3>${ul(it.avoid)}`),
-      sec('效果图画廊', '', gallery),
+      it.gallery?.length ? sec('效果图画廊', '', gallery) : '',
       sec('关联条目', '', related),
-      sec('skill 原文入口', '', `<ul><li><a href="${esc(it.skillPath)}SKILL.md">技能原文（SKILL.md）</a></li><li><a href="${esc(it.skillPath)}README.zh-CN.md">中文说明（README.zh-CN.md）</a></li><li><a href="${esc(it.skillPath)}README.md">原版说明（README.md）</a></li></ul>`),
-      sec('安装方式', '', promptBox('material-install', it.install)),
-      sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd><a href="${esc(it.upstream.url)}">${esc(it.upstream.repository)}</a></dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd><dt>版本</dt><dd>${esc(it.upstream.version)}</dd><dt>技能许可</dt><dd><a href="${esc(it.license.url)}">${esc(it.license.name)}</a></dd></dl><p>${esc(it.license.notes)}</p><p><a href="${esc(it.skillPath)}LICENSE">快照附带许可原文</a></p><ul>${it.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.title || source.label)}</a></li>`).join('')}</ul>`),
+      it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`),
+      it.install ? sec('安装方式', '', promptBox('material-install', it.install)) : '',
+      sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd><a href="${esc(it.upstream.url)}">${esc(it.upstream.repository)}</a></dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd><dt>版本</dt><dd>${esc(it.upstream.version)}</dd><dt>${it.type === 'agent-skill' ? '技能' : '素材'}许可</dt><dd><a href="${esc(it.license.url)}">${esc(it.license.name)}</a></dd></dl><p>${esc(it.license.notes)}</p>${it.snapshotPath && it.snapshotFiles.includes(it.snapshotPath + 'LICENSE') ? `<p><a href="${esc(it.snapshotPath)}LICENSE">快照附带许可原文</a></p>` : ''}<ul>${it.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.title || source.label)}</a></li>`).join('')}</ul>`),
+      documentLinks(it),
     ].join('');
   }
 
@@ -902,7 +908,7 @@
       <header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 素材 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(materialTypes[it.type])}</span></div></header>
       <div class="notes">${materialNotes(it)}</div></div></div>`;
     bindDetailFavorite(it);
-    root.querySelector('[data-copy]').addEventListener('click', () => copy(it.install, '安装方式已复制'));
+    root.querySelector('[data-copy]')?.addEventListener('click', () => copy(it.install, '安装方式已复制'));
     window.scrollTo(0, 0);
   }
 
@@ -947,6 +953,7 @@
       it.migration ? sec('迁移指南', 'MIGRATE', `<table class="token-table"><tbody>${it.migration.map((m) => `<tr><td>${esc(m.field)}</td><td>${esc(m.how)}</td></tr>`).join('')}</tbody></table>`) : '',
       sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl><div style="margin-top:10px">${ul(it.constraints)}</div>`),
       sec('关联巧思', 'PATTERNS', relPatterns(it.patternIds)),
+      documentLinks(it),
     ].join('');
   }
 
@@ -960,6 +967,7 @@
       sec('组合', 'COMPOSE', `<dl class="kv"><dt>职责</dt><dd>${esc(TAX.roles[comp.role] || comp.role || '—')}</dd><dt>搭配</dt><dd>${(comp.pairsWellWith || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd><dt>冲突</dt><dd>${(comp.conflicts || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd></dl>${comp.notes ? `<p style="margin-top:10px">${esc(comp.notes)}</p>` : ''}`),
       sec('可访问性', 'A11Y', `<dl class="kv"><dt>减少动态</dt><dd>${esc(it.accessibility?.reducedMotion || '—')}</dd><dt>键盘</dt><dd>${esc(it.accessibility?.keyboard || '—')}</dd></dl>`),
       `<p>所属案例：${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${esc(c.title)}</a>` : ''; }).join('、')}</p>`,
+      documentLinks(it),
     ].join('');
   }
 

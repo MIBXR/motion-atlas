@@ -1,0 +1,1585 @@
+{
+  "schemaVersion": 1,
+  "kind": "patterns",
+  "count": 82,
+  "patterns": [
+    {
+      "id": "corner-hud",
+      "title": "四角信息 HUD",
+      "summary": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。",
+      "types": [
+        "hud",
+        "composition"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "route-draw-marker",
+        "chapter-frame",
+        "collect-counter",
+        "vertical-title-blur"
+      ],
+      "bundle": "agent/patterns/corner-hud.json"
+    },
+    {
+      "id": "vertical-title-blur",
+      "title": "竖排汉字模糊入场 + 英文打字",
+      "summary": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。 三维片的英文标语逐词上移、去模糊并收字距，横线和中文随后显现。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage",
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "chapter-frame",
+        "card-expand-fullscreen"
+      ],
+      "bundle": "agent/patterns/vertical-title-blur.json"
+    },
+    {
+      "id": "route-draw-marker",
+      "title": "路线描画与标记脉冲",
+      "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。等距城市中，数据弧线从核心向屋顶生长，到达后屋顶标记循环扩圈。 手机科普片中，矿石产地路线画向深圳组装点，箭头落定后数据包循环前进，汇点回弹扩圈。",
+      "types": [
+        "camera",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage",
+        "mg-isometric",
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "alert-reroute",
+        "card-expand-fullscreen"
+      ],
+      "bundle": "agent/patterns/route-draw-marker.json"
+    },
+    {
+      "id": "day-night-flip",
+      "title": "昼夜翻转：逐层插值",
+      "summary": "地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "route-draw-marker"
+      ],
+      "bundle": "agent/patterns/day-night-flip.json"
+    },
+    {
+      "id": "card-expand-fullscreen",
+      "title": "卡片展开为全屏",
+      "summary": "照片卡片由引线牵出，展开到全屏停留，再收回原位。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "vertical-title-blur",
+        "split-compare-stamp"
+      ],
+      "bundle": "agent/patterns/card-expand-fullscreen.json"
+    },
+    {
+      "id": "chapter-frame",
+      "title": "章节主题：标签、强调色与四角框线",
+      "summary": "章节标签配框线或胶带网点入场，为一段旅程划出章节。 HUD 开机按层级错时描出边框、外环、刻度、面板与地球，开机日志随后上线。",
+      "types": [
+        "composition",
+        "transition"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage",
+        "mg-hud"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "route-draw-marker",
+        "vertical-title-blur"
+      ],
+      "bundle": "agent/patterns/chapter-frame.json"
+    },
+    {
+      "id": "split-compare-stamp",
+      "title": "分屏对比与时间戳盖章",
+      "summary": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。 综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage",
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [
+        "card-expand-fullscreen",
+        "vertical-title-blur",
+        "film-grain"
+      ],
+      "bundle": "agent/patterns/split-compare-stamp.json"
+    },
+    {
+      "id": "collect-counter",
+      "title": "收集计数徽章与收集物托盘",
+      "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。 综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。",
+      "types": [
+        "feedback",
+        "hud"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage",
+        "mg-paperclip",
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [
+        "corner-hud",
+        "outro-stat-stack"
+      ],
+      "bundle": "agent/patterns/collect-counter.json"
+    },
+    {
+      "id": "alert-reroute",
+      "title": "警示横幅与改道",
+      "summary": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。",
+      "types": [
+        "feedback",
+        "hud"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "route-draw-marker",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/alert-reroute.json"
+    },
+    {
+      "id": "outro-stat-stack",
+      "title": "结尾数据堆叠与计数",
+      "summary": "收尾时统计数字逐行堆叠，最后以 fin. 收束。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage"
+      ],
+      "pairsWellWith": [
+        "collect-counter",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/outro-stat-stack.json"
+    },
+    {
+      "id": "seekable-timeline",
+      "title": "可逐帧定位的时间轴",
+      "summary": "所有画面都是时间 t 的函数，拖动、倒退、跳转都能得到同一帧。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "map-pilgrimage",
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "film-grain",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/seekable-timeline.json"
+    },
+    {
+      "id": "film-grain",
+      "title": "可复现的胶片颗粒与暗角",
+      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。线条片在午夜蓝与金线画面上叠加逐帧换位颗粒和径向暗角。 形变片的纸纹与逐帧软颗粒、极光片的颗粒和暗角分别覆盖整片；极光片还叠加三角分布抖动。 三维片按帧号平移种子颗粒并叠加暗角；拼贴片逐格移动颗粒并交替两块尘点板。",
+      "types": [
+        "texture"
+      ],
+      "carriers": [
+        "video",
+        "console"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "map-pilgrimage",
+        "mg-bauhaus",
+        "mg-line-art",
+        "mg-morph",
+        "mg-aurora-glass",
+        "mg-3d-render",
+        "mg-collage"
+      ],
+      "pairsWellWith": [
+        "seekable-timeline",
+        "split-compare-stamp"
+      ],
+      "bundle": "agent/patterns/film-grain.json"
+    },
+    {
+      "id": "boot-typing",
+      "title": "终端逐字开机序列",
+      "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。 HUD 的开机日志和坐标按字符速率逐字出现，末尾方块光标按固定频率闪烁。",
+      "types": [
+        "type-motion",
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "archive-os",
+        "mg-hud"
+      ],
+      "pairsWellWith": [
+        "rolling-digits",
+        "decrypt-reveal",
+        "wave-array"
+      ],
+      "bundle": "agent/patterns/boot-typing.json"
+    },
+    {
+      "id": "rolling-digits",
+      "title": "滚动数字与文字",
+      "summary": "编号与文字按字符滚动 460ms。临界阻尼滚轮在连按时读取当前位置与速度，接向最新目标。",
+      "types": [
+        "type-motion",
+        "feedback"
+      ],
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "wave-array",
+        "boot-typing",
+        "corner-hud"
+      ],
+      "bundle": "agent/patterns/rolling-digits.json"
+    },
+    {
+      "id": "decrypt-reveal",
+      "title": "对角解密与磨砂转清",
+      "summary": "GLB 档案的一条模型空间对角线从两端接通再收束，约3.6267秒完成物理解密；玻璃转清后，正文按实际折行逐行移走遮罩。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "console",
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "boot-typing",
+        "rolling-digits"
+      ],
+      "bundle": "agent/patterns/decrypt-reveal.json"
+    },
+    {
+      "id": "wave-array",
+      "title": "阵列选择波浪",
+      "summary": "选择 GLB 档案时，循环阵列叠加带正负位移的行进波；欧氏距离决定波峰位置，选中模型同步抬起。 液态字标在节拍和末滴落点触发后，按字母次序传播果冻挤压波。",
+      "types": [
+        "feedback",
+        "rhythm"
+      ],
+      "carriers": [
+        "console"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "archive-os",
+        "mg-liquid"
+      ],
+      "pairsWellWith": [
+        "rolling-digits",
+        "idle-breathing"
+      ],
+      "bundle": "agent/patterns/wave-array.json"
+    },
+    {
+      "id": "idle-breathing",
+      "title": "空闲呼吸",
+      "summary": "停止操作2.5秒后，8s与13s周期叠加起伏，相邻元素错相。操作时渐退，画面保持轻微呼吸。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "console"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "archive-os"
+      ],
+      "pairsWellWith": [
+        "wave-array",
+        "rolling-digits"
+      ],
+      "bundle": "agent/patterns/idle-breathing.json"
+    },
+    {
+      "id": "squash-stretch-bounce",
+      "title": "预备、拉伸与压扁回弹",
+      "summary": "重放圆点落地、蓄力弹射与图标接力中的拉伸、压扁和回弹。逐帧火苗段追加醒来后的蹲压、拉长起跳、落地压扁与连续舞步。 液态片的液滴触地压扁回弹，冠状液臂长出后断成延迟飞出的次级液滴。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-flat-vector",
+        "mg-cel-boil",
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/squash-stretch-bounce.json"
+    },
+    {
+      "id": "push-through-window",
+      "title": "穿窗推镜",
+      "summary": "从城市主窗连续推进到室内，重放预备拉回、穿窗过冲、速度条、闪白与到达镜震。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-flat-vector"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/push-through-window.json"
+    },
+    {
+      "id": "shape-wipe-transition",
+      "title": "形状擦除转场",
+      "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。 形变片从主体位置向外扩张色域，并同步裁切同色装饰和字幕完成全屏换景。 综艺片用带滚动糖果条纹的不透明斜带扫过全屏，遮住前镜并露出下一镜。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-flat-vector",
+        "mg-morph",
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/shape-wipe-transition.json"
+    },
+    {
+      "id": "dot-drop-wordmark",
+      "title": "圆点落字成标",
+      "summary": "重放柱条接成字干、圆点升空悬停和落字，随后以逐字受震、镜头推震与扩散强调完成字标。",
+      "types": [
+        "type-motion",
+        "camera",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-flat-vector"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/dot-drop-wordmark.json"
+    },
+    {
+      "id": "grid-beat-construction",
+      "title": "网格逐拍构成",
+      "summary": "在网格上逐拍落下几何，反拍准星预示落点，拍数随节拍跳变。",
+      "types": [
+        "composition",
+        "rhythm",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-bauhaus"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/grid-beat-construction.json"
+    },
+    {
+      "id": "flip-tile-cascade",
+      "title": "方片翻牌级联波",
+      "summary": "方片按空间延迟翻转，以梯形与明暗表现卡面，切到背面三原色图形后向心归位。",
+      "types": [
+        "transition",
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-bauhaus"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/flip-tile-cascade.json"
+    },
+    {
+      "id": "misregistration-lock",
+      "title": "套印漂移与锁版",
+      "summary": "四色版保持微偏套准，随翻牌漂开、主击对齐与定格松版变化，最后在末拍锁定并增墨。",
+      "types": [
+        "texture",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-bauhaus"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/misregistration-lock.json"
+    },
+    {
+      "id": "integer-pixel-parallax",
+      "title": "整像素多速视差",
+      "summary": "320×180 像素地景分层卷动，相机追随角色后停下，远山继续按整像素步进。",
+      "types": [
+        "camera",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/integer-pixel-parallax.json"
+    },
+    {
+      "id": "stepped-palette-daynight",
+      "title": "色板阶梯昼夜",
+      "summary": "环境色板按阶梯换成午后、金色、日落与暮夜配色，星点显现并闪烁，最后夜色从外围向水晶收拢。",
+      "types": [
+        "transition",
+        "composition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/stepped-palette-daynight.json"
+    },
+    {
+      "id": "rpg-dialog-box",
+      "title": "像素对话框",
+      "summary": "像素对话框分级展开，框内映射宝箱名牌、头像和尾角，欢迎语逐字显示，读完提示出现后分级收起。",
+      "types": [
+        "hud",
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/rpg-dialog-box.json"
+    },
+    {
+      "id": "crt-boot-shell",
+      "title": "显像管开机与屏幕外壳",
+      "summary": "中心亮点拉成扫描线并展开，经过短促滚屏与交错行摆后，弧屏、边缘遮罩、扫描线和磷光辉光持续覆盖画面。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-pixel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/crt-boot-shell.json"
+    },
+    {
+      "id": "shared-cue-sheet",
+      "title": "画音共用节拍表",
+      "summary": "依次重放三片的密集节点段，在画面上用中文标出当前节点，并沿用原片音轨。 追加逐帧手绘的旋转、爆炸与逐笔书写，以及线条艺术的停笔续笔段。",
+      "types": [
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-flat-vector",
+        "mg-bauhaus",
+        "mg-pixel",
+        "mg-cel-boil",
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/shared-cue-sheet.json"
+    },
+    {
+      "id": "cel-line-boil",
+      "title": "逐张重画：线条沸腾与换纸",
+      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。",
+      "types": [
+        "texture",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-cel-boil",
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/cel-line-boil.json"
+    },
+    {
+      "id": "smear-frame-strike",
+      "title": "拖影帧与多重残像",
+      "summary": "重放火柴后撤蓄力、划火拖影、多重残像、点火闪光、翻转抛起与摆动落定。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-cel-boil"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/smear-frame-strike.json"
+    },
+    {
+      "id": "spark-stroke-handletter",
+      "title": "火星逐笔写字",
+      "summary": "重放火团迁移为花边徽章、黄色核心接续笔尖、火星逐笔写字与标题回弹落定。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-cel-boil"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/spark-stroke-handletter.json"
+    },
+    {
+      "id": "flipbook-pullback",
+      "title": "拉远翻纸溯帧",
+      "summary": "重放落版后三步拉远灯箱、拇指翻阅旧画格，以及红铅笔圈注总张数与箭头。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-cel-boil"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/flipbook-pullback.json"
+    },
+    {
+      "id": "blueprint-tile-drop-wave",
+      "title": "蓝图落块波",
+      "summary": "蓝图先从中心扩开，地块按方形同心环与角向错峰倾斜落位，触地压扁并微回弹。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/blueprint-tile-drop-wave.json"
+    },
+    {
+      "id": "staged-extrusion-build",
+      "title": "分层伸展组装",
+      "summary": "土层向下伸展、楼房错峰组装、核心塔套筒升出，后续层段的位置随前层当前伸展量联动。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/staged-extrusion-build.json"
+    },
+    {
+      "id": "core-ignition-wave",
+      "title": "核心激活全城",
+      "summary": "核心下蹲蓄力后在主拍放光，方形激活波联动地块翻面、载物跳起和建筑由灰模扫描着色。",
+      "types": [
+        "rhythm",
+        "composition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/core-ignition-wave.json"
+    },
+    {
+      "id": "isometric-leader-card",
+      "title": "等轴引线数据卡",
+      "summary": "引线从世界锚点画出，数据卡沿等轴侧面弹性横展，数值与柱条随后生长，离场时卡片和引线同步收回。",
+      "types": [
+        "hud",
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-isometric"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/isometric-leader-card.json"
+    },
+    {
+      "id": "continuous-line-narrative",
+      "title": "一线连续成景",
+      "summary": "同一根金线从种子长成植物、建筑、海浪和圆环拱门，卷须展开为屋梁后继续描绘。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/continuous-line-narrative.json"
+    },
+    {
+      "id": "pen-led-camera",
+      "title": "笔尖牵引镜头与停笔节奏",
+      "summary": "镜头跟随笔尖，转角减速、停笔时刹停、续笔后追赶，最后拉远为完整海报。",
+      "types": [
+        "camera",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/pen-led-camera.json"
+    },
+    {
+      "id": "fresh-ink-aging",
+      "title": "新墨笔锋渐暗",
+      "summary": "新画金线与发光笔尖保持明亮，旧线按绘制年龄退成暗金，标志线保留高亮。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/fresh-ink-aging.json"
+    },
+    {
+      "id": "line-ring-to-medallion",
+      "title": "线环熔成金章",
+      "summary": "细线圆环收细蓄势后熔成镂空金章，过冲、镜头冲击与回声圈完成落章，光脉沿原线往返。",
+      "types": [
+        "transition",
+        "rhythm",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/line-ring-to-medallion.json"
+    },
+    {
+      "id": "center-out-tracking-in",
+      "title": "中轴散字收拢",
+      "summary": "衬线字标按离中轴的距离错峰从宽字距收拢，中文标语抬入，两侧细线随亮点向外描出。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-line-art"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/center-out-tracking-in.json"
+    },
+    {
+      "id": "morph-primitive-bridge",
+      "title": "简形桥接连续变形",
+      "summary": "主体、孔洞与子件经圆或胶囊中介连续变形，同时位移、旋转并挤压回弹。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-morph"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/morph-primitive-bridge.json"
+    },
+    {
+      "id": "sea-mask-sunset",
+      "title": "海面遮罩吞日",
+      "summary": "海面升起，以同一水平边界裁掉太阳下半部，光芒变成波浪，随后海水上涌占满画面。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-morph"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/sea-mask-sunset.json"
+    },
+    {
+      "id": "shape-docks-wordmark",
+      "title": "形体落位成字标",
+      "summary": "主体形状飞到字位、开合成字标中的一个字母，其余字母随后显现；先重放圆环伸展为 morphe，再重放透镜开成 Aurora 的 o。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-morph",
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/shape-docks-wordmark.json"
+    },
+    {
+      "id": "analytic-motion-blur",
+      "title": "解析运动模糊",
+      "summary": "以快门区间的位置解析生成拖影：圆形生成胶囊轮廓与透明度坡，镜头运动使用仿射偏移采样和速度相关高斯模糊。",
+      "types": [
+        "texture",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-morph",
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/analytic-motion-blur.json"
+    },
+    {
+      "id": "sticker-slap-shadow",
+      "title": "抬高旋转拍贴",
+      "summary": "抬高、放大、倾转的贴纸下落，阴影同步收紧，落定后以衰减摆动与挤压回弹消力。 拼贴片将照片、文字纸片和刊名放大拍下，离纸阴影随高度塌缩，落地后逐格挤压回定。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-paperclip",
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/sticker-slap-shadow.json"
+    },
+    {
+      "id": "explode-parts-leaders",
+      "title": "拆件引线联动",
+      "summary": "部件从手机位置沿弧线飞到分解位，引线从锚点生长，端点与双语标签依次展开。",
+      "types": [
+        "composition",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/explode-parts-leaders.json"
+    },
+    {
+      "id": "element-flight-regroup",
+      "title": "同物飞排重组",
+      "summary": "同一元素在信息结构之间飞行换位：标签徽章飞入周期表格子，格子飞排成单位柱图，稀土柱条压成标签飞到产地地图。",
+      "types": [
+        "transition",
+        "composition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/element-flight-regroup.json"
+    },
+    {
+      "id": "anchor-pullback-phone",
+      "title": "锚点拉远显载体",
+      "summary": "以屏幕空间锚点约束两段拉远和旋转，先露局部屏幕，再揭示全部内容都在一部手机内。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-paperclip"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/anchor-pullback-phone.json"
+    },
+    {
+      "id": "bezier-aurora-drift",
+      "title": "贝塞尔极光漂移",
+      "summary": "邻近色椭圆光斑沿闭合贝塞尔轨道漂移，结合视差与非线性混色形成连续光场。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/bezier-aurora-drift.json"
+    },
+    {
+      "id": "layered-frosted-glass",
+      "title": "玻璃逐层磨砂",
+      "summary": "每张玻璃卡片模糊其背后已合成的内容，再加入倾斜平面的边缘、高光与界面。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/layered-frosted-glass.json"
+    },
+    {
+      "id": "metaball-lens-glide",
+      "title": "拉丝玻璃珠与滑读透镜",
+      "summary": "控钮按压后以 SDF 平滑并合拉出玻璃珠，脱离后展开为胶囊透镜沿文字滑行放大，速度驱动弹簧拉伸。",
+      "types": [
+        "transition",
+        "feedback"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/metaball-lens-glide.json"
+    },
+    {
+      "id": "envelope-radiating-waveform",
+      "title": "音量包络放射声波",
+      "summary": "从发光球向两侧按距离延迟读取配乐的 100Hz 音量包络，条高随包络变化，球核同步呼吸。",
+      "types": [
+        "hud",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/envelope-radiating-waveform.json"
+    },
+    {
+      "id": "card-depth-arrival-parting",
+      "title": "卡片穿焦起落",
+      "summary": "卡片从纵深与下方倾斜进入并衰减回摆，浮动后沿独立轴向退开，失焦先于离场。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-aurora-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/card-depth-arrival-parting.json"
+    },
+    {
+      "id": "soft-bed-letter-bounce",
+      "title": "软床触地回弹",
+      "summary": "字母到达软床后，接触力驱动下陷、反弹与延迟挤压，落点声音读取同一碰撞事件。",
+      "types": [
+        "rhythm",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/soft-bed-letter-bounce.json"
+    },
+    {
+      "id": "velocity-neon-grid-smear",
+      "title": "网格速度拖影",
+      "summary": "透视霓虹网格随公路速度向镜头推进，横向线条按快门位移展宽并补偿亮度，路侧反光条同步拉长。",
+      "types": [
+        "texture",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/velocity-neon-grid-smear.json"
+    },
+    {
+      "id": "capsule-sweep-lift",
+      "title": "扫浪托起字母",
+      "summary": "扫波到达胶囊阵列后，高斯波包同步驱动胶囊高度、倾斜与着色，反向扫波按阅读顺序托起字母。",
+      "types": [
+        "rhythm",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/capsule-sweep-lift.json"
+    },
+    {
+      "id": "striped-sun-rise",
+      "title": "条纹落日升起",
+      "summary": "横向镂空条纹的渐变落日从地平线后升起，下半圆条纹按相位卷动且向下加宽。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/striped-sun-rise.json"
+    },
+    {
+      "id": "hang-slam-capsule-crown",
+      "title": "悬球砸落冠波",
+      "summary": "金属球进入并减速悬停后，急砸软床触发镜震和径向胶囊翻跳，冠波顶点放慢后追上时钟，最后沉降。",
+      "types": [
+        "rhythm",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/hang-slam-capsule-crown.json"
+    },
+    {
+      "id": "neon-write-on-ignition",
+      "title": "霓虹描写通电",
+      "summary": "发亮笔头沿真实字形路径推进并留下暗玻璃管，通电节点按逐帧电平闪烁，最后整字稳定发光。",
+      "types": [
+        "type-motion",
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/neon-write-on-ignition.json"
+    },
+    {
+      "id": "macro-hero-focus-relay",
+      "title": "镜头焦点接力",
+      "summary": "各段相机 cue 到达后，镜头在微距、全字、金属球与正面落版之间换位，独立焦点跟随主角，片尾持续微推。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/macro-hero-focus-relay.json"
+    },
+    {
+      "id": "tape-rewind-chrome-slam",
+      "title": "倒带冲入落版",
+      "summary": "磁带画面先倒退两帧并拖慢压暗，主拍时镀铬字标从放大态冲入，闪光、镜震和跑车加速同步释放。",
+      "types": [
+        "transition",
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/tape-rewind-chrome-slam.json"
+    },
+    {
+      "id": "stepped-hand-placement",
+      "title": "抽帧手摆抖动",
+      "summary": "运动或停留状态变化后，位置与旋转按 12fps 或 6fps 取样，并用种子抖动保持手摆纸片感。",
+      "types": [
+        "rhythm",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/stepped-hand-placement.json"
+    },
+    {
+      "id": "vhs-event-row-tear",
+      "title": "磁带行撕色偏",
+      "summary": "故障节点按固定帧种子选择行段错位，叠加色偏与一次垂直跳帧，随后恢复稳定画面。",
+      "types": [
+        "texture",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/vhs-event-row-tear.json"
+    },
+    {
+      "id": "snip-rattle-pop-lid",
+      "title": "剪盖蓄势爆开",
+      "summary": "剪线印章到达后，剪刀逐段打开剪口，头盖三次抖动后悬停，再弹起并回落到纸钉铰链，同时迸出碎纸和 BANG。",
+      "types": [
+        "rhythm",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/snip-rattle-pop-lid.json"
+    },
+    {
+      "id": "specular-sweep-glint",
+      "title": "斜向扫光与星芒",
+      "summary": "窄高光带沿倾斜坐标扫过字标表面；镀铬字在指定字角同步绽出旋转星芒，厚液字保留液面上的窄高斯亮带。",
+      "types": [
+        "texture",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave",
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/specular-sweep-glint.json"
+    },
+    {
+      "id": "crt-line-dot-shutdown",
+      "title": "显像管线点收屏",
+      "summary": "整幅画面先沿纵向压成水平亮线，再沿横向缩成磷光点并熄灭。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-synthwave",
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/crt-line-dot-shutdown.json"
+    },
+    {
+      "id": "cutout-arc-flight-flutter",
+      "title": "剪影弧线飞出",
+      "summary": "地球、鹰或蝴蝶 cue 到达后，剪影沿二次曲线飞出并落位，按物件叠加落地压扁、俯冲或双姿势振翅。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/cutout-arc-flight-flutter.json"
+    },
+    {
+      "id": "liquid-neck-leap",
+      "title": "液团拉丝跃起",
+      "summary": "液团起跳时拉出细颈，细颈变细断裂、两端回弹，液团沿抛物线并入大液团或落下，引出后续液浪。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/liquid-neck-leap.json"
+    },
+    {
+      "id": "pinch-rip-cylinder-peel",
+      "title": "夹纸裂页翻卷",
+      "summary": "手指夹住纸页上沿后，锯齿裂缝向下展开，左右纸半错一步沿圆柱翻卷，露出反面和下一张红纸。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/pinch-rip-cylinder-peel.json"
+    },
+    {
+      "id": "phase-offset-liquid-flood",
+      "title": "三层液浪漫屏",
+      "summary": "三层不同方向和相位的波前依次漫屏，后沿退去时从液面边缘拉出四组字标种子。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/phase-offset-liquid-flood.json"
+    },
+    {
+      "id": "punch-in-camera-shake",
+      "title": "分级急推镜震",
+      "summary": "拍点到达后，镜头分级急推，每级在少数帧内完成推近、过冲与镜震，之后继续缓推或加强颤动。",
+      "types": [
+        "camera",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-collage",
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/punch-in-camera-shake.json"
+    },
+    {
+      "id": "layered-hanazi-spring-pop",
+      "title": "厚边花字弹入",
+      "summary": "逐字 cue 到达后，挤出、彩边、白边、渐变与高光一起弹入，驻留轻摆并按标题拍点依次跳动。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/layered-hanazi-spring-pop.json"
+    },
+    {
+      "id": "liquid-bar-split-wordmark",
+      "title": "液条断颈成字",
+      "summary": "液体在主拍前挤成横条，主拍沿字缝断颈，每段距离场切换为字形并弹开，碎滴与光环跟随冲量。",
+      "types": [
+        "type-motion",
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/liquid-bar-split-wordmark.json"
+    },
+    {
+      "id": "drip-ripple-glyph-reveal",
+      "title": "末滴涟漪显字",
+      "summary": "末滴落地后涟漪从落点传播，标语字形按距落点的距离延迟显现、抬入并去模糊。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-liquid"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/drip-ripple-glyph-reveal.json"
+    },
+    {
+      "id": "focus-burst-caption-hit",
+      "title": "集中线炸字主拍",
+      "summary": "炸毛主拍到达后，集中线、放射底、爆炸框和震惊花字同时展开，冲击抖动后保留轻摆并在定格帧闪白。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/focus-burst-caption-hit.json"
+    },
+    {
+      "id": "meter-needle-overrange",
+      "title": "量表扫针爆表",
+      "summary": "量表主拍到达后，表盘砸入，指针四帧从左端扫过终点并抵住抖动，爆表字和炸毛再击同拍发生。",
+      "types": [
+        "hud",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/meter-needle-overrange.json"
+    },
+    {
+      "id": "radar-sweep-persistent-blips",
+      "title": "雷达扫掠显点",
+      "summary": "扫描扇区转过目标方位时，目标点发亮并按最近扫过的时间衰减，列表读数随首次扫过上线。",
+      "types": [
+        "hud",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/radar-sweep-persistent-blips.json"
+    },
+    {
+      "id": "freeze-to-framed-card",
+      "title": "定格退为相框",
+      "summary": "定格 cue 到达后，保持主拍画面并略推，随后照片缩小、旋转、圆角裁切，白框与阴影展开，余振停稳。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/freeze-to-framed-card.json"
+    },
+    {
+      "id": "seeded-digit-scramble-settle",
+      "title": "乱数跳变落定",
+      "summary": "等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。",
+      "types": [
+        "hud",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/seeded-digit-scramble-settle.json"
+    },
+    {
+      "id": "hud-lock-alert-wave",
+      "title": "锁定括号警报波",
+      "summary": "四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。",
+      "types": [
+        "hud",
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hud"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/hud-lock-alert-wave.json"
+    }
+  ]
+}

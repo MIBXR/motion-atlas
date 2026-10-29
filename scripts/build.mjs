@@ -2,7 +2,7 @@
 // 构建：同步 motion-kit 副本 → 生成站点数据、Prompt 文档、Agent 资料包与 README 计数。
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, buildAll } from './lib/catalog.mjs';
+import { ROOT, buildAll, walk } from './lib/catalog.mjs';
 
 // 先同步 kit 副本，再生成资料包的文件清单。
 const first = buildAll();
@@ -25,12 +25,11 @@ for (const [rel, content] of Object.entries(files)) {
   changed++;
 }
 // 清理已删除条目的旧生成物
-for (const dir of ['agent/cases', 'agent/patterns', 'agent/materials', 'prompts/cases', 'prompts/patterns']) {
+for (const dir of ['agent', 'prompts', 'data']) {
   const abs = path.join(ROOT, dir);
   if (!fs.existsSync(abs)) continue;
-  for (const f of fs.readdirSync(abs)) {
-    const rel = `${dir}/${f}`;
-    if (!(rel in files)) { fs.rmSync(path.join(abs, f)); console.log('remove', rel); }
+  for (const rel of walk(dir)) {
+    if (!(rel in files)) { fs.rmSync(path.join(ROOT, rel)); console.log('remove', rel); }
   }
 }
 console.log(`build ok · ${cases.length} cases · ${patterns.length} patterns · ${materials.length} materials · ${changed} files updated`);

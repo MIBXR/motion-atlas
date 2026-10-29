@@ -116,7 +116,7 @@
   "files": [
     {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 2319
+      "bytes": 303
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
@@ -128,7 +128,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4167
+      "bytes": 4085
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
@@ -204,7 +204,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
-      "bytes": 3164
+      "bytes": 378
     },
     {
       "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
@@ -248,7 +248,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/fidelity.md",
-      "bytes": 3788
+      "bytes": 3710
     },
     {
       "path": "demos/cases/mg-paperclip/film/LICENSE",
@@ -337,6 +337,18 @@
     {
       "path": "demos/patterns/analytic-motion-blur/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-morph.json",
+      "bytes": 15482
+    },
+    {
+      "path": "entries/cases/mg-paperclip.json",
+      "bytes": 17325
+    },
+    {
+      "path": "entries/patterns/analytic-motion-blur.json",
+      "bytes": 3710
     },
     {
       "path": "previews/patterns/analytic-motion-blur.jpg",

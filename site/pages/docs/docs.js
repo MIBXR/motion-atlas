@@ -141,10 +141,10 @@
   function open() {
     const raw = decodeURIComponent(location.hash.replace(/^#doc\//, ''));
     const [p, frag] = raw.split('::');
-    const path = byPath.has(p) ? p : DEFAULT;
+    const path = p || DEFAULT;
     const d = byPath.get(path);
     const art = $('#doc');
-    if (!d) { art.innerHTML = '<p class="doc-empty">还没有文档。</p>'; return; }
+    if (!d) { art.innerHTML = '<p class="doc-empty">未找到文档。</p>'; return; }
     const heads = [];
     const body = render(d.content, d.path, heads);
     const isMd = /\.md$/.test(d.path);

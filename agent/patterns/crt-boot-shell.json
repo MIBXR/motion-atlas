@@ -118,7 +118,7 @@
   "files": [
     {
       "path": "demos/cases/mg-pixel/LICENSES.md",
-      "bytes": 1712
+      "bytes": 165
     },
     {
       "path": "demos/cases/mg-pixel/audio/film.m4a",
@@ -126,7 +126,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/fidelity.md",
-      "bytes": 3617
+      "bytes": 3570
     },
     {
       "path": "demos/cases/mg-pixel/film/LICENSE",
@@ -199,6 +199,14 @@
     {
       "path": "demos/patterns/crt-boot-shell/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-pixel.json",
+      "bytes": 21645
+    },
+    {
+      "path": "entries/patterns/crt-boot-shell.json",
+      "bytes": 3819
     },
     {
       "path": "previews/patterns/crt-boot-shell.jpg",

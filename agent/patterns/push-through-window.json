@@ -149,7 +149,7 @@
   "files": [
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 1736
+      "bytes": 254
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
@@ -157,7 +157,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3455
+      "bytes": 3398
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
@@ -218,6 +218,14 @@
     {
       "path": "demos/patterns/push-through-window/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-flat-vector.json",
+      "bytes": 20604
+    },
+    {
+      "path": "entries/patterns/push-through-window.json",
+      "bytes": 4178
     },
     {
       "path": "previews/patterns/push-through-window.jpg",

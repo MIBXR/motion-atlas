@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>巧思模板 · 锁定确认 — Motion Atlas</title>
+  <!--
+    巧思模板（单文件，不是条目，不进入站点）。拆分型：
+    - 保留自身机制代码，素材引用 ../../../demos/cases/<id>/；舞台、乐谱与控制条写法见 case-native/。
+    - 舞台像素：横屏 1920×1080、竖屏 1080×1920；两套构图写在 [data-orient] 规则与 CONFIG.layout 里。
+    - 舞台字号按设计决定，不设下限。层级：背景 → 图形 → 文字 → HUD。
+  -->
+  <style>
+    :root { --bg: #101114; --ink: #f4f1ea; --dim: #8e939c; --line: #2a2e35; --accent: #ffcf4a; --plate: rgba(16, 17, 20, 0.9);
+      --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      --mono: "Cascadia Mono", "JetBrains Mono", Consolas, "Courier New", monospace; }
+    .stage { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+    .stage > * { position: absolute; }
+    .stage p { margin: 0; }
+    .bg { inset: 0; background: radial-gradient(ellipse at 50% 50%, #1b1d22 0%, var(--bg) 70%); }
+    .gfx { left: 0; top: 0; overflow: visible; }
+    .gfx .bracket { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: square; }
+    .gfx .cross { stroke: var(--dim); stroke-width: 2; }
+    .gfx .flash { fill: var(--accent); opacity: 0; }
+    .word { font-weight: 800; line-height: 1; white-space: nowrap; transform: translate(-50%, -50%); }
+    .stamp { font-family: var(--mono); font-weight: 700; color: var(--accent); border: 6px solid var(--accent); line-height: 1.1;
+      text-align: center; background: var(--plate); white-space: nowrap; transform-origin: 50% 50%; }
+    .stamp small { display: block; font-weight: 400; letter-spacing: 0.12em; }
+    .cap { font-family: var(--mono); color: var(--dim); letter-spacing: 0.12em; white-space: nowrap; transform: translateX(-50%); }
+    .cap b { color: var(--accent); font-weight: 400; }
+
+    [data-orient="landscape"] .word { font-size: 126px; }
+    [data-orient="landscape"] .stamp { font-size: 33px; padding: 9px 21px; }
+    [data-orient="landscape"] .stamp small { font-size: 18px; }
+    [data-orient="landscape"] .cap { font-size: 21px; }
+
+    /* 竖屏：标题每行两个字竖排成两行，占满竖向构图 */
+    [data-orient="portrait"] .word { font-size: 238.33333px; width: 2.1em; white-space: normal; text-align: center; line-height: 1.08; }
+    [data-orient="portrait"] .stamp { font-size: 55px; padding: 14.5px 31px; }
+    [data-orient="portrait"] .stamp small { font-size: 33px; }
+    [data-orient="portrait"] .cap { font-size: 33px; }
+    [data-orient="landscape"] .stamp { border-width: 4.5px; }
+    [data-orient="portrait"] .stamp { border-width: 5.5px; }
+  </style>
+</head>
+<body>
+  <main id="stage" class="stage" aria-label="锁定确认：准星分步收拢、锁定、盖章">
+    <div class="bg" aria-hidden="true"></div>
+    <svg class="gfx" id="gfx" aria-hidden="true"></svg>
+    <p class="word" id="word"></p>
+    <p class="stamp" id="stamp"></p>
+    <p class="cap" id="cap"></p>
+  </main>
+  <script src="../../../kit/motion-kit.js"></script>
+  <script>
+// ---------------- 巧思配置 ----------------
+const CONFIG = {
+  word: '目标锁定',
+  stamp: ['CONFIRMED', '已确认'],
+  bpm: 120,
+  steps: 4,                                   // 准星收拢分几步（每步半拍，每步一个提示音）
+  beats: { steps: 1, lock: 3.5, stamp: 4.5, total: 8 },
+  layout: {
+    // 目标框（准星收拢到这里）、印章位置、说明文字位置，单位：舞台像素
+    landscape: { box: { cx: 960, cy: 500, w: 820, h: 250 }, stamp: { x: 1290, y: 724, rot: -8 }, cap: { x: 960, y: 900 } },
+    portrait: { box: { cx: 540, cy: 860, w: 740, h: 700 }, stamp: { x: 600, y: 1345, rot: -8 }, cap: { x: 540, y: 1640 } },
+  },
+  notes: ['C6', 'D6', 'E6', 'G6'],
+};
+// --------------------------------------------------------
+
+const MK = MotionKit, { clamp, lerp, seg, ease } = MK, $ = (s) => document.querySelector(s);
+const BT = MK.beats(CONFIG.bpm), B = CONFIG.beats, at = (b) => BT.at(b);
+const stage = MK.stage({ root: '#stage' });
+
+$('#word').textContent = CONFIG.word;
+$('#stamp').innerHTML = `${CONFIG.stamp[0]}<small>${CONFIG.stamp[1]}</small>`;
+$('#cap').innerHTML = `LOCK · <b>${MK.pad(CONFIG.steps)}</b> STEPS · ${CONFIG.bpm} BPM`;
+MK.preload([MK.preload.fonts()]);
+
+// 几何：四个角括号由同一个 corner() 计算；目标框中心同时用于文字锚点
+let L;
+const els = { gfx: $('#gfx'), word: $('#word'), stamp: $('#stamp'), cap: $('#cap') };
+function layout(orient) {
+  L = CONFIG.layout[orient];
+  const svg = els.gfx;
+  svg.setAttribute('viewBox', `0 0 ${stage.width} ${stage.height}`);
+  svg.setAttribute('width', stage.width);
+  svg.setAttribute('height', stage.height);
+  const { cx, cy } = L.box;
+  svg.innerHTML = `<rect class="flash" id="flash"/>`
+    + `<line class="cross" x1="${cx - 40}" y1="${cy}" x2="${cx + 40}" y2="${cy}"/><line class="cross" x1="${cx}" y1="${cy - 40}" x2="${cx}" y2="${cy + 40}"/>`
+    + [0, 1, 2, 3].map(() => '<path class="bracket"/>').join('');
+  els.word.style.left = cx + 'px';
+  els.word.style.top = cy + 'px';
+  els.stamp.style.left = L.stamp.x + 'px';
+  els.stamp.style.top = L.stamp.y + 'px';
+  els.cap.style.left = L.cap.x + 'px';
+  els.cap.style.top = L.cap.y + 'px';
+}
+// 第 i 个角（0 左上、1 右上、2 右下、3 左下）在缩放 s 下的路径：竖边 → 角点 → 横边，开口朝向框内；角长 = 短边的 22%
+function corner(i, s) {
+  const { cx, cy, w, h } = L.box, hw = (w / 2) * s, hh = (h / 2) * s, len = Math.round(Math.min(w, h) * 0.22);
+  const sx = i % 3 === 0 ? -1 : 1, sy = i < 2 ? -1 : 1;
+  const x = Math.round(cx + sx * hw), y = Math.round(cy + sy * hh);
+  return `M${x} ${y - sy * len} L${x} ${y} L${x - sx * len} ${y}`;
+}
+layout(stage.orient);
+stage.on('orient', layout);
+
+function render(t) {
+  // 分步收拢：每半拍一步，每步内部用 snap 缓动（快进、硬停）
+  const k = clamp((t - at(B.steps)) / (BT.spb / 2), 0, CONFIG.steps);
+  const step = Math.floor(k), frac = k - step;
+  const p = (step + (step < CONFIG.steps ? ease.snap(frac) : 0)) / CONFIG.steps;
+  const intro = seg(t, 0, at(B.steps), ease.emphasized);
+  const s = lerp(1.9, 1, p) * lerp(1.25, 1, intro);
+  const brackets = els.gfx.querySelectorAll('.bracket');
+  brackets.forEach((b, i) => { b.setAttribute('d', corner(i, s)); b.style.opacity = intro; });
+  // 十字准星只在收拢阶段出现，锁定后淡出（避免在字间缝隙里露出线条）
+  const crossOut = seg(t, at(B.lock), 0.2);
+  els.gfx.querySelectorAll('.cross').forEach((c) => { c.style.opacity = (intro * (1 - crossOut)).toFixed(3); });
+  // 锁定闪光
+  const lock = t - at(B.lock);
+  const flash = lock >= 0 ? Math.exp(-lock * 9) : 0;
+  const fl = $('#flash'), { cx, cy, w, h } = L.box;
+  fl.setAttribute('x', cx - w / 2); fl.setAttribute('y', cy - h / 2); fl.setAttribute('width', w); fl.setAttribute('height', h);
+  fl.style.opacity = (flash * 0.35).toFixed(3);
+  els.word.style.opacity = lerp(0.25, 1, clamp(lock / 0.08));
+  els.word.style.color = lock >= 0 && lock < 0.12 ? 'var(--accent)' : 'var(--ink)';
+  // 印章：从 2.4 倍砸下，带过冲
+  const st = seg(t, at(B.stamp), 0.28, ease.outBack);
+  els.stamp.style.opacity = clamp((t - at(B.stamp)) / 0.03);
+  els.stamp.style.transform = `translate(-50%, -50%) rotate(${L.stamp.rot}deg) scale(${lerp(2.4, 1, clamp(st)).toFixed(3)})`;
+  // 震动：印章落下后 0.2 秒，整层同步位移
+  const since = t - at(B.stamp), amp = since >= 0 ? Math.exp(-since * 20) * 16 : 0, r = MK.rng(3 + Math.floor(t * 60));
+  const shake = amp > 0.3 ? `translate(${((r() - 0.5) * amp).toFixed(1)}px, ${((r() - 0.5) * amp).toFixed(1)}px)` : '';
+  els.gfx.style.transform = shake;
+  els.cap.style.opacity = seg(t, 0.2, 0.5);
+}
+
+// 乐谱：每一步一个上行提示音；锁定 = 确认音；印章 = 盖章 + 次低频 + 闪光；全程轻镲
+const SCORE = [
+  { t: 0, voice: 'whoosh', dur: at(B.steps), peak: 0.85, vel: 0.7 },
+  ...Array.from({ length: CONFIG.steps }, (_, i) => ({ t: at(B.steps) + (i * BT.spb) / 2, voice: 'beep', note: CONFIG.notes[i % CONFIG.notes.length], dur: 0.05, wave: 'square', vel: 0.45 })),
+  ...Array.from({ length: CONFIG.steps }, (_, i) => ({ t: at(B.steps) + (i * BT.spb) / 2, voice: 'key', vel: 0.6 })),
+  { t: at(B.lock), voice: 'confirm', steps: [0, 4, 7], vel: 0.8 },
+  { t: at(B.stamp), voice: 'stamp', vel: 1 },
+  { t: at(B.stamp), voice: 'sub', note: 'A1', dur: 0.4, vel: 0.8 },
+  { t: at(B.stamp) + 0.03, voice: 'sparkle', vel: 0.6 },
+  MK.audio.pattern({ bpm: CONFIG.bpm, from: 0, to: at(B.total), tracks: { hat: '..x...x...x...x.' }, voices: { hat: { gain: 0.5 } } }),
+];
+
+const tl = MK.timeline({
+  duration: at(B.total), render,
+  markers: [{ t: at(B.steps), label: '收拢' }, { t: at(B.lock), label: '锁定' }, { t: at(B.stamp), label: '盖章' }],
+});
+MK.audio.attach(tl, SCORE);
+MK.expose(tl, { bpm: CONFIG.bpm });
+MK.controls(tl, { accent: '#ffcf4a' });
+MK.start(tl, { t: 0, reduced: at(B.stamp) + 0.6 });
+  </script>
+</body>
+</html>

@@ -22,6 +22,15 @@
       "foundation": "骨架：决定主视觉与信息层级",
       "support": "支撑：承担一个区域的交互或信息",
       "accent": "点睛：短时、局部的强调"
+    },
+    "materialTypes": {
+      "component-library": "组件库",
+      "image": "图像",
+      "sound": "声音",
+      "font": "字体",
+      "poster": "海报",
+      "agent-skill": "Agent Skill",
+      "prompt-kit": "提示词套件"
     }
   },
   "protocol": {
@@ -37,7 +46,9 @@
     "patterns": 82,
     "materials": 2
   },
-  "materialCatalog": "agent/materials.json",
+  "caseCatalog": "agent/cases/index.json",
+  "patternCatalog": "agent/patterns/index.json",
+  "materialCatalog": "agent/materials/index.json",
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -2240,7 +2251,8 @@
         "把点击推进的现场演示或普通网页当作本工具的主要产物",
         "把效果图当成已提供源码的可复刻案例"
       ],
-      "skillPath": "agent-skills/motion-showreel/",
+      "snapshotPath": "demos/materials/motion-showreel/",
+      "snapshotEntry": "SKILL.md",
       "relatedEntries": [
         {
           "kind": "case",
@@ -2268,7 +2280,8 @@
         "没有原文、口播稿或素材大纲，却要求该 skill 代为构思全部内容",
         "一般响应式网站或以自由浏览为主的网页应用"
       ],
-      "skillPath": "agent-skills/web-video-presentation/",
+      "snapshotPath": "demos/materials/web-video-presentation/",
+      "snapshotEntry": "SKILL.md",
       "relatedEntries": [],
       "bundle": "agent/materials/web-video-presentation.json"
     }
