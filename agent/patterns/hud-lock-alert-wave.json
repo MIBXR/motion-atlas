@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "hud-lock-alert-wave",
+  "pattern": {
+    "id": "hud-lock-alert-wave",
+    "order": 91,
+    "title": "锁定括号警报波",
+    "types": [
+      "hud",
+      "transition",
+      "rhythm"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "mg-styles-15",
+      "赛博朋克 HUD"
+    ],
+    "summary": "四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。",
+    "mechanism": "四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。",
+    "trigger": "候选匹配并到达目标锁定主拍时",
+    "effect": "目标括号、标题、闪白和径向警报改色沿同一锁定事件展开。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "mg-hud 原片 5.7–8.1 秒；1 倍速，总时长 2.4 秒。"
+      },
+      {
+        "name": "锁定括号警报波参数",
+        "value": "  \"bracket_travel\": [\n    5.9,\n    6.1667\n  ]\n  u.uWave.value = t >= LOCK ? E.outC(prog(t, LOCK, K.wave_dur)) * 1350 : -1;\n  float inside = uWave < 0.0 ? 0.0 : 1.0 - smoothstep(uWave - 110.0, uWave, dw);\n  float ann = uWave < 0.0 ? 0.0 : exp(-pow((dw - uWave + 22.0) / 40.0, 2.0)) * (1.0 - smoothstep(900.0, 1300.0, uWave));   // re-ink glow = 40 px annulus, not a disc\n  // titles: LOCKED + 目标锁定 land clean on the impact frame (scale 1.15 → 1 over 3 frames, first frame white-hot); only the small lines scramble"
+      }
+    ],
+    "useCases": [
+      "目标锁定提示",
+      "锁定主拍接全局警报改色"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态偏好下暂停在巧思 0.8 秒，声音默认关闭。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+    },
+    "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-hud 原片 5.7–8.1 秒；总时长 2.4 秒。四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。参数保持原作数值：  \"bracket_travel\": [\n    5.9,\n    6.1667\n  ]\n  u.uWave.value = t >= LOCK ? E.outC(prog(t, LOCK, K.wave_dur)) * 1350 : -1;\n  float inside = uWave < 0.0 ? 0.0 : 1.0 - smoothstep(uWave - 110.0, uWave, dw);\n  float ann = uWave < 0.0 ? 0.0 : exp(-pow((dw - uWave + 22.0) / 40.0, 2.0)) * (1.0 - smoothstep(900.0, 1300.0, uWave));   // re-ink glow = 40 px annulus, not a disc\n  // titles: LOCKED + 目标锁定 land clean on the impact frame (scale 1.15 → 1 over 3 frames, first frame white-hot); only the small lines scramble\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
+    "migration": [
+      {
+        "field": "index.html 内联配置 → segments / markers",
+        "how": "调整来源片段与中文节点，画面和声音使用同一时刻映射。"
+      }
+    ],
+    "demo": "demos/patterns/hud-lock-alert-wave/index.html",
+    "kit": true,
+    "timeline": true,
+    "renderer": "gpu",
+    "sources": [
+      {
+        "caseId": "mg-hud"
+      }
+    ],
+    "previewAt": 0.8,
+    "markers": [
+      {
+        "t": 0,
+        "label": "赛博朋克 HUD"
+      },
+      {
+        "t": 0.4,
+        "label": "机制画面 1"
+      },
+      {
+        "t": 0.7,
+        "label": "机制画面 2"
+      },
+      {
+        "t": 1,
+        "label": "机制画面 3"
+      }
+    ],
+    "preview": "previews/patterns/hud-lock-alert-wave.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "mg-hud",
+      "bundle": "agent/cases/mg-hud.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 锁定括号警报波\n\n## 实现 Prompt\n\n通过 MotionKit.replay 以 1 倍速依次重放mg-hud 原片 5.7–8.1 秒；总时长 2.4 秒。四角括号收拢吸附并蓄势，锁定主拍弹定标题、闪白并从目标发出改色波，警报脉冲随后衰减。参数保持原作数值：  \"bracket_travel\": [\n    5.9,\n    6.1667\n  ]\n  u.uWave.value = t >= LOCK ? E.outC(prog(t, LOCK, K.wave_dur)) * 1350 : -1;\n  float inside = uWave < 0.0 ? 0.0 : 1.0 - smoothstep(uWave - 110.0, uWave, dw);\n  float ann = uWave < 0.0 ? 0.0 : exp(-pow((dw - uWave + 22.0) / 40.0, 2.0)) * (1.0 - smoothstep(900.0, 1300.0, uWave));   // re-ink glow = 40 px annulus, not a disc\n  // titles: LOCKED + 目标锁定 land clean on the impact frame (scale 1.15 → 1 over 3 frames, first frame white-hot); only the small lines scramble\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。\n\n## 参数\n\n- **原片重放区间**：mg-hud 原片 5.7–8.1 秒；1 倍速，总时长 2.4 秒。\n- **锁定括号警报波参数**：  \"bracket_travel\": [\n    5.9,\n    6.1667\n  ]\n  u.uWave.value = t >= LOCK ? E.outC(prog(t, LOCK, K.wave_dur)) * 1350 : -1;\n  float inside = uWave < 0.0 ? 0.0 : 1.0 - smoothstep(uWave - 110.0, uWave, dw);\n  float ann = uWave < 0.0 ? 0.0 : exp(-pow((dw - uWave + 22.0) / 40.0, 2.0)) * (1.0 - smoothstep(900.0, 1300.0, uWave));   // re-ink glow = 40 px annulus, not a disc\n  // titles: LOCKED + 目标锁定 land clean on the impact frame (scale 1.15 → 1 over 3 frames, first frame white-hot); only the small lines scramble\n\n## 迁移\n\n- `index.html 内联配置 → segments / markers`：调整来源片段与中文节点，画面和声音使用同一时刻映射。\n\n[打开 Demo](../../demos/patterns/hud-lock-alert-wave/index.html) · [在库中查看](../../patterns.html#pattern/hud-lock-alert-wave)\n"
+  },
+  "entrypoint": "demos/patterns/hud-lock-alert-wave/index.html",
+  "files": [
+    {
+      "path": "demos/cases/mg-hud/LICENSES.md",
+      "bytes": 4082
+    },
+    {
+      "path": "demos/cases/mg-hud/assets/land-50m.json",
+      "bytes": 545535
+    },
+    {
+      "path": "demos/cases/mg-hud/audio/film.m4a",
+      "bytes": 418706
+    },
+    {
+      "path": "demos/cases/mg-hud/fidelity.md",
+      "bytes": 3655
+    },
+    {
+      "path": "demos/cases/mg-hud/film/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/cases/mg-hud/film/cues.json",
+      "bytes": 1518
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/holo.js",
+      "bytes": 17026
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/hud.js",
+      "bytes": 55288
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/post.js",
+      "bytes": 8773
+    },
+    {
+      "path": "demos/cases/mg-hud/film/js/util.js",
+      "bytes": 2285
+    },
+    {
+      "path": "demos/cases/mg-hud/film/main.js",
+      "bytes": 7461
+    },
+    {
+      "path": "demos/cases/mg-hud/film/setup.js",
+      "bytes": 101
+    },
+    {
+      "path": "demos/cases/mg-hud/film/style.css",
+      "bytes": 166
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/ChakraPetch-SemiBold.ttf",
+      "bytes": 78604
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS-Sans-LICENSE.txt",
+      "bytes": 32768
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Black.ttf",
+      "bytes": 8125608
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Bold.ttf",
+      "bytes": 8158996
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Medium.ttf",
+      "bytes": 8227312
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/HarmonyOS_Sans_SC_Regular.ttf",
+      "bytes": 8261128
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/JetBrainsMono[wght].ttf",
+      "bytes": 187208
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-Bold.ttf",
+      "bytes": 400680
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/Rajdhani-SemiBold.ttf",
+      "bytes": 390340
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/chakrapetch-OFL.txt",
+      "bytes": 4396
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/fonts.css",
+      "bytes": 1397
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/jetbrainsmono-OFL.txt",
+      "bytes": 4399
+    },
+    {
+      "path": "demos/cases/mg-hud/fonts/rajdhani-OFL.txt",
+      "bytes": 4373
+    },
+    {
+      "path": "demos/cases/mg-hud/index.html",
+      "bytes": 2189
+    },
+    {
+      "path": "demos/cases/mg-hud/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hud/source/audio.py",
+      "bytes": 7697
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
+      "bytes": 731
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/d3@7.9.0/dist/d3.min.js",
+      "bytes": 279706
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/LICENSE",
+      "bytes": 1081
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.core.js",
+      "bytes": 1458113
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/build/three.module.js",
+      "bytes": 662772
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 8501
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 4694
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 3228
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 15397
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
+      "bytes": 729
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1291
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/LICENSE",
+      "bytes": 734
+    },
+    {
+      "path": "demos/cases/mg-hud/vendor/topojson-client@3.1.0/dist/topojson-client.min.js",
+      "bytes": 7169
+    },
+    {
+      "path": "demos/patterns/hud-lock-alert-wave/index.html",
+      "bytes": 1402
+    },
+    {
+      "path": "demos/patterns/hud-lock-alert-wave/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "previews/patterns/hud-lock-alert-wave.jpg",
+      "bytes": 179659
+    }
+  ]
+}

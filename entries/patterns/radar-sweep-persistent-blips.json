@@ -1,0 +1,83 @@
+{
+  "id": "radar-sweep-persistent-blips",
+  "order": 89,
+  "title": "雷达扫掠显点",
+  "types": [
+    "hud",
+    "rhythm"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "mg-styles-15",
+    "赛博朋克 HUD"
+  ],
+  "summary": "扫描扇区转过目标方位时，目标点发亮并按最近扫过的时间衰减，列表读数随首次扫过上线。",
+  "mechanism": "扫描扇区转过目标方位时，目标点发亮并按最近扫过的时间衰减，列表读数随首次扫过上线。",
+  "trigger": "旋转扫描扇区扫过目标方位时",
+  "effect": "目标点与对应读数被扫描激活，亮度保留衰减余迹。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "mg-hud 原片 2.2–6.6 秒；1 倍速，总时长 4.4 秒。"
+    },
+    {
+      "name": "雷达扫掠显点参数",
+      "value": "    const a = (K.radar_theta0_deg + 180 * (t - K.radar_start) - 90) * DEG, tr = 0.6 * Math.PI, f = tr / (2 * Math.PI);\n    const since = (((brg - b.brg) % 360) + 360) % 360 / 180, age = t - K.radar_start - (((b.brg - K.radar_theta0_deg) % 360 + 360) % 360) / 180;\n  \"radar_period\": 2.0,\n  \"radar_theta0_deg\": 52,"
+    }
+  ],
+  "useCases": [
+    "雷达扫描与目标余迹",
+    "扫描触发的数据读数上线"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态偏好下暂停在巧思 0.8 秒，声音默认关闭。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+  },
+  "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-hud 原片 2.2–6.6 秒；总时长 4.4 秒。扫描扇区转过目标方位时，目标点发亮并按最近扫过的时间衰减，列表读数随首次扫过上线。参数保持原作数值：    const a = (K.radar_theta0_deg + 180 * (t - K.radar_start) - 90) * DEG, tr = 0.6 * Math.PI, f = tr / (2 * Math.PI);\n    const since = (((brg - b.brg) % 360) + 360) % 360 / 180, age = t - K.radar_start - (((b.brg - K.radar_theta0_deg) % 360 + 360) % 360) / 180;\n  \"radar_period\": 2.0,\n  \"radar_theta0_deg\": 52,\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
+  "migration": [
+    {
+      "field": "index.html 内联配置 → segments / markers",
+      "how": "调整来源片段与中文节点，画面和声音使用同一时刻映射。"
+    }
+  ],
+  "demo": "demos/patterns/radar-sweep-persistent-blips/index.html",
+  "kit": true,
+  "timeline": true,
+  "renderer": "gpu",
+  "sources": [
+    {
+      "caseId": "mg-hud"
+    }
+  ],
+  "previewAt": 0.8,
+  "markers": [
+    {
+      "t": 0,
+      "label": "赛博朋克 HUD"
+    },
+    {
+      "t": 0.7,
+      "label": "机制画面 1"
+    },
+    {
+      "t": 1.6,
+      "label": "机制画面 2"
+    },
+    {
+      "t": 2.3,
+      "label": "机制画面 3"
+    }
+  ]
+}

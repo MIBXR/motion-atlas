@@ -2,12 +2,44 @@
 
 ## 实现 Prompt
 
-章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；时长 7.05s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。
+章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；重放总时长 9.45s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 在原有 7.05 秒之后依次重放mg-hud 原片 0–2.4 秒；全部重放总时长 9.45 秒。HUD 的边框、外环、刻度、面板和地球按开机节点错时描出，日志按同一层级依次上线。参数沿用：  "boot": {
+    "frame": 0.12,
+    "ring_outer": 0.4,
+    "ring_ticks": 0.55,
+    "ring_inner": 0.7,
+    "panel_left": 0.9,
+    "panel_right": 1.15,
+    "hex": 1.2,
+    "globe": 1.4,
+    "log_lines": [
+      0.4,
+      0.9,
+      1.4,
+      1.9
+  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));
+  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);
+原有段的画面和时序保持原样，新增段沿用同区间原片音轨，声音默认关闭。
 
 ## 参数
 
-- **时长**：7.05s
+- **时长**：9.45 秒
 - **声音 voice**：bell、confirm
+- **分层描线开机参数**：  "boot": {
+    "frame": 0.12,
+    "ring_outer": 0.4,
+    "ring_ticks": 0.55,
+    "ring_inner": 0.7,
+    "panel_left": 0.9,
+    "panel_right": 1.15,
+    "hex": 1.2,
+    "globe": 1.4,
+    "log_lines": [
+      0.4,
+      0.9,
+      1.4,
+      1.9
+  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));
+  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);
 
 ## 动效 Token
 

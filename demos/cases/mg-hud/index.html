@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>赛博朋克 HUD · KESTREL-9 · Target Acquired</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="film/style.css">
+<script src="vendor/d3@7.9.0/dist/d3.min.js"></script>
+<script src="vendor/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script type="importmap">{"imports":{"three":"./vendor/three@0.186.1/build/three.module.js","three/addons/":"./vendor/three@0.186.1/examples/jsm/"}}</script>
+</head>
+<body>
+<script src="motion-kit.js"></script>
+<script type="module">
+await import('./film/setup.js');
+const { width, height, fps, duration } = window.DEMO;
+const cues = await (await fetch('./film/cues.json')).json();
+const labels = { power_on: '系统开机', data_live: '数据上线', radar_start: '雷达扫描', ground_track: '卫星轨迹', signal_detected: '发现信号', globe_turn: '地球转向', brackets_in: '括号收拢', snap: '括号吸附', settle: '锁定蓄势', lock: '目标锁定', dive: '穿入地图', resolve: '地图解析', coords: '坐标显示', uplink: '数据回传', power_off: '系统关机' };
+const bootLabels = { frame: '边框展开', ring_outer: '外环展开', ring_ticks: '刻度展开', ring_inner: '内环展开', panel_left: '左栏上线', panel_right: '右栏上线', hex: '六边格展开', globe: '全息地球', log_lines: '开机日志' };
+const markers = [...Object.entries(labels).flatMap(([key, label]) => (Array.isArray(cues[key]) ? cues[key] : [cues[key]]).map(t => ({ t, label }))), ...Object.entries(bootLabels).flatMap(([key, label]) => (Array.isArray(cues.boot[key]) ? cues.boot[key] : [cues.boot[key]]).map(t => ({ t, label })))].sort((a, b) => a.t - b.t);
+MotionKit.mountFilm({
+  film: { renderAt: window.renderAt, duration, width, height, fps },
+  title: document.title, bpm: cues.bpm,
+  root: '#stage', orients: ['landscape'], sizes: { landscape: [width, height] }, background: '#000',
+  markers, accent: '#45E0FF',
+  start: { t: 0, reduced: 9.5 },
+  audio: { src: 'audio/film.m4a', mime: 'audio/mp4' },
+});
+</script>
+</body>
+</html>
