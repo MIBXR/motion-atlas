@@ -60,7 +60,7 @@
       "conflicts": [],
       "notes": "与档案阵列的同一次选择更新编号、行列计数、标题、权限与列名；共享 460ms 时长，数字方向由导航决定，文字保持默认正向。"
     },
-    "prompt": "实现当前 archive-os 的逐字符滚动：直接裁出案例 bundle 中的滚动库，使用 createRollingNumber/createRollingText，duration:460、motionBlur:true，文字 transition:direct、stagger:none。每个字符建独立 slot/reel/face，临界阻尼使用 49 点及 exp(-10h)；连续更新必须先通过 Bs.read 读取当前动画位置和速度，再向最新目标接续。数字按照上下、左右输入方向滚动；文字使用默认正向。数字 --rn-blur 为 0.35，文字为 0.2，SVG Gaussian blur 随字高和速度变化。档案数据保存在 archives.json，字体引用 ../../cases/archive-os/film/app/fonts/，声音引用 ../../cases/archive-os/audio/film-audio.ogg。自动驾驶复用案例 62.6 秒后的四向输入，9 秒及 9.35 秒连续切列；真实输入接管，seek 恢复自动驾驶；默认静音并支持减少动态。",
+    "prompt": "实现当前 archive-os 的逐字符滚动：直接裁出案例 bundle 中的滚动库，使用 createRollingNumber/createRollingText，duration:460、motionBlur:true，文字 transition:direct、stagger:none。每个字符建独立 slot/reel/face，临界阻尼使用 49 点及 exp(-10h)；连续更新必须先通过 Bs.read 读取当前动画位置和速度，再向最新目标接续。数字按照上下、左右输入方向滚动；文字使用默认正向。数字 --rn-blur 为 0.35，文字为 0.2，SVG Gaussian blur 随字高和速度变化。档案数据保存在 mechanism/archives.json，字体引用 ../../cases/archive-os/film/app/fonts/，声音引用 ../../cases/archive-os/audio/film-audio.ogg。自动驾驶复用案例 62.6 秒后的四向输入，9 秒及 9.35 秒连续切列；真实输入接管，seek 恢复自动驾驶；默认静音并支持减少动态。",
     "demo": "demos/patterns/rolling-digits/index.html",
     "kit": true,
     "previewAt": 9.5,
@@ -97,7 +97,7 @@
       },
       {
         "name": "内容与声音",
-        "value": "档案数据读取 archives.json，音轨读取 ../../cases/archive-os/audio/film-audio.ogg；自动声音读取案例 62.6–75.6s 片段",
+        "value": "档案数据读取 mechanism/archives.json，音轨读取 ../../cases/archive-os/audio/film-audio.ogg；自动声音读取案例 62.6–75.6s 片段",
         "source": "demos/cases/archive-os/source/rhinelabui/content/archives.json；demos/cases/archive-os/audio/film-audio.ogg"
       }
     ],
@@ -113,19 +113,24 @@
     }
   ],
   "documents": {
-    "prompt": "# 滚动数字与文字\n\n## 实现 Prompt\n\n实现当前 archive-os 的逐字符滚动：直接裁出案例 bundle 中的滚动库，使用 createRollingNumber/createRollingText，duration:460、motionBlur:true，文字 transition:direct、stagger:none。每个字符建独立 slot/reel/face，临界阻尼使用 49 点及 exp(-10h)；连续更新必须先通过 Bs.read 读取当前动画位置和速度，再向最新目标接续。数字按照上下、左右输入方向滚动；文字使用默认正向。数字 --rn-blur 为 0.35，文字为 0.2，SVG Gaussian blur 随字高和速度变化。档案数据保存在 archives.json，字体引用 ../../cases/archive-os/film/app/fonts/，声音引用 ../../cases/archive-os/audio/film-audio.ogg。自动驾驶复用案例 62.6 秒后的四向输入，9 秒及 9.35 秒连续切列；真实输入接管，seek 恢复自动驾驶；默认静音并支持减少动态。\n\n## 视频生成 Prompt\n\n制作档案 HUD 的 13 秒滚轮片段，时间与 archive-os 的 62.6–75.6 秒对应。显示当前 RHINE LAB 档案的 X- 编号、行列号、中文标题、权限和列名；每次选择以 460ms 临界阻尼逐字符翻动，9 秒与 9.35 秒连续切列时保持当前位置和速度。保留 MiSans、浅灰底、字高相关速度模糊与案例原声音片段。\n\n## 负向约束\n\n不要 outCubic，不要整行文字滑入淡出，不要从上一次目标重启，不要固定像素正弦模糊，不要让文字与数字强制共用方向，不要 LUMEN 或固定 X-017 旧档案，不要跨目录读取案例。\n\n## 参数\n\n- **时长**：每次 460ms，49 点临界阻尼轨迹\n- **运动模糊**：SVG Gaussian blur 随字高与实时速度变化；数字 0.35、文字 0.2\n- **方向**：编号、行号与列号按导航方向；文字默认正向\n- **连续输入**：9s 与 9.35s 接连切列；第二次读取未完成动画的位置和速度\n\n[打开 Demo](../../demos/patterns/rolling-digits/index.html) · [在库中查看](../../patterns.html#pattern/rolling-digits)\n"
+    "prompt": "# 滚动数字与文字\n\n## 实现 Prompt\n\n实现当前 archive-os 的逐字符滚动：直接裁出案例 bundle 中的滚动库，使用 createRollingNumber/createRollingText，duration:460、motionBlur:true，文字 transition:direct、stagger:none。每个字符建独立 slot/reel/face，临界阻尼使用 49 点及 exp(-10h)；连续更新必须先通过 Bs.read 读取当前动画位置和速度，再向最新目标接续。数字按照上下、左右输入方向滚动；文字使用默认正向。数字 --rn-blur 为 0.35，文字为 0.2，SVG Gaussian blur 随字高和速度变化。档案数据保存在 mechanism/archives.json，字体引用 ../../cases/archive-os/film/app/fonts/，声音引用 ../../cases/archive-os/audio/film-audio.ogg。自动驾驶复用案例 62.6 秒后的四向输入，9 秒及 9.35 秒连续切列；真实输入接管，seek 恢复自动驾驶；默认静音并支持减少动态。\n\n## 视频生成 Prompt\n\n制作档案 HUD 的 13 秒滚轮片段，时间与 archive-os 的 62.6–75.6 秒对应。显示当前 RHINE LAB 档案的 X- 编号、行列号、中文标题、权限和列名；每次选择以 460ms 临界阻尼逐字符翻动，9 秒与 9.35 秒连续切列时保持当前位置和速度。保留 MiSans、浅灰底、字高相关速度模糊与案例原声音片段。\n\n## 负向约束\n\n不要 outCubic，不要整行文字滑入淡出，不要从上一次目标重启，不要固定像素正弦模糊，不要让文字与数字强制共用方向，不要 LUMEN 或固定 X-017 旧档案，不要跨目录读取案例。\n\n## 参数\n\n- **时长**：每次 460ms，49 点临界阻尼轨迹\n- **运动模糊**：SVG Gaussian blur 随字高与实时速度变化；数字 0.35、文字 0.2\n- **方向**：编号、行号与列号按导航方向；文字默认正向\n- **连续输入**：9s 与 9.35s 接连切列；第二次读取未完成动画的位置和速度\n\n[打开 Demo](../../demos/patterns/rolling-digits/index.html) · [在库中查看](../../patterns.html#pattern/rolling-digits)\n"
   },
   "entrypoint": "demos/patterns/rolling-digits/index.html",
   "files": [
     {
       "path": "demos/cases/archive-os/LICENSES.md",
-      "bytes": 498,
+      "bytes": 637,
       "role": "license"
     },
     {
       "path": "demos/cases/archive-os/audio/film-audio.ogg",
       "bytes": 1333228,
       "role": "asset"
+    },
+    {
+      "path": "demos/cases/archive-os/fidelity.md",
+      "bytes": 2376,
+      "role": "doc"
     },
     {
       "path": "demos/cases/archive-os/film/LICENSE",
@@ -4309,7 +4314,52 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5583,
+      "bytes": 5811,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/README.md",
+      "bytes": 1358,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/archive-assembly.blend",
+      "bytes": 4857544,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/build_archive.py",
+      "bytes": 11306,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/build_assembly.py",
+      "bytes": 3264,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/clear_reference_details.py",
+      "bytes": 2879,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/internal_architecture.py",
+      "bytes": 6340,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/rhine-archive.blend",
+      "bytes": 5624941,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/setup_studio.py",
+      "bytes": 1399,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/shell_reference_details.py",
+      "bytes": 4079,
       "role": "process"
     },
     {
@@ -4859,12 +4909,12 @@
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9252,
+      "bytes": 9811,
       "role": "entry"
     },
     {
       "path": "entries/patterns/rolling-digits.json",
-      "bytes": 5529,
+      "bytes": 5549,
       "role": "entry"
     },
     {

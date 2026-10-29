@@ -53,7 +53,7 @@
       "conflicts": [],
       "notes": "日序、日期、规尺、指南针与坐标持续更新。海拔、缩放、时钟、歌词与步进器保持固定位置。比例尺和署名留在边缘，中央呈现地图。"
     },
-    "prompt": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。复用地图巡礼的 drawHud、cameraAt、clockAt、stepAtX、ruleX 与对应 CSS。仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。片段：caseT 7→13.6；caseT 35.8→42.4；时长 13.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+    "prompt": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。复用地图巡礼的 drawHud、cameraAt、clockAt、stepAtX、ruleX 与对应 CSS。仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。片段：caseT 7→13.6；caseT 35.8→42.4；时长 13.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。",
     "demo": "demos/patterns/corner-hud/index.html",
     "kit": true,
     "sources": [
@@ -126,20 +126,20 @@
     },
     "migration": [
       {
-        "field": "动效函数",
-        "how": "配置镜头、时钟、步进器与规尺函数。"
+        "field": "mechanism/script.js → drawHud、clockAt、layout",
+        "how": "修改镜头、时钟、步进器与规尺函数的实现。"
       },
       {
-        "field": "依赖",
-        "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
+        "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
+        "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
       },
       {
-        "field": "需要的数据",
-        "how": "设置日序、日期、进度、歌词、步进器与横竖布局。"
+        "field": "../../cases/map-pilgrimage/film/config.js → meta、days、music.lyrics、stepper；tracks.day、tracks.clock、tracks.progress；layout",
+        "how": "修改日序、日期、歌词、时钟、步进器与横竖规尺。"
       },
       {
         "field": "mechanism/config.js → segments / markers",
-        "how": "7→13.6/35.8→42.4"
+        "how": "设置本巧思片段映射与标记；地图来源时刻：7→13.6/35.8→42.4。"
       },
       {
         "field": "mechanism/score.json",
@@ -156,13 +156,13 @@
     }
   ],
   "documents": {
-    "prompt": "# 四角信息 HUD\n\n## 实现 Prompt\n\n日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。复用地图巡礼的 drawHud、cameraAt、clockAt、stepAtX、ruleX 与对应 CSS。仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。片段：caseT 7→13.6；caseT 35.8→42.4；时长 13.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：13.8s\n- **声音 voice**：click、kick、sub\n\n## 动效 Token\n\n- **顶部 HUD 入场**：0s\n- **跨天**：6.6s\n- **时长**：13.8s\n\n## 迁移\n\n- `动效函数`：配置镜头、时钟、步进器与规尺函数。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置日序、日期、进度、歌词、步进器与横竖布局。\n- `mechanism/config.js → segments / markers`：7→13.6/35.8→42.4\n- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/corner-hud/index.html) · [在库中查看](../../patterns.html#pattern/corner-hud)\n"
+    "prompt": "# 四角信息 HUD\n\n## 实现 Prompt\n\n日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。复用地图巡礼的 drawHud、cameraAt、clockAt、stepAtX、ruleX 与对应 CSS。仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。片段：caseT 7→13.6；caseT 35.8→42.4；时长 13.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。\n\n## 参数\n\n- **时长**：13.8s\n- **声音 voice**：click、kick、sub\n\n## 动效 Token\n\n- **顶部 HUD 入场**：0s\n- **跨天**：6.6s\n- **时长**：13.8s\n\n## 迁移\n\n- `mechanism/script.js → drawHud、clockAt、layout`：修改镜头、时钟、步进器与规尺函数的实现。\n- `index.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。\n- `../../cases/map-pilgrimage/film/config.js → meta、days、music.lyrics、stepper；tracks.day、tracks.clock、tracks.progress；layout`：修改日序、日期、歌词、时钟、步进器与横竖规尺。\n- `mechanism/config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：7→13.6/35.8→42.4。\n- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/corner-hud/index.html) · [在库中查看](../../patterns.html#pattern/corner-hud)\n"
   },
   "entrypoint": "demos/patterns/corner-hud/index.html",
   "files": [
     {
       "path": "demos/cases/map-pilgrimage/fidelity.md",
-      "bytes": 392,
+      "bytes": 2550,
       "role": "doc"
     },
     {
@@ -257,12 +257,12 @@
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 19490,
+      "bytes": 19707,
       "role": "entry"
     },
     {
       "path": "entries/patterns/corner-hud.json",
-      "bytes": 5217,
+      "bytes": 5784,
       "role": "entry"
     },
     {

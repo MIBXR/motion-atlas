@@ -146,13 +146,18 @@
   "files": [
     {
       "path": "demos/cases/archive-os/LICENSES.md",
-      "bytes": 498,
+      "bytes": 637,
       "role": "license"
     },
     {
       "path": "demos/cases/archive-os/audio/film-audio.ogg",
       "bytes": 1333228,
       "role": "asset"
+    },
+    {
+      "path": "demos/cases/archive-os/fidelity.md",
+      "bytes": 2376,
+      "role": "doc"
     },
     {
       "path": "demos/cases/archive-os/film/LICENSE",
@@ -4336,7 +4341,52 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5583,
+      "bytes": 5811,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/README.md",
+      "bytes": 1358,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/archive-assembly.blend",
+      "bytes": 4857544,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/build_archive.py",
+      "bytes": 11306,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/build_assembly.py",
+      "bytes": 3264,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/clear_reference_details.py",
+      "bytes": 2879,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/internal_architecture.py",
+      "bytes": 6340,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/rhine-archive.blend",
+      "bytes": 5624941,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/setup_studio.py",
+      "bytes": 1399,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/archive-os/source/rhinelabui/art/shell_reference_details.py",
+      "bytes": 4079,
       "role": "process"
     },
     {
@@ -5036,7 +5086,7 @@
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9252,
+      "bytes": 9811,
       "role": "entry"
     },
     {

@@ -279,7 +279,7 @@
     },
     {
       "field": "source/audio.py",
-      "how": "读取 film/cues.json 合成极简点击电子节拍与落点音效。"
+      "how": "读取同目录 source/cues.json 合成极简点击电子节拍与落点音效；调整节点时同步修改画面使用的 film/cues.json。"
     },
     {
       "field": "index.html → MotionKit.mountFilm",

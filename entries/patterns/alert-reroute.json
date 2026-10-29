@@ -46,7 +46,7 @@
     "conflicts": [],
     "notes": "误乘横幅擦入，错误路线变红并画叉。改道胶囊单次淡入，省略号循环，与警报和提示音同步。"
   },
-  "prompt": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。复用地图巡礼的 drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project 与对应 CSS。警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。片段：caseT 44.8→50.3；时长 6.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。",
+  "prompt": "坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。复用地图巡礼的 drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project 与对应 CSS。警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。片段：caseT 44.8→50.3；时长 6.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 mechanism/score.json 挂接。",
   "demo": "demos/patterns/alert-reroute/index.html",
   "kit": true,
   "sources": [
@@ -132,20 +132,20 @@
   },
   "migration": [
     {
-      "field": "动效函数",
-      "how": "配置警示、改道提示、路线与标签。"
+      "field": "mechanism/script.js → renderLive、drawAlert、drawRoutesSVG、drawPatternMarkers",
+      "how": "修改警示、改道提示、路线与标签的实现。"
     },
     {
-      "field": "依赖",
-      "how": "配置MapLibre 5.6.0、样式、图层与地图镜像。"
+      "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
     },
     {
-      "field": "需要的数据",
-      "how": "设置警示轨道、错误路线、地图与横竖布局。"
+      "field": "../../cases/map-pilgrimage/film/config.js → tracks.alert、tracks.routes、tracks.markers；stops、map、layout",
+      "how": "修改警示文字、错误路线、地点与横竖布局。"
     },
     {
       "field": "mechanism/config.js → segments / markers",
-      "how": "44.8→50.3"
+      "how": "设置本巧思片段映射与标记；地图来源时刻：44.8→50.3。"
     },
     {
       "field": "mechanism/score.json",

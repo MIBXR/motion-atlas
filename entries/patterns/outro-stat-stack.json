@@ -45,7 +45,7 @@
     "conflicts": [],
     "notes": "统计行依次堆叠，数值逐项计数。fin.随后出现，让旅程在读完结果后结束。"
   },
-  "prompt": "收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+  "prompt": "收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。",
   "demo": "demos/patterns/outro-stat-stack/index.html",
   "kit": true,
   "sources": [
@@ -120,20 +120,20 @@
   },
   "migration": [
     {
-      "field": "动效函数",
-      "how": "配置统计行、数值计数与fin.入场。"
+      "field": "mechanism/script.js → drawOutro",
+      "how": "修改统计行、数值计数与fin.入场的实现。"
     },
     {
-      "field": "依赖",
-      "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
+      "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
     },
     {
-      "field": "需要的数据",
-      "how": "设置收尾与横竖布局；58s底图显示完成路线和标记。"
+      "field": "../../cases/map-pilgrimage/film/config.js → tracks.outro → t、stats、fin、credits；meta.handle；layout",
+      "how": "修改统计值、结尾文案与横竖布局；逐行时序在 mechanism/script.js → drawOutro。"
     },
     {
       "field": "mechanism/config.js → segments / markers",
-      "how": "55.6→60"
+      "how": "设置本巧思片段映射与标记；地图来源时刻：55.6→60。"
     },
     {
       "field": "mechanism/score.json",

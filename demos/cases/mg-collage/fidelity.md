@@ -43,3 +43,5 @@
 在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/06-collage && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
 
 配乐读取 `source/assets/sfx/` 的六份录音。`source/work/` 保存图像准备脚本，`work/prep_birds.py` 与 `work/prep_hand.py` 复用 `work/prep.py`；其布局输入取自案例 `assets/gen/layout.json`。共用纸张原图位于素材快照 `assets/textures/paper/Paper001_4K_color.jpg`，组装到复现根同名路径；制作脚本还读取根目录 `assets/images/`、`assets/textures/torn/`、`assets/textures/riso/`、`assets/textures/paper/Paper006_4K_color.jpg`、案例内 `assets/eagle_pillars.jpg` 与 `assets/manicule.svg`。
+
+上游固定版本未提供上述 `assets/images/` 肖像、剪贴图与报纸，撕纸蒙版及边缘、riso 纹理、Paper006、`eagle_pillars.jpg` 和 `manicule.svg`，也未提供 `prep_hand.py` 读取的 `/tmp/c06/manicule.svg.png`。该 PNG 的生成命令为 `qlmanage -t -s 1400 -o /tmp/c06 assets/manicule.svg`。本案例保存原生成脚本和上游已生成的拼贴素材。
