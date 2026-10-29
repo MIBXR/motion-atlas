@@ -197,6 +197,10 @@
   "entrypoint": "demos/patterns/vertical-title-blur/index.html",
   "files": [
     {
+      "path": "demos/cases/map-pilgrimage/fidelity.md",
+      "bytes": 392
+    },
+    {
       "path": "demos/cases/map-pilgrimage/film/config.js",
       "bytes": 17491
     },
@@ -226,7 +230,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/LICENSES.md",
-      "bytes": 2576
+      "bytes": 816
     },
     {
       "path": "demos/cases/mg-3d-render/assets/.gitignore",
@@ -1202,7 +1206,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/fidelity.md",
-      "bytes": 4317
+      "bytes": 5281
     },
     {
       "path": "demos/cases/mg-3d-render/film/LICENSE",
@@ -1259,6 +1263,10 @@
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "demos/cases/mg-3d-render/source/README.md",
+      "bytes": 899
     },
     {
       "path": "demos/cases/mg-3d-render/source/assets/hdri/studio_small_09_2k.hdr",
@@ -1369,8 +1377,20 @@
       "bytes": 41282
     },
     {
-      "path": "docs/research/map-pilgrimage.md",
-      "bytes": 7066
+      "path": "docs/cases/map-pilgrimage.md",
+      "bytes": 6454
+    },
+    {
+      "path": "entries/cases/map-pilgrimage.json",
+      "bytes": 19490
+    },
+    {
+      "path": "entries/cases/mg-3d-render.json",
+      "bytes": 16584
+    },
+    {
+      "path": "entries/patterns/vertical-title-blur.json",
+      "bytes": 6443
     },
     {
       "path": "previews/patterns/vertical-title-blur-portrait.jpg",

@@ -82,7 +82,7 @@
   "files": [
     {
       "path": "demos/cases/archive-os/LICENSES.md",
-      "bytes": 5454
+      "bytes": 498
     },
     {
       "path": "demos/cases/archive-os/audio/film-audio.ogg",
@@ -3434,11 +3434,11 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5916
+      "bytes": 5583
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 2589
+      "bytes": 2728
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/content/README.md",
@@ -3829,8 +3829,16 @@
       "bytes": 133782
     },
     {
-      "path": "docs/research/archive-os.md",
-      "bytes": 2679
+      "path": "docs/cases/archive-os.md",
+      "bytes": 2473
+    },
+    {
+      "path": "entries/cases/archive-os.json",
+      "bytes": 9252
+    },
+    {
+      "path": "entries/patterns/idle-breathing.json",
+      "bytes": 2914
     },
     {
       "path": "previews/patterns/idle-breathing.jpg",

@@ -140,7 +140,7 @@
   "files": [
     {
       "path": "demos/cases/archive-os/LICENSES.md",
-      "bytes": 5454
+      "bytes": 498
     },
     {
       "path": "demos/cases/archive-os/audio/film-audio.ogg",
@@ -3492,11 +3492,11 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5916
+      "bytes": 5583
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 2589
+      "bytes": 2728
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/content/README.md",
@@ -3880,7 +3880,7 @@
     },
     {
       "path": "demos/cases/mg-hud/LICENSES.md",
-      "bytes": 4082
+      "bytes": 1088
     },
     {
       "path": "demos/cases/mg-hud/assets/land-50m.json",
@@ -3892,7 +3892,7 @@
     },
     {
       "path": "demos/cases/mg-hud/fidelity.md",
-      "bytes": 3655
+      "bytes": 4101
     },
     {
       "path": "demos/cases/mg-hud/film/LICENSE",
@@ -3995,6 +3995,10 @@
       "bytes": 7573
     },
     {
+      "path": "demos/cases/mg-hud/source/cues.json",
+      "bytes": 1411
+    },
+    {
       "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
       "bytes": 731
     },
@@ -4056,11 +4060,11 @@
     },
     {
       "path": "demos/patterns/boot-typing/compiled.css",
-      "bytes": 1710
+      "bytes": 1721
     },
     {
       "path": "demos/patterns/boot-typing/compiled.js",
-      "bytes": 65282
+      "bytes": 65359
     },
     {
       "path": "demos/patterns/boot-typing/fonts.css",
@@ -4080,47 +4084,15 @@
     },
     {
       "path": "demos/patterns/boot-typing/script.js",
-      "bytes": 2972
+      "bytes": 3044
     },
     {
       "path": "demos/patterns/boot-typing/source/asset-url.ts",
       "bytes": 48
     },
     {
-      "path": "demos/patterns/boot-typing/source/boot-lettering-art.json",
-      "bytes": 29697
-    },
-    {
-      "path": "demos/patterns/boot-typing/source/boot-lettering.css",
-      "bytes": 1871
-    },
-    {
       "path": "demos/patterns/boot-typing/source/boot-lettering.ts",
-      "bytes": 4363
-    },
-    {
-      "path": "demos/patterns/boot-typing/source/boot-logo-tracks.ts",
-      "bytes": 3724
-    },
-    {
-      "path": "demos/patterns/boot-typing/source/boot-motion.ts",
-      "bytes": 4192
-    },
-    {
-      "path": "demos/patterns/boot-typing/source/boot-orbit-tracks.ts",
-      "bytes": 4835
-    },
-    {
-      "path": "demos/patterns/boot-typing/source/boot-tracks.ts",
-      "bytes": 7402
-    },
-    {
-      "path": "demos/patterns/boot-typing/source/boot.ts",
-      "bytes": 11417
-    },
-    {
-      "path": "demos/patterns/boot-typing/source/brand.ts",
-      "bytes": 1620
+      "bytes": 4455
     },
     {
       "path": "demos/patterns/boot-typing/source/theme-ui.ts",
@@ -4131,8 +4103,20 @@
       "bytes": 6049
     },
     {
-      "path": "docs/research/archive-os.md",
-      "bytes": 2679
+      "path": "docs/cases/archive-os.md",
+      "bytes": 2473
+    },
+    {
+      "path": "entries/cases/archive-os.json",
+      "bytes": 9252
+    },
+    {
+      "path": "entries/cases/mg-hud.json",
+      "bytes": 18397
+    },
+    {
+      "path": "entries/patterns/boot-typing.json",
+      "bytes": 6698
     },
     {
       "path": "previews/patterns/boot-typing.jpg",

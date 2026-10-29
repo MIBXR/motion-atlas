@@ -1,6 +1,6 @@
 # 接入与保真说明
 
-复刻以公开默认 10 秒成片为准，复用固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 的成品代码、素材、字体与音轨，仅整理成品所需文件并接入 Motion Atlas。
+复刻以公开默认成片为准，作品来源与固定版本见[条目 JSON](../../../entries/cases/mg-hanazi.json)。
 
 ## 相对原作的删改
 
@@ -37,3 +37,13 @@
 | 9.5 秒 | 青色条纹底、旋转圆角白框、猫咪、认证印章与两组落版花字对应一致；GPU 合成恢复完整背景与裁切。 | `compare-9.5.png` |
 
 无头浏览器中，独立 Demo 与站点案例页均自动播放，实际鼠标拖动可定位，声音默认关闭并能切换，播放时音轨跟随时间轴；独立页 `?t=5&autoplay=0` 停在 5 秒，案例页 `#case/mg-hanazi?t=5` 在 iframe ready 后从 5 秒定位继续。一次开启声音后的声画采样差为demo 50.0ms、site 20.3ms；三片的两种入口均无浏览器脚本异常。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/18-hanazi && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
+
+图像准备脚本位于 `source/assets/prep.py`、`prep_r2.py`、`prep_r2b.py`；组装时将案例 `assets/` 中的现有图片合入复现案例的 `assets/`，并在该目录运行准备脚本。准备链读取根目录 `assets/images/originals/cats/`、案例内 `cat_grey_face.jpg`、`tux_cut.png`、`tux_cut_r1.png` 和 `grey_r1.jpg`。
+
+原作仓库未提供猫原图、部分中间图与 rembg 模型。生成脚本和原作已生成的成品素材均已保留，案例直接使用这些成品素材；重新生成需自行准备原始输入与模型。

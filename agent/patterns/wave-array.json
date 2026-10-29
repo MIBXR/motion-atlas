@@ -144,7 +144,7 @@
   "files": [
     {
       "path": "demos/cases/archive-os/LICENSES.md",
-      "bytes": 5454
+      "bytes": 498
     },
     {
       "path": "demos/cases/archive-os/audio/film-audio.ogg",
@@ -3496,11 +3496,11 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5916
+      "bytes": 5583
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 2589
+      "bytes": 2728
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/content/README.md",
@@ -3884,7 +3884,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
-      "bytes": 2040
+      "bytes": 812
     },
     {
       "path": "demos/cases/mg-liquid/audio/film.m4a",
@@ -3892,7 +3892,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 4895
+      "bytes": 5866
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
@@ -3983,6 +3983,26 @@
       "bytes": 11884
     },
     {
+      "path": "demos/cases/mg-liquid/source/cues.json",
+      "bytes": 1702
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/lookdev.js",
+      "bytes": 2622
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/scene.js",
+      "bytes": 56751
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/textsdf.js",
+      "bytes": 5558
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/out/cues_derived.json",
+      "bytes": 5548
+    },
+    {
       "path": "demos/patterns/wave-array/array.html",
       "bytes": 1133
     },
@@ -4020,143 +4040,23 @@
     },
     {
       "path": "demos/patterns/wave-array/source/main.ts",
-      "bytes": 5820
+      "bytes": 6575
     },
     {
-      "path": "demos/patterns/wave-array/source/upstream/content/archives.json",
-      "bytes": 35817
+      "path": "docs/cases/archive-os.md",
+      "bytes": 2473
     },
     {
-      "path": "demos/patterns/wave-array/source/upstream/src/appearance.ts",
-      "bytes": 8043
+      "path": "entries/cases/archive-os.json",
+      "bytes": 9252
     },
     {
-      "path": "demos/patterns/wave-array/source/upstream/src/archive-drag.ts",
-      "bytes": 5541
+      "path": "entries/cases/mg-liquid.json",
+      "bytes": 15817
     },
     {
-      "path": "demos/patterns/wave-array/source/upstream/src/archive-draw-coverage.ts",
-      "bytes": 2596
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/archive-lighting.ts",
-      "bytes": 1273
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/archive-loop.ts",
-      "bytes": 2454
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/archive-play-motion.ts",
-      "bytes": 5651
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/archive-visibility.ts",
-      "bytes": 3410
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/asset-url.ts",
-      "bytes": 354
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/audio.ts",
-      "bytes": 26070
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/boot-logo-tracks.ts",
-      "bytes": 3724
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/boot-motion.ts",
-      "bytes": 4192
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/boot-orbit-tracks.ts",
-      "bytes": 4835
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/boot-tracks.ts",
-      "bytes": 7402
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/brand.ts",
-      "bytes": 1620
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/data.ts",
-      "bytes": 1077
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/decryption.ts",
-      "bytes": 5709
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/glass-reveal.ts",
-      "bytes": 2248
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/instance-updates.ts",
-      "bytes": 1274
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/internal-optics.ts",
-      "bytes": 2054
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/motion-preferences.ts",
-      "bytes": 6698
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/motion.ts",
-      "bytes": 4413
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/quality-renderer.ts",
-      "bytes": 2566
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/render-quality.ts",
-      "bytes": 3985
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/render-state.ts",
-      "bytes": 950
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/scene.ts",
-      "bytes": 81423
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/shared-depth.ts",
-      "bytes": 5617
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/theme-material.ts",
-      "bytes": 4276
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/theme-motion.ts",
-      "bytes": 1713
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/three-resources.ts",
-      "bytes": 1159
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/typing-rhythm.ts",
-      "bytes": 919
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/typing-samples.ts",
-      "bytes": 14792
-    },
-    {
-      "path": "demos/patterns/wave-array/source/upstream/src/viewport-layout.ts",
-      "bytes": 1857
-    },
-    {
-      "path": "docs/research/archive-os.md",
-      "bytes": 2679
+      "path": "entries/patterns/wave-array.json",
+      "bytes": 8090
     },
     {
       "path": "previews/patterns/wave-array-portrait.jpg",

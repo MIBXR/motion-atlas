@@ -1,6 +1,6 @@
 # 接入与保真说明
 
-复刻以公开默认 10 秒成片为准，复用固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 的画面、字体、运行数据与音轨，仅整理成品所需文件并接入 Motion Atlas。
+复刻以公开默认成片为准，作品来源与固定版本见[条目 JSON](../../../entries/cases/mg-paperclip.json)。
 
 ## 相对原作的删改
 
@@ -37,3 +37,13 @@
 | 9.5 秒 | 完整手机、70/118、结论、橙色下划线与说明的构图、字体、字号和基线对应一致。 | `compare-9.5.png` |
 
 浏览器中，独立页和站点案例页自动播放、拖动与声音开关正常；独立页 `?t=5&autoplay=0` 停在 5 秒，案例页 `#case/mg-paperclip?t=5` 将定位传给 Demo。独立页正常播放的一次声画采样差约 41ms；站点从 5 秒开启声音时两者起点对齐，结束时同时暂停，AAC 尾端与 10 秒画面相差约 16ms。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/19-paperclip && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
+
+贴纸准备脚本为 `source/tools/stickers.py`，读取复现案例 `assets/src/` 中 phone、battery、wafer、cobalt、lithium、tin、pcb、rareearth 的 `.img` 原图，输出 `assets/stickers/`；现有成品位于案例 `assets/stickers/`。
+
+原作仓库未提供这八份贴纸原图与 rembg 模型。生成脚本和原作已生成的成品贴纸均已保留，案例直接使用这些成品素材；重新生成需自行准备原始输入与模型。

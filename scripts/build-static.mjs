@@ -1,14 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT } from './lib/catalog.mjs';
+import { ROOT, loadEntries } from './lib/catalog.mjs';
 import { assetSources, rewriteCSS, rewriteHTML } from './lib/site-assets.mjs';
 import './build.mjs';
 
 const args = process.argv.slice(2);
 if (args.length > 1 || args.some(arg => arg !== '--site')) throw new Error('Usage: node scripts/build-static.mjs [--site]');
 const site = args.includes('--site');
-const directories = ['agent', 'agent-skills', 'site', 'data', 'demos', 'docs', 'entries', 'kit', 'previews', 'prompts'];
-const sources = site ? assetSources(ROOT, directories.filter((dir) => dir !== 'agent-skills')) : { assets: {} };
+const directories = ['agent', 'site', 'data', 'demos', 'docs', 'entries', 'kit', 'previews', 'prompts'];
+const snapshots = loadEntries().materials.filter(e => e.snapshotPath).map(e => e.snapshotPath);
+const sources = site ? assetSources(ROOT, directories, snapshots) : { assets: {} };
 const output = path.join(ROOT, 'dist');
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
@@ -26,7 +27,7 @@ function finalize(directory) {
     const file = path.join(directory, entry.name);
     if (entry.isDirectory()) { finalize(file); continue; }
     const filename = path.relative(output, file).split(path.sep).join('/');
-    if (site && !filename.startsWith('agent-skills/') && /\.(?:html|css)$/.test(filename)) {
+    if (site && !snapshots.some(prefix => filename.startsWith(prefix)) && /\.(?:html|css)$/.test(filename)) {
       const text = fs.readFileSync(file, 'utf8');
       fs.writeFileSync(file, filename.endsWith('.html') ? rewriteHTML(text, filename, sources) : rewriteCSS(text, filename, sources));
     }

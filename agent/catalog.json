@@ -22,6 +22,15 @@
       "foundation": "骨架：决定主视觉与信息层级",
       "support": "支撑：承担一个区域的交互或信息",
       "accent": "点睛：短时、局部的强调"
+    },
+    "materialTypes": {
+      "component-library": "组件库",
+      "image": "图像",
+      "sound": "声音",
+      "font": "字体",
+      "poster": "海报",
+      "agent-skill": "Agent Skill",
+      "prompt-kit": "提示词套件"
     }
   },
   "protocol": {
@@ -35,9 +44,11 @@
   "counts": {
     "cases": 18,
     "patterns": 82,
-    "materials": 2
+    "materials": 3
   },
-  "materialCatalog": "agent/materials.json",
+  "caseCatalog": "agent/cases/index.json",
+  "patternCatalog": "agent/patterns/index.json",
+  "materialCatalog": "agent/materials/index.json",
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -2223,6 +2234,104 @@
   ],
   "materials": [
     {
+      "id": "mg-styles-15",
+      "title": "mg-styles-15 风格提示词套件",
+      "summary": "作者用一套“通用部分 + 风格四段”的提示词模板，让会写代码的 AI 逐风格制作 10 秒动态设计短片，并用独立 AI 评审迭代两轮；附代码合成配乐的 mgaudio 库与 103 个乐器采样。",
+      "type": "prompt-kit",
+      "carrierNote": "提示词、评审与配乐工具用于制作可逐帧渲染的动态设计短片，成品按时间线播放。",
+      "useCases": [
+        "用代码制作动态设计短片、品牌片头与风格练习",
+        "以模板编写新风格，或替换已有风格的故事、文案与配色",
+        "让独立 AI 按统一量表评审成片，再交回制作 AI 迭代",
+        "根据画面时间点合成配乐与音效"
+      ],
+      "avoid": [
+        "实拍剪辑、人物表演与依赖视频生成模型的制作",
+        "需要观众自行掌握阅读节奏的普通网站与网页应用",
+        "缺少命令执行环境、只能输出文字的 AI 对话"
+      ],
+      "snapshotPath": "demos/materials/mg-styles-15/",
+      "snapshotEntry": "README.zh-CN.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "mg-flat-vector",
+          "note": "按 prompts/01-flat-vector.md 制作，作者 AI 终评 7.64 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-line-art",
+          "note": "按 prompts/02-line-art.md 制作，作者 AI 终评 7.64 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-isometric",
+          "note": "按 prompts/03-isometric.md 制作，作者 AI 终评 8.00 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-3d-render",
+          "note": "按 prompts/04-3d-render.md 制作，作者 AI 终评 7.71 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-cel-boil",
+          "note": "按 prompts/05-cel-boil.md 制作，作者 AI 终评 8.07 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-collage",
+          "note": "按 prompts/06-collage.md 制作，作者 AI 终评 8.14 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-liquid",
+          "note": "按 prompts/07-liquid.md 制作，作者 AI 终评 7.57 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-morph",
+          "note": "按 prompts/08-morph.md 制作，作者 AI 终评 7.64 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-bauhaus",
+          "note": "按 prompts/09-bauhaus.md 制作，作者 AI 终评 7.71 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-synthwave",
+          "note": "按 prompts/10-synthwave.md 制作，作者 AI 终评 8.21 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-aurora-glass",
+          "note": "按 prompts/12-aurora-glass.md 制作，作者 AI 终评 8.07 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-hanazi",
+          "note": "按 prompts/18-hanazi.md 制作，作者 AI 终评 7.64 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-paperclip",
+          "note": "按 prompts/19-paperclip.md 制作，作者 AI 终评 7.71 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-pixel",
+          "note": "按 prompts/20-pixel.md 制作，作者 AI 终评 8.07 / 10"
+        },
+        {
+          "kind": "case",
+          "id": "mg-hud",
+          "note": "按 prompts/22-hud.md 制作，作者 AI 终评 7.93 / 10"
+        }
+      ],
+      "bundle": "agent/materials/mg-styles-15.json"
+    },
+    {
       "id": "motion-showreel",
       "title": "motion-showreel · 代码渲染短视频",
       "summary": "把图形、文字与界面动画编排为确定性时间线，逐帧渲染并交付 MP4 与可编辑源码。",
@@ -2240,7 +2349,8 @@
         "把点击推进的现场演示或普通网页当作本工具的主要产物",
         "把效果图当成已提供源码的可复刻案例"
       ],
-      "skillPath": "agent-skills/motion-showreel/",
+      "snapshotPath": "demos/materials/motion-showreel/",
+      "snapshotEntry": "SKILL.md",
       "relatedEntries": [
         {
           "kind": "case",
@@ -2268,7 +2378,8 @@
         "没有原文、口播稿或素材大纲，却要求该 skill 代为构思全部内容",
         "一般响应式网站或以自由浏览为主的网页应用"
       ],
-      "skillPath": "agent-skills/web-video-presentation/",
+      "snapshotPath": "demos/materials/web-video-presentation/",
+      "snapshotEntry": "SKILL.md",
       "relatedEntries": [],
       "bundle": "agent/materials/web-video-presentation.json"
     }

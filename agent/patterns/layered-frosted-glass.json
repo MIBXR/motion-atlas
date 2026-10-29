@@ -100,7 +100,7 @@
   "files": [
     {
       "path": "demos/cases/mg-aurora-glass/LICENSES.md",
-      "bytes": 1858
+      "bytes": 830
     },
     {
       "path": "demos/cases/mg-aurora-glass/assets/textures/grain/grain_fine_2048.png",
@@ -112,7 +112,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/fidelity.md",
-      "bytes": 4142
+      "bytes": 4710
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/LICENSE",
@@ -183,12 +183,24 @@
       "bytes": 10545
     },
     {
+      "path": "demos/cases/mg-aurora-glass/source/cues.json",
+      "bytes": 881
+    },
+    {
       "path": "demos/patterns/layered-frosted-glass/index.html",
       "bytes": 1385
     },
     {
       "path": "demos/patterns/layered-frosted-glass/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-aurora-glass.json",
+      "bytes": 16301
+    },
+    {
+      "path": "entries/patterns/layered-frosted-glass.json",
+      "bytes": 2673
     },
     {
       "path": "previews/patterns/layered-frosted-glass.jpg",

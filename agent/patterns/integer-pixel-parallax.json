@@ -106,7 +106,7 @@
   "files": [
     {
       "path": "demos/cases/mg-pixel/LICENSES.md",
-      "bytes": 1712
+      "bytes": 694
     },
     {
       "path": "demos/cases/mg-pixel/audio/film.m4a",
@@ -114,7 +114,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/fidelity.md",
-      "bytes": 3617
+      "bytes": 4108
     },
     {
       "path": "demos/cases/mg-pixel/film/LICENSE",
@@ -181,12 +181,24 @@
       "bytes": 11101
     },
     {
+      "path": "demos/cases/mg-pixel/source/cues.json",
+      "bytes": 888
+    },
+    {
       "path": "demos/patterns/integer-pixel-parallax/index.html",
       "bytes": 1261
     },
     {
       "path": "demos/patterns/integer-pixel-parallax/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-pixel.json",
+      "bytes": 21794
+    },
+    {
+      "path": "entries/patterns/integer-pixel-parallax.json",
+      "bytes": 3339
     },
     {
       "path": "previews/patterns/integer-pixel-parallax.jpg",

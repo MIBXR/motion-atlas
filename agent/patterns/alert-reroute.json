@@ -172,6 +172,10 @@
   "entrypoint": "demos/patterns/alert-reroute/index.html",
   "files": [
     {
+      "path": "demos/cases/map-pilgrimage/fidelity.md",
+      "bytes": 392
+    },
+    {
       "path": "demos/cases/map-pilgrimage/film/config.js",
       "bytes": 17491
     },
@@ -224,8 +228,16 @@
       "bytes": 41282
     },
     {
-      "path": "docs/research/map-pilgrimage.md",
-      "bytes": 7066
+      "path": "docs/cases/map-pilgrimage.md",
+      "bytes": 6454
+    },
+    {
+      "path": "entries/cases/map-pilgrimage.json",
+      "bytes": 19490
+    },
+    {
+      "path": "entries/patterns/alert-reroute.json",
+      "bytes": 5136
     },
     {
       "path": "previews/patterns/alert-reroute-portrait.jpg",

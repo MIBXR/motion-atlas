@@ -100,7 +100,7 @@
   "files": [
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
-      "bytes": 3164
+      "bytes": 911
     },
     {
       "path": "demos/cases/mg-paperclip/assets/countries-110m.json",
@@ -144,7 +144,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/fidelity.md",
-      "bytes": 3788
+      "bytes": 4716
     },
     {
       "path": "demos/cases/mg-paperclip/film/LICENSE",
@@ -207,6 +207,10 @@
       "bytes": 10067
     },
     {
+      "path": "demos/cases/mg-paperclip/source/cues.json",
+      "bytes": 3076
+    },
+    {
       "path": "demos/cases/mg-paperclip/source/tools/stickers.py",
       "bytes": 4468
     },
@@ -233,6 +237,14 @@
     {
       "path": "demos/patterns/explode-parts-leaders/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-paperclip.json",
+      "bytes": 17474
+    },
+    {
+      "path": "entries/patterns/explode-parts-leaders.json",
+      "bytes": 2742
     },
     {
       "path": "previews/patterns/explode-parts-leaders.jpg",

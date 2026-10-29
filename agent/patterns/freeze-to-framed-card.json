@@ -111,7 +111,7 @@
   "files": [
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 3208
+      "bytes": 1047
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -171,7 +171,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3636
+      "bytes": 4658
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -280,6 +280,14 @@
     {
       "path": "demos/patterns/freeze-to-framed-card/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-hanazi.json",
+      "bytes": 18590
+    },
+    {
+      "path": "entries/patterns/freeze-to-framed-card.json",
+      "bytes": 3270
     },
     {
       "path": "previews/patterns/freeze-to-framed-card-portrait.jpg",

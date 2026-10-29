@@ -270,5 +270,11 @@
     "idle-breathing",
     "seekable-timeline"
   ],
-  "previewAtPortrait": 14
+  "previewAtPortrait": 14,
+  "attribution": [
+    {
+      "scope": "作品",
+      "notes": "本案例移植自 [LBEILC / RhineLabUI](https://github.com/LBEILC/RhineLabUI)，上游提交 `12cc5e4`。\n\n本案例为 RhineLabUI 的移植，属非官方作品；《明日方舟》及莱茵生命相关名称、标志、设定、原片与原片音频采样的权利归各自权利人所有。"
+    }
+  ]
 }

@@ -1,16 +1,34 @@
 # Agent 取材说明
 
-这份文件写给把本库当作参考资料使用的 Agent。修改本仓库的规则见根目录 `AGENTS.md`。
+这份说明面向从本库取得参考资料的 Agent；修改仓库时阅读 [AGENTS.md](../AGENTS.md)。
 
-本库收录以时间线为载体的作品：作品掌握节奏，按时间线播放；即使可以交互，也是在时间线上分支。网站与网页应用，包括其中的页面动效和微交互，不在本库范围内。
+## 检索与读取
 
-## 用本库做参考
+从 `agent/catalog.json` 取得三类摘要、协议与单类索引地址，或运行：
 
-1. **检索**：读 `agent/catalog.json`（摘要、标签、关联与资料包路径），或运行
-   `node scripts/atlas.mjs search "<关键词>" --json`。可用 `--kind cases|patterns|materials`、`--carrier video|console`、`--type <巧思类型>` 缩小范围。
-2. **读取**：打开 `agent/cases/<id>.json` 或 `agent/patterns/<id>.json`。资料包里有完整条目（`entry` / `pattern`）、Prompt 文档（`documents.prompt`）、入口（`entrypoint`）与文件清单（`files[]`，含路径和字节数）。
-3. **素材**：读 `agent/materials.json` 获取素材摘要与资料包路径，再打开 `agent/materials/<id>.json`。素材库收录用于制作视频的 skill 与工具；资料包包含完整条目（`material`）、工作流、文档原文（`documents`）及文件清单。选用前读工作流、适用边界、原文与许可；`agent-skills/<id>/` 是固定提交的原样快照，效果图是作者产出，未复刻。
-4. **组合**：巧思的 `composition.role` 为 `foundation`（骨架，一个作品通常只有一个）、`support`（支撑）、`accent`（点睛，同一时刻不超过两个）。检查 `pairsWellWith` 与 `conflicts`。
-5. **导出**：`node scripts/atlas.mjs export <id> --out <目录>` 保留仓库相对树，入口见导出目录的 `README.md`；巧思连同来源案例导出，并附 `PROMPT.md` 与 `entry.json`。
-6. **出片**：时间驱动的 Demo 暴露 `window.__motion`；`node scripts/render.mjs <入口> --fps 30` 逐帧渲染。
+```bash
+node scripts/atlas.mjs search "<关键词>" --json
+```
 
+使用 `--kind cases|patterns|materials`、`--carrier video|console`、`--type <巧思类型>` 缩小范围。各类索引是 `agent/cases/index.json`、`agent/patterns/index.json`、`agent/materials/index.json`。
+
+| 资料包 | 内容 |
+| --- | --- |
+| `agent/cases/<id>.json` | 完整 `entry`、Prompt、单条研究与复刻／许可文档、入口和文件清单 |
+| `agent/patterns/<id>.json` | 完整 `pattern`、`sourceCases`、Prompt、文档、入口和文件清单 |
+| `agent/materials/<id>.json` | 完整 `material`、使用说明、快照主文档与附属 Markdown、入口和文件清单 |
+
+`files[]` 提供仓库相对路径和字节数。读取 `entrypoint` 打开 Demo 或快照主文档；`documents` 提供可直接阅读的原文，`research`、`fidelity`、`licenses` 在对应文件存在时提供。
+
+## 组合与导出
+
+依据巧思的职责、搭配与冲突选择组合，数值和机制以条目为准，组织整体时间结构的方法见[Prompt 写法](prompting.md#五组合巧思)。
+
+```bash
+node scripts/atlas.mjs show <id> --source
+node scripts/atlas.mjs export <id> --out <目录>
+```
+
+导出保留仓库相对树与全部文件，巧思带上来源案例。导出根目录的 `README.md` 提供入口，`entry.json` 保存条目；有 Prompt 时另附 `PROMPT.md`。素材使用说明和原文快照随文件清单取得。
+
+逐帧视频与声音导出见[渲染管线](pipeline.md#九逐帧渲染成视频)，素材阅读入口见[素材总览](materials/README.md)。

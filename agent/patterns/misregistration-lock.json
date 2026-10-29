@@ -126,7 +126,7 @@
   "files": [
     {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
-      "bytes": 2041
+      "bytes": 765
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/grain/grain_fine_2048.png",
@@ -142,7 +142,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/fidelity.md",
-      "bytes": 3532
+      "bytes": 4011
     },
     {
       "path": "demos/cases/mg-bauhaus/film/LICENSE",
@@ -201,12 +201,24 @@
       "bytes": 9344
     },
     {
+      "path": "demos/cases/mg-bauhaus/source/cues.json",
+      "bytes": 3719
+    },
+    {
       "path": "demos/patterns/misregistration-lock/index.html",
       "bytes": 1642
     },
     {
       "path": "demos/patterns/misregistration-lock/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-bauhaus.json",
+      "bytes": 19199
+    },
+    {
+      "path": "entries/patterns/misregistration-lock.json",
+      "bytes": 3770
     },
     {
       "path": "previews/patterns/misregistration-lock.jpg",

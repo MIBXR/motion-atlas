@@ -1,6 +1,6 @@
 # 接入与保真说明
 
-复刻以公开默认 10 秒成片为准，复用固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 的画面、字体、运行数据与音轨，仅整理成品所需文件并接入 Motion Atlas。
+复刻以公开默认成片为准，作品来源与固定版本见[条目 JSON](../../../entries/cases/mg-aurora-glass.json)。
 
 ## 相对原作的删改
 
@@ -38,3 +38,11 @@
 | 9.5 秒 | Aurora 字标、玻璃 o、中英文标语、极光光场与扩散光环对应一致。 | `compare-9.5.png` |
 
 浏览器中，独立页和站点案例页自动播放、拖动与声音开关正常；独立页 `?t=5&autoplay=0` 停在 5 秒，案例页 `#case/mg-aurora-glass?t=5` 将定位传给 Demo。开启声音和跳转时起点对齐。Intel Iris Xe、DPR 1.25、2400×1350 画布下的一次完整播放记录了 124 帧：绘制耗时 1.1–23.4ms，全部低于 30fps 的 33.33ms 帧间隔；RAF 回调间隔中位数约 1000.6ms。共享时间轴将每次推进量限制为 0.1 秒，10 秒画面实际耗时 91.261 秒；mountFilm 的 0.08 秒校正触发 95 次，校正前音轨领先最大约 0.942 秒，校正后读数回到画面时刻，随后再次积累差值。问题位于共享时间轴与 mountFilm 的时钟关系；案例配置与共享 kit 保持原值，实时同步验收未通过，未列入已接受差异。诊断数据与时序表保存在工作区 `compare/mg-aurora-glass/sync-diagnostic.json`、`sync-diagnostic.md`。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/12-aurora-glass && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
+
+配乐还生成 `out/env.json` 的包络数据，页面对应数据位于 `film/out/env.json`。

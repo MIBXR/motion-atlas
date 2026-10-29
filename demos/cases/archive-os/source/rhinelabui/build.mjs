@@ -5,10 +5,12 @@ import { build } from 'vite';
 
 const vendor = fileURLToPath(new URL('.', import.meta.url));
 const app = path.resolve(vendor, '../../film/app');
-const upstream = 'C:/Users/mibxr/AppData/Local/Temp/mmref/RhineLabUI';
+const syncIndex = process.argv.indexOf('--sync-assets');
+const assets = syncIndex < 0 ? null : process.argv[syncIndex + 1];
+if (syncIndex >= 0 && (!assets || assets.startsWith('--'))) throw new Error('--sync-assets 需要上游 public 目录路径');
 const walk = (dir, rel = '') => fs.readdirSync(path.join(dir, rel), { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(dir, path.join(rel, e.name)) : [path.join(rel, e.name)]);
 fs.mkdirSync(app, { recursive: true });
-if (process.argv.includes('--sync-assets')) fs.cpSync(path.join(upstream, 'public'), app, { recursive: true });
+if (assets) fs.cpSync(path.resolve(assets), app, { recursive: true });
 for (const rel of walk(app)) {
   if (rel === 'index.html' || /(?:^|[/\\])[^/\\]+-[\w-]{8,}\.(?:js|css)$/.test(rel)) fs.rmSync(path.join(app, rel));
 }

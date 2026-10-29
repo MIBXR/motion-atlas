@@ -134,7 +134,7 @@
   "files": [
     {
       "path": "demos/cases/mg-line-art/LICENSES.md",
-      "bytes": 2141
+      "bytes": 789
     },
     {
       "path": "demos/cases/mg-line-art/assets/textures/grain/grain_fine_2048.png",
@@ -146,7 +146,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/fidelity.md",
-      "bytes": 4829
+      "bytes": 5828
     },
     {
       "path": "demos/cases/mg-line-art/film/LICENSE",
@@ -197,8 +197,40 @@
       "bytes": 133782
     },
     {
+      "path": "demos/cases/mg-line-art/source/assets/fonts/fonts.css",
+      "bytes": 9135
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
       "path": "demos/cases/mg-line-art/source/audio.py",
       "bytes": 9978
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/cues.json",
+      "bytes": 3214
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/film.js",
+      "bytes": 46982
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/index.html",
+      "bytes": 566
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/out/timing.json",
+      "bytes": 8840
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/tools/dump_timing.mjs",
+      "bytes": 2188
+    },
+    {
+      "path": "demos/cases/mg-line-art/source/tools/retime.py",
+      "bytes": 4430
     },
     {
       "path": "demos/patterns/center-out-tracking-in/index.html",
@@ -207,6 +239,14 @@
     {
       "path": "demos/patterns/center-out-tracking-in/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-line-art.json",
+      "bytes": 19166
+    },
+    {
+      "path": "entries/patterns/center-out-tracking-in.json",
+      "bytes": 3922
     },
     {
       "path": "previews/patterns/center-out-tracking-in.jpg",

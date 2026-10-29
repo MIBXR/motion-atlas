@@ -1,5 +1,5 @@
-import { BootSequence } from './source/boot.ts';
-import { logo, brandHeading } from './source/brand.ts';
+import { BootSequence } from '../../cases/archive-os/source/rhinelabui/src/boot.ts';
+import { logo, brandHeading } from '../../cases/archive-os/source/rhinelabui/src/brand.ts';
 const MK=MotionKit, CONFIG=window.CONFIG;
 const stage=MK.stage({orients:['landscape'],background:'#e8e5e1'});
 stage.root.dataset.mode='boot';

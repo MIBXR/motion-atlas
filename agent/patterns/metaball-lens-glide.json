@@ -104,7 +104,7 @@
   "files": [
     {
       "path": "demos/cases/mg-aurora-glass/LICENSES.md",
-      "bytes": 1858
+      "bytes": 830
     },
     {
       "path": "demos/cases/mg-aurora-glass/assets/textures/grain/grain_fine_2048.png",
@@ -116,7 +116,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/fidelity.md",
-      "bytes": 4142
+      "bytes": 4710
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/LICENSE",
@@ -187,12 +187,24 @@
       "bytes": 10545
     },
     {
+      "path": "demos/cases/mg-aurora-glass/source/cues.json",
+      "bytes": 881
+    },
+    {
       "path": "demos/patterns/metaball-lens-glide/index.html",
       "bytes": 1415
     },
     {
       "path": "demos/patterns/metaball-lens-glide/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-aurora-glass.json",
+      "bytes": 16301
+    },
+    {
+      "path": "entries/patterns/metaball-lens-glide.json",
+      "bytes": 3741
     },
     {
       "path": "previews/patterns/metaball-lens-glide.jpg",

@@ -116,7 +116,7 @@
   "files": [
     {
       "path": "demos/cases/mg-hud/LICENSES.md",
-      "bytes": 4082
+      "bytes": 1088
     },
     {
       "path": "demos/cases/mg-hud/assets/land-50m.json",
@@ -128,7 +128,7 @@
     },
     {
       "path": "demos/cases/mg-hud/fidelity.md",
-      "bytes": 3655
+      "bytes": 4101
     },
     {
       "path": "demos/cases/mg-hud/film/LICENSE",
@@ -231,6 +231,10 @@
       "bytes": 7573
     },
     {
+      "path": "demos/cases/mg-hud/source/cues.json",
+      "bytes": 1411
+    },
+    {
       "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
       "bytes": 731
     },
@@ -288,7 +292,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/LICENSES.md",
-      "bytes": 2558
+      "bytes": 1068
     },
     {
       "path": "demos/cases/mg-synthwave/audio/film.m4a",
@@ -296,7 +300,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/fidelity.md",
-      "bytes": 4139
+      "bytes": 4597
     },
     {
       "path": "demos/cases/mg-synthwave/film/LICENSE",
@@ -367,6 +371,10 @@
       "bytes": 11743
     },
     {
+      "path": "demos/cases/mg-synthwave/source/cues.json",
+      "bytes": 1312
+    },
+    {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/LICENSE",
       "bytes": 1085
     },
@@ -433,6 +441,18 @@
     {
       "path": "demos/patterns/crt-line-dot-shutdown/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-hud.json",
+      "bytes": 18397
+    },
+    {
+      "path": "entries/cases/mg-synthwave.json",
+      "bytes": 16367
+    },
+    {
+      "path": "entries/patterns/crt-line-dot-shutdown.json",
+      "bytes": 4736
     },
     {
       "path": "previews/patterns/crt-line-dot-shutdown.jpg",

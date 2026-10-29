@@ -178,7 +178,7 @@
   "files": [
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 1736
+      "bytes": 789
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
@@ -186,7 +186,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3455
+      "bytes": 3942
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
@@ -241,8 +241,12 @@
       "bytes": 7610
     },
     {
+      "path": "demos/cases/mg-flat-vector/source/cues.json",
+      "bytes": 906
+    },
+    {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 3208
+      "bytes": 1047
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -302,7 +306,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3636
+      "bytes": 4658
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -406,7 +410,7 @@
     },
     {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 2319
+      "bytes": 832
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
@@ -418,7 +422,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4167
+      "bytes": 4869
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
@@ -489,6 +493,10 @@
       "bytes": 8665
     },
     {
+      "path": "demos/cases/mg-morph/source/cues.json",
+      "bytes": 1541
+    },
+    {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
       "bytes": 2387
     },
@@ -499,6 +507,22 @@
     {
       "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-flat-vector.json",
+      "bytes": 20753
+    },
+    {
+      "path": "entries/cases/mg-hanazi.json",
+      "bytes": 18590
+    },
+    {
+      "path": "entries/cases/mg-morph.json",
+      "bytes": 15631
+    },
+    {
+      "path": "entries/patterns/shape-wipe-transition.json",
+      "bytes": 5918
     },
     {
       "path": "previews/patterns/shape-wipe-transition-portrait.jpg",

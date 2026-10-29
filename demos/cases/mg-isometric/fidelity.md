@@ -1,6 +1,6 @@
 # 等距 2.5D 接入与保真说明
 
-复刻以公开默认成片为准，复用固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 的画面、字体与音轨，保留默认画面数值逻辑并接入 Motion Atlas。
+复刻以公开默认成片为准，作品来源与固定版本见[条目 JSON](../../../entries/cases/mg-isometric.json)。
 
 ## 相对原作的删改
 
@@ -59,3 +59,9 @@ markers 和条目节拍取自 `film/cues.json` 的地块、土层、道路、建
 | 9.5 秒 | `compare-9.5.png` | 浮岛、云层、ISOPOLIS 三维字标、中文标语、状态行与背景点阵位置一致，字形一致。 |
 
 浏览器验收使用 Edge，服务端口 4331。案例页自动播放，拖动后暂停在 7.1636 秒；独立 Demo 的 `?t=5&autoplay=0` 定位在 5 秒并暂停，声音默认关闭。声音开关与 1.5 倍速有效；按绘制帧抽样，音轨与时间轴均为 5.15 秒且均在播放，暂停后两者均为 5.3 秒并停止。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/03-isometric && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。

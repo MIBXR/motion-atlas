@@ -1,6 +1,6 @@
 # 接入与保真说明
 
-复刻以公开默认 10 秒成片为准，复用固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 的画面、字体、运行数据与音轨，仅整理成品所需文件并接入 Motion Atlas。
+复刻以公开默认成片为准，作品来源与固定版本见[条目 JSON](../../../entries/cases/mg-morph.json)。
 
 ## 相对原作的删改
 
@@ -47,3 +47,11 @@ C:/Users/mibxr/AppData/Local/Temp/atlas-work/mg-batch3/.venv/Scripts/python.exe 
 `capture.mjs` 在 9.8 秒生成完整预览图，`shot.mjs` 的五个指定时刻均已生成截图与左右拼图。
 
 浏览器中，独立页和站点案例页自动播放、拖动与声音开关正常；独立页 `?t=5&autoplay=0` 停在 5 秒，案例页 `#case/mg-morph?t=5` 将定位传给 Demo。站点播放中的一次声画采样差约 37ms，结束时画面和音轨同时暂停。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/08-morph && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
+
+字形准备脚本 `source/tools/glyphs.py` 从当前目录的 `assets/fonts/Outfit-SemiBold.ttf` 读取字体；复现时将本案例 `fonts/Outfit-SemiBold.ttf` 放到该位置，输出 `glyphs.json`，现有结果位于 `film/glyphs.json`。

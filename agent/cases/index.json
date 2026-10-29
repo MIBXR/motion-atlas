@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 1,
+  "kind": "cases",
+  "count": 18,
+  "cases": [
+    {
+      "id": "map-pilgrimage",
+      "title": "地图巡礼 · 游戏过场式旅行影像",
+      "summary": "地图串起上海至关西的三日旅程。四角HUD持续报时，照片、回忆与分屏随120 BPM乐谱切换。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "地图叙事",
+        "游戏过场",
+        "HUD 四角",
+        "昼夜切换",
+        "分屏对比",
+        "竖排汉字",
+        "日本 · 关西",
+        "渐进缓冲"
+      ],
+      "useCases": [
+        "旅行 / 巡礼 Vlog",
+        "城市与文旅宣传",
+        "物流与路线回顾",
+        "活动巡回纪录",
+        "年度回顾影像",
+        "交互式行程展示"
+      ],
+      "avoid": [
+        "没有空间移动的内容",
+        "需要逐字阅读的长文",
+        "镜头要停在单一画面的访谈"
+      ],
+      "patternIds": [
+        "corner-hud",
+        "vertical-title-blur",
+        "route-draw-marker",
+        "day-night-flip",
+        "card-expand-fullscreen",
+        "chapter-frame",
+        "split-compare-stamp",
+        "collect-counter",
+        "alert-reroute",
+        "outro-stat-stack",
+        "seekable-timeline",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/map-pilgrimage.json"
+    },
+    {
+      "id": "archive-os",
+      "title": "莱茵生命档案终端",
+      "summary": "白底开场后，五列档案循环展开。读取时对角解密，还能360°查看模型、拆解与重组结构。",
+      "carriers": [
+        "console"
+      ],
+      "tags": [
+        "RhineLabUI",
+        "白底开场",
+        "五列循环档案",
+        "对角解密",
+        "360° 查看器",
+        "结构拆解",
+        "三轨配乐"
+      ],
+      "useCases": [
+        "数据档案与研究记录",
+        "产品与展品陈列台",
+        "数字资料馆与图形化目录",
+        "品牌发布会交互屏",
+        "可渲染的终端风格影像"
+      ],
+      "avoid": [
+        "需要高信息密度表格的后台",
+        "需要同时阅读多份长文档的资料工作台"
+      ],
+      "patternIds": [
+        "boot-typing",
+        "rolling-digits",
+        "decrypt-reveal",
+        "wave-array",
+        "idle-breathing",
+        "seekable-timeline"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/archive-os.json"
+    },
+    {
+      "id": "keeling-curve",
+      "title": "基林曲线 · 莫纳罗亚 CO₂ 数据短片",
+      "summary": "20 秒展开莫纳罗亚 CO₂ 真实月均曲线，再推近 2025 年的季节锯齿，拉远并列年均两端：长期趋势，持续上升；起伏，是季节。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "真实数据",
+        "基林曲线",
+        "季节起伏",
+        "长期趋势",
+        "尺度转换",
+        "中文数据短片",
+        "公开音频素材",
+        "motion-showreel"
+      ],
+      "useCases": [
+        "公开时间序列的数据短片",
+        "长期趋势与周期变化的双尺度解释",
+        "中文科学传播影像",
+        "需要来源、单位与数据口径并列呈现的动态图表"
+      ],
+      "avoid": [
+        "无法追溯来源的数字叙事",
+        "把莫纳罗亚观测序列当作全球平均",
+        "需要逐字阅读长篇解释的内容",
+        "需要竖屏重新排版的交付"
+      ],
+      "patternIds": [],
+      "seekable": true,
+      "bundle": "agent/cases/keeling-curve.json"
+    },
+    {
+      "id": "mg-cel-boil",
+      "title": "逐帧线条抖动 · HAND MADE",
+      "summary": "火柴在纸面划燃并翻转落定，火苗精灵醒来、跳跃与舞蹈；旋转蓄力后爆成烟火，火花逐笔写出「手作」与 HAND MADE，镜头拉回灯箱纸页。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "逐帧手绘",
+        "线条沸腾",
+        "曝光表",
+        "拖影帧",
+        "纸张质感"
+      ],
+      "useCases": [
+        "手绘品牌短片",
+        "逐帧动画片头",
+        "矢量主体的手绘特效层"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "cel-line-boil",
+        "smear-frame-strike",
+        "spark-stroke-handletter",
+        "flipbook-pullback",
+        "squash-stretch-bounce",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-cel-boil.json"
+    },
+    {
+      "id": "mg-isometric",
+      "title": "等距 2.5D · ISOPOLIS — Let the City Grow",
+      "summary": "蓝图先描出网格，地块逐圈落位，住宅、楼房、风机与轨道相继生长；核心塔伸展后发出激活波，让灰模城市转为彩色，数据弧线、无人机与信息卡接续，镜头拉远显出 ISOPOLIS 和「让城市自己生长」。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "等距投影",
+        "微缩城市",
+        "楼房生长",
+        "数据流",
+        "平行运镜"
+      ],
+      "useCases": [
+        "科技架构动画",
+        "应用功能演示",
+        "微缩智慧城短片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "blueprint-tile-drop-wave",
+        "staged-extrusion-build",
+        "core-ignition-wave",
+        "isometric-leader-card",
+        "route-draw-marker"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-isometric.json"
+    },
+    {
+      "id": "mg-flat-vector",
+      "title": "扁平矢量 · popwise — One Dot",
+      "summary": "珊瑚色圆点成为太阳，带出扁平城市；镜头推进窗口，人物与手机提示接续，气泡擦除转入图标落点，最后汇成 popwise 与中英文标语。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "扁平矢量",
+        "几何角色",
+        "弹性缓动",
+        "形状擦除",
+        "品牌短片"
+      ],
+      "useCases": [
+        "SaaS 产品宣传",
+        "科普解说",
+        "企业年报视频",
+        "品牌解释短片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "squash-stretch-bounce",
+        "push-through-window",
+        "shape-wipe-transition",
+        "dot-drop-wordmark",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-flat-vector.json"
+    },
+    {
+      "id": "mg-line-art",
+      "title": "线条艺术 · ATELIER LINEA — One Line",
+      "summary": "香槟金线在午夜蓝底上从种子长成幼苗，卷须展开为屋梁，延伸出建筑、天际与海浪；线条抬升成圆环拱门并填成金色徽章，镜头拉远为 ATELIER LINEA 与“始于一线”的海报落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "线条动画",
+        "一笔画",
+        "线面转换",
+        "笔尖跟镜",
+        "品牌短片"
+      ],
+      "useCases": [
+        "奢侈品品牌片",
+        "金融品牌片",
+        "建筑品牌片",
+        "标志动画"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "continuous-line-narrative",
+        "pen-led-camera",
+        "fresh-ink-aging",
+        "line-ring-to-medallion",
+        "center-out-tracking-in",
+        "film-grain",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-line-art.json"
+    },
+    {
+      "id": "mg-3d-render",
+      "title": "3D 渲染 · soft. — Soft Landing",
+      "summary": "充气字母依次落在胶囊阵列上，金属球悬停后砸落，掀起环形冠状波；镜头拉回 soft. 字标与“柔软，自有分量”标语。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "3D 渲染",
+        "柔软材质",
+        "克隆阵列",
+        "物理模拟",
+        "产品片"
+      ],
+      "useCases": [
+        "高端产品片",
+        "品牌 ident"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "soft-bed-letter-bounce",
+        "capsule-sweep-lift",
+        "hang-slam-capsule-crown",
+        "macro-hero-focus-relay",
+        "vertical-title-blur",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-3d-render.json"
+    },
+    {
+      "id": "mg-morph",
+      "title": "形状变形 · morphe. — One Shape, Every Story",
+      "summary": "墨滴成为咖啡杯，再沿太阳、海上落日、海鸥、纸飞机、定位钉和爱心的链条连续变形，最后组成 morphe. 字标。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "形状变形",
+        "中介形状",
+        "图形叙事",
+        "色域擦除",
+        "字标"
+      ],
+      "useCases": [
+        "图形叙事",
+        "形变品牌片",
+        "产品发布会动效"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "morph-primitive-bridge",
+        "sea-mask-sunset",
+        "shape-docks-wordmark",
+        "analytic-motion-blur",
+        "shape-wipe-transition",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-morph.json"
+    },
+    {
+      "id": "mg-paperclip",
+      "title": "贴纸科普 · How Many Elements Hide in a Phone?",
+      "summary": "照片贴纸与扁平部件铺在大画布上，镜头串起手机拆解、70/118 元素周期表、分类柱图和产地地图，最后拉远显露整张手机屏幕，70 贴纸飞出落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "贴纸科普",
+        "大画布",
+        "连续运镜",
+        "元素周期表",
+        "数据图表"
+      ],
+      "useCases": [
+        "硬核科普视频",
+        "财经知识视频",
+        "企业宣传片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "analytic-motion-blur",
+        "sticker-slap-shadow",
+        "explode-parts-leaders",
+        "element-flight-regroup",
+        "anchor-pullback-phone",
+        "collect-counter",
+        "route-draw-marker"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "id": "mg-hud",
+      "title": "赛博朋克 HUD · KESTREL-9 · Target Acquired",
+      "summary": "青色 HUD 从中心分层开机，线框地球、雷达、遥测与候选目标依次上线；发现信号后括号向目标收拢，6.4 秒锁定并扩散橙色警报波，镜头穿入地图，显示目标与坐标。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "赛博朋克",
+        "HUD",
+        "线框地球",
+        "目标锁定",
+        "雷达扫描"
+      ],
+      "useCases": [
+        "科技数码测评",
+        "游戏剪辑",
+        "航天科普",
+        "AI 产品演示"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "crt-line-dot-shutdown",
+        "radar-sweep-persistent-blips",
+        "seeded-digit-scramble-settle",
+        "hud-lock-alert-wave",
+        "chapter-frame",
+        "boot-typing"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-hud.json"
+    },
+    {
+      "id": "mg-collage",
+      "title": "拼贴剪贴 · NOGGIN Quarterly",
+      "summary": "巨手拍下老照片，人物下颌开合，剪刀沿虚线剪开头盖；火箭、地球、花鸟和蝴蝶从脑中飞出，手指撕开纸页，露出 NOGGIN 脑洞季刊落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "拼贴剪贴",
+        "定格",
+        "半调网点",
+        "纸张",
+        "超现实"
+      ],
+      "useCases": [
+        "音乐短视频",
+        "街头潮流短视频"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "stepped-hand-placement",
+        "snip-rattle-pop-lid",
+        "cutout-arc-flight-flutter",
+        "pinch-rip-cylinder-peel",
+        "punch-in-camera-shake",
+        "film-grain",
+        "sticker-slap-shadow"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-collage.json"
+    },
+    {
+      "id": "mg-aurora-glass",
+      "title": "极光与玻璃拟态 · Aurora — Think in Light",
+      "summary": "极光色斑缓慢漂移，磨砂玻璃卡片展示对话、声波和控件；Focus 控钮拉出玻璃珠，成为滑过回复的折射透镜，再收成 Aurora 字标中的 o。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "极光渐变",
+        "玻璃拟态",
+        "折射透镜",
+        "产品发布",
+        "呼吸节奏"
+      ],
+      "useCases": [
+        "科技品牌片",
+        "AI 产品发布片",
+        "玻璃拟态产品演示"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "shape-docks-wordmark",
+        "bezier-aurora-drift",
+        "layered-frosted-glass",
+        "metaball-lens-glide",
+        "envelope-radiating-waveform",
+        "card-depth-arrival-parting",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-aurora-glass.json"
+    },
+    {
+      "id": "mg-bauhaus",
+      "title": "几何包豪斯 · KONSTRUKTION · 20 Beats",
+      "summary": "圆、三角、矩形在 120px 网格上逐拍搭建，经过旋转、翻牌与列对滑动的级联波，定格为二十拍包豪斯海报。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "几何构成",
+        "包豪斯",
+        "动态海报",
+        "三原色",
+        "网格",
+        "节拍驱动"
+      ],
+      "useCases": [],
+      "avoid": [],
+      "patternIds": [
+        "grid-beat-construction",
+        "flip-tile-cascade",
+        "misregistration-lock",
+        "shared-cue-sheet",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-bauhaus.json"
+    },
+    {
+      "id": "mg-synthwave",
+      "title": "80 年代合成波 · NEON DRIVE — Midnight 1986",
+      "summary": "镜头沿霓虹网格公路追随跑车，条纹落日从地平线升起；磁带倒带与停顿后，NEON DRIVE 镀铬字落版，Midnight 霓虹手写字描出并点亮，最后显像管关机。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "合成波",
+        "霓虹网格",
+        "镀铬字",
+        "VHS",
+        "霓虹手写"
+      ],
+      "useCases": [
+        "音乐视频",
+        "潮流品牌片",
+        "合成波片头"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "velocity-neon-grid-smear",
+        "striped-sun-rise",
+        "neon-write-on-ignition",
+        "tape-rewind-chrome-slam",
+        "vhs-event-row-tear",
+        "specular-sweep-glint",
+        "crt-line-dot-shutdown"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-synthwave.json"
+    },
+    {
+      "id": "mg-pixel",
+      "title": "像素艺术 · PIXEL QUEST",
+      "summary": "320×180 的画布逐点绘制再放大：主角跑跳、收集金币、踩踏史莱姆、打开宝箱并举起水晶，昼夜光线由调色板轮换呈现，最后落下「PIXEL QUEST」片名。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "像素艺术",
+        "复古游戏",
+        "视差卷轴",
+        "色板轮换",
+        "芯片音乐",
+        "mg-styles-15"
+      ],
+      "useCases": [
+        "复古游戏标题片",
+        "8-bit 音乐影像",
+        "品牌怀旧营销"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "integer-pixel-parallax",
+        "stepped-palette-daynight",
+        "rpg-dialog-box",
+        "crt-boot-shell",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-pixel.json"
+    },
+    {
+      "id": "mg-liquid",
+      "title": "液态动效 · drop. — It All Starts with a Drop",
+      "summary": "液滴落下并压扁飞溅，液团跳跃融合后掀起三层液浪；液浪退去，四团液体挤成横条并分裂为 drop 字标，最后一滴落地，以涟漪揭示双语标语。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "液态流动",
+        "SDF",
+        "融球",
+        "波浪转场",
+        "液体字标"
+      ],
+      "useCases": [
+        "音乐视频",
+        "食品饮料广告",
+        "转场包装"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "specular-sweep-glint",
+        "liquid-neck-leap",
+        "phase-offset-liquid-flood",
+        "liquid-bar-split-wordmark",
+        "drip-ripple-glyph-reveal",
+        "squash-stretch-bounce",
+        "wave-array"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-liquid.json"
+    },
+    {
+      "id": "mg-hanazi",
+      "title": "综艺花字 · 喵呜日记 EP.07",
+      "summary": "喵呜日记以白猫晒太阳、灰猫凝视和长毛猫三段照片推进，逐字花字、问号、汗滴、三连推和炸毛主拍衔接，最后收成“猫主子认证”相框落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "综艺花字",
+        "萌宠",
+        "多层描边",
+        "弹簧",
+        "情绪字幕"
+      ],
+      "useCases": [
+        "萌宠短片",
+        "vlog 包装",
+        "搞笑二创"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "punch-in-camera-shake",
+        "layered-hanazi-spring-pop",
+        "focus-burst-caption-hit",
+        "meter-needle-overrange",
+        "freeze-to-framed-card",
+        "shape-wipe-transition",
+        "collect-counter",
+        "cel-line-boil",
+        "split-compare-stamp"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-hanazi.json"
+    }
+  ]
+}

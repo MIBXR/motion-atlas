@@ -1,6 +1,6 @@
 # 像素冒险复刻说明
 
-复刻以公开成片为准，保留固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 默认版本的画面数值、时刻表、素材、字体与原片音轨。
+复刻以公开默认成片为准，作品来源与固定版本见[条目 JSON](../../../entries/cases/mg-pixel.json)。
 
 ## 相对原作的删改
 
@@ -39,3 +39,9 @@
 | 9.5 秒 | 夜景、片名、水晶光池与开始提示一致；「像素冒险」笔画略粗（见下）。 |
 
 浏览器验收使用 Edge，服务端口 4328。案例页和独立 Demo 自动播放；拖动可定位，`?t=5&autoplay=0` 停在 5 秒；声音默认关闭，开关与 1.5 倍速播放有效，播放中音轨与画面时刻差约 5ms，播放中暂停后音画时刻一致。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/20-pixel && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。

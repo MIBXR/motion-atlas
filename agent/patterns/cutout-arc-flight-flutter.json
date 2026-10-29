@@ -108,7 +108,7 @@
   "files": [
     {
       "path": "demos/cases/mg-collage/LICENSES.md",
-      "bytes": 4282
+      "bytes": 1208
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bfly_a.png",
@@ -212,7 +212,7 @@
     },
     {
       "path": "demos/cases/mg-collage/fidelity.md",
-      "bytes": 3389
+      "bytes": 4402
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
@@ -345,6 +345,14 @@
     {
       "path": "demos/patterns/cutout-arc-flight-flutter/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-collage.json",
+      "bytes": 18983
+    },
+    {
+      "path": "entries/patterns/cutout-arc-flight-flutter.json",
+      "bytes": 3398
     },
     {
       "path": "previews/patterns/cutout-arc-flight-flutter.jpg",

@@ -1,6 +1,6 @@
 # 线条艺术接入与保真说明
 
-复刻以公开成片为准，保留 `mg-styles-15` 固定提交 `49052d80bfaf9fa8412cc9710530e5e95a3b8d8c` 默认版本的连续路径、画面数值、时刻表、素材、字体与原片音轨。
+复刻以公开默认成片为准，作品来源与固定版本见[条目 JSON](../../../entries/cases/mg-line-art.json)。
 
 ## 相对原作的删改
 
@@ -8,8 +8,8 @@
 | --- | --- | --- |
 | `film/film.js` | 删除 `V5`、`NOLINK`、`linkAt`、`TT`、`TITLE`、独占字形载入、标题轮廓与笔尖绘制函数；保留默认 10 秒时长、末段推镜 clamp 上限 1、3px 线宽及原有调用顺序。 | 另一版剪辑分支 |
 | `film/film.js` | 删除另一 reel 使用的 `?lw` 参数；保留 `?t` 定位及默认 3px 线宽。 | 另一版剪辑分支 |
-| `tools/retime.py`、`tools/dump_timing.mjs`、`film/film.js` 的 `window.__timing` | 删除重排时刻与导出路径速度、转角数据的开发工具；页面绘制继续读取现有 `film/cues.json`。 | 开发工具 |
-| `out/timing.json` | 删除路径时序的中间导出文件，成片播放使用现有 `audio/film.m4a`。 | 过程文件 |
+| `source/tools/retime.py`、`source/tools/dump_timing.mjs`、`source/index.html`、`source/film.js` | 保留原时序制作工具和提供 `window.__timing` 的原作页面；播放代码读取 `film/cues.json`。 | 制作依赖 |
+| `source/out/timing.json` | 保留配乐读取的路径速度与转角时序，成片播放使用 `audio/film.m4a`。 | 制作依赖 |
 | `index.html` | 字体表改为 `fonts/fonts.css`，原作模块改为 `./film/film.js`，加载 `motion-kit.js` 后调用 `MotionKit.mountFilm`。 | 路径改写 |
 | `film/film.js` | 时刻表改为 `./film/cues.json`，颗粒改为 `assets/textures/grain/grain_fine_2048.png`。 | 路径改写 |
 | `fonts/fonts.css` | 保留 Cormorant Garamond 与 Noto Serif SC 的原作声明，分别使用同目录官方完整文件 `CormorantGaramond[wght].ttf`、`NotoSerifSC-VF.ttf`。 | 路径改写 |
@@ -46,3 +46,11 @@ v5 分支属于另一版剪辑，已删除。
 | 9.5 秒 | 金章、字标、中文、城市线条位置与字形一致；运动边缘有轻微差异。 |
 
 浏览器验收使用 Edge，服务端口 4331。案例页自动播放，拖动停在 4.9429 秒；独立 Demo 的 `?t=5&autoplay=0` 精确停在 5 秒，声音默认关闭。声音开关与 1.5 倍速播放有效；播放绘制帧抽样音轨为 0.622156 秒、时间轴为 0.70155 秒，相差约 79.4ms，低于适配层 80ms 的偏移校正阈值。暂停样本中音轨与时间轴均为 0.2751 秒并同步停止。
+
+## 制作依赖与复现
+
+配乐脚本 `source/audio.py` 依赖素材 `demos/materials/mg-styles-15/lib/audio` 的 [mgaudio 与采样](../../materials/mg-styles-15/lib/audio/README.md)，提示词与原作许可随[素材快照](../../materials/mg-styles-15/README.zh-CN.md)保存；脚本读取的时刻表位于 `source/cues.json`。
+
+在仓库外按[素材使用说明](../../../docs/materials/mg-styles-15.md)组装原目录后执行 `cd <复现根>/demos/02-line-art && PYTHONUTF8=1 <venv-python> audio.py`，输出 `out/audio.wav`。
+
+配乐直接读取 `source/out/timing.json`。重算时序使用 `source/tools/dump_timing.mjs`、`source/tools/retime.py` 与 `source/index.html`、`source/film.js`；把 `source/assets/` 合入复现根的 `assets/`，将案例 `fonts/` 中两份字体分别放到 `assets/fonts/latin/cormorantgaramond/CormorantGaramond-VF.ttf`、`assets/fonts/cjk/notoserifsc/NotoSerifSC-VF.ttf`。原时序导出器在 macOS Chrome 与 Metal 环境运行，依赖 `puppeteer-core`；本库渲染入口为 `scripts/render.mjs`。

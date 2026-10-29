@@ -117,7 +117,7 @@
   "files": [
     {
       "path": "demos/cases/mg-collage/LICENSES.md",
-      "bytes": 4282
+      "bytes": 1208
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bfly_a.png",
@@ -221,7 +221,7 @@
     },
     {
       "path": "demos/cases/mg-collage/fidelity.md",
-      "bytes": 3389
+      "bytes": 4402
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
@@ -354,6 +354,14 @@
     {
       "path": "demos/patterns/snip-rattle-pop-lid/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-collage.json",
+      "bytes": 18983
+    },
+    {
+      "path": "entries/patterns/snip-rattle-pop-lid.json",
+      "bytes": 3595
     },
     {
       "path": "previews/patterns/snip-rattle-pop-lid.jpg",

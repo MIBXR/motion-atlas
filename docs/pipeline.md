@@ -1,15 +1,13 @@
 # 渲染管线：舞台、时间轴、声音与预加载
 
-本库按时间播放的 Demo 通过 `window.__motion` 提供定位与播放；时间纯函数作品的**画面只取决于时刻 t**，有自己时钟、状态或交互的作品负责重建相应画面。同一份代码可以实时播放、被站点刻度条拖动、被脚本逐帧渲染成视频，结果完全一致。Motion Kit v2 在此基础上提供四件事：
+本库按时间播放的 Demo 通过 `window.__motion` 提供定位与播放；时间纯函数作品的**画面只取决于时刻 t**，有自己时钟、状态或交互的作品负责重建相应画面。同一份代码可以实时播放、被站点刻度条拖动、被脚本逐帧渲染成视频，结果完全一致。Motion Kit 提供以下接口：
 
 - **固定画幅舞台** `MotionKit.stage()`：横屏 1920×1080、竖屏 1080×1920 两套构图，整体等比缩放（黑边），舞台内部只用像素。
 - **声音引擎** `MotionKit.audio`：零素材的 WebAudio 合成音色库 + 乐谱调度；同一份乐谱可离线渲染成 WAV。
 - **预加载** `MotionKit.preload()`：资源就绪后才宣告 ready，进度可被站点显示。
 - **宿主通信**：站点用 postMessage 切换画幅、开关声音，Demo 回报就绪、画幅、加载进度与声音状态。
 
-地图巡礼、莱茵生命档案终端与地图巡礼的12个巧思使用固定舞台、预加载与乐谱。档案终端的5个巧思使用自适应布局与即时音效。
-
-参考模板：`demos/_template/case-film/`（时间纯函数作品）、`case-native/`（作品自接 MotionKit）、`pattern-replay/`（片段重放）与 `pattern/`（拆分型单文件）。模板预览直接引用 `kit/motion-kit.js`；作为条目时改为加载同目录的 `motion-kit.js`，由构建同步。
+参考模板：`kit/templates/case-film/`（时间纯函数作品）、`case-native/`（作品自接 MotionKit）、`pattern-replay/`（片段重放）与 `pattern/`（拆分型单文件）。模板预览直接引用 `kit/motion-kit.js`；作为条目时改为加载同目录的 `motion-kit.js`，由构建同步。
 
 ## mountFilm 与 replay
 
@@ -139,7 +137,7 @@ CSS 写法（横竖两套构图）：
 | `orient` / `orients` / `setOrient(o)` / `stage` | 画幅；**`orients` 为空数组表示自适应Demo**，站点不应显示画幅切换 |
 | `audio` | 离线渲染接口（挂了乐谱时才有，否则为 `null`）：`renderWav({ from, to, sampleRate })` → `{ base64, sampleRate, channels, duration, peakDb, rmsDb, clipped, events }`；`events(from, to)` 列出事件 |
 | `kit` | kit 版本号 |
-| `meta` 里的字段 | 例如 `title`、`bpm`（旧 Demo 还会带 `sound`） |
+| `meta` 里的字段 | 例如 `title`、`bpm`、`sound` |
 
 `MotionKit.start(tl, { t = 0, reduced, autoplay = true })`：按 `?t=` → 减少动态时的 `reduced` → `t` 的顺序定位，就绪时提交初始时刻并自动播放（`?autoplay=0` 与 `?render` 不播放、减少动态不播放）。
 
@@ -238,7 +236,7 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 | `alarm` 警报 | sfx | 双音交替方波 + 锯齿，低通 + 失真 | `note/f`（960）、`f2`（0.8 倍）、`rate`（4 次/秒）、`dur`（1.2） |
 | `sparkle` / `shimmer` 闪光 / 微光 | sfx | 五声音阶高音 FM 颗粒随机散布 + 高频空气 | `dur`（0.5 / 1.8）、`count`（9 / 18）、`note/f`（C7 / C6） |
 | `drone` 持续低音 | bed | 失谐锯齿 + 次八度正弦，低通呼吸 | `note/f`（55）、`dur`（6）、`fade`（1.2）、`release`（1.5）、`cutoff`（380）、`lfo`（0.08） |
-| `tone` / `noise` | sfx | 旧 API 的基础音色 | 见 4.6 |
+| `tone` / `noise` | sfx | 即时声音接口 的基础音色 | 见 4.6 |
 
 别名：`openhat`（= `hat` + `open`）、`ui-blip`（= `blip`）、`ping`（= `sonar`）、`reverse-swell` / `swell`（= `reverse`）。
 
@@ -246,11 +244,11 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 
 `audio.renderOffline(score, duration, { sampleRate = 48000, channels = 2, from = 0, preroll = 2 })` 用 OfflineAudioContext 与**同一套音色、同一条混音链**生成 PCM，返回 `{ data, peakDb, rmsDb, clipped, wav(), base64() }`；`from > 0` 时向前多渲染 `preroll` 秒再裁掉，并接上之前开始的持续音。`audio.encodeWav(channels, sampleRate)` 编码 16-bit PCM WAV。站点或脚本通常通过 `__motion.audio.renderWav()` 调用，它按 `from + audio.latency` 截取，补偿主链路的 6ms 处理延迟，使导出的第 0 个样本对齐画面的 `from`。直接使用 `renderOffline()` 时由调用方处理这项补偿。
 
-### 4.6 旧 API 兼容
+### 4.6 即时声音接口
 
-`MotionKit.sound()` 返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，与 `MotionKit.audio` 共用引擎、声音开关及混音链，所以站点的 `motion:sound` 对自适应Demo 同样有效。旧 Demo 自己做的前瞻排程在暂停或跳转时也会被淡出。新 Demo 请使用乐谱。
+`MotionKit.sound()` 返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，与 `MotionKit.audio` 共用引擎、声音开关及混音链，所以站点的 `motion:sound` 对自适应Demo 同样有效。使用即时音效的 Demo 自己做的前瞻排程在暂停或跳转时也会被淡出。时间轴声音使用乐谱。
 
-`motion:ready.sound` 取乐谱、`expose()` 的声音元数据和 kit 的声音使用标记：创建 `sound()`、调用 `audio.play()` / `audio.attach()`，或给 `controls()` 传入声音对象都会登记。它表示 Demo 使用声音，不表示当前已开启；`__motion.audio` 只表示可离线导出的乐谱接口，不能用于判断旧版音效是否存在。仅在用户操作后才调用 `audio.play()` 的 Demo，应在 `expose(tl, { sound: true })` 中预先声明声音能力。
+`motion:ready.sound` 取乐谱、`expose()` 的声音元数据和 kit 的声音使用标记：创建 `sound()`、调用 `audio.play()` / `audio.attach()`，或给 `controls()` 传入声音对象都会登记。它表示 Demo 使用声音，不表示当前已开启；`__motion.audio` 只表示可离线导出的乐谱接口，不能用于判断即时音效是否存在。仅在用户操作后才调用 `audio.play()` 的 Demo，应在 `expose(tl, { sound: true })` 中预先声明声音能力。
 
 ## 五、加载与就绪
 
@@ -306,7 +304,7 @@ Demo → 父页面：
 
 | 消息 | 说明 |
 | --- | --- |
-| `{ type: 'motion:ready', duration, orients, orient, markers, sound, title, kit }` | 预加载完成后发送一次（`motion:query` 可重发）。`orients: []` 表示旧版自适应 Demo；`sound` 表示有声音（乐谱或旧版音效） |
+| `{ type: 'motion:ready', duration, orients, orient, markers, sound, title, kit }` | 预加载完成后发送一次（`motion:query` 可重发）。`orients: []` 表示自适应 Demo；`sound` 表示有声音（乐谱或即时音效） |
 | `{ type: 'motion:orient', orient }` | 画幅变化（含自动切换）；请求了不支持的画幅时带 `supported`、`rejected` |
 | `{ type: 'motion:loading', … }` | 字节、速度、文件数与阶段，格式见加载与就绪 |
 | `{ type: 'motion:sound', on, state }` | 声音状态变化：`state` 为 `off` / `on` / `blocked` |
@@ -338,8 +336,8 @@ Demo → 父页面：
 
 ```bash
 node scripts/render.mjs demos/cases/map-pilgrimage/index.html --fps 30
-node scripts/render.mjs demos/_template/case-native/index.html --orient portrait --fps 30 --audio
-node scripts/render.mjs demos/_template/case-native/index.html --audio-only
+node scripts/render.mjs kit/templates/case-native/index.html --orient portrait --fps 30 --audio
+node scripts/render.mjs kit/templates/case-native/index.html --audio-only
 ```
 
 | 选项 | 默认 | 说明 |
@@ -362,7 +360,7 @@ node scripts/render.mjs demos/_template/case-native/index.html --audio-only
 ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-pilgrimage.wav -c:v libx264 -pix_fmt yuv420p -crf 18 -c:a aac -b:a 192k -shortest renders/map-pilgrimage.mp4
 ```
 
-旧 Demo（没有挂乐谱）使用 `--audio` 时会提示跳过；挂接乐谱后即可导出声音。
+使用即时音效的 Demo（没有挂乐谱）使用 `--audio` 时会提示跳过；挂接乐谱后即可导出声音。
 
 ### 性能提示
 
@@ -374,10 +372,10 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 
 | 脚本 | 说明 |
 | --- | --- |
-| `node scripts/capture.mjs [--only ids] [--orient both\|landscape\|portrait] [--out 目录] [--url 页面 --t 秒]` | 预览图：横屏 1280×720 → `previews/<kind>/<id>.jpg`；Demo 支持竖屏时再出 720×1280 → `previews/<kind>/<id>-portrait.jpg`（时刻用条目的 `previewAtPortrait`，缺省同 `previewAt`）。站点数据里对应 `preview` 与 `previewPortrait` |
+| `node scripts/capture.mjs [--only ids] [--orient both\|landscape\|portrait] [--out 目录] [--url 页面 --kind 类别 --t 秒]` | 预览图：横屏 1280×720 → `previews/<kind>/<id>.jpg`；Demo 支持竖屏时再出 720×1280 → `previews/<kind>/<id>-portrait.jpg`（时刻用条目的 `previewAtPortrait`，缺省同 `previewAt`）。类别为 cases、patterns、materials。站点数据里对应 `preview` 与 `previewPortrait` |
 | `node scripts/shot.mjs <url> --orient portrait --t 3 --t 5 --out a.png` | 截图：`--orient` 给 URL 加 `?orient=` 并把视口默认设为舞台尺寸；可用 `--w/--h` 检查缩放与黑边 |
 
-条目设置`"renderer": "gpu"`时，预览图工具使用GPU并输出WebGL renderer。
+预览图工具使用本机 GPU，每个条目完成后关闭浏览器。条目设置 `"renderer": "gpu"` 时，工具还会确认硬件渲染并输出 WebGL renderer。
 
 `seek` / `play` 可以返回 Promise，供截图和渲染工具等待画面就绪。
 
@@ -410,7 +408,15 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 | `preload(tasks)` + `preload.image / font / fonts / fetch / wait / cache` | 预加载 |
 | `audio.enable / disable / toggle / state / on / meter / active` | 声音开关与状态 |
 | `audio.attach / pattern / play / stopAll / define / setMix / renderOffline / encodeWav / voices / dsp` | 乐谱、即时触发、自定义音色、混音、离线渲染 |
-| `sound()` | 旧 API（tone / noise），内部走新引擎 |
+| `sound()` | 即时声音接口（tone / noise），共用声音引擎 |
 | `tween / follow` | 非时间轴场景的补间与临界阻尼跟随 |
 
-完整注释见 `kit/motion-kit.js`。各 Demo 文件夹内的 `motion-kit.js` 是构建时同步的副本，改动请只改 `kit/` 下的源文件，然后运行 `node scripts/build.mjs`。
+完整接口实现见 `kit/motion-kit.js`，仓库操作见 [AGENTS.md](../AGENTS.md)。
+
+## 十三、发布素材地址
+
+完整本地包包含全部运行文件和素材。发布包的 `data/asset-sources.js` 记录源提交与大素材地址，至少 128 KiB 的图像、音视频、字体与模型从该提交的 GitHub 地址加载；JS、CSS 和小素材随站点部署。源码与完整本地包保留原始素材。
+
+`MotionAtlasAssets.resolve(url)` 解析图片、字体与 `fetch` 使用的素材地址；MotionKit 提供预加载、缓存、进度与就绪通知。地图瓦片及清单外请求使用其配置地址，发布模式需要访问对应网络来源。
+
+文字快照由条目的 `snapshotPath` 确定，完整保存在发布包内；其中的 HTML、CSS 与其他原文按原字节保存。

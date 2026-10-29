@@ -101,7 +101,7 @@
   "files": [
     {
       "path": "demos/cases/mg-hud/LICENSES.md",
-      "bytes": 4082
+      "bytes": 1088
     },
     {
       "path": "demos/cases/mg-hud/assets/land-50m.json",
@@ -113,7 +113,7 @@
     },
     {
       "path": "demos/cases/mg-hud/fidelity.md",
-      "bytes": 3655
+      "bytes": 4101
     },
     {
       "path": "demos/cases/mg-hud/film/LICENSE",
@@ -216,6 +216,10 @@
       "bytes": 7573
     },
     {
+      "path": "demos/cases/mg-hud/source/cues.json",
+      "bytes": 1411
+    },
+    {
       "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
       "bytes": 731
     },
@@ -278,6 +282,14 @@
     {
       "path": "demos/patterns/hud-lock-alert-wave/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-hud.json",
+      "bytes": 18397
+    },
+    {
+      "path": "entries/patterns/hud-lock-alert-wave.json",
+      "bytes": 3638
     },
     {
       "path": "previews/patterns/hud-lock-alert-wave.jpg",

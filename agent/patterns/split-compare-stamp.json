@@ -187,6 +187,10 @@
   "entrypoint": "demos/patterns/split-compare-stamp/index.html",
   "files": [
     {
+      "path": "demos/cases/map-pilgrimage/fidelity.md",
+      "bytes": 392
+    },
+    {
       "path": "demos/cases/map-pilgrimage/film/config.js",
       "bytes": 17491
     },
@@ -216,7 +220,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 3208
+      "bytes": 1047
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -276,7 +280,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3636
+      "bytes": 4658
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -415,8 +419,20 @@
       "bytes": 41282
     },
     {
-      "path": "docs/research/map-pilgrimage.md",
-      "bytes": 7066
+      "path": "docs/cases/map-pilgrimage.md",
+      "bytes": 6454
+    },
+    {
+      "path": "entries/cases/map-pilgrimage.json",
+      "bytes": 19490
+    },
+    {
+      "path": "entries/cases/mg-hanazi.json",
+      "bytes": 18590
+    },
+    {
+      "path": "entries/patterns/split-compare-stamp.json",
+      "bytes": 5940
     },
     {
       "path": "previews/patterns/split-compare-stamp-portrait.jpg",

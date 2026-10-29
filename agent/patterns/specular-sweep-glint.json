@@ -120,7 +120,7 @@
   "files": [
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
-      "bytes": 2040
+      "bytes": 812
     },
     {
       "path": "demos/cases/mg-liquid/audio/film.m4a",
@@ -128,7 +128,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 4895
+      "bytes": 5866
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
@@ -219,8 +219,28 @@
       "bytes": 11884
     },
     {
+      "path": "demos/cases/mg-liquid/source/cues.json",
+      "bytes": 1702
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/lookdev.js",
+      "bytes": 2622
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/scene.js",
+      "bytes": 56751
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/js/textsdf.js",
+      "bytes": 5558
+    },
+    {
+      "path": "demos/cases/mg-liquid/source/out/cues_derived.json",
+      "bytes": 5548
+    },
+    {
       "path": "demos/cases/mg-synthwave/LICENSES.md",
-      "bytes": 2558
+      "bytes": 1068
     },
     {
       "path": "demos/cases/mg-synthwave/audio/film.m4a",
@@ -228,7 +248,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/fidelity.md",
-      "bytes": 4139
+      "bytes": 4597
     },
     {
       "path": "demos/cases/mg-synthwave/film/LICENSE",
@@ -299,6 +319,10 @@
       "bytes": 11743
     },
     {
+      "path": "demos/cases/mg-synthwave/source/cues.json",
+      "bytes": 1312
+    },
+    {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/LICENSE",
       "bytes": 1085
     },
@@ -365,6 +389,18 @@
     {
       "path": "demos/patterns/specular-sweep-glint/motion-kit.js",
       "bytes": 133782
+    },
+    {
+      "path": "entries/cases/mg-liquid.json",
+      "bytes": 15817
+    },
+    {
+      "path": "entries/cases/mg-synthwave.json",
+      "bytes": 16367
+    },
+    {
+      "path": "entries/patterns/specular-sweep-glint.json",
+      "bytes": 4557
     },
     {
       "path": "previews/patterns/specular-sweep-glint.jpg",

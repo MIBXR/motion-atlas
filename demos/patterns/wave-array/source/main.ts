@@ -1,11 +1,11 @@
-import { ArchiveScene } from './upstream/src/scene';
-import { archiveColumns, columnFiles, fileLocation } from './upstream/src/data';
-import { wrap } from './upstream/src/archive-loop';
-import { fullMotion, reducedMotion } from './upstream/src/motion-preferences';
-import { qualityPresets } from './upstream/src/render-quality';
-import { smooth } from './upstream/src/motion';
-import { synthesizeSound } from './upstream/src/audio';
-import { openingLayout, viewportLayout } from './upstream/src/viewport-layout';
+import { ArchiveScene } from '../../../cases/archive-os/source/rhinelabui/src/scene';
+import { archiveColumns, columnFiles, fileLocation } from '../../../cases/archive-os/source/rhinelabui/src/data';
+import { wrap } from '../../../cases/archive-os/source/rhinelabui/src/archive-loop';
+import { fullMotion, reducedMotion } from '../../../cases/archive-os/source/rhinelabui/src/motion-preferences';
+import { qualityPresets } from '../../../cases/archive-os/source/rhinelabui/src/render-quality';
+import { smooth } from '../../../cases/archive-os/source/rhinelabui/src/motion';
+import { synthesizeSound } from '../../../cases/archive-os/source/rhinelabui/src/audio';
+import { openingLayout, viewportLayout } from '../../../cases/archive-os/source/rhinelabui/src/viewport-layout';
 
 const config = window.parent.WAVE_CONFIG;
 const container = document.getElementById('array')!;
@@ -42,7 +42,15 @@ async function reset() {
   scene = new ArchiveScene(container, selectionWave, false);
   scene.setQuality(qualityPresets[quality]);
   scene.setMotion(reduced ? reducedMotion() : fullMotion());
-  await scene.load(config.model);
+  await Reflect.get(window.parent, 'MotionKit').load.loader(async () => {
+    await scene.load(config.model);
+    const smaa = Reflect.get(scene, 'smaa');
+    await Promise.all([smaa._areaTexture.image, smaa._searchTexture.image].map(image => image.complete ? Promise.resolve() : new Promise((resolve, reject) => {
+      image.addEventListener('load', resolve, { once: true });
+      image.addEventListener('error', () => reject(new Error('SMAA texture failed')), { once: true });
+    })));
+    scene.resize();
+  }, window);
   selected = 0; memory = archiveColumns.map((_, lane) => columnFiles(lane)[0]);
   scene.select(0); scene.setMode('hidden');
   frame = -1; renderedRevision = revision;

@@ -37,7 +37,8 @@
     "notes": "skill 目录与仓库内图片按固定提交保存，并附原 LICENSE。未披露的外部字体、音频或其他素材不自动继承 MIT；本库仅展示作者效果，未复刻原作。UMBRA 的 Salamander 钢琴采样在来源中标为 CC BY，本库未收录采样或音轨。"
   },
   "install": "按来源集合 README，可使用 skills CLI 安装单个 skill：\nnpx skills add ConardLi/garden-skills -s motion-showreel\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。安装后在 skill 目录执行一次：\nsh scripts/setup.sh\n需要 Node 18+ 与 PATH 中的 ffmpeg；初始化脚本不安装系统软件。也可按来源 README，将 skill 目录复制到 Agent 会扫描的技能目录。",
-  "skillPath": "agent-skills/motion-showreel/",
+  "snapshotPath": "demos/materials/motion-showreel/",
+  "snapshotEntry": "SKILL.md",
   "relatedEntries": [
     {
       "kind": "case",
@@ -308,5 +309,6 @@
       "title": "manifest.json：版本",
       "url": "https://github.com/ConardLi/garden-skills/blob/2b9a89340b70f632d31c0f1c69fce94a7912423e/skills/motion-showreel/manifest.json"
     }
-  ]
+  ],
+  "research": "docs/materials/motion-showreel.md"
 }
