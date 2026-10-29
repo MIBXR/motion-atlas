@@ -1,9 +1,9 @@
 const W = 1920, H = 1080, D = './';
 window.DEMO = { width: W, height: H, fps: 30, duration: 10, motionBlur: { samples: 1, shutter: 0.5 } };
 const cv = document.getElementById('c'), X = cv.getContext('2d');
-const C = await (await fetch('./film/cues.json')).json();
-const LAY = await (await fetch(D + 'assets/gen/layout.json')).json();
-const load = src => new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => no(src); i.src = src; });
+const C = await (await MotionKit.load.fetch('./film/cues.json')).json();
+const LAY = await (await MotionKit.load.fetch(D + 'assets/gen/layout.json')).json();
+const load = src => MotionKit.load.image(src);
 const I = {};
 const GEN = ['p_lid', 'p_jaw', 'p_face', 'space_wedge', 'earth', 'bird_hawk',
   'rose_purple', 'rose_centi', 'bfly_a', 'bfly_b', 'rocket', 'flame0', 'flame1', 'news_a', 'news_b', 'manicule'];

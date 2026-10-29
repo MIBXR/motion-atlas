@@ -46,7 +46,7 @@ function pop(t, t0, f = 2.4, z = .42, amt = .12, pin = .9) {
 const hump = u => 4 * u * (1 - u);
 
 // ============================================================ cues + fonts
-const cues = await (await fetch('./film/cues.json')).json();
+const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
 const FR = cues.frames; const F = n => n / 30; const T = k => FR[k] / 30;
 await Promise.all([
   document.fonts.load("700 200px 'Fredoka'", 'popwıse'), document.fonts.load("600 40px 'Fredoka'", 'EVERY DAY'),

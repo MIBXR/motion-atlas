@@ -40,11 +40,17 @@ const renderer = gl ? gl.getParameter(debug ? debug.UNMASKED_RENDERER_WEBGL : gl
 gl?.getExtension('WEBGL_lose_context')?.loseContext();
 const quality = new URLSearchParams(location.search).get('quality') ?? CONFIG.quality ?? (/swiftshader|llvmpipe|software|microsoft basic render/i.test(renderer) ? 'performance' : 'original');
 frame.width = stage.width; frame.height = stage.height;
-const initial = new Promise(resolve => frame.addEventListener('load', async () => {
-  await frame.contentWindow.waveDemo.ready; resolve();
+const initial = new Promise((resolve, reject) => frame.addEventListener('load', async () => {
+  while (!frame.contentWindow.waveDemo) await new Promise(resolve => setTimeout(resolve, 0));
+  frame.contentWindow.waveDemo.ready.then(async () => {
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    await frame.contentWindow.waveDemo.seek(0);
+  }).then(resolve, reject);
 }, { once: true }));
+MK.load.register(['array.html', CONFIG.model]);
+MK.preload([MK.load.fetch('array.html'), MK.load.fetch(CONFIG.model)]);
 frame.src = `array.html?quality=${encodeURIComponent(quality)}`;
-MK.preload([{ label: '档案模型与材质', run: () => initial }], { timeout: 120000 });
+MK.preload([{ label: '档案模型与材质', run: () => initial }]);
 let target = 0, running;
 const tl = MK.timeline({ duration: CONFIG.duration, markers: CONFIG.events.map((e, i) => ({ t: e.t, label: `选择 ${i + 1}` })), render: t => {
   target = t;
@@ -68,6 +74,7 @@ tl.seek = t => {
 };
 tl.play = () => { frame.contentWindow.waveDemo?.resetInput(); audioScore.set(score); return rawPlay(); };
 window.WAVE_MANUAL = event => {
+  if (document.documentElement.dataset.motionReady !== '1' || MK.params().render && parent !== window && parent.document.documentElement.dataset.motionReady !== '1') return;
   if (tl.time >= tl.duration) tl.seek(0);
   frame.contentWindow.waveDemo.addInput(tl.time, event);
   audioScore.set([]);
@@ -85,7 +92,6 @@ MK.audio.define('archive-selection', (ctx, out, when, p) => frame.contentWindow.
 const score = CONFIG.events.map(event => ({ t: event.t, voice: 'archive-selection', event }));
 const audioScore = MK.audio.attach(tl, score);
 MK.expose(tl, { title: '阵列选择波浪', sourceTime: t => CONFIG.sourceStart + t });
-tl.ready = Promise.all([tl.ready, initial]).then(() => tl);
 MK.controls(tl, { accent: '#171713' });
 MK.start(tl, { reduced: CONFIG.duration });
 </script>

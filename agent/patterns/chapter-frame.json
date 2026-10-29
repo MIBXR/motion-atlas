@@ -202,7 +202,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843,
+      "bytes": 130629,
       "role": "source"
     },
     {
@@ -212,12 +212,12 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995,
+      "bytes": 7729,
       "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -272,7 +272,7 @@
     },
     {
       "path": "demos/cases/mg-hud/film/main.js",
-      "bytes": 7461,
+      "bytes": 7491,
       "role": "source"
     },
     {
@@ -352,12 +352,12 @@
     },
     {
       "path": "demos/cases/mg-hud/index.html",
-      "bytes": 2189,
+      "bytes": 2336,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -462,7 +462,7 @@
     },
     {
       "path": "demos/patterns/chapter-frame/index.html",
-      "bytes": 466,
+      "bytes": 555,
       "role": "source"
     },
     {
@@ -482,7 +482,7 @@
     },
     {
       "path": "demos/patterns/chapter-frame/mechanism/scene.html",
-      "bytes": 7787,
+      "bytes": 7848,
       "role": "source"
     },
     {
@@ -492,7 +492,7 @@
     },
     {
       "path": "demos/patterns/chapter-frame/mechanism/script.js",
-      "bytes": 145369,
+      "bytes": 145081,
       "role": "source"
     },
     {
@@ -502,7 +502,7 @@
     },
     {
       "path": "demos/patterns/chapter-frame/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

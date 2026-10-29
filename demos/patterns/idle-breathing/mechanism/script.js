@@ -39,9 +39,10 @@ const seek = tl.seek, play = tl.play;
 tl.seek = t => { extra = []; return seek(t); };
 tl.play = () => { extra = []; return play(); };
 tl.on('loop', () => { extra = []; });
-$('#poke').addEventListener('click', () => { extra.push(tl.time); if (!tl.playing) play(); });
+$('#poke').addEventListener('click', () => {
+  if (document.documentElement.dataset.motionReady !== '1') return;
+  extra.push(tl.time); if (!tl.playing) play();
+});
 MK.expose(tl);
 MK.controls(tl, { accent: '#c8742f' });
-const P = MK.params();
-tl.seek(P.t ?? (MK.prefersReducedMotion() ? 0.3 : 0));
-if (P.autoplay && !MK.prefersReducedMotion()) tl.play();
+MK.start(tl, { t: 0, reduced: 0.3 });

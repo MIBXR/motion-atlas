@@ -132,7 +132,7 @@ function plate3(tt) {
 
 let C, fx, rays, bgPat, B = {};
 async function build() {
-  C = await (await fetch('./film/cues.json')).json();
+  C = await (await MotionKit.load.fetch('./film/cues.json')).json();
   for (const [f, w] of [['Resource Han Rounded', 900], ['Alimama ShuHeiTi', 700], ['Douyin Sans', 700], ['LXGW Marker Gothic', 400], ['ZCOOL KuaiLe', 400], ['Luckiest Guy', 400]])
     await document.fonts.load(`${w} 100px "${f}"`, '今日份快乐？空气突然安静震惊！前方高能这发量合理吗绝子下期见～猫主认证喵呜日记小声正在光作用…（）发量检测爆表正常MIAOWU EP.07★');
   await document.fonts.ready;
@@ -307,7 +307,7 @@ async function build() {
   const tg = el('text', { x: 54, y: 28, 'font-family': 'Luckiest Guy', 'font-size': 32, fill: '#fff', 'text-anchor': 'middle', 'dominant-baseline': 'central' }, tag); tg.textContent = 'EP.07';
 
   fx.appendChild(B.wipe); fx.appendChild(B.badge);   // wipe covers captions; program badge stays on top
-  await Promise.all(['i1', 'e6', 'e11', 'e16', 'i2', 'i3', ...HERO].map(id => $(id).decode()));
+  await MotionKit.load.decode(() => Promise.all(['i1', 'e6', 'e11', 'e16', 'i2', 'i3', ...HERO].map(id => $(id).decode())));
 }
 
 /* ---------- frame ---------- */

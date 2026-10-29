@@ -7,8 +7,8 @@ const DPR = window.devicePixelRatio || 1;
 const RW = Math.round(W * DPR), RH = Math.round(H * DPR);
 const QW = Math.max(8, Math.round(RW / 4)), QH = Math.max(8, Math.round(RH / 4));
 
-const cues = await (await fetch('./film/cues.json')).json();
-const ENV = await (await fetch('./film/out/env.json')).json();
+const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
+const ENV = await (await MotionKit.load.fetch('./film/out/env.json')).json();
 
 // ------------------------------------------------------------------ math
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -180,8 +180,7 @@ function upload(tex, cv, mip) {
 }
 
 // grain texture
-const grainImg = new Image(); grainImg.src = './assets/textures/grain/grain_fine_2048.png';
-await grainImg.decode();
+const grainImg = await MotionKit.load.image('./assets/textures/grain/grain_fine_2048.png');
 const grainTex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, grainTex);
 gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, grainImg);

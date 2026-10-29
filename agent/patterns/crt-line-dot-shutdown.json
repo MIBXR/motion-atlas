@@ -166,7 +166,7 @@
     },
     {
       "path": "demos/cases/mg-hud/film/main.js",
-      "bytes": 7461,
+      "bytes": 7491,
       "role": "source"
     },
     {
@@ -246,12 +246,12 @@
     },
     {
       "path": "demos/cases/mg-hud/index.html",
-      "bytes": 2189,
+      "bytes": 2336,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -361,7 +361,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/film/scene.js",
-      "bytes": 70651,
+      "bytes": 70681,
       "role": "source"
     },
     {
@@ -421,12 +421,12 @@
     },
     {
       "path": "demos/cases/mg-synthwave/index.html",
-      "bytes": 1824,
+      "bytes": 1976,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -521,7 +521,7 @@
     },
     {
       "path": "demos/patterns/crt-line-dot-shutdown/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

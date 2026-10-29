@@ -164,7 +164,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/film/film.js",
-      "bytes": 33056,
+      "bytes": 33052,
       "role": "source"
     },
     {
@@ -204,12 +204,12 @@
     },
     {
       "path": "demos/cases/mg-line-art/index.html",
-      "bytes": 2089,
+      "bytes": 2256,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -264,7 +264,7 @@
     },
     {
       "path": "demos/patterns/center-out-tracking-in/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

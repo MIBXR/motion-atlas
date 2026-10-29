@@ -172,7 +172,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/film/main.js",
-      "bytes": 9762,
+      "bytes": 9777,
       "role": "source"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/film/title.js",
-      "bytes": 8504,
+      "bytes": 8519,
       "role": "source"
     },
     {
@@ -252,12 +252,12 @@
     },
     {
       "path": "demos/cases/mg-isometric/index.html",
-      "bytes": 2775,
+      "bytes": 2932,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -337,7 +337,7 @@
     },
     {
       "path": "demos/patterns/blueprint-tile-drop-wave/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

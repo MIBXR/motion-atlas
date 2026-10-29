@@ -281,7 +281,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103103,
+      "bytes": 103043,
       "role": "source"
     },
     {
@@ -331,12 +331,12 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2446,
+      "bytes": 2718,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -431,7 +431,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/film/scene.js",
-      "bytes": 63462,
+      "bytes": 63477,
       "role": "source"
     },
     {
@@ -471,12 +471,12 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/index.html",
-      "bytes": 2472,
+      "bytes": 2596,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -546,7 +546,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/film/main.js",
-      "bytes": 3441,
+      "bytes": 3456,
       "role": "source"
     },
     {
@@ -601,12 +601,12 @@
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1597,
+      "bytes": 1721,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -646,7 +646,7 @@
     },
     {
       "path": "demos/patterns/squash-stretch-bounce/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

@@ -134,7 +134,7 @@
     },
     {
       "path": "demos/cases/mg-morph/film/scene.js",
-      "bytes": 60312,
+      "bytes": 60329,
       "role": "source"
     },
     {
@@ -189,12 +189,12 @@
     },
     {
       "path": "demos/cases/mg-morph/index.html",
-      "bytes": 2062,
+      "bytes": 2250,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -219,7 +219,7 @@
     },
     {
       "path": "demos/patterns/morph-primitive-bridge/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

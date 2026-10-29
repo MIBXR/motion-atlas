@@ -25,3 +25,16 @@ for (const file of ['clock-shim.js', 'sequence.js']) fs.copyFileSync(path.join(v
 let bytes = 0;
 for (const rel of walk(app).sort()) { const size = fs.statSync(path.join(app, rel)).size; bytes += size; console.log(`${rel.replaceAll('\\','/')}\t${size}`); }
 console.log(`archive build: ${walk(app).length} files, ${bytes} bytes`);
+
+const entry = path.join(app, 'index.html');
+let html = fs.readFileSync(entry, 'utf8');
+const scripts = [...html.matchAll(/<script type="module"[^>]*src="([^"]+)"[^>]*><\/script>/g)].map(m => m[1]);
+const styles = [...html.matchAll(/<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/g)].map(m => m[1]);
+html = html.replace(/<script type="module"[^>]*src="[^"]+"[^>]*><\/script>/g, '').replace(/<link rel="stylesheet"[^>]*href="[^"]+"[^>]*>/g, '');
+const bootstrap = '<script type="module">' +
+  'const load = parent.MotionKit.load;' +
+  'window.__filmStylesheets = ' + JSON.stringify(styles) + '.map(url => new URL(url, document.baseURI).href);' +
+  'await Promise.all(__filmStylesheets.map(url => load.stylesheet(url, {document, fonts:false})));' +
+  'for (const url of ' + JSON.stringify(scripts) + ') await import(await load.moduleURL(new URL(url, document.baseURI).href));' +
+  '</script>';
+fs.writeFileSync(entry, html.replace('</body>', bootstrap + '</body>'));

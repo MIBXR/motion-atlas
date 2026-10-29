@@ -1204,9 +1204,7 @@ stage.root.innerHTML = `  <div id="boot-background" class="boot-background"><svg
 stage.root.querySelector("#boot-background").insertAdjacentHTML("beforeend", '<div class="boot-white"></div>');
 var sequence = new BootSequence(stage.root);
 var buffer;
-var audioReady = fetch("../../../cases/archive-os/audio/film-audio.ogg").then((r) => r.arrayBuffer()).then((data) => new OfflineAudioContext(2, 1, 48e3).decodeAudioData(data)).then((value) => {
-  buffer = value;
-});
+var audioReady = MK.load.audio('../../../cases/archive-os/audio/film-audio.ogg').then(value => { buffer = value; });
 MK.preload([{ label: "\u5B57\u4F53", run: () => document.fonts.ready }, { label: "\u5F00\u573A\u58F0\u97F3", run: () => audioReady }]);
 var tl = MK.timeline({ duration: CONFIG.duration, markers: [{ t: 1.8, label: "\u8BF7\u6C42\u6743\u9650" }, { t: 4.16, label: "\u5355\u8F6E\u5ED3\u6807\u5FD7" }, { t: 6.28, label: "\u786E\u8BA4\u8EAB\u4EFD" }, { t: 14.48, label: "\u626B\u63CF" }, { t: 17.76, label: "\u6B22\u8FCE" }], render(t) {
   const s = sequence.update(t * 25 / CONFIG.fps);

@@ -11,7 +11,7 @@ async function init() {
   await document.fonts.load('500 40px "Noto Serif SC"', '万物始于一滴');
   await document.fonts.load('600 20px "Inter"');
   await document.fonts.ready;
-  const cues = await (await fetch('./film/cues.json')).json();
+  const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
   const eng = createEngine(document.getElementById('c'), W, H);
   // wordmark SDF
   const sdf = buildLetterSDF({ word: 'drop', family: '"Fraunces Liquid"', weight: 900, size: 400, tracking: 10, pad: 170, sigma: 10 });

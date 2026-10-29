@@ -1,4 +1,13 @@
 import * as THREE from "three";
+import { filmMode } from "../film/app";
+async function loadModel(url: string) {
+  const loader = new GLTFLoader();
+  if (!filmMode) return loader.loadAsync(url);
+  const load = Reflect.get(window.parent, "MotionKit").load;
+  const absolute = new URL(url, document.baseURI).href;
+  const data = await (await load.fetch(absolute)).arrayBuffer();
+  return load.decode(() => loader.parseAsync(new Uint8Array(data).slice().buffer, new URL('.', absolute).href));
+}
 import { ArchiveVisibility } from "./archive-visibility";
 import { ArchiveDrawCoverage, ArchiveShadowCoverage } from "./archive-draw-coverage";
 import { InstanceUpdates } from "./instance-updates";
@@ -341,7 +350,7 @@ export class ArchiveScene {
   async load(assetUrl = publicAsset("assets/archive-cassette.glb")) {
     this.labelMark.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(labelMarkSvg)}`;
     await this.labelMark.decode();
-    const gltf = await new GLTFLoader().loadAsync(
+    const gltf = await loadModel(
       assetUrl,
     );
     gltf.scene.updateMatrixWorld(true);
@@ -507,8 +516,7 @@ export class ArchiveScene {
   private assemblyTemplate?: Promise<THREE.Group>;
   // MOTION-ATLAS: §4.2 share the original lazy GLB promise with film preloading.
   private loadAssemblyTemplate() {
-    return this.assemblyTemplate ??= new GLTFLoader()
-      .loadAsync(publicAsset("assets/archive-assembly.glb"))
+    return this.assemblyTemplate ??= loadModel(publicAsset("assets/archive-assembly.glb"))
       .then((gltf) => {
         gltf.scene.updateMatrixWorld(true);
         return gltf.scene;

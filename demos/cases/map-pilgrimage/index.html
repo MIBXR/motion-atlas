@@ -4,12 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>地图巡礼 · 游戏过场式旅行影像 — Motion Atlas Demo</title>
-  <link rel="stylesheet" href="film/style.css">
-  <!-- 地图资源尽早开始下载（与 film/config.js 的 map.lib / map.style 保持一致）：与页面脚本并行，缩短可播放前的等待 -->
   <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
   <link rel="preconnect" href="https://s3.amazonaws.com" crossorigin>
-  <link rel="preload" as="script" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js" crossorigin>
-  <link rel="preload" as="fetch" href="https://tiles.openfreemap.org/styles/positron" crossorigin>
 </head>
 <body>
   <!--
@@ -147,9 +143,9 @@
   </main>
 
   <script src="motion-kit.js"></script>
-  <script src="film/config.js"></script>
-  <script src="film/paths.js"></script>
-  <script src="film/scenes.js"></script>
-  <script src="film/script.js"></script>
+  <script type="module">
+    await MotionKit.load.prepare({ styles: ['film/style.css'], data: ['film/config.js', 'film/paths.js', 'film/scenes.js', 'film/script.js'] });
+    for (const src of ['film/config.js', 'film/paths.js', 'film/scenes.js', 'film/script.js']) await MotionKit.load.script(src);
+  </script>
 </body>
 </html>

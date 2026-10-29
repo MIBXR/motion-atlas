@@ -3,4 +3,10 @@
 <script>
 const CONFIG = window.CONFIG = { duration: 21.92, fps: 25, soundGain: 1 };
 </script>
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="compiled.css"></head><body><main id="stage"></main><script src="../motion-kit.js"></script><script type="module" src="compiled.js"></script></body></html>
+</head><body><main id="stage"></main><script src="../motion-kit.js"></script><script type="module">
+const load=MotionKit.load, audio='../../../cases/archive-os/audio/film-audio.ogg';
+load.register(['style.css','compiled.css','compiled.js',audio]);
+const fontText=(await (await load.fetch('compiled.js')).text().then(text=>text.replace(/\\(?:u([0-9a-f]{4})|x([0-9a-f]{2}))/gi,(_,unicode,hex)=>String.fromCharCode(parseInt(unicode||hex,16))))) + (await Promise.all(["style.css","compiled.css"].map(src=>load.fetch(src).then(r=>r.text())))).join("\n");
+await load.prepare({styles:['style.css','compiled.css'],modules:['compiled.js'],audio:[audio],fontText});
+await load.module('compiled.js');
+</script></body></html>

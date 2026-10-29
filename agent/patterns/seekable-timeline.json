@@ -417,13 +417,13 @@
       "role": "license"
     },
     {
-      "path": "demos/cases/archive-os/film/app/assets/index-BlM3wgKX.js",
-      "bytes": 994664,
+      "path": "demos/cases/archive-os/film/app/assets/index-DYLPDZ1T.css",
+      "bytes": 668055,
       "role": "source"
     },
     {
-      "path": "demos/cases/archive-os/film/app/assets/index-DYLPDZ1T.css",
-      "bytes": 668055,
+      "path": "demos/cases/archive-os/film/app/assets/index-s-1i48S1.js",
+      "bytes": 995073,
       "role": "source"
     },
     {
@@ -4313,7 +4313,7 @@
     },
     {
       "path": "demos/cases/archive-os/film/app/index.html",
-      "bytes": 1349,
+      "bytes": 1593,
       "role": "source"
     },
     {
@@ -4343,22 +4343,22 @@
     },
     {
       "path": "demos/cases/archive-os/film/script.js",
-      "bytes": 6764,
+      "bytes": 5825,
       "role": "source"
     },
     {
       "path": "demos/cases/archive-os/film/style.css",
-      "bytes": 241,
+      "bytes": 210,
       "role": "source"
     },
     {
       "path": "demos/cases/archive-os/index.html",
-      "bytes": 433,
+      "bytes": 636,
       "role": "source"
     },
     {
       "path": "demos/cases/archive-os/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -4428,7 +4428,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 1762,
+      "bytes": 2728,
       "role": "process"
     },
     {
@@ -4443,7 +4443,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/app.ts",
-      "bytes": 1622,
+      "bytes": 1846,
       "role": "process"
     },
     {
@@ -4743,7 +4743,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/src/scene.ts",
-      "bytes": 80876,
+      "bytes": 81294,
       "role": "process"
     },
     {
@@ -4928,7 +4928,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843,
+      "bytes": 130629,
       "role": "source"
     },
     {
@@ -4938,12 +4938,12 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995,
+      "bytes": 7729,
       "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -4983,7 +4983,7 @@
     },
     {
       "path": "demos/patterns/seekable-timeline/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

@@ -155,7 +155,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/film/main.js",
-      "bytes": 3441,
+      "bytes": 3456,
       "role": "source"
     },
     {
@@ -210,12 +210,12 @@
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1597,
+      "bytes": 1721,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -255,7 +255,7 @@
     },
     {
       "path": "demos/patterns/phase-offset-liquid-flood/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

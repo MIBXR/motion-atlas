@@ -1,7 +1,7 @@
 const W = 1920, H = 1080, FPS = 30, FR = 1 / FPS;
 window.DEMO = { width: W, height: H, fps: FPS, duration: 10, motionBlur: { samples: 4, shutter: 0.5 } };
-const cues = await (await fetch('./film/cues.json')).json();
-const GL = await (await fetch('./film/glyphs.json')).json();
+const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
+const GL = await (await MotionKit.load.fetch('./film/glyphs.json')).json();
 const cv = document.getElementById('c'); let ctx = cv.getContext('2d');
 const off = document.createElement('canvas'); off.width = 1920; off.height = 1080; const octx = off.getContext('2d');
 const C = { ink: '#16151B', cream: '#F4EEE3', mari: '#FFB627', verm: '#FF4F2B', ultra: '#2438E8' };
@@ -650,7 +650,7 @@ const GT = 512, GN = new Int8Array(GT * GT);
   for (let y = 0; y < GT; y++) for (let x = 0; x < GT; x++) { let v = 0; for (let j = -1; j <= 1; j++) for (let i = -1; i <= 1; i++) v += a[((y + j) & (GT - 1)) * GT + ((x + i) & (GT - 1))] * (2 - Math.abs(i)) * (2 - Math.abs(j)); b[y * GT + x] = v; ss += v * v; }
   const k = 2.0 / Math.sqrt(ss / b.length); for (let i = 0; i < b.length; i++) GN[i] = Math.max(-6, Math.min(6, Math.round(b[i] * k))); }
 let PAPER = null;
-{ const im = new Image(); im.src = './assets/textures/paper/Paper001_4K_color.jpg'; await im.decode(); const c = document.createElement('canvas'); c.width = W; c.height = H;
+{ const im = await MotionKit.load.image('./assets/textures/paper/Paper001_4K_color.jpg'); const c = document.createElement('canvas'); c.width = W; c.height = H;
   const g = c.getContext('2d'); g.drawImage(im, 0, 0, 4096, 4096, 0, 0, 2304, 2304); const d = g.getImageData(0, 0, W, H).data, L = new Float32Array(W * H); let m = 0;
   for (let i = 0; i < L.length; i++) { L[i] = d[i * 4] * 0.3 + d[i * 4 + 1] * 0.59 + d[i * 4 + 2] * 0.11; m += L[i]; } m /= L.length; let v = 0; for (let i = 0; i < L.length; i++) { L[i] -= m; v += L[i] * L[i]; }
   const k = 0.022 / Math.sqrt(v / L.length); PAPER = new Float32Array(W * H); for (let i = 0; i < L.length; i++) PAPER[i] = Math.max(-0.06, Math.min(0.06, L[i] * k)) / 765; }

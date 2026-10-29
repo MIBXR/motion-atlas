@@ -353,13 +353,13 @@
       "role": "license"
     },
     {
-      "path": "demos/cases/archive-os/film/app/assets/index-BlM3wgKX.js",
-      "bytes": 994664,
+      "path": "demos/cases/archive-os/film/app/assets/index-DYLPDZ1T.css",
+      "bytes": 668055,
       "role": "source"
     },
     {
-      "path": "demos/cases/archive-os/film/app/assets/index-DYLPDZ1T.css",
-      "bytes": 668055,
+      "path": "demos/cases/archive-os/film/app/assets/index-s-1i48S1.js",
+      "bytes": 995073,
       "role": "source"
     },
     {
@@ -4249,7 +4249,7 @@
     },
     {
       "path": "demos/cases/archive-os/film/app/index.html",
-      "bytes": 1349,
+      "bytes": 1593,
       "role": "source"
     },
     {
@@ -4279,22 +4279,22 @@
     },
     {
       "path": "demos/cases/archive-os/film/script.js",
-      "bytes": 6764,
+      "bytes": 5825,
       "role": "source"
     },
     {
       "path": "demos/cases/archive-os/film/style.css",
-      "bytes": 241,
+      "bytes": 210,
       "role": "source"
     },
     {
       "path": "demos/cases/archive-os/index.html",
-      "bytes": 433,
+      "bytes": 636,
       "role": "source"
     },
     {
       "path": "demos/cases/archive-os/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -4364,7 +4364,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 1762,
+      "bytes": 2728,
       "role": "process"
     },
     {
@@ -4379,7 +4379,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/app.ts",
-      "bytes": 1622,
+      "bytes": 1846,
       "role": "process"
     },
     {
@@ -4679,7 +4679,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/src/scene.ts",
-      "bytes": 80876,
+      "bytes": 81294,
       "role": "process"
     },
     {
@@ -4844,7 +4844,7 @@
     },
     {
       "path": "demos/patterns/rolling-digits/index.html",
-      "bytes": 519,
+      "bytes": 1215,
       "role": "source"
     },
     {
@@ -4864,12 +4864,12 @@
     },
     {
       "path": "demos/patterns/rolling-digits/mechanism/frame.html",
-      "bytes": 1833,
+      "bytes": 2254,
       "role": "source"
     },
     {
       "path": "demos/patterns/rolling-digits/mechanism/frame.js",
-      "bytes": 2992,
+      "bytes": 3045,
       "role": "source"
     },
     {
@@ -4889,7 +4889,7 @@
     },
     {
       "path": "demos/patterns/rolling-digits/mechanism/script.js",
-      "bytes": 2137,
+      "bytes": 2112,
       "role": "source"
     },
     {
@@ -4899,7 +4899,7 @@
     },
     {
       "path": "demos/patterns/rolling-digits/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

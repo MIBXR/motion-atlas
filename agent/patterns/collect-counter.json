@@ -252,7 +252,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843,
+      "bytes": 130629,
       "role": "source"
     },
     {
@@ -262,12 +262,12 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995,
+      "bytes": 7729,
       "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -362,12 +362,12 @@
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485,
+      "bytes": 48529,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432,
+      "bytes": 1511,
       "role": "source"
     },
     {
@@ -442,12 +442,12 @@
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900,
+      "bytes": 2291,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -547,7 +547,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50392,
+      "bytes": 50443,
       "role": "source"
     },
     {
@@ -597,12 +597,12 @@
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2075,
+      "bytes": 2456,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -682,7 +682,7 @@
     },
     {
       "path": "demos/patterns/collect-counter/index.html",
-      "bytes": 420,
+      "bytes": 509,
       "role": "source"
     },
     {
@@ -702,7 +702,7 @@
     },
     {
       "path": "demos/patterns/collect-counter/mechanism/scene.html",
-      "bytes": 7789,
+      "bytes": 7850,
       "role": "source"
     },
     {
@@ -712,7 +712,7 @@
     },
     {
       "path": "demos/patterns/collect-counter/mechanism/script.js",
-      "bytes": 145369,
+      "bytes": 145081,
       "role": "source"
     },
     {
@@ -722,7 +722,7 @@
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

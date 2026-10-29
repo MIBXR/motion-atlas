@@ -180,7 +180,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50392,
+      "bytes": 50443,
       "role": "source"
     },
     {
@@ -230,12 +230,12 @@
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2075,
+      "bytes": 2456,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -280,7 +280,7 @@
     },
     {
       "path": "demos/patterns/element-flight-regroup/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

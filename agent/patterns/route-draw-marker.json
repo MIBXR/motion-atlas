@@ -238,7 +238,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843,
+      "bytes": 130629,
       "role": "source"
     },
     {
@@ -248,12 +248,12 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995,
+      "bytes": 7729,
       "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -288,7 +288,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/film/main.js",
-      "bytes": 9762,
+      "bytes": 9777,
       "role": "source"
     },
     {
@@ -308,7 +308,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/film/title.js",
-      "bytes": 8504,
+      "bytes": 8519,
       "role": "source"
     },
     {
@@ -368,12 +368,12 @@
     },
     {
       "path": "demos/cases/mg-isometric/index.html",
-      "bytes": 2775,
+      "bytes": 2932,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-isometric/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -518,7 +518,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50392,
+      "bytes": 50443,
       "role": "source"
     },
     {
@@ -568,12 +568,12 @@
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2075,
+      "bytes": 2456,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -613,7 +613,7 @@
     },
     {
       "path": "demos/patterns/route-draw-marker/index.html",
-      "bytes": 445,
+      "bytes": 534,
       "role": "source"
     },
     {
@@ -633,7 +633,7 @@
     },
     {
       "path": "demos/patterns/route-draw-marker/mechanism/scene.html",
-      "bytes": 7791,
+      "bytes": 7852,
       "role": "source"
     },
     {
@@ -643,7 +643,7 @@
     },
     {
       "path": "demos/patterns/route-draw-marker/mechanism/script.js",
-      "bytes": 145369,
+      "bytes": 145081,
       "role": "source"
     },
     {
@@ -653,7 +653,7 @@
     },
     {
       "path": "demos/patterns/route-draw-marker/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

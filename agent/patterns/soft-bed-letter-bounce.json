@@ -1347,7 +1347,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/film/scene.js",
-      "bytes": 4014,
+      "bytes": 3928,
       "role": "source"
     },
     {
@@ -1397,12 +1397,12 @@
     },
     {
       "path": "demos/cases/mg-3d-render/index.html",
-      "bytes": 1644,
+      "bytes": 1855,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -1487,7 +1487,7 @@
     },
     {
       "path": "demos/patterns/soft-bed-letter-bounce/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

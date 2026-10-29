@@ -258,7 +258,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103103,
+      "bytes": 103043,
       "role": "source"
     },
     {
@@ -308,12 +308,12 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2446,
+      "bytes": 2718,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -473,12 +473,12 @@
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485,
+      "bytes": 48529,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432,
+      "bytes": 1511,
       "role": "source"
     },
     {
@@ -553,12 +553,12 @@
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900,
+      "bytes": 2291,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -593,7 +593,7 @@
     },
     {
       "path": "demos/patterns/cel-line-boil/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

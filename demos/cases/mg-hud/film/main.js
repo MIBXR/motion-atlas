@@ -9,8 +9,8 @@ import { prog, E, frameOf, LOCK, clamp } from './js/util.js';
 
 window.DEMO = { width: 1920, height: 1080, fps: 30, duration: 10, motionBlur: { samples: 1, shutter: 0.5 } };
 const W = 1920, H = 1080, dpr = window.devicePixelRatio || 1;
-const K = await (await fetch('./film/cues.json')).json();
-const topo = await (await fetch('./assets/land-50m.json')).json();
+const K = await (await MotionKit.load.fetch('./film/cues.json')).json();
+const topo = await (await MotionKit.load.fetch('./assets/land-50m.json')).json();
 
 // equirectangular land mask for the dotted-land layer
 const mc = document.createElement('canvas'); mc.width = 2048; mc.height = 1024;

@@ -130,7 +130,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/main.js",
-      "bytes": 46607,
+      "bytes": 46612,
       "role": "source"
     },
     {
@@ -190,12 +190,12 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/index.html",
-      "bytes": 1904,
+      "bytes": 2091,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -215,7 +215,7 @@
     },
     {
       "path": "demos/patterns/envelope-radiating-waveform/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

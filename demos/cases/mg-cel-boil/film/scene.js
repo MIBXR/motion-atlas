@@ -1263,15 +1263,15 @@ export async function init(canvas, dpr) {
   SHEETC = off(); NIGHTC = off();
   TOTAL = drawing(239).id + 1 - RIFFLE.length; // unique drawings in the film (the riffle re-shows old ones)
   LY = new Layers(W, H, dpr);
-  const load = (src) => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; });
+  const load = src => MotionKit.load.image(src);
   IMG.paper = await load('./assets/paper_base.jpg');
   IMG.tooth = await load('./assets/paper_tooth.png');
   IMG.dust = [];
   for (let k = 1; k <= 4; k++) { const im = await load(`./assets/dust_ink_0${k}.png`); await im.decode(); IMG.dust.push(im); }
   await IMG.paper.decode(); await IMG.tooth.decode();
-  CUES = await (await fetch('./film/cues.json')).json();
+  CUES = await (await MotionKit.load.fetch('./film/cues.json')).json();
   const opentype = (await import('opentype')).default || (await import('opentype'));
-  const buf = await (await fetch('./fonts/LXGWMarkerGothic-Regular.ttf')).arrayBuffer();
+  const buf = await (await MotionKit.load.fetch('./fonts/LXGWMarkerGothic-Regular.ttf')).arrayBuffer();
   const font = opentype.parse(buf);
   TAG = { a: glyphPolys(font, '一帧一帧', 60, 13), b: glyphPolys(font, '亲手点亮', 60, 13), gap: 92 };
 }

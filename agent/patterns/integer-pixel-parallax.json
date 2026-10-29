@@ -131,7 +131,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/film/film.js",
-      "bytes": 58398,
+      "bytes": 58413,
       "role": "source"
     },
     {
@@ -186,12 +186,12 @@
     },
     {
       "path": "demos/cases/mg-pixel/index.html",
-      "bytes": 2004,
+      "bytes": 2128,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-pixel/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -211,7 +211,7 @@
     },
     {
       "path": "demos/patterns/integer-pixel-parallax/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

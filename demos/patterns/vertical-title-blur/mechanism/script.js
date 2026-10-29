@@ -204,13 +204,7 @@
     map: null, ok: false, stats: { samples: 0, ms: 0, misses: 0, frames: 0, missFrames: [], missTiles: [], tiles: 0 },
     veil: 0, lastMissAt: -1, applied: '',
   };
-  const loadScript = (src, ms) => new Promise((res, rej) => {
-    const s = document.createElement('script');
-    s.src = src; s.async = true; s.crossOrigin = 'anonymous'; // 与 index.html 的 preload 一致，复用预下载
-    s.onload = res; s.onerror = () => rej(new Error('load ' + src));
-    document.head.appendChild(s);
-    setTimeout(() => rej(new Error('timeout ' + src)), ms);
-  });
+  const loadScript = src => MK.load.script(src);
   const MP = Object.fromEntries(Object.entries(C.mapPalette).map(([k, v]) => [k, v.map(hex)]));
   const COLOR_PROP = { background: 'background-color', fill: 'fill-color', line: 'line-color', 'fill-extrusion': 'fill-extrusion-color' };
   const mapLayers = [];
@@ -256,27 +250,28 @@
   }
   async function initMap() {
     if (new URLSearchParams(location.search).has('nomap')) throw new Error('nomap');
-    const link = document.createElement('link');
-    link.rel = 'stylesheet'; link.href = C.map.css;
-    document.head.appendChild(link);
+    await MK.load.stylesheet(C.map.css);
     // ?tilemirror=http://主机:端口：把 OpenFreeMap 与高程瓦片改走镜像（自建瓦片服务、离线演示、网络环境切换）；
     // ?demmirror= 单独指定高程瓦片的镜像（与线上一样分属两个主机，各用各的连接数）
     const qs = new URLSearchParams(location.search);
     const mirror = (qs.get('tilemirror') || '').replace(/\/$/, ''), demMirror = (qs.get('demmirror') || mirror).replace(/\/$/, '');
     const rewrite = (url) => url.replace('https://tiles.openfreemap.org/', mirror ? mirror + '/ofm/' : '$&').replace('https://s3.amazonaws.com/elevation-tiles-prod/', demMirror ? demMirror + '/dem/' : '$&');
     MAP.rewrite = rewrite;
-    const styleP = fetch(rewrite(C.map.style)).then((r) => r.json());
-    // 样式里的矢量数据源只给 tilejson 地址：提前取回，省掉样式加载后的又一次往返
-    styleP.then((st) => Object.values(st.sources || {}).forEach((src) => { if (src.url) fetch(src.url).catch(() => {}); })).catch(() => {});
+    const styleP = MK.load.fetch(rewrite(C.map.style)).then((r) => r.json());
     await loadScript(C.map.lib, 30000);
     // MapLibre 5 默认只用 1 个 worker 解析瓦片；预取时要并行解析几百块瓦片，开到 2–4 个
     window.maplibregl.setWorkerCount(clamp(Math.floor((navigator.hardwareConcurrency || 4) / 2), 2, 4));
+    window.maplibregl.addProtocol('motion', async request => {
+      const url = request.url.slice('motion://'.length);
+      const response = await MK.load.fetch(url);
+      return { data: request.type === 'json' ? await response.json() : request.type === 'string' ? await response.text() : await response.arrayBuffer() };
+    });
     const cam = cameraAt(0);
     MAP.softGL = softwareGL();
     const softwarePreview = MAP.softGL && (!P.render || stage.scale < 1);
     const map = new window.maplibregl.Map({
-      container: 'map', style: await styleP.catch(() => rewrite(C.map.style)), center: cam.center,
-      transformRequest: mirror || demMirror ? (url) => ({ url: rewrite(url) }) : undefined, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
+      container: 'map', style: await styleP, center: cam.center,
+      transformRequest: url => ({ url: /^(blob:|data:)/.test(url) ? url : 'motion://' + rewrite(url) }), zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
       interactive: false, attributionControl: false, fadeDuration: 0, maxPitch: 75, renderWorldCopies: false,
       // 预取的瓦片要整段留在缓存里：默认缓存只有“视口瓦片数 × 5”（1920×1080 约 100 块），这里放大
       maxTileCacheSize: 900, maxTileCacheZoomLevels: 60,
@@ -1423,10 +1418,10 @@
     }
   }
   async function preloadPlates() {
+    MK.load.register(PC.segments.flatMap(s => ['landscape','portrait'].map(orient => platePath(s, orient))).filter(Boolean));
     for(const s of PC.segments)for(const orient of ['landscape','portrait']) {
       const src=platePath(s,orient);if(!src || plates.has(src))continue;
-      const img=new Image();img.className='plate';img.src=src;img.dataset.orient=orient;
-      await img.decode();plates.set(src,img);plateRoot.appendChild(img);
+      const img=await MK.load.image(src);img.className='plate';img.dataset.orient=orient;plates.set(src,img);plateRoot.appendChild(img);
     }
     for(const [key,img] of plates)img.style.display=img.dataset.orient===O?'block':'none';
   }
@@ -1508,7 +1503,7 @@
   function startPattern() {
     maskPattern();buildSeekBar();
     tl=MK.timeline({duration:PC.duration,render,markers:PC.markers});
-    const scoreTask=fetch('score.json').then(r=>r.json()).then(score=>A.attach(tl,score));
+    const scoreTask=MK.load.fetch('score.json').then(r=>r.json()).then(score=>A.attach(tl,score));
     MK.preload([
       {label:'document.fonts.ready',run:()=>MK.preload.fonts()()},
       {label:'案例场景与固定底图',run:async()=>{
@@ -1518,7 +1513,7 @@
         measureMarkerLabels();
       }},
       {label:'案例声音事件',run:()=>scoreTask},
-    ],{timeout:120000});
+    ]);
     MK.expose(tl,{title:PC.id,fps:30,bpm:C.meta.bpm});
     if(PC.id!=='seekable-timeline')MK.controls(tl,{accent:C.palette.accent});
     stage.on('orient',()=>{

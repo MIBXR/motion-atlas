@@ -313,7 +313,7 @@
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
-      "bytes": 54479,
+      "bytes": 54419,
       "role": "source"
     },
     {
@@ -393,12 +393,12 @@
     },
     {
       "path": "demos/cases/mg-collage/index.html",
-      "bytes": 1876,
+      "bytes": 2700,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-collage/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -548,12 +548,12 @@
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485,
+      "bytes": 48529,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432,
+      "bytes": 1511,
       "role": "source"
     },
     {
@@ -628,12 +628,12 @@
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900,
+      "bytes": 2291,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -668,7 +668,7 @@
     },
     {
       "path": "demos/patterns/punch-in-camera-shake/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

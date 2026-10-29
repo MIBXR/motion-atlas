@@ -253,7 +253,7 @@
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
-      "bytes": 54479,
+      "bytes": 54419,
       "role": "source"
     },
     {
@@ -333,12 +333,12 @@
     },
     {
       "path": "demos/cases/mg-collage/index.html",
-      "bytes": 1876,
+      "bytes": 2700,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-collage/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -403,7 +403,7 @@
     },
     {
       "path": "demos/patterns/cutout-arc-flight-flutter/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

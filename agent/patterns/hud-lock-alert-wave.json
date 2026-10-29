@@ -151,7 +151,7 @@
     },
     {
       "path": "demos/cases/mg-hud/film/main.js",
-      "bytes": 7461,
+      "bytes": 7491,
       "role": "source"
     },
     {
@@ -231,12 +231,12 @@
     },
     {
       "path": "demos/cases/mg-hud/index.html",
-      "bytes": 2189,
+      "bytes": 2336,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -326,7 +326,7 @@
     },
     {
       "path": "demos/patterns/hud-lock-alert-wave/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

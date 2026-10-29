@@ -203,7 +203,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103103,
+      "bytes": 103043,
       "role": "source"
     },
     {
@@ -253,12 +253,12 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2446,
+      "bytes": 2718,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -333,7 +333,7 @@
     },
     {
       "path": "demos/patterns/smear-frame-strike/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

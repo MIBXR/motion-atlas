@@ -1,6 +1,6 @@
 import {createRollingNumber,createRollingText} from './rolling.js';
 const CONFIG=parent.CONFIG, $=s=>document.querySelector(s);
-const {records,columns}=await fetch('archives.json').then(r=>r.json());
+const {records,columns}=await parent.MotionKit.load.fetch(new URL('archives.json',document.baseURI).href).then(r=>r.json());
 const columnFiles=lane=>records.map((record,index)=>({record,index})).filter(({record})=>record.category===columns[lane]).map(({index})=>index);
 const memory=columns.map((_,lane)=>columnFiles(lane)[0]);let selected=0;
 const motion={duration:CONFIG.durationMs,motionBlur:true,animated:true};

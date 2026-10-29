@@ -46,6 +46,9 @@ export function filmLoaded(part: keyof FilmProgress) {
 }
 
 export async function preloadFilmFonts(text: string) {
+  const load = Reflect.get(window.parent, "MotionKit").load;
+  const sheets = Reflect.get(window, "__filmStylesheets") as string[];
+  await Promise.all(sheets.map(url => load.stylesheet(url, { document, fontText: text })));
   await Promise.all(
     [300, 400, 600, 700].map((weight) =>
       document.fonts.load(`${weight} 20px MiSans`, text),

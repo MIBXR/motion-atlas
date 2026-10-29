@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>拆分型巧思 · Motion Atlas</title>
-  <link rel="stylesheet" href="mechanism/style.css">
 </head>
 <body>
   <main id="stage"><div id="mark">LOCK</div></main>
   <script src="../../../kit/motion-kit.js"></script>
-  <script src="mechanism/script.js"></script>
+  <script type="module">
+    await MotionKit.load.prepare({ styles: ['mechanism/style.css'], modules: ['mechanism/script.js'] });
+    await MotionKit.load.module('mechanism/script.js');
+  </script>
 </body>
 </html>

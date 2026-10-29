@@ -218,7 +218,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843,
+      "bytes": 130629,
       "role": "source"
     },
     {
@@ -228,12 +228,12 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995,
+      "bytes": 7729,
       "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -1473,7 +1473,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/film/scene.js",
-      "bytes": 4014,
+      "bytes": 3928,
       "role": "source"
     },
     {
@@ -1523,12 +1523,12 @@
     },
     {
       "path": "demos/cases/mg-3d-render/index.html",
-      "bytes": 1644,
+      "bytes": 1855,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {
@@ -1638,7 +1638,7 @@
     },
     {
       "path": "demos/patterns/vertical-title-blur/index.html",
-      "bytes": 420,
+      "bytes": 509,
       "role": "source"
     },
     {
@@ -1658,7 +1658,7 @@
     },
     {
       "path": "demos/patterns/vertical-title-blur/mechanism/scene.html",
-      "bytes": 7793,
+      "bytes": 7854,
       "role": "source"
     },
     {
@@ -1668,7 +1668,7 @@
     },
     {
       "path": "demos/patterns/vertical-title-blur/mechanism/script.js",
-      "bytes": 145369,
+      "bytes": 145081,
       "role": "source"
     },
     {
@@ -1678,7 +1678,7 @@
     },
     {
       "path": "demos/patterns/vertical-title-blur/motion-kit.js",
-      "bytes": 119411,
+      "bytes": 133880,
       "role": "source"
     },
     {

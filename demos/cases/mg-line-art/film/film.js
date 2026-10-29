@@ -6,7 +6,7 @@ const Q = new URLSearchParams(location.search);
 const W = 1920, H = 1080, FPS = 30, DUR = 10;
 window.DEMO = { width: W, height: H, fps: FPS, duration: DUR, motionBlur: { samples: 4, shutter: 0.5 } };
 
-const cues = await (await fetch('./film/cues.json')).json();
+const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
 
 // ---------------------------------------------------------------- utils
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -219,7 +219,7 @@ const applyCam = (g, c) => { g.setTransform(1, 0, 0, 1, 0, 0); g.translate(W / 2
 const toScreen = (c, x, y) => { const dx = (x - c.cx) * c.z, dy = (y - c.cy) * c.z, cs = Math.cos(c.roll), sn = Math.sin(c.roll); return [W / 2 + dx * cs - dy * sn, H / 2 + dx * sn + dy * cs]; };
 
 // ---------------------------------------------------------------- assets
-const grain = new Image(); grain.src = 'assets/textures/grain/grain_fine_2048.png'; await grain.decode();
+const grain = await MotionKit.load.image('assets/textures/grain/grain_fine_2048.png');
 await document.fonts.load("500 50px 'Cormorant Garamond'", 'ATELIER LINEA');
 await document.fonts.load("300 26px 'Noto Serif SC'", '始于一线');
 await document.fonts.ready;

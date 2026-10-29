@@ -42,7 +42,15 @@ async function reset() {
   scene = new ArchiveScene(container, selectionWave, false);
   scene.setQuality(qualityPresets[quality]);
   scene.setMotion(reduced ? reducedMotion() : fullMotion());
-  await scene.load(config.model);
+  await Reflect.get(window.parent, 'MotionKit').load.loader(async () => {
+    await scene.load(config.model);
+    const smaa = Reflect.get(scene, 'smaa');
+    await Promise.all([smaa._areaTexture.image, smaa._searchTexture.image].map(image => image.complete ? Promise.resolve() : new Promise((resolve, reject) => {
+      image.addEventListener('load', resolve, { once: true });
+      image.addEventListener('error', () => reject(new Error('SMAA texture failed')), { once: true });
+    })));
+    scene.resize();
+  }, window);
   selected = 0; memory = archiveColumns.map((_, lane) => columnFiles(lane)[0]);
   scene.select(0); scene.setMode('hidden');
   frame = -1; renderedRevision = revision;
