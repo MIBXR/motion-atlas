@@ -222,7 +222,7 @@
     "voices": [
       "vinyl"
     ],
-    "score": "demos/patterns/film-grain/score.json",
+    "score": "demos/patterns/film-grain/mechanism/score.json",
     "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
@@ -286,11 +286,11 @@
       "how": "颗粒按floor(t×12)定位；10.4s地图配机窗照片与回忆。"
     },
     {
-      "field": "config.js → segments / markers",
+      "field": "mechanism/config.js → segments / markers",
       "how": "地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56"
     },
     {
-      "field": "score.json",
+      "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ]

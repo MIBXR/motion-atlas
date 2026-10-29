@@ -86,7 +86,7 @@
       "bell",
       "confirm"
     ],
-    "score": "demos/patterns/chapter-frame/score.json",
+    "score": "demos/patterns/chapter-frame/mechanism/score.json",
     "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
@@ -150,11 +150,11 @@
       "how": "设置章节轨道、标题、配色、装饰与横竖布局。"
     },
     {
-      "field": "config.js → segments / markers",
+      "field": "mechanism/config.js → segments / markers",
       "how": "24.2→25.85/33→33.8/40.6→44.8"
     },
     {
-      "field": "score.json",
+      "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ]

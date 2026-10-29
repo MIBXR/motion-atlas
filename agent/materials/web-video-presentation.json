@@ -384,491 +384,613 @@
   "files": [
     {
       "path": "demos/materials/web-video-presentation/LICENSE",
-      "bytes": 1056
+      "bytes": 1056,
+      "role": "license"
     },
     {
       "path": "demos/materials/web-video-presentation/README.md",
-      "bytes": 17939
+      "bytes": 17939,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/README.zh-CN.md",
-      "bytes": 17563
+      "bytes": 17563,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/SKILL.md",
-      "bytes": 23239
+      "bytes": 23239,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/manifest.json",
-      "bytes": 629
+      "bytes": 629,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/references/AUDIO.md",
-      "bytes": 11126
+      "bytes": 11126,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/CHAPTER-CRAFT.md",
-      "bytes": 10676
+      "bytes": 10676,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/README.md",
-      "bytes": 5155
+      "bytes": 5155,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/case-tech-review/README.md",
-      "bytes": 2917
+      "bytes": 2917,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/case-tech-review/outline-snippet.md",
-      "bytes": 6516
+      "bytes": 6516,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/hook-chapter/README.md",
-      "bytes": 3863
+      "bytes": 3863,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/hook-chapter/chapter.css",
-      "bytes": 4882
+      "bytes": 4882,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/hook-chapter/chapter.tsx",
-      "bytes": 4529
+      "bytes": 4529,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/list-reveal/README.md",
-      "bytes": 3660
+      "bytes": 3660,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/list-reveal/chapter.css",
-      "bytes": 3508
+      "bytes": 3508,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/references/EXAMPLES/list-reveal/chapter.tsx",
-      "bytes": 3549
+      "bytes": 3549,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/references/OUTLINE-FORMAT.md",
-      "bytes": 8523
+      "bytes": 8523,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/RECORDING.md",
-      "bytes": 2988
+      "bytes": 2988,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/SCRIPT-STYLE.md",
-      "bytes": 17950
+      "bytes": 17950,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/references/THEMES.md",
-      "bytes": 23359
+      "bytes": 23359,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/scripts/scaffold.sh",
-      "bytes": 9537
+      "bytes": 9537,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/index.html",
-      "bytes": 302
+      "bytes": 302,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/scripts/extract-narrations.ts",
-      "bytes": 4717
+      "bytes": 4717,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/scripts/synthesize-audio.sh",
-      "bytes": 5119
+      "bytes": 5119,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/scripts/tts-providers/README.md",
-      "bytes": 11950
+      "bytes": 11950,
+      "role": "doc"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/scripts/tts-providers/minimax.sh",
-      "bytes": 1771
+      "bytes": 1771,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/scripts/tts-providers/openai.sh",
-      "bytes": 2636
+      "bytes": 2636,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/App.tsx",
-      "bytes": 2487
+      "bytes": 2487,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/chapters/01-example/Example.css",
-      "bytes": 1990
+      "bytes": 1990,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/chapters/01-example/Example.tsx",
-      "bytes": 3878
+      "bytes": 3878,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/chapters/01-example/narrations.ts",
-      "bytes": 1280
+      "bytes": 1280,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/AutoStartGate.css",
-      "bytes": 1209
+      "bytes": 1209,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/AutoStartGate.tsx",
-      "bytes": 1014
+      "bytes": 1014,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/AutoToggle.css",
-      "bytes": 1062
+      "bytes": 1062,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/AutoToggle.tsx",
-      "bytes": 898
+      "bytes": 898,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/MaskReveal.tsx",
-      "bytes": 797
+      "bytes": 797,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/ProgressBar.css",
-      "bytes": 2501
+      "bytes": 2501,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/ProgressBar.tsx",
-      "bytes": 3837
+      "bytes": 3837,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/components/Stage.tsx",
-      "bytes": 1507
+      "bytes": 1507,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/hooks/useAudioPlayer.ts",
-      "bytes": 3768
+      "bytes": 3768,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/hooks/useAutoMode.ts",
-      "bytes": 2473
+      "bytes": 2473,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/hooks/useStageScale.ts",
-      "bytes": 843
+      "bytes": 843,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/hooks/useStepper.ts",
-      "bytes": 5192
+      "bytes": 5192,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/main.tsx",
-      "bytes": 209
+      "bytes": 209,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/registry/chapters.ts",
-      "bytes": 833
+      "bytes": 833,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/registry/types.ts",
-      "bytes": 704
+      "bytes": 704,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/styles/animations.css",
-      "bytes": 2320
+      "bytes": 2320,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/styles/base.css",
-      "bytes": 15271
+      "bytes": 15271,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/src/styles/fonts.css",
-      "bytes": 2129
+      "bytes": 2129,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/templates/vite.config.ts",
-      "bytes": 196
+      "bytes": 196,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/bauhaus-bold/theme.json",
-      "bytes": 750
+      "bytes": 750,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/bauhaus-bold/tokens.css",
-      "bytes": 2767
+      "bytes": 2767,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/blueprint/theme.json",
-      "bytes": 744
+      "bytes": 744,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/blueprint/tokens.css",
-      "bytes": 2957
+      "bytes": 2957,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/bold-signal/theme.json",
-      "bytes": 956
+      "bytes": 956,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/bold-signal/tokens.css",
-      "bytes": 3184
+      "bytes": 3184,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/chalk-garden/theme.json",
-      "bytes": 705
+      "bytes": 705,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/chalk-garden/tokens.css",
-      "bytes": 2917
+      "bytes": 2917,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/creative-voltage/theme.json",
-      "bytes": 970
+      "bytes": 970,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/creative-voltage/tokens.css",
-      "bytes": 3087
+      "bytes": 3087,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/dark-botanical/theme.json",
-      "bytes": 911
+      "bytes": 911,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/dark-botanical/tokens.css",
-      "bytes": 3211
+      "bytes": 3211,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/dune/theme.json",
-      "bytes": 879
+      "bytes": 879,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/dune/tokens.css",
-      "bytes": 2920
+      "bytes": 2920,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/electric-studio/theme.json",
-      "bytes": 885
+      "bytes": 885,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/electric-studio/tokens.css",
-      "bytes": 3013
+      "bytes": 3013,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/forest-ink/theme.json",
-      "bytes": 902
+      "bytes": 902,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/forest-ink/tokens.css",
-      "bytes": 3337
+      "bytes": 3337,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/indigo-porcelain/theme.json",
-      "bytes": 953
+      "bytes": 953,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/indigo-porcelain/tokens.css",
-      "bytes": 2931
+      "bytes": 2931,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/kraft-paper/theme.json",
-      "bytes": 869
+      "bytes": 869,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/kraft-paper/tokens.css",
-      "bytes": 3241
+      "bytes": 3241,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/midnight-press/theme.json",
-      "bytes": 623
+      "bytes": 623,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/midnight-press/tokens.css",
-      "bytes": 2455
+      "bytes": 2455,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/monochrome-print/theme.json",
-      "bytes": 818
+      "bytes": 818,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/monochrome-print/tokens.css",
-      "bytes": 2754
+      "bytes": 2754,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/neon-cyber/theme.json",
-      "bytes": 874
+      "bytes": 874,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/neon-cyber/tokens.css",
-      "bytes": 3451
+      "bytes": 3451,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/newsroom/theme.json",
-      "bytes": 734
+      "bytes": 734,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/newsroom/tokens.css",
-      "bytes": 3052
+      "bytes": 3052,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/paper-press/theme.json",
-      "bytes": 637
+      "bytes": 637,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/paper-press/tokens.css",
-      "bytes": 2920
+      "bytes": 2920,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/pastel-dream/theme.json",
-      "bytes": 908
+      "bytes": 908,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/pastel-dream/tokens.css",
-      "bytes": 3415
+      "bytes": 3415,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/split-canvas/theme.json",
-      "bytes": 888
+      "bytes": 888,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/split-canvas/tokens.css",
-      "bytes": 3100
+      "bytes": 3100,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/sunset-zine/theme.json",
-      "bytes": 745
+      "bytes": 745,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/sunset-zine/tokens.css",
-      "bytes": 3120
+      "bytes": 3120,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/swiss-ikb/theme.json",
-      "bytes": 1048
+      "bytes": 1048,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/swiss-ikb/tokens.css",
-      "bytes": 3735
+      "bytes": 3735,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/terminal-green/theme.json",
-      "bytes": 780
+      "bytes": 780,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/terminal-green/tokens.css",
-      "bytes": 3098
+      "bytes": 3098,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/vintage-editorial/theme.json",
-      "bytes": 970
+      "bytes": 970,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/vintage-editorial/tokens.css",
-      "bytes": 3274
+      "bytes": 3274,
+      "role": "source"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/warm-keynote/theme.json",
-      "bytes": 681
+      "bytes": 681,
+      "role": "asset"
     },
     {
       "path": "demos/materials/web-video-presentation/themes/warm-keynote/tokens.css",
-      "bytes": 2849
+      "bytes": 2849,
+      "role": "source"
     },
     {
       "path": "docs/materials/web-video-presentation.md",
-      "bytes": 872
+      "bytes": 872,
+      "role": "doc"
     },
     {
       "path": "entries/materials/web-video-presentation.json",
-      "bytes": 16432
+      "bytes": 16432,
+      "role": "entry"
     },
     {
       "path": "previews/materials/web-video-presentation/bauhaus-bold.webp",
-      "bytes": 64892
+      "bytes": 64892,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/blueprint.webp",
-      "bytes": 116986
+      "bytes": 116986,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/bold-signal.webp",
-      "bytes": 91040
+      "bytes": 91040,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/chalk-garden.webp",
-      "bytes": 97478
+      "bytes": 97478,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/creative-voltage.webp",
-      "bytes": 190626
+      "bytes": 190626,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/dark-botanical.webp",
-      "bytes": 82580
+      "bytes": 82580,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/dune.webp",
-      "bytes": 69214
+      "bytes": 69214,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/electric-studio.webp",
-      "bytes": 49714
+      "bytes": 49714,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/forest-ink.webp",
-      "bytes": 75994
+      "bytes": 75994,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/gallery.webp",
-      "bytes": 134380
+      "bytes": 134380,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/indigo-porcelain.webp",
-      "bytes": 82474
+      "bytes": 82474,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/kraft-paper.webp",
-      "bytes": 97714
+      "bytes": 97714,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/midnight-press.webp",
-      "bytes": 73554
+      "bytes": 73554,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/monochrome-print.webp",
-      "bytes": 47752
+      "bytes": 47752,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/neon-cyber.webp",
-      "bytes": 61892
+      "bytes": 61892,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/newsroom.webp",
-      "bytes": 102810
+      "bytes": 102810,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/paper-press.webp",
-      "bytes": 60980
+      "bytes": 60980,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/pastel-dream.webp",
-      "bytes": 43722
+      "bytes": 43722,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/split-canvas.webp",
-      "bytes": 77860
+      "bytes": 77860,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/sunset-zine.webp",
-      "bytes": 111806
+      "bytes": 111806,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/swiss-ikb.webp",
-      "bytes": 67714
+      "bytes": 67714,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/terminal-green.webp",
-      "bytes": 120092
+      "bytes": 120092,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/vintage-editorial.webp",
-      "bytes": 58304
+      "bytes": 58304,
+      "role": "preview"
     },
     {
       "path": "previews/materials/web-video-presentation/warm-keynote.webp",
-      "bytes": 78722
+      "bytes": 78722,
+      "role": "preview"
     }
   ]
 }

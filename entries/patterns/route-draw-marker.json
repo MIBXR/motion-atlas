@@ -113,7 +113,7 @@
       "chime",
       "tick"
     ],
-    "score": "demos/patterns/route-draw-marker/score.json",
+    "score": "demos/patterns/route-draw-marker/mechanism/score.json",
     "description": "声音随画面事件播放，音色与时刻由乐谱设置。等距城市追加段沿用原片同区间音轨。"
   },
   "tokens": {
@@ -181,11 +181,11 @@
       "how": "设置地点、路线、镜头与横竖S1/S2/S3取景。"
     },
     {
-      "field": "config.js → segments / markers",
+      "field": "mechanism/config.js → segments / markers",
       "how": "kix: 1.5→2.35/haruka: 14.6→17.05/kyoto: 16.6→17.45/naraLine: 37.4→39.85/jrNara: 39.4→40.25/walk1: 39.4→41.25/naraPark: 40.8→41.65"
     },
     {
-      "field": "score.json",
+      "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ],

@@ -22,7 +22,7 @@
 - `动效函数`：配置HUD、卡片、引线、镜头、时钟与控制条。
 - `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
 - `需要的数据`：设置顶部HUD、kix卡片与MIKAN；13s底图配七段拖动。
-- `config.js → segments / markers`：12→14/14→12.6/12.6→13.4/13.4→15.5/15.5→16.6/16.6→13/13→14.4
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：12→14/14→12.6/12.6→13.4/13.4→15.5/15.5→16.6/16.6→13/13→14.4
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/seekable-timeline/index.html) · [在库中查看](../../patterns.html#pattern/seekable-timeline)

@@ -26,7 +26,7 @@ const uz = prog(t, T0 + 0.30, 0.9), ez = expoOut(uz);
 - `动效函数`：配置片名、地名、回忆、收尾的模糊与打字入场。
 - `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
 - `需要的数据`：设置片名、地点、回忆字幕、收尾与横竖布局。
-- `config.js → segments / markers`：3.8→8/17.9→21.6/25.5→29.6/57.9→60
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：3.8→8/17.9→21.6/25.5→29.6/57.9→60
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/vertical-title-blur/index.html) · [在库中查看](../../patterns.html#pattern/vertical-title-blur)

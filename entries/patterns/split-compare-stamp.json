@@ -91,7 +91,7 @@
       "stamp",
       "sub"
     ],
-    "score": "demos/patterns/split-compare-stamp/score.json",
+    "score": "demos/patterns/split-compare-stamp/mechanism/score.json",
     "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
@@ -151,11 +151,11 @@
       "how": "设置对比轨道、明信片与照片画布、横竖布局。"
     },
     {
-      "field": "config.js → segments / markers",
+      "field": "mechanism/config.js → segments / markers",
       "how": "29→33.4"
     },
     {
-      "field": "score.json",
+      "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ],

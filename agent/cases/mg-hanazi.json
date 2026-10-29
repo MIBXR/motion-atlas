@@ -251,179 +251,223 @@
   "files": [
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 1047
+      "bytes": 1047,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
-      "bytes": 1358977
+      "bytes": 1358977,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B0.png",
-      "bytes": 1482239
+      "bytes": 1482239,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B1.png",
-      "bytes": 1488365
+      "bytes": 1488365,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B2.png",
-      "bytes": 1479775
+      "bytes": 1479775,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L06.png",
-      "bytes": 1403484
+      "bytes": 1403484,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L12.png",
-      "bytes": 1523388
+      "bytes": 1523388,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L135.png",
-      "bytes": 1555269
+      "bytes": 1555269,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/tux_r1.jpg",
-      "bytes": 1380121
+      "bytes": 1380121,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_dof.jpg",
-      "bytes": 525250
+      "bytes": 525250,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear11.png",
-      "bytes": 2491551
+      "bytes": 2491551,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear16.png",
-      "bytes": 2492949
+      "bytes": 2492949,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear6.png",
-      "bytes": 2489969
+      "bytes": 2489969,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/audio/film.m4a",
-      "bytes": 423783
+      "bytes": 423783,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 4658
+      "bytes": 4658,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/film/cues.json",
-      "bytes": 1116
+      "bytes": 1116,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485
+      "bytes": 48485,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432
+      "bytes": 1432,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/style.css",
-      "bytes": 1332
+      "bytes": 1332,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-Bold.ttf",
-      "bytes": 1375772
+      "bytes": 1375772,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-LICENSE.txt",
-      "bytes": 2016
+      "bytes": 2016,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSans-OFL.txt",
-      "bytes": 4425
+      "bytes": 4425,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSansBold.ttf",
-      "bytes": 1919404
+      "bytes": 1919404,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-OFL.txt",
-      "bytes": 4406
+      "bytes": 4406,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-Regular.ttf",
-      "bytes": 3190368
+      "bytes": 3190368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-LICENSE.txt",
-      "bytes": 11358
+      "bytes": 11358,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-Regular.ttf",
-      "bytes": 73320
+      "bytes": 73320,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ResourceHanRounded-OFL.txt",
-      "bytes": 4504
+      "bytes": 4504,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ResourceHanRoundedCN-Heavy.ttf",
-      "bytes": 13688972
+      "bytes": 13688972,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-OFL.txt",
-      "bytes": 4398
+      "bytes": 4398,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-Regular.ttf",
-      "bytes": 1514968
+      "bytes": 1514968,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/fonts.css",
-      "bytes": 1066
+      "bytes": 1066,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900
+      "bytes": 1900,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep.py",
-      "bytes": 8811
+      "bytes": 8811,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2.py",
-      "bytes": 8193
+      "bytes": 8193,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2b.py",
-      "bytes": 4162
+      "bytes": 4162,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/audio.py",
-      "bytes": 12031
+      "bytes": 12031,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/cues.json",
-      "bytes": 1116
+      "bytes": 1116,
+      "role": "process"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18590
+      "bytes": 18590,
+      "role": "entry"
     },
     {
       "path": "previews/cases/mg-hanazi-portrait.jpg",
-      "bytes": 209244
+      "bytes": 209244,
+      "role": "preview"
     },
     {
       "path": "previews/cases/mg-hanazi.jpg",
-      "bytes": 96711
+      "bytes": 96711,
+      "role": "preview"
     }
   ]
 }

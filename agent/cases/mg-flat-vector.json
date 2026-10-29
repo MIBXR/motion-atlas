@@ -433,79 +433,98 @@
   "files": [
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 789
+      "bytes": 789,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
-      "bytes": 346596
+      "bytes": 346596,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3942
+      "bytes": 3942,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/cues.json",
-      "bytes": 906
+      "bytes": 906,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/scene.js",
-      "bytes": 63462
+      "bytes": 63462,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/setup.js",
-      "bytes": 206
+      "bytes": 206,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/film/style.css",
-      "bytes": 111
+      "bytes": 111,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/Fredoka-OFL.txt",
-      "bytes": 4388
+      "bytes": 4388,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/Fredoka[wdth,wght].ttf",
-      "bytes": 159184
+      "bytes": 159184,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/ResourceHanRounded-OFL.txt",
-      "bytes": 4504
+      "bytes": 4504,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/ResourceHanRoundedCN-Bold.ttf",
-      "bytes": 13978508
+      "bytes": 13978508,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-flat-vector/fonts/fonts.css",
-      "bytes": 376
+      "bytes": 376,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-flat-vector/index.html",
-      "bytes": 2472
+      "bytes": 2472,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-flat-vector/source/audio.py",
-      "bytes": 7610
+      "bytes": 7610,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-flat-vector/source/cues.json",
-      "bytes": 906
+      "bytes": 906,
+      "role": "process"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20753
+      "bytes": 20753,
+      "role": "entry"
     },
     {
       "path": "previews/cases/mg-flat-vector.jpg",
-      "bytes": 35472
+      "bytes": 35472,
+      "role": "preview"
     }
   ]
 }

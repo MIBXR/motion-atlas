@@ -28,7 +28,7 @@ dustC[Math.floor(k / 2) % 2]
 - `动效函数`：配置场景绘制、颗粒与暗角。
 - `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
 - `需要的数据`：颗粒按floor(t×12)定位；10.4s地图配机窗照片与回忆。
-- `config.js → segments / markers`：地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：地图固定 10.4/kix 照片画布固定 13.5/回忆插画画布固定 27.56
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/film-grain/index.html) · [在库中查看](../../patterns.html#pattern/film-grain)

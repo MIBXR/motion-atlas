@@ -74,7 +74,7 @@
       "kick",
       "sub"
     ],
-    "score": "demos/patterns/corner-hud/score.json",
+    "score": "demos/patterns/corner-hud/mechanism/score.json",
     "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
@@ -134,11 +134,11 @@
       "how": "设置日序、日期、进度、歌词、步进器与横竖布局。"
     },
     {
-      "field": "config.js → segments / markers",
+      "field": "mechanism/config.js → segments / markers",
       "how": "7→13.6/35.8→42.4"
     },
     {
-      "field": "score.json",
+      "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ]

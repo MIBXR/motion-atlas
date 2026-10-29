@@ -79,7 +79,7 @@
         "reverse",
         "chime"
       ],
-      "score": "demos/patterns/day-night-flip/score.json",
+      "score": "demos/patterns/day-night-flip/mechanism/score.json",
       "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
     },
     "tokens": {
@@ -143,11 +143,11 @@
         "how": "设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。"
       },
       {
-        "field": "config.js → segments / markers",
+        "field": "mechanism/config.js → segments / markers",
         "how": "31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值"
       },
       {
-        "field": "score.json",
+        "field": "mechanism/score.json",
         "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
@@ -162,85 +162,104 @@
     }
   ],
   "documents": {
-    "prompt": "# 昼夜翻转：逐层插值\n\n## 实现 Prompt\n\n地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。片段：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：7s\n- **声音 voice**：whoosh、sub、reverse、chime\n\n## 动效 Token\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n\n## 迁移\n\n- `动效函数`：配置昼夜配色、镜头、时钟与HUD。\n- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。\n- `需要的数据`：设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。\n- `config.js → segments / markers`：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
+    "prompt": "# 昼夜翻转：逐层插值\n\n## 实现 Prompt\n\n地图配色与 HUD 强调色一起在昼夜之间过渡，交代时间的流逝。复用地图巡礼的 dayNight、valueAt、cameraAt、drawHud、clockAt、classify、setPaint 与对应 CSS。地图、3D 建筑、HUD 与案例暖色 wash；镜头固定为案例 34.5s，HUD 与昼夜值按 caseT 31.3→35.8、36.6→39.1 求值。片段：caseT 31.3→35.8；caseT 36.6→39.1；固定镜头 caseT 34.5，全部 HUD 按片段求值；时长 7s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：7s\n- **声音 voice**：whoosh、sub、reverse、chime\n\n## 动效 Token\n\n- **白天**：0s\n- **入夜**：1.5s\n- **天亮**：4.5s\n- **时长**：7s\n\n## 迁移\n\n- `动效函数`：配置昼夜配色、镜头、时钟与HUD。\n- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。\n- `需要的数据`：设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。\n- `mechanism/config.js → segments / markers`：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值\n- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)\n"
   },
   "entrypoint": "demos/patterns/day-night-flip/index.html",
   "files": [
     {
       "path": "demos/cases/map-pilgrimage/fidelity.md",
-      "bytes": 392
+      "bytes": 392,
+      "role": "doc"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/config.js",
-      "bytes": 17491
+      "bytes": 17491,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/paths.js",
-      "bytes": 8047
+      "bytes": 8047,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/scenes.js",
-      "bytes": 35275
+      "bytes": 35275,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130843,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
-      "bytes": 40692
+      "bytes": 40692,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7995,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
-    },
-    {
-      "path": "demos/patterns/day-night-flip/config.js",
-      "bytes": 656
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/patterns/day-night-flip/index.html",
-      "bytes": 7776
+      "bytes": 7806,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/mechanism/config.js",
+      "bytes": 656,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/mechanism/score.json",
+      "bytes": 392,
+      "role": "asset"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/mechanism/script.js",
+      "bytes": 145236,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/day-night-flip/mechanism/style.css",
+      "bytes": 41282,
+      "role": "source"
     },
     {
       "path": "demos/patterns/day-night-flip/motion-kit.js",
-      "bytes": 119411
-    },
-    {
-      "path": "demos/patterns/day-night-flip/score.json",
-      "bytes": 392
-    },
-    {
-      "path": "demos/patterns/day-night-flip/script.js",
-      "bytes": 145219
-    },
-    {
-      "path": "demos/patterns/day-night-flip/style.css",
-      "bytes": 41282
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "docs/cases/map-pilgrimage.md",
-      "bytes": 6454
+      "bytes": 6454,
+      "role": "doc"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 19490
+      "bytes": 19490,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/day-night-flip.json",
-      "bytes": 5066
+      "bytes": 5096,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/day-night-flip-portrait.jpg",
-      "bytes": 187869
+      "bytes": 187869,
+      "role": "preview"
     },
     {
       "path": "previews/patterns/day-night-flip.jpg",
-      "bytes": 166983
+      "bytes": 166983,
+      "role": "preview"
     }
   ]
 }

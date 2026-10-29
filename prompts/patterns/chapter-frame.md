@@ -53,7 +53,7 @@
 - `动效函数`：配置章节标签、标题、框线与胶带。
 - `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
 - `需要的数据`：设置章节轨道、标题、配色、装饰与横竖布局。
-- `config.js → segments / markers`：24.2→25.85/33→33.8/40.6→44.8
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：24.2→25.85/33→33.8/40.6→44.8
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)

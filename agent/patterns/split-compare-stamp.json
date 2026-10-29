@@ -95,7 +95,7 @@
         "stamp",
         "sub"
       ],
-      "score": "demos/patterns/split-compare-stamp/score.json",
+      "score": "demos/patterns/split-compare-stamp/mechanism/score.json",
       "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
     },
     "tokens": {
@@ -155,11 +155,11 @@
         "how": "设置对比轨道、明信片与照片画布、横竖布局。"
       },
       {
-        "field": "config.js → segments / markers",
+        "field": "mechanism/config.js → segments / markers",
         "how": "29→33.4"
       },
       {
-        "field": "score.json",
+        "field": "mechanism/score.json",
         "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
@@ -182,265 +182,339 @@
     }
   ],
   "documents": {
-    "prompt": "# 分屏对比与时间戳盖章\n\n## 实现 Prompt\n\n旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 6.133s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 按 index.html 内联 segments 在原有 4.8 秒之后重放mg-hanazi 原片 8.167–9.5 秒，总时长 6.133 秒。综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。画面与音轨沿用同一映射，声音默认关闭。\n\n## 参数\n\n- **时长**：6.133s\n- **声音 voice**：whoosh、stamp、sub\n- **追加原片区间**：mg-hanazi 原片 8.167–9.5 秒；s = lerp(2.5, 1, E.inQuad(k)); o = clamp(k * 2.2);\ns = 1 - .09 * Math.exp(-w * 16) * Math.cos(w * 44);\nkick(t, C.stamp, 14, 10, 13)\n\n## 动效 Token\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n\n## 迁移\n\n- `动效函数`：配置分屏、两侧场景、边框与印章。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。\n- `config.js → segments / markers`：29→33.4\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
+    "prompt": "# 分屏对比与时间戳盖章\n\n## 实现 Prompt\n\n旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 6.133s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 按 index.html 内联 segments 在原有 4.8 秒之后重放mg-hanazi 原片 8.167–9.5 秒，总时长 6.133 秒。综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。画面与音轨沿用同一映射，声音默认关闭。\n\n## 参数\n\n- **时长**：6.133s\n- **声音 voice**：whoosh、stamp、sub\n- **追加原片区间**：mg-hanazi 原片 8.167–9.5 秒；s = lerp(2.5, 1, E.inQuad(k)); o = clamp(k * 2.2);\ns = 1 - .09 * Math.exp(-w * 16) * Math.cos(w * 44);\nkick(t, C.stamp, 14, 10, 13)\n\n## 动效 Token\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n\n## 迁移\n\n- `动效函数`：配置分屏、两侧场景、边框与印章。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。\n- `mechanism/config.js → segments / markers`：29→33.4\n- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
   },
   "entrypoint": "demos/patterns/split-compare-stamp/index.html",
   "files": [
     {
       "path": "demos/cases/map-pilgrimage/fidelity.md",
-      "bytes": 392
+      "bytes": 392,
+      "role": "doc"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/config.js",
-      "bytes": 17491
+      "bytes": 17491,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/paths.js",
-      "bytes": 8047
+      "bytes": 8047,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/scenes.js",
-      "bytes": 35275
+      "bytes": 35275,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130843,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
-      "bytes": 40692
+      "bytes": 40692,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7995,
+      "role": "source"
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 1047
+      "bytes": 1047,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
-      "bytes": 1358977
+      "bytes": 1358977,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B0.png",
-      "bytes": 1482239
+      "bytes": 1482239,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B1.png",
-      "bytes": 1488365
+      "bytes": 1488365,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_B2.png",
-      "bytes": 1479775
+      "bytes": 1479775,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L06.png",
-      "bytes": 1403484
+      "bytes": 1403484,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L12.png",
-      "bytes": 1523388
+      "bytes": 1523388,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/hero_L135.png",
-      "bytes": 1555269
+      "bytes": 1555269,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/tux_r1.jpg",
-      "bytes": 1380121
+      "bytes": 1380121,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_dof.jpg",
-      "bytes": 525250
+      "bytes": 525250,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear11.png",
-      "bytes": 2491551
+      "bytes": 2491551,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear16.png",
-      "bytes": 2492949
+      "bytes": 2492949,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/assets/white_ear6.png",
-      "bytes": 2489969
+      "bytes": 2489969,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/audio/film.m4a",
-      "bytes": 423783
+      "bytes": 423783,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 4658
+      "bytes": 4658,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/film/cues.json",
-      "bytes": 1116
+      "bytes": 1116,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485
+      "bytes": 48485,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432
+      "bytes": 1432,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/film/style.css",
-      "bytes": 1332
+      "bytes": 1332,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-Bold.ttf",
-      "bytes": 1375772
+      "bytes": 1375772,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-LICENSE.txt",
-      "bytes": 2016
+      "bytes": 2016,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSans-OFL.txt",
-      "bytes": 4425
+      "bytes": 4425,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/DouyinSansBold.ttf",
-      "bytes": 1919404
+      "bytes": 1919404,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-OFL.txt",
-      "bytes": 4406
+      "bytes": 4406,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-Regular.ttf",
-      "bytes": 3190368
+      "bytes": 3190368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-LICENSE.txt",
-      "bytes": 11358
+      "bytes": 11358,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-Regular.ttf",
-      "bytes": 73320
+      "bytes": 73320,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ResourceHanRounded-OFL.txt",
-      "bytes": 4504
+      "bytes": 4504,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ResourceHanRoundedCN-Heavy.ttf",
-      "bytes": 13688972
+      "bytes": 13688972,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-OFL.txt",
-      "bytes": 4398
+      "bytes": 4398,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-Regular.ttf",
-      "bytes": 1514968
+      "bytes": 1514968,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/fonts/fonts.css",
-      "bytes": 1066
+      "bytes": 1066,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900
+      "bytes": 1900,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep.py",
-      "bytes": 8811
+      "bytes": 8811,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2.py",
-      "bytes": 8193
+      "bytes": 8193,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep_r2b.py",
-      "bytes": 4162
+      "bytes": 4162,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/audio.py",
-      "bytes": 12031
+      "bytes": 12031,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-hanazi/source/cues.json",
-      "bytes": 1116
+      "bytes": 1116,
+      "role": "process"
     },
     {
-      "path": "demos/patterns/split-compare-stamp/config.js",
-      "bytes": 440
+      "path": "demos/patterns/split-compare-stamp/assets/plates/landscape-24.6-map.webp",
+      "bytes": 483390,
+      "role": "asset"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/assets/plates/portrait-24.6-map.webp",
+      "bytes": 547812,
+      "role": "asset"
     },
     {
       "path": "demos/patterns/split-compare-stamp/index.html",
-      "bytes": 1744
+      "bytes": 420,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/mechanism/config.js",
+      "bytes": 440,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/mechanism/replay.css",
+      "bytes": 305,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/mechanism/replay.js",
+      "bytes": 1074,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/mechanism/scene.html",
+      "bytes": 7793,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/mechanism/score.json",
+      "bytes": 379,
+      "role": "asset"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/mechanism/script.js",
+      "bytes": 145369,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/mechanism/style.css",
+      "bytes": 41282,
+      "role": "source"
     },
     {
       "path": "demos/patterns/split-compare-stamp/motion-kit.js",
-      "bytes": 119411
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/original.html",
-      "bytes": 7781
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/plates/landscape-24.6-map.webp",
-      "bytes": 483390
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/plates/portrait-24.6-map.webp",
-      "bytes": 547812
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/score.json",
-      "bytes": 379
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/script.js",
-      "bytes": 145359
-    },
-    {
-      "path": "demos/patterns/split-compare-stamp/style.css",
-      "bytes": 41282
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "docs/cases/map-pilgrimage.md",
-      "bytes": 6454
+      "bytes": 6454,
+      "role": "doc"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 19490
+      "bytes": 19490,
+      "role": "entry"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18590
+      "bytes": 18590,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/split-compare-stamp.json",
-      "bytes": 5940
+      "bytes": 5970,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/split-compare-stamp-portrait.jpg",
-      "bytes": 145504
+      "bytes": 145504,
+      "role": "preview"
     },
     {
       "path": "previews/patterns/split-compare-stamp.jpg",
-      "bytes": 183579
+      "bytes": 183579,
+      "role": "preview"
     }
   ]
 }

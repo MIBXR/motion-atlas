@@ -46,7 +46,16 @@ function walk(dir) {
 
 export function fileManifest(files) {
   return files.filter(exists).map((p) => {
-    return { path: p, bytes: fs.statSync(path.join(ROOT, p)).size };
+    const name = path.posix.basename(p);
+    const role = /^(?:licen[cs]es?|notice|copying|ofl)(?:[._-]|$)|[-_](?:licen[cs]e|notice|ofl)(?:[._-]|$)/i.test(name) ? 'license'
+      : p.includes('/source/') ? 'process'
+      : p.includes('/vendor/') ? 'vendor'
+      : p.includes('/fonts/') ? 'font'
+      : p.startsWith('previews/') ? 'preview'
+      : p.startsWith('entries/') ? 'entry'
+      : /\.(?:md|txt)$/.test(p) ? 'doc'
+      : /\.(?:html|css|m?js|tsx?)$/.test(p) ? 'source' : 'asset';
+    return { path: p, bytes: fs.statSync(path.join(ROOT, p)).size, role };
   });
 }
 

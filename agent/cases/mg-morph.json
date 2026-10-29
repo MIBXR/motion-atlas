@@ -222,103 +222,128 @@
   "files": [
     {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 832
+      "bytes": 832,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
-      "bytes": 3684106
+      "bytes": 3684106,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-morph/audio/film.m4a",
-      "bytes": 342366
+      "bytes": 342366,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4869
+      "bytes": 4869,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-morph/film/cues.json",
-      "bytes": 1541
+      "bytes": 1541,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-morph/film/glyphs.json",
-      "bytes": 24462
+      "bytes": 24462,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-morph/film/scene.js",
-      "bytes": 60312
+      "bytes": 60312,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-morph/film/setup.js",
-      "bytes": 257
+      "bytes": 257,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-morph/film/style.css",
-      "bytes": 74
+      "bytes": 74,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-morph/fonts/HarmonyOS-Sans-LICENSE.txt",
-      "bytes": 32768
+      "bytes": 32768,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-morph/fonts/HarmonyOS_Sans_SC_Medium.ttf",
-      "bytes": 8227312
+      "bytes": 8227312,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-morph/fonts/IBMPlexMono-Medium.ttf",
-      "bytes": 136704
+      "bytes": 136704,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-morph/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4363
+      "bytes": 4363,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-morph/fonts/Outfit-OFL.txt",
-      "bytes": 4389
+      "bytes": 4389,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-morph/fonts/Outfit-SemiBold.ttf",
-      "bytes": 55384
+      "bytes": 55384,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-morph/fonts/Outfit[wght].ttf",
-      "bytes": 110884
+      "bytes": 110884,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-morph/fonts/fonts.css",
-      "bytes": 475
+      "bytes": 475,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-morph/index.html",
-      "bytes": 2062
+      "bytes": 2062,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
-      "bytes": 8665
+      "bytes": 8665,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-morph/source/cues.json",
-      "bytes": 1541
+      "bytes": 1541,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-morph/source/tools/glyphs.py",
-      "bytes": 2387
+      "bytes": 2387,
+      "role": "process"
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 15631
+      "bytes": 15631,
+      "role": "entry"
     },
     {
       "path": "previews/cases/mg-morph.jpg",
-      "bytes": 66111
+      "bytes": 66111,
+      "role": "preview"
     }
   ]
 }

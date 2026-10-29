@@ -23,7 +23,7 @@ kick(t, C.stamp, 14, 10, 13)
 - `动效函数`：配置分屏、两侧场景、边框与印章。
 - `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
 - `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。
-- `config.js → segments / markers`：29→33.4
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：29→33.4
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)

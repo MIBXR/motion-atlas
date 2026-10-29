@@ -126,103 +126,128 @@
   "files": [
     {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
-      "bytes": 765
+      "bytes": 765,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/grain/grain_fine_2048.png",
-      "bytes": 3554972
+      "bytes": 3554972,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/assets/textures/paper/Paper001_4K_color.jpg",
-      "bytes": 3684106
+      "bytes": 3684106,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/audio/film.m4a",
-      "bytes": 426687
+      "bytes": 426687,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/fidelity.md",
-      "bytes": 4011
+      "bytes": 4011,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/cues.json",
-      "bytes": 3719
+      "bytes": 3719,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/film.js",
-      "bytes": 35182
+      "bytes": 35182,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/setup.js",
-      "bytes": 148
+      "bytes": 148,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/film/style.css",
-      "bytes": 172
+      "bytes": 172,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/NotoSansSC-OFL.txt",
-      "bytes": 4301
+      "bytes": 4301,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/NotoSansSC-VF.ttf",
-      "bytes": 17773132
+      "bytes": 17773132,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/Poppins-Black.ttf",
-      "bytes": 153440
+      "bytes": 153440,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/Poppins-OFL.txt",
-      "bytes": 4385
+      "bytes": 4385,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/Poppins-SemiBold.ttf",
-      "bytes": 157312
+      "bytes": 157312,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/fonts/fonts.css",
-      "bytes": 486
+      "bytes": 486,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-bauhaus/index.html",
-      "bytes": 1807
+      "bytes": 1807,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-bauhaus/source/audio.py",
-      "bytes": 9344
+      "bytes": 9344,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-bauhaus/source/cues.json",
-      "bytes": 3719
+      "bytes": 3719,
+      "role": "process"
     },
     {
       "path": "demos/patterns/misregistration-lock/index.html",
-      "bytes": 1642
+      "bytes": 1642,
+      "role": "source"
     },
     {
       "path": "demos/patterns/misregistration-lock/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19199
+      "bytes": 19199,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/misregistration-lock.json",
-      "bytes": 3770
+      "bytes": 3770,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/misregistration-lock.jpg",
-      "bytes": 85938
+      "bytes": 85938,
+      "role": "preview"
     }
   ]
 }

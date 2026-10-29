@@ -4,67 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>巧思原片重放</title>
-  <style>
-    html,body{margin:0;background:#000;overflow:hidden}
-    #stage{background:#000}
-    #cue{position:absolute;left:24px;top:24px;z-index:2;padding:10px 16px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;font:22px/1.4 "Microsoft YaHei",sans-serif;pointer-events:none}
-    #cue[hidden]{display:none}
-  </style>
+  <link rel="stylesheet" href="mechanism/replay.css">
 </head>
 <body>
   <main id="stage"><output id="cue" hidden></output></main>
   <script src="motion-kit.js"></script>
-  <script type="module">
-    const config = {
-      "title": "分屏对比与时间戳盖章",
-      "root": "#stage",
-      "orients": [
-        "landscape",
-        "portrait"
-      ],
-      "fps": 30,
-      "segments": [
-        {
-          "caseId": "map-pilgrimage",
-          "label": "地图巡礼",
-          "source": "original.html",
-          "from": 0,
-          "to": 4.8,
-          "legacy": true
-        },
-        {
-          "caseId": "mg-hanazi",
-          "label": "综艺花字 · 认证印章砸落",
-          "source": "../../cases/mg-hanazi/index.html",
-          "from": 8.167,
-          "to": 9.5
-        }
-      ],
-      "markers": [
-        {
-          "t": 0,
-          "label": "分屏"
-        },
-        {
-          "t": 1.65,
-          "label": "盖章"
-        },
-        {
-          "t": 4.8,
-          "label": "综艺花字"
-        },
-        {
-          "t": 5.133,
-          "label": "猫主认证"
-        },
-        {
-          "t": 5.533,
-          "label": "下期见"
-        }
-      ],
-      "reduced": 2.4
-    };
-    await MotionKit.replay(config);
-  </script>
+  <script type="module" src="mechanism/replay.js"></script>
 </body>
 </html>

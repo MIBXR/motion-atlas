@@ -21,7 +21,7 @@
 - `动效函数`：配置警示、改道提示、路线与标签。
 - `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。
 - `需要的数据`：设置警示轨道、错误路线、地图与横竖布局。
-- `config.js → segments / markers`：44.8→50.3
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：44.8→50.3
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/alert-reroute/index.html) · [在库中查看](../../patterns.html#pattern/alert-reroute)

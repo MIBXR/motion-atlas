@@ -20,7 +20,7 @@
 - `动效函数`：配置镜头、时钟、步进器与规尺函数。
 - `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
 - `需要的数据`：设置日序、日期、进度、歌词、步进器与横竖布局。
-- `config.js → segments / markers`：7→13.6/35.8→42.4
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：7→13.6/35.8→42.4
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/corner-hud/index.html) · [在库中查看](../../patterns.html#pattern/corner-hud)

@@ -344,643 +344,803 @@
   "files": [
     {
       "path": "demos/materials/mg-styles-15/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/materials/mg-styles-15/README.md",
-      "bytes": 16239
+      "bytes": 16239,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/README.zh-CN.md",
-      "bytes": 15975
+      "bytes": 15975,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/assets/textures/paper/Paper001_4K_color.jpg",
-      "bytes": 3684106
+      "bytes": 3684106,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/README.md",
-      "bytes": 21602
+      "bytes": 21602,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/__init__.py",
-      "bytes": 1172
+      "bytes": 1172,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/__main__.py",
-      "bytes": 128
+      "bytes": 128,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/_dsp.py",
-      "bytes": 14307
+      "bytes": 14307,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/chip.py",
-      "bytes": 7890
+      "bytes": 7890,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/core.py",
-      "bytes": 18092
+      "bytes": 18092,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/drums.py",
-      "bytes": 22645
+      "bytes": 22645,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/filters.py",
-      "bytes": 8021
+      "bytes": 8021,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/fm.py",
-      "bytes": 8872
+      "bytes": 8872,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/fx.py",
-      "bytes": 23398
+      "bytes": 23398,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/master.py",
-      "bytes": 6567
+      "bytes": 6567,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/mix.py",
-      "bytes": 23510
+      "bytes": 23510,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/osc.py",
-      "bytes": 5740
+      "bytes": 5740,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/pluck.py",
-      "bytes": 11325
+      "bytes": 11325,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/qc.py",
-      "bytes": 13295
+      "bytes": 13295,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/recipes/__init__.py",
-      "bytes": 4298
+      "bytes": 4298,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/recipes/base.py",
-      "bytes": 14122
+      "bytes": 14122,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/recipes/chill.py",
-      "bytes": 12260
+      "bytes": 12260,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/recipes/club.py",
-      "bytes": 23775
+      "bytes": 23775,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/recipes/fun.py",
-      "bytes": 10176
+      "bytes": 10176,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/recipes/retro.py",
-      "bytes": 16580
+      "bytes": 16580,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/recipes/world.py",
-      "bytes": 7049
+      "bytes": 7049,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/samples.py",
-      "bytes": 8685
+      "bytes": 8685,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/seq.py",
-      "bytes": 5073
+      "bytes": 5073,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/sfx.py",
-      "bytes": 58321
+      "bytes": 58321,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/sync.py",
-      "bytes": 3249
+      "bytes": 3249,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/synth.py",
-      "bytes": 21224
+      "bytes": 21224,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/theory.py",
-      "bytes": 14131
+      "bytes": 14131,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/mgaudio/wind.py",
-      "bytes": 6420
+      "bytes": 6420,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/cabasa/Cabasa1_Hit_rr1_Mid.flac",
-      "bytes": 66539
+      "bytes": 66539,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/crash/cymbal_crash1_ff2.flac",
-      "bytes": 998547
+      "bytes": 998547,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/crash/cymbal_crash1_ff3.flac",
-      "bytes": 1014035
+      "bytes": 1014035,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/crash/cymbal_crash1_mf1.flac",
-      "bytes": 982320
+      "bytes": 982320,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_loud_C5_01.flac",
-      "bytes": 612513
+      "bytes": 612513,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_loud_G#6_01.flac",
-      "bytes": 343235
+      "bytes": 343235,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_loud_G5_01.flac",
-      "bytes": 532836
+      "bytes": 532836,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_medium_C5_01.flac",
-      "bytes": 554336
+      "bytes": 554336,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_medium_C6_01.flac",
-      "bytes": 420524
+      "bytes": 420524,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_medium_C7_01.flac",
-      "bytes": 156834
+      "bytes": 156834,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_medium_G4_01.flac",
-      "bytes": 540566
+      "bytes": 540566,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_medium_G5_01.flac",
-      "bytes": 456638
+      "bytes": 456638,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/glock/glock_medium_G6_01.flac",
-      "bytes": 361097
+      "bytes": 361097,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/guiro/Guiro_Med_rr1_Mid.flac",
-      "bytes": 163220
+      "bytes": 163220,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/harp/KSHarp_B5_mf1.flac",
-      "bytes": 430386
+      "bytes": 430386,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/harp/KSHarp_C5_mf1.flac",
-      "bytes": 806559
+      "bytes": 806559,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/harp/KSHarp_D6_mf1.flac",
-      "bytes": 283609
+      "bytes": 283609,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/harp/KSHarp_E5_mf1.flac",
-      "bytes": 769582
+      "bytes": 769582,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/harp/KSHarp_F6_mf1.flac",
-      "bytes": 257929
+      "bytes": 257929,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/harp/KSHarp_G5_mf1.flac",
-      "bytes": 467817
+      "bytes": 467817,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/index.json",
-      "bytes": 125557
+      "bytes": 125557,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_A#3_k18_50_100_rr2.flac",
-      "bytes": 145648
+      "bytes": 145648,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_A#4_k2_50_100_rr2.flac",
-      "bytes": 110379
+      "bytes": 110379,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_B4_k23_50_100_rr2.flac",
-      "bytes": 109963
+      "bytes": 109963,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_C#4_k5_50_100_rr2.flac",
-      "bytes": 270361
+      "bytes": 270361,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_C#5_k24_50_100_rr2.flac",
-      "bytes": 129411
+      "bytes": 129411,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_D#4_k20_50_100_rr2.flac",
-      "bytes": 126547
+      "bytes": 126547,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_D#4_k4_50_100_rr2.flac",
-      "bytes": 236899
+      "bytes": 236899,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_E5_k25_50_100_rr2.flac",
-      "bytes": 168057
+      "bytes": 168057,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_F3_k17_50_100_rr2.flac",
-      "bytes": 270073
+      "bytes": 270073,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_F4_k3_50_100_rr2.flac",
-      "bytes": 175083
+      "bytes": 175083,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_G#5_k26_50_100_rr2.flac",
-      "bytes": 114932
+      "bytes": 114932,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_G3_k6_50_100_rr2.flac",
-      "bytes": 289978
+      "bytes": 289978,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/kalimba/MBira3_pluck_Main_G4_k22_50_100_rr2.flac",
-      "bytes": 152324
+      "bytes": 152324,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_B2_med_01.flac",
-      "bytes": 159727
+      "bytes": 159727,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_B4_med_01.flac",
-      "bytes": 51331
+      "bytes": 51331,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_C2_med_01.flac",
-      "bytes": 193358
+      "bytes": 193358,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_C4_med_01.flac",
-      "bytes": 95083
+      "bytes": 95083,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_C6_med_01.flac",
-      "bytes": 49899
+      "bytes": 49899,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_F3_med_01.flac",
-      "bytes": 134181
+      "bytes": 134181,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_F5_med_01.flac",
-      "bytes": 47648
+      "bytes": 47648,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_G2_med_01.flac",
-      "bytes": 184258
+      "bytes": 184258,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/marimba/Marimba_hit_Outrigger_G4_med_01.flac",
-      "bytes": 55690
+      "bytes": 55690,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_A#2_v2_rr1_Player.flac",
-      "bytes": 953727
+      "bytes": 953727,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_A#2_v3_rr1_Player.flac",
-      "bytes": 1034696
+      "bytes": 1034696,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_A#3_v2_rr1_Player.flac",
-      "bytes": 882823
+      "bytes": 882823,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_A#3_v3_rr1_Player.flac",
-      "bytes": 1017428
+      "bytes": 1017428,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_A#4_v3_rr1_Player.flac",
-      "bytes": 959833
+      "bytes": 959833,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_A0_v2_rr1_Player.flac",
-      "bytes": 973213
+      "bytes": 973213,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_A1_v3_rr1_Player.flac",
-      "bytes": 1061443
+      "bytes": 1061443,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_B4_v3_rr1_Player.flac",
-      "bytes": 649714
+      "bytes": 649714,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C1_v2_rr1_Player.flac",
-      "bytes": 967746
+      "bytes": 967746,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C1_v3_rr1_Player.flac",
-      "bytes": 1040459
+      "bytes": 1040459,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C2_v2_rr1_Player.flac",
-      "bytes": 976052
+      "bytes": 976052,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C2_v3_rr1_Player.flac",
-      "bytes": 1054220
+      "bytes": 1054220,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C3_v2_rr1_Player.flac",
-      "bytes": 962636
+      "bytes": 962636,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C4_v2_rr1_Player.flac",
-      "bytes": 853913
+      "bytes": 853913,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C4_v3_rr1_Player.flac",
-      "bytes": 1008993
+      "bytes": 1008993,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_C5_v3_rr1_Player.flac",
-      "bytes": 860880
+      "bytes": 860880,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_D#0_v2_rr1_Player.flac",
-      "bytes": 968237
+      "bytes": 968237,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_D#1_v2_rr1_Player.flac",
-      "bytes": 974099
+      "bytes": 974099,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_D#5_v2_rr1_Player.flac",
-      "bytes": 293516
+      "bytes": 293516,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_D3_v2_rr1_Player.flac",
-      "bytes": 913444
+      "bytes": 913444,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_D3_v3_rr1_Player.flac",
-      "bytes": 1030310
+      "bytes": 1030310,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_D4_v2_rr1_Player.flac",
-      "bytes": 923238
+      "bytes": 923238,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_D4_v3_rr1_Player.flac",
-      "bytes": 995832
+      "bytes": 995832,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_E2_v3_rr1_Player.flac",
-      "bytes": 1044308
+      "bytes": 1044308,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_E3_v2_rr1_Player.flac",
-      "bytes": 929577
+      "bytes": 929577,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_E3_v3_rr1_Player.flac",
-      "bytes": 1035656
+      "bytes": 1035656,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_E4_v2_rr1_Player.flac",
-      "bytes": 481722
+      "bytes": 481722,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_F#0_v3_rr1_Player.flac",
-      "bytes": 1019538
+      "bytes": 1019538,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_F#1_v3_rr1_Player.flac",
-      "bytes": 1045056
+      "bytes": 1045056,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_F#2_v2_rr1_Player.flac",
-      "bytes": 873795
+      "bytes": 873795,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_F#2_v3_rr1_Player.flac",
-      "bytes": 1043944
+      "bytes": 1043944,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_F#3_v2_rr1_Player.flac",
-      "bytes": 911918
+      "bytes": 911918,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_F#4_v2_rr1_Player.flac",
-      "bytes": 470485
+      "bytes": 470485,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_F#4_v3_rr1_Player.flac",
-      "bytes": 962115
+      "bytes": 962115,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_G#2_v2_rr1_Player.flac",
-      "bytes": 781873
+      "bytes": 781873,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_G#2_v3_rr1_Player.flac",
-      "bytes": 1035520
+      "bytes": 1035520,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_G#3_v2_rr1_Player.flac",
-      "bytes": 898507
+      "bytes": 898507,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_G#3_v3_rr1_Player.flac",
-      "bytes": 1015410
+      "bytes": 1015410,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/piano/GPiano_sus_G#4_v2_rr1_Player.flac",
-      "bytes": 299324
+      "bytes": 299324,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/slapstick/slapstick_rr1.flac",
-      "bytes": 63269
+      "bytes": 63269,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/slapstick/slapstick_rr2.flac",
-      "bytes": 57014
+      "bytes": 57014,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/slapstick/slapstick_rr3.flac",
-      "bytes": 65712
+      "bytes": 65712,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/suscymbal/susCymb1_hit_f1.flac",
-      "bytes": 1253419
+      "bytes": 1253419,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/timpani/Timpani1_Hit_v4_rr1_Sum.flac",
-      "bytes": 532783
+      "bytes": 532783,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/timpani/Timpani2_Hit_v4_rr1_Sum.flac",
-      "bytes": 356646
+      "bytes": 356646,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/timpani/Timpani3_Hit_v4_rr1_Sum.flac",
-      "bytes": 497438
+      "bytes": 497438,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/timpani/Timpani4_Hit_v4_rr1_Sum.flac",
-      "bytes": 312659
+      "bytes": 312659,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/vibraphone/Vibes_hard_A2_v2_rr1_Main.flac",
-      "bytes": 751843
+      "bytes": 751843,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/vibraphone/Vibes_hard_B3_v2_rr1_Main.flac",
-      "bytes": 761104
+      "bytes": 761104,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/vibraphone/Vibes_hard_C3_v2_rr1_Main.flac",
-      "bytes": 758243
+      "bytes": 758243,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/vibraphone/Vibes_hard_E3_v2_rr1_Main.flac",
-      "bytes": 774332
+      "bytes": 774332,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/vibraphone/Vibes_hard_F2_v2_rr1_Main.flac",
-      "bytes": 253665
+      "bytes": 253665,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/vibraphone/Vibes_hard_G3_v2_rr1_Main.flac",
-      "bytes": 764310
+      "bytes": 764310,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/vibraslap/vibraslap_rr1.flac",
-      "bytes": 429583
+      "bytes": 429583,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/wineglass/glass1_D#4_Fast_1_main.flac",
-      "bytes": 891353
+      "bytes": 891353,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/woodblock/wood_click2_mp.flac",
-      "bytes": 57187
+      "bytes": 57187,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/woodblock/wood_click3_vl2.flac",
-      "bytes": 62607
+      "bytes": 62607,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/woodblock/wood_click_f_rr1.flac",
-      "bytes": 63259
+      "bytes": 63259,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/woodblock/wood_click_ff.flac",
-      "bytes": 60385
+      "bytes": 60385,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/samples/woodblock/wood_click_mp.flac",
-      "bytes": 56469
+      "bytes": 56469,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/tools/build_samples.py",
-      "bytes": 5394
+      "bytes": 5394,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/tools/download_vcsl.sh",
-      "bytes": 243
+      "bytes": 243,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/tools/select_vcsl.py",
-      "bytes": 3593
+      "bytes": 3593,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/lib/audio/tools/vcsl_list.tsv",
-      "bytes": 120959
+      "bytes": 120959,
+      "role": "asset"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/01-flat-vector.md",
-      "bytes": 8245
+      "bytes": 8245,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/02-line-art.md",
-      "bytes": 7766
+      "bytes": 7766,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/03-isometric.md",
-      "bytes": 7969
+      "bytes": 7969,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/04-3d-render.md",
-      "bytes": 7877
+      "bytes": 7877,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/05-cel-boil.md",
-      "bytes": 7791
+      "bytes": 7791,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/06-collage.md",
-      "bytes": 7740
+      "bytes": 7740,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/07-liquid.md",
-      "bytes": 7615
+      "bytes": 7615,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/08-morph.md",
-      "bytes": 7432
+      "bytes": 7432,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/09-bauhaus.md",
-      "bytes": 7960
+      "bytes": 7960,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/10-synthwave.md",
-      "bytes": 7933
+      "bytes": 7933,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/12-aurora-glass.md",
-      "bytes": 7829
+      "bytes": 7829,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/18-hanazi.md",
-      "bytes": 7923
+      "bytes": 7923,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/19-paperclip.md",
-      "bytes": 8016
+      "bytes": 8016,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/20-pixel.md",
-      "bytes": 7601
+      "bytes": 7601,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/prompts/22-hud.md",
-      "bytes": 7756
+      "bytes": 7756,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/requirements.txt",
-      "bytes": 399
+      "bytes": 399,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/rubric.md",
-      "bytes": 3676
+      "bytes": 3676,
+      "role": "doc"
     },
     {
       "path": "demos/materials/mg-styles-15/template.md",
-      "bytes": 1945
+      "bytes": 1945,
+      "role": "doc"
     },
     {
       "path": "docs/materials/mg-styles-15.md",
-      "bytes": 2289
+      "bytes": 2289,
+      "role": "doc"
     },
     {
       "path": "entries/materials/mg-styles-15.json",
-      "bytes": 6658
+      "bytes": 6658,
+      "role": "entry"
     }
   ]
 }

@@ -23,7 +23,7 @@
 - `动效函数`：配置镜头、路线、标记、引线、投影与标签避让。
 - `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。
 - `需要的数据`：设置地点、路线、镜头与横竖S1/S2/S3取景。
-- `config.js → segments / markers`：kix: 1.5→2.35/haruka: 14.6→17.05/kyoto: 16.6→17.45/naraLine: 37.4→39.85/jrNara: 39.4→40.25/walk1: 39.4→41.25/naraPark: 40.8→41.65
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：kix: 1.5→2.35/haruka: 14.6→17.05/kyoto: 16.6→17.45/naraLine: 37.4→39.85/jrNara: 39.4→40.25/walk1: 39.4→41.25/naraPark: 40.8→41.65
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/route-draw-marker/index.html) · [在库中查看](../../patterns.html#pattern/route-draw-marker)

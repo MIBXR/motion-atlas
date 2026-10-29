@@ -119,7 +119,7 @@
       "stamp",
       "sparkle"
     ],
-    "score": "demos/patterns/collect-counter/score.json",
+    "score": "demos/patterns/collect-counter/mechanism/score.json",
     "description": "声音随画面事件播放，音色与时刻由乐谱设置。"
   },
   "tokens": {
@@ -191,11 +191,11 @@
       "how": "设置计数与收集事件（来源为车站印章）、镜头和横竖布局。"
     },
     {
-      "field": "config.js → segments / markers",
+      "field": "mechanism/config.js → segments / markers",
       "how": "8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6"
     },
     {
-      "field": "score.json",
+      "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ],

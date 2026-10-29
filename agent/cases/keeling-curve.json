@@ -446,119 +446,148 @@
   "files": [
     {
       "path": "demos/cases/keeling-curve/LICENSES.md",
-      "bytes": 370
+      "bytes": 370,
+      "role": "license"
     },
     {
       "path": "demos/cases/keeling-curve/assets/co2_annmean_mlo.txt",
-      "bytes": 3696
+      "bytes": 3696,
+      "role": "doc"
     },
     {
       "path": "demos/cases/keeling-curve/assets/co2_mm_mlo.txt",
-      "bytes": 59678
+      "bytes": 59678,
+      "role": "doc"
     },
     {
       "path": "demos/cases/keeling-curve/audio/Kevin-MacLeod-CC-BY-4.0.txt",
-      "bytes": 157
+      "bytes": 157,
+      "role": "doc"
     },
     {
       "path": "demos/cases/keeling-curve/audio/final.wav",
-      "bytes": 3840078
+      "bytes": 3840078,
+      "role": "asset"
     },
     {
       "path": "demos/cases/keeling-curve/audio/kenney-impact-sounds/License.txt",
-      "bytes": 608
+      "bytes": 608,
+      "role": "license"
     },
     {
       "path": "demos/cases/keeling-curve/audio/kenney-ui-audio/License.txt",
-      "bytes": 479
+      "bytes": 479,
+      "role": "license"
     },
     {
       "path": "demos/cases/keeling-curve/film/data.js",
-      "bytes": 759
+      "bytes": 759,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/film/motion.js",
-      "bytes": 13717
+      "bytes": 13717,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/film/scene.js",
-      "bytes": 7410
+      "bytes": 7410,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/film/setup.js",
-      "bytes": 173
+      "bytes": 173,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/film/style.css",
-      "bytes": 92
+      "bytes": 92,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/film/timeline.js",
-      "bytes": 1564
+      "bytes": 1564,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/fonts/IBMPlexMono-Medium.ttf",
-      "bytes": 136704
+      "bytes": 136704,
+      "role": "font"
     },
     {
       "path": "demos/cases/keeling-curve/fonts/IBMPlexMono-OFL.txt",
-      "bytes": 4456
+      "bytes": 4456,
+      "role": "license"
     },
     {
       "path": "demos/cases/keeling-curve/fonts/NotoSansSC-400.woff2",
-      "bytes": 38976
+      "bytes": 38976,
+      "role": "font"
     },
     {
       "path": "demos/cases/keeling-curve/fonts/NotoSansSC-600.woff2",
-      "bytes": 38976
+      "bytes": 38976,
+      "role": "font"
     },
     {
       "path": "demos/cases/keeling-curve/fonts/NotoSansSC-700.woff2",
-      "bytes": 39112
+      "bytes": 39112,
+      "role": "font"
     },
     {
       "path": "demos/cases/keeling-curve/fonts/NotoSansSC-OFL.txt",
-      "bytes": 4388
+      "bytes": 4388,
+      "role": "license"
     },
     {
       "path": "demos/cases/keeling-curve/fonts/fonts.css",
-      "bytes": 354
+      "bytes": 354,
+      "role": "font"
     },
     {
       "path": "demos/cases/keeling-curve/index.html",
-      "bytes": 1263
+      "bytes": 1263,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/keeling-curve/source/AUDIO.md",
-      "bytes": 4035
+      "bytes": 4035,
+      "role": "process"
     },
     {
       "path": "demos/cases/keeling-curve/source/DATA.md",
-      "bytes": 5028
+      "bytes": 5028,
+      "role": "process"
     },
     {
       "path": "demos/cases/keeling-curve/source/brief.md",
-      "bytes": 22832
+      "bytes": 22832,
+      "role": "process"
     },
     {
       "path": "demos/cases/keeling-curve/source/preview.js",
-      "bytes": 12572
+      "bytes": 12572,
+      "role": "process"
     },
     {
       "path": "docs/cases/keeling-curve.md",
-      "bytes": 1747
+      "bytes": 1747,
+      "role": "doc"
     },
     {
       "path": "entries/cases/keeling-curve.json",
-      "bytes": 24100
+      "bytes": 24100,
+      "role": "entry"
     },
     {
       "path": "previews/cases/keeling-curve.jpg",
-      "bytes": 33540
+      "bytes": 33540,
+      "role": "preview"
     }
   ]
 }

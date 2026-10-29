@@ -120,291 +120,363 @@
   "files": [
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
-      "bytes": 812
+      "bytes": 812,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/audio/film.m4a",
-      "bytes": 418545
+      "bytes": 418545,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 5866
+      "bytes": 5866,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/film/cues.json",
-      "bytes": 1702
+      "bytes": 1702,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/engine.js",
-      "bytes": 9243
+      "bytes": 9243,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/scene.js",
-      "bytes": 46421
+      "bytes": 46421,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/shaders.js",
-      "bytes": 28643
+      "bytes": 28643,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/state.js",
-      "bytes": 669
+      "bytes": 669,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/textsdf.js",
-      "bytes": 5558
+      "bytes": 5558,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/js/type.js",
-      "bytes": 2073
+      "bytes": 2073,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/main.js",
-      "bytes": 3441
+      "bytes": 3441,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/setup.js",
-      "bytes": 152
+      "bytes": 152,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/film/style.css",
-      "bytes": 143
+      "bytes": 143,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/Fraunces-Liquid-72-900-Soft.ttf",
-      "bytes": 72996
+      "bytes": 72996,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/Fraunces[SOFT,WONK,opsz,wght].ttf",
-      "bytes": 360440
+      "bytes": 360440,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/Inter[opsz,wght].ttf",
-      "bytes": 876576
+      "bytes": 876576,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/NotoSerifSC[wght].ttf",
-      "bytes": 25125512
+      "bytes": 25125512,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/fonts.css",
-      "bytes": 494
+      "bytes": 494,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/fraunces-OFL.txt",
-      "bytes": 4391
+      "bytes": 4391,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/inter-OFL.txt",
-      "bytes": 4377
+      "bytes": 4377,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/fonts/notoserifsc-OFL.txt",
-      "bytes": 4350
+      "bytes": 4350,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1597
+      "bytes": 1597,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/source/audio.py",
-      "bytes": 11884
+      "bytes": 11884,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/cues.json",
-      "bytes": 1702
+      "bytes": 1702,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/js/lookdev.js",
-      "bytes": 2622
+      "bytes": 2622,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/js/scene.js",
-      "bytes": 56751
+      "bytes": 56751,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/js/textsdf.js",
-      "bytes": 5558
+      "bytes": 5558,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-liquid/source/out/cues_derived.json",
-      "bytes": 5548
+      "bytes": 5548,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-synthwave/LICENSES.md",
-      "bytes": 1068
+      "bytes": 1068,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/audio/film.m4a",
-      "bytes": 403976
+      "bytes": 403976,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-synthwave/fidelity.md",
-      "bytes": 4597
+      "bytes": 4597,
+      "role": "doc"
     },
     {
       "path": "demos/cases/mg-synthwave/film/LICENSE",
-      "bytes": 1071
+      "bytes": 1071,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/film/cues.json",
-      "bytes": 1312
+      "bytes": 1312,
+      "role": "asset"
     },
     {
       "path": "demos/cases/mg-synthwave/film/scene.js",
-      "bytes": 70651
+      "bytes": 70651,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/film/setup.js",
-      "bytes": 243
+      "bytes": 243,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/film/style.css",
-      "bytes": 166
+      "bytes": 166,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/Archivo-Italic[wdth,wght].ttf",
-      "bytes": 741368
+      "bytes": 741368,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/Michroma-Regular.ttf",
-      "bytes": 64344
+      "bytes": 64344,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/MrDafoe-Regular.ttf",
-      "bytes": 47976
+      "bytes": 47976,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/VT323-Regular.ttf",
-      "bytes": 153116
+      "bytes": 153116,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/archivo-OFL.txt",
-      "bytes": 4388
+      "bytes": 4388,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/fonts.css",
-      "bytes": 636
+      "bytes": 636,
+      "role": "font"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/michroma-OFL.txt",
-      "bytes": 4395
+      "bytes": 4395,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/mrdafoe-OFL.txt",
-      "bytes": 4398
+      "bytes": 4398,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/fonts/vt323-OFL.txt",
-      "bytes": 4367
+      "bytes": 4367,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/index.html",
-      "bytes": 1824
+      "bytes": 1824,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "demos/cases/mg-synthwave/source/audio.py",
-      "bytes": 11743
+      "bytes": 11743,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-synthwave/source/cues.json",
-      "bytes": 1312
+      "bytes": 1312,
+      "role": "process"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/LICENSE",
-      "bytes": 1085
+      "bytes": 1085,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/dist/opentype.mjs",
-      "bytes": 494695
+      "bytes": 494695,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/simplex-noise@4.0.3/LICENSE",
-      "bytes": 1069
+      "bytes": 1069,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/simplex-noise@4.0.3/dist/esm/simplex-noise.js",
-      "bytes": 18735
+      "bytes": 18735,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/LICENSE",
-      "bytes": 1081
+      "bytes": 1081,
+      "role": "license"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/build/three.core.js",
-      "bytes": 1458113
+      "bytes": 1458113,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/build/three.module.js",
-      "bytes": 662772
+      "bytes": 662772,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/EffectComposer.js",
-      "bytes": 8501
+      "bytes": 8501,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/MaskPass.js",
-      "bytes": 4694
+      "bytes": 4694,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/Pass.js",
-      "bytes": 4218
+      "bytes": 4218,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/RenderPass.js",
-      "bytes": 4280
+      "bytes": 4280,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/ShaderPass.js",
-      "bytes": 3228
+      "bytes": 3228,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/postprocessing/UnrealBloomPass.js",
-      "bytes": 15397
+      "bytes": 15397,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/shaders/CopyShader.js",
-      "bytes": 729
+      "bytes": 729,
+      "role": "vendor"
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/three@0.186.1/examples/jsm/shaders/LuminosityHighPassShader.js",
-      "bytes": 1291
+      "bytes": 1291,
+      "role": "vendor"
     },
     {
       "path": "demos/patterns/specular-sweep-glint/index.html",
-      "bytes": 1865
+      "bytes": 1865,
+      "role": "source"
     },
     {
       "path": "demos/patterns/specular-sweep-glint/motion-kit.js",
-      "bytes": 119411
+      "bytes": 119411,
+      "role": "source"
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 15817
+      "bytes": 15817,
+      "role": "entry"
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16367
+      "bytes": 16367,
+      "role": "entry"
     },
     {
       "path": "entries/patterns/specular-sweep-glint.json",
-      "bytes": 4557
+      "bytes": 4557,
+      "role": "entry"
     },
     {
       "path": "previews/patterns/specular-sweep-glint.jpg",
-      "bytes": 155688
+      "bytes": 155688,
+      "role": "preview"
     }
   ]
 }

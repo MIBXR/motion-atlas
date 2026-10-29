@@ -21,7 +21,7 @@
 - `动效函数`：配置昼夜配色、镜头、时钟与HUD。
 - `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。
 - `需要的数据`：设置昼夜、镜头、时钟、HUD；镜头固定在34.5s。
-- `config.js → segments / markers`：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值
-- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
+- `mechanism/config.js → segments / markers`：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值
+- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/day-night-flip/index.html) · [在库中查看](../../patterns.html#pattern/day-night-flip)
