@@ -1,5 +1,7 @@
 # Motion Atlas 维护
 
+本库是个人设计参考库：案例是可参考、可修改的范本，忠实复刻是验证制作过程的手段；定位与收录原则见 [CONTRIBUTING.md 的仓库定位与收录原则](CONTRIBUTING.md#仓库定位)。
+
 - 修改内容前阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。新增目录、条目或内容类型前，先确认符合其中的三类组织规范；收录、字段、新增流程与验收规则以该文件为准。
 - 内容源为 `entries/`、`demos/`、`docs/`。修改共享运行时只改 `kit/motion-kit.js`；Demo 内的副本由构建同步。
 - `prompts/`、`agent/`、`data/`、`previews/` 中截图以外的生成文件、`docs/cases/README.md` 和 README 计数块由构建生成，不手改。预览截图使用 `scripts/capture.mjs`。
