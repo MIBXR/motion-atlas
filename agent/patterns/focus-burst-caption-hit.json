@@ -111,7 +111,7 @@
   "files": [
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 3208
+      "bytes": 517
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -171,7 +171,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3636
+      "bytes": 3555
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -280,6 +280,14 @@
     {
       "path": "demos/patterns/focus-burst-caption-hit/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-hanazi.json",
+      "bytes": 18441
+    },
+    {
+      "path": "entries/patterns/focus-burst-caption-hit.json",
+      "bytes": 3292
     },
     {
       "path": "previews/patterns/focus-burst-caption-hit-portrait.jpg",

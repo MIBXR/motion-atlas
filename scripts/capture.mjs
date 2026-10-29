@@ -3,8 +3,8 @@
 //   横屏：?orient=landscape，视口 1280×720（固定画幅舞台 1920×1080 等比缩到 2/3）→ previews/<kind>/<id>.jpg
 //   竖屏：?orient=portrait，视口 720×1280 → previews/<kind>/<id>-portrait.jpg（只在 Demo 使用 MotionKit.stage() 且支持竖屏时生成）
 //   竖屏时刻用 entry.previewAtPortrait（缺省同 previewAt）。
-// 用法：node scripts/capture.mjs [--only id1,id2] [--kind cases|patterns] [--orient both|landscape|portrait] [--base http://localhost:4321] [--w 1280 --h 720]
-//        [--out <目录>（默认 previews）] [--url <页面> --t <秒>]（--url 截任意页面，例如模板；输出 <out>/misc/<目录名>.jpg）
+// 用法：node scripts/capture.mjs [--only id1,id2] [--kind cases|patterns|materials] [--orient both|landscape|portrait] [--base http://localhost:4321] [--w 1280 --h 720]
+//        [--out <目录>（默认 previews）] [--url <页面> --t <秒>]（--url 截任意页面，例如模板；输出 <out>/<kind>/<目录名>.jpg（--url 需指定 --kind））
 // 需要先启动 npm start（或任意静态服务器指向仓库根目录）。
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,17 +21,15 @@ const w = Number(get('--w', 1280)), h = Number(get('--h', 720));
 const outRoot = path.resolve(ROOT, get('--out', 'previews'));
 const urlArg = get('--url', null);
 
-const { cases, patterns } = loadEntries();
-const jobs = [
-  ...(kind === 'patterns' ? [] : cases.map((e) => ({ e, dir: 'cases' }))),
-  ...(kind === 'cases' ? [] : patterns.map((e) => ({ e, dir: 'patterns' }))),
-].filter(({ e }) => !urlArg && (!only || only.has(e.id)));
+const { cases, patterns, materials } = loadEntries();
+if (!['all', 'cases', 'patterns', 'materials'].includes(kind)) throw new Error('未知条目类别：' + kind);
+if (urlArg && kind === 'all') throw new Error('--url 需指定 --kind cases|patterns|materials');
+const jobs = Object.entries({ cases, patterns, materials }).flatMap(([dir, list]) => list.filter(e => e.demo).map(e => ({ e, dir }))).filter(({ e, dir }) => !urlArg && (kind === 'all' || dir === kind) && (!only || only.has(e.id)));
 if (urlArg) {
   const demo = urlArg.replace(/^https?:\/\/[^/]+\//, '').replace(/^\//, '').replace(/\?.*$/, '');
-  jobs.push({ e: { id: demo.split('/').filter((x) => x && x !== 'index.html').slice(-2).join('-'), demo, previewAt: Number(get('--t', 0)) }, dir: 'misc' });
+  jobs.push({ e: { id: path.posix.basename(path.posix.dirname(demo)), demo, previewAt: Number(get('--t', 0)) }, dir: kind });
 }
 
-let browser;
 let ok = 0, portraits = 0;
 
 async function checkRenderer(page, renderers) {
@@ -99,27 +97,21 @@ async function shoot(browser, e, dir, orient, renderers) {
   }
 }
 
-try {
-  for (const { e, dir } of jobs) {
-    let gpuBrowser;
-    const renderers = new Set();
-    try {
-      const jobBrowser = e.renderer === 'gpu'
-        ? gpuBrowser = await launch({ width: w, height: h, args: ['--enable-gpu', '--use-angle=d3d11', '--ignore-gpu-blocklist'] })
-        : browser ??= await launch({ width: w, height: h });
-      const done = [];
-      if (orientArg !== 'portrait') { await shoot(jobBrowser, e, dir, 'landscape', renderers); done.push('横'); }
-      if (orientArg !== 'landscape' && (await shoot(jobBrowser, e, dir, 'portrait', renderers)) === 'ok') { done.push('竖'); portraits++; }
-      console.log('✓', dir, e.id, done.join(' / '), ...renderers);
-      ok++;
-    } catch (err) {
-      console.error('✗', dir, e.id, err.message, ...renderers);
-    } finally {
-      await gpuBrowser?.close();
-    }
+for (const { e, dir } of jobs) {
+  let browser;
+  const renderers = new Set();
+  try {
+    browser = await launch({ width: w, height: h, args: ['--enable-gpu', '--use-angle=d3d11', '--ignore-gpu-blocklist'] });
+    const done = [];
+    if (orientArg !== 'portrait') { await shoot(browser, e, dir, 'landscape', renderers); done.push('横'); }
+    if (orientArg !== 'landscape' && (await shoot(browser, e, dir, 'portrait', renderers)) === 'ok') { done.push('竖'); portraits++; }
+    console.log('✓', dir, e.id, done.join(' / '), ...renderers);
+    ok++;
+  } catch (err) {
+    console.error('✗', dir, e.id, err.message, ...renderers);
+  } finally {
+    await browser?.close();
   }
-} finally {
-  await browser?.close();
 }
 console.log(`captured ${ok}/${jobs.length}${portraits ? ` · 竖屏预览 ${portraits}` : ''}`);
 if (ok < jobs.length) process.exit(1);

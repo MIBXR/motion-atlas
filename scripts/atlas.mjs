@@ -19,7 +19,7 @@ const asJSON = flags.has('--json');
 const { cases, patterns, materials } = loadEntries();
 const all = [...cases.map((e) => ({ kind: 'cases', e })), ...patterns.map((e) => ({ kind: 'patterns', e })), ...materials.map((e) => ({ kind: 'materials', e }))];
 const strip = ({ _file, ...e }) => e;
-const label = (kind, e) => kind === 'cases' ? `案例 · ${e.carriers.map((k) => TAXONOMY.carriers[k]).join(' / ')}` : kind === 'materials' ? '素材 · Agent Skill' : `巧思 · ${e.types.map((k) => TAXONOMY.types[k]).join(' / ')}`;
+const label = (kind, e) => kind === 'cases' ? `案例 · ${e.carriers.map((k) => TAXONOMY.carriers[k]).join(' / ')}` : kind === 'materials' ? `素材 · ${TAXONOMY.materialTypes[e.type]}` : `巧思 · ${e.types.map((k) => TAXONOMY.types[k]).join(' / ')}`;
 const find = (id) => all.find((x) => x.e.id === id);
 const die = (msg) => { console.error(msg); process.exit(1); };
 
@@ -99,7 +99,7 @@ function show(id) {
     if (e.composition?.pairsWellWith?.length) L.push(`搭配：${e.composition.pairsWellWith.join(', ')}`);
     if (e.composition?.conflicts?.length) L.push(`冲突：${e.composition.conflicts.join(', ')}`);
   } else {
-    L.push('', '## 工作流', ...e.workflow.map((step) => `- ${step}`), '', '## 安装方式', e.install);
+    L.push('', '## 工作流', ...(e.workflow || []).map((step) => `- ${step}`), '', '## 安装方式', e.install);
   }
   if (e.prompt) L.push('', '## 实现 Prompt', e.prompt);
   if (e.videoPrompt) L.push('', '## 视频生成 Prompt', e.videoPrompt);
@@ -133,9 +133,9 @@ function exportDemo(id) {
     if (fs.existsSync(promptDoc)) fs.writeFileSync(path.join(out, 'PROMPT.md'), fs.readFileSync(promptDoc, 'utf8').replace(/\[([^\]]+)\]\(\.\.\/\.\.\/([^)]+)\)/g, '$1（Motion Atlas 仓库内 `$2`）'));
     const readme = [
       `# ${e.title}`, '', `从 Motion Atlas 导出（${kind === 'cases' ? '案例' : kind === 'materials' ? '素材' : '巧思'} \`${e.id}\`）。`, '', e.summary, '',
-      kind === 'materials' ? '## 使用' : '## 运行', '', kind === 'materials' ? `入口为 \`${e.skillPath}SKILL.md\`，按技能原文和 README 中的工作流使用。` : `从导出目录启动静态服务器，入口为 \`${e.demo}\`。目录保留仓库相对树，巧思的来源案例在 demos/cases/。`, '',
+      kind === 'materials' ? '## 使用' : '## 运行', '', kind === 'materials' ? `入口为 \`${e.snapshotPath ? e.snapshotPath + e.snapshotEntry : e.demo}\`，按素材原文和使用说明操作。` : `从导出目录启动静态服务器，入口为 \`${e.demo}\`。目录保留仓库相对树，巧思的来源案例在 demos/cases/。`, '',
       kind === 'materials' ? '## 工作流' : '## 迁移', '',
-      ...(kind === 'materials' ? e.workflow.map((step) => `- ${step}`) : e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 时间纯函数作品在 `film/` 修改内容并用 `MotionKit.mountFilm`；自有时钟作品自己接 MotionKit；重放型巧思在 `index.html` 配置来源片段。']),
+      ...(kind === 'materials' ? (e.workflow || []).map((step) => `- ${step}`) : e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 时间纯函数作品在 `film/` 修改内容并用 `MotionKit.mountFilm`；自有时钟作品自己接 MotionKit；重放型巧思在 `index.html` 配置来源片段。']),
       '', e.timeline ? '本 Demo 遵守 render(t) 协议：`window.__motion.seek(t)` 可定位任意时刻；`?render=1` 关闭自动播放，供逐帧渲染。' : '',
       '', '## 文件', '', ...copied.map((f) => `- ${f}`), '',
     ].join('\n');

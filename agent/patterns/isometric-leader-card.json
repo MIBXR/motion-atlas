@@ -151,7 +151,7 @@
   "files": [
     {
       "path": "demos/cases/mg-isometric/LICENSES.md",
-      "bytes": 2687
+      "bytes": 451
     },
     {
       "path": "demos/cases/mg-isometric/audio/film.m4a",
@@ -159,7 +159,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/fidelity.md",
-      "bytes": 5634
+      "bytes": 5575
     },
     {
       "path": "demos/cases/mg-isometric/film/LICENSE",
@@ -304,6 +304,14 @@
     {
       "path": "demos/patterns/isometric-leader-card/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-isometric.json",
+      "bytes": 24388
+    },
+    {
+      "path": "entries/patterns/isometric-leader-card.json",
+      "bytes": 4247
     },
     {
       "path": "previews/patterns/isometric-leader-card.jpg",

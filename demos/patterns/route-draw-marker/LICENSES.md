@@ -1,1 +1,3 @@
-等距城市追加段的原作、完整字体、固定版本库与成品音轨的来源和许可见[来源许可](../../cases/mg-isometric/LICENSES.md)。
+# 第三方许可索引
+
+[条目来源](../../../entries/patterns/route-draw-marker.json) · [许可原文与索引](../../cases/mg-isometric/LICENSES.md)

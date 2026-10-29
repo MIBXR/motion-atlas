@@ -107,7 +107,7 @@
   "files": [
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 3208
+      "bytes": 517
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -167,7 +167,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3636
+      "bytes": 3555
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -276,6 +276,14 @@
     {
       "path": "demos/patterns/meter-needle-overrange/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-hanazi.json",
+      "bytes": 18441
+    },
+    {
+      "path": "entries/patterns/meter-needle-overrange.json",
+      "bytes": 3054
     },
     {
       "path": "previews/patterns/meter-needle-overrange-portrait.jpg",

@@ -198,7 +198,7 @@
   "files": [
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 3001
+      "bytes": 442
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
@@ -230,7 +230,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 4518
+      "bytes": 4474
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
@@ -326,7 +326,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 3208
+      "bytes": 517
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -386,7 +386,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3636
+      "bytes": 3555
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -495,6 +495,18 @@
     {
       "path": "demos/patterns/cel-line-boil/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-cel-boil.json",
+      "bytes": 24092
+    },
+    {
+      "path": "entries/cases/mg-hanazi.json",
+      "bytes": 18441
+    },
+    {
+      "path": "entries/patterns/cel-line-boil.json",
+      "bytes": 5551
     },
     {
       "path": "previews/patterns/cel-line-boil-portrait.jpg",

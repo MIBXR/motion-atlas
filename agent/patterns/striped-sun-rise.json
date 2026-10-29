@@ -100,7 +100,7 @@
   "files": [
     {
       "path": "demos/cases/mg-synthwave/LICENSES.md",
-      "bytes": 2558
+      "bytes": 535
     },
     {
       "path": "demos/cases/mg-synthwave/audio/film.m4a",
@@ -108,7 +108,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/fidelity.md",
-      "bytes": 4139
+      "bytes": 4055
     },
     {
       "path": "demos/cases/mg-synthwave/film/LICENSE",
@@ -245,6 +245,14 @@
     {
       "path": "demos/patterns/striped-sun-rise/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-synthwave.json",
+      "bytes": 16218
+    },
+    {
+      "path": "entries/patterns/striped-sun-rise.json",
+      "bytes": 2943
     },
     {
       "path": "previews/patterns/striped-sun-rise.jpg",

@@ -140,7 +140,7 @@
   "files": [
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 3001
+      "bytes": 442
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
@@ -172,7 +172,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 4518
+      "bytes": 4474
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
@@ -273,6 +273,14 @@
     {
       "path": "demos/patterns/flipbook-pullback/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-cel-boil.json",
+      "bytes": 24092
+    },
+    {
+      "path": "entries/patterns/flipbook-pullback.json",
+      "bytes": 4074
     },
     {
       "path": "previews/patterns/flipbook-pullback.jpg",

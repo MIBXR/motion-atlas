@@ -178,7 +178,7 @@
   "files": [
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 1736
+      "bytes": 254
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
@@ -186,7 +186,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3455
+      "bytes": 3398
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
@@ -242,7 +242,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
-      "bytes": 3208
+      "bytes": 517
     },
     {
       "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
@@ -302,7 +302,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/fidelity.md",
-      "bytes": 3636
+      "bytes": 3555
     },
     {
       "path": "demos/cases/mg-hanazi/film/LICENSE",
@@ -406,7 +406,7 @@
     },
     {
       "path": "demos/cases/mg-morph/LICENSES.md",
-      "bytes": 2319
+      "bytes": 303
     },
     {
       "path": "demos/cases/mg-morph/assets/textures/paper/Paper001_4K_color.jpg",
@@ -418,7 +418,7 @@
     },
     {
       "path": "demos/cases/mg-morph/fidelity.md",
-      "bytes": 4167
+      "bytes": 4085
     },
     {
       "path": "demos/cases/mg-morph/film/LICENSE",
@@ -499,6 +499,22 @@
     {
       "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-flat-vector.json",
+      "bytes": 20604
+    },
+    {
+      "path": "entries/cases/mg-hanazi.json",
+      "bytes": 18441
+    },
+    {
+      "path": "entries/cases/mg-morph.json",
+      "bytes": 15482
+    },
+    {
+      "path": "entries/patterns/shape-wipe-transition.json",
+      "bytes": 5918
     },
     {
       "path": "previews/patterns/shape-wipe-transition-portrait.jpg",

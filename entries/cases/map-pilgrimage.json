@@ -392,5 +392,19 @@
     "film-grain"
   ],
   "previewAt": 20.4,
-  "previewAtPortrait": 41.8
+  "previewAtPortrait": 41.8,
+  "attribution": [
+    {
+      "scope": "参考",
+      "notes": "【眩晕瘫坐 旅游时拍的素材给Opus5.5剪出来是这样】（哔哩哔哩，<https://b23.tv/eBjaN0O>），画面署名 @DWTornier"
+    },
+    {
+      "scope": "素材",
+      "notes": "用户下载的本地成片，151.21 秒，1920×1080"
+    },
+    {
+      "scope": "观察日期",
+      "notes": "2026-10-14（初次）、2026-10-16（打磨第一轮复看：全片粗扫、9 段转场细扫、21 张全分辨率帧）"
+    }
+  ]
 }

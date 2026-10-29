@@ -1,6 +1,6 @@
 # Prompt 写法
 
-本库每个案例有三段 Prompt：**实现 Prompt**（给代码模型，产出可运行的 HTML/CSS/JS）、**视频生成 Prompt**（给视频模型，英文）、**负向约束**（两者通用）。每个巧思有一段实现 Prompt。本篇说明它们为什么这样写，以及如何改写成你自己的。
+案例和巧思提供**实现 Prompt**（给代码模型，产出可运行的 HTML/CSS/JS）；**视频生成 Prompt**与**负向约束**是可选字段，条目填写时才显示并生成文档。视频生成 Prompt 面向视频模型，负向约束可供两者使用。本篇说明它们为什么这样写，以及如何改写成你自己的。
 
 ## 一、实现 Prompt 的骨架
 
@@ -13,7 +13,7 @@
 4. **动效参数**：曲线、时长、错峰、缩放幅度、震动像素数。写数字，不写“流畅”“有冲击力”。
 5. **信息层与交互**：HUD 内容、键盘/指针操作、每个输入的反馈。
 6. **工程约定**：作品代码放 `film/`；时间纯函数作品提供 `renderAt(t)` 与时长、尺寸并调用 `MotionKit.mountFilm`；有自己时钟、状态或交互的作品自己接 MotionKit 并提供 `window.__motion`。
-7. **可访问性与边界**：减少动态时的替代、最小字号、版权边界（不使用原作素材）。
+7. **可访问性与边界**：减少动态时的替代、最小字号、资源许可（采用条目中列明的来源与许可）。
 
 一个好用的检验：**把 Prompt 交给两个不同的模型，产出的时间结构应该几乎一样**，差异只在细节。
 
@@ -68,7 +68,7 @@
 动效：主曲线 cubic-bezier([…])，元素时长 [ms]，错峰 [ms]；重拍缩放脉冲 [%]；冲击震动 [px]。
 信息层：[HUD 字段与位置]。交互：[输入 → 反馈 → 余波]。
 工程：作品代码与样式放 film/，制作过程放 source/。时间纯函数作品提供 renderAt(t)、时长与尺寸，用 MotionKit.mountFilm；有自己时钟、状态或交互的作品自己接 MotionKit 并提供 window.__motion。只重放案例片段的巧思用 MotionKit.replay 引用来源。
-边界：所有文字 ≥ 12px；prefers-reduced-motion 时去掉位移与闪烁；不使用任何第三方作品的素材与名称。
+边界：站点界面文字 ≥ 12px；画面内文字按设计需要确定；prefers-reduced-motion 时去掉位移与闪烁；第三方素材沿用条目列明的许可。
 ```
 
 ### 视频生成 Prompt 模板
@@ -85,7 +85,7 @@ Ending: [how it resolves].
 ### 负向约束模板
 
 ```text
-No [风格最容易跑偏的方向 1], no [2], no [3]; no off-beat random motion; no third-party logos, characters or copyrighted footage.
+No [风格最容易跑偏的方向 1], no [2], no [3]; no off-beat random motion.
 ```
 
 ## 七、节奏实验室导出的片段

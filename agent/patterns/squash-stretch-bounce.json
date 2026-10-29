@@ -221,7 +221,7 @@
   "files": [
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
-      "bytes": 3001
+      "bytes": 442
     },
     {
       "path": "demos/cases/mg-cel-boil/assets/dust_ink_01.png",
@@ -253,7 +253,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/fidelity.md",
-      "bytes": 4518
+      "bytes": 4474
     },
     {
       "path": "demos/cases/mg-cel-boil/film/LICENSE",
@@ -349,7 +349,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
-      "bytes": 1736
+      "bytes": 254
     },
     {
       "path": "demos/cases/mg-flat-vector/audio/film.m4a",
@@ -357,7 +357,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/fidelity.md",
-      "bytes": 3455
+      "bytes": 3398
     },
     {
       "path": "demos/cases/mg-flat-vector/film/LICENSE",
@@ -413,7 +413,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
-      "bytes": 2040
+      "bytes": 282
     },
     {
       "path": "demos/cases/mg-liquid/audio/film.m4a",
@@ -421,7 +421,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 4895
+      "bytes": 4808
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
@@ -518,6 +518,22 @@
     {
       "path": "demos/patterns/squash-stretch-bounce/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-cel-boil.json",
+      "bytes": 24092
+    },
+    {
+      "path": "entries/cases/mg-flat-vector.json",
+      "bytes": 20604
+    },
+    {
+      "path": "entries/cases/mg-liquid.json",
+      "bytes": 15668
+    },
+    {
+      "path": "entries/patterns/squash-stretch-bounce.json",
+      "bytes": 7454
     },
     {
       "path": "previews/patterns/squash-stretch-bounce.jpg",

@@ -147,7 +147,7 @@
   "files": [
     {
       "path": "demos/cases/mg-line-art/LICENSES.md",
-      "bytes": 2141
+      "bytes": 257
     },
     {
       "path": "demos/cases/mg-line-art/assets/textures/grain/grain_fine_2048.png",
@@ -159,7 +159,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/fidelity.md",
-      "bytes": 4829
+      "bytes": 4754
     },
     {
       "path": "demos/cases/mg-line-art/film/LICENSE",
@@ -220,6 +220,14 @@
     {
       "path": "demos/patterns/continuous-line-narrative/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-line-art.json",
+      "bytes": 19017
+    },
+    {
+      "path": "entries/patterns/continuous-line-narrative.json",
+      "bytes": 4106
     },
     {
       "path": "previews/patterns/continuous-line-narrative.jpg",

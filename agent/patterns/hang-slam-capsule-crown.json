@@ -116,7 +116,7 @@
   "files": [
     {
       "path": "demos/cases/mg-3d-render/LICENSES.md",
-      "bytes": 2576
+      "bytes": 283
     },
     {
       "path": "demos/cases/mg-3d-render/assets/.gitignore",
@@ -1092,7 +1092,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/fidelity.md",
-      "bytes": 4317
+      "bytes": 4239
     },
     {
       "path": "demos/cases/mg-3d-render/film/LICENSE",
@@ -1213,6 +1213,14 @@
     {
       "path": "demos/patterns/hang-slam-capsule-crown/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-3d-render.json",
+      "bytes": 16435
+    },
+    {
+      "path": "entries/patterns/hang-slam-capsule-crown.json",
+      "bytes": 3446
     },
     {
       "path": "previews/patterns/hang-slam-capsule-crown.jpg",

@@ -104,7 +104,7 @@
   "files": [
     {
       "path": "demos/cases/mg-collage/LICENSES.md",
-      "bytes": 4282
+      "bytes": 470
     },
     {
       "path": "demos/cases/mg-collage/assets/gen/bfly_a.png",
@@ -208,7 +208,7 @@
     },
     {
       "path": "demos/cases/mg-collage/fidelity.md",
-      "bytes": 3389
+      "bytes": 3309
     },
     {
       "path": "demos/cases/mg-collage/film/LICENSE",
@@ -341,6 +341,14 @@
     {
       "path": "demos/patterns/pinch-rip-cylinder-peel/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "entries/cases/mg-collage.json",
+      "bytes": 18834
+    },
+    {
+      "path": "entries/patterns/pinch-rip-cylinder-peel.json",
+      "bytes": 3167
     },
     {
       "path": "previews/patterns/pinch-rip-cylinder-peel.jpg",
