@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>形状擦除转场 · Motion Atlas</title>
+  <title>巧思原片重放</title>
   <style>
     html,body{margin:0;background:#000;overflow:hidden}
     #stage{background:#000}
@@ -29,6 +29,13 @@
           "label": "形状变形",
           "from": 1.42,
           "to": 8.82
+        },
+        {
+          "caseId": "mg-hanazi",
+          "label": "综艺花字 · 糖果斜带擦除",
+          "source": "../../cases/mg-hanazi/index.html",
+          "from": 3.57,
+          "to": 4.43
         }
       ],
       "markers": [
@@ -59,11 +66,27 @@
         {
           "t": 1.233333333,
           "label": "形状变形"
+        },
+        {
+          "t": 8.633333333,
+          "label": "综艺花字"
+        },
+        {
+          "t": 9.063333333,
+          "label": "糖果擦除"
+        },
+        {
+          "t": 9.263333333,
+          "label": "嘉宾名牌"
         }
       ],
       "reduced": 0.7333333333333334,
       "root": "#stage",
-      "fps": 30
+      "fps": 30,
+      "orients": [
+        "landscape",
+        "portrait"
+      ]
     };
     await MotionKit.replay(config);
   </script>

@@ -13,25 +13,30 @@
     "carriers": [
       "video"
     ],
-    "summary": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。",
-    "mechanism": "两侧插画以分割线分开，边框组织画面。时间戳以印章动作落下，让两个时刻的景象并排对照。",
+    "summary": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。 综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。",
+    "mechanism": "两侧插画以分割线分开，边框组织画面。时间戳以印章动作落下，让两个时刻的景象并排对照。 综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。",
     "trigger": "同一地点的今昔需要对照时",
     "effect": "同一地点的时间差异一眼可见。",
     "timing": [
       {
         "name": "时长",
-        "value": "4.8s"
+        "value": "6.133s"
       },
       {
         "name": "声音 voice",
         "value": "whoosh、stamp、sub"
+      },
+      {
+        "name": "追加原片区间",
+        "value": "mg-hanazi 原片 8.167–9.5 秒；s = lerp(2.5, 1, E.inQuad(k)); o = clamp(k * 2.2);\ns = 1 - .09 * Math.exp(-w * 16) * Math.cos(w * 44);\nkick(t, C.stamp, 14, 10, 13)"
       }
     ],
     "useCases": [
       "巡礼对比",
       "前后改造",
       "设计方案对照",
-      "陈列界面复原对比"
+      "陈列界面复原对比",
+      "综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。"
     ],
     "avoid": [
       "两张图构图不对齐时（对比失去意义）"
@@ -50,12 +55,15 @@
       "conflicts": [],
       "notes": "两侧插画以分割线分开，边框组织画面。时间戳以印章动作落下，让两个时刻的景象并排对照。"
     },
-    "prompt": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。",
+    "prompt": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 6.133s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 按 index.html 内联 segments 在原有 4.8 秒之后重放mg-hanazi 原片 8.167–9.5 秒，总时长 6.133 秒。综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。画面与音轨沿用同一映射，声音默认关闭。",
     "demo": "demos/patterns/split-compare-stamp/index.html",
     "kit": true,
     "sources": [
       {
         "caseId": "map-pilgrimage"
+      },
+      {
+        "caseId": "mg-hanazi"
       }
     ],
     "previewAt": 2.4,
@@ -67,6 +75,18 @@
       {
         "t": 1.65,
         "label": "盖章"
+      },
+      {
+        "t": 4.8,
+        "label": "综艺花字"
+      },
+      {
+        "t": 5.133,
+        "label": "猫主认证"
+      },
+      {
+        "t": 5.533,
+        "label": "下期见"
       }
     ],
     "sound": {
@@ -143,6 +163,11 @@
         "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
+    "orients": [
+      "landscape",
+      "portrait"
+    ],
+    "previewAtPortrait": 5.4665,
     "preview": "previews/patterns/split-compare-stamp.jpg",
     "previewPortrait": "previews/patterns/split-compare-stamp-portrait.jpg"
   },
@@ -150,10 +175,14 @@
     {
       "caseId": "map-pilgrimage",
       "bundle": "agent/cases/map-pilgrimage.json"
+    },
+    {
+      "caseId": "mg-hanazi",
+      "bundle": "agent/cases/mg-hanazi.json"
     }
   ],
   "documents": {
-    "prompt": "# 分屏对比与时间戳盖章\n\n## 实现 Prompt\n\n旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 4.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：4.8s\n- **声音 voice**：whoosh、stamp、sub\n\n## 动效 Token\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n\n## 迁移\n\n- `动效函数`：配置分屏、两侧场景、边框与印章。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。\n- `config.js → segments / markers`：29→33.4\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
+    "prompt": "# 分屏对比与时间戳盖章\n\n## 实现 Prompt\n\n旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 6.133s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 按 index.html 内联 segments 在原有 4.8 秒之后重放mg-hanazi 原片 8.167–9.5 秒，总时长 6.133 秒。综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。画面与音轨沿用同一映射，声音默认关闭。\n\n## 参数\n\n- **时长**：6.133s\n- **声音 voice**：whoosh、stamp、sub\n- **追加原片区间**：mg-hanazi 原片 8.167–9.5 秒；s = lerp(2.5, 1, E.inQuad(k)); o = clamp(k * 2.2);\ns = 1 - .09 * Math.exp(-w * 16) * Math.cos(w * 44);\nkick(t, C.stamp, 14, 10, 13)\n\n## 动效 Token\n\n- **分屏**：0s\n- **盖章**：1.65s\n- **时长**：4.8s\n\n## 迁移\n\n- `动效函数`：配置分屏、两侧场景、边框与印章。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置对比轨道、明信片与照片画布、横竖布局。\n- `config.js → segments / markers`：29→33.4\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/split-compare-stamp/index.html) · [在库中查看](../../patterns.html#pattern/split-compare-stamp)\n"
   },
   "entrypoint": "demos/patterns/split-compare-stamp/index.html",
   "files": [
@@ -186,16 +215,184 @@
       "bytes": 119411
     },
     {
+      "path": "demos/cases/mg-hanazi/LICENSES.md",
+      "bytes": 3208
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
+      "bytes": 1358977
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B0.png",
+      "bytes": 1482239
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B1.png",
+      "bytes": 1488365
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B2.png",
+      "bytes": 1479775
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L06.png",
+      "bytes": 1403484
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L12.png",
+      "bytes": 1523388
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L135.png",
+      "bytes": 1555269
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/tux_r1.jpg",
+      "bytes": 1380121
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_dof.jpg",
+      "bytes": 525250
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear11.png",
+      "bytes": 2491551
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear16.png",
+      "bytes": 2492949
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear6.png",
+      "bytes": 2489969
+    },
+    {
+      "path": "demos/cases/mg-hanazi/audio/film.m4a",
+      "bytes": 423783
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fidelity.md",
+      "bytes": 3636
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/cues.json",
+      "bytes": 1232
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/scene.js",
+      "bytes": 48485
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/setup.js",
+      "bytes": 1432
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/style.css",
+      "bytes": 1332
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-Bold.ttf",
+      "bytes": 1375772
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-LICENSE.txt",
+      "bytes": 2030
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/DouyinSans-OFL.txt",
+      "bytes": 4455
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/DouyinSansBold.ttf",
+      "bytes": 1919404
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-OFL.txt",
+      "bytes": 4406
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-Regular.ttf",
+      "bytes": 3190368
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-LICENSE.txt",
+      "bytes": 11358
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ResourceHanRounded-OFL.txt",
+      "bytes": 4504
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ResourceHanRoundedCN-Heavy.ttf",
+      "bytes": 13688972
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-OFL.txt",
+      "bytes": 4398
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-Regular.ttf",
+      "bytes": 1514968
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/fonts.css",
+      "bytes": 1066
+    },
+    {
+      "path": "demos/cases/mg-hanazi/index.html",
+      "bytes": 1900
+    },
+    {
+      "path": "demos/cases/mg-hanazi/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep.py",
+      "bytes": 8920
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep_r2.py",
+      "bytes": 8320
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep_r2b.py",
+      "bytes": 4220
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/audio.py",
+      "bytes": 12216
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/cues.json",
+      "bytes": 1232
+    },
+    {
       "path": "demos/patterns/split-compare-stamp/config.js",
       "bytes": 440
     },
     {
       "path": "demos/patterns/split-compare-stamp/index.html",
-      "bytes": 7781
+      "bytes": 1744
     },
     {
       "path": "demos/patterns/split-compare-stamp/motion-kit.js",
       "bytes": 119411
+    },
+    {
+      "path": "demos/patterns/split-compare-stamp/original.html",
+      "bytes": 7781
     },
     {
       "path": "demos/patterns/split-compare-stamp/plates/landscape-24.6-map.webp",
@@ -223,11 +420,11 @@
     },
     {
       "path": "previews/patterns/split-compare-stamp-portrait.jpg",
-      "bytes": 180049
+      "bytes": 145504
     },
     {
       "path": "previews/patterns/split-compare-stamp.jpg",
-      "bytes": 183553
+      "bytes": 183579
     }
   ]
 }

@@ -33,8 +33,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 12,
-    "patterns": 55,
+    "cases": 15,
+    "patterns": 68,
     "materials": 2
   },
   "materialCatalog": "agent/materials.json",
@@ -287,6 +287,37 @@
       "bundle": "agent/cases/mg-line-art.json"
     },
     {
+      "id": "mg-3d-render",
+      "title": "3D 渲染 · soft. — Soft Landing",
+      "summary": "充气字母依次落在胶囊阵列上，金属球悬停后砸落，掀起环形冠状波；镜头拉回 soft. 字标与“柔软，自有分量”标语。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "3D 渲染",
+        "柔软材质",
+        "克隆阵列",
+        "物理模拟",
+        "产品片"
+      ],
+      "useCases": [
+        "高端产品片",
+        "品牌 ident"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "soft-bed-letter-bounce",
+        "capsule-sweep-lift",
+        "hang-slam-capsule-crown",
+        "macro-hero-focus-relay",
+        "vertical-title-blur",
+        "film-grain"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-3d-render.json"
+    },
+    {
       "id": "mg-morph",
       "title": "形状变形 · morphe. — One Shape, Every Story",
       "summary": "墨滴成为咖啡杯，再沿太阳、海上落日、海鸥、纸飞机、定位钉和爱心的链条连续变形，最后组成 morphe. 字标。",
@@ -350,6 +381,38 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "id": "mg-collage",
+      "title": "拼贴剪贴 · NOGGIN Quarterly",
+      "summary": "巨手拍下老照片，人物下颌开合，剪刀沿虚线剪开头盖；火箭、地球、花鸟和蝴蝶从脑中飞出，手指撕开纸页，露出 NOGGIN 脑洞季刊落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "拼贴剪贴",
+        "定格",
+        "半调网点",
+        "纸张",
+        "超现实"
+      ],
+      "useCases": [
+        "音乐短视频",
+        "街头潮流短视频"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "stepped-hand-placement",
+        "snip-rattle-pop-lid",
+        "cutout-arc-flight-flutter",
+        "pinch-rip-cylinder-peel",
+        "punch-in-camera-shake",
+        "film-grain",
+        "sticker-slap-shadow"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-collage.json"
     },
     {
       "id": "mg-aurora-glass",
@@ -442,6 +505,41 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mg-pixel.json"
+    },
+    {
+      "id": "mg-hanazi",
+      "title": "综艺花字 · 喵呜日记 EP.07",
+      "summary": "喵呜日记以白猫晒太阳、灰猫凝视和长毛猫三段照片推进，逐字花字、问号、汗滴、三连推和炸毛主拍衔接，最后收成“猫主子认证”相框落版。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "mg-styles-15",
+        "综艺花字",
+        "萌宠",
+        "多层描边",
+        "弹簧",
+        "情绪字幕"
+      ],
+      "useCases": [
+        "萌宠短片",
+        "vlog 包装",
+        "搞笑二创"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "punch-in-camera-shake",
+        "layered-hanazi-spring-pop",
+        "focus-burst-caption-hit",
+        "meter-needle-overrange",
+        "freeze-to-framed-card",
+        "shape-wipe-transition",
+        "collect-counter",
+        "cel-line-boil",
+        "split-compare-stamp"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/mg-hanazi.json"
     }
   ],
   "patterns": [
@@ -472,7 +570,7 @@
     {
       "id": "vertical-title-blur",
       "title": "竖排汉字模糊入场 + 英文打字",
-      "summary": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。",
+      "summary": "竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。 三维片的英文标语逐词上移、去模糊并收字距，横线和中文随后显现。",
       "types": [
         "type-motion"
       ],
@@ -482,7 +580,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "mg-3d-render"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -584,7 +683,7 @@
     {
       "id": "split-compare-stamp",
       "title": "分屏对比与时间戳盖章",
-      "summary": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。",
+      "summary": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。 综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。",
       "types": [
         "transition",
         "composition"
@@ -594,7 +693,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "mg-hanazi"
       ],
       "pairsWellWith": [
         "card-expand-fullscreen",
@@ -606,7 +706,7 @@
     {
       "id": "collect-counter",
       "title": "收集计数徽章与收集物托盘",
-      "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。",
+      "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。 综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。",
       "types": [
         "feedback",
         "hud"
@@ -618,7 +718,8 @@
       "role": "accent",
       "sourceCases": [
         "map-pilgrimage",
-        "mg-paperclip"
+        "mg-paperclip",
+        "mg-hanazi"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -694,7 +795,7 @@
     {
       "id": "film-grain",
       "title": "可复现的胶片颗粒与暗角",
-      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。线条片在午夜蓝与金线画面上叠加逐帧换位颗粒和径向暗角。 形变片的纸纹与逐帧软颗粒、极光片的颗粒和暗角分别覆盖整片；极光片还叠加三角分布抖动。",
+      "summary": "动态胶片颗粒与暗角覆盖地图、照片和插画，统一整片的质感。包豪斯片在几何海报上使用逐帧换位的纸面印刷颗粒与径向暗角。线条片在午夜蓝与金线画面上叠加逐帧换位颗粒和径向暗角。 形变片的纸纹与逐帧软颗粒、极光片的颗粒和暗角分别覆盖整片；极光片还叠加三角分布抖动。 三维片按帧号平移种子颗粒并叠加暗角；拼贴片逐格移动颗粒并交替两块尘点板。",
       "types": [
         "texture"
       ],
@@ -708,7 +809,9 @@
         "mg-bauhaus",
         "mg-line-art",
         "mg-morph",
-        "mg-aurora-glass"
+        "mg-aurora-glass",
+        "mg-3d-render",
+        "mg-collage"
       ],
       "pairsWellWith": [
         "seekable-timeline",
@@ -865,7 +968,7 @@
     {
       "id": "shape-wipe-transition",
       "title": "形状擦除转场",
-      "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。 形变片从主体位置向外扩张色域，并同步裁切同色装饰和字幕完成全屏换景。",
+      "summary": "重放通知气泡的预备形变，以及珊瑚彗星、薄荷胶囊和奶油半圆依次覆盖画面的转场。 形变片从主体位置向外扩张色域，并同步裁切同色装饰和字幕完成全屏换景。 综艺片用带滚动糖果条纹的不透明斜带扫过全屏，遮住前镜并露出下一镜。",
       "types": [
         "transition"
       ],
@@ -875,7 +978,8 @@
       "role": "accent",
       "sourceCases": [
         "mg-flat-vector",
-        "mg-morph"
+        "mg-morph",
+        "mg-hanazi"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/shape-wipe-transition.json"
@@ -1054,7 +1158,7 @@
     {
       "id": "cel-line-boil",
       "title": "逐张重画：线条沸腾与换纸",
-      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。",
+      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。",
       "types": [
         "texture",
         "rhythm"
@@ -1064,7 +1168,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-cel-boil"
+        "mg-cel-boil",
+        "mg-hanazi"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/cel-line-boil.json"
@@ -1362,7 +1467,7 @@
     {
       "id": "sticker-slap-shadow",
       "title": "抬高旋转拍贴",
-      "summary": "抬高、放大、倾转的贴纸下落，阴影同步收紧，落定后以衰减摆动与挤压回弹消力。",
+      "summary": "抬高、放大、倾转的贴纸下落，阴影同步收紧，落定后以衰减摆动与挤压回弹消力。 拼贴片将照片、文字纸片和刊名放大拍下，离纸阴影随高度塌缩，落地后逐格挤压回定。",
       "types": [
         "transition",
         "rhythm"
@@ -1372,7 +1477,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "mg-paperclip"
+        "mg-paperclip",
+        "mg-collage"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/sticker-slap-shadow.json"
@@ -1521,6 +1627,237 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/card-depth-arrival-parting.json"
+    },
+    {
+      "id": "soft-bed-letter-bounce",
+      "title": "软床触地回弹",
+      "summary": "字母到达软床后，接触力驱动下陷、反弹与延迟挤压，落点声音读取同一碰撞事件。",
+      "types": [
+        "rhythm",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/soft-bed-letter-bounce.json"
+    },
+    {
+      "id": "capsule-sweep-lift",
+      "title": "扫浪托起字母",
+      "summary": "扫波到达胶囊阵列后，高斯波包同步驱动胶囊高度、倾斜与着色，反向扫波按阅读顺序托起字母。",
+      "types": [
+        "rhythm",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/capsule-sweep-lift.json"
+    },
+    {
+      "id": "hang-slam-capsule-crown",
+      "title": "悬球砸落冠波",
+      "summary": "金属球进入并减速悬停后，急砸软床触发镜震和径向胶囊翻跳，冠波顶点放慢后追上时钟，最后沉降。",
+      "types": [
+        "rhythm",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/hang-slam-capsule-crown.json"
+    },
+    {
+      "id": "macro-hero-focus-relay",
+      "title": "镜头焦点接力",
+      "summary": "各段相机 cue 到达后，镜头在微距、全字、金属球与正面落版之间换位，独立焦点跟随主角，片尾持续微推。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-3d-render"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/macro-hero-focus-relay.json"
+    },
+    {
+      "id": "stepped-hand-placement",
+      "title": "抽帧手摆抖动",
+      "summary": "运动或停留状态变化后，位置与旋转按 12fps 或 6fps 取样，并用种子抖动保持手摆纸片感。",
+      "types": [
+        "rhythm",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/stepped-hand-placement.json"
+    },
+    {
+      "id": "snip-rattle-pop-lid",
+      "title": "剪盖蓄势爆开",
+      "summary": "剪线印章到达后，剪刀逐段打开剪口，头盖三次抖动后悬停，再弹起并回落到纸钉铰链，同时迸出碎纸和 BANG。",
+      "types": [
+        "rhythm",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/snip-rattle-pop-lid.json"
+    },
+    {
+      "id": "cutout-arc-flight-flutter",
+      "title": "剪影弧线飞出",
+      "summary": "地球、鹰或蝴蝶 cue 到达后，剪影沿二次曲线飞出并落位，按物件叠加落地压扁、俯冲或双姿势振翅。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/cutout-arc-flight-flutter.json"
+    },
+    {
+      "id": "pinch-rip-cylinder-peel",
+      "title": "夹纸裂页翻卷",
+      "summary": "手指夹住纸页上沿后，锯齿裂缝向下展开，左右纸半错一步沿圆柱翻卷，露出反面和下一张红纸。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-collage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/pinch-rip-cylinder-peel.json"
+    },
+    {
+      "id": "punch-in-camera-shake",
+      "title": "分级急推镜震",
+      "summary": "拍点到达后，镜头分级急推，每级在少数帧内完成推近、过冲与镜震，之后继续缓推或加强颤动。",
+      "types": [
+        "camera",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-collage",
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/punch-in-camera-shake.json"
+    },
+    {
+      "id": "layered-hanazi-spring-pop",
+      "title": "厚边花字弹入",
+      "summary": "逐字 cue 到达后，挤出、彩边、白边、渐变与高光一起弹入，驻留轻摆并按标题拍点依次跳动。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/layered-hanazi-spring-pop.json"
+    },
+    {
+      "id": "focus-burst-caption-hit",
+      "title": "集中线炸字主拍",
+      "summary": "炸毛主拍到达后，集中线、放射底、爆炸框和震惊花字同时展开，冲击抖动后保留轻摆并在定格帧闪白。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/focus-burst-caption-hit.json"
+    },
+    {
+      "id": "meter-needle-overrange",
+      "title": "量表扫针爆表",
+      "summary": "量表主拍到达后，表盘砸入，指针四帧从左端扫过终点并抵住抖动，爆表字和炸毛再击同拍发生。",
+      "types": [
+        "hud",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/meter-needle-overrange.json"
+    },
+    {
+      "id": "freeze-to-framed-card",
+      "title": "定格退为相框",
+      "summary": "定格 cue 到达后，保持主拍画面并略推，随后照片缩小、旋转、圆角裁切，白框与阴影展开，余振停稳。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "mg-hanazi"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/freeze-to-framed-card.json"
     }
   ],
   "materials": [

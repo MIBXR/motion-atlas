@@ -14,10 +14,11 @@
       "video"
     ],
     "orients": [
-      "landscape"
+      "landscape",
+      "portrait"
     ],
-    "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。",
-    "mechanism": "按曝光表一拍一、二、三取整绘制时间，循环噪声线稿变体让静止形体持续轻抖；同一绘制编号同时换纸齿采样区与尘点板。",
+    "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。",
+    "mechanism": "按曝光表一拍一、二、三取整绘制时间，循环噪声线稿变体让静止形体持续轻抖；同一绘制编号同时换纸齿采样区与尘点板。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。",
     "trigger": "时间进入下一张曝光画格时。",
     "effect": "线稿几何、纸齿位置与尘点板随绘制编号一起切换。",
     "timing": [
@@ -39,12 +40,17 @@
       },
       {
         "name": "重放时长",
-        "value": "原片0–10秒，巧思总时长10秒。"
+        "value": "原片0–10秒，巧思总时长12.701秒。"
+      },
+      {
+        "name": "追加原片区间",
+        "value": "mg-hanazi 原片 1.3–1.834 秒；mg-hanazi 原片 5.8–7.967 秒；['e11', 'e16', 'e11', 'e6'][ef]\nconst pick = fm >= 0 && fm < 2 ? 'hL135' : (fm >= 2 && fm < 4) || (fd >= 2 && fd < 4) ? 'hL12' : fd < 2 ? 'hL06' : 'hB' + (Math.floor(tt * 12) % 3);"
       }
     ],
     "useCases": [
       "逐帧手绘线稿的停留质感",
-      "纸纹与线稿共用曝光节奏"
+      "纸纹与线稿共用曝光节奏",
+      "综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。"
     ],
     "avoid": [
       "竖屏重排",
@@ -60,13 +66,16 @@
       "conflicts": [],
       "notes": "本巧思按所列原片区间顺序重放。"
     },
-    "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
+    "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放0–10秒，全长12.701秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。 按 index.html 内联 segments 在原有 10 秒之后重放mg-hanazi 原片 1.3–1.834 秒；mg-hanazi 原片 5.8–7.967 秒，总时长 12.701 秒。综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。画面与音轨沿用同一映射，声音默认关闭。",
     "demo": "demos/patterns/cel-line-boil/index.html",
     "kit": true,
     "timeline": true,
     "sources": [
       {
         "caseId": "mg-cel-boil"
+      },
+      {
+        "caseId": "mg-hanazi"
       }
     ],
     "previewAt": 9.75,
@@ -114,6 +123,34 @@
       {
         "t": 9.583333333333334,
         "label": "结尾重画"
+      },
+      {
+        "t": 10,
+        "label": "综艺花字"
+      },
+      {
+        "t": 10.017,
+        "label": "小声旁白"
+      },
+      {
+        "t": 10.267,
+        "label": "快乐电池"
+      },
+      {
+        "t": 10.534,
+        "label": "综艺花字"
+      },
+      {
+        "t": 10.734,
+        "label": "炸毛主拍"
+      },
+      {
+        "t": 11.734,
+        "label": "发量爆表"
+      },
+      {
+        "t": 12.234,
+        "label": "定格收框"
       }
     ],
     "sound": {
@@ -140,17 +177,22 @@
         "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
       }
     ],
+    "previewAtPortrait": 10.267,
     "preview": "previews/patterns/cel-line-boil.jpg",
-    "previewPortrait": null
+    "previewPortrait": "previews/patterns/cel-line-boil-portrait.jpg"
   },
   "sourceCases": [
     {
       "caseId": "mg-cel-boil",
       "bundle": "agent/cases/mg-cel-boil.json"
+    },
+    {
+      "caseId": "mg-hanazi",
+      "bundle": "agent/cases/mg-hanazi.json"
     }
   ],
   "documents": {
-    "prompt": "# 逐张重画：线条沸腾与换纸\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放0–10秒，全长10秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。\n\n## 参数\n\n- **曝光表**：SCHED=[[0,8,2],[8,24,1],[24,48,2],[48,60,1],[60,108,2],[108,120,3],[120,132,2],[132,168,1],[168,224,2],[224,230,1],[230,240,3]]；24fps。\n- **线稿变体**：bv=(D)=>(D.step===3?D.id%3:D.id%4)；boil(pts,seed,amp=2.4,scale=70)；z=seed*2.371+0.5。\n- **纸齿换位**：ox=floor(hs(v,51)*470)；oy=floor(hs(v,52)*310)；globalCompositeOperation=multiply；globalAlpha=0.5。\n- **尘点轮换**：IMG.dust[v%4]；globalAlpha=0.22；按v%2、v%3翻转。\n- **重放时长**：原片0–10秒，巧思总时长10秒。\n\n## 迁移\n\n- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/cel-line-boil/index.html) · [在库中查看](../../patterns.html#pattern/cel-line-boil)\n"
+    "prompt": "# 逐张重画：线条沸腾与换纸\n\n## 实现 Prompt\n\n复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放0–10秒，全长12.701秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。 按 index.html 内联 segments 在原有 10 秒之后重放mg-hanazi 原片 1.3–1.834 秒；mg-hanazi 原片 5.8–7.967 秒，总时长 12.701 秒。综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。画面与音轨沿用同一映射，声音默认关闭。\n\n## 参数\n\n- **曝光表**：SCHED=[[0,8,2],[8,24,1],[24,48,2],[48,60,1],[60,108,2],[108,120,3],[120,132,2],[132,168,1],[168,224,2],[224,230,1],[230,240,3]]；24fps。\n- **线稿变体**：bv=(D)=>(D.step===3?D.id%3:D.id%4)；boil(pts,seed,amp=2.4,scale=70)；z=seed*2.371+0.5。\n- **纸齿换位**：ox=floor(hs(v,51)*470)；oy=floor(hs(v,52)*310)；globalCompositeOperation=multiply；globalAlpha=0.5。\n- **尘点轮换**：IMG.dust[v%4]；globalAlpha=0.22；按v%2、v%3翻转。\n- **重放时长**：原片0–10秒，巧思总时长12.701秒。\n- **追加原片区间**：mg-hanazi 原片 1.3–1.834 秒；mg-hanazi 原片 5.8–7.967 秒；['e11', 'e16', 'e11', 'e6'][ef]\nconst pick = fm >= 0 && fm < 2 ? 'hL135' : (fm >= 2 && fm < 4) || (fd >= 2 && fd < 4) ? 'hL12' : fd < 2 ? 'hL06' : 'hB' + (Math.floor(tt * 12) % 3);\n\n## 迁移\n\n- `index.html 内联配置 → segments`：设置重放原片的起止时刻，画面与音轨使用同一映射。\n- `index.html 内联配置 → markers / reduced`：设置巧思相对时间轴的中文节点与减少动态时刻。\n\n[打开 Demo](../../demos/patterns/cel-line-boil/index.html) · [在库中查看](../../patterns.html#pattern/cel-line-boil)\n"
   },
   "entrypoint": "demos/patterns/cel-line-boil/index.html",
   "files": [
@@ -283,16 +325,184 @@
       "bytes": 18735
     },
     {
+      "path": "demos/cases/mg-hanazi/LICENSES.md",
+      "bytes": 3208
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/grey_r2.jpg",
+      "bytes": 1358977
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B0.png",
+      "bytes": 1482239
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B1.png",
+      "bytes": 1488365
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_B2.png",
+      "bytes": 1479775
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L06.png",
+      "bytes": 1403484
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L12.png",
+      "bytes": 1523388
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/hero_L135.png",
+      "bytes": 1555269
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/textures/grain/grain_fine_2048.png",
+      "bytes": 3554972
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/tux_r1.jpg",
+      "bytes": 1380121
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_dof.jpg",
+      "bytes": 525250
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear11.png",
+      "bytes": 2491551
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear16.png",
+      "bytes": 2492949
+    },
+    {
+      "path": "demos/cases/mg-hanazi/assets/white_ear6.png",
+      "bytes": 2489969
+    },
+    {
+      "path": "demos/cases/mg-hanazi/audio/film.m4a",
+      "bytes": 423783
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fidelity.md",
+      "bytes": 3636
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/LICENSE",
+      "bytes": 1092
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/cues.json",
+      "bytes": 1232
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/scene.js",
+      "bytes": 48485
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/setup.js",
+      "bytes": 1432
+    },
+    {
+      "path": "demos/cases/mg-hanazi/film/style.css",
+      "bytes": 1332
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-Bold.ttf",
+      "bytes": 1375772
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/AlimamaShuHeiTi-LICENSE.txt",
+      "bytes": 2030
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/DouyinSans-OFL.txt",
+      "bytes": 4455
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/DouyinSansBold.ttf",
+      "bytes": 1919404
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-OFL.txt",
+      "bytes": 4406
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LXGWMarkerGothic-Regular.ttf",
+      "bytes": 3190368
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-LICENSE.txt",
+      "bytes": 11358
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ResourceHanRounded-OFL.txt",
+      "bytes": 4504
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ResourceHanRoundedCN-Heavy.ttf",
+      "bytes": 13688972
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-OFL.txt",
+      "bytes": 4398
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/ZCOOLKuaiLe-Regular.ttf",
+      "bytes": 1514968
+    },
+    {
+      "path": "demos/cases/mg-hanazi/fonts/fonts.css",
+      "bytes": 1066
+    },
+    {
+      "path": "demos/cases/mg-hanazi/index.html",
+      "bytes": 1900
+    },
+    {
+      "path": "demos/cases/mg-hanazi/motion-kit.js",
+      "bytes": 119411
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep.py",
+      "bytes": 8920
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep_r2.py",
+      "bytes": 8320
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/assets/prep_r2b.py",
+      "bytes": 4220
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/audio.py",
+      "bytes": 12216
+    },
+    {
+      "path": "demos/cases/mg-hanazi/source/cues.json",
+      "bytes": 1232
+    },
+    {
       "path": "demos/patterns/cel-line-boil/index.html",
-      "bytes": 1887
+      "bytes": 2927
     },
     {
       "path": "demos/patterns/cel-line-boil/motion-kit.js",
       "bytes": 119411
     },
     {
+      "path": "previews/patterns/cel-line-boil-portrait.jpg",
+      "bytes": 132482
+    },
+    {
       "path": "previews/patterns/cel-line-boil.jpg",
-      "bytes": 139961
+      "bytes": 142917
     }
   ]
 }
