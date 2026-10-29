@@ -113,11 +113,11 @@
     },
     {
       "path": "demos/cases/mg-liquid/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-liquid/film/cues.json",
-      "bytes": 1801
+      "bytes": 1702
     },
     {
       "path": "demos/cases/mg-liquid/film/js/engine.js",
@@ -137,7 +137,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/film/js/textsdf.js",
-      "bytes": 5672
+      "bytes": 5558
     },
     {
       "path": "demos/cases/mg-liquid/film/js/type.js",
@@ -197,7 +197,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/source/audio.py",
-      "bytes": 12053
+      "bytes": 11884
     },
     {
       "path": "demos/patterns/liquid-bar-split-wordmark/index.html",

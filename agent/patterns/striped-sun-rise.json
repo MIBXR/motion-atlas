@@ -112,11 +112,11 @@
     },
     {
       "path": "demos/cases/mg-synthwave/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-synthwave/film/cues.json",
-      "bytes": 1356
+      "bytes": 1312
     },
     {
       "path": "demos/cases/mg-synthwave/film/scene.js",
@@ -176,7 +176,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/source/audio.py",
-      "bytes": 11907
+      "bytes": 11743
     },
     {
       "path": "demos/cases/mg-synthwave/vendor/opentype.js@2.0.0/LICENSE",

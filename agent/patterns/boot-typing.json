@@ -3884,7 +3884,7 @@
     },
     {
       "path": "demos/cases/mg-hud/assets/land-50m.json",
-      "bytes": 545535
+      "bytes": 545534
     },
     {
       "path": "demos/cases/mg-hud/audio/film.m4a",
@@ -3896,11 +3896,11 @@
     },
     {
       "path": "demos/cases/mg-hud/film/LICENSE",
-      "bytes": 1092
+      "bytes": 1071
     },
     {
       "path": "demos/cases/mg-hud/film/cues.json",
-      "bytes": 1518
+      "bytes": 1411
     },
     {
       "path": "demos/cases/mg-hud/film/js/holo.js",
@@ -3992,7 +3992,7 @@
     },
     {
       "path": "demos/cases/mg-hud/source/audio.py",
-      "bytes": 7697
+      "bytes": 7573
     },
     {
       "path": "demos/cases/mg-hud/vendor/d3@7.9.0/LICENSE",
