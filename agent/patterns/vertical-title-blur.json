@@ -158,20 +158,20 @@
     },
     "migration": [
       {
-        "field": "动效函数",
-        "how": "配置片名、地名、回忆、收尾的模糊与打字入场。"
+        "field": "script.js → blurIn、typeIn、drawIntro、drawLocTitle、drawFlashback、drawOutro",
+        "how": "修改片名、地名、回忆、收尾的模糊与打字入场的实现。"
       },
       {
-        "field": "依赖",
-        "how": "配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。"
+        "field": "original.html → script 与样式加载；script.js → layout、startPattern",
+        "how": "入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。"
       },
       {
-        "field": "需要的数据",
-        "how": "设置片名、地点、回忆字幕、收尾与横竖布局。"
+        "field": "../../cases/map-pilgrimage/film/config.js → meta；tracks.locTitle、tracks.flashback、tracks.outro；layout",
+        "how": "修改片名、地名、回忆字幕、收尾与横竖布局。"
       },
       {
-        "field": "config.js → segments / markers",
-        "how": "3.8→8/17.9→21.6/25.5→29.6/57.9→60"
+        "field": "index.html → config.segments / markers；config.js → segments / markers",
+        "how": "index.html 设置地图与追加案例的重放区间、顺序和标记；config.js 设置 original.html 地图片段。地图来源时刻：3.8→8/17.9→21.6/25.5→29.6/57.9→60。"
       },
       {
         "field": "score.json",
@@ -192,13 +192,13 @@
     }
   ],
   "documents": {
-    "prompt": "# 竖排汉字模糊入场 + 英文打字\n\n## 实现 Prompt\n\n竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 16s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 按 index.html 内联 segments 在原有 14.1 秒之后重放mg-3d-render 原片 7.8–9.7 秒，总时长 16 秒。三维片的英文标语逐词上移、去模糊并收字距，横线和中文随后显现。画面与音轨沿用同一映射，声音默认关闭。\n\n## 参数\n\n- **时长**：16s\n- **声音 voice**：key、tick、bell、shimmer、sub\n- **追加原片区间**：mg-3d-render 原片 7.8–9.7 秒；const u = prog(t, T0 + 0.07 * k, 0.9);\nw.style.filter = `blur(${(1 - e) * 7}px)`;\nw.style.letterSpacing = `${0.26 + (1 - e) * 0.2}em`;\nconst uz = prog(t, T0 + 0.30, 0.9), ez = expoOut(uz);\n\n## 动效 Token\n\n- **片名**：0s\n- **地点标题**：4.2s\n- **回忆竖排字幕**：7.9s\n- **fin.**：12s\n- **时长**：14.1s\n\n## 迁移\n\n- `动效函数`：配置片名、地名、回忆、收尾的模糊与打字入场。\n- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。\n- `需要的数据`：设置片名、地点、回忆字幕、收尾与横竖布局。\n- `config.js → segments / markers`：3.8→8/17.9→21.6/25.5→29.6/57.9→60\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/vertical-title-blur/index.html) · [在库中查看](../../patterns.html#pattern/vertical-title-blur)\n"
+    "prompt": "# 竖排汉字模糊入场 + 英文打字\n\n## 实现 Prompt\n\n竖排大字从模糊中显影，配副标题与逐字打字；片名、地点、回忆字幕与收尾共用一套入场。复用地图巡礼的 drawIntro、drawLocTitle、drawFlashback、drawOutro、blurIn、typeIn、mountScene、paintScene 与对应 CSS。片名、地点标题、全屏回忆插画与竖排字幕，以及 drawOutro 的 fin.。片段：caseT 3.8→8；caseT 17.9→21.6；caseT 25.5→29.6；caseT 57.9→60；时长 16s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 score.json 挂接。 按 index.html 内联 segments 在原有 14.1 秒之后重放mg-3d-render 原片 7.8–9.7 秒，总时长 16 秒。三维片的英文标语逐词上移、去模糊并收字距，横线和中文随后显现。画面与音轨沿用同一映射，声音默认关闭。\n\n## 参数\n\n- **时长**：16s\n- **声音 voice**：key、tick、bell、shimmer、sub\n- **追加原片区间**：mg-3d-render 原片 7.8–9.7 秒；const u = prog(t, T0 + 0.07 * k, 0.9);\nw.style.filter = `blur(${(1 - e) * 7}px)`;\nw.style.letterSpacing = `${0.26 + (1 - e) * 0.2}em`;\nconst uz = prog(t, T0 + 0.30, 0.9), ez = expoOut(uz);\n\n## 动效 Token\n\n- **片名**：0s\n- **地点标题**：4.2s\n- **回忆竖排字幕**：7.9s\n- **fin.**：12s\n- **时长**：14.1s\n\n## 迁移\n\n- `script.js → blurIn、typeIn、drawIntro、drawLocTitle、drawFlashback、drawOutro`：修改片名、地名、回忆、收尾的模糊与打字入场的实现。\n- `original.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。\n- `../../cases/map-pilgrimage/film/config.js → meta；tracks.locTitle、tracks.flashback、tracks.outro；layout`：修改片名、地名、回忆字幕、收尾与横竖布局。\n- `index.html → config.segments / markers；config.js → segments / markers`：index.html 设置地图与追加案例的重放区间、顺序和标记；config.js 设置 original.html 地图片段。地图来源时刻：3.8→8/17.9→21.6/25.5→29.6/57.9→60。\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/vertical-title-blur/index.html) · [在库中查看](../../patterns.html#pattern/vertical-title-blur)\n"
   },
   "entrypoint": "demos/patterns/vertical-title-blur/index.html",
   "files": [
     {
       "path": "demos/cases/map-pilgrimage/fidelity.md",
-      "bytes": 392
+      "bytes": 2550
     },
     {
       "path": "demos/cases/map-pilgrimage/film/config.js",
@@ -1382,7 +1382,7 @@
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 19490
+      "bytes": 19707
     },
     {
       "path": "entries/cases/mg-3d-render.json",
@@ -1390,7 +1390,7 @@
     },
     {
       "path": "entries/patterns/vertical-title-blur.json",
-      "bytes": 6443
+      "bytes": 7009
     },
     {
       "path": "previews/patterns/vertical-title-blur-portrait.jpg",

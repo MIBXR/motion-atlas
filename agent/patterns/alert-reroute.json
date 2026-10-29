@@ -136,20 +136,20 @@
     },
     "migration": [
       {
-        "field": "动效函数",
-        "how": "配置警示、改道提示、路线与标签。"
+        "field": "script.js → renderLive、drawAlert、drawRoutesSVG、drawPatternMarkers",
+        "how": "修改警示、改道提示、路线与标签的实现。"
       },
       {
-        "field": "依赖",
-        "how": "配置MapLibre 5.6.0、样式、图层与地图镜像。"
+        "field": "index.html → script 与样式加载；script.js → layout、startPattern",
+        "how": "入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。"
       },
       {
-        "field": "需要的数据",
-        "how": "设置警示轨道、错误路线、地图与横竖布局。"
+        "field": "../../cases/map-pilgrimage/film/config.js → tracks.alert、tracks.routes、tracks.markers；stops、map、layout",
+        "how": "修改警示文字、错误路线、地点与横竖布局。"
       },
       {
         "field": "config.js → segments / markers",
-        "how": "44.8→50.3"
+        "how": "设置本巧思片段映射与标记；地图来源时刻：44.8→50.3。"
       },
       {
         "field": "score.json",
@@ -167,13 +167,13 @@
     }
   ],
   "documents": {
-    "prompt": "# 警示横幅与改道\n\n## 实现 Prompt\n\n坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。复用地图巡礼的 drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project 与对应 CSS。警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。片段：caseT 44.8→50.3；时长 6.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：6.2s\n- **声音 voice**：blip、whoosh、error、glitch、clack、alarm、beep、stamp\n\n## 动效 Token\n\n- **警示**：0.2s\n- **错误终点**：1.5s\n- **改道**：2.2s\n- **时长**：6.2s\n\n## 迁移\n\n- `动效函数`：配置警示、改道提示、路线与标签。\n- `依赖`：配置MapLibre 5.6.0、样式、图层与地图镜像。\n- `需要的数据`：设置警示轨道、错误路线、地图与横竖布局。\n- `config.js → segments / markers`：44.8→50.3\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/alert-reroute/index.html) · [在库中查看](../../patterns.html#pattern/alert-reroute)\n"
+    "prompt": "# 警示横幅与改道\n\n## 实现 Prompt\n\n坐错车时红色警示横幅压下，错误路线打叉，改道路线重新描画。复用地图巡礼的 drawAlert、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、cameraAt、project 与对应 CSS。警示横幅、改道胶囊、错误路线与 X、改道路线、该时段标记标签，以及已完成的持续路线。片段：caseT 44.8→50.3；时长 6.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 score.json 挂接。\n\n## 参数\n\n- **时长**：6.2s\n- **声音 voice**：blip、whoosh、error、glitch、clack、alarm、beep、stamp\n\n## 动效 Token\n\n- **警示**：0.2s\n- **错误终点**：1.5s\n- **改道**：2.2s\n- **时长**：6.2s\n\n## 迁移\n\n- `script.js → renderLive、drawAlert、drawRoutesSVG、drawPatternMarkers`：修改警示、改道提示、路线与标签的实现。\n- `index.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。\n- `../../cases/map-pilgrimage/film/config.js → tracks.alert、tracks.routes、tracks.markers；stops、map、layout`：修改警示文字、错误路线、地点与横竖布局。\n- `config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：44.8→50.3。\n- `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/alert-reroute/index.html) · [在库中查看](../../patterns.html#pattern/alert-reroute)\n"
   },
   "entrypoint": "demos/patterns/alert-reroute/index.html",
   "files": [
     {
       "path": "demos/cases/map-pilgrimage/fidelity.md",
-      "bytes": 392
+      "bytes": 2550
     },
     {
       "path": "demos/cases/map-pilgrimage/film/config.js",
@@ -233,11 +233,11 @@
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 19490
+      "bytes": 19707
     },
     {
       "path": "entries/patterns/alert-reroute.json",
-      "bytes": 5136
+      "bytes": 5592
     },
     {
       "path": "previews/patterns/alert-reroute-portrait.jpg",

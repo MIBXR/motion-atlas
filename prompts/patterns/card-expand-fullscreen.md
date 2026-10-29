@@ -18,10 +18,10 @@
 
 ## 迁移
 
-- `动效函数`：配置卡片、引线、场景绘制与镜头。
-- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
-- `需要的数据`：设置20.4s底图锚点、鸟居照片、卡片与展开轨道、横竖布局。
-- `config.js → segments / markers`：18.4→24.6
+- `script.js → drawCards、drawLeader、mountScene`：修改卡片、引线、场景绘制与镜头的实现。
+- `index.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → tracks.cards[] → scene、caption、expand；tracks.camera、layout`：修改卡片、展开时刻、镜头与横竖布局；程序场景在 ../../cases/map-pilgrimage/film/scenes.js → paintScene。
+- `config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：18.4→24.6。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/card-expand-fullscreen/index.html) · [在库中查看](../../patterns.html#pattern/card-expand-fullscreen)

@@ -289,7 +289,7 @@
     "layout": "只有横屏 1920×1080。大字在左上，折线图区域为 x=155–1760、y=445–865。左侧年均组基线 y=363，下沿 y=410，与纵轴标签、曲线顶部至少留 40px；来源 y=1030，音乐署名 y=1064。整体等比缩放。",
     "imagery": "无实拍图片。NOAA GML 月均 average 列形成真实锯齿，decimal date 为横坐标；全局范围 1958–2026／308–440 ppm，近景范围 2023–2026／414–434 ppm，数据只使用到 2025 年 12 月。",
     "motion": "月线按真实时间线性展开；横纵坐标跨度按对数插值，推近与拉远均用 ease.inOutCubic，两端速度归零。文字保持排版字号，数据落定后不弹跳、不滚动虚构数字。峰谷标签 0.300 秒、来源与音乐署名 0.350 秒，用 glide 缓动入场。",
-    "sound": "默认关闭。开启后播放与最终成片一致的混音音轨，定位与播放跟随画面 t。BGM 为 Kevin MacLeod 的 Dreams Become Real，CC BY 4.0；三个 Kenney 音效为 CC0。音乐连续截取 7.162–27.162 秒，片内 100ms 淡入、末尾 1.5 秒淡出，无口播与合成声部；完整许可和署名见 Demo 的 AUDIO.md 与 audio/。",
+    "sound": "默认关闭。开启后播放与最终成片一致的混音音轨，定位与播放跟随画面 t。BGM 为 Kevin MacLeod 的 Dreams Become Real，CC BY 4.0；三个 Kenney 音效为 CC0。音乐连续截取 7.162–27.162 秒，片内 100ms 淡入、末尾 1.5 秒淡出，无口播与合成声部；完整许可和署名见 Demo 的 source/AUDIO.md 与 audio/。",
     "rhythm": "名义 60 BPM，20 个音乐拍点由 candidate-1-beats-60.json 的 beats 减 7.162 秒得到。六段镜头边界保持 0／2.428／7.408／10.346／12.366／15.315／20 秒，不等同于音乐拍点；三个音效事件为 0.500／10.346／17.300 秒。能量值由 Motion Atlas 依据成片的运动量与停留时间估计，不是 skill brief 中给出的数值。",
     "coherence": "同一条真实月线贯穿全片，全局与近景只改变坐标映射和高亮。年均比较、月均端点与季节峰谷各自标明口径，纸底、字体、细轴线和单一强调色保持一致。"
   },
@@ -382,8 +382,8 @@
   "constraints": [
     "成片 20 秒、1920×1080、30fps，只有横屏，不作无缝循环。",
     "制作方式：garden-skills 的 motion-showreel skill，固定提交 2b9a89340b70f632d31c0f1c69fce94a7912423e；原始 skill brief 随 Demo 原样保存。",
-    "数据许可：NOAA GML 免费公开数据，发表需相应引用与署名；保留 Xin Lan（NOAA/GML）、Ralph Keeling（Scripps）及早期 C. David Keeling／Scripps 归属，具体要求见 DATA.md。",
-    "声音许可：Dreams Become Real，Kevin MacLeod／Incompetech，CC BY 4.0，须保留完整署名并说明截取、淡入淡出与混音；Kenney Impact Sounds 和 UI Audio 为 CC0，包内 License.txt 随音轨保留，见 AUDIO.md。",
+    "数据许可：NOAA GML 免费公开数据，发表需相应引用与署名；保留 Xin Lan（NOAA/GML）、Ralph Keeling（Scripps）及早期 C. David Keeling／Scripps 归属，具体要求见 source/DATA.md。",
+    "声音许可：Dreams Become Real，Kevin MacLeod／Incompetech，CC BY 4.0，须保留完整署名并说明截取、淡入淡出与混音；Kenney Impact Sounds 和 UI Audio 为 CC0，包内 License.txt 随音轨保留，见 source/AUDIO.md。",
     "自托管 Noto Sans SC 与 IBM Plex Mono 附各自 OFL 许可。",
     "814 条月均记录只取 1958-03 至 2025-12；年均比较只用 annual 第 46／112 行。2022 年末至 2023 年中的临时代测记录按 NOAA 官方连续序列保留。",
     "画面保留 ppm、年均／月均口径、非零纵轴说明与来源；不补造 1958 年一二月，不生成无来源的中间数字。",
@@ -396,7 +396,7 @@
   "migration": [
     {
       "field": "assets/co2_mm_mlo.txt、assets/co2_annmean_mlo.txt 与 film/data.js",
-      "how": "更换数据前核对字段、有效日期、缺测规则与引用要求，同时更新 DATA.md；月均线与年均度量分别读取，不能互换。"
+      "how": "更换数据前核对字段、有效日期、缺测规则与引用要求，同时更新 source/DATA.md；月均线与年均度量分别读取，不能互换。"
     },
     {
       "field": "film/timeline.js → SHOTS、TIMES、EVENTS、AUDIO",
@@ -407,8 +407,8 @@
       "how": "为新作品调整色彩、绘图区、两种坐标范围和文案；保持同一数据点身份、数值口径、单位与非零纵轴说明。本案例原文件保真保存。"
     },
     {
-      "field": "audio/ 与 AUDIO.md",
-      "how": "更换音乐或音效须先取得相应许可，更新完整署名、截取区间、淡入淡出及三个事件的同步说明。"
+      "field": "audio/；source/AUDIO.md；source/audio/production.json",
+      "how": "在 source/audio/ 更换原曲、音效与混音输入；截取、淡入淡出、播放起点与增益见 production.json，制作命令与署名见 source/AUDIO.md；运行音轨为 audio/final.wav。"
     },
     {
       "field": "index.html → MotionKit.mountFilm",

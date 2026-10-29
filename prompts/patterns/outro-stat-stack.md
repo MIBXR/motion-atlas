@@ -17,10 +17,10 @@
 
 ## 迁移
 
-- `动效函数`：配置统计行、数值计数与fin.入场。
-- `依赖`：配置舞台、时间轴、预加载、声音、横竖布局、颗粒与暗角。
-- `需要的数据`：设置收尾与横竖布局；58s底图显示完成路线和标记。
-- `config.js → segments / markers`：55.6→60
+- `script.js → drawOutro`：修改统计行、数值计数与fin.入场的实现。
+- `index.html → script 与样式加载；script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 config.js、paths.js、scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → tracks.outro → t、stats、fin、credits；meta.handle；layout`：修改统计值、结尾文案与横竖布局；逐行时序在 script.js → drawOutro。
+- `config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：55.6→60。
 - `score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 
 [打开 Demo](../../demos/patterns/outro-stat-stack/index.html) · [在库中查看](../../patterns.html#pattern/outro-stat-stack)

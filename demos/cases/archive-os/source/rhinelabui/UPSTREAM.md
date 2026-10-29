@@ -1,7 +1,7 @@
 # RhineLabUI 上游快照
 
 
-来源与固定版本见[条目 JSON](../../../../../entries/cases/archive-os.json)，许可入口见[LICENSES.md](../../LICENSES.md)。本目录保存上游源码与 Motion Atlas 胶片接入层。上游视觉、CSS、档案文本、动效参数、模型、字体和音频资源保留原版内容；上游源码的接入修改使用 `// MOTION-ATLAS:` 标记。
+来源为 [LBEILC / RhineLabUI](https://github.com/LBEILC/RhineLabUI/tree/12cc5e4013acb9408f753ff71de6b8492299b7c8)，固定提交 `12cc5e4013acb9408f753ff71de6b8492299b7c8`；条目事实见[条目 JSON](../../../../../entries/cases/archive-os.json)，许可入口见[LICENSES.md](../../LICENSES.md)。本目录保存上游源码、模型制作输入与 Motion Atlas 胶片接入层。上游视觉、CSS、档案文本、动效参数、模型、字体和音频资源保留原版内容；上游源码的接入修改使用 `// MOTION-ATLAS:` 标记。
 
 ## 应用文件职责
 
@@ -39,7 +39,7 @@
 | `licenses/licenses/rolling-number.txt` | `public/licenses/rolling-number.txt` |
 | `licenses/audio/README.md` | `public/audio/README.md` |
 
-快照包含上游README、LICENSE、PR15署名、index、package文件、TypeScript/Vite配置、src、content、两份音频生成脚本，以及postinstall所需的原版rolling-number补丁脚本。`art/`、`docs/`、`reference/`、`verification/`、`wallpaper/`和部署配置不属于快照；node_modules由上游lockfile安装并被Git忽略。
+快照包含上游README、LICENSE、PR15署名、index、package文件、TypeScript/Vite配置、src、content、两份音频生成脚本、`art/` 的模型生成脚本与 Blender 工程，以及postinstall所需的原版rolling-number补丁脚本。`docs/`、`reference/`、`verification/`、`wallpaper/`和部署配置不属于快照；node_modules由上游lockfile安装并被Git忽略。
 
 ## 构建与胶片锚点
 
