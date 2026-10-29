@@ -47,7 +47,7 @@ export function rewriteHTML(text, filename, sources) {
       return url === value ? all : prefix + quote + url.replaceAll('&', '&amp;') + quote;
     });
   });
-  const relative = name => path.posix.relative(path.posix.dirname(filename), `assets/${name}`);
-  const scripts = `<script src="${relative('asset-sources.js')}"></script><script src="${relative('asset-runtime.js')}"></script>`;
+  const relative = target => path.posix.relative(path.posix.dirname(filename), target);
+  const scripts = `<script src="${relative('data/asset-sources.js')}"></script><script src="${relative('site/runtime/asset-runtime.js')}"></script>`;
   return rewritten.replace(/<head\b[^>]*>/i, head => head + scripts);
 }

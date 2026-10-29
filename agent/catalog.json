@@ -35,9 +35,9 @@
   "counts": {
     "cases": 12,
     "patterns": 55,
-    "resources": 2
+    "materials": 2
   },
-  "resourceCatalog": "agent/resources.json",
+  "materialCatalog": "agent/materials.json",
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -1523,7 +1523,7 @@
       "bundle": "agent/patterns/card-depth-arrival-parting.json"
     }
   ],
-  "resources": [
+  "materials": [
     {
       "id": "motion-showreel",
       "title": "motion-showreel · 代码渲染短视频",
@@ -1550,7 +1550,7 @@
           "note": "用本 skill 按其完整工作流实际制作的 20 秒数据短片，配乐与音效来自公开素材库"
         }
       ],
-      "bundle": "agent/resources/motion-showreel.json"
+      "bundle": "agent/materials/motion-showreel.json"
     },
     {
       "id": "web-video-presentation",
@@ -1572,7 +1572,7 @@
       ],
       "skillPath": "agent-skills/web-video-presentation/",
       "relatedEntries": [],
-      "bundle": "agent/resources/web-video-presentation.json"
+      "bundle": "agent/materials/web-video-presentation.json"
     }
   ]
 }

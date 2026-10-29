@@ -194,10 +194,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/map-pilgrimage/source/research.md",
-      "bytes": 7061
-    },
-    {
       "path": "demos/patterns/card-expand-fullscreen/config.js",
       "bytes": 836
     },
@@ -230,12 +226,16 @@
       "bytes": 41282
     },
     {
+      "path": "docs/research/map-pilgrimage.md",
+      "bytes": 7066
+    },
+    {
       "path": "previews/patterns/card-expand-fullscreen-portrait.jpg",
       "bytes": 196757
     },
     {
       "path": "previews/patterns/card-expand-fullscreen.jpg",
-      "bytes": 185242
+      "bytes": 185214
     }
   ]
 }

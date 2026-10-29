@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Motion Atlas 命令行：给人和 Agent 用的检索、查看与导出。零依赖。
-//   node scripts/atlas.mjs list [--kind cases|patterns] [--json]
-//   node scripts/atlas.mjs search <关键词…> [--kind cases|patterns] [--carrier video|console] [--type <巧思类型>] [--limit 8] [--json]
+//   node scripts/atlas.mjs list [--kind cases|patterns|materials] [--json]
+//   node scripts/atlas.mjs search <关键词…> [--kind cases|patterns|materials] [--carrier video|console] [--type <巧思类型>] [--limit 8] [--json]
 //   node scripts/atlas.mjs show <id> [--source] [--json]
 //   node scripts/atlas.mjs export <id> --out <目录> [--code-only] [--force]
 import fs from 'node:fs';
@@ -16,16 +16,16 @@ const VALUED = new Set(['--kind', '--carrier', '--type', '--limit', '--out']);
 const positional = rest.filter((a, i) => !a.startsWith('--') && !(i > 0 && VALUED.has(rest[i - 1])));
 const asJSON = flags.has('--json');
 
-const { cases, patterns } = loadEntries();
-const all = [...cases.map((e) => ({ kind: 'cases', e })), ...patterns.map((e) => ({ kind: 'patterns', e }))];
+const { cases, patterns, materials } = loadEntries();
+const all = [...cases.map((e) => ({ kind: 'cases', e })), ...patterns.map((e) => ({ kind: 'patterns', e })), ...materials.map((e) => ({ kind: 'materials', e }))];
 const strip = ({ _file, ...e }) => e;
-const label = (kind, e) => kind === 'cases' ? `案例 · ${e.carriers.map((k) => TAXONOMY.carriers[k]).join(' / ')}` : `巧思 · ${e.types.map((k) => TAXONOMY.types[k]).join(' / ')}`;
+const label = (kind, e) => kind === 'cases' ? `案例 · ${e.carriers.map((k) => TAXONOMY.carriers[k]).join(' / ')}` : kind === 'materials' ? '素材 · Agent Skill' : `巧思 · ${e.types.map((k) => TAXONOMY.types[k]).join(' / ')}`;
 const find = (id) => all.find((x) => x.e.id === id);
 const die = (msg) => { console.error(msg); process.exit(1); };
 
 function usage() {
   console.log(`Motion Atlas CLI
-  list    [--kind cases|patterns] [--json]                         列出全部条目
+  list    [--kind cases|patterns|materials] [--json]               列出全部条目
   search  <关键词…> [--kind …] [--carrier …] [--type …] [--limit 8] [--json]   检索
   show    <id> [--source] [--json]                                 查看条目、Prompt 与 Demo 文件
   export  <id> --out <目录> [--code-only] [--force]                导出可运行 Demo（含 Prompt 与迁移说明）
@@ -38,9 +38,9 @@ function haystack(kind, e) {
   const tax = [...(e.carriers || []).map((k) => TAXONOMY.carriers[k]), ...(e.types || []).map((k) => TAXONOMY.types[k])];
   return [
     [3, [e.id, e.title, e.subtitle].join(' ')],
-    [2, [...(e.tags || []), ...tax, ...(e.carriers || []), ...(e.types || [])].join(' ')],
+    [2, [...(e.tags || []), ...tax, ...(e.carriers || []), ...(e.types || []), e.type].join(' ')],
     [1.5, [e.summary, e.mechanism, e.trigger, e.effect, e.focus].join(' ')],
-    [1, [...(e.useCases || []), e.prompt].join(' ')],
+    [1, [...(e.useCases || []), ...(e.workflow || []), e.prompt].join(' ')],
   ].map(([w, s]) => [w, String(s || '').toLowerCase()]);
 }
 function terms(q) {
@@ -94,12 +94,14 @@ function show(id) {
     L.push(`可逐帧：${e.timeline ? '是' : '否'}`);
     if (e.rhythm?.beats?.length) L.push('', '## 节拍', ...e.rhythm.beats.map((b) => `- ${b.t.toFixed(2).padStart(6)}s  ${b.label}`));
     if (e.patternIds?.length) L.push('', `巧思：${e.patternIds.join(', ')}`);
-  } else {
+  } else if (kind === 'patterns') {
     L.push(`触发：${e.trigger}`, `结果：${e.effect}`, `职责：${TAXONOMY.roles[e.composition?.role] || '-'}`);
     if (e.composition?.pairsWellWith?.length) L.push(`搭配：${e.composition.pairsWellWith.join(', ')}`);
     if (e.composition?.conflicts?.length) L.push(`冲突：${e.composition.conflicts.join(', ')}`);
+  } else {
+    L.push('', '## 工作流', ...e.workflow.map((step) => `- ${step}`), '', '## 安装方式', e.install);
   }
-  L.push('', '## 实现 Prompt', e.prompt);
+  if (e.prompt) L.push('', '## 实现 Prompt', e.prompt);
   if (e.videoPrompt) L.push('', '## 视频生成 Prompt', e.videoPrompt);
   if (e.negativePrompt) L.push('', '## 负向约束', e.negativePrompt);
   if (e.migration?.length) L.push('', '## 迁移', ...e.migration.map((m) => `- ${m.field}：${m.how}`));
@@ -130,17 +132,17 @@ function exportDemo(id) {
     const promptDoc = path.join(ROOT, 'prompts', kind, `${e.id}.md`);
     if (fs.existsSync(promptDoc)) fs.writeFileSync(path.join(out, 'PROMPT.md'), fs.readFileSync(promptDoc, 'utf8').replace(/\[([^\]]+)\]\(\.\.\/\.\.\/([^)]+)\)/g, '$1（Motion Atlas 仓库内 `$2`）'));
     const readme = [
-      `# ${e.title}`, '', `从 Motion Atlas 导出（${kind === 'cases' ? '案例' : '巧思'} \`${e.id}\`）。`, '', e.summary, '',
-      '## 运行', '', `从导出目录启动静态服务器，入口为 \`${e.demo}\`。目录保留仓库相对树，巧思的来源案例在 demos/cases/。`, '',
-      '## 迁移', '',
-      ...(e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 时间纯函数作品在 `film/` 修改内容并用 `MotionKit.mountFilm`；自有时钟作品自己接 MotionKit；重放型巧思在 `index.html` 配置来源片段。']),
+      `# ${e.title}`, '', `从 Motion Atlas 导出（${kind === 'cases' ? '案例' : kind === 'materials' ? '素材' : '巧思'} \`${e.id}\`）。`, '', e.summary, '',
+      kind === 'materials' ? '## 使用' : '## 运行', '', kind === 'materials' ? `入口为 \`${e.skillPath}SKILL.md\`，按技能原文和 README 中的工作流使用。` : `从导出目录启动静态服务器，入口为 \`${e.demo}\`。目录保留仓库相对树，巧思的来源案例在 demos/cases/。`, '',
+      kind === 'materials' ? '## 工作流' : '## 迁移', '',
+      ...(kind === 'materials' ? e.workflow.map((step) => `- ${step}`) : e.migration?.length ? e.migration.map((m) => `- \`${m.field}\`：${m.how}`) : ['- 时间纯函数作品在 `film/` 修改内容并用 `MotionKit.mountFilm`；自有时钟作品自己接 MotionKit；重放型巧思在 `index.html` 配置来源片段。']),
       '', e.timeline ? '本 Demo 遵守 render(t) 协议：`window.__motion.seek(t)` 可定位任意时刻；`?render=1` 关闭自动播放，供逐帧渲染。' : '',
       '', '## 文件', '', ...copied.map((f) => `- ${f}`), '',
     ].join('\n');
     fs.writeFileSync(path.join(out, 'README.md'), readme);
     fs.writeFileSync(path.join(out, 'entry.json'), JSON.stringify(strip(e), null, 2) + '\n');
   }
-  console.log(`已导出 ${e.id} → ${out}\n${copied.length} 个 Demo 文件${flags.has('--code-only') ? '' : ' + PROMPT.md、README.md、entry.json'}`);
+  console.log(`已导出 ${e.id} → ${out}\n${copied.length} 个文件${flags.has('--code-only') ? '' : kind === 'materials' ? ' + README.md、entry.json' : ' + PROMPT.md、README.md、entry.json'}`);
 }
 
 switch (cmd) {

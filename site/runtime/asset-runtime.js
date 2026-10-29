@@ -1,5 +1,5 @@
 (() => {
-  const root = new URL('../', document.currentScript.src);
+  const root = new URL('../../', document.currentScript.src);
   const sources = globalThis.MotionAtlasAssetSources.assets;
   const resolve = (value, base = document.baseURI) => {
     const url = new URL(value, base);

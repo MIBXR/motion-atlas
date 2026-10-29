@@ -104,7 +104,7 @@ select.select { min-height: 44px; padding: 0 36px 0 14px; border-radius: 10px; b
 .toast-msg { position: fixed; left: 50%; bottom: 28px; z-index: 100; transform: translate(-50%, 20px); padding: 10px 18px; border-radius: 10px; background: var(--ink); color: var(--bg); font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
 .toast-msg.show { opacity: 1; transform: translate(-50%, 0); }
 
-/* ---------- 库页面布局（案例库 / 巧思库 / 资源库） ---------- */
+/* ---------- 库页面布局（案例库 / 巧思库 / 素材库） ---------- */
 .lib { display: grid; grid-template-columns: 228px minmax(0, 1fr); gap: 32px; padding: 0 32px 80px; margin: 0; }
 .lib > section { min-width: 0; padding-top: 24px; }
 .lib-side { position: sticky; top: calc(var(--header-h) + 24px); align-self: start; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; min-width: 0; margin: 24px 0; padding: 18px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); max-height: calc(100svh - var(--header-h) - 48px); overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; }
@@ -174,7 +174,7 @@ select.select { min-height: 44px; padding: 0 36px 0 14px; border-radius: 10px; b
 .empty { padding: 60px 20px; text-align: center; color: var(--muted); border: 1px dashed var(--line-2); border-radius: var(--radius); }
 
 /* ---------- 详情 ----------
- * 尺寸由 assets/library.js 的 layout() 按视口计算后写入 CSS 变量（--stage-col / --frame-w / --frame-h / --ifr-w / --ifr-h），
+ * 尺寸由 site/shared/library.js 的 layout() 按视口计算后写入 CSS 变量（--stage-col / --frame-w / --frame-h / --ifr-w / --ifr-h），
  * data-layout="split|stack" 决定左右并排还是上下排列，data-side="1" 表示竖屏时节拍列表放在舞台右侧。 */
 .detail { padding: 16px 32px 80px; margin: 0; }
 .detail-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
@@ -341,13 +341,13 @@ body .gen-list { overflow-y: auto; overflow-x: hidden; }
 .rel-list img { width: 64px; height: 40px; object-fit: cover; border-radius: 5px; background: var(--surface-2); }
 .rel-list strong { display: block; font-size: 14px; line-height: 1.35; }
 .rel-list small { display: block; font-size: 12px; color: var(--muted); }
-.resource-detail { max-width: 1264px; margin-inline: auto; }
-.resource-detail .note-sec h3 { margin: 12px 0 8px; font-size: 14px; }
-.resource-detail .kv dd { overflow-wrap: anywhere; }
-.resource-gallery { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
-.resource-gallery .card-media img { object-fit: contain; }
-.resource-gallery .chip { justify-self: start; }
-.resource-credit { font-size: 12px; color: var(--muted); }
+.material-detail { max-width: 1264px; margin-inline: auto; }
+.material-detail .note-sec h3 { margin: 12px 0 8px; font-size: 14px; }
+.material-detail .kv dd { overflow-wrap: anywhere; }
+.material-gallery { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+.material-gallery .card-media img { object-fit: contain; }
+.material-gallery .chip { justify-self: start; }
+.material-credit { font-size: 12px; color: var(--muted); }
 
 /* ---------- 页脚 ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 28px var(--gutter) 40px; color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; }

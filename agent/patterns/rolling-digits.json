@@ -3458,10 +3458,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/archive-os/source/research.md",
-      "bytes": 2572
-    },
-    {
       "path": "demos/cases/archive-os/source/rhinelabui/LICENSE",
       "bytes": 1063
     },
@@ -3900,6 +3896,10 @@
     {
       "path": "demos/patterns/rolling-digits/style.css",
       "bytes": 4770
+    },
+    {
+      "path": "docs/research/archive-os.md",
+      "bytes": 2679
     },
     {
       "path": "previews/patterns/rolling-digits.jpg",

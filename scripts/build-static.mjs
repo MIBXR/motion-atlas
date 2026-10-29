@@ -7,7 +7,7 @@ import './build.mjs';
 const args = process.argv.slice(2);
 if (args.length > 1 || args.some(arg => arg !== '--site')) throw new Error('Usage: node scripts/build-static.mjs [--site]');
 const site = args.includes('--site');
-const directories = ['agent', 'agent-skills', 'assets', 'data', 'demos', 'docs', 'entries', 'kit', 'previews', 'prompts'];
+const directories = ['agent', 'agent-skills', 'site', 'data', 'demos', 'docs', 'entries', 'kit', 'previews', 'prompts'];
 const sources = site ? assetSources(ROOT, directories.filter((dir) => dir !== 'agent-skills')) : { assets: {} };
 const output = path.join(ROOT, 'dist');
 fs.rmSync(output, { recursive: true, force: true });
@@ -19,7 +19,7 @@ for (const directory of directories) {
 for (const file of fs.readdirSync(ROOT).filter((name) => /\.(html|md)$/.test(name))) {
   fs.copyFileSync(path.join(ROOT, file), path.join(output, file));
 }
-if (site) fs.writeFileSync(path.join(output, 'assets/asset-sources.js'), `globalThis.MotionAtlasAssetSources = ${JSON.stringify(sources)};\n`);
+if (site) fs.writeFileSync(path.join(output, 'data/asset-sources.js'), `globalThis.MotionAtlasAssetSources = ${JSON.stringify(sources)};\n`);
 let bytes = 0, count = 0;
 function finalize(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

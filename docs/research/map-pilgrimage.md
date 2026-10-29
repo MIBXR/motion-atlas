@@ -75,4 +75,4 @@
 
 ## Demo 资源与播放
 
-案例的路线、镜头、节拍、配色和文字集中在 demos/cases/map-pilgrimage/config.js。地图使用 MapLibre 与 OpenFreeMap 瓦片；资源预加载和播放进度沿用 MotionKit。渲染模式等待目标画面的瓦片就绪，实时播放使用分段缓冲。
+案例的路线、镜头、节拍、配色和文字集中在 demos/cases/map-pilgrimage/film/config.js。地图使用 MapLibre 与 OpenFreeMap 瓦片；资源预加载和播放进度沿用 MotionKit。渲染模式等待目标画面的瓦片就绪，实时播放使用分段缓冲。

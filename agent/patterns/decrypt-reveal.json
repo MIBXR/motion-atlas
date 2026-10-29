@@ -3452,10 +3452,6 @@
       "bytes": 119411
     },
     {
-      "path": "demos/cases/archive-os/source/research.md",
-      "bytes": 2572
-    },
-    {
       "path": "demos/cases/archive-os/source/rhinelabui/LICENSE",
       "bytes": 1063
     },
@@ -3948,12 +3944,16 @@
       "bytes": 2749
     },
     {
+      "path": "docs/research/archive-os.md",
+      "bytes": 2679
+    },
+    {
       "path": "previews/patterns/decrypt-reveal-portrait.jpg",
-      "bytes": 28861
+      "bytes": 28874
     },
     {
       "path": "previews/patterns/decrypt-reveal.jpg",
-      "bytes": 33936
+      "bytes": 33927
     }
   ]
 }

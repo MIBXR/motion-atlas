@@ -7,10 +7,10 @@
 面向**按时间线播放的影像视频、交互操作台与展示台**的参考库。从完整案例理解镜头、信息层、文字、转场与声音如何协作，从独立巧思借用具体机制；带着节拍表、能量曲线、动效 Token 与可复用 Prompt，在可运行的 Demo 中拖动、跳拍，再逐帧渲染成自己的作品。
 
 <!-- counts:start -->
-**12 个案例**　·　**55 个巧思**　·　**2 个资源**　·　**12 个可逐帧渲染的影像 Demo**
+**12 个案例**　·　**55 个巧思**　·　**2 个素材**　·　**12 个可逐帧渲染的影像 Demo**
 <!-- counts:end -->
 
-[打开首页](https://motion-atlas.mibxranime.chatgpt.site/) · [案例库](https://motion-atlas.mibxranime.chatgpt.site/cases.html) · [巧思库](https://motion-atlas.mibxranime.chatgpt.site/patterns.html) · [资源库](https://motion-atlas.mibxranime.chatgpt.site/resources.html) · [节奏实验室](https://motion-atlas.mibxranime.chatgpt.site/lab.html) · [文档中心](https://motion-atlas.mibxranime.chatgpt.site/docs.html) · [Agent 工作流](https://motion-atlas.mibxranime.chatgpt.site/agent.html)
+[打开首页](https://motion-atlas.mibxranime.chatgpt.site/) · [案例库](https://motion-atlas.mibxranime.chatgpt.site/cases.html) · [巧思库](https://motion-atlas.mibxranime.chatgpt.site/patterns.html) · [素材库](https://motion-atlas.mibxranime.chatgpt.site/materials.html) · [节奏实验室](https://motion-atlas.mibxranime.chatgpt.site/lab.html) · [文档中心](https://motion-atlas.mibxranime.chatgpt.site/docs.html) · [Agent 工作流](https://motion-atlas.mibxranime.chatgpt.site/agent.html)
 
 ![Motion Atlas 三个可运行 Demo 的实际画面](docs/readme/cover.webp)
 
@@ -42,29 +42,29 @@
 
 每个案例保留设计重点、节奏结构、画面分层、动效参数、适用边界、Prompt 与迁移指引。先在 Demo 中看清动作，再把内容和参数带回自己的作品。
 
-- **查找与筛选**：搜索名称、标签、机制与用途，按载体找案例；巧思可按类型、载体与所属案例筛选，资源可按类型筛选，也可只看收藏或按名称排序。
+- **查找与筛选**：搜索名称、标签、机制与用途，按载体找案例；巧思可按类型、载体与所属案例筛选，素材可按类型筛选，也可只看收藏或按名称排序。
 - **内嵌体验**：详情上方直接运行 Demo，首屏刻度条与节拍点对应画面时刻；加载进度、播放、暂停和全屏控件集中在舞台周围。
 - **拖动与跳拍**：拖动刻度条定位，点击节拍时间或跳到上／下一个标记，反复查看同一个动作的进入、停留与退出。
 - **横竖构图**：地图巡礼与档案终端支持横竖两套构图，切换时保持当前时刻、整体等比缩放；基林曲线保留横屏。切换按钮只对支持多画幅的 Demo 显示。
 - **声音开关**：声音默认关闭，主动开启后与画面同步；可随时静音。不同 Demo 使用合成乐谱、即时反馈音或已混好的音轨，具体来源见条目说明。
 - **巧思库**：每项说明机制、触发、结果、参数、减少动态策略与独立 Demo；通过骨架、支撑、点睛职责及搭配／冲突关系判断怎样组合，并回到来源案例查看整体。
-- **资源库**：阅读制作视频的 skill 与工具工作流、适用与避用、作者效果图、安装方式、固定版本原文与许可。
+- **素材库**：阅读制作视频的 skill 与工具工作流、适用与避用、作者效果图、安装方式、固定版本原文与许可。
 - **节奏实验室**：用多音色节拍器、拍号、细分与摇摆练习节拍；通过 A/B 对比、打拍录入、首拍偏移与量化强度理解吸附，让曲线、时长和错峰对齐拍子，导出 CSS 变量、MotionKit 乐谱代码、Prompt 与 WAV。
 - **复制 Prompt**：案例提供实现指令、视频生成指令与负向约束，巧思提供实现 Prompt；结合具体参数与制作约束替换自己的内容。
-- **收藏与备份**：案例、巧思与资源共用一份 JSON 备份，支持导出与合并导入；收藏留在当前浏览器，不跨设备自动同步。
+- **收藏与备份**：案例、巧思与素材共用一份 JSON 备份，支持导出与合并导入；收藏留在当前浏览器，不跨设备自动同步。
 - **文档中心**：集中阅读使用指南、节奏方法、Prompt 写法、条目结构、渲染管线与全部案例／巧思 Prompt。
 - **Agent 取材**：从结构化索引找到资料包，连同条目、Prompt、入口与文件清单读取；[配套 skill](https://github.com/MIBXR/mibxr-skills/tree/main/skills/motion-atlas) 提供另一种使用入口。
 - **逐帧出片**：按帧率定位并截图，导出可用音轨；本机有 ffmpeg 时可自动合成 MP4，同一个 Demo 可用于实时体验与视频输出。
 
 ## 网站本体
 
-首页介绍案例、巧思、资源与节奏方法；案例库理解完整作品，巧思库拆看单个机制，资源库查制作工作流。主导航直接连接各库、节奏实验室、文档中心与 Agent 工作流。
+首页介绍案例、巧思、素材与节奏方法；案例库理解完整作品，巧思库拆看单个机制，素材库查制作工作流。主导航直接连接各库、节奏实验室、文档中心与 Agent 工作流。
 
 | 首页 | 案例库 |
 | --- | --- |
-| ![Motion Atlas 首页：案例与节奏方法入口](docs/site/home.jpg) | ![案例库：按载体浏览完整作品](docs/site/cases.jpg) |
-| 巧思库 | 资源库 |
-| ![巧思库：按类型浏览独立机制](docs/site/patterns.jpg) | ![资源库：工作流与作者产出预览](docs/site/resources.jpg) |
+| ![Motion Atlas 首页：案例与节奏方法入口](docs/readme/home.jpg) | ![案例库：按载体浏览完整作品](docs/readme/cases.jpg) |
+| 巧思库 | 素材库 |
+| ![巧思库：按类型浏览独立机制](docs/readme/patterns.jpg) | ![素材库：工作流与作者产出预览](docs/readme/materials.jpg) |
 
 以上为网站本体的实际浏览器首屏截图；各案例的独立 Demo 预览见下方画廊。
 
@@ -86,13 +86,13 @@
 
 ## Agent 直接取材
 
-网页用于亲手预览；Agent 从 [工作流入口](https://motion-atlas.mibxranime.chatgpt.site/agent.html)、[结构化索引](agent/catalog.json) 与按条目生成的资料包取得完整上下文。索引包含摘要、标签、关联、协议、计数与资料包路径，使用方法见 [AGENT.md](AGENT.md)。工作流页的指令生成器可选择条目，生成交给编码 Agent 或视频模型的任务说明。
+网页用于亲手预览；Agent 从 [工作流入口](https://motion-atlas.mibxranime.chatgpt.site/agent.html)、[结构化索引](agent/catalog.json) 与按条目生成的资料包取得完整上下文。索引包含摘要、标签、关联、协议、计数与资料包路径，使用方法见 [Agent 使用说明](docs/agent.md)。工作流页的指令生成器可选择条目，生成交给编码 Agent 或视频模型的任务说明。
 
 | 资料 | 路径 | 资料包包含什么 |
 | --- | --- | --- |
 | 案例 | `agent/cases/<id>.json` | 完整 `entry`、`documents.prompt`、`entrypoint` 与 `files[]` |
 | 巧思 | `agent/patterns/<id>.json` | 完整 `pattern`、来源案例包 `sourceCases`、Prompt、入口与文件清单 |
-| 资源 | `agent/resources/<id>.json` | 完整 `resource`、原文 `documents`、skill 入口与文件清单 |
+| 素材 | `agent/materials/<id>.json` | 完整 `material`、原文 `documents`、skill 入口与文件清单 |
 
 `files[]` 列出路径与字节数，源码和媒体按清单读取；案例与巧思的可运行入口随包给出。组合时先看 `composition.role` 的骨架、支撑、点睛，再读 `pairsWellWith` 与 `conflicts`。
 
@@ -102,20 +102,20 @@ node scripts/atlas.mjs show map-pilgrimage --source
 node scripts/atlas.mjs export split-compare-stamp --out ../my-demo
 ```
 
-命令只需 Node.js，无需安装依赖；导出保留仓库相对树，巧思连同来源案例目录导出，并附 `PROMPT.md`、`README.md` 与 `entry.json`，入口路径见导出的 `README.md`。资源从独立目录读取；配套 [motion-atlas skill](https://github.com/MIBXR/mibxr-skills/tree/main/skills/motion-atlas) 与本仓库的资料格式一同使用。
+命令只需 Node.js，无需安装依赖；导出保留仓库相对树，巧思连同来源案例目录导出，并附 `PROMPT.md`、`README.md` 与 `entry.json`，入口路径见导出的 `README.md`。素材从独立目录读取；配套 [motion-atlas skill](https://github.com/MIBXR/mibxr-skills/tree/main/skills/motion-atlas) 与本仓库的资料格式一同使用。
 
-## 资源库取材
+## 素材库取材
 
-[资源库](https://motion-atlas.mibxranime.chatgpt.site/resources.html) 收录用于制作视频、但没有完整可复刻作品源码的 skill 与工具。条目包含归库理由、工作流、适用与避用、关联案例、上游版本、安装方式、盘点证据及许可；有对应案例时通过 `relatedEntries` 关联。
+[素材库](https://motion-atlas.mibxranime.chatgpt.site/materials.html) 收录用于制作视频、但没有完整可复刻作品源码的 skill 与工具。条目包含归库理由、工作流、适用与避用、关联案例、上游版本、安装方式、盘点证据及许可；有对应案例时通过 `relatedEntries` 关联。
 
-| 资源 | 制作方向 | 原文快照与条目 |
+| 素材 | 制作方向 | 原文快照与条目 |
 | --- | --- | --- |
-| motion-showreel | 用 `render(t)` 逐帧渲染短视频 | [Skill 原文](agent-skills/motion-showreel/SKILL.md) · [条目](entries/resources/motion-showreel.json) |
-| web-video-presentation | 制作按步推进、用于录屏的网页演示 | [Skill 原文](agent-skills/web-video-presentation/SKILL.md) · [条目](entries/resources/web-video-presentation.json) |
+| motion-showreel | 用 `render(t)` 逐帧渲染短视频 | [Skill 原文](agent-skills/motion-showreel/SKILL.md) · [条目](entries/materials/motion-showreel.json) |
+| web-video-presentation | 制作按步推进、用于录屏的网页演示 | [Skill 原文](agent-skills/web-video-presentation/SKILL.md) · [条目](entries/materials/web-video-presentation.json) |
 
-Agent 先读 [资源目录](agent/resources.json)，再打开 `agent/resources/<id>.json` 的 `resource`、`documents` 与 `files[]`。`agent/catalog.json` 也登记 `resourceCatalog` 和 `counts.resources`。Agent Skill 资源的原文按固定提交保存在 `agent-skills/<id>/`，保留原语言、原字节、附属文件与上游许可。
+Agent 先读 [素材目录](agent/materials.json)，再打开 `agent/materials/<id>.json` 的 `material`、`documents` 与 `files[]`。`agent/catalog.json` 也登记 `materialCatalog` 和 `counts.materials`。Agent Skill 素材的原文按固定提交保存在 `agent-skills/<id>/`，保留原语言、原字节、附属文件与上游许可。
 
-资源效果图标注**“作者产出，未复刻”**，逐图保留原 URL 与许可说明；静帧不作为动态效果的验证。安装、使用或复用图片前，分别核对工作流边界与图片许可。
+素材效果图标注**“作者产出，未复刻”**，逐图保留原 URL 与许可说明；静帧不作为动态效果的验证。安装、使用或复用图片前，分别核对工作流边界与图片许可。
 
 ## 案例画廊
 
@@ -194,7 +194,7 @@ node scripts/render.mjs demos/cases/archive-os/index.html --orient portrait --fp
 
 ### 收藏与迁移
 
-案例、巧思与资源收藏保存在当前站点浏览器的 `localStorage`，共用 `ma-favorites`。各库可导出 `motion-atlas-favorites.json`，导入时合并有效条目、去重并忽略未知 ID。
+案例、巧思与素材收藏保存在当前站点浏览器的 `localStorage`，共用 `ma-favorites`。各库可导出 `motion-atlas-favorites.json`，导入时合并有效条目、去重并忽略未知 ID。
 
 收藏不上传，也不会自动写入 Git；更换浏览器、域名、端口或清理网站数据后不会自动恢复。迁移前导出同一份 JSON，在新地址导入即可继续使用。
 
@@ -205,18 +205,21 @@ node scripts/render.mjs demos/cases/archive-os/index.html --orient portrait --fp
 ## 资料结构与维护
 
 ```text
-entries/                      案例、巧思与资源条目（唯一内容源）
-agent-skills/                 资源库的上游 skill 原样快照与许可
+entries/                      案例、巧思与素材条目（唯一内容源）
+agent-skills/                 素材库的上游 skill 原样快照与许可
 demos/cases/<id>/             index.html 入口；film/ 作品，assets/、fonts/、audio/、vendor/ 素材与库，source/ 制作资料
 demos/patterns/<id>/          重放型引用案例；拆分型保留机制代码，素材引用案例
 demos/_template/              case-film/、case-native/、pattern-replay/、pattern/
 kit/motion-kit.js             共享运行时：固定画幅、时间轴、缓动、节拍、合成乐谱、预加载、控制条
 docs/                         指南与使用方法
-docs/readme/                  README 封面
-docs/site/                    网站本体的实际浏览器截图
+docs/readme/                  README 封面与网站本体截图
+docs/research/                案例研究
+docs/agent.md                 Agent 取材说明
+AGENTS.md                     仓库维护规则
+site/                         站点共享代码、页面代码、素材运行时与图标
 prompts/ agent/ data/         由 entries 生成（勿手改）
 previews/                     Demo 实际截图，含案例桌面与手机预览
-assets/resources/             资源库作者效果图（未复刻）
+previews/materials/           素材库作者效果图（未复刻）
 scripts/                      本地播放、构建、检查、截图、视频导出与命令行工具
 ```
 
@@ -228,9 +231,9 @@ scripts/                      本地播放、构建、检查、截图、视频�
 | `node scripts/capture.mjs` | 重新截取预览图（需先启动本地服务器） |
 | `node scripts/frames.mjs <video>` | 参考视频取帧，生成带时间码的接触表 |
 
-新增条目遵循 [贡献流程](CONTRIBUTING.md)，Agent 使用与维护规则见 [AGENT.md](AGENT.md)。共享运行时只改 `kit/motion-kit.js`，Demo 中的副本由构建同步。
+新增条目遵循 [贡献流程](CONTRIBUTING.md)，Agent 取材见 [Agent 使用说明](docs/agent.md)，仓库维护规则见 [AGENTS.md](AGENTS.md)。共享运行时只改 `kit/motion-kit.js`，Demo 中的副本由构建同步。
 
-发布前先运行 `npm run build`，以已提交并推送的源码运行 `npm run build:site`（等同于 `node scripts/build-static.mjs --site`）。站点配置见 [.openai/hosting.json](.openai/hosting.json)。发布包中的 `assets/asset-sources.js` 记录源码提交与大素材地址；新增大图、音视频、字体与模型自动纳入，JS、CSS 和小素材随站点部署。源码与完整本地包保留原始素材。
+发布前先运行 `npm run build`，以已提交并推送的源码运行 `npm run build:site`（等同于 `node scripts/build-static.mjs --site`）。站点配置见 [.openai/hosting.json](.openai/hosting.json)。发布包中的 `data/asset-sources.js` 记录源码提交与大素材地址；新增大图、音视频、字体与模型自动纳入，JS、CSS 和小素材随站点部署。源码与完整本地包保留原始素材。
 
 发布模式的 `MotionAtlasAssets.resolve(url)` 解析素材地址，兼容图片、字体与 `fetch` 加载；MotionKit 负责预加载、缓存、进度与就绪通知。外部地图瓦片及未列入清单的请求沿用原地址，发布模式需要联网访问 GitHub 素材。
 
@@ -238,7 +241,7 @@ scripts/                      本地播放、构建、检查、截图、视频�
 
 本库用于设计与制作研究，案例的来源、观察范围、近似实现、限制与迁移条件以条目为准。参考一种节奏或机制不等于取得原作素材的使用许可，也不将局部实现称为完整原作复刻。
 
-新增案例与巧思按 [AGENT.md](AGENT.md) 和 [贡献指南](CONTRIBUTING.md) 的收录规范，不提交第三方画面、角色、标志、音乐、字体文件和参考视频取帧。参考视频的 `frames/`、`renders/` 仅供本地分析；资源库原文与作者效果图另按固定来源、逐项许可和“作者产出，未复刻”规则管理。
+新增案例与巧思按 [Agent 使用说明](docs/agent.md) 和 [贡献指南](CONTRIBUTING.md) 的收录规范，不提交第三方画面、角色、标志、音乐、字体文件和参考视频取帧。参考视频的 `frames/`、`renders/` 仅供本地分析；素材库原文与作者效果图另按固定来源、逐项许可和“作者产出，未复刻”规则管理。
 
 用户自制或公开许可素材须保留各自来源与署名。基林曲线的 NOAA 数据归属及口径见 [DATA.md](demos/cases/keeling-curve/source/DATA.md) 与原始数据文件头；CC BY 4.0 音乐、CC0 音效的完整署名与许可见 [AUDIO.md](demos/cases/keeling-curve/source/AUDIO.md)、`audio/` 和片尾；OFL 字体许可保存在该 Demo 的 `fonts/` 中。
 
