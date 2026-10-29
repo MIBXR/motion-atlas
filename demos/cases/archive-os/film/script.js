@@ -15,21 +15,12 @@ const initialPrefs = Object.fromEntries(Object.keys(localStorage).filter(k => k.
 let sequence, dirty = false, target = 0, running, audioBuffer;
 let fastForward = false, seeking = false;
 let playStarted = null, filmTime = 0, playRequest = 0;
-const parts = ['fonts','cassette','assembly','frame'];
-const resolved = {};
-const resources = Object.fromEntries(parts.map(part => [part,new Promise(resolve => { resolved[part]=resolve; })]));
-const emitLoading = progress => {
-  const detail = { progress };
-  dispatchEvent(new CustomEvent('motion:loading', { detail }));
-  parent.postMessage({type:'motion:loading',...detail}, location.origin);
-};
 const yieldTurn = () => new Promise(resolve => setTimeout(resolve, 0));
 function restorePrefs() {
   for (const k of Object.keys(localStorage).filter(k=>k.startsWith('rhine-'))) if (!(k in initialPrefs)) localStorage.removeItem(k);
   for (const [k,value] of Object.entries(initialPrefs)) localStorage.setItem(k,value);
 }
 async function loadFrame() {
-  emitLoading(0);
   restorePrefs();
   frame.width=stage.width;frame.height=stage.height;
   frame.style.width=stage.width+'px';frame.style.height=stage.height+'px';
@@ -38,13 +29,7 @@ async function loadFrame() {
   await loaded;
   const win=frame.contentWindow;
   while (!win.__filmApp) await yieldTurn();
-  function progress() {
-    for (const part of parts) if (part!=='frame' && win.__filmApp.progress[part]) resolved[part]();
-  }
-  win.addEventListener('film:progress',progress);
-  progress();
   await win.__filmApp.ready;
-  progress();
   sequence=createSequence(win,settings.A);
   dirty=false;
   for (const type of ['keydown','pointerdown','touchstart']) win.document.addEventListener(type,event=>{
@@ -55,12 +40,10 @@ async function loadFrame() {
     void win.__filmAudio.setManual(true,MK.audio.enabled);
   },{capture:true});
   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-  resolved.frame();
 }
 const initial = loadFrame();
-const audioReady = fetch('audio/film-audio.ogg').then(r=>{if(!r.ok)throw new Error('Film audio '+r.status);return r.arrayBuffer();})
-  .then(data=>new OfflineAudioContext(2,1,48000).decodeAudioData(data)).then(buffer=>{audioBuffer=buffer;});
-MK.preload([...parts.map(part=>({label:part,run:()=>resources[part]})),{label:'audio/film-audio.ogg',run:()=>audioReady}],{timeout:120000});
+const audioReady = MK.load.audio('audio/film-audio.ogg').then(buffer=>{audioBuffer=buffer;});
+MK.preload([{label:'档案应用',run:()=>initial},{label:'音轨',run:()=>audioReady}]);
 async function seekFrame(k, skip = true) {
   target=k;
   fastForward ||= skip;
@@ -80,7 +63,6 @@ async function seekFrame(k, skip = true) {
       win.__filmSkipRender=false;
       if (!dirty && win.__clock.frame===target) break;
     }
-    if(rebuilt)emitLoading(1);
     return target/60;
   })().finally(()=>{running=null;fastForward=false;});
   return running;
@@ -133,6 +115,5 @@ MK.audio.attach(tl,[{t:0,dur:score.duration,resume:true,bus:'music',voice:(ctx,o
   return when+audioBuffer.duration-(p.offset||0);
 }}]);
 MK.expose(tl,{title:'莱茵生命档案终端',A:score.A,B:score.B});
-tl.ready=Promise.all([tl.ready,initial,audioReady]).then(()=>tl);
 window.__filmDriver={get log(){return sequence?.log;},get manual(){return dirty;},get frame(){return frame.contentWindow.__clock?.frame;},get quality(){return quality;}};
 MK.start(tl);

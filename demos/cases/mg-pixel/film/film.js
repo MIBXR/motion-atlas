@@ -2,7 +2,7 @@
 // Indexed 320x180 frame (semantic slots -> per-stage LUT -> QUEST-32 master palette), WebGL2 CRT pass x6.
 // Every frame is a pure function of the frame number f = round(t*30).
 const W = 320, H = 180, FPS = 30;
-const cues = await (await fetch('./film/cues.json')).json();
+const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
 const F = t => Math.round(t * FPS);
 
 // ------------------------------------------------------------------ palette

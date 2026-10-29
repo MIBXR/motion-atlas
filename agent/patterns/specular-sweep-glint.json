@@ -164,7 +164,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/film/main.js",
-      "bytes": 3441
+      "bytes": 3456
     },
     {
       "path": "demos/cases/mg-liquid/film/setup.js",
@@ -208,11 +208,11 @@
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1597
+      "bytes": 1721
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-liquid/source/audio.py",
@@ -240,7 +240,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/film/scene.js",
-      "bytes": 70651
+      "bytes": 70681
     },
     {
       "path": "demos/cases/mg-synthwave/film/setup.js",
@@ -288,11 +288,11 @@
     },
     {
       "path": "demos/cases/mg-synthwave/index.html",
-      "bytes": 1824
+      "bytes": 1976
     },
     {
       "path": "demos/cases/mg-synthwave/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-synthwave/source/audio.py",
@@ -364,7 +364,7 @@
     },
     {
       "path": "demos/patterns/specular-sweep-glint/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/specular-sweep-glint.jpg",

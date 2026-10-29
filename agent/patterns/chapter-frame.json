@@ -194,7 +194,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130629
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
@@ -202,11 +202,11 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7729
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-hud/LICENSES.md",
@@ -250,7 +250,7 @@
     },
     {
       "path": "demos/cases/mg-hud/film/main.js",
-      "bytes": 7461
+      "bytes": 7491
     },
     {
       "path": "demos/cases/mg-hud/film/setup.js",
@@ -314,11 +314,11 @@
     },
     {
       "path": "demos/cases/mg-hud/index.html",
-      "bytes": 2189
+      "bytes": 2336
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-hud/source/audio.py",
@@ -390,11 +390,11 @@
     },
     {
       "path": "demos/patterns/chapter-frame/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/chapter-frame/original.html",
-      "bytes": 7775
+      "bytes": 7836
     },
     {
       "path": "demos/patterns/chapter-frame/plates/landscape-24.6-map.webp",
@@ -418,7 +418,7 @@
     },
     {
       "path": "demos/patterns/chapter-frame/script.js",
-      "bytes": 145359
+      "bytes": 145071
     },
     {
       "path": "demos/patterns/chapter-frame/style.css",

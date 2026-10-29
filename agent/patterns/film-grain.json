@@ -350,7 +350,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130629
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
@@ -358,11 +358,11 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7729
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-3d-render/LICENSES.md",
@@ -1354,7 +1354,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/film/scene.js",
-      "bytes": 4014
+      "bytes": 3928
     },
     {
       "path": "demos/cases/mg-3d-render/film/setup.js",
@@ -1394,11 +1394,11 @@
     },
     {
       "path": "demos/cases/mg-3d-render/index.html",
-      "bytes": 1644
+      "bytes": 1855
     },
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-3d-render/source/assets/hdri/studio_small_09_2k.hdr",
@@ -1482,7 +1482,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/main.js",
-      "bytes": 46607
+      "bytes": 46612
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/out/env.json",
@@ -1530,11 +1530,11 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/index.html",
-      "bytes": 1904
+      "bytes": 2091
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-aurora-glass/source/audio.py",
@@ -1570,7 +1570,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/film/film.js",
-      "bytes": 35182
+      "bytes": 35151
     },
     {
       "path": "demos/cases/mg-bauhaus/film/setup.js",
@@ -1606,11 +1606,11 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/index.html",
-      "bytes": 1807
+      "bytes": 2020
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-bauhaus/source/audio.py",
@@ -1734,7 +1734,7 @@
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
-      "bytes": 54479
+      "bytes": 54419
     },
     {
       "path": "demos/cases/mg-collage/film/setup.js",
@@ -1798,11 +1798,11 @@
     },
     {
       "path": "demos/cases/mg-collage/index.html",
-      "bytes": 1876
+      "bytes": 2700
     },
     {
       "path": "demos/cases/mg-collage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/clear.wav",
@@ -1874,7 +1874,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/film/film.js",
-      "bytes": 33056
+      "bytes": 33052
     },
     {
       "path": "demos/cases/mg-line-art/film/setup.js",
@@ -1906,11 +1906,11 @@
     },
     {
       "path": "demos/cases/mg-line-art/index.html",
-      "bytes": 2089
+      "bytes": 2256
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-line-art/source/audio.py",
@@ -1946,7 +1946,7 @@
     },
     {
       "path": "demos/cases/mg-morph/film/scene.js",
-      "bytes": 60312
+      "bytes": 60329
     },
     {
       "path": "demos/cases/mg-morph/film/setup.js",
@@ -1990,11 +1990,11 @@
     },
     {
       "path": "demos/cases/mg-morph/index.html",
-      "bytes": 2062
+      "bytes": 2250
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
@@ -2018,11 +2018,11 @@
     },
     {
       "path": "demos/patterns/film-grain/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/film-grain/original.html",
-      "bytes": 7772
+      "bytes": 7833
     },
     {
       "path": "demos/patterns/film-grain/plates/landscape-10.4-map.webp",
@@ -2038,7 +2038,7 @@
     },
     {
       "path": "demos/patterns/film-grain/script.js",
-      "bytes": 145359
+      "bytes": 145071
     },
     {
       "path": "demos/patterns/film-grain/style.css",

@@ -302,12 +302,12 @@
       "bytes": 1697
     },
     {
-      "path": "demos/cases/archive-os/film/app/assets/index-BlM3wgKX.js",
-      "bytes": 994664
-    },
-    {
       "path": "demos/cases/archive-os/film/app/assets/index-DYLPDZ1T.css",
       "bytes": 668055
+    },
+    {
+      "path": "demos/cases/archive-os/film/app/assets/index-s-1i48S1.js",
+      "bytes": 995073
     },
     {
       "path": "demos/cases/archive-os/film/app/audio/README.md",
@@ -3419,7 +3419,7 @@
     },
     {
       "path": "demos/cases/archive-os/film/app/index.html",
-      "bytes": 1349
+      "bytes": 1593
     },
     {
       "path": "demos/cases/archive-os/film/app/licenses/rolling-number.txt",
@@ -3443,19 +3443,19 @@
     },
     {
       "path": "demos/cases/archive-os/film/script.js",
-      "bytes": 6764
+      "bytes": 5825
     },
     {
       "path": "demos/cases/archive-os/film/style.css",
-      "bytes": 241
+      "bytes": 210
     },
     {
       "path": "demos/cases/archive-os/index.html",
-      "bytes": 433
+      "bytes": 636
     },
     {
       "path": "demos/cases/archive-os/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/LICENSE",
@@ -3475,7 +3475,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 1623
+      "bytes": 2589
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/content/README.md",
@@ -3487,7 +3487,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/app.ts",
-      "bytes": 1622
+      "bytes": 1846
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/clock-shim.js",
@@ -3727,7 +3727,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/src/scene.ts",
-      "bytes": 80876
+      "bytes": 81294
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/src/screen-finish.ts",
@@ -3867,19 +3867,19 @@
     },
     {
       "path": "demos/patterns/rolling-digits/frame.html",
-      "bytes": 1830
+      "bytes": 2248
     },
     {
       "path": "demos/patterns/rolling-digits/frame.js",
-      "bytes": 2992
+      "bytes": 3045
     },
     {
       "path": "demos/patterns/rolling-digits/index.html",
-      "bytes": 930
+      "bytes": 1217
     },
     {
       "path": "demos/patterns/rolling-digits/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/rolling-digits/rolling.css",
@@ -3891,7 +3891,7 @@
     },
     {
       "path": "demos/patterns/rolling-digits/script.js",
-      "bytes": 2127
+      "bytes": 2102
     },
     {
       "path": "demos/patterns/rolling-digits/style.css",

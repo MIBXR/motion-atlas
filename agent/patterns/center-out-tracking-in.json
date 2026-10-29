@@ -158,7 +158,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/film/film.js",
-      "bytes": 33056
+      "bytes": 33052
     },
     {
       "path": "demos/cases/mg-line-art/film/setup.js",
@@ -190,11 +190,11 @@
     },
     {
       "path": "demos/cases/mg-line-art/index.html",
-      "bytes": 2089
+      "bytes": 2256
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-line-art/source/audio.py",
@@ -206,7 +206,7 @@
     },
     {
       "path": "demos/patterns/center-out-tracking-in/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/center-out-tracking-in.jpg",

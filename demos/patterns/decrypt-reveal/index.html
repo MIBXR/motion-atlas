@@ -25,10 +25,6 @@ const CONFIG = {
 };
 window.CONFIG = CONFIG;
 </script>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="document-decryption.css">
-<link rel="stylesheet" href="decryption.css">
 </head>
 <body>
 <main id="stage">
@@ -39,6 +35,12 @@ window.CONFIG = CONFIG;
   <article id="detail-content" class="detail-content" aria-label="档案正文"></article>
 </main>
 <script src="motion-kit.js"></script>
-<script type="module" src="runtime.js"></script>
+<script type="module">
+const load=MotionKit.load, styles=["fonts.css","style.css","document-decryption.css","decryption.css"];
+load.register([...styles,'runtime.js',CONFIG.modelAsset]);
+const fontText=(await (await load.fetch('runtime.js')).text().then(text=>text.replace(/\\(?:u([0-9a-f]{4})|x([0-9a-f]{2}))/gi,(_,unicode,hex)=>String.fromCharCode(parseInt(unicode||hex,16)))) + JSON.stringify(CONFIG)) + (await Promise.all(["style.css","document-decryption.css","decryption.css"].map(src=>load.fetch(src).then(r=>r.text())))).join("\n");
+await load.prepare({styles,modules:['runtime.js'],data:[CONFIG.modelAsset],fontText});
+await load.module('runtime.js');
+</script>
 </body>
 </html>

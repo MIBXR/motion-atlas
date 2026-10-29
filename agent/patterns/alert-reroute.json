@@ -185,7 +185,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130629
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
@@ -193,11 +193,11 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7729
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/alert-reroute/config.js",
@@ -209,7 +209,7 @@
     },
     {
       "path": "demos/patterns/alert-reroute/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/alert-reroute/score.json",

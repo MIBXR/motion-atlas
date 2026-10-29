@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ISOPOLIS — 03-isometric</title>
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="film/style.css">
 <script type="importmap">{"imports":{
   "three":"./vendor/three@0.186.1/build/three.module.js","three/addons/":"./vendor/three@0.186.1/examples/jsm/",
   "opentype":"./vendor/opentype.js@2.0.0/dist/opentype.mjs"}}</script>
@@ -13,8 +11,16 @@
 <body>
 <script src="motion-kit.js"></script>
 <script type="module">
-const { ready: filmReady } = await import('./film/setup.js');
-const cuesReady = fetch('./film/cues.json').then(response => response.json());
+await MotionKit.load.prepare({
+  styles: ["fonts/fonts.css","film/style.css"],
+  modules: ["./film/setup.js"],
+  images: [],
+  data: ["film/cues.json","fonts/Unbounded-800-static.ttf"],
+  audio: ["audio/film.m4a"],
+});
+
+const { ready: filmReady } = await MotionKit.load.module('./film/setup.js');
+const cuesReady = MotionKit.load.fetch('./film/cues.json').then(response => response.json());
 MotionKit.preload([{ label: '原作画面与时间表', run: () => Promise.all([filmReady, cuesReady]) }]);
 const width = 1920, height = 1080, fps = 30, duration = 10;
 const cues = await cuesReady;

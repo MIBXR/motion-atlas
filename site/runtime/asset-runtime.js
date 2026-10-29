@@ -14,7 +14,11 @@
     const target = resolve(original);
     return nativeFetch(target === original ? input : input instanceof Request ? new Request(target, input) : target, options);
   };
-  globalThis.MotionAtlasAssets = Object.freeze({ resolve, fetch: fetchAsset });
+  const info = (value, base = document.baseURI) => {
+    const url = new URL(value, base);
+    return sources[decodeURIComponent(url.pathname.slice(root.pathname.length))] || Object.values(sources).find(asset => asset.url === url.href);
+  };
+  globalThis.MotionAtlasAssets = Object.freeze({ resolve, fetch: fetchAsset, info });
   globalThis.fetch = fetchAsset;
 
   // Resolve before native setters start loading, including detached preload images.

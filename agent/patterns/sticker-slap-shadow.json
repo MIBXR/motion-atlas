@@ -284,7 +284,7 @@
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
-      "bytes": 54479
+      "bytes": 54419
     },
     {
       "path": "demos/cases/mg-collage/film/setup.js",
@@ -348,11 +348,11 @@
     },
     {
       "path": "demos/cases/mg-collage/index.html",
-      "bytes": 1876
+      "bytes": 2700
     },
     {
       "path": "demos/cases/mg-collage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/clear.wav",
@@ -456,7 +456,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50392
+      "bytes": 50443
     },
     {
       "path": "demos/cases/mg-paperclip/film/setup.js",
@@ -496,11 +496,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2075
+      "bytes": 2456
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
@@ -532,7 +532,7 @@
     },
     {
       "path": "demos/patterns/sticker-slap-shadow/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/sticker-slap-shadow.jpg",

@@ -230,7 +230,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130629
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
@@ -238,11 +238,11 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7729
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-isometric/LICENSES.md",
@@ -270,7 +270,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/film/main.js",
-      "bytes": 9762
+      "bytes": 9777
     },
     {
       "path": "demos/cases/mg-isometric/film/render.js",
@@ -286,7 +286,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/film/title.js",
-      "bytes": 8504
+      "bytes": 8519
     },
     {
       "path": "demos/cases/mg-isometric/film/ui.js",
@@ -334,11 +334,11 @@
     },
     {
       "path": "demos/cases/mg-isometric/index.html",
-      "bytes": 2775
+      "bytes": 2932
     },
     {
       "path": "demos/cases/mg-isometric/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-isometric/source/audio.py",
@@ -450,7 +450,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50392
+      "bytes": 50443
     },
     {
       "path": "demos/cases/mg-paperclip/film/setup.js",
@@ -490,11 +490,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2075
+      "bytes": 2456
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
@@ -534,11 +534,11 @@
     },
     {
       "path": "demos/patterns/route-draw-marker/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/route-draw-marker/original.html",
-      "bytes": 7779
+      "bytes": 7840
     },
     {
       "path": "demos/patterns/route-draw-marker/score.json",
@@ -546,7 +546,7 @@
     },
     {
       "path": "demos/patterns/route-draw-marker/script.js",
-      "bytes": 145359
+      "bytes": 145071
     },
     {
       "path": "demos/patterns/route-draw-marker/style.css",

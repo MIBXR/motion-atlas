@@ -244,7 +244,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130843
+      "bytes": 130629
     },
     {
       "path": "demos/cases/map-pilgrimage/film/style.css",
@@ -252,11 +252,11 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/index.html",
-      "bytes": 7995
+      "bytes": 7729
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-hanazi/LICENSES.md",
@@ -332,11 +332,11 @@
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485
+      "bytes": 48529
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432
+      "bytes": 1511
     },
     {
       "path": "demos/cases/mg-hanazi/film/style.css",
@@ -396,11 +396,11 @@
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900
+      "bytes": 2291
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep.py",
@@ -480,7 +480,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50392
+      "bytes": 50443
     },
     {
       "path": "demos/cases/mg-paperclip/film/setup.js",
@@ -520,11 +520,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2075
+      "bytes": 2456
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
@@ -560,11 +560,11 @@
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/collect-counter/original.html",
-      "bytes": 7777
+      "bytes": 7838
     },
     {
       "path": "demos/patterns/collect-counter/plates/landscape-10.4-map.webp",
@@ -604,7 +604,7 @@
     },
     {
       "path": "demos/patterns/collect-counter/script.js",
-      "bytes": 145359
+      "bytes": 145071
     },
     {
       "path": "demos/patterns/collect-counter/style.css",

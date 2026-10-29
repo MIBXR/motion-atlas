@@ -26,9 +26,9 @@
 | `rates` | 播放速率，默认 `[0.5, 0.75, 1, 1.25, 1.5, 2]` |
 | `step` | `'seconds'`（默认）或 `'frames'`；后者按 `film.fps` 逐帧步进 |
 | `start` | `{ t: 0, reduced: <秒> }` |
-| `audio` | 可选 `{ src, mime }`；音轨后台加载，开启声音时等待；以时间轴为时钟，偏差超过 0.08 秒时校正，`?render` 下禁声 |
+| `audio` | 可选 `{ src, mime }`；音轨下载并解码后才就绪；以时间轴为时钟，偏差超过 0.08 秒时校正，`?render` 下禁声 |
 
-`renderAt(t)` 的 Promise 负责作品资源就绪；媒体音轨不阻塞 `__motion.ready`。cue 数据结构属于案例；通用接入只接收换算好的 markers。
+`renderAt(t)` 的 Promise 负责画面准备；媒体音轨纳入 `__motion.ready`。cue 数据结构属于案例；通用接入只接收换算好的 markers。
 
 只重放案例片段的巧思调用 `MotionKit.replay(config)`，由 `segments` 拼接片段并复用来源案例 iframe，返回外层时间轴。每条片段用 `caseId`、`from`、`to` 指定来源与时间范围；`title`、`accent`、`markers`、`fps`、`reduced` 配置外层播放，`overlay` 指定巧思自己的 cue 说明层。来源入口为 `../../cases/<id>/index.html?embed=1&render=1`；外层提供 `__motion`、控制条、URL 定位、声音同步及画幅与加载状态。重放型目录只放 `index.html` 与同步的 `motion-kit.js`；有自身机制的巧思保留机制代码，素材引用来源案例。
 
@@ -134,14 +134,14 @@ CSS 写法（横竖两套构图）：
 | --- | --- |
 | `duration` / `markers` / `time` / `playing` / `rate` / `loop` | 同时间轴 |
 | `seek(t)` → Promise、`play()`、`pause()`、`toggle()`、`on()` | 同时间轴 |
-| `ready` | Promise：全部 `preload()` 完成后 resolve（没有预加载时下一轮事件循环即 resolve）。之后 `<html data-motion-ready="1">` 并向父页面发 `motion:ready` |
+| `ready` | Promise：全部必需资源、解码和初始帧完成后 resolve；失败或超时 reject。之后 `<html data-motion-ready="1">` 并向父页面发 `motion:ready` |
 | `progress` | 预加载进度 0–1 |
 | `orient` / `orients` / `setOrient(o)` / `stage` | 画幅；**`orients` 为空数组表示自适应Demo**，站点不应显示画幅切换 |
 | `audio` | 离线渲染接口（挂了乐谱时才有，否则为 `null`）：`renderWav({ from, to, sampleRate })` → `{ base64, sampleRate, channels, duration, peakDb, rmsDb, clipped, events }`；`events(from, to)` 列出事件 |
 | `kit` | kit 版本号 |
 | `meta` 里的字段 | 例如 `title`、`bpm`（旧 Demo 还会带 `sound`） |
 
-`MotionKit.start(tl, { t = 0, reduced, autoplay = true })`：按 `?t=` → 减少动态时的 `reduced` → `t` 的顺序定位，预加载完成后重绘一次并自动播放（`?autoplay=0` 与 `?render` 不播放、减少动态不播放）。
+`MotionKit.start(tl, { t = 0, reduced, autoplay = true })`：按 `?t=` → 减少动态时的 `reduced` → `t` 的顺序定位，就绪时提交初始时刻并自动播放（`?autoplay=0` 与 `?render` 不播放、减少动态不播放）。
 
 ## 四、声音 `MotionKit.audio`
 
@@ -165,7 +165,7 @@ CSS 写法（横竖两套构图）：
 - 页面切到后台：停止调度、淡出并挂起 AudioContext；回到前台后恢复，从当前时刻重新对齐。
 - `audio.meter()` → `{ peak, rms, peakDb, rmsDb }`：输出电平（最近约 43ms），可做电平表；`audio.active`：仍在发声或已排程的声部数。
 - `audio.latency`：主混音链的固定处理延迟，当前为 0.006 秒；不包含设备输出延迟。需要将画面贴合实际听到的声音时，还要结合 AudioContext 的输出时间戳或 `outputLatency`。
-- 渲染模式（`?render`）下 `enable()` 不生效（无头渲染只走离线渲染）。
+- 渲染模式（`?render`）默认关闭实时声音；重放宿主以 `enable({ replay: true })` 启用来源乐谱。
 
 ### 4.3 乐谱与调度
 
@@ -252,20 +252,42 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 
 `motion:ready.sound` 取乐谱、`expose()` 的声音元数据和 kit 的声音使用标记：创建 `sound()`、调用 `audio.play()` / `audio.attach()`，或给 `controls()` 传入声音对象都会登记。它表示 Demo 使用声音，不表示当前已开启；`__motion.audio` 只表示可离线导出的乐谱接口，不能用于判断旧版音效是否存在。仅在用户操作后才调用 `audio.play()` 的 Demo，应在 `expose(tl, { sound: true })` 中预先声明声音能力。
 
-## 五、预加载 `MotionKit.preload(tasks, { onProgress, timeout = 30000 })`
+## 五、加载与就绪
 
-`tasks` 是数组，元素可以是返回 Promise 的函数、Promise，或 `{ run, weight, label }`。返回 `Promise<结果数组>`；单个任务失败或超时只记 `console.warn`，不阻塞 ready（对应结果为 null）。可以多次调用，全部登记到 `__motion.ready`。
+案例初始化前用 `MotionKit.load.prepare({ styles, modules, images, data, audio, fontText })` 登记并下载全部必需资源。`styles` 解析样式、字体和图片；`modules` 下载模块依赖图；`images` 下载并解码；`data` 和 `audio` 下载字节。之后通过下列接口读取同一份缓存。
 
-| 工厂 | 说明 |
+| 接口 | 结果 |
 | --- | --- |
-| `preload.image(src)` | 加载并 `decode()` 完成，结果为 `HTMLImageElement`，并存入 `preload.cache` |
-| `preload.font(spec, text)` / `preload.fonts()` | `document.fonts.load()` / `document.fonts.ready` |
-| `preload.fetch(url, as = 'blob')` | 预取任意资源，结果存入 `preload.cache` |
-| `preload.wait(ms)` | 等待（调试进度显示用） |
+| `load.register(urls)` | 登记必需 URL，可传 `{ url, bytes }`；按绝对 URL 去重 |
+| `load.fetch(url, options)` | 计数读取响应流，返回可重复读取的 Response |
+| `load.image(url)` / `load.url(url)` | 已解码的 Image / 已准备资源的 Blob URL |
+| `load.font(family, url, descriptors)` | 下载并加载 FontFace |
+| `load.stylesheet(url, { document, fontText, fonts, before })` | 按声明位置保留样式顺序，加载样式及其资源；fontText 选择所需 Unicode 字体分片；fonts:false 只应用布局样式 |
+| `load.module(url)` / `load.moduleURL(url)` | 加载模块 / 返回模块依赖已准备的 Blob URL |
+| `load.script(url, { document })` | 下载并执行普通脚本 |
+| `load.loader(run, window)` | 将第三方 URL loader 的 fetch 接入计数，并保持其原始加载流程 |
+| `load.audio(url)` / `load.decode(run)` | 已解码音轨 / 独立解码阶段 |
+| `load.source(id, state)` / `load.state` | 合并来源进度 / 当前状态 |
 
-**地图巡礼的渐进缓冲**：实时播放先扫描全片镜头需求，按瓦片最早 / 最晚出现时刻排计划；下载窗口 45 秒进入 HTTP 缓存，解析窗口 10 秒进入 MapLibre 缓存，另设解析内存预算。快速推拉中能由必需上级覆盖的瓦片列为可选，优先为近期必需瓦片分配带宽。开头 6 秒就绪即开始；前方缓冲不足 0.5 秒时停在当前帧并显示 `BUFFERING MAP`，攒够 4 秒自动继续。切换画幅会重扫计划。渲染模式不走实时缓冲，`seek()` 等待瓦片和地图 idle 后截图。
+字节总量优先使用固定素材映射的 bytes，其次使用未压缩响应的 Content-Length；未知总量以已下载字节计并标记 unknownTotal。速度使用最近三秒的下载字节变化。下载百分比单调不减，就绪前最高为 99%，100% 与 ready 同步发布；解码和首帧准备使用独立阶段。
 
-**进度显示**：独立打开时 kit 在页面顶部显示一条细进度条；嵌入（`?embed`）时不显示，由站点根据 `motion:loading` 显示加载状态。进度同时写在 `<html data-motion-loading="0.500|done">` 并派发 `window` 事件 `motion:loading`（`detail.progress`）。
+`MotionKit.preload(tasks, { onProgress, timeout = 3600000 })` 登记必需准备任务。tasks 接受 Promise、返回 Promise 的函数或 `{ run, weight, label }`。失败和超时拒绝 ready；计数请求收到响应头后，响应体连续 60 秒没有数据时失败。
+
+公共 expose 层在 ready 前禁用 play、toggle、seek、快捷键与宿主播放／定位消息。控制条、站点播放、重播、刻度条和节拍点同时禁用。URL 的 t 和默认初始时刻在就绪时提交一次；render 模式的 API seek 等待 ready 后执行。音轨是必需资源；声音默认关闭。
+
+replay 等全部来源 iframe、音轨与初始帧完成，按 URL 合并字节并共享下载缓存。地图巡礼在开头缓冲完成后就绪，播放中的后续瓦片沿用缓冲泵：解析窗口 10 秒，下载窗口 45 秒，开头 6 秒；前方不足 0.5 秒时暂停，缓冲 4 秒后继续。渲染模式逐帧等待地图。档案终端以应用字体、模型、音轨和初始帧的最终完成状态发布 ready。
+
+独立 Demo 与站点详情都显示进度条和“已下载 23.4 / 56.0 MB · 1.8 MB/s · 文件 87 / 243 · 下载中”。阶段为下载中、解码中、准备首帧；失败显示原因与重试，重试重新加载 Demo。减少动态偏好下进度条没有动画。
+
+状态通过 motion:loading 事件及父窗口消息同步，包含：
+
+```js
+{ type: 'motion:loading', progress, loadedBytes, totalBytes, unknownTotal,
+  bytesPerSecond, filesDone, filesTotal, phase, error,
+  resources: [{ url, loaded, total, known, downloaded }] }
+```
+
+phase 为 download / decode / frame / ready / error；error 成功时为 null，失败时为原因。resources 用于重放来源按 URL 去重汇总。HTML 的 data-motion-loading 保存进度，data-motion-ready="1" 表示就绪。
 
 ## 六、宿主通信协议（postMessage）
 
@@ -286,7 +308,7 @@ Demo → 父页面：
 | --- | --- |
 | `{ type: 'motion:ready', duration, orients, orient, markers, sound, title, kit }` | 预加载完成后发送一次（`motion:query` 可重发）。`orients: []` 表示旧版自适应 Demo；`sound` 表示有声音（乐谱或旧版音效） |
 | `{ type: 'motion:orient', orient }` | 画幅变化（含自动切换）；请求了不支持的画幅时带 `supported`、`rejected` |
-| `{ type: 'motion:loading', progress }` | 预加载进度 0–1 |
+| `{ type: 'motion:loading', … }` | 字节、速度、文件数与阶段，格式见加载与就绪 |
 | `{ type: 'motion:sound', on, state }` | 声音状态变化：`state` 为 `off` / `on` / `blocked` |
 
 **开启声音**：点击声音按钮即可开启。若显示“待启用”，点击舞台或再次点击声音按钮。嵌入页面使用`allow="autoplay"`，通过`motion:sound`接收开关状态。画幅按钮只在Demo支持多种画幅时显示，切换后保持当前时刻。
@@ -308,7 +330,7 @@ Demo → 父页面：
 
 `rates` 添加速率菜单；`step: 'frames'` 添加前后逐帧按钮，方向键暂停并按 fps 步进。
 
-按钮节点只创建一次，状态变化时切换属性（`data-playing`、`data-sound`、`data-orient`），使一次按下与抬起始终落在同一节点上。站点详情页（`site/shared/library.js`）同样保留稳定的播放按钮节点；舞台、工具栏与刻度条按视口高度布局，加载中允许定位，横竖切换保持当前时刻，全屏时提供浮层控制。
+按钮节点只创建一次，状态变化时切换属性（`data-playing`、`data-sound`、`data-orient`），使一次按下与抬起始终落在同一节点上。站点详情页（`site/shared/library.js`）同样保留稳定的播放按钮节点；舞台、工具栏与刻度条按视口高度布局，就绪后允许定位，横竖切换保持当前时刻，全屏时提供浮层控制。
 
 ## 九、逐帧渲染成视频
 

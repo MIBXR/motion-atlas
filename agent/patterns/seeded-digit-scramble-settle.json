@@ -140,7 +140,7 @@
     },
     {
       "path": "demos/cases/mg-hud/film/main.js",
-      "bytes": 7461
+      "bytes": 7491
     },
     {
       "path": "demos/cases/mg-hud/film/setup.js",
@@ -204,11 +204,11 @@
     },
     {
       "path": "demos/cases/mg-hud/index.html",
-      "bytes": 2189
+      "bytes": 2336
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-hud/source/audio.py",
@@ -276,7 +276,7 @@
     },
     {
       "path": "demos/patterns/seeded-digit-scramble-settle/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/seeded-digit-scramble-settle.jpg",

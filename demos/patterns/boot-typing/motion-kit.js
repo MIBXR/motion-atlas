@@ -289,7 +289,11 @@
     timeline: null, // 当前暴露的时间轴（expose() 设置）
     hostOrient: null, // 舞台创建前收到的宿主画幅请求
     preloads: [], // 已登记的预加载 Promise
-    load: { done: 0, total: 0 },
+    resources: new Map(),
+    sources: new Map(),
+    decoding: 0,
+    progress: 0,
+    error: null,
     readyState: false,
     usesSound: false, // 用到了声音（sound() / audio.play / attach / controls 的声音开关），站点据此显示开关
     events: emitter(),
@@ -450,17 +454,44 @@
   /* =====================================================================
    * 预加载
    * ===================================================================== */
-  function loadProgress() {
-    return KIT.load.total ? KIT.load.done / KIT.load.total : 1;
+  function loadingState() {
+    const resources = new Map(KIT.resources);
+    for (const state of KIT.sources.values()) for (const item of state.resources || []) {
+      const previous = resources.get(item.url);
+      if (!previous || item.loaded > previous.loaded) resources.set(item.url, item);
+    }
+    const list = [...resources.values()];
+    const loadedBytes = list.reduce((n, r) => n + r.loaded, 0);
+    const totalBytes = list.reduce((n, r) => n + Math.max(r.total, r.loaded), 0);
+    const unknownTotal = list.some(r => !r.known);
+    const now = performance.now();
+    samples.push([now, loadedBytes]);
+    while (samples.length > 1 && samples[1][0] < now - 3000) samples.shift();
+    const speed = samples.length > 1 ? Math.max(0, (loadedBytes - samples[0][1]) / Math.max(.001, (now - samples[0][0]) / 1000)) : 0;
+    const downloading = !list.length || list.some(r => !r.downloaded);
+    const children = [...KIT.sources.values()];
+    const phase = KIT.error ? 'error' : KIT.readyState ? 'ready' : downloading || children.some(s => s.phase === 'download') ? 'download' : KIT.decoding || children.some(s => s.phase === 'decode') ? 'decode' : 'frame';
+    const unknownPending = list.some(r => !r.known && !r.downloaded) || children.some(s => !s.filesTotal && s.phase !== 'ready');
+    KIT.progress = KIT.readyState ? 1 : Math.max(KIT.progress, Math.min(.99, !unknownPending && totalBytes ? loadedBytes / totalBytes : 0));
+    return { progress: KIT.progress, loadedBytes, totalBytes, unknownTotal, bytesPerSecond: speed,
+      filesDone: list.filter(r => r.downloaded).length, filesTotal: list.length, phase,
+      error: KIT.error?.message || null, resources: list.map(({ url, loaded, total, known, downloaded }) => ({ url, loaded, total, known, downloaded })) };
+  }
+  const samples = [];
+  function loadProgress() { return loadingState().progress; }
+  const phaseText = { download: '下载中', decode: '解码中', frame: '准备首帧', error: '加载失败', ready: '就绪' };
+  function loadingText(s) {
+    const mb = n => (n / 1e6).toFixed(1);
+    return `已下载 ${mb(s.loadedBytes)}${s.unknownTotal ? ' MB' : ''} / ${s.unknownTotal ? '未知总量' : mb(s.totalBytes) + ' MB'} · ${mb(s.bytesPerSecond)} MB/s · 文件 ${s.filesDone} / ${s.filesTotal} · ${phaseText[s.phase]}`;
   }
   let overlay = null;
   function reportLoading() {
-    const progress = loadProgress();
+    const detail = loadingState(), progress = detail.progress;
     if (hasDOM) {
       document.documentElement.dataset.motionLoading = progress >= 1 ? 'done' : progress.toFixed(3);
-      try { global.dispatchEvent(new CustomEvent('motion:loading', { detail: { progress, done: KIT.load.done, total: KIT.load.total } })); } catch (e) { /* 旧浏览器 */ }
+      global.dispatchEvent(new CustomEvent('motion:loading', { detail }));
     }
-    post({ type: 'motion:loading', progress });
+    post({ type: 'motion:loading', ...detail });
     // 独立打开时显示一条细进度条；嵌入与渲染模式交给宿主或不显示
     const p = params();
     if (!hasDOM || p.embed || p.render) return;
@@ -469,28 +500,223 @@
       overlay.className = 'mk-loading';
       overlay.setAttribute('role', 'progressbar');
       overlay.setAttribute('aria-label', '正在加载资源');
-      overlay.innerHTML = '<i></i><span></span>';
+      overlay.innerHTML = '<i></i><span></span><p></p><button type="button" hidden>重试</button>';
+      overlay.querySelector('button').onclick = () => location.reload();
       const st = document.createElement('style');
-      st.textContent = `.mk-loading{position:fixed;left:0;right:0;top:0;z-index:10000;height:3px;background:rgba(255,255,255,.12);pointer-events:none}
+      st.textContent = `.mk-loading{position:fixed;left:0;right:0;top:0;z-index:10000;background:rgba(12,13,15,.94);color:#f1efe9;font:12px/1.5 system-ui;text-align:center;padding-bottom:12px}
+        .mk-loading i{min-height:3px}
         .mk-loading i{display:block;height:100%;width:0;background:#f1efe9;transition:width .2s}
-        .mk-loading span{position:absolute;right:12px;top:8px;font:12px/1 "Cascadia Mono",Consolas,monospace;color:#f1efe9;opacity:.8}`;
+        .mk-loading span{display:block;margin:10px 12px 0}.mk-loading p{margin:6px 12px;overflow-wrap:anywhere}.mk-loading p:empty{display:none}
+        .mk-loading button{font:inherit;padding:5px 14px;cursor:pointer}.mk-loading button[hidden]{display:none}
+        @media(prefers-reduced-motion:reduce){.mk-loading i{transition:none}}`;
       document.head.appendChild(st);
       document.body.appendChild(overlay);
     }
     if (overlay) {
       overlay.querySelector('i').style.width = (progress * 100).toFixed(1) + '%';
-      overlay.querySelector('span').textContent = `LOADING ${Math.round(progress * 100)}%`;
+      overlay.querySelector('span').textContent = loadingText(detail);
+      overlay.querySelector('p').textContent = detail.error || '';
+      overlay.querySelector('button').hidden = !detail.error;
       overlay.setAttribute('aria-valuenow', String(Math.round(progress * 100)));
       if (progress >= 1) { const o = overlay; overlay = null; setTimeout(() => o.remove(), 250); }
     }
   }
 
+  function failLoading(error) {
+    if (!KIT.error) KIT.error = error instanceof Error ? error : new Error(String(error));
+    rejectLoading(KIT.error);
+    KIT.timeline?.pause();
+    reportLoading();
+    KIT.events.emit('loading');
+  }
+  let rejectLoading;
+  const loadingFailed = new Promise((_, reject) => { rejectLoading = reject; });
+  loadingFailed.catch(() => {});
+  let resolveExposed;
+  const exposed = new Promise(resolve => { resolveExposed = resolve; });
+
+  const sharedStore = (() => {
+    if (inFrame) { try { if (global.parent.MotionKit) return global.parent.MotionKit.load._store; } catch {} }
+    return new Map();
+  })();
+  const absolute = (url, base = document.baseURI) => new URL(url, base).href;
+  const fetchResource = global.fetch.bind(global);
+  const assetKey = url => global.MotionAtlasAssets?.resolve(url) || url;
+  function register(urls, base = document.baseURI) {
+    return urls.map(item => {
+      const src = absolute(typeof item === 'string' ? item : item.url, base), url = assetKey(src);
+      let r = sharedStore.get(url);
+      if (!r) {
+        const bytes = (typeof item === 'object' && item.bytes) || global.MotionAtlasAssets?.info(src)?.bytes || 0;
+        r = { url, src, loaded: 0, total: bytes, known: !!bytes, downloaded: false };
+        sharedStore.set(url, r);
+      }
+      KIT.resources.set(url, r);
+      return r;
+    });
+  }
+  async function countedFetch(url, options = {}) {
+    const [r] = register([url]);
+    if (!r.promise) r.promise = (async () => {
+      const controller = new AbortController();
+      let timer;
+      const reset = () => { clearTimeout(timer); timer = setTimeout(() => controller.abort(new Error('下载超时 ' + r.src)), 60000); };
+      try {
+        const response = await fetchResource(r.src, { ...options, signal: options.signal ? AbortSignal.any([options.signal, controller.signal]) : controller.signal });
+        if (!response.ok) throw new Error(`${response.status} ${r.src}`);
+        reset();
+        if (!r.known && !response.headers.get('Content-Encoding')) {
+          r.total = Number(response.headers.get('Content-Length')) || 0;
+          r.known = r.total > 0;
+        }
+        const chunks = [], reader = response.body.getReader();
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value); r.loaded += value.byteLength;
+          reset();
+        }
+        r.body = new Blob(chunks, { type: response.headers.get('Content-Type') || '' });
+        r.headers = response.headers;
+        r.downloaded = true;
+        reportLoading();
+      } finally { clearTimeout(timer); }
+    })().catch(error => { failLoading(error); throw error; });
+    await r.promise;
+    const response = new Response(r.body, { headers: r.headers });
+    Object.defineProperty(response, 'url', { value: r.src });
+    return response;
+  }
+  async function decode(run) {
+    KIT.decoding++; reportLoading();
+    try { return await run(); } finally { KIT.decoding--; reportLoading(); }
+  }
+  async function loadImage(url) {
+    const [r] = register([url]);
+    if (!r.image) r.image = (async () => {
+      await countedFetch(r.src);
+      return decode(async () => {
+        const image = new Image();
+        r.blobURL ||= URL.createObjectURL(r.body);
+        image.src = r.blobURL;
+        await image.decode();
+        return image;
+      });
+    })();
+    return r.image;
+  }
+  const styles = new WeakMap(), modules = new Map();
+  async function loadStyle(url, options = {}) {
+    const doc = options.document || document;
+    if (!styles.has(doc)) styles.set(doc, new Map());
+    const cache = styles.get(doc), key = absolute(url) + (options.fonts === false ? ':layout' : ':fonts');
+    url = absolute(url);
+    if (cache.has(key)) return cache.get(key);
+    const style = doc.createElement('style');
+    doc.head.insertBefore(style, options.before || null);
+    const promise = (async () => {
+      let text = await (await countedFetch(url)).text();
+      const imports = [...text.matchAll(/@import\s+(?:url\(\s*)?['"]([^'"]+)['"]\s*\)?[^;]*;/g)];
+      await Promise.all(imports.map(m => loadStyle(absolute(m[1], url), options)));
+      for (const m of imports) text = text.replace(m[0], '');
+      const parsed = new CSSStyleSheet(); parsed.replaceSync(text);
+      for (let i = parsed.cssRules.length - 1; i >= 0; i--) {
+        const rule = parsed.cssRules[i];
+        if (rule.type !== CSSRule.FONT_FACE_RULE) continue;
+        const ranges = (rule.style.getPropertyValue('unicode-range') || 'U+0-10FFFF').split(',').map(range => {
+          const value = range.trim().slice(2), [a, b = a] = value.split('-');
+          return [parseInt(a.replaceAll('?', '0'), 16), parseInt(b.replaceAll('?', 'F'), 16)];
+        });
+        if (options.fonts === false || options.fontText && ![...options.fontText].some(char => ranges.some(([a, b]) => char.codePointAt(0) >= a && char.codePointAt(0) <= b))) parsed.deleteRule(i);
+      }
+      text = text.replace(/@font-face\s*\{[^}]*\}/gi, '') + '\n' + [...parsed.cssRules].filter(rule => rule.type === CSSRule.FONT_FACE_RULE).map(rule => rule.cssText).join('\n');
+      const urls = [...text.matchAll(/url\(\s*(['"]?)([^)'"\s]+)\1\s*\)/g)].filter(m => !/^(data:|blob:|#)/.test(m[2]));
+      register(urls.map(m => absolute(m[2], url)));
+      await Promise.all(urls.map(async m => {
+        const src = absolute(m[2], url), [r] = register([src]);
+        await countedFetch(src);
+        r.blobURL ||= URL.createObjectURL(r.body);
+        text = text.replaceAll(m[0], `url("${r.blobURL}")`);
+        if (!/\.(woff2?|[ot]tf)(?:[?#]|$)/i.test(src)) await loadImage(src);
+      }));
+      const sheet = new CSSStyleSheet(); sheet.replaceSync(text);
+      const faces = await Promise.all([...sheet.cssRules].filter(rule => rule.type === CSSRule.FONT_FACE_RULE).map(rule => decode(async () => {
+        const s = rule.style, descriptors = {};
+        for (const [css, js] of [['font-weight','weight'],['font-style','style'],['font-stretch','stretch'],['unicode-range','unicodeRange'],['font-display','display']]) if (s.getPropertyValue(css)) descriptors[js] = s.getPropertyValue(css);
+        const face = new FontFace(s.getPropertyValue('font-family').replace(/^['"]|['"]$/g, ''), s.getPropertyValue('src'), descriptors);
+        await face.load(); return face;
+      })));
+      faces.forEach(face => doc.fonts.add(face));
+      style.textContent = text.replace(/@font-face\s*\{[^}]*\}/gi, '');
+    })();
+    cache.set(key, promise);
+    return promise;
+  }
+  function moduleSpecifier(spec, base) {
+    const imports = JSON.parse(document.querySelector('script[type="importmap"]')?.textContent || '{}').imports || {};
+    if (imports[spec]) return absolute(imports[spec]);
+    const prefix = Object.keys(imports).find(key => key.endsWith('/') && spec.startsWith(key));
+    return prefix ? absolute(imports[prefix] + spec.slice(prefix.length)) : absolute(spec, base);
+  }
+  async function moduleURL(url) {
+    url = absolute(url);
+    if (modules.has(url)) return modules.get(url);
+    const promise = (async () => {
+      let code = await (await countedFetch(url)).text();
+      const matches = [...code.matchAll(/(?:^[ \t]*(?:import|export)[ \t]+(?:[^;'"]*?\bfrom\s*)?|\bimport\s*\(\s*)(['"])([^'"\n]+)\1/gm)];
+      const deps = await Promise.all(matches.map(m => moduleURL(moduleSpecifier(m[2], url))));
+      for (let i = matches.length - 1; i >= 0; i--) {
+        const m = matches[i], offset = m.index + m[0].lastIndexOf(m[1] + m[2] + m[1]);
+        code = code.slice(0, offset) + JSON.stringify(deps[i]) + code.slice(offset + m[2].length + 2);
+      }
+      code = code.replaceAll('import.meta.url', JSON.stringify(url));
+      return URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+    })();
+    modules.set(url, promise);
+    return promise;
+  }
+  const load = {
+    _store: sharedStore, register, fetch: countedFetch, image: loadImage, stylesheet: loadStyle,
+    font: (family, url, descriptors = {}) => decode(async () => {
+      const data = await (await countedFetch(url)).arrayBuffer();
+      const face = new FontFace(family, data, descriptors); await face.load(); document.fonts.add(face); return face;
+    }),
+    audio: url => decode(async () => new OfflineAudioContext(2, 1, 48000).decodeAudioData(await (await countedFetch(url)).arrayBuffer())),
+    async loader(run, target = global) {
+      const original = target.fetch;
+      target.fetch = async (input, options) => {
+        const url = typeof input === 'string' ? input : input.url;
+        if (/^(blob:|data:)/.test(url)) return original.call(target, input, options);
+        const response = await countedFetch(absolute(url, target.document.baseURI), options);
+        return new target.Response(response.body, { headers: response.headers });
+      };
+      try { return await decode(run); } finally { target.fetch = original; }
+    },
+    module: async url => import(await moduleURL(url)), moduleURL,
+    script: async (url, options = {}) => { const doc = options.document || document; const text = await (await countedFetch(url)).text(); const script = doc.createElement('script'); script.textContent = text; doc.head.appendChild(script); },
+    url: url => { const r = KIT.resources.get(assetKey(absolute(url))); if (!r?.blobURL) throw new Error('资源未准备 ' + url); return r.blobURL; },
+    decode,
+    fail: failLoading,
+    source: (id, state) => { KIT.sources.set(id, state); if (state.error) failLoading(new Error(state.error)); reportLoading(); },
+    get state() { return loadingState(); },
+    async prepare({ styles = [], modules = [], images = [], data = [], audio = [], fontText }) {
+      register([...styles, ...modules, ...images, ...data, ...audio]); reportLoading();
+      const ready = Promise.all([...styles.map(url => loadStyle(url, { fontText })), ...modules.map(moduleURL), ...images.map(loadImage), ...data.map(url => countedFetch(url)), ...audio.map(url => countedFetch(url))]);
+      preload([ready]);
+      await ready;
+    },
+  };
+  if (hasDOM) {
+    const heartbeat = setInterval(() => { if (KIT.readyState || KIT.error) clearInterval(heartbeat); reportLoading(); }, 200);
+    global.addEventListener('unhandledrejection', e => { if (!KIT.readyState) failLoading(e.reason); });
+    document.addEventListener('DOMContentLoaded', () => { if (!KIT.readyState) reportLoading(); }, { once: true });
+  }
+
   /**
    * 预加载：tasks 为返回 Promise 的函数（或 Promise、或 { run, weight, label }）。
-   * 单个任务失败或超时只记警告，不阻塞 ready。返回 Promise<结果数组>，并登记到 __motion.ready。
-   * opts：onProgress(p, done, total) 本组进度；timeout 单任务超时（毫秒，默认 30000）。
+   * 必需任务失败或超时会拒绝 ready。
    */
-  function preload(tasks, { onProgress, timeout = 30000 } = {}) {
+  function preload(tasks, { onProgress, timeout = 3600000 } = {}) {
     const list = (Array.isArray(tasks) ? tasks : [tasks]).filter(Boolean).map((x, i) => {
       if (typeof x === 'function') return { run: x, weight: 1, label: x.label || `task ${i + 1}` };
       if (x && typeof x.then === 'function') return { run: () => x, weight: 1, label: `promise ${i + 1}` };
@@ -498,34 +724,26 @@
     });
     const total = list.reduce((s, x) => s + x.weight, 0);
     let done = 0;
-    KIT.load.total += total;
     reportLoading();
     const promise = Promise.all(list.map((item) => {
       let timer = 0;
-      const guard = new Promise((_, rej) => { timer = setTimeout(() => rej(new Error('超时')), timeout); });
+      const guard = new Promise((_, rej) => { timer = setTimeout(() => rej(new Error(item.label + ' 超时')), timeout); });
       return Promise.race([Promise.resolve().then(item.run), guard])
-        .catch((err) => { console.warn('[MotionKit.preload] 资源未就绪：', item.label, err && err.message ? err.message : err); return null; })
         .then((v) => {
           clearTimeout(timer);
           done += item.weight;
-          KIT.load.done += item.weight;
           try { onProgress && onProgress(total ? done / total : 1, done, total); } catch (err) { console.error(err); }
           reportLoading();
           return v;
-        });
+        }).catch(err => { failLoading(err); throw err; }).finally(() => clearTimeout(timer));
     }));
     KIT.preloads.push(promise);
+    promise.catch(() => {});
     return promise;
   }
   /** 预加载任务工厂：图片（解码完成）、字体、任意 URL、等待 */
   preload.image = (src) => {
-    const fn = () => new Promise((res, rej) => {
-      const img = new Image();
-      img.decoding = 'async';
-      img.onload = () => (img.decode ? img.decode().catch(() => null) : Promise.resolve()).then(() => { preload.cache.set(src, img); res(img); });
-      img.onerror = () => rej(new Error('图片加载失败 ' + src));
-      img.src = src;
-    });
+    const fn = () => loadImage(src).then(img => { preload.cache.set(src, img); return img; });
     fn.label = src;
     return fn;
   };
@@ -540,7 +758,7 @@
     return fn;
   };
   preload.fetch = (url, as = 'blob') => {
-    const fn = () => fetch(url).then((r) => { if (!r.ok) throw new Error(r.status + ' ' + url); return r[as](); }).then((v) => { preload.cache.set(url, v); return v; });
+    const fn = () => countedFetch(url).then(r => r[as]()).then((v) => { preload.cache.set(url, v); return v; });
     fn.label = url;
     return fn;
   };
@@ -552,7 +770,10 @@
   async function allLoaded() {
     await new Promise((r) => setTimeout(r, 0));
     let n;
-    do { n = KIT.preloads.length; await Promise.all(KIT.preloads); } while (KIT.preloads.length !== n);
+    do {
+      n = KIT.preloads.length + KIT.resources.size;
+      await Promise.race([Promise.all([...KIT.preloads, ...[...KIT.resources.values()].map(r => r.promise)]), loadingFailed]);
+    } while (KIT.preloads.length + KIT.resources.size !== n);
   }
 
   /* =====================================================================
@@ -1819,8 +2040,8 @@
           G.trim.gain.value = MIX.trim;
         }
       },
-      enable() {
-        if (params().render) return false;
+      enable({ replay = false } = {}) {
+        if (params().render && !replay) return false;
         if (!ensure()) return false;
         enabled = true;
         if (ctx.state !== 'running') {
@@ -1938,6 +2159,13 @@
     global.__motion = tl;
     for (const k of Object.keys(meta)) { try { tl[k] = meta[k]; } catch (e) { /* 只读字段 */ } }
     KIT.timeline = tl;
+    const seek = tl.seek.bind(tl), play = tl.play.bind(tl), pause = tl.pause.bind(tl);
+    const readTime = Object.getOwnPropertyDescriptor(tl, 'time').get;
+    Object.defineProperty(tl, 'time', { configurable: true, get: () => KIT.readyState ? readTime.call(tl) : 0 });
+    tl.play = () => { if (KIT.readyState) return play(); };
+    tl.pause = () => { if (KIT.readyState) return pause(); };
+    tl.toggle = () => { if (KIT.readyState) return tl.playing ? tl.pause() : tl.play(); };
+    tl.seek = time => KIT.readyState ? seek(time) : params().render ? tl.ready.then(() => seek(time)) : Promise.resolve(tl.time);
     const def = (k, desc) => Object.defineProperty(tl, k, Object.assign({ configurable: true, enumerable: false }, desc));
     def('kit', { value: VERSION, writable: true });
     def('stage', { get: () => KIT.stage });
@@ -1964,14 +2192,21 @@
     // 旧 Demo 的即时音效（sound().tone/noise，自己前瞻排程）：暂停或跳转时淡出；新乐谱由 attach 的调度器处理
     tl.on('pause', () => audio._stopOwner('legacy'));
     tl.on('seek', (to, from) => { if (Math.abs(to - from) > 0.034) audio._stopOwner('legacy'); });
-    const ready = allLoaded().then(() => {
+    const ready = allLoaded().then(async () => {
+      if (KIT.error) throw KIT.error;
+      reportLoading();
+      await seek(tl.__startAt ?? params().t ?? 0);
       KIT.readyState = true;
       if (hasDOM) document.documentElement.dataset.motionReady = '1';
+      reportLoading();
       post(readyMsg(tl));
+      KIT.events.emit('loading');
       try { global.dispatchEvent(new CustomEvent('motion:ready', { detail: readyMsg(tl) })); } catch (e) { /* 旧浏览器 */ }
       return tl;
-    });
+    }).catch(error => { failLoading(error); throw error; });
     def('ready', { value: ready, writable: true });
+    ready.catch(() => {});
+    resolveExposed(tl);
     if (params().sound) (tl.__sound || audio).enable();
     return tl;
   }
@@ -1983,15 +2218,11 @@
   function start(tl, { t = 0, reduced = null, autoplay = true } = {}) {
     const p = params(), reduce = prefersReducedMotion();
     const at = p.t != null && Number.isFinite(p.t) ? p.t : reduce && reduced != null ? reduced : t;
-    tl.seek(at);
-    return (tl.ready || Promise.resolve()).then(() => {
-      // 资源就绪后重绘一次（期间用户没有拖动过才重绘，避免把用户拉回去）
-      if (Math.abs(tl.time - at) < 1e-6) return tl.seek(at);
-      return tl.time;
-    }).then(() => {
+    tl.__startAt = at;
+    return tl.ready.then(() => {
       if (autoplay && p.autoplay && !reduce) tl.play();
       return tl;
-    });
+    }).catch(failLoading);
   }
 
 
@@ -2000,9 +2231,10 @@
     media.preload = 'auto';
     media.muted = true;
     const ready = (async () => {
-      const bytes = await (await fetch(src)).arrayBuffer();
+      const bytes = await (await countedFetch(src)).arrayBuffer();
+      await decode(() => new OfflineAudioContext(2, 1, 48000).decodeAudioData(bytes.slice(0)));
       const metadata = new Promise((resolve, reject) => {
-        media.addEventListener('loadedmetadata', resolve, { once: true });
+        media.addEventListener('canplaythrough', resolve, { once: true });
         media.addEventListener('error', () => reject(media.error), { once: true });
       });
       media.src = URL.createObjectURL(new Blob([bytes], { type: mime }));
@@ -2065,6 +2297,7 @@
       render: t => film.renderAt(t),
     });
     const track = config.audio ? loadMediaTrack(config.audio) : null;
+    if (track) preload([track.ready]);
     const snd = track ? playerSound(tl, async (enabled, valid, report) => {
       const { media, ready } = track;
       if (!enabled || !tl.playing) media.pause();
@@ -2124,6 +2357,7 @@
       const url = new URL(segment.source, location.href);
       url.searchParams.set('embed', '1');
       url.searchParams.set('render', '1');
+      KIT.sources.set(url.href, { phase: 'download', resources: [] });
       frame.src = url.href;
       const track = segment.legacy ? null : loadMediaTrack({ src: segment.audio || `../../cases/${segment.caseId}/audio/film.m4a` });
       records.set(segment.source, { frame, loaded, segment, track, progress: 0 });
@@ -2132,7 +2366,7 @@
       const record = [...records.values()].find(item => item.frame.contentWindow === event.source);
       if (!record || event.data?.type !== 'motion:loading') return;
       record.progress = event.data.progress;
-      post({ type: 'motion:loading', progress: [...records.values()].reduce((sum, item) => sum + item.progress, 0) / records.size });
+      load.source(record.frame.src, event.data);
     });
     const prepared = Promise.all([...records.values()].map(async record => {
       await record.loaded;
@@ -2146,7 +2380,7 @@
       record.progress = 1;
       await new Promise(requestAnimationFrame);
     }));
-    preload([{ label: '原作画面与同段音轨', run: () => prepared }], { timeout: 120000 });
+    preload([{ label: '原作画面与同段音轨', run: () => prepared }]);
     let orientReady = Promise.resolve();
     st.on('orient', orient => {
       orientReady = prepared.then(() => Promise.all([...records.values()].map(record => record.window.__motion.setOrient(orient))));
@@ -2201,7 +2435,7 @@
         await original.seek(sourceTime);
         if (!valid()) return;
         if (enabled && tl.playing) {
-          selected.window.MotionKit.audio.enable();
+          await selected.window.MotionKit.audio.enable({ replay: true });
           original.play();
           report(selected.window.MotionKit.audio.state);
         }
@@ -2254,6 +2488,7 @@
     const p = params();
     if (snd) KIT.usesSound = true;
     const keys = (e) => {
+      if (!KIT.readyState) return;
       const tg = e.target;
       if (tg && tg.closest) {
         if (tg.closest('input, textarea, select, [contenteditable="true"], [contenteditable=""]')) return;
@@ -2317,6 +2552,15 @@
     const oBtn = bar.querySelector('[data-act="orient"]');
     const range = bar.querySelector('input');
     const out = bar.querySelector('output');
+    const gate = () => {
+      for (const control of bar.querySelectorAll('input, [data-act="toggle"], [data-act="restart"], [data-act="back"], [data-act="next"]')) {
+        control.disabled = !KIT.readyState;
+        control.setAttribute('aria-disabled', String(!KIT.readyState));
+      }
+      if (KIT.readyState) { range.value = String(tl.time); out.textContent = fmt(tl.time); }
+    };
+    KIT.events.on('loading', gate);
+    gate();
     let scrubbing = false, wasPlaying = false;
 
     const soundSource = snd && 'state' in snd ? snd : audio;
@@ -2360,6 +2604,7 @@
     range.addEventListener('change', () => { scrubbing = false; if (wasPlaying) tl.play(); });
     let lastPlaying = null, lastText = '';
     tl.on((t, playing) => {
+      if (!KIT.readyState) return;
       if (Number(range.max) !== tl.duration) range.max = String(tl.duration);
       if (!scrubbing) range.value = String(t);
       const s = fmt(t);
@@ -2405,12 +2650,12 @@
           break;
         case 'motion:query':
           if (tl && KIT.readyState) post(readyMsg(tl));
-          post({ type: 'motion:loading', progress: loadProgress() });
+          reportLoading();
           post({ type: 'motion:sound', on: snd.enabled, state: snd.state });
           break;
         case 'motion:play': if (tl) tl.play(); break;
         case 'motion:pause': if (tl) tl.pause(); break;
-        case 'motion:seek': if (tl && Number.isFinite(Number(d.t))) tl.seek(Number(d.t)); break;
+        case 'motion:seek': if (tl && KIT.readyState && Number.isFinite(Number(d.t))) tl.seek(Number(d.t)); break;
         default: break;
       }
     });
@@ -2456,6 +2701,15 @@
   global.MotionKit = {
     version: VERSION,
     clamp, lerp, invLerp, bezier, ease, seg, env, keyframes, rng, chars, typeText, scramble, count, pad, beats,
-    timeline, params, prefersReducedMotion, expose, controls, start, stage, preload, mountFilm, replay, audio, sound, tween, follow, icons: ICON,
+    timeline, params, prefersReducedMotion, expose, controls, start, stage, preload, load, mountFilm, replay, audio, sound, tween, follow, icons: ICON,
   };
+  if (hasDOM) {
+    const ready = Promise.race([exposed, loadingFailed]).then(tl => tl.ready);
+    ready.catch(() => {});
+    global.__motion = {
+      ready, duration: 0, time: 0, playing: false,
+      play() {}, pause() {}, toggle() {},
+      seek: t => params().render ? ready.then(tl => tl.seek(t)) : Promise.resolve(0),
+    };
+  }
 })(typeof window !== 'undefined' ? window : globalThis);

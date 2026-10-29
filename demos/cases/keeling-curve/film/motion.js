@@ -190,4 +190,4 @@ export function drawBoxes(ctx, cam, boxes) {
 /** Wait for named fonts before READY, e.g. await loadFonts(['800 120px "Archivo"', '400 32px "JetBrains Mono"']) */
 export async function loadFonts(specs = []) { await Promise.all(specs.map(s => document.fonts.load(s))); await document.fonts.ready; }
 /** Load an image and decode it before READY */
-export const loadImage = src => new Promise((res, rej) => { const i = new Image(); i.onload = () => i.decode().then(() => res(i), () => res(i)); i.onerror = rej; i.src = src; });
+export const loadImage = src => MotionKit.load.image(src);

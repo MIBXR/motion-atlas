@@ -191,7 +191,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103103
+      "bytes": 103043
     },
     {
       "path": "demos/cases/mg-cel-boil/film/setup.js",
@@ -231,11 +231,11 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2446
+      "bytes": 2718
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-cel-boil/source/audio.py",
@@ -275,7 +275,7 @@
     },
     {
       "path": "demos/patterns/smear-frame-strike/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/smear-frame-strike.jpg",

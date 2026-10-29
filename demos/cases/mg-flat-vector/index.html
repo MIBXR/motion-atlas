@@ -4,15 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>popwise — One Dot</title>
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="film/style.css">
 </head>
 <body>
 <script src="motion-kit.js"></script>
 <script type="module">
-await import('./film/setup.js');
+await MotionKit.load.prepare({
+  styles: ["fonts/fonts.css","film/style.css"],
+  modules: ["./film/setup.js"],
+  images: [],
+  data: ["film/cues.json"],
+  audio: ["audio/film.m4a"],
+});
+
+await MotionKit.load.module('./film/setup.js');
 const { width, height, fps, duration } = window.DEMO;
-const cues = await (await fetch('./film/cues.json')).json();
+const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
 const labels = {
   impact1: '首次落地', impact2: '再次碰撞', antic: '弹射预备', launch: '圆点弹射',
   sunLand: '太阳落定', rays: '光芒展开', farRise: '远景升起', bldStart: '建筑入场',

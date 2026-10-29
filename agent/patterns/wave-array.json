@@ -327,12 +327,12 @@
       "bytes": 1697
     },
     {
-      "path": "demos/cases/archive-os/film/app/assets/index-BlM3wgKX.js",
-      "bytes": 994664
-    },
-    {
       "path": "demos/cases/archive-os/film/app/assets/index-DYLPDZ1T.css",
       "bytes": 668055
+    },
+    {
+      "path": "demos/cases/archive-os/film/app/assets/index-s-1i48S1.js",
+      "bytes": 995073
     },
     {
       "path": "demos/cases/archive-os/film/app/audio/README.md",
@@ -3444,7 +3444,7 @@
     },
     {
       "path": "demos/cases/archive-os/film/app/index.html",
-      "bytes": 1349
+      "bytes": 1593
     },
     {
       "path": "demos/cases/archive-os/film/app/licenses/rolling-number.txt",
@@ -3468,19 +3468,19 @@
     },
     {
       "path": "demos/cases/archive-os/film/script.js",
-      "bytes": 6764
+      "bytes": 5825
     },
     {
       "path": "demos/cases/archive-os/film/style.css",
-      "bytes": 241
+      "bytes": 210
     },
     {
       "path": "demos/cases/archive-os/index.html",
-      "bytes": 433
+      "bytes": 636
     },
     {
       "path": "demos/cases/archive-os/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/LICENSE",
@@ -3500,7 +3500,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/build.mjs",
-      "bytes": 1623
+      "bytes": 2589
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/content/README.md",
@@ -3512,7 +3512,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/app.ts",
-      "bytes": 1622
+      "bytes": 1846
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/clock-shim.js",
@@ -3752,7 +3752,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/src/scene.ts",
-      "bytes": 80876
+      "bytes": 81294
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/src/screen-finish.ts",
@@ -3928,7 +3928,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/film/main.js",
-      "bytes": 3441
+      "bytes": 3456
     },
     {
       "path": "demos/cases/mg-liquid/film/setup.js",
@@ -3972,11 +3972,11 @@
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1597
+      "bytes": 1721
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-liquid/source/audio.py",
@@ -3984,7 +3984,7 @@
     },
     {
       "path": "demos/patterns/wave-array/array.html",
-      "bytes": 1153
+      "bytes": 1133
     },
     {
       "path": "demos/patterns/wave-array/assets/RhineLabUI-LICENSE.txt",
@@ -3999,20 +3999,24 @@
       "bytes": 1465
     },
     {
+      "path": "demos/patterns/wave-array/fonts.css",
+      "bytes": 367
+    },
+    {
       "path": "demos/patterns/wave-array/index.html",
       "bytes": 1388
     },
     {
       "path": "demos/patterns/wave-array/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/patterns/wave-array/original.html",
-      "bytes": 4443
+      "bytes": 4932
     },
     {
       "path": "demos/patterns/wave-array/runtime.js",
-      "bytes": 843415
+      "bytes": 843817
     },
     {
       "path": "demos/patterns/wave-array/source/main.ts",
@@ -4120,7 +4124,7 @@
     },
     {
       "path": "demos/patterns/wave-array/source/upstream/src/scene.ts",
-      "bytes": 80876
+      "bytes": 81423
     },
     {
       "path": "demos/patterns/wave-array/source/upstream/src/shared-depth.ts",

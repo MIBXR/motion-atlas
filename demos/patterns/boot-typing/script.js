@@ -16,7 +16,7 @@ stage.root.innerHTML=`  <div id="boot-background" class="boot-background"><svg v
 stage.root.querySelector('#boot-background').insertAdjacentHTML('beforeend','<div class="boot-white"></div>');
 const sequence=new BootSequence(stage.root);
 let buffer;
-const audioReady=fetch('../../cases/archive-os/audio/film-audio.ogg').then(r=>r.arrayBuffer()).then(data=>new OfflineAudioContext(2,1,48000).decodeAudioData(data)).then(value=>{buffer=value;});
+const audioReady=MK.load.audio('../../cases/archive-os/audio/film-audio.ogg').then(value=>{buffer=value;});
 MK.preload([{label:'字体',run:()=>document.fonts.ready},{label:'开场声音',run:()=>audioReady}]);
 const tl=MK.timeline({duration:CONFIG.duration,markers:[{t:1.8,label:'请求权限'},{t:4.16,label:'单轮廓标志'},{t:6.28,label:'确认身份'},{t:14.48,label:'扫描'},{t:17.76,label:'欢迎'}],render(t){const s=sequence.update(t*25/CONFIG.fps);stage.root.dataset.boot=s.step;}});
 MK.audio.attach(tl,[{t:0,dur:CONFIG.duration,resume:true,bus:'music',voice:(ctx,out,when,p)=>{const source=ctx.createBufferSource();source.buffer=buffer;const gain=ctx.createGain();gain.gain.value=CONFIG.soundGain;source.connect(gain).connect(out);source.start(when,p.offset||0,CONFIG.duration-(p.offset||0));return when+CONFIG.duration-(p.offset||0);}}]);

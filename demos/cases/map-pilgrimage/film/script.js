@@ -201,13 +201,7 @@
     map: null, ok: false, stats: { samples: 0, ms: 0, misses: 0, frames: 0, missFrames: [], missTiles: [], tiles: 0 },
     veil: 0, lastMissAt: -1, applied: '',
   };
-  const loadScript = (src, ms) => new Promise((res, rej) => {
-    const s = document.createElement('script');
-    s.src = src; s.async = true; s.crossOrigin = 'anonymous'; // 与 index.html 的 preload 一致，复用预下载
-    s.onload = res; s.onerror = () => rej(new Error('load ' + src));
-    document.head.appendChild(s);
-    setTimeout(() => rej(new Error('timeout ' + src)), ms);
-  });
+  const loadScript = src => MK.load.script(src);
   const MP = Object.fromEntries(Object.entries(C.mapPalette).map(([k, v]) => [k, v.map(hex)]));
   const COLOR_PROP = { background: 'background-color', fill: 'fill-color', line: 'line-color', 'fill-extrusion': 'fill-extrusion-color' };
   const mapLayers = [];
@@ -253,27 +247,30 @@
   }
   async function initMap() {
     if (new URLSearchParams(location.search).has('nomap')) throw new Error('nomap');
-    const link = document.createElement('link');
-    link.rel = 'stylesheet'; link.href = C.map.css;
-    document.head.appendChild(link);
+    await MK.load.stylesheet(C.map.css);
     // ?tilemirror=http://主机:端口：把 OpenFreeMap 与高程瓦片改走镜像（自建瓦片服务、离线演示、网络环境切换）；
     // ?demmirror= 单独指定高程瓦片的镜像（与线上一样分属两个主机，各用各的连接数）
     const qs = new URLSearchParams(location.search);
     const mirror = (qs.get('tilemirror') || '').replace(/\/$/, ''), demMirror = (qs.get('demmirror') || mirror).replace(/\/$/, '');
     const rewrite = (url) => url.replace('https://tiles.openfreemap.org/', mirror ? mirror + '/ofm/' : '$&').replace('https://s3.amazonaws.com/elevation-tiles-prod/', demMirror ? demMirror + '/dem/' : '$&');
     MAP.rewrite = rewrite;
-    const styleP = fetch(rewrite(C.map.style)).then((r) => r.json());
-    // 样式里的矢量数据源只给 tilejson 地址：提前取回，省掉样式加载后的又一次往返
-    styleP.then((st) => Object.values(st.sources || {}).forEach((src) => { if (src.url) fetch(src.url).catch(() => {}); })).catch(() => {});
+    const styleP = MK.load.fetch(rewrite(C.map.style)).then((r) => r.json());
     await loadScript(C.map.lib, 30000);
     // MapLibre 5 默认只用 1 个 worker 解析瓦片；预取时要并行解析几百块瓦片，开到 2–4 个
     window.maplibregl.setWorkerCount(clamp(Math.floor((navigator.hardwareConcurrency || 4) / 2), 2, 4));
+    window.maplibregl.addProtocol('motion', async request => {
+      const url = request.url.slice('motion://'.length);
+      const counted = !MAP.started || MK.load._store.has(url);
+      const response = await (counted ? MK.load.fetch(url) : fetch(url));
+      if (!response.ok) throw new Error(response.status + ' ' + url);
+      return { data: request.type === 'json' ? await response.json() : request.type === 'string' ? await response.text() : await response.arrayBuffer() };
+    });
     const cam = cameraAt(0);
     MAP.softGL = softwareGL();
     const softwarePreview = MAP.softGL && (!P.render || stage.scale < 1);
     const map = new window.maplibregl.Map({
-      container: 'map', style: await styleP.catch(() => rewrite(C.map.style)), center: cam.center,
-      transformRequest: mirror || demMirror ? (url) => ({ url: rewrite(url) }) : undefined, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
+      container: 'map', style: await styleP, center: cam.center,
+      transformRequest: url => ({ url: url.startsWith('blob:') || url.startsWith('data:') ? url : 'motion://' + rewrite(url) }), zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
       interactive: false, attributionControl: false, fadeDuration: 0, maxPitch: 75, renderWorldCopies: false,
       // 预取的瓦片要整段留在缓存里：默认缓存只有“视口瓦片数 × 5”（1920×1080 约 100 块），这里放大
       maxTileCacheSize: 900, maxTileCacheZoomLevels: 60,
@@ -827,9 +824,11 @@
   }
   /** 第一次就绪：开头 gate 秒的瓦片全部到位（进度回调 0–1） */
   function untilGate(onStep) {
-    return new Promise((res) => {
+    return new Promise((res, rej) => {
       const gate = Math.min(DUR, BUF_CFG.gate);
       const iv = setInterval(() => {
+        const failed = [...BUF.tiles.values()].find(e => e.tFirst <= gate && !e.optional && e.state === 'error');
+        if (failed) { clearInterval(iv); rej(new Error('开头瓦片加载失败 ' + tileUrl(failed))); return; }
         const until = computeBuffered(0);
         onStep && onStep(clamp(until / gate));
         if (until >= gate) { clearInterval(iv); BUF.gateDone = true; res(); }
@@ -2150,16 +2149,7 @@
   const stMap = defer(), stPlan = defer(), stGate = [defer(), defer(), defer(), defer()];
   const mapTask = async () => {
     showLoading(0, '连接地图');
-    try {
-      await initMap();
-    } catch (e) {
-      console.warn('[地图巡礼] 地图不可用，退回纸面网格：', e && e.message);
-      MAP.ok = false;
-      stageEl.classList.add('no-map');
-      hideLoading();
-      stMap.resolve(); stPlan.resolve(); stGate.forEach((d) => d.resolve());
-      return;
-    }
+    await initMap();
     MAP.t0 = performance.now();
     console.info(`[地图巡礼] 地图库与样式就绪：页面打开后 ${Math.round(performance.now())}ms`);
     stMap.resolve();
@@ -2193,14 +2183,15 @@
     MAP.started = true;
     hideLoading();
   };
-  mapTask();
+  const mapReady = mapTask();
   MK.preload([
+    { label: '地图开头缓冲', run: () => mapReady },
     { label: 'document.fonts.ready', run: () => MK.preload.fonts()().then((result) => { measureMarkerLabels(); return result; }) },
     { label: '场景画面', weight: 1, run: () => new Promise((res) => { requestAnimationFrame(() => { const a = performance.now(); MAP.scenes = true; layout(O); console.info(`[地图巡礼] 场景画面 ${Math.round(performance.now() - a)}ms`); res(true); }); }) },
     { label: '地图库与样式', weight: 1, run: () => stMap },
     { label: '缓冲计划', weight: 1, run: () => stPlan },
     ...stGate.map((d, i) => ({ label: `开头瓦片 ${i + 1}/${stGate.length}`, weight: 1, run: () => d })),
-  ], { timeout: 120000 });
+  ]);
   tl.on('pause', () => onUserPause());
   // 统计（验证脚本读取）
   Object.defineProperty(window, '__buffer', { get: () => ({

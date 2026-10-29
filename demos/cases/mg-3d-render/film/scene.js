@@ -24,9 +24,7 @@ let loadingFrame = -1, requestedFrame = -1, loading;
 function loadFrame(i) {
   if (loadingFrame !== i) {
     loadingFrame = i;
-    const image = new Image();
-    image.src = `./assets/frames/${String(i).padStart(4, '0')}.webp`;
-    loading = image.decode().then(() => image.src);
+    loading = MotionKit.load.image(`./assets/frames/${String(i).padStart(4, '0')}.webp`).then(image => image.src);
   }
   return loading;
 }
@@ -73,9 +71,9 @@ window.renderAt = async (t) => {
   grain.style.transform = `translate(${Math.round(hash(i) * 64 - 32)}px, ${Math.round(hash(i + 999) * 64 - 32)}px)`;
 };
 
-  CUES = await (await fetch('./film/cues.json')).json();
+  CUES = await (await MotionKit.load.fetch('./film/cues.json')).json();
   await document.fonts.load("600 21px 'DM Sans'", 'SOFTNESS CARRIES WEIGHT');
   await document.fonts.load("500 20px 'Noto Sans SC'", '柔软自有分量');
   await document.fonts.ready;
-  await new Promise((r) => { const g = new Image(); g.onload = r; g.onerror = r; g.src = './assets/textures/grain/grain_fine_2048.png'; });
+  await MotionKit.load.image('./assets/textures/grain/grain_fine_2048.png');
   await window.renderAt(0);

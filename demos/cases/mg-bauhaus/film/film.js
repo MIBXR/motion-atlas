@@ -8,7 +8,7 @@ window.DEMO = { width: W, height: H, fps: 30, duration: 10, motionBlur: { sample
 const Q = new URLSearchParams(location.search);
 const MB = +(Q.get('mb') || window.DEMO.motionBlur.samples);          // harness samples per frame (slice for in-shader taps)
 const BASE = './';
-const cues = await (await fetch(BASE + 'film/cues.json')).json();
+const cues = await (await MotionKit.load.fetch(BASE + 'film/cues.json')).json();
 const EV = Object.fromEntries(cues.events.map(e => [e.id, e]));
 const RP = Object.fromEntries(cues.ripples.map(r => [r.id, r]));
 const DROP = cues.drop, FREEZE = cues.freeze;
@@ -486,7 +486,7 @@ function tex(unit, src, repeat) {
   if (src) gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src);
   return tx;
 }
-async function img(url) { const i = new Image(); i.src = url; await i.decode(); return i; }
+const img = url => MotionKit.load.image(url);
 const [paperImg, grainImg] = await Promise.all([img('assets/textures/paper/Paper001_4K_color.jpg'), img('assets/textures/grain/grain_fine_2048.png')]);
 const txA = tex(0, null, false), txB = tex(1, null, false);
 tex(2, paperImg, true); tex(3, grainImg, true);

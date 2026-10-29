@@ -19,7 +19,7 @@ function glyphShapes(font, ch, size) {
 
 export async function buildTitle(world, cues, o) {
   const { bgGroup, onUpdate, PAL } = world;
-  const buf = await (await fetch('./fonts/Unbounded-800-static.ttf')).arrayBuffer();
+  const buf = await (await MotionKit.load.fetch('./fonts/Unbounded-800-static.ttf')).arrayBuffer();
   const font = parse(buf);
   const FLOOR = o.floorY;
   const size = o.size;           // em size in world units

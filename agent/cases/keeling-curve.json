@@ -464,11 +464,11 @@
     },
     {
       "path": "demos/cases/keeling-curve/film/data.js",
-      "bytes": 759
+      "bytes": 774
     },
     {
       "path": "demos/cases/keeling-curve/film/motion.js",
-      "bytes": 13717
+      "bytes": 13597
     },
     {
       "path": "demos/cases/keeling-curve/film/scene.js",
@@ -516,11 +516,11 @@
     },
     {
       "path": "demos/cases/keeling-curve/index.html",
-      "bytes": 1263
+      "bytes": 1445
     },
     {
       "path": "demos/cases/keeling-curve/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/keeling-curve/source/AUDIO.md",

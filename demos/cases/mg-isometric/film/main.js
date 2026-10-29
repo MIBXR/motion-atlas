@@ -10,7 +10,7 @@ const SPP = +(q.get('spp') || 16);
 window.DEMO = { width: 1920, height: 1080, fps: 30, duration: 10, motionBlur: { samples: 1, shutter: 0.5 } };
 const SHUTTER = 0.5, FPS = 30;
 
-const cues = await (await fetch('./film/cues.json')).json();
+const cues = await (await MotionKit.load.fetch('./film/cues.json')).json();
 
 // fonts (canvas decal + DOM tags need them resolved first)
 await Promise.all([

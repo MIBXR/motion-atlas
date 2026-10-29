@@ -10,7 +10,7 @@ const opentype = OT.default ?? OT;
 const W = 1920, H = 1080, FPS = 30;
 window.DEMO = { width: W, height: H, fps: FPS, duration: 10, motionBlur: { samples: 1, shutter: 0.5 } };
 const DPR = window.devicePixelRatio || 1;
-const CUES = await (await fetch('./film/cues.json')).json();
+const CUES = await (await MotionKit.load.fetch('./film/cues.json')).json();
 
 // ---------- helpers ----------
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -500,7 +500,7 @@ const chromeMaskMat = new THREE.ShaderMaterial({ uniforms: chromeU, transparent:
 const TITLE_LEFT = W / 2 - TB.tw / TS / 2, TITLE_TOP = TITLE_CY - TB.asc / TS / 2;
 
 // --- neon script (per-frame) ---
-const fontBuf = await (await fetch('./fonts/MrDafoe-Regular.ttf')).arrayBuffer();
+const fontBuf = await (await MotionKit.load.fetch('./fonts/MrDafoe-Regular.ttf')).arrayBuffer();
 const dafoe = opentype.parse(fontBuf);
 const SFS = 226, SCRIPT = 'Midnight', SCX = 1195, SCY = 470, SROT = -0.13;
 const sPath = dafoe.getPath(SCRIPT, 0, 0, SFS);

@@ -128,7 +128,7 @@
     },
     {
       "path": "demos/cases/mg-morph/film/scene.js",
-      "bytes": 60312
+      "bytes": 60329
     },
     {
       "path": "demos/cases/mg-morph/film/setup.js",
@@ -172,11 +172,11 @@
     },
     {
       "path": "demos/cases/mg-morph/index.html",
-      "bytes": 2062
+      "bytes": 2250
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
@@ -192,7 +192,7 @@
     },
     {
       "path": "demos/patterns/sea-mask-sunset/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/sea-mask-sunset.jpg",

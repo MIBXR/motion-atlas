@@ -463,7 +463,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/film/film.js",
-      "bytes": 58398
+      "bytes": 58413
     },
     {
       "path": "demos/cases/mg-pixel/film/setup.js",
@@ -507,11 +507,11 @@
     },
     {
       "path": "demos/cases/mg-pixel/index.html",
-      "bytes": 2004
+      "bytes": 2128
     },
     {
       "path": "demos/cases/mg-pixel/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-pixel/source/audio.py",

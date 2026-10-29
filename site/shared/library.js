@@ -265,7 +265,8 @@
   function stageHTML(it, isCase) {
     const want = wantedOrient();
     const t = Number(hashParams().get('t'));
-    const src = `${it.demo}?embed=1&orient=${want}${Number.isFinite(t) && t > 0 ? `&t=${t}` : ''}`;
+    const autoplay = hashParams().get('autoplay') || q.get('autoplay');
+    const src = `${it.demo}?embed=1&orient=${want}${Number.isFinite(t) && t > 0 ? `&t=${t}` : ''}${autoplay === '0' ? '&autoplay=0' : ''}`;
     const libName = isCase ? '案例库' : '巧思库';
     return `<section class="stage-col" id="stage-col" aria-label="${esc(it.title)} Demo">
       <div class="stage-bar">
@@ -278,21 +279,21 @@
         <span class="spacer"></span>
         <button class="sound-btn" type="button" data-state="off" aria-pressed="false">${SI.soundOff}${SI.soundOn}<span class="sound-txt">声音</span><span class="sound-state">关</span><i class="meter" aria-hidden="true"><b></b><b></b><b></b></i></button>
         <button class="tool-btn" type="button" data-act="fullscreen" aria-label="全屏查看" title="全屏查看（F）">${SI.expand}${SI.collapse}<span class="lbl-wide">全屏</span></button>
-        <button class="tool-btn" type="button" data-act="replay" aria-label="从头播放" title="从头播放">${ICONS.replay}<span class="lbl-wide">重播</span></button>
+        <button class="tool-btn" type="button" data-act="replay" disabled aria-disabled="true" aria-label="从头播放" title="从头播放">${ICONS.replay}<span class="lbl-wide">重播</span></button>
         <a class="tool-btn" data-act="open" href="${esc(it.demo)}" target="_blank" rel="noopener" aria-label="独立打开 Demo" title="在新标签页独立打开">${ICONS.external}<span class="lbl-wide">独立打开</span></a>
       </div>
       <div class="stage-body">
         <div class="stage-frame" id="stage-frame" aria-busy="true">
           <iframe id="demo-frame" title="${esc(it.title)} Demo" src="${esc(src)}" allow="autoplay"></iframe>
-          <div class="stage-loading" aria-hidden="true" data-indeterminate><div class="ld-card"><span class="ld-text">正在载入 Demo</span><i class="ld-bar"><b></b></i></div></div>
+          <div class="stage-loading" role="status"><div class="ld-card"><i class="ld-bar" role="progressbar" aria-label="资源下载" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><b></b></i><span class="ld-text">已下载 0.0 / 未知总量 · 0.0 MB/s · 文件 0 / 0 · 下载中</span><span class="ld-error" hidden></span><button type="button" class="btn ld-retry" hidden>重试</button></div></div>
           <div class="stage-hint" hidden>${SI.soundOn}<span>点击舞台启用声音</span></div>
         </div>
         <div class="beat-side"><p class="side-h">节拍点<small>BEATS</small></p><div class="side-beats" id="beat-side"></div></div>
       </div>
       <div class="scrubber" id="scrubber" data-ready="0">
         <div class="scrub-row">
-          <button class="icon-btn play-btn" type="button" id="scrub-play" data-playing="false" aria-label="播放" title="播放 / 暂停（空格）">${SI.play}${SI.pause}</button>
-          <div class="scrub-track" id="scrub-track" tabindex="0" role="slider" aria-label="时间轴（←/→ 跳 1 秒，Shift 跳到上 / 下一个节拍点）" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="00:00.00"><svg id="scrub-svg" preserveAspectRatio="none" aria-hidden="true"></svg><i class="head" id="scrub-head"></i><span class="scrub-tip" id="scrub-tip" aria-hidden="true"></span></div>
+          <button class="icon-btn play-btn" type="button" id="scrub-play" disabled aria-disabled="true" data-playing="false" aria-label="播放" title="播放 / 暂停（空格）">${SI.play}${SI.pause}</button>
+          <div class="scrub-track" id="scrub-track" tabindex="-1" disabled aria-disabled="true" role="slider" aria-label="时间轴（←/→ 跳 1 秒，Shift 跳到上 / 下一个节拍点）" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="00:00.00"><svg id="scrub-svg" preserveAspectRatio="none" aria-hidden="true"></svg><i class="head" id="scrub-head"></i><span class="scrub-tip" id="scrub-tip" aria-hidden="true"></span></div>
           <span class="scrub-time" aria-hidden="true"><b id="scrub-time">00:00.00</b><span class="dur" id="scrub-dur"></span></span>
         </div>
         <div class="beat-list" id="beat-list"></div>
@@ -337,13 +338,14 @@
     d.poll = setInterval(() => { if (det !== d || d.m || ++tries > 600) clearInterval(d.poll); else tryConnect(); }, 100);
 
     // 工具栏
+    d.loader.querySelector('.ld-retry').addEventListener('click', reloadFrame);
     d.bar.addEventListener('click', (e) => {
       const b = e.target.closest('button');
       if (!b) return;
       if (b.dataset.orient) chooseOrient(b.dataset.orient);
       else if (b === d.snd) toggleSound();
       else if (b.dataset.act === 'fullscreen') toggleFs();
-      else if (b.dataset.act === 'replay') { if (d.m) { d.m.seek(0); d.m.play(); } else reloadFrame(); }
+      else if (b.dataset.act === 'replay' && d.loaded) { d.m.seek(0); d.m.play(); }
     });
     d.play.addEventListener('click', () => togglePlay());
     const beatClick = (e) => { const b = e.target.closest('[data-t]'); if (b) seekTo(Number(b.dataset.t)); };
@@ -383,6 +385,11 @@
     const d = det;
     if (d.unsub) { try { d.unsub(); } catch { /* 已卸载 */ } d.unsub = null; }
     d.m = null; d.loaded = false;
+    setPlaybackReady(false);
+    d.loader.querySelector('.ld-error').hidden = true;
+    d.loader.querySelector('.ld-retry').hidden = true;
+    d.loader.querySelector('.ld-bar b').style.transform = 'scaleX(0)';
+    d.loader.querySelector('.ld-text').textContent = '已下载 0.0 / 未知总量 · 0.0 MB/s · 文件 0 / 0 · 下载中';
     d.loader.classList.add('show');
     d.frame.setAttribute('aria-busy', 'true');
     d.ifr.src = d.ifr.src;
@@ -465,12 +472,11 @@
     if (!d.markers && Array.isArray(m.markers) && m.markers.length) d.markers = m.markers.map((x) => ({ t: x.t, label: x.label }));
     applyOrients(Array.isArray(m.orients) ? m.orients : [], m.orient);
     paintBeats();
-    d.sc.dataset.ready = '1';
-    if (d.pendingT != null) { m.seek(d.pendingT); d.pendingT = null; }
+
     onFrame(m.time, m.playing);
     hookFrame();
     syncSound();
-    Promise.resolve(m.ready).then(() => { if (det === d && d.m === m) loadDone(); }, () => {});
+    Promise.resolve(m.ready).then(() => { if (det === d && d.m === m) loadDone(); }, error => { if (det === d && d.m === m) loadFailed(error.message); });
   }
   // 同源 iframe：在 Demo 窗口里监听指针（全屏时唤出浮层）与 Esc（伪全屏时退出）
   function hookFrame() {
@@ -489,7 +495,7 @@
     if (!d || e.source !== frameWin()) return;
     const msg = e.data;
     if (!msg || typeof msg.type !== 'string') return;
-    if (msg.type === 'motion:loading') setLoading(Number(msg.progress));
+    if (msg.type === 'motion:loading') setLoading(msg);
     else if (msg.type === 'motion:ready') onReady(msg);
     else if (msg.type === 'motion:orient') {
       const o = normOrient(msg.orient);
@@ -525,18 +531,41 @@
   }
 
   /* ----- 加载状态 ----- */
-  function setLoading(p) {
+  function setPlaybackReady(ready) {
     const d = det;
-    if (!d || d.loaded || !Number.isFinite(p)) return;
-    const pct = Math.round(Math.max(0, Math.min(1, p)) * 100);
-    delete d.loader.dataset.indeterminate;
-    d.loader.querySelector('.ld-text').textContent = pct >= 100 ? '准备播放' : `正在载入 ${pct}%`;
-    d.loader.querySelector('.ld-bar b').style.transform = `scaleX(${pct / 100})`;
+    d.sc.dataset.ready = ready ? '1' : '0';
+    for (const node of [d.play, d.el.querySelector('[data-act="replay"]'), d.track, ...d.col.querySelectorAll('[data-t]')]) {
+      node.toggleAttribute('disabled', !ready);
+      node.setAttribute('aria-disabled', String(!ready));
+      node.tabIndex = ready ? 0 : -1;
+    }
+  }
+  function setLoading(state) {
+    const d = det;
+    if (!d || d.loaded) return;
+    const mb = n => ((n || 0) / 1e6).toFixed(1);
+    const phase = { download: '下载中', decode: '解码中', frame: '准备首帧', error: '加载失败', ready: '就绪' };
+    d.loader.querySelector('.ld-text').textContent = '已下载 ' + mb(state.loadedBytes) + ' / ' + (state.unknownTotal ? '未知总量' : mb(state.totalBytes) + ' MB') + ' · ' + mb(state.bytesPerSecond) + ' MB/s · 文件 ' + (state.filesDone || 0) + ' / ' + (state.filesTotal || 0) + ' · ' + phase[state.phase];
+    const percent = Math.min(state.phase === 'ready' ? 1 : .99, state.progress || 0);
+    d.loader.querySelector('.ld-bar b').style.transform = 'scaleX(' + percent + ')';
+    d.loader.querySelector('.ld-bar').setAttribute('aria-valuenow', String(Math.floor(percent * 100)));
+    if (state.error) loadFailed(state.error);
+  }
+  function loadFailed(reason) {
+    const d = det;
+    setPlaybackReady(false);
+    d.loader.classList.add('show');
+    d.loader.querySelector('.ld-error').hidden = false;
+    d.loader.querySelector('.ld-error').textContent = '加载失败：' + reason;
+    d.loader.querySelector('.ld-retry').hidden = false;
   }
   function loadDone() {
     const d = det;
     if (!d || d.loaded) return;
     d.loaded = true;
+    setPlaybackReady(true);
+    onFrame(d.m.time, d.m.playing);
+    if (d.pendingT != null) { const t = d.pendingT; d.pendingT = null; if (Math.abs(d.m.time - t) > 1e-6) d.m.seek(t); }
     d.loader.classList.remove('show');
     d.frame.removeAttribute('aria-busy');
   }
@@ -694,12 +723,12 @@
   /* ----- 时间轴与节拍点 ----- */
   function seekTo(t) {
     const d = det;
-    if (!d || !Number.isFinite(t)) return;
+    if (!d || !d.loaded || !Number.isFinite(t)) return;
     const T = Math.max(0, Math.min(d.D || t, t));
     if (d.m) d.m.seek(T);
     else { d.pendingT = T; onFrame(T, false); } // Demo 尚未载入：先记下，连上后再定位
   }
-  function togglePlay() { const d = det; if (d && d.m) d.m.toggle(); }
+  function togglePlay() { const d = det; if (d && d.loaded && d.m) d.m.toggle(); }
   function stepBeat(dir) {
     const d = det, t = d.m ? d.m.time : d.pendingT || 0;
     const ts = d.beats.map((b) => b.t);
@@ -709,7 +738,7 @@
 
   function onFrame(t, playing) {
     const d = det;
-    if (!d) return;
+    if (!d || !d.loaded) return;
     if (d.m && d.m.duration && d.m.duration !== d.D) { d.D = d.m.duration; paintBeats(); }
     const pct = d.D ? Math.max(0, Math.min(1, t / d.D)) * 100 : 0;
     if (Math.abs(pct - d.lastPct) > 0.005) { d.lastPct = pct; d.head.style.left = pct.toFixed(3) + '%'; }
@@ -763,6 +792,7 @@
     d.side.innerHTML = beats.length
       ? beats.map((b, i) => `<button type="button" data-t="${b.t}" data-i="${i}"><b>${fmtB(b.t)}</b><span>${esc(b.label)}</span>${b.note ? `<small>${esc(b.note)}</small>` : ''}</button>`).join('')
       : `<span class="beat-empty">${empty}</span>`;
+    setPlaybackReady(d.loaded);
     d.track.setAttribute('aria-valuemax', D ? D.toFixed(2) : '0');
     d.dur.textContent = D ? ` / ${fmtB(D)}` : '';
     if (d.m) onFrame(d.m.time, d.m.playing);
@@ -808,7 +838,7 @@
       d.tip.classList.add('show');
     };
     tr.addEventListener('pointerdown', (ev) => {
-      if (ev.button !== 0 || !d.D) return;
+      if (ev.button !== 0 || !d.D || !d.loaded) return;
       d.dragging = true;
       was = !!(d.m && d.m.playing);
       if (d.m) d.m.pause();

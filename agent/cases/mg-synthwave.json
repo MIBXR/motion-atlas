@@ -219,7 +219,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/film/scene.js",
-      "bytes": 70651
+      "bytes": 70681
     },
     {
       "path": "demos/cases/mg-synthwave/film/setup.js",
@@ -267,11 +267,11 @@
     },
     {
       "path": "demos/cases/mg-synthwave/index.html",
-      "bytes": 1824
+      "bytes": 1976
     },
     {
       "path": "demos/cases/mg-synthwave/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-synthwave/source/audio.py",

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>vertical-title-blur — Motion Atlas Demo</title>
-  <link rel="stylesheet" href="style.css">
   <!-- 地图资源尽早开始下载（与 config.js 的 map.lib / map.style 保持一致）：与页面脚本并行，缩短可播放前的等待 -->
 </head>
 <body>
@@ -144,10 +143,10 @@
   </main>
 
   <script src="motion-kit.js"></script>
-  <script src="../../cases/map-pilgrimage/film/config.js"></script>
-  <script src="config.js"></script>
-  <script src="../../cases/map-pilgrimage/film/paths.js"></script>
-  <script src="../../cases/map-pilgrimage/film/scenes.js"></script>
-  <script src="script.js"></script>
+  <script type="module">
+    const scripts = ['../../cases/map-pilgrimage/film/config.js', 'config.js', '../../cases/map-pilgrimage/film/paths.js', '../../cases/map-pilgrimage/film/scenes.js', 'script.js'];
+    await MotionKit.load.prepare({ styles: ['style.css'], data: [...scripts, 'score.json'] });
+    for (const src of scripts) await MotionKit.load.script(src);
+  </script>
 </body>
 </html>

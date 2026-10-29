@@ -179,7 +179,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/film/film.js",
-      "bytes": 35182
+      "bytes": 35151
     },
     {
       "path": "demos/cases/mg-bauhaus/film/setup.js",
@@ -215,11 +215,11 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/index.html",
-      "bytes": 1807
+      "bytes": 2020
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-bauhaus/source/audio.py",
@@ -275,7 +275,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/film/scene.js",
-      "bytes": 103103
+      "bytes": 103043
     },
     {
       "path": "demos/cases/mg-cel-boil/film/setup.js",
@@ -315,11 +315,11 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/index.html",
-      "bytes": 2446
+      "bytes": 2718
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-cel-boil/source/audio.py",
@@ -375,7 +375,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/film/scene.js",
-      "bytes": 63462
+      "bytes": 63477
     },
     {
       "path": "demos/cases/mg-flat-vector/film/setup.js",
@@ -407,11 +407,11 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/index.html",
-      "bytes": 2472
+      "bytes": 2596
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-flat-vector/source/audio.py",
@@ -443,7 +443,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/film/film.js",
-      "bytes": 33056
+      "bytes": 33052
     },
     {
       "path": "demos/cases/mg-line-art/film/setup.js",
@@ -475,11 +475,11 @@
     },
     {
       "path": "demos/cases/mg-line-art/index.html",
-      "bytes": 2089
+      "bytes": 2256
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-line-art/source/audio.py",
@@ -507,7 +507,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/film/film.js",
-      "bytes": 58398
+      "bytes": 58413
     },
     {
       "path": "demos/cases/mg-pixel/film/setup.js",
@@ -551,11 +551,11 @@
     },
     {
       "path": "demos/cases/mg-pixel/index.html",
-      "bytes": 2004
+      "bytes": 2128
     },
     {
       "path": "demos/cases/mg-pixel/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-pixel/source/audio.py",
@@ -567,7 +567,7 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/shared-cue-sheet.jpg",

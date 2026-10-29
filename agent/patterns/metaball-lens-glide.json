@@ -128,7 +128,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/main.js",
-      "bytes": 46607
+      "bytes": 46612
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/out/env.json",
@@ -176,11 +176,11 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/index.html",
-      "bytes": 1904
+      "bytes": 2091
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-aurora-glass/source/audio.py",
@@ -192,7 +192,7 @@
     },
     {
       "path": "demos/patterns/metaball-lens-glide/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/metaball-lens-glide.jpg",

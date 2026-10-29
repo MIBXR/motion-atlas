@@ -1,6 +1,6 @@
 const ROOT='./';
-const cues=await fetch('./film/cues.json').then(r=>r.json());
-const meta=await fetch(ROOT+'assets/stickers/meta.json').then(r=>r.json());
+const cues=await MotionKit.load.fetch('./film/cues.json').then(r=>r.json());
+const meta=await MotionKit.load.fetch(ROOT+'assets/stickers/meta.json').then(r=>r.json());
 const EV=cues.ev, WW=cues.world.w, WH=cues.world.h;
 window.DEMO={width:1920,height:1080,fps:30,duration:10,motionBlur:{samples:1,shutter:0.5}};
 // ---------- helpers ----------
@@ -79,7 +79,7 @@ U.push(t=>{const k=oC(P(t,EV.kicker,.35));kick.style.opacity=k;kick.style.transf
 const pblurG=document.getElementById('pblurG');
 const SLOTS=[...Array(10)].map((_,i)=>el('div','a',screen,`left:${A.x+i*58}px;top:986px;width:46px;height:46px;border-radius:9px;border:2.5px dashed #AEBAC5;opacity:0;z-index:3`));
 U.push(t=>SLOTS.forEach((d,i)=>{const u=P(t,EV.slots[0]+i*.028,.22);d.style.opacity=.85*clamp(u*3);d.style.transform=`scale(${u>0?oB(u,1.6):.5})`;}));
-const stickerImg=(name,w,h,z=5)=>{const i=el('img','stk',screen,`width:${w}px;height:${h}px;z-index:${z}`);i.src=ROOT+'assets/stickers/'+name+'.png';return i;};
+const stickerImg=(name,w,h,z=5)=>{const i=el('img','stk',screen,`width:${w}px;height:${h}px;z-index:${z}`);i.src=MotionKit.load.url(ROOT+'assets/stickers/'+name+'.png');return i;};
 const phone=stickerImg('phone',meta.phone.w,meta.phone.h,20);
 const PH0={x:1690,y:660,s:.92,r:-3}, PH1={x:1200,y:1835,s:.8,r:1.5};
 const leadSvg=sv('svg',{width:WW,height:WH,style:'position:absolute;left:0;top:0;z-index:30;overflow:visible'},screen);
@@ -257,7 +257,7 @@ U.push((t,C)=>{
   const n=cnt[i];c.num.textContent=n;c.num.style.opacity=n>0?(i===1?1-reF:1):0;c.num.style.transformOrigin='0 60%';c.num.style.transform=`translate(${DX+n*CPX+18}px,0) scale(${1+.16*(1-oC(P(t,lastL[i],.16)))})`;});
 });
 // ---------- E: world map ----------
-const topo=await fetch(ROOT+'assets/countries-110m.json').then(r=>r.json());
+const topo=await MotionKit.load.fetch(ROOT+'assets/countries-110m.json').then(r=>r.json());
 const land=topojson.feature(topo,topo.objects.countries);
 const MB=[[330,4880],[2210,5790]];
 const proj=d3.geoNaturalEarth1().fitExtent(MB,{type:'Sphere'});
@@ -433,7 +433,7 @@ window.renderAt=async(t0)=>{const t=SHW(t0),C=cam(t),W=worldM(t,C);
 await document.fonts.ready;
 for(const w of ['500','700','900'])await document.fonts.load(`${w} 60px "Alibaba PuHuiTi"`,'一部手机藏着多少种元素');
 for(const w of ['500','600','700','800','900'])await document.fonts.load(`${w} 60px "Inter"`,'0123456789/ABC');
-await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));
+await Promise.all([...document.images].map(i=>i.decode()));
 await window.renderAt(7.2);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
 await window.renderAt(0);
 window.__ready=true;

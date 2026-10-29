@@ -4,14 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>基林曲线 · 同一条曲线，两种尺度</title>
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="film/style.css">
 </head>
 <body>
 <script src="motion-kit.js"></script>
 <script type="module">
-await import('./film/setup.js');
-const { DUR, FPS, SHOTS, EVENTS } = await import('./film/timeline.js');
+await MotionKit.load.prepare({
+  styles: ["fonts/fonts.css","film/style.css"],
+  modules: ["./film/setup.js","./film/timeline.js"],
+  images: [],
+  data: ["assets/co2_mm_mlo.txt","assets/co2_annmean_mlo.txt"],
+  audio: ["audio/final.wav"],
+});
+
+await MotionKit.load.module('./film/setup.js');
+const { DUR, FPS, SHOTS, EVENTS } = await MotionKit.load.module('./film/timeline.js');
 const labels = ['开场与早期锯齿', '续画到 2025', '推近', '2025 高亮', '拉远', '落版'];
 const markers = [
   ...SHOTS.map((shot, i) => ({ t: shot.t0, label: labels[i] })),

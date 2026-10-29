@@ -72,7 +72,7 @@ let currentTime = 0;
 
 async function load() {
   await document.fonts.ready;
-  const gltf = await new GLTFLoader().loadAsync(C.modelAsset);
+  const gltf = await MK.load.loader(() => new GLTFLoader().loadAsync(C.modelAsset));
   gltf.scene.updateMatrixWorld(true);
   gltf.scene.traverse(object => {
     if (!(object instanceof THREE.Mesh)) return;

@@ -145,7 +145,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/film/main.js",
-      "bytes": 3441
+      "bytes": 3456
     },
     {
       "path": "demos/cases/mg-liquid/film/setup.js",
@@ -189,11 +189,11 @@
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1597
+      "bytes": 1721
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-liquid/source/audio.py",
@@ -205,7 +205,7 @@
     },
     {
       "path": "demos/patterns/liquid-bar-split-wordmark/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/liquid-bar-split-wordmark.jpg",

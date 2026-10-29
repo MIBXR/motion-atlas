@@ -341,9 +341,16 @@ export class ArchiveScene {
   async load(assetUrl = publicAsset("assets/archive-cassette.glb")) {
     this.labelMark.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(labelMarkSvg)}`;
     await this.labelMark.decode();
-    const gltf = await new GLTFLoader().loadAsync(
-      assetUrl,
-    );
+    const load = Reflect.get(window.parent, 'MotionKit').load;
+    const gltf = await load.loader(async () => {
+      const result = await new GLTFLoader().loadAsync(assetUrl);
+      await Promise.all([Reflect.get(this.smaa, '_areaTexture').image, Reflect.get(this.smaa, '_searchTexture').image].map(image => image.complete ? Promise.resolve() : new Promise((resolve, reject) => {
+        image.addEventListener('load', resolve, { once: true });
+        image.addEventListener('error', () => reject(new Error('SMAA texture failed')), { once: true });
+      })));
+      this.resize();
+      return result;
+    }, window);
     gltf.scene.updateMatrixWorld(true);
     const meshes: THREE.Mesh[] = [];
     gltf.scene.traverse((o) => {

@@ -169,7 +169,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/film/scene.js",
-      "bytes": 63462
+      "bytes": 63477
     },
     {
       "path": "demos/cases/mg-flat-vector/film/setup.js",
@@ -201,11 +201,11 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/index.html",
-      "bytes": 2472
+      "bytes": 2596
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-flat-vector/source/audio.py",
@@ -217,7 +217,7 @@
     },
     {
       "path": "demos/patterns/push-through-window/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/push-through-window.jpg",

@@ -140,7 +140,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/main.js",
-      "bytes": 46607
+      "bytes": 46612
     },
     {
       "path": "demos/cases/mg-aurora-glass/film/out/env.json",
@@ -188,11 +188,11 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/index.html",
-      "bytes": 1904
+      "bytes": 2091
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-aurora-glass/source/audio.py",
@@ -228,7 +228,7 @@
     },
     {
       "path": "demos/cases/mg-morph/film/scene.js",
-      "bytes": 60312
+      "bytes": 60329
     },
     {
       "path": "demos/cases/mg-morph/film/setup.js",
@@ -272,11 +272,11 @@
     },
     {
       "path": "demos/cases/mg-morph/index.html",
-      "bytes": 2062
+      "bytes": 2250
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
@@ -292,7 +292,7 @@
     },
     {
       "path": "demos/patterns/shape-docks-wordmark/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/shape-docks-wordmark.jpg",

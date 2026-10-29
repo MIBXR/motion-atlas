@@ -1104,7 +1104,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/film/scene.js",
-      "bytes": 4014
+      "bytes": 3928
     },
     {
       "path": "demos/cases/mg-3d-render/film/setup.js",
@@ -1144,11 +1144,11 @@
     },
     {
       "path": "demos/cases/mg-3d-render/index.html",
-      "bytes": 1644
+      "bytes": 1855
     },
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-3d-render/source/assets/hdri/studio_small_09_2k.hdr",
@@ -1212,7 +1212,7 @@
     },
     {
       "path": "demos/patterns/hang-slam-capsule-crown/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/hang-slam-capsule-crown.jpg",

@@ -151,7 +151,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/film/film.js",
-      "bytes": 35182
+      "bytes": 35151
     },
     {
       "path": "demos/cases/mg-bauhaus/film/setup.js",
@@ -187,11 +187,11 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/index.html",
-      "bytes": 1807
+      "bytes": 2020
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-bauhaus/source/audio.py",
@@ -203,7 +203,7 @@
     },
     {
       "path": "demos/patterns/flip-tile-cascade/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/flip-tile-cascade.jpg",

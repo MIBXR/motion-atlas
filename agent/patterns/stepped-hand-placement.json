@@ -261,7 +261,7 @@
     },
     {
       "path": "demos/cases/mg-collage/film/scene.js",
-      "bytes": 54479
+      "bytes": 54419
     },
     {
       "path": "demos/cases/mg-collage/film/setup.js",
@@ -325,11 +325,11 @@
     },
     {
       "path": "demos/cases/mg-collage/index.html",
-      "bytes": 1876
+      "bytes": 2700
     },
     {
       "path": "demos/cases/mg-collage/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-collage/source/assets/sfx/clear.wav",
@@ -381,7 +381,7 @@
     },
     {
       "path": "demos/patterns/stepped-hand-placement/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/stepped-hand-placement.jpg",

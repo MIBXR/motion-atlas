@@ -198,7 +198,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/film/scene.js",
-      "bytes": 63462
+      "bytes": 63477
     },
     {
       "path": "demos/cases/mg-flat-vector/film/setup.js",
@@ -230,11 +230,11 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/index.html",
-      "bytes": 2472
+      "bytes": 2596
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-flat-vector/source/audio.py",
@@ -314,11 +314,11 @@
     },
     {
       "path": "demos/cases/mg-hanazi/film/scene.js",
-      "bytes": 48485
+      "bytes": 48529
     },
     {
       "path": "demos/cases/mg-hanazi/film/setup.js",
-      "bytes": 1432
+      "bytes": 1511
     },
     {
       "path": "demos/cases/mg-hanazi/film/style.css",
@@ -378,11 +378,11 @@
     },
     {
       "path": "demos/cases/mg-hanazi/index.html",
-      "bytes": 1900
+      "bytes": 2291
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-hanazi/source/assets/prep.py",
@@ -434,7 +434,7 @@
     },
     {
       "path": "demos/cases/mg-morph/film/scene.js",
-      "bytes": 60312
+      "bytes": 60329
     },
     {
       "path": "demos/cases/mg-morph/film/setup.js",
@@ -478,11 +478,11 @@
     },
     {
       "path": "demos/cases/mg-morph/index.html",
-      "bytes": 2062
+      "bytes": 2250
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
@@ -498,7 +498,7 @@
     },
     {
       "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/shape-wipe-transition-portrait.jpg",

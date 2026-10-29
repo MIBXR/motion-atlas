@@ -144,7 +144,7 @@
     },
     {
       "path": "demos/cases/mg-morph/film/scene.js",
-      "bytes": 60312
+      "bytes": 60329
     },
     {
       "path": "demos/cases/mg-morph/film/setup.js",
@@ -188,11 +188,11 @@
     },
     {
       "path": "demos/cases/mg-morph/index.html",
-      "bytes": 2062
+      "bytes": 2250
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-morph/source/audio.py",
@@ -260,7 +260,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/film/scene.js",
-      "bytes": 50392
+      "bytes": 50443
     },
     {
       "path": "demos/cases/mg-paperclip/film/setup.js",
@@ -300,11 +300,11 @@
     },
     {
       "path": "demos/cases/mg-paperclip/index.html",
-      "bytes": 2075
+      "bytes": 2456
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "demos/cases/mg-paperclip/source/audio.py",
@@ -336,7 +336,7 @@
     },
     {
       "path": "demos/patterns/analytic-motion-blur/motion-kit.js",
-      "bytes": 119411
+      "bytes": 133782
     },
     {
       "path": "previews/patterns/analytic-motion-blur.jpg",
