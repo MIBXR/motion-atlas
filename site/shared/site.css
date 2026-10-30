@@ -3,8 +3,8 @@
 :root {
   --bg: #0c0d0f;
   --bg-2: #111215;
-  --surface: #16181b;
-  --surface-2: #1c1f23;
+  --surface: #1a1816;
+  --surface-2: #221f1c;
   --line: #2a2d33;
   --line-2: #3b3f46;
   --ink: #ecebe6;
@@ -24,13 +24,13 @@
   color-scheme: dark;
 }
 :root[data-theme="light"] {
-  --bg: #f1eee7; --bg-2: #eae6dc; --surface: #faf8f3; --surface-2: #f2eee5; --line: #d9d3c6; --line-2: #c3bcad;
+  --bg: #f1eee7; --bg-2: #eae6dc; --surface: #ffffff; --surface-2: #f6f4ef; --line: #d9d3c6; --line-2: #c3bcad;
   --ink: #17181b; --ink-2: #3a3b3f; --muted: #6a6862; --accent: #df3f17; --accent-ink: #fff; --accent-soft: rgba(223, 63, 23, .1);
   color-scheme: light;
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: #f1eee7; --bg-2: #eae6dc; --surface: #faf8f3; --surface-2: #f2eee5; --line: #d9d3c6; --line-2: #c3bcad;
+    --bg: #f1eee7; --bg-2: #eae6dc; --surface: #ffffff; --surface-2: #f6f4ef; --line: #d9d3c6; --line-2: #c3bcad;
     --ink: #17181b; --ink-2: #3a3b3f; --muted: #6a6862; --accent: #df3f17; --accent-ink: #fff; --accent-soft: rgba(223, 63, 23, .1);
     color-scheme: light;
   }
@@ -297,7 +297,7 @@ button:disabled { opacity: .5; }
 
 /* 全屏：舞台按 contain 铺满屏幕，工具栏与刻度条浮在上下；浮层固定用深色 */
 .detail[data-layout] .stage-col.is-fs { position: fixed; inset: 0; z-index: 200; width: auto; height: auto; max-width: none; margin: 0; display: block; background: #000; color-scheme: dark; /* 选择器要压过 split / stack 的列规则（伪全屏时没有 UA 的 :fullscreen 规则兜底） */
-  --surface: #16181b; --surface-2: #1c1f23; --line: #2a2d33; --line-2: #3b3f46; --ink: #ecebe6; --ink-2: #c9c7c0; --muted: #8f8d87; --bg: #0c0d0f;
+  --surface: #1a1816; --surface-2: #221f1c; --line: #2a2d33; --line-2: #3b3f46; --ink: #ecebe6; --ink-2: #c9c7c0; --muted: #8f8d87; --bg: #0c0d0f;
   --accent: #ff5b2e; --accent-ink: #160804; --accent-soft: rgba(255, 91, 46, .18); }
 .is-fs .stage-body { position: absolute; inset: 0; display: block; }
 .is-fs .stage-frame { position: absolute; inset: 0; width: auto; height: auto; max-width: none; border-radius: 0; box-shadow: none; }
