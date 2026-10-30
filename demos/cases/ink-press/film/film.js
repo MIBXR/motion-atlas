@@ -32649,15 +32649,56 @@ var ThemedFilm = ({ theme, colors }) => {
 
 // ../film/entry.tsx
 var import_jsx_runtime71 = __toESM(require_jsx_runtime(), 1);
+var liveTextures = [];
 function mountInk(el) {
   window.remotion_staticBase = new URL("../assets", import.meta.url).pathname.replace(/\/$/, "");
+  window.MotionKit.preload([async () => {
+    await Promise.all([
+      "card1.png",
+      "card2.png",
+      "card3.png",
+      "card4.png",
+      "card4-hires.png",
+      "card5.png",
+      "card6.png",
+      "card7.png",
+      "card8.png",
+      "card9.png",
+      "card10.png",
+      "detail-experiments.png",
+      "detail-full.png",
+      "float-filter.png",
+      "float-search.png",
+      "float-section.png",
+      "float-stats.png",
+      "nav.png",
+      "paper1.png",
+      "paper2.png",
+      "paper3.png",
+      "paper4.png",
+      "paper5.png",
+      "papers-full.png",
+      "projects-empty.png",
+      "projects-full.png",
+      "wbr-full.png"
+    ].map(async (name) => {
+      const img = new Image();
+      liveTextures.push(img);
+      img.src = new URL(`../assets/textures/live/${name}`, import.meta.url).href;
+      await img.decode();
+    }));
+  }]);
   if (new URLSearchParams(window.location.search).has("render")) {
     window.process = { env: { NODE_ENV: "production" } };
     window.remotion_puppeteerTimeout = 3e4;
   }
   const root = (0, import_client.createRoot)(el);
+  let lastRender = { frame: -1, complete: false };
   async function renderAt(t) {
     const frame = Math.min(AIFL_TOTAL - 1, Math.max(0, Math.round(t * 30)));
+    if (frame === lastRender.frame && lastRender.complete) return;
+    const rendering = { frame, complete: false };
+    lastRender = rendering;
     (0, import_react_dom2.flushSync)(() => root.render(
       /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
         Thumbnail,
@@ -32675,6 +32716,7 @@ function mountInk(el) {
     ));
     await Promise.all(Array.from(el.querySelectorAll("img"), (img) => img.decode()));
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    rendering.complete = true;
   }
   return { renderAt, duration: AIFL_TOTAL / 30, width: 1920, height: 1080, fps: 30 };
 }

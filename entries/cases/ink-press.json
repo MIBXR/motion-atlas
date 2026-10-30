@@ -205,7 +205,7 @@
     "layout": "1920×1080 横屏、30fps、1085 帧，十个镜头以真实页面为主体，四张字卡穿插呼吸。",
     "imagery": "27 张原始 PNG 包括整页 2x 截图、透明底元素切片、空板与 4x 主角卡特写，坐标由 live-layout.json 提供。",
     "motion": "页面相机插值 cx、cy、zoom 与 3D 旋转；聚光主角卡完成弹起、悬浮、扫光和归位，发牌、嵌入、压入与自写各占一个功能段。",
-    "sound": "32 条钉帧 Mixkit 音效、11 个 MP3 样本，无配乐；结尾在 945、980、1005 帧依次触发 riser、impact、sparkle，声音默认关闭。",
+    "sound": "公开成片的配乐与钉帧音效混音，音轨抽自作者发布的成片；钉帧表在 film/src/aifl/Main.tsx 的 SFX。",
     "rhythm": "品牌开场低能量，功能段与四张衬线字卡交替，结尾合影组装推到峰值并留出字标停留。",
     "coherence": "纸墨琥珀色板、物理隐喻与同一套真实页面素材贯穿全片，动作和音效通过绝对帧号对应。"
   },
@@ -279,10 +279,6 @@
       "how": "修改 film/src/aifl/Main.tsx 的 CAPTIONS 文案与绝对帧号；在 source/ 运行 npm run build。"
     },
     {
-      "field": "音效钉帧",
-      "how": "修改 film/src/aifl/Main.tsx 的 SFX，样本位于 assets/audio/；在 source/ 运行 npm run build，再运行 npm run audio。"
-    },
-    {
       "field": "运镜",
       "how": "修改各 film/src/aifl/live/Scene*.tsx 中 PageCam 的 keys；在 source/ 运行 npm run build。"
     }
@@ -331,8 +327,12 @@
       "notes": "27 张 PNG 原样取自同提交的 `template/public/textures/live/`，为包含虚构演示数据的研究管理工具界面；坐标表来自 `template/src/aifl/live-layout.json`。"
     },
     {
-      "scope": "音效与音轨",
-      "notes": "11 个 MP3 原样取自 `template/public/audio/`，音轨由原工程按 1085 帧渲染，无配乐。Mixkit 来源记录原文见 [assets/audio/ATTRIBUTION.md](assets/audio/ATTRIBUTION.md)；keyboard、pop、riser-cine、sparkle、whoosh-big 的来源无法反查。该记录说明 `impact-cine.mp3` 与 `sfx/impact/impact-deep-whoosh.mp3` 字节相同，原名 Cinematic whoosh deep impact，来源 https://assets.mixkit.co/active_storage/sfx/1143/1143-preview.mp3。"
+      "scope": "音效素材",
+      "notes": "11 个 MP3 原样取自 `template/public/audio/`，钉帧表保留在 film/src/aifl/Main.tsx 的 SFX。Mixkit 来源记录原文见 [assets/audio/ATTRIBUTION.md](assets/audio/ATTRIBUTION.md)；keyboard、pop、riser-cine、sparkle、whoosh-big 的来源无法反查。该记录说明 `impact-cine.mp3` 与 `sfx/impact/impact-deep-whoosh.mp3` 字节相同，原名 Cinematic whoosh deep impact，来源 https://assets.mixkit.co/active_storage/sfx/1143/1143-preview.mp3。"
+    },
+    {
+      "scope": "公开成片音轨",
+      "notes": "audio/film.m4a 流复制自作者发布的 [showcase-ink-press-template.mp4](https://github.com/Vincentwei1021/video-shotcraft/releases/download/showcase-media/showcase-ink-press-template.mp4)，含配乐与钉帧音效混音。配乐曲目未能识别；配乐许可为 [Mixkit Stock Music Free License](https://mixkit.co/license/#musicFree)，依据 [assets/audio/ATTRIBUTION.md](assets/audio/ATTRIBUTION.md) 的 bgm 一节，音效来源见同文件。"
     },
     {
       "scope": "运行库",

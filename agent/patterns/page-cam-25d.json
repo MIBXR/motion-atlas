@@ -117,7 +117,7 @@
   "files": [
     {
       "path": "demos/cases/ink-press/LICENSES.md",
-      "bytes": 839,
+      "bytes": 1285,
       "role": "license"
     },
     {
@@ -317,12 +317,12 @@
     },
     {
       "path": "demos/cases/ink-press/audio/film.m4a",
-      "bytes": 1448961,
+      "bytes": 582866,
       "role": "asset"
     },
     {
       "path": "demos/cases/ink-press/fidelity.md",
-      "bytes": 4788,
+      "bytes": 4968,
       "role": "doc"
     },
     {
@@ -332,12 +332,12 @@
     },
     {
       "path": "demos/cases/ink-press/film/entry.tsx",
-      "bytes": 1323,
+      "bytes": 2343,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/film.js",
-      "bytes": 1356481,
+      "bytes": 1357605,
       "role": "source"
     },
     {
@@ -472,7 +472,7 @@
     },
     {
       "path": "demos/cases/ink-press/source/package.json",
-      "bytes": 622,
+      "bytes": 529,
       "role": "process"
     },
     {
@@ -522,7 +522,7 @@
     },
     {
       "path": "entries/cases/ink-press.json",
-      "bytes": 12771,
+      "bytes": 13077,
       "role": "entry"
     },
     {

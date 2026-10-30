@@ -5,8 +5,7 @@
   "scripts": {
     "build": "node build.mjs",
     "dev": "remotion studio ../film/src/index.ts",
-    "render": "remotion render ../film/src/index.ts AiflPromo out/promo.mp4",
-    "audio": "remotion render ../film/src/index.ts AiflPromo ../audio/film.m4a --codec=aac"
+    "render": "remotion render ../film/src/index.ts AiflPromo out/promo.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.484",
