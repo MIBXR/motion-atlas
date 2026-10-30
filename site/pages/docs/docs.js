@@ -266,5 +266,11 @@
   addEventListener('hashchange', open);
   open();
   drawNav();
-  requestAnimationFrame(() => positionCurrent(true));
+  // 初次定位等字体与布局稳定；当前项尚未排版时逐帧重试
+  const settle = (tries = 60) => {
+    const active = $('#docNav [aria-current="page"]');
+    if (active && active.getClientRects().length && side.clientHeight) positionCurrent(true);
+    else if (tries) requestAnimationFrame(() => settle(tries - 1));
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(() => requestAnimationFrame(() => settle())));
 })();
