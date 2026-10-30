@@ -128,7 +128,7 @@
 | 第三方许可原文与索引 | 条目本体内的许可原文与 `LICENSES.md` |
 | Prompt 文档、Agent 资料包、站点数据、案例索引 | 构建生成 |
 
-文档中心收录 `docs/**` 与 `prompts/**` 的 Markdown；条目本体的 `fidelity.md`、`LICENSES.md` 由条目详情与资料包提供。
+文档中心收录 docs/**、prompts/** 与根目录 README、CONTRIBUTING、AGENTS 的 Markdown；站内指向仓库 Markdown 的链接一律在文档中心打开。条目本体的 `fidelity.md`、`LICENSES.md` 由条目详情与资料包提供。
 
 `README.md` 介绍项目并提供入口；本文件集中收录规则、目录规范、新增流程与字段说明；`AGENTS.md` 规定仓库修改操作。
 

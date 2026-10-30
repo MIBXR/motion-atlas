@@ -16,6 +16,36 @@ for (const dir of first.kitTargets) {
 }
 
 const { files, cases, patterns, materials } = buildAll();
+const docs = JSON.parse(files['data/docs.js'].match(/window\.MA_DOCS = (.+);/)[1]);
+const snapshotDocs = new Set(materials.flatMap(e => e.snapshotFiles || []));
+const entryDocs = [...new Set([...cases, ...patterns, ...materials].flatMap(e => [e.fidelity, e.licenses]).filter(p => p && !snapshotDocs.has(p)))].map(p => {
+  const content = fs.readFileSync(path.join(ROOT, p), 'utf8');
+  return { path: p, title: content.match(/^#\s+(.+)$/m)?.[1].trim() || p, group: '条目文档', hidden: true, content };
+});
+const projectDocs = [['README.md', '项目介绍'], ['CONTRIBUTING.md', '贡献指南'], ['AGENTS.md', '维护要点']].map(([p, title]) => ({
+  path: p, title, group: '项目说明', content: files[p] ?? fs.readFileSync(path.join(ROOT, p), 'utf8'),
+}));
+docs.push(...entryDocs, ...projectDocs);
+const docPaths = new Set(docs.map(d => d.path));
+const localTargets = new Set();
+for (const d of docs) {
+  const markdown = d.content.replace(/```[^\n]*\n[\s\S]*?```/g, '');
+  for (const [, href] of markdown.matchAll(/\[[^\]]*\]\(([^)\s]+)\)/g)) {
+    const url = new URL(href, `https://atlas.local/${d.path}`);
+    const p = decodeURIComponent(url.pathname.slice(1));
+    if (url.origin !== 'https://atlas.local' || !fs.existsSync(path.join(ROOT, p))) continue;
+    localTargets.add(p);
+    if (!p.endsWith('.md') || docPaths.has(p)) continue;
+    const content = files[p] ?? fs.readFileSync(path.join(ROOT, p), 'utf8');
+    docs.push({ path: p, title: content.match(/^#\s+(.+)$/m)?.[1].trim() || p, group: '条目文档', hidden: true, content });
+    docPaths.add(p);
+  }
+}
+const documentEntries = Object.entries({ cases, patterns, materials }).flatMap(([kind, list]) => list.map(e => ({
+  id: e.id, kind, root: e.snapshotPath || path.posix.dirname(e.demo) + '/', upstream: e.upstream, sources: e.sources, attribution: e.attribution,
+  promptSource: e.prompt && docs.find(d => d.path.startsWith('demos/materials/') && d.content.trim() === e.prompt.trim())?.path,
+})));
+files['data/docs.js'] = `/* 由 scripts/build.mjs 生成，请勿手改 */\nwindow.MA_DOCS = ${JSON.stringify(docs)};\nwindow.MA_DOC_LINKS = ${JSON.stringify({ files: [...localTargets], entries: documentEntries })};\n`;
 let changed = 0;
 for (const [rel, content] of Object.entries(files)) {
   const abs = path.join(ROOT, rel);

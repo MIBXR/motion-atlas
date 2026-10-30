@@ -918,7 +918,7 @@
   const promptBox = (id, text) => `<div class="prompt-box"><pre id="${id}">${esc(text)}</pre><button class="btn" type="button" data-copy="${id}">${ICONS.copy}<span>复制</span></button></div>`;
   const documentLinks = it => {
     const links = [['research', '阅读说明与研究'], ['fidelity', '复刻对照'], ['licenses', '许可原文索引']].filter(([key]) => it[key]);
-    return links.length ? sec('相关文档', 'DOCUMENTS', `<ul>${links.map(([key, label]) => `<li><a href="${key === 'research' ? 'docs.html#doc/' : ''}${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
+    return links.length ? sec('相关文档', 'DOCUMENTS', `<ul>${links.map(([key, label]) => `<li><a href="docs.html#doc/${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
   };
 
   function materialNotes(it) {

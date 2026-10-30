@@ -3,7 +3,9 @@
 [来源、版本和许可事实](../../../entries/cases/mg-pixel.json)
 
 - [film/LICENSE](film/LICENSE)
-- [fonts/LICENSES/](fonts/LICENSES/)
+- [ark-pixel OFL](fonts/LICENSES/ark-pixel/OFL.txt)
+- [cubic-11 OFL](fonts/LICENSES/cubic-11/OFL.txt)
+- [galmuri LICENSE](fonts/LICENSES/galmuri/LICENSE.txt)
 
 ## 制作依赖
 
