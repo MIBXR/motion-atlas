@@ -134,10 +134,6 @@ select.select { min-height: 44px; padding: 0 36px 0 14px; border-radius: 10px; b
 .toolbar .group { display: flex; flex-wrap: wrap; gap: 6px; }
 .toolbar-divider { flex: none; width: 1px; height: 24px; margin: 0 4px; background: var(--line); }
 .sort-group { display: flex; align-items: center; gap: 8px; }
-.sort-control { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
-.sort-control > svg { width: 16px; height: 16px; flex: none; }
-.sort-control > span { font-size: 12px; color: var(--muted); }
-.sort-control select { min-width: 0; border: 0; background: transparent; font-size: 14px; }
 .sort-dir { display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink); cursor: pointer; }
 .sort-dir svg { width: 16px; height: 16px; }
 @media (max-width: 1050px) {
@@ -148,7 +144,7 @@ select.select { min-height: 44px; padding: 0 36px 0 14px; border-radius: 10px; b
   .lib-head p br { display: none; }
   .toolbar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .toolbar .field, .toolbar .sort-group { grid-column: 1 / -1; }
-  .toolbar .sort-control { flex: 1; }
+  .toolbar .sort-group .select { flex: 1; }
   .toolbar .select { min-width: 0; width: 100%; }
   .toolbar-divider { display: none; }
 }

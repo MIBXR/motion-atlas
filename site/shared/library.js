@@ -113,7 +113,7 @@
       KIND === 'patterns' ? filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier) : '',
       KIND === 'patterns' ? filterSelect('case-filter', '所属案例', '全部案例', MA.cases.map(c => [c.id, c.title]), state.caseId) : '',
     ].join('');
-    const sortOptions = [['order', '编号'], ['title', '名称']];
+    const sortOptions = [['order', '按编号'], ['title', '按名称']];
 
     root.innerHTML = `
       <div class="lib">
@@ -133,7 +133,7 @@
             <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : isMaterial ? '搜索素材、工作流、适用场景…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
             ${filters}
             ${KIND === 'patterns' ? '<span class="toolbar-divider" aria-hidden="true"></span>' : ''}
-            <div class="sort-group"><label class="sort-control"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>排序</span><select id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label><button class="sort-dir" id="sort-dir" type="button"></button></div>
+            <div class="sort-group"><select class="select" id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select><button class="sort-dir" id="sort-dir" type="button"></button></div>
           </div>
           <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : isMaterial ? '作者产出效果，未复刻' : '每个巧思都有独立 Demo'}</span></div>
           <div class="grid" id="grid"></div>
