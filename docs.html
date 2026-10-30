@@ -17,7 +17,13 @@
       <nav id="docNav"></nav>
     </aside>
     <article class="doc" id="doc" tabindex="-1"></article>
-    <aside class="doc-toc" aria-label="本页目录"><p class="eyebrow">ON THIS PAGE</p><nav id="toc"></nav></aside>
+    <aside class="doc-toc" aria-label="本页目录">
+      <button class="btn toc-toggle" id="toc-toggle" type="button" aria-controls="toc-panel" aria-expanded="false" aria-label="打开本文目录" hidden>本文目录</button>
+      <div class="toc-panel" id="toc-panel">
+        <div class="toc-head"><p class="eyebrow">本文目录</p><button class="btn toc-close" id="toc-close" type="button" hidden>关闭</button></div>
+        <nav id="toc"></nav>
+      </div>
+    </aside>
   </main>
   <footer id="site-footer"></footer>
   <script src="data/docs.js"></script>

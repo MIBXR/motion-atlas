@@ -153,7 +153,7 @@
   }
   function drawNav() {
     $('#docNav').innerHTML = groups.map((g) => {
-      return `<details class="side-group" data-group="${esc(g.name)}"${g.docs.some(d => d.path === current) ? ' open' : ''}><summary>${esc(g.name)}</summary><ul class="side-list">${g.docs.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}">${esc(d.title)}</a></li>`).join('')}</ul></details>`;
+      return `<details class="side-group" data-group="${esc(g.name)}"${g.docs.some(d => d.path === current) ? ' open' : ''}><summary>${esc(g.name)}<span class="group-indicator" aria-hidden="true">${ICONS.plus}${ICONS.minus}</span></summary><ul class="side-list">${g.docs.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}">${esc(d.title)}</a></li>`).join('')}</ul></details>`;
     }).join('') + '<p class="doc-empty" hidden>没有匹配的文档</p>';
     markNav();
   }
@@ -225,6 +225,39 @@
     requestAnimationFrame(() => { side.scrollTop += summary.getBoundingClientRect().top - top; });
   });
 
+  const outline = $('.doc-toc');
+  const tocToggle = $('#toc-toggle');
+  const tocPanel = $('#toc-panel');
+  const tocClose = $('#toc-close');
+  const compact = matchMedia('(max-width: 800px)');
+  function setTocOpen(open, restoreFocus = false) {
+    tocPanel.hidden = compact.matches && !open;
+    tocToggle.setAttribute('aria-expanded', String(open));
+    tocToggle.setAttribute('aria-label', open ? '收起本文目录' : '打开本文目录');
+    if (restoreFocus) tocToggle.focus({ preventScroll: true });
+  }
+  function syncToc() {
+    tocToggle.hidden = !compact.matches;
+    tocClose.hidden = !compact.matches;
+    setTocOpen(false);
+  }
+  tocToggle.addEventListener('click', () => setTocOpen(tocPanel.hidden));
+  tocClose.addEventListener('click', () => setTocOpen(false, true));
+  $('#toc').addEventListener('click', event => {
+    if (compact.matches && event.target.closest('a')) setTocOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (compact.matches && !tocPanel.hidden && event.key === 'Escape') {
+      event.preventDefault();
+      setTocOpen(false, true);
+    }
+  });
+  document.addEventListener('click', event => {
+    if (compact.matches && !tocPanel.hidden && !outline.contains(event.target)) setTocOpen(false);
+  });
+  compact.addEventListener('change', syncToc);
+  syncToc();
+
   // ---------- 打开文档 ----------
   let spy = null;
   function open() {
@@ -236,7 +269,7 @@
     if (!d) { art.innerHTML = '<p class="doc-empty">未找到文档。</p>'; return; }
     const heads = [];
     const body = render(d.content, d.path, heads);
-    art.innerHTML = `<div class="doc-path"><span>${esc(d.group)} / ${esc(d.path)}</span></div>${heads.length ? '' : `<h1>${esc(d.title)}</h1>`}${body}`;
+    art.innerHTML = `<div class="doc-path"><span title="${esc(d.group)} / ${esc(d.path)}">${esc(d.group)} / ${esc(d.path)}</span><a class="btn" href="${esc(d.path)}" download="${esc(d.path.split('/').pop())}" aria-label="下载原始 Markdown">${ICONS.download}<span>下载 Markdown</span></a></div>${heads.length ? '' : `<h1>${esc(d.title)}</h1>`}${body}`;
     art.querySelectorAll('pre').forEach((pre) => {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'btn'; b.innerHTML = `${ICONS.copy}复制`;
@@ -249,6 +282,8 @@
     if (changed) positionCurrent();
     const toc = heads.filter((h) => h.lv === 2 || h.lv === 3);
     $('#toc').innerHTML = toc.map((h) => `<a href="#doc/${esc(path)}::${esc(h.id)}" data-id="${esc(h.id)}"${h.lv === 3 ? ' class="sub"' : ''}>${esc(h.text)}</a>`).join('');
+    outline.hidden = !toc.length;
+    setTocOpen(false);
     const target = frag && document.getElementById(frag);
     // 内容写入后再滚动；instant 绕过全局 smooth（滚动恢复已设为 manual）
     setTimeout(() => {

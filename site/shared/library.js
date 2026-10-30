@@ -101,13 +101,11 @@
     const group = KIND === 'cases' ? 'carrier' : 'type';
     const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '载体' : '类型'}</summary><ul class="side-list">
       ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : isMaterial ? materialTypes : TAX.types).filter(([value]) => !isMaterial || items.some(it => it.type === value))].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
-      </ul></details><div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
+      </ul></details><details class="side-group" open><summary>收藏</summary><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
       <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
       <li><button type="button" data-tool="import"><span>导入收藏</span>${ICONS.upload}</button></li>
-      <li><a href="${KIND === 'cases' ? 'patterns.html' : 'cases.html'}"><span>${KIND === 'cases' ? '浏览巧思库' : '浏览案例库'}</span>${ICONS.arrow}</a></li>
-      ${isMaterial ? '<li><a href="patterns.html"><span>浏览巧思库</span>' + ICONS.arrow + '</a></li>' : '<li><a href="materials.html"><span>浏览素材库</span>' + ICONS.arrow + '</a></li>'}
-      </ul></div>`;
+      </ul></details>`;
     const filterSelect = (id, label, all, values, value) => `<select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`;
     const filters = [
       KIND === 'patterns' ? filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier) : '',
@@ -132,7 +130,7 @@
           <div class="toolbar">
             <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : isMaterial ? '搜索素材、工作流、适用场景…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
             ${filters}
-            ${KIND === 'patterns' ? '<span class="toolbar-divider" aria-hidden="true"></span>' : ''}
+            <span class="toolbar-divider" aria-hidden="true"></span>
             <div class="sort-group"><select class="select" id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select><button class="sort-dir" id="sort-dir" type="button"></button></div>
           </div>
           <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : isMaterial ? '作者产出效果，未复刻' : '每个巧思都有独立 Demo'}</span></div>
@@ -141,6 +139,8 @@
       </div>`;
     bindList();
     paintGrid();
+    window.Site.decorateControls(root);
+    root.querySelectorAll('.side-group > summary').forEach(summary => summary.insertAdjacentHTML('beforeend', `<span class="group-indicator" aria-hidden="true">${ICONS.plus}${ICONS.minus}</span>`));
     sizeHeroLabels();
     window.Site.syncMenu();
   }
@@ -176,7 +176,7 @@
     const dir = root.querySelector('#sort-dir');
     dir.setAttribute('aria-label', state.dir === 'asc' ? '正序' : '反序');
     dir.setAttribute('aria-pressed', String(state.dir === 'desc'));
-    dir.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${state.dir === 'asc' ? 'M12 19V5M12 5l-6 6M12 5l6 6' : 'M12 5v14M12 19l-6-6M12 19l6-6'}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    dir.innerHTML = state.dir === 'asc' ? ICONS.up : ICONS.down;
     document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' : '当前筛选'} / ${list.length} 个条目`;
     paintSideCounts();
     syncURL();
@@ -221,17 +221,9 @@
       if (state.fav) paintGrid();
     });
   }
-  addEventListener('keydown', (e) => {
-    if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) {
-      const s = document.getElementById('search');
-      if (s) { e.preventDefault(); s.focus(); }
-    }
-  });
 
   /* ---------- 详情：舞台、刻度条、画幅、声音、全屏 ----------
-   * 舞台框按 Demo 的画幅比例计算（横屏 16:9、竖屏 9:16；自适应 Demo 按 16:9 画框）：
-   *   可用高度 = 视口高 − 顶栏 − 上边距 − 舞台工具栏 − 刻度条 − 间距 − 下边距；舞台宽 = min(可用宽, 可用高 × 比例)。
-   * 左右并排（split）还是上下排列（stack）由计算结果决定：并排时舞台宽 ≥ 960px，或不小于上下排列时的 85%，才并排。
+   * 舞台在主体左列内按可用宽高等比适配；横屏 16:9、竖屏 9:16，自适应 Demo 使用 16:9。
    * 竖屏且旁边放得下时，节拍列表放到舞台右侧（data-side="1"），刻度条横跨两者。
    * 全屏：舞台按 contain 铺满屏幕，工具栏与刻度条浮在上下，静止 2.5 秒后淡出。
    * 与 Demo 的通信：同源 iframe，直接读写 contentWindow.__motion；画幅、声音、加载状态走 postMessage（docs/pipeline.md 第六节）。 */
@@ -248,17 +240,11 @@
     const s = p.toString();
     history.replaceState(null, '', location.pathname + location.search + (i > -1 ? h.slice(0, i) : h) + (s ? '?' + s : ''));
   }
-  const svgI = (cls, body) => `<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true">${body}</svg>`;
-  const STROKE = 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
   const SI = {
-    play: svgI('i-play', '<path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/>'),
-    pause: svgI('i-pause', '<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/>'),
-    landscape: svgI('', `<rect x="2.5" y="6.5" width="19" height="11" rx="1.8" ${STROKE}/><path d="M6 10.5v3" ${STROKE}/>`),
-    portrait: svgI('', `<rect x="6.5" y="2.5" width="11" height="19" rx="1.8" ${STROKE}/><path d="M10.5 18h3" ${STROKE}/>`),
-    soundOn: svgI('i-on', `<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" ${STROKE}/>`),
-    soundOff: svgI('i-off', `<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5" ${STROKE}/>`),
-    expand: svgI('i-expand', `<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" ${STROKE}/>`),
-    collapse: svgI('i-collapse', `<path d="M9 4v5H4M15 4v5h5M15 20v-5h5M9 20v-5H4" ${STROKE}/>`),
+    play: window.Site.icon('play', 'i-play'), pause: window.Site.icon('pause', 'i-pause'),
+    landscape: ICONS.landscape, portrait: ICONS.portrait,
+    soundOn: window.Site.icon('soundOn', 'i-on'), soundOff: window.Site.icon('soundOff', 'i-off'),
+    expand: window.Site.icon('expand', 'i-expand'), collapse: window.Site.icon('collapse', 'i-collapse'),
   };
   const SOUND_TEXT = { off: '关', on: '开', blocked: '待启用', pending: '开启中', none: '无' };
   const SOUND_TITLE = {
@@ -268,25 +254,25 @@
 
   let det = null; // 当前详情页的舞台控制器（离开详情页时销毁）
 
-  function stageHTML(it, isCase) {
+  function stageHTML(it) {
     const want = wantedOrient();
     const t = Number(hashParams().get('t'));
     const autoplay = hashParams().get('autoplay') || q.get('autoplay');
     const src = `${it.demo}?embed=1&orient=${want}${Number.isFinite(t) && t > 0 ? `&t=${t}` : ''}${autoplay === '0' ? '&autoplay=0' : ''}`;
-    const libName = isCase ? '案例库' : '巧思库';
     return `<section class="stage-col" id="stage-col" aria-label="${esc(it.title)} Demo">
       <div class="stage-bar">
-        <a class="tool-btn back" href="#" title="返回${libName}">${ICONS.back}<span class="lbl-mid">${libName}</span></a>
+        <div class="stage-views" role="group" aria-label="查看方式">
         <div class="orient-seg" role="group" aria-label="画幅" hidden>
           <button type="button" data-orient="landscape" aria-pressed="false" title="横屏 1920×1080">${SI.landscape}<span class="lbl-mid">横屏 16:9</span></button>
           <button type="button" data-orient="portrait" aria-pressed="false" title="竖屏 1080×1920">${SI.portrait}<span class="lbl-mid">竖屏 9:16</span></button>
         </div>
         <span class="orient-badge" hidden></span>
-        <span class="spacer"></span>
+        </div><div class="stage-controls" role="group" aria-label="播放控制">
         <button class="sound-btn" type="button" data-state="off" aria-pressed="false">${SI.soundOff}${SI.soundOn}<span class="sound-txt">声音</span><span class="sound-state">关</span><i class="meter" aria-hidden="true"><b></b><b></b><b></b></i></button>
         <button class="tool-btn" type="button" data-act="fullscreen" aria-label="全屏查看" title="全屏查看（F）">${SI.expand}${SI.collapse}<span class="lbl-wide">全屏</span></button>
         <button class="tool-btn" type="button" data-act="replay" disabled aria-disabled="true" aria-label="从头播放" title="从头播放">${ICONS.replay}<span class="lbl-wide">重播</span></button>
         <a class="tool-btn" data-act="open" href="${esc(it.demo)}" target="_blank" rel="noopener" aria-label="独立打开 Demo" title="在新标签页独立打开">${ICONS.external}<span class="lbl-wide">独立打开</span></a>
+        </div>
       </div>
       <div class="stage-body">
         <div class="stage-frame" id="stage-frame" aria-busy="true">
@@ -316,7 +302,7 @@
     const el = root.querySelector('.detail');
     const want = wantedOrient();
     const d = det = {
-      it, el, grid: el.querySelector('.detail-grid'), col: $('stage-col'), bar: el.querySelector('.stage-bar'),
+      it, el, actions: root.querySelector('.page-actions'), col: $('stage-col'), bar: el.querySelector('.stage-bar'),
       frame: $('stage-frame'), ifr: $('demo-frame'), sc: $('scrubber'), track: $('scrub-track'), svg: $('scrub-svg'),
       head: $('scrub-head'), tip: $('scrub-tip'), time: $('scrub-time'), dur: $('scrub-dur'), play: $('scrub-play'),
       strip: $('beat-list'), side: $('beat-side'), seg: el.querySelector('.orient-seg'), badge: el.querySelector('.orient-badge'),
@@ -335,7 +321,7 @@
     renderSound();
     layout(); // 同步算一次，首帧就是正确尺寸
     d.ro = new ResizeObserver(scheduleLayout);
-    [d.el, d.bar, d.sc, d.strip].forEach((x) => d.ro.observe(x));
+    [d.el, d.actions, d.bar, d.sc, d.strip].forEach((x) => d.ro.observe(x));
 
     // 加载状态：200ms 内就绪的不显示，避免闪一下
     later(() => { if (!d.loaded) d.loader.classList.add('show'); }, 200);
@@ -426,38 +412,29 @@
       Object.assign(vars, { '--ifr-w': w, '--ifr-h': h });
     } else {
       const cs = getComputedStyle(d.el), colCS = getComputedStyle(d.col), scCS = getComputedStyle(d.sc);
-      const W = d.el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      const W = d.col.getBoundingClientRect().width;
       const header = document.querySelector('.site-header');
       const headH = header ? header.getBoundingClientRect().height : 0;
       const gap = parseFloat(colCS.rowGap) || 0;
-      const colGap = parseFloat(getComputedStyle(d.grid).columnGap) || 0;
       const stripBlock = parseFloat(getComputedStyle(d.strip).height) + (parseFloat(scCS.rowGap) || 0);
       const scBase = d.sc.querySelector('.scrub-row').offsetHeight + parseFloat(scCS.paddingTop) + parseFloat(scCS.paddingBottom) + parseFloat(scCS.borderTopWidth) + parseFloat(scCS.borderBottomWidth);
-      const chrome = headH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
+      const actionH = d.actions.getBoundingClientRect().height;
+      const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
       const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
-      const infoMin = Math.round(Math.min(440, Math.max(340, W * 0.24)));
-      const room = W - colGap - infoMin; // 并排时舞台列最多能占的宽度
+      mode = innerWidth > 1159 ? 'split' : 'stack';
+      Object.assign(vars, { '--stage-col': W, '--actions-h': actionH });
       if (d.orient === 'portrait') {
-        const h = Math.floor(availH(false)), w = Math.round(h * 9 / 16);
-        if (room - w - gap >= SIDE_MIN) {
-          const sw = Math.min(SIDE_MAX, room - w - gap);
-          mode = 'split'; side = '1';
-          Object.assign(vars, { '--stage-col': w + gap + sw, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
-        } else if (W - w - gap >= SIDE_MIN) {
-          mode = 'stack'; side = '1';
-          Object.assign(vars, { '--stage-col': W, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
+        const h = Math.floor(Math.min(availH(false), W * 16 / 9)), w = Math.round(h * 9 / 16);
+        if (W - w - gap >= SIDE_MIN) {
+          side = '1';
+          Object.assign(vars, { '--beat-side-w': Math.min(SIDE_MAX, W - w - gap), '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
         } else {
           const h2 = Math.floor(Math.min(availH(true), W * 16 / 9)), w2 = Math.round(h2 * 9 / 16);
-          mode = 'stack';
-          Object.assign(vars, { '--stage-col': W, '--frame-w': W, '--frame-h': h2, '--ifr-w': w2, '--ifr-h': h2 });
+          Object.assign(vars, { '--frame-w': W, '--frame-h': h2, '--ifr-w': w2, '--ifr-h': h2 });
         }
       } else {
-        const hA = availH(true);
-        const splitW = Math.floor(Math.min(room, hA * 16 / 9)), stackW = Math.floor(Math.min(W, hA * 16 / 9));
-        const split = room >= 480 && (splitW >= 960 || splitW >= stackW * 0.85);
-        const w = split ? splitW : stackW, h = Math.round(w * 9 / 16);
-        mode = split ? 'split' : 'stack';
-        Object.assign(vars, { '--stage-col': w, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
+        const w = Math.floor(Math.min(W, availH(true) * 16 / 9)), h = Math.round(w * 9 / 16);
+        Object.assign(vars, { '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
       }
     }
     const el = d.el;
@@ -920,6 +897,14 @@
     const links = [['research', '阅读说明与研究'], ['fidelity', '复刻对照'], ['licenses', '许可原文索引']].filter(([key]) => it[key]);
     return links.length ? sec('相关文档', 'DOCUMENTS', `<ul>${links.map(([key, label]) => `<li><a href="docs.html#doc/${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
   };
+  function pageActions(it) {
+    const fav = favs.has(KIND, it.id);
+    return `<div class="page-actions"><a class="btn back-btn" href="#" aria-label="返回${libName}">${ICONS.back}<span>返回${libName}</span></a><div class="detail-actions" role="group" aria-label="条目操作">
+      <button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button>
+      <a class="btn bundle-btn${isMaterial ? ' primary' : ''}" href="agent/${KIND}/${it.id}.json" download aria-label="下载资料包 JSON">${ICONS.download}<span>资料包 JSON</span></a>
+      ${isMaterial ? '' : `<button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>`}
+    </div></div>`;
+  }
 
   function materialNotes(it) {
     const galleryKinds = { style: '风格样张', work: '作品节选', theme: '主题预览' };
@@ -938,28 +923,25 @@
     const references = [['README.zh-CN.md', '中文说明'], ['README.md', '原版说明']];
     if (it.type === 'prompt-kit') references.push(['template.md', '提示词模板'], ['rubric.md', '评审量表'], ['lib/audio/README.md', 'mgaudio 配乐说明'], ...it.snapshotFiles.filter(file => file.startsWith(it.snapshotPath + 'prompts/') && file.endsWith('.md')).map(file => [file.slice(it.snapshotPath.length), '风格提示词']));
     const snapshotLinks = it.snapshotPath ? `<ul><li><a href="docs.html#doc/${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${references.filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="docs.html#doc/${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
-    return [
+    return { preview: `${it.gallery?.length ? sec('效果图画廊', '', gallery) : ''}${it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`)}`, notes: [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
       sec('为什么归入本库', '', `<p>${esc(it.carrierNote)}</p>`),
       it.workflow?.length ? sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`) : '',
       sec('适合与避用', '', `<h3>适合</h3>${ul(it.useCases)}<h3>避用</h3>${ul(it.avoid)}`),
-      it.gallery?.length ? sec('效果图画廊', '', gallery) : '',
       sec('关联条目', '', related),
-      it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`),
       it.install ? sec('安装方式', '', promptBox('material-install', it.install)) : '',
       sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd><a href="${esc(it.upstream.url)}">${esc(it.upstream.repository)}</a></dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd><dt>版本</dt><dd>${esc(it.upstream.version)}</dd><dt>${it.type === 'agent-skill' ? '技能' : '素材'}许可</dt><dd><a href="${esc(it.license.url)}">${esc(it.license.name)}</a></dd></dl><p>${esc(it.license.notes)}</p>${it.snapshotPath && it.snapshotFiles.includes(it.snapshotPath + 'LICENSE') ? `<p><a href="${esc(it.snapshotPath)}LICENSE">快照附带许可原文</a></p>` : ''}<ul>${it.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.title || source.label)}</a></li>`).join('')}</ul>`),
       documentLinks(it),
-    ].join('');
+    ].join('') };
   }
 
   function renderMaterial(it) {
     destroyDetail();
     document.title = `${it.title} · Motion Atlas`;
-    const fav = favs.has(KIND, it.id);
-    root.innerHTML = `<div class="detail material-detail"><div class="info-col">
-      <div class="detail-actions"><a class="btn" href="#">${ICONS.back}<span>素材库</span></a><button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button><a class="btn" href="agent/materials/${it.id}.json" download>${ICONS.download}<span>资料包 JSON</span></a></div>
+    const material = materialNotes(it);
+    root.innerHTML = `${pageActions(it)}<div class="detail material-detail"><div class="detail-grid"><section class="material-stage" aria-label="素材预览">${material.preview}</section><div class="info-col">
       <header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 素材 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(materialTypes[it.type])}</span></div></header>
-      <div class="notes">${materialNotes(it)}</div></div></div>`;
+      <div class="notes">${material.notes}</div></div></div></div>`;
     bindDetailFavorite(it);
     root.querySelector('[data-copy]')?.addEventListener('click', () => copy(it.install, '安装方式已复制'));
     window.scrollTo(0, 0);
@@ -1033,18 +1015,12 @@
     const chips = isCase
       ? [...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), ...(it.tags || []).map((t) => `<span class="chip">${esc(t)}</span>`)]
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)];
-    const fav = favs.has(KIND, it.id);
-    // 左列：舞台工具栏 + 舞台 + 刻度条（并排时吸顶，首屏完整可见）；右列：操作、标题与说明
     root.innerHTML = `
+      ${pageActions(it)}
       <div class="detail" data-layout="split" data-orient="landscape" data-side="0">
         <div class="detail-grid">
-          ${stageHTML(it, isCase)}
+          ${stageHTML(it)}
           <div class="info-col">
-            <div class="detail-actions">
-              <button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button>
-              <button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>
-              <a class="btn" href="agent/${KIND}/${it.id}.json" download>${ICONS.download}<span>资料包 JSON</span></a>
-            </div>
             <header class="detail-head">
               <p class="eyebrow">${String(idx + 1).padStart(2, '0')} / ${isCase ? 'CASE' : 'PATTERN'} · ${esc(it.id)}</p>
               <h1>${esc(it.title)}</h1>
