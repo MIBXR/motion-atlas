@@ -94,5 +94,10 @@ window.CONFIG = {
       "to": 41.65,
       "stop": "naraPark"
     }
-  ]
+  ],
+  "liveMap": true,
+  "plateBase": "../assets/plates",
+  "scoreUrl": "score.json",
+  "showHud": false,
+  "showStamps": false
 };

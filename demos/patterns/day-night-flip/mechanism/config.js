@@ -37,5 +37,11 @@ window.CONFIG = {
       "label": "天亮"
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": true,
+  "plateBase": "assets/plates",
+  "scoreUrl": "mechanism/score.json",
+  "showHud": true,
+  "showStamps": false,
+  "ignoreOverlays": true
 };

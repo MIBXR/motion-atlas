@@ -227,7 +227,7 @@ select.select { min-height: 44px; padding: 0 36px 0 14px; border-radius: 10px; b
 .sound-btn .meter b { flex: 1; height: 100%; border-radius: 1px; background: currentColor; transform-origin: 50% 100%; transform: scaleY(.45); }
 @container stage (max-width: 400px) { .sound-btn .sound-txt { display: none; } }
 
-/* 舞台框：黑底，iframe 按画幅比例居中（旧 Demo 按 16:9） */
+/* 舞台框：黑底，iframe 按画幅比例居中（自适应 Demo 按 16:9） */
 .stage-body { display: flex; gap: 10px; min-width: 0; }
 .detail[data-layout="stack"] .stage-body { justify-content: center; }
 .stage-frame { position: relative; flex: none; width: var(--frame-w, 100%); height: var(--frame-h, 56vw); max-width: 100%; display: grid; place-items: center; border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--line); }

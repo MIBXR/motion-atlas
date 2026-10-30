@@ -78,12 +78,12 @@
       {
         "name": "文字模式",
         "value": "transition:'direct'；stagger:'none'；逐字符 reel",
-        "source": "demos/cases/archive-os/source/rhinelabui/src/main.ts:252-277；demos/cases/archive-os/film/app/assets/index-BlM3wgKX.js:1-2"
+        "source": "demos/cases/archive-os/source/rhinelabui/src/main.ts:252-277（textOptions、createRollingText）；demos/cases/archive-os/film/app/assets/index-s-1i48S1.js:2（makeColumn：rn-slot / rn-reel）"
       },
       {
         "name": "轨迹",
         "value": "49 点临界阻尼；e+(r+(v×s+10r)×h)×exp(-10h)；读取当前 position/velocity",
-        "source": "demos/cases/archive-os/film/app/assets/index-BlM3wgKX.js:1-2，gn / Bs.read / commit"
+        "source": "demos/cases/archive-os/film/app/assets/index-s-1i48S1.js:1（gn、yf、Bs.read）；:2（commit：读取当前 position / velocity 后接续）"
       },
       {
         "name": "模糊系数",
@@ -4294,7 +4294,7 @@
     },
     {
       "path": "demos/cases/archive-os/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -4314,7 +4314,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5811,
+      "bytes": 6432,
       "role": "process"
     },
     {
@@ -4389,7 +4389,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/render-audio.mjs",
-      "bytes": 6172,
+      "bytes": 6340,
       "role": "process"
     },
     {
@@ -4899,7 +4899,7 @@
     },
     {
       "path": "demos/patterns/rolling-digits/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -4914,7 +4914,7 @@
     },
     {
       "path": "entries/patterns/rolling-digits.json",
-      "bytes": 5549,
+      "bytes": 5679,
       "role": "entry"
     },
     {

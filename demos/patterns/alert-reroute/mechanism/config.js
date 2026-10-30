@@ -28,5 +28,10 @@ window.CONFIG = {
       "label": "改道"
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": true,
+  "plateBase": "assets/plates",
+  "scoreUrl": "mechanism/score.json",
+  "showHud": false,
+  "showStamps": false
 };

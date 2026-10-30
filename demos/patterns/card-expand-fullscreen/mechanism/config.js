@@ -49,5 +49,11 @@ window.CONFIG = {
         }
       }
     }
-  }
+  },
+  "liveMap": false,
+  "plateBase": "assets/plates",
+  "scoreUrl": "mechanism/score.json",
+  "showHud": true,
+  "showStamps": true,
+  "showBadge": true
 };

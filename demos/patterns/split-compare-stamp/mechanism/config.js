@@ -24,5 +24,10 @@ window.CONFIG = {
       "label": "盖章"
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": false,
+  "plateBase": "../assets/plates",
+  "scoreUrl": "score.json",
+  "showHud": false,
+  "showStamps": false
 };

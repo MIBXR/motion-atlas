@@ -101,7 +101,7 @@
     exit: [0.4, 0, 1, 1], anticipate: [0.36, 0, 0.66, -0.56], overshoot: [0.34, 1.56, 0.64, 1], linear: [0, 0, 1, 1],
   };
 
-  /* ---------- 状态（localStorage，旧版字段兼容） ---------- */
+  /* ---------- 状态（localStorage） ---------- */
   const DEF = {
     v: 2, bpm: 120, meter: '4/4', div: 2, swing: 0, offset: 0, kit: 'drum', vol: 80, lv: { bar: 100, beat: 75, sub: 45 }, sound: true,
     bars: 2, strength: 100, mode: 'off', evVoice: 'clap', startCue: true, ev: null, example: 'sync', lat: 0,
@@ -112,8 +112,6 @@
   const saved = store.get('ma-lab', {}) || {};
   const S = Object.assign({}, DEF, saved);
   S.lv = Object.assign({}, DEF.lv, saved.lv || {});
-  if (!Array.isArray(S.ev)) S.ev = typeof saved.events === 'string' ? parseEv(saved.events) : null;
-  delete S.events;
   if (!METERS[S.meter]) S.meter = '4/4';
   if (!DIVS.includes(S.div)) S.div = 2;
   if (!KITS[S.kit]) S.kit = 'drum';

@@ -50,3 +50,13 @@
 外层以原生performance.now和独立墙钟累加器维护胶片时间，timeline的render、seek、play、pause、on(fn)与setRate读取统一时间。播放每个host RAF取target=floor(wall*60)，完整更新全部中间状态步并跳过中间GPU绘制，只绘制目标步；不设30步推进上限。pause冻结当前实际frame/60并清除播放队列。seek与离线render路径保持原固定步重建和目标帧绘制，seek的Promise等待目标步完成。
 
 外层script.js使用递增播放请求序号：pause与seek取消尚未开始的播放，异步重建后的startPlay仅执行最新且未取消的请求。软件GL且URL未指定quality时选择原版performance；显式quality优先。
+
+## 离线音轨
+
+在仓库根目录启动 `node scripts/serve.mjs --port 4321`，另开终端运行：
+
+```bash
+node demos/cases/archive-os/source/rhinelabui/film/render-audio.mjs --base http://localhost:4321 --out <输出目录>/film-audio.ogg --wav <输出目录>/film-audio.wav
+```
+
+脚本按 `film/config.js` 的锚点驱动完整 77.6 秒胶片，输出 48 kHz 双声道 WAV、OGG 与同目录的 `film-audio.json`。`ffmpeg` 由 PATH 或 `FFMPEG_PATH` 指定；`--anchor` 可指定首次详情时刻。默认 OGG 写入案例的 `audio/film-audio.ogg`，WAV 与排程数据写入仓库的 `renders/archive-os/`。

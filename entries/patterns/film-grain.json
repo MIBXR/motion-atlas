@@ -274,16 +274,16 @@
   },
   "migration": [
     {
-      "field": "mechanism/script.js → drawGrain、render",
+      "field": "../../cases/map-pilgrimage/film/script.js ? drawGrain?renderPattern?mechanism/film.js ? createFilm",
       "how": "修改场景绘制、颗粒与暗角的实现。"
     },
     {
-      "field": "mechanism/scene.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+      "field": "mechanism/scene.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
     },
     {
       "field": "../../cases/map-pilgrimage/film/config.js → palette；tracks.flashback、tracks.compare；layout",
-      "how": "修改底色、回忆与分屏状态；颗粒刷新频率在 mechanism/script.js → drawGrain，固定场景时刻在 render。"
+      "how": "修改底色、回忆与分屏状态；颗粒刷新频率在 ../../cases/map-pilgrimage/film/script.js → drawGrain，固定场景时刻在 render。"
     },
     {
       "field": "mechanism/replay.js → config.segments / markers；mechanism/config.js → segments / markers",

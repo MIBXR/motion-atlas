@@ -122,12 +122,12 @@
   },
   "migration": [
     {
-      "field": "mechanism/script.js → drawHud、clockAt、layout",
+      "field": "../../cases/map-pilgrimage/film/script.js → drawHud、clockAt、layout",
       "how": "修改镜头、时钟、步进器与规尺函数的实现。"
     },
     {
-      "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+      "field": "index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
     },
     {
       "field": "../../cases/map-pilgrimage/film/config.js → meta、days、music.lyrics、stepper；tracks.day、tracks.clock、tracks.progress；layout",

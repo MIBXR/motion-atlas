@@ -12,12 +12,14 @@
 (() => {
   'use strict';
   const MK = window.MotionKit;
-  const C = window.CONFIG;
+  const PC = window.CASE_CONFIG ? window.CONFIG : null;
+  const C = window.CASE_CONFIG || window.CONFIG;
+  const isLive = !!PC?.liveMap;
   const T = C.tracks;
   const PATHS = window.PATHS || {};
   const P = MK.params();
   const layerParam = new URLSearchParams(location.search).get('layers');
-  const layerMode = ['map', 'map,routes,markers'].includes(layerParam) ? layerParam : null;
+  const layerMode = !PC && ['map', 'map,routes,markers'].includes(layerParam) ? layerParam : null;
   const { clamp, lerp, seg, env, ease } = MK;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -29,6 +31,7 @@
   /* =====================================================================
    * 1. 舞台
    * ===================================================================== */
+  let currentPlateT = null;
   const stageEl = $('#stage');
   if (layerMode) stageEl.dataset.layers = layerMode;
   const stage = MK.stage({ root: '#stage', background: '#000' });
@@ -260,8 +263,7 @@
     window.maplibregl.setWorkerCount(clamp(Math.floor((navigator.hardwareConcurrency || 4) / 2), 2, 4));
     window.maplibregl.addProtocol('motion', async request => {
       const url = request.url.slice('motion://'.length);
-      const counted = !MAP.started || MK.load._store.has(url);
-      const response = await (counted ? MK.load.fetch(url) : fetch(url));
+      const response = await MK.load.fetch(url);
       if (!response.ok) throw new Error(response.status + ' ' + url);
       return { data: request.type === 'json' ? await response.json() : request.type === 'string' ? await response.text() : await response.arrayBuffer() };
     });
@@ -306,8 +308,7 @@
     if (C.map.dem) {
       // tileSize 512：每块 256px 的高程瓦片按 512px 铺开（请求少一级缩放，瓦片数约 1/4；山体阴影本来就是柔和的底纹）
       map.addSource('dem', { type: 'raster-dem', tiles: [rewrite(C.map.dem)], encoding: 'terrarium', tileSize: 512, maxzoom: C.map.demMaxZoom || 10 });
-      // 山体阴影只在 z5.5–13 的区域与城市全景出现（城市近景几乎是平地，阴影强度本来就接近 0）：
-      // 高程瓦片走 HTTP/1.1（每个域名 6 个连接），近景不再请求它们，缓冲快得多
+      // 山体阴影显示于 z5.5–13 的区域与城市全景，高程瓦片按此范围加载。
       map.addLayer({ id: 'hillshade', type: 'hillshade', source: 'dem', minzoom: 5.5, maxzoom: 13, paint: {
         'hillshade-exaggeration': ['interpolate', ['linear'], ['zoom'], 5.5, 0.5, 9, 0.5, 11.5, 0.34, 13, 0.12],
         'hillshade-shadow-color': '#5f5644', 'hillshade-highlight-color': '#ffffff', 'hillshade-accent-color': '#5f5644',
@@ -365,6 +366,12 @@
   /* ---------- 投影：与 GL 图层同一个变换 ---------- */
   let boundsPad = null;
   function project(ll) {
+    if (PC && !isLive) {
+      const stops = PC.anchors[O]?.[String(currentPlateT)]?.stops || {};
+      const stop = Object.values(S).find(s => s.lngLat[0] === ll[0] && s.lngLat[1] === ll[1]);
+      const id = Object.keys(S).find(id => S[id] === stop);
+      return stops[id] || {x:-10000,y:-10000};
+    }
     const map = MAP.map;
     if (MAP.ok) {
       const p = map.project(ll);
@@ -525,8 +532,7 @@
     BUF.tiles = new Map();
     BUF.samples = scanned.map((s, k) => {
       const tiles = [];
-      // 采样点代表 [t, 下一个采样点) 这一整段（镜头静止时一段可以长达数秒）：tLast 记这一段的结束时刻。
-      // 只记 s.t 的话，静止镜头里播放头一过 s.t + 0.5 秒，这些瓦片既不再排队、又会被淘汰，缓冲永远等不到它们（实测卡死）
+      // 按镜头有效区间维护瓦片队列，静止镜头保留当前所需瓦片；tLast 记录区间结束时刻。
       const tEnd = k + 1 < scanned.length ? scanned[k + 1].t : DUR;
       for (const [src, tid] of s.need) {
         const key = src + '/' + tid.key;
@@ -1198,6 +1204,230 @@
   let locKey = '', locCJK = [], locEN = [];
   const lyricSpans = new Map();
 
+  const plateRoot = $('#plates');
+  const plates = new Map();
+  if (PC) stageEl.dataset.pattern = PC.id;
+  let patternBar = null;
+  let attributionOrient = null;
+  let tl;
+
+  function segmentAt(t) {
+    let selected = PC.segments[0];
+    for (const segment of PC.segments) if (t >= segment.start) selected = segment;
+    return selected;
+  }
+  function caseTime(t) {
+    const s = segmentAt(t), p = clamp((t-s.start)/s.duration);
+    return +lerp(s.from,s.to,s.mode === 'drag' ? ease.inOutCubic(p) : p).toFixed(6);
+  }
+  function platePath(segment, orient = O) {
+    return segment.plate == null ? null : `${PC.plateBase}/${orient}-${segment.plate}-${segment.layers.replaceAll(',','-')}.webp`;
+  }
+  function maskPattern() {
+    stageEl.appendChild(el.attrib);
+    attributionOrient = null;
+    const hud = PC.showHud;
+    const allowed = new Set(['plates','grain']);
+    if (isLive) allowed.add('map');
+    if (PC.id === 'day-night-flip') allowed.add('wash');
+    if (hud) ['hudgfx'].forEach(id=>allowed.add(id));
+    if (PC.id === 'collect-counter') ['badge','hudgfx'].forEach(id=>allowed.add(id));
+    if (PC.id === 'seekable-timeline') ['cards','geo','badge'].forEach(id=>allowed.add(id));
+    if (PC.id === 'vertical-title-blur') ['intro','loc','flashback','outro'].forEach(id=>allowed.add(id));
+    if (PC.id === 'card-expand-fullscreen') ['cards','geo','labels'].forEach(id=>allowed.add(id));
+    if (PC.showBadge) allowed.add('badge');
+    if (PC.id === 'chapter-frame') ['chapter','decor'].forEach(id=>allowed.add(id));
+    if (PC.id === 'split-compare-stamp') allowed.add('compare');
+    if (PC.id === 'alert-reroute') ['geo','labels','alert'].forEach(id=>allowed.add(id));
+    if (PC.id === 'route-draw-marker') ['geo','labels'].forEach(id=>allowed.add(id));
+    if (PC.id === 'outro-stat-stack') allowed.add('outro');
+    for(const child of stageEl.children) {
+      const keep = child === el.attrib || allowed.has(child.id) || child.classList.contains('vignette') ||
+        (hud && (child.classList.contains('hud') || child.classList.contains('hud-fade') || child.classList.contains('attrib'))) ||
+        (['outro-stat-stack','vertical-title-blur'].includes(PC.id) && child.classList.contains('outro-bg')) || child === patternBar;
+      child.classList.toggle('pattern-off', !keep);
+    }
+    tagEls.forEach(tag=>tag.el.classList.add('pattern-off'));
+    G.stamps.forEach(st=>st.g.classList.toggle('pattern-off',!PC.showStamps));
+    if(PC.id==='seekable-timeline') {
+      $('.hud-bottom').classList.add('pattern-off');
+      $('.hud-fade.bottom').classList.add('pattern-off');
+      G.stepGroup.classList.add('pattern-off');
+    }
+    if (PC.id === 'collect-counter') {
+      [...hudgfx.children].forEach(e=>e.classList.toggle('pattern-off',!e.classList.contains('stamp') && e!==G.stepGroup));
+    }
+    if (['card-expand-fullscreen','seekable-timeline'].includes(PC.id)) {
+      const stop = PC.id==='card-expand-fullscreen' ? 'inari' : 'kix';
+      cardEls.forEach(ce=>ce.el.classList.toggle('pattern-off',ce.c.stop!==stop));
+      markerEls.forEach((me,i)=>{me.el.classList.toggle('pattern-off',me.m.stop!==stop || PC.id==='seekable-timeline');G.nodes[i].g.classList.toggle('pattern-off',me.m.stop!==stop || PC.id==='seekable-timeline');});
+      G.heads.filter(Boolean).forEach(g=>g.classList.add('pattern-off'));
+    }
+  }
+  function renderPlates(t) {
+    const s=segmentAt(t), i=PC.segments.indexOf(s), prev=PC.segments[Math.max(0,i-1)];
+    currentPlateT=s.plate;
+    const alpha=i===0 ? 1 : clamp((t-s.start)/.4);
+    for(const [key,img] of plates) {
+      const now=key===platePath(s), before=i>0 && key===platePath(prev);
+      img.style.opacity=now?(i>0 && prev.plate==null?String(alpha):'1'):before?String(1-alpha):'0';
+      img.style.zIndex=now?'1':'2';
+      if(now && before) {img.style.opacity='1';img.style.zIndex='1';}
+      if(film)img.style.transform=`scale(${1+.04*clamp((t-s.start)/2.5)})`;
+    }
+    film?.render(t,s,alpha);
+  }
+  function drawPatternMarkers(t,cam,ui,activeCard) {
+    const route=PC.id==='route-draw-marker';
+    const alert=PC.id==='alert-reroute' && por();
+    const avoid=L.avoid;
+    const saidaijiMin=S.saidaiji.minZoom,takanoharaMin=S.takanohara.minZoom;
+    if(route)L.avoid=[];
+    if(alert)S.saidaiji.minZoom=S.takanohara.minZoom=0;
+    try {
+      return drawMarkers(t,cam,ui,activeCard);
+    } finally {
+      if(route)L.avoid=avoid;
+      if(alert) {
+        S.saidaiji.minZoom=saidaijiMin;
+        S.takanohara.minZoom=takanoharaMin;
+      }
+    }
+  }
+  function drawPatternAttribution(t) {
+    const index=PC.segments.indexOf(segmentAt(t));
+    const hidden=PC.id==='film-grain' ? index>0 : PC.id==='vertical-title-blur' && index===2;
+    el.attrib.classList.toggle('pattern-attrib-hidden',hidden);
+    if(PC.id==='seekable-timeline' && patternBar && attributionOrient!==O) {
+      const scale=stage.scale||1,gap=por()?18:12;
+      const bar=patternBar.getBoundingClientRect();
+      const lineHeight=el.attrib.getBoundingClientRect().height/scale;
+      const barTop=(bar.top-stageEl.getBoundingClientRect().top)/scale;
+      sty(el.attrib,'top',`${barTop-gap-lineHeight}px`);
+      attributionOrient=O;
+    }
+  }
+  function drawPattern(t,{cam=cameraAt(t),night=valueAt(T.night,t),hudT=t,grainT=t,geo:drawGeo=true}={}) {
+    O=stage.orient;
+    /* --- 覆盖程度：全屏卡片 / 回忆 / 对比时，HUD 转白字 --- */
+    let over = 0, expandF = 0;
+    for (const ce of cardEls) if (ce.c.expand) {
+      const ex = ce.c.expand;
+      const f = seg(t, ex.t, 0.6, ease.inOutCubic) * (1 - seg(t, ex.t + 0.6 + ex.hold, 0.55, ease.inOutCubic));
+      expandF = Math.max(expandF, f);
+    }
+    const fbItem = T.flashback.find((f) => t >= f.t - 0.3 && t <= f.until + 0.4);
+    const fbVis = !PC.ignoreOverlays && fbItem ? env(t, fbItem.t, fbItem.until, 0.28, 0.32) : 0;
+    const cmpItem = T.compare.find((c) => t >= c.t - 0.5 && t <= c.until + 0.6);
+    const cmpVis = !PC.ignoreOverlays && cmpItem ? env(t, cmpItem.t, cmpItem.until, 0.3, 0.5) : 0;
+    over = PC.ignoreOverlays ? 0 : Math.max(expandF, fbVis, cmpVis);
+
+    /* --- 章节与强调色 --- */
+    const ch = T.chapter.find((c) => t >= c.t - 0.1 && t <= c.until + 0.7);
+    const chDef = ch && C.chapters[ch.key];
+    const chK = ch ? env(t, ch.t, ch.until, 0.5, 0.6) : 0;
+    const accent = chDef ? mix(PAL.accent, hex(chDef.accent), env(t, ch.t, ch.until, 0.35, 0.6)) : PAL.accent;
+
+    /* --- 全局配色变量 --- */
+    const paper = mix(PAL.paper, PAL.nightPaper, night);
+    const inkBase = mix(PAL.ink, PAL.nightInk, night);
+    const ink = mix(inkBase, WHITE, over);
+    const surfaceBase = mix([250, 249, 245], [22, 28, 40], night);
+    sty(stageEl, '--paper', css(paper));
+    sty(stageEl, '--ink', css(ink));
+    sty(stageEl, '--ink-map', css(inkBase));
+    sty(stageEl, '--muted', css(ink, 0.62));
+    sty(stageEl, '--line', css(ink, 0.26));
+    sty(stageEl, '--surface', css(mix(surfaceBase, [12, 14, 20], over), 0.94));
+    sty(stageEl, '--accent', css(accent));
+    sty(stageEl, '--accent-soft', css(accent, 0.22));
+    sty(stageEl, '--night', String(+night.toFixed(3)));
+    sty(TOP, '--shadow', over > 0.01 ? `0 1px 10px rgba(0,0,0,${f2(0.45 * over)})` : 'none');
+
+
+    const id=PC.id;
+    if(id==='vertical-title-blur') {
+      drawIntro(t);drawLocTitle(t,over);drawFlashback(t,fbItem,fbVis);drawOutro(t);
+    }
+    if(id==='chapter-frame')drawChapter(t,ch,chDef,chK,fbVis,cmpVis);
+    if(id==='split-compare-stamp')drawCompare(t,cmpItem,cmpVis);
+    if(PC.showHud || id==='collect-counter')drawHud(hudT,cam,night,over,fbVis,cmpVis);
+    if(['card-expand-fullscreen','seekable-timeline'].includes(id)) {
+      const active=drawCards(t,cam,accent,chDef,expandF);
+      drawMarkers(t,cam,1-over,active);drawLeader();
+    }
+    if(id==='outro-stat-stack')drawOutro(t);
+    if(id==='alert-reroute')drawAlert(t);
+    if(drawGeo && ['route-draw-marker','alert-reroute'].includes(id)) {
+      drawRoutesSVG(t,cam,1-over,accent);drawPatternMarkers(t,cam,1-over,null);
+    }
+    drawGrain(grainT,fbVis,night,cmpVis);
+    return {cam,night,accent,over,fbVis,cmpVis};
+  }
+  function drawGrain(t,fbVis,night,cmpVis) {
+    /* --- 质感：颗粒、暗角、色调 --- */
+    const fi = Math.floor(t * 12);
+    if (fi !== grainIdx) {
+      grainIdx = fi;
+      const gr = MK.rng(9 + fi);
+      sty(grainEl, 'transform', `translate(${Math.floor(gr() * 512)}px, ${Math.floor(gr() * 512)}px)`);
+    }
+    op(grainEl, 0.1 + 0.14 * fbVis + 0.04 * night + 0.05 * cmpVis);
+    const noteK = T.note.reduce((m, n) => Math.max(m, env(t, n.t, n.until, 0.5, 0.4)), 0);
+    op(el.wash, noteK * 0.55);
+
+
+  }
+  function renderPattern(t) {
+    if(isLive)return renderLive(t);
+    renderPlates(t);
+    const caseT=PC.frameTimes ? PC.frameTimes[PC.segments.indexOf(segmentAt(t))] : caseTime(t);
+    const result=drawPattern(caseT,{grainT:PC.frameTimes?t:caseT});
+    drawPatternAttribution(t);
+    if(patternBar) {
+      patternBar.querySelector('input').value=String(caseT);
+      patternBar.querySelector('output').textContent=`${MK.pad(caseT/60)}:${MK.pad(caseT%60)}`;
+      patternBar.toggleAttribute('data-playing',tl?.playing || false);
+      patternBar.querySelector('[data-act="toggle"]').setAttribute('aria-label',tl?.playing?'暂停':'播放');
+    }
+    return result && null;
+  }
+  const film = PC?.createFilm?.({MK, C, stage, plateRoot, sceneCanvas});
+  async function preloadPlates() {
+    MK.load.register(PC.segments.flatMap(s => ['landscape','portrait'].map(orient => platePath(s, orient))).filter(Boolean));
+    for(const s of PC.segments)for(const orient of ['landscape','portrait']) {
+      const src=platePath(s,orient);if(!src || plates.has(src))continue;
+      const img=await MK.load.image(src);img.className='plate';img.dataset.orient=orient;plates.set(src,img);plateRoot.appendChild(img);
+    }
+    for(const [key,img] of plates)img.style.display=img.dataset.orient===O?'block':'none';
+  }
+  function startPattern() {
+    maskPattern();
+    patternBar=PC.createControls?.({MK, C, stage, stageEl, A, timeline:()=>tl}) || null;
+    tl=MK.timeline({duration:PC.duration,render:renderPattern,markers:PC.markers});
+    const scoreTask=MK.load.fetch(PC.scoreUrl).then(r=>r.json()).then(score=>A.attach(tl,score));
+    MK.preload([
+      {label:'document.fonts.ready',run:()=>MK.preload.fonts()()},
+      {label:'案例场景与固定底图',run:async()=>{
+        MAP.scenes=true;layout(O);maskPattern();
+        film?.build();
+        if(isLive)await initPatternMap();else await preloadPlates();
+        measureMarkerLabels();
+      }},
+      {label:'案例声音事件',run:()=>scoreTask},
+    ]);
+    MK.expose(tl,{title:PC.id,fps:30,bpm:C.meta.bpm});
+    if(PC.id!=='seekable-timeline')MK.controls(tl,{accent:C.palette.accent});
+    stage.on('orient',()=>{
+      maskPattern();
+      film?.build();
+      for(const img of plates.values())img.style.display=img.dataset.orient===O?'block':'none';
+      tl.seek(tl.time);
+    });
+    MK.start(tl,{t:0,reduced:0});
+  }
+
+
   function render(t) {
     O = stage.orient;
     const por = portrait();
@@ -1300,16 +1530,7 @@
     /* --- 收尾 --- */
     drawOutro(t);
 
-    /* --- 质感：颗粒、暗角、色调 --- */
-    const fi = Math.floor(t * 12);
-    if (fi !== grainIdx) {
-      grainIdx = fi;
-      const gr = MK.rng(9 + fi);
-      sty(grainEl, 'transform', `translate(${Math.floor(gr() * 512)}px, ${Math.floor(gr() * 512)}px)`);
-    }
-    op(grainEl, 0.1 + 0.14 * fbVis + 0.04 * night + 0.05 * cmpVis);
-    const noteK = T.note.reduce((m, n) => Math.max(m, env(t, n.t, n.until, 0.5, 0.4)), 0);
-    op(el.wash, noteK * 0.55);
+    drawGrain(t, fbVis, night, cmpVis);
 
     /* --- 地图降级与渲染等待 --- */
     if (MAP.ok) {
@@ -1974,6 +2195,272 @@
     return end;
   }, { bus: 'sfx', send: 0.15, level: 0.5 });
 
+  let liveCameras = [], liveCameraOrient = null, liveReady = false, liveWait = null;
+
+  function mercatorFrame(points, inset, reference = null) {
+    const projected = points.map(merc);
+    const xs = projected.map(point => point[0]), ys = projected.map(point => point[1]);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+    const focus = reference ? reference.focus.slice() : [W / 2, H / 2];
+    const width = 2 * Math.min(focus[0] - W * inset, W * (1 - inset) - focus[0]);
+    const height = 2 * Math.min(focus[1] - H * inset, H * (1 - inset) - focus[1]);
+    return {
+      center: unmerc([(x0 + x1) / 2, (y0 + y1) / 2]),
+      zoom: Math.log2(Math.min(width / ((x1 - x0) * 512), height / ((y1 - y0) * 512))),
+      bearing: 0, pitch: 0, focus,
+      padding: reference ? { ...reference.padding } : { left: 0, right: 0, top: 0, bottom: 0 },
+    };
+  }
+
+  function insideFrame(points, inset) {
+    return points.every(point => {
+      const p = project(point);
+      return p.x >= W * inset && p.x <= W * (1 - inset) && p.y >= H * inset && p.y <= H * (1 - inset);
+    });
+  }
+
+  function projectedFrame(camera, points, inset) {
+    applyCamera(camera);
+    if (insideFrame(points, inset)) return camera;
+    let low = 0, high = camera.zoom;
+    for (let iteration = 0; iteration < 24; iteration++) {
+      camera.zoom = (low + high) / 2;
+      applyCamera(camera);
+      if (insideFrame(points, inset)) low = camera.zoom;
+      else high = camera.zoom;
+    }
+    camera.zoom = low;
+    return camera;
+  }
+
+  function configureLiveCameras() {
+    MAP.map.resize();
+    if (PC.id === 'route-draw-marker') {
+      const thirdPoints = [S.jrNara.lngLat, S.naraPark.lngLat];
+      const third = mercatorFrame(thirdPoints, .2);
+      third.center = [0, 1].map(axis => (thirdPoints[0][axis] + thirdPoints[1][axis]) / 2);
+      projectedFrame(third, thirdPoints, .2);
+      third.zoom = Math.max(13, third.zoom);
+      liveCameras = [
+        projectedFrame(mercatorFrame([S.kix.lngLat, S.kyoto.lngLat], .12), [S.kix.lngLat, S.kyoto.lngLat], .12),
+        projectedFrame(mercatorFrame([S.kyoto.lngLat, S.jrNara.lngLat], .12), [S.kyoto.lngLat, S.jrNara.lngLat], .12),
+        third,
+      ];
+    } else if (PC.id === 'alert-reroute') {
+      const original = cameraAt(46.475, O);
+      const points = [...R.wrong.pts, ...R.reroute.pts];
+      applyCamera(original);
+      if (insideFrame(points, .08)) liveCameras = [original];
+      else {
+        const camera = { ...original, center: mercatorFrame(points, .15, original).center };
+        let low = 0, high = original.zoom;
+        for (let iteration = 0; iteration < 24; iteration++) {
+          camera.zoom = (low + high) / 2;
+          applyCamera(camera);
+          if (insideFrame(points, .15)) low = camera.zoom;
+          else high = camera.zoom;
+        }
+        camera.zoom = low;
+        liveCameras = [camera];
+      }
+    } else liveCameras = [cameraAt(34.5, O)];
+    liveCameraOrient = O;
+    G.leader.classList.add('pattern-off'); G.leaderCap.classList.add('pattern-off');
+    if (PC.id === 'route-draw-marker') {
+      G.heads.filter(Boolean).forEach(head => op(head, 0));
+      const selected = new Set(PC.actions.filter(action => action.stop).map(action => action.stop));
+      markerEls.forEach((marker, i) => {
+        marker.el.classList.toggle('pattern-off', !selected.has(marker.m.stop));
+        G.nodes[i].g.classList.toggle('pattern-off', !selected.has(marker.m.stop));
+      });
+      el.veil.classList.remove('pattern-off');
+      $('.veil-tag', el.veil).classList.add('pattern-off');
+      sty(el.veil, 'z-index', '14');
+    }
+  }
+
+  function liveCameraAt(t) {
+    return liveCameras[PC.id === 'route-draw-marker' ? t < 3.8 ? 0 : t < 7 ? 1 : 2 : 0];
+  }
+
+  function cameraNeedsApply(camera) {
+    const map = MAP.map, center = map.getCenter(), padding = map.getPadding();
+    const focus = [(W + padding.left - padding.right) / 2, (H + padding.top - padding.bottom) / 2];
+    const current = `${center.lng.toFixed(7)},${center.lat.toFixed(7)},${map.getZoom().toFixed(4)},${map.getPitch().toFixed(3)},${map.getBearing().toFixed(3)},${focus[0].toFixed(1)},${focus[1].toFixed(1)}`;
+    const target = `${camera.center[0].toFixed(7)},${camera.center[1].toFixed(7)},${camera.zoom.toFixed(4)},${camera.pitch.toFixed(3)},${camera.bearing.toFixed(3)},${camera.focus[0].toFixed(1)},${camera.focus[1].toFixed(1)}`;
+    return current !== target;
+  }
+
+  function settleLiveMap() {
+    if (!liveWait) liveWait = (async () => {
+      const map = MAP.map;
+      await nextRender(map);
+      const loaded = await tilesSettled(map, 20000);
+      let idle = false;
+      const markIdle = () => { idle = true; };
+      map.once('idle', markIdle);
+      await waitIdle(map, 4000);
+      map.off('idle', markIdle);
+      if (!loaded || !idle || !map.areTilesLoaded() || !map.loaded()) throw new Error('Fixed map did not reach idle with visible tiles loaded');
+    })().finally(() => { liveWait = null; });
+    return liveWait;
+  }
+
+  function paintLiveMap(night) {
+    const n2 = Math.round(night * 200) / 200;
+    for (const layer of mapLayers) setPaint(layer.id, layer.prop, css(dayNight(MP[layer.key][0], MP[layer.key][1], n2)));
+    setPaint('hillshade', 'hillshade-shadow-color', css(dayNight(MP.shade[0], MP.shade[1], n2), lerp(.55, .75, n2)));
+    setPaint('hillshade', 'hillshade-highlight-color', css(dayNight(MP.light[0], MP.light[1], n2), lerp(.55, .12, n2)));
+    setPaint('hillshade', 'hillshade-accent-color', css(dayNight(MP.shade[0], MP.shade[1], n2), .25));
+    sty(el.map, 'background', css(mix(PAL.paper, PAL.nightPaper, night)));
+  }
+
+  function routeStrokeWidth(route, zoom) {
+    const map = MAP.map, sid = 'rt-' + route.id;
+    const ids = route.style === 'rail' || route.style === 'wrong' ? [sid + '-glow', sid + '-casing', sid] : [sid + '-casing', sid];
+    return Math.max(...ids.filter(id => map.getLayoutProperty(id, 'visibility') !== 'none' && map.getPaintProperty(id, 'line-opacity') > 0).map(id => {
+      const width = map.getPaintProperty(id, 'line-width');
+      return typeof width === 'number' ? width : lerp(width[4], width[6], clamp((zoom - width[3]) / (width[5] - width[3])));
+    }));
+  }
+
+  function routeHitsLabel(a, b, box, radius) {
+    let low = 0, high = 1;
+    for (const axis of ['x', 'y']) {
+      const delta = b[axis] - a[axis], min = box[axis + '0'], max = box[axis + '1'];
+      if (delta === 0) { if (a[axis] < min || a[axis] > max) { low = 1; high = 0; break; } }
+      else {
+        const u = (min - a[axis]) / delta, v = (max - a[axis]) / delta;
+        low = Math.max(low, Math.min(u, v)); high = Math.min(high, Math.max(u, v));
+      }
+    }
+    if (low <= high) return true;
+    const pointBox = p => Math.hypot(p.x - clamp(p.x, box.x0, box.x1), p.y - clamp(p.y, box.y0, box.y1));
+    if (Math.min(pointBox(a), pointBox(b)) <= radius) return true;
+    const dx = b.x - a.x, dy = b.y - a.y, length2 = dx * dx + dy * dy;
+    return [box.x0, box.x1].some(x => [box.y0, box.y1].some(y => {
+      const k = length2 ? clamp(((x - a.x) * dx + (y - a.y) * dy) / length2) : 0;
+      return Math.hypot(x - a.x - dx * k, y - a.y - dy * k) <= radius;
+    }));
+  }
+
+  function placeRouteLabels(t, visibleRoutes) {
+    const labels = markerEls.filter(me => me.box && !me.el.classList.contains('pattern-off'));
+    const nodes = markerEls.map((me, i) => ({ me, nd: G.nodes[i] })).filter(({ me, nd }) => !nd.g.classList.contains('pattern-off') && Number(cache(nd.g)['s:opacity']) > .001).map(({ me, nd }) => {
+      const k = seg(t, me.m.t, .45, ease.outBack), scale = .6 + .4 * clamp(k, 0, 1.25);
+      const circles = [nd.ring, nd.p1, nd.p2].filter(circle => circle === nd.ring || Number(cache(circle)['s:opacity']) > .001);
+      return { me, ...project(me.s.lngLat), radius: scale * Math.max(...circles.map(circle => Number(circle.getAttribute('r')) + (circle === nd.ring ? me.s.node ? 1.25 : 1.5 : 1))) };
+    });
+    const debug = P.render ? { referenceT: t, orient: O, width: W, height: H, candidateIndexBase: 0, routes: visibleRoutes.map((route, index) => ({ index, width: route.width, points: route.points })), labels: [] } : null;
+    const collisions = (me, box) => ({
+      stage: box.x0 < 16 || box.x1 > W - 16 || box.y0 < 16 || box.y1 > H - 16,
+      labels: labels.filter(other => other !== me && hitRect(box, { x: other.box.x0, y: other.box.y0, w: other.box.x1 - other.box.x0, h: other.box.y1 - other.box.y0 }, 6)).map(other => other.m.stop),
+      markers: nodes.filter(node => node.me !== me && Math.hypot(node.x - clamp(node.x, box.x0, box.x1), node.y - clamp(node.y, box.y0, box.y1)) <= node.radius).map(node => ({ stop: node.me.m.stop, x: node.x, y: node.y, radius: node.radius })),
+      routes: visibleRoutes.map((route, index) => ({ index, width: route.width, segments: route.points.slice(1).flatMap((point, i) => routeHitsLabel(route.points[i], point, box, route.width / 2 + 4) ? [i] : []) })).filter(route => route.segments.length),
+    });
+    for (const me of labels) {
+      const q = project(me.s.lngLat), s = me.s;
+      const gap = (s.node ? 6 : por() ? 12 : 10) + 10;
+      const wLab = me.fullW || me.el.offsetWidth || 200, hLab = me.el.offsetHeight || 40;
+      const tryBox = (side, dy) => { const x0 = side > 0 ? q.x + gap : side < 0 ? q.x - gap - wLab : q.x - wLab / 2; return { x0, x1: x0 + wLab, y0: q.y - hLab / 2 + dy, y1: q.y + hLab / 2 + dy, side }; };
+      const pf0 = por() && s.sideP !== undefined ? s.sideP : me.pref, pf = pf0 || 1, vy = hLab / 2 + gap + 4;
+      const order = [[pf, 0], [-pf, 0], [0, vy + hLab / 2], [0, -vy - hLab / 2], [pf, hLab + 6], [-pf, hLab + 6], [pf, -hLab - 6], [-pf, -hLab - 6]];
+      if (pf0 === 0) order.unshift(order.splice(2, 1)[0]);
+      const bad = box => box.x0 < 16 || box.x1 > W - 16 || box.y0 < 16 || box.y1 > H - 16 ||
+        labels.some(other => other !== me && hitRect(box, { x: other.box.x0, y: other.box.y0, w: other.box.x1 - other.box.x0, h: other.box.y1 - other.box.y0 }, 6)) ||
+        nodes.some(node => node.me !== me && Math.hypot(node.x - clamp(node.x, box.x0, box.x1), node.y - clamp(node.y, box.y0, box.y1)) <= node.radius) ||
+        visibleRoutes.some(route => route.points.slice(1).some((point, i) => routeHitsLabel(route.points[i], point, box, route.width / 2 + 4)));
+      const candidates = order.map(([side, dy]) => tryBox(side, dy));
+      const selectedIndex = candidates.findIndex(candidate => !bad(candidate));
+      const box = candidates[selectedIndex];
+      if (debug) {
+        const sourceIndex = candidates.findIndex(candidate => candidate.x0 === me.box.x0 && candidate.y0 === me.box.y0 && candidate.side === me.box.side);
+        const index = box ? selectedIndex : sourceIndex;
+        debug.labels.push({ stop: me.m.stop, sourceCandidateIndex: sourceIndex, sourceRect: { ...me.box }, selectedCandidateIndex: index, fallback: !box, side: (box || me.box).side, dy: index < 0 ? null : order[index][1], rect: { ...(box || me.box) }, candidates: candidates.map((candidate, index) => ({ index, side: candidate.side, dy: order[index][1], rect: candidate, collisions: collisions(me, candidate) })) });
+      }
+      if (!box) continue;
+      me.box = box;
+      sty(me.el, 'transform', `translate(${Math.round(box.x0)}px, ${Math.round(box.y0)}px)`);
+      me.el.classList.toggle('is-left', box.side < 0);
+    }
+    G.placed = labels.map(me => ({ x: me.box.x0, y: me.box.y0, w: me.box.x1 - me.box.x0, h: me.box.y1 - me.box.y0 }));
+    if (debug) {
+      debug.labels.forEach(label => { label.finalCollisions = collisions(markerEls.find(me => me.m.stop === label.stop), label.rect); });
+      window.__routeLabelDiagnostics = debug;
+    }
+  }
+
+  function drawRouteActions(t, camera, accent) {
+    const savedRoutes = routes.slice(), savedHeads = G.heads;
+    const visibleRoutes = [];
+    for (const action of PC.actions.filter(action => action.route)) {
+      const route = R[action.route], index = savedRoutes.indexOf(route);
+      const completed = t >= action.at + action.to - action.from;
+      const caseT = t < action.at ? action.from - 1 : completed && route.style === 'rail' ? route.t1 + 1 : action.from + clamp(t - action.at, 0, action.to - action.from);
+      routes.splice(0, routes.length, route); G.heads = [savedHeads[index]];
+      updateRoutesGL(caseT, 0, accent, 0);
+      drawRoutesSVG(caseT, camera, 1, accent);
+      const progress = routeP(route, caseT), width = routeStrokeWidth(route, camera.zoom);
+      if (progress > 0 && width > 0) visibleRoutes.push({ points: partial(route, progress).map(project), width });
+    }
+    routes.splice(0, routes.length, ...savedRoutes); G.heads = savedHeads;
+    const referenceT = 41.65;
+    const starts = markerEls.map(marker => marker.m.t);
+    markerEls.forEach(marker => {
+      const action = PC.actions.find(action => action.stop === marker.m.stop);
+      marker.m.t = action && t >= action.at ? referenceT - clamp(t - action.at, 0, .85) : referenceT + 1;
+    });
+    drawPatternMarkers(referenceT, camera, 1, null);
+    placeRouteLabels(referenceT, visibleRoutes);
+    markerEls.forEach((marker, i) => { marker.m.t = starts[i]; });
+    const fade = Math.max(0, 1 - Math.abs(t - 3.8) / .2, 1 - Math.abs(t - 7) / .2);
+    el.veil.classList.remove('pattern-off');
+    op(el.veil, fade);
+  }
+
+  function renderLive(t) {
+    O = stage.orient;
+    if (!MAP.ok) return drawPattern(PC.id === 'day-night-flip' ? 34.5 : PC.id === 'alert-reroute' ? 44.8 : t, { geo: false });
+    const reoriented = liveCameraOrient !== O;
+    if (reoriented) configureLiveCameras();
+    const camera = liveCameraAt(t), changed = cameraNeedsApply(camera);
+    if (changed || reoriented) applyCamera(camera);
+    if (PC.id === 'route-draw-marker') {
+      const result = drawPattern(t, { cam: camera, night: 0, geo: false });
+      paintLiveMap(0);
+      drawRouteActions(t, camera, result.accent);
+    } else if (PC.id === 'day-night-flip') {
+      const caseT = t < 4.5 ? 31.3 + t : 36.6 + t - 4.5;
+      const night = valueAt(T.night, caseT);
+      drawPattern(caseT, { cam: camera, night, hudT: caseT, grainT: caseT, geo: false });
+      paintLiveMap(night);
+    } else {
+      const caseT = 44.8 + clamp(t, 0, 5.5);
+      const result = drawPattern(caseT, { cam: camera, geo: false });
+      paintLiveMap(result.night);
+      updateRoutesGL(caseT, result.night, result.accent, result.over);
+      drawRoutesSVG(caseT, camera, 1 - result.over, result.accent);
+      drawPatternMarkers(caseT, camera, 1 - result.over, null);
+    }
+    drawPatternAttribution(t);
+    if (liveReady && (P.render || changed || reoriented)) return settleLiveMap();
+    return null;
+  }
+
+  async function initPatternMap() {
+    await initMap();
+    routes.forEach(route => setVis(route, false));
+    configureLiveCameras();
+    for (const camera of liveCameras) {
+      applyCamera(camera);
+      await settleLiveMap();
+    }
+    liveReady = true;
+    await renderLive(tl.time);
+    await settleLiveMap();
+  }
+
+
   const at = (bar, beat = 0) => (bar * 4 + beat) * SPB; // 第 bar 小节（从 0 起）第 beat 拍 → 秒
   const CH = SND.chords;
   function buildScore() {
@@ -2124,6 +2611,10 @@
       });
     }
   }
+  if (PC) {
+    startPattern();
+    return;
+  }
   const SCORE = buildScore();
 
   /* =====================================================================
@@ -2136,7 +2627,7 @@
     { t: 37.0, label: 'DAY 02 · 奈良线' }, { t: 40.8, label: '奈良公园' }, { t: 45.0, label: '意外 · 改道' }, { t: 47.4, label: '改道 · 入夜' },
     { t: 50.0, label: '道頓堀' }, { t: 54.6, label: '全程鸟瞰 · DAY 03' }, { t: 56.0, label: '结尾统计' },
   ];
-  const tl = MK.timeline({ duration: DUR, render, markers });
+  tl = MK.timeline({ duration: DUR, render, markers });
   A.attach(tl, SCORE);
   MK.expose(tl, { title: '地图巡礼', fps: 30, bpm: C.meta.bpm });
   Object.defineProperty(window, '__mapStats', { get: () => MAP.stats });

@@ -3,20 +3,20 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import { launch } from '../../../scripts/lib/cdp.mjs';
+import { launch } from '../../../../../../scripts/lib/cdp.mjs';
 import { timeline } from './sequence.js';
 
-const root = fileURLToPath(new URL('../../../', import.meta.url));
+const root = fileURLToPath(new URL('../../../../../../', import.meta.url));
 const args = process.argv.slice(2);
 const get = (key, fallback) => { const i = args.indexOf(key); return i < 0 ? fallback : args[i + 1]; };
 const config = {};
-vm.runInNewContext(fs.readFileSync(path.join(root, 'demos/cases/archive-os/config.js'), 'utf8'), { window: config, globalThis: config });
+vm.runInNewContext(fs.readFileSync(path.join(root, 'demos/cases/archive-os/film/config.js'), 'utf8'), { window: config, globalThis: config });
 const anchor = Number(get('--anchor', config.ARCHIVE_FILM?.A));
 if (!Number.isFinite(anchor) || anchor <= 0) throw new Error('config.js must provide ARCHIVE_FILM.A, or pass --anchor with the measured first-detail time.');
 const duration = timeline(anchor).duration;
 const base = get('--base', 'http://localhost:4323');
-const out = path.resolve(root, get('--out', 'demos/cases/archive-os/film-audio.ogg'));
-const wav = path.resolve(root, get('--wav', 'dev/shots/T5r/audio/film-audio.wav'));
+const out = path.resolve(root, get('--out', 'demos/cases/archive-os/audio/film-audio.ogg'));
+const wav = path.resolve(root, get('--wav', 'renders/archive-os/film-audio.wav'));
 
 function findFfmpeg() {
   const candidates = [process.env.FFMPEG_PATH, 'ffmpeg'].filter(Boolean);
@@ -34,7 +34,7 @@ function findFfmpeg() {
 }
 const ffmpeg = findFfmpeg();
 if (!ffmpeg) throw new Error('ffmpeg was not found; set FFMPEG_PATH or install it on PATH.');
-const url = new URL('demos/cases/archive-os/app/index.html', base.endsWith('/') ? base : `${base}/`);
+const url = new URL('demos/cases/archive-os/film/app/index.html', base.endsWith('/') ? base : `${base}/`);
 url.searchParams.set('film', '1');
 url.searchParams.set('audio', 'offline');
 url.searchParams.set('duration', String(duration));
@@ -42,6 +42,7 @@ const browser = await launch({ width: 1920, height: 1080 });
 const started = performance.now();
 try {
   const page = await browser.newPage();
+  await page.send('Page.addScriptToEvaluateOnNewDocument', { source: fs.readFileSync(path.join(root, 'kit/motion-kit.js'), 'utf8') });
   const errors = [];
   page.on('Runtime.exceptionThrown', event => errors.push(event.exceptionDetails.exception?.description || event.exceptionDetails.text));
   page.on('Runtime.consoleAPICalled', event => { if (event.type === 'error') errors.push(event.args.map(arg => arg.description || arg.value || arg.type).join(' ')); });

@@ -18,8 +18,8 @@
 
 ## 迁移
 
-- `mechanism/script.js → drawCards、drawLeader、mountScene`：修改卡片、引线、场景绘制与镜头的实现。
-- `index.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。
+- `../../cases/map-pilgrimage/film/script.js → drawCards、drawLeader、mountScene`：修改卡片、引线、场景绘制与镜头的实现。
+- `index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。
 - `../../cases/map-pilgrimage/film/config.js → tracks.cards[] → scene、caption、expand；tracks.camera、layout`：修改卡片、展开时刻、镜头与横竖布局；程序场景在 ../../cases/map-pilgrimage/film/scenes.js → paintScene。
 - `mechanism/config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：18.4→24.6。
 - `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。

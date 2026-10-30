@@ -139,12 +139,12 @@
   },
   "migration": [
     {
-      "field": "mechanism/script.js → render、caseTime、buildSeekBar、drawHud、drawCards",
+      "field": "../../cases/map-pilgrimage/film/script.js ? renderPattern?caseTime?drawHud?drawCards?mechanism/controls.js ? createControls",
       "how": "修改HUD、卡片、引线、镜头、时钟与控制条的实现。"
     },
     {
-      "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+      "field": "index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
     },
     {
       "field": "../../cases/map-pilgrimage/film/config.js → tracks.cards、tracks.camera、tracks.clock；music、layout",

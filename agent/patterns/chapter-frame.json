@@ -142,12 +142,12 @@
     },
     "migration": [
       {
-        "field": "mechanism/script.js → drawChapter",
+        "field": "../../cases/map-pilgrimage/film/script.js → drawChapter",
         "how": "修改章节标签、标题、框线与胶带的实现。"
       },
       {
-        "field": "mechanism/scene.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-        "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+        "field": "mechanism/scene.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+        "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
       },
       {
         "field": "../../cases/map-pilgrimage/film/config.js → chapters；tracks.chapter、layout",
@@ -176,10 +176,15 @@
     }
   ],
   "documents": {
-    "prompt": "# 章节主题：标签、强调色与四角框线\n\n## 实现 Prompt\n\n章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；重放总时长 9.45s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。 在原有 7.05 秒之后依次重放mg-hud 原片 0–2.4 秒；全部重放总时长 9.45 秒。HUD 的边框、外环、刻度、面板和地球按开机节点错时描出，日志按同一层级依次上线。参数沿用：  \"boot\": {\n    \"frame\": 0.12,\n    \"ring_outer\": 0.4,\n    \"ring_ticks\": 0.55,\n    \"ring_inner\": 0.7,\n    \"panel_left\": 0.9,\n    \"panel_right\": 1.15,\n    \"hex\": 1.2,\n    \"globe\": 1.4,\n    \"log_lines\": [\n      0.4,\n      0.9,\n      1.4,\n      1.9\n  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));\n  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);\n原有段的画面和时序保持原样，新增段沿用同区间原片音轨，声音默认关闭。\n\n## 参数\n\n- **时长**：9.45 秒\n- **声音 voice**：bell、confirm\n- **分层描线开机参数**：  \"boot\": {\n    \"frame\": 0.12,\n    \"ring_outer\": 0.4,\n    \"ring_ticks\": 0.55,\n    \"ring_inner\": 0.7,\n    \"panel_left\": 0.9,\n    \"panel_right\": 1.15,\n    \"hex\": 1.2,\n    \"globe\": 1.4,\n    \"log_lines\": [\n      0.4,\n      0.9,\n      1.4,\n      1.9\n  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));\n  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);\n\n## 动效 Token\n\n- **鸭川框线入场**：0s\n- **框线退场**：1.65s\n- **奈良胶带与网点**：2.45s\n- **时长**：7.05s\n\n## 迁移\n\n- `mechanism/script.js → drawChapter`：修改章节标签、标题、框线与胶带的实现。\n- `mechanism/scene.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。\n- `../../cases/map-pilgrimage/film/config.js → chapters；tracks.chapter、layout`：修改章节标签、标题、强调色、框线与胶带。\n- `mechanism/replay.js → config.segments / markers；mechanism/config.js → segments / markers`：mechanism/replay.js 设置地图与追加案例的重放区间、顺序和标记；mechanism/config.js 设置 mechanism/scene.html 地图片段。地图来源时刻：24.2→25.85/33→33.8/40.6→44.8。\n- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)\n"
+    "prompt": "# 章节主题：标签、强调色与四角框线\n\n## 实现 Prompt\n\n章节标签配框线或胶带网点入场，为一段旅程划出章节。复用地图巡礼的 drawChapter、applyStaticLayout 与对应 CSS。drawChapter 的章节标签、框线、四角方块、胶带与网点。片段：caseT 24.2→25.85；caseT 33→33.8；caseT 40.6→44.8；重放总时长 9.45s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。 在原有 7.05 秒之后依次重放mg-hud 原片 0–2.4 秒；全部重放总时长 9.45 秒。HUD 的边框、外环、刻度、面板和地球按开机节点错时描出，日志按同一层级依次上线。参数沿用：  \"boot\": {\n    \"frame\": 0.12,\n    \"ring_outer\": 0.4,\n    \"ring_ticks\": 0.55,\n    \"ring_inner\": 0.7,\n    \"panel_left\": 0.9,\n    \"panel_right\": 1.15,\n    \"hex\": 1.2,\n    \"globe\": 1.4,\n    \"log_lines\": [\n      0.4,\n      0.9,\n      1.4,\n      1.9\n  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));\n  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);\n原有段的画面和时序保持原样，新增段沿用同区间原片音轨，声音默认关闭。\n\n## 参数\n\n- **时长**：9.45 秒\n- **声音 voice**：bell、confirm\n- **分层描线开机参数**：  \"boot\": {\n    \"frame\": 0.12,\n    \"ring_outer\": 0.4,\n    \"ring_ticks\": 0.55,\n    \"ring_inner\": 0.7,\n    \"panel_left\": 0.9,\n    \"panel_right\": 1.15,\n    \"hex\": 1.2,\n    \"globe\": 1.4,\n    \"log_lines\": [\n      0.4,\n      0.9,\n      1.4,\n      1.9\n  const p1 = E.outC(prog(t, K.boot.ring_outer, 0.5));\n  v.uT.value = t; v.uFrame.value = f; v.uOpen.value = E.outC(prog(t, 0.0, 0.3)); v.uGlitch.value = glitch(t);\n\n## 动效 Token\n\n- **鸭川框线入场**：0s\n- **框线退场**：1.65s\n- **奈良胶带与网点**：2.45s\n- **时长**：7.05s\n\n## 迁移\n\n- `../../cases/map-pilgrimage/film/script.js → drawChapter`：修改章节标签、标题、框线与胶带的实现。\n- `mechanism/scene.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。\n- `../../cases/map-pilgrimage/film/config.js → chapters；tracks.chapter、layout`：修改章节标签、标题、强调色、框线与胶带。\n- `mechanism/replay.js → config.segments / markers；mechanism/config.js → segments / markers`：mechanism/replay.js 设置地图与追加案例的重放区间、顺序和标记；mechanism/config.js 设置 mechanism/scene.html 地图片段。地图来源时刻：24.2→25.85/33→33.8/40.6→44.8。\n- `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。\n\n[打开 Demo](../../demos/patterns/chapter-frame/index.html) · [在库中查看](../../patterns.html#pattern/chapter-frame)\n"
   },
   "entrypoint": "demos/patterns/chapter-frame/index.html",
   "files": [
+    {
+      "path": "demos/cases/map-pilgrimage/LICENSES.md",
+      "bytes": 1021,
+      "role": "license"
+    },
     {
       "path": "demos/cases/map-pilgrimage/fidelity.md",
       "bytes": 2550,
@@ -202,7 +207,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/film/script.js",
-      "bytes": 130629,
+      "bytes": 156283,
       "role": "source"
     },
     {
@@ -217,7 +222,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -357,7 +362,7 @@
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -467,7 +472,7 @@
     },
     {
       "path": "demos/patterns/chapter-frame/mechanism/config.js",
-      "bytes": 881,
+      "bytes": 1007,
       "role": "source"
     },
     {
@@ -477,12 +482,12 @@
     },
     {
       "path": "demos/patterns/chapter-frame/mechanism/replay.js",
-      "bytes": 969,
+      "bytes": 974,
       "role": "source"
     },
     {
       "path": "demos/patterns/chapter-frame/mechanism/scene.html",
-      "bytes": 7848,
+      "bytes": 7883,
       "role": "source"
     },
     {
@@ -491,18 +496,13 @@
       "role": "asset"
     },
     {
-      "path": "demos/patterns/chapter-frame/mechanism/script.js",
-      "bytes": 145081,
-      "role": "source"
-    },
-    {
       "path": "demos/patterns/chapter-frame/mechanism/style.css",
       "bytes": 41282,
       "role": "source"
     },
     {
       "path": "demos/patterns/chapter-frame/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -512,7 +512,7 @@
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 19707,
+      "bytes": 20793,
       "role": "entry"
     },
     {
@@ -522,7 +522,7 @@
     },
     {
       "path": "entries/patterns/chapter-frame.json",
-      "bytes": 7375,
+      "bytes": 7441,
       "role": "entry"
     },
     {

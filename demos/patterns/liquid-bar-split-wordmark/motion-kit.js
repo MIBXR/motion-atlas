@@ -301,7 +301,7 @@
   const inFrame = (() => { try { return hasDOM && global.parent && global.parent !== global; } catch (e) { return false; } })();
   function post(msg) {
     if (!inFrame) return;
-    try { global.parent.postMessage(msg, '*'); } catch (e) { /* 父页面不可达时忽略 */ }
+    global.parent.postMessage(msg, '*');
   }
 
   /* =====================================================================
@@ -406,7 +406,7 @@
       bus.emit('orient', o, size);
       audio._resyncAll(true); // 画幅切换：停止已排程与正在发声的声音，从当前位置继续
       post({ type: 'motion:orient', orient: o });
-      try { global.dispatchEvent(new CustomEvent('motion:orient', { detail: { orient: o } })); } catch (e) { /* 旧浏览器 */ }
+      global.dispatchEvent(new CustomEvent('motion:orient', { detail: { orient: o } }));
       const tl = KIT.timeline;
       return tl ? tl.seek(tl.time).then(() => true) : Promise.resolve(true);
     }
@@ -1835,7 +1835,7 @@
       if (ctx) return ctx;
       const AC = global.AudioContext || global.webkitAudioContext;
       if (!AC) return null;
-      try { ctx = new AC({ latencyHint: 'interactive' }); } catch (e) { ctx = new AC(); }
+      ctx = new AC({ latencyHint: 'interactive' });
       G = buildGraph(ctx);
       ctx.onstatechange = () => { if (ctx.state === 'running') resuming = false; changed(); };
       return ctx;
@@ -1927,7 +1927,7 @@
         if (document.hidden) {
           // 后台：停止调度并淡出，降级为静默；回到前台后从当前时刻重新对齐
           for (const s of schedulers) s.resync(true);
-          stopWhere((r) => r.owner === 'legacy', 0.02);
+          stopWhere((r) => r.owner === 'oneshot', 0.02);
           if (enabled) setTimeout(() => { if (document.hidden && ctx.state === 'running') ctx.suspend(); }, 120);
         } else if (enabled && ctx.state !== 'running') {
           ctx.resume().then(changed, () => {});
@@ -2097,15 +2097,14 @@
       compile: compileScore,
       renderOffline,
       encodeWav,
-      /** 内部：旧 API 与站点协议使用 */
-      _legacy(voiceName, o = {}) {
+      _oneshot(voiceName, o = {}) {
         if (!live()) return;
         if (records.size > 64) cleanup();
-        const r = playVoice(ctx, G, Object.assign({}, o, { voice: voiceName }), ctx.currentTime + (o.delay || 0), 'legacy');
+        const r = playVoice(ctx, G, Object.assign({}, o, { voice: voiceName }), ctx.currentTime + (o.delay || 0), 'oneshot');
         if (r) records.add(r);
       },
       _stopOwner(owner, fade = 0.012) { stopWhere((r) => r.owner === owner, fade); },
-      _resyncAll(hard) { for (const s of schedulers) s.resync(hard); stopWhere((r) => r.owner === 'legacy', 0.012); },
+      _resyncAll(hard) { for (const s of schedulers) s.resync(hard); stopWhere((r) => r.owner === 'oneshot', 0.012); },
       /** 内部工具（自定义音色可用）：osc / noise / gain / filter / perc / drive / panner / fm */
       dsp: { osc, noise: noiseSrc, gain, filter: bq, perc, drive, panner, fm: fmNote, noteHz, semis, rng,
         sample(ctx, out, when, buffer, { offset = 0, gain: level = 1 } = {}) {
@@ -2119,10 +2118,7 @@
     return api;
   })();
 
-  /**
-   * 旧 API：sound() 返回 { enabled, ctx, enable, disable, toggle, tone, noise }，内部改由新引擎发声，
-   * 与 MotionKit.audio 共用开关（站点的 motion:sound 消息对旧 Demo 同样有效）。
-   */
+  // 即时 tone/noise 与 MotionKit.audio 共用声音引擎和开关。
   function sound() {
     KIT.usesSound = true;
     return {
@@ -2131,8 +2127,8 @@
       enable() { audio.enable(); },
       disable() { audio.disable(); },
       toggle() { audio.toggle(); },
-      tone(o = {}) { audio._legacy('tone', o); },
-      noise(o = {}) { audio._legacy('noise', o); },
+      tone(o = {}) { audio._oneshot('tone', o); },
+      noise(o = {}) { audio._oneshot('noise', o); },
     };
   }
 
@@ -2191,9 +2187,9 @@
         };
       },
     });
-    // 旧 Demo 的即时音效（sound().tone/noise，自己前瞻排程）：暂停或跳转时淡出；新乐谱由 attach 的调度器处理
-    tl.on('pause', () => audio._stopOwner('legacy'));
-    tl.on('seek', (to, from) => { if (Math.abs(to - from) > 0.034) audio._stopOwner('legacy'); });
+    // 即时 tone/noise 在暂停或跳转时淡出，乐谱由 attach 调度器处理。
+    tl.on('pause', () => audio._stopOwner('oneshot'));
+    tl.on('seek', (to, from) => { if (Math.abs(to - from) > 0.034) audio._stopOwner('oneshot'); });
     const ready = allLoaded().then(async () => {
       if (KIT.error) throw KIT.error;
       reportLoading();
@@ -2203,7 +2199,7 @@
       reportLoading();
       post(readyMsg(tl));
       KIT.events.emit('loading');
-      try { global.dispatchEvent(new CustomEvent('motion:ready', { detail: readyMsg(tl) })); } catch (e) { /* 旧浏览器 */ }
+      global.dispatchEvent(new CustomEvent('motion:ready', { detail: readyMsg(tl) }));
       return tl;
     }).catch(error => { failLoading(error); throw error; });
     def('ready', { value: ready, writable: true });
@@ -2361,7 +2357,7 @@
       url.searchParams.set('render', '1');
       KIT.sources.set(url.href, { phase: 'download', resources: [] });
       frame.src = url.href;
-      const track = segment.legacy ? null : loadMediaTrack({ src: segment.audio || `../../cases/${segment.caseId}/audio/film.m4a` });
+      const track = segment.nativeAudio ? null : loadMediaTrack({ src: segment.audio || `../../cases/${segment.caseId}/audio/film.m4a` });
       records.set(segment.source, { frame, loaded, segment, track, progress: 0 });
     }
     global.addEventListener('message', event => {
@@ -2421,7 +2417,7 @@
       const { segment, sourceTime } = mapped(tl.time);
       const selected = records.get(segment.source);
       for (const record of records.values()) {
-        if (record.segment.legacy) {
+        if (record.segment.nativeAudio) {
           if (record !== selected || !enabled || !tl.playing) {
             record.window.__motion.pause();
             record.window.MotionKit.audio.disable();
@@ -2431,7 +2427,7 @@
           record.track.media.muted = true;
         }
       }
-      if (segment.legacy) {
+      if (segment.nativeAudio) {
         const original = selected.window.__motion;
         original.setRate(tl.rate);
         await original.seek(sourceTime);

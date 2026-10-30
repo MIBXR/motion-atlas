@@ -235,7 +235,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -360,7 +360,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -455,7 +455,7 @@
     },
     {
       "path": "demos/patterns/specular-sweep-glint/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {

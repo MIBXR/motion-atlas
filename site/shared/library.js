@@ -155,7 +155,7 @@
       ? it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`).join('')
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)].join('');
     const label = KIND === 'cases' ? TAX.carriers[it.carriers[0]] : isMaterial ? materialTypes[it.type] : TAX.types[it.types[0]];
-    const preview = isMaterial ? it.gallery[0]?.path : it.preview;
+    const preview = it.preview;
     const fav = favs.has(KIND, it.id);
     return `<article class="card">
       <div class="card-media">${preview ? `<img src="${esc(preview)}" alt="${esc(it.title)} ${isMaterial ? '作者产出效果，未复刻' : 'Demo 实际截图'}" loading="lazy">` : '<span class="ph">预览图</span>'}
@@ -223,7 +223,7 @@
   });
 
   /* ---------- 详情：舞台、刻度条、画幅、声音、全屏 ----------
-   * 舞台框按 Demo 的画幅比例计算（横屏 16:9、竖屏 9:16；未迁移的旧 Demo 按 16:9 画框、内部自适应）：
+   * 舞台框按 Demo 的画幅比例计算（横屏 16:9、竖屏 9:16；自适应 Demo 按 16:9 画框）：
    *   可用高度 = 视口高 − 顶栏 − 上边距 − 舞台工具栏 − 刻度条 − 间距 − 下边距；舞台宽 = min(可用宽, 可用高 × 比例)。
    * 左右并排（split）还是上下排列（stack）由计算结果决定：并排时舞台宽 ≥ 960px，或不小于上下排列时的 85%，才并排。
    * 竖屏且旁边放得下时，节拍列表放到舞台右侧（data-side="1"），刻度条横跨两者。
@@ -318,7 +318,7 @@
       hint: el.querySelector('.stage-hint'), loader: el.querySelector('.stage-loading'),
       m: null, unsub: null, D: (it.rhythm && it.rhythm.duration) || 0, markers: null, beats: [], beatKey: '', cur: -2,
       playing: null, lastText: '', lastPct: -1, pendingT: null, dragging: false,
-      // 迁移后的条目有竖屏预览图，可以先按意向画幅给出舞台框，等 Demo 回报后再以回报为准
+      // 有竖屏预览图时先按意向画幅给出舞台框，随后采用 Demo 回报的画幅
       want, orient: it.previewPortrait && want === 'portrait' ? 'portrait' : 'landscape', orients: null,
       sound: { pref: store.get(PREF_SOUND, false) === true, state: 'off', available: true, pending: false, seq: 0 },
       loaded: false, fs: false, pseudo: false, lastPointerInCol: false,
@@ -515,9 +515,7 @@
     if (Array.isArray(msg.markers) && msg.markers.length) d.markers = msg.markers;
     if (msg.duration) d.D = msg.duration;
     applyOrients(Array.isArray(msg.orients) ? msg.orients : [], msg.orient);
-    // sound:false 只对已迁移的固定画幅 Demo 可信：旧 Demo 有的把 sfx 只传给 controls() 而没有写进 expose()（6 个巧思），
-    // 回报为 false 但实际有声音，所以旧 Demo 一律保留开关
-    d.sound.available = msg.sound !== false || !(Array.isArray(msg.orients) && msg.orients.length);
+    d.sound.available = msg.sound !== false;
     // 每个新载入的 Demo 都按上次的选择重发一次（同源子框架继承父页面的用户激活，无需新手势）
     if (d.sound.available && d.sound.pref) {
       d.sound.pending = true;
@@ -574,12 +572,12 @@
   function applyOrients(list, cur) {
     const d = det;
     d.orients = list.slice();
-    const legacy = !d.orients.length;
-    d.orient = legacy ? 'landscape' : (normOrient(cur) && d.orients.includes(normOrient(cur)) ? normOrient(cur) : d.orients[0]);
+    const adaptive = !d.orients.length;
+    d.orient = adaptive ? 'landscape' : (normOrient(cur) && d.orients.includes(normOrient(cur)) ? normOrient(cur) : d.orients[0]);
     d.seg.hidden = d.orients.length < 2;
     d.badge.hidden = d.orients.length > 1;
-    d.badge.textContent = legacy ? '16:9 · 自适应' : d.orients[0] === 'portrait' ? '仅竖屏 9:16' : '仅横屏 16:9';
-    d.badge.title = legacy ? '这个 Demo 按 16:9 显示，内容随画框自适应。' : '这个 Demo 只提供一种画幅。';
+    d.badge.textContent = adaptive ? '16:9 · 自适应' : d.orients[0] === 'portrait' ? '仅竖屏 9:16' : '仅横屏 16:9';
+    d.badge.title = adaptive ? '这个 Demo 按 16:9 显示，内容随画框自适应。' : '这个 Demo 只提供一种画幅。';
     paintOrient();
     layout();
   }

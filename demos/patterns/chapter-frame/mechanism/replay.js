@@ -5,7 +5,7 @@ const config = {
           "caseId": "map-pilgrimage",
           "label": "原有演示",
           "source": "mechanism/scene.html",
-          "legacy": true,
+          "nativeAudio": true,
           "from": 0,
           "to": 7.05
         },

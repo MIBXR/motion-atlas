@@ -144,7 +144,7 @@
 
   <script src="../motion-kit.js"></script>
   <script type="module">
-    const scripts = ['../../../cases/map-pilgrimage/film/config.js', 'config.js', '../../../cases/map-pilgrimage/film/paths.js', '../../../cases/map-pilgrimage/film/scenes.js', 'script.js'];
+    const scripts = ['../../../cases/map-pilgrimage/film/config.js', 'config.js', '../../../cases/map-pilgrimage/film/paths.js', '../../../cases/map-pilgrimage/film/scenes.js', '../../../cases/map-pilgrimage/film/script.js'];
     await MotionKit.load.prepare({ styles: ['style.css'], data: [...scripts, 'score.json'] });
     for (const src of scripts) await MotionKit.load.script(src);
   </script>

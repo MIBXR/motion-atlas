@@ -33,5 +33,10 @@ window.CONFIG = {
       "label": "跨天"
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": false,
+  "plateBase": "assets/plates",
+  "scoreUrl": "mechanism/score.json",
+  "showHud": true,
+  "showStamps": false
 };

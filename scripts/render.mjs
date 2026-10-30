@@ -74,7 +74,7 @@ try {
   await page.viewport(w, h, 1);
   await page.goto(u.href, 60000);
   await page.waitFor('window.__motion && typeof window.__motion.seek === "function"', 30000);
-  // 等预加载完成（旧 Demo 没有 ready，直接通过）
+  // 等待预加载完成
   await page.eval('Promise.resolve(window.__motion.ready).then(() => true)', 120000);
   const info = await page.eval('({ duration: (window.__motion.pause(), window.__motion.duration), orient: window.__motion.orient || null, orients: window.__motion.orients || [], hasScore: !!window.__motion.audio })');
   const duration = info.duration;
@@ -104,7 +104,7 @@ try {
   let wav = null;
   if (wantAudio) {
     if (!info.hasScore) {
-      console.warn('该 Demo 没有挂乐谱（MotionKit.audio.attach），跳过音频导出。旧 Demo 迁移后才能导出声音。');
+      console.warn('该 Demo 没有挂乐谱（MotionKit.audio.attach），跳过音频导出。');
     } else {
       const r = await page.eval(`window.__motion.audio.renderWav({ from: ${from}, to: ${to}, sampleRate: ${sampleRate} })`, 300000);
       wav = `${out}.wav`;

@@ -7,7 +7,7 @@
 </head>
 <body>
   <main id="stage" class="stage"></main>
-  <script src="../../../kit/motion-kit.js"></script>
+  <script src="motion-kit.js"></script>
   <script type="module">
     await MotionKit.load.prepare({ styles: ['film/style.css'], modules: ['film/scene.js'] });
     const { renderAt, duration, width, height, fps } = await MotionKit.load.module('./film/scene.js');

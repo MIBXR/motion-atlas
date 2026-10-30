@@ -19,8 +19,8 @@
 
 ## 迁移
 
-- `mechanism/script.js → render、caseTime、buildSeekBar、drawHud、drawCards`：修改HUD、卡片、引线、镜头、时钟与控制条的实现。
-- `index.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。
+- `../../cases/map-pilgrimage/film/script.js ? renderPattern?caseTime?drawHud?drawCards?mechanism/controls.js ? createControls`：修改HUD、卡片、引线、镜头、时钟与控制条的实现。
+- `index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。
 - `../../cases/map-pilgrimage/film/config.js → tracks.cards、tracks.camera、tracks.clock；music、layout`：修改卡片、镜头、HUD 与横竖布局；七段拖动时间映射在 mechanism/config.js → segments。
 - `mechanism/config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：12→14/14→12.6/12.6→13.4/13.4→15.5/15.5→16.6/16.6→13/13→14.4。
 - `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
