@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 18,
+  "count": 19,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -603,6 +603,41 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mg-hanazi.json"
+    },
+    {
+      "id": "ink-press",
+      "title": "Ink Press 纸墨宣传片",
+      "summary": "36 秒纸墨琥珀风产品宣传片：墨线描画与字标压印开场，真实页面截图在 2.5D 相机下聚光、发牌、嵌入、压入与自写，四张衬线字卡作呼吸位，结尾元素合影组装、铅印字标砸落。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "video-shotcraft",
+        "产品宣传片",
+        "纸墨琥珀",
+        "2.5D 运镜",
+        "页面截图",
+        "Remotion",
+        "音画同步"
+      ],
+      "useCases": [
+        "Web / 桌面产品宣传片",
+        "以真实页面截图讲功能的发布短片"
+      ],
+      "avoid": [
+        "没有真实界面可截的产品"
+      ],
+      "patternIds": [
+        "page-cam-25d",
+        "spotlight-hero-card",
+        "deck-deal-flyin",
+        "list-stack-press",
+        "document-typewriter-reveal",
+        "paper-title-card",
+        "outro-group-photo-slam"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/ink-press.json"
     }
   ]
 }

@@ -1,0 +1,66 @@
+{
+  "id": "video-shotcraft",
+  "title": "video-shotcraft · 镜头配方卡宣传片",
+  "type": "agent-skill",
+  "summary": "用 157 张镜头配方卡、218 个 Remotion 参考组件、已验收的 Ink Press 模板和 149 个音效，把 Web / 桌面产品做成电影感宣传片。",
+  "carrierNote": "用 Remotion 逐帧渲染出宣传片，最终形态是视频，因此归入本库。",
+  "workflow": [
+    "判断模式：直接套用 Ink Press 模板、Agent 自主创作或与用户逐阶段共同创作；用户已点名模板或镜头卡时直接按其执行。",
+    "只读检查产品，起本地 dev server，用无头浏览器采集整页 2x 截图、元素透明底切片与 layout.json 坐标表；敏感数据换成虚构内容。",
+    "从产品自身的设计系统提取字体、栅格与配色写入设计 spec，按能量曲线从镜头卡选镜头，依次做文字方向、styleframe、镜头映射与分镜。",
+    "用镜头卡时先用 gallery/api/library.json 校验卡名，再读卡片指向的 demo 源码，在其调校参数上适配。",
+    "有配乐时先做节奏分析，时间线按拍写；音效按画面动作钉帧。",
+    "每个镜头用 remotion still 出静帧自检，整片渲染后抽帧回看，交付前由干净上下文的子 Agent 独立终检。",
+    "有配乐时交付带配乐与无配乐两版；上游另提供剪映草稿导出和浏览器后期工作台。"
+  ],
+  "useCases": [
+    "Web / 桌面产品的宣传片、发布片与演示视频",
+    "从镜头卡取用单个动效镜头",
+    "把真实页面截图做成 2.5D 运镜镜头"
+  ],
+  "avoid": [
+    "口播讲解视频（作者另有 video-talkcraft）",
+    "没有可截界面的产品",
+    "实拍剪辑"
+  ],
+  "upstream": {
+    "repository": "Vincentwei1021/video-shotcraft",
+    "url": "https://github.com/Vincentwei1021/video-shotcraft/tree/5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+    "commit": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+    "version": "1.0.0"
+  },
+  "license": {
+    "name": "Apache-2.0",
+    "url": "https://github.com/Vincentwei1021/video-shotcraft/blob/5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab/LICENSE",
+    "notes": "音效与配乐的逐文件来源见 assets/audio/ATTRIBUTION.md，其中部分文件来源无法反查；2026-08 新增的 48 张镜头卡为公开作品手法的重新实现，来源清单见 references/shots/ATTRIBUTION.md；渲染引擎 Remotion 另有独立许可。"
+  },
+  "install": "npx skills add Vincentwei1021/video-shotcraft\n也可 git clone 上游仓库，把仓库目录链接到 ~/.claude/skills/video-shotcraft 或 ~/.codex/skills/video-shotcraft。\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。模板在 template/ 内 npm install 后用 Remotion 预览和渲染，抽帧与音频处理需要 PATH 中的 ffmpeg。\n本库快照不含 workbench/（浏览器后期工作台），需要时从上游仓库取得。",
+  "snapshotPath": "demos/materials/video-shotcraft/",
+  "snapshotEntry": "SKILL.md",
+  "research": "docs/materials/video-shotcraft.md",
+  "relatedEntries": [
+    {
+      "kind": "case",
+      "id": "ink-press",
+      "note": "skill 自带的 Ink Press 模板成片，按原工程复刻"
+    }
+  ],
+  "sources": [
+    {
+      "title": "README",
+      "url": "https://github.com/Vincentwei1021/video-shotcraft/blob/5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab/README.md"
+    },
+    {
+      "title": "SKILL.md",
+      "url": "https://github.com/Vincentwei1021/video-shotcraft/blob/5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab/SKILL.md"
+    },
+    {
+      "title": "Ink Press 模板",
+      "url": "https://github.com/Vincentwei1021/video-shotcraft/blob/5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab/template/TEMPLATE.md"
+    },
+    {
+      "title": "Gallery",
+      "url": "https://vincentwei1021.github.io/video-shotcraft/"
+    }
+  ]
+}
