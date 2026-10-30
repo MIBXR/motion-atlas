@@ -248,7 +248,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -438,7 +438,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -563,7 +563,7 @@
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -588,22 +588,22 @@
     },
     {
       "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20753,
+      "bytes": 21410,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18590,
+      "bytes": 19250,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 15631,
+      "bytes": 16288,
       "role": "entry"
     },
     {

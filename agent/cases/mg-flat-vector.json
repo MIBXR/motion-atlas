@@ -419,6 +419,49 @@
         "note": "提示词与配乐合成库所在素材"
       }
     ],
+    "energy": [
+      0.356,
+      0.295,
+      0.213,
+      0.194,
+      0.21,
+      0.236,
+      0.255,
+      0.283,
+      0.283,
+      0.242,
+      0.232,
+      0.281,
+      0.459,
+      0.599,
+      0.53,
+      0.381,
+      0.23,
+      0.217,
+      0.204,
+      0.282,
+      0.483,
+      0.491,
+      0.403,
+      0.343,
+      0.347,
+      0.424,
+      0.304,
+      0.359,
+      0.299,
+      0.398,
+      0.465,
+      0.509,
+      0.44,
+      0.386,
+      0.38,
+      0.359,
+      0.255,
+      0.151,
+      0.076,
+      0.048
+    ],
+    "energyNote": "能量值由 Motion Atlas 依据成片每 0.25 秒的相邻画面帧差（权重 0.6）与音轨 RMS（权重 0.4）计算，各自按本片 95 分位归一，取 40 个等距采样。",
     "fidelity": "demos/cases/mg-flat-vector/fidelity.md",
     "licenses": "demos/cases/mg-flat-vector/LICENSES.md",
     "preview": "previews/cases/mg-flat-vector.jpg",
@@ -503,7 +546,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -518,7 +561,7 @@
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20753,
+      "bytes": 21410,
       "role": "entry"
     },
     {

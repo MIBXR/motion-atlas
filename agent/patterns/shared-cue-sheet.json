@@ -236,7 +236,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -366,7 +366,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -506,7 +506,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -596,7 +596,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -731,7 +731,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -751,32 +751,32 @@
     },
     {
       "path": "demos/patterns/shared-cue-sheet/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19270,
+      "bytes": 19929,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24241,
+      "bytes": 24898,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20753,
+      "bytes": 21410,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19166,
+      "bytes": 19825,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 21794,
+      "bytes": 22452,
       "role": "entry"
     },
     {

@@ -199,7 +199,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -219,12 +219,12 @@
     },
     {
       "path": "demos/patterns/metaball-lens-glide/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16301,
+      "bytes": 16960,
       "role": "entry"
     },
     {

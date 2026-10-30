@@ -282,7 +282,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -317,12 +317,12 @@
     },
     {
       "path": "demos/patterns/meter-needle-overrange/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18590,
+      "bytes": 19250,
       "role": "entry"
     },
     {

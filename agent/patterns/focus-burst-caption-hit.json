@@ -286,7 +286,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -321,12 +321,12 @@
     },
     {
       "path": "demos/patterns/focus-burst-caption-hit/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18590,
+      "bytes": 19250,
       "role": "entry"
     },
     {

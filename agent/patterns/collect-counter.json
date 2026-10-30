@@ -272,7 +272,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -452,7 +452,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -607,7 +607,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -722,7 +722,7 @@
     },
     {
       "path": "demos/patterns/collect-counter/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -737,12 +737,12 @@
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 18590,
+      "bytes": 19250,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 17474,
+      "bytes": 18133,
       "role": "entry"
     },
     {

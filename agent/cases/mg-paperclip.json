@@ -222,6 +222,49 @@
         "note": "提示词与配乐合成库所在素材"
       }
     ],
+    "energy": [
+      0.449,
+      0.403,
+      0.343,
+      0.331,
+      0.412,
+      0.522,
+      0.549,
+      0.467,
+      0.344,
+      0.316,
+      0.416,
+      0.517,
+      0.54,
+      0.511,
+      0.507,
+      0.516,
+      0.495,
+      0.577,
+      0.634,
+      0.677,
+      0.543,
+      0.538,
+      0.52,
+      0.507,
+      0.422,
+      0.376,
+      0.403,
+      0.592,
+      0.697,
+      0.852,
+      0.825,
+      0.745,
+      0.544,
+      0.334,
+      0.237,
+      0.188,
+      0.173,
+      0.159,
+      0.142,
+      0.13
+    ],
+    "energyNote": "能量值由 Motion Atlas 依据成片每 0.25 秒的相邻画面帧差（权重 0.6）与音轨 RMS（权重 0.4）计算，各自按本片 95 分位归一，取 40 个等距采样。",
     "fidelity": "demos/cases/mg-paperclip/fidelity.md",
     "licenses": "demos/cases/mg-paperclip/LICENSES.md",
     "preview": "previews/cases/mg-paperclip.jpg",
@@ -361,7 +404,7 @@
     },
     {
       "path": "demos/cases/mg-paperclip/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -401,7 +444,7 @@
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 17474,
+      "bytes": 18133,
       "role": "entry"
     },
     {

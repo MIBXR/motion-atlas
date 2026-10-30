@@ -208,7 +208,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -228,12 +228,12 @@
     },
     {
       "path": "demos/patterns/grid-beat-construction/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19270,
+      "bytes": 19929,
       "role": "entry"
     },
     {

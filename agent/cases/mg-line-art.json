@@ -343,6 +343,49 @@
         "note": "提示词与配乐合成库所在素材"
       }
     ],
+    "energy": [
+      0.296,
+      0.283,
+      0.262,
+      0.246,
+      0.24,
+      0.276,
+      0.311,
+      0.377,
+      0.409,
+      0.401,
+      0.345,
+      0.288,
+      0.289,
+      0.356,
+      0.428,
+      0.437,
+      0.395,
+      0.357,
+      0.42,
+      0.435,
+      0.427,
+      0.364,
+      0.363,
+      0.392,
+      0.432,
+      0.495,
+      0.527,
+      0.533,
+      0.529,
+      0.664,
+      0.77,
+      0.872,
+      0.831,
+      0.778,
+      0.646,
+      0.511,
+      0.427,
+      0.366,
+      0.312,
+      0.269
+    ],
+    "energyNote": "能量值由 Motion Atlas 依据成片每 0.25 秒的相邻画面帧差（权重 0.6）与音轨 RMS（权重 0.4）计算，各自按本片 95 分位归一，取 40 个等距采样。",
     "fidelity": "demos/cases/mg-line-art/fidelity.md",
     "licenses": "demos/cases/mg-line-art/LICENSES.md",
     "preview": "previews/cases/mg-line-art.jpg",
@@ -432,7 +475,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -482,7 +525,7 @@
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19166,
+      "bytes": 19825,
       "role": "entry"
     },
     {

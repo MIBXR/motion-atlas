@@ -378,7 +378,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -1673,7 +1673,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -1848,7 +1848,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -1948,7 +1948,7 @@
     },
     {
       "path": "demos/cases/mg-bauhaus/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -2193,7 +2193,7 @@
     },
     {
       "path": "demos/cases/mg-collage/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -2328,7 +2328,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -2473,7 +2473,7 @@
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -2543,7 +2543,7 @@
     },
     {
       "path": "demos/patterns/film-grain/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -2563,32 +2563,32 @@
     },
     {
       "path": "entries/cases/mg-3d-render.json",
-      "bytes": 16584,
+      "bytes": 17242,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16301,
+      "bytes": 16960,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19270,
+      "bytes": 19929,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-collage.json",
-      "bytes": 18983,
+      "bytes": 19642,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19166,
+      "bytes": 19825,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 15631,
+      "bytes": 16288,
       "role": "entry"
     },
     {

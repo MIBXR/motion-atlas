@@ -484,7 +484,7 @@
     const mb = n => (n / 1e6).toFixed(1);
     return `已下载 ${mb(s.loadedBytes)}${s.unknownTotal ? ' MB' : ''} / ${s.unknownTotal ? '未知总量' : mb(s.totalBytes) + ' MB'} · ${mb(s.bytesPerSecond)} MB/s · 文件 ${s.filesDone} / ${s.filesTotal} · ${phaseText[s.phase]}`;
   }
-  let overlay = null;
+  let overlay = null, loadingStarted = false;
   function reportLoading() {
     const detail = loadingState(), progress = detail.progress;
     if (hasDOM) {
@@ -494,7 +494,7 @@
     post({ type: 'motion:loading', ...detail });
     // 独立打开时显示一条细进度条；嵌入与渲染模式交给宿主或不显示
     const p = params();
-    if (!hasDOM || p.embed || p.render) return;
+    if (!loadingStarted || !hasDOM || p.embed || p.render) return;
     if (progress < 1 && !overlay && document.body) {
       overlay = document.createElement('div');
       overlay.className = 'mk-loading';
@@ -543,6 +543,7 @@
   const fetchResource = global.fetch.bind(global);
   const assetKey = url => global.MotionAtlasAssets?.resolve(url) || url;
   function register(urls, base = document.baseURI) {
+    loadingStarted = true;
     return urls.map(item => {
       const src = absolute(typeof item === 'string' ? item : item.url, base), url = assetKey(src);
       let r = sharedStore.get(url);
@@ -702,6 +703,7 @@
     source: (id, state) => { KIT.sources.set(id, state); if (state.error) failLoading(new Error(state.error)); reportLoading(); },
     get state() { return loadingState(); },
     async prepare({ styles = [], modules = [], images = [], data = [], audio = [], fontText }) {
+      loadingStarted = true;
       register([...styles, ...modules, ...images, ...data, ...audio]); reportLoading();
       const ready = Promise.all([...styles.map(url => loadStyle(url, { fontText })), ...modules.map(moduleURL), ...images.map(loadImage), ...data.map(url => countedFetch(url)), ...audio.map(url => countedFetch(url))]);
       preload([ready]);
@@ -719,6 +721,7 @@
    * 必需任务失败或超时会拒绝 ready。
    */
   function preload(tasks, { onProgress, timeout = 3600000 } = {}) {
+    loadingStarted = true;
     const list = (Array.isArray(tasks) ? tasks : [tasks]).filter(Boolean).map((x, i) => {
       if (typeof x === 'function') return { run: x, weight: 1, label: x.label || `task ${i + 1}` };
       if (x && typeof x.then === 'function') return { run: () => x, weight: 1, label: `promise ${i + 1}` };
@@ -2282,6 +2285,7 @@
   }
 
   function mountFilm(config) {
+    loadingStarted = true;
     const film = config.film;
     stage({
       root: config.root,
@@ -2334,6 +2338,7 @@
   }
 
   function replay(config) {
+    loadingStarted = true;
     document.title = config.title;
     const st = stage({ root: config.root, orients: config.orients || ['landscape'], sizes: config.sizes, background: config.background || '#000' });
     const cue = typeof config.overlay === 'string' ? document.querySelector(config.overlay) : config.overlay;

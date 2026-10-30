@@ -481,6 +481,49 @@
         "note": "提示词与配乐合成库所在素材"
       }
     ],
+    "energy": [
+      0.413,
+      0.503,
+      0.561,
+      0.498,
+      0.392,
+      0.346,
+      0.341,
+      0.355,
+      0.388,
+      0.405,
+      0.368,
+      0.379,
+      0.338,
+      0.382,
+      0.353,
+      0.372,
+      0.35,
+      0.376,
+      0.36,
+      0.377,
+      0.404,
+      0.399,
+      0.396,
+      0.4,
+      0.599,
+      0.775,
+      0.785,
+      0.628,
+      0.457,
+      0.413,
+      0.394,
+      0.373,
+      0.356,
+      0.351,
+      0.354,
+      0.381,
+      0.39,
+      0.358,
+      0.253,
+      0.193
+    ],
+    "energyNote": "能量值由 Motion Atlas 依据成片每 0.25 秒的相邻画面帧差（权重 0.6）与音轨 RMS（权重 0.4）计算，各自按本片 95 分位归一，取 40 个等距采样。",
     "fidelity": "demos/cases/mg-cel-boil/fidelity.md",
     "licenses": "demos/cases/mg-cel-boil/LICENSES.md",
     "preview": "previews/cases/mg-cel-boil.jpg",
@@ -610,7 +653,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -680,7 +723,7 @@
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24241,
+      "bytes": 24898,
       "role": "entry"
     },
     {

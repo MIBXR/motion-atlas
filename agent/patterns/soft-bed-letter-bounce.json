@@ -1402,7 +1402,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -1487,7 +1487,7 @@
     },
     {
       "path": "demos/patterns/soft-bed-letter-bounce/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -1497,7 +1497,7 @@
     },
     {
       "path": "entries/cases/mg-3d-render.json",
-      "bytes": 16584,
+      "bytes": 17242,
       "role": "entry"
     },
     {
