@@ -17,8 +17,8 @@
 
 ## 迁移
 
-- `mechanism/script.js → drawHud、clockAt、layout`：修改镜头、时钟、步进器与规尺函数的实现。
-- `index.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。
+- `../../cases/map-pilgrimage/film/script.js → drawHud、clockAt、layout`：修改镜头、时钟、步进器与规尺函数的实现。
+- `index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。
 - `../../cases/map-pilgrimage/film/config.js → meta、days、music.lyrics、stepper；tracks.day、tracks.clock、tracks.progress；layout`：修改日序、日期、歌词、时钟、步进器与横竖规尺。
 - `mechanism/config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：7→13.6/35.8→42.4。
 - `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。

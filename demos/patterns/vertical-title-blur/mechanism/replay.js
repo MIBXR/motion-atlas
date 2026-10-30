@@ -13,7 +13,7 @@ const config = {
           "source": "mechanism/scene.html",
           "from": 0,
           "to": 14.1,
-          "legacy": true
+          "nativeAudio": true
         },
         {
           "caseId": "mg-3d-render",

@@ -4472,7 +4472,7 @@
     },
     {
       "path": "demos/cases/archive-os/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -4492,7 +4492,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/UPSTREAM.md",
-      "bytes": 5811,
+      "bytes": 6432,
       "role": "process"
     },
     {
@@ -4567,7 +4567,7 @@
     },
     {
       "path": "demos/cases/archive-os/source/rhinelabui/film/render-audio.mjs",
-      "bytes": 6172,
+      "bytes": 6340,
       "role": "process"
     },
     {

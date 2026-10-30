@@ -11,7 +11,7 @@ const config = {
           "source": "mechanism/scene.html",
           "from": 0,
           "to": 7.5,
-          "legacy": true
+          "nativeAudio": true
         },
         {
           "caseId": "mg-bauhaus",

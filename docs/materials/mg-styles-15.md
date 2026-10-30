@@ -6,8 +6,47 @@
 
 评审时，将成片与 `rubric.md` 一起交给另一个 AI，让它按量表看片、给出分项评价，再把具体修改意见交回制作 AI。修改时保留画面和声音共用的时间点，使视觉事件、音乐段落和音效瞬态一起调整。
 
+## 配乐复现
+
 配乐从[模块说明](../../demos/materials/mg-styles-15/lib/audio/README.md)进入：按风格选 recipe，设置高潮、落版、速度与调性，再将音效放到画面事件上；需要自定义配器时使用 synth、drums、samples 和 seq。原案例的 `source/audio.py` 是完整编曲入口，采样与合成模块通过同一份 `lib/audio` 取得。
 
 在仓库外准备复现目录，把素材快照的 `lib/audio` 放到根目录的 `lib/audio`，把案例 `source/` 内容放到 `demos/<原 slug>/`，然后在该案例目录运行配乐脚本。额外图片、纹理、字体和场景的映射见各案例 `fidelity.md`；这种组装保留脚本原有的相对路径。
+
+
+Windows 使用 Python 3.12，在复现根目录创建 `requirements-windows.txt`，固定依赖如下：
+
+```text
+numpy==2.4.6
+scipy==1.16.3
+soundfile==0.14.0
+numba==0.66.0
+pedalboard==0.9.25
+pyloudnorm==0.2.0
+matplotlib==3.9.1.post1
+librosa==0.11.0
+pillow==12.3.0
+fonttools==4.53.1
+scikit-image==0.26.0
+opencv-python==5.0.0.93
+rembg==2.0.78
+```
+
+在复现根目录用 PowerShell 安装，并运行线条艺术与手绘案例的编曲入口：
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-windows.txt --only-binary=matplotlib
+$env:PYTHONUTF8='1'
+$env:MPLBACKEND='Agg'
+Set-Location demos/02-line-art
+& ..\..\.venv\Scripts\python.exe audio.py
+Set-Location ../05-cel-boil
+& ..\..\.venv\Scripts\python.exe audio.py
+Set-Location ../..
+```
+
+两例均输出 `out/audio.wav`，为 48 kHz、双声道、10 秒。线条艺术同时生成频谱图；手绘编曲入口调用 `tools/hitmax.py` 后处理。
+
+## 画面导出
 
 画面采用给定时刻绘制一帧的协议。上游的 `harness/render.mjs` 对应本库的 `scripts/render.mjs`：原作 `window.renderAt(t)` 由 MotionKit 接到 `window.__motion.seek(t)`，先导出画面，再用 ffmpeg 将配乐 WAV 与画面合成。三维画面先由 Blender 输出帧序列，再由案例页面叠加文字和颗粒，页面仍通过同一个逐帧入口导出。具体命令见[渲染管线](../pipeline.md)。

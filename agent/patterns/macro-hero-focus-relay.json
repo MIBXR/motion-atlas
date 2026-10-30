@@ -1425,7 +1425,7 @@
     },
     {
       "path": "demos/cases/mg-3d-render/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -1510,8 +1510,13 @@
     },
     {
       "path": "demos/patterns/macro-hero-focus-relay/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
+    },
+    {
+      "path": "docs/cases/mg-3d-render.md",
+      "bytes": 3255,
+      "role": "doc"
     },
     {
       "path": "entries/cases/mg-3d-render.json",

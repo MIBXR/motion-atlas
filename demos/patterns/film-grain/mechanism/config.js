@@ -46,5 +46,15 @@ window.CONFIG = {
       "label": "插画颗粒"
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": false,
+  "plateBase": "../assets/plates",
+  "scoreUrl": "score.json",
+  "showHud": false,
+  "showStamps": false,
+  "frameTimes": [
+    10.4,
+    13.5,
+    27.56
+  ]
 };

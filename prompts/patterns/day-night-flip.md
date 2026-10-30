@@ -18,9 +18,9 @@
 
 ## 迁移
 
-- `mechanism/script.js → renderLive、drawPattern、drawHud、paintLiveMap`：修改昼夜配色、镜头、时钟与HUD的实现。
-- `index.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。
-- `../../cases/map-pilgrimage/film/config.js → tracks.night、tracks.camera、tracks.clock；palette、mapPalette、layout`：修改昼夜轨道、地图配色、HUD 与横竖布局；固定镜头位置见 mechanism/script.js → configureLiveCameras。
+- `../../cases/map-pilgrimage/film/script.js → renderLive、drawPattern、drawHud、paintLiveMap`：修改昼夜配色、镜头、时钟与HUD的实现。
+- `index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。
+- `../../cases/map-pilgrimage/film/config.js → tracks.night、tracks.camera、tracks.clock；palette、mapPalette、layout`：修改昼夜轨道、地图配色、HUD 与横竖布局；固定镜头位置见 ../../cases/map-pilgrimage/film/script.js → configureLiveCameras。
 - `mechanism/config.js → segments / markers`：设置本巧思片段映射与标记；地图来源时刻：31.3→35.8/36.6→39.1/镜头34.5，全部 HUD 按片段求值。
 - `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。
 

@@ -23,8 +23,8 @@ const uz = prog(t, T0 + 0.30, 0.9), ez = expoOut(uz);
 
 ## 迁移
 
-- `mechanism/script.js → blurIn、typeIn、drawIntro、drawLocTitle、drawFlashback、drawOutro`：修改片名、地名、回忆、收尾的模糊与打字入场的实现。
-- `mechanism/scene.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。
+- `../../cases/map-pilgrimage/film/script.js → blurIn、typeIn、drawIntro、drawLocTitle、drawFlashback、drawOutro`：修改片名、地名、回忆、收尾的模糊与打字入场的实现。
+- `mechanism/scene.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。
 - `../../cases/map-pilgrimage/film/config.js → meta；tracks.locTitle、tracks.flashback、tracks.outro；layout`：修改片名、地名、回忆字幕、收尾与横竖布局。
 - `mechanism/replay.js → config.segments / markers；mechanism/config.js → segments / markers`：mechanism/replay.js 设置地图与追加案例的重放区间、顺序和标记；mechanism/config.js 设置 mechanism/scene.html 地图片段。地图来源时刻：3.8→8/17.9→21.6/25.5→29.6/57.9→60。
 - `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。

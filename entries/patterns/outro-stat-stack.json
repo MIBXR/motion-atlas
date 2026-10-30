@@ -120,16 +120,16 @@
   },
   "migration": [
     {
-      "field": "mechanism/script.js → drawOutro",
+      "field": "../../cases/map-pilgrimage/film/script.js → drawOutro",
       "how": "修改统计行、数值计数与fin.入场的实现。"
     },
     {
-      "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+      "field": "index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
     },
     {
       "field": "../../cases/map-pilgrimage/film/config.js → tracks.outro → t、stats、fin、credits；meta.handle；layout",
-      "how": "修改统计值、结尾文案与横竖布局；逐行时序在 mechanism/script.js → drawOutro。"
+      "how": "修改统计值、结尾文案与横竖布局；逐行时序在 ../../cases/map-pilgrimage/film/script.js → drawOutro。"
     },
     {
       "field": "mechanism/config.js → segments / markers",

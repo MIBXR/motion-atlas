@@ -169,12 +169,12 @@
   },
   "migration": [
     {
-      "field": "mechanism/script.js → renderLive、drawRouteActions、drawRoutesSVG、drawMarkers",
+      "field": "../../cases/map-pilgrimage/film/script.js → renderLive、drawRouteActions、drawRoutesSVG、drawMarkers",
       "how": "修改镜头、路线、标记、引线、投影与标签避让的实现。"
     },
     {
-      "field": "mechanism/scene.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+      "field": "mechanism/scene.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
     },
     {
       "field": "../../cases/map-pilgrimage/film/config.js → stops；tracks.routes、tracks.markers；layout",

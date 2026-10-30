@@ -72,5 +72,10 @@ window.CONFIG = {
       "label": "×4 + 大阪"
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": false,
+  "plateBase": "../assets/plates",
+  "scoreUrl": "score.json",
+  "showHud": false,
+  "showStamps": true
 };

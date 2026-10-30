@@ -154,12 +154,12 @@
   },
   "migration": [
     {
-      "field": "mechanism/script.js → blurIn、typeIn、drawIntro、drawLocTitle、drawFlashback、drawOutro",
+      "field": "../../cases/map-pilgrimage/film/script.js → blurIn、typeIn、drawIntro、drawLocTitle、drawFlashback、drawOutro",
       "how": "修改片名、地名、回忆、收尾的模糊与打字入场的实现。"
     },
     {
-      "field": "mechanism/scene.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+      "field": "mechanism/scene.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
     },
     {
       "field": "../../cases/map-pilgrimage/film/config.js → meta；tracks.locTitle、tracks.flashback、tracks.outro；layout",

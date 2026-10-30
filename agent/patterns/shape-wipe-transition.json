@@ -248,7 +248,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -438,7 +438,7 @@
     },
     {
       "path": "demos/cases/mg-hanazi/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -563,7 +563,7 @@
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {
@@ -588,7 +588,7 @@
     },
     {
       "path": "demos/patterns/shape-wipe-transition/motion-kit.js",
-      "bytes": 133880,
+      "bytes": 133465,
       "role": "source"
     },
     {

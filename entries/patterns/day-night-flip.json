@@ -127,16 +127,16 @@
   },
   "migration": [
     {
-      "field": "mechanism/script.js → renderLive、drawPattern、drawHud、paintLiveMap",
+      "field": "../../cases/map-pilgrimage/film/script.js → renderLive、drawPattern、drawHud、paintLiveMap",
       "how": "修改昼夜配色、镜头、时钟与HUD的实现。"
     },
     {
-      "field": "index.html → script 与样式加载；mechanism/script.js → layout、startPattern",
-      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。"
+      "field": "index.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern",
+      "how": "入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。"
     },
     {
       "field": "../../cases/map-pilgrimage/film/config.js → tracks.night、tracks.camera、tracks.clock；palette、mapPalette、layout",
-      "how": "修改昼夜轨道、地图配色、HUD 与横竖布局；固定镜头位置见 mechanism/script.js → configureLiveCameras。"
+      "how": "修改昼夜轨道、地图配色、HUD 与横竖布局；固定镜头位置见 ../../cases/map-pilgrimage/film/script.js → configureLiveCameras。"
     },
     {
       "field": "mechanism/config.js → segments / markers",

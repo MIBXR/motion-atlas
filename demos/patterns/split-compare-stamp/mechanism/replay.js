@@ -13,7 +13,7 @@ const config = {
           "source": "mechanism/scene.html",
           "from": 0,
           "to": 4.8,
-          "legacy": true
+          "nativeAudio": true
         },
         {
           "caseId": "mg-hanazi",

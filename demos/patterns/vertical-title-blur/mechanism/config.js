@@ -59,5 +59,10 @@ window.CONFIG = {
       "label": "fin."
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": false,
+  "plateBase": "../assets/plates",
+  "scoreUrl": "score.json",
+  "showHud": false,
+  "showStamps": false
 };

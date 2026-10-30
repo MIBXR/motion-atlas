@@ -23,8 +23,8 @@ const h = addK(hand(t, 1, .8), kick(t, C.charge[2], 7, 12, 14))
 
 ## 迁移
 
-- `mechanism/script.js → drawHud`：修改计数、徽章、收集物托盘（来源为车站印章）与回弹的实现。
-- `mechanism/scene.html → script 与样式加载；mechanism/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 mechanism/script.js → initMap。
+- `../../cases/map-pilgrimage/film/script.js → drawHud`：修改计数、徽章、收集物托盘（来源为车站印章）与回弹的实现。
+- `mechanism/scene.html → script 与样式加载；../../cases/map-pilgrimage/film/script.js → layout、startPattern`：入口加载 MotionKit、来源案例的 ../../cases/map-pilgrimage/film/config.js、../../cases/map-pilgrimage/film/paths.js、../../cases/map-pilgrimage/film/scenes.js，以及本巧思配置；地图依赖地址在 ../../cases/map-pilgrimage/film/config.js → map，初始化在 ../../cases/map-pilgrimage/film/script.js → initMap。
 - `../../cases/map-pilgrimage/film/config.js → tracks.counter、tracks.stamps；mascot、stepper、layout`：修改计数事件、徽章、收集印章与横竖布局。
 - `mechanism/replay.js → config.segments / markers；mechanism/config.js → segments / markers`：mechanism/replay.js 设置地图与追加案例的重放区间、顺序和标记；mechanism/config.js 设置 mechanism/scene.html 地图片段。地图来源时刻：8.1→8.9/12.6→14/19.2→20.4/41.8→43/51.2→52.6。
 - `mechanism/score.json`：调整声音事件，按巧思时间对齐，保留音色参数。

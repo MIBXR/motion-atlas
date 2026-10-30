@@ -9,7 +9,7 @@
 | [等距 2.5D · ISOPOLIS — Let the City Grow](../../cases.html#case/mg-isometric) | [条目](../../entries/cases/mg-isometric.json) |
 | [扁平矢量 · popwise — One Dot](../../cases.html#case/mg-flat-vector) | [条目](../../entries/cases/mg-flat-vector.json) |
 | [线条艺术 · ATELIER LINEA — One Line](../../cases.html#case/mg-line-art) | [条目](../../entries/cases/mg-line-art.json) |
-| [3D 渲染 · soft. — Soft Landing](../../cases.html#case/mg-3d-render) | [条目](../../entries/cases/mg-3d-render.json) |
+| [3D 渲染 · soft. — Soft Landing](../../cases.html#case/mg-3d-render) | [研究](mg-3d-render.md) |
 | [形状变形 · morphe. — One Shape, Every Story](../../cases.html#case/mg-morph) | [条目](../../entries/cases/mg-morph.json) |
 | [贴纸科普 · How Many Elements Hide in a Phone?](../../cases.html#case/mg-paperclip) | [条目](../../entries/cases/mg-paperclip.json) |
 | [赛博朋克 HUD · KESTREL-9 · Target Acquired](../../cases.html#case/mg-hud) | [条目](../../entries/cases/mg-hud.json) |

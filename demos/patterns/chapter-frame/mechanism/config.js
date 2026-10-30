@@ -46,5 +46,10 @@ window.CONFIG = {
       "label": "奈良胶带与网点"
     }
   ],
-  "anchors": {}
+  "anchors": {},
+  "liveMap": false,
+  "plateBase": "../assets/plates",
+  "scoreUrl": "score.json",
+  "showHud": false,
+  "showStamps": false
 };
