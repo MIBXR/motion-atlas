@@ -153,7 +153,129 @@
       }
     ],
     "research": "docs/materials/mg-styles-15.md",
-    "preview": null,
+    "gallery": [
+      {
+        "path": "previews/materials/mg-styles-15/01-flat-vector.webp",
+        "caption": "扁平矢量成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/01-flat-vector.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/02-line-art.webp",
+        "caption": "线条艺术成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/02-line-art.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/03-isometric.webp",
+        "caption": "等距 2.5D成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/03-isometric.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/04-3d-render.webp",
+        "caption": "3D 渲染成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/04-3d-render.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/05-cel-boil.webp",
+        "caption": "逐帧线条抖动成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/05-cel-boil.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/06-collage.webp",
+        "caption": "拼贴剪贴成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/06-collage.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/07-liquid.webp",
+        "caption": "液态动效成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/07-liquid.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/08-morph.webp",
+        "caption": "形状变形成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/08-morph.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/09-bauhaus.webp",
+        "caption": "几何包豪斯成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/09-bauhaus.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/10-synthwave.webp",
+        "caption": "80 年代合成波成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/10-synthwave.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/12-aurora-glass.webp",
+        "caption": "极光与玻璃拟态成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/12-aurora-glass.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/18-hanazi.webp",
+        "caption": "综艺花字成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/18-hanazi.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/19-paperclip.webp",
+        "caption": "贴纸科普成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/19-paperclip.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/20-pixel.webp",
+        "caption": "像素艺术成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/20-pixel.jpg",
+        "license": "MIT"
+      },
+      {
+        "path": "previews/materials/mg-styles-15/22-hud.webp",
+        "caption": "赛博朋克 HUD成片封面",
+        "kind": "work",
+        "replicated": false,
+        "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/22-hud.jpg",
+        "license": "MIT"
+      }
+    ],
+    "preview": "previews/materials/mg-styles-15/01-flat-vector.webp",
     "snapshotFiles": [
       "demos/materials/mg-styles-15/LICENSE",
       "demos/materials/mg-styles-15/README.md",
@@ -1139,8 +1261,83 @@
     },
     {
       "path": "entries/materials/mg-styles-15.json",
-      "bytes": 6658,
+      "bytes": 11849,
       "role": "entry"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/01-flat-vector.webp",
+      "bytes": 5690,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/02-line-art.webp",
+      "bytes": 6178,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/03-isometric.webp",
+      "bytes": 26796,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/04-3d-render.webp",
+      "bytes": 38362,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/05-cel-boil.webp",
+      "bytes": 44772,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/06-collage.webp",
+      "bytes": 58396,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/07-liquid.webp",
+      "bytes": 9726,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/08-morph.webp",
+      "bytes": 18480,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/09-bauhaus.webp",
+      "bytes": 21400,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/10-synthwave.webp",
+      "bytes": 34518,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/12-aurora-glass.webp",
+      "bytes": 13728,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/18-hanazi.webp",
+      "bytes": 14088,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/19-paperclip.webp",
+      "bytes": 11226,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/20-pixel.webp",
+      "bytes": 41174,
+      "role": "preview"
+    },
+    {
+      "path": "previews/materials/mg-styles-15/22-hud.webp",
+      "bytes": 26156,
+      "role": "preview"
     }
   ]
 }
