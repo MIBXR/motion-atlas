@@ -133,7 +133,7 @@
     },
     {
       "path": "demos/cases/ink-press/assets/audio/ATTRIBUTION.md",
-      "bytes": 22594,
+      "bytes": 22401,
       "role": "doc"
     },
     {
@@ -338,7 +338,7 @@
     },
     {
       "path": "demos/cases/ink-press/film/LICENSE",
-      "bytes": 11542,
+      "bytes": 11340,
       "role": "license"
     },
     {
@@ -353,102 +353,102 @@
     },
     {
       "path": "demos/cases/ink-press/film/src/Root.tsx",
-      "bytes": 413,
+      "bytes": 396,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/Caption.tsx",
-      "bytes": 2364,
+      "bytes": 2299,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/DigitRoll.tsx",
-      "bytes": 1874,
+      "bytes": 1826,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/FlashCut.tsx",
-      "bytes": 916,
+      "bytes": 892,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/Main.tsx",
-      "bytes": 9922,
+      "bytes": 9730,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/PaperTitleCard.tsx",
-      "bytes": 4305,
+      "bytes": 4194,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live-layout.json",
-      "bytes": 5989,
+      "bytes": 5601,
       "role": "asset"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live/PageCam.tsx",
-      "bytes": 6904,
+      "bytes": 6754,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live/SceneDetail.tsx",
-      "bytes": 6158,
+      "bytes": 6000,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live/SceneFlyIn.tsx",
-      "bytes": 21255,
+      "bytes": 20787,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live/SceneOpen.tsx",
-      "bytes": 26374,
+      "bytes": 25822,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live/SceneOutroLive.tsx",
-      "bytes": 18123,
+      "bytes": 17712,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live/ScenePapers.tsx",
-      "bytes": 8447,
+      "bytes": 8247,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/aifl/live/SceneWbr.tsx",
-      "bytes": 13091,
+      "bytes": 12767,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/index.ts",
-      "bytes": 97,
+      "bytes": 93,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/themes/ThemedFilm.tsx",
-      "bytes": 371,
+      "bytes": 364,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/themes/palette-assets.json",
-      "bytes": 105915,
+      "bytes": 105914,
       "role": "asset"
     },
     {
       "path": "demos/cases/ink-press/film/src/themes/palette-assets.ts",
-      "bytes": 2233,
+      "bytes": 2209,
       "role": "source"
     },
     {
       "path": "demos/cases/ink-press/film/src/themes/palettes.json",
-      "bytes": 1621,
+      "bytes": 1547,
       "role": "asset"
     },
     {
       "path": "demos/cases/ink-press/film/src/themes/visual-theme.tsx",
-      "bytes": 5437,
+      "bytes": 5346,
       "role": "source"
     },
     {
@@ -468,7 +468,7 @@
     },
     {
       "path": "demos/cases/ink-press/source/TEMPLATE.md",
-      "bytes": 8271,
+      "bytes": 8172,
       "role": "process"
     },
     {
@@ -488,12 +488,12 @@
     },
     {
       "path": "demos/cases/ink-press/source/remotion.config.ts",
-      "bytes": 226,
+      "bytes": 220,
       "role": "process"
     },
     {
       "path": "demos/cases/ink-press/source/tsconfig.json",
-      "bytes": 330,
+      "bytes": 315,
       "role": "process"
     },
     {
