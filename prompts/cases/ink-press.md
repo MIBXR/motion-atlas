@@ -21,7 +21,6 @@
 - `截图与坐标`：替换 assets/textures/live/ 的整页截图与切片，并更新 film/src/aifl/live-layout.json 的元素坐标；在 source/ 运行 npm run build 重新打包。
 - `字卡文案`：修改 film/src/aifl/Main.tsx 的 TITLE_CARDS，*词* 为琥珀斜体强调；在 source/ 运行 npm run build。
 - `字幕`：修改 film/src/aifl/Main.tsx 的 CAPTIONS 文案与绝对帧号；在 source/ 运行 npm run build。
-- `音效钉帧`：修改 film/src/aifl/Main.tsx 的 SFX，样本位于 assets/audio/；在 source/ 运行 npm run build，再运行 npm run audio。
 - `运镜`：修改各 film/src/aifl/live/Scene*.tsx 中 PageCam 的 keys；在 source/ 运行 npm run build。
 
 [打开 Demo](../../demos/cases/ink-press/index.html) · [在库中查看](../../cases.html#case/ink-press)
