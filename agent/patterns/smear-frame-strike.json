@@ -258,7 +258,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -333,12 +333,12 @@
     },
     {
       "path": "demos/patterns/smear-frame-strike/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24241,
+      "bytes": 24898,
       "role": "entry"
     },
     {

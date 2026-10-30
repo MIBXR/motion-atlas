@@ -190,7 +190,7 @@
     },
     {
       "path": "demos/cases/mg-synthwave/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -285,12 +285,12 @@
     },
     {
       "path": "demos/patterns/vhs-event-row-tear/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16367,
+      "bytes": 17027,
       "role": "entry"
     },
     {

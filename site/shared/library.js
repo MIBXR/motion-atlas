@@ -56,6 +56,7 @@
     fav: q.get('fav') === '1',
     query: q.get('q') || '',
     sort: q.get('sort') === 'title' ? 'title' : 'order',
+    dir: q.get('dir') === 'desc' ? 'desc' : 'asc',
   };
   function syncURL() {
     const p = new URLSearchParams();
@@ -65,6 +66,7 @@
     if (state.fav) p.set('fav', '1');
     if (state.query) p.set('q', state.query);
     if (state.sort !== 'order') p.set('sort', state.sort);
+    if (state.dir !== 'asc') p.set('dir', state.dir);
     const s = p.toString();
     history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + location.hash);
   }
@@ -83,7 +85,8 @@
       if (words.length) { const h = haystack(it); if (!words.every((w) => h.includes(w))) return false; }
       return true;
     });
-    if (filters.sort === 'title') list = [...list].sort((a, b) => a.title.localeCompare(b.title, 'zh'));
+    list.sort(filters.sort === 'title' ? (a, b) => a.title.localeCompare(b.title, 'zh') : (a, b) => a.order - b.order);
+    if (filters.dir === 'desc') list.reverse();
     return list;
   }
 
@@ -130,7 +133,7 @@
             <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : isMaterial ? '搜索素材、工作流、适用场景…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
             ${filters}
             ${KIND === 'patterns' ? '<span class="toolbar-divider" aria-hidden="true"></span>' : ''}
-            <label class="sort-control"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>排序</span><select id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+            <div class="sort-group"><label class="sort-control"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>排序</span><select id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label><button class="sort-dir" id="sort-dir" type="button"></button></div>
           </div>
           <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : isMaterial ? '作者产出效果，未复刻' : '每个巧思都有独立 Demo'}</span></div>
           <div class="grid" id="grid"></div>
@@ -150,20 +153,18 @@
     art.querySelectorAll('[font-size]').forEach((label) => label.setAttribute('font-size', size));
   }
 
-  function cardHTML(it, i) {
+  function cardHTML(it) {
     const tagLine = isMaterial ? `<span class="chip accent">${esc(materialTypes[it.type])}</span>` : KIND === 'cases'
       ? it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`).join('')
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)].join('');
-    const label = KIND === 'cases' ? TAX.carriers[it.carriers[0]] : isMaterial ? materialTypes[it.type] : TAX.types[it.types[0]];
     const preview = it.preview;
     const fav = favs.has(KIND, it.id);
     return `<article class="card">
-      <div class="card-media">${preview ? `<img src="${esc(preview)}" alt="${esc(it.title)} ${isMaterial ? '作者产出效果，未复刻' : 'Demo 实际截图'}" loading="lazy">` : '<span class="ph">预览图</span>'}
-        <span class="card-index">${String(i + 1).padStart(2, '0')} / ${esc(label)}</span></div>
+      <div class="card-media">${preview ? `<img src="${esc(preview)}" alt="${esc(it.title)} ${isMaterial ? '作者产出效果，未复刻' : 'Demo 实际截图'}" loading="lazy">` : '<span class="ph">预览图</span>'}</div>
       <div class="card-body">
         <div class="card-title"><a href="#${hashKind}/${it.id}">${esc(it.title)}</a>
           <button class="fav-btn" type="button" data-fav="${it.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(it.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
-        <p class="card-sum">${esc(it.summary)}</p>
+        <p class="card-sum" title="${esc(it.summary)}">${esc(it.summary)}</p>
         ${KIND === 'cases' ? energyPath(it) : ''}
         <div class="card-tags">${tagLine}</div>
       </div></article>`;
@@ -172,6 +173,10 @@
     const list = filtered();
     const grid = document.getElementById('grid');
     grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">没有符合条件的${itemName}。换个关键词，或清除筛选。</div>`;
+    const dir = root.querySelector('#sort-dir');
+    dir.setAttribute('aria-label', state.dir === 'asc' ? '正序' : '反序');
+    dir.setAttribute('aria-pressed', String(state.dir === 'desc'));
+    dir.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${state.dir === 'asc' ? 'M12 19V5M12 5l-6 6M12 5l6 6' : 'M12 5v14M12 19l-6-6M12 19l6-6'}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' : '当前筛选'} / ${list.length} 个条目`;
     paintSideCounts();
     syncURL();
@@ -201,6 +206,7 @@
     const s = root.querySelector('#search');
     s.addEventListener('input', () => { state.query = s.value.trim(); paintGrid(); });
     root.querySelector('#sort').addEventListener('change', (e) => { state.sort = e.target.value; paintGrid(); });
+    root.querySelector('#sort-dir').addEventListener('click', () => { state.dir = state.dir === 'asc' ? 'desc' : 'asc'; paintGrid(); });
     for (const [id, key] of [['carrier-filter', 'carrier'], ['case-filter', 'caseId']]) {
       const select = root.querySelector('#' + id);
       if (select) select.addEventListener('change', (e) => { state[key] = e.target.value; paintGrid(); });
@@ -329,7 +335,7 @@
     renderSound();
     layout(); // 同步算一次，首帧就是正确尺寸
     d.ro = new ResizeObserver(scheduleLayout);
-    [d.el, d.bar, d.sc].forEach((x) => d.ro.observe(x));
+    [d.el, d.bar, d.sc, d.strip].forEach((x) => d.ro.observe(x));
 
     // 加载状态：200ms 内就绪的不显示，避免闪一下
     later(() => { if (!d.loaded) d.loader.classList.add('show'); }, 200);
@@ -350,6 +356,13 @@
     d.play.addEventListener('click', () => togglePlay());
     const beatClick = (e) => { const b = e.target.closest('[data-t]'); if (b) seekTo(Number(b.dataset.t)); };
     d.strip.addEventListener('click', beatClick);
+    d.strip.addEventListener('scroll', updateBeatOverflow, { passive: true });
+    ['pointerdown', 'touchstart'].forEach((t) => d.strip.addEventListener(t, () => d.touchAt.set(d.strip, performance.now()), { passive: true }));
+    d.strip.addEventListener('wheel', (e) => {
+      if (d.strip.scrollWidth <= d.strip.clientWidth) return;
+      d.touchAt.set(d.strip, performance.now());
+      if (e.deltaY) { e.preventDefault(); d.strip.scrollLeft += e.deltaY; }
+    }, { passive: false });
     d.side.addEventListener('click', beatClick);
     // 竖向节拍列表手动滚动后 4 秒内不自动跟随。
     ['pointerdown', 'wheel', 'touchstart'].forEach((t) => d.side.addEventListener(t, () => d.touchAt.set(d.side, performance.now()), { passive: true }));
@@ -418,10 +431,8 @@
       const headH = header ? header.getBoundingClientRect().height : 0;
       const gap = parseFloat(colCS.rowGap) || 0;
       const colGap = parseFloat(getComputedStyle(d.grid).columnGap) || 0;
-      // 刻度条基础高度不含换行节拍点，显示节拍点时按实际高度预留空间。
-      const stripBlock = d.strip.offsetHeight + (parseFloat(scCS.rowGap) || 0);
-      const stripShown = getComputedStyle(d.strip).display !== 'none';
-      const scBase = d.sc.offsetHeight - (stripShown ? stripBlock : 0);
+      const stripBlock = parseFloat(getComputedStyle(d.strip).height) + (parseFloat(scCS.rowGap) || 0);
+      const scBase = d.sc.querySelector('.scrub-row').offsetHeight + parseFloat(scCS.paddingTop) + parseFloat(scCS.paddingBottom) + parseFloat(scCS.borderTopWidth) + parseFloat(scCS.borderBottomWidth);
       const chrome = headH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
       const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
       const infoMin = Math.round(Math.min(440, Math.max(340, W * 0.24)));
@@ -456,6 +467,13 @@
       const s = v + 'px';
       if (el.style.getPropertyValue(k) !== s) el.style.setProperty(k, s);
     }
+    updateBeatOverflow();
+  }
+
+  function updateBeatOverflow() {
+    const strip = det.strip;
+    const left = strip.scrollLeft > 1, right = strip.scrollWidth - strip.clientWidth - strip.scrollLeft > 1;
+    strip.dataset.overflow = left ? (right ? 'both' : 'left') : (right ? 'right' : '');
   }
 
   /* ----- 连接 Demo ----- */
@@ -790,6 +808,7 @@
     d.side.innerHTML = beats.length
       ? beats.map((b, i) => `<button type="button" data-t="${b.t}" data-i="${i}"><b>${fmtB(b.t)}</b><span>${esc(b.label)}</span>${b.note ? `<small>${esc(b.note)}</small>` : ''}</button>`).join('')
       : `<span class="beat-empty">${empty}</span>`;
+    updateBeatOverflow();
     setPlaybackReady(d.loaded);
     d.track.setAttribute('aria-valuemax', D ? D.toFixed(2) : '0');
     d.dur.textContent = D ? ` / ${fmtB(D)}` : '';
@@ -802,7 +821,11 @@
       const a = box.querySelector('[aria-current]');
       if (a) a.removeAttribute('aria-current');
       const b = idx >= 0 ? box.querySelector(`[data-i="${idx}"]`) : null;
-      if (b) { b.setAttribute('aria-current', 'true'); if (box === d.side) follow(box, b); }
+      if (b) {
+        b.setAttribute('aria-current', 'true');
+        if (box === d.side) follow(box, b);
+        else if (box.clientWidth && performance.now() - (d.touchAt.get(box) ?? -Infinity) >= 2000) b.scrollIntoView({ block: 'nearest', inline: 'center', container: 'nearest' });
+      }
     }
     const on = d.svg.querySelector('.tick.on');
     if (on) on.classList.remove('on');

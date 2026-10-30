@@ -26,7 +26,7 @@ C:/Users/mibxr/AppData/Local/Temp/atlas-work/mg-batch4/.venv/Scripts/python.exe 
 
 ## 接入
 
-`MotionKit.mountFilm` 以原作 `renderAt(t)` 接入 1920×1080、30fps、10 秒横屏舞台；中文 markers 从 `film/cues.json` 换算。种子随机数接入 `MotionKit.rng`，保留原始种子与时间推导。声音默认关闭，开启后音轨与时间轴同步；`?embed`、`?render`、`?t=秒` 与减少动态偏好由共享运行时处理。
+`MotionKit.mountFilm` 以原作 `renderAt(t)` 接入 1920×1080、30fps、10 秒横屏舞台，时刻上限钳制到最后一帧（10 − 1/30 秒），原作相机插值在 t = 10 时越界；中文 markers 从 `film/cues.json` 换算。种子随机数接入 `MotionKit.rng`，保留原始种子与时间推导。声音默认关闭，开启后音轨与时间轴同步；`?embed`、`?render`、`?t=秒` 与减少动态偏好由共享运行时处理。
 
 `previewAt: 9.5`：drop 字标、末滴形成的地面液珠、涟漪和两行标语均已显现，字内气泡与微动仍在延续。减少动态时在同一时刻暂停。
 

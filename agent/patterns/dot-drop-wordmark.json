@@ -236,7 +236,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -256,12 +256,12 @@
     },
     {
       "path": "demos/patterns/dot-drop-wordmark/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20753,
+      "bytes": 21410,
       "role": "entry"
     },
     {

@@ -209,7 +209,7 @@
     },
     {
       "path": "demos/cases/mg-line-art/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -264,12 +264,12 @@
     },
     {
       "path": "demos/patterns/center-out-tracking-in/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19166,
+      "bytes": 19825,
       "role": "entry"
     },
     {

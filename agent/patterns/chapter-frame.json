@@ -222,7 +222,7 @@
     },
     {
       "path": "demos/cases/map-pilgrimage/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -362,7 +362,7 @@
     },
     {
       "path": "demos/cases/mg-hud/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -502,7 +502,7 @@
     },
     {
       "path": "demos/patterns/chapter-frame/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -517,7 +517,7 @@
     },
     {
       "path": "entries/cases/mg-hud.json",
-      "bytes": 18397,
+      "bytes": 19054,
       "role": "entry"
     },
     {

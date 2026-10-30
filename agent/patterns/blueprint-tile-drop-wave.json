@@ -257,7 +257,7 @@
     },
     {
       "path": "demos/cases/mg-isometric/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -337,12 +337,12 @@
     },
     {
       "path": "demos/patterns/blueprint-tile-drop-wave/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-isometric.json",
-      "bytes": 24537,
+      "bytes": 25194,
       "role": "entry"
     },
     {

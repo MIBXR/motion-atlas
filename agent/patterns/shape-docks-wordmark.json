@@ -211,7 +211,7 @@
     },
     {
       "path": "demos/cases/mg-aurora-glass/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -321,7 +321,7 @@
     },
     {
       "path": "demos/cases/mg-morph/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -346,17 +346,17 @@
     },
     {
       "path": "demos/patterns/shape-docks-wordmark/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16301,
+      "bytes": 16960,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 15631,
+      "bytes": 16288,
       "role": "entry"
     },
     {

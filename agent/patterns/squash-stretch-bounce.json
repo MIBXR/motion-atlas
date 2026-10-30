@@ -336,7 +336,7 @@
     },
     {
       "path": "demos/cases/mg-cel-boil/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -476,7 +476,7 @@
     },
     {
       "path": "demos/cases/mg-flat-vector/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -501,7 +501,7 @@
     },
     {
       "path": "demos/cases/mg-liquid/fidelity.md",
-      "bytes": 5866,
+      "bytes": 5964,
       "role": "doc"
     },
     {
@@ -601,12 +601,12 @@
     },
     {
       "path": "demos/cases/mg-liquid/index.html",
-      "bytes": 1721,
+      "bytes": 1759,
       "role": "source"
     },
     {
       "path": "demos/cases/mg-liquid/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
@@ -646,22 +646,22 @@
     },
     {
       "path": "demos/patterns/squash-stretch-bounce/motion-kit.js",
-      "bytes": 133465,
+      "bytes": 133645,
       "role": "source"
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24241,
+      "bytes": 24898,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 20753,
+      "bytes": 21410,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 15817,
+      "bytes": 16474,
       "role": "entry"
     },
     {
