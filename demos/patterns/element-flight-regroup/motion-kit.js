@@ -2547,7 +2547,8 @@
       .mk-controls[data-orient="landscape"] .mk-i-land,.mk-controls[data-orient="portrait"] .mk-i-port{display:none}
       .mk-controls input{flex:1 1 360px;width:auto;min-width:48px;max-width:360px;accent-color:${accent}}
       .mk-controls output{min-width:76px;font-variant-numeric:tabular-nums}
-      @media (max-width:520px){.mk-controls{gap:2px;padding:4px 6px;bottom:8px}.mk-controls output{display:none}.mk-controls button{width:30px;height:30px}}`;
+      .mk-controls .mk-rate{display:flex;align-items:center;gap:6px;flex:none;white-space:nowrap}
+      @media (max-width:520px){.mk-controls{gap:2px;padding:4px 6px;bottom:8px}.mk-controls output,.mk-controls .mk-rate span{display:none}.mk-controls button{width:30px;height:30px}}`;
     document.head.appendChild(style);
     document.body.appendChild(bar);
     const btn = bar.querySelector('[data-act="toggle"]');
@@ -2620,7 +2621,10 @@
     });
     if (rates && rates.length) {
       const label = document.createElement('label');
-      label.textContent = '速度 ';
+      label.className = 'mk-rate';
+      const text = document.createElement('span');
+      text.textContent = '速度';
+      label.appendChild(text);
       const select = document.createElement('select');
       select.setAttribute('aria-label', '播放速度');
       select.style.cssText = 'font:inherit;font-size:13px;color:inherit;background:#26272b;border:0;border-radius:4px;padding:5px 2px';

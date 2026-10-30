@@ -288,10 +288,8 @@ button:disabled { opacity: .5; }
 .scrub-track:focus-visible { outline-offset: 4px; }
 .scrub-tip { position: absolute; bottom: calc(100% + 10px); left: 0; transform: translateX(-50%); padding: 3px 8px; border-radius: 6px; background: var(--ink); color: var(--bg); font: 12px/1.5 var(--f-mono); white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .12s; z-index: 3; }
 .scrub-tip.show { opacity: 1; }
-.beat-list { position: relative; display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 6px; height: 34px; min-width: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
-.beat-list::-webkit-scrollbar { height: 6px; }
-.beat-list::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
-.beat-list::-webkit-scrollbar-track { background: transparent; }
+.beat-list { position: relative; display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 6px; min-width: 0; padding-bottom: 4px; overflow-x: scroll; overflow-y: hidden; scrollbar-color: var(--line-2) transparent; }
+/* 高度由按钮、4px 间距与系统滚动条撑开；滚动条常驻，各案例高度一致且不压住按钮 */
 .beat-list[data-overflow="left"] { mask-image: linear-gradient(to right, transparent, #000 24px); }
 .beat-list[data-overflow="right"] { mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); }
 .beat-list[data-overflow="both"] { mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent); }
