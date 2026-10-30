@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "materials",
-  "count": 3,
+  "count": 4,
   "materials": [
     {
       "id": "mg-styles-15",
@@ -129,6 +129,33 @@
         }
       ],
       "bundle": "agent/materials/motion-showreel.json"
+    },
+    {
+      "id": "video-shotcraft",
+      "title": "video-shotcraft · 镜头配方卡宣传片",
+      "summary": "用 157 张镜头配方卡、218 个 Remotion 参考组件、已验收的 Ink Press 模板和 149 个音效，把 Web / 桌面产品做成电影感宣传片。",
+      "type": "agent-skill",
+      "carrierNote": "用 Remotion 逐帧渲染出宣传片，最终形态是视频，因此归入本库。",
+      "useCases": [
+        "Web / 桌面产品的宣传片、发布片与演示视频",
+        "从镜头卡取用单个动效镜头",
+        "把真实页面截图做成 2.5D 运镜镜头"
+      ],
+      "avoid": [
+        "口播讲解视频（作者另有 video-talkcraft）",
+        "没有可截界面的产品",
+        "实拍剪辑"
+      ],
+      "snapshotPath": "demos/materials/video-shotcraft/",
+      "snapshotEntry": "SKILL.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "ink-press",
+          "note": "skill 自带的 Ink Press 模板成片，按原工程复刻"
+        }
+      ],
+      "bundle": "agent/materials/video-shotcraft.json"
     },
     {
       "id": "web-video-presentation",

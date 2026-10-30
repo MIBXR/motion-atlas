@@ -20,3 +20,4 @@
 | [像素艺术 · PIXEL QUEST](../../cases.html#case/mg-pixel) | [条目](../../entries/cases/mg-pixel.json) |
 | [液态动效 · drop. — It All Starts with a Drop](../../cases.html#case/mg-liquid) | [条目](../../entries/cases/mg-liquid.json) |
 | [综艺花字 · 喵呜日记 EP.07](../../cases.html#case/mg-hanazi) | [条目](../../entries/cases/mg-hanazi.json) |
+| [Ink Press 纸墨宣传片](../../cases.html#case/ink-press) | [条目](../../entries/cases/ink-press.json) |

@@ -42,9 +42,9 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 18,
-    "patterns": 82,
-    "materials": 3
+    "cases": 19,
+    "patterns": 89,
+    "materials": 4
   },
   "caseCatalog": "agent/cases/index.json",
   "patternCatalog": "agent/patterns/index.json",
@@ -650,6 +650,41 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mg-hanazi.json"
+    },
+    {
+      "id": "ink-press",
+      "title": "Ink Press 纸墨宣传片",
+      "summary": "36 秒纸墨琥珀风产品宣传片：墨线描画与字标压印开场，真实页面截图在 2.5D 相机下聚光、发牌、嵌入、压入与自写，四张衬线字卡作呼吸位，结尾元素合影组装、铅印字标砸落。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "video-shotcraft",
+        "产品宣传片",
+        "纸墨琥珀",
+        "2.5D 运镜",
+        "页面截图",
+        "Remotion",
+        "音画同步"
+      ],
+      "useCases": [
+        "Web / 桌面产品宣传片",
+        "以真实页面截图讲功能的发布短片"
+      ],
+      "avoid": [
+        "没有真实界面可截的产品"
+      ],
+      "patternIds": [
+        "page-cam-25d",
+        "spotlight-hero-card",
+        "deck-deal-flyin",
+        "list-stack-press",
+        "document-typewriter-reveal",
+        "paper-title-card",
+        "outro-group-photo-slam"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/ink-press.json"
     }
   ],
   "patterns": [
@@ -2230,6 +2265,151 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/hud-lock-alert-wave.json"
+    },
+    {
+      "id": "page-cam-25d",
+      "title": "2.5D 页面相机",
+      "summary": "整页 2x 截图作为平面，关键帧插值相机位姿做 2.5D 运镜，CSS zoom 布局级放大保住小字清晰。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "ink-press"
+      ],
+      "pairsWellWith": [
+        "spotlight-hero-card",
+        "deck-deal-flyin",
+        "list-stack-press",
+        "document-typewriter-reveal",
+        "outro-group-photo-slam"
+      ],
+      "bundle": "agent/patterns/page-cam-25d.json"
+    },
+    {
+      "id": "spotlight-hero-card",
+      "title": "聚光主角卡",
+      "summary": "暖色聚光在看板上游走后锁定一张卡，相机推近转到侧斜视角，卡片弹起悬浮、光束扫过再压缩归位。",
+      "types": [
+        "camera",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "ink-press"
+      ],
+      "pairsWellWith": [
+        "page-cam-25d"
+      ],
+      "bundle": "agent/patterns/spotlight-hero-card.json"
+    },
+    {
+      "id": "deck-deal-flyin",
+      "title": "加速发牌飞入",
+      "summary": "26 张卡先在右上角堆成一叠做 3D 特写，拉远后按阅读顺序加速发牌，飞入网格各自的槽位。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "ink-press"
+      ],
+      "pairsWellWith": [
+        "page-cam-25d",
+        "paper-title-card"
+      ],
+      "bundle": "agent/patterns/deck-deal-flyin.json"
+    },
+    {
+      "id": "list-stack-press",
+      "title": "列表堆叠压入",
+      "summary": "论文列表逐条堆叠压入页面，计数器随之滚动落定。",
+      "types": [
+        "composition",
+        "feedback"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "ink-press"
+      ],
+      "pairsWellWith": [
+        "page-cam-25d",
+        "paper-title-card"
+      ],
+      "bundle": "agent/patterns/list-stack-press.json"
+    },
+    {
+      "id": "document-typewriter-reveal",
+      "title": "文档打字机自写",
+      "summary": "周报页在键盘声里自己写出来，随后历史周报逐条弹入侧栏，每落一条配一个 pop。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "ink-press"
+      ],
+      "pairsWellWith": [
+        "page-cam-25d"
+      ],
+      "bundle": "agent/patterns/document-typewriter-reveal.json"
+    },
+    {
+      "id": "paper-title-card",
+      "title": "纸墨逐词字卡",
+      "summary": "衬线大字逐词入场，星号标出的强调词用琥珀斜体，可挂里程表数字子标，作为功能段之间的呼吸位。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "ink-press"
+      ],
+      "pairsWellWith": [
+        "deck-deal-flyin",
+        "list-stack-press"
+      ],
+      "bundle": "agent/patterns/paper-title-card.json"
+    },
+    {
+      "id": "outro-group-photo-slam",
+      "title": "合影组装与字标砸落",
+      "summary": "虚焦后各页面元素组装成一张合影，铅印字标砸落，riser→impact→sparkle 的声音句式收尾，字标落定后停 1 秒。",
+      "types": [
+        "composition",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "ink-press"
+      ],
+      "pairsWellWith": [
+        "page-cam-25d"
+      ],
+      "bundle": "agent/patterns/outro-group-photo-slam.json"
     }
   ],
   "materials": [
@@ -2359,6 +2539,33 @@
         }
       ],
       "bundle": "agent/materials/motion-showreel.json"
+    },
+    {
+      "id": "video-shotcraft",
+      "title": "video-shotcraft · 镜头配方卡宣传片",
+      "summary": "用 157 张镜头配方卡、218 个 Remotion 参考组件、已验收的 Ink Press 模板和 149 个音效，把 Web / 桌面产品做成电影感宣传片。",
+      "type": "agent-skill",
+      "carrierNote": "用 Remotion 逐帧渲染出宣传片，最终形态是视频，因此归入本库。",
+      "useCases": [
+        "Web / 桌面产品的宣传片、发布片与演示视频",
+        "从镜头卡取用单个动效镜头",
+        "把真实页面截图做成 2.5D 运镜镜头"
+      ],
+      "avoid": [
+        "口播讲解视频（作者另有 video-talkcraft）",
+        "没有可截界面的产品",
+        "实拍剪辑"
+      ],
+      "snapshotPath": "demos/materials/video-shotcraft/",
+      "snapshotEntry": "SKILL.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "ink-press",
+          "note": "skill 自带的 Ink Press 模板成片，按原工程复刻"
+        }
+      ],
+      "bundle": "agent/materials/video-shotcraft.json"
     },
     {
       "id": "web-video-presentation",
