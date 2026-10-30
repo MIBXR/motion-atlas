@@ -151,23 +151,59 @@
     if (!g) groups.push((g = { name: d.group, docs: [] }));
     g.docs.push(d);
   }
-  function drawNav(q = '') {
-    const k = q.trim().toLowerCase();
+  function drawNav() {
     $('#docNav').innerHTML = groups.map((g) => {
-      const list = g.docs.filter((d) => !k || d.title.toLowerCase().includes(k));
-      return list.length ? `<details class="side-group" open><summary>${esc(g.name)}</summary><ul class="side-list">${list.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}">${esc(d.title)}</a></li>`).join('')}</ul></details>` : '';
-    }).join('') || '<p class="doc-empty">没有匹配的文档</p>';
+      return `<details class="side-group" data-group="${esc(g.name)}"${g.docs.some(d => d.path === current) ? ' open' : ''}><summary>${esc(g.name)}</summary><ul class="side-list">${g.docs.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}">${esc(d.title)}</a></li>`).join('')}</ul></details>`;
+    }).join('') + '<p class="doc-empty" hidden>没有匹配的文档</p>';
     markNav();
   }
   let current = null;
-  function markNav() {
+  let searchState = null;
+  function markNav(reveal = false) {
     document.querySelectorAll('#docNav a').forEach((a) => {
-      if (a.dataset.p === current) { a.setAttribute('aria-current', 'page'); a.closest('details').open = true; }
+      if (a.dataset.p === current) {
+        a.setAttribute('aria-current', 'page');
+        if (reveal) {
+          const group = a.closest('details');
+          group.open = true;
+          searchState?.set(group.dataset.group, true);
+        }
+      }
       else a.removeAttribute('aria-current');
     });
   }
+  function filterNav() {
+    const query = $('#docQ').value.trim().toLowerCase();
+    const sections = [...$('#docNav').querySelectorAll('details')];
+    if (query && !searchState) searchState = new Map(sections.map(g => [g.dataset.group, g.open]));
+    let matches = 0;
+    for (const group of sections) {
+      let count = 0;
+      for (const link of group.querySelectorAll('a')) {
+        const match = !query || link.textContent.toLowerCase().includes(query);
+        link.parentElement.hidden = !match;
+        if (match) count++;
+      }
+      group.hidden = !count;
+      if (query) group.open = !!count;
+      else if (searchState) group.open = searchState.get(group.dataset.group);
+      matches += count;
+    }
+    $('#docNav .doc-empty').hidden = !!matches;
+    if (!query) searchState = null;
+  }
+  function positionCurrent(center = false) {
+    const active = $('#docNav [aria-current="page"]');
+    if (!active || !active.getClientRects().length) return;
+    const item = active.getBoundingClientRect();
+    const top = search.getBoundingClientRect().bottom + active.closest('details').querySelector('summary').getBoundingClientRect().height;
+    const bottom = side.getBoundingClientRect().bottom - parseFloat(getComputedStyle(side).paddingBottom);
+    if (center) side.scrollTop += item.top + item.height / 2 - (top + bottom) / 2;
+    else if (item.top < top) side.scrollTop += Math.floor(item.top - top);
+    else if (item.bottom > bottom) side.scrollTop += Math.ceil(item.bottom - bottom);
+  }
   $('#doc-search-icon').outerHTML = ICONS.search;
-  $('#docQ').addEventListener('input', (e) => drawNav(e.target.value));
+  $('#docQ').addEventListener('input', filterNav);
   const side = $('#doc-side');
   const search = document.createElement('div');
   search.className = 'doc-search';
@@ -208,7 +244,9 @@
       pre.appendChild(b);
     });
     document.title = `${d.title} · Motion Atlas`;
-    current = path; markNav();
+    const changed = current !== path;
+    current = path; markNav(changed);
+    if (changed) positionCurrent();
     const toc = heads.filter((h) => h.lv === 2 || h.lv === 3);
     $('#toc').innerHTML = toc.map((h) => `<a href="#doc/${esc(path)}::${esc(h.id)}" data-id="${esc(h.id)}"${h.lv === 3 ? ' class="sub"' : ''}>${esc(h.text)}</a>`).join('');
     const target = frag && document.getElementById(frag);
@@ -225,7 +263,8 @@
       toc.forEach((h) => { const el = document.getElementById(h.id); if (el) spy.observe(el); });
     }
   }
-  addEventListener('hashchange', () => { open(); if (!$('#docQ').value) drawNav(); });
+  addEventListener('hashchange', open);
   open();
   drawNav();
+  requestAnimationFrame(() => positionCurrent(true));
 })();
