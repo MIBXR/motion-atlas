@@ -2,7 +2,7 @@
 // 构建：同步 motion-kit 副本 → 生成站点数据、Prompt 文档、Agent 资料包与 README 计数。
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, buildAll, walk } from './lib/catalog.mjs';
+import { ROOT, PROJECT_DOCS, buildAll, walk, documentTitle, compareDocuments } from './lib/catalog.mjs';
 
 // 先同步 kit 副本，再生成资料包的文件清单。
 const first = buildAll();
@@ -20,11 +20,12 @@ const docs = JSON.parse(files['data/docs.js'].match(/window\.MA_DOCS = (.+);/)[1
 const snapshotDocs = new Set(materials.flatMap(e => e.snapshotFiles || []));
 const entryDocs = [...new Set([...cases, ...patterns, ...materials].flatMap(e => [e.fidelity, e.licenses]).filter(p => p && !snapshotDocs.has(p)))].map(p => {
   const content = fs.readFileSync(path.join(ROOT, p), 'utf8');
-  return { path: p, title: content.match(/^#\s+(.+)$/m)?.[1].trim() || p, group: '条目文档', hidden: true, content };
+  return { path: p, title: documentTitle(p, content), group: '条目文档', hidden: true, content };
 });
-const projectDocs = [['README.md', '项目介绍'], ['CONTRIBUTING.md', '贡献指南'], ['AGENTS.md', '维护要点']].map(([p, title]) => ({
-  path: p, title, group: '项目说明', content: files[p] ?? fs.readFileSync(path.join(ROOT, p), 'utf8'),
-}));
+const projectDocs = PROJECT_DOCS.map(p => {
+  const content = files[p] ?? fs.readFileSync(path.join(ROOT, p), 'utf8');
+  return { path: p, title: documentTitle(p, content), group: '项目说明', content };
+});
 docs.push(...entryDocs, ...projectDocs);
 const docPaths = new Set(docs.map(d => d.path));
 const localTargets = new Set();
@@ -37,10 +38,11 @@ for (const d of docs) {
     localTargets.add(p);
     if (!p.endsWith('.md') || docPaths.has(p)) continue;
     const content = files[p] ?? fs.readFileSync(path.join(ROOT, p), 'utf8');
-    docs.push({ path: p, title: content.match(/^#\s+(.+)$/m)?.[1].trim() || p, group: '条目文档', hidden: true, content });
+    docs.push({ path: p, title: documentTitle(p, content), group: '条目文档', hidden: true, content });
     docPaths.add(p);
   }
 }
+docs.sort(compareDocuments);
 const documentEntries = Object.entries({ cases, patterns, materials }).flatMap(([kind, list]) => list.map(e => ({
   id: e.id, kind, root: e.snapshotPath || path.posix.dirname(e.demo) + '/', upstream: e.upstream, sources: e.sources, attribution: e.attribution,
   promptSource: e.prompt && docs.find(d => d.path.startsWith('demos/materials/') && d.content.trim() === e.prompt.trim())?.path,

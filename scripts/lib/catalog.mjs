@@ -107,32 +107,48 @@ function promptDoc(kind, e) {
   return L.join('\n');
 }
 
+export const PROJECT_DOCS = ['README.md', 'CONTRIBUTING.md', 'AGENTS.md'];
 const DOC_GROUPS = [
   ['docs/', '指南'],
   ['docs/cases/', '案例研究'],
-  ['docs/patterns/', '巧思说明'],
+  ['docs/patterns/', '巧思研究'],
   ['docs/materials/', '素材说明'],
   ['prompts/cases/', '案例 Prompt'],
   ['prompts/patterns/', '巧思 Prompt'],
-  ['prompts/materials/', '素材 Prompt'],
+  ...PROJECT_DOCS.map(p => [p, '项目说明']),
+  ['demos/', '条目文档'],
   ['demos/materials/', '素材原文'],
 ];
 const GUIDE_ORDER = ['docs/guide.md', 'docs/rhythm.md', 'docs/prompting.md', 'docs/methodology.md', 'docs/pipeline.md'];
+
+export function documentTitle(file, content) {
+  const text = content.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
+  const frontmatter = text.match(/^---\n([\s\S]*?)\n---(?:\n|$)/);
+  const body = text.slice(frontmatter?.[0].length || 0).replace(/<!--[\s\S]*?-->/g, '').replace(/(```|~~~)[^\n]*\n[\s\S]*?\1/g, '');
+  const heading = body.match(/^#[ \t]+(.+?)(?:[ \t]+#+)?[ \t]*$/m)?.[1];
+  const field = key => frontmatter?.[1].match(new RegExp(`^${key}:[ \\t]*(.+)$`, 'm'))?.[1].trim().replace(/^(['"])(.*)\1$/, '$2');
+  return (heading || field('title') || field('name') || path.posix.basename(file, '.md')).trim().replace(/\.md$/i, '').replace(/\//g, '／');
+}
+
+export function compareDocuments(a, b) {
+  const ga = DOC_GROUPS.findIndex(([, g]) => g === a.group), gb = DOC_GROUPS.findIndex(([, g]) => g === b.group);
+  if (ga !== gb) return ga - gb;
+  if (a.group === '指南') {
+    const ia = GUIDE_ORDER.indexOf(a.path), ib = GUIDE_ORDER.indexOf(b.path);
+    if (ia !== -1 || ib !== -1) return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+    return a.path.localeCompare(b.path);
+  }
+  if (a.group === '项目说明') return PROJECT_DOCS.indexOf(a.path) - PROJECT_DOCS.indexOf(b.path);
+  return a.title.localeCompare(b.title, 'zh') || a.path.localeCompare(b.path);
+}
 
 function collectDocs(extra, materials) {
   const files = [...walk('docs'), ...materials.flatMap(r => r.snapshotFiles || [])].filter((f) => f.endsWith('.md'));
   const docs = [...new Set([...files, ...Object.keys(extra).filter(p => /^(?:docs|prompts)\/.+\.md$/.test(p))])].map(p => ({ path: p, content: extra[p] ?? read(p) }));
   return docs.map((d) => {
-    const m = d.content.match(/^#\s+(.+)$/m);
     const group = DOC_GROUPS.filter(([pre]) => d.path.startsWith(pre)).at(-1)[1];
-    return { path: d.path, title: m ? m[1].trim() : d.path, group, content: d.content };
-  }).sort((a, b) => {
-    const ga = DOC_GROUPS.findIndex(([, g]) => g === a.group), gb = DOC_GROUPS.findIndex(([, g]) => g === b.group);
-    if (ga !== gb) return ga - gb;
-    const ia = GUIDE_ORDER.indexOf(a.path), ib = GUIDE_ORDER.indexOf(b.path);
-    if (ia !== -1 || ib !== -1) return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
-    return a.path.localeCompare(b.path);
-  });
+    return { path: d.path, title: documentTitle(d.path, d.content), group, ...(d.path.startsWith('demos/') ? { hidden: true } : {}), content: d.content };
+  }).sort(compareDocuments);
 }
 
 export function buildAll() {

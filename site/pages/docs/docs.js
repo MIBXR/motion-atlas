@@ -168,6 +168,26 @@
   }
   $('#doc-search-icon').outerHTML = ICONS.search;
   $('#docQ').addEventListener('input', (e) => drawNav(e.target.value));
+  const side = $('#doc-side');
+  const search = document.createElement('div');
+  search.className = 'doc-search';
+  const field = $('#docQ').closest('.field');
+  field.before(search);
+  search.append(field);
+  function sizeSearch() {
+    side.style.setProperty('--doc-side-padding', getComputedStyle(side).paddingTop);
+    side.style.setProperty('--doc-search-height', `${search.getBoundingClientRect().height}px`);
+  }
+  sizeSearch();
+  const searchSize = new ResizeObserver(sizeSearch);
+  searchSize.observe(search);
+  searchSize.observe(side);
+  $('#docNav').addEventListener('click', (event) => {
+    const summary = event.target.closest('summary');
+    if (!summary) return;
+    const top = summary.getBoundingClientRect().top;
+    requestAnimationFrame(() => { side.scrollTop += summary.getBoundingClientRect().top - top; });
+  });
 
   // ---------- 打开文档 ----------
   let spy = null;
