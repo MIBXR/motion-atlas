@@ -10,8 +10,9 @@ const site = args.includes('--site');
 const directories = ['agent', 'site', 'data', 'demos', 'docs', 'entries', 'kit', 'scripts/templates', 'previews', 'prompts'];
 const snapshots = loadEntries().materials.filter(e => e.snapshotPath).map(e => e.snapshotPath);
 const sources = site ? assetSources(ROOT, directories) : { assets: {} };
-const output = path.join(ROOT, 'dist');
-fs.rmSync(output, { recursive: true, force: true });
+const dist = path.join(ROOT, 'dist');
+const output = site ? path.join(dist, 'client') : dist;
+fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
 
 for (const directory of directories) {
@@ -22,8 +23,11 @@ for (const file of fs.readdirSync(ROOT).filter((name) => /\.(html|md)$/.test(nam
 }
 if (site) {
   fs.writeFileSync(path.join(output, 'data/asset-sources.js'), `globalThis.MotionAtlasAssetSources = ${JSON.stringify(sources)};\n`);
-  const redirects = Object.entries(sources.assets).map(([filename, asset]) => `/${filename.split('/').map(encodeURIComponent).join('/')} ${asset.url} 302`);
-  fs.writeFileSync(path.join(output, '_redirects'), redirects.join('\n') + '\n');
+  const media = Object.fromEntries(Object.entries(sources.assets).map(([filename, asset]) => ['/' + filename, asset.url]));
+  const server = path.join(dist, 'server');
+  fs.mkdirSync(server, {recursive:true});
+  fs.writeFileSync(path.join(server, 'index.js'), `const media = ${JSON.stringify(media)};\nexport default {\n  fetch(request, env) {\n    const target = media[decodeURIComponent(new URL(request.url).pathname)];\n    if (target) return new Response(null, {status:302, headers:{Location:target, 'Cache-Control':'no-store'}});\n    return env.ASSETS.fetch(request);\n  }\n};\n`);
+  fs.writeFileSync(path.join(server, 'wrangler.json'), JSON.stringify({main:'index.js', compatibility_date:'2026-10-30', assets:{directory:'../client', binding:'ASSETS', run_worker_first:true, not_found_handling:'none'}}, null, 2) + '\n');
 }
 let bytes = 0, count = 0;
 function finalize(directory) {
