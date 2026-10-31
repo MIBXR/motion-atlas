@@ -940,7 +940,7 @@
     const tabs = [['impl', '实现 Prompt', it.prompt]];
     if (it.videoPrompt) tabs.push(['video', '视频生成 Prompt', it.videoPrompt]);
     if (it.negativePrompt) tabs.push(['neg', '负向约束', it.negativePrompt]);
-    return `<div class="tabs" role="tablist">${tabs.map(([k, l], i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-tab="${k}">${l}</button>`).join('')}</div>
+    return `<div class="tabs" role="tablist">${tabs.map(([k, l], i) => `<button class="tab" type="button" role="tab" aria-selected="${i === 0}" data-tab="${k}">${l}</button>`).join('')}</div>
       ${tabs.map(([k, , txt], i) => `<div data-panel="${k}"${i ? ' hidden' : ''}>${promptBox('p-' + k, txt)}</div>`).join('')}`;
   }
   function relPatterns(ids) {

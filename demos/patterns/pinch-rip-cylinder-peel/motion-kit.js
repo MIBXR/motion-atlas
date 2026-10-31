@@ -10,6 +10,14 @@
 
   const VERSION = '2.0.0';
   const hasDOM = typeof document !== 'undefined';
+  const atlasRoot = hasDOM && document.currentScript?.src.match(/^(.*\/)demos\/(?:cases|patterns|materials)\/[^/]+\/motion-kit\.js(?:\?.*)?$/)?.[1];
+  const assetCacheReady = Promise.race([global.AtlasAssetCache?.ready || (atlasRoot ? new Promise(resolve => {
+    const script = document.createElement('script');
+    script.src = new URL('site/runtime/asset-cache.js', atlasRoot);
+    script.onload = () => resolve(global.AtlasAssetCache.ready);
+    script.onerror = () => resolve(false);
+    document.head.append(script);
+  }) : Promise.resolve(false)), new Promise(resolve => setTimeout(() => resolve(false), 1000))]);
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -563,6 +571,7 @@
       let timer;
       const reset = () => { clearTimeout(timer); timer = setTimeout(() => controller.abort(new Error('下载超时 ' + r.src)), 60000); };
       try {
+        await assetCacheReady;
         const response = await fetchResource(r.src, { ...options, signal: options.signal ? AbortSignal.any([options.signal, controller.signal]) : controller.signal });
         if (!response.ok) throw new Error(`${response.status} ${r.src}`);
         reset();

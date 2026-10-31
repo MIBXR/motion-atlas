@@ -17,7 +17,7 @@ fs.mkdirSync(output, { recursive: true });
 for (const directory of directories) {
   fs.cpSync(path.join(ROOT, directory), path.join(output, directory), { recursive: true, filter: file => !sources.assets[path.relative(ROOT, file).split(path.sep).join('/')] });
 }
-for (const file of fs.readdirSync(ROOT).filter((name) => /\.(html|md)$/.test(name))) {
+for (const file of fs.readdirSync(ROOT).filter((name) => /\.(html|md)$/.test(name) || name === 'asset-cache-worker.js')) {
   fs.copyFileSync(path.join(ROOT, file), path.join(output, file));
 }
 if (site) fs.writeFileSync(path.join(output, 'data/asset-sources.js'), `globalThis.MotionAtlasAssetSources = ${JSON.stringify(sources)};\n`);

@@ -1,8 +1,16 @@
 /* Motion Atlas · 站点外壳：顶栏、主题、收藏、复制、提示。所有功能图标为内联 SVG。 */
 (function () {
   'use strict';
+  const cacheReady = new Promise(resolve => {
+    const script = document.createElement('script');
+    script.src = new URL('../runtime/asset-cache.js', document.currentScript.src);
+    script.onload = script.onerror = resolve;
+    document.head.append(script);
+  });
 
   const ICONS = {
+    cache: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></svg>',
+    close: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
     logo: '<svg viewBox="0 0 96 96" aria-hidden="true"><path fill="var(--accent)" fill-rule="evenodd" d="M8 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z M32 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z"/></svg>',
     sun: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7L7 17M17 7l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
     moon: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
@@ -255,6 +263,7 @@
         </nav>
         <div class="header-tools">
           <button class="icon-btn nav-toggle" type="button" aria-label="菜单" aria-expanded="false" aria-controls="mobile-menu">${ICONS.menu}<span>菜单</span></button>
+          <button class="icon-btn atlas-cache-toggle" type="button" aria-label="管理已下载的素材" title="已下载的素材" aria-haspopup="dialog" aria-controls="asset-cache-dialog">${ICONS.cache}</button>
           <button class="icon-btn theme-btn" type="button"></button>
         </div>`;
       const tb = header.querySelector('.theme-btn');
@@ -264,6 +273,29 @@
         tb.title = THEME_LABEL[theme];
       };
       paint();
+      const cacheButton = header.querySelector('.atlas-cache-toggle');
+      const cacheDialog = document.createElement('dialog');
+      cacheDialog.id = 'asset-cache-dialog';
+      cacheDialog.className = 'atlas-cache-dialog';
+      cacheDialog.setAttribute('aria-labelledby', 'asset-cache-title');
+      cacheDialog.innerHTML = '<form method="dialog"><button class="dialog-close" aria-label="关闭素材缓存管理">' + ICONS.close + '</button></form><h2 id="asset-cache-title">已下载的素材</h2><p>嵌入预览与独立页面共享当前站点的素材缓存。浏览器空间不足时会重新下载。</p><p id="cache-status" role="status"></p><button id="cache-clear" class="btn" disabled>清除素材缓存</button>';
+      document.body.append(cacheDialog);
+      async function showCacheStatus(clear = false) {
+        const status = cacheDialog.querySelector('#cache-status');
+        const button = cacheDialog.querySelector('#cache-clear');
+        status.textContent = clear ? '正在清除素材缓存…' : '正在检查素材缓存…';
+        button.disabled = true;
+        await cacheReady;
+        const api = window.AtlasAssetCache;
+        const result = api ? await api[clear ? 'clear' : 'status']() : { available: false };
+        status.textContent = result.available ? `${result.files} 项 · ${(result.bytes / 1024 / 1024).toFixed(1)} MiB · 上限 ${(result.limit / 1024 / 1024).toFixed(0)} MiB${clear ? ' · 下次打开时按需重新下载' : ''}` : '此浏览器暂不支持持久素材缓存，页面仍可正常加载。';
+        button.disabled = !result.available;
+      }
+      cacheButton.addEventListener('click', async () => {
+        cacheDialog.showModal();
+        await showCacheStatus();
+      });
+      cacheDialog.querySelector('#cache-clear').addEventListener('click', () => showCacheStatus(true));
       tb.addEventListener('click', () => {
         theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
         store.set('ma-theme', theme);
