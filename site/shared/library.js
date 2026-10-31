@@ -32,19 +32,19 @@
         <g stroke="var(--line-2)"><path d="M50 30H380M50 80H380M50 130H380M50 180H380"/></g>
         <g fill="var(--ink)"><path d="M90 30l7-7 7 7-7 7zM190 30l7-7 7 7-7 7zM320 30l7-7 7 7-7 7z"/><rect x="120" y="74" width="120" height="12" rx="3" opacity=".85"/><rect x="260" y="74" width="80" height="12" rx="3" opacity=".4"/>
         <path d="M70 130l7-7 7 7-7 7zM100 130l7-7 7 7-7 7zM130 130l7-7 7 7-7 7z" opacity=".6"/></g>
-        <g fill="var(--accent)"><circle cx="150" cy="180" r="5"/><circle cx="210" cy="180" r="5"/><circle cx="270" cy="180" r="5"/><circle cx="330" cy="180" r="5"/></g>
-        <path d="M50 214C100 214 120 196 160 186S240 150 280 160 340 206 380 200" fill="none" stroke="var(--accent)" stroke-width="2"/>
-        <g class="ph-anim"><rect x="236" y="8" width="2" height="212" fill="var(--accent)"/><path d="M231 4h12l-6 8z" fill="var(--accent)"/></g>
+        <g fill="var(--accent-1)"><circle cx="150" cy="180" r="5"/><circle cx="210" cy="180" r="5"/><circle cx="270" cy="180" r="5"/><circle cx="330" cy="180" r="5"/></g>
+        <path d="M50 214C100 214 120 196 160 186S240 150 280 160 340 206 380 200" fill="none" stroke="var(--accent-1)" stroke-width="2"/>
+        <g class="ph-anim"><rect x="236" y="8" width="2" height="212" fill="var(--accent-1)"/><path d="M231 4h12l-6 8z" fill="var(--accent-1)"/></g>
       </svg>`
     : `<svg class="hero-art" viewBox="0 0 380 220" aria-hidden="true">
         <g stroke="var(--line-2)" fill="none"><rect x="10" y="10" width="110" height="110"/><rect x="135" y="10" width="110" height="110"/><rect x="260" y="10" width="110" height="110"/></g>
         <path d="M10 120C50 120 40 10 120 10" fill="none" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M135 120C215 120 165 10 245 10" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+        <path d="M135 120C215 120 165 10 245 10" fill="none" stroke="var(--accent-1)" stroke-width="2.5"/>
         <path d="M260 120C270 40 300 -10 370 10" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 4"/>
-        <g fill="var(--accent)"><circle cx="10" cy="120" r="4"/><circle cx="120" cy="10" r="4"/><circle cx="135" cy="120" r="4"/><circle cx="245" cy="10" r="4"/></g>
+        <g fill="var(--accent-1)"><circle cx="10" cy="120" r="4"/><circle cx="120" cy="10" r="4"/><circle cx="135" cy="120" r="4"/><circle cx="245" cy="10" r="4"/></g>
         <g font-family="var(--f-mono)" font-size="12" fill="var(--muted)"><text x="10" y="146">glide</text><text x="135" y="146">snap</text><text x="260" y="146">overshoot</text></g>
         <g fill="var(--ink)"><rect x="10" y="170" width="40" height="40" rx="6"/><rect x="62" y="178" width="40" height="32" rx="6" opacity=".7"/><rect x="114" y="186" width="40" height="24" rx="6" opacity=".45"/><rect x="166" y="194" width="40" height="16" rx="6" opacity=".25"/></g>
-        <path d="M230 210h140" stroke="var(--line-2)"/><path d="M230 210h40l20-36 20 36h60" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <path d="M230 210h140" stroke="var(--line-2)"/><path d="M230 210h40l20-36 20 36h60" fill="none" stroke="var(--accent-1)" stroke-width="2"/>
       </svg>`;
 
   /* ---------- 状态（列表筛选保存在 URL） ---------- */
@@ -101,19 +101,20 @@
     const group = KIND === 'cases' ? 'carrier' : 'type';
     const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '载体' : '类型'}</summary><ul class="side-list">
       ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : isMaterial ? materialTypes : TAX.types).filter(([value]) => !isMaterial || items.some(it => it.type === value))].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
-      </ul></details><div class="side-group"><h2>收藏与工具</h2><ul class="side-list">
+      </ul></details><details class="side-group" open><summary>收藏</summary><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
       <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
       <li><button type="button" data-tool="import"><span>导入收藏</span>${ICONS.upload}</button></li>
-      <li><a href="${KIND === 'cases' ? 'patterns.html' : 'cases.html'}"><span>${KIND === 'cases' ? '浏览巧思库' : '浏览案例库'}</span>${ICONS.arrow}</a></li>
-      ${isMaterial ? '<li><a href="patterns.html"><span>浏览巧思库</span>' + ICONS.arrow + '</a></li>' : '<li><a href="materials.html"><span>浏览素材库</span>' + ICONS.arrow + '</a></li>'}
-      </ul></div>`;
+      </ul></details>`;
     const filterSelect = (id, label, all, values, value) => `<select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`;
     const filters = [
       KIND === 'patterns' ? filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier) : '',
       KIND === 'patterns' ? filterSelect('case-filter', '所属案例', '全部案例', MA.cases.map(c => [c.id, c.title]), state.caseId) : '',
     ].join('');
-    const sortOptions = [['order', '编号'], ['title', '名称']];
+    const sortOptions = [['order', '按编号'], ['title', '按名称']];
+    const description = isMaterial ? '工作流、适用场景、作者效果图与固定版本的技能原文。' : KIND === 'cases'
+      ? '节拍表、动效参数、可复用 Prompt，以及能拖动逐帧查看的 Demo。'
+      : '每个巧思都有触发方式、效果、参数、可复制的 Prompt 和独立 Demo。';
 
     root.innerHTML = `
       <div class="lib">
@@ -123,17 +124,15 @@
             <div>
               <p class="eyebrow">${KIND === 'cases' ? 'CASE COLLECTION · RHYTHM / MOTION / HUD' : isMaterial ? '素材库 · 工作流与实现手段' : 'PATTERN COLLECTION · ATOMIC MECHANISMS'}</p>
               <h1>${KIND === 'cases' ? '先看懂节拍，<br>再拿走<em>动势</em>。' : isMaterial ? '找到<em>实现手段</em>，<br>让想法走向成片。' : '一个触发，<br>一种<em>可借用</em>的结果。'}</h1>
-              <p>${isMaterial ? `${items.length} 个素材：工作流、适用场景、作者效果图与固定版本的技能原文。` : KIND === 'cases'
-                ? `${items.length} 个案例：节拍表、动效参数、可复用 Prompt，以及能拖动逐帧查看的 Demo。`
-                : `${items.length} 个巧思：每个都有触发方式、效果、参数、可复制的 Prompt 和独立 Demo。`}</p>
+              <p title="${esc(description)}">${esc(description)}</p>
             </div>
             ${isMaterial ? '' : heroArt}
           </header>
           <div class="toolbar">
             <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : isMaterial ? '搜索素材、工作流、适用场景…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
             ${filters}
-            ${KIND === 'patterns' ? '<span class="toolbar-divider" aria-hidden="true"></span>' : ''}
-            <div class="sort-group"><label class="sort-control"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>排序</span><select id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label><button class="sort-dir" id="sort-dir" type="button"></button></div>
+            <span class="toolbar-divider" aria-hidden="true"></span>
+            <div class="sort-group"><select class="select" id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select><button class="sort-dir" id="sort-dir" type="button"></button></div>
           </div>
           <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : isMaterial ? '作者产出效果，未复刻' : '每个巧思都有独立 Demo'}</span></div>
           <div class="grid" id="grid"></div>
@@ -141,6 +140,8 @@
       </div>`;
     bindList();
     paintGrid();
+    window.Site.decorateControls(root);
+    root.querySelectorAll('.side-group > summary').forEach(summary => summary.insertAdjacentHTML('beforeend', `<span class="group-indicator" aria-hidden="true">${ICONS.plus}${ICONS.minus}</span>`));
     sizeHeroLabels();
     window.Site.syncMenu();
   }
@@ -176,7 +177,7 @@
     const dir = root.querySelector('#sort-dir');
     dir.setAttribute('aria-label', state.dir === 'asc' ? '正序' : '反序');
     dir.setAttribute('aria-pressed', String(state.dir === 'desc'));
-    dir.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${state.dir === 'asc' ? 'M12 19V5M12 5l-6 6M12 5l6 6' : 'M12 5v14M12 19l-6-6M12 19l6-6'}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    dir.innerHTML = state.dir === 'asc' ? ICONS.up : ICONS.down;
     document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' : '当前筛选'} / ${list.length} 个条目`;
     paintSideCounts();
     syncURL();
@@ -221,17 +222,9 @@
       if (state.fav) paintGrid();
     });
   }
-  addEventListener('keydown', (e) => {
-    if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) {
-      const s = document.getElementById('search');
-      if (s) { e.preventDefault(); s.focus(); }
-    }
-  });
 
   /* ---------- 详情：舞台、刻度条、画幅、声音、全屏 ----------
-   * 舞台框按 Demo 的画幅比例计算（横屏 16:9、竖屏 9:16；自适应 Demo 按 16:9 画框）：
-   *   可用高度 = 视口高 − 顶栏 − 上边距 − 舞台工具栏 − 刻度条 − 间距 − 下边距；舞台宽 = min(可用宽, 可用高 × 比例)。
-   * 左右并排（split）还是上下排列（stack）由计算结果决定：并排时舞台宽 ≥ 960px，或不小于上下排列时的 85%，才并排。
+   * 舞台在主体左列内按可用宽高等比适配；横屏 16:9、竖屏 9:16，自适应 Demo 使用 16:9。
    * 竖屏且旁边放得下时，节拍列表放到舞台右侧（data-side="1"），刻度条横跨两者。
    * 全屏：舞台按 contain 铺满屏幕，工具栏与刻度条浮在上下，静止 2.5 秒后淡出。
    * 与 Demo 的通信：同源 iframe，直接读写 contentWindow.__motion；画幅、声音、加载状态走 postMessage（docs/pipeline.md 第六节）。 */
@@ -248,17 +241,11 @@
     const s = p.toString();
     history.replaceState(null, '', location.pathname + location.search + (i > -1 ? h.slice(0, i) : h) + (s ? '?' + s : ''));
   }
-  const svgI = (cls, body) => `<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true">${body}</svg>`;
-  const STROKE = 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
   const SI = {
-    play: svgI('i-play', '<path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/>'),
-    pause: svgI('i-pause', '<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/>'),
-    landscape: svgI('', `<rect x="2.5" y="6.5" width="19" height="11" rx="1.8" ${STROKE}/><path d="M6 10.5v3" ${STROKE}/>`),
-    portrait: svgI('', `<rect x="6.5" y="2.5" width="11" height="19" rx="1.8" ${STROKE}/><path d="M10.5 18h3" ${STROKE}/>`),
-    soundOn: svgI('i-on', `<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" ${STROKE}/>`),
-    soundOff: svgI('i-off', `<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5" ${STROKE}/>`),
-    expand: svgI('i-expand', `<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" ${STROKE}/>`),
-    collapse: svgI('i-collapse', `<path d="M9 4v5H4M15 4v5h5M15 20v-5h5M9 20v-5H4" ${STROKE}/>`),
+    play: window.Site.icon('play', 'i-play'), pause: window.Site.icon('pause', 'i-pause'),
+    landscape: ICONS.landscape, portrait: ICONS.portrait,
+    soundOn: window.Site.icon('soundOn', 'i-on'), soundOff: window.Site.icon('soundOff', 'i-off'),
+    expand: window.Site.icon('expand', 'i-expand'), collapse: window.Site.icon('collapse', 'i-collapse'),
   };
   const SOUND_TEXT = { off: '关', on: '开', blocked: '待启用', pending: '开启中', none: '无' };
   const SOUND_TITLE = {
@@ -267,26 +254,28 @@
   };
 
   let det = null; // 当前详情页的舞台控制器（离开详情页时销毁）
+  let detailColumns = null;
 
-  function stageHTML(it, isCase) {
+  function stageHTML(it) {
     const want = wantedOrient();
     const t = Number(hashParams().get('t'));
     const autoplay = hashParams().get('autoplay') || q.get('autoplay');
     const src = `${it.demo}?embed=1&orient=${want}${Number.isFinite(t) && t > 0 ? `&t=${t}` : ''}${autoplay === '0' ? '&autoplay=0' : ''}`;
-    const libName = isCase ? '案例库' : '巧思库';
+    const caption = KIND === 'patterns' ? `<p class="stage-caption">所属案例：${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${esc(c.title)}</a>` : ''; }).join('、')}</p>` : '';
     return `<section class="stage-col" id="stage-col" aria-label="${esc(it.title)} Demo">
       <div class="stage-bar">
-        <a class="tool-btn back" href="#" title="返回${libName}">${ICONS.back}<span class="lbl-mid">${libName}</span></a>
+        <div class="stage-views" role="group" aria-label="查看方式">
         <div class="orient-seg" role="group" aria-label="画幅" hidden>
           <button type="button" data-orient="landscape" aria-pressed="false" title="横屏 1920×1080">${SI.landscape}<span class="lbl-mid">横屏 16:9</span></button>
           <button type="button" data-orient="portrait" aria-pressed="false" title="竖屏 1080×1920">${SI.portrait}<span class="lbl-mid">竖屏 9:16</span></button>
         </div>
         <span class="orient-badge" hidden></span>
-        <span class="spacer"></span>
-        <button class="sound-btn" type="button" data-state="off" aria-pressed="false">${SI.soundOff}${SI.soundOn}<span class="sound-txt">声音</span><span class="sound-state">关</span><i class="meter" aria-hidden="true"><b></b><b></b><b></b></i></button>
+        </div><div class="stage-controls" role="group" aria-label="播放控制">
+        <button class="sound-btn" type="button" data-state="off" aria-pressed="false">${SI.soundOff}${SI.soundOn}<span class="sound-state">关</span></button>
         <button class="tool-btn" type="button" data-act="fullscreen" aria-label="全屏查看" title="全屏查看（F）">${SI.expand}${SI.collapse}<span class="lbl-wide">全屏</span></button>
         <button class="tool-btn" type="button" data-act="replay" disabled aria-disabled="true" aria-label="从头播放" title="从头播放">${ICONS.replay}<span class="lbl-wide">重播</span></button>
         <a class="tool-btn" data-act="open" href="${esc(it.demo)}" target="_blank" rel="noopener" aria-label="独立打开 Demo" title="在新标签页独立打开">${ICONS.external}<span class="lbl-wide">独立打开</span></a>
+        </div>
       </div>
       <div class="stage-body">
         <div class="stage-frame" id="stage-frame" aria-busy="true">
@@ -296,6 +285,7 @@
         </div>
         <div class="beat-side"><p class="side-h">节拍点<small>BEATS</small></p><div class="side-beats" id="beat-side"></div></div>
       </div>
+      ${caption}
       <div class="scrubber" id="scrubber" data-ready="0">
         <div class="scrub-row">
           <button class="icon-btn play-btn" type="button" id="scrub-play" disabled aria-disabled="true" data-playing="false" aria-label="播放" title="播放 / 暂停（空格）">${SI.play}${SI.pause}</button>
@@ -316,8 +306,9 @@
     const el = root.querySelector('.detail');
     const want = wantedOrient();
     const d = det = {
-      it, el, grid: el.querySelector('.detail-grid'), col: $('stage-col'), bar: el.querySelector('.stage-bar'),
+      it, el, actions: root.querySelector('.page-actions'), col: $('stage-col'), bar: el.querySelector('.stage-bar'),
       frame: $('stage-frame'), ifr: $('demo-frame'), sc: $('scrubber'), track: $('scrub-track'), svg: $('scrub-svg'),
+      caption: el.querySelector('.stage-caption'),
       head: $('scrub-head'), tip: $('scrub-tip'), time: $('scrub-time'), dur: $('scrub-dur'), play: $('scrub-play'),
       strip: $('beat-list'), side: $('beat-side'), seg: el.querySelector('.orient-seg'), badge: el.querySelector('.orient-badge'),
       snd: el.querySelector('.sound-btn'), fsBtn: el.querySelector('[data-act="fullscreen"]'), open: el.querySelector('[data-act="open"]'),
@@ -328,14 +319,12 @@
       want, orient: it.previewPortrait && want === 'portrait' ? 'portrait' : 'landscape', orients: null,
       sound: { pref: store.get(PREF_SOUND, false) === true, state: 'off', available: true, pending: false, seq: 0 },
       loaded: false, fs: false, pseudo: false, lastPointerInCol: false,
-      timers: new Set(), poll: 0, meterRaf: 0, idleT: 0, touchAt: new WeakMap(), ro: null,
+      timers: new Set(), poll: 0, idleT: 0, touchAt: new WeakMap(),
     };
     paintOrient();
     paintBeats(true);
     renderSound();
     layout(); // 同步算一次，首帧就是正确尺寸
-    d.ro = new ResizeObserver(scheduleLayout);
-    [d.el, d.bar, d.sc, d.strip].forEach((x) => d.ro.observe(x));
 
     // 加载状态：200ms 内就绪的不显示，避免闪一下
     later(() => { if (!d.loaded) d.loader.classList.add('show'); }, 200);
@@ -369,18 +358,18 @@
     d.col.addEventListener('pointermove', poke, { passive: true });
     d.col.addEventListener('focusin', poke);
     bindTrack();
+    mountDetailColumns();
   }
 
   function destroyDetail() {
+    if (detailColumns) { detailColumns.ro.disconnect(); detailColumns = null; }
     const d = det;
     if (!d) return;
     det = null;
     clearInterval(d.poll);
     d.timers.forEach(clearTimeout);
-    cancelAnimationFrame(d.meterRaf);
     clearTimeout(d.idleT);
     if (d.unsub) { try { d.unsub(); } catch { /* iframe 已卸载 */ } }
-    if (d.ro) d.ro.disconnect();
     document.documentElement.classList.remove('ma-fs-lock');
     const fe = document.fullscreenElement || document.webkitFullscreenElement;
     if (fe && fe === d.col) { try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch { /* 已退出 */ } }
@@ -411,9 +400,28 @@
   /* ----- 尺寸 ----- */
   let layoutRaf = 0;
   function scheduleLayout() {
-    if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); });
+    if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); layoutColumns(); });
   }
   addEventListener('resize', scheduleLayout);
+  function mountDetailColumns() {
+    const el = root.querySelector('.detail'), cols = [...el.querySelector('.detail-grid').children];
+    const header = document.getElementById('site-header'), actions = root.querySelector('.page-actions');
+    const ro = new ResizeObserver(scheduleLayout);
+    detailColumns = { el, cols, header, actions, ro };
+    const targets = [el, ...cols, header, actions];
+    if (det) targets.push(det.bar, det.sc, det.strip);
+    targets.forEach(x => ro.observe(x));
+    layoutColumns();
+  }
+  function layoutColumns() {
+    if (!detailColumns) return;
+    const { el, cols, actions } = detailColumns;
+    const sticky = innerWidth > 1159 && !det?.fs;
+    const top = actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
+    el.style.setProperty('--detail-sticky-top', `calc(var(--header-offset) + ${top}px)`);
+    cols[0].classList.toggle('is-sticky', sticky);
+    cols[1].classList.toggle('is-sticky', sticky && cols[0].getBoundingClientRect().height > cols[1].getBoundingClientRect().height);
+  }
   function layout() {
     const d = det;
     if (!d) return;
@@ -426,38 +434,29 @@
       Object.assign(vars, { '--ifr-w': w, '--ifr-h': h });
     } else {
       const cs = getComputedStyle(d.el), colCS = getComputedStyle(d.col), scCS = getComputedStyle(d.sc);
-      const W = d.el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      const W = d.col.getBoundingClientRect().width;
       const header = document.querySelector('.site-header');
       const headH = header ? header.getBoundingClientRect().height : 0;
       const gap = parseFloat(colCS.rowGap) || 0;
-      const colGap = parseFloat(getComputedStyle(d.grid).columnGap) || 0;
       const stripBlock = parseFloat(getComputedStyle(d.strip).height) + (parseFloat(scCS.rowGap) || 0);
       const scBase = d.sc.querySelector('.scrub-row').offsetHeight + parseFloat(scCS.paddingTop) + parseFloat(scCS.paddingBottom) + parseFloat(scCS.borderTopWidth) + parseFloat(scCS.borderBottomWidth);
-      const chrome = headH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
+      const actionH = d.actions.getBoundingClientRect().height;
+      const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM + (d.caption ? d.caption.offsetHeight + gap : 0);
       const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
-      const infoMin = Math.round(Math.min(440, Math.max(340, W * 0.24)));
-      const room = W - colGap - infoMin; // 并排时舞台列最多能占的宽度
+      mode = innerWidth > 1159 ? 'split' : 'stack';
+      Object.assign(vars, { '--stage-col': W });
       if (d.orient === 'portrait') {
-        const h = Math.floor(availH(false)), w = Math.round(h * 9 / 16);
-        if (room - w - gap >= SIDE_MIN) {
-          const sw = Math.min(SIDE_MAX, room - w - gap);
-          mode = 'split'; side = '1';
-          Object.assign(vars, { '--stage-col': w + gap + sw, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
-        } else if (W - w - gap >= SIDE_MIN) {
-          mode = 'stack'; side = '1';
-          Object.assign(vars, { '--stage-col': W, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
+        const h = Math.floor(Math.min(availH(false), W * 16 / 9)), w = Math.round(h * 9 / 16);
+        if (W - w - gap >= SIDE_MIN) {
+          side = '1';
+          Object.assign(vars, { '--beat-side-w': Math.min(SIDE_MAX, W - w - gap), '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
         } else {
           const h2 = Math.floor(Math.min(availH(true), W * 16 / 9)), w2 = Math.round(h2 * 9 / 16);
-          mode = 'stack';
-          Object.assign(vars, { '--stage-col': W, '--frame-w': W, '--frame-h': h2, '--ifr-w': w2, '--ifr-h': h2 });
+          Object.assign(vars, { '--frame-w': W, '--frame-h': h2, '--ifr-w': w2, '--ifr-h': h2 });
         }
       } else {
-        const hA = availH(true);
-        const splitW = Math.floor(Math.min(room, hA * 16 / 9)), stackW = Math.floor(Math.min(W, hA * 16 / 9));
-        const split = room >= 480 && (splitW >= 960 || splitW >= stackW * 0.85);
-        const w = split ? splitW : stackW, h = Math.round(w * 9 / 16);
-        mode = split ? 'split' : 'stack';
-        Object.assign(vars, { '--stage-col': w, '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
+        const w = Math.floor(Math.min(W, availH(true) * 16 / 9)), h = Math.round(w * 9 / 16);
+        Object.assign(vars, { '--frame-w': w, '--frame-h': h, '--ifr-w': w, '--ifr-h': h });
       }
     }
     const el = d.el;
@@ -641,7 +640,6 @@
       b.setAttribute('aria-label', `声音：${SOUND_TEXT[st] || ''}`);
     }
     d.hint.hidden = st !== 'blocked';
-    runMeter();
   }
   function toggleSound() {
     const d = det;
@@ -661,27 +659,6 @@
     const d = det, seq = ++d.sound.seq;
     later(() => { if (d.sound.pending && d.sound.seq === seq) { d.sound.pending = false; syncSound(); } }, 2500);
   }
-  // 小电平表：读 Demo 内 MotionKit.audio.meter()，只改三根竖条的 transform，不重建节点
-  function runMeter() {
-    const d = det;
-    cancelAnimationFrame(d.meterRaf);
-    d.meterRaf = 0;
-    const bars = d.snd.querySelectorAll('.meter b');
-    if (d.snd.dataset.state !== 'on' || reducedMotion()) { bars.forEach((b) => { b.style.transform = ''; }); return; }
-    let lvl = 0;
-    const K = [0.75, 1, 0.6];
-    const step = () => {
-      if (det !== d) return;
-      let p = 0;
-      try { const r = frameWin().MotionKit.audio.meter(); p = (r && r.peak) || 0; } catch { /* Demo 还没有引擎 */ }
-      const v = Math.max(0, Math.min(1, (20 * Math.log10(Math.max(p, 1e-5)) + 54) / 48));
-      lvl = Math.max(v, lvl * 0.86);
-      bars.forEach((b, i) => { b.style.transform = `scaleY(${(0.2 + 0.8 * Math.min(1, lvl * K[i])).toFixed(3)})`; });
-      d.meterRaf = requestAnimationFrame(step);
-    };
-    step();
-  }
-
   /* ----- 全屏 ----- */
   function toggleFs() { if (det) (det.fs ? exitFs : enterFs)(); }
   function enterFs() {
@@ -918,15 +895,23 @@
   const promptBox = (id, text) => `<div class="prompt-box"><pre id="${id}">${esc(text)}</pre><button class="btn" type="button" data-copy="${id}">${ICONS.copy}<span>复制</span></button></div>`;
   const documentLinks = it => {
     const links = [['research', '阅读说明与研究'], ['fidelity', '复刻对照'], ['licenses', '许可原文索引']].filter(([key]) => it[key]);
-    return links.length ? sec('相关文档', 'DOCUMENTS', `<ul>${links.map(([key, label]) => `<li><a href="${key === 'research' ? 'docs.html#doc/' : ''}${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
+    return links.length ? sec('相关文档', 'DOCUMENTS', `<ul>${links.map(([key, label]) => `<li><a href="docs.html#doc/${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
   };
+  function pageActions(it) {
+    const fav = favs.has(KIND, it.id);
+    return `<div class="page-actions"><a class="btn back-btn" href="#" aria-label="返回${libName}">${ICONS.back}<span>返回${libName}</span></a><div class="detail-actions" role="group" aria-label="条目操作">
+      <button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button>
+      <a class="btn bundle-btn" href="agent/${KIND}/${it.id}.json" download aria-label="下载资料包 JSON">${ICONS.download}<span>资料包 JSON</span></a>
+      ${isMaterial ? '' : `<button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>`}
+    </div></div>`;
+  }
 
   function materialNotes(it) {
     const galleryKinds = { style: '风格样张', work: '作品节选', theme: '主题预览' };
     const gallery = `<div class="grid material-gallery">${(it.gallery || []).map((image) => {
       const sourceUrl = image.sourceUrl || image.url;
       const license = typeof image.license === 'string' ? image.license : image.license?.notes || image.license?.name;
-      return `<figure class="card"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
+      return `<figure class="material-preview"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
         <figcaption class="card-body"><span class="chip accent">${galleryKinds[image.kind]}</span><p class="card-sum">${esc(image.caption)}</p><p class="material-credit">作者产出效果，未复刻</p>${sourceUrl ? `<a class="material-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}${license ? `<p class="material-credit">${esc(license)}</p>` : ''}</figcaption></figure>`;
     }).join('')}</div>`;
     const related = it.relatedEntries?.length ? `<ul>${it.relatedEntries.map((relation) => {
@@ -938,28 +923,26 @@
     const references = [['README.zh-CN.md', '中文说明'], ['README.md', '原版说明']];
     if (it.type === 'prompt-kit') references.push(['template.md', '提示词模板'], ['rubric.md', '评审量表'], ['lib/audio/README.md', 'mgaudio 配乐说明'], ...it.snapshotFiles.filter(file => file.startsWith(it.snapshotPath + 'prompts/') && file.endsWith('.md')).map(file => [file.slice(it.snapshotPath.length), '风格提示词']));
     const snapshotLinks = it.snapshotPath ? `<ul><li><a href="docs.html#doc/${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${references.filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="docs.html#doc/${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
-    return [
+    return { preview: `${it.gallery?.length ? sec('效果图画廊', '', gallery) : ''}${it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`)}`, notes: [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
       sec('为什么归入本库', '', `<p>${esc(it.carrierNote)}</p>`),
       it.workflow?.length ? sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`) : '',
       sec('适合与避用', '', `<h3>适合</h3>${ul(it.useCases)}<h3>避用</h3>${ul(it.avoid)}`),
-      it.gallery?.length ? sec('效果图画廊', '', gallery) : '',
       sec('关联条目', '', related),
-      it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`),
       it.install ? sec('安装方式', '', promptBox('material-install', it.install)) : '',
       sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd><a href="${esc(it.upstream.url)}">${esc(it.upstream.repository)}</a></dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd><dt>版本</dt><dd>${esc(it.upstream.version)}</dd><dt>${it.type === 'agent-skill' ? '技能' : '素材'}许可</dt><dd><a href="${esc(it.license.url)}">${esc(it.license.name)}</a></dd></dl><p>${esc(it.license.notes)}</p>${it.snapshotPath && it.snapshotFiles.includes(it.snapshotPath + 'LICENSE') ? `<p><a href="${esc(it.snapshotPath)}LICENSE">快照附带许可原文</a></p>` : ''}<ul>${it.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.title || source.label)}</a></li>`).join('')}</ul>`),
       documentLinks(it),
-    ].join('');
+    ].join('') };
   }
 
   function renderMaterial(it) {
     destroyDetail();
     document.title = `${it.title} · Motion Atlas`;
-    const fav = favs.has(KIND, it.id);
-    root.innerHTML = `<div class="detail material-detail"><div class="info-col">
-      <div class="detail-actions"><a class="btn" href="#">${ICONS.back}<span>素材库</span></a><button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button><a class="btn" href="agent/materials/${it.id}.json" download>${ICONS.download}<span>资料包 JSON</span></a></div>
+    const material = materialNotes(it);
+    root.innerHTML = `${pageActions(it)}<div class="detail material-detail"><div class="detail-grid"><section class="material-stage" aria-label="素材预览">${material.preview}</section><div class="info-col">
       <header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 素材 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(materialTypes[it.type])}</span></div></header>
-      <div class="notes">${materialNotes(it)}</div></div></div>`;
+      <div class="notes">${material.notes}</div></div></div></div>`;
+    mountDetailColumns();
     bindDetailFavorite(it);
     root.querySelector('[data-copy]')?.addEventListener('click', () => copy(it.install, '安装方式已复制'));
     window.scrollTo(0, 0);
@@ -980,7 +963,7 @@
     const tabs = [['impl', '实现 Prompt', it.prompt]];
     if (it.videoPrompt) tabs.push(['video', '视频生成 Prompt', it.videoPrompt]);
     if (it.negativePrompt) tabs.push(['neg', '负向约束', it.negativePrompt]);
-    return `<div class="tabs" role="tablist">${tabs.map(([k, l], i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-tab="${k}">${l}</button>`).join('')}</div>
+    return `<div class="tabs" role="tablist">${tabs.map(([k, l], i) => `<button class="tab" type="button" role="tab" aria-selected="${i === 0}" data-tab="${k}">${l}</button>`).join('')}</div>
       ${tabs.map(([k, , txt], i) => `<div data-panel="${k}"${i ? ' hidden' : ''}>${promptBox('p-' + k, txt)}</div>`).join('')}`;
   }
   function relPatterns(ids) {
@@ -1020,7 +1003,6 @@
       sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl>`),
       sec('组合', 'COMPOSE', `<dl class="kv"><dt>职责</dt><dd>${esc(TAX.roles[comp.role] || comp.role || '—')}</dd><dt>搭配</dt><dd>${(comp.pairsWellWith || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd><dt>冲突</dt><dd>${(comp.conflicts || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd></dl>${comp.notes ? `<p style="margin-top:10px">${esc(comp.notes)}</p>` : ''}`),
       sec('可访问性', 'A11Y', `<dl class="kv"><dt>减少动态</dt><dd>${esc(it.accessibility?.reducedMotion || '—')}</dd><dt>键盘</dt><dd>${esc(it.accessibility?.keyboard || '—')}</dd></dl>`),
-      `<p>所属案例：${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${esc(c.title)}</a>` : ''; }).join('、')}</p>`,
       documentLinks(it),
     ].join('');
   }
@@ -1033,18 +1015,12 @@
     const chips = isCase
       ? [...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), ...(it.tags || []).map((t) => `<span class="chip">${esc(t)}</span>`)]
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)];
-    const fav = favs.has(KIND, it.id);
-    // 左列：舞台工具栏 + 舞台 + 刻度条（并排时吸顶，首屏完整可见）；右列：操作、标题与说明
     root.innerHTML = `
+      ${pageActions(it)}
       <div class="detail" data-layout="split" data-orient="landscape" data-side="0">
         <div class="detail-grid">
-          ${stageHTML(it, isCase)}
+          ${stageHTML(it)}
           <div class="info-col">
-            <div class="detail-actions">
-              <button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button>
-              <button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>
-              <a class="btn" href="agent/${KIND}/${it.id}.json" download>${ICONS.download}<span>资料包 JSON</span></a>
-            </div>
             <header class="detail-head">
               <p class="eyebrow">${String(idx + 1).padStart(2, '0')} / ${isCase ? 'CASE' : 'PATTERN'} · ${esc(it.id)}</p>
               <h1>${esc(it.title)}</h1>
@@ -1081,7 +1057,7 @@
     if (it) { if (isMaterial) renderMaterial(it); else renderDetail(it); window.Site.syncMenu(); }
     else { destroyDetail(); renderList(); }
   }
-  addEventListener('hashchange', route);
+  addEventListener('hashchange', () => window.Site.viewTransition(route));
   document.addEventListener('ma:favorites', () => {
     const c = document.querySelector('[data-group="fav"] .count');
     if (c) c.textContent = String(favs.all()[KIND].length).padStart(2, '0');

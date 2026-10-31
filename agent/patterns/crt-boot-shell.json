@@ -118,7 +118,7 @@
   "files": [
     {
       "path": "demos/cases/mg-pixel/LICENSES.md",
-      "bytes": 694,
+      "bytes": 815,
       "role": "license"
     },
     {
@@ -203,7 +203,7 @@
     },
     {
       "path": "demos/cases/mg-pixel/motion-kit.js",
-      "bytes": 133645,
+      "bytes": 134537,
       "role": "source"
     },
     {
@@ -223,7 +223,7 @@
     },
     {
       "path": "demos/patterns/crt-boot-shell/motion-kit.js",
-      "bytes": 133645,
+      "bytes": 134537,
       "role": "source"
     },
     {

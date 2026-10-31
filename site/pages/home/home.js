@@ -33,9 +33,9 @@
   // 时间轴示意：五条轨道 + 播放头（减少动态时静止）
   const TRACKS = [
     ['CAM', [[0, 34, 'var(--line-2)'], [36, 62, 'var(--line-2)']], [10, 48, 80]],
-    ['HUD', [[8, 96, 'color-mix(in srgb, var(--accent) 35%, transparent)']], []],
+    ['HUD', [[8, 96, 'var(--accent-4)']], []],
     ['TYPE', [[14, 30, 'var(--ink-2)'], [52, 66, 'var(--ink-2)'], [78, 92, 'var(--ink-2)']], []],
-    ['FX', [[30, 36, 'var(--accent)'], [62, 68, 'var(--accent)']], [33, 65]],
+    ['FX', [[30, 36, 'var(--accent-1)'], [62, 68, 'var(--accent-1)']], [33, 65]],
     ['SFX', [], [6, 18, 30, 42, 54, 66, 78, 90]],
   ];
   $('#tracks').innerHTML = TRACKS.map(([name, clips, keys]) => `<div class="trk"><b>${name}</b><div class="lane">${clips.map(([a, b, c]) => `<i class="clip" style="left:${a}%;width:${b - a}%;background:${c}"></i>`).join('')}${keys.map((k) => `<i class="key" style="left:${k}%"></i>`).join('')}</div></div>`).join('') + '<i class="playhead" id="ph"></i>';
