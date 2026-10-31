@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "title-shade-rollup",
+  "pattern": {
+    "id": "title-shade-rollup",
+    "order": 147,
+    "title": "片头卷帘揭景",
+    "types": [
+      "transition"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "旋转旭日纹上的标题字母按拍点错相跳动；厨房已画在底下，整张片头卡向上移出，底沿的圆柱卷轴同步上升露出布景。",
+    "mechanism": "旋转旭日纹上的标题字母按拍点错相跳动；厨房已画在底下，整张片头卡向上移出，底沿的圆柱卷轴同步上升露出布景。",
+    "trigger": "来源案例时间轴进入所列动作区间。",
+    "effect": "旋转旭日纹上的标题字母按拍点错相跳动；厨房已画在底下，整张片头卡向上移出，底沿的圆柱卷轴同步上升露出布景。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "0.000000–5.200000秒；1倍速，总时长5.200000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "片头",
+        "value": "film/scenes.js:shotTitle：24瓣旭日纹旋转t×.22；角色时间q(t)为12fps；hopL(i)以相位i×.12产生26px跳动。"
+      },
+      {
+        "name": "卷帘",
+        "value": "film/story.js:K.roll=[bar(3,4),bar(4)]=4.583333–5秒；shotTitle的lift=eio×1180，卷轴位于1080−lift，宽1476、高58。"
+      }
+    ],
+    "sourceFiles": [
+      "demos/cases/lemo-rubber-hose/film/scenes.js",
+      "demos/cases/lemo-rubber-hose/film/story.js",
+      "demos/cases/lemo-rubber-hose/film/ui.js"
+    ],
+    "locator": "shotTitle / K.roll / fatTitle",
+    "useCases": [
+      "把片头卡作为舞台道具，卷起后进入同一布景。"
+    ],
+    "avoid": [
+      "在主动作发生时叠加争夺注意的另一主动作"
+    ],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    },
+    "prompt": "用来源案例lemo-rubber-hose的原作render(t)重放“片头卷帘揭景”。旋转旭日纹上的标题字母按拍点错相跳动；厨房已画在底下，整张片头卡向上移出，底沿的圆柱卷轴同步上升露出布景。保留参数：film/scenes.js:shotTitle：24瓣旭日纹旋转t×.22；角色时间q(t)为12fps；hopL(i)以相位i×.12产生26px跳动。；film/story.js:K.roll=[bar(3,4),bar(4)]=4.583333–5秒；shotTitle的lift=eio×1180，卷轴位于1080−lift，宽1476、高58。。按index.html中的segments映射时间，复用原作素材、字体和同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/title-shade-rollup/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-rubber-hose"
+      }
+    ],
+    "previewAt": 4.8,
+    "markers": [
+      {
+        "t": 0,
+        "label": "片头卷帘揭景"
+      }
+    ],
+    "preview": "previews/patterns/title-shade-rollup.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-rubber-hose",
+      "bundle": "agent/cases/lemo-rubber-hose.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 片头卷帘揭景\n\n## 实现 Prompt\n\n用来源案例lemo-rubber-hose的原作render(t)重放“片头卷帘揭景”。旋转旭日纹上的标题字母按拍点错相跳动；厨房已画在底下，整张片头卡向上移出，底沿的圆柱卷轴同步上升露出布景。保留参数：film/scenes.js:shotTitle：24瓣旭日纹旋转t×.22；角色时间q(t)为12fps；hopL(i)以相位i×.12产生26px跳动。；film/story.js:K.roll=[bar(3,4),bar(4)]=4.583333–5秒；shotTitle的lift=eio×1180，卷轴位于1080−lift，宽1476、高58。。按index.html中的segments映射时间，复用原作素材、字体和同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：0.000000–5.200000秒；1倍速，总时长5.200000秒。\n\n[打开 Demo](../../demos/patterns/title-shade-rollup/index.html) · [在库中查看](../../patterns.html#pattern/title-shade-rollup)\n"
+  },
+  "entrypoint": "demos/patterns/title-shade-rollup/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-rubber-hose/LICENSES.md",
+      "bytes": 975,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/CREDITS",
+      "bytes": 1112,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/film.m4a",
+      "bytes": 1653708,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fidelity.md",
+      "bytes": 4769,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/bg.js",
+      "bytes": 9799,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/cast.js",
+      "bytes": 10497,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/chars.js",
+      "bytes": 26670,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/events.js",
+      "bytes": 2985,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/film.js",
+      "bytes": 3684,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/index.html",
+      "bytes": 463,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/main.js",
+      "bytes": 2914,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/scenes.js",
+      "bytes": 50967,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/story.js",
+      "bytes": 6301,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/toon.js",
+      "bytes": 9294,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/ui.js",
+      "bytes": 3381,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/IMFeENsc28P.ttf",
+      "bytes": 183932,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/Limelight-Regular.ttf",
+      "bytes": 132292,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/OFL-imfellenglishsc.txt",
+      "bytes": 4359,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/OFL-limelight.txt",
+      "bytes": 4399,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/OFL-shrikhand.txt",
+      "bytes": 4370,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/Shrikhand-Regular.ttf",
+      "bytes": 220804,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/fonts.css",
+      "bytes": 372,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/index.html",
+      "bytes": 2370,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/CREDITS",
+      "bytes": 1112,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/README.md",
+      "bytes": 3933,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/build.sh",
+      "bytes": 1939,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/events.json",
+      "bytes": 3729,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/lines.json",
+      "bytes": 750,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/mix.py",
+      "bytes": 13192,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/music/score.json",
+      "bytes": 3192,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/music/score.py",
+      "bytes": 26331,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/sheet.js",
+      "bytes": 12866,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/tools/final_asr.py",
+      "bytes": 1426,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/tools/still.mjs",
+      "bytes": 2238,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/tools/subs.mjs",
+      "bytes": 691,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/voices/dur.json",
+      "bytes": 100,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/voices/words.json",
+      "bytes": 908,
+      "role": "process"
+    },
+    {
+      "path": "demos/patterns/title-shade-rollup/index.html",
+      "bytes": 804,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/title-shade-rollup/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-rubber-hose.json",
+      "bytes": 10368,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/title-shade-rollup.json",
+      "bytes": 3009,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/title-shade-rollup.jpg",
+      "bytes": 72757,
+      "role": "preview"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "id": "lemo-rubber-hose",
+  "order": 50,
+  "title": "咖啡杯追逐战 · 1930s 橡皮管卡通",
+  "subtitle": "Coffee Cup Chase",
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "lemo-opuscar",
+    "1930s 橡皮管卡通",
+    "卡通与动画",
+    "代码影片"
+  ],
+  "summary": "苦咖啡杯追赶逃跑的方糖，跨过烤面包机和盘子阶梯，在水槽漩涡边伸长手臂救回方糖；善意让方糖自己跳进杯中，全厨房随爵士乐起舞。",
+  "focus": "物件身体、无关节橡皮管四肢和逐拍呼吸；标题、布景、道具、动作与乐队共同表演。",
+  "accent": "#F1EEE6",
+  "background": "#000000",
+  "timeline": true,
+  "kit": true,
+  "previewAt": 30.0,
+  "rhythm": {
+    "duration": 50.0,
+    "bpm": 144,
+    "beats": [
+      {
+        "t": 0,
+        "label": "片头卷帘",
+        "note": "原片0.000000–5.000000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 5,
+        "label": "舞台式厨房",
+        "note": "原片5.000000–8.333333秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 8.333333333333334,
+        "label": "苦味反应",
+        "note": "原片8.333333–10.000000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 11.666666666666666,
+        "label": "沿台面追逐",
+        "note": "原片11.666667–16.666667秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 16.666666666666668,
+        "label": "盘子阶梯与坠落",
+        "note": "原片16.666667–23.333333秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 23.333333333333332,
+        "label": "水槽救援",
+        "note": "原片23.333333–30.000000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 30,
+        "label": "安静的转折",
+        "note": "原片30.000000–36.875000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 36.875,
+        "label": "甜味与群舞",
+        "note": "原片36.875000–43.333333秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 43.333333333333336,
+        "label": "虹膜收束与片尾",
+        "note": "原片43.333333–50.000000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      }
+    ]
+  },
+  "energySegments": [
+    {
+      "t0": 0,
+      "t1": 5,
+      "to": 0.35,
+      "label": "片头卷帘",
+      "from": 0.15
+    },
+    {
+      "t0": 5,
+      "t1": 8.333333333333334,
+      "to": 0.5,
+      "label": "舞台式厨房",
+      "from": 0.35
+    },
+    {
+      "t0": 8.333333333333334,
+      "t1": 10,
+      "to": 0.3,
+      "label": "苦味反应",
+      "from": 0.5
+    },
+    {
+      "t0": 10,
+      "t1": 11.666666666666666,
+      "from": 0.3,
+      "to": 0.6,
+      "label": "???????"
+    },
+    {
+      "t0": 11.666666666666666,
+      "t1": 16.666666666666668,
+      "to": 0.8,
+      "label": "沿台面追逐",
+      "from": 0.3
+    },
+    {
+      "t0": 16.666666666666668,
+      "t1": 23.333333333333332,
+      "to": 0.65,
+      "label": "盘子阶梯与坠落",
+      "from": 0.8
+    },
+    {
+      "t0": 23.333333333333332,
+      "t1": 30,
+      "to": 0.45,
+      "label": "水槽救援",
+      "from": 0.65
+    },
+    {
+      "t0": 30,
+      "t1": 36.875,
+      "to": 0.6,
+      "label": "安静的转折",
+      "from": 0.45
+    },
+    {
+      "t0": 36.875,
+      "t1": 43.333333333333336,
+      "to": 0.5,
+      "label": "甜味与群舞",
+      "from": 0.6
+    },
+    {
+      "t0": 43.333333333333336,
+      "t1": 50,
+      "to": 0.25,
+      "label": "虹膜收束与片尾",
+      "from": 0.5
+    }
+  ],
+  "energyNote": "段落取DEMO.md Shots与film内时间表；0–1为画面密度、动作和声音强度的相对编辑标注。",
+  "observations": [
+    "144BPM在24fps下每拍10帧，角色按12fps取样，相机保持连续。",
+    "灰阶水彩布景预绘并缓存，角色的恒定屏幕描边带轻微线条沸腾。",
+    "旋转旭日纹中，标题字母按相位跳动，4.583333–5秒整卡向上卷起。",
+    "方糖起跳先蹲压，空中纵向拉伸，触地以指数衰减回弹。"
+  ],
+  "composition": {
+    "color": "暖灰阶与墨黑；角色白比布景更亮，4:3片门居中于16:9画幅。",
+    "typography": "Shrikhand胖体标题、Limelight副标、IM Fell English SC字幕字卡。",
+    "layout": "1920×1080输出、1440×1080圆角片门；剧场机位让表情与目的地可见。",
+    "imagery": "Canvas2D角色骨架、缓存水彩布景、胶片划痕与投影抖动。",
+    "motion": "角色12fps、相机24fps；追拍、伸臂、起跳压扁和全场同步呼吸。",
+    "sound": "原片热爵士乐队、VSCO/VCSL和MuldjordKit采样、收音机质感旁白及材料拟音。",
+    "rhythm": "144BPM，脚步与盘子即乐器；救援后两拍静默，只留放映机声。",
+    "coherence": "片头卡是卷帘，片尾虹膜能被手套抓住，影片本身成为道具。"
+  },
+  "layers": [
+    {
+      "name": "水彩布景",
+      "role": "厨房和橱柜水槽背景预绘缓存。"
+    },
+    {
+      "name": "活体角色",
+      "role": "咖啡杯、方糖、钟、锅、调味罐和烤面包机。"
+    },
+    {
+      "name": "字卡与片门",
+      "role": "跳字标题、卷帘、字幕字卡和可抓取虹膜。"
+    },
+    {
+      "name": "胶片",
+      "role": "门抖、闪烁、划痕、灰尘、暗角与编码颗粒。"
+    }
+  ],
+  "tokens": {
+    "palette": [
+      "#F1EEE6",
+      "#C8C5BC",
+      "#9A978F",
+      "#6B6963",
+      "#3B3A37",
+      "#0E0D0C",
+      "#FCFBF7"
+    ],
+    "type": "Shrikhand 400、Limelight 400、IM Fell English SC 400。",
+    "motion": [
+      {
+        "name": "卷帘",
+        "value": "film/scenes.js:shotTitle：K.roll=[bar(3,4),bar(4)]；lift=eio×1180，底沿绘制58px卷轴。"
+      },
+      {
+        "name": "逐拍呼吸",
+        "value": "film/story.js:q / breath：floor(t×12)/12，cos(beats(q(t))×2π)。"
+      },
+      {
+        "name": "起跳与落地",
+        "value": "film/scenes.js:shotLeaving：crouch / hop / launch / plop阶段联动sx、sy；12fps角色采样。"
+      }
+    ]
+  },
+  "useCases": [
+    "复古餐饮广告",
+    "卡通品牌片",
+    "音乐动作短片"
+  ],
+  "avoid": [
+    "写实关节或现代渐变角色"
+  ],
+  "constraints": [
+    "角色四肢保持等宽管状，描边维持屏幕像素宽度。",
+    "角色用q(t)，相机用连续t。",
+    "片门内保留伸臂与跳跃轨迹。"
+  ],
+  "migration": [
+    {
+      "field": "film/scenes.js:shotTitle",
+      "how": "修改该处的卷帘参数。"
+    },
+    {
+      "field": "film/story.js:q / breath",
+      "how": "修改该处的逐拍呼吸参数。"
+    },
+    {
+      "field": "film/scenes.js:shotLeaving",
+      "how": "修改该处的起跳与落地参数。"
+    }
+  ],
+  "prompt": "制作一支1930s 橡皮管卡通时间线影片。苦咖啡杯追赶逃跑的方糖，跨过烤面包机和盘子阶梯，在水槽漩涡边伸长手臂救回方糖；善意让方糖自己跳进杯中，全厨房随爵士乐起舞。物件身体、无关节橡皮管四肢和逐拍呼吸；标题、布景、道具、动作与乐队共同表演。画面构成：暖灰阶与墨黑；角色白比布景更亮，4:3片门居中于16:9画幅。；Shrikhand胖体标题、Limelight副标、IM Fell English SC字幕字卡。；1920×1080输出、1440×1080圆角片门；剧场机位让表情与目的地可见。；Canvas2D角色骨架、缓存水彩布景、胶片划痕与投影抖动。；角色12fps、相机24fps；追拍、伸臂、起跳压扁和全场同步呼吸。；原片热爵士乐队、VSCO/VCSL和MuldjordKit采样、收音机质感旁白及材料拟音。；144BPM，脚步与盘子即乐器；救援后两拍静默，只留放映机声。；片头卡是卷帘，片尾虹膜能被手套抓住，影片本身成为道具。。实现入口为demos/cases/lemo-rubber-hose/film/，MotionKit适配层仅调用并等待原作render(t)，使用原片音轨同步播放。",
+  "demo": "demos/cases/lemo-rubber-hose/index.html",
+  "patternIds": [
+    "title-shade-rollup",
+    "squash-stretch-bounce"
+  ],
+  "fidelity": "demos/cases/lemo-rubber-hose/fidelity.md",
+  "upstream": {
+    "repository": "lemomo-ai/lemo-opuscar",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/rubber-hose",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "path": "styles/rubber-hose/",
+    "version": "0.1.0"
+  },
+  "license": {
+    "name": "MIT · CC BY 4.0",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+    "notes": "代码与文档MIT；成片及静帧CC BY 4.0，署名LemoLab；第三方资源按CREDITS许可。"
+  },
+  "sources": [
+    {
+      "label": "风格与示范制作说明",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/rubber-hose"
+    },
+    {
+      "label": "Release公开成片",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/rubber-hose.mp4"
+    },
+    {
+      "label": "第三方资源与署名",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/rubber-hose/demo/CREDITS"
+    }
+  ],
+  "attribution": [
+    {
+      "scope": "作品",
+      "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/rubber-hose)；代码MIT、成片CC BY 4.0，接入与对照见[fidelity.md](fidelity.md)。"
+    },
+    {
+      "scope": "声音与第三方资源",
+      "notes": "原片热爵士乐队、VSCO/VCSL和MuldjordKit采样、收音机质感旁白及材料拟音。 原始署名见[audio/CREDITS](audio/CREDITS)，完整许可见[LICENSES.md](LICENSES.md)。"
+    },
+    {
+      "scope": "字体",
+      "notes": "Shrikhand 400、Limelight 400、IM Fell English SC 400。 OFL原文位于fonts/，取得与重建方法见[source/README.md](source/README.md)。"
+    }
+  ]
+}

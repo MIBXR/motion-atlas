@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "speed-up-ladder",
+  "pattern": {
+    "id": "speed-up-ladder",
+    "order": 154,
+    "title": "五项同步加速",
+    "types": [
+      "rhythm"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。",
+    "mechanism": "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。",
+    "trigger": "来源案例的时间轴进入所列动作区间。",
+    "effect": "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "lemo-microgame 0.000000–4.400000秒；lemo-microgame 25.500000–31.280000秒；lemo-microgame 39.850000–43.200000秒；1倍速，总时长13.530000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "节拍与时长",
+        "value": "film/timeline.js:120→140→160 BPM；普通关4→18/7秒，常规舞台2→6/7秒；G7另含两拍回放，Boss32拍=12秒。"
+      },
+      {
+        "name": "驻留与帧率",
+        "value": "film/film.js:R2 / tvInDur / tvOutDur / hold，口令.75→.64秒，Boss回到.75秒；g_crayon/g_ink/g_ascii/g_riso用8fps，g_pixel/g_blue/g_swiss用12fps，g_boss主体用连续lt，局部保留12fps线稿。"
+      }
+    ],
+    "sourceFiles": [
+      "demos/cases/lemo-microgame/film/timeline.js",
+      "demos/cases/lemo-microgame/film/film.js",
+      "demos/cases/lemo-microgame/film/g_crayon.js",
+      "demos/cases/lemo-microgame/film/g_pixel.js",
+      "demos/cases/lemo-microgame/film/g_boss.js"
+    ],
+    "locator": "film/timeline.js:120→140→160 BPM；普通关4→18/7秒，常规舞台2→6/7秒；G7另含两拍回放，Boss32拍=12秒。；film/film.js:R2 / tvInDur / tvOutDur / hold，口令.75→.64秒，Boss回到.75秒；g_crayon/g_ink/g_ascii/g_riso用8fps，g_pixel/g_blue/g_swiss用12fps，g_boss主体用连续lt，局部保留12fps线稿。",
+    "useCases": [
+      "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "foundation",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    },
+    "prompt": "调用来源案例原作render(t)重放“五项同步加速”。BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。 参数：film/timeline.js:120→140→160 BPM；普通关4→18/7秒，常规舞台2→6/7秒；G7另含两拍回放，Boss32拍=12秒。 film/film.js:R2 / tvInDur / tvOutDur / hold，口令.75→.64秒，Boss回到.75秒；g_crayon/g_ink/g_ascii/g_riso用8fps，g_pixel/g_blue/g_swiss用12fps，g_boss主体用连续lt，局部保留12fps线稿。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/speed-up-ladder/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-microgame"
+      }
+    ],
+    "previewAt": 6.1,
+    "markers": [
+      {
+        "t": 0,
+        "label": "五项同步加速"
+      },
+      {
+        "t": 4.4,
+        "label": "五项同步加速"
+      },
+      {
+        "t": 10.180000000000001,
+        "label": "五项同步加速"
+      }
+    ],
+    "renderer": "gpu",
+    "preview": "previews/patterns/speed-up-ladder.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-microgame",
+      "bundle": "agent/cases/lemo-microgame.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 五项同步加速\n\n## 实现 Prompt\n\n调用来源案例原作render(t)重放“五项同步加速”。BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。 参数：film/timeline.js:120→140→160 BPM；普通关4→18/7秒，常规舞台2→6/7秒；G7另含两拍回放，Boss32拍=12秒。 film/film.js:R2 / tvInDur / tvOutDur / hold，口令.75→.64秒，Boss回到.75秒；g_crayon/g_ink/g_ascii/g_riso用8fps，g_pixel/g_blue/g_swiss用12fps，g_boss主体用连续lt，局部保留12fps线稿。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：lemo-microgame 0.000000–4.400000秒；lemo-microgame 25.500000–31.280000秒；lemo-microgame 39.850000–43.200000秒；1倍速，总时长13.530000秒。\n\n[打开 Demo](../../demos/patterns/speed-up-ladder/index.html) · [在库中查看](../../patterns.html#pattern/speed-up-ladder)\n"
+  },
+  "entrypoint": "demos/patterns/speed-up-ladder/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-microgame/LICENSES.md",
+      "bytes": 1185,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC-BY-3.0.txt",
+      "bytes": 19467,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CREDITS",
+      "bytes": 1717,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CREDITS-music.txt",
+      "bytes": 658,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/film.m4a",
+      "bytes": 2011571,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fidelity.md",
+      "bytes": 6504,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/chars.js",
+      "bytes": 20159,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/film.js",
+      "bytes": 18389,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_ascii.js",
+      "bytes": 9981,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_blue.js",
+      "bytes": 10427,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_boss.js",
+      "bytes": 22311,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_crayon.js",
+      "bytes": 13920,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_ink.js",
+      "bytes": 14916,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_pixel.js",
+      "bytes": 9940,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_riso.js",
+      "bytes": 8874,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_swiss.js",
+      "bytes": 7693,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/glpass.js",
+      "bytes": 9187,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/hud.js",
+      "bytes": 9549,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/index.html",
+      "bytes": 460,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/lines.json",
+      "bytes": 2906,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/main.js",
+      "bytes": 1144,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/stage.js",
+      "bytes": 8756,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/timeline.js",
+      "bytes": 2424,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/toon.js",
+      "bytes": 4853,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/voices/dur.json",
+      "bytes": 356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/ArchitectsDaughter-Regular.ttf",
+      "bytes": 43352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/GochiHand-Regular.ttf",
+      "bytes": 37352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Inter.ttf",
+      "bytes": 876576,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/LilitaOne-Regular.ttf",
+      "bytes": 28092,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-architectsdaughter.txt",
+      "bytes": 4362,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-gochihand.txt",
+      "bytes": 4423,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-inter.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-lilitaone.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-silkscreen.txt",
+      "bytes": 4394,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-titanone.txt",
+      "bytes": 4418,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-vt323.txt",
+      "bytes": 4367,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Silkscreen-Bold.ttf",
+      "bytes": 30632,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Silkscreen-Regular.ttf",
+      "bytes": 32220,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/TitanOne-Regular.ttf",
+      "bytes": 55712,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/VT323-Regular.ttf",
+      "bytes": 153116,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/fonts.css",
+      "bytes": 924,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/index.html",
+      "bytes": 3363,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/CREDITS",
+      "bytes": 1717,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/README.md",
+      "bytes": 4505,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/build.sh",
+      "bytes": 2238,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/events.json",
+      "bytes": 6285,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/frames.js",
+      "bytes": 10563,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/lines.json.asr.json",
+      "bytes": 2974,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/mix.py",
+      "bytes": 16861,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/CREDITS_music.txt",
+      "bytes": 658,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/score.json",
+      "bytes": 2142,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/score.py",
+      "bytes": 28624,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/timeline.json",
+      "bytes": 5884,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/cuecheck.py",
+      "bytes": 3160,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/dump_timeline.mjs",
+      "bytes": 422,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/final_asr.py",
+      "bytes": 1416,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/mux.sh",
+      "bytes": 1241,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/review.sh",
+      "bytes": 511,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/subs.py",
+      "bytes": 864,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/trim_cmd.py",
+      "bytes": 1543,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/voices/words.json",
+      "bytes": 1315,
+      "role": "process"
+    },
+    {
+      "path": "demos/patterns/speed-up-ladder/index.html",
+      "bytes": 1479,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/speed-up-ladder/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-microgame.json",
+      "bytes": 9764,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/speed-up-ladder.json",
+      "bytes": 3823,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/speed-up-ladder.jpg",
+      "bytes": 58971,
+      "role": "preview"
+    }
+  ]
+}

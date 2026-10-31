@@ -61,6 +61,241 @@
           "kind": "case",
           "id": "lemo-paper-popup",
           "note": "平面彩色纸偶与真实桌面、光线和微距景深产生尺度反差；翻页、翻板和弹起结构承担叙事换景。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-ukiyoe",
+          "note": "五幅版画以同一座山组织构图，色版、装裱留缝与纸白同时承担造型、转场和高潮。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-shadow-puppet",
+          "note": "灯数决定世界亮度，射日动作让过曝白热逐级回到暖金，结尾把神话与皮影照明收在同一盏灯上。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-papercut-red",
+          "note": "折、剪、展开直接推动故事；同一个楔形图案既复制灯笼，也成为照亮村落与驱散年兽的孔洞光。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-impasto",
+          "note": "同一组厚涂笔触保存灰与彩两种状态，音乐既推动换色，也让人群运动留下可读的彩色图案。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-crayon-book",
+          "note": "蜡笔防染成为高潮动作，线条抖动、纸齿、梯子与被子都由绘画材料本身推动故事。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-paper-lantern",
+          "note": "用层叠纸雕的距离、逐节车窗的灯光和镜像音符讲述最后一趟旅程；隧道黑场连接雪山蓝与河谷青绿。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-whiteboard",
+          "note": "口袋里的爱因斯坦 · 白板讲解；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-urban-sketch",
+          "note": "风去了哪里 · 钢笔淡彩；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-chalkboard",
+          "note": "汉字的故事 · 黑板粉笔；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-risograph",
+          "note": "周日骑行 · Risograph 孔版印刷；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-halftone-dossier",
+          "note": "胖橘案卷 · 复古半调案卷；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-engraving",
+          "note": "蜜蜂，第七号图版 · 铜版画；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-silkscreen-poster",
+          "note": "绕远路回家 · 丝印旅行海报"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-printed-long-take",
+          "note": "三十三只 · 印刷长镜头"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-art-deco",
+          "note": "星光饭店的午夜 · 装饰艺术"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-blueprint",
+          "note": "专利申请中：接云机器 · 蓝图 / 工程制图"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-stained-glass",
+          "note": "东窗之龙 · 彩色玻璃窗"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-pictogram-motion",
+          "note": "被落下的伞 · 象形运动图形"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-ascii-crt",
+          "note": "静海日志 · ASCII / CRT 终端；本体保存运行代码、字体、原片音轨和制作资料。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-dark-keynote",
+          "note": "思考的空间 · 暗色科技发布；本体保存运行代码、字体、原片音轨和制作资料。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-living-screencast",
+          "note": "Clawd 搬进来 · 活体实机录屏；本体保存运行代码、字体、原片音轨和制作资料。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-circuit-board",
+          "note": "七毫秒 · 电路板；本体保存运行代码、字体、原片音轨和制作资料。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-rubber-hose",
+          "note": "咖啡杯追逐战 · 1930s 橡皮管卡通；本体保存运行代码、字体、原片音轨和制作资料。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-cel-anime-80s",
+          "note": "城市之光，1987 · 80 年代赛璐璐动画；本体保存运行代码、字体、原片音轨和制作资料。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-scifi-toon",
+          "note": "买咖啡 · 科幻情景喜剧卡通；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-midcentury-toon",
+          "note": "认识皮普 · 50s 扁平卡通；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-hd-2d",
+          "note": "提灯人 · HD-2D；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-microgame",
+          "note": "五秒宇航员 · 微游戏快闪；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-brick-toy",
+          "note": "用零件造火箭 · 积木玩具；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-tilt-shift",
+          "note": "玩具城早高峰 · 移轴微缩；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-desktop-flythrough",
+          "note": "叮之前 · 桌面穿梭；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-lowpoly-island",
+          "note": "长出来的小岛 · 低多边形等距；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-backrooms",
+          "note": "夜班入职指引 · 后室 / 新怪谈；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-silent-film",
+          "note": "逃跑的面包 · 1920s 默片；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-satellite-briefing",
+          "note": "地图上还写着海 · 卫星简报；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-briefing-board",
+          "note": "船说了算 · 工程简报板；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-white-model",
+          "note": "投影把鹿特丹白模按建成年代逐层点亮，高度光层升到203米，冬至阴影越过16个屋顶后展厅重新亮起。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-data-physical",
+          "note": "2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-archive-lighttable",
+          "note": "电报与报纸写着57秒，放大镜把莱特兄弟的负片转正并带入照片，档案记录的59秒让两份记录形成对照。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-microscope",
+          "note": "从一张真实肝组织玻片连续推到细胞核，逐像素数出两个1毫米圆内13.5%与32.6%的蓝色，再拉回玻片。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-caption-news",
+          "note": "美国一年损失130万箱蜜蜂，总数却上涨6%；大字字幕、原报告高亮、双栏账本、图表与地图逐项解释养蜂人的补建。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-newsreel",
+          "note": "1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-visual-investigation",
+          "note": "以兴登堡号最后的四分钟与燃烧的三十二秒为线索，将新闻片、海军照片、证词、调查报告和气象记录按事件时刻交叉对照，最后合为证据地图。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-news-package",
+          "note": "LEMO AI NEWS的一周四则AI新闻，从串联单进入模型开放、市场下跌、欧盟问询与开放权重，用翻牌价格表、阈值折线、地图信函和规格卡承载信息，再回到已勾选的串联单。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-telestrator",
+          "note": "2019年贝西克塔斯对费内巴切的3–3比赛分析：先看连续进球，再定格圈人画线，双机位对齐头球，倒带拆解扳平远射，最后把射门帧压成俯视战术板。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-countdown",
+          "note": "阿尔忒弥斯二号发射从T−32.5到T+27秒连续播放，多机位、控制室、乘组照片与任务文件逐格展开，点火瞬间九格合一，控制权由地面交给火箭再交给休斯敦。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-kino-montage",
+          "note": "从1931年帝国大厦宣传册的“完成这项工作的人”出发，用工地实拍、刘易斯·海因照片和原始文档回答每天2500名工人的集体建造，再把剪下的人物叠成一座塔。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

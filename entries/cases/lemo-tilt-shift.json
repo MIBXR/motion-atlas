@@ -1,0 +1,253 @@
+{
+  "id": "lemo-tilt-shift",
+  "order": 57,
+  "title": "玩具城早高峰 · 移轴微缩",
+  "subtitle": "Toy Town Rush Hour",
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "lemo-opuscar",
+    "移轴微缩",
+    "材质与 3D",
+    "代码影片"
+  ],
+  "summary": "玩具城从黎明车灯光轨加速到早高峰，拥堵最密时俯冲到一群过路鸭子并降为实时，随后释放车流，升到城市电路板般的纹样。",
+  "focus": "交通系统的延时密度与一件微小事件相撞；焦带沿车和鸭子投影移动，长曝光车灯在世界空间画出行进路径。",
+  "accent": "#0f5e3c",
+  "background": "#f6d9bc",
+  "timeline": true,
+  "kit": true,
+  "previewAt": 22.8,
+  "rhythm": {
+    "duration": 38.0,
+    "beats": [
+      {
+        "t": 0,
+        "label": "黎明光轨"
+      },
+      {
+        "t": 5,
+        "label": "屋顶片名"
+      },
+      {
+        "t": 9,
+        "label": "路口苏醒"
+      },
+      {
+        "t": 14,
+        "label": "车站低音"
+      },
+      {
+        "t": 19,
+        "label": "拥堵密度"
+      },
+      {
+        "t": 22.5,
+        "label": "延时骤降"
+      },
+      {
+        "t": 24,
+        "label": "鸭群实时"
+      },
+      {
+        "t": 30,
+        "label": "释放车流"
+      },
+      {
+        "t": 34,
+        "label": "城市纹样与片尾"
+      }
+    ],
+    "bpm": 120
+  },
+  "energySegments": [
+    {
+      "t0": 0,
+      "t1": 5,
+      "from": 0.2,
+      "to": 0.4,
+      "label": "黎明光轨"
+    },
+    {
+      "t0": 5,
+      "t1": 9,
+      "from": 0.4,
+      "to": 0.65,
+      "label": "屋顶片名"
+    },
+    {
+      "t0": 9,
+      "t1": 14,
+      "from": 0.65,
+      "to": 0.6,
+      "label": "路口苏醒"
+    },
+    {
+      "t0": 14,
+      "t1": 19,
+      "from": 0.6,
+      "to": 1,
+      "label": "车站低音"
+    },
+    {
+      "t0": 19,
+      "t1": 22.5,
+      "from": 1,
+      "to": 0.5,
+      "label": "拥堵密度"
+    },
+    {
+      "t0": 22.5,
+      "t1": 24,
+      "from": 0.5,
+      "to": 0.08,
+      "label": "延时骤降"
+    },
+    {
+      "t0": 24,
+      "t1": 30,
+      "from": 0.08,
+      "to": 0.9,
+      "label": "鸭群实时"
+    },
+    {
+      "t0": 30,
+      "t1": 34,
+      "from": 0.9,
+      "to": 0.25,
+      "label": "释放车流"
+    },
+    {
+      "t0": 34,
+      "t1": 38.0,
+      "from": 0.25,
+      "to": 0.05,
+      "label": "城市纹样与片尾"
+    }
+  ],
+  "energyNote": "段落取DEMO.md的Shots及源码时间线；0–1是根据动作、配乐、静默和画面密度标注的相对能量。",
+  "observations": [
+    "每个时间窗独立预计算IDM车流，红灯聚人、绿灯过街，事件门控同一配乐骨架。",
+    "黎明焦带跟随近侧主车，屏幕空间带宽与物理景深共同控制微缩感。",
+    "高密度俯视在22.5秒开始连续俯冲，视线先落鸭子，镜头位置再跟随。",
+    "鸭群阶段焦带半宽.05；30秒释放起由.035扩大至.07；结尾城市仍是同一三维场景。"
+  ],
+  "composition": {
+    "color": "#6fa24a、#4b4e53、#ffb48c、#0f5e3c、#ffc233、#3dff8a。",
+    "typography": "Overpass 100–900、Overpass Mono 300–700。",
+    "layout": "1920×1080横屏，24fps；舞台等比缩放，字幕与画内信息保留原作位置。",
+    "imagery": "Three.js程序城市、交通、车站、列车、鸭群、云与世界空间光轨。",
+    "motion": "延时车流按8Hz取样，×2–×6时12Hz，低于×2连续；22.5–24秒由×40降到×1，30–30.6秒释放回×40。",
+    "sound": "120 BPM原创采样马林巴配乐，VSCO CE与VCSL采样CC0；Kokoro am_adam，代码生成交通、鸭鸣与步声，降速采用磁带停转。",
+    "rhythm": "由稀疏马林巴事件累积到拥堵，降速后只留单次跳跃的音符，释放时恢复满密度。",
+    "coherence": "时钟、倍率、车流步进和配乐事件读取同一城市时间，焦带追踪主叙事对象。"
+  },
+  "layers": [
+    {
+      "name": "城市",
+      "role": "程序街区、窗面、路面与招牌。"
+    },
+    {
+      "name": "交通系统",
+      "role": "车辆、行人、信号灯与列车。"
+    },
+    {
+      "name": "主角细节",
+      "role": "主车、鸭群和跳路沿编舞。"
+    },
+    {
+      "name": "镜头与信息",
+      "role": "焦带、散焦、光轨、时钟、倍率与道路标识字幕。"
+    }
+  ],
+  "tokens": {
+    "palette": [
+      "#6fa24a",
+      "#4b4e53",
+      "#ffb48c",
+      "#0f5e3c",
+      "#ffc233",
+      "#3dff8a"
+    ],
+    "type": "Overpass 100–900、Overpass Mono 300–700。",
+    "motion": [
+      {
+        "name": "降速",
+        "value": "film/story.js:jamRate / T.rampDown=[22.5,24]、rampUp=[30,30.6]；film/main.js:stepped / jamCam。"
+      },
+      {
+        "name": "焦带与光轨",
+        "value": "film/post.js:cocShader与dof.band；film/main.js:band.follow；film/traffic.js:makeTrails，14段顶点、白色头灯与红色尾灯加色条带。"
+      }
+    ]
+  },
+  "useCases": [
+    "城市宣传",
+    "交通系统叙事",
+    "地产微缩影片"
+  ],
+  "avoid": [],
+  "constraints": [],
+  "migration": [
+    {
+      "field": "film/story.js → WINDOWS / T / SHOTS",
+      "how": "修改城市时钟、延时倍率、俯冲与鸭子事件。"
+    },
+    {
+      "field": "film/main.js → cam / jamCam；film/post.js → band",
+      "how": "修改追踪主体、焦带、俯冲和拉高路线。"
+    }
+  ],
+  "prompt": "制作玩具城从黎明车灯光轨加速到早高峰，拥堵最密时俯冲到一群过路鸭子并降为实时，随后释放车流，升到城市电路板般的纹样。 交通系统的延时密度与一件微小事件相撞；焦带沿车和鸭子投影移动，长曝光车灯在世界空间画出行进路径。 延时车流按8Hz取样，×2–×6时12Hz，低于×2连续；22.5–24秒由×40降到×1，30–30.6秒释放回×40。 Three.js程序城市、交通、车站、列车、鸭群、云与世界空间光轨。 字体：Overpass 100–900、Overpass Mono 300–700。 声音：120 BPM原创采样马林巴配乐，VSCO CE与VCSL采样CC0；Kokoro am_adam，代码生成交通、鸭鸣与步声，降速采用磁带停转。 实现沿用lemo-tilt-shift的film/源码、素材与时间表。",
+  "demo": "demos/cases/lemo-tilt-shift/index.html",
+  "patternIds": [
+    "timelapse-drop-to-realtime",
+    "tilt-shift-focus-band",
+    "long-exposure-light-trail"
+  ],
+  "fidelity": "demos/cases/lemo-tilt-shift/fidelity.md",
+  "upstream": {
+    "repository": "lemomo-ai/lemo-opuscar",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/tilt-shift",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "path": "styles/tilt-shift/"
+  },
+  "license": {
+    "name": "MIT · CC BY 4.0",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+    "notes": "代码与文档MIT；示范成片与静帧CC BY 4.0，署名LemoLab；第三方资源沿用CREDITS的许可。"
+  },
+  "sources": [
+    {
+      "label": "风格与制作说明",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/tilt-shift"
+    },
+    {
+      "label": "Release公开成片",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/tilt-shift.mp4"
+    },
+    {
+      "label": "第三方资源与署名",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/tilt-shift/demo/CREDITS"
+    }
+  ],
+  "attribution": [
+    {
+      "scope": "作品",
+      "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）；[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/tilt-shift)，代码MIT、成片CC BY 4.0；本库接入MotionKit，删改与对照见[fidelity.md](fidelity.md)。"
+    },
+    {
+      "scope": "声音与第三方资源",
+      "notes": "120 BPM原创采样马林巴配乐，VSCO CE与VCSL采样CC0；Kokoro am_adam，代码生成交通、鸭鸣与步声，降速采用磁带停转。 原始署名见[audio/CREDITS](audio/CREDITS)，许可全文见[LICENSES.md](LICENSES.md)。"
+    },
+    {
+      "scope": "字体",
+      "notes": "Overpass 100–900、Overpass Mono 300–700。 SIL OFL 1.1原文在fonts/，来源与重建方法见[source/README.md](source/README.md)。"
+    }
+  ],
+  "renderer": "gpu"
+}

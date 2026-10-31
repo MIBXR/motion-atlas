@@ -1,0 +1,70 @@
+{
+  "id": "chart-to-installation-pullback",
+  "order": 164,
+  "title": "图表拉远成装置",
+  "types": [
+    "camera",
+    "transition"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "镜头从数据单元的近景持续拉远和升高，已见过的堆片和刻度显出一件完整实体装置，两条年份螺旋连成胡桃木表盘。",
+  "mechanism": "镜头从数据单元的近景持续拉远和升高，已见过的堆片和刻度显出一件完整实体装置，两条年份螺旋连成胡桃木表盘。",
+  "trigger": "来源时间线进入对应镜头与动作节点。",
+  "effect": "镜头从数据单元的近景持续拉远和升高，已见过的堆片和刻度显出一件完整实体装置，两条年份螺旋连成胡桃木表盘。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-data-physical：29–37.8秒；1倍速，总时长8.800000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "装置拉远",
+      "value": "film/film.js:CAMK / setCamera，30秒开始吊臂拉远，q(13,2)=33.75秒相机半径6.6、高度19.6，DUR时半径6.8、高度20，近俯视露出表盘。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-data-physical/film/film.js"
+  ],
+  "locator": "film/film.js:CAMK / setCamera",
+  "useCases": [
+    "证据影像",
+    "数据解说",
+    "档案与科学短片"
+  ],
+  "avoid": [
+    "在主要读数和证据上叠加争夺注意的运动"
+  ],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "画面与音轨按同一来源时间映射。"
+  },
+  "prompt": "用来源案例的原作render(t)实现“图表拉远成装置”。镜头从数据单元的近景持续拉远和升高，已见过的堆片和刻度显出一件完整实体装置，两条年份螺旋连成胡桃木表盘。保留参数：film/film.js:CAMK / setCamera，30秒开始吊臂拉远，q(13,2)=33.75秒相机半径6.6、高度19.6，DUR时半径6.8、高度20，近俯视露出表盘。。按index.html内联segments定位原片，复用原作素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/chart-to-installation-pullback/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-data-physical"
+    }
+  ],
+  "previewAt": 4.75,
+  "markers": [
+    {
+      "t": 0,
+      "label": "图表成为完整装置"
+    }
+  ],
+  "renderer": "gpu"
+}

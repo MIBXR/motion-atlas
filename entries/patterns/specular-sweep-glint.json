@@ -67,6 +67,12 @@
     },
     {
       "caseId": "mg-liquid"
+    },
+    {
+      "caseId": "lemo-dark-keynote"
+    },
+    {
+      "caseId": "lemo-cel-anime-80s"
     }
   ],
   "previewAt": 0.65,
@@ -94,6 +100,16 @@
     {
       "t": 3.525,
       "label": "机制画面 3"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-dark-keynote · 生成界面与错相配乐共用音符表，拥挤、冻结和归格形成节奏，暗色产品靠扫光与一个品牌色被看见。",
+      "value": "film/film.js:sceneProduct的sweepP在20–21.3秒推进；film/engine.js:lightReveal以斜向亮度遮罩和glint显出产品：base=.07、soft=700、band=360、glint=.2。"
+    },
+    {
+      "name": "lemo-cel-anime-80s · 绘景、平涂赛璐璐、透过光与录像带显像管四层反差",
+      "value": "film/scenes1.js:titleCard / title?T.title=bar(5)=10.344828??lt=.15?1.2?sx??300?2300?240px?????????lt=1.1?1.6?????flare????12fps???"
     }
   ]
 }

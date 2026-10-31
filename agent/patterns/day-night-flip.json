@@ -55,6 +55,9 @@
     "sources": [
       {
         "caseId": "map-pilgrimage"
+      },
+      {
+        "caseId": "lemo-lowpoly-island"
       }
     ],
     "previewAt": 4,
@@ -152,6 +155,12 @@
       }
     ],
     "renderer": "gpu",
+    "parameters": [
+      {
+        "name": "lemo-lowpoly-island",
+        "value": "film/story.js:SKY、film/main.js:skyAt连续ss插值天空/海水/太阳/环境光；world.js:448的窗灯自发光随night增强，26.25秒起每半拍点亮一窗。"
+      }
+    ],
     "preview": "previews/patterns/day-night-flip.jpg",
     "previewPortrait": "previews/patterns/day-night-flip-portrait.jpg"
   },
@@ -159,6 +168,10 @@
     {
       "caseId": "map-pilgrimage",
       "bundle": "agent/cases/map-pilgrimage.json"
+    },
+    {
+      "caseId": "lemo-lowpoly-island",
+      "bundle": "agent/cases/lemo-lowpoly-island.json"
     }
   ],
   "documents": {
@@ -166,6 +179,256 @@
   },
   "entrypoint": "demos/patterns/day-night-flip/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-lowpoly-island/LICENSES.md",
+      "bytes": 836,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/audio/CREDITS",
+      "bytes": 773,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/audio/film.m4a",
+      "bytes": 1749067,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/fidelity.md",
+      "bytes": 4327,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/index.html",
+      "bytes": 605,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/main.js",
+      "bytes": 15223,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/post.js",
+      "bytes": 7067,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/sea.js",
+      "bytes": 5409,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/story.js",
+      "bytes": 5162,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/voices/dur.json",
+      "bytes": 71,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/film/world.js",
+      "bytes": 39012,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/fonts/6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw.woff2",
+      "bytes": 15904,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/fonts/OFL-josefinsans.txt",
+      "bytes": 4449,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/fonts/OFL-quicksand.txt",
+      "bytes": 4445,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/fonts/Qw3aZQNVED7rKGKxtqIqX5EUDXx4Vn8sig.woff2",
+      "bytes": 12304,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/fonts/fonts.css",
+      "bytes": 2271,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/index.html",
+      "bytes": 3101,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/CREDITS",
+      "bytes": 773,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/README.md",
+      "bytes": 2375,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/build.sh",
+      "bytes": 1318,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/events.json",
+      "bytes": 5887,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/lines.json",
+      "bytes": 488,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/mix.py",
+      "bytes": 8393,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/music/CREDITS_music.txt",
+      "bytes": 1321,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/music/check.py",
+      "bytes": 7878,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/music/score.json",
+      "bytes": 41586,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/music/score.py",
+      "bytes": 28230,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/subs.py",
+      "bytes": 935,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/source/voices/words.json",
+      "bytes": 869,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+      "bytes": 16582,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+      "bytes": 12990,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-lowpoly-island/vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+      "bytes": 6614,
+      "role": "vendor"
+    },
     {
       "path": "demos/cases/map-pilgrimage/LICENSES.md",
       "bytes": 1021,
@@ -242,13 +505,18 @@
       "role": "doc"
     },
     {
+      "path": "entries/cases/lemo-lowpoly-island.json",
+      "bytes": 10019,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/map-pilgrimage.json",
       "bytes": 20793,
       "role": "entry"
     },
     {
       "path": "entries/patterns/day-night-flip.json",
-      "bytes": 5848,
+      "bytes": 6156,
       "role": "entry"
     },
     {

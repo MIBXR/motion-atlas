@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "command-word-beat",
+  "pattern": {
+    "id": "command-word-beat",
+    "order": 155,
+    "title": "一词口令即一场",
+    "types": [
+      "type-motion",
+      "rhythm"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
+    "mechanism": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
+    "trigger": "来源案例的时间轴进入所列动作区间。",
+    "effect": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "lemo-microgame 0.000000–1.300000秒；lemo-microgame 31.278149–32.578149秒；1倍速，总时长2.600000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "字的冲量",
+        "value": "film/hud.js:56–80，.12秒1.9→.92、.08秒回1，随后驻留，.22秒缩到.3倍角标；film/timeline.js:cmd与t0共表，film/film.js:cmd_slam事件。"
+      }
+    ],
+    "sourceFiles": [
+      "demos/cases/lemo-microgame/film/hud.js",
+      "demos/cases/lemo-microgame/film/timeline.js",
+      "demos/cases/lemo-microgame/film/film.js"
+    ],
+    "locator": "film/hud.js:56–80，.12秒1.9→.92、.08秒回1，随后驻留，.22秒缩到.3倍角标；film/timeline.js:cmd与t0共表，film/film.js:cmd_slam事件。",
+    "useCases": [
+      "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    },
+    "prompt": "调用来源案例原作render(t)重放“一词口令即一场”。一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。 参数：film/hud.js:56–80，.12秒1.9→.92、.08秒回1，随后驻留，.22秒缩到.3倍角标；film/timeline.js:cmd与t0共表，film/film.js:cmd_slam事件。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/command-word-beat/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-microgame"
+      }
+    ],
+    "previewAt": 0.4,
+    "markers": [
+      {
+        "t": 0,
+        "label": "一词口令即一场"
+      },
+      {
+        "t": 1.3,
+        "label": "一词口令即一场"
+      }
+    ],
+    "renderer": "gpu",
+    "preview": "previews/patterns/command-word-beat.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-microgame",
+      "bundle": "agent/cases/lemo-microgame.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 一词口令即一场\n\n## 实现 Prompt\n\n调用来源案例原作render(t)重放“一词口令即一场”。一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。 参数：film/hud.js:56–80，.12秒1.9→.92、.08秒回1，随后驻留，.22秒缩到.3倍角标；film/timeline.js:cmd与t0共表，film/film.js:cmd_slam事件。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：lemo-microgame 0.000000–1.300000秒；lemo-microgame 31.278149–32.578149秒；1倍速，总时长2.600000秒。\n\n[打开 Demo](../../demos/patterns/command-word-beat/index.html) · [在库中查看](../../patterns.html#pattern/command-word-beat)\n"
+  },
+  "entrypoint": "demos/patterns/command-word-beat/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-microgame/LICENSES.md",
+      "bytes": 1185,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC-BY-3.0.txt",
+      "bytes": 19467,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CREDITS",
+      "bytes": 1717,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CREDITS-music.txt",
+      "bytes": 658,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/film.m4a",
+      "bytes": 2011571,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fidelity.md",
+      "bytes": 6504,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/chars.js",
+      "bytes": 20159,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/film.js",
+      "bytes": 18389,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_ascii.js",
+      "bytes": 9981,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_blue.js",
+      "bytes": 10427,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_boss.js",
+      "bytes": 22311,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_crayon.js",
+      "bytes": 13920,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_ink.js",
+      "bytes": 14916,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_pixel.js",
+      "bytes": 9940,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_riso.js",
+      "bytes": 8874,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_swiss.js",
+      "bytes": 7693,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/glpass.js",
+      "bytes": 9187,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/hud.js",
+      "bytes": 9549,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/index.html",
+      "bytes": 460,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/lines.json",
+      "bytes": 2906,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/main.js",
+      "bytes": 1144,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/stage.js",
+      "bytes": 8756,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/timeline.js",
+      "bytes": 2424,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/toon.js",
+      "bytes": 4853,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/voices/dur.json",
+      "bytes": 356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/ArchitectsDaughter-Regular.ttf",
+      "bytes": 43352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/GochiHand-Regular.ttf",
+      "bytes": 37352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Inter.ttf",
+      "bytes": 876576,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/LilitaOne-Regular.ttf",
+      "bytes": 28092,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-architectsdaughter.txt",
+      "bytes": 4362,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-gochihand.txt",
+      "bytes": 4423,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-inter.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-lilitaone.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-silkscreen.txt",
+      "bytes": 4394,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-titanone.txt",
+      "bytes": 4418,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-vt323.txt",
+      "bytes": 4367,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Silkscreen-Bold.ttf",
+      "bytes": 30632,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Silkscreen-Regular.ttf",
+      "bytes": 32220,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/TitanOne-Regular.ttf",
+      "bytes": 55712,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/VT323-Regular.ttf",
+      "bytes": 153116,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/fonts.css",
+      "bytes": 924,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/index.html",
+      "bytes": 3363,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/CREDITS",
+      "bytes": 1717,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/README.md",
+      "bytes": 4505,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/build.sh",
+      "bytes": 2238,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/events.json",
+      "bytes": 6285,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/frames.js",
+      "bytes": 10563,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/lines.json.asr.json",
+      "bytes": 2974,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/mix.py",
+      "bytes": 16861,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/CREDITS_music.txt",
+      "bytes": 658,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/score.json",
+      "bytes": 2142,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/score.py",
+      "bytes": 28624,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/timeline.json",
+      "bytes": 5884,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/cuecheck.py",
+      "bytes": 3160,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/dump_timeline.mjs",
+      "bytes": 422,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/final_asr.py",
+      "bytes": 1416,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/mux.sh",
+      "bytes": 1241,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/review.sh",
+      "bytes": 511,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/subs.py",
+      "bytes": 864,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/trim_cmd.py",
+      "bytes": 1543,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/voices/words.json",
+      "bytes": 1315,
+      "role": "process"
+    },
+    {
+      "path": "demos/patterns/command-word-beat/index.html",
+      "bytes": 1182,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/command-word-beat/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-microgame.json",
+      "bytes": 9764,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/command-word-beat.json",
+      "bytes": 2967,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/command-word-beat.jpg",
+      "bytes": 195444,
+      "role": "preview"
+    }
+  ]
+}

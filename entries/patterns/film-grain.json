@@ -89,6 +89,9 @@
     },
     {
       "caseId": "mg-collage"
+    },
+    {
+      "caseId": "lemo-newsreel"
     }
   ],
   "previewAt": 1.2,
@@ -292,6 +295,12 @@
     {
       "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-newsreel",
+      "value": "film/index.html:filmLook / render，24fps帧种子驱动银色multiply/screen、暗角、9帧一轮的划痕、每帧0–4尘点；仅档案影像叠±1.6/2.2px门片漂移和亮度闪烁。source/build.sh的mux为grain7。"
     }
   ]
 }

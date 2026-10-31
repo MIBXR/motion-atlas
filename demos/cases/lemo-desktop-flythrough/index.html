@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>叮之前 · 桌面穿梭</title>
+  <style>html,body{margin:0;overflow:hidden}#film{display:block;width:1920px;height:1080px;border:0}</style>
+</head>
+<body>
+  <main id="stage" class="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    await MotionKit.load.prepare({
+  "styles": [
+    "fonts/fonts.css"
+  ],
+  "data": [
+    "film/core/lib.js",
+    "film/index.html",
+    "vendor/three@0.170.0/build/three.module.js",
+    "vendor/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+    "vendor/three@0.170.0/examples/jsm/geometries/RoundedBoxGeometry.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+    "film/src/anim.js",
+    "film/src/camera.js",
+    "film/src/captions.js",
+    "film/src/cards.js",
+    "film/src/film.js",
+    "film/src/main.js",
+    "film/src/post.js",
+    "film/src/shots.js",
+    "film/src/vo.js",
+    "film/src/voxel.js",
+    "film/src/world.js"
+  ],
+  "audio": [
+    "audio/film.m4a"
+  ]
+});
+    const frame = document.createElement('iframe');
+    frame.id = 'film';
+    frame.title = "Before the Ding";
+    const loaded = new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+    frame.src = 'film/index.html';
+    document.querySelector('#stage').append(frame);
+    await loaded;
+    const upstream = frame.contentWindow;
+    while (upstream.READY !== true) await new Promise(requestAnimationFrame);
+    MotionKit.mountFilm({
+      film: {
+        duration: 59.96666666666667, width: 1920, height: 1080, fps: 30,
+        renderAt(t) {
+          const f = Math.round(t * 30);
+          if (f > 715 && f < 1128) upstream.render(715 / 30);
+          if (f > 1300 && f <= 1344) upstream.render(1300 / 30);
+          upstream.render(f / 30);
+        },
+      },
+      ...{
+  "title": "叮之前 · 桌面穿梭",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "background": "#e6e3e0",
+  "accent": "#2f5bff",
+  "step": "frames",
+  "start": {
+    "t": 0,
+    "reduced": 56.85
+  },
+  "audio": {
+    "src": "audio/film.m4a",
+    "mime": "audio/mp4"
+  },
+  "markers": [
+  {
+    "t": 0,
+    "label": "发送与叮声"
+  },
+  {
+    "t": 4.6,
+    "label": "回放与路线"
+  },
+  {
+    "t": 7.6,
+    "label": "飞往压缩卡"
+  },
+  {
+    "t": 10.6,
+    "label": "压小照片"
+  },
+  {
+    "t": 17.2,
+    "label": "飞往服务器"
+  },
+  {
+    "t": 20.3,
+    "label": "云端等待"
+  },
+  {
+    "t": 26,
+    "label": "通知飞行"
+  },
+  {
+    "t": 32.1,
+    "label": "手机响铃"
+  },
+  {
+    "t": 34.6,
+    "label": "取回照片"
+  },
+  {
+    "t": 39.6,
+    "label": "从糊到清"
+  },
+  {
+    "t": 44.8,
+    "label": "接力全景"
+  },
+  {
+    "t": 48.4,
+    "label": "朋友的副本"
+  },
+  {
+    "t": 52.6,
+    "label": "自己的原图"
+  },
+  {
+    "t": 55.4,
+    "label": "桌面谢幕"
+  }
+]
+}
+    });
+  </script>
+</body>
+</html>

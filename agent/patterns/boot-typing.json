@@ -79,6 +79,9 @@
       },
       {
         "caseId": "mg-hud"
+      },
+      {
+        "caseId": "lemo-ascii-crt"
       }
     ],
     "parameters": [
@@ -106,6 +109,10 @@
         "name": "声音",
         "value": "原样复用案例 film-audio.ogg；其中逐字音为 48kHz、三段 38ms 采样按实际揭字轮替",
         "source": "demos/cases/archive-os/audio/film-audio.ogg；demos/cases/archive-os/source/rhinelabui/src/typing-rhythm.ts:5-29；demos/cases/archive-os/source/rhinelabui/src/audio.ts:36-55,238-241"
+      },
+      {
+        "name": "lemo-ascii-crt · 墨量决定字符的图像位置，字格大小承担镜头",
+        "value": "film/main.js:BOOT按.012秒/字，CMD按.038秒/字；MSG_T以[0,.14,.3,.62,.74,.86,1.02,1.12,1.24,1.36,1.52,1.62,1.74,1.86,1.98,2.3]×.82实现人工停顿与连击；msgBlinks=[19.8,20.4,21]，每次亮.3秒、余辉TAU=.12。"
       }
     ],
     "videoPrompt": "制作 21.92 秒、25fps 帧表驱动的 RHINE LAB 开场。1.8 秒逐字出现 ACCESS PERMISSION REQUIRED，4.16 秒起沿一条共享轮廓描绘标志并移动，6.28 秒起确认 JOYCE MOORE 身份，9.68 秒起请求、11.92 秒起处理，14.48 秒扫描、17.76 秒欢迎，21.56 秒开始缩小失焦并于 21.92 秒结束。字形、材质色彩、轮廓轨迹与声音均使用当前 archive-os 文件。",
@@ -131,6 +138,10 @@
     {
       "caseId": "mg-hud",
       "bundle": "agent/cases/mg-hud.json"
+    },
+    {
+      "caseId": "lemo-ascii-crt",
+      "bundle": "agent/cases/lemo-ascii-crt.json"
     }
   ],
   "documents": {
@@ -4864,6 +4875,156 @@
       "role": "process"
     },
     {
+      "path": "demos/cases/lemo-ascii-crt/LICENSES.md",
+      "bytes": 517,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/audio/CREDITS",
+      "bytes": 630,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/audio/film.m4a",
+      "bytes": 1922911,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/fidelity.md",
+      "bytes": 5594,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/art.js",
+      "bytes": 13453,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/crt.js",
+      "bytes": 9310,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/index.html",
+      "bytes": 344,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/lines.json",
+      "bytes": 756,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/main.js",
+      "bytes": 36385,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/term.js",
+      "bytes": 6988,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/voices/dur.json",
+      "bytes": 72,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/film/voices/words.json",
+      "bytes": 998,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/fonts/OFL-VT323.txt",
+      "bytes": 4367,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/fonts/VT323-Regular.ttf",
+      "bytes": 153116,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/fonts/fonts.css",
+      "bytes": 182,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/index.html",
+      "bytes": 2125,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/CREDITS",
+      "bytes": 630,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/README.md",
+      "bytes": 2652,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/build.sh",
+      "bytes": 1945,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/events.json",
+      "bytes": 12841,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/mix.py",
+      "bytes": 8976,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/music/score.json",
+      "bytes": 3134,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/music/score.py",
+      "bytes": 15868,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/tools/subs.mjs",
+      "bytes": 554,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/voice_fx.py",
+      "bytes": 1165,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ascii-crt/source/voices_raw/dur.json",
+      "bytes": 72,
+      "role": "process"
+    },
+    {
       "path": "demos/cases/mg-hud/LICENSES.md",
       "bytes": 1088,
       "role": "license"
@@ -5164,13 +5325,18 @@
       "role": "entry"
     },
     {
+      "path": "entries/cases/lemo-ascii-crt.json",
+      "bytes": 9583,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-hud.json",
       "bytes": 19054,
       "role": "entry"
     },
     {
       "path": "entries/patterns/boot-typing.json",
-      "bytes": 6698,
+      "bytes": 7099,
       "role": "entry"
     },
     {

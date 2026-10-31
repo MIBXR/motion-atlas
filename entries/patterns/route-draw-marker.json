@@ -63,6 +63,9 @@
     },
     {
       "caseId": "mg-paperclip"
+    },
+    {
+      "caseId": "lemo-newsreel"
     }
   ],
   "previewAt": 8.6,
@@ -189,5 +192,11 @@
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ],
-  "renderer": "gpu"
+  "renderer": "gpu",
+  "parameters": [
+    {
+      "name": "lemo-newsreel",
+      "value": "film/index.html:arcPts / sceneMap，Natural Earth Albers州界上，纽约到好莱坞、奥斯汀的60点弧线逐点绘出，终点星形按抵达时刻弹跳并脉冲；10.2/10.55秒抵达，提前.6秒开始描线。"
+    }
+  ]
 }

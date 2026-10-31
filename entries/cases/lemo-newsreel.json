@@ -1,0 +1,363 @@
+{
+  "id": "lemo-newsreel",
+  "order": 69,
+  "title": "膝盖警报 · 1920s 新闻影片",
+  "subtitle": "Knock-Knee Alert",
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "lemo-opuscar",
+    "1920s 新闻影片",
+    "剪辑与纪实",
+    "代码影片"
+  ],
+  "summary": "1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。",
+  "focus": "新闻物件与真实档案按200 BPM剪辑，百叶字卡、划变与光圈连接段落，分屏对决后由历史唱片接管声音。",
+  "accent": "#F3EEE4",
+  "background": "#000000",
+  "timeline": true,
+  "kit": true,
+  "previewAt": 30.2,
+  "rhythm": {
+    "duration": 54.583333333333336,
+    "beats": [
+      {
+        "t": 0,
+        "label": "探照灯与地球片头",
+        "note": "0–3.6秒，探照灯与地球片头。"
+      },
+      {
+        "t": 3.6,
+        "label": "旋入报纸",
+        "note": "3.6–7.2秒，旋入报纸。"
+      },
+      {
+        "t": 7.2,
+        "label": "膝盖圈注",
+        "note": "7.2–8.4秒，膝盖圈注。"
+      },
+      {
+        "t": 8.4,
+        "label": "舞蹈传播地图",
+        "note": "8.4–13.2秒，舞蹈传播地图。"
+      },
+      {
+        "t": 13.2,
+        "label": "九张舞步发牌",
+        "note": "13.2–15.9秒，九张舞步发牌。"
+      },
+      {
+        "t": 15.9,
+        "label": "舞步翻页",
+        "note": "15.9–18秒，舞步翻页。"
+      },
+      {
+        "t": 18,
+        "label": "福特登场字卡",
+        "note": "18–21秒，福特登场字卡。"
+      },
+      {
+        "t": 21,
+        "label": "福特乐队与舞者",
+        "note": "21–24秒，福特乐队与舞者。"
+      },
+      {
+        "t": 24,
+        "label": "书页与下划线",
+        "note": "24–27秒，书页与下划线。"
+      },
+      {
+        "t": 27,
+        "label": "围圈跳舞",
+        "note": "27–28.2秒，围圈跳舞。"
+      },
+      {
+        "t": 28.2,
+        "label": "双栏舞蹈对决",
+        "note": "28.2–32.4秒，双栏舞蹈对决。"
+      },
+      {
+        "t": 32.4,
+        "label": "唱针落下",
+        "note": "32.4–34.7秒，唱针落下。"
+      },
+      {
+        "t": 34.7,
+        "label": "跟随唱片切镜",
+        "note": "34.7–39.5秒，跟随唱片切镜。"
+      },
+      {
+        "t": 39.5,
+        "label": "四宫格",
+        "note": "39.5–41.9秒，四宫格。"
+      },
+      {
+        "t": 41.9,
+        "label": "孩子跳查尔斯顿",
+        "note": "41.9–44.4秒，孩子跳查尔斯顿。"
+      },
+      {
+        "t": 44.4,
+        "label": "膝盖定格",
+        "note": "44.4–46.8秒，膝盖定格。"
+      },
+      {
+        "t": 46.8,
+        "label": "片头再现",
+        "note": "46.8–50.4秒，片头再现。"
+      },
+      {
+        "t": 50.4,
+        "label": "片尾署名",
+        "note": "50.4–54.5833秒，片尾署名。"
+      }
+    ]
+  },
+  "energySegments": [
+    {
+      "t0": 0,
+      "t1": 3.6,
+      "from": 0.2,
+      "to": 0.25,
+      "label": "探照灯与地球片头"
+    },
+    {
+      "t0": 3.6,
+      "t1": 7.2,
+      "from": 0.25,
+      "to": 0.35,
+      "label": "旋入报纸"
+    },
+    {
+      "t0": 7.2,
+      "t1": 8.4,
+      "from": 0.35,
+      "to": 0.4,
+      "label": "膝盖圈注"
+    },
+    {
+      "t0": 8.4,
+      "t1": 13.2,
+      "from": 0.4,
+      "to": 0.45,
+      "label": "舞蹈传播地图"
+    },
+    {
+      "t0": 13.2,
+      "t1": 15.9,
+      "from": 0.45,
+      "to": 0.6,
+      "label": "九张舞步发牌"
+    },
+    {
+      "t0": 15.9,
+      "t1": 18,
+      "from": 0.6,
+      "to": 0.5,
+      "label": "舞步翻页"
+    },
+    {
+      "t0": 18,
+      "t1": 21,
+      "from": 0.5,
+      "to": 0.7,
+      "label": "福特登场字卡"
+    },
+    {
+      "t0": 21,
+      "t1": 24,
+      "from": 0.7,
+      "to": 0.75,
+      "label": "福特乐队与舞者"
+    },
+    {
+      "t0": 24,
+      "t1": 27,
+      "from": 0.75,
+      "to": 0.55,
+      "label": "书页与下划线"
+    },
+    {
+      "t0": 27,
+      "t1": 28.2,
+      "from": 0.55,
+      "to": 0.5,
+      "label": "围圈跳舞"
+    },
+    {
+      "t0": 28.2,
+      "t1": 32.4,
+      "from": 0.5,
+      "to": 0.6,
+      "label": "双栏舞蹈对决"
+    },
+    {
+      "t0": 32.4,
+      "t1": 34.7,
+      "from": 0.6,
+      "to": 0.65,
+      "label": "唱针落下"
+    },
+    {
+      "t0": 34.7,
+      "t1": 39.5,
+      "from": 0.65,
+      "to": 0.5,
+      "label": "跟随唱片切镜"
+    },
+    {
+      "t0": 39.5,
+      "t1": 41.9,
+      "from": 0.5,
+      "to": 0.75,
+      "label": "四宫格"
+    },
+    {
+      "t0": 41.9,
+      "t1": 44.4,
+      "from": 0.75,
+      "to": 0.55,
+      "label": "孩子跳查尔斯顿"
+    },
+    {
+      "t0": 44.4,
+      "t1": 46.8,
+      "from": 0.55,
+      "to": 0.3,
+      "label": "膝盖定格"
+    },
+    {
+      "t0": 46.8,
+      "t1": 50.4,
+      "from": 0.3,
+      "to": 0.65,
+      "label": "片头再现"
+    },
+    {
+      "t0": 50.4,
+      "t1": 54.583333333333336,
+      "from": 0.65,
+      "to": 0.65,
+      "label": "片尾署名"
+    }
+  ],
+  "energyNote": "时段取上游DEMO.md的Shots；0–1为依据画面密度、配乐与旁白作的相对编辑标注。",
+  "observations": [
+    "新闻物件与真实档案按200 BPM剪辑，百叶字卡、划变与光圈连接段落，分屏对决后由历史唱片接管声音。",
+    "报纸旋入、点线地图与抵达星标、舞步发牌和翻页、百叶字卡、光圈和时钟划变；恒定24fps档案影像叠加可复现损伤。",
+    "NARA福特电影收藏1924—1927年影像、1926年奥斯汀报纸、1925年Photoplay舞步照、1926年Good Morning书页与Natural Earth州界。"
+  ],
+  "composition": {
+    "color": "#000000、#F3EEE4、#D6CFC0、#EFE7D6、#17140F",
+    "typography": "Limelight Regular；Oswald可变200–700；Noto Sans SC、Noto Serif SC可变100–900，OFL。",
+    "layout": "1920×1080、24fps；主画面、读数和字幕按原作时间线组织。",
+    "imagery": "NARA福特电影收藏1924—1927年影像、1926年奥斯汀报纸、1925年Photoplay舞步照、1926年Good Morning书页与Natural Earth州界。",
+    "motion": "报纸旋入、点线地图与抵达星标、舞步发牌和翻页、百叶字卡、光圈和时钟划变；恒定24fps档案影像叠加可复现损伤。",
+    "sound": "200 BPM原爵士与老式舞曲分声道对决、1925年Golden Gate Orchestra唱片、放映机和机械拟音、Kokoro混合男声旁白。",
+    "rhythm": "连续时间线按Shots的段落与声音节点推进。",
+    "coherence": "新闻物件与真实档案按200 BPM剪辑，百叶字卡、划变与光圈连接段落，分屏对决后由历史唱片接管声音。"
+  },
+  "layers": [
+    {
+      "name": "原作画面",
+      "role": "NARA福特电影收藏1924—1927年影像、1926年奥斯汀报纸、1925年Photoplay舞步照、1926年Good Morning书页与Natural Earth州界。"
+    },
+    {
+      "name": "测量与文字",
+      "role": "新闻物件与真实档案按200 BPM剪辑，百叶字卡、划变与光圈连接段落，分屏对决后由历史唱片接管声音。"
+    },
+    {
+      "name": "声音",
+      "role": "200 BPM原爵士与老式舞曲分声道对决、1925年Golden Gate Orchestra唱片、放映机和机械拟音、Kokoro混合男声旁白。"
+    }
+  ],
+  "tokens": {
+    "palette": [
+      "#000000",
+      "#F3EEE4",
+      "#D6CFC0",
+      "#EFE7D6",
+      "#17140F"
+    ],
+    "type": "Limelight Regular；Oswald可变200–700；Noto Sans SC、Noto Serif SC可变100–900，OFL。",
+    "motion": [
+      {
+        "name": "源码时间线",
+        "value": "film/index.html的SEC/HIT与composeScene；段落见rhythm.beats。"
+      }
+    ]
+  },
+  "useCases": [
+    "历史新闻叙事",
+    "档案剪辑",
+    "时代回顾影片"
+  ],
+  "avoid": [
+    "需要观看者自行决定节奏的网页交互"
+  ],
+  "constraints": [
+    "素材、数据、字体与时间线由原作文件直接驱动。"
+  ],
+  "migration": [
+    {
+      "field": "film/index.html",
+      "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+    }
+  ],
+  "prompt": "制作“膝盖警报 · 1920s 新闻影片”：1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。新闻物件与真实档案按200 BPM剪辑，百叶字卡、划变与光圈连接段落，分屏对决后由历史唱片接管声音。画面：NARA福特电影收藏1924—1927年影像、1926年奥斯汀报纸、1925年Photoplay舞步照、1926年Good Morning书页与Natural Earth州界。运动：报纸旋入、点线地图与抵达星标、舞步发牌和翻页、百叶字卡、光圈和时钟划变；恒定24fps档案影像叠加可复现损伤。声音：200 BPM原爵士与老式舞曲分声道对决、1925年Golden Gate Orchestra唱片、放映机和机械拟音、Kokoro混合男声旁白。实现文件为film/index.html，保留真实数据、素材署名和原片音轨，按1920×1080舞台的原作render(t)逐帧定位。",
+  "demo": "demos/cases/lemo-newsreel/index.html",
+  "patternIds": [
+    "newsreel-intertitle-wipe",
+    "film-grain",
+    "route-draw-marker"
+  ],
+  "fidelity": "demos/cases/lemo-newsreel/fidelity.md",
+  "upstream": {
+    "repository": "lemomo-ai/lemo-opuscar",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/newsreel",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "path": "styles/newsreel/",
+    "version": "0.1.0"
+  },
+  "license": {
+    "name": "MIT · CC BY 4.0",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+    "notes": "代码与文档MIT；原成片与静帧CC BY 4.0，署名LemoLab；第三方素材沿用CREDITS的许可。"
+  },
+  "sources": [
+    {
+      "label": "风格、示范与固定源码",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/newsreel"
+    },
+    {
+      "label": "Release公开成片",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/newsreel.mp4"
+    },
+    {
+      "label": "原始署名与素材许可",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/newsreel/demo/CREDITS"
+    },
+    {
+      "label": "事实与测量依据",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/newsreel/demo/FACTS.md"
+    }
+  ],
+  "attribution": [
+    {
+      "scope": "作品",
+      "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/newsreel)，代码MIT、成片CC BY 4.0；接入与对照见[fidelity.md](fidelity.md)。"
+    },
+    {
+      "scope": "第三方素材与声音",
+      "notes": "NARA福特电影收藏1924—1927年影像、1926年奥斯汀报纸、1925年Photoplay舞步照、1926年Good Morning书页与Natural Earth州界。 200 BPM原爵士与老式舞曲分声道对决、1925年Golden Gate Orchestra唱片、放映机和机械拟音、Kokoro混合男声旁白。 原始记录见[source/CREDITS](source/CREDITS)，许可索引见[LICENSES.md](LICENSES.md)。"
+    },
+    {
+      "scope": "字体",
+      "notes": "Limelight Regular；Oswald可变200–700；Noto Sans SC、Noto Serif SC可变100–900，OFL。 许可原文在fonts/。"
+    }
+  ]
+}

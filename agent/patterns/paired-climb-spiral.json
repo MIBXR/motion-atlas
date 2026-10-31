@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "paired-climb-spiral",
+  "pattern": {
+    "id": "paired-climb-spiral",
+    "order": 163,
+    "title": "双螺旋并行攀升",
+    "types": [
+      "composition",
+      "rhythm"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。",
+    "mechanism": "同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。",
+    "trigger": "来源时间线进入对应镜头与动作节点。",
+    "effect": "同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "lemo-data-physical：10–25.3秒；1倍速，总时长15.300000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "空间排布",
+        "value": "film/set.js:PAIRS / th / rS / rW：STEP=.4817，rS=2.25+.03i、rW=rS−.6；两组有独立半径和固定年份位置。"
+      },
+      {
+        "name": "实物单位",
+        "value": "film/data.js:GW_PER_SHEET=10、BRASS_EVERY=10；set.js:TH=.0125，一片10 GW，每100 GW一片黄铜。"
+      },
+      {
+        "name": "并行节奏",
+        "value": "film/set.js:BUILD与SHEETS，太阳能比风电晚半个BEAT；2021的四个读数在film.js:pairLabels完成后，21.875秒显示反超。"
+      }
+    ],
+    "sourceFiles": [
+      "demos/cases/lemo-data-physical/film/set.js",
+      "demos/cases/lemo-data-physical/film/film.js",
+      "demos/cases/lemo-data-physical/film/data.js",
+      "demos/cases/lemo-data-physical/film/timeline.js"
+    ],
+    "locator": "film/set.js:PAIRS / th / rS / rW：STEP=.4817；film/data.js:GW_PER_SHEET=10、BRASS_EVERY=10；set.js:TH=.0125；film/set.js:BUILD与SHEETS",
+    "useCases": [
+      "证据影像",
+      "数据解说",
+      "档案与科学短片"
+    ],
+    "avoid": [
+      "在主要读数和证据上叠加争夺注意的运动"
+    ],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "画面与音轨按同一来源时间映射。"
+    },
+    "prompt": "用来源案例的原作render(t)实现“双螺旋并行攀升”。同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。保留参数：film/set.js:PAIRS / th / rS / rW：STEP=.4817，rS=2.25+.03i、rW=rS−.6；两组有独立半径和固定年份位置。；film/data.js:GW_PER_SHEET=10、BRASS_EVERY=10；set.js:TH=.0125，一片10 GW，每100 GW一片黄铜。；film/set.js:BUILD与SHEETS，太阳能比风电晚半个BEAT；2021的四个读数在film.js:pairLabels完成后，21.875秒显示反超。。按index.html内联segments定位原片，复用原作素材、字体与同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/paired-climb-spiral/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-data-physical"
+      }
+    ],
+    "previewAt": 11.875,
+    "markers": [
+      {
+        "t": 0,
+        "label": "沿年份堆叠与反超"
+      }
+    ],
+    "renderer": "gpu",
+    "preview": "previews/patterns/paired-climb-spiral.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-data-physical",
+      "bundle": "agent/cases/lemo-data-physical.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 双螺旋并行攀升\n\n## 实现 Prompt\n\n用来源案例的原作render(t)实现“双螺旋并行攀升”。同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。保留参数：film/set.js:PAIRS / th / rS / rW：STEP=.4817，rS=2.25+.03i、rW=rS−.6；两组有独立半径和固定年份位置。；film/data.js:GW_PER_SHEET=10、BRASS_EVERY=10；set.js:TH=.0125，一片10 GW，每100 GW一片黄铜。；film/set.js:BUILD与SHEETS，太阳能比风电晚半个BEAT；2021的四个读数在film.js:pairLabels完成后，21.875秒显示反超。。按index.html内联segments定位原片，复用原作素材、字体与同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：lemo-data-physical：10–25.3秒；1倍速，总时长15.300000秒。\n\n[打开 Demo](../../demos/patterns/paired-climb-spiral/index.html) · [在库中查看](../../patterns.html#pattern/paired-climb-spiral)\n"
+  },
+  "entrypoint": "demos/patterns/paired-climb-spiral/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-data-physical/LICENSES.md",
+      "bytes": 2863,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/data/world_solar_capacity_irena2026.csv",
+      "bytes": 791,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/data/world_wind_capacity_irena2026.csv",
+      "bytes": 782,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/photo_studio_loft_hall_2k.hdr",
+      "bytes": 6432146,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/walnut_diff.jpg",
+      "bytes": 2418767,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/walnut_nor.jpg",
+      "bytes": 1959270,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/walnut_rough.jpg",
+      "bytes": 2865130,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/CREDITS",
+      "bytes": 2286,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/film.m4a",
+      "bytes": 1333232,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fidelity.md",
+      "bytes": 3444,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/core/three/post.js",
+      "bytes": 6482,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/data.js",
+      "bytes": 965,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/film.js",
+      "bytes": 16469,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/index.html",
+      "bytes": 652,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/out/cues.json",
+      "bytes": 1162,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/set.js",
+      "bytes": 11763,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/timeline.js",
+      "bytes": 3686,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-200-0.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-300-1.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-400-2.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-500-3.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/JBMono-400-0.woff2",
+      "bytes": 13596,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/JBMono-500-1.woff2",
+      "bytes": 13596,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/NotoSC-400-0.woff2",
+      "bytes": 34824,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/NotoSC-500-1.woff2",
+      "bytes": 34824,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/NotoSerifSC-600-0.woff2",
+      "bytes": 24032,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/fonts.css",
+      "bytes": 1010,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/index.html",
+      "bytes": 3488,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/CREDITS",
+      "bytes": 2286,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/FACTS.md",
+      "bytes": 5660,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/PolyHaven-SOURCES.md",
+      "bytes": 397,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/README.md",
+      "bytes": 2216,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/build.sh",
+      "bytes": 2878,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/data/owid_solar_capacity.metadata.json",
+      "bytes": 1116,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/data/owid_wind_capacity.metadata.json",
+      "bytes": 1166,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/events.json",
+      "bytes": 15241,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/mix.py",
+      "bytes": 16978,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/export.mjs",
+      "bytes": 1980,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/fonts.mjs",
+      "bytes": 1992,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/holdcheck.py",
+      "bytes": 826,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/srt.mjs",
+      "bytes": 477,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/subcheck.mjs",
+      "bytes": 1111,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/voice/lines.json",
+      "bytes": 1428,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/voice/out/dur.json",
+      "bytes": 97,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/voice/out/words.json",
+      "bytes": 1443,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/loaders/RGBELoader.js",
+      "bytes": 11377,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+      "bytes": 16582,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+      "bytes": 12990,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+      "bytes": 6614,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/patterns/paired-climb-spiral/index.html",
+      "bytes": 827,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/paired-climb-spiral/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-data-physical.json",
+      "bytes": 9780,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/paired-climb-spiral.json",
+      "bytes": 3485,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/paired-climb-spiral.jpg",
+      "bytes": 149639,
+      "role": "preview"
+    }
+  ]
+}

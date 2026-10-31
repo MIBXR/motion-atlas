@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>逃跑的面包 · 1920s 默片</title>
+  <style>html,body{margin:0;overflow:hidden}#film{display:block;width:1920px;height:1080px;border:0}</style>
+</head>
+<body>
+  <main id="stage" class="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    await MotionKit.load.prepare({
+  "styles": [
+    "fonts/fonts.css"
+  ],
+  "data": [
+    "film/cardspecs.js",
+    "film/chars.js",
+    "film/engine/cards.js",
+    "film/engine/figure.js",
+    "film/engine/film.js",
+    "film/engine/heads.js",
+    "film/engine/ink.js",
+    "film/engine/redraw.js",
+    "film/film.js",
+    "film/index.html",
+    "film/main.js",
+    "film/poses.js",
+    "film/sets.js",
+    "film/shots.js",
+    "film/stage.js",
+    "film/timeline.js"
+  ],
+  "audio": [
+    "audio/film.m4a"
+  ]
+});
+    const frame = document.createElement('iframe');
+    frame.id = 'film';
+    frame.title = "The Runaway Loaf";
+    const loaded = new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+    frame.src = 'film/index.html';
+    document.querySelector('#stage').append(frame);
+    await loaded;
+    const upstream = frame.contentWindow;
+    while (upstream.READY !== true) await new Promise(requestAnimationFrame);
+    MotionKit.mountFilm({
+      film: {
+        duration: 54.208333333333336, width: 1920, height: 1080, fps: 24,
+        async renderAt(t) { await upstream.render(Math.round(t * 24) / 24); },
+      },
+      ...{
+  "title": "逃跑的面包 · 1920s 默片",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "background": "#000000",
+  "accent": "#b99b70",
+  "step": "frames",
+  "start": {
+    "t": 0,
+    "reduced": 39.02
+  },
+  "audio": {
+    "src": "audio/film.m4a",
+    "mime": "audio/mp4"
+  },
+  "markers": [
+  {
+    "t": 0,
+    "label": "放映与开圈"
+  },
+  {
+    "t": 5.3125,
+    "label": "骄傲与逃跑"
+  },
+  {
+    "t": 14.375,
+    "label": "下坡追逐"
+  },
+  {
+    "t": 19.375,
+    "label": "单镜连锁喜剧"
+  },
+  {
+    "t": 28.541666666666668,
+    "label": "面包停下与静默"
+  },
+  {
+    "t": 37.54924242424242,
+    "label": "分享面包"
+  },
+  {
+    "t": 45.88257575757576,
+    "label": "眨眼与闭圈"
+  }
+]
+}
+    });
+  </script>
+</body>
+</html>

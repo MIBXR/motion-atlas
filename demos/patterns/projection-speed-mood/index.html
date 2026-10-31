@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>放映速度表情绪</title>
+</head>
+<body>
+  <main id="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    await MotionKit.replay({
+  "title": "放映速度表情绪",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "fps": 24,
+  "segments": [
+    {
+      "caseId": "lemo-silent-film",
+      "source": "../../cases/lemo-silent-film/index.html",
+      "audio": "../../cases/lemo-silent-film/audio/film.m4a",
+      "label": "放映速度表情绪",
+      "from": 14.375,
+      "to": 45.88257575757576
+    }
+  ],
+  "markers": [
+    {
+      "t": 0,
+      "label": "放映速度表情绪"
+    }
+  ],
+  "reduced": 3
+});
+  </script>
+</body>
+</html>

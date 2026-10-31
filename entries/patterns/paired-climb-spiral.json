@@ -1,0 +1,81 @@
+{
+  "id": "paired-climb-spiral",
+  "order": 163,
+  "title": "双螺旋并行攀升",
+  "types": [
+    "composition",
+    "rhythm"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。",
+  "mechanism": "同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。",
+  "trigger": "来源时间线进入对应镜头与动作节点。",
+  "effect": "同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-data-physical：10–25.3秒；1倍速，总时长15.300000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "空间排布",
+      "value": "film/set.js:PAIRS / th / rS / rW：STEP=.4817，rS=2.25+.03i、rW=rS−.6；两组有独立半径和固定年份位置。"
+    },
+    {
+      "name": "实物单位",
+      "value": "film/data.js:GW_PER_SHEET=10、BRASS_EVERY=10；set.js:TH=.0125，一片10 GW，每100 GW一片黄铜。"
+    },
+    {
+      "name": "并行节奏",
+      "value": "film/set.js:BUILD与SHEETS，太阳能比风电晚半个BEAT；2021的四个读数在film.js:pairLabels完成后，21.875秒显示反超。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-data-physical/film/set.js",
+    "demos/cases/lemo-data-physical/film/film.js",
+    "demos/cases/lemo-data-physical/film/data.js",
+    "demos/cases/lemo-data-physical/film/timeline.js"
+  ],
+  "locator": "film/set.js:PAIRS / th / rS / rW：STEP=.4817；film/data.js:GW_PER_SHEET=10、BRASS_EVERY=10；set.js:TH=.0125；film/set.js:BUILD与SHEETS",
+  "useCases": [
+    "证据影像",
+    "数据解说",
+    "档案与科学短片"
+  ],
+  "avoid": [
+    "在主要读数和证据上叠加争夺注意的运动"
+  ],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "画面与音轨按同一来源时间映射。"
+  },
+  "prompt": "用来源案例的原作render(t)实现“双螺旋并行攀升”。同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。保留参数：film/set.js:PAIRS / th / rS / rW：STEP=.4817，rS=2.25+.03i、rW=rS−.6；两组有独立半径和固定年份位置。；film/data.js:GW_PER_SHEET=10、BRASS_EVERY=10；set.js:TH=.0125，一片10 GW，每100 GW一片黄铜。；film/set.js:BUILD与SHEETS，太阳能比风电晚半个BEAT；2021的四个读数在film.js:pairLabels完成后，21.875秒显示反超。。按index.html内联segments定位原片，复用原作素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/paired-climb-spiral/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-data-physical"
+    }
+  ],
+  "previewAt": 11.875,
+  "markers": [
+    {
+      "t": 0,
+      "label": "沿年份堆叠与反超"
+    }
+  ],
+  "renderer": "gpu"
+}

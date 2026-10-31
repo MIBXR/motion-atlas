@@ -1,0 +1,72 @@
+{
+  "id": "command-word-beat",
+  "order": 155,
+  "title": "一词口令即一场",
+  "types": [
+    "type-motion",
+    "rhythm"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
+  "mechanism": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
+  "trigger": "来源案例的时间轴进入所列动作区间。",
+  "effect": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-microgame 0.000000–1.300000秒；lemo-microgame 31.278149–32.578149秒；1倍速，总时长2.600000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "字的冲量",
+      "value": "film/hud.js:56–80，.12秒1.9→.92、.08秒回1，随后驻留，.22秒缩到.3倍角标；film/timeline.js:cmd与t0共表，film/film.js:cmd_slam事件。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-microgame/film/hud.js",
+    "demos/cases/lemo-microgame/film/timeline.js",
+    "demos/cases/lemo-microgame/film/film.js"
+  ],
+  "locator": "film/hud.js:56–80，.12秒1.9→.92、.08秒回1，随后驻留，.22秒缩到.3倍角标；film/timeline.js:cmd与t0共表，film/film.js:cmd_slam事件。",
+  "useCases": [
+    "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "support",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+  },
+  "prompt": "调用来源案例原作render(t)重放“一词口令即一场”。一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。 参数：film/hud.js:56–80，.12秒1.9→.92、.08秒回1，随后驻留，.22秒缩到.3倍角标；film/timeline.js:cmd与t0共表，film/film.js:cmd_slam事件。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/command-word-beat/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-microgame"
+    }
+  ],
+  "previewAt": 0.4,
+  "markers": [
+    {
+      "t": 0,
+      "label": "一词口令即一场"
+    },
+    {
+      "t": 1.3,
+      "label": "一词口令即一场"
+    }
+  ],
+  "renderer": "gpu"
+}

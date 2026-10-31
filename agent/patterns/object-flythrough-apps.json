@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "object-flythrough-apps",
+  "pattern": {
+    "id": "object-flythrough-apps",
+    "order": 151,
+    "title": "一物飞越应用卡片",
+    "types": [
+      "camera",
+      "transition"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "同一张照片在桌面应用卡片之间连续跳跃，相机以主体位置为目标跟随；经过压缩、云端存储、通知和取图后落入另一台手机。",
+    "mechanism": "同一张照片在桌面应用卡片之间连续跳跃，相机以主体位置为目标跟随；经过压缩、云端存储、通知和取图后落入另一台手机。",
+    "trigger": "来源时间线进入一物飞越应用卡片段。",
+    "effect": "同一张照片在桌面应用卡片之间连续跳跃，相机以主体位置为目标跟随；经过压缩、云端存储、通知和取图后落入另一台手机。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "lemo-desktop-flythrough：7.600000–20.300000秒，1倍速，总时长12.700000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "主角与路线",
+        "value": "film/src/film.js:build与ctx.subj；16×16猫在10.5秒受压，8×8副本从压缩卡继续接力。"
+      },
+      {
+        "name": "跟随镜头",
+        "value": "film/src/camera.js:makeRig、film/src/shots.js:KEYS；film/src/main.js:applyAt以rig.target更新相机、太阳和景深焦平面。"
+      }
+    ],
+    "sourceFiles": [
+      "demos\\cases\\lemo-desktop-flythrough\\film\\src\\film.js",
+      "demos\\cases\\lemo-desktop-flythrough\\film\\src\\shots.js",
+      "demos\\cases\\lemo-desktop-flythrough\\film\\src\\vo.js"
+    ],
+    "locator": "film/src/film.js / film/src/shots.js / film/src/vo.js",
+    "useCases": [
+      "应用原理解说",
+      "产品工作流短片",
+      "数据传递科普"
+    ],
+    "avoid": [
+      "在关键动作和证据上叠加争夺注意的运动"
+    ],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "画面和声音使用同一来源时间映射。"
+    },
+    "prompt": "用来源案例的原作render(t)实现“一物飞越应用卡片”。同一张照片在桌面应用卡片之间连续跳跃，相机以主体位置为目标跟随；经过压缩、云端存储、通知和取图后落入另一台手机。参数：film/src/film.js:build与ctx.subj；16×16猫在10.5秒受压，8×8副本从压缩卡继续接力。；film/src/camera.js:makeRig、film/src/shots.js:KEYS；film/src/main.js:applyAt以rig.target更新相机、太阳和景深焦平面。。复用来源字体、素材和同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/object-flythrough-apps/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-desktop-flythrough"
+      }
+    ],
+    "previewAt": 5.6,
+    "markers": [
+      {
+        "t": 0,
+        "label": "一物飞越应用卡片"
+      }
+    ],
+    "renderer": "gpu",
+    "preview": "previews/patterns/object-flythrough-apps.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-desktop-flythrough",
+      "bundle": "agent/cases/lemo-desktop-flythrough.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 一物飞越应用卡片\n\n## 实现 Prompt\n\n用来源案例的原作render(t)实现“一物飞越应用卡片”。同一张照片在桌面应用卡片之间连续跳跃，相机以主体位置为目标跟随；经过压缩、云端存储、通知和取图后落入另一台手机。参数：film/src/film.js:build与ctx.subj；16×16猫在10.5秒受压，8×8副本从压缩卡继续接力。；film/src/camera.js:makeRig、film/src/shots.js:KEYS；film/src/main.js:applyAt以rig.target更新相机、太阳和景深焦平面。。复用来源字体、素材和同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：lemo-desktop-flythrough：7.600000–20.300000秒，1倍速，总时长12.700000秒。\n\n[打开 Demo](../../demos/patterns/object-flythrough-apps/index.html) · [在库中查看](../../patterns.html#pattern/object-flythrough-apps)\n"
+  },
+  "entrypoint": "demos/patterns/object-flythrough-apps/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/LICENSES.md",
+      "bytes": 951,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/CREDITS",
+      "bytes": 1683,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/VOICE-LICENSE.md",
+      "bytes": 346,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/film.m4a",
+      "bytes": 1953575,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fidelity.md",
+      "bytes": 5786,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/index.html",
+      "bytes": 1721,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/anim.js",
+      "bytes": 2721,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/camera.js",
+      "bytes": 3108,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/captions.js",
+      "bytes": 1738,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/cards.js",
+      "bytes": 4014,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/film.js",
+      "bytes": 43545,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/main.js",
+      "bytes": 4279,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/post.js",
+      "bytes": 6363,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/shots.js",
+      "bytes": 3169,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/vo.js",
+      "bytes": 2991,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/voxel.js",
+      "bytes": 4574,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/world.js",
+      "bytes": 8010,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/IBMPlexMono-Medium.ttf",
+      "bytes": 136704,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/IBMPlexMono-SemiBold.ttf",
+      "bytes": 140216,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/InstrumentSans.ttf",
+      "bytes": 194336,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/NotoSansSC-sub.ttf",
+      "bytes": 80548,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/OFL-IBMPlexMono.txt",
+      "bytes": 4363,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/OFL-InstrumentSans.txt",
+      "bytes": 4403,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/OFL-NotoSansSC.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/fonts.css",
+      "bytes": 378,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/index.html",
+      "bytes": 3574,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/CREDITS",
+      "bytes": 1683,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/FACTS.md",
+      "bytes": 4284,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/README.md",
+      "bytes": 3220,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/compose.py",
+      "bytes": 4921,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/foley.py",
+      "bytes": 8648,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/mix.py",
+      "bytes": 3597,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/vo_timeline.py",
+      "bytes": 2307,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/build.sh",
+      "bytes": 4354,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/music/harmony.json",
+      "bytes": 2450,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/tools/camspeed.mjs",
+      "bytes": 1383,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/tools/chars.txt",
+      "bytes": 497,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/tools/subset.py",
+      "bytes": 922,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/dur.json",
+      "bytes": 211,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/lines.json",
+      "bytes": 1641,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/lines_en.json",
+      "bytes": 1828,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/timeline.json",
+      "bytes": 2933,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/words.json",
+      "bytes": 5301,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+      "bytes": 3606,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 4625,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/patterns/object-flythrough-apps/index.html",
+      "bytes": 852,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/object-flythrough-apps/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos\\cases\\lemo-desktop-flythrough\\film\\src\\film.js",
+      "bytes": 43545,
+      "role": "source"
+    },
+    {
+      "path": "demos\\cases\\lemo-desktop-flythrough\\film\\src\\shots.js",
+      "bytes": 3169,
+      "role": "source"
+    },
+    {
+      "path": "demos\\cases\\lemo-desktop-flythrough\\film\\src\\vo.js",
+      "bytes": 2991,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-desktop-flythrough.json",
+      "bytes": 11965,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/object-flythrough-apps.json",
+      "bytes": 3120,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/object-flythrough-apps.jpg",
+      "bytes": 69739,
+      "role": "preview"
+    }
+  ]
+}

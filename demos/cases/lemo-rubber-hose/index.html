@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>咖啡杯追逐战 · 1930s 橡皮管卡通</title>
+  <style>html,body{margin:0;overflow:hidden}#film{display:block;width:1920px;height:1080px;border:0}</style>
+</head>
+<body>
+  <main id="stage" class="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    await MotionKit.load.prepare({
+  "styles": [
+    "fonts/fonts.css"
+  ],
+  "data": [
+    "film/bg.js",
+    "film/cast.js",
+    "film/chars.js",
+    "film/core/lib.js",
+    "film/events.js",
+    "film/film.js",
+    "film/index.html",
+    "film/main.js",
+    "film/scenes.js",
+    "film/story.js",
+    "film/toon.js",
+    "film/ui.js"
+  ],
+  "audio": [
+    "audio/film.m4a"
+  ]
+});
+    const frame = document.createElement('iframe');
+    frame.id = 'film';
+    frame.title = "Coffee Cup Chase";
+    const loaded = new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+    frame.src = 'film/index.html';
+    document.querySelector('#stage').append(frame);
+    await loaded;
+    const upstream = frame.contentWindow;
+    while (upstream.READY !== true) await new Promise(requestAnimationFrame);
+    MotionKit.mountFilm({
+      film: {
+        duration: 50.0, width: 1920, height: 1080, fps: 24,
+        async renderAt(t) { await upstream.render(Math.round(t * 24) / 24); },
+      },
+      ...{
+  "title": "咖啡杯追逐战 · 1930s 橡皮管卡通",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "background": "#000000",
+  "accent": "#F1EEE6",
+  "step": "frames",
+  "start": {
+    "t": 0,
+    "reduced": 30.0
+  },
+  "audio": {
+    "src": "audio/film.m4a",
+    "mime": "audio/mp4"
+  },
+  "markers": [
+  {
+    "t": 0,
+    "label": "片头卷帘"
+  },
+  {
+    "t": 5,
+    "label": "舞台式厨房"
+  },
+  {
+    "t": 8.333333333333334,
+    "label": "苦味反应"
+  },
+  {
+    "t": 11.666666666666666,
+    "label": "沿台面追逐"
+  },
+  {
+    "t": 16.666666666666668,
+    "label": "盘子阶梯与坠落"
+  },
+  {
+    "t": 23.333333333333332,
+    "label": "水槽救援"
+  },
+  {
+    "t": 30,
+    "label": "安静的转折"
+  },
+  {
+    "t": 36.875,
+    "label": "甜味与群舞"
+  },
+  {
+    "t": 43.333333333333336,
+    "label": "虹膜收束与片尾"
+  }
+]
+}
+    });
+  </script>
+</body>
+</html>

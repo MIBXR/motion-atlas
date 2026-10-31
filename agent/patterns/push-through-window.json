@@ -76,6 +76,9 @@
     "sources": [
       {
         "caseId": "mg-flat-vector"
+      },
+      {
+        "caseId": "lemo-circuit-board"
       }
     ],
     "previewAt": 1.3333333333333335,
@@ -133,6 +136,12 @@
         "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
       }
     ],
+    "parameters": [
+      {
+        "name": "lemo-circuit-board · 水流、交流和直流各有光的运动方式",
+        "value": "film/src/main.js:camStreet在34–34.6秒锁定SK.holeL，z从8.6×1.06对数推到2600；34.6秒换到charger层的LPAD，以2400→20反向退出，35.35秒显出充电器；孔内黑区承担尺度交接。"
+      }
+    ],
     "preview": "previews/patterns/push-through-window.jpg",
     "previewPortrait": null
   },
@@ -140,6 +149,10 @@
     {
       "caseId": "mg-flat-vector",
       "bundle": "agent/cases/mg-flat-vector.json"
+    },
+    {
+      "caseId": "lemo-circuit-board",
+      "bundle": "agent/cases/lemo-circuit-board.json"
     }
   ],
   "documents": {
@@ -147,6 +160,221 @@
   },
   "entrypoint": "demos/patterns/push-through-window/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-circuit-board/LICENSES.md",
+      "bytes": 572,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/audio/CREDITS",
+      "bytes": 1695,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/audio/VOICE.txt",
+      "bytes": 267,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/audio/film.m4a",
+      "bytes": 1882472,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/fidelity.md",
+      "bytes": 5107,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/data/subs_en.json",
+      "bytes": 1145,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/index.html",
+      "bytes": 445,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/charger.js",
+      "bytes": 7870,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/city.js",
+      "bytes": 4943,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/font.js",
+      "bytes": 9546,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/geo.js",
+      "bytes": 3640,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/hanzi.js",
+      "bytes": 9707,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/house.js",
+      "bytes": 6946,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/levels.js",
+      "bytes": 3041,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/loss.js",
+      "bytes": 2035,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/main.js",
+      "bytes": 24894,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/palette.js",
+      "bytes": 1046,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/parts.js",
+      "bytes": 10979,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/post.js",
+      "bytes": 3965,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/render.js",
+      "bytes": 28647,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/src/world.js",
+      "bytes": 28070,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/voice/dur.json",
+      "bytes": 167,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/film/voice/lines.json",
+      "bytes": 1645,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/fonts/NotoSansSC-Medium-sub.ttf",
+      "bytes": 50388,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/fonts/OFL-NotoSansSC.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/fonts/fonts.css",
+      "bytes": 81,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/index.html",
+      "bytes": 2671,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/CREDITS",
+      "bytes": 1695,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/FACTS.md",
+      "bytes": 5801,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/README.md",
+      "bytes": 2876,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/audio.py",
+      "bytes": 13179,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/build.sh",
+      "bytes": 3347,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/events.json",
+      "bytes": 3534,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/tools/sheet.sh",
+      "bytes": 510,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/tools/srt.py",
+      "bytes": 1062,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/tools/subset.py",
+      "bytes": 1362,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/voice/words.json",
+      "bytes": 6477,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/voice_en/dur.json",
+      "bytes": 165,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-circuit-board/source/voice_en/lines.json",
+      "bytes": 2946,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-flat-vector/LICENSES.md",
       "bytes": 789,
@@ -243,13 +471,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-circuit-board.json",
+      "bytes": 11347,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-flat-vector.json",
       "bytes": 21410,
       "role": "entry"
     },
     {
       "path": "entries/patterns/push-through-window.json",
-      "bytes": 4178,
+      "bytes": 4578,
       "role": "entry"
     },
     {

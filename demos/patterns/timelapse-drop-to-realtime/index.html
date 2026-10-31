@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>延时骤降到实时 · Motion Atlas</title>
+</head>
+<body>
+  <main id="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    MotionKit.replay({
+  "title": "延时骤降到实时",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "fps": 24,
+  "segments": [
+    {
+      "caseId": "lemo-tilt-shift",
+      "source": "../../cases/lemo-tilt-shift/index.html",
+      "audio": "../../cases/lemo-tilt-shift/audio/film.m4a",
+      "label": "玩具城早高峰 · 移轴微缩",
+      "from": 19,
+      "to": 30.8
+    }
+  ],
+  "markers": [
+    {
+      "t": 0,
+      "label": "延时骤降到实时"
+    }
+  ],
+  "reduced": 5.5
+});
+  </script>
+</body>
+</html>

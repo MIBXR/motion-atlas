@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>双螺旋并行攀升</title>
+</head>
+<body>
+  <main id="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    MotionKit.replay({
+  "title": "双螺旋并行攀升",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "fps": 24,
+  "segments": [
+    {
+      "caseId": "lemo-data-physical",
+      "source": "../../cases/lemo-data-physical/index.html",
+      "audio": "../../cases/lemo-data-physical/audio/film.m4a",
+      "label": "沿年份堆叠与反超",
+      "from": 10,
+      "to": 25.3
+    }
+  ],
+  "markers": [
+    {
+      "t": 0,
+      "label": "沿年份堆叠与反超"
+    }
+  ],
+  "reduced": 11.875
+});
+  </script>
+</body>
+</html>

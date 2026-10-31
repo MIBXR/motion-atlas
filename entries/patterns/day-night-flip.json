@@ -51,6 +51,9 @@
   "sources": [
     {
       "caseId": "map-pilgrimage"
+    },
+    {
+      "caseId": "lemo-lowpoly-island"
     }
   ],
   "previewAt": 4,
@@ -147,5 +150,11 @@
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
     }
   ],
-  "renderer": "gpu"
+  "renderer": "gpu",
+  "parameters": [
+    {
+      "name": "lemo-lowpoly-island",
+      "value": "film/story.js:SKY、film/main.js:skyAt连续ss插值天空/海水/太阳/环境光；world.js:448的窗灯自发光随night增强，26.25秒起每半拍点亮一窗。"
+    }
+  ]
 }
