@@ -415,12 +415,10 @@
   }
   function layoutColumns() {
     if (!detailColumns) return;
-    const { el, cols, header, actions } = detailColumns;
+    const { el, cols, actions } = detailColumns;
     const sticky = innerWidth > 1159 && !det?.fs;
-    if (sticky) {
-      const top = header.getBoundingClientRect().height + actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
-      el.style.setProperty('--detail-sticky-top', top + 'px');
-    }
+    const top = actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
+    el.style.setProperty('--detail-sticky-top', `calc(var(--header-offset) + ${top}px)`);
     cols[0].classList.toggle('is-sticky', sticky);
     cols[1].classList.toggle('is-sticky', sticky && cols[0].getBoundingClientRect().height > cols[1].getBoundingClientRect().height);
   }
