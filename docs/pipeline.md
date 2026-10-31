@@ -419,4 +419,4 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 
 `MotionAtlasAssets.resolve(url)` 解析图片、字体与 `fetch` 使用的素材地址；MotionKit 提供预加载、缓存、进度与就绪通知。地图瓦片及清单外请求使用其配置地址，发布模式需要访问对应网络来源。
 
-文字快照由条目的 `snapshotPath` 确定，完整保存在发布包内；其中的 HTML、CSS 与其他原文按原字节保存。
+文字快照由条目的 `snapshotPath` 确定，完整保存在源码与本地包内，原始素材与目录结构保持原样。发布副本的 HTML/CSS 改写素材地址并接入现有素材解析器，大素材按同一阈值从固定 GitHub 提交加载；文档中心的素材链接直接指向 GitHub。快照内的 Markdown、许可等原文不改写。
