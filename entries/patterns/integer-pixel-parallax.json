@@ -69,6 +69,9 @@
   "sources": [
     {
       "caseId": "mg-pixel"
+    },
+    {
+      "caseId": "lemo-cel-anime-80s"
     }
   ],
   "previewAt": 3,
@@ -84,6 +87,12 @@
     {
       "t": 4.0666666667,
       "label": "远山续移"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-cel-anime-80s · 绘景、平涂赛璐璐、透过光与录像带显像管四层反差",
+      "value": "film/scenes1.js:crane以同一k分别移动tallFar(3200)、tallNear(3600)：yF=−2120k、yN=−2520k；前景牌yFG=900−3400k。此案例为连续Canvas绘景，多速视差与该巧思相同。"
     }
   ]
 }

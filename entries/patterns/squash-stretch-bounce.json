@@ -96,6 +96,9 @@
     },
     {
       "caseId": "mg-liquid"
+    },
+    {
+      "caseId": "lemo-rubber-hose"
     }
   ],
   "previewAt": 0.5333333333333333,
@@ -191,6 +194,12 @@
     {
       "field": "index.html 内联配置 → markers / reduced",
       "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-rubber-hose · 物件身体、无关节橡皮管四肢和逐拍呼吸",
+      "value": "film/story.js:q以12fps采样；film/scenes.js:shotLeaving按K.crouch / hop / launch / plop将方糖从蹲压(.8高、1.12宽)推入起跳纵伸，杯身在接住方糖后以exp(−7dt)驱动sy+=.14、sx−=.06；shotWide2空中sy=1.25、sx=.85。"
     }
   ]
 }

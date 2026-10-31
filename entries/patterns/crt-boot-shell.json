@@ -73,6 +73,9 @@
   "sources": [
     {
       "caseId": "mg-pixel"
+    },
+    {
+      "caseId": "lemo-ascii-crt"
     }
   ],
   "previewAt": 1,
@@ -96,6 +99,12 @@
     {
       "t": 0.3666666667,
       "label": "开机完成"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-ascii-crt · 墨量决定字符的图像位置，字格大小承担镜头",
+      "value": "film/main.js:T.on0=.35、on1=1.05；film/crt.js:COMP令sx=smoothstep(0,.35,power)、sy=max(.004,smoothstep(.35,1,power))；dot→line→满屏。curv=.045、scan=.3、glow=.55、halo=.22；开机前expo=0。"
     }
   ]
 }

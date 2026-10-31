@@ -97,23 +97,23 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - 蓝图 / 工程制图 · Blueprint（已复刻，[本库案例](../../cases.html#case/lemo-blueprint))
 - 彩色玻璃窗 · Stained Glass（已复刻，[本库案例](../../cases.html#case/lemo-stained-glass))
 - 象形运动图形 · Pictogram Motion（已复刻，[本库案例](../../cases.html#case/lemo-pictogram-motion))
-- ASCII / CRT 终端 · ASCII / CRT Terminal
+- [ASCII / CRT 终端 · ASCII / CRT Terminal](../../cases.html#case/lemo-ascii-crt) · 已复刻
 
 ### 信息与发布 · Information & Keynote
 
 - 数据叙事 · Data Storytelling
 - 等距信息图 · Isometric Infographic
-- 暗色科技发布 · Dark Tech Keynote
-- 活体实机录屏 · Living Screencast
+- [暗色科技发布 · Dark Tech Keynote](../../cases.html#case/lemo-dark-keynote) · 已复刻
+- [活体实机录屏 · Living Screencast](../../cases.html#case/lemo-living-screencast) · 已复刻
 - 科幻全息界面 · Sci-fi Hologram HUD
 - 地铁线路图 · Transit Map
 - 等距绘本 · Isometric Picture Book
-- 电路板 · Circuit Board
+- [电路板 · Circuit Board](../../cases.html#case/lemo-circuit-board) · 已复刻
 
 ### 卡通与动画 · Cartoon & Anime
 
-- 1930s 橡皮管卡通 · 1930s Rubber Hose Cartoon
-- 80 年代赛璐璐动画 · 80s Cel Anime
+- [1930s 橡皮管卡通 · 1930s Rubber Hose Cartoon](../../cases.html#case/lemo-rubber-hose) · 已复刻
+- [80 年代赛璐璐动画 · 80s Cel Anime](../../cases.html#case/lemo-cel-anime-80s) · 已复刻
 - 科幻情景喜剧卡通 · Sci-Fi Sitcom Toon
 - 50s 扁平卡通 · Mid-century Cartoon
 
@@ -151,7 +151,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-二十六个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+三十二个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -190,4 +190,11 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [东窗之龙 · 彩色玻璃窗](../../cases.html#case/lemo-stained-glass)：制作文件见 [source/README.md](../../demos/cases/lemo-stained-glass/source/README.md)。
 - [被落下的伞 · 象形运动图形](../../cases.html#case/lemo-pictogram-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-pictogram-motion/source/README.md)。
 
-二十六个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+- [静海日志 · ASCII / CRT 终端](../../cases.html#case/lemo-ascii-crt)：制作文件见[source/README.md](../../demos/cases/lemo-ascii-crt/source/README.md)。
+- [思考的空间 · 暗色科技发布](../../cases.html#case/lemo-dark-keynote)：制作文件见[source/README.md](../../demos/cases/lemo-dark-keynote/source/README.md)。
+- [Clawd 搬进来 · 活体实机录屏](../../cases.html#case/lemo-living-screencast)：制作文件见[source/README.md](../../demos/cases/lemo-living-screencast/source/README.md)。
+- [七毫秒 · 电路板](../../cases.html#case/lemo-circuit-board)：制作文件见[source/README.md](../../demos/cases/lemo-circuit-board/source/README.md)。
+- [咖啡杯追逐战 · 1930s 橡皮管卡通](../../cases.html#case/lemo-rubber-hose)：制作文件见[source/README.md](../../demos/cases/lemo-rubber-hose/source/README.md)。
+- [城市之光，1987 · 80 年代赛璐璐动画](../../cases.html#case/lemo-cel-anime-80s)：制作文件见[source/README.md](../../demos/cases/lemo-cel-anime-80s/source/README.md)。
+
+三十二个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。

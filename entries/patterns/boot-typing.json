@@ -75,6 +75,9 @@
     },
     {
       "caseId": "mg-hud"
+    },
+    {
+      "caseId": "lemo-ascii-crt"
     }
   ],
   "parameters": [
@@ -102,6 +105,10 @@
       "name": "声音",
       "value": "原样复用案例 film-audio.ogg；其中逐字音为 48kHz、三段 38ms 采样按实际揭字轮替",
       "source": "demos/cases/archive-os/audio/film-audio.ogg；demos/cases/archive-os/source/rhinelabui/src/typing-rhythm.ts:5-29；demos/cases/archive-os/source/rhinelabui/src/audio.ts:36-55,238-241"
+    },
+    {
+      "name": "lemo-ascii-crt · 墨量决定字符的图像位置，字格大小承担镜头",
+      "value": "film/main.js:BOOT按.012秒/字，CMD按.038秒/字；MSG_T以[0,.14,.3,.62,.74,.86,1.02,1.12,1.24,1.36,1.52,1.62,1.74,1.86,1.98,2.3]×.82实现人工停顿与连击；msgBlinks=[19.8,20.4,21]，每次亮.3秒、余辉TAU=.12。"
     }
   ],
   "videoPrompt": "制作 21.92 秒、25fps 帧表驱动的 RHINE LAB 开场。1.8 秒逐字出现 ACCESS PERMISSION REQUIRED，4.16 秒起沿一条共享轮廓描绘标志并移动，6.28 秒起确认 JOYCE MOORE 身份，9.68 秒起请求、11.92 秒起处理，14.48 秒扫描、17.76 秒欢迎，21.56 秒开始缩小失焦并于 21.92 秒结束。字形、材质色彩、轮廓轨迹与声音均使用当前 archive-os 文件。",

@@ -71,6 +71,12 @@
       },
       {
         "caseId": "mg-liquid"
+      },
+      {
+        "caseId": "lemo-dark-keynote"
+      },
+      {
+        "caseId": "lemo-cel-anime-80s"
       }
     ],
     "previewAt": 0.65,
@@ -100,6 +106,16 @@
         "label": "机制画面 3"
       }
     ],
+    "parameters": [
+      {
+        "name": "lemo-dark-keynote · 生成界面与错相配乐共用音符表，拥挤、冻结和归格形成节奏，暗色产品靠扫光与一个品牌色被看见。",
+        "value": "film/film.js:sceneProduct的sweepP在20–21.3秒推进；film/engine.js:lightReveal以斜向亮度遮罩和glint显出产品：base=.07、soft=700、band=360、glint=.2。"
+      },
+      {
+        "name": "lemo-cel-anime-80s · 绘景、平涂赛璐璐、透过光与录像带显像管四层反差",
+        "value": "film/scenes1.js:titleCard / title?T.title=bar(5)=10.344828??lt=.15?1.2?sx??300?2300?240px?????????lt=1.1?1.6?????flare????12fps???"
+      }
+    ],
     "preview": "previews/patterns/specular-sweep-glint.jpg",
     "previewPortrait": null
   },
@@ -111,6 +127,14 @@
     {
       "caseId": "mg-liquid",
       "bundle": "agent/cases/mg-liquid.json"
+    },
+    {
+      "caseId": "lemo-dark-keynote",
+      "bundle": "agent/cases/lemo-dark-keynote.json"
+    },
+    {
+      "caseId": "lemo-cel-anime-80s",
+      "bundle": "agent/cases/lemo-cel-anime-80s.json"
     }
   ],
   "documents": {
@@ -118,6 +142,466 @@
   },
   "entrypoint": "demos/patterns/specular-sweep-glint/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/LICENSES.md",
+      "bytes": 723,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/CREDITS",
+      "bytes": 1105,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/film.m4a",
+      "bytes": 1936216,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fidelity.md",
+      "bytes": 7994,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/bg.js",
+      "bytes": 16675,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/cel.js",
+      "bytes": 5809,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/fx.js",
+      "bytes": 6031,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/hands.js",
+      "bytes": 2567,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/head80.js",
+      "bytes": 24208,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/hud.js",
+      "bytes": 1692,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/index.html",
+      "bytes": 378,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/main.js",
+      "bytes": 4608,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/pal.js",
+      "bytes": 3127,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/post.js",
+      "bytes": 10466,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/rider.js",
+      "bytes": 11736,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes1.js",
+      "bytes": 14050,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes2.js",
+      "bytes": 19054,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes3.js",
+      "bytes": 27081,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes4.js",
+      "bytes": 17710,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/shots.js",
+      "bytes": 7603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/story.js",
+      "bytes": 3127,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/voices/dur.json",
+      "bytes": 113,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-Bold.ttf",
+      "bytes": 111772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-Medium.ttf",
+      "bytes": 105560,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-SemiBold.ttf",
+      "bytes": 109772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/DelaGothicOne-Regular.ttf",
+      "bytes": 2508848,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-BlackItalic.ttf",
+      "bytes": 185464,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-ExtraBoldItalic.ttf",
+      "bytes": 188372,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-SemiBoldItalic.ttf",
+      "bytes": 175508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-Barlow.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-DelaGothicOne.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-Kanit.txt",
+      "bytes": 4383,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/fonts.css",
+      "bytes": 998,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/index.html",
+      "bytes": 2603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/CREDITS",
+      "bytes": 1105,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/README.md",
+      "bytes": 3929,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/events.json",
+      "bytes": 1277,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/lines.json",
+      "bytes": 751,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/mix.py",
+      "bytes": 10535,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/music/score.json",
+      "bytes": 562,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/music/score.py",
+      "bytes": 36959,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/test.js",
+      "bytes": 2350,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/mux.sh",
+      "bytes": 969,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/sheet.py",
+      "bytes": 785,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/srt.py",
+      "bytes": 1088,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/still.mjs",
+      "bytes": 2013,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/LICENSES.md",
+      "bytes": 841,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/audio/CREDITS",
+      "bytes": 922,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/audio/film.m4a",
+      "bytes": 1343311,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fidelity.md",
+      "bytes": 4765,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/engine.js",
+      "bytes": 32318,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/film.js",
+      "bytes": 40052,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/index.html",
+      "bytes": 491,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/lines.json",
+      "bytes": 501,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/main.js",
+      "bytes": 782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/timeline.js",
+      "bytes": 3446,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/voices/dur.json",
+      "bytes": 85,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/film/world.js",
+      "bytes": 12839,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fonts/Inter.ttf",
+      "bytes": 876576,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fonts/InterTight-var.woff2",
+      "bytes": 234224,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fonts/JetBrainsMono-var.ttf",
+      "bytes": 187208,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fonts/OFL-inter.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fonts/OFL-intertight.txt",
+      "bytes": 4383,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fonts/OFL-jetbrainsmono.txt",
+      "bytes": 4399,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/fonts/fonts.css",
+      "bytes": 347,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/index.html",
+      "bytes": 2228,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/CREDITS",
+      "bytes": 922,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/README.md",
+      "bytes": 3930,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/build.sh",
+      "bytes": 1763,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/events.json",
+      "bytes": 44748,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/frames.js",
+      "bytes": 2313,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/mix.py",
+      "bytes": 12116,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/music/CREDITS_music.txt",
+      "bytes": 537,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/music/check.py",
+      "bytes": 4767,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/music/score.json",
+      "bytes": 12796,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/music/score.py",
+      "bytes": 17837,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/timeline.json",
+      "bytes": 17240,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/tools/cuecheck.py",
+      "bytes": 1923,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/tools/dump_timeline.mjs",
+      "bytes": 646,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/tools/export.mjs",
+      "bytes": 837,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/tools/final_asr.py",
+      "bytes": 1848,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-dark-keynote/source/voices/words.json",
+      "bytes": 511,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-liquid/LICENSES.md",
       "bytes": 812,
@@ -459,6 +943,16 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-cel-anime-80s.json",
+      "bytes": 10947,
+      "role": "entry"
+    },
+    {
+      "path": "entries/cases/lemo-dark-keynote.json",
+      "bytes": 10117,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-liquid.json",
       "bytes": 16474,
       "role": "entry"
@@ -470,7 +964,7 @@
     },
     {
       "path": "entries/patterns/specular-sweep-glint.json",
-      "bytes": 4557,
+      "bytes": 5325,
       "role": "entry"
     },
     {

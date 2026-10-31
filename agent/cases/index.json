@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 45,
+  "count": 51,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -1379,6 +1379,180 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-pictogram-motion.json"
+    },
+    {
+      "id": "lemo-ascii-crt",
+      "title": "静海日志 · ASCII / CRT 终端",
+      "summary": "月球中继机沉默四十年后收到地球来信，把“I AM STILL HERE.”拆成字符地出图，推入一个由日志构成的字母，最后拉远到空无一人的月球房间并关机。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "ASCII / CRT 终端",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "开发工具短片",
+        "科幻叙事",
+        "技术品牌片头"
+      ],
+      "avoid": [
+        "依靠自由像素或矢量面板叙事的画面"
+      ],
+      "patternIds": [
+        "text-sorts-into-image",
+        "font-size-zoom",
+        "crt-line-dot-shutdown",
+        "crt-boot-shell",
+        "boot-typing"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-ascii-crt.json"
+    },
+    {
+      "id": "lemo-dark-keynote",
+      "title": "思考的空间 · 暗色科技发布",
+      "summary": "被窗口、文件和通知埋住的光标按下一次，264个界面元素沿三股光流归格；光带显出Tidy产品窗口和0.8秒指标，最后一切收回到开场的光标。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "暗色科技发布",
+        "信息与发布",
+        "代码影片"
+      ],
+      "useCases": [
+        "软件发布片",
+        "SaaS演示",
+        "发布会指标段"
+      ],
+      "avoid": [
+        "需要真实应用操作流程的教程"
+      ],
+      "patternIds": [
+        "clutter-snap-grid",
+        "freeze-digital-silence",
+        "specular-sweep-glint"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-dark-keynote.json"
+    },
+    {
+      "id": "lemo-living-screencast",
+      "title": "Clawd 搬进来 · 活体实机录屏",
+      "summary": "Clawd从终端字符标志中爬出并搬入Claude应用，沿真实DOM元素上边缘跑跳，演示输入、Plan、diff审阅、预览和并行会话，最后逐词跳出标语。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "活体实机录屏",
+        "信息与发布",
+        "代码影片"
+      ],
+      "useCases": [
+        "产品功能教程",
+        "软件上手引导",
+        "吉祥物产品片"
+      ],
+      "avoid": [
+        "只用截图替代可变UI状态的画面"
+      ],
+      "patternIds": [
+        "mascot-on-ui-edges",
+        "screencast-camera"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-living-screencast.json"
+    },
+    {
+      "id": "lemo-circuit-board",
+      "title": "七毫秒 · 电路板",
+      "summary": "电流从四川水坝沿铜走线奔向江苏，在换流站由交流变成直流，经过降压与插座进入手机充电器，再一口气拉远到包含各级模块的整张电路板。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "电路板",
+        "信息与发布",
+        "代码影片"
+      ],
+      "useCases": [
+        "能源科普",
+        "供应链解释",
+        "电子设备原理短片"
+      ],
+      "avoid": [
+        "需要透视三维器件城市的画面"
+      ],
+      "patternIds": [
+        "pulse-path-current",
+        "push-through-window",
+        "nested-boards-pullout"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-circuit-board.json"
+    },
+    {
+      "id": "lemo-rubber-hose",
+      "title": "咖啡杯追逐战 · 1930s 橡皮管卡通",
+      "summary": "苦咖啡杯追赶逃跑的方糖，跨过烤面包机和盘子阶梯，在水槽漩涡边伸长手臂救回方糖；善意让方糖自己跳进杯中，全厨房随爵士乐起舞。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "1930s 橡皮管卡通",
+        "卡通与动画",
+        "代码影片"
+      ],
+      "useCases": [
+        "复古餐饮广告",
+        "卡通品牌片",
+        "音乐动作短片"
+      ],
+      "avoid": [
+        "写实关节或现代渐变角色"
+      ],
+      "patternIds": [
+        "title-shade-rollup",
+        "squash-stretch-bounce"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-rubber-hose.json"
+    },
+    {
+      "id": "lemo-cel-anime-80s",
+      "title": "城市之光，1987 · 80 年代赛璐璐动画",
+      "summary": "快递少女穿过雨夜霓虹都市，在吊桥升起前飞跃缺口，把磁带送到火箭驾驶员手中；磁带按下播放，城市在黎明中放亮。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "80 年代赛璐璐动画",
+        "卡通与动画",
+        "代码影片"
+      ],
+      "useCases": [
+        "音乐短片",
+        "游戏预告",
+        "复古动画片头"
+      ],
+      "avoid": [
+        "依赖柔和渐变塑形的现代角色"
+      ],
+      "patternIds": [
+        "integer-pixel-parallax",
+        "stepped-hand-placement",
+        "specular-sweep-glint"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-cel-anime-80s.json"
     }
   ]
 }

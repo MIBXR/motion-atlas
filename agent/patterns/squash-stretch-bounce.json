@@ -100,6 +100,9 @@
       },
       {
         "caseId": "mg-liquid"
+      },
+      {
+        "caseId": "lemo-rubber-hose"
       }
     ],
     "previewAt": 0.5333333333333333,
@@ -197,6 +200,12 @@
         "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
       }
     ],
+    "parameters": [
+      {
+        "name": "lemo-rubber-hose · 物件身体、无关节橡皮管四肢和逐拍呼吸",
+        "value": "film/story.js:q以12fps采样；film/scenes.js:shotLeaving按K.crouch / hop / launch / plop将方糖从蹲压(.8高、1.12宽)推入起跳纵伸，杯身在接住方糖后以exp(−7dt)驱动sy+=.14、sx−=.06；shotWide2空中sy=1.25、sx=.85。"
+      }
+    ],
     "preview": "previews/patterns/squash-stretch-bounce.jpg",
     "previewPortrait": null
   },
@@ -212,6 +221,10 @@
     {
       "caseId": "mg-liquid",
       "bundle": "agent/cases/mg-liquid.json"
+    },
+    {
+      "caseId": "lemo-rubber-hose",
+      "bundle": "agent/cases/lemo-rubber-hose.json"
     }
   ],
   "documents": {
@@ -219,6 +232,221 @@
   },
   "entrypoint": "demos/patterns/squash-stretch-bounce/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-rubber-hose/LICENSES.md",
+      "bytes": 975,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/CREDITS",
+      "bytes": 1112,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/audio/film.m4a",
+      "bytes": 1653708,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fidelity.md",
+      "bytes": 4769,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/bg.js",
+      "bytes": 9799,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/cast.js",
+      "bytes": 10497,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/chars.js",
+      "bytes": 26670,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/events.js",
+      "bytes": 2985,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/film.js",
+      "bytes": 3684,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/index.html",
+      "bytes": 463,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/main.js",
+      "bytes": 2914,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/scenes.js",
+      "bytes": 50967,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/story.js",
+      "bytes": 6301,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/toon.js",
+      "bytes": 9294,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/film/ui.js",
+      "bytes": 3381,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/IMFeENsc28P.ttf",
+      "bytes": 183932,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/Limelight-Regular.ttf",
+      "bytes": 132292,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/OFL-imfellenglishsc.txt",
+      "bytes": 4359,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/OFL-limelight.txt",
+      "bytes": 4399,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/OFL-shrikhand.txt",
+      "bytes": 4370,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/Shrikhand-Regular.ttf",
+      "bytes": 220804,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/fonts/fonts.css",
+      "bytes": 372,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/index.html",
+      "bytes": 2370,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/CREDITS",
+      "bytes": 1112,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/README.md",
+      "bytes": 3933,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/build.sh",
+      "bytes": 1939,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/events.json",
+      "bytes": 3729,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/lines.json",
+      "bytes": 750,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/mix.py",
+      "bytes": 13192,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/music/score.json",
+      "bytes": 3192,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/music/score.py",
+      "bytes": 26331,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/sheet.js",
+      "bytes": 12866,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/tools/final_asr.py",
+      "bytes": 1426,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/tools/still.mjs",
+      "bytes": 2238,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/tools/subs.mjs",
+      "bytes": 691,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/voices/dur.json",
+      "bytes": 100,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-rubber-hose/source/voices/words.json",
+      "bytes": 908,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-cel-boil/LICENSES.md",
       "bytes": 1181,
@@ -650,6 +878,11 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-rubber-hose.json",
+      "bytes": 10368,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-cel-boil.json",
       "bytes": 24898,
       "role": "entry"
@@ -666,7 +899,7 @@
     },
     {
       "path": "entries/patterns/squash-stretch-bounce.json",
-      "bytes": 7454,
+      "bytes": 7894,
       "role": "entry"
     },
     {

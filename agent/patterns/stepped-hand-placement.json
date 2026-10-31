@@ -60,6 +60,9 @@
     "sources": [
       {
         "caseId": "mg-collage"
+      },
+      {
+        "caseId": "lemo-cel-anime-80s"
       }
     ],
     "previewAt": 7.2,
@@ -129,6 +132,12 @@
       ],
       "type": "Anton 400；Bebas Neue 400；Alimama ShuHeiTi 700；Noto Serif SC 900；Noto Sans SC 700；IBM Plex Mono 500。"
     },
+    "parameters": [
+      {
+        "name": "lemo-cel-anime-80s · 绘景、平涂赛璐璐、透过光与录像带显像管四层反差",
+        "value": "film/story.js:q12=floor(t×12+1e−6)/12，q8=floor(t×8+1e−6)/8；film/scenes1.js:eyes按q8在7.75秒后分三张睁眼，人物与衣发按12fps取样。镜头、扫光不抽帧。"
+      }
+    ],
     "preview": "previews/patterns/stepped-hand-placement.jpg",
     "previewPortrait": null
   },
@@ -136,6 +145,10 @@
     {
       "caseId": "mg-collage",
       "bundle": "agent/cases/mg-collage.json"
+    },
+    {
+      "caseId": "lemo-cel-anime-80s",
+      "bundle": "agent/cases/lemo-cel-anime-80s.json"
     }
   ],
   "documents": {
@@ -143,6 +156,256 @@
   },
   "entrypoint": "demos/patterns/stepped-hand-placement/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/LICENSES.md",
+      "bytes": 723,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/CREDITS",
+      "bytes": 1105,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/film.m4a",
+      "bytes": 1936216,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fidelity.md",
+      "bytes": 7994,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/bg.js",
+      "bytes": 16675,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/cel.js",
+      "bytes": 5809,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/fx.js",
+      "bytes": 6031,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/hands.js",
+      "bytes": 2567,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/head80.js",
+      "bytes": 24208,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/hud.js",
+      "bytes": 1692,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/index.html",
+      "bytes": 378,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/main.js",
+      "bytes": 4608,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/pal.js",
+      "bytes": 3127,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/post.js",
+      "bytes": 10466,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/rider.js",
+      "bytes": 11736,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes1.js",
+      "bytes": 14050,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes2.js",
+      "bytes": 19054,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes3.js",
+      "bytes": 27081,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes4.js",
+      "bytes": 17710,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/shots.js",
+      "bytes": 7603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/story.js",
+      "bytes": 3127,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/voices/dur.json",
+      "bytes": 113,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-Bold.ttf",
+      "bytes": 111772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-Medium.ttf",
+      "bytes": 105560,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-SemiBold.ttf",
+      "bytes": 109772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/DelaGothicOne-Regular.ttf",
+      "bytes": 2508848,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-BlackItalic.ttf",
+      "bytes": 185464,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-ExtraBoldItalic.ttf",
+      "bytes": 188372,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-SemiBoldItalic.ttf",
+      "bytes": 175508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-Barlow.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-DelaGothicOne.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-Kanit.txt",
+      "bytes": 4383,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/fonts.css",
+      "bytes": 998,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/index.html",
+      "bytes": 2603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/CREDITS",
+      "bytes": 1105,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/README.md",
+      "bytes": 3929,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/events.json",
+      "bytes": 1277,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/lines.json",
+      "bytes": 751,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/mix.py",
+      "bytes": 10535,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/music/score.json",
+      "bytes": 562,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/music/score.py",
+      "bytes": 36959,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/test.js",
+      "bytes": 2350,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/mux.sh",
+      "bytes": 969,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/sheet.py",
+      "bytes": 785,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/srt.py",
+      "bytes": 1088,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/still.mjs",
+      "bytes": 2013,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-collage/LICENSES.md",
       "bytes": 1208,
@@ -444,13 +707,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-cel-anime-80s.json",
+      "bytes": 10947,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-collage.json",
       "bytes": 19642,
       "role": "entry"
     },
     {
       "path": "entries/patterns/stepped-hand-placement.json",
-      "bytes": 3706,
+      "bytes": 4102,
       "role": "entry"
     },
     {

@@ -56,6 +56,9 @@
   "sources": [
     {
       "caseId": "mg-collage"
+    },
+    {
+      "caseId": "lemo-cel-anime-80s"
     }
   ],
   "previewAt": 7.2,
@@ -124,5 +127,11 @@
       "#E0A355"
     ],
     "type": "Anton 400；Bebas Neue 400；Alimama ShuHeiTi 700；Noto Serif SC 900；Noto Sans SC 700；IBM Plex Mono 500。"
-  }
+  },
+  "parameters": [
+    {
+      "name": "lemo-cel-anime-80s · 绘景、平涂赛璐璐、透过光与录像带显像管四层反差",
+      "value": "film/story.js:q12=floor(t×12+1e−6)/12，q8=floor(t×8+1e−6)/8；film/scenes1.js:eyes按q8在7.75秒后分三张睁眼，人物与衣发按12fps取样。镜头、扫光不抽帧。"
+    }
+  ]
 }

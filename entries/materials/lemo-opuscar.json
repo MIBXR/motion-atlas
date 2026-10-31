@@ -168,6 +168,36 @@
       "kind": "case",
       "id": "lemo-pictogram-motion",
       "note": "被落下的伞 · 象形运动图形"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-ascii-crt",
+      "note": "静海日志 · ASCII / CRT 终端；本体保存运行代码、字体、原片音轨和制作资料。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-dark-keynote",
+      "note": "思考的空间 · 暗色科技发布；本体保存运行代码、字体、原片音轨和制作资料。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-living-screencast",
+      "note": "Clawd 搬进来 · 活体实机录屏；本体保存运行代码、字体、原片音轨和制作资料。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-circuit-board",
+      "note": "七毫秒 · 电路板；本体保存运行代码、字体、原片音轨和制作资料。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-rubber-hose",
+      "note": "咖啡杯追逐战 · 1930s 橡皮管卡通；本体保存运行代码、字体、原片音轨和制作资料。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-cel-anime-80s",
+      "note": "城市之光，1987 · 80 年代赛璐璐动画；本体保存运行代码、字体、原片音轨和制作资料。"
     }
   ],
   "sources": [

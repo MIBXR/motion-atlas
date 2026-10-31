@@ -72,6 +72,9 @@
   "sources": [
     {
       "caseId": "mg-flat-vector"
+    },
+    {
+      "caseId": "lemo-circuit-board"
     }
   ],
   "previewAt": 1.3333333333333335,
@@ -127,6 +130,12 @@
     {
       "field": "index.html 内联配置 → markers / reduced",
       "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-circuit-board · 水流、交流和直流各有光的运动方式",
+      "value": "film/src/main.js:camStreet在34–34.6秒锁定SK.holeL，z从8.6×1.06对数推到2600；34.6秒换到charger层的LPAD，以2400→20反向退出，35.35秒显出充电器；孔内黑区承担尺度交接。"
     }
   ]
 }

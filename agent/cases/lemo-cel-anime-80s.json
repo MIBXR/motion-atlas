@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "lemo-cel-anime-80s",
+  "entry": {
+    "id": "lemo-cel-anime-80s",
+    "order": 51,
+    "title": "城市之光，1987 · 80 年代赛璐璐动画",
+    "subtitle": "City Lights, 1987",
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "lemo-opuscar",
+      "80 年代赛璐璐动画",
+      "卡通与动画",
+      "代码影片"
+    ],
+    "summary": "快递少女穿过雨夜霓虹都市，在吊桥升起前飞跃缺口，把磁带送到火箭驾驶员手中；磁带按下播放，城市在黎明中放亮。",
+    "focus": "绘景、平涂赛璐璐、透过光与录像带显像管四层反差；抽帧人物置于连续镜头、霓虹和雨线之中。",
+    "accent": "#ff579a",
+    "background": "#080b20",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 17.7,
+    "rhythm": {
+      "duration": 59,
+      "bpm": 116,
+      "beats": [
+        {
+          "t": 0,
+          "label": "多层摇降",
+          "note": "原片0.000000–4.137931秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 4.137931034482759,
+          "label": "手中的磁带",
+          "note": "原片4.137931–7.240000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 7.24,
+          "label": "眼神决意",
+          "note": "原片7.240000–10.344828秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 10.344827586206897,
+          "label": "背光片名",
+          "note": "原片10.344828–14.482759秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 14.482758620689655,
+          "label": "四层追拍与速度",
+          "note": "原片14.482759–26.896552秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 26.896551724137932,
+          "label": "吊桥障碍",
+          "note": "原片26.896552–33.103448秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 33.10344827586207,
+          "label": "飞跃与落地",
+          "note": "原片33.103448–39.310345秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 39.310344827586206,
+          "label": "黎明再现",
+          "note": "原片39.310345–41.379310秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 41.37931034482759,
+          "label": "递带与播放",
+          "note": "原片41.379310–45.517241秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        },
+        {
+          "t": 45.51724137931034,
+          "label": "火箭升空与落版",
+          "note": "原片45.517241–59.000000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+        }
+      ]
+    },
+    "energySegments": [
+      {
+        "t0": 0,
+        "t1": 4.137931034482759,
+        "to": 0.35,
+        "label": "多层摇降",
+        "from": 0.15
+      },
+      {
+        "t0": 4.137931034482759,
+        "t1": 7.24,
+        "to": 0.5,
+        "label": "手中的磁带",
+        "from": 0.35
+      },
+      {
+        "t0": 7.24,
+        "t1": 10.344827586206897,
+        "to": 0.3,
+        "label": "眼神决意",
+        "from": 0.5
+      },
+      {
+        "t0": 10.344827586206897,
+        "t1": 14.482758620689655,
+        "to": 0.8,
+        "label": "背光片名",
+        "from": 0.3
+      },
+      {
+        "t0": 14.482758620689655,
+        "t1": 26.896551724137932,
+        "to": 0.65,
+        "label": "四层追拍与速度",
+        "from": 0.8
+      },
+      {
+        "t0": 26.896551724137932,
+        "t1": 33.10344827586207,
+        "to": 0.45,
+        "label": "吊桥障碍",
+        "from": 0.65
+      },
+      {
+        "t0": 33.10344827586207,
+        "t1": 39.310344827586206,
+        "to": 0.6,
+        "label": "飞跃与落地",
+        "from": 0.45
+      },
+      {
+        "t0": 39.310344827586206,
+        "t1": 41.37931034482759,
+        "to": 0.5,
+        "label": "黎明再现",
+        "from": 0.6
+      },
+      {
+        "t0": 41.37931034482759,
+        "t1": 45.51724137931034,
+        "to": 0.25,
+        "label": "递带与播放",
+        "from": 0.5
+      },
+      {
+        "t0": 45.51724137931034,
+        "t1": 59,
+        "to": 0.1,
+        "label": "火箭升空与落版",
+        "from": 0.25
+      }
+    ],
+    "energyNote": "段落取DEMO.md Shots与film内时间表；0–1为画面密度、动作和声音强度的相对编辑标注。",
+    "observations": [
+      "高绘景从天空、屋顶、霓虹下降到街道，远近画板和前景竖牌有不同位移。",
+      "人物q12按两帧一画，眼睛和手势q8按三帧一画；相机、光带与雨保留连续时间。",
+      "镀铬斜体片名在12fps闪亮，斜光条扫过并点出旋转星芒。",
+      "角色轮廓先印黑到发光层，避免霓虹辉光穿透人物。"
+    ],
+    "composition": {
+      "color": "夜景靛蓝、紫、霓虹洋红与青；黎明改为玫瑰、桃色和浅金；珊瑚围巾贯穿。",
+      "typography": "Kanit粗斜体镀铬片名、Dela Gothic One日文、Barlow Semi Condensed字幕。",
+      "layout": "1920×1080全画幅；长绘景与近景人物对照，底部留字幕带。",
+      "imagery": "缓存彩色与自发光画板，硬阴影平涂人物，WebGL录像带与显像管后期。",
+      "motion": "多速视差、12/8fps作画、连续扫光与雨、冲击帧和慢摇静帧。",
+      "sound": "原片116BPM城市流行配乐、模拟合成器、引擎与磁带拟音、双声线旁白。",
+      "rhythm": "按小节切镜，飞跃前一拍静音，机舱播放磁带后升半音进入尾段。",
+      "coherence": "磁带既是递送目标也改变配乐音质；夜骑与黎明骑行共享构图。"
+    },
+    "layers": [
+      {
+        "name": "绘景",
+        "role": "彩色画板与发光画板成对移动，湿地反射由画板生成。"
+      },
+      {
+        "name": "赛璐璐",
+        "role": "硬阴影、高光和有色描边，按两帧或三帧一画。"
+      },
+      {
+        "name": "光与天气",
+        "role": "背光字、霓虹光带、星芒、雨和速度线。"
+      },
+      {
+        "name": "录像带",
+        "role": "色度渗透、扫描线、栅格、磷光、跟踪扰动与片内字幕。"
+      }
+    ],
+    "tokens": {
+      "palette": [
+        "#080b20",
+        "#3c235b",
+        "#ff579a",
+        "#6ae6ff",
+        "#ffb36a",
+        "#fff0a0"
+      ],
+      "type": "Kanit Italic 600/800/900、Dela Gothic One 400、Barlow Semi Condensed 500/600/700。",
+      "motion": [
+        {
+          "name": "多层摇降",
+          "value": "film/scenes1.js:crane：yF=−k×(3200−1080)，yN=−k×(3600−1080)，yFG=−3400k+900。"
+        },
+        {
+          "name": "抽帧作画",
+          "value": "film/story.js:q12 / q8：floor(t×12+1e−6)/12、floor(t×8+1e−6)/8；eyes三张睁眼画。"
+        },
+        {
+          "name": "扫光星芒",
+          "value": "film/scenes1.js:titleCard：倾斜光带与flare；film/post.js保持原作自发光合成。"
+        }
+      ]
+    },
+    "useCases": [
+      "音乐短片",
+      "游戏预告",
+      "复古动画片头"
+    ],
+    "avoid": [
+      "依赖柔和渐变塑形的现代角色"
+    ],
+    "constraints": [
+      "人物和背景发光板分层，角色遮挡发光层。",
+      "抽帧只用于角色表演，镜头与扫光连续。",
+      "保持字体字重和日文字形覆盖。"
+    ],
+    "migration": [
+      {
+        "field": "film/scenes1.js:crane",
+        "how": "修改该处的多层摇降参数。"
+      },
+      {
+        "field": "film/story.js:q12 / q8",
+        "how": "修改该处的抽帧作画参数。"
+      },
+      {
+        "field": "film/scenes1.js:titleCard",
+        "how": "修改该处的扫光星芒参数。"
+      }
+    ],
+    "prompt": "制作一支80 年代赛璐璐动画时间线影片。快递少女穿过雨夜霓虹都市，在吊桥升起前飞跃缺口，把磁带送到火箭驾驶员手中；磁带按下播放，城市在黎明中放亮。绘景、平涂赛璐璐、透过光与录像带显像管四层反差；抽帧人物置于连续镜头、霓虹和雨线之中。画面构成：夜景靛蓝、紫、霓虹洋红与青；黎明改为玫瑰、桃色和浅金；珊瑚围巾贯穿。；Kanit粗斜体镀铬片名、Dela Gothic One日文、Barlow Semi Condensed字幕。；1920×1080全画幅；长绘景与近景人物对照，底部留字幕带。；缓存彩色与自发光画板，硬阴影平涂人物，WebGL录像带与显像管后期。；多速视差、12/8fps作画、连续扫光与雨、冲击帧和慢摇静帧。；原片116BPM城市流行配乐、模拟合成器、引擎与磁带拟音、双声线旁白。；按小节切镜，飞跃前一拍静音，机舱播放磁带后升半音进入尾段。；磁带既是递送目标也改变配乐音质；夜骑与黎明骑行共享构图。。实现入口为demos/cases/lemo-cel-anime-80s/film/，MotionKit适配层仅调用并等待原作render(t)，使用原片音轨同步播放。",
+    "demo": "demos/cases/lemo-cel-anime-80s/index.html",
+    "patternIds": [
+      "integer-pixel-parallax",
+      "stepped-hand-placement",
+      "specular-sweep-glint"
+    ],
+    "fidelity": "demos/cases/lemo-cel-anime-80s/fidelity.md",
+    "upstream": {
+      "repository": "lemomo-ai/lemo-opuscar",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s",
+      "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+      "path": "styles/cel-anime-80s/",
+      "version": "0.1.0"
+    },
+    "license": {
+      "name": "MIT · CC BY 4.0",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+      "notes": "代码与文档MIT；成片及静帧CC BY 4.0，署名LemoLab；第三方资源按CREDITS许可。"
+    },
+    "sources": [
+      {
+        "label": "风格与示范制作说明",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s"
+      },
+      {
+        "label": "Release公开成片",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/cel-anime-80s.mp4"
+      },
+      {
+        "label": "第三方资源与署名",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s/demo/CREDITS"
+      }
+    ],
+    "attribution": [
+      {
+        "scope": "作品",
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s)；代码MIT、成片CC BY 4.0，接入与对照见[fidelity.md](fidelity.md)。"
+      },
+      {
+        "scope": "声音与第三方资源",
+        "notes": "原片116BPM城市流行配乐、模拟合成器、引擎与磁带拟音、双声线旁白。 原始署名见[audio/CREDITS](audio/CREDITS)，完整许可见[LICENSES.md](LICENSES.md)。"
+      },
+      {
+        "scope": "字体",
+        "notes": "Kanit Italic 600/800/900、Dela Gothic One 400、Barlow Semi Condensed 500/600/700。 OFL原文位于fonts/，取得与重建方法见[source/README.md](source/README.md)。"
+      }
+    ],
+    "renderer": "gpu",
+    "licenses": "demos/cases/lemo-cel-anime-80s/LICENSES.md",
+    "preview": "previews/cases/lemo-cel-anime-80s.jpg",
+    "previewPortrait": null
+  },
+  "documents": {
+    "fidelity": "# 城市之光，1987 · 80 年代赛璐璐动画 · 接入与保真说明\n\n复刻范围为完整代码影片，来源与固定版本见[条目JSON](../../../entries/cases/lemo-cel-anime-80s.json)。\n\n## 相对原作的删改\n\n| 文件 | 删改内容 | 原因 |\n| --- | --- | --- |\n| index.html | 预载运行代码、字体与音轨，同源iframe等待load和READY，按原fps调用并等待render(t)。 | 接入MotionKit舞台、时间线、声音与定位。 |\n| audio/film.m4a | 从Release以-c:a copy流复制AAC音轨。 | 同步正式混音。 |\n| source/ | 保存Demo内非运行制作文件与中文重建说明。 | 保留制作工具和输入。 |\n| stills/ | 风格帧留在来源，本站预览由capture生成。 | 成片绘制不读取上游静帧。 |\n| film/index.html | 字体路径指向../fonts/。 | 接入字体资源位置。 |\n| film/main.js、source/test.js | 移除test动态导入和模型视图分支，test.js保存于source。 | 成片入口按原SHOTS调度。 |\n\n绘制、时间轴、数据和着色器沿用固定提交；文本换行为LF。许可索引见[LICENSES.md](LICENSES.md)。\n\n## 适配层\n\n`index.html`使用`MotionKit.load.prepare`预载；同源iframe等待load和`READY === true`后，以`MotionKit.mountFilm`接入1920×1080横屏、24fps、59.000000秒舞台。`renderAt(t)`执行并等待`upstream.render(Math.round(t*24)/24)`。声音读取`audio/film.m4a`，默认关闭。\n\n`?embed`隐藏控制条，`?render`暂停自动播放与声音，`?t=秒`定位；减少动态时暂停在条目previewAt。镜头标记取DEMO.md Shots与源码时间表。\n\n## 像素差异\n\n人物姿态、画板构图、片名字形与字幕一致。原始PNG保留显像管高频栅格，成片经JPEG95、CRF14、4:2:0和CRF23编码：`film/post.js:73–91`按3px周期绘扫描线，并以`.06`的RGB栅格调制每列，再叠加`.018`信号噪声；`film/main.js:47–55`按原帧号调度后期；`source/tools/mux.sh:8–10`添加luma noise=2，以slow CRF23输出。扫描线、RGB格栅和逐帧噪声经过色度降采样与量化后改变像素对应关系。\n\n编码链测量使12帧从原始0.774201–0.932286升至0.943746–0.977132，其中425、968、1043帧仍低于0.95。测量使用单帧I帧和从该帧起算的颗粒，原片使用连续GOP与颗粒历史。下表低通数字只用于定位高频差异，页面和正式SSIM均使用原始画面。\n\n| 视频帧号 | 原始 | 编码链 | 诊断低通sigma=2 | 对应代码 |\n| --- | --- | --- | --- | --- |\n| 425 | 0.832291 | 0.943746 | 0.978636 | film/scenes1.js / shots.js的侧向四层追拍；post.js:73–91扫描线、RGB栅格。 |\n| 50 | 0.884358 | 0.963657 | 0.988830 | film/scenes1.js:crane的高画板和霓虹；post.js的栅格与噪声。 |\n| 137 | 0.905341 | 0.968277 | 0.990425 | film/scenes1.js:tape的塑料高光与文字；post.js的栅格与噪声。 |\n| 211 | 0.894117 | 0.966073 | 0.988037 | film/scenes1.js:eyes的q8表演；post.js的栅格与噪声。 |\n| 298 | 0.932286 | 0.977132 | 0.992677 | film/scenes1.js:title / titleCard的背光片名；post.js的栅格与噪声。 |\n| 497 | 0.914205 | 0.966983 | 0.990657 | film/scenes2.js的追拍绘景；post.js的栅格与噪声。 |\n| 720 | 0.909435 | 0.974305 | 0.992167 | film/scenes3.js:throttle的8fps手势；post.js的栅格与噪声。 |\n| 869 | 0.844350 | 0.957288 | 0.985667 | film/scenes3.js:jump的和谐静帧；post.js的栅格与噪声。 |\n| 968 | 0.794866 | 0.947480 | 0.977239 | film/shots.js的dawnride绘景和人物；post.js:73–91扫描线、RGB栅格。 |\n| 1043 | 0.857343 | 0.946934 | 0.984098 | film/scenes4.js:deck的磁带面板与字；post.js:73–91扫描线、RGB栅格。 |\n| 1254 | 0.774201 | 0.952331 | 0.974274 | film/scenes4.js:smile的暖色近景；post.js的栅格与噪声。 |\n| 1392 | 0.897906 | 0.959809 | 0.991191 | film/scenes4.js:endcard的落版；post.js的栅格与噪声。 |\n\n| 排除项 | 对照数字 |\n| --- | --- |\n| 参考取帧 | 425、968、1043、1254均从整片起点精确取帧，与参考PNG互比1.000000。 |\n| 重复定位与等待 | 上述4帧在新页面重复绘制，与原截图互比均1.000000；字体全部loaded，所有样本脚本和资源错误为0。 |\n| 绘制历史与接入 | 1254帧从原4-worker末段的1062帧推进，与直接定位互比1.000000；独立film入口与适配入口互比0.999989。 |\n| 时间映射 | 425的前/本/后帧为0.752108/0.832291/0.720193；968为0.775981/0.794866/0.793661；1043为0.584451/0.857343/0.858080；1254为0.757449/0.774201/0.772115。整体帧号对齐，1044的细微高频增益不改变1043的取帧。 |\n| 后端 | 425/968/1043/1254在默认D3D11为0.832291/0.794866/0.857343/0.774201，禁用加速2D为0.838216/0.795108/0.857677/0.774089，SwiftShader为0.832002/0.794464/0.856064/0.773083。 |\n| 高频定位 | sigma=2的SSIM范围为0.974274–0.992677，sigma=4为0.992197–0.997099。 |\n\n## 与原片对照结果\n\n无头Edge使用`--enable-gpu --ignore-gpu-blocklist --font-render-hinting=none --force-color-profile=srgb`，1920×1080、DPR1；等待`__motion.ready`并以原fps对齐后截图。WebGL使用Intel Iris Xe／ANGLE D3D11。参考PNG从Release按相同视频帧号提取。\n\n原始列比较参考PNG与本库PNG；编码链列将本库PNG在独立测量页捕获为JPEG95，再按原作链编解码。测量编码只在过程目录进行，页面直接调用原作render(t)。两幅PNG转yuv444p，读取ffmpeg SSIM All。单帧测量形成I帧，原片为连续GOP；时间颗粒也从测量帧起算。左右拼图为`compare-N.png`与`compare-encoded-N.png`。\n\n`source/tools/mux.sh:8–10`与共享渲染工具：24fps，JPEG95→libx264 medium CRF14 yuv420p→slow CRF23，noise=c0s=2:allf=t。\n\n| Shots段 | 起止（秒） | 中点（秒） | 视频帧号 |\n| --- | --- | --- | --- |\n| 多层摇降 | 0.000000–4.137931 | 2.068966 | 50 |\n| 手中的磁带 | 4.137931–7.240000 | 5.688966 | 137 |\n| 眼神决意 | 7.240000–10.344828 | 8.792414 | 211 |\n| 背光片名 | 10.344828–14.482759 | 12.413793 | 298 |\n| 四层追拍与速度 | 14.482759–26.896552 | 20.689655 | 497 |\n| 吊桥障碍 | 26.896552–33.103448 | 30.000000 | 720 |\n| 飞跃与落地 | 33.103448–39.310345 | 36.206897 | 869 |\n| 黎明再现 | 39.310345–41.379310 | 40.344828 | 968 |\n| 递带与播放 | 41.379310–45.517241 | 43.448276 | 1043 |\n| 火箭升空与落版 | 45.517241–59.000000 | 52.258621 | 1254 |\n\n| 序号 | 视频帧号 | 请求秒 | 实际秒 | 原始SSIM All | 编码链SSIM All | 覆盖 |\n| --- | --- | --- | --- | --- | --- | --- |\n| 1 | 0 | 0.000000 | 0.000000 | 0.989032 | 0.998785 | 开头 |\n| 2 | 425 | 17.700000 | 17.708333 | 0.832291 | 0.943746 | frame_sec |\n| 3 | 50 | 2.068966 | 2.083333 | 0.884358 | 0.963657 | Shots · 多层摇降中点 |\n| 4 | 137 | 5.688966 | 5.708333 | 0.905341 | 0.968277 | Shots · 手中的磁带中点 |\n| 5 | 211 | 8.792414 | 8.791667 | 0.894117 | 0.966073 | Shots · 眼神决意中点 |\n| 6 | 298 | 12.413793 | 12.416667 | 0.932286 | 0.977132 | Shots · 背光片名中点 |\n| 7 | 497 | 20.689655 | 20.708333 | 0.914205 | 0.966983 | Shots · 四层追拍与速度中点 |\n| 8 | 720 | 30.000000 | 30.000000 | 0.909435 | 0.974305 | Shots · 吊桥障碍中点 |\n| 9 | 869 | 36.206897 | 36.208333 | 0.844350 | 0.957288 | Shots · 飞跃与落地中点 |\n| 10 | 968 | 40.344828 | 40.333333 | 0.794866 | 0.947480 | Shots · 黎明再现中点 |\n| 11 | 1043 | 43.448276 | 43.458333 | 0.857343 | 0.946934 | Shots · 递带与播放中点 |\n| 12 | 1254 | 52.258621 | 52.250000 | 0.774201 | 0.952331 | Shots · 火箭升空与落版中点 |\n| 13 | 1392 | 58.000000 | 58.000000 | 0.897906 | 0.959809 | 片尾前1秒 |\n\n13帧：原始最低**0.774201**、最高**0.989032**，1/13达到0.95；编码链最低**0.943746**、最高**0.998785**，10/13达到0.95。\n\n声音：成片与本库音轨解码为48kHz单声道，每10ms取RMS包络，在±500ms内互相关；最佳偏移**0ms**，相关系数**1.000000**。\n",
+    "licenses": "# 城市之光，1987 · 80 年代赛璐璐动画 · 许可索引\n\n| 范围 | 许可与署名 | 原文 |\n| --- | --- | --- |\n| 原作代码与文档 | LemoLab × Claude Opus 5.5；MIT | [film/LICENSE](film/LICENSE) |\n| 原片音轨 | LemoLab；CC BY 4.0，资源署名见[audio/CREDITS](audio/CREDITS) | [audio/CC-BY-4.0.txt](audio/CC-BY-4.0.txt) |\n| 字体 · OFL-Barlow | SIL OFL 1.1 | [fonts/OFL-Barlow.txt](fonts/OFL-Barlow.txt) |\n| 字体 · OFL-DelaGothicOne | SIL OFL 1.1 | [fonts/OFL-DelaGothicOne.txt](fonts/OFL-DelaGothicOne.txt) |\n| 字体 · OFL-Kanit | SIL OFL 1.1 | [fonts/OFL-Kanit.txt](fonts/OFL-Kanit.txt) |\n| Kokoro旁白 | hexgrad/Kokoro-82M；Apache-2.0 | [audio/Apache-2.0.txt](audio/Apache-2.0.txt) |\n",
+    "prompt": "# 城市之光，1987 · 80 年代赛璐璐动画\n\n## 实现 Prompt\n\n制作一支80 年代赛璐璐动画时间线影片。快递少女穿过雨夜霓虹都市，在吊桥升起前飞跃缺口，把磁带送到火箭驾驶员手中；磁带按下播放，城市在黎明中放亮。绘景、平涂赛璐璐、透过光与录像带显像管四层反差；抽帧人物置于连续镜头、霓虹和雨线之中。画面构成：夜景靛蓝、紫、霓虹洋红与青；黎明改为玫瑰、桃色和浅金；珊瑚围巾贯穿。；Kanit粗斜体镀铬片名、Dela Gothic One日文、Barlow Semi Condensed字幕。；1920×1080全画幅；长绘景与近景人物对照，底部留字幕带。；缓存彩色与自发光画板，硬阴影平涂人物，WebGL录像带与显像管后期。；多速视差、12/8fps作画、连续扫光与雨、冲击帧和慢摇静帧。；原片116BPM城市流行配乐、模拟合成器、引擎与磁带拟音、双声线旁白。；按小节切镜，飞跃前一拍静音，机舱播放磁带后升半音进入尾段。；磁带既是递送目标也改变配乐音质；夜骑与黎明骑行共享构图。。实现入口为demos/cases/lemo-cel-anime-80s/film/，MotionKit适配层仅调用并等待原作render(t)，使用原片音轨同步播放。\n\n## 动效 Token\n\n- **多层摇降**：film/scenes1.js:crane：yF=−k×(3200−1080)，yN=−k×(3600−1080)，yFG=−3400k+900。\n- **抽帧作画**：film/story.js:q12 / q8：floor(t×12+1e−6)/12、floor(t×8+1e−6)/8；eyes三张睁眼画。\n- **扫光星芒**：film/scenes1.js:titleCard：倾斜光带与flare；film/post.js保持原作自发光合成。\n\n## 制作约束\n\n- 人物和背景发光板分层，角色遮挡发光层。\n- 抽帧只用于角色表演，镜头与扫光连续。\n- 保持字体字重和日文字形覆盖。\n\n## 迁移\n\n- `film/scenes1.js:crane`：修改该处的多层摇降参数。\n- `film/story.js:q12 / q8`：修改该处的抽帧作画参数。\n- `film/scenes1.js:titleCard`：修改该处的扫光星芒参数。\n\n[打开 Demo](../../demos/cases/lemo-cel-anime-80s/index.html) · [在库中查看](../../cases.html#case/lemo-cel-anime-80s)\n"
+  },
+  "entrypoint": "demos/cases/lemo-cel-anime-80s/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/LICENSES.md",
+      "bytes": 723,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/CREDITS",
+      "bytes": 1105,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/audio/film.m4a",
+      "bytes": 1936216,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fidelity.md",
+      "bytes": 7994,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/bg.js",
+      "bytes": 16675,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/cel.js",
+      "bytes": 5809,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/fx.js",
+      "bytes": 6031,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/hands.js",
+      "bytes": 2567,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/head80.js",
+      "bytes": 24208,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/hud.js",
+      "bytes": 1692,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/index.html",
+      "bytes": 378,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/main.js",
+      "bytes": 4608,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/pal.js",
+      "bytes": 3127,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/post.js",
+      "bytes": 10466,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/rider.js",
+      "bytes": 11736,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes1.js",
+      "bytes": 14050,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes2.js",
+      "bytes": 19054,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes3.js",
+      "bytes": 27081,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/scenes4.js",
+      "bytes": 17710,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/shots.js",
+      "bytes": 7603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/story.js",
+      "bytes": 3127,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/film/voices/dur.json",
+      "bytes": 113,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-Bold.ttf",
+      "bytes": 111772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-Medium.ttf",
+      "bytes": 105560,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/BarlowSemiCondensed-SemiBold.ttf",
+      "bytes": 109772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/DelaGothicOne-Regular.ttf",
+      "bytes": 2508848,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-BlackItalic.ttf",
+      "bytes": 185464,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-ExtraBoldItalic.ttf",
+      "bytes": 188372,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/Kanit-SemiBoldItalic.ttf",
+      "bytes": 175508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-Barlow.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-DelaGothicOne.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/OFL-Kanit.txt",
+      "bytes": 4383,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/fonts/fonts.css",
+      "bytes": 998,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/index.html",
+      "bytes": 2603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/CREDITS",
+      "bytes": 1105,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/README.md",
+      "bytes": 3929,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/events.json",
+      "bytes": 1277,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/lines.json",
+      "bytes": 751,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/mix.py",
+      "bytes": 10535,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/music/score.json",
+      "bytes": 562,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/music/score.py",
+      "bytes": 36959,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/test.js",
+      "bytes": 2350,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/mux.sh",
+      "bytes": 969,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/sheet.py",
+      "bytes": 785,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/srt.py",
+      "bytes": 1088,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-cel-anime-80s/source/tools/still.mjs",
+      "bytes": 2013,
+      "role": "process"
+    },
+    {
+      "path": "entries/cases/lemo-cel-anime-80s.json",
+      "bytes": 10947,
+      "role": "entry"
+    },
+    {
+      "path": "previews/cases/lemo-cel-anime-80s.jpg",
+      "bytes": 120731,
+      "role": "preview"
+    }
+  ]
+}

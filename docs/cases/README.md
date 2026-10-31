@@ -47,3 +47,9 @@
 | [专利申请中：接云机器 · 蓝图 / 工程制图](../../cases.html#case/lemo-blueprint) | [条目](../../entries/cases/lemo-blueprint.json) |
 | [东窗之龙 · 彩色玻璃窗](../../cases.html#case/lemo-stained-glass) | [条目](../../entries/cases/lemo-stained-glass.json) |
 | [被落下的伞 · 象形运动图形](../../cases.html#case/lemo-pictogram-motion) | [条目](../../entries/cases/lemo-pictogram-motion.json) |
+| [静海日志 · ASCII / CRT 终端](../../cases.html#case/lemo-ascii-crt) | [条目](../../entries/cases/lemo-ascii-crt.json) |
+| [思考的空间 · 暗色科技发布](../../cases.html#case/lemo-dark-keynote) | [条目](../../entries/cases/lemo-dark-keynote.json) |
+| [Clawd 搬进来 · 活体实机录屏](../../cases.html#case/lemo-living-screencast) | [条目](../../entries/cases/lemo-living-screencast.json) |
+| [七毫秒 · 电路板](../../cases.html#case/lemo-circuit-board) | [条目](../../entries/cases/lemo-circuit-board.json) |
+| [咖啡杯追逐战 · 1930s 橡皮管卡通](../../cases.html#case/lemo-rubber-hose) | [条目](../../entries/cases/lemo-rubber-hose.json) |
+| [城市之光，1987 · 80 年代赛璐璐动画](../../cases.html#case/lemo-cel-anime-80s) | [条目](../../entries/cases/lemo-cel-anime-80s.json) |

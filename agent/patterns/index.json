@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 131,
+  "count": 140,
   "patterns": [
     {
       "id": "corner-hud",
@@ -297,7 +297,8 @@
       "role": "support",
       "sourceCases": [
         "archive-os",
-        "mg-hud"
+        "mg-hud",
+        "lemo-ascii-crt"
       ],
       "pairsWellWith": [
         "rolling-digits",
@@ -407,7 +408,8 @@
       "sourceCases": [
         "mg-flat-vector",
         "mg-cel-boil",
-        "mg-liquid"
+        "mg-liquid",
+        "lemo-rubber-hose"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/squash-stretch-bounce.json"
@@ -425,7 +427,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "mg-flat-vector"
+        "mg-flat-vector",
+        "lemo-circuit-board"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/push-through-window.json"
@@ -541,7 +544,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "mg-pixel"
+        "mg-pixel",
+        "lemo-cel-anime-80s"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/integer-pixel-parallax.json"
@@ -597,7 +601,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-pixel"
+        "mg-pixel",
+        "lemo-ascii-crt"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/crt-boot-shell.json"
@@ -1261,7 +1266,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-collage"
+        "mg-collage",
+        "lemo-cel-anime-80s"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/stepped-hand-placement.json"
@@ -1316,7 +1322,9 @@
       "role": "accent",
       "sourceCases": [
         "mg-synthwave",
-        "mg-liquid"
+        "mg-liquid",
+        "lemo-dark-keynote",
+        "lemo-cel-anime-80s"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/specular-sweep-glint.json"
@@ -1335,7 +1343,8 @@
       "role": "accent",
       "sourceCases": [
         "mg-synthwave",
-        "mg-hud"
+        "mg-hud",
+        "lemo-ascii-crt"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/crt-line-dot-shutdown.json"
@@ -2526,6 +2535,164 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/count-up-slam.json"
+    },
+    {
+      "id": "text-sorts-into-image",
+      "title": "字按墨度排成图",
+      "summary": "一句回复拆成同字母粒子；目标格的亮度经实测墨量坡选择字母和亮度档，字粒子由原字位置落位，地球部分先落到地平线后再升起。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-ascii-crt"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/text-sorts-into-image.json"
+    },
+    {
+      "id": "font-size-zoom",
+      "title": "字号即镜头",
+      "summary": "把字格宽度当镜头尺度，8px字格推到300px并停一秒，再到450px；同一个字形以40列小日志填充，字内全亮、字外压暗，最后按对数尺度退回。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-ascii-crt"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/font-size-zoom.json"
+    },
+    {
+      "id": "clutter-snap-grid",
+      "title": "杂物一拍归格",
+      "summary": "数百个按音符生成的UI堆叠被冻结；光标按下后以径向波触发飞行，同类沿同向弧线化为统一方块，按类型和空间顺序填满隐藏网格。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-dark-keynote"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/clutter-snap-grid.json"
+    },
+    {
+      "id": "mascot-on-ui-edges",
+      "title": "小人只站界面上沿",
+      "summary": "每帧测量真实DOM元素上边缘并换回世界坐标，像素吉祥物以这些点为站立、行走和跳跃端点；同一时间表触发文件高亮、计划生成和界面状态变化。",
+      "types": [
+        "composition",
+        "feedback"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-living-screencast"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/mascot-on-ui-edges.json"
+    },
+    {
+      "id": "pulse-path-current",
+      "title": "电流沿走线奔跑",
+      "summary": "把河流和电力路径画成板上走线，按路径弧长推进光；交流短划线来回摇摆，直流由单向光头、连续光流和余辉组成，换流器的内部边缘在转换时发光。",
+      "types": [
+        "hud",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-circuit-board"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/pulse-path-current.json"
+    },
+    {
+      "id": "title-shade-rollup",
+      "title": "片头卷帘揭景",
+      "summary": "旋转旭日纹上的标题字母按拍点错相跳动；厨房已画在底下，整张片头卡向上移出，底沿的圆柱卷轴同步上升露出布景。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-rubber-hose"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/title-shade-rollup.json"
+    },
+    {
+      "id": "freeze-digital-silence",
+      "title": "全屏定格静音",
+      "summary": "同一节点冻结全场界面物件姿态并把所有混音轨清为数字零；静音中相机推向唯一亮着的光标，光标蓄力后按下释放。",
+      "types": [
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-dark-keynote"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/freeze-digital-silence.json"
+    },
+    {
+      "id": "screencast-camera",
+      "title": "录屏式相机",
+      "summary": "在可变DOM界面内部连续插值相机中心和对数缩放；后续镜头从当前状态继续，慢段微漂移，跨面板急摇由相机速度产生方向模糊，缩放不小于1。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-living-screencast"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/screencast-camera.json"
+    },
+    {
+      "id": "nested-boards-pullout",
+      "title": "嵌套电路板拉远",
+      "summary": "充电器、街道、城市和走廊各用局部坐标与独立画布，子板嵌入父板的固定足印；对数拉远时递归选择外层并把每级子板裁切合成，连续露出整张大板。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-circuit-board"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/nested-boards-pullout.json"
     }
   ]
 }

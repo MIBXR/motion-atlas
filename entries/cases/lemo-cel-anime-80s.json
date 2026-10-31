@@ -1,0 +1,289 @@
+{
+  "id": "lemo-cel-anime-80s",
+  "order": 51,
+  "title": "城市之光，1987 · 80 年代赛璐璐动画",
+  "subtitle": "City Lights, 1987",
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "lemo-opuscar",
+    "80 年代赛璐璐动画",
+    "卡通与动画",
+    "代码影片"
+  ],
+  "summary": "快递少女穿过雨夜霓虹都市，在吊桥升起前飞跃缺口，把磁带送到火箭驾驶员手中；磁带按下播放，城市在黎明中放亮。",
+  "focus": "绘景、平涂赛璐璐、透过光与录像带显像管四层反差；抽帧人物置于连续镜头、霓虹和雨线之中。",
+  "accent": "#ff579a",
+  "background": "#080b20",
+  "timeline": true,
+  "kit": true,
+  "previewAt": 17.7,
+  "rhythm": {
+    "duration": 59.0,
+    "bpm": 116,
+    "beats": [
+      {
+        "t": 0,
+        "label": "多层摇降",
+        "note": "原片0.000000–4.137931秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 4.137931034482759,
+        "label": "手中的磁带",
+        "note": "原片4.137931–7.240000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 7.24,
+        "label": "眼神决意",
+        "note": "原片7.240000–10.344828秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 10.344827586206897,
+        "label": "背光片名",
+        "note": "原片10.344828–14.482759秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 14.482758620689655,
+        "label": "四层追拍与速度",
+        "note": "原片14.482759–26.896552秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 26.896551724137932,
+        "label": "吊桥障碍",
+        "note": "原片26.896552–33.103448秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 33.10344827586207,
+        "label": "飞跃与落地",
+        "note": "原片33.103448–39.310345秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 39.310344827586206,
+        "label": "黎明再现",
+        "note": "原片39.310345–41.379310秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 41.37931034482759,
+        "label": "递带与播放",
+        "note": "原片41.379310–45.517241秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      },
+      {
+        "t": 45.51724137931034,
+        "label": "火箭升空与落版",
+        "note": "原片45.517241–59.000000秒；时刻来自DEMO.md Shots及film内镜头时间表。"
+      }
+    ]
+  },
+  "energySegments": [
+    {
+      "t0": 0,
+      "t1": 4.137931034482759,
+      "to": 0.35,
+      "label": "多层摇降",
+      "from": 0.15
+    },
+    {
+      "t0": 4.137931034482759,
+      "t1": 7.24,
+      "to": 0.5,
+      "label": "手中的磁带",
+      "from": 0.35
+    },
+    {
+      "t0": 7.24,
+      "t1": 10.344827586206897,
+      "to": 0.3,
+      "label": "眼神决意",
+      "from": 0.5
+    },
+    {
+      "t0": 10.344827586206897,
+      "t1": 14.482758620689655,
+      "to": 0.8,
+      "label": "背光片名",
+      "from": 0.3
+    },
+    {
+      "t0": 14.482758620689655,
+      "t1": 26.896551724137932,
+      "to": 0.65,
+      "label": "四层追拍与速度",
+      "from": 0.8
+    },
+    {
+      "t0": 26.896551724137932,
+      "t1": 33.10344827586207,
+      "to": 0.45,
+      "label": "吊桥障碍",
+      "from": 0.65
+    },
+    {
+      "t0": 33.10344827586207,
+      "t1": 39.310344827586206,
+      "to": 0.6,
+      "label": "飞跃与落地",
+      "from": 0.45
+    },
+    {
+      "t0": 39.310344827586206,
+      "t1": 41.37931034482759,
+      "to": 0.5,
+      "label": "黎明再现",
+      "from": 0.6
+    },
+    {
+      "t0": 41.37931034482759,
+      "t1": 45.51724137931034,
+      "to": 0.25,
+      "label": "递带与播放",
+      "from": 0.5
+    },
+    {
+      "t0": 45.51724137931034,
+      "t1": 59,
+      "to": 0.1,
+      "label": "火箭升空与落版",
+      "from": 0.25
+    }
+  ],
+  "energyNote": "段落取DEMO.md Shots与film内时间表；0–1为画面密度、动作和声音强度的相对编辑标注。",
+  "observations": [
+    "高绘景从天空、屋顶、霓虹下降到街道，远近画板和前景竖牌有不同位移。",
+    "人物q12按两帧一画，眼睛和手势q8按三帧一画；相机、光带与雨保留连续时间。",
+    "镀铬斜体片名在12fps闪亮，斜光条扫过并点出旋转星芒。",
+    "角色轮廓先印黑到发光层，避免霓虹辉光穿透人物。"
+  ],
+  "composition": {
+    "color": "夜景靛蓝、紫、霓虹洋红与青；黎明改为玫瑰、桃色和浅金；珊瑚围巾贯穿。",
+    "typography": "Kanit粗斜体镀铬片名、Dela Gothic One日文、Barlow Semi Condensed字幕。",
+    "layout": "1920×1080全画幅；长绘景与近景人物对照，底部留字幕带。",
+    "imagery": "缓存彩色与自发光画板，硬阴影平涂人物，WebGL录像带与显像管后期。",
+    "motion": "多速视差、12/8fps作画、连续扫光与雨、冲击帧和慢摇静帧。",
+    "sound": "原片116BPM城市流行配乐、模拟合成器、引擎与磁带拟音、双声线旁白。",
+    "rhythm": "按小节切镜，飞跃前一拍静音，机舱播放磁带后升半音进入尾段。",
+    "coherence": "磁带既是递送目标也改变配乐音质；夜骑与黎明骑行共享构图。"
+  },
+  "layers": [
+    {
+      "name": "绘景",
+      "role": "彩色画板与发光画板成对移动，湿地反射由画板生成。"
+    },
+    {
+      "name": "赛璐璐",
+      "role": "硬阴影、高光和有色描边，按两帧或三帧一画。"
+    },
+    {
+      "name": "光与天气",
+      "role": "背光字、霓虹光带、星芒、雨和速度线。"
+    },
+    {
+      "name": "录像带",
+      "role": "色度渗透、扫描线、栅格、磷光、跟踪扰动与片内字幕。"
+    }
+  ],
+  "tokens": {
+    "palette": [
+      "#080b20",
+      "#3c235b",
+      "#ff579a",
+      "#6ae6ff",
+      "#ffb36a",
+      "#fff0a0"
+    ],
+    "type": "Kanit Italic 600/800/900、Dela Gothic One 400、Barlow Semi Condensed 500/600/700。",
+    "motion": [
+      {
+        "name": "多层摇降",
+        "value": "film/scenes1.js:crane：yF=−k×(3200−1080)，yN=−k×(3600−1080)，yFG=−3400k+900。"
+      },
+      {
+        "name": "抽帧作画",
+        "value": "film/story.js:q12 / q8：floor(t×12+1e−6)/12、floor(t×8+1e−6)/8；eyes三张睁眼画。"
+      },
+      {
+        "name": "扫光星芒",
+        "value": "film/scenes1.js:titleCard：倾斜光带与flare；film/post.js保持原作自发光合成。"
+      }
+    ]
+  },
+  "useCases": [
+    "音乐短片",
+    "游戏预告",
+    "复古动画片头"
+  ],
+  "avoid": [
+    "依赖柔和渐变塑形的现代角色"
+  ],
+  "constraints": [
+    "人物和背景发光板分层，角色遮挡发光层。",
+    "抽帧只用于角色表演，镜头与扫光连续。",
+    "保持字体字重和日文字形覆盖。"
+  ],
+  "migration": [
+    {
+      "field": "film/scenes1.js:crane",
+      "how": "修改该处的多层摇降参数。"
+    },
+    {
+      "field": "film/story.js:q12 / q8",
+      "how": "修改该处的抽帧作画参数。"
+    },
+    {
+      "field": "film/scenes1.js:titleCard",
+      "how": "修改该处的扫光星芒参数。"
+    }
+  ],
+  "prompt": "制作一支80 年代赛璐璐动画时间线影片。快递少女穿过雨夜霓虹都市，在吊桥升起前飞跃缺口，把磁带送到火箭驾驶员手中；磁带按下播放，城市在黎明中放亮。绘景、平涂赛璐璐、透过光与录像带显像管四层反差；抽帧人物置于连续镜头、霓虹和雨线之中。画面构成：夜景靛蓝、紫、霓虹洋红与青；黎明改为玫瑰、桃色和浅金；珊瑚围巾贯穿。；Kanit粗斜体镀铬片名、Dela Gothic One日文、Barlow Semi Condensed字幕。；1920×1080全画幅；长绘景与近景人物对照，底部留字幕带。；缓存彩色与自发光画板，硬阴影平涂人物，WebGL录像带与显像管后期。；多速视差、12/8fps作画、连续扫光与雨、冲击帧和慢摇静帧。；原片116BPM城市流行配乐、模拟合成器、引擎与磁带拟音、双声线旁白。；按小节切镜，飞跃前一拍静音，机舱播放磁带后升半音进入尾段。；磁带既是递送目标也改变配乐音质；夜骑与黎明骑行共享构图。。实现入口为demos/cases/lemo-cel-anime-80s/film/，MotionKit适配层仅调用并等待原作render(t)，使用原片音轨同步播放。",
+  "demo": "demos/cases/lemo-cel-anime-80s/index.html",
+  "patternIds": [
+    "integer-pixel-parallax",
+    "stepped-hand-placement",
+    "specular-sweep-glint"
+  ],
+  "fidelity": "demos/cases/lemo-cel-anime-80s/fidelity.md",
+  "upstream": {
+    "repository": "lemomo-ai/lemo-opuscar",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "path": "styles/cel-anime-80s/",
+    "version": "0.1.0"
+  },
+  "license": {
+    "name": "MIT · CC BY 4.0",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+    "notes": "代码与文档MIT；成片及静帧CC BY 4.0，署名LemoLab；第三方资源按CREDITS许可。"
+  },
+  "sources": [
+    {
+      "label": "风格与示范制作说明",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s"
+    },
+    {
+      "label": "Release公开成片",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/cel-anime-80s.mp4"
+    },
+    {
+      "label": "第三方资源与署名",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s/demo/CREDITS"
+    }
+  ],
+  "attribution": [
+    {
+      "scope": "作品",
+      "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s)；代码MIT、成片CC BY 4.0，接入与对照见[fidelity.md](fidelity.md)。"
+    },
+    {
+      "scope": "声音与第三方资源",
+      "notes": "原片116BPM城市流行配乐、模拟合成器、引擎与磁带拟音、双声线旁白。 原始署名见[audio/CREDITS](audio/CREDITS)，完整许可见[LICENSES.md](LICENSES.md)。"
+    },
+    {
+      "scope": "字体",
+      "notes": "Kanit Italic 600/800/900、Dela Gothic One 400、Barlow Semi Condensed 500/600/700。 OFL原文位于fonts/，取得与重建方法见[source/README.md](source/README.md)。"
+    }
+  ],
+  "renderer": "gpu"
+}
