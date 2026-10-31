@@ -112,6 +112,9 @@
       KIND === 'patterns' ? filterSelect('case-filter', '所属案例', '全部案例', MA.cases.map(c => [c.id, c.title]), state.caseId) : '',
     ].join('');
     const sortOptions = [['order', '按编号'], ['title', '按名称']];
+    const description = isMaterial ? '工作流、适用场景、作者效果图与固定版本的技能原文。' : KIND === 'cases'
+      ? '节拍表、动效参数、可复用 Prompt，以及能拖动逐帧查看的 Demo。'
+      : '每个巧思都有触发方式、效果、参数、可复制的 Prompt 和独立 Demo。';
 
     root.innerHTML = `
       <div class="lib">
@@ -121,9 +124,7 @@
             <div>
               <p class="eyebrow">${KIND === 'cases' ? 'CASE COLLECTION · RHYTHM / MOTION / HUD' : isMaterial ? '素材库 · 工作流与实现手段' : 'PATTERN COLLECTION · ATOMIC MECHANISMS'}</p>
               <h1>${KIND === 'cases' ? '先看懂节拍，<br>再拿走<em>动势</em>。' : isMaterial ? '找到<em>实现手段</em>，<br>让想法走向成片。' : '一个触发，<br>一种<em>可借用</em>的结果。'}</h1>
-              <p>${isMaterial ? `${items.length} 个素材：工作流、适用场景、作者效果图与固定版本的技能原文。` : KIND === 'cases'
-                ? `${items.length} 个案例：节拍表、动效参数、可复用 Prompt，以及能拖动逐帧查看的 Demo。`
-                : `${items.length} 个巧思：每个都有触发方式、效果、参数、可复制的 Prompt 和独立 Demo。`}</p>
+              <p title="${esc(description)}">${esc(description)}</p>
             </div>
             ${isMaterial ? '' : heroArt}
           </header>
@@ -268,7 +269,7 @@
         </div>
         <span class="orient-badge" hidden></span>
         </div><div class="stage-controls" role="group" aria-label="播放控制">
-        <button class="sound-btn" type="button" data-state="off" aria-pressed="false">${SI.soundOff}${SI.soundOn}<span class="sound-txt">声音</span><span class="sound-state">关</span><i class="meter" aria-hidden="true"><b></b><b></b><b></b></i></button>
+        <button class="sound-btn" type="button" data-state="off" aria-pressed="false">${SI.soundOff}${SI.soundOn}<span class="sound-state">关</span></button>
         <button class="tool-btn" type="button" data-act="fullscreen" aria-label="全屏查看" title="全屏查看（F）">${SI.expand}${SI.collapse}<span class="lbl-wide">全屏</span></button>
         <button class="tool-btn" type="button" data-act="replay" disabled aria-disabled="true" aria-label="从头播放" title="从头播放">${ICONS.replay}<span class="lbl-wide">重播</span></button>
         <a class="tool-btn" data-act="open" href="${esc(it.demo)}" target="_blank" rel="noopener" aria-label="独立打开 Demo" title="在新标签页独立打开">${ICONS.external}<span class="lbl-wide">独立打开</span></a>
@@ -314,7 +315,7 @@
       want, orient: it.previewPortrait && want === 'portrait' ? 'portrait' : 'landscape', orients: null,
       sound: { pref: store.get(PREF_SOUND, false) === true, state: 'off', available: true, pending: false, seq: 0 },
       loaded: false, fs: false, pseudo: false, lastPointerInCol: false,
-      timers: new Set(), poll: 0, meterRaf: 0, idleT: 0, touchAt: new WeakMap(), ro: null,
+      timers: new Set(), poll: 0, idleT: 0, touchAt: new WeakMap(), ro: null,
     };
     paintOrient();
     paintBeats(true);
@@ -363,7 +364,6 @@
     det = null;
     clearInterval(d.poll);
     d.timers.forEach(clearTimeout);
-    cancelAnimationFrame(d.meterRaf);
     clearTimeout(d.idleT);
     if (d.unsub) { try { d.unsub(); } catch { /* iframe 已卸载 */ } }
     if (d.ro) d.ro.disconnect();
@@ -618,7 +618,6 @@
       b.setAttribute('aria-label', `声音：${SOUND_TEXT[st] || ''}`);
     }
     d.hint.hidden = st !== 'blocked';
-    runMeter();
   }
   function toggleSound() {
     const d = det;
@@ -638,27 +637,6 @@
     const d = det, seq = ++d.sound.seq;
     later(() => { if (d.sound.pending && d.sound.seq === seq) { d.sound.pending = false; syncSound(); } }, 2500);
   }
-  // 小电平表：读 Demo 内 MotionKit.audio.meter()，只改三根竖条的 transform，不重建节点
-  function runMeter() {
-    const d = det;
-    cancelAnimationFrame(d.meterRaf);
-    d.meterRaf = 0;
-    const bars = d.snd.querySelectorAll('.meter b');
-    if (d.snd.dataset.state !== 'on' || reducedMotion()) { bars.forEach((b) => { b.style.transform = ''; }); return; }
-    let lvl = 0;
-    const K = [0.75, 1, 0.6];
-    const step = () => {
-      if (det !== d) return;
-      let p = 0;
-      try { const r = frameWin().MotionKit.audio.meter(); p = (r && r.peak) || 0; } catch { /* Demo 还没有引擎 */ }
-      const v = Math.max(0, Math.min(1, (20 * Math.log10(Math.max(p, 1e-5)) + 54) / 48));
-      lvl = Math.max(v, lvl * 0.86);
-      bars.forEach((b, i) => { b.style.transform = `scaleY(${(0.2 + 0.8 * Math.min(1, lvl * K[i])).toFixed(3)})`; });
-      d.meterRaf = requestAnimationFrame(step);
-    };
-    step();
-  }
-
   /* ----- 全屏 ----- */
   function toggleFs() { if (det) (det.fs ? exitFs : enterFs)(); }
   function enterFs() {
@@ -901,7 +879,7 @@
     const fav = favs.has(KIND, it.id);
     return `<div class="page-actions"><a class="btn back-btn" href="#" aria-label="返回${libName}">${ICONS.back}<span>返回${libName}</span></a><div class="detail-actions" role="group" aria-label="条目操作">
       <button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button>
-      <a class="btn bundle-btn${isMaterial ? ' primary' : ''}" href="agent/${KIND}/${it.id}.json" download aria-label="下载资料包 JSON">${ICONS.download}<span>资料包 JSON</span></a>
+      <a class="btn bundle-btn" href="agent/${KIND}/${it.id}.json" download aria-label="下载资料包 JSON">${ICONS.download}<span>资料包 JSON</span></a>
       ${isMaterial ? '' : `<button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>`}
     </div></div>`;
   }

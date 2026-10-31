@@ -125,7 +125,7 @@
         i += 2;
         const rows = [];
         while (i < lines.length && lines[i].includes('|') && lines[i].trim()) rows.push(cells(lines[i++]));
-        out.push(`<div class="tbl"><table><thead><tr>${head.map((c) => `<th>${inline(c, base)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${inline(c, base)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
+        out.push(`<div class="tbl"><div class="tbl-scroll"><table><thead><tr>${head.map((c) => `<th>${inline(c, base)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${inline(c, base)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`);
       } else if (RE.list.test(l)) {
         const r = parseList(lines, i, base);
         out.push(r.html); i = r.i;
@@ -153,7 +153,7 @@
   }
   function drawNav() {
     $('#docNav').innerHTML = groups.map((g) => {
-      return `<details class="side-group" data-group="${esc(g.name)}"${g.docs.some(d => d.path === current) ? ' open' : ''}><summary>${esc(g.name)}<span class="group-indicator" aria-hidden="true">${ICONS.plus}${ICONS.minus}</span></summary><ul class="side-list">${g.docs.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}">${esc(d.title)}</a></li>`).join('')}</ul></details>`;
+      return `<details class="side-group" data-group="${esc(g.name)}"${g.docs.some(d => d.path === current) ? ' open' : ''}><summary title="${esc(g.name)}"><span class="doc-group-title">${esc(g.name)}</span><span class="group-indicator" aria-hidden="true">${ICONS.plus}${ICONS.minus}</span></summary><ul class="side-list">${g.docs.map((d) => `<li><a href="#doc/${esc(d.path)}" data-p="${esc(d.path)}" title="${esc(d.title)}">${esc(d.title)}</a></li>`).join('')}</ul></details>`;
     }).join('') + '<p class="doc-empty" hidden>没有匹配的文档</p>';
     markNav();
   }
@@ -196,7 +196,8 @@
     const active = $('#docNav [aria-current="page"]');
     if (!active || !active.getClientRects().length) return;
     const item = active.getBoundingClientRect();
-    const top = search.getBoundingClientRect().bottom + active.closest('details').querySelector('summary').getBoundingClientRect().height;
+    const fade = parseFloat(getComputedStyle(side).getPropertyValue('--doc-rail-fade'));
+    const top = search.getBoundingClientRect().bottom + active.closest('details').querySelector('summary').getBoundingClientRect().height + fade;
     const bottom = side.getBoundingClientRect().bottom - parseFloat(getComputedStyle(side).paddingBottom);
     if (center) side.scrollTop += item.top + item.height / 2 - (top + bottom) / 2;
     else if (item.top < top) side.scrollTop += Math.floor(item.top - top);
