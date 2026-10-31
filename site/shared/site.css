@@ -460,3 +460,7 @@ body .gen-list { overflow-y: auto; overflow-x: hidden; }
   ::view-transition-old(atlas-header) { display: none; }
   ::view-transition-new(atlas-header) { mix-blend-mode: normal; }
 }
+
+@media (max-width: 389px) {
+  .brand-word { display: none; }
+}
