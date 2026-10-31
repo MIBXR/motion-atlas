@@ -34,6 +34,10 @@
       {
         "name": "同位新解释",
         "value": "film/js/film.js:188–194：T.wipe1+.1开始，在G1.x/G2.x、y=1345写弓+手和矢+委，英语解释随后写入post阶段。"
+      },
+      {
+        "name": "图号原位划改",
+        "value": "lemo-blueprint：film/film.js:190–216的figLabel：B(6)/B(9)划掉旧编号，tc+.15到+.45写新号，仍在同一FIG.标注区；tc+1.6后新编号归回x+10。"
       }
     ],
     "sourceFiles": [
@@ -56,7 +60,7 @@
       "role": "support",
       "pairsWellWith": [],
       "conflicts": [],
-      "notes": "重放来源案例对应片段，画面与音轨共享时间映射。"
+      "notes": "重放来源案例对应片段，画面与音轨共享时间映射。 lemo-blueprint：film/film.js:190–216的figLabel：B(6)/B(9)划掉旧编号，tc+.15到+.45写新号，仍在同一FIG.标注区；tc+1.6后新编号归回x+10。"
     },
     "prompt": "复用来源案例lemo-chalkboard的原作render(t)，重放“写擦原位重写”。保留黑板上的两个主字和位置，把错误解释及交叉箭头标记为待擦；一次路径板擦移除旧释义，再在同一区域逐笔写回正确拆字。参数与源码：film/js/film.js:183–187：T.wipe1=T.wipe0+.75，w=360，WP经catmull(...,12)平滑，q1/q1e/q2/q2e和交叉箭头标记wiped。；film/js/film.js:188–194：T.wipe1+.1开始，在G1.x/G2.x、y=1345写弓+手和矢+委，英语解释随后写入post阶段。按入口segments映射原片时刻，保留原作字体、画面与同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/write-wipe-rewrite/index.html",
@@ -65,6 +69,9 @@
     "sources": [
       {
         "caseId": "lemo-chalkboard"
+      },
+      {
+        "caseId": "lemo-blueprint"
       }
     ],
     "previewAt": 4.8,
@@ -82,6 +89,10 @@
     {
       "caseId": "lemo-chalkboard",
       "bundle": "agent/cases/lemo-chalkboard.json"
+    },
+    {
+      "caseId": "lemo-blueprint",
+      "bundle": "agent/cases/lemo-blueprint.json"
     }
   ],
   "documents": {
@@ -89,6 +100,226 @@
   },
   "entrypoint": "demos/patterns/write-wipe-rewrite/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-blueprint/LICENSES.md",
+      "bytes": 907,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/audio/CREDITS",
+      "bytes": 1071,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/audio/film.m4a",
+      "bytes": 1534289,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fidelity.md",
+      "bytes": 4221,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/draw.js",
+      "bytes": 14459,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/film.js",
+      "bytes": 26942,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/index.html",
+      "bytes": 346,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/lines.json",
+      "bytes": 981,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/machine.js",
+      "bytes": 24965,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/main.js",
+      "bytes": 6532,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/paper.js",
+      "bytes": 8655,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/sheet.js",
+      "bytes": 20986,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/film/voices/dur.json",
+      "bytes": 86,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/Allura-Regular.ttf",
+      "bytes": 246632,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/ArchitectsDaughter-Regular.ttf",
+      "bytes": 43352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/B612-Bold.ttf",
+      "bytes": 100932,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/B612-Regular.ttf",
+      "bytes": 153192,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/B612Mono-Regular.ttf",
+      "bytes": 140292,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/OFL-allura.txt",
+      "bytes": 4478,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/OFL-architectsdaughter.txt",
+      "bytes": 4362,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/OFL-b612.txt",
+      "bytes": 4470,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/OFL-b612mono.txt",
+      "bytes": 4470,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/OFL.txt",
+      "bytes": 4362,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/fonts/fonts.css",
+      "bytes": 489,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/index.html",
+      "bytes": 2402,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/CREDITS",
+      "bytes": 1071,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/DEMO.md",
+      "bytes": 15849,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/README.md",
+      "bytes": 3784,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/STYLE.md",
+      "bytes": 12323,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/build.sh",
+      "bytes": 1489,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/events.json",
+      "bytes": 21654,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/mix.py",
+      "bytes": 8076,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/music/score.json",
+      "bytes": 1598,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/music/score.py",
+      "bytes": 13539,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/style.json",
+      "bytes": 550,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/subs.json",
+      "bytes": 762,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/tools/check_mix.py",
+      "bytes": 1182,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/tools/subs.mjs",
+      "bytes": 1022,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-blueprint/source/voices/words.json",
+      "bytes": 1259,
+      "role": "process"
+    },
     {
       "path": "demos/cases/lemo-chalkboard/LICENSES.md",
       "bytes": 1214,
@@ -325,13 +556,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-blueprint.json",
+      "bytes": 10208,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/lemo-chalkboard.json",
       "bytes": 11274,
       "role": "entry"
     },
     {
       "path": "entries/patterns/write-wipe-rewrite.json",
-      "bytes": 3076,
+      "bytes": 3518,
       "role": "entry"
     },
     {

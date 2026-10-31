@@ -86,17 +86,17 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - 复古半调案卷 · Halftone Dossier（已复刻，[本库案例](../../cases.html#case/lemo-halftone-dossier)）
 - 木刻版画 · Woodcut Print（已复刻，[本库案例](../../cases.html#case/lemo-woodcut)）
 - 铜版画 · Copperplate Engraving（已复刻，[本库案例](../../cases.html#case/lemo-engraving)）
-- 丝印旅行海报 · Silkscreen Travel Poster
-- 印刷长镜头 · Printed Long Take
+- 丝印旅行海报 · Silkscreen Travel Poster（已复刻，[本库案例](../../cases.html#case/lemo-silkscreen-poster))
+- 印刷长镜头 · Printed Long Take（已复刻，[本库案例](../../cases.html#case/lemo-printed-long-take))
 
 ### 图形与排版 · Graphic & Type
 
 - 瑞士动态排版 · Swiss Motion Graphics（[本库案例](../../cases.html#case/lemo-swiss-motion)）
 - 60s 间谍片头 · 60s Spy Title Sequence（已复刻，[本库案例](../../cases.html#case/lemo-spy-titles)）
-- 装饰艺术 · Art Deco
-- 蓝图 / 工程制图 · Blueprint
-- 彩色玻璃窗 · Stained Glass
-- 象形运动图形 · Pictogram Motion
+- 装饰艺术 · Art Deco（已复刻，[本库案例](../../cases.html#case/lemo-art-deco))
+- 蓝图 / 工程制图 · Blueprint（已复刻，[本库案例](../../cases.html#case/lemo-blueprint))
+- 彩色玻璃窗 · Stained Glass（已复刻，[本库案例](../../cases.html#case/lemo-stained-glass))
+- 象形运动图形 · Pictogram Motion（已复刻，[本库案例](../../cases.html#case/lemo-pictogram-motion))
 - ASCII / CRT 终端 · ASCII / CRT Terminal
 
 ### 信息与发布 · Information & Keynote
@@ -151,7 +151,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-二十个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+二十六个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -183,4 +183,11 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 - [蜜蜂，第七号图版 · 铜版画](../../cases.html#case/lemo-engraving)：制作文件见 [source/README.md](../../demos/cases/lemo-engraving/source/README.md)。
 
-二十个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+- [绕远路回家 · 丝印旅行海报](../../cases.html#case/lemo-silkscreen-poster)：制作文件见 [source/README.md](../../demos/cases/lemo-silkscreen-poster/source/README.md)。
+- [三十三只 · 印刷长镜头](../../cases.html#case/lemo-printed-long-take)：制作文件见 [source/README.md](../../demos/cases/lemo-printed-long-take/source/README.md)。
+- [星光饭店的午夜 · 装饰艺术](../../cases.html#case/lemo-art-deco)：制作文件见 [source/README.md](../../demos/cases/lemo-art-deco/source/README.md)。
+- [专利申请中：接云机器 · 蓝图 / 工程制图](../../cases.html#case/lemo-blueprint)：制作文件见 [source/README.md](../../demos/cases/lemo-blueprint/source/README.md)。
+- [东窗之龙 · 彩色玻璃窗](../../cases.html#case/lemo-stained-glass)：制作文件见 [source/README.md](../../demos/cases/lemo-stained-glass/source/README.md)。
+- [被落下的伞 · 象形运动图形](../../cases.html#case/lemo-pictogram-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-pictogram-motion/source/README.md)。
+
+二十六个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。

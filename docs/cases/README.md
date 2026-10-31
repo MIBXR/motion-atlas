@@ -41,3 +41,9 @@
 | [周日骑行 · Risograph 孔版印刷](../../cases.html#case/lemo-risograph) | [条目](../../entries/cases/lemo-risograph.json) |
 | [胖橘案卷 · 复古半调案卷](../../cases.html#case/lemo-halftone-dossier) | [条目](../../entries/cases/lemo-halftone-dossier.json) |
 | [蜜蜂，第七号图版 · 铜版画](../../cases.html#case/lemo-engraving) | [条目](../../entries/cases/lemo-engraving.json) |
+| [绕远路回家 · 丝印旅行海报](../../cases.html#case/lemo-silkscreen-poster) | [条目](../../entries/cases/lemo-silkscreen-poster.json) |
+| [三十三只 · 印刷长镜头](../../cases.html#case/lemo-printed-long-take) | [条目](../../entries/cases/lemo-printed-long-take.json) |
+| [星光饭店的午夜 · 装饰艺术](../../cases.html#case/lemo-art-deco) | [条目](../../entries/cases/lemo-art-deco.json) |
+| [专利申请中：接云机器 · 蓝图 / 工程制图](../../cases.html#case/lemo-blueprint) | [条目](../../entries/cases/lemo-blueprint.json) |
+| [东窗之龙 · 彩色玻璃窗](../../cases.html#case/lemo-stained-glass) | [条目](../../entries/cases/lemo-stained-glass.json) |
+| [被落下的伞 · 象形运动图形](../../cases.html#case/lemo-pictogram-motion) | [条目](../../entries/cases/lemo-pictogram-motion.json) |

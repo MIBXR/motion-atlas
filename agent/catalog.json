@@ -42,8 +42,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 39,
-    "patterns": 120,
+    "cases": 45,
+    "patterns": 131,
     "materials": 5
   },
   "caseCatalog": "agent/cases/index.json",
@@ -1256,6 +1256,176 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-engraving.json"
+    },
+    {
+      "id": "lemo-silkscreen-poster",
+      "title": "绕远路回家 · 丝印旅行海报",
+      "summary": "一位旅人从北京出发，途经伊斯坦布尔、巴黎与布宜诺斯艾利斯；票根数着离家距离，越过世界的另一侧后沿夜海回到北京。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "丝印旅行海报",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "旅行影像",
+        "城市目的地系列",
+        "印刷主题片头"
+      ],
+      "avoid": [
+        "需要真人实拍或摄影素材作为主画面的作品"
+      ],
+      "patternIds": [
+        "blade-sweep-print-next",
+        "misregistration-lock"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-silkscreen-poster.json"
+    },
+    {
+      "id": "lemo-printed-long-take",
+      "title": "三十三只 · 印刷长镜头",
+      "summary": "北海道雪地河谷一镜到底，丹顶鹤从河中苏醒、起飞到投喂田；同一地点四次再印，让1952年的33只与2025年的1927只在告示板旁对照。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "印刷长镜头",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "野生动物纪录短片",
+        "地景长镜",
+        "生态年代对比"
+      ],
+      "avoid": [
+        "需要真人实拍或摄影素材作为主画面的作品"
+      ],
+      "patternIds": [
+        "reprint-same-place"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-printed-long-take.json"
+    },
+    {
+      "id": "lemo-art-deco",
+      "title": "星光饭店的午夜 · 装饰艺术",
+      "summary": "1930年除夕，门童赶在午夜前把一封信送上星光饭店顶楼；电梯故障后他爬楼、穿过厨房，把乐谱交给指挥，十二声钟响逐字点亮灯牌。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "装饰艺术",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "饭店与庆典宣传",
+        "倒计时片头",
+        "典礼邀请影片"
+      ],
+      "avoid": [
+        "需要真人实拍或摄影素材作为主画面的作品"
+      ],
+      "patternIds": [
+        "fan-sunburst-clockface",
+        "axis-door-transition",
+        "windows-light-car-by-car"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-art-deco.json"
+    },
+    {
+      "id": "lemo-blueprint",
+      "title": "专利申请中：接云机器 · 蓝图 / 工程制图",
+      "summary": "发明家的蓝图自行画出接云机器，展开、装回并运转；发现纸上没有云后，手影补上修订云线，云线变成雨云，落雨让画中的花盛开。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "蓝图 / 工程制图",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "工程与硬件发布",
+        "发明故事",
+        "技术解释短片"
+      ],
+      "avoid": [
+        "需要真人实拍或摄影素材作为主画面的作品"
+      ],
+      "patternIds": [
+        "oblique-projection-camera",
+        "symbol-becomes-real",
+        "drafting-order-build",
+        "write-wipe-rewrite"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-blueprint.json"
+    },
+    {
+      "id": "lemo-stained-glass",
+      "title": "东窗之龙 · 彩色玻璃窗",
+      "summary": "阳光沿四格东窗从清晨走向黄昏，依次唤醒骑士寻龙的故事；一剑击裂玻璃后，他发现龙在守护太阳余烬，按拍修补铅条、放下长剑，夜里最后一格仍然发光。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "彩色玻璃窗",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "传说故事",
+        "文化遗产影像",
+        "节日短片"
+      ],
+      "avoid": [
+        "需要真人实拍或摄影素材作为主画面的作品"
+      ],
+      "patternIds": [
+        "light-is-time-panels",
+        "crack-and-relead"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-stained-glass.json"
+    },
+    {
+      "id": "lemo-pictogram-motion",
+      "title": "被落下的伞 · 象形运动图形",
+      "summary": "一把黄伞被落在公交车上，晴天里随车到终点，加入失物招领的312把伞；暴雨回来，313把伞同时撑开、变黄，伞墙成为网格纹样，再把干燥脚印送回雨中。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "象形运动图形",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "公共服务短片",
+        "城市物件故事",
+        "品牌活动识别"
+      ],
+      "avoid": [
+        "需要真人实拍或摄影素材作为主画面的作品"
+      ],
+      "patternIds": [
+        "icon-wall-pattern",
+        "count-up-slam"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-pictogram-motion.json"
     }
   ],
   "patterns": [
@@ -1778,7 +1948,8 @@
       "role": "support",
       "sourceCases": [
         "mg-bauhaus",
-        "lemo-risograph"
+        "lemo-risograph",
+        "lemo-silkscreen-poster"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/misregistration-lock.json"
@@ -3432,7 +3603,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "lemo-paper-lantern"
+        "lemo-paper-lantern",
+        "lemo-art-deco"
       ],
       "pairsWellWith": [
         "tunnel-blink-black"
@@ -3525,7 +3697,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "lemo-chalkboard"
+        "lemo-chalkboard",
+        "lemo-blueprint"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/write-wipe-rewrite.json"
@@ -3584,6 +3757,201 @@
         "misregistration-lock"
       ],
       "bundle": "agent/patterns/overprint-disc-transition.json"
+    },
+    {
+      "id": "blade-sweep-print-next",
+      "title": "刮板斜扫印出下一城",
+      "summary": "斜向刮板沿带噪声边缘的裁切区扫过旧海报，后方直接印出下一座城市；刮板墨珠并列装载新海报的色组。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-silkscreen-poster"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/blade-sweep-print-next.json"
+    },
+    {
+      "id": "oblique-projection-camera",
+      "title": "斜投影作镜头",
+      "summary": "沿固定45度深度轴把二维图纸坐标偏移，投影系数从0升到.5；立面转出厚度并沿同一轴展开部件。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-blueprint"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/oblique-projection-camera.json"
+    },
+    {
+      "id": "symbol-becomes-real",
+      "title": "图符成真",
+      "summary": "纸上的修订云线保留同一云轮廓，转成有统一体积渐变、光晕与投影的实体云，原位置留下未曝光痕迹。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-blueprint"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/symbol-becomes-real.json"
+    },
+    {
+      "id": "light-is-time-panels",
+      "title": "光照到哪格哪格动",
+      "summary": "太阳带从左到右访问四个窗格，人物在离光时刻停格；玫瑰窗亮度与日色同步，作为整日时钟。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-stained-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/light-is-time-panels.json"
+    },
+    {
+      "id": "crack-and-relead",
+      "title": "裂纹与重铅",
+      "summary": "受击点向外延伸锯齿裂纹，音乐硬停；剑、腿、躯干、手臂逐拍滑到新姿态，焊接后裂痕成为铅线留在玻璃中。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-stained-glass"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/crack-and-relead.json"
+    },
+    {
+      "id": "icon-wall-pattern",
+      "title": "图标墙成纹",
+      "summary": "313把伞在规则货架上从主伞向外撑开，按行变成同一黄系，整行交替错移半格；打开的伞冠成为网格半圆纹样。",
+      "types": [
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-pictogram-motion"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/icon-wall-pattern.json"
+    },
+    {
+      "id": "fan-sunburst-clockface",
+      "title": "对称扇面成钟",
+      "summary": "八位扇舞者按八分音符开扇，镜头升成八向对称俯拍旭日纹；舞者转位、展开的扇面与两根金针合为十二点钟面。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-art-deco"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/fan-sunburst-clockface.json"
+    },
+    {
+      "id": "reprint-same-place",
+      "title": "同地再印换时",
+      "summary": "固定机位把同一片田地印四次，纸角揭开下一年的鹤群；每次新印先没有红冠，.45秒后单独压上稍有偏位的红版。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-printed-long-take"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/reprint-same-place.json"
+    },
+    {
+      "id": "drafting-order-build",
+      "title": "按制图顺序自绘",
+      "summary": "工程图以中心线、轮廓、齿轮细节、剖面排线、尺寸、球标、标签的约定顺序自绘，沿真实线段长度推进并在每层内错峰。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-blueprint"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/drafting-order-build.json"
+    },
+    {
+      "id": "axis-door-transition",
+      "title": "中轴开门转场",
+      "summary": "旧镜头成为从中缝分开的左右门扇，左右外缘为铰链，门扇在水平方向缩短并加阴影露出新镜；结尾两片电梯门反向合拢。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-art-deco"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/axis-door-transition.json"
+    },
+    {
+      "id": "count-up-slam",
+      "title": "计数砸落",
+      "summary": "同一大字号数值按ease-out从1累计到313，到终值时整体瞬间放大7%，以指数衰减回原尺寸并停住。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-pictogram-motion"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/count-up-slam.json"
     }
   ],
   "materials": [
@@ -3705,6 +4073,36 @@
           "kind": "case",
           "id": "lemo-engraving",
           "note": "蜜蜂，第七号图版 · 铜版画；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-silkscreen-poster",
+          "note": "绕远路回家 · 丝印旅行海报"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-printed-long-take",
+          "note": "三十三只 · 印刷长镜头"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-art-deco",
+          "note": "星光饭店的午夜 · 装饰艺术"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-blueprint",
+          "note": "专利申请中：接云机器 · 蓝图 / 工程制图"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-stained-glass",
+          "note": "东窗之龙 · 彩色玻璃窗"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-pictogram-motion",
+          "note": "被落下的伞 · 象形运动图形"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

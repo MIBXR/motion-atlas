@@ -39,6 +39,10 @@
       {
         "name": "音符镜像",
         "value": "source/mix.py:UP=[D5,E5,F#5,A5,B5,D6,E6,F#6]；H.cars读取UP[k]，H.off读取UP[::-1][k]，每事件一声glockenspiel，共用timeline.json。"
+      },
+      {
+        "name": "十二钟逐字亮灯",
+        "value": "lemo-art-deco：film/timeline.js:12–14的strike(k)=35.86+(k−1)*60/116；film/scenes/roof.js、engine/bulbs.js的litSequence按十二个STRIKES点亮THE STARLIGHT十二字母，source/music/score.py同拍tubular_bells。"
       }
     ],
     "sourceFiles": [
@@ -62,7 +66,7 @@
         "tunnel-blink-black"
       ],
       "conflicts": [],
-      "notes": "画面和成片音轨按同一区间重放。"
+      "notes": "画面和成片音轨按同一区间重放。 lemo-art-deco：film/timeline.js:12–14的strike(k)=35.86+(k−1)*60/116；film/scenes/roof.js、engine/bulbs.js的litSequence按十二个STRIKES点亮THE STARLIGHT十二字母，source/music/score.py同拍tubular_bells。"
     },
     "prompt": "复用来源案例lemo-paper-lantern的原作render(t)重放“车窗逐节亮灭”。机车与七节车厢各自控制车窗glow map，开场从车头起逐节点亮并配同拍上行钟琴；到终点按同一车厢顺序熄灭，钟琴音高倒序下行，最后保留站灯。参数与源码：film/timeline.json:HIT.cars=1.5+.34*i，i=0…7；film/src/world.js:world.update对每个cars[i]设置uGlowLit=ss(seg(t,H.cars[i],H.cars[i]+.12))*(1+.03*sin(9*t+2*i))。；film/timeline.json:HIT.off=[42,42.42,42.84,43.26,43.68,44.1,44.52,45.75]；film/src/shots.js:s6.update用1-ss(seg(t,H.off[i],H.off[i]+.18))逐节熄灭，站灯保留。；source/mix.py:UP=[D5,E5,F#5,A5,B5,D6,E6,F#6]；H.cars读取UP[k]，H.off读取UP[::-1][k]，每事件一声glockenspiel，共用timeline.json。。以入口segments映射原片时间，保留原作字体、纸层、灯光和同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/windows-light-car-by-car/index.html",
@@ -72,6 +76,9 @@
     "sources": [
       {
         "caseId": "lemo-paper-lantern"
+      },
+      {
+        "caseId": "lemo-art-deco"
       }
     ],
     "previewAt": 2.1,
@@ -92,6 +99,10 @@
     {
       "caseId": "lemo-paper-lantern",
       "bundle": "agent/cases/lemo-paper-lantern.json"
+    },
+    {
+      "caseId": "lemo-art-deco",
+      "bundle": "agent/cases/lemo-art-deco.json"
     }
   ],
   "documents": {
@@ -99,6 +110,296 @@
   },
   "entrypoint": "demos/patterns/windows-light-car-by-car/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-art-deco/LICENSES.md",
+      "bytes": 1009,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/audio/CC-BY-3.0.txt",
+      "bytes": 19467,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/audio/CREDITS",
+      "bytes": 1098,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/audio/film.m4a",
+      "bytes": 1931499,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fidelity.md",
+      "bytes": 4707,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/chars.js",
+      "bytes": 44498,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/engine/bulbs.js",
+      "bytes": 10790,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/engine/cam.js",
+      "bytes": 1706,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/engine/deco.js",
+      "bytes": 21500,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/engine/type.js",
+      "bytes": 16867,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/film.js",
+      "bytes": 6642,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/index.html",
+      "bytes": 391,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/lines.json",
+      "bytes": 1039,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/main.js",
+      "bytes": 657,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/scenes/lobby.js",
+      "bytes": 21512,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/scenes/roof.js",
+      "bytes": 7301,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/scenes/stairs.js",
+      "bytes": 8287,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/scenes/tower.js",
+      "bytes": 9084,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/shots_kitchen.js",
+      "bytes": 11826,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/shots_lobby.js",
+      "bytes": 5677,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/shots_misc.js",
+      "bytes": 12789,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/shots_out.js",
+      "bytes": 3214,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/shots_roof.js",
+      "bytes": 14889,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/shots_stairs.js",
+      "bytes": 3687,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/timeline.js",
+      "bytes": 3430,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/film/voices/dur.json",
+      "bytes": 100,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/Italiana-Regular.ttf",
+      "bytes": 31828,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/JosefinSans[wght].ttf",
+      "bytes": 118588,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/Limelight-Regular.ttf",
+      "bytes": 132292,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/OFL-italiana.txt",
+      "bytes": 4393,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/OFL-josefinsans.txt",
+      "bytes": 4449,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/OFL-limelight.txt",
+      "bytes": 4399,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/OFL-poiretone.txt",
+      "bytes": 4389,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/PoiretOne-Regular.ttf",
+      "bytes": 130176,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/fonts/fonts.css",
+      "bytes": 289,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/index.html",
+      "bytes": 3043,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/CREDITS",
+      "bytes": 1098,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/DEMO.md",
+      "bytes": 14371,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/README.md",
+      "bytes": 4289,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/STYLE.md",
+      "bytes": 12196,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/build.sh",
+      "bytes": 2093,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/frames.js",
+      "bytes": 13939,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/mix.py",
+      "bytes": 17241,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/music/CREDITS_music.txt",
+      "bytes": 384,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/music/score.json",
+      "bytes": 1775,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/music/score.py",
+      "bytes": 24611,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/style.json",
+      "bytes": 497,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/timeline.json",
+      "bytes": 3773,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/tools/cuecheck.py",
+      "bytes": 1808,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/tools/dump_timeline.mjs",
+      "bytes": 635,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/tools/pitch.py",
+      "bytes": 742,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/tools/subs.py",
+      "bytes": 810,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-art-deco/source/voices/words.json",
+      "bytes": 1366,
+      "role": "process"
+    },
     {
       "path": "demos/cases/lemo-paper-lantern/LICENSES.md",
       "bytes": 1445,
@@ -320,13 +621,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-art-deco.json",
+      "bytes": 10844,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/lemo-paper-lantern.json",
       "bytes": 10200,
       "role": "entry"
     },
     {
       "path": "entries/patterns/windows-light-car-by-car.json",
-      "bytes": 3712,
+      "bytes": 4274,
       "role": "entry"
     },
     {

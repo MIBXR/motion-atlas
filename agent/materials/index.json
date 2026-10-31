@@ -121,6 +121,36 @@
           "kind": "case",
           "id": "lemo-engraving",
           "note": "蜜蜂，第七号图版 · 铜版画；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-silkscreen-poster",
+          "note": "绕远路回家 · 丝印旅行海报"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-printed-long-take",
+          "note": "三十三只 · 印刷长镜头"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-art-deco",
+          "note": "星光饭店的午夜 · 装饰艺术"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-blueprint",
+          "note": "专利申请中：接云机器 · 蓝图 / 工程制图"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-stained-glass",
+          "note": "东窗之龙 · 彩色玻璃窗"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-pictogram-motion",
+          "note": "被落下的伞 · 象形运动图形"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"
