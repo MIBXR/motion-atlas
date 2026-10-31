@@ -12,7 +12,7 @@
   --muted: #8f8d87;
   --accent-1: #ff7a52;
   --accent-2: #ff6a3f;
-  --accent-3: #ff5b2e;
+  --accent-3: #ff5b2e; --brand-mark: #ff5b2e;
   --accent-3-ink: #160804;
   --accent-mark: #8a2c14;
   --accent-4: #3a1d14;
@@ -33,7 +33,7 @@
 :root[data-theme="light"] {
   --bg: #f6f4ef; --bg-2: #eae6dc; --surface: #ffffff; --surface-2: #f6f4ef; --line: #d9d3c6; --line-2: #c3bcad;
   --ink: #17181b; --ink-2: #3a3b3f; --muted: #6a6862;
-  --accent-1: #b8330f; --accent-2: #d0401a; --accent-3: #ef4d24;
+  --accent-1: #b8330f; --accent-2: #d0401a; --accent-3: #ef4d24; --brand-mark: #df3f17;
   --accent-3-ink: #ffffff; --accent-mark: rgba(239, 77, 36, .35); --accent-4: #fbe4dc;
   color-scheme: light;
 }
@@ -41,7 +41,7 @@
   :root:not([data-theme="dark"]) {
     --bg: #f6f4ef; --bg-2: #eae6dc; --surface: #ffffff; --surface-2: #f6f4ef; --line: #d9d3c6; --line-2: #c3bcad;
     --ink: #17181b; --ink-2: #3a3b3f; --muted: #6a6862;
-    --accent-1: #b8330f; --accent-2: #d0401a; --accent-3: #ef4d24;
+    --accent-1: #b8330f; --accent-2: #d0401a; --accent-3: #ef4d24; --brand-mark: #df3f17;
     --accent-3-ink: #ffffff; --accent-mark: rgba(239, 77, 36, .35); --accent-4: #fbe4dc;
     color-scheme: light;
   }
@@ -337,7 +337,7 @@ button:disabled { opacity: .5; }
 /* 全屏：舞台按 contain 铺满屏幕，工具栏与刻度条浮在上下；浮层固定用深色 */
 .detail[data-layout] .stage-col.is-fs { position: fixed; inset: 0; z-index: 200; width: auto; height: auto; max-width: none; margin: 0; display: block; background: #000; color-scheme: dark; /* 选择器要压过 split / stack 的列规则（伪全屏时没有 UA 的 :fullscreen 规则兜底） */
   --surface: #1a1816; --surface-2: #221f1c; --line: #2a2d33; --line-2: #3b3f46; --ink: #ecebe6; --ink-2: #c9c7c0; --muted: #8f8d87; --bg: #0c0d0f;
-  --accent-1: #ff7a52; --accent-2: #ff6a3f; --accent-3: #ff5b2e;
+  --accent-1: #ff7a52; --accent-2: #ff6a3f; --accent-3: #ff5b2e; --brand-mark: #ff5b2e;
   --accent-3-ink: #160804; --accent-mark: #8a2c14; --accent-4: #3a1d14; }
 .is-fs .stage-body { position: absolute; inset: 0; display: block; }
 .is-fs .stage-frame { position: absolute; inset: 0; width: auto; height: auto; max-width: none; border-radius: 0; box-shadow: none; }
@@ -424,3 +424,12 @@ body .gen-list { overflow-y: auto; overflow-x: hidden; }
 /* ---------- 回到顶部 ---------- */
 .to-top { position: fixed; right: 20px; bottom: 20px; z-index: 40; opacity: 0; pointer-events: none; transition: opacity .2s; }
 .to-top.show { opacity: 1; pointer-events: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .site-header { view-transition-name: atlas-header; }
+  ::view-transition-group(root), ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 140ms; animation-timing-function: ease-out; }
+  ::view-transition-group(atlas-header), ::view-transition-new(atlas-header) { animation: none; }
+  ::view-transition-old(atlas-header) { display: none; }
+  ::view-transition-new(atlas-header) { mix-blend-mode: normal; }
+}

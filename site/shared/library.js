@@ -1057,7 +1057,7 @@
     if (it) { if (isMaterial) renderMaterial(it); else renderDetail(it); window.Site.syncMenu(); }
     else { destroyDetail(); renderList(); }
   }
-  addEventListener('hashchange', route);
+  addEventListener('hashchange', () => window.Site.viewTransition(route));
   document.addEventListener('ma:favorites', () => {
     const c = document.querySelector('[data-group="fav"] .count');
     if (c) c.textContent = String(favs.all()[KIND].length).padStart(2, '0');

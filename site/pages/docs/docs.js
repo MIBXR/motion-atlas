@@ -299,7 +299,7 @@
       toc.forEach((h) => { const el = document.getElementById(h.id); if (el) spy.observe(el); });
     }
   }
-  addEventListener('hashchange', open);
+  addEventListener('hashchange', () => window.Site.viewTransition(open));
   open();
   drawNav();
   // 初次定位等字体与布局稳定；当前项尚未排版时逐帧重试
