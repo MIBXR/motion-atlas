@@ -261,6 +261,7 @@
     const t = Number(hashParams().get('t'));
     const autoplay = hashParams().get('autoplay') || q.get('autoplay');
     const src = `${it.demo}?embed=1&orient=${want}${Number.isFinite(t) && t > 0 ? `&t=${t}` : ''}${autoplay === '0' ? '&autoplay=0' : ''}`;
+    const caption = KIND === 'patterns' ? `<p class="stage-caption">所属案例：${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${esc(c.title)}</a>` : ''; }).join('、')}</p>` : '';
     return `<section class="stage-col" id="stage-col" aria-label="${esc(it.title)} Demo">
       <div class="stage-bar">
         <div class="stage-views" role="group" aria-label="查看方式">
@@ -284,6 +285,7 @@
         </div>
         <div class="beat-side"><p class="side-h">节拍点<small>BEATS</small></p><div class="side-beats" id="beat-side"></div></div>
       </div>
+      ${caption}
       <div class="scrubber" id="scrubber" data-ready="0">
         <div class="scrub-row">
           <button class="icon-btn play-btn" type="button" id="scrub-play" disabled aria-disabled="true" data-playing="false" aria-label="播放" title="播放 / 暂停（空格）">${SI.play}${SI.pause}</button>
@@ -306,6 +308,7 @@
     const d = det = {
       it, el, actions: root.querySelector('.page-actions'), col: $('stage-col'), bar: el.querySelector('.stage-bar'),
       frame: $('stage-frame'), ifr: $('demo-frame'), sc: $('scrubber'), track: $('scrub-track'), svg: $('scrub-svg'),
+      caption: el.querySelector('.stage-caption'),
       head: $('scrub-head'), tip: $('scrub-tip'), time: $('scrub-time'), dur: $('scrub-dur'), play: $('scrub-play'),
       strip: $('beat-list'), side: $('beat-side'), seg: el.querySelector('.orient-seg'), badge: el.querySelector('.orient-badge'),
       snd: el.querySelector('.sound-btn'), fsBtn: el.querySelector('[data-act="fullscreen"]'), open: el.querySelector('[data-act="open"]'),
@@ -413,15 +416,13 @@
   function layoutColumns() {
     if (!detailColumns) return;
     const { el, cols, header, actions } = detailColumns;
-    let shorter = null;
-    if (innerWidth > 1159 && !det?.fs) {
-      const heights = cols.map(col => col.getBoundingClientRect().height);
-      const index = heights[0] <= heights[1] ? 0 : 1;
-      shorter = cols[index];
+    const sticky = innerWidth > 1159 && !det?.fs;
+    if (sticky) {
       const top = header.getBoundingClientRect().height + actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
-      el.style.setProperty('--detail-sticky-top', Math.min(top, innerHeight - heights[index] - BOTTOM) + 'px');
+      el.style.setProperty('--detail-sticky-top', top + 'px');
     }
-    cols.forEach(col => col.classList.toggle('is-sticky', col === shorter));
+    cols[0].classList.toggle('is-sticky', sticky);
+    cols[1].classList.toggle('is-sticky', sticky && cols[0].getBoundingClientRect().height > cols[1].getBoundingClientRect().height);
   }
   function layout() {
     const d = det;
@@ -442,7 +443,7 @@
       const stripBlock = parseFloat(getComputedStyle(d.strip).height) + (parseFloat(scCS.rowGap) || 0);
       const scBase = d.sc.querySelector('.scrub-row').offsetHeight + parseFloat(scCS.paddingTop) + parseFloat(scCS.paddingBottom) + parseFloat(scCS.borderTopWidth) + parseFloat(scCS.borderBottomWidth);
       const actionH = d.actions.getBoundingClientRect().height;
-      const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
+      const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM + (d.caption ? d.caption.offsetHeight + gap : 0);
       const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
       mode = innerWidth > 1159 ? 'split' : 'stack';
       Object.assign(vars, { '--stage-col': W });
@@ -912,7 +913,7 @@
     const gallery = `<div class="grid material-gallery">${(it.gallery || []).map((image) => {
       const sourceUrl = image.sourceUrl || image.url;
       const license = typeof image.license === 'string' ? image.license : image.license?.notes || image.license?.name;
-      return `<figure class="card"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
+      return `<figure class="material-preview"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
         <figcaption class="card-body"><span class="chip accent">${galleryKinds[image.kind]}</span><p class="card-sum">${esc(image.caption)}</p><p class="material-credit">作者产出效果，未复刻</p>${sourceUrl ? `<a class="material-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}${license ? `<p class="material-credit">${esc(license)}</p>` : ''}</figcaption></figure>`;
     }).join('')}</div>`;
     const related = it.relatedEntries?.length ? `<ul>${it.relatedEntries.map((relation) => {
@@ -1004,7 +1005,6 @@
       sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl>`),
       sec('组合', 'COMPOSE', `<dl class="kv"><dt>职责</dt><dd>${esc(TAX.roles[comp.role] || comp.role || '—')}</dd><dt>搭配</dt><dd>${(comp.pairsWellWith || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd><dt>冲突</dt><dd>${(comp.conflicts || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd></dl>${comp.notes ? `<p style="margin-top:10px">${esc(comp.notes)}</p>` : ''}`),
       sec('可访问性', 'A11Y', `<dl class="kv"><dt>减少动态</dt><dd>${esc(it.accessibility?.reducedMotion || '—')}</dd><dt>键盘</dt><dd>${esc(it.accessibility?.keyboard || '—')}</dd></dl>`),
-      `<p>所属案例：${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${esc(c.title)}</a>` : ''; }).join('、')}</p>`,
       documentLinks(it),
     ].join('');
   }
