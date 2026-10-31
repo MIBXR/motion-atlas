@@ -11,7 +11,7 @@
   const ICONS = {
     cache: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></svg>',
     close: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
-    logo: '<svg viewBox="0 0 96 96" aria-hidden="true"><path fill="var(--accent)" fill-rule="evenodd" d="M8 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z M32 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z"/></svg>',
+    logo: '<svg viewBox="0 0 96 96" aria-hidden="true"><path fill="var(--accent-3)" fill-rule="evenodd" d="M8 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z M32 48a28 28 0 1 0 56 0a28 28 0 1 0-56 0Z"/></svg>',
     sun: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7L7 17M17 7l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
     moon: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
     system: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',

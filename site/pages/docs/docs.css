@@ -27,7 +27,7 @@
 .doc li + li { margin-top: 4px; }
 .doc li > ul, .doc li > ol { margin: 4px 0 0; }
 .doc strong { color: var(--ink); }
-.doc a { color: var(--accent); text-underline-offset: 3px; }
+.doc a { color: var(--accent-1); text-underline-offset: 3px; }
 .doc code { font: 14px/1.5 var(--f-mono); color: var(--ink); padding: 1px 6px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); }
 .doc pre { position: relative; padding: 16px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line); overflow: auto; }
 .doc pre code { padding: 0; border: 0; border-radius: 0; background: none; font-size: 12px; line-height: 1.7; color: var(--ink-2); white-space: pre; }
@@ -46,7 +46,7 @@
 #toc { display: grid; gap: 2px; margin-top: 10px; }
 #toc a { display: block; padding: 4px 0 4px 10px; font-size: 12px; line-height: 1.5; color: var(--muted); text-decoration: none; border-left: 1px solid var(--line); }
 #toc a.sub { padding-left: 22px; }
-#toc a:hover, #toc a.on { color: var(--ink); border-color: var(--accent); }
+#toc a:hover, #toc a.on { color: var(--ink); border-color: var(--accent-1); }
 @media (max-width: 1240px) { .docs { grid-template-columns: 228px minmax(0, 1fr); } .doc-toc { display: none; } }
 @media (max-width: 980px) {
   .docs { grid-template-columns: 1fr; gap: 0; }

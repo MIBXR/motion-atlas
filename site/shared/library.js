@@ -32,19 +32,19 @@
         <g stroke="var(--line-2)"><path d="M50 30H380M50 80H380M50 130H380M50 180H380"/></g>
         <g fill="var(--ink)"><path d="M90 30l7-7 7 7-7 7zM190 30l7-7 7 7-7 7zM320 30l7-7 7 7-7 7z"/><rect x="120" y="74" width="120" height="12" rx="3" opacity=".85"/><rect x="260" y="74" width="80" height="12" rx="3" opacity=".4"/>
         <path d="M70 130l7-7 7 7-7 7zM100 130l7-7 7 7-7 7zM130 130l7-7 7 7-7 7z" opacity=".6"/></g>
-        <g fill="var(--accent)"><circle cx="150" cy="180" r="5"/><circle cx="210" cy="180" r="5"/><circle cx="270" cy="180" r="5"/><circle cx="330" cy="180" r="5"/></g>
-        <path d="M50 214C100 214 120 196 160 186S240 150 280 160 340 206 380 200" fill="none" stroke="var(--accent)" stroke-width="2"/>
-        <g class="ph-anim"><rect x="236" y="8" width="2" height="212" fill="var(--accent)"/><path d="M231 4h12l-6 8z" fill="var(--accent)"/></g>
+        <g fill="var(--accent-1)"><circle cx="150" cy="180" r="5"/><circle cx="210" cy="180" r="5"/><circle cx="270" cy="180" r="5"/><circle cx="330" cy="180" r="5"/></g>
+        <path d="M50 214C100 214 120 196 160 186S240 150 280 160 340 206 380 200" fill="none" stroke="var(--accent-1)" stroke-width="2"/>
+        <g class="ph-anim"><rect x="236" y="8" width="2" height="212" fill="var(--accent-1)"/><path d="M231 4h12l-6 8z" fill="var(--accent-1)"/></g>
       </svg>`
     : `<svg class="hero-art" viewBox="0 0 380 220" aria-hidden="true">
         <g stroke="var(--line-2)" fill="none"><rect x="10" y="10" width="110" height="110"/><rect x="135" y="10" width="110" height="110"/><rect x="260" y="10" width="110" height="110"/></g>
         <path d="M10 120C50 120 40 10 120 10" fill="none" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M135 120C215 120 165 10 245 10" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+        <path d="M135 120C215 120 165 10 245 10" fill="none" stroke="var(--accent-1)" stroke-width="2.5"/>
         <path d="M260 120C270 40 300 -10 370 10" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 4"/>
-        <g fill="var(--accent)"><circle cx="10" cy="120" r="4"/><circle cx="120" cy="10" r="4"/><circle cx="135" cy="120" r="4"/><circle cx="245" cy="10" r="4"/></g>
+        <g fill="var(--accent-1)"><circle cx="10" cy="120" r="4"/><circle cx="120" cy="10" r="4"/><circle cx="135" cy="120" r="4"/><circle cx="245" cy="10" r="4"/></g>
         <g font-family="var(--f-mono)" font-size="12" fill="var(--muted)"><text x="10" y="146">glide</text><text x="135" y="146">snap</text><text x="260" y="146">overshoot</text></g>
         <g fill="var(--ink)"><rect x="10" y="170" width="40" height="40" rx="6"/><rect x="62" y="178" width="40" height="32" rx="6" opacity=".7"/><rect x="114" y="186" width="40" height="24" rx="6" opacity=".45"/><rect x="166" y="194" width="40" height="16" rx="6" opacity=".25"/></g>
-        <path d="M230 210h140" stroke="var(--line-2)"/><path d="M230 210h40l20-36 20 36h60" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <path d="M230 210h140" stroke="var(--line-2)"/><path d="M230 210h40l20-36 20 36h60" fill="none" stroke="var(--accent-1)" stroke-width="2"/>
       </svg>`;
 
   /* ---------- 状态（列表筛选保存在 URL） ---------- */
