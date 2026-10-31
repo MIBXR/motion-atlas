@@ -419,6 +419,4 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 
 `MotionAtlasAssets.resolve(url)` 解析图片、字体与 `fetch` 使用的素材地址；MotionKit 提供预加载、缓存、进度与就绪通知。地图瓦片及清单外请求使用其配置地址，发布模式需要访问对应网络来源。
 
-文字快照由条目的 `snapshotPath` 确定，完整保存在源码与本地包内；发布包中的 HTML、CSS 与其他原文按原字节保存，大素材按同一阈值从固定 GitHub 提交加载。Site 请求入口将原素材路径临时跳转到对应 GitHub 地址，其余请求交给静态资源绑定；快照的相对目录结构与资源引用保持原样。
-
-站点发布输出为 `dist/client/` 静态内容和 `dist/server/` 请求入口，`.openai/hosting.json` 保留 Site 身份并使用 Worker 发布。
+文字快照由条目的 `snapshotPath` 确定，完整保存在源码与本地包内；发布包中的 HTML、CSS 与其他原文按原字节保存，大素材按同一阈值从固定 GitHub 提交加载。发布包的 `_redirects` 将原素材路径临时跳转到对应 GitHub 地址，快照的相对目录结构与资源引用保持原样。
