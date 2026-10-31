@@ -36,7 +36,7 @@
 - **可修改**：修改范本时直接读改源码，不要求把内容抽成配置。案例、巧思与素材的迁移指南（`migration`）均为可选；有可提炼的常改内容（路线、图片、文案、节拍、配色、素材）时，写明在哪个文件、哪一段。
 - **保留制作依赖**：收录是为了日后参考、学习和复现制作。成品运行所需之外，制作该作品必需的工具与依赖一并保留：配乐合成库与采样、素材生成脚本、模拟与渲染场景，以及这些脚本读取的数据。条目专属的放在条目本体的 `source/`；多个条目共用的作为素材收录在 `demos/materials/<id>/`，由条目引用。与本库已有工具完全等价的可以不收，在条目说明中写明对应关系。 要求是工具与依赖在库里取得到、写明怎么用，不要求每个案例都验证一键重跑。
 - **方法与决策记录**：有研究价值时，在 `docs/cases/<id>.md` 记录参考与来源、采用的工作流／skill／提示词、关键决定与理由、怎么改；验证结论链接到本体的 `fidelity.md`。不强制每个案例都写，避免把范本框死在固定格式里。
-- **语言**：站点说明使用中文；被复刻作品自身的原文、素材收录的 skill 与 prompt 原文保留原语言。
+- **语言**：站点说明使用中文，装饰性的英文眉题除外；被复刻作品自身的原文、素材收录的 skill 与 prompt 原文保留原语言。
 - **声音**：原创作品采用非 AI 合成的连续公开音乐打底，在 3–4 个关键节点加入低于音乐音量的短音效，例如 Kevin MacLeod 的 CC BY 4.0 音乐、Kenney 的 CC0 音效；复刻作品沿用原作声音。
 - **第三方资源**：画面、字体、音乐、贴图与库保留完整素材、原字节、许可原文与署名，许可入口列在条目本体的 `LICENSES.md`。文字素材快照仅含上游原文文件与许可原文，保留原语言与原字节。第三方库按固定版本保存于 `vendor/<库>@<版本>/`；地图案例的 MapLibre 使用固定版本 CDN。
 - **作者效果图**：标注“作者产出，未复刻”，逐图在条目 JSON 中记录原 URL、许可与静态／动态属性。
@@ -58,7 +58,7 @@
 | `site/` | 站点代码 | `shared/`、`pages/<页>/`、`runtime/`、`icons/` |
 | `kit/` | Demo 运行时 | `motion-kit.js` |
 | `scripts/` | 工具与制作模板 | 构建、播放、截图、渲染、取帧与 CLI；`templates/` 放条目模板 |
-| 根目录 | 页面与说明 | `index.html`、`cases.html`、`patterns.html`、`materials.html`、`lab.html`、`agent.html`、`docs.html`、`README.md`、`CONTRIBUTING.md`、`AGENTS.md`、`package.json`、`.gitattributes`、`.gitignore`、`.openai/` |
+| 根目录 | 页面与说明 | `index.html`、`cases.html`、`patterns.html`、`materials.html`、`lab.html`、`agent.html`、`docs.html`、`README.md`、`CONTRIBUTING.md`、`AGENTS.md`、`package.json`、`asset-cache-worker.js`（位于根目录，使 Service Worker 作用域覆盖 `demos/`）、`.gitattributes`、`.gitignore`、`.openai/` |
 
 ### 条目本体
 
@@ -237,6 +237,6 @@ git ls-files --others --ignored --exclude-standard
 
 Web Atlas 与 Motion Atlas 是姊妹站，内容互不交叉，界面骨架保持一致：顶栏、页脚、侧栏、列表页、详情页、素材缓存、控件与图标、字体和配色角色的结构与用法相同。修改界面时对照另一站的同一位置。
 
-两站只在品牌层不同：主题色（Motion 橙、Web 绿）、标志、圆角大小（Motion 偏大、Web 偏小）、底色色相，以及卡片上的附加信息（Motion 的能量曲线，Web 的来源标签与比较入口）。
+两站的差异主要在品牌层：主题色（Motion 橙、Web 绿）、标志、圆角大小（Motion 偏大、Web 偏小）、底色色相，以及卡片上的附加信息（Motion 的能量曲线，Web 的来源标签与比较入口）。
 
-配色：浅色模式底色带主题色、卡片与侧栏为白；深色模式底色接近中性黑、卡片与侧栏带少量主题色。页面上的内容放在有圆角和内边距的卡片里，卡片内的子项用比卡片略深的底色。
+配色：浅色模式底色带主题色、卡片与侧栏为白；深色模式底色接近中性黑、卡片与侧栏带少量主题色。页面上的内容放在有圆角和内边距的卡片里，卡片内的子项用与卡片区分的次级面底色。
