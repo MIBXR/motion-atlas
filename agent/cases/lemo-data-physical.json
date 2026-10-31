@@ -1,0 +1,630 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "lemo-data-physical",
+  "entry": {
+    "id": "lemo-data-physical",
+    "order": 65,
+    "title": "两条螺旋 · 数据实物化",
+    "subtitle": "Two Spirals",
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "lemo-opuscar",
+      "数据实物化",
+      "实证影像",
+      "代码影片"
+    ],
+    "summary": "2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。",
+    "focus": "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。",
+    "accent": "#D4521C",
+    "background": "#C4BEB4",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 37.8,
+    "rhythm": {
+      "duration": 39.375,
+      "beats": [
+        {
+          "t": 0,
+          "label": "2014年成对堆片",
+          "note": "0–2.5秒，2014年成对堆片。"
+        },
+        {
+          "t": 2.5,
+          "label": "成对读数与判断",
+          "note": "2.5–7.5秒，成对读数与判断。"
+        },
+        {
+          "t": 7.5,
+          "label": "单位片特写",
+          "note": "7.5–10.3秒，单位片特写。"
+        },
+        {
+          "t": 10,
+          "label": "沿年份攀升",
+          "note": "10–17.5秒，沿年份攀升。"
+        },
+        {
+          "t": 17.5,
+          "label": "2021年反超",
+          "note": "17.5–22.5秒，2021年反超。"
+        },
+        {
+          "t": 22.5,
+          "label": "后续年份加速",
+          "note": "22.5–25.3秒，后续年份加速。"
+        },
+        {
+          "t": 25.3,
+          "label": "2025年新增片",
+          "note": "25.3–30秒，2025年新增片。"
+        },
+        {
+          "t": 30,
+          "label": "拉远成装置",
+          "note": "30–34.4秒，拉远成装置。"
+        },
+        {
+          "t": 34.4,
+          "label": "黄铜倍数与片尾",
+          "note": "34.4–39.375秒，黄铜倍数与片尾。"
+        }
+      ]
+    },
+    "energySegments": [
+      {
+        "t0": 0,
+        "t1": 2.5,
+        "from": 0.2,
+        "to": 0.25,
+        "label": "2014年成对堆片"
+      },
+      {
+        "t0": 2.5,
+        "t1": 7.5,
+        "from": 0.25,
+        "to": 0.35,
+        "label": "成对读数与判断"
+      },
+      {
+        "t0": 7.5,
+        "t1": 10.3,
+        "from": 0.35,
+        "to": 0.4,
+        "label": "单位片特写"
+      },
+      {
+        "t0": 10,
+        "t1": 17.5,
+        "from": 0.4,
+        "to": 0.45,
+        "label": "沿年份攀升"
+      },
+      {
+        "t0": 17.5,
+        "t1": 22.5,
+        "from": 0.45,
+        "to": 0.6,
+        "label": "2021年反超"
+      },
+      {
+        "t0": 22.5,
+        "t1": 25.3,
+        "from": 0.6,
+        "to": 0.5,
+        "label": "后续年份加速"
+      },
+      {
+        "t0": 25.3,
+        "t1": 30,
+        "from": 0.5,
+        "to": 0.7,
+        "label": "2025年新增片"
+      },
+      {
+        "t0": 30,
+        "t1": 34.4,
+        "from": 0.7,
+        "to": 0.75,
+        "label": "拉远成装置"
+      },
+      {
+        "t0": 34.4,
+        "t1": 39.375,
+        "from": 0.75,
+        "to": 0.75,
+        "label": "黄铜倍数与片尾"
+      }
+    ],
+    "energyNote": "时段取上游DEMO.md的Shots；0–1为依据画面密度、配乐与旁白作的相对编辑标注。",
+    "observations": [
+      "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。",
+      "同年两组片错半拍堆叠，2025新增片逐片落下，镜头沿螺旋攀升后吊臂拉远到近俯视。",
+      "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。"
+    ],
+    "composition": {
+      "color": "#C4BEB4、#C8CCD1、#9FD3D6、#D2B07A、#EFE4CF、#1C1D20、#D4521C",
+      "typography": "Noto Sans SC 400/500；Noto Serif SC 600；Inter 200/300/400/500；JetBrains Mono 400/500，OFL字符子集。",
+      "layout": "1920×1080、24fps；主画面、读数和字幕按原作时间线组织。",
+      "imagery": "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。",
+      "motion": "同年两组片错半拍堆叠，2025新增片逐片落下，镜头沿螺旋攀升后吊臂拉远到近俯视。",
+      "sound": "96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。",
+      "rhythm": "连续时间线按Shots的段落与声音节点推进。",
+      "coherence": "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。"
+    },
+    "layers": [
+      {
+        "name": "原作画面",
+        "role": "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。"
+      },
+      {
+        "name": "测量与文字",
+        "role": "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。"
+      },
+      {
+        "name": "声音",
+        "role": "96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。"
+      }
+    ],
+    "tokens": {
+      "palette": [
+        "#C4BEB4",
+        "#C8CCD1",
+        "#9FD3D6",
+        "#D2B07A",
+        "#EFE4CF",
+        "#1C1D20",
+        "#D4521C"
+      ],
+      "type": "Noto Sans SC 400/500；Noto Serif SC 600；Inter 200/300/400/500；JetBrains Mono 400/500，OFL字符子集。",
+      "motion": [
+        {
+          "name": "源码时间线",
+          "value": "film/timeline.js的T/HIT/BUILD；段落见rhythm.beats。"
+        }
+      ]
+    },
+    "useCases": [
+      "年度报告影片",
+      "能源数据展示",
+      "实物化统计叙事"
+    ],
+    "avoid": [
+      "需要观看者自行决定节奏的网页交互"
+    ],
+    "constraints": [
+      "素材、数据、字体与时间线由原作文件直接驱动。"
+    ],
+    "migration": [
+      {
+        "field": "film/film.js",
+        "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+      },
+      {
+        "field": "film/set.js",
+        "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+      },
+      {
+        "field": "film/data.js",
+        "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+      },
+      {
+        "field": "film/timeline.js",
+        "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+      }
+    ],
+    "prompt": "制作“两条螺旋 · 数据实物化”：2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。画面：IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。运动：同年两组片错半拍堆叠，2025新增片逐片落下，镜头沿螺旋攀升后吊臂拉远到近俯视。声音：96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。实现文件为film/film.js、film/set.js、film/data.js、film/timeline.js，保留真实数据、素材署名和原片音轨，按1920×1080舞台的原作render(t)逐帧定位。",
+    "demo": "demos/cases/lemo-data-physical/index.html",
+    "patternIds": [
+      "paired-climb-spiral",
+      "chart-to-installation-pullback"
+    ],
+    "fidelity": "demos/cases/lemo-data-physical/fidelity.md",
+    "upstream": {
+      "repository": "lemomo-ai/lemo-opuscar",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical",
+      "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+      "path": "styles/data-physical/",
+      "version": "0.1.0"
+    },
+    "license": {
+      "name": "MIT · CC BY 4.0",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+      "notes": "代码与文档MIT；原成片与静帧CC BY 4.0，署名LemoLab；第三方素材沿用CREDITS的许可。"
+    },
+    "sources": [
+      {
+        "label": "风格、示范与固定源码",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical"
+      },
+      {
+        "label": "Release公开成片",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/data-physical.mp4"
+      },
+      {
+        "label": "原始署名与素材许可",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical/demo/CREDITS"
+      },
+      {
+        "label": "事实与测量依据",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical/demo/FACTS.md"
+      }
+    ],
+    "attribution": [
+      {
+        "scope": "作品",
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical)，代码MIT、成片CC BY 4.0；接入与对照见[fidelity.md](fidelity.md)。"
+      },
+      {
+        "scope": "第三方素材与声音",
+        "notes": "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。 96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。 原始记录见[source/CREDITS](source/CREDITS)，许可索引见[LICENSES.md](LICENSES.md)。"
+      },
+      {
+        "scope": "字体",
+        "notes": "Noto Sans SC 400/500；Noto Serif SC 600；Inter 200/300/400/500；JetBrains Mono 400/500，OFL字符子集。 许可原文在fonts/。"
+      }
+    ],
+    "renderer": "gpu",
+    "licenses": "demos/cases/lemo-data-physical/LICENSES.md",
+    "preview": "previews/cases/lemo-data-physical.jpg",
+    "previewPortrait": null
+  },
+  "documents": {
+    "fidelity": "# 两条螺旋 · 数据实物化 · 接入与保真说明\n\n完整代码影片，固定版本见[条目JSON](../../../entries/cases/lemo-data-physical.json)。\n\n## 相对原作的删改\n\n| 文件 | 删改内容 | 原因 |\n| --- | --- | --- |\n| index.html | 按原fps调用原作render(t)，等待iframe load与READY；预载运行资源并挂接成片音轨。 | 接入MotionKit的时间线、定位、播放与减少动态。 |\n| film/index.html | 字体与import map定位到本案例fonts/、film/core/与固定three.js子集。 | 接入本地路径。 |\n| audio/film.m4a | 由Release公开成片以-c:a copy提取。 | 保留原成片混音。 |\n| source/ | 保存上游不参与成品运行的制作文件与原始来源、许可证据；stills留在上游。 | 保留重建所需资料。 |\n| film/set.js | /core/assets/polyhaven/改为../assets/；out/cues.json按原export.mjs生成。 | 原纹理、HDRI与字幕路径接入。 |\n\n## 适配层\n\n`MotionKit.load.prepare`预载资源，等待原作`READY`；`MotionKit.mountFilm`使用1920×1080、24fps、39.375000秒，`renderAt(t)`调用并等待`render(round(t×fps)/fps)`。镜头标记取DEMO.md的Shots。\n\n`?embed`隐藏工具栏，`?render`暂停播放与声音，`?t=秒`定位；减少动态时停在37.8秒。音轨为公开成片流复制，默认关闭。画面由原作render(t)直接生成。\n\n\n## 与原片对照结果\n\n无头Edge使用`--enable-gpu --ignore-gpu-blocklist --font-render-hinting=none --force-color-profile=srgb`，1920×1080、DPR 1；三维与灯台使用Intel Iris Xe / ANGLE Direct3D11。等待`__motion.ready`并按`round(t×fps)/fps`定位。参考PNG从Release成片按相同帧号精确提取。\n\n原始列比较参考PNG与本库PNG；编码链列将本库画面以JPEG95、libx264 medium CRF14 yuv420p，再以slow CRF19编码解码；全部编码在过程目录完成。颗粒取上游build.sh的mux参数：0。颗粒滤镜先推进到原视频帧号，再选择测量帧，保持相同的时间相位。编码参数见source/build.sh和共享core/render/video.mjs、mux.sh。\n\n编码链值使用单帧I帧测量。两张图像均转yuv444p，取ffmpeg SSIM All。左右拼图保存在过程目录renders/<id>/，左为参考、右为本库。\n\n\n| 视频帧号 | 实际秒 | 原始SSIM All | 编码链SSIM All | 覆盖 |\n| --- | --- | --- | --- | --- |\n| 0 | 0.000000 | 0.994962 | 0.995424 | 开头 |\n| 907 | 37.791667 | 0.985330 | 0.988345 | frame_sec |\n| 30 | 1.250000 | 0.989851 | 0.990691 | Shots · 2014年成对堆片中点 |\n| 120 | 5.000000 | 0.988983 | 0.988423 | Shots · 成对读数与判断中点 |\n| 214 | 8.916667 | 0.993844 | 0.993558 | Shots · 单位片特写中点 |\n| 330 | 13.750000 | 0.987096 | 0.990750 | Shots · 沿年份攀升中点 |\n| 480 | 20.000000 | 0.971992 | 0.977809 | Shots · 2021年反超中点 |\n| 574 | 23.916667 | 0.971459 | 0.981735 | Shots · 后续年份加速中点 |\n| 664 | 27.666667 | 0.990453 | 0.992329 | Shots · 2025年新增片中点 |\n| 773 | 32.208333 | 0.979210 | 0.986302 | Shots · 拉远成装置中点 |\n| 885 | 36.875000 | 0.984964 | 0.987803 | Shots · 黄铜倍数与片尾中点 |\n| 921 | 38.375000 | 0.985363 | 0.988549 | 片尾前1秒 |\n\n12帧：原始最低0.971459、最高0.994962；编码链最低0.977809、最高0.995424。\n\n声音：原片与audio/film.m4a解码为48kHz单声道，每10ms取RMS包络，在±500ms内互相关；最佳偏移0ms，相关系数1.000000。\n",
+    "licenses": "# 两条螺旋 · 数据实物化 · 许可索引\n\n| 内容 | 作者 | 许可 | 原地址 | 本地文件 |\n| --- | --- | --- | --- | --- |\n| 作品代码与文档 | LemoLab × Claude Opus 5.5；Lemomo | MIT | https://github.com/lemomo-ai/lemo-opuscar | film/LICENSE、source/ |\n| 原成片音轨 | LemoLab × Claude Opus 5.5 | CC BY 4.0，第三方沿用各自许可 | https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/data-physical.mp4 | audio/film.m4a、audio/CC-BY-4.0.txt |\n| 太阳能装机数据 | IRENA (2026)，Our World in Data整理 | CC BY 4.0 | https://ourworldindata.org/grapher/installed-solar-pv-capacity | assets/data/world_solar_capacity_irena2026.csv |\n| 风电装机数据 | IRENA (2026)，Our World in Data整理 | CC BY 4.0 | https://ourworldindata.org/grapher/cumulative-installed-wind-energy-capacity-gigawatts | assets/data/world_wind_capacity_irena2026.csv |\n| American Walnut Veneer | Poly Haven | CC0 1.0 | https://polyhaven.com/a/american_walnut_veneer | assets/walnut_diff.jpg、walnut_nor.jpg、walnut_rough.jpg |\n| Photo Studio Loft Hall HDRI | Poly Haven | CC0 1.0 | https://polyhaven.com/a/photo_studio_loft_hall | assets/photo_studio_loft_hall_2k.hdr |\n| VS Chamber Orchestra: Community Edition | Versilian Studios / Sam Gossner | CC0 1.0 | https://github.com/sgossner/VSCO-2-CE | audio/film.m4a、source/CREDITS、audio/CC0-1.0.txt |\n| Versilian Community Sample Library | Versilian Studios / Sam Gossner | CC0 1.0 | https://github.com/sgossner/VCSL | audio/film.m4a、source/CREDITS、audio/CC0-1.0.txt |\n| FreePats采样 | FreePats project | CC0 1.0 | https://freepats.zenvoid.org | audio/film.m4a、source/CREDITS、audio/CC0-1.0.txt |\n| Kokoro-82M旁白 | hexgrad | Apache-2.0 | https://github.com/hexgrad/kokoro | audio/film.m4a、audio/Apache-2.0.txt |\n| three.js r170 | three.js authors / mrdoob | MIT | https://github.com/mrdoob/three.js/tree/r170 | vendor/three@0.170.0/LICENSE |\n\n| 字体Noto Sans SC | Google / Adobe | SIL OFL 1.1 | https://github.com/google/fonts/tree/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/notosanssc | fonts/及OFL原文 |\n| 字体Noto Serif SC | Google / Adobe | SIL OFL 1.1 | https://github.com/google/fonts/tree/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/notoserifsc | fonts/及OFL原文 |\n| 字体Inter | Rasmus Andersson | SIL OFL 1.1 | https://github.com/google/fonts/tree/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/inter | fonts/及OFL原文 |\n| 字体JetBrains Mono | JetBrains | SIL OFL 1.1 | https://github.com/google/fonts/tree/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/jetbrainsmono | fonts/及OFL原文 |\n\n字体：Noto Sans SC 400/500；Noto Serif SC 600；Inter 200/300/400/500；JetBrains Mono 400/500，OFL字符子集。 作者及OFL原文见fonts/OFL-*.txt。原片的逐项采样、声线与制作说明保留在[source/CREDITS](source/CREDITS)。\n",
+    "prompt": "# 两条螺旋 · 数据实物化\n\n## 实现 Prompt\n\n制作“两条螺旋 · 数据实物化”：2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。画面：IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。运动：同年两组片错半拍堆叠，2025新增片逐片落下，镜头沿螺旋攀升后吊臂拉远到近俯视。声音：96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。实现文件为film/film.js、film/set.js、film/data.js、film/timeline.js，保留真实数据、素材署名和原片音轨，按1920×1080舞台的原作render(t)逐帧定位。\n\n## 动效 Token\n\n- **源码时间线**：film/timeline.js的T/HIT/BUILD；段落见rhythm.beats。\n\n## 制作约束\n\n- 素材、数据、字体与时间线由原作文件直接驱动。\n\n## 迁移\n\n- `film/film.js`：修改画面、时间线或对应数据；参数位置见该文件。\n- `film/set.js`：修改画面、时间线或对应数据；参数位置见该文件。\n- `film/data.js`：修改画面、时间线或对应数据；参数位置见该文件。\n- `film/timeline.js`：修改画面、时间线或对应数据；参数位置见该文件。\n\n[打开 Demo](../../demos/cases/lemo-data-physical/index.html) · [在库中查看](../../cases.html#case/lemo-data-physical)\n"
+  },
+  "entrypoint": "demos/cases/lemo-data-physical/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-data-physical/LICENSES.md",
+      "bytes": 2863,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/data/world_solar_capacity_irena2026.csv",
+      "bytes": 791,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/data/world_wind_capacity_irena2026.csv",
+      "bytes": 782,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/photo_studio_loft_hall_2k.hdr",
+      "bytes": 6432146,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/walnut_diff.jpg",
+      "bytes": 2418767,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/walnut_nor.jpg",
+      "bytes": 1959270,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/assets/walnut_rough.jpg",
+      "bytes": 2865130,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/CREDITS",
+      "bytes": 2286,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/audio/film.m4a",
+      "bytes": 1333232,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fidelity.md",
+      "bytes": 3444,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/core/three/post.js",
+      "bytes": 6482,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/data.js",
+      "bytes": 965,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/film.js",
+      "bytes": 16469,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/index.html",
+      "bytes": 652,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/out/cues.json",
+      "bytes": 1162,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/set.js",
+      "bytes": 11763,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/film/timeline.js",
+      "bytes": 3686,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-200-0.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-300-1.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-400-2.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/Inter-500-3.woff2",
+      "bytes": 23844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/JBMono-400-0.woff2",
+      "bytes": 13596,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/JBMono-500-1.woff2",
+      "bytes": 13596,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/NotoSC-400-0.woff2",
+      "bytes": 34824,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/NotoSC-500-1.woff2",
+      "bytes": 34824,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/NotoSerifSC-600-0.woff2",
+      "bytes": 24032,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/fonts/fonts.css",
+      "bytes": 1010,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/index.html",
+      "bytes": 3488,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/CREDITS",
+      "bytes": 2286,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/FACTS.md",
+      "bytes": 5660,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/PolyHaven-SOURCES.md",
+      "bytes": 397,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/README.md",
+      "bytes": 2216,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/build.sh",
+      "bytes": 2878,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/data/owid_solar_capacity.metadata.json",
+      "bytes": 1116,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/data/owid_wind_capacity.metadata.json",
+      "bytes": 1166,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/events.json",
+      "bytes": 15241,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/mix.py",
+      "bytes": 16978,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/export.mjs",
+      "bytes": 1980,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/fonts.mjs",
+      "bytes": 1992,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/holdcheck.py",
+      "bytes": 826,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/srt.mjs",
+      "bytes": 477,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/tools/subcheck.mjs",
+      "bytes": 1111,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/voice/lines.json",
+      "bytes": 1428,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/voice/out/dur.json",
+      "bytes": 97,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/source/voice/out/words.json",
+      "bytes": 1443,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/loaders/RGBELoader.js",
+      "bytes": 11377,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+      "bytes": 16582,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+      "bytes": 12990,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-data-physical/vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+      "bytes": 6614,
+      "role": "vendor"
+    },
+    {
+      "path": "entries/cases/lemo-data-physical.json",
+      "bytes": 9780,
+      "role": "entry"
+    },
+    {
+      "path": "previews/cases/lemo-data-physical.jpg",
+      "bytes": 83206,
+      "role": "preview"
+    }
+  ]
+}

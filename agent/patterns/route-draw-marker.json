@@ -67,6 +67,9 @@
       },
       {
         "caseId": "mg-paperclip"
+      },
+      {
+        "caseId": "lemo-newsreel"
       }
     ],
     "previewAt": 8.6,
@@ -194,6 +197,12 @@
       }
     ],
     "renderer": "gpu",
+    "parameters": [
+      {
+        "name": "lemo-newsreel",
+        "value": "film/index.html:arcPts / sceneMap，Natural Earth Albers州界上，纽约到好莱坞、奥斯汀的60点弧线逐点绘出，终点星形按抵达时刻弹跳并脉冲；10.2/10.55秒抵达，提前.6秒开始描线。"
+      }
+    ],
     "preview": "previews/patterns/route-draw-marker.jpg",
     "previewPortrait": "previews/patterns/route-draw-marker-portrait.jpg"
   },
@@ -209,6 +218,10 @@
     {
       "caseId": "mg-paperclip",
       "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "caseId": "lemo-newsreel",
+      "bundle": "agent/cases/lemo-newsreel.json"
     }
   ],
   "documents": {
@@ -216,6 +229,5166 @@
   },
   "entrypoint": "demos/patterns/route-draw-marker/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-newsreel/LICENSES.md",
+      "bytes": 8637,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/book_p30.jpg",
+      "bytes": 848374,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/book_title.jpg",
+      "bytes": 281800,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/charleston1925.wav",
+      "bytes": 1125878,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/000.jpg",
+      "bytes": 129356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/001.jpg",
+      "bytes": 120084,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/001.png",
+      "bytes": 479665,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/002.jpg",
+      "bytes": 108924,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/002.png",
+      "bytes": 446703,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/003.jpg",
+      "bytes": 106821,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/003.png",
+      "bytes": 405256,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/004.jpg",
+      "bytes": 102173,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/004.png",
+      "bytes": 383877,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/005.jpg",
+      "bytes": 102379,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/005.png",
+      "bytes": 369433,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/006.jpg",
+      "bytes": 106186,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/006.png",
+      "bytes": 368519,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/007.jpg",
+      "bytes": 107582,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/007.png",
+      "bytes": 385783,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/008.jpg",
+      "bytes": 104922,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/008.png",
+      "bytes": 390824,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/009.jpg",
+      "bytes": 107454,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/009.png",
+      "bytes": 385593,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/010.jpg",
+      "bytes": 111075,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/010.png",
+      "bytes": 391470,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/011.jpg",
+      "bytes": 111238,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/011.png",
+      "bytes": 402605,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/012.jpg",
+      "bytes": 110200,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/012.png",
+      "bytes": 405782,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/013.jpg",
+      "bytes": 116356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/013.png",
+      "bytes": 405892,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/014.jpg",
+      "bytes": 114408,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/014.png",
+      "bytes": 424100,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/015.jpg",
+      "bytes": 115387,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/015.png",
+      "bytes": 419555,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/016.jpg",
+      "bytes": 111585,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/016.png",
+      "bytes": 418637,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/017.jpg",
+      "bytes": 110713,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/017.png",
+      "bytes": 408464,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/018.jpg",
+      "bytes": 112242,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/018.png",
+      "bytes": 403567,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/019.jpg",
+      "bytes": 111835,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/019.png",
+      "bytes": 409336,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/020.jpg",
+      "bytes": 111299,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/020.png",
+      "bytes": 410108,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/021.jpg",
+      "bytes": 108202,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/021.png",
+      "bytes": 409905,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/022.jpg",
+      "bytes": 117016,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/022.png",
+      "bytes": 401808,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/023.jpg",
+      "bytes": 123619,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/023.png",
+      "bytes": 426716,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/024.jpg",
+      "bytes": 119653,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/024.png",
+      "bytes": 446068,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/025.jpg",
+      "bytes": 118238,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/025.png",
+      "bytes": 437447,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/026.jpg",
+      "bytes": 129135,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/026.png",
+      "bytes": 431314,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/027.jpg",
+      "bytes": 128238,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/027.png",
+      "bytes": 467140,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/028.jpg",
+      "bytes": 129347,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/028.png",
+      "bytes": 465733,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/029.jpg",
+      "bytes": 125408,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/029.png",
+      "bytes": 466142,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/030.jpg",
+      "bytes": 131293,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/030.png",
+      "bytes": 460989,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/031.jpg",
+      "bytes": 131763,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/031.png",
+      "bytes": 473044,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/032.jpg",
+      "bytes": 128334,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/032.png",
+      "bytes": 475256,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/033.jpg",
+      "bytes": 128064,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/033.png",
+      "bytes": 468742,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/034.jpg",
+      "bytes": 125636,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/034.png",
+      "bytes": 467403,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/035.jpg",
+      "bytes": 126393,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/035.png",
+      "bytes": 457456,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/036.jpg",
+      "bytes": 124285,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/036.png",
+      "bytes": 460360,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/037.jpg",
+      "bytes": 119519,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/037.png",
+      "bytes": 453359,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/038.jpg",
+      "bytes": 119166,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/038.png",
+      "bytes": 439867,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/039.jpg",
+      "bytes": 117402,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/039.png",
+      "bytes": 433196,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/040.jpg",
+      "bytes": 117872,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/040.png",
+      "bytes": 431153,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/041.jpg",
+      "bytes": 118611,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/041.png",
+      "bytes": 433462,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/042.jpg",
+      "bytes": 124823,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/042.png",
+      "bytes": 432975,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/043.jpg",
+      "bytes": 126263,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/043.png",
+      "bytes": 453409,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/044.jpg",
+      "bytes": 123060,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/044.png",
+      "bytes": 461082,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/045.jpg",
+      "bytes": 124533,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/045.png",
+      "bytes": 454305,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/046.jpg",
+      "bytes": 126763,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/046.png",
+      "bytes": 458714,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/047.jpg",
+      "bytes": 130404,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/047.png",
+      "bytes": 467543,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/048.jpg",
+      "bytes": 128292,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/048.png",
+      "bytes": 479090,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/049.jpg",
+      "bytes": 131395,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/049.png",
+      "bytes": 473717,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/050.jpg",
+      "bytes": 132366,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/050.png",
+      "bytes": 481718,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/051.jpg",
+      "bytes": 134491,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/051.png",
+      "bytes": 486783,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/052.jpg",
+      "bytes": 135339,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/052.png",
+      "bytes": 492507,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/053.jpg",
+      "bytes": 137742,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/053.png",
+      "bytes": 493745,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/054.jpg",
+      "bytes": 138976,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/054.png",
+      "bytes": 496699,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/055.jpg",
+      "bytes": 137567,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/055.png",
+      "bytes": 493771,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/056.jpg",
+      "bytes": 135670,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/056.png",
+      "bytes": 490538,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/057.jpg",
+      "bytes": 136431,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/057.png",
+      "bytes": 487284,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/058.jpg",
+      "bytes": 147337,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/058.png",
+      "bytes": 489772,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/059.jpg",
+      "bytes": 146314,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/059.png",
+      "bytes": 517665,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/060.jpg",
+      "bytes": 146558,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/061.jpg",
+      "bytes": 149158,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/062.jpg",
+      "bytes": 137574,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/063.jpg",
+      "bytes": 148703,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/064.jpg",
+      "bytes": 148217,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/065.jpg",
+      "bytes": 139092,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/066.jpg",
+      "bytes": 164248,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/067.jpg",
+      "bytes": 136519,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/068.jpg",
+      "bytes": 135472,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/069.jpg",
+      "bytes": 134777,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/070.jpg",
+      "bytes": 133888,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/071.jpg",
+      "bytes": 132695,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/072.jpg",
+      "bytes": 128468,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/073.jpg",
+      "bytes": 128651,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/074.jpg",
+      "bytes": 125132,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/075.jpg",
+      "bytes": 124011,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/076.jpg",
+      "bytes": 122066,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/077.jpg",
+      "bytes": 122299,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/078.jpg",
+      "bytes": 118206,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/079.jpg",
+      "bytes": 120277,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/080.jpg",
+      "bytes": 117244,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/081.jpg",
+      "bytes": 117508,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/082.jpg",
+      "bytes": 121671,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/083.jpg",
+      "bytes": 127236,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/084.jpg",
+      "bytes": 125348,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/085.jpg",
+      "bytes": 125637,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/086.jpg",
+      "bytes": 131774,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/087.jpg",
+      "bytes": 131988,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/088.jpg",
+      "bytes": 130922,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/089.jpg",
+      "bytes": 136668,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/090.jpg",
+      "bytes": 137112,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/091.jpg",
+      "bytes": 138785,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/092.jpg",
+      "bytes": 140485,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/093.jpg",
+      "bytes": 139219,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/094.jpg",
+      "bytes": 130142,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/095.jpg",
+      "bytes": 138682,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/096.jpg",
+      "bytes": 136352,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/097.jpg",
+      "bytes": 147172,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/098.jpg",
+      "bytes": 141854,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/099.jpg",
+      "bytes": 137673,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/100.jpg",
+      "bytes": 136163,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/101.jpg",
+      "bytes": 123610,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/102.jpg",
+      "bytes": 120567,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/103.jpg",
+      "bytes": 118202,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/104.jpg",
+      "bytes": 115472,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/105.jpg",
+      "bytes": 114682,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/106.jpg",
+      "bytes": 110497,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/107.jpg",
+      "bytes": 109257,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/108.jpg",
+      "bytes": 106895,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/109.jpg",
+      "bytes": 104503,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/110.jpg",
+      "bytes": 102258,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/111.jpg",
+      "bytes": 102721,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/112.jpg",
+      "bytes": 102864,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/113.jpg",
+      "bytes": 98939,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/114.jpg",
+      "bytes": 97795,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/115.jpg",
+      "bytes": 101459,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/116.jpg",
+      "bytes": 101633,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/117.jpg",
+      "bytes": 102692,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/118.jpg",
+      "bytes": 115285,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/119.jpg",
+      "bytes": 107151,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/120.jpg",
+      "bytes": 102411,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/121.jpg",
+      "bytes": 99776,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/122.jpg",
+      "bytes": 93069,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/123.jpg",
+      "bytes": 94683,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/124.jpg",
+      "bytes": 92699,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/125.jpg",
+      "bytes": 95067,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/126.jpg",
+      "bytes": 100239,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/127.jpg",
+      "bytes": 101883,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/128.jpg",
+      "bytes": 99366,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/129.jpg",
+      "bytes": 101061,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/130.jpg",
+      "bytes": 104610,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/131.jpg",
+      "bytes": 106726,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/132.jpg",
+      "bytes": 104908,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/133.jpg",
+      "bytes": 105280,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/134.jpg",
+      "bytes": 98638,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/135.jpg",
+      "bytes": 97249,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/136.jpg",
+      "bytes": 95784,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/137.jpg",
+      "bytes": 92262,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/138.jpg",
+      "bytes": 93250,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/139.jpg",
+      "bytes": 97384,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/140.jpg",
+      "bytes": 96747,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/141.jpg",
+      "bytes": 100835,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/142.jpg",
+      "bytes": 106794,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/143.jpg",
+      "bytes": 109531,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/circle/144.jpg",
+      "bytes": 107552,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/000.jpg",
+      "bytes": 115108,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/001.jpg",
+      "bytes": 110177,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/002.jpg",
+      "bytes": 117738,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/003.jpg",
+      "bytes": 117958,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/004.jpg",
+      "bytes": 118805,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/005.jpg",
+      "bytes": 115422,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/006.jpg",
+      "bytes": 122667,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/007.jpg",
+      "bytes": 124204,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/008.jpg",
+      "bytes": 128953,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/009.jpg",
+      "bytes": 125998,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/010.jpg",
+      "bytes": 132437,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/011.jpg",
+      "bytes": 127795,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/012.jpg",
+      "bytes": 129568,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/013.jpg",
+      "bytes": 126046,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/014.jpg",
+      "bytes": 131275,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/015.jpg",
+      "bytes": 131537,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/016.jpg",
+      "bytes": 129406,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/017.jpg",
+      "bytes": 123426,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/018.jpg",
+      "bytes": 128130,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/019.jpg",
+      "bytes": 125479,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/020.jpg",
+      "bytes": 125866,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/021.jpg",
+      "bytes": 121882,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/022.jpg",
+      "bytes": 126649,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/023.jpg",
+      "bytes": 125913,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/024.jpg",
+      "bytes": 119048,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/025.jpg",
+      "bytes": 114590,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/026.jpg",
+      "bytes": 116580,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/027.jpg",
+      "bytes": 114775,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/028.jpg",
+      "bytes": 112514,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/029.jpg",
+      "bytes": 110211,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/030.jpg",
+      "bytes": 118244,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/031.jpg",
+      "bytes": 117563,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/032.jpg",
+      "bytes": 121409,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/033.jpg",
+      "bytes": 122232,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/034.jpg",
+      "bytes": 122945,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/035.jpg",
+      "bytes": 122239,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/036.jpg",
+      "bytes": 118223,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/037.jpg",
+      "bytes": 115711,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/038.jpg",
+      "bytes": 120271,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/039.jpg",
+      "bytes": 121112,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/040.jpg",
+      "bytes": 127114,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/041.jpg",
+      "bytes": 121167,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/042.jpg",
+      "bytes": 124949,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/043.jpg",
+      "bytes": 113859,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/044.jpg",
+      "bytes": 115788,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/045.jpg",
+      "bytes": 112364,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/046.jpg",
+      "bytes": 114753,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/047.jpg",
+      "bytes": 115743,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/048.jpg",
+      "bytes": 117446,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/049.jpg",
+      "bytes": 116888,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/050.jpg",
+      "bytes": 117939,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/051.jpg",
+      "bytes": 115526,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/052.jpg",
+      "bytes": 112842,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/053.jpg",
+      "bytes": 111791,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/054.jpg",
+      "bytes": 117896,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/055.jpg",
+      "bytes": 117814,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/056.jpg",
+      "bytes": 116754,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/057.jpg",
+      "bytes": 114348,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/058.jpg",
+      "bytes": 122595,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/059.jpg",
+      "bytes": 120945,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/060.jpg",
+      "bytes": 123493,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/061.jpg",
+      "bytes": 117924,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/062.jpg",
+      "bytes": 126070,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/063.jpg",
+      "bytes": 124134,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/064.jpg",
+      "bytes": 126052,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/065.jpg",
+      "bytes": 121633,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g1/066.jpg",
+      "bytes": 131256,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/000.jpg",
+      "bytes": 183001,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/001.jpg",
+      "bytes": 184586,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/002.jpg",
+      "bytes": 186046,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/003.jpg",
+      "bytes": 187440,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/004.jpg",
+      "bytes": 182356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/005.jpg",
+      "bytes": 180273,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/006.jpg",
+      "bytes": 178510,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/007.jpg",
+      "bytes": 176415,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/008.jpg",
+      "bytes": 177238,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/009.jpg",
+      "bytes": 179810,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/010.jpg",
+      "bytes": 171818,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/011.jpg",
+      "bytes": 169776,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/012.jpg",
+      "bytes": 168766,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/013.jpg",
+      "bytes": 172743,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/014.jpg",
+      "bytes": 176141,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/015.jpg",
+      "bytes": 181422,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/016.jpg",
+      "bytes": 179873,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/017.jpg",
+      "bytes": 181034,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/018.jpg",
+      "bytes": 183605,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/019.jpg",
+      "bytes": 175920,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/020.jpg",
+      "bytes": 175923,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/021.jpg",
+      "bytes": 178766,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/022.jpg",
+      "bytes": 183580,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/023.jpg",
+      "bytes": 187909,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/024.jpg",
+      "bytes": 183902,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/025.jpg",
+      "bytes": 183406,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/026.jpg",
+      "bytes": 180770,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/027.jpg",
+      "bytes": 179073,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/028.jpg",
+      "bytes": 175654,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/029.jpg",
+      "bytes": 167955,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/030.jpg",
+      "bytes": 170291,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/031.jpg",
+      "bytes": 174232,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/032.jpg",
+      "bytes": 173819,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/033.jpg",
+      "bytes": 173414,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/034.jpg",
+      "bytes": 175162,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/035.jpg",
+      "bytes": 177418,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/036.jpg",
+      "bytes": 176151,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/037.jpg",
+      "bytes": 177527,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/038.jpg",
+      "bytes": 169670,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/039.jpg",
+      "bytes": 171246,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/040.jpg",
+      "bytes": 170870,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/041.jpg",
+      "bytes": 170830,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/042.jpg",
+      "bytes": 175091,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/043.jpg",
+      "bytes": 177769,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/044.jpg",
+      "bytes": 177377,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/045.jpg",
+      "bytes": 180557,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/046.jpg",
+      "bytes": 181990,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/047.jpg",
+      "bytes": 184110,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/048.jpg",
+      "bytes": 175115,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/049.jpg",
+      "bytes": 177706,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/050.jpg",
+      "bytes": 178751,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/051.jpg",
+      "bytes": 179739,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/052.jpg",
+      "bytes": 182300,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/053.jpg",
+      "bytes": 187919,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/054.jpg",
+      "bytes": 192547,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/055.jpg",
+      "bytes": 194969,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/056.jpg",
+      "bytes": 191091,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/057.jpg",
+      "bytes": 192086,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/058.jpg",
+      "bytes": 183322,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/059.jpg",
+      "bytes": 184282,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/060.jpg",
+      "bytes": 178814,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/061.jpg",
+      "bytes": 179135,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/062.jpg",
+      "bytes": 179343,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/063.jpg",
+      "bytes": 180623,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/064.jpg",
+      "bytes": 179508,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/065.jpg",
+      "bytes": 182012,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g2/066.jpg",
+      "bytes": 183324,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/000.jpg",
+      "bytes": 160429,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/001.jpg",
+      "bytes": 161221,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/002.jpg",
+      "bytes": 155122,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/003.jpg",
+      "bytes": 156184,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/004.jpg",
+      "bytes": 155296,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/005.jpg",
+      "bytes": 158070,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/006.jpg",
+      "bytes": 158745,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/007.jpg",
+      "bytes": 159610,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/008.jpg",
+      "bytes": 157587,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/009.jpg",
+      "bytes": 159378,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/010.jpg",
+      "bytes": 159379,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/011.jpg",
+      "bytes": 160180,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/012.jpg",
+      "bytes": 150802,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/013.jpg",
+      "bytes": 153730,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/014.jpg",
+      "bytes": 155695,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/015.jpg",
+      "bytes": 157666,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/016.jpg",
+      "bytes": 156682,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/017.jpg",
+      "bytes": 160375,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/018.jpg",
+      "bytes": 161026,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/019.jpg",
+      "bytes": 161582,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/020.jpg",
+      "bytes": 159754,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/021.jpg",
+      "bytes": 161707,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/022.jpg",
+      "bytes": 157288,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/023.jpg",
+      "bytes": 158148,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/024.jpg",
+      "bytes": 157758,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/025.jpg",
+      "bytes": 161223,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/026.jpg",
+      "bytes": 160461,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/027.jpg",
+      "bytes": 162251,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/028.jpg",
+      "bytes": 162560,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/029.jpg",
+      "bytes": 163297,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/030.jpg",
+      "bytes": 165614,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/031.jpg",
+      "bytes": 162416,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/032.jpg",
+      "bytes": 160927,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/033.jpg",
+      "bytes": 163048,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/034.jpg",
+      "bytes": 162310,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/035.jpg",
+      "bytes": 162945,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/036.jpg",
+      "bytes": 162448,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/037.jpg",
+      "bytes": 163886,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/038.jpg",
+      "bytes": 163207,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/039.jpg",
+      "bytes": 164347,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/040.jpg",
+      "bytes": 165148,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/041.jpg",
+      "bytes": 158252,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/042.jpg",
+      "bytes": 159080,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/043.jpg",
+      "bytes": 159778,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/044.jpg",
+      "bytes": 158348,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/045.jpg",
+      "bytes": 162346,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/046.jpg",
+      "bytes": 162784,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/047.jpg",
+      "bytes": 162993,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/048.jpg",
+      "bytes": 161509,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/049.jpg",
+      "bytes": 164900,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/050.jpg",
+      "bytes": 160561,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/051.jpg",
+      "bytes": 162063,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/052.jpg",
+      "bytes": 158723,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/053.jpg",
+      "bytes": 160974,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/054.jpg",
+      "bytes": 160686,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/055.jpg",
+      "bytes": 157917,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/056.jpg",
+      "bytes": 158599,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/057.jpg",
+      "bytes": 163264,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/058.jpg",
+      "bytes": 162393,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/059.jpg",
+      "bytes": 163470,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/060.jpg",
+      "bytes": 155323,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/061.jpg",
+      "bytes": 157499,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/062.jpg",
+      "bytes": 157493,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/063.jpg",
+      "bytes": 158864,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/064.jpg",
+      "bytes": 159121,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/065.jpg",
+      "bytes": 162864,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g3/066.jpg",
+      "bytes": 163675,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/000.jpg",
+      "bytes": 157007,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/001.jpg",
+      "bytes": 159793,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/002.jpg",
+      "bytes": 161563,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/003.jpg",
+      "bytes": 161761,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/004.jpg",
+      "bytes": 160973,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/005.jpg",
+      "bytes": 162104,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/006.jpg",
+      "bytes": 163087,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/007.jpg",
+      "bytes": 162868,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/008.jpg",
+      "bytes": 162346,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/009.jpg",
+      "bytes": 164485,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/010.jpg",
+      "bytes": 158918,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/011.jpg",
+      "bytes": 159598,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/012.jpg",
+      "bytes": 159855,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/013.jpg",
+      "bytes": 160633,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/014.jpg",
+      "bytes": 161387,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/015.jpg",
+      "bytes": 160988,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/016.jpg",
+      "bytes": 161458,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/017.jpg",
+      "bytes": 163257,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/018.jpg",
+      "bytes": 160829,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/019.jpg",
+      "bytes": 154917,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/020.jpg",
+      "bytes": 152312,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/021.jpg",
+      "bytes": 154266,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/022.jpg",
+      "bytes": 155682,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/023.jpg",
+      "bytes": 155299,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/024.jpg",
+      "bytes": 156212,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/025.jpg",
+      "bytes": 158610,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/026.jpg",
+      "bytes": 160165,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/027.jpg",
+      "bytes": 160261,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/028.jpg",
+      "bytes": 161233,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/029.jpg",
+      "bytes": 156565,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/030.jpg",
+      "bytes": 160136,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/031.jpg",
+      "bytes": 160453,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/032.jpg",
+      "bytes": 160545,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/033.jpg",
+      "bytes": 162370,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/034.jpg",
+      "bytes": 163796,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/035.jpg",
+      "bytes": 163458,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/036.jpg",
+      "bytes": 162744,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/037.jpg",
+      "bytes": 165898,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/038.jpg",
+      "bytes": 156243,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/039.jpg",
+      "bytes": 155959,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/040.jpg",
+      "bytes": 155258,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/041.jpg",
+      "bytes": 155874,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/042.jpg",
+      "bytes": 159482,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/043.jpg",
+      "bytes": 159488,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/044.jpg",
+      "bytes": 160046,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/045.jpg",
+      "bytes": 160359,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/046.jpg",
+      "bytes": 162714,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/047.jpg",
+      "bytes": 162020,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/048.jpg",
+      "bytes": 157676,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/049.jpg",
+      "bytes": 158772,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/050.jpg",
+      "bytes": 160103,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/051.jpg",
+      "bytes": 159946,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/052.jpg",
+      "bytes": 159913,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/053.jpg",
+      "bytes": 159940,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/054.jpg",
+      "bytes": 161537,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/055.jpg",
+      "bytes": 160937,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/056.jpg",
+      "bytes": 158865,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/057.jpg",
+      "bytes": 162220,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/058.jpg",
+      "bytes": 158175,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/059.jpg",
+      "bytes": 158493,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/060.jpg",
+      "bytes": 157694,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/061.jpg",
+      "bytes": 157914,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/062.jpg",
+      "bytes": 161011,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/063.jpg",
+      "bytes": 160991,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/064.jpg",
+      "bytes": 160651,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/065.jpg",
+      "bytes": 161052,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/g4/066.jpg",
+      "bytes": 164536,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/000.jpg",
+      "bytes": 122340,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/001.jpg",
+      "bytes": 119162,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/002.jpg",
+      "bytes": 117384,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/003.jpg",
+      "bytes": 113681,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/004.jpg",
+      "bytes": 116048,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/005.jpg",
+      "bytes": 114773,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/006.jpg",
+      "bytes": 107886,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/007.jpg",
+      "bytes": 102956,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/008.jpg",
+      "bytes": 104924,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/009.jpg",
+      "bytes": 104955,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/010.jpg",
+      "bytes": 104899,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/011.jpg",
+      "bytes": 102650,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/012.jpg",
+      "bytes": 110308,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/013.jpg",
+      "bytes": 113176,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/014.jpg",
+      "bytes": 113861,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/015.jpg",
+      "bytes": 113927,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/016.jpg",
+      "bytes": 115256,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/017.jpg",
+      "bytes": 114629,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/018.jpg",
+      "bytes": 116506,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/019.jpg",
+      "bytes": 105959,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/020.jpg",
+      "bytes": 104718,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/021.jpg",
+      "bytes": 104334,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/022.jpg",
+      "bytes": 105818,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/023.jpg",
+      "bytes": 106606,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/024.jpg",
+      "bytes": 111632,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/025.jpg",
+      "bytes": 115000,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/026.jpg",
+      "bytes": 115985,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/027.jpg",
+      "bytes": 116840,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/028.jpg",
+      "bytes": 121229,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/029.jpg",
+      "bytes": 116799,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/030.jpg",
+      "bytes": 121092,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/031.jpg",
+      "bytes": 121040,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/032.jpg",
+      "bytes": 119688,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/033.jpg",
+      "bytes": 119699,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/034.jpg",
+      "bytes": 121299,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/035.jpg",
+      "bytes": 114741,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/036.jpg",
+      "bytes": 117638,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/037.jpg",
+      "bytes": 119223,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/038.jpg",
+      "bytes": 113489,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/039.jpg",
+      "bytes": 112311,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/040.jpg",
+      "bytes": 111549,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/041.jpg",
+      "bytes": 115619,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/042.jpg",
+      "bytes": 119868,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/043.jpg",
+      "bytes": 117924,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/044.jpg",
+      "bytes": 121762,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/045.jpg",
+      "bytes": 122146,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/046.jpg",
+      "bytes": 123608,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/047.jpg",
+      "bytes": 122003,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/048.jpg",
+      "bytes": 120614,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/049.jpg",
+      "bytes": 121075,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/050.jpg",
+      "bytes": 120948,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/051.jpg",
+      "bytes": 118800,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/052.jpg",
+      "bytes": 119364,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/053.jpg",
+      "bytes": 117498,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/054.jpg",
+      "bytes": 116628,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/055.jpg",
+      "bytes": 114444,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/056.jpg",
+      "bytes": 115416,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/057.jpg",
+      "bytes": 117028,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/058.jpg",
+      "bytes": 117124,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/059.jpg",
+      "bytes": 114183,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/060.jpg",
+      "bytes": 116992,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/061.jpg",
+      "bytes": 118821,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/062.jpg",
+      "bytes": 125736,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/063.jpg",
+      "bytes": 131344,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/064.jpg",
+      "bytes": 138228,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/065.jpg",
+      "bytes": 137844,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/066.jpg",
+      "bytes": 142028,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/067.jpg",
+      "bytes": 138228,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/068.jpg",
+      "bytes": 134614,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kids/069.jpg",
+      "bytes": 134294,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/000.jpg",
+      "bytes": 120986,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/001.jpg",
+      "bytes": 117099,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/002.jpg",
+      "bytes": 118385,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/003.jpg",
+      "bytes": 116772,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/004.jpg",
+      "bytes": 116580,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/005.jpg",
+      "bytes": 107477,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/006.jpg",
+      "bytes": 111297,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/007.jpg",
+      "bytes": 114670,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/008.jpg",
+      "bytes": 114216,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/009.jpg",
+      "bytes": 111115,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/010.jpg",
+      "bytes": 113837,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/011.jpg",
+      "bytes": 114017,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/012.jpg",
+      "bytes": 110635,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/013.jpg",
+      "bytes": 110868,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/014.jpg",
+      "bytes": 113227,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/015.jpg",
+      "bytes": 114566,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/016.jpg",
+      "bytes": 114133,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/017.jpg",
+      "bytes": 113396,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/018.jpg",
+      "bytes": 118835,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/019.jpg",
+      "bytes": 118441,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/020.jpg",
+      "bytes": 118145,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/021.jpg",
+      "bytes": 109960,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/022.jpg",
+      "bytes": 109178,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/023.jpg",
+      "bytes": 109484,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/024.jpg",
+      "bytes": 113029,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/025.jpg",
+      "bytes": 106536,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/026.jpg",
+      "bytes": 108495,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/027.jpg",
+      "bytes": 108463,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/028.jpg",
+      "bytes": 103445,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/029.jpg",
+      "bytes": 100172,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/030.jpg",
+      "bytes": 104031,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/031.jpg",
+      "bytes": 103535,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/032.jpg",
+      "bytes": 103269,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/033.jpg",
+      "bytes": 104101,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/034.jpg",
+      "bytes": 100654,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/035.jpg",
+      "bytes": 103605,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/036.jpg",
+      "bytes": 103997,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/037.jpg",
+      "bytes": 106697,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/038.jpg",
+      "bytes": 115596,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/039.jpg",
+      "bytes": 116814,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/040.jpg",
+      "bytes": 115648,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/041.jpg",
+      "bytes": 110057,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/042.jpg",
+      "bytes": 113572,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/043.jpg",
+      "bytes": 114488,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/044.jpg",
+      "bytes": 111312,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/045.jpg",
+      "bytes": 110296,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/046.jpg",
+      "bytes": 110595,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/047.jpg",
+      "bytes": 110408,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/048.jpg",
+      "bytes": 102202,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/049.jpg",
+      "bytes": 103650,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/050.jpg",
+      "bytes": 111383,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/051.jpg",
+      "bytes": 114496,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/052.jpg",
+      "bytes": 109763,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/053.jpg",
+      "bytes": 105238,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/054.jpg",
+      "bytes": 106787,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/055.jpg",
+      "bytes": 109502,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/056.jpg",
+      "bytes": 111224,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/057.jpg",
+      "bytes": 109567,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/058.jpg",
+      "bytes": 108937,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/059.jpg",
+      "bytes": 111934,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/060.jpg",
+      "bytes": 109554,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/061.jpg",
+      "bytes": 109720,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/062.jpg",
+      "bytes": 108152,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/063.jpg",
+      "bytes": 109415,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/064.jpg",
+      "bytes": 108169,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/065.jpg",
+      "bytes": 105749,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/066.jpg",
+      "bytes": 110484,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/067.jpg",
+      "bytes": 112295,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/068.jpg",
+      "bytes": 111323,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/069.jpg",
+      "bytes": 110561,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/070.jpg",
+      "bytes": 112795,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/071.jpg",
+      "bytes": 114182,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/072.jpg",
+      "bytes": 111315,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/073.jpg",
+      "bytes": 111871,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/074.jpg",
+      "bytes": 113081,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/075.jpg",
+      "bytes": 110174,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/076.jpg",
+      "bytes": 108981,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/077.jpg",
+      "bytes": 104451,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/078.jpg",
+      "bytes": 106761,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/079.jpg",
+      "bytes": 107414,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/080.jpg",
+      "bytes": 104730,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/081.jpg",
+      "bytes": 103808,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/082.jpg",
+      "bytes": 97773,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/083.jpg",
+      "bytes": 102268,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/084.jpg",
+      "bytes": 97191,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/085.jpg",
+      "bytes": 97343,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/086.jpg",
+      "bytes": 102885,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/087.jpg",
+      "bytes": 106217,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/088.jpg",
+      "bytes": 108500,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/089.jpg",
+      "bytes": 108817,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/090.jpg",
+      "bytes": 112228,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/091.jpg",
+      "bytes": 109007,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/092.jpg",
+      "bytes": 108175,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/093.jpg",
+      "bytes": 107591,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/094.jpg",
+      "bytes": 109797,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/095.jpg",
+      "bytes": 110699,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/096.jpg",
+      "bytes": 106255,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/097.jpg",
+      "bytes": 109263,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/098.jpg",
+      "bytes": 115328,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/099.jpg",
+      "bytes": 115141,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/100.jpg",
+      "bytes": 114178,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/101.jpg",
+      "bytes": 113256,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/102.jpg",
+      "bytes": 31105,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/103.jpg",
+      "bytes": 52546,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/104.jpg",
+      "bytes": 53176,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/105.jpg",
+      "bytes": 49997,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/106.jpg",
+      "bytes": 55432,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/107.jpg",
+      "bytes": 35594,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/108.jpg",
+      "bytes": 49612,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/kidsR/109.jpg",
+      "bytes": 49831,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/000.jpg",
+      "bytes": 79278,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/001.jpg",
+      "bytes": 73659,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/002.jpg",
+      "bytes": 70534,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/003.jpg",
+      "bytes": 70596,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/004.jpg",
+      "bytes": 68145,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/005.jpg",
+      "bytes": 69807,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/006.jpg",
+      "bytes": 70179,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/007.jpg",
+      "bytes": 69914,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/008.jpg",
+      "bytes": 69904,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/009.jpg",
+      "bytes": 70603,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/010.jpg",
+      "bytes": 69984,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/011.jpg",
+      "bytes": 68059,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/012.jpg",
+      "bytes": 67782,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/013.jpg",
+      "bytes": 69283,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/014.jpg",
+      "bytes": 67597,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/015.jpg",
+      "bytes": 67675,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/016.jpg",
+      "bytes": 68300,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/017.jpg",
+      "bytes": 67398,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/018.jpg",
+      "bytes": 66773,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/019.jpg",
+      "bytes": 68042,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/020.jpg",
+      "bytes": 69220,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/021.jpg",
+      "bytes": 70564,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/022.jpg",
+      "bytes": 71462,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/023.jpg",
+      "bytes": 70043,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/024.jpg",
+      "bytes": 64176,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/025.jpg",
+      "bytes": 64250,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/026.jpg",
+      "bytes": 64976,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/027.jpg",
+      "bytes": 64696,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/028.jpg",
+      "bytes": 65479,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/029.jpg",
+      "bytes": 67107,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/030.jpg",
+      "bytes": 69164,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/031.jpg",
+      "bytes": 68921,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/032.jpg",
+      "bytes": 68884,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/033.jpg",
+      "bytes": 69303,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/034.jpg",
+      "bytes": 67758,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/035.jpg",
+      "bytes": 67867,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/036.jpg",
+      "bytes": 68096,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/037.jpg",
+      "bytes": 68348,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/038.jpg",
+      "bytes": 68995,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/039.jpg",
+      "bytes": 68438,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/040.jpg",
+      "bytes": 67811,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/oldman/041.jpg",
+      "bytes": 66605,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/000.jpg",
+      "bytes": 99670,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/001.jpg",
+      "bytes": 97541,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/002.jpg",
+      "bytes": 95413,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/003.jpg",
+      "bytes": 95429,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/004.jpg",
+      "bytes": 93549,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/005.jpg",
+      "bytes": 92000,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/006.jpg",
+      "bytes": 94127,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/007.jpg",
+      "bytes": 93342,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/008.jpg",
+      "bytes": 94441,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/009.jpg",
+      "bytes": 96289,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/010.jpg",
+      "bytes": 97041,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/011.jpg",
+      "bytes": 97182,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/012.jpg",
+      "bytes": 93679,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/013.jpg",
+      "bytes": 92862,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/014.jpg",
+      "bytes": 88988,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/015.jpg",
+      "bytes": 88652,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/016.jpg",
+      "bytes": 88194,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/017.jpg",
+      "bytes": 88573,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/018.jpg",
+      "bytes": 88799,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/019.jpg",
+      "bytes": 88391,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/020.jpg",
+      "bytes": 88151,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/021.jpg",
+      "bytes": 86131,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/022.jpg",
+      "bytes": 85970,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/023.jpg",
+      "bytes": 85747,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/024.jpg",
+      "bytes": 86779,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/025.jpg",
+      "bytes": 91225,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/026.jpg",
+      "bytes": 89988,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/027.jpg",
+      "bytes": 89637,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/028.jpg",
+      "bytes": 89348,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/029.jpg",
+      "bytes": 88238,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/030.jpg",
+      "bytes": 87043,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/031.jpg",
+      "bytes": 87194,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/032.jpg",
+      "bytes": 90268,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/033.jpg",
+      "bytes": 88067,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/034.jpg",
+      "bytes": 87921,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/035.jpg",
+      "bytes": 87402,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/036.jpg",
+      "bytes": 84583,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/037.jpg",
+      "bytes": 84552,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/038.jpg",
+      "bytes": 84463,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/039.jpg",
+      "bytes": 84001,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/orch/040.jpg",
+      "bytes": 84094,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/paper.jpg",
+      "bytes": 1556332,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/000.jpg",
+      "bytes": 146043,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/001.jpg",
+      "bytes": 148345,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/002.jpg",
+      "bytes": 148403,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/003.jpg",
+      "bytes": 150297,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/004.jpg",
+      "bytes": 149147,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/005.jpg",
+      "bytes": 150489,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/006.jpg",
+      "bytes": 148015,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/007.jpg",
+      "bytes": 150871,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/008.jpg",
+      "bytes": 147816,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/009.jpg",
+      "bytes": 152542,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/010.jpg",
+      "bytes": 147868,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/011.jpg",
+      "bytes": 150631,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/012.jpg",
+      "bytes": 150001,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/013.jpg",
+      "bytes": 157959,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/014.jpg",
+      "bytes": 157067,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/015.jpg",
+      "bytes": 154947,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/016.jpg",
+      "bytes": 143759,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/017.jpg",
+      "bytes": 144481,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/018.jpg",
+      "bytes": 147795,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/019.jpg",
+      "bytes": 142621,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/020.jpg",
+      "bytes": 138361,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/021.jpg",
+      "bytes": 138425,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/022.jpg",
+      "bytes": 140429,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/023.jpg",
+      "bytes": 141267,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/024.jpg",
+      "bytes": 135979,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/025.jpg",
+      "bytes": 135906,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/026.jpg",
+      "bytes": 131505,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/027.jpg",
+      "bytes": 129980,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/028.jpg",
+      "bytes": 132435,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/029.jpg",
+      "bytes": 126185,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/030.jpg",
+      "bytes": 127708,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/031.jpg",
+      "bytes": 130737,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/032.jpg",
+      "bytes": 128349,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/033.jpg",
+      "bytes": 129566,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/034.jpg",
+      "bytes": 130413,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/035.jpg",
+      "bytes": 131769,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/036.jpg",
+      "bytes": 129529,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/037.jpg",
+      "bytes": 129048,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/038.jpg",
+      "bytes": 122956,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/039.jpg",
+      "bytes": 124861,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/040.jpg",
+      "bytes": 120780,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/041.jpg",
+      "bytes": 119530,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/042.jpg",
+      "bytes": 118872,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/043.jpg",
+      "bytes": 118689,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/044.jpg",
+      "bytes": 116718,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/045.jpg",
+      "bytes": 114096,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/046.jpg",
+      "bytes": 114402,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/047.jpg",
+      "bytes": 116852,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/048.jpg",
+      "bytes": 110354,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/049.jpg",
+      "bytes": 110960,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/050.jpg",
+      "bytes": 114920,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/051.jpg",
+      "bytes": 119904,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/052.jpg",
+      "bytes": 121748,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/053.jpg",
+      "bytes": 120036,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/054.jpg",
+      "bytes": 120664,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/055.jpg",
+      "bytes": 122761,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/056.jpg",
+      "bytes": 121724,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/057.jpg",
+      "bytes": 120471,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/058.jpg",
+      "bytes": 114105,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/059.jpg",
+      "bytes": 114728,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/060.jpg",
+      "bytes": 115313,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/061.jpg",
+      "bytes": 113647,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/062.jpg",
+      "bytes": 115528,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/063.jpg",
+      "bytes": 117150,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/064.jpg",
+      "bytes": 117148,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/065.jpg",
+      "bytes": 116781,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav/066.jpg",
+      "bytes": 117382,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/000.jpg",
+      "bytes": 173471,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/001.jpg",
+      "bytes": 170650,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/002.jpg",
+      "bytes": 172425,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/003.jpg",
+      "bytes": 171119,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/004.jpg",
+      "bytes": 178457,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/005.jpg",
+      "bytes": 176200,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/006.jpg",
+      "bytes": 181869,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/007.jpg",
+      "bytes": 180687,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/008.jpg",
+      "bytes": 184541,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/009.jpg",
+      "bytes": 183759,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/010.jpg",
+      "bytes": 178997,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/011.jpg",
+      "bytes": 177571,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/012.jpg",
+      "bytes": 180196,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/013.jpg",
+      "bytes": 179047,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/014.jpg",
+      "bytes": 189194,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/015.jpg",
+      "bytes": 187944,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/016.jpg",
+      "bytes": 195527,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/017.jpg",
+      "bytes": 193882,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/018.jpg",
+      "bytes": 193182,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/019.jpg",
+      "bytes": 182302,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/020.jpg",
+      "bytes": 184831,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/021.jpg",
+      "bytes": 183234,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/022.jpg",
+      "bytes": 180218,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/023.jpg",
+      "bytes": 179510,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/024.jpg",
+      "bytes": 181049,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/025.jpg",
+      "bytes": 179293,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/026.jpg",
+      "bytes": 183698,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/027.jpg",
+      "bytes": 182343,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/028.jpg",
+      "bytes": 187713,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/029.jpg",
+      "bytes": 174067,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/030.jpg",
+      "bytes": 179296,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/031.jpg",
+      "bytes": 178980,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/032.jpg",
+      "bytes": 180755,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/033.jpg",
+      "bytes": 179095,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/034.jpg",
+      "bytes": 179110,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/035.jpg",
+      "bytes": 177668,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/036.jpg",
+      "bytes": 178034,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pav2/037.jpg",
+      "bytes": 175840,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp1.jpg",
+      "bytes": 101124,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp2.jpg",
+      "bytes": 102046,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp3.jpg",
+      "bytes": 97003,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp4.jpg",
+      "bytes": 109361,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp5.jpg",
+      "bytes": 115236,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp6.jpg",
+      "bytes": 117969,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp7.jpg",
+      "bytes": 97153,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp8.jpg",
+      "bytes": 102144,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/pp9.jpg",
+      "bytes": 111331,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/000.jpg",
+      "bytes": 158638,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/001.jpg",
+      "bytes": 161631,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/002.jpg",
+      "bytes": 163264,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/003.jpg",
+      "bytes": 165496,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/004.jpg",
+      "bytes": 162080,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/005.jpg",
+      "bytes": 167948,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/006.jpg",
+      "bytes": 168900,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/007.jpg",
+      "bytes": 170089,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/008.jpg",
+      "bytes": 165662,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/009.jpg",
+      "bytes": 169255,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/010.jpg",
+      "bytes": 167895,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/011.jpg",
+      "bytes": 169114,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/012.jpg",
+      "bytes": 166187,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/013.jpg",
+      "bytes": 172571,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/014.jpg",
+      "bytes": 173585,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/015.jpg",
+      "bytes": 173254,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/016.jpg",
+      "bytes": 170205,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/017.jpg",
+      "bytes": 173739,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/018.jpg",
+      "bytes": 173872,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/019.jpg",
+      "bytes": 164526,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/020.jpg",
+      "bytes": 161464,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/021.jpg",
+      "bytes": 167651,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/022.jpg",
+      "bytes": 168064,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/023.jpg",
+      "bytes": 170222,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/024.jpg",
+      "bytes": 165521,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/025.jpg",
+      "bytes": 171727,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/026.jpg",
+      "bytes": 172271,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/027.jpg",
+      "bytes": 172443,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/028.jpg",
+      "bytes": 171269,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/029.jpg",
+      "bytes": 161282,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/030.jpg",
+      "bytes": 161712,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/031.jpg",
+      "bytes": 161616,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/032.jpg",
+      "bytes": 159010,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/033.jpg",
+      "bytes": 165664,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/034.jpg",
+      "bytes": 165937,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/035.jpg",
+      "bytes": 166152,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/036.jpg",
+      "bytes": 164010,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/solo/037.jpg",
+      "bytes": 165071,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/000.jpg",
+      "bytes": 163923,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/001.jpg",
+      "bytes": 161348,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/002.jpg",
+      "bytes": 162117,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/003.jpg",
+      "bytes": 164335,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/004.jpg",
+      "bytes": 163334,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/005.jpg",
+      "bytes": 163880,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/006.jpg",
+      "bytes": 167033,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/007.jpg",
+      "bytes": 167958,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/008.jpg",
+      "bytes": 166303,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/009.jpg",
+      "bytes": 169972,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/010.jpg",
+      "bytes": 163715,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/011.jpg",
+      "bytes": 165064,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/012.jpg",
+      "bytes": 166138,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/013.jpg",
+      "bytes": 165789,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/014.jpg",
+      "bytes": 168338,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/015.jpg",
+      "bytes": 170060,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/016.jpg",
+      "bytes": 170030,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/017.jpg",
+      "bytes": 169422,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/018.jpg",
+      "bytes": 170832,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/019.jpg",
+      "bytes": 163642,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/020.jpg",
+      "bytes": 161631,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/021.jpg",
+      "bytes": 161000,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/022.jpg",
+      "bytes": 164764,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/023.jpg",
+      "bytes": 163764,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/024.jpg",
+      "bytes": 162904,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/025.jpg",
+      "bytes": 163827,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/026.jpg",
+      "bytes": 167648,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/027.jpg",
+      "bytes": 168441,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/028.jpg",
+      "bytes": 168454,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/029.jpg",
+      "bytes": 160518,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/030.jpg",
+      "bytes": 162629,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/031.jpg",
+      "bytes": 164328,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/032.jpg",
+      "bytes": 165027,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/033.jpg",
+      "bytes": 163900,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/034.jpg",
+      "bytes": 167326,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/035.jpg",
+      "bytes": 167585,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/036.jpg",
+      "bytes": 165402,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap/037.jpg",
+      "bytes": 164741,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/000.jpg",
+      "bytes": 161727,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/001.jpg",
+      "bytes": 160149,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/002.jpg",
+      "bytes": 162123,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/003.jpg",
+      "bytes": 162523,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/004.jpg",
+      "bytes": 162345,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/005.jpg",
+      "bytes": 162439,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/006.jpg",
+      "bytes": 163439,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/007.jpg",
+      "bytes": 163607,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/008.jpg",
+      "bytes": 164236,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/009.jpg",
+      "bytes": 165417,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/010.jpg",
+      "bytes": 160102,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/011.jpg",
+      "bytes": 159277,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/012.jpg",
+      "bytes": 158437,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/013.jpg",
+      "bytes": 160646,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/014.jpg",
+      "bytes": 162823,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/015.jpg",
+      "bytes": 163218,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/016.jpg",
+      "bytes": 163258,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/017.jpg",
+      "bytes": 164213,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/018.jpg",
+      "bytes": 166400,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/019.jpg",
+      "bytes": 159603,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/020.jpg",
+      "bytes": 158410,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/021.jpg",
+      "bytes": 160464,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/022.jpg",
+      "bytes": 162282,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/023.jpg",
+      "bytes": 160622,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/024.jpg",
+      "bytes": 158743,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/025.jpg",
+      "bytes": 159634,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/026.jpg",
+      "bytes": 161713,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/027.jpg",
+      "bytes": 160873,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/028.jpg",
+      "bytes": 161258,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/029.jpg",
+      "bytes": 153676,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/030.jpg",
+      "bytes": 156560,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/031.jpg",
+      "bytes": 157580,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/032.jpg",
+      "bytes": 158722,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/033.jpg",
+      "bytes": 158470,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/034.jpg",
+      "bytes": 161323,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/035.jpg",
+      "bytes": 161974,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/036.jpg",
+      "bytes": 160676,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/tap2/037.jpg",
+      "bytes": 161102,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/us.json",
+      "bytes": 33845,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/000.jpg",
+      "bytes": 111778,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/001.jpg",
+      "bytes": 103413,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/002.jpg",
+      "bytes": 100985,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/003.jpg",
+      "bytes": 98753,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/004.jpg",
+      "bytes": 96589,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/005.jpg",
+      "bytes": 94662,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/006.jpg",
+      "bytes": 95276,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/007.jpg",
+      "bytes": 95569,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/008.jpg",
+      "bytes": 93279,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/009.jpg",
+      "bytes": 94442,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/010.jpg",
+      "bytes": 94048,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/011.jpg",
+      "bytes": 95446,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/012.jpg",
+      "bytes": 97411,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/013.jpg",
+      "bytes": 94422,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/014.jpg",
+      "bytes": 93895,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/015.jpg",
+      "bytes": 95675,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/016.jpg",
+      "bytes": 90356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/017.jpg",
+      "bytes": 91853,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/018.jpg",
+      "bytes": 90301,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/019.jpg",
+      "bytes": 92479,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/020.jpg",
+      "bytes": 93135,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/021.jpg",
+      "bytes": 89340,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/022.jpg",
+      "bytes": 92937,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/assets/violin/023.jpg",
+      "bytes": 94161,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/audio/CREDITS",
+      "bytes": 3342,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/audio/film.m4a",
+      "bytes": 1760124,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fidelity.md",
+      "bytes": 4149,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/film/index.html",
+      "bytes": 49186,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/film/timeline.json",
+      "bytes": 6043,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/film/voice/out/dur.json",
+      "bytes": 143,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/Limelight-Regular.ttf",
+      "bytes": 132292,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/NotoSansSC-VF.ttf",
+      "bytes": 17772300,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/NotoSerifSC-VF.ttf",
+      "bytes": 25125512,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/OFL-Limelight.txt",
+      "bytes": 4399,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/OFL-NotoSansSC.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/OFL-NotoSerifSC.txt",
+      "bytes": 4350,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/OFL-Oswald.txt",
+      "bytes": 4390,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/Oswald[wght].ttf",
+      "bytes": 172088,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/fonts/fonts.css",
+      "bytes": 318,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/index.html",
+      "bytes": 29376,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/CREDITS",
+      "bytes": 3342,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/FACTS.md",
+      "bytes": 9534,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/README.md",
+      "bytes": 2252,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/SOURCES.jsonl",
+      "bytes": 14845,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/SOURCES.md",
+      "bytes": 7937,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/audio/mix.py",
+      "bytes": 20018,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/build.sh",
+      "bytes": 2504,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/events.json",
+      "bytes": 1547,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/cues.py",
+      "bytes": 975,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/fetch_sources.py",
+      "bytes": 2376,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/final_asr.py",
+      "bytes": 1524,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/footage.py",
+      "bytes": 12606,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/prep.py",
+      "bytes": 6774,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/subcheck.mjs",
+      "bytes": 765,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/timeline.py",
+      "bytes": 4729,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/tools/voice.py",
+      "bytes": 2024,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-newsreel/source/voice/lines.json",
+      "bytes": 2898,
+      "role": "process"
+    },
     {
       "path": "demos/cases/map-pilgrimage/LICENSES.md",
       "bytes": 1021,
@@ -662,6 +5835,11 @@
       "role": "doc"
     },
     {
+      "path": "entries/cases/lemo-newsreel.json",
+      "bytes": 11757,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/map-pilgrimage.json",
       "bytes": 20793,
       "role": "entry"
@@ -678,7 +5856,7 @@
     },
     {
       "path": "entries/patterns/route-draw-marker.json",
-      "bytes": 9142,
+      "bytes": 9491,
       "role": "entry"
     },
     {

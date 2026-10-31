@@ -1,0 +1,82 @@
+{
+  "id": "newsreel-intertitle-wipe",
+  "order": 169,
+  "title": "新闻片字卡与划变",
+  "types": [
+    "transition",
+    "type-motion"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "十二条百叶按错相翻转露出装饰艺术字卡，双线框与标题依次落位，下一段以光圈展开；地图段用亮边斜向硬划变。",
+  "mechanism": "十二条百叶按错相翻转露出装饰艺术字卡，双线框与标题依次落位，下一段以光圈展开；地图段用亮边斜向硬划变。",
+  "trigger": "来源时间线进入对应镜头与动作节点。",
+  "effect": "十二条百叶按错相翻转露出装饰艺术字卡，双线框与标题依次落位，下一段以光圈展开；地图段用亮边斜向硬划变。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-newsreel：17.7–21.5秒；lemo-newsreel：8.25–9.2秒；1倍速，总时长4.750000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "字卡",
+      "value": "film/index.html:sceneCard，双框在.35秒内画出，Limelight英文与Noto Serif SC中文按decoTitle入场，镜头缓推。"
+    },
+    {
+      "name": "百叶与光圈",
+      "value": "film/index.html:TR / composeScene，blinds用12条横向条片，abs(cos(vπ))缩放并按v<.5切换新旧图；21秒转为irisopen。"
+    },
+    {
+      "name": "斜向划变",
+      "value": "film/index.html:composeScene的wipe分支，以四边形裁切由左至右展开新镜，斜边6px亮线。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-newsreel/film/index.html",
+    "demos/cases/lemo-newsreel/film/timeline.json"
+  ],
+  "locator": "film/index.html:sceneCard；film/index.html:TR / composeScene；film/index.html:composeScene的wipe分支",
+  "useCases": [
+    "证据影像",
+    "数据解说",
+    "档案与科学短片"
+  ],
+  "avoid": [
+    "在主要读数和证据上叠加争夺注意的运动"
+  ],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "画面与音轨按同一来源时间映射。"
+  },
+  "prompt": "用来源案例的原作render(t)实现“新闻片字卡与划变”。十二条百叶按错相翻转露出装饰艺术字卡，双线框与标题依次落位，下一段以光圈展开；地图段用亮边斜向硬划变。保留参数：film/index.html:sceneCard，双框在.35秒内画出，Limelight英文与Noto Serif SC中文按decoTitle入场，镜头缓推。；film/index.html:TR / composeScene，blinds用12条横向条片，abs(cos(vπ))缩放并按v<.5切换新旧图；21秒转为irisopen。；film/index.html:composeScene的wipe分支，以四边形裁切由左至右展开新镜，斜边6px亮线。。按index.html内联segments定位原片，复用原作素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/newsreel-intertitle-wipe/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-newsreel"
+    }
+  ],
+  "previewAt": 1.8,
+  "markers": [
+    {
+      "t": 0,
+      "label": "百叶字卡与光圈"
+    },
+    {
+      "t": 3.8,
+      "label": "地图斜向划变"
+    }
+  ]
+}

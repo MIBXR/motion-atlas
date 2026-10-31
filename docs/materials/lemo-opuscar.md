@@ -42,8 +42,8 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 剪辑与纪实 · Edit & Documentary
 
-- 字幕新闻 · Caption News
-- 1920s 新闻影片 · 1920s Newsreel
+- [字幕新闻 · Caption News](../../cases.html#case/lemo-caption-news) · 已复刻
+- [1920s 新闻影片 · 1920s Newsreel](../../cases.html#case/lemo-newsreel) · 已复刻
 - 实时倒计时分屏 · Live Countdown Split-screen
 - 延时交响 · Time-lapse Symphony
 - 视觉调查 · Visual Investigation
@@ -56,11 +56,11 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [卫星简报 · Satellite Briefing](../../cases.html#case/lemo-satellite-briefing) · 已复刻
 - [工程简报板 · Engineering Briefing Board](../../cases.html#case/lemo-briefing-board) · 已复刻
 - 点云测绘 · LiDAR Survey（[本库案例](../../cases.html#case/lemo-lidar-survey)）
-- 白模投影 · Projection on White Model
-- 数据实物化 · Data Physicalization
+- [白模投影 · Projection on White Model](../../cases.html#case/lemo-white-model) · 已复刻
+- [数据实物化 · Data Physicalization](../../cases.html#case/lemo-data-physical) · 已复刻
 - 产品拆解 · Exploded Teardown
-- 显微叙事 · Microscope Story
-- 档案灯台 · Archive Light Table
+- [显微叙事 · Microscope Story](../../cases.html#case/lemo-microscope) · 已复刻
+- [档案灯台 · Archive Light Table](../../cases.html#case/lemo-archive-lighttable) · 已复刻
 
 ### 手绘与绘画 · Hand-drawn & Painting
 
@@ -151,7 +151,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-四十四个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+50个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -204,7 +204,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [用零件造火箭 · 积木玩具](../../cases.html#case/lemo-brick-toy)：制作文件见[source/README.md](../../demos/cases/lemo-brick-toy/source/README.md)。
 - [玩具城早高峰 · 移轴微缩](../../cases.html#case/lemo-tilt-shift)：制作文件见[source/README.md](../../demos/cases/lemo-tilt-shift/source/README.md)。
 
-三十八个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+50个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
 
 - [叮之前 · 桌面穿梭](../../cases.html#case/lemo-desktop-flythrough)：制作文件见 [source/README.md](../../demos/cases/lemo-desktop-flythrough/source/README.md)。
 
@@ -217,3 +217,15 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [地图上还写着海 · 卫星简报](../../cases.html#case/lemo-satellite-briefing)：制作文件见 [source/README.md](../../demos/cases/lemo-satellite-briefing/source/README.md)。
 
 - [船说了算 · 工程简报板](../../cases.html#case/lemo-briefing-board)：制作文件见 [source/README.md](../../demos/cases/lemo-briefing-board/source/README.md)。
+
+- [被炸平的城市怎样长回来 · 白模投影](../../cases.html#case/lemo-white-model)：制作文件见 [source/README.md](../../demos/cases/lemo-white-model/source/README.md)。
+
+- [两条螺旋 · 数据实物化](../../cases.html#case/lemo-data-physical)：制作文件见 [source/README.md](../../demos/cases/lemo-data-physical/source/README.md)。
+
+- [差两秒 · 档案灯台](../../cases.html#case/lemo-archive-lighttable)：制作文件见 [source/README.md](../../demos/cases/lemo-archive-lighttable/source/README.md)。
+
+- [量出来的蓝 · 显微叙事](../../cases.html#case/lemo-microscope)：制作文件见 [source/README.md](../../demos/cases/lemo-microscope/source/README.md)。
+
+- [蜜蜂账本 · 字幕新闻](../../cases.html#case/lemo-caption-news)：制作文件见 [source/README.md](../../demos/cases/lemo-caption-news/source/README.md)。
+
+- [膝盖警报 · 1920s 新闻影片](../../cases.html#case/lemo-newsreel)：制作文件见 [source/README.md](../../demos/cases/lemo-newsreel/source/README.md)。

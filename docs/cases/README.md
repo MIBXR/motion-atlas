@@ -65,3 +65,9 @@
 | [逃跑的面包 · 1920s 默片](../../cases.html#case/lemo-silent-film) | [条目](../../entries/cases/lemo-silent-film.json) |
 | [地图上还写着海 · 卫星简报](../../cases.html#case/lemo-satellite-briefing) | [条目](../../entries/cases/lemo-satellite-briefing.json) |
 | [船说了算 · 工程简报板](../../cases.html#case/lemo-briefing-board) | [条目](../../entries/cases/lemo-briefing-board.json) |
+| [被炸平的城市怎样长回来 · 白模投影](../../cases.html#case/lemo-white-model) | [条目](../../entries/cases/lemo-white-model.json) |
+| [两条螺旋 · 数据实物化](../../cases.html#case/lemo-data-physical) | [条目](../../entries/cases/lemo-data-physical.json) |
+| [量出来的蓝 · 显微叙事](../../cases.html#case/lemo-microscope) | [条目](../../entries/cases/lemo-microscope.json) |
+| [差两秒 · 档案灯台](../../cases.html#case/lemo-archive-lighttable) | [条目](../../entries/cases/lemo-archive-lighttable.json) |
+| [蜜蜂账本 · 字幕新闻](../../cases.html#case/lemo-caption-news) | [条目](../../entries/cases/lemo-caption-news.json) |
+| [膝盖警报 · 1920s 新闻影片](../../cases.html#case/lemo-newsreel) | [条目](../../entries/cases/lemo-newsreel.json) |

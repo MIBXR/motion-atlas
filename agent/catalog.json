@@ -42,8 +42,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 63,
-    "patterns": 158,
+    "cases": 69,
+    "patterns": 168,
     "materials": 5
   },
   "caseCatalog": "agent/cases/index.json",
@@ -1928,6 +1928,176 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-briefing-board.json"
+    },
+    {
+      "id": "lemo-white-model",
+      "title": "被炸平的城市怎样长回来 · 白模投影",
+      "summary": "投影把鹿特丹白模按建成年代逐层点亮，高度光层升到203米，冬至阴影越过16个屋顶后展厅重新亮起。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "白模投影",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "城市规划展陈",
+        "建筑数据短片",
+        "日照解说"
+      ],
+      "avoid": [
+        "需要观看者自行决定节奏的网页交互"
+      ],
+      "patternIds": [
+        "projection-layers-by-time",
+        "sun-clock-shadow-trace"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-white-model.json"
+    },
+    {
+      "id": "lemo-data-physical",
+      "title": "两条螺旋 · 数据实物化",
+      "summary": "2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "数据实物化",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "年度报告影片",
+        "能源数据展示",
+        "实物化统计叙事"
+      ],
+      "avoid": [
+        "需要观看者自行决定节奏的网页交互"
+      ],
+      "patternIds": [
+        "paired-climb-spiral",
+        "chart-to-installation-pullback"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-data-physical.json"
+    },
+    {
+      "id": "lemo-microscope",
+      "title": "量出来的蓝 · 显微叙事",
+      "summary": "从一张真实肝组织玻片连续推到细胞核，逐像素数出两个1毫米圆内13.5%与32.6%的蓝色，再拉回玻片。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "显微叙事",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "显微影像解说",
+        "材料观察",
+        "尺度叙事"
+      ],
+      "avoid": [
+        "需要观看者自行决定节奏的网页交互"
+      ],
+      "patternIds": [
+        "microscope-dive",
+        "pixel-count-colour"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-microscope.json"
+    },
+    {
+      "id": "lemo-archive-lighttable",
+      "title": "差两秒 · 档案灯台",
+      "summary": "电报与报纸写着57秒，放大镜把莱特兄弟的负片转正并带入照片，档案记录的59秒让两份记录形成对照。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "档案灯台",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "博物馆档案故事",
+        "品牌历史影片",
+        "文献证据叙事"
+      ],
+      "avoid": [
+        "需要观看者自行决定节奏的网页交互"
+      ],
+      "patternIds": [
+        "negative-to-positive-loupe",
+        "line-lights-up",
+        "element-flight-regroup"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-archive-lighttable.json"
+    },
+    {
+      "id": "lemo-caption-news",
+      "title": "蜜蜂账本 · 字幕新闻",
+      "summary": "美国一年损失130万箱蜜蜂，总数却上涨6%；大字字幕、原报告高亮、双栏账本、图表与地图逐项解释养蜂人的补建。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "字幕新闻",
+        "剪辑与纪实",
+        "代码影片"
+      ],
+      "useCases": [
+        "社交新闻短片",
+        "报告解说",
+        "静音信息流"
+      ],
+      "avoid": [
+        "需要观看者自行决定节奏的网页交互"
+      ],
+      "patternIds": [
+        "silent-caption-news",
+        "line-lights-up"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-caption-news.json"
+    },
+    {
+      "id": "lemo-newsreel",
+      "title": "膝盖警报 · 1920s 新闻影片",
+      "summary": "1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "1920s 新闻影片",
+        "剪辑与纪实",
+        "代码影片"
+      ],
+      "useCases": [
+        "历史新闻叙事",
+        "档案剪辑",
+        "时代回顾影片"
+      ],
+      "avoid": [
+        "需要观看者自行决定节奏的网页交互"
+      ],
+      "patternIds": [
+        "newsreel-intertitle-wipe",
+        "film-grain",
+        "route-draw-marker"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-newsreel.json"
     }
   ],
   "patterns": [
@@ -1994,7 +2164,8 @@
       "sourceCases": [
         "map-pilgrimage",
         "mg-isometric",
-        "mg-paperclip"
+        "mg-paperclip",
+        "lemo-newsreel"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -2204,7 +2375,8 @@
         "mg-morph",
         "mg-aurora-glass",
         "mg-3d-render",
-        "mg-collage"
+        "mg-collage",
+        "lemo-newsreel"
       ],
       "pairsWellWith": [
         "seekable-timeline",
@@ -2925,7 +3097,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-paperclip"
+        "mg-paperclip",
+        "lemo-archive-lighttable"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/element-flight-regroup.json"
@@ -4951,6 +5124,186 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/long-exposure-light-trail.json"
+    },
+    {
+      "id": "projection-layers-by-time",
+      "title": "投影按年代逐层刷上白模",
+      "summary": "关灯后投影按建成年代点亮固定的白模，四组战后建筑错峰闪亮，随后一层高度光沿立面升到最高屋顶。",
+      "types": [
+        "composition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-white-model"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/projection-layers-by-time.json"
+    },
+    {
+      "id": "sun-clock-shadow-trace",
+      "title": "日晷与投影阴影轨迹",
+      "summary": "按真实冬至太阳位置推进时钟到正午，太阳阴影落在模型上，投影描出阴影边缘，量程线从塔楼伸到777米并依次标记16个屋顶。",
+      "types": [
+        "hud",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-white-model"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/sun-clock-shadow-trace.json"
+    },
+    {
+      "id": "paired-climb-spiral",
+      "title": "双螺旋并行攀升",
+      "summary": "同年的风电和太阳能装机量分别堆成亚克力与铝片，两组沿表盘的内外螺旋逐年推进，比较同年堆叠高度读出反超。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-data-physical"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/paired-climb-spiral.json"
+    },
+    {
+      "id": "chart-to-installation-pullback",
+      "title": "图表拉远成装置",
+      "summary": "镜头从数据单元的近景持续拉远和升高，已见过的堆片和刻度显出一件完整实体装置，两条年份螺旋连成胡桃木表盘。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-data-physical"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/chart-to-installation-pullback.json"
+    },
+    {
+      "id": "microscope-dive",
+      "title": "显微俯冲",
+      "summary": "镜头沿对数螺旋连续推入真实玻片的组织、结节和细胞核，影像金字塔按像素密度衔接，焦面扫过后在细胞核外缘画出量测圆环。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-microscope"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/microscope-dive.json"
+    },
+    {
+      "id": "pixel-count-colour",
+      "title": "逐像素数颜色",
+      "summary": "圆内扫描前沿点亮实际计入的蓝色像素，累计曲线驱动百分比；第二个圆用同一方法计数，两份读数停留后给出2.4倍结论。",
+      "types": [
+        "hud",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-microscope"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/pixel-count-colour.json"
+    },
+    {
+      "id": "negative-to-positive-loupe",
+      "title": "放大镜下负片转正",
+      "summary": "放大镜内由中心向外的显影前沿把同一负片转为正片，镜缘随后越过画幅，镜内照片分层产生纵深与轻微位移。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-archive-lighttable"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/negative-to-positive-loupe.json"
+    },
+    {
+      "id": "silent-caption-news",
+      "title": "静音可读字幕新闻",
+      "summary": "大字逐句字幕与每镜的数据标签承担完整信息，损失数字、报告反转、双栏账本、图表和两句结论按同一时间线展开。",
+      "types": [
+        "type-motion",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-caption-news"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/silent-caption-news.json"
+    },
+    {
+      "id": "newsreel-intertitle-wipe",
+      "title": "新闻片字卡与划变",
+      "summary": "十二条百叶按错相翻转露出装饰艺术字卡，双线框与标题依次落位，下一段以光圈展开；地图段用亮边斜向硬划变。",
+      "types": [
+        "transition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-newsreel"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/newsreel-intertitle-wipe.json"
+    },
+    {
+      "id": "line-lights-up",
+      "title": "逐行点亮原文",
+      "summary": "保留扫描文档的全部原文，按指定行的坐标推进高亮前沿，让正在引用的句子变亮或被荧光笔覆盖。",
+      "types": [
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-archive-lighttable",
+        "lemo-caption-news"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/line-lights-up.json"
     }
   ],
   "materials": [
@@ -5192,6 +5545,36 @@
           "kind": "case",
           "id": "lemo-briefing-board",
           "note": "船说了算 · 工程简报板；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-white-model",
+          "note": "投影把鹿特丹白模按建成年代逐层点亮，高度光层升到203米，冬至阴影越过16个屋顶后展厅重新亮起。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-data-physical",
+          "note": "2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-archive-lighttable",
+          "note": "电报与报纸写着57秒，放大镜把莱特兄弟的负片转正并带入照片，档案记录的59秒让两份记录形成对照。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-microscope",
+          "note": "从一张真实肝组织玻片连续推到细胞核，逐像素数出两个1毫米圆内13.5%与32.6%的蓝色，再拉回玻片。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-caption-news",
+          "note": "美国一年损失130万箱蜜蜂，总数却上涨6%；大字字幕、原报告高亮、双栏账本、图表与地图逐项解释养蜂人的补建。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-newsreel",
+          "note": "1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

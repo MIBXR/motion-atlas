@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>两条螺旋 · 数据实物化</title>
+  <style>html,body{margin:0;overflow:hidden}#film{display:block;width:1920px;height:1080px;border:0}</style>
+</head>
+<body>
+  <main id="stage" class="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    await MotionKit.load.prepare({
+  "styles": [
+    "fonts/fonts.css"
+  ],
+  "data": [
+    "film/data.js",
+    "film/film.js",
+    "film/index.html",
+    "film/set.js",
+    "film/timeline.js",
+    "film/core/lib.js",
+    "film/out/cues.json",
+    "film/core/three/post.js",
+    "vendor/three@0.170.0/build/three.module.js",
+    "vendor/three@0.170.0/examples/jsm/loaders/RGBELoader.js",
+    "vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+    "vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+    "vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+    "assets/photo_studio_loft_hall_2k.hdr",
+    "assets/data/world_solar_capacity_irena2026.csv",
+    "assets/data/world_wind_capacity_irena2026.csv"
+  ],
+  "images": [
+    "assets/walnut_diff.jpg",
+    "assets/walnut_nor.jpg",
+    "assets/walnut_rough.jpg"
+  ],
+  "audio": [
+    "audio/film.m4a"
+  ]
+});
+    const frame = document.createElement('iframe');
+    frame.id = 'film';
+    frame.title = "Two Spirals";
+    const loaded = new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+    frame.src = 'film/index.html';
+    document.querySelector('#stage').append(frame);
+    await loaded;
+    const upstream = frame.contentWindow;
+    while (upstream.READY !== true) await new Promise(requestAnimationFrame);
+    MotionKit.mountFilm({
+      film: {
+        duration: 39.375, width: 1920, height: 1080, fps: 24,
+        async renderAt(t) { await upstream.render(Math.round(t * 24) / 24); },
+      },
+      ...{
+  "title": "两条螺旋 · 数据实物化",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "background": "#C4BEB4",
+  "accent": "#D4521C",
+  "step": "frames",
+  "start": {
+    "t": 0,
+    "reduced": 37.8
+  },
+  "audio": {
+    "src": "audio/film.m4a",
+    "mime": "audio/mp4"
+  },
+  "markers": [
+  {
+    "t": 0,
+    "label": "2014年成对堆片"
+  },
+  {
+    "t": 2.5,
+    "label": "成对读数与判断"
+  },
+  {
+    "t": 7.5,
+    "label": "单位片特写"
+  },
+  {
+    "t": 10,
+    "label": "沿年份攀升"
+  },
+  {
+    "t": 17.5,
+    "label": "2021年反超"
+  },
+  {
+    "t": 22.5,
+    "label": "后续年份加速"
+  },
+  {
+    "t": 25.3,
+    "label": "2025年新增片"
+  },
+  {
+    "t": 30,
+    "label": "拉远成装置"
+  },
+  {
+    "t": 34.4,
+    "label": "黄铜倍数与片尾"
+  }
+]
+}
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+[
+ {
+  "id": "l1",
+  "t0": 1.25,
+  "t1": 5.919,
+  "zh": "2014 年，全球风电装机将近太阳能的两倍。",
+  "en": "In 2014, the world had almost twice as much wind power as solar."
+ },
+ {
+  "id": "l2",
+  "t0": 7.5,
+  "t1": 11.268,
+  "zh": "每一片是 10 GW，每一片黄铜是 100 GW。",
+  "en": "Every plate is ten gigawatts. Every brass plate, one hundred."
+ },
+ {
+  "id": "l3",
+  "t0": 11.875,
+  "t1": 14.443,
+  "zh": "风电一直在涨，太阳能涨得更快。",
+  "en": "Wind kept growing. Solar grew faster."
+ },
+ {
+  "id": "l4",
+  "t0": 21.875,
+  "t1": 24.261,
+  "zh": "2021 年，太阳能超过了风电。",
+  "en": "In 2021, solar passed wind."
+ },
+ {
+  "id": "l5",
+  "t0": 25.625,
+  "t1": 29.974,
+  "zh": "仅 2025 一年，太阳能就新增了 500 多 GW。",
+  "en": "In 2025 alone, solar added more than five hundred gigawatts."
+ },
+ {
+  "id": "l6",
+  "t0": 30.625,
+  "t1": 33.225,
+  "zh": "退后一步，十二年合成一张表盘。",
+  "en": "Step back, and twelve years become one dial."
+ },
+ {
+  "id": "l7",
+  "t0": 35,
+  "t1": 36.76,
+  "zh": "如今，正好反了过来。",
+  "en": "Now it is the other way round."
+ }
+]

@@ -1,0 +1,269 @@
+{
+  "id": "lemo-data-physical",
+  "order": 65,
+  "title": "两条螺旋 · 数据实物化",
+  "subtitle": "Two Spirals",
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "lemo-opuscar",
+    "数据实物化",
+    "实证影像",
+    "代码影片"
+  ],
+  "summary": "2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。",
+  "focus": "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。",
+  "accent": "#D4521C",
+  "background": "#C4BEB4",
+  "timeline": true,
+  "kit": true,
+  "previewAt": 37.8,
+  "rhythm": {
+    "duration": 39.375,
+    "beats": [
+      {
+        "t": 0,
+        "label": "2014年成对堆片",
+        "note": "0–2.5秒，2014年成对堆片。"
+      },
+      {
+        "t": 2.5,
+        "label": "成对读数与判断",
+        "note": "2.5–7.5秒，成对读数与判断。"
+      },
+      {
+        "t": 7.5,
+        "label": "单位片特写",
+        "note": "7.5–10.3秒，单位片特写。"
+      },
+      {
+        "t": 10,
+        "label": "沿年份攀升",
+        "note": "10–17.5秒，沿年份攀升。"
+      },
+      {
+        "t": 17.5,
+        "label": "2021年反超",
+        "note": "17.5–22.5秒，2021年反超。"
+      },
+      {
+        "t": 22.5,
+        "label": "后续年份加速",
+        "note": "22.5–25.3秒，后续年份加速。"
+      },
+      {
+        "t": 25.3,
+        "label": "2025年新增片",
+        "note": "25.3–30秒，2025年新增片。"
+      },
+      {
+        "t": 30,
+        "label": "拉远成装置",
+        "note": "30–34.4秒，拉远成装置。"
+      },
+      {
+        "t": 34.4,
+        "label": "黄铜倍数与片尾",
+        "note": "34.4–39.375秒，黄铜倍数与片尾。"
+      }
+    ]
+  },
+  "energySegments": [
+    {
+      "t0": 0,
+      "t1": 2.5,
+      "from": 0.2,
+      "to": 0.25,
+      "label": "2014年成对堆片"
+    },
+    {
+      "t0": 2.5,
+      "t1": 7.5,
+      "from": 0.25,
+      "to": 0.35,
+      "label": "成对读数与判断"
+    },
+    {
+      "t0": 7.5,
+      "t1": 10.3,
+      "from": 0.35,
+      "to": 0.4,
+      "label": "单位片特写"
+    },
+    {
+      "t0": 10,
+      "t1": 17.5,
+      "from": 0.4,
+      "to": 0.45,
+      "label": "沿年份攀升"
+    },
+    {
+      "t0": 17.5,
+      "t1": 22.5,
+      "from": 0.45,
+      "to": 0.6,
+      "label": "2021年反超"
+    },
+    {
+      "t0": 22.5,
+      "t1": 25.3,
+      "from": 0.6,
+      "to": 0.5,
+      "label": "后续年份加速"
+    },
+    {
+      "t0": 25.3,
+      "t1": 30,
+      "from": 0.5,
+      "to": 0.7,
+      "label": "2025年新增片"
+    },
+    {
+      "t0": 30,
+      "t1": 34.4,
+      "from": 0.7,
+      "to": 0.75,
+      "label": "拉远成装置"
+    },
+    {
+      "t0": 34.4,
+      "t1": 39.375,
+      "from": 0.75,
+      "to": 0.75,
+      "label": "黄铜倍数与片尾"
+    }
+  ],
+  "energyNote": "时段取上游DEMO.md的Shots；0–1为依据画面密度、配乐与旁白作的相对编辑标注。",
+  "observations": [
+    "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。",
+    "同年两组片错半拍堆叠，2025新增片逐片落下，镜头沿螺旋攀升后吊臂拉远到近俯视。",
+    "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。"
+  ],
+  "composition": {
+    "color": "#C4BEB4、#C8CCD1、#9FD3D6、#D2B07A、#EFE4CF、#1C1D20、#D4521C",
+    "typography": "Noto Sans SC 400/500；Noto Serif SC 600；Inter 200/300/400/500；JetBrains Mono 400/500，OFL字符子集。",
+    "layout": "1920×1080、24fps；主画面、读数和字幕按原作时间线组织。",
+    "imagery": "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。",
+    "motion": "同年两组片错半拍堆叠，2025新增片逐片落下，镜头沿螺旋攀升后吊臂拉远到近俯视。",
+    "sound": "96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。",
+    "rhythm": "连续时间线按Shots的段落与声音节点推进。",
+    "coherence": "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。"
+  },
+  "layers": [
+    {
+      "name": "原作画面",
+      "role": "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。"
+    },
+    {
+      "name": "测量与文字",
+      "role": "每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。"
+    },
+    {
+      "name": "声音",
+      "role": "96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。"
+    }
+  ],
+  "tokens": {
+    "palette": [
+      "#C4BEB4",
+      "#C8CCD1",
+      "#9FD3D6",
+      "#D2B07A",
+      "#EFE4CF",
+      "#1C1D20",
+      "#D4521C"
+    ],
+    "type": "Noto Sans SC 400/500；Noto Serif SC 600；Inter 200/300/400/500；JetBrains Mono 400/500，OFL字符子集。",
+    "motion": [
+      {
+        "name": "源码时间线",
+        "value": "film/timeline.js的T/HIT/BUILD；段落见rhythm.beats。"
+      }
+    ]
+  },
+  "useCases": [
+    "年度报告影片",
+    "能源数据展示",
+    "实物化统计叙事"
+  ],
+  "avoid": [
+    "需要观看者自行决定节奏的网页交互"
+  ],
+  "constraints": [
+    "素材、数据、字体与时间线由原作文件直接驱动。"
+  ],
+  "migration": [
+    {
+      "field": "film/film.js",
+      "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+    },
+    {
+      "field": "film/set.js",
+      "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+    },
+    {
+      "field": "film/data.js",
+      "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+    },
+    {
+      "field": "film/timeline.js",
+      "how": "修改画面、时间线或对应数据；参数位置见该文件。"
+    }
+  ],
+  "prompt": "制作“两条螺旋 · 数据实物化”：2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。每片10 GW、每十片一层黄铜，以同年并列和不同材质建立比较，再由特写拉远露出完整装置。画面：IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。运动：同年两组片错半拍堆叠，2025新增片逐片落下，镜头沿螺旋攀升后吊臂拉远到近俯视。声音：96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。实现文件为film/film.js、film/set.js、film/data.js、film/timeline.js，保留真实数据、素材署名和原片音轨，按1920×1080舞台的原作render(t)逐帧定位。",
+  "demo": "demos/cases/lemo-data-physical/index.html",
+  "patternIds": [
+    "paired-climb-spiral",
+    "chart-to-installation-pullback"
+  ],
+  "fidelity": "demos/cases/lemo-data-physical/fidelity.md",
+  "upstream": {
+    "repository": "lemomo-ai/lemo-opuscar",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "path": "styles/data-physical/",
+    "version": "0.1.0"
+  },
+  "license": {
+    "name": "MIT · CC BY 4.0",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+    "notes": "代码与文档MIT；原成片与静帧CC BY 4.0，署名LemoLab；第三方素材沿用CREDITS的许可。"
+  },
+  "sources": [
+    {
+      "label": "风格、示范与固定源码",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical"
+    },
+    {
+      "label": "Release公开成片",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/data-physical.mp4"
+    },
+    {
+      "label": "原始署名与素材许可",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical/demo/CREDITS"
+    },
+    {
+      "label": "事实与测量依据",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical/demo/FACTS.md"
+    }
+  ],
+  "attribution": [
+    {
+      "scope": "作品",
+      "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical)，代码MIT、成片CC BY 4.0；接入与对照见[fidelity.md](fidelity.md)。"
+    },
+    {
+      "scope": "第三方素材与声音",
+      "notes": "IRENA 2026经Our World in Data整理的装机数据；Poly Haven胡桃木纹与工作室HDRI；片、黄铜标记和表盘由three.js生成。 96 BPM原配乐，金属与亚克力落片声、玻璃与钟琴、低铜管重拍、Kokoro af_heart旁白。 原始记录见[source/CREDITS](source/CREDITS)，许可索引见[LICENSES.md](LICENSES.md)。"
+    },
+    {
+      "scope": "字体",
+      "notes": "Noto Sans SC 400/500；Noto Serif SC 600；Inter 200/300/400/500；JetBrains Mono 400/500，OFL字符子集。 许可原文在fonts/。"
+    }
+  ],
+  "renderer": "gpu"
+}
