@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 33,
+  "count": 39,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -1041,6 +1041,174 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-paper-lantern.json"
+    },
+    {
+      "id": "lemo-whiteboard",
+      "title": "口袋里的爱因斯坦 · 白板讲解",
+      "summary": "从手机地图上的定位磁铁讲到GPS卫星、原子钟与相对论；每日38微秒的差别把定位推入海里，板擦倒抹轨迹，校准后拉远看见整堂课在同一块白板上。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "白板讲解",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "科学解说",
+        "在线课程",
+        "概念推导"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "stroke-order-equation-sync",
+        "eraser-rewind",
+        "pen-led-camera"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-whiteboard.json"
+    },
+    {
+      "id": "lemo-urban-sketch",
+      "title": "风去了哪里 · 钢笔淡彩",
+      "summary": "公园从一张无彩钢笔速写开始，一阵风把女孩的草帽吹过行人、树冠和天际线，所经之处晕开淡彩；男孩追帽、跃起又扑倒，接住后镜头拉远成整页写生。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "钢笔淡彩",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "城市旅行短片",
+        "建筑写生",
+        "生活方式品牌"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "color-follows-wind"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-urban-sketch.json"
+    },
+    {
+      "id": "lemo-chalkboard",
+      "title": "汉字的故事 · 黑板粉笔",
+      "summary": "孩子在教室黑板上问“射和矮是不是弄反了”；老师把射从甲骨、金文、小篆写回楷书，用橙色追踪弓和箭，擦掉错误释义后在原位写回答案。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "黑板粉笔",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "文字溯源",
+        "知识辟谣",
+        "课堂讲解"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "write-wipe-rewrite",
+        "tracked-component-highlight"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-chalkboard.json"
+    },
+    {
+      "id": "lemo-risograph",
+      "title": "周日骑行 · Risograph 孔版印刷",
+      "summary": "骑车人带着篮子穿过沉睡的蓝色街道，经过面包店加上黄色、驶进公园加上粉色，鸽子搭上法棍；套印圆盘转为河边太阳，静默中错版漂开，下拍锁回后分享面包。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "Risograph 孔版印刷",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "品牌短片",
+        "城市日常",
+        "专色插画叙事"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "block-by-block-print-reveal",
+        "overprint-disc-transition",
+        "misregistration-lock"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-risograph.json"
+    },
+    {
+      "id": "lemo-halftone-dossier",
+      "title": "胖橘案卷 · 复古半调案卷",
+      "summary": "胖橘被立案调查：推杯测试重力、凌晨四点跑酷、把周报踩成乱码；三项证据汇总后却盖下“无罪释放”，理由只有“太可爱了”，最后趴在案卷上睡着。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "复古半调案卷",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "宠物短片",
+        "幽默内容",
+        "社交短视频"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "split-compare-stamp"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-halftone-dossier.json"
+    },
+    {
+      "id": "lemo-engraving",
+      "title": "蜜蜂，第七号图版 · 铜版画",
+      "summary": "雕刀在铜版上推开第一条蜜蜂腹部曲线，揭印后轮廓、排线和交叉暗线逐层成形；复眼、翅钩与花粉篮放大镜飞到图版位置，静默后手工淡彩晕开，最后覆上薄护纸。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "铜版画",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "博物馆展签",
+        "科学知识短片",
+        "品牌工艺传承"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "carve-cut-by-cut-reveal",
+        "hand-tint-wash"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-engraving.json"
     }
   ]
 }

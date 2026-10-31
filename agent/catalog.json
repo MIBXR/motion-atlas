@@ -42,8 +42,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 33,
-    "patterns": 113,
+    "cases": 39,
+    "patterns": 120,
     "materials": 5
   },
   "caseCatalog": "agent/cases/index.json",
@@ -1088,6 +1088,174 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-paper-lantern.json"
+    },
+    {
+      "id": "lemo-whiteboard",
+      "title": "口袋里的爱因斯坦 · 白板讲解",
+      "summary": "从手机地图上的定位磁铁讲到GPS卫星、原子钟与相对论；每日38微秒的差别把定位推入海里，板擦倒抹轨迹，校准后拉远看见整堂课在同一块白板上。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "白板讲解",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "科学解说",
+        "在线课程",
+        "概念推导"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "stroke-order-equation-sync",
+        "eraser-rewind",
+        "pen-led-camera"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-whiteboard.json"
+    },
+    {
+      "id": "lemo-urban-sketch",
+      "title": "风去了哪里 · 钢笔淡彩",
+      "summary": "公园从一张无彩钢笔速写开始，一阵风把女孩的草帽吹过行人、树冠和天际线，所经之处晕开淡彩；男孩追帽、跃起又扑倒，接住后镜头拉远成整页写生。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "钢笔淡彩",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "城市旅行短片",
+        "建筑写生",
+        "生活方式品牌"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "color-follows-wind"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-urban-sketch.json"
+    },
+    {
+      "id": "lemo-chalkboard",
+      "title": "汉字的故事 · 黑板粉笔",
+      "summary": "孩子在教室黑板上问“射和矮是不是弄反了”；老师把射从甲骨、金文、小篆写回楷书，用橙色追踪弓和箭，擦掉错误释义后在原位写回答案。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "黑板粉笔",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "文字溯源",
+        "知识辟谣",
+        "课堂讲解"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "write-wipe-rewrite",
+        "tracked-component-highlight"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-chalkboard.json"
+    },
+    {
+      "id": "lemo-risograph",
+      "title": "周日骑行 · Risograph 孔版印刷",
+      "summary": "骑车人带着篮子穿过沉睡的蓝色街道，经过面包店加上黄色、驶进公园加上粉色，鸽子搭上法棍；套印圆盘转为河边太阳，静默中错版漂开，下拍锁回后分享面包。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "Risograph 孔版印刷",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "品牌短片",
+        "城市日常",
+        "专色插画叙事"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "block-by-block-print-reveal",
+        "overprint-disc-transition",
+        "misregistration-lock"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-risograph.json"
+    },
+    {
+      "id": "lemo-halftone-dossier",
+      "title": "胖橘案卷 · 复古半调案卷",
+      "summary": "胖橘被立案调查：推杯测试重力、凌晨四点跑酷、把周报踩成乱码；三项证据汇总后却盖下“无罪释放”，理由只有“太可爱了”，最后趴在案卷上睡着。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "复古半调案卷",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "宠物短片",
+        "幽默内容",
+        "社交短视频"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "split-compare-stamp"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-halftone-dossier.json"
+    },
+    {
+      "id": "lemo-engraving",
+      "title": "蜜蜂，第七号图版 · 铜版画",
+      "summary": "雕刀在铜版上推开第一条蜜蜂腹部曲线，揭印后轮廓、排线和交叉暗线逐层成形；复眼、翅钩与花粉篮放大镜飞到图版位置，静默后手工淡彩晕开，最后覆上薄护纸。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "铜版画",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "博物馆展签",
+        "科学知识短片",
+        "品牌工艺传承"
+      ],
+      "avoid": [
+        "以观众滚动阅读为主的页面"
+      ],
+      "patternIds": [
+        "carve-cut-by-cut-reveal",
+        "hand-tint-wash"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-engraving.json"
     }
   ],
   "patterns": [
@@ -1243,7 +1411,8 @@
       "role": "accent",
       "sourceCases": [
         "map-pilgrimage",
-        "mg-hanazi"
+        "mg-hanazi",
+        "lemo-halftone-dossier"
       ],
       "pairsWellWith": [
         "card-expand-fullscreen",
@@ -1608,7 +1777,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-bauhaus"
+        "mg-bauhaus",
+        "lemo-risograph"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/misregistration-lock.json"
@@ -1888,7 +2058,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-line-art"
+        "mg-line-art",
+        "lemo-whiteboard"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/pen-led-camera.json"
@@ -2994,7 +3165,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "lemo-woodcut"
+        "lemo-woodcut",
+        "lemo-engraving"
       ],
       "pairsWellWith": [
         "mirrored-block-pull-print"
@@ -3114,7 +3286,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "lemo-ukiyoe"
+        "lemo-ukiyoe",
+        "lemo-risograph"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/block-by-block-print-reveal.json"
@@ -3285,6 +3458,132 @@
         "windows-light-car-by-car"
       ],
       "bundle": "agent/patterns/tunnel-blink-black.json"
+    },
+    {
+      "id": "stroke-order-equation-sync",
+      "title": "随旁白按笔顺写式",
+      "summary": "将各个公式项分配给旁白词级时间窗口，单线字形在窗口内依笔顺书写；速度与引力两项修正写完后，再写出每天多出的38微秒。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-whiteboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/stroke-order-equation-sync.json"
+    },
+    {
+      "id": "eraser-rewind",
+      "title": "板擦倒抹回溯",
+      "summary": "将已经画出的七天轨迹倒序重组为板擦路径，板擦反向抹去轨迹，定位磁铁同步沿倒序轨迹回到起点。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-whiteboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/eraser-rewind.json"
+    },
+    {
+      "id": "color-follows-wind",
+      "title": "风过处上色",
+      "summary": "草帽沿风的路径飞过无彩钢笔公园，每隔0.04秒留下颜色扩散源；每个像素读取最早到达时刻，湿前沿铺上淡彩，树冠与天空源补足大色区。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-urban-sketch"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/color-follows-wind.json"
+    },
+    {
+      "id": "write-wipe-rewrite",
+      "title": "写擦原位重写",
+      "summary": "保留黑板上的两个主字和位置，把错误解释及交叉箭头标记为待擦；一次路径板擦移除旧释义，再在同一区域逐笔写回正确拆字。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-chalkboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/write-wipe-rewrite.json"
+    },
+    {
+      "id": "tracked-component-highlight",
+      "title": "部件追色",
+      "summary": "将同一部件的笔画固定为橙色，甲骨、金文、小篆和楷书按时间线依次书写；字形和镜头变化时，橙色保持对应部件与相对高度，随后追到短字中的矢。",
+      "types": [
+        "type-motion",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-chalkboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/tracked-component-highlight.json"
+    },
+    {
+      "id": "hand-tint-wash",
+      "title": "版画手工上色",
+      "summary": "在已经完成的黑色刻线下按色区错峰铺透明水彩，各区从落笔点以带噪声的湿边扩张；淡彩独立缓存，保留溢色、偏位、边缘积色、回花与纸齿，黑墨始终盖在颜色上。",
+      "types": [
+        "texture",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-engraving"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/hand-tint-wash.json"
+    },
+    {
+      "id": "overprint-disc-transition",
+      "title": "套印圆盘吞景",
+      "summary": "粉色专版圆从车篮扩张至全屏，与原景蓝版透印叠成紫色；全屏时切换底景，再把同一粉圆收成河上的太阳。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-risograph"
+      ],
+      "pairsWellWith": [
+        "misregistration-lock"
+      ],
+      "bundle": "agent/patterns/overprint-disc-transition.json"
     }
   ],
   "materials": [
@@ -3376,6 +3675,36 @@
           "kind": "case",
           "id": "lemo-paper-lantern",
           "note": "用层叠纸雕的距离、逐节车窗的灯光和镜像音符讲述最后一趟旅程；隧道黑场连接雪山蓝与河谷青绿。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-whiteboard",
+          "note": "口袋里的爱因斯坦 · 白板讲解；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-urban-sketch",
+          "note": "风去了哪里 · 钢笔淡彩；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-chalkboard",
+          "note": "汉字的故事 · 黑板粉笔；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-risograph",
+          "note": "周日骑行 · Risograph 孔版印刷；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-halftone-dossier",
+          "note": "胖橘案卷 · 复古半调案卷；完整画面、字体、原音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-engraving",
+          "note": "蜜蜂，第七号图版 · 铜版画；完整画面、字体、原音轨与制作文件。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

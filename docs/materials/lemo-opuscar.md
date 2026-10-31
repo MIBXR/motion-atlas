@@ -69,9 +69,9 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - 中国水墨 · Chinese Ink Wash（已复刻，[本库案例](../../cases.html#case/lemo-ink-wash)）
 - 油画厚涂 · Impasto Oil Painting（已复刻，[本库案例](../../cases.html#case/lemo-impasto)）
 - 一笔画 · One-line Drawing
-- 白板讲解 · Whiteboard Explainer
-- 钢笔淡彩 · Urban Sketch · Pen & Wash
-- 黑板粉笔 · Chalkboard
+- 白板讲解 · Whiteboard Explainer（已复刻，[本库案例](../../cases.html#case/lemo-whiteboard)）
+- 钢笔淡彩 · Urban Sketch · Pen & Wash（已复刻，[本库案例](../../cases.html#case/lemo-urban-sketch)）
+- 黑板粉笔 · Chalkboard（已复刻，[本库案例](../../cases.html#case/lemo-chalkboard)）
 
 ### 东方传统 · East Asian Traditions
 
@@ -82,10 +82,10 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 印刷与版画 · Print & Printmaking
 
-- Risograph 孔版印刷 · Risograph Print
-- 复古半调案卷 · Halftone Dossier
+- Risograph 孔版印刷 · Risograph Print（已复刻，[本库案例](../../cases.html#case/lemo-risograph)）
+- 复古半调案卷 · Halftone Dossier（已复刻，[本库案例](../../cases.html#case/lemo-halftone-dossier)）
 - 木刻版画 · Woodcut Print（已复刻，[本库案例](../../cases.html#case/lemo-woodcut)）
-- 铜版画 · Copperplate Engraving
+- 铜版画 · Copperplate Engraving（已复刻，[本库案例](../../cases.html#case/lemo-engraving)）
 - 丝印旅行海报 · Silkscreen Travel Poster
 - 印刷长镜头 · Printed Long Take
 
@@ -151,7 +151,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-十四个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+二十个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -171,4 +171,16 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 - [末班夜车 · 纸雕灯影](../../cases.html#case/lemo-paper-lantern)：制作文件见 [source/README.md](../../demos/cases/lemo-paper-lantern/source/README.md)。
 
-十四个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+- [口袋里的爱因斯坦 · 白板讲解](../../cases.html#case/lemo-whiteboard)：制作文件见 [source/README.md](../../demos/cases/lemo-whiteboard/source/README.md)。
+
+- [风去了哪里 · 钢笔淡彩](../../cases.html#case/lemo-urban-sketch)：制作文件见 [source/README.md](../../demos/cases/lemo-urban-sketch/source/README.md)。
+
+- [汉字的故事 · 黑板粉笔](../../cases.html#case/lemo-chalkboard)：制作文件见 [source/README.md](../../demos/cases/lemo-chalkboard/source/README.md)。
+
+- [周日骑行 · Risograph 孔版印刷](../../cases.html#case/lemo-risograph)：制作文件见 [source/README.md](../../demos/cases/lemo-risograph/source/README.md)。
+
+- [胖橘案卷 · 复古半调案卷](../../cases.html#case/lemo-halftone-dossier)：制作文件见 [source/README.md](../../demos/cases/lemo-halftone-dossier/source/README.md)。
+
+- [蜜蜂，第七号图版 · 铜版画](../../cases.html#case/lemo-engraving)：制作文件见 [source/README.md](../../demos/cases/lemo-engraving/source/README.md)。
+
+二十个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。

@@ -63,7 +63,7 @@
       "role": "support",
       "pairsWellWith": [],
       "conflicts": [],
-      "notes": "本巧思按所列原片区间重放，画面与音轨使用同一时间映射。"
+      "notes": "本巧思按所列原片区间重放，画面与音轨使用同一时间映射。 lemo-whiteboard：film/film.js:134–141、280–305：信号线24.75–27.55秒由卫星画向手机，cam键24.9→28秒从(3900,1640)移到(1900,2460)，随后30.3秒到公式；14.5–16.6秒镜头沿新画轨道横移。"
     },
     "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 以1倍速重放原片0–10秒，巧思时长10秒。笔尖在转角密集处按加权路径长度减速，并在重复标记处停笔；镜头以高斯采样跟随，随停笔刹停与续笔追赶，再把焦点交给标志和海报。const KCORN = 9; (1 + KCORN * Math.min(CORN[i], 0.3))。2.083–2.233、3.5–3.65、4.75–4.9秒。const HA = 0.133, HR = 0.5; const dt = k * 0.05；sigma: 0.3；lead: 0.08；hook lag: 0.067。logo_from: 6.0；logo_to: 7.3；poster_from: 7.8；poster_to: 9.0；end_push amount: 0.03。env = np.clip(spd / 3000.0, 0, 1) ** 0.6 * (tt < T_END + 0.02)；env = filters.lpf(env.astype(np.float32), 30.0)。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
     "demo": "demos/patterns/pen-led-camera/index.html",
@@ -72,6 +72,9 @@
     "sources": [
       {
         "caseId": "mg-line-art"
+      },
+      {
+        "caseId": "lemo-whiteboard"
       }
     ],
     "previewAt": 9.75,
@@ -143,6 +146,12 @@
         "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
       }
     ],
+    "parameters": [
+      {
+        "name": "白板上的引线跟镜",
+        "value": "lemo-whiteboard：film/film.js:134–141、280–305：信号线24.75–27.55秒由卫星画向手机，cam键24.9→28秒从(3900,1640)移到(1900,2460)，随后30.3秒到公式；14.5–16.6秒镜头沿新画轨道横移。"
+      }
+    ],
     "preview": "previews/patterns/pen-led-camera.jpg",
     "previewPortrait": null
   },
@@ -150,6 +159,10 @@
     {
       "caseId": "mg-line-art",
       "bundle": "agent/cases/mg-line-art.json"
+    },
+    {
+      "caseId": "lemo-whiteboard",
+      "bundle": "agent/cases/lemo-whiteboard.json"
     }
   ],
   "documents": {
@@ -157,6 +170,176 @@
   },
   "entrypoint": "demos/patterns/pen-led-camera/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-whiteboard/LICENSES.md",
+      "bytes": 1190,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/audio/CREDITS",
+      "bytes": 1394,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/audio/film.m4a",
+      "bytes": 3730104,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/fidelity.md",
+      "bytes": 4438,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/engine/wb.js",
+      "bytes": 32649,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/film.js",
+      "bytes": 30965,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/index.html",
+      "bytes": 419,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/lines.json",
+      "bytes": 3405,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/main.js",
+      "bytes": 421,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/film/voices/words.json",
+      "bytes": 4364,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/fonts/ArchitectsDaughter-Regular.ttf",
+      "bytes": 43352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/fonts/EMSTech.json",
+      "bytes": 35406,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/fonts/OFL-ArchitectsDaughter.txt",
+      "bytes": 4362,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/fonts/OFL-EMSTech.txt",
+      "bytes": 442,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/fonts/fonts.css",
+      "bytes": 69,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/index.html",
+      "bytes": 2466,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/CREDITS",
+      "bytes": 1394,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/README.md",
+      "bytes": 3040,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/build.sh",
+      "bytes": 1588,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/events.json",
+      "bytes": 101156,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/mix.py",
+      "bytes": 12101,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/music.py",
+      "bytes": 13249,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/test.js",
+      "bytes": 1354,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/tools/asr_check.py",
+      "bytes": 1502,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/tools/cuecheck.py",
+      "bytes": 1716,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/tools/subs.mjs",
+      "bytes": 669,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/tools/svgfont2json.py",
+      "bytes": 997,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-whiteboard/source/voices/dur.json",
+      "bytes": 316,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-line-art/LICENSES.md",
       "bytes": 789,
@@ -293,13 +476,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-whiteboard.json",
+      "bytes": 11260,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-line-art.json",
       "bytes": 19825,
       "role": "entry"
     },
     {
       "path": "entries/patterns/pen-led-camera.json",
-      "bytes": 4498,
+      "bytes": 5091,
       "role": "entry"
     },
     {

@@ -34,6 +34,10 @@
       {
         "name": "套印与入版",
         "value": "film/main.js:REG=[[0,0],[2.2,-1.3],[-1.8,1.9],[1.5,2.2]]，SHIFT=[[4,-5],[-6,4],[5,5],[-5,-4]]；revFor / drawSheet调用print.js:stampLayer / stampFn。"
+      },
+      {
+        "name": "三专色按段加版",
+        "value": "lemo-risograph：film/film.js:53–59的plates：gate=[1,t>=8,t>=16]，蓝版.02秒、黄版8秒、粉版16秒分别以.55秒水平sweep扫入；riso.js按三通道墨量独立成版再相乘。"
       }
     ],
     "sourceFiles": [
@@ -56,7 +60,7 @@
       "role": "foundation",
       "pairsWellWith": [],
       "conflicts": [],
-      "notes": "来源案例的画面和成片音轨按同一区间重放。"
+      "notes": "来源案例的画面和成片音轨按同一区间重放。 lemo-risograph：film/film.js:53–59的plates：gate=[1,t>=8,t>=16]，蓝版.02秒、黄版8秒、粉版16秒分别以.55秒水平sweep扫入；riso.js按三通道墨量独立成版再相乘。"
     },
     "prompt": "复用来源案例lemo-ukiyoe的原作render(t)，实现“逐版套印成画”：空纸上的关键线、蓝、绿、红四块色版依次用带噪声的斜向巴连遮罩印入，同时消除各版的入场位移，保留固定套印偏差；浪后空纸再次按四版重印。参数与源码：film/story.js:T.print1=[.35,1.05,1.70,2.30]，T.print5=[32.2,32.7,33.2,33.7]；REVEAL_DUR=.34秒。；film/main.js:REG=[[0,0],[2.2,-1.3],[-1.8,1.9],[1.5,2.2]]，SHIFT=[[4,-5],[-6,4],[5,5],[-5,-4]]；revFor / drawSheet调用print.js:stampLayer / stampFn。。按入口segments映射原片时刻，画面、字体与音轨沿用同一映射，声音默认关闭。",
     "demo": "demos/patterns/block-by-block-print-reveal/index.html",
@@ -65,6 +69,9 @@
     "sources": [
       {
         "caseId": "lemo-ukiyoe"
+      },
+      {
+        "caseId": "lemo-risograph"
       }
     ],
     "previewAt": 5.6,
@@ -85,6 +92,10 @@
     {
       "caseId": "lemo-ukiyoe",
       "bundle": "agent/cases/lemo-ukiyoe.json"
+    },
+    {
+      "caseId": "lemo-risograph",
+      "bundle": "agent/cases/lemo-risograph.json"
     }
   ],
   "documents": {
@@ -92,6 +103,196 @@
   },
   "entrypoint": "demos/patterns/block-by-block-print-reveal/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-risograph/LICENSES.md",
+      "bytes": 835,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/audio/CREDITS",
+      "bytes": 1115,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/audio/film.m4a",
+      "bytes": 1310009,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/fidelity.md",
+      "bytes": 4713,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/draw.js",
+      "bytes": 6136,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/film.js",
+      "bytes": 19331,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/index.html",
+      "bytes": 419,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/lines.json",
+      "bytes": 604,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/main.js",
+      "bytes": 2965,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/rider.js",
+      "bytes": 23831,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/riso.js",
+      "bytes": 9145,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/scenes.js",
+      "bytes": 12235,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/scenes2.js",
+      "bytes": 12834,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/sheet.js",
+      "bytes": 5563,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/film/voices/dur.json",
+      "bytes": 72,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/fonts/Bricolage-OFL.txt",
+      "bytes": 4403,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/fonts/Bricolage.ttf",
+      "bytes": 408496,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/fonts/Jost-OFL.txt",
+      "bytes": 4384,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/fonts/Jost.ttf",
+      "bytes": 134996,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/fonts/fonts.css",
+      "bytes": 270,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/index.html",
+      "bytes": 2374,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/CREDITS",
+      "bytes": 1115,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/README.md",
+      "bytes": 2249,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/build.sh",
+      "bytes": 1619,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/events.json",
+      "bytes": 1224,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/mix.py",
+      "bytes": 8965,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/music/bell.py",
+      "bytes": 2315,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/music/score.json",
+      "bytes": 8534,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/music/score.py",
+      "bytes": 21937,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/tools/mux.sh",
+      "bytes": 1340,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/tools/subs.py",
+      "bytes": 699,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/tools/video_png.mjs",
+      "bytes": 2412,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-risograph/source/voices/words.json",
+      "bytes": 1073,
+      "role": "process"
+    },
     {
       "path": "demos/cases/lemo-ukiyoe/LICENSES.md",
       "bytes": 934,
@@ -293,13 +494,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-risograph.json",
+      "bytes": 10478,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/lemo-ukiyoe.json",
       "bytes": 9803,
       "role": "entry"
     },
     {
       "path": "entries/patterns/block-by-block-print-reveal.json",
-      "bytes": 3171,
+      "bytes": 3676,
       "role": "entry"
     },
     {

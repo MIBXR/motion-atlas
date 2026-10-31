@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 113,
+  "count": 120,
   "patterns": [
     {
       "id": "corner-hud",
@@ -155,7 +155,8 @@
       "role": "accent",
       "sourceCases": [
         "map-pilgrimage",
-        "mg-hanazi"
+        "mg-hanazi",
+        "lemo-halftone-dossier"
       ],
       "pairsWellWith": [
         "card-expand-fullscreen",
@@ -520,7 +521,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-bauhaus"
+        "mg-bauhaus",
+        "lemo-risograph"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/misregistration-lock.json"
@@ -800,7 +802,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-line-art"
+        "mg-line-art",
+        "lemo-whiteboard"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/pen-led-camera.json"
@@ -1906,7 +1909,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "lemo-woodcut"
+        "lemo-woodcut",
+        "lemo-engraving"
       ],
       "pairsWellWith": [
         "mirrored-block-pull-print"
@@ -2026,7 +2030,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "lemo-ukiyoe"
+        "lemo-ukiyoe",
+        "lemo-risograph"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/block-by-block-print-reveal.json"
@@ -2197,6 +2202,132 @@
         "windows-light-car-by-car"
       ],
       "bundle": "agent/patterns/tunnel-blink-black.json"
+    },
+    {
+      "id": "stroke-order-equation-sync",
+      "title": "随旁白按笔顺写式",
+      "summary": "将各个公式项分配给旁白词级时间窗口，单线字形在窗口内依笔顺书写；速度与引力两项修正写完后，再写出每天多出的38微秒。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-whiteboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/stroke-order-equation-sync.json"
+    },
+    {
+      "id": "eraser-rewind",
+      "title": "板擦倒抹回溯",
+      "summary": "将已经画出的七天轨迹倒序重组为板擦路径，板擦反向抹去轨迹，定位磁铁同步沿倒序轨迹回到起点。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-whiteboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/eraser-rewind.json"
+    },
+    {
+      "id": "color-follows-wind",
+      "title": "风过处上色",
+      "summary": "草帽沿风的路径飞过无彩钢笔公园，每隔0.04秒留下颜色扩散源；每个像素读取最早到达时刻，湿前沿铺上淡彩，树冠与天空源补足大色区。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-urban-sketch"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/color-follows-wind.json"
+    },
+    {
+      "id": "write-wipe-rewrite",
+      "title": "写擦原位重写",
+      "summary": "保留黑板上的两个主字和位置，把错误解释及交叉箭头标记为待擦；一次路径板擦移除旧释义，再在同一区域逐笔写回正确拆字。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-chalkboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/write-wipe-rewrite.json"
+    },
+    {
+      "id": "tracked-component-highlight",
+      "title": "部件追色",
+      "summary": "将同一部件的笔画固定为橙色，甲骨、金文、小篆和楷书按时间线依次书写；字形和镜头变化时，橙色保持对应部件与相对高度，随后追到短字中的矢。",
+      "types": [
+        "type-motion",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-chalkboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/tracked-component-highlight.json"
+    },
+    {
+      "id": "hand-tint-wash",
+      "title": "版画手工上色",
+      "summary": "在已经完成的黑色刻线下按色区错峰铺透明水彩，各区从落笔点以带噪声的湿边扩张；淡彩独立缓存，保留溢色、偏位、边缘积色、回花与纸齿，黑墨始终盖在颜色上。",
+      "types": [
+        "texture",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-engraving"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/hand-tint-wash.json"
+    },
+    {
+      "id": "overprint-disc-transition",
+      "title": "套印圆盘吞景",
+      "summary": "粉色专版圆从车篮扩张至全屏，与原景蓝版透印叠成紫色；全屏时切换底景，再把同一粉圆收成河上的太阳。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-risograph"
+      ],
+      "pairsWellWith": [
+        "misregistration-lock"
+      ],
+      "bundle": "agent/patterns/overprint-disc-transition.json"
     }
   ]
 }

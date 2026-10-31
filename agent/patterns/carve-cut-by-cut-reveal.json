@@ -39,6 +39,10 @@
       {
         "name": "刻光",
         "value": "film/shots2.js:第二次浇铸的rays：39.3333秒起，t1=t0+.5，n=60、r0=62、r1=[700,1500]、w=22、jit=.8、bend=.03。"
+      },
+      {
+        "name": "铜版逐线雕刻",
+        "value": "lemo-engraving：film/film.js:42–47的Ink.schedule按ol0/ol/h1/h2/h3分配每条线的s0/s1；engine/burin.js的Ink.build / draw按单线进度显露鼓起并收尖的刻线，conc=1/16/70/70/90。"
       }
     ],
     "sourceFiles": [
@@ -65,7 +69,7 @@
         "mirrored-block-pull-print"
       ],
       "conflicts": [],
-      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+      "notes": "按来源片段重放，画面和音轨共用时间映射。 lemo-engraving：film/film.js:42–47的Ink.schedule按ol0/ol/h1/h2/h3分配每条线的s0/s1；engine/burin.js的Ink.build / draw按单线进度显露鼓起并收尖的刻线，conc=1/16/70/70/90。"
     },
     "prompt": "用来源案例lemo-woodcut的原作render(t)重放“逐刀刻出画面”。每条刻痕持有起始时刻、持续时间和刀宽，沿刀路逐步显露；形体的reveal key分配粗细刀次，高潮光线由放射刻痕爆开。保留参数：film/engine/knife.js:progOf：u=clamp((t−s.t0)/s.dur)，进度u*(.55+.45*u)；hatch.js:hatch依据key、speed和jit分配t0/dur。；film/world.js:buildWorld：field在3–4.8秒，village从4+i*.08秒，sky在5–6.1秒；shots.js:buildOpen标题6–6.85秒，sp=3.2、wmax=4.4。；film/shots2.js:第二次浇铸的rays：39.3333秒起，t1=t0+.5，n=60、r0=62、r1=[700,1500]、w=22、jit=.8、bend=.03。。按index.html内联segments映射原片时刻，复用原作字体、素材与同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/carve-cut-by-cut-reveal/index.html",
@@ -74,6 +78,9 @@
     "sources": [
       {
         "caseId": "lemo-woodcut"
+      },
+      {
+        "caseId": "lemo-engraving"
       }
     ],
     "previewAt": 4.5,
@@ -95,6 +102,10 @@
     {
       "caseId": "lemo-woodcut",
       "bundle": "agent/cases/lemo-woodcut.json"
+    },
+    {
+      "caseId": "lemo-engraving",
+      "bundle": "agent/cases/lemo-engraving.json"
     }
   ],
   "documents": {
@@ -102,6 +113,241 @@
   },
   "entrypoint": "demos/patterns/carve-cut-by-cut-reveal/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-engraving/LICENSES.md",
+      "bytes": 1027,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/audio/CREDITS",
+      "bytes": 1754,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/audio/film.m4a",
+      "bytes": 1324797,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/fidelity.md",
+      "bytes": 3759,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/content.json",
+      "bytes": 2353,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/engine/burin.js",
+      "bytes": 33064,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/engine/copper.js",
+      "bytes": 12503,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/engine/index.js",
+      "bytes": 2153,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/engine/plate.js",
+      "bytes": 9974,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/engine/wash.js",
+      "bytes": 7693,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/film.js",
+      "bytes": 27561,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/index.html",
+      "bytes": 462,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/lines.json",
+      "bytes": 914,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/main.js",
+      "bytes": 782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/subjects/bee.js",
+      "bytes": 24894,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/subjects/details.js",
+      "bytes": 16815,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/subjects/scallop.js",
+      "bytes": 6153,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/film/voices/dur.json",
+      "bytes": 78,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/fonts/BodoniModa-Italic-VF.ttf",
+      "bytes": 176300,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/fonts/BodoniModa-VF.ttf",
+      "bytes": 162104,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/fonts/OFL-bodonimoda.txt",
+      "bytes": 4400,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/fonts/OFL.txt",
+      "bytes": 4384,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/fonts/PinyonScript-Regular.ttf",
+      "bytes": 151412,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/fonts/fonts.css",
+      "bytes": 397,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/index.html",
+      "bytes": 2438,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/CREDITS",
+      "bytes": 1754,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/README.md",
+      "bytes": 2897,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/build.sh",
+      "bytes": 1763,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/content_alt.json",
+      "bytes": 1803,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/events.json",
+      "bytes": 2157,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/example/index.html",
+      "bytes": 1830,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/mix.py",
+      "bytes": 10651,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/music/CREDITS_music.txt",
+      "bytes": 347,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/music/cues.json",
+      "bytes": 2555,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/music/score.py",
+      "bytes": 26367,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/tools/build_alt.sh",
+      "bytes": 1203,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/tools/cuecheck.py",
+      "bytes": 2158,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/tools/events.mjs",
+      "bytes": 825,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/tools/readcheck/index.html",
+      "bytes": 2138,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/tools/subs.py",
+      "bytes": 869,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-engraving/source/voices/words.json",
+      "bytes": 1498,
+      "role": "process"
+    },
     {
       "path": "demos/cases/lemo-woodcut/LICENSES.md",
       "bytes": 1188,
@@ -388,13 +634,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-engraving.json",
+      "bytes": 10561,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/lemo-woodcut.json",
       "bytes": 10819,
       "role": "entry"
     },
     {
       "path": "entries/patterns/carve-cut-by-cut-reveal.json",
-      "bytes": 3698,
+      "bytes": 4210,
       "role": "entry"
     },
     {

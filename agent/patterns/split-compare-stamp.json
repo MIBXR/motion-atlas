@@ -53,7 +53,7 @@
         "film-grain"
       ],
       "conflicts": [],
-      "notes": "两侧插画以分割线分开，边框组织画面。时间戳以印章动作落下，让两个时刻的景象并排对照。"
+      "notes": "两侧插画以分割线分开，边框组织画面。时间戳以印章动作落下，让两个时刻的景象并排对照。 lemo-halftone-dossier：film/index.html:183–189的stampAnim：.09秒内scale=lerp(2.6,1,E.in(p))，落点后乘1+.05sin(30a)exp(−9a)；1037–1058在23秒叠26px/.45秒镜震及.12秒闪白。"
     },
     "prompt": "旧明信片与今日实景在横屏左右、竖屏上下对比，分割线划过后盖上时间戳。复用地图巡礼的 drawCompare、mountScene、sceneCanvas、paintScene 与对应 CSS。drawCompare 的两侧插画、分割线、边框与时间戳印章。片段：caseT 29→33.4；时长 6.133s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。 按 index.html 内联 segments 在原有 4.8 秒之后重放mg-hanazi 原片 8.167–9.5 秒，总时长 6.133 秒。综艺片的认证印章从 2.5 倍缩到落点，旋转回弹并带动相框镜震。画面与音轨沿用同一映射，声音默认关闭。",
     "demo": "demos/patterns/split-compare-stamp/index.html",
@@ -64,6 +64,9 @@
       },
       {
         "caseId": "mg-hanazi"
+      },
+      {
+        "caseId": "lemo-halftone-dossier"
       }
     ],
     "previewAt": 2.4,
@@ -168,6 +171,12 @@
       "portrait"
     ],
     "previewAtPortrait": 5.4665,
+    "parameters": [
+      {
+        "name": "案卷印章主拍",
+        "value": "lemo-halftone-dossier：film/index.html:183–189的stampAnim：.09秒内scale=lerp(2.6,1,E.in(p))，落点后乘1+.05sin(30a)exp(−9a)；1037–1058在23秒叠26px/.45秒镜震及.12秒闪白。"
+      }
+    ],
     "preview": "previews/patterns/split-compare-stamp.jpg",
     "previewPortrait": "previews/patterns/split-compare-stamp-portrait.jpg"
   },
@@ -179,6 +188,10 @@
     {
       "caseId": "mg-hanazi",
       "bundle": "agent/cases/mg-hanazi.json"
+    },
+    {
+      "caseId": "lemo-halftone-dossier",
+      "bundle": "agent/cases/lemo-halftone-dossier.json"
     }
   ],
   "documents": {
@@ -186,6 +199,2081 @@
   },
   "entrypoint": "demos/patterns/split-compare-stamp/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-halftone-dossier/LICENSES.md",
+      "bytes": 976,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/audio/CREDITS",
+      "bytes": 1964,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/audio/film.m4a",
+      "bytes": 973032,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fidelity.md",
+      "bytes": 5260,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/film/index.html",
+      "bytes": 66045,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/OFL-bagelfatone.txt",
+      "bytes": 4485,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/OFL-jetbrainsmono.txt",
+      "bytes": 4399,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/OFL-notosanssc.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/OFL-notoserifsc.txt",
+      "bytes": 4350,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/OFL-zcoolkuaile.txt",
+      "bytes": 4398,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f0.woff2",
+      "bytes": 4460,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f1.woff2",
+      "bytes": 1780,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f10.woff2",
+      "bytes": 10412,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f100.woff2",
+      "bytes": 39972,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f101.woff2",
+      "bytes": 36672,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f102.woff2",
+      "bytes": 33620,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f103.woff2",
+      "bytes": 34560,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f104.woff2",
+      "bytes": 37396,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f105.woff2",
+      "bytes": 38216,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f106.woff2",
+      "bytes": 32064,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f107.woff2",
+      "bytes": 35244,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f108.woff2",
+      "bytes": 34168,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f109.woff2",
+      "bytes": 33572,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f11.woff2",
+      "bytes": 1824,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f110.woff2",
+      "bytes": 32456,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f111.woff2",
+      "bytes": 29292,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f112.woff2",
+      "bytes": 35228,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f113.woff2",
+      "bytes": 39048,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f114.woff2",
+      "bytes": 37124,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f115.woff2",
+      "bytes": 34008,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f116.woff2",
+      "bytes": 26300,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f117.woff2",
+      "bytes": 32760,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f118.woff2",
+      "bytes": 30424,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f119.woff2",
+      "bytes": 37972,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f12.woff2",
+      "bytes": 6024,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f120.woff2",
+      "bytes": 47716,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f121.woff2",
+      "bytes": 38668,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f122.woff2",
+      "bytes": 38404,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f123.woff2",
+      "bytes": 32580,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f124.woff2",
+      "bytes": 36808,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f125.woff2",
+      "bytes": 33148,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f126.woff2",
+      "bytes": 29308,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f127.woff2",
+      "bytes": 35132,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f128.woff2",
+      "bytes": 28344,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f129.woff2",
+      "bytes": 36344,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f13.woff2",
+      "bytes": 11740,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f130.woff2",
+      "bytes": 31876,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f131.woff2",
+      "bytes": 37128,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f132.woff2",
+      "bytes": 38896,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f133.woff2",
+      "bytes": 42572,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f134.woff2",
+      "bytes": 35260,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f135.woff2",
+      "bytes": 30912,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f136.woff2",
+      "bytes": 31668,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f137.woff2",
+      "bytes": 41384,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f138.woff2",
+      "bytes": 33176,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f139.woff2",
+      "bytes": 26180,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f14.woff2",
+      "bytes": 11380,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f140.woff2",
+      "bytes": 30132,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f141.woff2",
+      "bytes": 36440,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f142.woff2",
+      "bytes": 37800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f143.woff2",
+      "bytes": 28516,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f144.woff2",
+      "bytes": 38708,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f145.woff2",
+      "bytes": 28036,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f146.woff2",
+      "bytes": 32960,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f147.woff2",
+      "bytes": 34268,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f148.woff2",
+      "bytes": 29316,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f149.woff2",
+      "bytes": 39876,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f15.woff2",
+      "bytes": 11428,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f150.woff2",
+      "bytes": 30616,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f151.woff2",
+      "bytes": 34932,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f152.woff2",
+      "bytes": 27108,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f153.woff2",
+      "bytes": 37640,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f154.woff2",
+      "bytes": 31028,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f155.woff2",
+      "bytes": 23636,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f156.woff2",
+      "bytes": 32344,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f157.woff2",
+      "bytes": 33080,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f158.woff2",
+      "bytes": 30776,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f159.woff2",
+      "bytes": 22368,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f16.woff2",
+      "bytes": 12840,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f160.woff2",
+      "bytes": 22012,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f161.woff2",
+      "bytes": 25084,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f162.woff2",
+      "bytes": 5440,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f163.woff2",
+      "bytes": 6112,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f164.woff2",
+      "bytes": 6876,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f165.woff2",
+      "bytes": 5844,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f166.woff2",
+      "bytes": 5800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f167.woff2",
+      "bytes": 1524,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f168.woff2",
+      "bytes": 2620,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f169.woff2",
+      "bytes": 6860,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f17.woff2",
+      "bytes": 1908,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f170.woff2",
+      "bytes": 45680,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f171.woff2",
+      "bytes": 41920,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f172.woff2",
+      "bytes": 43040,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f173.woff2",
+      "bytes": 45448,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f174.woff2",
+      "bytes": 43480,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f175.woff2",
+      "bytes": 43768,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f176.woff2",
+      "bytes": 43932,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f177.woff2",
+      "bytes": 42744,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f178.woff2",
+      "bytes": 44920,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f179.woff2",
+      "bytes": 42572,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f18.woff2",
+      "bytes": 10820,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f180.woff2",
+      "bytes": 42820,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f181.woff2",
+      "bytes": 43480,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f182.woff2",
+      "bytes": 40640,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f183.woff2",
+      "bytes": 40808,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f184.woff2",
+      "bytes": 40240,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f185.woff2",
+      "bytes": 38928,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f186.woff2",
+      "bytes": 36332,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f187.woff2",
+      "bytes": 35880,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f188.woff2",
+      "bytes": 31356,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f189.woff2",
+      "bytes": 49564,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f19.woff2",
+      "bytes": 16536,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f190.woff2",
+      "bytes": 8076,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f191.woff2",
+      "bytes": 5836,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f192.woff2",
+      "bytes": 5772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f193.woff2",
+      "bytes": 18400,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f194.woff2",
+      "bytes": 1600,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f195.woff2",
+      "bytes": 4056,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f196.woff2",
+      "bytes": 5100,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f197.woff2",
+      "bytes": 5084,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f198.woff2",
+      "bytes": 4280,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f199.woff2",
+      "bytes": 3960,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f2.woff2",
+      "bytes": 2516,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f20.woff2",
+      "bytes": 13972,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f200.woff2",
+      "bytes": 3696,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f201.woff2",
+      "bytes": 3884,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f202.woff2",
+      "bytes": 4508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f203.woff2",
+      "bytes": 3328,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f204.woff2",
+      "bytes": 3804,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f205.woff2",
+      "bytes": 3244,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f206.woff2",
+      "bytes": 3620,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f207.woff2",
+      "bytes": 4244,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f208.woff2",
+      "bytes": 4052,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f209.woff2",
+      "bytes": 4576,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f21.woff2",
+      "bytes": 12012,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f210.woff2",
+      "bytes": 4584,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f211.woff2",
+      "bytes": 4552,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f212.woff2",
+      "bytes": 3688,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f213.woff2",
+      "bytes": 5596,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f214.woff2",
+      "bytes": 4296,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f215.woff2",
+      "bytes": 5224,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f216.woff2",
+      "bytes": 3592,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f217.woff2",
+      "bytes": 6168,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f218.woff2",
+      "bytes": 5540,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f219.woff2",
+      "bytes": 6472,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f22.woff2",
+      "bytes": 10912,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f220.woff2",
+      "bytes": 6956,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f221.woff2",
+      "bytes": 5288,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f222.woff2",
+      "bytes": 4616,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f223.woff2",
+      "bytes": 5352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f224.woff2",
+      "bytes": 3796,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f225.woff2",
+      "bytes": 5408,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f226.woff2",
+      "bytes": 5776,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f227.woff2",
+      "bytes": 6356,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f228.woff2",
+      "bytes": 4388,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f229.woff2",
+      "bytes": 2316,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f23.woff2",
+      "bytes": 11740,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f230.woff2",
+      "bytes": 2972,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f231.woff2",
+      "bytes": 4392,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f232.woff2",
+      "bytes": 5100,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f233.woff2",
+      "bytes": 4752,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f234.woff2",
+      "bytes": 4516,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f235.woff2",
+      "bytes": 5744,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f236.woff2",
+      "bytes": 4916,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f237.woff2",
+      "bytes": 4868,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f238.woff2",
+      "bytes": 4664,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f239.woff2",
+      "bytes": 4188,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f24.woff2",
+      "bytes": 11076,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f240.woff2",
+      "bytes": 3884,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f241.woff2",
+      "bytes": 4408,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f242.woff2",
+      "bytes": 4432,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f243.woff2",
+      "bytes": 3420,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f244.woff2",
+      "bytes": 4164,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f245.woff2",
+      "bytes": 5388,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f246.woff2",
+      "bytes": 2964,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f247.woff2",
+      "bytes": 4376,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f248.woff2",
+      "bytes": 5032,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f249.woff2",
+      "bytes": 4360,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f25.woff2",
+      "bytes": 14140,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f250.woff2",
+      "bytes": 4568,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f251.woff2",
+      "bytes": 4456,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f252.woff2",
+      "bytes": 4400,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f253.woff2",
+      "bytes": 5264,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f254.woff2",
+      "bytes": 5088,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f255.woff2",
+      "bytes": 4564,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f256.woff2",
+      "bytes": 5696,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f257.woff2",
+      "bytes": 5204,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f258.woff2",
+      "bytes": 2128,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f259.woff2",
+      "bytes": 3392,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f26.woff2",
+      "bytes": 5036,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f260.woff2",
+      "bytes": 1488,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f261.woff2",
+      "bytes": 1232,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f262.woff2",
+      "bytes": 1676,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f263.woff2",
+      "bytes": 5704,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f264.woff2",
+      "bytes": 8692,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f265.woff2",
+      "bytes": 7728,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f266.woff2",
+      "bytes": 9052,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f267.woff2",
+      "bytes": 9384,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f268.woff2",
+      "bytes": 9704,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f269.woff2",
+      "bytes": 11228,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f27.woff2",
+      "bytes": 1836,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f270.woff2",
+      "bytes": 12260,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f271.woff2",
+      "bytes": 14284,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f272.woff2",
+      "bytes": 14436,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f273.woff2",
+      "bytes": 14792,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f274.woff2",
+      "bytes": 15548,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f275.woff2",
+      "bytes": 14888,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f276.woff2",
+      "bytes": 14640,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f277.woff2",
+      "bytes": 15320,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f278.woff2",
+      "bytes": 14728,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f279.woff2",
+      "bytes": 14776,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f28.woff2",
+      "bytes": 8480,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f280.woff2",
+      "bytes": 14704,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f281.woff2",
+      "bytes": 13364,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f282.woff2",
+      "bytes": 12408,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f283.woff2",
+      "bytes": 11028,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f284.woff2",
+      "bytes": 2720,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f285.woff2",
+      "bytes": 16688,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f286.woff2",
+      "bytes": 1664,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f287.woff2",
+      "bytes": 8892,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f288.woff2",
+      "bytes": 6800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f289.woff2",
+      "bytes": 5872,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f29.woff2",
+      "bytes": 8880,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f290.woff2",
+      "bytes": 11596,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f291.woff2",
+      "bytes": 31340,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f292.woff2",
+      "bytes": 3752,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f293.woff2",
+      "bytes": 19996,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f294.woff2",
+      "bytes": 11388,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f295.woff2",
+      "bytes": 11324,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f296.woff2",
+      "bytes": 65184,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f297.woff2",
+      "bytes": 56636,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f298.woff2",
+      "bytes": 62552,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f299.woff2",
+      "bytes": 58096,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f3.woff2",
+      "bytes": 16288,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f30.woff2",
+      "bytes": 6200,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f300.woff2",
+      "bytes": 50752,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f301.woff2",
+      "bytes": 47404,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f302.woff2",
+      "bytes": 50028,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f303.woff2",
+      "bytes": 53836,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f304.woff2",
+      "bytes": 54432,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f305.woff2",
+      "bytes": 47068,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f306.woff2",
+      "bytes": 52368,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f307.woff2",
+      "bytes": 47320,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f308.woff2",
+      "bytes": 46736,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f309.woff2",
+      "bytes": 50508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f31.woff2",
+      "bytes": 8912,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f310.woff2",
+      "bytes": 41704,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f311.woff2",
+      "bytes": 53352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f312.woff2",
+      "bytes": 54408,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f313.woff2",
+      "bytes": 51668,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f314.woff2",
+      "bytes": 46420,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f315.woff2",
+      "bytes": 36216,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f316.woff2",
+      "bytes": 45460,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f317.woff2",
+      "bytes": 46456,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f318.woff2",
+      "bytes": 54028,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f319.woff2",
+      "bytes": 67416,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f32.woff2",
+      "bytes": 10096,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f320.woff2",
+      "bytes": 57560,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f321.woff2",
+      "bytes": 55964,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f322.woff2",
+      "bytes": 50644,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f323.woff2",
+      "bytes": 52744,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f324.woff2",
+      "bytes": 45672,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f325.woff2",
+      "bytes": 41448,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f326.woff2",
+      "bytes": 51692,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f327.woff2",
+      "bytes": 43256,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f328.woff2",
+      "bytes": 51788,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f329.woff2",
+      "bytes": 47964,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f33.woff2",
+      "bytes": 8468,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f330.woff2",
+      "bytes": 53400,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f331.woff2",
+      "bytes": 55612,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f332.woff2",
+      "bytes": 57432,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f333.woff2",
+      "bytes": 47480,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f334.woff2",
+      "bytes": 41304,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f335.woff2",
+      "bytes": 45076,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f336.woff2",
+      "bytes": 58920,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f337.woff2",
+      "bytes": 49008,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f338.woff2",
+      "bytes": 41408,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f339.woff2",
+      "bytes": 41360,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f34.woff2",
+      "bytes": 9708,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f340.woff2",
+      "bytes": 52588,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f341.woff2",
+      "bytes": 52432,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f342.woff2",
+      "bytes": 41320,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f343.woff2",
+      "bytes": 55500,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f344.woff2",
+      "bytes": 42028,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f345.woff2",
+      "bytes": 47748,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f346.woff2",
+      "bytes": 46820,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f347.woff2",
+      "bytes": 39096,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f348.woff2",
+      "bytes": 56224,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f349.woff2",
+      "bytes": 43776,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f35.woff2",
+      "bytes": 6388,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f350.woff2",
+      "bytes": 48256,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f351.woff2",
+      "bytes": 36656,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f352.woff2",
+      "bytes": 48968,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f353.woff2",
+      "bytes": 41140,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f354.woff2",
+      "bytes": 32440,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f355.woff2",
+      "bytes": 47364,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f356.woff2",
+      "bytes": 45988,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f357.woff2",
+      "bytes": 43324,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f358.woff2",
+      "bytes": 32440,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f359.woff2",
+      "bytes": 26732,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f36.woff2",
+      "bytes": 8116,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f360.woff2",
+      "bytes": 33400,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f361.woff2",
+      "bytes": 7908,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f362.woff2",
+      "bytes": 7196,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f363.woff2",
+      "bytes": 10800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f364.woff2",
+      "bytes": 9272,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f365.woff2",
+      "bytes": 8592,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f366.woff2",
+      "bytes": 2056,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f367.woff2",
+      "bytes": 3408,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f368.woff2",
+      "bytes": 9664,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f369.woff2",
+      "bytes": 64332,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f37.woff2",
+      "bytes": 7232,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f370.woff2",
+      "bytes": 57940,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f371.woff2",
+      "bytes": 60508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f372.woff2",
+      "bytes": 63684,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f373.woff2",
+      "bytes": 61324,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f374.woff2",
+      "bytes": 61592,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f375.woff2",
+      "bytes": 62472,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f376.woff2",
+      "bytes": 60852,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f377.woff2",
+      "bytes": 64264,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f378.woff2",
+      "bytes": 60196,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f379.woff2",
+      "bytes": 61192,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f38.woff2",
+      "bytes": 7364,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f380.woff2",
+      "bytes": 62464,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f381.woff2",
+      "bytes": 57436,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f382.woff2",
+      "bytes": 58440,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f383.woff2",
+      "bytes": 57696,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f384.woff2",
+      "bytes": 56212,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f385.woff2",
+      "bytes": 52800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f386.woff2",
+      "bytes": 52252,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f387.woff2",
+      "bytes": 45884,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f388.woff2",
+      "bytes": 76236,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f389.woff2",
+      "bytes": 9916,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f39.woff2",
+      "bytes": 7292,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f390.woff2",
+      "bytes": 8948,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f391.woff2",
+      "bytes": 8108,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f392.woff2",
+      "bytes": 24936,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f4.woff2",
+      "bytes": 12668,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f40.woff2",
+      "bytes": 7416,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f41.woff2",
+      "bytes": 7780,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f42.woff2",
+      "bytes": 8660,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f43.woff2",
+      "bytes": 6312,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f44.woff2",
+      "bytes": 8876,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f45.woff2",
+      "bytes": 7620,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f46.woff2",
+      "bytes": 5916,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f47.woff2",
+      "bytes": 5464,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f48.woff2",
+      "bytes": 11168,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f49.woff2",
+      "bytes": 8964,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f5.woff2",
+      "bytes": 10580,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f50.woff2",
+      "bytes": 7752,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f51.woff2",
+      "bytes": 8768,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f52.woff2",
+      "bytes": 6144,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f53.woff2",
+      "bytes": 7192,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f54.woff2",
+      "bytes": 6468,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f55.woff2",
+      "bytes": 7308,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f56.woff2",
+      "bytes": 5296,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f57.woff2",
+      "bytes": 5224,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f58.woff2",
+      "bytes": 8260,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f59.woff2",
+      "bytes": 8112,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f6.woff2",
+      "bytes": 7000,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f60.woff2",
+      "bytes": 10300,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f61.woff2",
+      "bytes": 8156,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f62.woff2",
+      "bytes": 4888,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f63.woff2",
+      "bytes": 6064,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f64.woff2",
+      "bytes": 6948,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f65.woff2",
+      "bytes": 5552,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f66.woff2",
+      "bytes": 1592,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f67.woff2",
+      "bytes": 800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f68.woff2",
+      "bytes": 800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f69.woff2",
+      "bytes": 960,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f7.woff2",
+      "bytes": 8344,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f70.woff2",
+      "bytes": 860,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f71.woff2",
+      "bytes": 1108,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f72.woff2",
+      "bytes": 23796,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f73.woff2",
+      "bytes": 23016,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f74.woff2",
+      "bytes": 23160,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f75.woff2",
+      "bytes": 23904,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f76.woff2",
+      "bytes": 24132,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f77.woff2",
+      "bytes": 25172,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f78.woff2",
+      "bytes": 25588,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f79.woff2",
+      "bytes": 25044,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f8.woff2",
+      "bytes": 9920,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f80.woff2",
+      "bytes": 25664,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f81.woff2",
+      "bytes": 24824,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f82.woff2",
+      "bytes": 24532,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f83.woff2",
+      "bytes": 25540,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f84.woff2",
+      "bytes": 24552,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f85.woff2",
+      "bytes": 23932,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f86.woff2",
+      "bytes": 23084,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f87.woff2",
+      "bytes": 22180,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f88.woff2",
+      "bytes": 21096,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f89.woff2",
+      "bytes": 20852,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f9.woff2",
+      "bytes": 15112,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f90.woff2",
+      "bytes": 18396,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f91.woff2",
+      "bytes": 4744,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f92.woff2",
+      "bytes": 5356,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f93.woff2",
+      "bytes": 2776,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f94.woff2",
+      "bytes": 15308,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f95.woff2",
+      "bytes": 8920,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f96.woff2",
+      "bytes": 13900,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f97.woff2",
+      "bytes": 43436,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f98.woff2",
+      "bytes": 37264,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/f99.woff2",
+      "bytes": 42232,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/fonts/fonts.css",
+      "bytes": 454301,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/index.html",
+      "bytes": 2100,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/source/CREDITS",
+      "bytes": 1964,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/source/README.md",
+      "bytes": 1722,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/source/fetch_fonts.mjs",
+      "bytes": 772,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/source/music.py",
+      "bytes": 13265,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/source/package-lock.json",
+      "bytes": 697,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/source/package.json",
+      "bytes": 302,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-halftone-dossier/source/render.mjs",
+      "bytes": 4490,
+      "role": "process"
+    },
     {
       "path": "demos/cases/map-pilgrimage/LICENSES.md",
       "bytes": 1021,
@@ -492,6 +2580,11 @@
       "role": "doc"
     },
     {
+      "path": "entries/cases/lemo-halftone-dossier.json",
+      "bytes": 10547,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/map-pilgrimage.json",
       "bytes": 20793,
       "role": "entry"
@@ -503,7 +2596,7 @@
     },
     {
       "path": "entries/patterns/split-compare-stamp.json",
-      "bytes": 6813,
+      "bytes": 7348,
       "role": "entry"
     },
     {

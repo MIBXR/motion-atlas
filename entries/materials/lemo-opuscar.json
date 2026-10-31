@@ -108,6 +108,36 @@
       "kind": "case",
       "id": "lemo-paper-lantern",
       "note": "用层叠纸雕的距离、逐节车窗的灯光和镜像音符讲述最后一趟旅程；隧道黑场连接雪山蓝与河谷青绿。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-whiteboard",
+      "note": "口袋里的爱因斯坦 · 白板讲解；完整画面、字体、原音轨与制作文件。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-urban-sketch",
+      "note": "风去了哪里 · 钢笔淡彩；完整画面、字体、原音轨与制作文件。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-chalkboard",
+      "note": "汉字的故事 · 黑板粉笔；完整画面、字体、原音轨与制作文件。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-risograph",
+      "note": "周日骑行 · Risograph 孔版印刷；完整画面、字体、原音轨与制作文件。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-halftone-dossier",
+      "note": "胖橘案卷 · 复古半调案卷；完整画面、字体、原音轨与制作文件。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-engraving",
+      "note": "蜜蜂，第七号图版 · 铜版画；完整画面、字体、原音轨与制作文件。"
     }
   ],
   "sources": [

@@ -35,3 +35,9 @@
 | [雨的颜色 · 油画厚涂](../../cases.html#case/lemo-impasto) | [条目](../../entries/cases/lemo-impasto.json) |
 | [月亮睡不着 · 蜡笔儿童绘本](../../cases.html#case/lemo-crayon-book) | [条目](../../entries/cases/lemo-crayon-book.json) |
 | [末班夜车 · 纸雕灯影](../../cases.html#case/lemo-paper-lantern) | [条目](../../entries/cases/lemo-paper-lantern.json) |
+| [口袋里的爱因斯坦 · 白板讲解](../../cases.html#case/lemo-whiteboard) | [条目](../../entries/cases/lemo-whiteboard.json) |
+| [风去了哪里 · 钢笔淡彩](../../cases.html#case/lemo-urban-sketch) | [条目](../../entries/cases/lemo-urban-sketch.json) |
+| [汉字的故事 · 黑板粉笔](../../cases.html#case/lemo-chalkboard) | [条目](../../entries/cases/lemo-chalkboard.json) |
+| [周日骑行 · Risograph 孔版印刷](../../cases.html#case/lemo-risograph) | [条目](../../entries/cases/lemo-risograph.json) |
+| [胖橘案卷 · 复古半调案卷](../../cases.html#case/lemo-halftone-dossier) | [条目](../../entries/cases/lemo-halftone-dossier.json) |
+| [蜜蜂，第七号图版 · 铜版画](../../cases.html#case/lemo-engraving) | [条目](../../entries/cases/lemo-engraving.json) |
