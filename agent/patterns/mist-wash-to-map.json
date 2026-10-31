@@ -108,7 +108,7 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/audio/CREDITS",
-      "bytes": 2461,
+      "bytes": 2421,
       "role": "asset"
     },
     {
@@ -123,17 +123,17 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/film/LICENSE",
-      "bytes": 1085,
+      "bytes": 1064,
       "role": "license"
     },
     {
       "path": "demos/cases/lemo-watercolor/film/aus.js",
-      "bytes": 23420,
+      "bytes": 23419,
       "role": "source"
     },
     {
       "path": "demos/cases/lemo-watercolor/film/engine.js",
-      "bytes": 8628,
+      "bytes": 8486,
       "role": "source"
     },
     {
@@ -143,7 +143,7 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/film/main.js",
-      "bytes": 19304,
+      "bytes": 19065,
       "role": "source"
     },
     {
@@ -153,12 +153,12 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/film/plants.js",
-      "bytes": 14255,
+      "bytes": 14039,
       "role": "source"
     },
     {
       "path": "demos/cases/lemo-watercolor/film/scene.js",
-      "bytes": 35848,
+      "bytes": 35322,
       "role": "source"
     },
     {
@@ -173,7 +173,7 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/fonts/OFL-ibmplexmono.txt",
-      "bytes": 4456,
+      "bytes": 4363,
       "role": "license"
     },
     {
@@ -298,7 +298,7 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/source/CREDITS",
-      "bytes": 2461,
+      "bytes": 2421,
       "role": "process"
     },
     {
@@ -308,52 +308,52 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/source/asr.py",
-      "bytes": 507,
+      "bytes": 499,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/extract_aus.mjs",
-      "bytes": 1376,
+      "bytes": 1359,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/fetch_fonts.mjs",
-      "bytes": 1156,
+      "bytes": 1135,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/fonts.css",
-      "bytes": 11553,
+      "bytes": 11293,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/mix.py",
-      "bytes": 8907,
+      "bytes": 8743,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/music/analyze.py",
-      "bytes": 1891,
+      "bytes": 1861,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/music/edit.py",
-      "bytes": 1843,
+      "bytes": 1816,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/music/jump.py",
-      "bytes": 1544,
+      "bytes": 1515,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/music/lag.py",
-      "bytes": 1332,
+      "bytes": 1308,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/music/prep.sh",
-      "bytes": 857,
+      "bytes": 846,
       "role": "process"
     },
     {
@@ -368,52 +368,52 @@
     },
     {
       "path": "demos/cases/lemo-watercolor/source/mux.sh",
-      "bytes": 1053,
+      "bytes": 1039,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/paper.py",
-      "bytes": 1326,
+      "bytes": 1299,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/render.mjs",
-      "bytes": 5080,
+      "bytes": 4995,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/sheet.py",
-      "bytes": 547,
+      "bytes": 537,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/tts/gen.py",
-      "bytes": 1107,
+      "bytes": 1090,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/tts/lines.json",
-      "bytes": 1283,
+      "bytes": 1268,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/vendor/LICENSE-topojson-client",
-      "bytes": 747,
+      "bytes": 734,
       "role": "license"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/vendor/LICENSE-world-atlas",
-      "bytes": 747,
+      "bytes": 734,
       "role": "license"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/vendor/countries-50m.json",
-      "bytes": 756421,
+      "bytes": 756420,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-watercolor/source/vendor/topojson-client.min.cjs",
-      "bytes": 7171,
+      "bytes": 7169,
       "role": "process"
     },
     {

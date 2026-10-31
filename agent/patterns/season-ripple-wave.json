@@ -113,7 +113,7 @@
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/audio/CREDITS",
-      "bytes": 1197,
+      "bytes": 1178,
       "role": "asset"
     },
     {
@@ -128,7 +128,7 @@
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/film/LICENSE",
-      "bytes": 1085,
+      "bytes": 1064,
       "role": "license"
     },
     {
@@ -138,17 +138,17 @@
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/film/main.js",
-      "bytes": 47905,
+      "bytes": 47310,
       "role": "source"
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/film/memphis.js",
-      "bytes": 18771,
+      "bytes": 18439,
       "role": "source"
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/film/people.js",
-      "bytes": 2244,
+      "bytes": 2206,
       "role": "source"
     },
     {
@@ -178,7 +178,7 @@
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/fonts/OFL-ibmplexmono.txt",
-      "bytes": 4456,
+      "bytes": 4363,
       "role": "license"
     },
     {
@@ -193,7 +193,7 @@
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/fonts/fonts.css",
-      "bytes": 461,
+      "bytes": 456,
       "role": "font"
     },
     {
@@ -208,7 +208,7 @@
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/source/CREDITS",
-      "bytes": 1197,
+      "bytes": 1178,
       "role": "process"
     },
     {
@@ -218,17 +218,17 @@
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/source/build.sh",
-      "bytes": 1880,
+      "bytes": 1846,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/source/music.py",
-      "bytes": 13896,
+      "bytes": 13603,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-memphis-diorama/source/tools/fonts.py",
-      "bytes": 2342,
+      "bytes": 2310,
       "role": "process"
     },
     {

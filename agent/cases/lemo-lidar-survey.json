@@ -362,7 +362,7 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/audio/CREDITS",
-      "bytes": 3723,
+      "bytes": 3673,
       "role": "asset"
     },
     {
@@ -377,7 +377,7 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/film/LICENSE",
-      "bytes": 1085,
+      "bytes": 1064,
       "role": "license"
     },
     {
@@ -402,12 +402,12 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/film/cues.json",
-      "bytes": 1630,
+      "bytes": 1552,
       "role": "asset"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/film/data/facts.json",
-      "bytes": 2329,
+      "bytes": 2113,
       "role": "asset"
     },
     {
@@ -417,7 +417,7 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/film/film.js",
-      "bytes": 31765,
+      "bytes": 31233,
       "role": "source"
     },
     {
@@ -427,7 +427,7 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/film/timeline.js",
-      "bytes": 4397,
+      "bytes": 4328,
       "role": "source"
     },
     {
@@ -462,17 +462,17 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/fonts/OFL-barlow.txt",
-      "bytes": 4470,
+      "bytes": 4377,
       "role": "license"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/fonts/OFL-ibmplexmono.txt",
-      "bytes": 4456,
+      "bytes": 4363,
       "role": "license"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/fonts/OFL-notosanssc.txt",
-      "bytes": 4481,
+      "bytes": 4388,
       "role": "license"
     },
     {
@@ -487,12 +487,12 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/CREDITS",
-      "bytes": 3723,
+      "bytes": 3673,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/FACTS.md",
-      "bytes": 5766,
+      "bytes": 5730,
       "role": "process"
     },
     {
@@ -502,7 +502,7 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/build.sh",
-      "bytes": 3996,
+      "bytes": 3940,
       "role": "process"
     },
     {
@@ -512,7 +512,7 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/data/walls_traced.json",
-      "bytes": 2325,
+      "bytes": 2069,
       "role": "process"
     },
     {
@@ -522,102 +522,102 @@
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/mix.py",
-      "bytes": 15291,
+      "bytes": 15019,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/timeline.json",
-      "bytes": 1037,
+      "bytes": 953,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/audiocheck.py",
-      "bytes": 1558,
+      "bytes": 1536,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/build_data.py",
-      "bytes": 7135,
+      "bytes": 7026,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/cuecheck.py",
-      "bytes": 707,
+      "bytes": 694,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/export.mjs",
-      "bytes": 2182,
+      "bytes": 2155,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/fetch_ept.py",
-      "bytes": 2557,
+      "bytes": 2496,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/fetch_naip.py",
-      "bytes": 909,
+      "bytes": 895,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/fonts.py",
-      "bytes": 1987,
+      "bytes": 1956,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/load.py",
-      "bytes": 826,
+      "bytes": 812,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/motioncheck.py",
-      "bytes": 1660,
+      "bytes": 1627,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/tools/profile.py",
-      "bytes": 2695,
-      "role": "process"
-    },
-    {
-      "path": "demos/cases/lemo-lidar-survey/source/tools/scout_dem.py",
-      "bytes": 1411,
-      "role": "process"
-    },
-    {
-      "path": "demos/cases/lemo-lidar-survey/source/tools/subcheck.mjs",
-      "bytes": 1168,
-      "role": "process"
-    },
-    {
-      "path": "demos/cases/lemo-lidar-survey/source/tools/terrain.py",
-      "bytes": 1452,
-      "role": "process"
-    },
-    {
-      "path": "demos/cases/lemo-lidar-survey/source/tools/trace.py",
       "bytes": 2654,
       "role": "process"
     },
     {
+      "path": "demos/cases/lemo-lidar-survey/source/tools/scout_dem.py",
+      "bytes": 1387,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lidar-survey/source/tools/subcheck.mjs",
+      "bytes": 1154,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lidar-survey/source/tools/terrain.py",
+      "bytes": 1423,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-lidar-survey/source/tools/trace.py",
+      "bytes": 2609,
+      "role": "process"
+    },
+    {
       "path": "demos/cases/lemo-lidar-survey/source/tools/walls.py",
-      "bytes": 2890,
+      "bytes": 2837,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/voice/lines.json",
-      "bytes": 1636,
+      "bytes": 1555,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/voice/out/dur.json",
-      "bytes": 169,
+      "bytes": 157,
       "role": "process"
     },
     {
       "path": "demos/cases/lemo-lidar-survey/source/voice/out/words.json",
-      "bytes": 2163,
+      "bytes": 1790,
       "role": "process"
     },
     {
