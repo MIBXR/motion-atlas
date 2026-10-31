@@ -62,6 +62,9 @@
   "sources": [
     {
       "caseId": "mg-bauhaus"
+    },
+    {
+      "caseId": "lemo-swiss-motion"
     }
   ],
   "previewAt": 3,
@@ -101,6 +104,12 @@
     {
       "t": 9.5,
       "label": "二十拍"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "瑞士动态排版",
+      "value": "lemo-swiss-motion：film/film.js:gridState / buildEvents 的海报列从4+c*.25秒、行从5.625+r*.125秒起各画.25秒；film/ease.js 的 E16=.125秒，黑块在18+k*.125+.125秒落格并发出 snap。"
     }
   ]
 }

@@ -7,4 +7,6 @@
 - [mg-styles-15 使用说明](mg-styles-15.md)
 - [video-shotcraft 使用说明](video-shotcraft.md)
 
+- [lemo-opuscar 使用说明](lemo-opuscar.md)
+
 [打开素材库](../../materials.html) · [Agent 取材](../agent.md)

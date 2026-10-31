@@ -42,9 +42,9 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 19,
-    "patterns": 89,
-    "materials": 4
+    "cases": 23,
+    "patterns": 95,
+    "materials": 5
   },
   "caseCatalog": "agent/cases/index.json",
   "patternCatalog": "agent/patterns/index.json",
@@ -685,6 +685,122 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/ink-press.json"
+    },
+    {
+      "id": "lemo-watercolor",
+      "title": "跟着雨走 · 水彩笔刷",
+      "summary": "从澳大利亚红色腹地沿降雨梯度横移到绿色海岸，植物逐笔画入，纸雾洗去风景后展开大陆地图，回溯五千万年的干湿变化。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "水彩笔刷",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "自然纪录短片",
+        "旅行影像",
+        "科学解说"
+      ],
+      "avoid": [
+        "需要厚涂、矢量描边或硬切的画面",
+        "需要精确古气候重建的内容，原片地图使用示意雨量场"
+      ],
+      "patternIds": [
+        "brush-ribbon-bristle-paint-in",
+        "gradient-walk-dolly",
+        "mist-wash-to-map"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-watercolor.json"
+    },
+    {
+      "id": "lemo-swiss-motion",
+      "title": "海报五则 · 瑞士动态排版",
+      "summary": "五条规则把音乐会海报排进网格，唯一的红圆脱离格点，带动版面重排；海报旋转后揭示为正在播放的乐谱，再拉远成一墙变体。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "瑞士动态排版",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "品牌视觉识别短片",
+        "活动影像",
+        "设计教育"
+      ],
+      "avoid": [
+        "弹跳、粒子、渐变或发光主导的影片",
+        "需要多种信号色并行表达的构图"
+      ],
+      "patternIds": [
+        "grid-reveals-score",
+        "grid-beat-construction",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-swiss-motion.json"
+    },
+    {
+      "id": "lemo-lidar-survey",
+      "title": "林下的田 · 点云测绘",
+      "summary": "康涅狄格州阿什福德的一片森林，从夏季航拍转为春季激光点云；切割面剥去树冠，地面凝成受光表面，显出 22 段、合计 3.4 公里的旧农田石墙。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "点云测绘",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "文化遗产影像",
+        "环境主题短片",
+        "场地测绘解说"
+      ],
+      "avoid": [
+        "用虚构点云代替真实测量的证据片",
+        "密集点云始终只以远景俯视呈现"
+      ],
+      "patternIds": [
+        "point-cloud-cutting-plane"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-lidar-survey.json"
+    },
+    {
+      "id": "lemo-memphis-diorama",
+      "title": "柚子城的四季 · 孟菲斯微缩景",
+      "summary": "一个虚构河湾在连续高视角镜头中经历四季：广场主树每次下蹲回弹，换季波从树扩散，地面、树冠、屋顶与水面依次改色，冬日窗灯逐盏亮起。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "孟菲斯微缩景观",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "网页首屏的场景影片",
+        "环境循环影像",
+        "四季与节气系列"
+      ],
+      "avoid": [
+        "近景人物表演",
+        "依赖景深、真实反射或体积光的场景"
+      ],
+      "patternIds": [
+        "season-ripple-wave"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-memphis-diorama.json"
     }
   ],
   "patterns": [
@@ -1166,7 +1282,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "mg-bauhaus"
+        "mg-bauhaus",
+        "lemo-swiss-motion"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/grid-beat-construction.json"
@@ -1299,7 +1416,8 @@
         "mg-bauhaus",
         "mg-pixel",
         "mg-cel-boil",
-        "mg-line-art"
+        "mg-line-art",
+        "lemo-swiss-motion"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/shared-cue-sheet.json"
@@ -2410,9 +2528,170 @@
         "page-cam-25d"
       ],
       "bundle": "agent/patterns/outro-group-photo-slam.json"
+    },
+    {
+      "id": "brush-ribbon-bristle-paint-in",
+      "title": "色带飞白逐笔画入",
+      "summary": "变宽半透明色带与断续毛刷叠成飞白，植物按结构顺序画入，完成后使用缓存精灵并摇曳。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-watercolor"
+      ],
+      "pairsWellWith": [
+        "gradient-walk-dolly"
+      ],
+      "bundle": "agent/patterns/brush-ribbon-bristle-paint-in.json"
+    },
+    {
+      "id": "gradient-walk-dolly",
+      "title": "沿梯度横移长镜",
+      "summary": "把降雨量映射为横向距离，单调分段相机穿过五区，四层视差与区域混色随数据变化。",
+      "types": [
+        "camera",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-watercolor"
+      ],
+      "pairsWellWith": [
+        "brush-ribbon-bristle-paint-in"
+      ],
+      "bundle": "agent/patterns/gradient-walk-dolly.json"
+    },
+    {
+      "id": "mist-wash-to-map",
+      "title": "纸雾洗白转地图",
+      "summary": "两层波状纸色雾从下向上擦去长镜世界，在同一纸面上重新画出大陆地图。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-watercolor"
+      ],
+      "pairsWellWith": [
+        "gradient-walk-dolly"
+      ],
+      "bundle": "agent/patterns/mist-wash-to-map.json"
+    },
+    {
+      "id": "grid-reveals-score",
+      "title": "网格即乐谱",
+      "summary": "海报旋转九十度后，七列读作七音、十六行读作两小节，条块与声音成为同一份乐谱。",
+      "types": [
+        "composition",
+        "sound",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-swiss-motion"
+      ],
+      "pairsWellWith": [
+        "shared-cue-sheet",
+        "grid-beat-construction"
+      ],
+      "bundle": "agent/patterns/grid-reveals-score.json"
+    },
+    {
+      "id": "point-cloud-cutting-plane",
+      "title": "切割面逐层剥除点云",
+      "summary": "航拍扫为真实点云，水平切割面逐拍下降，树冠回波抬离，地面点凝为表面后露出石墙。",
+      "types": [
+        "composition",
+        "camera",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-lidar-survey"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/point-cloud-cutting-plane.json"
+    },
+    {
+      "id": "season-ripple-wave",
+      "title": "主树蹲起换季波",
+      "summary": "主树半秒下蹲回弹，从树扩散的环把地面、树冠、屋顶、水面换成下一季，物件随波动作。",
+      "types": [
+        "transition",
+        "rhythm",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-memphis-diorama"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/season-ripple-wave.json"
     }
   ],
   "materials": [
+    {
+      "id": "lemo-opuscar",
+      "title": "lemo-opuscar · 66 种代码影片风格",
+      "summary": "66 种影片风格，每种配一支完全由代码逐帧渲染的示范短片（Canvas / WebGL 画面、免费采样配乐、本地 TTS 旁白），附导演、技术指南与“改成我的风格”流程。",
+      "type": "agent-skill",
+      "carrierNote": "风格示范片用浏览器页面按时间逐帧渲染后合成视频，最终形态为视频，归入本库。",
+      "useCases": [
+        "按指定风格制作主题短片与科普、旅行、品牌、纪实影片",
+        "借用笔刷、布局、点云、微缩模型、声音和逐帧渲染技术",
+        "把现有风格改成品牌或频道自己的风格，或从空白开始保存个人风格"
+      ],
+      "avoid": [
+        "上游声明为 Claude Opus 5.5 调校，其他模型可能难以复现。",
+        "单支影片约需30–60分钟 Agent 时间与相应 token。",
+        "运行环境需要 Node 20+、ffmpeg 7+、Python 3.11+（或 uv）。"
+      ],
+      "snapshotPath": "demos/materials/lemo-opuscar/",
+      "snapshotEntry": "plugin/skills/lemo-opuscar/SKILL.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "lemo-watercolor",
+          "note": "从澳大利亚红色腹地沿降雨梯度横移到绿色海岸，植物逐笔画入，纸雾洗去风景后展开大陆地图，回溯五千万年的干湿变化。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-swiss-motion",
+          "note": "五条规则把音乐会海报排进网格，唯一的红圆脱离格点，带动版面重排；海报旋转后揭示为正在播放的乐谱，再拉远成一墙变体。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-lidar-survey",
+          "note": "康涅狄格州阿什福德的一片森林，从夏季航拍转为春季激光点云；切割面剥去树冠，地面凝成受光表面，显出 22 段、合计 3.4 公里的旧农田石墙。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-memphis-diorama",
+          "note": "一个虚构河湾在连续高视角镜头中经历四季：广场主树每次下蹲回弹，换季波从树扩散，地面、树冠、屋顶与水面依次改色，冬日窗灯逐盏亮起。"
+        }
+      ],
+      "bundle": "agent/materials/lemo-opuscar.json"
+    },
     {
       "id": "mg-styles-15",
       "title": "mg-styles-15 风格提示词套件",

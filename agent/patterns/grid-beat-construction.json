@@ -66,6 +66,9 @@
     "sources": [
       {
         "caseId": "mg-bauhaus"
+      },
+      {
+        "caseId": "lemo-swiss-motion"
       }
     ],
     "previewAt": 3,
@@ -107,6 +110,12 @@
         "label": "二十拍"
       }
     ],
+    "parameters": [
+      {
+        "name": "瑞士动态排版",
+        "value": "lemo-swiss-motion：film/film.js:gridState / buildEvents 的海报列从4+c*.25秒、行从5.625+r*.125秒起各画.25秒；film/ease.js 的 E16=.125秒，黑块在18+k*.125+.125秒落格并发出 snap。"
+      }
+    ],
     "preview": "previews/patterns/grid-beat-construction.jpg",
     "previewPortrait": null
   },
@@ -114,6 +123,10 @@
     {
       "caseId": "mg-bauhaus",
       "bundle": "agent/cases/mg-bauhaus.json"
+    },
+    {
+      "caseId": "lemo-swiss-motion",
+      "bundle": "agent/cases/lemo-swiss-motion.json"
     }
   ],
   "documents": {
@@ -121,6 +134,181 @@
   },
   "entrypoint": "demos/patterns/grid-beat-construction/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-swiss-motion/LICENSES.md",
+      "bytes": 1382,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/audio/CREDITS",
+      "bytes": 1092,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/audio/film.m4a",
+      "bytes": 1438198,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fidelity.md",
+      "bytes": 5264,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/ease.js",
+      "bytes": 1851,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/film.js",
+      "bytes": 30232,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/index.html",
+      "bytes": 355,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/lines.json",
+      "bytes": 967,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/main.js",
+      "bytes": 878,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/score.json",
+      "bytes": 2138,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/voices/dur.json",
+      "bytes": 116,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/film/voices/words_rel.json",
+      "bytes": 301,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fonts/Archivo-VF.ttf",
+      "bytes": 658596,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fonts/DMSerifDisplay-Regular.ttf",
+      "bytes": 76580,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fonts/OFL-Archivo.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fonts/OFL-DMSerifDisplay.txt",
+      "bytes": 4512,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fonts/OFL-UnifrakturMaguntia.txt",
+      "bytes": 4417,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fonts/UnifrakturMaguntia-Regular.ttf",
+      "bytes": 88508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/fonts/fonts.css",
+      "bytes": 357,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/index.html",
+      "bytes": 2658,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/CREDITS",
+      "bytes": 1092,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/README.md",
+      "bytes": 3100,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/build.sh",
+      "bytes": 1591,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/events.json",
+      "bytes": 5043,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/mix.py",
+      "bytes": 6334,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/music/score.py",
+      "bytes": 9315,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/music/score_meta.json",
+      "bytes": 778,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/tools/subs.py",
+      "bytes": 724,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/tools/words.py",
+      "bytes": 1150,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-swiss-motion/source/voices/words.json",
+      "bytes": 1021,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-bauhaus/LICENSES.md",
       "bytes": 765,
@@ -232,13 +420,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-swiss-motion.json",
+      "bytes": 11849,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-bauhaus.json",
       "bytes": 19929,
       "role": "entry"
     },
     {
       "path": "entries/patterns/grid-beat-construction.json",
-      "bytes": 3242,
+      "bytes": 3584,
       "role": "entry"
     },
     {

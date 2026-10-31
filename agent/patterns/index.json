@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 89,
+  "count": 95,
   "patterns": [
     {
       "id": "corner-hud",
@@ -481,7 +481,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "mg-bauhaus"
+        "mg-bauhaus",
+        "lemo-swiss-motion"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/grid-beat-construction.json"
@@ -614,7 +615,8 @@
         "mg-bauhaus",
         "mg-pixel",
         "mg-cel-boil",
-        "mg-line-art"
+        "mg-line-art",
+        "lemo-swiss-motion"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/shared-cue-sheet.json"
@@ -1725,6 +1727,125 @@
         "page-cam-25d"
       ],
       "bundle": "agent/patterns/outro-group-photo-slam.json"
+    },
+    {
+      "id": "brush-ribbon-bristle-paint-in",
+      "title": "色带飞白逐笔画入",
+      "summary": "变宽半透明色带与断续毛刷叠成飞白，植物按结构顺序画入，完成后使用缓存精灵并摇曳。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-watercolor"
+      ],
+      "pairsWellWith": [
+        "gradient-walk-dolly"
+      ],
+      "bundle": "agent/patterns/brush-ribbon-bristle-paint-in.json"
+    },
+    {
+      "id": "gradient-walk-dolly",
+      "title": "沿梯度横移长镜",
+      "summary": "把降雨量映射为横向距离，单调分段相机穿过五区，四层视差与区域混色随数据变化。",
+      "types": [
+        "camera",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-watercolor"
+      ],
+      "pairsWellWith": [
+        "brush-ribbon-bristle-paint-in"
+      ],
+      "bundle": "agent/patterns/gradient-walk-dolly.json"
+    },
+    {
+      "id": "mist-wash-to-map",
+      "title": "纸雾洗白转地图",
+      "summary": "两层波状纸色雾从下向上擦去长镜世界，在同一纸面上重新画出大陆地图。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-watercolor"
+      ],
+      "pairsWellWith": [
+        "gradient-walk-dolly"
+      ],
+      "bundle": "agent/patterns/mist-wash-to-map.json"
+    },
+    {
+      "id": "grid-reveals-score",
+      "title": "网格即乐谱",
+      "summary": "海报旋转九十度后，七列读作七音、十六行读作两小节，条块与声音成为同一份乐谱。",
+      "types": [
+        "composition",
+        "sound",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-swiss-motion"
+      ],
+      "pairsWellWith": [
+        "shared-cue-sheet",
+        "grid-beat-construction"
+      ],
+      "bundle": "agent/patterns/grid-reveals-score.json"
+    },
+    {
+      "id": "point-cloud-cutting-plane",
+      "title": "切割面逐层剥除点云",
+      "summary": "航拍扫为真实点云，水平切割面逐拍下降，树冠回波抬离，地面点凝为表面后露出石墙。",
+      "types": [
+        "composition",
+        "camera",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-lidar-survey"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/point-cloud-cutting-plane.json"
+    },
+    {
+      "id": "season-ripple-wave",
+      "title": "主树蹲起换季波",
+      "summary": "主树半秒下蹲回弹，从树扩散的环把地面、树冠、屋顶、水面换成下一季，物件随波动作。",
+      "types": [
+        "transition",
+        "rhythm",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-memphis-diorama"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/season-ripple-wave.json"
     }
   ]
 }

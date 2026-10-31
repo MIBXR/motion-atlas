@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 19,
+  "count": 23,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -638,6 +638,122 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/ink-press.json"
+    },
+    {
+      "id": "lemo-watercolor",
+      "title": "跟着雨走 · 水彩笔刷",
+      "summary": "从澳大利亚红色腹地沿降雨梯度横移到绿色海岸，植物逐笔画入，纸雾洗去风景后展开大陆地图，回溯五千万年的干湿变化。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "水彩笔刷",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "自然纪录短片",
+        "旅行影像",
+        "科学解说"
+      ],
+      "avoid": [
+        "需要厚涂、矢量描边或硬切的画面",
+        "需要精确古气候重建的内容，原片地图使用示意雨量场"
+      ],
+      "patternIds": [
+        "brush-ribbon-bristle-paint-in",
+        "gradient-walk-dolly",
+        "mist-wash-to-map"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-watercolor.json"
+    },
+    {
+      "id": "lemo-swiss-motion",
+      "title": "海报五则 · 瑞士动态排版",
+      "summary": "五条规则把音乐会海报排进网格，唯一的红圆脱离格点，带动版面重排；海报旋转后揭示为正在播放的乐谱，再拉远成一墙变体。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "瑞士动态排版",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "品牌视觉识别短片",
+        "活动影像",
+        "设计教育"
+      ],
+      "avoid": [
+        "弹跳、粒子、渐变或发光主导的影片",
+        "需要多种信号色并行表达的构图"
+      ],
+      "patternIds": [
+        "grid-reveals-score",
+        "grid-beat-construction",
+        "shared-cue-sheet"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-swiss-motion.json"
+    },
+    {
+      "id": "lemo-lidar-survey",
+      "title": "林下的田 · 点云测绘",
+      "summary": "康涅狄格州阿什福德的一片森林，从夏季航拍转为春季激光点云；切割面剥去树冠，地面凝成受光表面，显出 22 段、合计 3.4 公里的旧农田石墙。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "点云测绘",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "文化遗产影像",
+        "环境主题短片",
+        "场地测绘解说"
+      ],
+      "avoid": [
+        "用虚构点云代替真实测量的证据片",
+        "密集点云始终只以远景俯视呈现"
+      ],
+      "patternIds": [
+        "point-cloud-cutting-plane"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-lidar-survey.json"
+    },
+    {
+      "id": "lemo-memphis-diorama",
+      "title": "柚子城的四季 · 孟菲斯微缩景",
+      "summary": "一个虚构河湾在连续高视角镜头中经历四季：广场主树每次下蹲回弹，换季波从树扩散，地面、树冠、屋顶与水面依次改色，冬日窗灯逐盏亮起。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "孟菲斯微缩景观",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "网页首屏的场景影片",
+        "环境循环影像",
+        "四季与节气系列"
+      ],
+      "avoid": [
+        "近景人物表演",
+        "依赖景深、真实反射或体积光的场景"
+      ],
+      "patternIds": [
+        "season-ripple-wave"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-memphis-diorama.json"
     }
   ]
 }
