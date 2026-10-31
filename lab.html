@@ -11,17 +11,23 @@
 </head>
 <body>
   <header id="site-header"></header>
-  <main class="lab">
+  <main class="lib lab">
+    <aside class="lib-side" aria-label="实验室目录">
+      <div class="side-group">
+        <h2>实验室目录</h2>
+        <ul class="side-list" id="labNav">
+          <li><a href="#s-beat">感受节拍</a></li>
+          <li><a href="#s-quant">理解吸附</a></li>
+          <li><a href="#s-ease">曲线 × 时长 × 拍子</a></li>
+          <li><a href="#s-export">导出</a></li>
+        </ul>
+      </div>
+    </aside>
+    <div class="lab-main">
     <header class="lab-head">
       <p class="eyebrow">RHYTHM LAB · BEAT / QUANTIZE / EASE / EXPORT</p>
       <h1>把“手感”调成<em>数字</em>。</h1>
       <p>先用节拍器听速度、拍号与细分，再比较事件吸附前后的差别。把曲线、时长和错峰对齐拍子，导出代码、Prompt或WAV。</p>
-      <ol class="path" aria-label="学习路径">
-        <li><a href="#s-beat"><b>01</b><span>感受节拍</span></a></li>
-        <li><a href="#s-quant"><b>02</b><span>理解吸附</span></a></li>
-        <li><a href="#s-ease"><b>03</b><span>曲线 × 时长 × 拍子</span></a></li>
-        <li><a href="#s-export"><b>04</b><span>导出</span></a></li>
-      </ol>
     </header>
 
     <div class="transport" id="transport" role="group" aria-label="走带：播放、速度与声音">
@@ -219,6 +225,7 @@
       </div>
       <p class="note">设置会记在本浏览器里，方便下次继续调；换设备不会同步。声音默认关闭，第一次点“播放”时开启。</p>
     </section>
+    </div>
   </main>
   <footer id="site-footer"></footer>
   <script src="kit/motion-kit.js"></script>

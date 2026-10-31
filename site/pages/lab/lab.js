@@ -10,6 +10,19 @@
   const MK = window.MotionKit, audio = MK.audio;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const sectionLinks = $$('#labNav a');
+  function setCurrentSection(hash) {
+    for (const link of sectionLinks) {
+      if (link.hash === hash) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  }
+  for (const link of sectionLinks) link.addEventListener('click', () => setCurrentSection(link.hash));
+  setCurrentSection(sectionLinks.some(link => link.hash === location.hash) ? location.hash : sectionLinks[0].hash);
+  const sectionObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) if (entry.isIntersecting) setCurrentSection('#' + entry.target.id);
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  for (const link of sectionLinks) sectionObserver.observe($(link.hash));
   const mq = matchMedia('(prefers-reduced-motion: reduce)');
   let reduce = mq.matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
