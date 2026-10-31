@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 27,
+  "count": 33,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -871,6 +871,176 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-paper-popup.json"
+    },
+    {
+      "id": "lemo-ukiyoe",
+      "title": "走向远山 · 浮世绘",
+      "summary": "戴笠旅人走过稻田、雨桥与茶屋，巨浪冲出画框并洗回空纸；四次套印重新显出山景，镜头拉远露出五景画轴。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "浮世绘",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "文化旅行短片",
+        "系列景观叙事",
+        "诗意品牌影像"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "block-by-block-print-reveal",
+        "handscroll-pan-transition",
+        "anchor-pullback-phone"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-ukiyoe.json"
+    },
+    {
+      "id": "lemo-shadow-puppet",
+      "title": "后羿射日 · 皮影戏",
+      "summary": "十盏幕后油灯化作十个太阳，后羿每射落一日便熄灭一灯；留下最后一日后，镜头绕到幕后，显出独灯、操偶手与皮影幕布。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "皮影戏",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "神话民俗短片",
+        "文化遗产解说",
+        "节庆故事"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "lamp-count-light-state",
+        "anchor-pullback-phone"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-shadow-puppet.json"
+    },
+    {
+      "id": "lemo-papercut-red",
+      "title": "年兽进城 · 红色窗花剪纸",
+      "summary": "年兽进村，灯火逐盏熄灭；女孩把红纸折三次、剪出楔形图案，展开后八盏灯笼飞向八扇窗，窗花镂空的光落在雪地与年兽脸上。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "红色窗花剪纸",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "新年节庆影像",
+        "传统手工叙事",
+        "民俗品牌短片"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "fold-cut-unfold-replicate",
+        "holes-are-light"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-papercut-red.json"
+    },
+    {
+      "id": "lemo-impasto",
+      "title": "雨的颜色 · 油画厚涂",
+      "summary": "灰色雨中，大提琴手无人聆听，女孩撑开第一把红伞；圆舞曲让雨伞逐拍染色，俯拍下的群伞轨迹在地面累积成曼陀罗，终和弦把广场重涂成彩色。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "油画厚涂",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "音乐短片",
+        "美术文化影像",
+        "情感品牌广告"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "palette-knife-recolor",
+        "motion-trails-paint-mandala"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-impasto.json"
+    },
+    {
+      "id": "lemo-crayon-book",
+      "title": "月亮睡不着 · 蜡笔儿童绘本",
+      "summary": "月亮失眠，数羊失败；女孩爬上逐级画出的梯子，用水彩刷显纸上白蜡笔星星，再给月亮盖上拼布被，镜头拉远成桌上的绘本并翻到终页。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "蜡笔儿童绘本",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "睡前绘本",
+        "儿童学习故事",
+        "温柔告别短片"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "wax-resist-wash-reveal",
+        "cel-line-boil",
+        "anchor-pullback-phone"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-crayon-book.json"
+    },
+    {
+      "id": "lemo-paper-lantern",
+      "title": "末班夜车 · 纸雕灯影",
+      "summary": "老夜车从雪山小站驶出，越过高架桥、松林、隧道与河谷开到海边；车窗开场逐节亮起，到站逐节熄灭，最后留下站灯与吊线落下的纸车票。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "纸雕灯影",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "旅程与旅行短片",
+        "告别与周年影像",
+        "地方故事与纸雕场景"
+      ],
+      "avoid": [
+        "依赖真实铁路数据的纪实重建"
+      ],
+      "patternIds": [
+        "windows-light-car-by-car",
+        "tunnel-blink-black"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-paper-lantern.json"
     }
   ]
 }

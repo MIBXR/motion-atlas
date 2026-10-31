@@ -29,3 +29,9 @@
 | [铸钟人 · 木刻版画](../../cases.html#case/lemo-woodcut) | [条目](../../entries/cases/lemo-woodcut.json) |
 | [天鹅绒密码 · 60s 间谍片头](../../cases.html#case/lemo-spy-titles) | [条目](../../entries/cases/lemo-spy-titles.json) |
 | [小精灵冒险记 · 纸片立体书](../../cases.html#case/lemo-paper-popup) | [条目](../../entries/cases/lemo-paper-popup.json) |
+| [走向远山 · 浮世绘](../../cases.html#case/lemo-ukiyoe) | [条目](../../entries/cases/lemo-ukiyoe.json) |
+| [后羿射日 · 皮影戏](../../cases.html#case/lemo-shadow-puppet) | [条目](../../entries/cases/lemo-shadow-puppet.json) |
+| [年兽进城 · 红色窗花剪纸](../../cases.html#case/lemo-papercut-red) | [条目](../../entries/cases/lemo-papercut-red.json) |
+| [雨的颜色 · 油画厚涂](../../cases.html#case/lemo-impasto) | [条目](../../entries/cases/lemo-impasto.json) |
+| [月亮睡不着 · 蜡笔儿童绘本](../../cases.html#case/lemo-crayon-book) | [条目](../../entries/cases/lemo-crayon-book.json) |
+| [末班夜车 · 纸雕灯影](../../cases.html#case/lemo-paper-lantern) | [条目](../../entries/cases/lemo-paper-lantern.json) |

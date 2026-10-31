@@ -42,8 +42,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 27,
-    "patterns": 103,
+    "cases": 33,
+    "patterns": 113,
     "materials": 5
   },
   "caseCatalog": "agent/cases/index.json",
@@ -918,6 +918,176 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-paper-popup.json"
+    },
+    {
+      "id": "lemo-ukiyoe",
+      "title": "走向远山 · 浮世绘",
+      "summary": "戴笠旅人走过稻田、雨桥与茶屋，巨浪冲出画框并洗回空纸；四次套印重新显出山景，镜头拉远露出五景画轴。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "浮世绘",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "文化旅行短片",
+        "系列景观叙事",
+        "诗意品牌影像"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "block-by-block-print-reveal",
+        "handscroll-pan-transition",
+        "anchor-pullback-phone"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-ukiyoe.json"
+    },
+    {
+      "id": "lemo-shadow-puppet",
+      "title": "后羿射日 · 皮影戏",
+      "summary": "十盏幕后油灯化作十个太阳，后羿每射落一日便熄灭一灯；留下最后一日后，镜头绕到幕后，显出独灯、操偶手与皮影幕布。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "皮影戏",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "神话民俗短片",
+        "文化遗产解说",
+        "节庆故事"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "lamp-count-light-state",
+        "anchor-pullback-phone"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-shadow-puppet.json"
+    },
+    {
+      "id": "lemo-papercut-red",
+      "title": "年兽进城 · 红色窗花剪纸",
+      "summary": "年兽进村，灯火逐盏熄灭；女孩把红纸折三次、剪出楔形图案，展开后八盏灯笼飞向八扇窗，窗花镂空的光落在雪地与年兽脸上。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "红色窗花剪纸",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "新年节庆影像",
+        "传统手工叙事",
+        "民俗品牌短片"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "fold-cut-unfold-replicate",
+        "holes-are-light"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-papercut-red.json"
+    },
+    {
+      "id": "lemo-impasto",
+      "title": "雨的颜色 · 油画厚涂",
+      "summary": "灰色雨中，大提琴手无人聆听，女孩撑开第一把红伞；圆舞曲让雨伞逐拍染色，俯拍下的群伞轨迹在地面累积成曼陀罗，终和弦把广场重涂成彩色。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "油画厚涂",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "音乐短片",
+        "美术文化影像",
+        "情感品牌广告"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "palette-knife-recolor",
+        "motion-trails-paint-mandala"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-impasto.json"
+    },
+    {
+      "id": "lemo-crayon-book",
+      "title": "月亮睡不着 · 蜡笔儿童绘本",
+      "summary": "月亮失眠，数羊失败；女孩爬上逐级画出的梯子，用水彩刷显纸上白蜡笔星星，再给月亮盖上拼布被，镜头拉远成桌上的绘本并翻到终页。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "蜡笔儿童绘本",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "睡前绘本",
+        "儿童学习故事",
+        "温柔告别短片"
+      ],
+      "avoid": [
+        "需要写实摄影或自由三维转面的画面"
+      ],
+      "patternIds": [
+        "wax-resist-wash-reveal",
+        "cel-line-boil",
+        "anchor-pullback-phone"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-crayon-book.json"
+    },
+    {
+      "id": "lemo-paper-lantern",
+      "title": "末班夜车 · 纸雕灯影",
+      "summary": "老夜车从雪山小站驶出，越过高架桥、松林、隧道与河谷开到海边；车窗开场逐节亮起，到站逐节熄灭，最后留下站灯与吊线落下的纸车票。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "纸雕灯影",
+        "东方传统",
+        "代码影片"
+      ],
+      "useCases": [
+        "旅程与旅行短片",
+        "告别与周年影像",
+        "地方故事与纸雕场景"
+      ],
+      "avoid": [
+        "依赖真实铁路数据的纪实重建"
+      ],
+      "patternIds": [
+        "windows-light-car-by-car",
+        "tunnel-blink-black"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-paper-lantern.json"
     }
   ],
   "patterns": [
@@ -1554,7 +1724,8 @@
       "role": "support",
       "sourceCases": [
         "mg-cel-boil",
-        "mg-hanazi"
+        "mg-hanazi",
+        "lemo-crayon-book"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/cel-line-boil.json"
@@ -1918,7 +2089,10 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "mg-paperclip"
+        "mg-paperclip",
+        "lemo-ukiyoe",
+        "lemo-shadow-puppet",
+        "lemo-crayon-book"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/anchor-pullback-phone.json"
@@ -2926,6 +3100,191 @@
         "shape-rhyme-match-cut"
       ],
       "bundle": "agent/patterns/diagonal-strip-shatter-title.json"
+    },
+    {
+      "id": "block-by-block-print-reveal",
+      "title": "逐版套印成画",
+      "summary": "空纸上的关键线、蓝、绿、红四块色版依次用带噪声的斜向巴连遮罩印入，同时消除各版的入场位移，保留固定套印偏差；浪后空纸再次按四版重印。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-ukiyoe"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/block-by-block-print-reveal.json"
+    },
+    {
+      "id": "handscroll-pan-transition",
+      "title": "画卷横移转场",
+      "summary": "五幅画按SLOT从右向左铺在同一装裱长卷，相机在两幅画中心间横移，穿过260px装裱留缝后下一景到位，三次横移逐渐加快。",
+      "types": [
+        "transition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-ukiyoe"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/handscroll-pan-transition.json"
+    },
+    {
+      "id": "lamp-count-light-state",
+      "title": "灯数即光照",
+      "summary": "每个太阳读取对应油灯强度，九盏灯依次点亮造成过曝与褪色；每次命中使该灯衰减到零，总灯场和按有效灯数计算的曝光让幕布逐级变暗回暖。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-shadow-puppet"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/lamp-count-light-state.json"
+    },
+    {
+      "id": "fold-cut-unfold-replicate",
+      "title": "折剪展开复制",
+      "summary": "红纸三次折成45°楔形，剪刀沿路径显露孔洞；三次展开把同一楔形按D4变换复制为八瓣团花，其中灯笼图案沿飞行轨迹去到八扇窗。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-papercut-red"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/fold-cut-unfold-replicate.json"
+    },
+    {
+      "id": "holes-are-light",
+      "title": "镂空即光",
+      "summary": "团花在圆形范围内反取alpha得到孔洞蒙版；背光使孔洞透出暖光，同一蒙版压扁投到雪地，再与年兽alpha相交落到脸部，纸上剪掉的形状成为照明。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-papercut-red"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/holes-are-light.json"
+    },
+    {
+      "id": "palette-knife-recolor",
+      "title": "刮刀重涂换色",
+      "summary": "同一笔触保存原色与冷灰亮度，着色器按笔触到重涂原点的距离延迟切换；撑伞和终和弦触发不同的reveal / revC波，把已有笔触重新铺成彩色。",
+      "types": [
+        "texture",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-impasto"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/palette-knife-recolor.json"
+    },
+    {
+      "id": "motion-trails-paint-mandala",
+      "title": "轨迹作画成纹",
+      "summary": "19把伞按中心、内外两环的编舞轨迹运动，每把伞用自身颜色沿已走过的dancePos位置累积刮刀笔触；相机旋转并吊臂拉远，显出群体路径形成的曼陀罗。",
+      "types": [
+        "composition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-impasto"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/motion-trails-paint-mandala.json"
+    },
+    {
+      "id": "wax-resist-wash-reveal",
+      "title": "蜡笔防染显形",
+      "summary": "白蜡笔星星先画入蜡覆盖场，水彩密度经过时按蜡覆盖量降低染色；三道宽刷交错扫过纸面，星星因为防染而从夜色中显出。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-crayon-book"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/wax-resist-wash-reveal.json"
+    },
+    {
+      "id": "windows-light-car-by-car",
+      "title": "车窗逐节亮灭",
+      "summary": "机车与七节车厢各自控制车窗glow map，开场从车头起逐节点亮并配同拍上行钟琴；到终点按同一车厢顺序熄灭，钟琴音高倒序下行，最后保留站灯。",
+      "types": [
+        "rhythm",
+        "sound",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-paper-lantern"
+      ],
+      "pairsWellWith": [
+        "tunnel-blink-black"
+      ],
+      "bundle": "agent/patterns/windows-light-car-by-car.json"
+    },
+    {
+      "id": "tunnel-blink-black",
+      "title": "隧道黑场换景",
+      "summary": "相机推向隧道口，列车被前层山崖逐节遮住，场景在25.3–25.5秒淡至黑；黑场停顿后25.75秒硬切河谷，全套场景与色阶由雪山冷蓝切到河谷青绿，声音同步留出短暂停顿。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-paper-lantern"
+      ],
+      "pairsWellWith": [
+        "windows-light-car-by-car"
+      ],
+      "bundle": "agent/patterns/tunnel-blink-black.json"
     }
   ],
   "materials": [
@@ -2987,6 +3346,36 @@
           "kind": "case",
           "id": "lemo-paper-popup",
           "note": "平面彩色纸偶与真实桌面、光线和微距景深产生尺度反差；翻页、翻板和弹起结构承担叙事换景。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-ukiyoe",
+          "note": "五幅版画以同一座山组织构图，色版、装裱留缝与纸白同时承担造型、转场和高潮。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-shadow-puppet",
+          "note": "灯数决定世界亮度，射日动作让过曝白热逐级回到暖金，结尾把神话与皮影照明收在同一盏灯上。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-papercut-red",
+          "note": "折、剪、展开直接推动故事；同一个楔形图案既复制灯笼，也成为照亮村落与驱散年兽的孔洞光。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-impasto",
+          "note": "同一组厚涂笔触保存灰与彩两种状态，音乐既推动换色，也让人群运动留下可读的彩色图案。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-crayon-book",
+          "note": "蜡笔防染成为高潮动作，线条抖动、纸齿、梯子与被子都由绘画材料本身推动故事。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-paper-lantern",
+          "note": "用层叠纸雕的距离、逐节车窗的灯光和镜像音符讲述最后一趟旅程；隧道黑场连接雪山蓝与河谷青绿。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

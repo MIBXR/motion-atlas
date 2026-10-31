@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "windows-light-car-by-car",
+  "pattern": {
+    "id": "windows-light-car-by-car",
+    "order": 122,
+    "title": "车窗逐节亮灭",
+    "types": [
+      "rhythm",
+      "sound",
+      "composition"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "机车与七节车厢各自控制车窗glow map，开场从车头起逐节点亮并配同拍上行钟琴；到终点按同一车厢顺序熄灭，钟琴音高倒序下行，最后保留站灯。",
+    "mechanism": "机车与七节车厢各自控制车窗glow map，开场从车头起逐节点亮并配同拍上行钟琴；到终点按同一车厢顺序熄灭，钟琴音高倒序下行，最后保留站灯。",
+    "trigger": "开场1.5秒开始亮窗，终点42秒开始灭窗。",
+    "effect": "同一组灯与音符的升降镜像让出发和告别相互呼应。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "0.4–5.25秒；41–46.5秒；1倍速，共10.350000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "八节车厢亮灯",
+        "value": "film/timeline.json:HIT.cars=1.5+.34*i，i=0…7；film/src/world.js:world.update对每个cars[i]设置uGlowLit=ss(seg(t,H.cars[i],H.cars[i]+.12))*(1+.03*sin(9*t+2*i))。"
+      },
+      {
+        "name": "到站灭灯",
+        "value": "film/timeline.json:HIT.off=[42,42.42,42.84,43.26,43.68,44.1,44.52,45.75]；film/src/shots.js:s6.update用1-ss(seg(t,H.off[i],H.off[i]+.18))逐节熄灭，站灯保留。"
+      },
+      {
+        "name": "音符镜像",
+        "value": "source/mix.py:UP=[D5,E5,F#5,A5,B5,D6,E6,F#6]；H.cars读取UP[k]，H.off读取UP[::-1][k]，每事件一声glockenspiel，共用timeline.json。"
+      }
+    ],
+    "sourceFiles": [
+      "demos/cases/lemo-paper-lantern/film/timeline.json",
+      "demos/cases/lemo-paper-lantern/film/src/world.js",
+      "demos/cases/lemo-paper-lantern/film/src/shots.js",
+      "demos/cases/lemo-paper-lantern/source/mix.py"
+    ],
+    "locator": "HIT.cars / HIT.off / uGlowLit / UP",
+    "useCases": [
+      "用可数的光与音符组织出发和告别"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "foundation",
+      "pairsWellWith": [
+        "tunnel-blink-black"
+      ],
+      "conflicts": [],
+      "notes": "画面和成片音轨按同一区间重放。"
+    },
+    "prompt": "复用来源案例lemo-paper-lantern的原作render(t)重放“车窗逐节亮灭”。机车与七节车厢各自控制车窗glow map，开场从车头起逐节点亮并配同拍上行钟琴；到终点按同一车厢顺序熄灭，钟琴音高倒序下行，最后保留站灯。参数与源码：film/timeline.json:HIT.cars=1.5+.34*i，i=0…7；film/src/world.js:world.update对每个cars[i]设置uGlowLit=ss(seg(t,H.cars[i],H.cars[i]+.12))*(1+.03*sin(9*t+2*i))。；film/timeline.json:HIT.off=[42,42.42,42.84,43.26,43.68,44.1,44.52,45.75]；film/src/shots.js:s6.update用1-ss(seg(t,H.off[i],H.off[i]+.18))逐节熄灭，站灯保留。；source/mix.py:UP=[D5,E5,F#5,A5,B5,D6,E6,F#6]；H.cars读取UP[k]，H.off读取UP[::-1][k]，每事件一声glockenspiel，共用timeline.json。。以入口segments映射原片时间，保留原作字体、纸层、灯光和同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/windows-light-car-by-car/index.html",
+    "kit": true,
+    "timeline": true,
+    "renderer": "gpu",
+    "sources": [
+      {
+        "caseId": "lemo-paper-lantern"
+      }
+    ],
+    "previewAt": 2.1,
+    "markers": [
+      {
+        "t": 0,
+        "label": "逐节亮窗"
+      },
+      {
+        "t": 4.85,
+        "label": "逐节灭窗"
+      }
+    ],
+    "preview": "previews/patterns/windows-light-car-by-car.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-paper-lantern",
+      "bundle": "agent/cases/lemo-paper-lantern.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 车窗逐节亮灭\n\n## 实现 Prompt\n\n复用来源案例lemo-paper-lantern的原作render(t)重放“车窗逐节亮灭”。机车与七节车厢各自控制车窗glow map，开场从车头起逐节点亮并配同拍上行钟琴；到终点按同一车厢顺序熄灭，钟琴音高倒序下行，最后保留站灯。参数与源码：film/timeline.json:HIT.cars=1.5+.34*i，i=0…7；film/src/world.js:world.update对每个cars[i]设置uGlowLit=ss(seg(t,H.cars[i],H.cars[i]+.12))*(1+.03*sin(9*t+2*i))。；film/timeline.json:HIT.off=[42,42.42,42.84,43.26,43.68,44.1,44.52,45.75]；film/src/shots.js:s6.update用1-ss(seg(t,H.off[i],H.off[i]+.18))逐节熄灭，站灯保留。；source/mix.py:UP=[D5,E5,F#5,A5,B5,D6,E6,F#6]；H.cars读取UP[k]，H.off读取UP[::-1][k]，每事件一声glockenspiel，共用timeline.json。。以入口segments映射原片时间，保留原作字体、纸层、灯光和同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：0.4–5.25秒；41–46.5秒；1倍速，共10.350000秒。\n\n[打开 Demo](../../demos/patterns/windows-light-car-by-car/index.html) · [在库中查看](../../patterns.html#pattern/windows-light-car-by-car)\n"
+  },
+  "entrypoint": "demos/patterns/windows-light-car-by-car/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-paper-lantern/LICENSES.md",
+      "bytes": 1445,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/audio/CC-BY-3.0.txt",
+      "bytes": 19467,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/audio/CREDITS",
+      "bytes": 1776,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/audio/film.m4a",
+      "bytes": 1647572,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/fidelity.md",
+      "bytes": 4432,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/index.html",
+      "bytes": 1578,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/src/lib.js",
+      "bytes": 2791,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/src/main.js",
+      "bytes": 3168,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/src/paper.js",
+      "bytes": 14398,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/src/post.js",
+      "bytes": 6647,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/src/shots.js",
+      "bytes": 33533,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/src/stage.js",
+      "bytes": 2694,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/src/world.js",
+      "bytes": 18833,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/film/timeline.json",
+      "bytes": 4046,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/fonts/CormorantGaramond-VF.ttf",
+      "bytes": 1195560,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/fonts/NotoSerifSC-sub.ttf",
+      "bytes": 122608,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/fonts/OFL-CormorantGaramond.txt",
+      "bytes": 4387,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/fonts/OFL-NotoSerifSC.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/fonts/fonts.css",
+      "bytes": 173,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/index.html",
+      "bytes": 2448,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/CREDITS",
+      "bytes": 1776,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/FACTS.md",
+      "bytes": 517,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/README.md",
+      "bytes": 3240,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/build.sh",
+      "bytes": 2492,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/mix.py",
+      "bytes": 10351,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/tools/fonts.py",
+      "bytes": 1494,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/tools/subcheck.py",
+      "bytes": 1217,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/tools/timeline.py",
+      "bytes": 3383,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/voices/dur.json",
+      "bytes": 161,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/voices/lines.json",
+      "bytes": 1227,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/source/voices/words.json",
+      "bytes": 2035,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-paper-lantern/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/patterns/windows-light-car-by-car/index.html",
+      "bytes": 1115,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/windows-light-car-by-car/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-paper-lantern.json",
+      "bytes": 10200,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/windows-light-car-by-car.json",
+      "bytes": 3712,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/windows-light-car-by-car.jpg",
+      "bytes": 57946,
+      "role": "preview"
+    }
+  ]
+}

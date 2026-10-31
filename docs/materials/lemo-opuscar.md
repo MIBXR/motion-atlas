@@ -64,10 +64,10 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 手绘与绘画 · Hand-drawn & Painting
 
-- 蜡笔儿童绘本 · Crayon Picture Book
+- 蜡笔儿童绘本 · Crayon Picture Book（已复刻，[本库案例](../../cases.html#case/lemo-crayon-book)）
 - 水彩笔刷 · Watercolor Brush（[本库案例](../../cases.html#case/lemo-watercolor)）
 - 中国水墨 · Chinese Ink Wash（已复刻，[本库案例](../../cases.html#case/lemo-ink-wash)）
-- 油画厚涂 · Impasto Oil Painting
+- 油画厚涂 · Impasto Oil Painting（已复刻，[本库案例](../../cases.html#case/lemo-impasto)）
 - 一笔画 · One-line Drawing
 - 白板讲解 · Whiteboard Explainer
 - 钢笔淡彩 · Urban Sketch · Pen & Wash
@@ -75,10 +75,10 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 东方传统 · East Asian Traditions
 
-- 皮影戏 · Shadow Puppetry
-- 浮世绘 · Ukiyo-e
-- 红色窗花剪纸 · Red Paper-cut
-- 纸雕灯影 · Paper-cut Lightbox
+- 皮影戏 · Shadow Puppetry（已复刻，[本库案例](../../cases.html#case/lemo-shadow-puppet)）
+- 浮世绘 · Ukiyo-e（已复刻，[本库案例](../../cases.html#case/lemo-ukiyoe)）
+- 红色窗花剪纸 · Red Paper-cut（已复刻，[本库案例](../../cases.html#case/lemo-papercut-red)）
+- 纸雕灯影 · Paper-cut Lightbox（已复刻，[本库案例](../../cases.html#case/lemo-paper-lantern)）
 
 ### 印刷与版画 · Print & Printmaking
 
@@ -151,7 +151,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-八个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+十四个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -163,4 +163,12 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [天鹅绒密码 · 60s 间谍片头](../../cases.html#case/lemo-spy-titles)：制作文件见 [source/README.md](../../demos/cases/lemo-spy-titles/source/README.md)。
 - [小精灵冒险记 · 纸片立体书](../../cases.html#case/lemo-paper-popup)：制作文件见 [source/README.md](../../demos/cases/lemo-paper-popup/source/README.md)。
 
-八个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+- [走向远山 · 浮世绘](../../cases.html#case/lemo-ukiyoe)：制作文件见 [source/README.md](../../demos/cases/lemo-ukiyoe/source/README.md)。
+- [后羿射日 · 皮影戏](../../cases.html#case/lemo-shadow-puppet)：制作文件见 [source/README.md](../../demos/cases/lemo-shadow-puppet/source/README.md)。
+- [年兽进城 · 红色窗花剪纸](../../cases.html#case/lemo-papercut-red)：制作文件见 [source/README.md](../../demos/cases/lemo-papercut-red/source/README.md)。
+- [雨的颜色 · 油画厚涂](../../cases.html#case/lemo-impasto)：制作文件见 [source/README.md](../../demos/cases/lemo-impasto/source/README.md)。
+- [月亮睡不着 · 蜡笔儿童绘本](../../cases.html#case/lemo-crayon-book)：制作文件见 [source/README.md](../../demos/cases/lemo-crayon-book/source/README.md)。
+
+- [末班夜车 · 纸雕灯影](../../cases.html#case/lemo-paper-lantern)：制作文件见 [source/README.md](../../demos/cases/lemo-paper-lantern/source/README.md)。
+
+十四个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。

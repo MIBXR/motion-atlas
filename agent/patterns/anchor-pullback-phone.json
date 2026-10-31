@@ -63,6 +63,15 @@
     "sources": [
       {
         "caseId": "mg-paperclip"
+      },
+      {
+        "caseId": "lemo-ukiyoe"
+      },
+      {
+        "caseId": "lemo-shadow-puppet"
+      },
+      {
+        "caseId": "lemo-crayon-book"
       }
     ],
     "previewAt": 1.2,
@@ -84,6 +93,20 @@
         "label": "机制画面"
       }
     ],
+    "parameters": [
+      {
+        "name": "lemo-ukiyoe · 画轴载体",
+        "value": "film/main.js:camera，38.9–40.9秒，对数缩放1.02→1920*.94/(TOTAL+420)，五景、装裱与轴头进入画幅。"
+      },
+      {
+        "name": "lemo-shadow-puppet · 幕布与幕后台",
+        "value": "film/story.js:T.pull0=40.6、truck0=43.2、cutBack=43.8、truck1=44.5；film/main.js:camera / renderBack从故事拉回框架，再经幕柱遮挡绕到操偶手与灯。"
+      },
+      {
+        "name": "lemo-crayon-book · 桌上绘本",
+        "value": "film/film.js:camT在44.8–46秒回到[1600,900,.6]；film/end.js:endFrame使画页成为桌上绘本，47.6秒起翻页。"
+      }
+    ],
     "preview": "previews/patterns/anchor-pullback-phone.jpg",
     "previewPortrait": null
   },
@@ -91,6 +114,18 @@
     {
       "caseId": "mg-paperclip",
       "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "caseId": "lemo-ukiyoe",
+      "bundle": "agent/cases/lemo-ukiyoe.json"
+    },
+    {
+      "caseId": "lemo-shadow-puppet",
+      "bundle": "agent/cases/lemo-shadow-puppet.json"
+    },
+    {
+      "caseId": "lemo-crayon-book",
+      "bundle": "agent/cases/lemo-crayon-book.json"
     }
   ],
   "documents": {
@@ -98,6 +133,676 @@
   },
   "entrypoint": "demos/patterns/anchor-pullback-phone/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-crayon-book/LICENSES.md",
+      "bytes": 1116,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/audio/CREDITS",
+      "bytes": 1034,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/audio/film.m4a",
+      "bytes": 1685306,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fidelity.md",
+      "bytes": 7740,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/chars.js",
+      "bytes": 32010,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/crayon.js",
+      "bytes": 13323,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/end.js",
+      "bytes": 15113,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/film.js",
+      "bytes": 16611,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/gl.js",
+      "bytes": 12352,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/index.html",
+      "bytes": 460,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/main.js",
+      "bytes": 904,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/pal.js",
+      "bytes": 899,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/rig.js",
+      "bytes": 2840,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/film/world.js",
+      "bytes": 12758,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/caveatbrush_CaveatBrush-Regular.ttf",
+      "bytes": 295568,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/caveatbrush_OFL.txt",
+      "bytes": 4351,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/fonts.css",
+      "bytes": 757,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/gaegu_Gaegu-Bold.ttf",
+      "bytes": 2962664,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/gaegu_Gaegu-Regular.ttf",
+      "bytes": 3165816,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/gaegu_OFL.txt",
+      "bytes": 4344,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/gochihand_GochiHand-Regular.ttf",
+      "bytes": 37352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/gochihand_OFL.txt",
+      "bytes": 4423,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/patrickhand_OFL.txt",
+      "bytes": 4376,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/patrickhand_PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/shortstack_OFL.txt",
+      "bytes": 4401,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/shortstack_ShortStack-Regular.ttf",
+      "bytes": 68152,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/sniglet_OFL.txt",
+      "bytes": 4499,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/fonts/sniglet_Sniglet-Regular.ttf",
+      "bytes": 75212,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/index.html",
+      "bytes": 2270,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/CREDITS",
+      "bytes": 1034,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/README.md",
+      "bytes": 4028,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/build.sh",
+      "bytes": 1223,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/events.json",
+      "bytes": 8635,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/lines.json",
+      "bytes": 723,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/mix.py",
+      "bytes": 14959,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/music/score.json",
+      "bytes": 404,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/music/score.py",
+      "bytes": 13914,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/sheet.js",
+      "bytes": 7994,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/subs.json",
+      "bytes": 583,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/subs.mjs",
+      "bytes": 702,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/test.js",
+      "bytes": 2713,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/tools/mux.sh",
+      "bytes": 1240,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/voices/dur.json",
+      "bytes": 98,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-crayon-book/source/voices/words.json",
+      "bytes": 1164,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/LICENSES.md",
+      "bytes": 954,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/audio/CREDITS",
+      "bytes": 1143,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/audio/film.m4a",
+      "bytes": 1811700,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fidelity.md",
+      "bytes": 4836,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/backstage.js",
+      "bytes": 9257,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/carve.js",
+      "bytes": 11395,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/gl.js",
+      "bytes": 9047,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/houyi.js",
+      "bytes": 22919,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/hud.js",
+      "bytes": 1911,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/index.html",
+      "bytes": 462,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/main.js",
+      "bytes": 26449,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/poses.js",
+      "bytes": 903,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/scenery.js",
+      "bytes": 14436,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/stage.js",
+      "bytes": 7686,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/story.js",
+      "bytes": 2101,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/suns.js",
+      "bytes": 6469,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/film/voices/dur.json",
+      "bytes": 85,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/CormorantGaramond-Bold.ttf",
+      "bytes": 773164,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/CormorantGaramond-Medium.ttf",
+      "bytes": 774336,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/CormorantGaramond-SemiBold.ttf",
+      "bytes": 774032,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/CormorantGaramond-SemiBoldItalic.ttf",
+      "bytes": 454472,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857936,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/OFL-CormorantGaramond.txt",
+      "bytes": 4387,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/OFL-MaShanZheng.txt",
+      "bytes": 4397,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/fonts/fonts.css",
+      "bytes": 773,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/index.html",
+      "bytes": 2520,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/CREDITS",
+      "bytes": 1143,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/README.md",
+      "bytes": 3123,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/build.sh",
+      "bytes": 1733,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/events.json",
+      "bytes": 3343,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/lines.json",
+      "bytes": 864,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/mix.py",
+      "bytes": 9394,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/music/credits.txt",
+      "bytes": 167,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/music/score.json",
+      "bytes": 1429,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/music/score.py",
+      "bytes": 16462,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/test.js",
+      "bytes": 12260,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/tools/cues.py",
+      "bytes": 829,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/tools/mux.sh",
+      "bytes": 1423,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/tools/probe.mjs",
+      "bytes": 1391,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-shadow-puppet/source/voices/words.json",
+      "bytes": 1490,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/LICENSES.md",
+      "bytes": 934,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/audio/CREDITS",
+      "bytes": 1474,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/audio/film.m4a",
+      "bytes": 1376127,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fidelity.md",
+      "bytes": 4603,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/index.html",
+      "bytes": 427,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/lines.json",
+      "bytes": 485,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/main.js",
+      "bytes": 18242,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/nature.js",
+      "bytes": 12111,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/print.js",
+      "bytes": 19583,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/story.js",
+      "bytes": 1485,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/traveler.js",
+      "bytes": 13600,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/views.js",
+      "bytes": 29228,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/voices/dur.json",
+      "bytes": 72,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/film/wave.js",
+      "bytes": 12643,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fonts/OFL-shipporiminchob1.txt",
+      "bytes": 4399,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fonts/OFL-yujisyuku.txt",
+      "bytes": 4386,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fonts/fonts.css",
+      "bytes": 543,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fonts/shippori-500.woff2",
+      "bytes": 32472,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fonts/shippori-700.woff2",
+      "bytes": 32676,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fonts/shippori-kanji.woff2",
+      "bytes": 1828,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/fonts/yuji-kanji.woff2",
+      "bytes": 9332,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/index.html",
+      "bytes": 2412,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/CREDITS",
+      "bytes": 1474,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/README.md",
+      "bytes": 3076,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/build.sh",
+      "bytes": 1298,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/check_asr.py",
+      "bytes": 1033,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/events.json",
+      "bytes": 3149,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/mix.py",
+      "bytes": 10955,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/music/score.json",
+      "bytes": 5536,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/music/score.py",
+      "bytes": 20217,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/subs.py",
+      "bytes": 673,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-ukiyoe/source/voices/words.json",
+      "bytes": 1043,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
       "bytes": 911,
@@ -274,13 +979,28 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-crayon-book.json",
+      "bytes": 9612,
+      "role": "entry"
+    },
+    {
+      "path": "entries/cases/lemo-shadow-puppet.json",
+      "bytes": 10283,
+      "role": "entry"
+    },
+    {
+      "path": "entries/cases/lemo-ukiyoe.json",
+      "bytes": 9803,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-paperclip.json",
       "bytes": 18133,
       "role": "entry"
     },
     {
       "path": "entries/patterns/anchor-pullback-phone.json",
-      "bytes": 2781,
+      "bytes": 3603,
       "role": "entry"
     },
     {

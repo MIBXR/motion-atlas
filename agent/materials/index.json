@@ -61,6 +61,36 @@
           "kind": "case",
           "id": "lemo-paper-popup",
           "note": "平面彩色纸偶与真实桌面、光线和微距景深产生尺度反差；翻页、翻板和弹起结构承担叙事换景。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-ukiyoe",
+          "note": "五幅版画以同一座山组织构图，色版、装裱留缝与纸白同时承担造型、转场和高潮。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-shadow-puppet",
+          "note": "灯数决定世界亮度，射日动作让过曝白热逐级回到暖金，结尾把神话与皮影照明收在同一盏灯上。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-papercut-red",
+          "note": "折、剪、展开直接推动故事；同一个楔形图案既复制灯笼，也成为照亮村落与驱散年兽的孔洞光。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-impasto",
+          "note": "同一组厚涂笔触保存灰与彩两种状态，音乐既推动换色，也让人群运动留下可读的彩色图案。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-crayon-book",
+          "note": "蜡笔防染成为高潮动作，线条抖动、纸齿、梯子与被子都由绘画材料本身推动故事。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-paper-lantern",
+          "note": "用层叠纸雕的距离、逐节车窗的灯光和镜像音符讲述最后一趟旅程；隧道黑场连接雪山蓝与河谷青绿。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

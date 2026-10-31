@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 103,
+  "count": 113,
   "patterns": [
     {
       "id": "corner-hud",
@@ -636,7 +636,8 @@
       "role": "support",
       "sourceCases": [
         "mg-cel-boil",
-        "mg-hanazi"
+        "mg-hanazi",
+        "lemo-crayon-book"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/cel-line-boil.json"
@@ -1000,7 +1001,10 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "mg-paperclip"
+        "mg-paperclip",
+        "lemo-ukiyoe",
+        "lemo-shadow-puppet",
+        "lemo-crayon-book"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/anchor-pullback-phone.json"
@@ -2008,6 +2012,191 @@
         "shape-rhyme-match-cut"
       ],
       "bundle": "agent/patterns/diagonal-strip-shatter-title.json"
+    },
+    {
+      "id": "block-by-block-print-reveal",
+      "title": "逐版套印成画",
+      "summary": "空纸上的关键线、蓝、绿、红四块色版依次用带噪声的斜向巴连遮罩印入，同时消除各版的入场位移，保留固定套印偏差；浪后空纸再次按四版重印。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-ukiyoe"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/block-by-block-print-reveal.json"
+    },
+    {
+      "id": "handscroll-pan-transition",
+      "title": "画卷横移转场",
+      "summary": "五幅画按SLOT从右向左铺在同一装裱长卷，相机在两幅画中心间横移，穿过260px装裱留缝后下一景到位，三次横移逐渐加快。",
+      "types": [
+        "transition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-ukiyoe"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/handscroll-pan-transition.json"
+    },
+    {
+      "id": "lamp-count-light-state",
+      "title": "灯数即光照",
+      "summary": "每个太阳读取对应油灯强度，九盏灯依次点亮造成过曝与褪色；每次命中使该灯衰减到零，总灯场和按有效灯数计算的曝光让幕布逐级变暗回暖。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-shadow-puppet"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/lamp-count-light-state.json"
+    },
+    {
+      "id": "fold-cut-unfold-replicate",
+      "title": "折剪展开复制",
+      "summary": "红纸三次折成45°楔形，剪刀沿路径显露孔洞；三次展开把同一楔形按D4变换复制为八瓣团花，其中灯笼图案沿飞行轨迹去到八扇窗。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-papercut-red"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/fold-cut-unfold-replicate.json"
+    },
+    {
+      "id": "holes-are-light",
+      "title": "镂空即光",
+      "summary": "团花在圆形范围内反取alpha得到孔洞蒙版；背光使孔洞透出暖光，同一蒙版压扁投到雪地，再与年兽alpha相交落到脸部，纸上剪掉的形状成为照明。",
+      "types": [
+        "texture",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-papercut-red"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/holes-are-light.json"
+    },
+    {
+      "id": "palette-knife-recolor",
+      "title": "刮刀重涂换色",
+      "summary": "同一笔触保存原色与冷灰亮度，着色器按笔触到重涂原点的距离延迟切换；撑伞和终和弦触发不同的reveal / revC波，把已有笔触重新铺成彩色。",
+      "types": [
+        "texture",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-impasto"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/palette-knife-recolor.json"
+    },
+    {
+      "id": "motion-trails-paint-mandala",
+      "title": "轨迹作画成纹",
+      "summary": "19把伞按中心、内外两环的编舞轨迹运动，每把伞用自身颜色沿已走过的dancePos位置累积刮刀笔触；相机旋转并吊臂拉远，显出群体路径形成的曼陀罗。",
+      "types": [
+        "composition",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-impasto"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/motion-trails-paint-mandala.json"
+    },
+    {
+      "id": "wax-resist-wash-reveal",
+      "title": "蜡笔防染显形",
+      "summary": "白蜡笔星星先画入蜡覆盖场，水彩密度经过时按蜡覆盖量降低染色；三道宽刷交错扫过纸面，星星因为防染而从夜色中显出。",
+      "types": [
+        "transition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-crayon-book"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/wax-resist-wash-reveal.json"
+    },
+    {
+      "id": "windows-light-car-by-car",
+      "title": "车窗逐节亮灭",
+      "summary": "机车与七节车厢各自控制车窗glow map，开场从车头起逐节点亮并配同拍上行钟琴；到终点按同一车厢顺序熄灭，钟琴音高倒序下行，最后保留站灯。",
+      "types": [
+        "rhythm",
+        "sound",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-paper-lantern"
+      ],
+      "pairsWellWith": [
+        "tunnel-blink-black"
+      ],
+      "bundle": "agent/patterns/windows-light-car-by-car.json"
+    },
+    {
+      "id": "tunnel-blink-black",
+      "title": "隧道黑场换景",
+      "summary": "相机推向隧道口，列车被前层山崖逐节遮住，场景在25.3–25.5秒淡至黑；黑场停顿后25.75秒硬切河谷，全套场景与色阶由雪山冷蓝切到河谷青绿，声音同步留出短暂停顿。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-paper-lantern"
+      ],
+      "pairsWellWith": [
+        "windows-light-car-by-car"
+      ],
+      "bundle": "agent/patterns/tunnel-blink-black.json"
     }
   ]
 }
