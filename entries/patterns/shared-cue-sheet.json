@@ -84,6 +84,9 @@
     },
     {
       "caseId": "mg-line-art"
+    },
+    {
+      "caseId": "lemo-swiss-motion"
     }
   ],
   "previewAt": 1.7,
@@ -113,6 +116,12 @@
     {
       "field": "index.html 内联配置 → segments / cues",
       "how": "设置来源片段与中文节点名称，画面和原音轨使用同一时刻映射。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "瑞士动态排版",
+      "value": "lemo-swiss-motion：film/score.json 的列→音高、行→起音、长度→音长由 film/main.js 与 source/music/score.py 共同读取；film/film.js:buildEvents 导出 source/events.json，供 source/mix.py 的拟音使用，32–36秒扫奏。"
     }
   ]
 }

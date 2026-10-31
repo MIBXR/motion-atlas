@@ -21,3 +21,7 @@
 | [液态动效 · drop. — It All Starts with a Drop](../../cases.html#case/mg-liquid) | [条目](../../entries/cases/mg-liquid.json) |
 | [综艺花字 · 喵呜日记 EP.07](../../cases.html#case/mg-hanazi) | [条目](../../entries/cases/mg-hanazi.json) |
 | [Ink Press 纸墨宣传片](../../cases.html#case/ink-press) | [条目](../../entries/cases/ink-press.json) |
+| [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor) | [条目](../../entries/cases/lemo-watercolor.json) |
+| [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion) | [条目](../../entries/cases/lemo-swiss-motion.json) |
+| [林下的田 · 点云测绘](../../cases.html#case/lemo-lidar-survey) | [条目](../../entries/cases/lemo-lidar-survey.json) |
+| [柚子城的四季 · 孟菲斯微缩景](../../cases.html#case/lemo-memphis-diorama) | [条目](../../entries/cases/lemo-memphis-diorama.json) |

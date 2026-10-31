@@ -1,8 +1,50 @@
 {
   "schemaVersion": 1,
   "kind": "materials",
-  "count": 4,
+  "count": 5,
   "materials": [
+    {
+      "id": "lemo-opuscar",
+      "title": "lemo-opuscar · 66 种代码影片风格",
+      "summary": "66 种影片风格，每种配一支完全由代码逐帧渲染的示范短片（Canvas / WebGL 画面、免费采样配乐、本地 TTS 旁白），附导演、技术指南与“改成我的风格”流程。",
+      "type": "agent-skill",
+      "carrierNote": "风格示范片用浏览器页面按时间逐帧渲染后合成视频，最终形态为视频，归入本库。",
+      "useCases": [
+        "按指定风格制作主题短片与科普、旅行、品牌、纪实影片",
+        "借用笔刷、布局、点云、微缩模型、声音和逐帧渲染技术",
+        "把现有风格改成品牌或频道自己的风格，或从空白开始保存个人风格"
+      ],
+      "avoid": [
+        "上游声明为 Claude Opus 5.5 调校，其他模型可能难以复现。",
+        "单支影片约需30–60分钟 Agent 时间与相应 token。",
+        "运行环境需要 Node 20+、ffmpeg 7+、Python 3.11+（或 uv）。"
+      ],
+      "snapshotPath": "demos/materials/lemo-opuscar/",
+      "snapshotEntry": "plugin/skills/lemo-opuscar/SKILL.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "lemo-watercolor",
+          "note": "从澳大利亚红色腹地沿降雨梯度横移到绿色海岸，植物逐笔画入，纸雾洗去风景后展开大陆地图，回溯五千万年的干湿变化。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-swiss-motion",
+          "note": "五条规则把音乐会海报排进网格，唯一的红圆脱离格点，带动版面重排；海报旋转后揭示为正在播放的乐谱，再拉远成一墙变体。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-lidar-survey",
+          "note": "康涅狄格州阿什福德的一片森林，从夏季航拍转为春季激光点云；切割面剥去树冠，地面凝成受光表面，显出 22 段、合计 3.4 公里的旧农田石墙。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-memphis-diorama",
+          "note": "一个虚构河湾在连续高视角镜头中经历四季：广场主树每次下蹲回弹，换季波从树扩散，地面、树冠、屋顶与水面依次改色，冬日窗灯逐盏亮起。"
+        }
+      ],
+      "bundle": "agent/materials/lemo-opuscar.json"
+    },
     {
       "id": "mg-styles-15",
       "title": "mg-styles-15 风格提示词套件",
