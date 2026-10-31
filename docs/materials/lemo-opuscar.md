@@ -153,6 +153,8 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 以下10种风格与库中已有案例主题重合，未复刻：pixel-rpg → `mg-pixel`；hologram-hud → `mg-hud`；iso-infographic、isometric-picture-book → `mg-isometric`；one-line → `mg-line-art`；teardown → `mg-paperclip`；dataviz → `keeling-curve`；glass-product → `mg-aurora-glass`；transit-map → `map-pilgrimage`；game-show → `mg-hanazi`。
 
+city-symphony 的画面由上游 `tools/render.py` 用 Python 逐帧离线合成，浏览器页面不绘制画面，未复刻。
+
 55个案例各自保留运行画面、字体、成片音轨与`source/`制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见[source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
