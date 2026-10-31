@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 69,
+  "count": 74,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -2051,6 +2051,150 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-newsreel.json"
+    },
+    {
+      "id": "lemo-visual-investigation",
+      "title": "兴登堡号：四分钟与三十二秒 · 视觉调查",
+      "summary": "以兴登堡号最后的四分钟与燃烧的三十二秒为线索，将新闻片、海军照片、证词、调查报告和气象记录按事件时刻交叉对照，最后合为证据地图。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "视觉调查",
+        "剪辑与纪实",
+        "代码影片"
+      ],
+      "useCases": [
+        "事件重建",
+        "事实核对",
+        "事故报告"
+      ],
+      "avoid": [
+        "把灾难画面作为慢动作奇观的剪辑",
+        "来源时间和机位无法定位的同步叙事"
+      ],
+      "patternIds": [
+        "multi-source-timeline"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-visual-investigation.json"
+    },
+    {
+      "id": "lemo-news-package",
+      "title": "本周 AI 四件事 · 电视新闻包装",
+      "summary": "LEMO AI NEWS的一周四则AI新闻，从串联单进入模型开放、市场下跌、欧盟问询与开放权重，用翻牌价格表、阈值折线、地图信函和规格卡承载信息，再回到已勾选的串联单。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "电视新闻包装",
+        "剪辑与纪实",
+        "代码影片"
+      ],
+      "useCases": [
+        "每周新闻汇总",
+        "市场简报",
+        "产品规格报道"
+      ],
+      "avoid": [
+        "大字幕主导的社交短视频",
+        "虚拟演播厅、走马字幕与多页幻灯片"
+      ],
+      "patternIds": [
+        "flap-board-price-table",
+        "lower-third-rundown"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-news-package.json"
+    },
+    {
+      "id": "lemo-telestrator",
+      "title": "定格 · 体育战术板",
+      "summary": "2019年贝西克塔斯对费内巴切的3–3比赛分析：先看连续进球，再定格圈人画线，双机位对齐头球，倒带拆解扳平远射，最后把射门帧压成俯视战术板。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "体育战术板",
+        "剪辑与纪实",
+        "代码影片"
+      ],
+      "useCases": [
+        "比赛战术分析",
+        "教练复盘",
+        "多个机位的动作讲解"
+      ],
+      "avoid": [
+        "只把精彩片段按音乐拼接的集锦",
+        "脱离真实球场位置的抽象战术图"
+      ],
+      "patternIds": [
+        "freeze-and-draw",
+        "split-compare-stamp"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-telestrator.json"
+    },
+    {
+      "id": "lemo-countdown",
+      "title": "自己倒数 · 实时倒计时分屏",
+      "summary": "阿尔忒弥斯二号发射从T−32.5到T+27秒连续播放，多机位、控制室、乘组照片与任务文件逐格展开，点火瞬间九格合一，控制权由地面交给火箭再交给休斯敦。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "实时倒计时分屏",
+        "剪辑与纪实",
+        "代码影片"
+      ],
+      "useCases": [
+        "发射直播剪辑",
+        "赛事或裁决倒数",
+        "有明确零点的实时事件"
+      ],
+      "avoid": [
+        "跳时、倒序或变速的蒙太奇",
+        "无法将多个机位对到同一事件时刻的素材组合"
+      ],
+      "patternIds": [
+        "many-into-one-countdown",
+        "sync-badge-grid",
+        "corner-hud"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-countdown.json"
+    },
+    {
+      "id": "lemo-kino-montage",
+      "title": "410 天 · 构成主义蒙太奇",
+      "summary": "从1931年帝国大厦宣传册的“完成这项工作的人”出发，用工地实拍、刘易斯·海因照片和原始文档回答每天2500名工人的集体建造，再把剪下的人物叠成一座塔。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "构成主义蒙太奇",
+        "剪辑与纪实",
+        "代码影片"
+      ],
+      "useCases": [
+        "工业历史影片",
+        "建设里程碑",
+        "集体劳动叙事"
+      ],
+      "avoid": [
+        "以单个人物的慢镜特写为主角的影片",
+        "中性幻灯片式的档案展示"
+      ],
+      "patternIds": [
+        "constructivist-diagonal-montage"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-kino-montage.json"
     }
   ]
 }

@@ -25,13 +25,13 @@
   ],
   "upstream": {
     "repository": "lemomo-ai/lemo-opuscar",
-    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/f17136060781a0068a7951245a3aa7835a7230de",
-    "commit": "f17136060781a0068a7951245a3aa7835a7230de",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
     "version": "0.1.0"
   },
   "license": {
     "name": "MIT · CC BY 4.0",
-    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/f17136060781a0068a7951245a3aa7835a7230de/LICENSE",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
     "notes": "README 的 Licence 节：代码和文档（含风格文本）MIT；styles、画廊与 Releases 中的示范影片及静帧 CC BY 4.0，署名 LemoLab 并链接仓库，改编注明改动；用户新做影片归用户。第三方资源保留原许可。game-show 的 macOS say 喊声、paper-lantern 的 Edge TTS 旁白、news-package 的豆包 TTS 旁白被明确排除在 CC BY 4.0 外。"
   },
   "install": "claude plugin marketplace add lemomo-ai/lemo-opuscar\nclaude plugin install lemo-opuscar@lemolab\n\n或：\ngit clone https://github.com/lemomo-ai/lemo-opuscar.git\ncd lemo-opuscar\nclaude",
@@ -288,28 +288,53 @@
       "kind": "case",
       "id": "lemo-newsreel",
       "note": "1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-visual-investigation",
+      "note": "以兴登堡号最后的四分钟与燃烧的三十二秒为线索，将新闻片、海军照片、证词、调查报告和气象记录按事件时刻交叉对照，最后合为证据地图。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-news-package",
+      "note": "LEMO AI NEWS的一周四则AI新闻，从串联单进入模型开放、市场下跌、欧盟问询与开放权重，用翻牌价格表、阈值折线、地图信函和规格卡承载信息，再回到已勾选的串联单。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-telestrator",
+      "note": "2019年贝西克塔斯对费内巴切的3–3比赛分析：先看连续进球，再定格圈人画线，双机位对齐头球，倒带拆解扳平远射，最后把射门帧压成俯视战术板。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-countdown",
+      "note": "阿尔忒弥斯二号发射从T−32.5到T+27秒连续播放，多机位、控制室、乘组照片与任务文件逐格展开，点火瞬间九格合一，控制权由地面交给火箭再交给休斯敦。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-kino-montage",
+      "note": "从1931年帝国大厦宣传册的“完成这项工作的人”出发，用工地实拍、刘易斯·海因照片和原始文档回答每天2500名工人的集体建造，再把剪下的人物叠成一座塔。"
     }
   ],
   "sources": [
     {
       "label": "README.md",
-      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/f17136060781a0068a7951245a3aa7835a7230de/README.md"
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/README.md"
     },
     {
       "label": "AGENTS.md",
-      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/f17136060781a0068a7951245a3aa7835a7230de/AGENTS.md"
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/AGENTS.md"
     },
     {
       "label": "DIRECTOR.md",
-      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/f17136060781a0068a7951245a3aa7835a7230de/DIRECTOR.md"
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/DIRECTOR.md"
     },
     {
       "label": "styles/README.md",
-      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/f17136060781a0068a7951245a3aa7835a7230de/styles/README.md"
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/README.md"
     },
     {
       "label": "Gallery 页面源码（固定提交）",
-      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/f17136060781a0068a7951245a3aa7835a7230de/styleboard/index.html"
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styleboard/index.html"
     },
     {
       "label": "公开 Gallery",
@@ -543,7 +568,7 @@
     },
     {
       "path": "previews/materials/lemo-opuscar/paper-lantern.webp",
-      "caption": "作者成片 · 纸雕灯影 Paper-cut Lightbox：一枚月饼讲中秋的团圆与思念，纸雕灯箱层层透光。原片约 121.8 秒，此处为 60.9 秒起 4 秒片段的循环动画 WebP。",
+      "caption": "作者成片 · 纸雕灯影 Paper-cut Lightbox：一列老夜车跑最后一趟：从雪山小站穿过长隧道开到海边，到站后车窗一扇扇熄灭。原片约 51 秒，此处为 9.6 秒起 4 秒片段的循环动画 WebP。",
       "kind": "style",
       "replicated": false,
       "sourceUrl": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/paper-lantern.mp4",
@@ -583,7 +608,7 @@
     },
     {
       "path": "previews/materials/lemo-opuscar/silkscreen-poster.webp",
-      "caption": "作者成片 · 丝印旅行海报 Silkscreen Travel Poster：三条步道各一张丝印海报，一色一刮印出来，再沿山脊一镜到底从正午爬到黄昏。原片约 38.4 秒，此处为 34 秒起 4 秒片段的循环动画 WebP。",
+      "caption": "作者成片 · 丝印旅行海报 Silkscreen Travel Poster：一张满屏丝印海报一座城，票根数着离家的公里数，走到世界的另一头，才发现那是回家的路。原片约 50 秒，此处为 44.5 秒起 4 秒片段的循环动画 WebP。",
       "kind": "style",
       "replicated": false,
       "sourceUrl": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/silkscreen-poster.mp4",
@@ -639,7 +664,7 @@
     },
     {
       "path": "previews/materials/lemo-opuscar/pictogram-motion.webp",
-      "caption": "作者成片 · 象形运动图形 Pictogram Motion：2026 亚运会 43 个大项，几何象形人卡着节拍快闪。原片约 163.6 秒，此处为 65.44 秒起 4 秒片段的循环动画 WebP。",
+      "caption": "作者成片 · 象形运动图形 Pictogram Motion：一把被落在公交车上的黄伞，晴天里在失物招领的货架上等了一整天，暴雨回来时和另外 312 把一起撑开：物件、交通、天气和标识，都是卡着节拍的几何象形符号。原片约 50 秒，此处为 9.2 秒起 4 秒片段的循环动画 WebP。",
       "kind": "style",
       "replicated": false,
       "sourceUrl": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/pictogram-motion.mp4",

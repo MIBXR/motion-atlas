@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 168,
+  "count": 175,
   "patterns": [
     {
       "id": "corner-hud",
@@ -18,7 +18,8 @@
       "role": "foundation",
       "sourceCases": [
         "map-pilgrimage",
-        "lemo-backrooms"
+        "lemo-backrooms",
+        "lemo-countdown"
       ],
       "pairsWellWith": [
         "route-draw-marker",
@@ -159,7 +160,8 @@
       "sourceCases": [
         "map-pilgrimage",
         "mg-hanazi",
-        "lemo-halftone-dossier"
+        "lemo-halftone-dossier",
+        "lemo-telestrator"
       ],
       "pairsWellWith": [
         "card-expand-fullscreen",
@@ -3206,6 +3208,131 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/line-lights-up.json"
+    },
+    {
+      "id": "constructivist-diagonal-montage",
+      "title": "构成主义斜线蒙太奇",
+      "summary": "以−18°斜梁承载大字，沿轴砸入；工地影像分成三条双窗条带逐拍换镜，剪下的工人和影像楼层再交替叠成塔。",
+      "types": [
+        "composition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-kino-montage"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/constructivist-diagonal-montage.json"
+    },
+    {
+      "id": "multi-source-timeline",
+      "title": "多源同一时间轴",
+      "summary": "电报卡与气象记录指向同一分钟游标；五来源板把新闻片、照片、证词、原声和报告连向同一舱段，随后报告、照片与新闻片按各自覆盖时刻在同一T+秒表下依次亮起。",
+      "types": [
+        "hud",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-visual-investigation"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/multi-source-timeline.json"
+    },
+    {
+      "id": "flap-board-price-table",
+      "title": "翻牌价格表",
+      "summary": "价格牌把上半和下半分别裁切，先画新值上半与旧值下半；旧上半压缩至零后，新下半从零展开，再停在完整价格。",
+      "types": [
+        "type-motion",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-news-package"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/flap-board-price-table.json"
+    },
+    {
+      "id": "many-into-one-countdown",
+      "title": "多格倒数合一",
+      "summary": "倒数原声逐个打开3×3布局的摄影机格，零点时每个旧格移动到同一全屏镜头对应的拼块位置；边框和标签消退，所有拼块交叉淡入同一个镜头，时钟与转写回到底部。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-countdown"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/many-into-one-countdown.json"
+    },
+    {
+      "id": "freeze-and-draw",
+      "title": "定格画线",
+      "summary": "先播放真实比赛，到指定源帧冻结并短闪、急推和压暗；脚底圈、球路或跑位线、空间区域和发现标签按进度画入，图层与画面共用变换，随后从同一帧恢复播放。",
+      "types": [
+        "hud",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-telestrator"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/freeze-and-draw.json"
+    },
+    {
+      "id": "lower-third-rundown",
+      "title": "串联单与标题条",
+      "summary": "串联单各行按拍在竖向遮罩中翻入，回顾时同一列表逐行打勾；报道的分类签、标题条和来源行与所属画面一起在带状转场裁切区内绘制，新旧文字在同一帧交接。",
+      "types": [
+        "hud",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-news-package"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/lower-third-rundown.json"
+    },
+    {
+      "id": "sync-badge-grid",
+      "title": "同步徽章格",
+      "summary": "每个摄影机格携带自己的同步种类，徽章右对齐跟随格子矩形移动；空间不足时从上角移到下角。实时同步用橙色实心点，同一时段用灰色空心点和斜线底纹，恢复实时的慢动作另标1×。",
+      "types": [
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-countdown"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/sync-badge-grid.json"
     }
   ]
 }

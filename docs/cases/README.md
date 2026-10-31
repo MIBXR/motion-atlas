@@ -71,3 +71,8 @@
 | [差两秒 · 档案灯台](../../cases.html#case/lemo-archive-lighttable) | [条目](../../entries/cases/lemo-archive-lighttable.json) |
 | [蜜蜂账本 · 字幕新闻](../../cases.html#case/lemo-caption-news) | [条目](../../entries/cases/lemo-caption-news.json) |
 | [膝盖警报 · 1920s 新闻影片](../../cases.html#case/lemo-newsreel) | [条目](../../entries/cases/lemo-newsreel.json) |
+| [兴登堡号：四分钟与三十二秒 · 视觉调查](../../cases.html#case/lemo-visual-investigation) | [条目](../../entries/cases/lemo-visual-investigation.json) |
+| [本周 AI 四件事 · 电视新闻包装](../../cases.html#case/lemo-news-package) | [条目](../../entries/cases/lemo-news-package.json) |
+| [定格 · 体育战术板](../../cases.html#case/lemo-telestrator) | [条目](../../entries/cases/lemo-telestrator.json) |
+| [自己倒数 · 实时倒计时分屏](../../cases.html#case/lemo-countdown) | [条目](../../entries/cases/lemo-countdown.json) |
+| [410 天 · 构成主义蒙太奇](../../cases.html#case/lemo-kino-montage) | [条目](../../entries/cases/lemo-kino-montage.json) |

@@ -47,7 +47,7 @@
       "vertical-title-blur"
     ],
     "conflicts": [],
-    "notes": "日序、日期、规尺、指南针与坐标持续更新。海拔、缩放、时钟、歌词与步进器保持固定位置。比例尺和署名留在边缘，中央呈现地图。"
+    "notes": "日序、日期、规尺、指南针与坐标持续更新。海拔、缩放、时钟、歌词与步进器保持固定位置。比例尺和署名留在边缘，中央呈现地图。 lemo-countdown：film/index.html:drawClock / HANDS / HAND_LAB；固定HUD_CLOCK=[24,872,656,184]，零点32.5秒T−转T+、橙底深字；.4/53.78秒控制段按.3秒ease-out填充；每秒整组数字从上方14px在.12秒落入，没有乱数或字轮。"
   },
   "prompt": "日序、坐标、时钟、歌词与步进器钉在四角，数值随镜头与时间持续更新，中央留给地图。复用地图巡礼的 drawHud、cameraAt、clockAt、stepAtX、ruleX 与对应 CSS。仅 drawHud 的日序、日期、规尺、指南针、坐标、海拔、缩放、时钟、歌词、步进器、比例尺和署名。片段：caseT 7→13.6；caseT 35.8→42.4；时长 13.8s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。",
   "demo": "demos/patterns/corner-hud/index.html",
@@ -58,6 +58,9 @@
     },
     {
       "caseId": "lemo-backrooms"
+    },
+    {
+      "caseId": "lemo-countdown"
     }
   ],
   "previewAt": 7.2,
@@ -149,6 +152,10 @@
     {
       "name": "lemo-backrooms",
       "value": "film/osd.js:drawOSD；REC左上、电量右上、日期/时钟右下，5×7位图白字黑边；story.js:clock/battery在36.35秒同时跳变。"
+    },
+    {
+      "name": "lemo-countdown · 任务时钟与控制条",
+      "value": "film/index.html:drawClock / HANDS / HAND_LAB；固定HUD_CLOCK=[24,872,656,184]，零点32.5秒T−转T+、橙底深字；.4/53.78秒控制段按.3秒ease-out填充；每秒整组数字从上方14px在.12秒落入，没有乱数或字轮。"
     }
   ]
 }
