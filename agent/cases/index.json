@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 23,
+  "count": 27,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -754,6 +754,123 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-memphis-diorama.json"
+    },
+    {
+      "id": "lemo-ink-wash",
+      "title": "剑客渡江 · 中国水墨",
+      "summary": "侠客踏水过江，在静默后以书写“水”的末笔斩开巨浪；镜头拉远，整段旅程成为落有朱印的一卷山水。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "中国水墨",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "武侠短片",
+        "文化品牌影像",
+        "诗歌影像"
+      ],
+      "avoid": [
+        "多色水彩、矢量硬轮廓或密集填满画面的构图",
+        "用持续配乐覆盖决断前的静默"
+      ],
+      "patternIds": [
+        "decisive-stroke-glyph",
+        "scale-reveal-ink-figure"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-ink-wash.json"
+    },
+    {
+      "id": "lemo-woodcut",
+      "title": "铸钟人 · 木刻版画",
+      "summary": "冬雪封路的村庄为钟楼铸钟，第一口钟开裂后，学徒献出指南针；铜色随第二次浇铸扩散，钟声响起时雪停在空中。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "木刻版画",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "民间故事",
+        "工艺品牌影像",
+        "图书预告片"
+      ],
+      "avoid": [
+        "多色平涂海报或铜版画式白底细线",
+        "在钟出现前使用钟类音色"
+      ],
+      "patternIds": [
+        "carve-cut-by-cut-reveal",
+        "mirrored-block-pull-print"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-woodcut.json"
+    },
+    {
+      "id": "lemo-spy-titles",
+      "title": "天鹅绒密码 · 60s 间谍片头",
+      "summary": "虚构1964年间谍片的开场：特工追逐带着钥匙的信使，穿过字母柱廊、单词车厢和轮盘，钥匙最终打开片名中的锁孔。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "60s 间谍片头",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "电影片头",
+        "活动开场",
+        "预告片"
+      ],
+      "avoid": [
+        "枪管式开场或真实片头的字标和角色复用",
+        "渐变、半调网点或平滑连续变形作为匹配剪辑"
+      ],
+      "patternIds": [
+        "type-as-architecture",
+        "shape-rhyme-match-cut",
+        "diagonal-strip-shatter-title"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-spy-titles.json"
+    },
+    {
+      "id": "lemo-paper-popup",
+      "title": "小精灵冒险记 · 纸片立体书",
+      "summary": "一本立体书在核桃木桌上打开，皮普穿越纸片谷、森林和大海，帮助皱纸变成纸飞机，最后越过书页来到台灯下的真实房间。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "纸片立体书",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "儿童绘本影像",
+        "游戏预告片",
+        "故事短片"
+      ],
+      "avoid": [
+        "圆润3D卡通、橡皮泥形变或单色背光剪纸",
+        "在书内用视频淡化替代纸机关"
+      ],
+      "patternIds": [
+        "page-turn-popup-swap",
+        "flip-tile-cascade"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-paper-popup.json"
     }
   ]
 }

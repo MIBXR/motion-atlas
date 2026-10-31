@@ -42,8 +42,8 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 23,
-    "patterns": 95,
+    "cases": 27,
+    "patterns": 103,
     "materials": 5
   },
   "caseCatalog": "agent/cases/index.json",
@@ -801,6 +801,123 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-memphis-diorama.json"
+    },
+    {
+      "id": "lemo-ink-wash",
+      "title": "剑客渡江 · 中国水墨",
+      "summary": "侠客踏水过江，在静默后以书写“水”的末笔斩开巨浪；镜头拉远，整段旅程成为落有朱印的一卷山水。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "中国水墨",
+        "手绘与绘画",
+        "代码影片"
+      ],
+      "useCases": [
+        "武侠短片",
+        "文化品牌影像",
+        "诗歌影像"
+      ],
+      "avoid": [
+        "多色水彩、矢量硬轮廓或密集填满画面的构图",
+        "用持续配乐覆盖决断前的静默"
+      ],
+      "patternIds": [
+        "decisive-stroke-glyph",
+        "scale-reveal-ink-figure"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-ink-wash.json"
+    },
+    {
+      "id": "lemo-woodcut",
+      "title": "铸钟人 · 木刻版画",
+      "summary": "冬雪封路的村庄为钟楼铸钟，第一口钟开裂后，学徒献出指南针；铜色随第二次浇铸扩散，钟声响起时雪停在空中。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "木刻版画",
+        "印刷与版画",
+        "代码影片"
+      ],
+      "useCases": [
+        "民间故事",
+        "工艺品牌影像",
+        "图书预告片"
+      ],
+      "avoid": [
+        "多色平涂海报或铜版画式白底细线",
+        "在钟出现前使用钟类音色"
+      ],
+      "patternIds": [
+        "carve-cut-by-cut-reveal",
+        "mirrored-block-pull-print"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-woodcut.json"
+    },
+    {
+      "id": "lemo-spy-titles",
+      "title": "天鹅绒密码 · 60s 间谍片头",
+      "summary": "虚构1964年间谍片的开场：特工追逐带着钥匙的信使，穿过字母柱廊、单词车厢和轮盘，钥匙最终打开片名中的锁孔。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "60s 间谍片头",
+        "图形与排版",
+        "代码影片"
+      ],
+      "useCases": [
+        "电影片头",
+        "活动开场",
+        "预告片"
+      ],
+      "avoid": [
+        "枪管式开场或真实片头的字标和角色复用",
+        "渐变、半调网点或平滑连续变形作为匹配剪辑"
+      ],
+      "patternIds": [
+        "type-as-architecture",
+        "shape-rhyme-match-cut",
+        "diagonal-strip-shatter-title"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-spy-titles.json"
+    },
+    {
+      "id": "lemo-paper-popup",
+      "title": "小精灵冒险记 · 纸片立体书",
+      "summary": "一本立体书在核桃木桌上打开，皮普穿越纸片谷、森林和大海，帮助皱纸变成纸飞机，最后越过书页来到台灯下的真实房间。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "纸片立体书",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "儿童绘本影像",
+        "游戏预告片",
+        "故事短片"
+      ],
+      "avoid": [
+        "圆润3D卡通、橡皮泥形变或单色背光剪纸",
+        "在书内用视频淡化替代纸机关"
+      ],
+      "patternIds": [
+        "page-turn-popup-swap",
+        "flip-tile-cascade"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-paper-popup.json"
     }
   ],
   "patterns": [
@@ -1302,7 +1419,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "mg-bauhaus"
+        "mg-bauhaus",
+        "lemo-paper-popup"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/flip-tile-cascade.json"
@@ -2647,6 +2765,167 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/season-ripple-wave.json"
+    },
+    {
+      "id": "decisive-stroke-glyph",
+      "title": "一笔斩浪成字",
+      "summary": "“水”前三笔按书写顺序出现，静默后末笔沿捺势延伸为飞白斩线；同一笔完成字与动作，斩线扫完才裁开浪体。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-ink-wash"
+      ],
+      "pairsWellWith": [
+        "scale-reveal-ink-figure"
+      ],
+      "bundle": "agent/patterns/decisive-stroke-glyph.json"
+    },
+    {
+      "id": "scale-reveal-ink-figure",
+      "title": "拉远显微小人物",
+      "summary": "从人物所在的局部连续拉远，按对数插值缩小世界，直到整卷山水、装裱与轴头进入画幅，人物成为画中小点，朱印落下。",
+      "types": [
+        "camera",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-ink-wash"
+      ],
+      "pairsWellWith": [
+        "decisive-stroke-glyph"
+      ],
+      "bundle": "agent/patterns/scale-reveal-ink-figure.json"
+    },
+    {
+      "id": "carve-cut-by-cut-reveal",
+      "title": "逐刀刻出画面",
+      "summary": "每条刻痕持有起始时刻、持续时间和刀宽，沿刀路逐步显露；形体的reveal key分配粗细刀次，高潮光线由放射刻痕爆开。",
+      "types": [
+        "texture",
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-woodcut"
+      ],
+      "pairsWellWith": [
+        "mirrored-block-pull-print"
+      ],
+      "bundle": "agent/patterns/carve-cut-by-cut-reveal.json"
+    },
+    {
+      "id": "mirrored-block-pull-print",
+      "title": "反刻版揭印转正",
+      "summary": "木版以镜像变换显示反刻标题，滚墨覆纸后通过圆柱卷纸的正背条带绘制揭出可读正印；唯一铜色随浇铸放大，片尾收于小钟高光。",
+      "types": [
+        "transition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-woodcut"
+      ],
+      "pairsWellWith": [
+        "carve-cut-by-cut-reveal"
+      ],
+      "bundle": "agent/patterns/mirrored-block-pull-print.json"
+    },
+    {
+      "id": "type-as-architecture",
+      "title": "字即布景",
+      "summary": "先排出一行可读字幕，再把字母和单词作为柱廊、列车与赌场道具的支撑；剪影人物在字的前后穿行。",
+      "types": [
+        "composition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-spy-titles"
+      ],
+      "pairsWellWith": [
+        "shape-rhyme-match-cut"
+      ],
+      "bundle": "agent/patterns/type-as-architecture.json"
+    },
+    {
+      "id": "page-turn-popup-swap",
+      "title": "翻页立体书换景",
+      "summary": "曲面纸页用旧地面作正面、新天空作背面，沿40段积分得到刚性弯曲；旧立体件折倒，新件绕底铰链弹起。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-paper-popup"
+      ],
+      "pairsWellWith": [
+        "flip-tile-cascade"
+      ],
+      "bundle": "agent/patterns/page-turn-popup-swap.json"
+    },
+    {
+      "id": "shape-rhyme-match-cut",
+      "title": "形状押韵硬切",
+      "summary": "保持圆形的屏幕位置与交接尺度，在时间阈值直接切换轮子、轮盘、瞳孔和月亮；场内推进衔接下一次硬切，匹配段间隔逐步缩短。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-spy-titles"
+      ],
+      "pairsWellWith": [
+        "type-as-architecture"
+      ],
+      "bundle": "agent/patterns/shape-rhyme-match-cut.json"
+    },
+    {
+      "id": "diagonal-strip-shatter-title",
+      "title": "斜切条带退场与字形入场",
+      "summary": "film.js把旧屋顶画面截成260px斜向条带，沿DIR交替滑出画外；新片名字形从1500px外按letterLand沿同一方向入场。",
+      "types": [
+        "transition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-spy-titles"
+      ],
+      "pairsWellWith": [
+        "type-as-architecture",
+        "shape-rhyme-match-cut"
+      ],
+      "bundle": "agent/patterns/diagonal-strip-shatter-title.json"
     }
   ],
   "materials": [
@@ -2688,6 +2967,26 @@
           "kind": "case",
           "id": "lemo-memphis-diorama",
           "note": "一个虚构河湾在连续高视角镜头中经历四季：广场主树每次下蹲回弹，换季波从树扩散，地面、树冠、屋顶与水面依次改色，冬日窗灯逐盏亮起。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-ink-wash",
+          "note": "让笔触同时承担造型、动作与叙事，纸白成为水、雾和停顿；微小人物与浓墨巨浪建立尺度反差。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-woodcut",
+          "note": "黑木为底，光由逐刀刻痕出现；反刻字经揭印转正，单一铜色只用于热量与最后的钟光。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-spy-titles",
+          "note": "四种不透明纸墨、剪影表演与字形布景共用节拍；同位圆形硬切和30°斜线把追逐、拆景与片名连在一起。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-paper-popup",
+          "note": "平面彩色纸偶与真实桌面、光线和微距景深产生尺度反差；翻页、翻板和弹起结构承担叙事换景。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

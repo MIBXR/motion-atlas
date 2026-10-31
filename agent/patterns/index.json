@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 95,
+  "count": 103,
   "patterns": [
     {
       "id": "corner-hud",
@@ -501,7 +501,8 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "mg-bauhaus"
+        "mg-bauhaus",
+        "lemo-paper-popup"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/flip-tile-cascade.json"
@@ -1846,6 +1847,167 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/season-ripple-wave.json"
+    },
+    {
+      "id": "decisive-stroke-glyph",
+      "title": "一笔斩浪成字",
+      "summary": "“水”前三笔按书写顺序出现，静默后末笔沿捺势延伸为飞白斩线；同一笔完成字与动作，斩线扫完才裁开浪体。",
+      "types": [
+        "type-motion",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-ink-wash"
+      ],
+      "pairsWellWith": [
+        "scale-reveal-ink-figure"
+      ],
+      "bundle": "agent/patterns/decisive-stroke-glyph.json"
+    },
+    {
+      "id": "scale-reveal-ink-figure",
+      "title": "拉远显微小人物",
+      "summary": "从人物所在的局部连续拉远，按对数插值缩小世界，直到整卷山水、装裱与轴头进入画幅，人物成为画中小点，朱印落下。",
+      "types": [
+        "camera",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-ink-wash"
+      ],
+      "pairsWellWith": [
+        "decisive-stroke-glyph"
+      ],
+      "bundle": "agent/patterns/scale-reveal-ink-figure.json"
+    },
+    {
+      "id": "carve-cut-by-cut-reveal",
+      "title": "逐刀刻出画面",
+      "summary": "每条刻痕持有起始时刻、持续时间和刀宽，沿刀路逐步显露；形体的reveal key分配粗细刀次，高潮光线由放射刻痕爆开。",
+      "types": [
+        "texture",
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-woodcut"
+      ],
+      "pairsWellWith": [
+        "mirrored-block-pull-print"
+      ],
+      "bundle": "agent/patterns/carve-cut-by-cut-reveal.json"
+    },
+    {
+      "id": "mirrored-block-pull-print",
+      "title": "反刻版揭印转正",
+      "summary": "木版以镜像变换显示反刻标题，滚墨覆纸后通过圆柱卷纸的正背条带绘制揭出可读正印；唯一铜色随浇铸放大，片尾收于小钟高光。",
+      "types": [
+        "transition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-woodcut"
+      ],
+      "pairsWellWith": [
+        "carve-cut-by-cut-reveal"
+      ],
+      "bundle": "agent/patterns/mirrored-block-pull-print.json"
+    },
+    {
+      "id": "type-as-architecture",
+      "title": "字即布景",
+      "summary": "先排出一行可读字幕，再把字母和单词作为柱廊、列车与赌场道具的支撑；剪影人物在字的前后穿行。",
+      "types": [
+        "composition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-spy-titles"
+      ],
+      "pairsWellWith": [
+        "shape-rhyme-match-cut"
+      ],
+      "bundle": "agent/patterns/type-as-architecture.json"
+    },
+    {
+      "id": "page-turn-popup-swap",
+      "title": "翻页立体书换景",
+      "summary": "曲面纸页用旧地面作正面、新天空作背面，沿40段积分得到刚性弯曲；旧立体件折倒，新件绕底铰链弹起。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-paper-popup"
+      ],
+      "pairsWellWith": [
+        "flip-tile-cascade"
+      ],
+      "bundle": "agent/patterns/page-turn-popup-swap.json"
+    },
+    {
+      "id": "shape-rhyme-match-cut",
+      "title": "形状押韵硬切",
+      "summary": "保持圆形的屏幕位置与交接尺度，在时间阈值直接切换轮子、轮盘、瞳孔和月亮；场内推进衔接下一次硬切，匹配段间隔逐步缩短。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-spy-titles"
+      ],
+      "pairsWellWith": [
+        "type-as-architecture"
+      ],
+      "bundle": "agent/patterns/shape-rhyme-match-cut.json"
+    },
+    {
+      "id": "diagonal-strip-shatter-title",
+      "title": "斜切条带退场与字形入场",
+      "summary": "film.js把旧屋顶画面截成260px斜向条带，沿DIR交替滑出画外；新片名字形从1500px外按letterLand沿同一方向入场。",
+      "types": [
+        "transition",
+        "type-motion"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-spy-titles"
+      ],
+      "pairsWellWith": [
+        "type-as-architecture",
+        "shape-rhyme-match-cut"
+      ],
+      "bundle": "agent/patterns/diagonal-strip-shatter-title.json"
     }
   ]
 }

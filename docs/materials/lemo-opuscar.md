@@ -66,7 +66,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 - 蜡笔儿童绘本 · Crayon Picture Book
 - 水彩笔刷 · Watercolor Brush（[本库案例](../../cases.html#case/lemo-watercolor)）
-- 中国水墨 · Chinese Ink Wash
+- 中国水墨 · Chinese Ink Wash（已复刻，[本库案例](../../cases.html#case/lemo-ink-wash)）
 - 油画厚涂 · Impasto Oil Painting
 - 一笔画 · One-line Drawing
 - 白板讲解 · Whiteboard Explainer
@@ -84,7 +84,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 - Risograph 孔版印刷 · Risograph Print
 - 复古半调案卷 · Halftone Dossier
-- 木刻版画 · Woodcut Print
+- 木刻版画 · Woodcut Print（已复刻，[本库案例](../../cases.html#case/lemo-woodcut)）
 - 铜版画 · Copperplate Engraving
 - 丝印旅行海报 · Silkscreen Travel Poster
 - 印刷长镜头 · Printed Long Take
@@ -92,7 +92,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 ### 图形与排版 · Graphic & Type
 
 - 瑞士动态排版 · Swiss Motion Graphics（[本库案例](../../cases.html#case/lemo-swiss-motion)）
-- 60s 间谍片头 · 60s Spy Title Sequence
+- 60s 间谍片头 · 60s Spy Title Sequence（已复刻，[本库案例](../../cases.html#case/lemo-spy-titles)）
 - 装饰艺术 · Art Deco
 - 蓝图 / 工程制图 · Blueprint
 - 彩色玻璃窗 · Stained Glass
@@ -132,7 +132,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 ### 材质与 3D · Materials & 3D
 
 - 积木玩具 · Brick Toy
-- 纸片立体书 · Paper Pop-up Book
+- 纸片立体书 · Paper Pop-up Book（已复刻，[本库案例](../../cases.html#case/lemo-paper-popup)）
 - 移轴微缩 · Tilt-Shift Miniature
 - 低多边形等距 · Low-poly Isometric Island
 - 玻璃质感产品 · Glass Product Render
@@ -151,11 +151,16 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-四个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+八个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
 - [林下的田 · 点云测绘](../../cases.html#case/lemo-lidar-survey)：制作文件见 [source/README.md](../../demos/cases/lemo-lidar-survey/source/README.md)。
 - [柚子城的四季 · 孟菲斯微缩景](../../cases.html#case/lemo-memphis-diorama)：制作文件见 [source/README.md](../../demos/cases/lemo-memphis-diorama/source/README.md)。
 
-四个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+- [剑客渡江 · 中国水墨](../../cases.html#case/lemo-ink-wash)：制作文件见 [source/README.md](../../demos/cases/lemo-ink-wash/source/README.md)。
+- [铸钟人 · 木刻版画](../../cases.html#case/lemo-woodcut)：制作文件见 [source/README.md](../../demos/cases/lemo-woodcut/source/README.md)。
+- [天鹅绒密码 · 60s 间谍片头](../../cases.html#case/lemo-spy-titles)：制作文件见 [source/README.md](../../demos/cases/lemo-spy-titles/source/README.md)。
+- [小精灵冒险记 · 纸片立体书](../../cases.html#case/lemo-paper-popup)：制作文件见 [source/README.md](../../demos/cases/lemo-paper-popup/source/README.md)。
+
+八个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
