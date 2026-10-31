@@ -403,7 +403,7 @@
     },
     {
       "path": "demos/cases/lemo-blueprint/fonts/OFL-allura.txt",
-      "bytes": 4478,
+      "bytes": 4385,
       "role": "license"
     },
     {
@@ -413,12 +413,12 @@
     },
     {
       "path": "demos/cases/lemo-blueprint/fonts/OFL-b612.txt",
-      "bytes": 4470,
+      "bytes": 4377,
       "role": "license"
     },
     {
       "path": "demos/cases/lemo-blueprint/fonts/OFL-b612mono.txt",
-      "bytes": 4470,
+      "bytes": 4377,
       "role": "license"
     },
     {
