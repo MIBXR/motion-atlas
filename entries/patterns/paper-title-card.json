@@ -42,6 +42,10 @@
     {
       "name": "数字",
       "value": "offset=(10+target)*t*lineH；lineH=fontSize*1.15；bezier(0.25,0.8,0.25,1)。"
+    },
+    {
+      "name": "lemo-silent-film",
+      "value": "film/cardspecs.js:CARDS和film/film.js:renderFilm；TITLE/CARD1/CARD2/CARD3/END整段插入intertitle，文案位于engine/cards.js的装饰边框中。"
     }
   ],
   "sourceFiles": [
@@ -71,6 +75,9 @@
   "sources": [
     {
       "caseId": "ink-press"
+    },
+    {
+      "caseId": "lemo-silent-film"
     }
   ],
   "previewAt": 1.4666666666666666,

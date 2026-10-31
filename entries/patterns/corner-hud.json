@@ -55,6 +55,9 @@
   "sources": [
     {
       "caseId": "map-pilgrimage"
+    },
+    {
+      "caseId": "lemo-backrooms"
     }
   ],
   "previewAt": 7.2,
@@ -140,6 +143,12 @@
     {
       "field": "mechanism/score.json",
       "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-backrooms",
+      "value": "film/osd.js:drawOSD；REC左上、电量右上、日期/时钟右下，5×7位图白字黑边；story.js:clock/battery在36.35秒同时跳变。"
     }
   ]
 }

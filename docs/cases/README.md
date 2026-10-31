@@ -59,3 +59,9 @@
 | [五秒宇航员 · 微游戏快闪](../../cases.html#case/lemo-microgame) | [条目](../../entries/cases/lemo-microgame.json) |
 | [用零件造火箭 · 积木玩具](../../cases.html#case/lemo-brick-toy) | [条目](../../entries/cases/lemo-brick-toy.json) |
 | [玩具城早高峰 · 移轴微缩](../../cases.html#case/lemo-tilt-shift) | [条目](../../entries/cases/lemo-tilt-shift.json) |
+| [叮之前 · 桌面穿梭](../../cases.html#case/lemo-desktop-flythrough) | [条目](../../entries/cases/lemo-desktop-flythrough.json) |
+| [长出来的小岛 · 低多边形等距](../../cases.html#case/lemo-lowpoly-island) | [条目](../../entries/cases/lemo-lowpoly-island.json) |
+| [夜班入职指引 · 后室 / 新怪谈](../../cases.html#case/lemo-backrooms) | [条目](../../entries/cases/lemo-backrooms.json) |
+| [逃跑的面包 · 1920s 默片](../../cases.html#case/lemo-silent-film) | [条目](../../entries/cases/lemo-silent-film.json) |
+| [地图上还写着海 · 卫星简报](../../cases.html#case/lemo-satellite-briefing) | [条目](../../entries/cases/lemo-satellite-briefing.json) |
+| [船说了算 · 工程简报板](../../cases.html#case/lemo-briefing-board) | [条目](../../entries/cases/lemo-briefing-board.json) |

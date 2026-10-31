@@ -211,6 +211,36 @@
           "kind": "case",
           "id": "lemo-tilt-shift",
           "note": "玩具城早高峰 · 移轴微缩；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-desktop-flythrough",
+          "note": "叮之前 · 桌面穿梭；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-lowpoly-island",
+          "note": "长出来的小岛 · 低多边形等距；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-backrooms",
+          "note": "夜班入职指引 · 后室 / 新怪谈；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-silent-film",
+          "note": "逃跑的面包 · 1920s 默片；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-satellite-briefing",
+          "note": "地图上还写着海 · 卫星简报；原作代码、原片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-briefing-board",
+          "note": "船说了算 · 工程简报板；原作代码、原片音轨与制作文件。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

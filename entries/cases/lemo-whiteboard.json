@@ -272,7 +272,8 @@
   "patternIds": [
     "stroke-order-equation-sync",
     "eraser-rewind",
-    "pen-led-camera"
+    "pen-led-camera",
+    "magnet-pieces-on-board"
   ],
   "fidelity": "demos/cases/lemo-whiteboard/fidelity.md",
   "upstream": {

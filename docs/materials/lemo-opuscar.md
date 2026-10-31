@@ -53,8 +53,8 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 实证影像 · Evidence Films
 
-- 卫星简报 · Satellite Briefing
-- 工程简报板 · Engineering Briefing Board
+- [卫星简报 · Satellite Briefing](../../cases.html#case/lemo-satellite-briefing) · 已复刻
+- [工程简报板 · Engineering Briefing Board](../../cases.html#case/lemo-briefing-board) · 已复刻
 - 点云测绘 · LiDAR Survey（[本库案例](../../cases.html#case/lemo-lidar-survey)）
 - 白模投影 · Projection on White Model
 - 数据实物化 · Data Physicalization
@@ -126,18 +126,18 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 电影与时代 · Cinema & Eras
 
-- 1920s 默片 · 1920s Silent Film
-- 后室 / 新怪谈 · Liminal Found Footage
+- [1920s 默片 · 1920s Silent Film](../../cases.html#case/lemo-silent-film) · 已复刻
+- [后室 / 新怪谈 · Liminal Found Footage](../../cases.html#case/lemo-backrooms) · 已复刻
 
 ### 材质与 3D · Materials & 3D
 
 - [积木玩具 · Brick Toy](../../cases.html#case/lemo-brick-toy) · 已复刻
 - 纸片立体书 · Paper Pop-up Book（已复刻，[本库案例](../../cases.html#case/lemo-paper-popup)）
 - [移轴微缩 · Tilt-Shift Miniature](../../cases.html#case/lemo-tilt-shift) · 已复刻
-- 低多边形等距 · Low-poly Isometric Island
+- [低多边形等距 · Low-poly Isometric Island](../../cases.html#case/lemo-lowpoly-island) · 已复刻
 - 玻璃质感产品 · Glass Product Render
 - 孟菲斯微缩景观 · Memphis Diorama（[本库案例](../../cases.html#case/lemo-memphis-diorama)）
-- 桌面穿梭 · Desktop Flythrough
+- [桌面穿梭 · Desktop Flythrough](../../cases.html#case/lemo-desktop-flythrough) · 已复刻
 
 ## 改成我的风格
 
@@ -151,7 +151,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-三十八个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+四十四个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -205,3 +205,15 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [玩具城早高峰 · 移轴微缩](../../cases.html#case/lemo-tilt-shift)：制作文件见[source/README.md](../../demos/cases/lemo-tilt-shift/source/README.md)。
 
 三十八个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+
+- [叮之前 · 桌面穿梭](../../cases.html#case/lemo-desktop-flythrough)：制作文件见 [source/README.md](../../demos/cases/lemo-desktop-flythrough/source/README.md)。
+
+- [长出来的小岛 · 低多边形等距](../../cases.html#case/lemo-lowpoly-island)：制作文件见 [source/README.md](../../demos/cases/lemo-lowpoly-island/source/README.md)。
+
+- [夜班入职指引 · 后室 / 新怪谈](../../cases.html#case/lemo-backrooms)：制作文件见 [source/README.md](../../demos/cases/lemo-backrooms/source/README.md)。
+
+- [逃跑的面包 · 1920s 默片](../../cases.html#case/lemo-silent-film)：制作文件见 [source/README.md](../../demos/cases/lemo-silent-film/source/README.md)。
+
+- [地图上还写着海 · 卫星简报](../../cases.html#case/lemo-satellite-briefing)：制作文件见 [source/README.md](../../demos/cases/lemo-satellite-briefing/source/README.md)。
+
+- [船说了算 · 工程简报板](../../cases.html#case/lemo-briefing-board)：制作文件见 [source/README.md](../../demos/cases/lemo-briefing-board/source/README.md)。

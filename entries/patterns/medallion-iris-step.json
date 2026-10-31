@@ -29,6 +29,10 @@
     {
       "name": "片尾",
       "value": "film/film.js:sceneEnd，半径2300→70px、圆心[1680,880]，随后居中圆卡展开。"
+    },
+    {
+      "name": "lemo-silent-film",
+      "value": "film/film.js:irisAt：开场圆心(575,560)、r6→1906；片尾按girlFace定位，r1900→190，停1.3拍让女孩眨眼，随后.6拍闭合。"
     }
   ],
   "sourceFiles": [
@@ -56,6 +60,9 @@
   "sources": [
     {
       "caseId": "lemo-midcentury-toon"
+    },
+    {
+      "caseId": "lemo-silent-film"
     }
   ],
   "previewAt": 0.5,

@@ -1,0 +1,77 @@
+{
+  "id": "projection-speed-mood",
+  "order": 155,
+  "title": "放映速度表情绪",
+  "types": [
+    "rhythm",
+    "texture"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。",
+  "mechanism": "追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。",
+  "trigger": "来源时间线进入放映速度表情绪段。",
+  "effect": "追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-silent-film：14.375000–45.882576秒，1倍速，总时长31.507576秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "动作取样",
+      "value": "film/film.js:LOOK/renderFilm，CHASE/MARKET fps=18，其余16；ta=floor(t×look.fps)/look.fps，胶片frame=floor(t×24)。"
+    },
+    {
+      "name": "情绪质感",
+      "value": "film/film.js:LOOK：CHASE crank=1.35/str=.85/sepia=.1，MARKET crank=1.3，TENDER str=.32/sepia=.34；film/engine/film.js消费crank。"
+    }
+  ],
+  "sourceFiles": [
+    "demos\\cases\\lemo-silent-film\\film\\film.js",
+    "demos\\cases\\lemo-silent-film\\film\\timeline.js",
+    "demos\\cases\\lemo-silent-film\\film\\shots.js",
+    "demos\\cases\\lemo-silent-film\\film\\cardspecs.js"
+  ],
+  "locator": "film/film.js / film/timeline.js / film/shots.js / film/cardspecs.js",
+  "useCases": [
+    "无声喜剧",
+    "复古品牌影片",
+    "动作叙事"
+  ],
+  "avoid": [
+    "在关键动作和证据上叠加争夺注意的运动"
+  ],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "画面和声音使用同一来源时间映射。"
+  },
+  "prompt": "用来源案例的原作render(t)实现“放映速度表情绪”。追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。参数：film/film.js:LOOK/renderFilm，CHASE/MARKET fps=18，其余16；ta=floor(t×look.fps)/look.fps，胶片frame=floor(t×24)。；film/film.js:LOOK：CHASE crank=1.35/str=.85/sepia=.1，MARKET crank=1.3，TENDER str=.32/sepia=.34；film/engine/film.js消费crank。。复用来源字体、素材和同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/projection-speed-mood/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-silent-film"
+    }
+  ],
+  "previewAt": 3,
+  "markers": [
+    {
+      "t": 0,
+      "label": "放映速度表情绪"
+    }
+  ],
+  "renderer": "gpu"
+}

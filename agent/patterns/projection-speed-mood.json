@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "projection-speed-mood",
+  "pattern": {
+    "id": "projection-speed-mood",
+    "order": 155,
+    "title": "放映速度表情绪",
+    "types": [
+      "rhythm",
+      "texture"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。",
+    "mechanism": "追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。",
+    "trigger": "来源时间线进入放映速度表情绪段。",
+    "effect": "追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "lemo-silent-film：14.375000–45.882576秒，1倍速，总时长31.507576秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "动作取样",
+        "value": "film/film.js:LOOK/renderFilm，CHASE/MARKET fps=18，其余16；ta=floor(t×look.fps)/look.fps，胶片frame=floor(t×24)。"
+      },
+      {
+        "name": "情绪质感",
+        "value": "film/film.js:LOOK：CHASE crank=1.35/str=.85/sepia=.1，MARKET crank=1.3，TENDER str=.32/sepia=.34；film/engine/film.js消费crank。"
+      }
+    ],
+    "sourceFiles": [
+      "demos\\cases\\lemo-silent-film\\film\\film.js",
+      "demos\\cases\\lemo-silent-film\\film\\timeline.js",
+      "demos\\cases\\lemo-silent-film\\film\\shots.js",
+      "demos\\cases\\lemo-silent-film\\film\\cardspecs.js"
+    ],
+    "locator": "film/film.js / film/timeline.js / film/shots.js / film/cardspecs.js",
+    "useCases": [
+      "无声喜剧",
+      "复古品牌影片",
+      "动作叙事"
+    ],
+    "avoid": [
+      "在关键动作和证据上叠加争夺注意的运动"
+    ],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "画面和声音使用同一来源时间映射。"
+    },
+    "prompt": "用来源案例的原作render(t)实现“放映速度表情绪”。追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。参数：film/film.js:LOOK/renderFilm，CHASE/MARKET fps=18，其余16；ta=floor(t×look.fps)/look.fps，胶片frame=floor(t×24)。；film/film.js:LOOK：CHASE crank=1.35/str=.85/sepia=.1，MARKET crank=1.3，TENDER str=.32/sepia=.34；film/engine/film.js消费crank。。复用来源字体、素材和同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/projection-speed-mood/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-silent-film"
+      }
+    ],
+    "previewAt": 3,
+    "markers": [
+      {
+        "t": 0,
+        "label": "放映速度表情绪"
+      }
+    ],
+    "renderer": "gpu",
+    "preview": "previews/patterns/projection-speed-mood.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-silent-film",
+      "bundle": "agent/cases/lemo-silent-film.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 放映速度表情绪\n\n## 实现 Prompt\n\n用来源案例的原作render(t)实现“放映速度表情绪”。追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。参数：film/film.js:LOOK/renderFilm，CHASE/MARKET fps=18，其余16；ta=floor(t×look.fps)/look.fps，胶片frame=floor(t×24)。；film/film.js:LOOK：CHASE crank=1.35/str=.85/sepia=.1，MARKET crank=1.3，TENDER str=.32/sepia=.34；film/engine/film.js消费crank。。复用来源字体、素材和同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：lemo-silent-film：14.375000–45.882576秒，1倍速，总时长31.507576秒。\n\n[打开 Demo](../../demos/patterns/projection-speed-mood/index.html) · [在库中查看](../../patterns.html#pattern/projection-speed-mood)\n"
+  },
+  "entrypoint": "demos/patterns/projection-speed-mood/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-silent-film/LICENSES.md",
+      "bytes": 627,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/CREDITS",
+      "bytes": 1125,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/film.m4a",
+      "bytes": 1758749,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fidelity.md",
+      "bytes": 4182,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/cardspecs.js",
+      "bytes": 1394,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/chars.js",
+      "bytes": 18285,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/cards.js",
+      "bytes": 7094,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/figure.js",
+      "bytes": 28392,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/film.js",
+      "bytes": 11918,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/heads.js",
+      "bytes": 22075,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/ink.js",
+      "bytes": 16432,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/redraw.js",
+      "bytes": 9339,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/film.js",
+      "bytes": 6584,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/index.html",
+      "bytes": 376,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/main.js",
+      "bytes": 853,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/poses.js",
+      "bytes": 5140,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/sets.js",
+      "bytes": 13784,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/shots.js",
+      "bytes": 31133,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/stage.js",
+      "bytes": 2029,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/timeline.js",
+      "bytes": 3191,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OFL.txt",
+      "bytes": 4373,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OFL_playfair.txt",
+      "bytes": 4449,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OldStandard-Bold.ttf",
+      "bytes": 267128,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OldStandard-Italic.ttf",
+      "bytes": 272692,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OldStandard-Regular.ttf",
+      "bytes": 249668,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplay-Italic[wght].ttf",
+      "bytes": 278688,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplaySC-Black.ttf",
+      "bytes": 202412,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplaySC-Bold.ttf",
+      "bytes": 204568,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplay[wght].ttf",
+      "bytes": 300724,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/fonts.css",
+      "bytes": 1156,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/index.html",
+      "bytes": 2365,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/CREDITS",
+      "bytes": 1125,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/README.md",
+      "bytes": 2759,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/build.sh",
+      "bytes": 2119,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/frames.js",
+      "bytes": 11998,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/mix.py",
+      "bytes": 3752,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/music/CREDITS_music.txt",
+      "bytes": 116,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/music/score.json",
+      "bytes": 551,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/music/score.py",
+      "bytes": 13149,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/scenes/market.js",
+      "bytes": 7822,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/sheets.js",
+      "bytes": 4956,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/timeline.json",
+      "bytes": 3549,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/tools/cuecheck.py",
+      "bytes": 678,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/tools/dump_timeline.mjs",
+      "bytes": 455,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/tools/subs.py",
+      "bytes": 714,
+      "role": "process"
+    },
+    {
+      "path": "demos/patterns/projection-speed-mood/index.html",
+      "bytes": 833,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/projection-speed-mood/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos\\cases\\lemo-silent-film\\film\\cardspecs.js",
+      "bytes": 1394,
+      "role": "source"
+    },
+    {
+      "path": "demos\\cases\\lemo-silent-film\\film\\film.js",
+      "bytes": 6584,
+      "role": "source"
+    },
+    {
+      "path": "demos\\cases\\lemo-silent-film\\film\\shots.js",
+      "bytes": 31133,
+      "role": "source"
+    },
+    {
+      "path": "demos\\cases\\lemo-silent-film\\film\\timeline.js",
+      "bytes": 3191,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-silent-film.json",
+      "bytes": 9915,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/projection-speed-mood.json",
+      "bytes": 3226,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/projection-speed-mood.jpg",
+      "bytes": 177442,
+      "role": "preview"
+    }
+  ]
+}

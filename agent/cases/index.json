@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 57,
+  "count": 63,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -1066,7 +1066,8 @@
       "patternIds": [
         "stroke-order-equation-sync",
         "eraser-rewind",
-        "pen-led-camera"
+        "pen-led-camera",
+        "magnet-pieces-on-board"
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-whiteboard.json"
@@ -1712,6 +1713,174 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-tilt-shift.json"
+    },
+    {
+      "id": "lemo-desktop-flythrough",
+      "title": "叮之前 · 桌面穿梭",
+      "summary": "一张猫照片从自己的手机出发，经压缩卡片、服务器和通知铃铛抵达朋友手机；镜头跟着照片飞越桌面，片尾拉远显出整场接力。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "桌面穿梭",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "应用原理解说",
+        "产品工作流短片",
+        "数据传递科普"
+      ],
+      "avoid": [
+        "需要脱离来源时间线实时操控全部场景的应用"
+      ],
+      "patternIds": [
+        "object-flythrough-apps"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-desktop-flythrough.json"
+    },
+    {
+      "id": "lemo-lowpoly-island",
+      "title": "长出来的小岛 · 低多边形等距",
+      "summary": "空海中逐格长出岛屿、树木和村庄，每次生长都奏出一个音符；天黑后灯塔扫过房屋重奏旋律，为出海的小船指路。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "低多边形等距",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "游戏世界预告",
+        "场景生成短片",
+        "安静的微缩叙事"
+      ],
+      "avoid": [
+        "需要脱离来源时间线实时操控全部场景的应用"
+      ],
+      "patternIds": [
+        "tile-by-tile-island-growth",
+        "day-night-flip"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-lowpoly-island.json"
+    },
+    {
+      "id": "lemo-backrooms",
+      "title": "夜班入职指引 · 后室 / 新怪谈",
+      "summary": "一名新夜班员工用摄像机记录入职路线；重复的告示、自动对焦的失灵和磁带断裂逐步让守则失去可信度，时钟与电量留下跳时的证据。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "后室 / 新怪谈",
+        "电影与时代",
+        "代码影片"
+      ],
+      "useCases": [
+        "新怪谈短片",
+        "悬疑预告",
+        "游戏氛围片"
+      ],
+      "avoid": [
+        "需要脱离来源时间线实时操控全部场景的应用"
+      ],
+      "patternIds": [
+        "autofocus-hunting-reveal",
+        "tracking-tear-cut",
+        "corner-hud"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-backrooms.json"
+    },
+    {
+      "id": "lemo-silent-film",
+      "title": "逃跑的面包 · 1920s 默片",
+      "summary": "面包店学徒追着滚下坡的面包，连锁事故把瓜弹到警察头上；面包最终停在饥饿女孩脚边，学徒将它掰成两半，光圈收在女孩的眨眼上。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "1920s 默片",
+        "电影与时代",
+        "代码影片"
+      ],
+      "useCases": [
+        "无声喜剧",
+        "复古品牌影片",
+        "动作叙事"
+      ],
+      "avoid": [
+        "需要脱离来源时间线实时操控全部场景的应用"
+      ],
+      "patternIds": [
+        "projection-speed-mood",
+        "medallion-iris-step",
+        "paper-title-card"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-silent-film.json"
+    },
+    {
+      "id": "lemo-satellite-briefing",
+      "title": "地图上还写着海 · 卫星简报",
+      "summary": "卫星按地图俯冲到咸海，却看到沙漠；同一地理画面逐年留出海岸线，量出旧港口到海边的距离，再转向科卡拉尔大坝，显出北咸海的回水。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "卫星简报",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "环境实证影像",
+        "地理短片",
+        "新闻解说"
+      ],
+      "avoid": [
+        "需要脱离来源时间线实时操控全部场景的应用"
+      ],
+      "patternIds": [
+        "time-rings-locked-frame"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-satellite-briefing.json"
+    },
+    {
+      "id": "lemo-briefing-board",
+      "title": "船说了算 · 工程简报板",
+      "summary": "一条千米河道要架桥，船撞上桥墩后确立航道不立墩的条件；简报墙逐个比较梁桥、拱桥、斜拉桥和悬索桥，船从最终方案下通过后拉远整墙结论。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "工程简报板",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "工程方案比较",
+        "实物简报",
+        "条件驱动的科普"
+      ],
+      "avoid": [
+        "需要脱离来源时间线实时操控全部场景的应用"
+      ],
+      "patternIds": [
+        "plan-elevation-projection",
+        "magnet-pieces-on-board"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-briefing-board.json"
     }
   ]
 }

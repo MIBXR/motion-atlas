@@ -46,6 +46,10 @@
       {
         "name": "数字",
         "value": "offset=(10+target)*t*lineH；lineH=fontSize*1.15；bezier(0.25,0.8,0.25,1)。"
+      },
+      {
+        "name": "lemo-silent-film",
+        "value": "film/cardspecs.js:CARDS和film/film.js:renderFilm；TITLE/CARD1/CARD2/CARD3/END整段插入intertitle，文案位于engine/cards.js的装饰边框中。"
       }
     ],
     "sourceFiles": [
@@ -75,6 +79,9 @@
     "sources": [
       {
         "caseId": "ink-press"
+      },
+      {
+        "caseId": "lemo-silent-film"
       }
     ],
     "previewAt": 1.4666666666666666,
@@ -119,6 +126,10 @@
     {
       "caseId": "ink-press",
       "bundle": "agent/cases/ink-press.json"
+    },
+    {
+      "caseId": "lemo-silent-film",
+      "bundle": "agent/cases/lemo-silent-film.json"
     }
   ],
   "documents": {
@@ -522,6 +533,251 @@
       "role": "license"
     },
     {
+      "path": "demos/cases/lemo-silent-film/LICENSES.md",
+      "bytes": 627,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/CREDITS",
+      "bytes": 1125,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/audio/film.m4a",
+      "bytes": 1758749,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fidelity.md",
+      "bytes": 4182,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/cardspecs.js",
+      "bytes": 1394,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/chars.js",
+      "bytes": 18285,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/cards.js",
+      "bytes": 7094,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/figure.js",
+      "bytes": 28392,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/film.js",
+      "bytes": 11918,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/heads.js",
+      "bytes": 22075,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/ink.js",
+      "bytes": 16432,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/engine/redraw.js",
+      "bytes": 9339,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/film.js",
+      "bytes": 6584,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/index.html",
+      "bytes": 376,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/main.js",
+      "bytes": 853,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/poses.js",
+      "bytes": 5140,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/sets.js",
+      "bytes": 13784,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/shots.js",
+      "bytes": 31133,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/stage.js",
+      "bytes": 2029,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/film/timeline.js",
+      "bytes": 3191,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OFL.txt",
+      "bytes": 4373,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OFL_playfair.txt",
+      "bytes": 4449,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OldStandard-Bold.ttf",
+      "bytes": 267128,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OldStandard-Italic.ttf",
+      "bytes": 272692,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/OldStandard-Regular.ttf",
+      "bytes": 249668,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplay-Italic[wght].ttf",
+      "bytes": 278688,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplaySC-Black.ttf",
+      "bytes": 202412,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplaySC-Bold.ttf",
+      "bytes": 204568,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/PlayfairDisplay[wght].ttf",
+      "bytes": 300724,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/fonts/fonts.css",
+      "bytes": 1156,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/index.html",
+      "bytes": 2365,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/CREDITS",
+      "bytes": 1125,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/README.md",
+      "bytes": 2759,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/build.sh",
+      "bytes": 2119,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/frames.js",
+      "bytes": 11998,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/mix.py",
+      "bytes": 3752,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/music/CREDITS_music.txt",
+      "bytes": 116,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/music/score.json",
+      "bytes": 551,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/music/score.py",
+      "bytes": 13149,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/scenes/market.js",
+      "bytes": 7822,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/sheets.js",
+      "bytes": 4956,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/timeline.json",
+      "bytes": 3549,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/tools/cuecheck.py",
+      "bytes": 678,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/tools/dump_timeline.mjs",
+      "bytes": 455,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-silent-film/source/tools/subs.py",
+      "bytes": 714,
+      "role": "process"
+    },
+    {
       "path": "demos/patterns/paper-title-card/index.html",
       "bytes": 1368,
       "role": "source"
@@ -537,8 +793,13 @@
       "role": "entry"
     },
     {
+      "path": "entries/cases/lemo-silent-film.json",
+      "bytes": 9915,
+      "role": "entry"
+    },
+    {
       "path": "entries/patterns/paper-title-card.json",
-      "bytes": 3486,
+      "bytes": 3751,
       "role": "entry"
     },
     {

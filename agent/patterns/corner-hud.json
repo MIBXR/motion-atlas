@@ -59,6 +59,9 @@
     "sources": [
       {
         "caseId": "map-pilgrimage"
+      },
+      {
+        "caseId": "lemo-backrooms"
       }
     ],
     "previewAt": 7.2,
@@ -146,6 +149,12 @@
         "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
+    "parameters": [
+      {
+        "name": "lemo-backrooms",
+        "value": "film/osd.js:drawOSD；REC左上、电量右上、日期/时钟右下，5×7位图白字黑边；story.js:clock/battery在36.35秒同时跳变。"
+      }
+    ],
     "preview": "previews/patterns/corner-hud.jpg",
     "previewPortrait": "previews/patterns/corner-hud-portrait.jpg"
   },
@@ -153,6 +162,10 @@
     {
       "caseId": "map-pilgrimage",
       "bundle": "agent/cases/map-pilgrimage.json"
+    },
+    {
+      "caseId": "lemo-backrooms",
+      "bundle": "agent/cases/lemo-backrooms.json"
     }
   ],
   "documents": {
@@ -160,6 +173,306 @@
   },
   "entrypoint": "demos/patterns/corner-hud/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-backrooms/LICENSES.md",
+      "bytes": 952,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/audio/CREDITS",
+      "bytes": 802,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/audio/film.m4a",
+      "bytes": 1907236,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fidelity.md",
+      "bytes": 5589,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/core/three/post.js",
+      "bytes": 6482,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/figures.js",
+      "bytes": 5200,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/index.html",
+      "bytes": 726,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/main.js",
+      "bytes": 11732,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/osd.js",
+      "bytes": 5046,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/story.js",
+      "bytes": 5998,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/subs.js",
+      "bytes": 3423,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/tex.js",
+      "bytes": 10774,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/thing2d.js",
+      "bytes": 4966,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/vhs.js",
+      "bytes": 6601,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/voices/dur.json",
+      "bytes": 142,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/voices/words.json",
+      "bytes": 1880,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/film/world.js",
+      "bytes": 24627,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/IBMPlexMono-500.woff2",
+      "bytes": 10060,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/IBMPlexMono-600.woff2",
+      "bytes": 10120,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/IBMPlexSans-400.woff2",
+      "bytes": 17604,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/IBMPlexSans-600.woff2",
+      "bytes": 19192,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/IBMPlexSans-700.woff2",
+      "bytes": 17816,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/IBMPlexSansCondensed-600.woff2",
+      "bytes": 14776,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/IBMPlexSansCondensed-700.woff2",
+      "bytes": 14004,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/OFL-ibmplexmono.txt",
+      "bytes": 4363,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/OFL-ibmplexsans.txt",
+      "bytes": 4363,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/OFL-ibmplexsanscondensed.txt",
+      "bytes": 4363,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/fonts/fonts.css",
+      "bytes": 759,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/index.html",
+      "bytes": 3314,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/CREDITS",
+      "bytes": 802,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/README.md",
+      "bytes": 2213,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/build.sh",
+      "bytes": 1778,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/events.json",
+      "bytes": 5492,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/lines.json",
+      "bytes": 1445,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/mix.py",
+      "bytes": 14348,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/music/muzak.py",
+      "bytes": 2489,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/sheet.js",
+      "bytes": 4572,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/tools/mux.sh",
+      "bytes": 1248,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/source/voices_fx/words.json",
+      "bytes": 1872,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+      "bytes": 16582,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+      "bytes": 12990,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-backrooms/vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+      "bytes": 6614,
+      "role": "vendor"
+    },
     {
       "path": "demos/cases/map-pilgrimage/LICENSES.md",
       "bytes": 1021,
@@ -256,13 +569,18 @@
       "role": "doc"
     },
     {
+      "path": "entries/cases/lemo-backrooms.json",
+      "bytes": 10203,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/map-pilgrimage.json",
       "bytes": 20793,
       "role": "entry"
     },
     {
       "path": "entries/patterns/corner-hud.json",
-      "bytes": 5850,
+      "bytes": 6125,
       "role": "entry"
     },
     {

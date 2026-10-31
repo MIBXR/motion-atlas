@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 150,
+  "count": 158,
   "patterns": [
     {
       "id": "corner-hud",
@@ -17,7 +17,8 @@
       ],
       "role": "foundation",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "lemo-backrooms"
       ],
       "pairsWellWith": [
         "route-draw-marker",
@@ -88,7 +89,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "map-pilgrimage"
+        "map-pilgrimage",
+        "lemo-lowpoly-island"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -1722,7 +1724,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "ink-press"
+        "ink-press",
+        "lemo-silent-film"
       ],
       "pairsWellWith": [
         "deck-deal-flyin",
@@ -2699,6 +2702,24 @@
       "bundle": "agent/patterns/nested-boards-pullout.json"
     },
     {
+      "id": "object-flythrough-apps",
+      "title": "一物飞越应用卡片",
+      "summary": "同一张照片在桌面应用卡片之间连续跳跃，相机以主体位置为目标跟随；经过压缩、云端存储、通知和取图后落入另一台手机。",
+      "types": [
+        "camera",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-desktop-flythrough"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/object-flythrough-apps.json"
+    },
+    {
       "id": "portal-universe-hop",
       "title": "传送门串平行宇宙",
       "summary": "角色冲入传送门，满屏旋涡遮住交接；下一宇宙换成独立的配色、怪物与道具规则，连续短世界沿用相同构图。",
@@ -2728,10 +2749,48 @@
       ],
       "role": "accent",
       "sourceCases": [
-        "lemo-midcentury-toon"
+        "lemo-midcentury-toon",
+        "lemo-silent-film"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/medallion-iris-step.json"
+    },
+    {
+      "id": "tile-by-tile-island-growth",
+      "title": "逐块长岛配音符",
+      "summary": "海中地块按节拍由水下升起并带水花，随后树和房屋按部件生长；每个落定事件携带音高导出给配乐，转台镜头在同一世界里展示建造。",
+      "types": [
+        "composition",
+        "rhythm",
+        "sound"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-lowpoly-island"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/tile-by-tile-island-growth.json"
+    },
+    {
+      "id": "autofocus-hunting-reveal",
+      "title": "对焦游移显隐",
+      "summary": "镜头推向远处并反复拉动对焦距离；身影只在第一次正确对焦的短暂窗口可见，失焦后消失，第二次清晰锁定留下空走廊。",
+      "types": [
+        "camera",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-backrooms"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/autofocus-hunting-reveal.json"
     },
     {
       "id": "carried-light-meter",
@@ -2769,6 +2828,24 @@
       "bundle": "agent/patterns/speed-up-ladder.json"
     },
     {
+      "id": "tracking-tear-cut",
+      "title": "磁迹撕裂即剪辑",
+      "summary": "跟踪撕裂遮住时间切口，恢复后保留相同走廊构图；OSD时钟跳过三小时，电量从三格降到一格，灯光变化共同证明时间被切走。",
+      "types": [
+        "transition",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-backrooms"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/tracking-tear-cut.json"
+    },
+    {
       "id": "command-word-beat",
       "title": "一词口令即一场",
       "summary": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
@@ -2787,6 +2864,24 @@
       "bundle": "agent/patterns/command-word-beat.json"
     },
     {
+      "id": "projection-speed-mood",
+      "title": "放映速度表情绪",
+      "summary": "追逐与连锁喜剧按18fps取动作并提高放映闪烁速度、损伤强度；温情段回到16fps抽样和较干净、偏暖的胶片，让速度感与老化共同表达情绪。",
+      "types": [
+        "rhythm",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-silent-film"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/projection-speed-mood.json"
+    },
+    {
       "id": "snap-build-collapse-rebuild",
       "title": "拼搭、崩塌、用零件重建",
       "summary": "积木逐块按拍点咔嗒落位，塔体失稳后每块都有落地位置；第二次组装复用这些散落部件，从废墟飞回组成更稳的火箭。",
@@ -2803,6 +2898,42 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/snap-build-collapse-rebuild.json"
+    },
+    {
+      "id": "time-rings-locked-frame",
+      "title": "锁定画面里的时间环",
+      "summary": "同一地理画面中各年卫星图沿扫描条切换，旧岸线留在原地形成逐年嵌套的时间环；年份加速落定后停在今天的岸线。",
+      "types": [
+        "composition",
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-satellite-briefing"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/time-rings-locked-frame.json"
+    },
+    {
+      "id": "plan-elevation-projection",
+      "title": "平面图与立面图投影对位",
+      "summary": "上方平面河道的两岸沿蓝色虚线投影到下方桥梁立面，各种桥型用同一跨距作判断；同一条船先在平面受阻，再在立面穿过答案。",
+      "types": [
+        "composition",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-briefing-board"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/plan-elevation-projection.json"
     },
     {
       "id": "timelapse-drop-to-realtime",
@@ -2838,6 +2969,24 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/counter-rotate-pullback.json"
+    },
+    {
+      "id": "magnet-pieces-on-board",
+      "title": "磁贴在板上移动",
+      "summary": "有厚度和贴板阴影的磁贴作为可计数的故事物件：磁铁代表桥墩，受撞后被逐个拔除；白板地图中的磁铁沿道路漂移并倒带归位。",
+      "types": [
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-briefing-board",
+        "lemo-whiteboard"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/magnet-pieces-on-board.json"
     },
     {
       "id": "tilt-shift-focus-band",

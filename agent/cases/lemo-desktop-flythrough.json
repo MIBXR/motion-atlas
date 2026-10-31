@@ -1,0 +1,652 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "lemo-desktop-flythrough",
+  "entry": {
+    "id": "lemo-desktop-flythrough",
+    "order": 58,
+    "title": "叮之前 · 桌面穿梭",
+    "subtitle": "Before the Ding",
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "lemo-opuscar",
+      "桌面穿梭",
+      "材质与 3D",
+      "代码影片"
+    ],
+    "summary": "一张猫照片从自己的手机出发，经压缩卡片、服务器和通知铃铛抵达朋友手机；镜头跟着照片飞越桌面，片尾拉远显出整场接力。",
+    "focus": "照片既是贯穿全片的主角，也是解释数据流转的实体；镜头与焦点始终跟随同一物件，桌上四站构成可见的工作流。",
+    "accent": "#2f5bff",
+    "background": "#e6e3e0",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 56.85,
+    "rhythm": {
+      "duration": 59.96666666666667,
+      "beats": [
+        {
+          "t": 0,
+          "label": "发送与叮声",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 4.6,
+          "label": "回放与路线",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 7.6,
+          "label": "飞往压缩卡",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 10.6,
+          "label": "压小照片",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 17.2,
+          "label": "飞往服务器",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 20.3,
+          "label": "云端等待",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 26,
+          "label": "通知飞行",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 32.1,
+          "label": "手机响铃",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 34.6,
+          "label": "取回照片",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 39.6,
+          "label": "从糊到清",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 44.8,
+          "label": "接力全景",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 48.4,
+          "label": "朋友的副本",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 52.6,
+          "label": "自己的原图",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        },
+        {
+          "t": 55.4,
+          "label": "桌面谢幕",
+          "note": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+        }
+      ],
+      "bpm": 120
+    },
+    "energySegments": [
+      {
+        "t0": 0,
+        "t1": 4.6,
+        "from": 0.2,
+        "to": 0.65,
+        "label": "发送与叮声"
+      },
+      {
+        "t0": 4.6,
+        "t1": 7.6,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "回放与路线"
+      },
+      {
+        "t0": 7.6,
+        "t1": 10.6,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "飞往压缩卡"
+      },
+      {
+        "t0": 10.6,
+        "t1": 17.2,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "压小照片"
+      },
+      {
+        "t0": 17.2,
+        "t1": 20.3,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "飞往服务器"
+      },
+      {
+        "t0": 20.3,
+        "t1": 26,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "云端等待"
+      },
+      {
+        "t0": 26,
+        "t1": 32.1,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "通知飞行"
+      },
+      {
+        "t0": 32.1,
+        "t1": 34.6,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "手机响铃"
+      },
+      {
+        "t0": 34.6,
+        "t1": 39.6,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "取回照片"
+      },
+      {
+        "t0": 39.6,
+        "t1": 44.8,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "从糊到清"
+      },
+      {
+        "t0": 44.8,
+        "t1": 48.4,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "接力全景"
+      },
+      {
+        "t0": 48.4,
+        "t1": 52.6,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "朋友的副本"
+      },
+      {
+        "t0": 52.6,
+        "t1": 55.4,
+        "from": 0.5,
+        "to": 0.65,
+        "label": "自己的原图"
+      },
+      {
+        "t0": 55.4,
+        "t1": 59.96666666666667,
+        "from": 0.5,
+        "to": 0.15,
+        "label": "桌面谢幕"
+      }
+    ],
+    "energyNote": "段落取DEMO.md Shots与原作时间表；0–1数值为画面运动、事件和声音密度的相对编辑标注。",
+    "observations": [
+      "16×16 原图被压为8×8副本，4.2 MB与300 KB对应两种体素尺寸。",
+      "通知先抵达手机，手机随后回到服务器取图；镜头把这两个步骤分别呈现。",
+      "片尾四个站点依次跳起，两只猫鞠躬，标题卡落在桌面中央。"
+    ],
+    "composition": {
+      "color": "#e2e8f5、#171c2e、#2f5bff、#c4cde3、#e6e3e0",
+      "typography": "Instrument Sans 400–700、IBM Plex Mono 500/600、Noto Sans SC 可变字重子集；英文与中文双行字幕。",
+      "layout": "1920×1080横屏，保留原作构图、字幕、片头与片尾。",
+      "imagery": "Three.js 体素猫、手机界面、应用卡片、纸垫、木桌和服务器均由原作代码绘制。",
+      "motion": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。",
+      "sound": "原片中文 Microsoft edge-tts 晓晓旁白，120 BPM D大调马林巴、拨弦、钟琴与按事件合成的拟音。",
+      "rhythm": "发送与叮声；回放与路线；飞往压缩卡；压小照片；飞往服务器；云端等待；通知飞行；手机响铃；取回照片；从糊到清；接力全景；朋友的副本；自己的原图；桌面谢幕",
+      "coherence": "照片既是贯穿全片的主角，也是解释数据流转的实体；镜头与焦点始终跟随同一物件，桌上四站构成可见的工作流。"
+    },
+    "layers": [
+      {
+        "name": "原作场景",
+        "role": "Three.js 体素猫、手机界面、应用卡片、纸垫、木桌和服务器均由原作代码绘制。"
+      },
+      {
+        "name": "镜头与质感",
+        "role": "相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。"
+      },
+      {
+        "name": "字幕、标记与声音",
+        "role": "原片中文 Microsoft edge-tts 晓晓旁白，120 BPM D大调马林巴、拨弦、钟琴与按事件合成的拟音。"
+      }
+    ],
+    "tokens": {
+      "palette": [
+        "#e2e8f5",
+        "#171c2e",
+        "#2f5bff",
+        "#c4cde3",
+        "#e6e3e0"
+      ],
+      "type": "Instrument Sans 400–700、IBM Plex Mono 500/600、Noto Sans SC 可变字重子集；英文与中文双行字幕。",
+      "motion": [
+        {
+          "name": "主体与场景",
+          "value": "film/src/film.js:build；照片、压缩卡、服务器、铃铛和两台手机共用桌面坐标。"
+        },
+        {
+          "name": "镜头与快门",
+          "value": "film/src/main.js:FPS=30、SHUTTER=.3、accum.N=20；shutterAt 将高速拖影控制在约8px；film/src/camera.js:makeRig 读取 shots.js 的 KEYS。"
+        }
+      ]
+    },
+    "useCases": [
+      "应用原理解说",
+      "产品工作流短片",
+      "数据传递科普"
+    ],
+    "avoid": [
+      "需要脱离来源时间线实时操控全部场景的应用"
+    ],
+    "constraints": [
+      "画面由上游render(t)直接绘制，按原作帧率定位。",
+      "修改字幕或场景文案后按source中的字体流程重建相同字重和字符子集。",
+      "声音使用原片混音，修改事件时同步更新声音制作文件。"
+    ],
+    "migration": [
+      {
+        "field": "film/src/film.js",
+        "how": "按原作数据与函数修改故事内容、画面和物件。"
+      },
+      {
+        "field": "film/src/shots.js",
+        "how": "按原作数据与函数修改时间表、镜头和节拍。"
+      }
+    ],
+    "prompt": "制作《叮之前 · 桌面穿梭》这样的代码影片：一张猫照片从自己的手机出发，经压缩卡片、服务器和通知铃铛抵达朋友手机；镜头跟着照片飞越桌面，片尾拉远显出整场接力。照片既是贯穿全片的主角，也是解释数据流转的实体；镜头与焦点始终跟随同一物件，桌上四站构成可见的工作流。Three.js 体素猫、手机界面、应用卡片、纸垫、木桌和服务器均由原作代码绘制。Instrument Sans 400–700、IBM Plex Mono 500/600、Noto Sans SC 可变字重子集；英文与中文双行字幕。相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。原片中文 Microsoft edge-tts 晓晓旁白，120 BPM D大调马林巴、拨弦、钟琴与按事件合成的拟音。实现使用demos\\cases\\lemo-desktop-flythrough\\film\\src\\film.js, demos\\cases\\lemo-desktop-flythrough\\film\\src\\shots.js, demos\\cases\\lemo-desktop-flythrough\\film\\src\\vo.js。",
+    "demo": "demos/cases/lemo-desktop-flythrough/index.html",
+    "patternIds": [
+      "object-flythrough-apps"
+    ],
+    "fidelity": "demos/cases/lemo-desktop-flythrough/fidelity.md",
+    "renderer": "gpu",
+    "upstream": {
+      "repository": "lemomo-ai/lemo-opuscar",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/desktop-flythrough",
+      "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+      "path": "styles/desktop-flythrough/",
+      "version": "0.1.0"
+    },
+    "license": {
+      "name": "MIT · CC BY 4.0",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+      "notes": "代码与文档MIT；原成片与静帧CC BY 4.0，署名LemoLab；第三方资源沿用CREDITS。"
+    },
+    "sources": [
+      {
+        "label": "固定风格与示范源码",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/desktop-flythrough"
+      },
+      {
+        "label": "Release公开成片",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/desktop-flythrough.mp4"
+      },
+      {
+        "label": "第三方资源与署名",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/desktop-flythrough/demo/CREDITS"
+      }
+    ],
+    "attribution": [
+      {
+        "scope": "作品",
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（lemomo-ai）；固定版本与许可见upstream/license，接入与对照见[fidelity.md](fidelity.md)。"
+      },
+      {
+        "scope": "声音与第三方资源",
+        "notes": "原片完整署名见[audio/CREDITS](audio/CREDITS)，逐项许可见[LICENSES.md](LICENSES.md)。"
+      },
+      {
+        "scope": "字体",
+        "notes": "家族与字重见tokens.type；fonts保存二进制与OFL原文，制作入口见[source/README.md](source/README.md)。"
+      }
+    ],
+    "licenses": "demos/cases/lemo-desktop-flythrough/LICENSES.md",
+    "preview": "previews/cases/lemo-desktop-flythrough.jpg",
+    "previewPortrait": null
+  },
+  "documents": {
+    "fidelity": "# 叮之前 · 桌面穿梭 · 接入与保真说明\n\n复刻范围为完整代码影片，来源与固定版本见[条目JSON](../../../entries/cases/lemo-desktop-flythrough.json)。\n\n## 相对原作的删改\n\n| 文件 | 删改内容 | 原因 |\n| --- | --- | --- |\n| `index.html` | 预载资源，同源iframe等待load与READY后按原fps调用render(t)。 | 接入MotionKit舞台、时间线与声音。 |\n| `film/index.html` | 字体URL指向本体fonts；Three.js以固定0.170.0本地import map加载。 | 本地目录接入。 |\n| `film/core/`、`film/index.html` | 共享运行代码原样复制，import map将/core路径映射到film/core。 | 保留原模块实现与本地路径。 |\n| `audio/film.m4a` | 从Release以-c:a copy流复制。 | 保留正式混音和时刻。 |\n| `index.html`的renderAt | 在隐藏区间先运行原作715／1300帧，再运行目标帧；保持原作同步调用。 | 接入原作读取历史位置的镜头。 |\n| `source/` | 保留成片运行之外的上游制作文件和输入，文本统一LF。 | 保存重建依赖。 |\n| `stills/` | 原作风格帧与调试图留在来源，预览由本库capture生成。 | 截图与过程文件留在工作区。 |\n\n## 接入方式\n\nMotionKit.load.prepare预载运行文件、字体、素材与音轨；iframe使用1920×1080舞台，时长59.966667秒。renderAt同步执行 `upstream.render(Math.round(t*30)/30)`；画面由上游直接绘制。声音默认关闭。`?embed`隐藏控制条，`?render`暂停，`?t=秒`定位；减少动态时停在56.85秒。\n\n原作 `film/src/voxel.js:56–58` 在主体隐藏时保留root.position；`film/src/film.js:278`与 `camera.js:16–23` 的镜头切线读取该位置。适配层在716–1127帧先运行715帧，在1301–1344帧先运行1300帧，恢复原片关闭抽屉和照片入屏时的隐藏位置；原作代码保持原样。连续同步调用使暂停与定位各自完成整次绘制。\n\n## 与原片对照结果\n\n无头Edge使用 `--enable-gpu --ignore-gpu-blocklist --font-render-hinting=none --force-color-profile=srgb`，1920×1080、DPR1；Windows ANGLE Direct3D11，Intel Iris Xe。等待 `__motion.ready` 后按 `floor(t×fps+.5)` 对齐，调用seek并等待两次requestAnimationFrame；参考PNG按相同视频帧号从Release提取。\n\n原始列比较参考PNG与本库PNG；编码链列把本库PNG放在独立测量页捕获为JPEG95，再按上游链编解码。页面只运行原作render(t)，编码仅在过程目录进行。两图转为yuv444p，取ffmpeg SSIM All；单张I帧测量的颗粒从该测量帧开始。\n\n30fps，JPEG95 → libx264 medium CRF14 yuv420p → slow CRF19；grain0。编码参数来自原作build.sh、mux脚本与共享core/render/video.mjs。`compare-N.png`为左参考、右本库，`compare-encoded-N.png`为左参考、右编码链结果。\n\n| Shots段 | 起止秒 | 中点秒 | 视频帧 |\n| --- | --- | --- | --- |\n| 发送与叮声 | 0.000000–4.600000 | 2.300000 | 69 |\n| 回放与路线 | 4.600000–7.600000 | 6.100000 | 183 |\n| 飞往压缩卡 | 7.600000–10.600000 | 9.100000 | 273 |\n| 压小照片 | 10.600000–17.200000 | 13.900000 | 417 |\n| 飞往服务器 | 17.200000–20.300000 | 18.750000 | 563 |\n| 云端等待 | 20.300000–26.000000 | 23.150000 | 695 |\n| 通知飞行 | 26.000000–32.100000 | 29.050000 | 872 |\n| 手机响铃 | 32.100000–34.600000 | 33.350000 | 1001 |\n| 取回照片 | 34.600000–39.600000 | 37.100000 | 1113 |\n| 从糊到清 | 39.600000–44.800000 | 42.200000 | 1266 |\n| 接力全景 | 44.800000–48.400000 | 46.600000 | 1398 |\n| 朋友的副本 | 48.400000–52.600000 | 50.500000 | 1515 |\n| 自己的原图 | 52.600000–55.400000 | 54.000000 | 1620 |\n| 桌面谢幕 | 55.400000–59.966667 | 57.683333 | 1731 |\n\nShots无数字的段按原作时间表分段，开头、frame_sec、每段中点和片尾前1秒按视频帧号去重。\n\n| 序号 | 视频帧 | 请求秒 | 实际秒 | 原始SSIM All | 编码链SSIM All | 覆盖 |\n| --- | --- | --- | --- | --- | --- | --- |\n| 1 | 0 | 0.000000 | 0.000000 | 0.993897 | 0.994385 | 开头 |\n| 2 | 1706 | 56.850000 | 56.866667 | 0.992621 | 0.992136 | frame_sec |\n| 3 | 69 | 2.300000 | 2.300000 | 0.992434 | 0.992526 | Shots · 发送与叮声中点 |\n| 4 | 183 | 6.100000 | 6.100000 | 0.993671 | 0.993532 | Shots · 回放与路线中点 |\n| 5 | 273 | 9.100000 | 9.100000 | 0.992365 | 0.992790 | Shots · 飞往压缩卡中点 |\n| 6 | 417 | 13.900000 | 13.900000 | 0.991863 | 0.992184 | Shots · 压小照片中点 |\n| 7 | 563 | 18.750000 | 18.766667 | 0.992032 | 0.992724 | Shots · 飞往服务器中点 |\n| 8 | 695 | 23.150000 | 23.166667 | 0.992090 | 0.992335 | Shots · 云端等待中点 |\n| 9 | 872 | 29.050000 | 29.066667 | 0.994387 | 0.994518 | Shots · 通知飞行中点 |\n| 10 | 1001 | 33.350000 | 33.366667 | 0.994857 | 0.995087 | Shots · 手机响铃中点 |\n| 11 | 1113 | 37.100000 | 37.100000 | 0.993807 | 0.993631 | Shots · 取回照片中点 |\n| 12 | 1266 | 42.200000 | 42.200000 | 0.993536 | 0.993498 | Shots · 从糊到清中点 |\n| 13 | 1398 | 46.600000 | 46.600000 | 0.992899 | 0.992875 | Shots · 接力全景中点 |\n| 14 | 1515 | 50.500000 | 50.500000 | 0.994380 | 0.994492 | Shots · 朋友的副本中点 |\n| 15 | 1620 | 54.000000 | 54.000000 | 0.995152 | 0.995743 | Shots · 自己的原图中点 |\n| 16 | 1731 | 57.683333 | 57.700000 | 0.991950 | 0.991893 | Shots · 桌面谢幕中点 |\n| 17 | 1769 | 58.966667 | 58.966667 | 0.991863 | 0.991830 | 片尾前1秒 |\n\n17帧：原始最低 **0.991863**、最高 **0.995152**；编码链最低 **0.991830**、最高 **0.995743**。\n\n全部规定取样的两列SSIM均达到0.95。\n\n声音：两条音轨解码为48kHz单声道，以10ms RMS包络在±500ms内互相关；最佳偏移 **0ms**，相关系数 **1.000000**。\n",
+    "licenses": "# 叮之前 · 桌面穿梭 · 许可索引\n\n- `film/LICENSE`：Lemo-Opuscar代码与文档，MIT，LemoLab。\n- 成片与静帧：CC BY 4.0，LemoLab × Claude Opus 5.5，来源为条目记录的Release成片。\n- [audio/CREDITS](audio/CREDITS)：原作声音、字体与素材的逐项署名。\n- [audio/CC-BY-4.0.txt](audio/CC-BY-4.0.txt)：作品影像的CC BY 4.0原文。\n- [audio/CC0-1.0.txt](audio/CC0-1.0.txt)：Versilian与FreePats采样的CC0原文。\n- [audio/VOICE-LICENSE.md](audio/VOICE-LICENSE.md)：Microsoft在线旁白的声音、服务与条款入口。\n- [vendor/three@0.170.0/LICENSE](vendor/three@0.170.0/LICENSE)：Three.js 0.170.0，MIT。\n- [fonts/OFL-IBMPlexMono.txt](fonts/OFL-IBMPlexMono.txt)：SIL Open Font License 1.1原文。\n- [fonts/OFL-InstrumentSans.txt](fonts/OFL-InstrumentSans.txt)：SIL Open Font License 1.1原文。\n- [fonts/OFL-NotoSansSC.txt](fonts/OFL-NotoSansSC.txt)：SIL Open Font License 1.1原文。\n",
+    "prompt": "# 叮之前 · 桌面穿梭\n\n## 实现 Prompt\n\n制作《叮之前 · 桌面穿梭》这样的代码影片：一张猫照片从自己的手机出发，经压缩卡片、服务器和通知铃铛抵达朋友手机；镜头跟着照片飞越桌面，片尾拉远显出整场接力。照片既是贯穿全片的主角，也是解释数据流转的实体；镜头与焦点始终跟随同一物件，桌上四站构成可见的工作流。Three.js 体素猫、手机界面、应用卡片、纸垫、木桌和服务器均由原作代码绘制。Instrument Sans 400–700、IBM Plex Mono 500/600、Noto Sans SC 可变字重子集；英文与中文双行字幕。相机沿 shots.js 关键帧跟随照片和铃铛；20次子帧积累、Halton 抖动与随镜头速度变化的快门。原片中文 Microsoft edge-tts 晓晓旁白，120 BPM D大调马林巴、拨弦、钟琴与按事件合成的拟音。实现使用demos\\cases\\lemo-desktop-flythrough\\film\\src\\film.js, demos\\cases\\lemo-desktop-flythrough\\film\\src\\shots.js, demos\\cases\\lemo-desktop-flythrough\\film\\src\\vo.js。\n\n## 动效 Token\n\n- **主体与场景**：film/src/film.js:build；照片、压缩卡、服务器、铃铛和两台手机共用桌面坐标。\n- **镜头与快门**：film/src/main.js:FPS=30、SHUTTER=.3、accum.N=20；shutterAt 将高速拖影控制在约8px；film/src/camera.js:makeRig 读取 shots.js 的 KEYS。\n\n## 制作约束\n\n- 画面由上游render(t)直接绘制，按原作帧率定位。\n- 修改字幕或场景文案后按source中的字体流程重建相同字重和字符子集。\n- 声音使用原片混音，修改事件时同步更新声音制作文件。\n\n## 迁移\n\n- `film/src/film.js`：按原作数据与函数修改故事内容、画面和物件。\n- `film/src/shots.js`：按原作数据与函数修改时间表、镜头和节拍。\n\n[打开 Demo](../../demos/cases/lemo-desktop-flythrough/index.html) · [在库中查看](../../cases.html#case/lemo-desktop-flythrough)\n"
+  },
+  "entrypoint": "demos/cases/lemo-desktop-flythrough/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/LICENSES.md",
+      "bytes": 951,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/CREDITS",
+      "bytes": 1683,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/VOICE-LICENSE.md",
+      "bytes": 346,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/audio/film.m4a",
+      "bytes": 1953575,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fidelity.md",
+      "bytes": 5786,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/index.html",
+      "bytes": 1721,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/anim.js",
+      "bytes": 2721,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/camera.js",
+      "bytes": 3108,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/captions.js",
+      "bytes": 1738,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/cards.js",
+      "bytes": 4014,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/film.js",
+      "bytes": 43545,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/main.js",
+      "bytes": 4279,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/post.js",
+      "bytes": 6363,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/shots.js",
+      "bytes": 3169,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/vo.js",
+      "bytes": 2991,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/voxel.js",
+      "bytes": 4574,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/film/src/world.js",
+      "bytes": 8010,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/IBMPlexMono-Medium.ttf",
+      "bytes": 136704,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/IBMPlexMono-SemiBold.ttf",
+      "bytes": 140216,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/InstrumentSans.ttf",
+      "bytes": 194336,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/NotoSansSC-sub.ttf",
+      "bytes": 80548,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/OFL-IBMPlexMono.txt",
+      "bytes": 4363,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/OFL-InstrumentSans.txt",
+      "bytes": 4403,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/OFL-NotoSansSC.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/fonts/fonts.css",
+      "bytes": 378,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/index.html",
+      "bytes": 3574,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/CREDITS",
+      "bytes": 1683,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/FACTS.md",
+      "bytes": 4284,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/README.md",
+      "bytes": 3220,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/compose.py",
+      "bytes": 4921,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/foley.py",
+      "bytes": 8648,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/mix.py",
+      "bytes": 3597,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/audio/vo_timeline.py",
+      "bytes": 2307,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/build.sh",
+      "bytes": 4354,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/music/harmony.json",
+      "bytes": 2450,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/tools/camspeed.mjs",
+      "bytes": 1383,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/tools/chars.txt",
+      "bytes": 497,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/tools/subset.py",
+      "bytes": 922,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/dur.json",
+      "bytes": 211,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/lines.json",
+      "bytes": 1641,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/lines_en.json",
+      "bytes": 1828,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/timeline.json",
+      "bytes": 2933,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/source/vo/words.json",
+      "bytes": 5301,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+      "bytes": 3606,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 4625,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-desktop-flythrough/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "entries/cases/lemo-desktop-flythrough.json",
+      "bytes": 11965,
+      "role": "entry"
+    },
+    {
+      "path": "previews/cases/lemo-desktop-flythrough.jpg",
+      "bytes": 70629,
+      "role": "preview"
+    }
+  ]
+}
