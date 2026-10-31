@@ -254,6 +254,7 @@
   };
 
   let det = null; // 当前详情页的舞台控制器（离开详情页时销毁）
+  let detailColumns = null;
 
   function stageHTML(it) {
     const want = wantedOrient();
@@ -315,14 +316,12 @@
       want, orient: it.previewPortrait && want === 'portrait' ? 'portrait' : 'landscape', orients: null,
       sound: { pref: store.get(PREF_SOUND, false) === true, state: 'off', available: true, pending: false, seq: 0 },
       loaded: false, fs: false, pseudo: false, lastPointerInCol: false,
-      timers: new Set(), poll: 0, idleT: 0, touchAt: new WeakMap(), ro: null,
+      timers: new Set(), poll: 0, idleT: 0, touchAt: new WeakMap(),
     };
     paintOrient();
     paintBeats(true);
     renderSound();
     layout(); // 同步算一次，首帧就是正确尺寸
-    d.ro = new ResizeObserver(scheduleLayout);
-    [d.el, d.actions, d.bar, d.sc, d.strip].forEach((x) => d.ro.observe(x));
 
     // 加载状态：200ms 内就绪的不显示，避免闪一下
     later(() => { if (!d.loaded) d.loader.classList.add('show'); }, 200);
@@ -356,9 +355,11 @@
     d.col.addEventListener('pointermove', poke, { passive: true });
     d.col.addEventListener('focusin', poke);
     bindTrack();
+    mountDetailColumns();
   }
 
   function destroyDetail() {
+    if (detailColumns) { detailColumns.ro.disconnect(); detailColumns = null; }
     const d = det;
     if (!d) return;
     det = null;
@@ -366,7 +367,6 @@
     d.timers.forEach(clearTimeout);
     clearTimeout(d.idleT);
     if (d.unsub) { try { d.unsub(); } catch { /* iframe 已卸载 */ } }
-    if (d.ro) d.ro.disconnect();
     document.documentElement.classList.remove('ma-fs-lock');
     const fe = document.fullscreenElement || document.webkitFullscreenElement;
     if (fe && fe === d.col) { try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch { /* 已退出 */ } }
@@ -397,9 +397,32 @@
   /* ----- 尺寸 ----- */
   let layoutRaf = 0;
   function scheduleLayout() {
-    if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); });
+    if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); layoutColumns(); });
   }
   addEventListener('resize', scheduleLayout);
+  function mountDetailColumns() {
+    const el = root.querySelector('.detail'), cols = [...el.querySelector('.detail-grid').children];
+    const header = document.getElementById('site-header'), actions = root.querySelector('.page-actions');
+    const ro = new ResizeObserver(scheduleLayout);
+    detailColumns = { el, cols, header, actions, ro };
+    const targets = [el, ...cols, header, actions];
+    if (det) targets.push(det.bar, det.sc, det.strip);
+    targets.forEach(x => ro.observe(x));
+    layoutColumns();
+  }
+  function layoutColumns() {
+    if (!detailColumns) return;
+    const { el, cols, header, actions } = detailColumns;
+    let shorter = null;
+    if (innerWidth > 1159 && !det?.fs) {
+      const heights = cols.map(col => col.getBoundingClientRect().height);
+      const index = heights[0] <= heights[1] ? 0 : 1;
+      shorter = cols[index];
+      const top = header.getBoundingClientRect().height + actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
+      el.style.setProperty('--detail-sticky-top', Math.min(top, innerHeight - heights[index] - BOTTOM) + 'px');
+    }
+    cols.forEach(col => col.classList.toggle('is-sticky', col === shorter));
+  }
   function layout() {
     const d = det;
     if (!d) return;
@@ -422,7 +445,7 @@
       const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
       const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
       mode = innerWidth > 1159 ? 'split' : 'stack';
-      Object.assign(vars, { '--stage-col': W, '--actions-h': actionH });
+      Object.assign(vars, { '--stage-col': W });
       if (d.orient === 'portrait') {
         const h = Math.floor(Math.min(availH(false), W * 16 / 9)), w = Math.round(h * 9 / 16);
         if (W - w - gap >= SIDE_MIN) {
@@ -920,6 +943,7 @@
     root.innerHTML = `${pageActions(it)}<div class="detail material-detail"><div class="detail-grid"><section class="material-stage" aria-label="素材预览">${material.preview}</section><div class="info-col">
       <header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 素材 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(materialTypes[it.type])}</span></div></header>
       <div class="notes">${material.notes}</div></div></div></div>`;
+    mountDetailColumns();
     bindDetailFavorite(it);
     root.querySelector('[data-copy]')?.addEventListener('click', () => copy(it.install, '安装方式已复制'));
     window.scrollTo(0, 0);

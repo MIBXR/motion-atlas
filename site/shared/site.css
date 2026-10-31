@@ -220,7 +220,7 @@ details[open] > summary .group-indicator .icon:last-child { display: inline-bloc
 
 /* 舞台列：工具栏 + 舞台（+ 竖屏时的节拍列表）+ 刻度条 */
 .stage-col { display: flex; flex-direction: column; gap: 10px; min-width: 0; container: stage / inline-size; }
-.detail[data-layout="split"] .stage-col { position: sticky; top: calc(var(--header-h) + var(--actions-h, 0px) + 16px); z-index: 5; }
+@media (min-width: 1160px) { .detail-grid > .is-sticky { position: sticky; top: var(--detail-sticky-top); z-index: 5; } }
 .stage-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; min-width: 0; }
 .stage-views, .stage-controls { display: flex; align-items: center; gap: 8px; min-height: 44px; max-width: 100%; }
 .stage-controls { flex-wrap: wrap; margin-left: auto; }
