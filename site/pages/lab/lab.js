@@ -11,6 +11,7 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const sectionLinks = $$('#labNav a');
+  $('.lib-side .side-group > summary').insertAdjacentHTML('beforeend', `<span class="group-indicator" aria-hidden="true">${ICONS.plus}${ICONS.minus}</span>`);
   function setCurrentSection(hash) {
     for (const link of sectionLinks) {
       if (link.hash === hash) link.setAttribute('aria-current', 'location');
