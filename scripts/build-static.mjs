@@ -9,7 +9,7 @@ if (args.length > 1 || args.some(arg => arg !== '--site')) throw new Error('Usag
 const site = args.includes('--site');
 const directories = ['agent', 'site', 'data', 'demos', 'docs', 'entries', 'kit', 'scripts/templates', 'previews', 'prompts'];
 const snapshots = loadEntries().materials.filter(e => e.snapshotPath).map(e => e.snapshotPath);
-const sources = site ? assetSources(ROOT, directories, snapshots) : { assets: {} };
+const sources = site ? assetSources(ROOT, directories) : { assets: {} };
 const output = path.join(ROOT, 'dist');
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
@@ -20,7 +20,11 @@ for (const directory of directories) {
 for (const file of fs.readdirSync(ROOT).filter((name) => /\.(html|md)$/.test(name) || name === 'asset-cache-worker.js')) {
   fs.copyFileSync(path.join(ROOT, file), path.join(output, file));
 }
-if (site) fs.writeFileSync(path.join(output, 'data/asset-sources.js'), `globalThis.MotionAtlasAssetSources = ${JSON.stringify(sources)};\n`);
+if (site) {
+  fs.writeFileSync(path.join(output, 'data/asset-sources.js'), `globalThis.MotionAtlasAssetSources = ${JSON.stringify(sources)};\n`);
+  const redirects = Object.entries(sources.assets).map(([filename, asset]) => `/${filename.split('/').map(encodeURIComponent).join('/')} ${asset.url} 302`);
+  fs.writeFileSync(path.join(output, '_redirects'), redirects.join('\n') + '\n');
+}
 let bytes = 0, count = 0;
 function finalize(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
