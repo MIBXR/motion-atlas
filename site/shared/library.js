@@ -12,6 +12,10 @@
   const TAX = MA.taxonomy;
   const root = document.getElementById('app');
   const items = MA[KIND];
+  const group = KIND === 'cases' ? 'carrier' : 'type';
+  const categoryLabels = KIND === 'cases' ? TAX.carriers : isMaterial ? materialTypes : TAX.types;
+  const categories = Object.entries(categoryLabels).filter(([value]) => !isMaterial || items.some(it => it.type === value));
+  const allCategories = KIND === 'cases' ? '全部载体' : '全部类型';
   const byId = (list, id) => list.find((x) => x.id === id);
 
   /* ---------- 小工具 ---------- */
@@ -49,16 +53,21 @@
 
   /* ---------- 状态（列表筛选保存在 URL） ---------- */
   const q = new URLSearchParams(location.search);
-  const state = {
-    carrier: q.get('carrier') || 'all',
-    type: q.get('type') || 'all',
-    caseId: q.get('case') || 'all',
-    fav: q.get('fav') === '1',
-    query: q.get('q') || '',
-    sort: q.get('sort') === 'title' ? 'title' : 'order',
-    dir: q.get('dir') === 'desc' ? 'desc' : 'asc',
-  };
-  function syncURL() {
+  function readState() {
+    const q = new URLSearchParams(location.search);
+    return {
+      carrier: q.get('carrier') || 'all',
+      type: q.get('type') || 'all',
+      caseId: q.get('case') || 'all',
+      fav: q.get('fav') === '1',
+      query: q.get('q') || '',
+      sort: q.get('sort') === 'title' ? 'title' : 'order',
+      dir: q.get('dir') === 'desc' ? 'desc' : 'asc',
+    };
+  }
+  const state = readState();
+  const filterMedia = matchMedia('(max-width: 800px)');
+  function syncURL(push = false) {
     const p = new URLSearchParams();
     if (state.carrier !== 'all') p.set('carrier', state.carrier);
     if (KIND !== 'cases' && state.type !== 'all') p.set('type', state.type);
@@ -68,7 +77,8 @@
     if (state.sort !== 'order') p.set('sort', state.sort);
     if (state.dir !== 'asc') p.set('dir', state.dir);
     const s = p.toString();
-    history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + location.hash);
+    const url = location.pathname + (s ? '?' + s : '') + location.hash;
+    if (url !== location.pathname + location.search + location.hash) history[push ? 'pushState' : 'replaceState'](null, '', url);
   }
 
   const haystack = (it) => [it.id, it.title, it.subtitle, it.summary, ...(it.tags || []), ...(it.useCases || []), it.mechanism, it.trigger, it.effect,
@@ -92,22 +102,22 @@
 
   /* ---------- 列表 ---------- */
   function sideButton(group, value, label, count) {
-    const pressed = (group === 'fav' ? state.fav : state[group] === value) ? 'true' : 'false';
+    const pressed = (group === 'fav' ? state.fav : !state.fav && state[group] === value) ? 'true' : 'false';
     return `<li><button type="button" data-group="${group}" data-value="${esc(value)}" aria-pressed="${pressed}"><span>${esc(label)}</span><span class="count">${String(count).padStart(2, '0')}</span></button></li>`;
   }
-  function renderList() {
+  function renderList(push = false) {
     document.title = libName + ' · Motion Atlas';
     const carriers = Object.entries(TAX.carriers);
-    const group = KIND === 'cases' ? 'carrier' : 'type';
     const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '载体' : '类型'}</summary><ul class="side-list">
-      ${[['all', KIND === 'cases' ? '全部载体' : '全部类型'], ...Object.entries(KIND === 'cases' ? TAX.carriers : isMaterial ? materialTypes : TAX.types).filter(([value]) => !isMaterial || items.some(it => it.type === value))].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, [group]: value }).length)).join('')}
+      ${[['all', allCategories], ...categories].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, fav: false, [group]: value }).length)).join('')}
       </ul></details><details class="side-group" open><summary>收藏</summary><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
       <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
       <li><button type="button" data-tool="import"><span>导入收藏</span>${ICONS.upload}</button></li>
       </ul></details>`;
-    const filterSelect = (id, label, all, values, value) => `<select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>`;
+    const filterSelect = (id, label, all, values, value) => `<label class="filter-field"><span class="filter-label">${label}</span><select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select></label>`;
     const filters = [
+      state.fav ? filterSelect('favorite-filter', KIND === 'cases' ? '载体' : '类型', allCategories, categories, state[group]) : '',
       KIND === 'patterns' ? filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier) : '',
       KIND === 'patterns' ? filterSelect('case-filter', '所属案例', '全部案例', MA.cases.map(c => [c.id, c.title]), state.caseId) : '',
     ].join('');
@@ -130,17 +140,19 @@
           </header>
           <div class="toolbar">
             <label class="field">${ICONS.search}<span class="sr-only">搜索</span><input id="search" type="search" placeholder="${KIND === 'cases' ? '搜索案例、节奏、转场、HUD…' : isMaterial ? '搜索素材、工作流、适用场景…' : '搜索巧思、触发、转场、参数…'}" value="${esc(state.query)}"><span class="kbd" aria-hidden="true">/</span></label>
-            ${filters}
+            <div class="filter-home" id="filter-home"><div class="lib-filters" id="lib-filters">${filters}</div></div>
             <span class="toolbar-divider" aria-hidden="true"></span>
-            <div class="sort-group"><select class="select" id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select><button class="sort-dir" id="sort-dir" type="button"></button></div>
+            <div class="toolbar-row"><button class="btn filter-toggle" id="filter-toggle" type="button" aria-haspopup="dialog" aria-controls="filter-dialog" aria-expanded="false">${ICONS.filter}<span>筛选</span></button><div class="sort-group"><select class="select" id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select><button class="sort-dir" id="sort-dir" type="button"></button></div></div>
           </div>
+          <dialog class="filter-dialog" id="filter-dialog" aria-labelledby="filter-title"><div class="filter-head"><h2 id="filter-title">筛选</h2><button class="filter-clear" id="filter-clear" type="button">清除</button></div><div class="filter-content"></div><button class="btn primary filter-done" id="filter-done" type="button">完成</button></dialog>
           <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : isMaterial ? '作者产出效果，未复刻' : '每个巧思都有独立 Demo'}</span></div>
           <div class="grid" id="grid"></div>
         </section>
       </div>`;
     bindList();
-    paintGrid();
+    paintGrid(push);
     window.Site.decorateControls(root);
+    syncFilterControls();
     root.querySelectorAll('.side-group > summary').forEach(summary => summary.insertAdjacentHTML('beforeend', `<span class="group-indicator" aria-hidden="true">${ICONS.plus}${ICONS.minus}</span>`));
     sizeHeroLabels();
     window.Site.syncMenu();
@@ -170,7 +182,8 @@
         <div class="card-tags">${tagLine}</div>
       </div></article>`;
   }
-  function paintGrid() {
+  function paintGrid(push = false) {
+    paintCategoryCounts();
     const list = filtered();
     const grid = document.getElementById('grid');
     grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">没有符合条件的${itemName}。换个关键词，或清除筛选。</div>`;
@@ -178,16 +191,60 @@
     dir.setAttribute('aria-label', state.dir === 'asc' ? '正序' : '反序');
     dir.setAttribute('aria-pressed', String(state.dir === 'desc'));
     dir.innerHTML = state.dir === 'asc' ? ICONS.up : ICONS.down;
-    document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' : '当前筛选'} / ${list.length} 个条目`;
-    paintSideCounts();
-    syncURL();
+    const category = state[group] === 'all' ? '' : ` · ${categoryLabels[state[group]]}`;
+    document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' + category : '当前筛选'} / ${list.length} 个条目`;
+    paintFilterToggle();
+    syncURL(push);
   }
-  function paintSideCounts() {
+  function paintCategoryCounts() {
     document.querySelectorAll('.lib-side [data-group="carrier"], .lib-side [data-group="type"]').forEach((b) => {
-      b.querySelector('.count').textContent = String(filtered({ ...state, [b.dataset.group]: b.dataset.value }).length).padStart(2, '0');
+      b.setAttribute('aria-pressed', String(!state.fav && state[b.dataset.group] === b.dataset.value));
+      b.querySelector('.count').textContent = String(filtered({ ...state, fav: false, [b.dataset.group]: b.dataset.value }).length).padStart(2, '0');
     });
+    const filter = root.querySelector('#favorite-filter');
+    if (filter) {
+      const available = categories.filter(([value]) => items.some(it => favs.has(KIND, it.id) && (KIND === 'cases' ? it.carriers.includes(value) : isMaterial ? it.type === value : it.types.includes(value))));
+      if (state[group] !== 'all' && !available.some(([value]) => value === state[group])) state[group] = 'all';
+      filter.innerHTML = [['all', allCategories], ...available].map(([value, label]) => `<option value="${value}"${state[group] === value ? ' selected' : ''}>${esc(label)}</option>`).join('');
+    }
+  }
+  function paintFilterToggle() {
+    const button = root.querySelector('#filter-toggle');
+    const count = [...root.querySelectorAll('#lib-filters select')].filter(select => select.value !== 'all').length;
+    button.querySelector('span').textContent = count ? `筛选 · ${count}` : '筛选';
+    button.setAttribute('aria-pressed', String(count > 0));
+  }
+  function syncFilterControls() {
+    const filters = root.querySelector('#lib-filters');
+    if (!filters) return;
+    const dialog = root.querySelector('#filter-dialog');
+    const button = root.querySelector('#filter-toggle');
+    button.hidden = !filters.querySelector('select');
+    (filterMedia.matches ? dialog.querySelector('.filter-content') : root.querySelector('#filter-home')).append(filters);
+    if (!filterMedia.matches && dialog.open) dialog.close();
   }
   function bindList() {
+    const dialog = root.querySelector('#filter-dialog');
+    const filterButton = root.querySelector('#filter-toggle');
+    filterButton.addEventListener('click', () => {
+      dialog.showModal();
+      filterButton.setAttribute('aria-expanded', 'true');
+    });
+    dialog.addEventListener('close', () => {
+      filterButton.setAttribute('aria-expanded', 'false');
+      filterButton.focus({ preventScroll: true });
+    });
+    dialog.addEventListener('click', (e) => {
+      if (e.target !== dialog) return;
+      const r = dialog.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+    });
+    root.querySelector('#filter-done').addEventListener('click', () => dialog.close());
+    root.querySelector('#filter-clear').addEventListener('click', () => {
+      state.carrier = state.type = state.caseId = 'all';
+      root.querySelectorAll('#lib-filters select').forEach(select => { select.value = 'all'; });
+      paintGrid(true);
+    });
     root.querySelector('#lib-side').addEventListener('click', (e) => {
       const b = e.target.closest('button');
       if (!b) return;
@@ -200,17 +257,23 @@
       }
       const g = b.dataset.group;
       if (!g) return;
-      if (g === 'fav') state.fav = !state.fav;
-      else state[g] = b.dataset.value;
-      renderList();
+      if (g === 'fav') {
+        if (state.fav) return;
+        state.fav = true;
+        state[group] = 'all';
+      } else {
+        state.fav = false;
+        state[g] = b.dataset.value;
+      }
+      renderList(true);
     });
     const s = root.querySelector('#search');
     s.addEventListener('input', () => { state.query = s.value.trim(); paintGrid(); });
     root.querySelector('#sort').addEventListener('change', (e) => { state.sort = e.target.value; paintGrid(); });
     root.querySelector('#sort-dir').addEventListener('click', () => { state.dir = state.dir === 'asc' ? 'desc' : 'asc'; paintGrid(); });
-    for (const [id, key] of [['carrier-filter', 'carrier'], ['case-filter', 'caseId']]) {
+    for (const [id, key] of [['favorite-filter', group], ['carrier-filter', 'carrier'], ['case-filter', 'caseId']]) {
       const select = root.querySelector('#' + id);
-      if (select) select.addEventListener('change', (e) => { state[key] = e.target.value; paintGrid(); });
+      if (select) select.addEventListener('change', (e) => { state[key] = e.target.value; paintGrid(true); });
     }
     root.querySelector('#grid').addEventListener('click', (e) => {
       const b = e.target.closest('[data-fav]');
@@ -1051,17 +1114,24 @@
   }
 
   /* ---------- 路由 ---------- */
+  let routeHash = location.hash;
   function route() {
+    routeHash = location.hash;
+    Object.assign(state, readState());
     const m = location.hash.match(/^#(case|pattern|material)\/([\w-]+)/);
     const it = m && byId(items, m[2]);
     if (it) { if (isMaterial) renderMaterial(it); else renderDetail(it); window.Site.syncMenu(); }
     else { destroyDetail(); renderList(); }
   }
   addEventListener('hashchange', () => window.Site.viewTransition(route));
+  filterMedia.addEventListener('change', syncFilterControls);
+  addEventListener('popstate', () => {
+    if (location.hash === routeHash) window.Site.viewTransition(route);
+  });
   document.addEventListener('ma:favorites', () => {
     const c = document.querySelector('[data-group="fav"] .count');
     if (c) c.textContent = String(favs.all()[KIND].length).padStart(2, '0');
-    paintSideCounts();
+    paintCategoryCounts();
   });
   route();
 })();
