@@ -47,6 +47,8 @@
     if (url.origin !== root.origin) return { href, ext: true };
     const target = decodeURIComponent(url.pathname.slice(root.pathname.length));
     const frag = url.hash.slice(1);
+    const asset = window.MotionAtlasAssets?.resolve(url.href);
+    if (asset && asset !== url.href) return { href: asset, ext: true };
     if (image) return { href: target + url.search + url.hash };
     if (byPath.has(target)) return { href: `docs.html${url.search}#doc/${target}${frag ? '::' + frag : ''}` };
     if (localFiles.has(target)) return { href: target + url.search + url.hash };
