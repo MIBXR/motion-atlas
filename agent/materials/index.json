@@ -41,6 +41,26 @@
           "kind": "case",
           "id": "lemo-memphis-diorama",
           "note": "一个虚构河湾在连续高视角镜头中经历四季：广场主树每次下蹲回弹，换季波从树扩散，地面、树冠、屋顶与水面依次改色，冬日窗灯逐盏亮起。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-ink-wash",
+          "note": "让笔触同时承担造型、动作与叙事，纸白成为水、雾和停顿；微小人物与浓墨巨浪建立尺度反差。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-woodcut",
+          "note": "黑木为底，光由逐刀刻痕出现；反刻字经揭印转正，单一铜色只用于热量与最后的钟光。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-spy-titles",
+          "note": "四种不透明纸墨、剪影表演与字形布景共用节拍；同位圆形硬切和30°斜线把追逐、拆景与片名连在一起。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-paper-popup",
+          "note": "平面彩色纸偶与真实桌面、光线和微距景深产生尺度反差；翻页、翻板和弹起结构承担叙事换景。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

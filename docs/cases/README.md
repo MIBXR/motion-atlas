@@ -25,3 +25,7 @@
 | [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion) | [条目](../../entries/cases/lemo-swiss-motion.json) |
 | [林下的田 · 点云测绘](../../cases.html#case/lemo-lidar-survey) | [条目](../../entries/cases/lemo-lidar-survey.json) |
 | [柚子城的四季 · 孟菲斯微缩景](../../cases.html#case/lemo-memphis-diorama) | [条目](../../entries/cases/lemo-memphis-diorama.json) |
+| [剑客渡江 · 中国水墨](../../cases.html#case/lemo-ink-wash) | [条目](../../entries/cases/lemo-ink-wash.json) |
+| [铸钟人 · 木刻版画](../../cases.html#case/lemo-woodcut) | [条目](../../entries/cases/lemo-woodcut.json) |
+| [天鹅绒密码 · 60s 间谍片头](../../cases.html#case/lemo-spy-titles) | [条目](../../entries/cases/lemo-spy-titles.json) |
+| [小精灵冒险记 · 纸片立体书](../../cases.html#case/lemo-paper-popup) | [条目](../../entries/cases/lemo-paper-popup.json) |

@@ -60,7 +60,7 @@
     "role": "accent",
     "pairsWellWith": [],
     "conflicts": [],
-    "notes": ""
+    "notes": "lemo-paper-popup的昼夜天空采用同一空间延迟翻牌机制；定位见parameters。"
   },
   "prompt": "用来源案例的原作renderAt(t)重放方片翻牌级联波。6秒开始R1，120px方片按距(840,300)的径向延迟自转90°，dur=0.25、span=0.25，并用s=1/(abs(cosθ)+abs(sinθ))内缩。6.5秒开始R2，240px卡片按对角延迟绕横轴翻面，dur=0.2、span=0.3、sc=cos(π*ease(u))。保留xs=1-0.22*sn*(0.5+0.5*fs*ca/120)的梯形透视、col*=1-0.2*shd的明暗与黑床衔接。背面显示黄色三角、红色方块与蓝色圆形；7.1秒在背面遮挡时复位正面映射。7.5秒开始R4，卡片按距(960,540)的向心延迟绕竖轴翻回正面，dur=0.2、span=0.3、sc=-cos(π*ease(u))，8秒归位。按index.html 内联配置的segments映射时间，保留原作字体、素材和同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/flip-tile-cascade/index.html",
@@ -70,6 +70,9 @@
   "sources": [
     {
       "caseId": "mg-bauhaus"
+    },
+    {
+      "caseId": "lemo-paper-popup"
     }
   ],
   "previewAt": 1,
@@ -101,6 +104,12 @@
     {
       "t": 2.2,
       "label": "正面定格"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "纸片立体书天空翻板",
+      "value": "lemo-paper-popup：film/sets.js:buildSlats生成4块双面天空卡，宽(BW−.006)/4、高BD−.03；film/main.js:EX.slats在81.8+i*.28至82.5+i*.28秒，以rotation.y=π*eio(seg(...))从昼面翻到夜面。"
     }
   ]
 }
