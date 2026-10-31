@@ -68,6 +68,9 @@
     },
     {
       "caseId": "mg-hanazi"
+    },
+    {
+      "caseId": "lemo-microgame"
     }
   ],
   "previewAt": 6.2,
@@ -203,5 +206,11 @@
     "landscape",
     "portrait"
   ],
-  "previewAtPortrait": 8.8665
+  "previewAtPortrait": 8.8665,
+  "parameters": [
+    {
+      "name": "lemo-microgame",
+      "value": "film/film.js:stageSeg将lives按S1=3、S2=2、S7=1传入舞台；film/hud.js:livesBoard / lifeIcon绘三格头盔，丢命裂开下坠，最后一命以.55+.45cos(12lt)闪烁。"
+    }
+  ]
 }

@@ -68,6 +68,9 @@
     },
     {
       "caseId": "lemo-crayon-book"
+    },
+    {
+      "caseId": "lemo-brick-toy"
     }
   ],
   "previewAt": 1.2,
@@ -101,6 +104,10 @@
     {
       "name": "lemo-crayon-book · 桌上绘本",
       "value": "film/film.js:camT在44.8–46秒回到[1600,900,.6]；film/end.js:endFrame使画页成为桌上绘本，47.6秒起翻页。"
+    },
+    {
+      "name": "lemo-brick-toy",
+      "value": "film/main.js:cam的reveal分支，48–51.71秒从积木月面拉到[38,78,100]、look到[−20,4,−18]，fov38；tea_set_01、desk_lamp_arm_01与书堆显示整个故事发生在真实书桌。"
     }
   ]
 }

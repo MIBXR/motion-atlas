@@ -53,3 +53,9 @@
 | [七毫秒 · 电路板](../../cases.html#case/lemo-circuit-board) | [条目](../../entries/cases/lemo-circuit-board.json) |
 | [咖啡杯追逐战 · 1930s 橡皮管卡通](../../cases.html#case/lemo-rubber-hose) | [条目](../../entries/cases/lemo-rubber-hose.json) |
 | [城市之光，1987 · 80 年代赛璐璐动画](../../cases.html#case/lemo-cel-anime-80s) | [条目](../../entries/cases/lemo-cel-anime-80s.json) |
+| [买咖啡 · 科幻情景喜剧卡通](../../cases.html#case/lemo-scifi-toon) | [条目](../../entries/cases/lemo-scifi-toon.json) |
+| [认识皮普 · 50s 扁平卡通](../../cases.html#case/lemo-midcentury-toon) | [条目](../../entries/cases/lemo-midcentury-toon.json) |
+| [提灯人 · HD-2D](../../cases.html#case/lemo-hd-2d) | [条目](../../entries/cases/lemo-hd-2d.json) |
+| [五秒宇航员 · 微游戏快闪](../../cases.html#case/lemo-microgame) | [条目](../../entries/cases/lemo-microgame.json) |
+| [用零件造火箭 · 积木玩具](../../cases.html#case/lemo-brick-toy) | [条目](../../entries/cases/lemo-brick-toy.json) |
+| [玩具城早高峰 · 移轴微缩](../../cases.html#case/lemo-tilt-shift) | [条目](../../entries/cases/lemo-tilt-shift.json) |

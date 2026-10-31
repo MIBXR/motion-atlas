@@ -1,0 +1,70 @@
+{
+  "id": "long-exposure-light-trail",
+  "order": 160,
+  "title": "长曝光光轨",
+  "types": [
+    "texture"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。",
+  "mechanism": "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。",
+  "trigger": "来源案例的时间轴进入所列动作区间。",
+  "effect": "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-tilt-shift 0.000000–5.000000秒；1倍速，总时长5.000000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "历史轨迹",
+      "value": "film/main.js:275–304，黎明主车14个历史位置铺成弯曲光轨；普通车根据曝光时间取首尾位置。"
+    },
+    {
+      "name": "条带网格",
+      "value": "film/traffic.js:202–239，K=14、HEAD=[1,.86,.62]、TAIL=[1,.08,.04]；fade=t^1.6·I，AdditiveBlending、depthWrite=false、fog=false。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-tilt-shift/film/main.js",
+    "demos/cases/lemo-tilt-shift/film/traffic.js"
+  ],
+  "locator": "film/main.js:275–304，黎明主车14个历史位置铺成弯曲光轨；普通车根据曝光时间取首尾位置。；film/traffic.js:202–239，K=14、HEAD=[1,.86,.62]、TAIL=[1,.08,.04]；fade=t^1.6·I，AdditiveBlending、depthWrite=false、fog=false。",
+  "useCases": [
+    "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "accent",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+  },
+  "prompt": "调用来源案例原作render(t)重放“长曝光光轨”。在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。 参数：film/main.js:275–304，黎明主车14个历史位置铺成弯曲光轨；普通车根据曝光时间取首尾位置。 film/traffic.js:202–239，K=14、HEAD=[1,.86,.62]、TAIL=[1,.08,.04]；fade=t^1.6·I，AdditiveBlending、depthWrite=false、fog=false。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/long-exposure-light-trail/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-tilt-shift"
+    }
+  ],
+  "previewAt": 2.5,
+  "markers": [
+    {
+      "t": 0,
+      "label": "长曝光光轨"
+    }
+  ],
+  "renderer": "gpu"
+}

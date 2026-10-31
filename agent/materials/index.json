@@ -181,6 +181,36 @@
           "kind": "case",
           "id": "lemo-cel-anime-80s",
           "note": "城市之光，1987 · 80 年代赛璐璐动画；本体保存运行代码、字体、原片音轨和制作资料。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-scifi-toon",
+          "note": "买咖啡 · 科幻情景喜剧卡通；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-midcentury-toon",
+          "note": "认识皮普 · 50s 扁平卡通；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-hd-2d",
+          "note": "提灯人 · HD-2D；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-microgame",
+          "note": "五秒宇航员 · 微游戏快闪；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-brick-toy",
+          "note": "用零件造火箭 · 积木玩具；保留运行代码、字体、成片音轨与制作文件。"
+        },
+        {
+          "kind": "case",
+          "id": "lemo-tilt-shift",
+          "note": "玩具城早高峰 · 移轴微缩；保留运行代码、字体、成片音轨与制作文件。"
         }
       ],
       "bundle": "agent/materials/lemo-opuscar.json"

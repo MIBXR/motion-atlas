@@ -70,6 +70,9 @@
   "sources": [
     {
       "caseId": "mg-pixel"
+    },
+    {
+      "caseId": "lemo-hd-2d"
     }
   ],
   "previewAt": 1.2,
@@ -97,6 +100,12 @@
     {
       "t": 1.4,
       "label": "对话框收起"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-hd-2d",
+      "value": "film/ui.js:57–78 dialog，17.3–24秒，1180×210px金边框和Old Keeper名牌，正文按配音92%时长逐字显示，完成后提示三角闪烁；film/story.js:VO.k1交付任务，开头另有章节卡。"
     }
   ]
 }

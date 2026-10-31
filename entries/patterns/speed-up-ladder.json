@@ -1,0 +1,81 @@
+{
+  "id": "speed-up-ladder",
+  "order": 154,
+  "title": "五项同步加速",
+  "types": [
+    "rhythm"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。",
+  "mechanism": "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。",
+  "trigger": "来源案例的时间轴进入所列动作区间。",
+  "effect": "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-microgame 0.000000–4.400000秒；lemo-microgame 25.500000–31.280000秒；lemo-microgame 39.850000–43.200000秒；1倍速，总时长13.530000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "节拍与时长",
+      "value": "film/timeline.js:120→140→160 BPM；普通关4→18/7秒，常规舞台2→6/7秒；G7另含两拍回放，Boss32拍=12秒。"
+    },
+    {
+      "name": "驻留与帧率",
+      "value": "film/film.js:R2 / tvInDur / tvOutDur / hold，口令.75→.64秒，Boss回到.75秒；g_crayon/g_ink/g_ascii/g_riso用8fps，g_pixel/g_blue/g_swiss用12fps，g_boss主体用连续lt，局部保留12fps线稿。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-microgame/film/timeline.js",
+    "demos/cases/lemo-microgame/film/film.js",
+    "demos/cases/lemo-microgame/film/g_crayon.js",
+    "demos/cases/lemo-microgame/film/g_pixel.js",
+    "demos/cases/lemo-microgame/film/g_boss.js"
+  ],
+  "locator": "film/timeline.js:120→140→160 BPM；普通关4→18/7秒，常规舞台2→6/7秒；G7另含两拍回放，Boss32拍=12秒。；film/film.js:R2 / tvInDur / tvOutDur / hold，口令.75→.64秒，Boss回到.75秒；g_crayon/g_ink/g_ascii/g_riso用8fps，g_pixel/g_blue/g_swiss用12fps，g_boss主体用连续lt，局部保留12fps线稿。",
+  "useCases": [
+    "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "foundation",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+  },
+  "prompt": "调用来源案例原作render(t)重放“五项同步加速”。BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。 参数：film/timeline.js:120→140→160 BPM；普通关4→18/7秒，常规舞台2→6/7秒；G7另含两拍回放，Boss32拍=12秒。 film/film.js:R2 / tvInDur / tvOutDur / hold，口令.75→.64秒，Boss回到.75秒；g_crayon/g_ink/g_ascii/g_riso用8fps，g_pixel/g_blue/g_swiss用12fps，g_boss主体用连续lt，局部保留12fps线稿。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/speed-up-ladder/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-microgame"
+    }
+  ],
+  "previewAt": 6.1,
+  "markers": [
+    {
+      "t": 0,
+      "label": "五项同步加速"
+    },
+    {
+      "t": 4.4,
+      "label": "五项同步加速"
+    },
+    {
+      "t": 10.180000000000001,
+      "label": "五项同步加速"
+    }
+  ],
+  "renderer": "gpu"
+}

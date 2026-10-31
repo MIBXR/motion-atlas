@@ -1,0 +1,727 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "tilt-shift-focus-band",
+  "pattern": {
+    "id": "tilt-shift-focus-band",
+    "order": 159,
+    "title": "移轴焦带",
+    "types": [
+      "camera",
+      "texture"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。",
+    "mechanism": "以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。",
+    "trigger": "来源案例的时间轴进入所列动作区间。",
+    "effect": "以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "lemo-hd-2d 5.500000–10.000000秒；lemo-tilt-shift 0.000000–5.000000秒；lemo-tilt-shift 22.500000–25.200000秒；1倍速，总时长12.200000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "HD-2D",
+        "value": "film/main.js:tiltCenter追踪薇伦、广景固定.34/.36；film/post_ts.js:tiltAmt=17、tiltW=.075、tiltF=.3，与物理散焦取有符号合成。"
+      },
+      {
+        "name": "移轴微缩",
+        "value": "film/main.js:cam的band.follow投影到.25–.75；鸭群半宽.05，释放起.035→.07；film/post.js:cb=sign(dy)·amp·pow(max(0,abs(dy)−w)/.5,pow)，与cp按mix混合。"
+      }
+    ],
+    "sourceFiles": [
+      "demos/cases/lemo-hd-2d/film/main.js",
+      "demos/cases/lemo-hd-2d/film/post_ts.js",
+      "demos/cases/lemo-tilt-shift/film/post.js",
+      "demos/cases/lemo-tilt-shift/film/main.js"
+    ],
+    "locator": "film/main.js:tiltCenter追踪薇伦、广景固定.34/.36；film/post_ts.js:tiltAmt=17、tiltW=.075、tiltF=.3，与物理散焦取有符号合成。；film/main.js:cam的band.follow投影到.25–.75；鸭群半宽.05，释放起.035→.07；film/post.js:cb=sign(dy)·amp·pow(max(0,abs(dy)−w)/.5,pow)，与cp按mix混合。",
+    "useCases": [
+      "以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "support",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    },
+    "prompt": "调用来源案例原作render(t)重放“移轴焦带”。以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。 参数：film/main.js:tiltCenter追踪薇伦、广景固定.34/.36；film/post_ts.js:tiltAmt=17、tiltW=.075、tiltF=.3，与物理散焦取有符号合成。 film/main.js:cam的band.follow投影到.25–.75；鸭群半宽.05，释放起.035→.07；film/post.js:cb=sign(dy)·amp·pow(max(0,abs(dy)−w)/.5,pow)，与cp按mix混合。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/tilt-shift-focus-band/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-hd-2d"
+      },
+      {
+        "caseId": "lemo-tilt-shift"
+      }
+    ],
+    "previewAt": 5.8,
+    "markers": [
+      {
+        "t": 0,
+        "label": "移轴焦带"
+      },
+      {
+        "t": 4.5,
+        "label": "移轴焦带"
+      },
+      {
+        "t": 9.5,
+        "label": "移轴焦带"
+      }
+    ],
+    "renderer": "gpu",
+    "preview": "previews/patterns/tilt-shift-focus-band.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-hd-2d",
+      "bundle": "agent/cases/lemo-hd-2d.json"
+    },
+    {
+      "caseId": "lemo-tilt-shift",
+      "bundle": "agent/cases/lemo-tilt-shift.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 移轴焦带\n\n## 实现 Prompt\n\n调用来源案例原作render(t)重放“移轴焦带”。以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。 参数：film/main.js:tiltCenter追踪薇伦、广景固定.34/.36；film/post_ts.js:tiltAmt=17、tiltW=.075、tiltF=.3，与物理散焦取有符号合成。 film/main.js:cam的band.follow投影到.25–.75；鸭群半宽.05，释放起.035→.07；film/post.js:cb=sign(dy)·amp·pow(max(0,abs(dy)−w)/.5,pow)，与cp按mix混合。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：lemo-hd-2d 5.500000–10.000000秒；lemo-tilt-shift 0.000000–5.000000秒；lemo-tilt-shift 22.500000–25.200000秒；1倍速，总时长12.200000秒。\n\n[打开 Demo](../../demos/patterns/tilt-shift-focus-band/index.html) · [在库中查看](../../patterns.html#pattern/tilt-shift-focus-band)\n"
+  },
+  "entrypoint": "demos/patterns/tilt-shift-focus-band/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-hd-2d/LICENSES.md",
+      "bytes": 979,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/audio/CREDITS",
+      "bytes": 2037,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/audio/CREDITS-music.txt",
+      "bytes": 245,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/audio/film.m4a",
+      "bytes": 2501609,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fidelity.md",
+      "bytes": 3637,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/chars.js",
+      "bytes": 13883,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/cliff.js",
+      "bytes": 29856,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/forest.js",
+      "bytes": 12071,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/forest_art.js",
+      "bytes": 5926,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/fx.js",
+      "bytes": 13318,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/harbor.js",
+      "bytes": 22104,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/index.html",
+      "bytes": 599,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/kit.js",
+      "bytes": 10045,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/main.js",
+      "bytes": 3398,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/post_ts.js",
+      "bytes": 7263,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/px.js",
+      "bytes": 12560,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/story.js",
+      "bytes": 1690,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/ui.js",
+      "bytes": 8659,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/film/voices/dur.json",
+      "bytes": 114,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/OFL-Cinzel.txt",
+      "bytes": 4383,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/OFL-CormorantGaramond.txt",
+      "bytes": 4387,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/fonts.css",
+      "bytes": 1695,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/h0.woff2",
+      "bytes": 15056,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/h1.woff2",
+      "bytes": 15224,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/h2.woff2",
+      "bytes": 23900,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/h3.woff2",
+      "bytes": 23260,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/fonts/h4.woff2",
+      "bytes": 23384,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/index.html",
+      "bytes": 2397,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/CREDITS",
+      "bytes": 2037,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/README.md",
+      "bytes": 3344,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/lines.json",
+      "bytes": 1347,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/mix.py",
+      "bytes": 9289,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/music/CREDITS.txt",
+      "bytes": 245,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/music/CUES.md",
+      "bytes": 7944,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/music/edit.py",
+      "bytes": 24524,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/music/measure.json",
+      "bytes": 4704,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/sfx_events.json",
+      "bytes": 682,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/tools/render_range.mjs",
+      "bytes": 2736,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/tools/sheet/index.html",
+      "bytes": 1285,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/tools/srt.py",
+      "bytes": 957,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/vo_times.json",
+      "bytes": 199,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/source/voices/words.json",
+      "bytes": 2092,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+      "bytes": 16582,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+      "bytes": 12990,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-hd-2d/vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+      "bytes": 6614,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/LICENSES.md",
+      "bytes": 899,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CREDITS",
+      "bytes": 767,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CREDITS-music.txt",
+      "bytes": 131,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/film.m4a",
+      "bytes": 1222144,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fidelity.md",
+      "bytes": 4652,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/city.js",
+      "bytes": 40951,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/ducks.js",
+      "bytes": 10038,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/geo.js",
+      "bytes": 6180,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/index.html",
+      "bytes": 603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/main.js",
+      "bytes": 31300,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/post.js",
+      "bytes": 8134,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/sky.js",
+      "bytes": 6528,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/story.js",
+      "bytes": 3221,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/traffic.js",
+      "bytes": 18432,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/train.js",
+      "bytes": 3361,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/voices/dur.json",
+      "bytes": 86,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/OFL-Overpass.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/OFL-overpassmono.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/Overpass-var.ttf",
+      "bytes": 318700,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/OverpassMono-var.ttf",
+      "bytes": 258800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/fonts.css",
+      "bytes": 269,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/index.html",
+      "bytes": 2266,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/CREDITS",
+      "bytes": 767,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/README.md",
+      "bytes": 2907,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/build.sh",
+      "bytes": 1353,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/cues.json",
+      "bytes": 483,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/events.json",
+      "bytes": 157042,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/lines.json",
+      "bytes": 829,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/mix.py",
+      "bytes": 9549,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/music/CREDITS.txt",
+      "bytes": 131,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/music/cues.json",
+      "bytes": 531,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/music/score.py",
+      "bytes": 15748,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/subs.mjs",
+      "bytes": 692,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/voices/words.json",
+      "bytes": 896,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 4625,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+      "bytes": 16582,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+      "bytes": 12990,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+      "bytes": 6614,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/patterns/tilt-shift-focus-band/index.html",
+      "bytes": 1405,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/tilt-shift-focus-band/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-hd-2d.json",
+      "bytes": 8927,
+      "role": "entry"
+    },
+    {
+      "path": "entries/cases/lemo-tilt-shift.json",
+      "bytes": 8554,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/tilt-shift-focus-band.json",
+      "bytes": 3779,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/tilt-shift-focus-band.jpg",
+      "bytes": 142113,
+      "role": "preview"
+    }
+  ]
+}

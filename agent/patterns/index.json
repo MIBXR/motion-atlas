@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 140,
+  "count": 150,
   "patterns": [
     {
       "id": "corner-hud",
@@ -181,7 +181,8 @@
       "sourceCases": [
         "map-pilgrimage",
         "mg-paperclip",
-        "mg-hanazi"
+        "mg-hanazi",
+        "lemo-microgame"
       ],
       "pairsWellWith": [
         "corner-hud",
@@ -409,7 +410,8 @@
         "mg-flat-vector",
         "mg-cel-boil",
         "mg-liquid",
-        "lemo-rubber-hose"
+        "lemo-rubber-hose",
+        "lemo-scifi-toon"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/squash-stretch-bounce.json"
@@ -583,7 +585,8 @@
       ],
       "role": "support",
       "sourceCases": [
-        "mg-pixel"
+        "mg-pixel",
+        "lemo-hd-2d"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/rpg-dialog-box.json"
@@ -1013,7 +1016,8 @@
         "mg-paperclip",
         "lemo-ukiyoe",
         "lemo-shadow-puppet",
-        "lemo-crayon-book"
+        "lemo-crayon-book",
+        "lemo-brick-toy"
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/anchor-pullback-phone.json"
@@ -2693,6 +2697,183 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/nested-boards-pullout.json"
+    },
+    {
+      "id": "portal-universe-hop",
+      "title": "传送门串平行宇宙",
+      "summary": "角色冲入传送门，满屏旋涡遮住交接；下一宇宙换成独立的配色、怪物与道具规则，连续短世界沿用相同构图。",
+      "types": [
+        "transition",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-scifi-toon"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/portal-universe-hop.json"
+    },
+    {
+      "id": "medallion-iris-step",
+      "title": "圆章开圈换步",
+      "summary": "步骤编号圆章盖在上镜主体上，圆心移到画面中心并扩大成开圈，露出下一步；启动按钮开圈接俯视，片尾圆收在产品上。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-midcentury-toon"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/medallion-iris-step.json"
+    },
+    {
+      "id": "carried-light-meter",
+      "title": "随身灯即情绪",
+      "summary": "主角提灯的lit参数同时改变精灵火焰、点光源和辉光，亮灭承载护火情节；初次点灯让两人的影子一起落在木板上。",
+      "types": [
+        "composition",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-hd-2d"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/carried-light-meter.json"
+    },
+    {
+      "id": "speed-up-ladder",
+      "title": "五项同步加速",
+      "summary": "BPM、普通关时长、舞台停留、口令驻留和角色更新频率随轮次加快；Boss把前面各关的媒介拼成同一幅降落画面。",
+      "types": [
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-microgame"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/speed-up-ladder.json"
+    },
+    {
+      "id": "command-word-beat",
+      "title": "一词口令即一场",
+      "summary": "一个动词同时规定任务、充当字幕并落在关卡下拍；大字砸入后缩为左上角标，在动作发生前让出画面。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-microgame"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/command-word-beat.json"
+    },
+    {
+      "id": "snap-build-collapse-rebuild",
+      "title": "拼搭、崩塌、用零件重建",
+      "summary": "积木逐块按拍点咔嗒落位，塔体失稳后每块都有落地位置；第二次组装复用这些散落部件，从废墟飞回组成更稳的火箭。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-brick-toy"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/snap-build-collapse-rebuild.json"
+    },
+    {
+      "id": "timelapse-drop-to-realtime",
+      "title": "延时骤降到实时",
+      "summary": "拥堵密度达到顶点时，×40延时随连续俯冲降到×1，对准鸭子过路的一件小事；静留后释放回×40并升高镜头。",
+      "types": [
+        "rhythm",
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "lemo-tilt-shift"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/timelapse-drop-to-realtime.json"
+    },
+    {
+      "id": "counter-rotate-pullback",
+      "title": "反旋拉远",
+      "summary": "镜头从正在描画的一条清扫路线连续拉远，同时消除倾角并把中心从路径点移到平面图中心，显出完整的路线纹样。",
+      "types": [
+        "camera"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-midcentury-toon"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/counter-rotate-pullback.json"
+    },
+    {
+      "id": "tilt-shift-focus-band",
+      "title": "移轴焦带",
+      "summary": "以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。",
+      "types": [
+        "camera",
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "lemo-hd-2d",
+        "lemo-tilt-shift"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/tilt-shift-focus-band.json"
+    },
+    {
+      "id": "long-exposure-light-trail",
+      "title": "长曝光光轨",
+      "summary": "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。",
+      "types": [
+        "texture"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "lemo-tilt-shift"
+      ],
+      "pairsWellWith": [],
+      "bundle": "agent/patterns/long-exposure-light-trail.json"
     }
   ]
 }

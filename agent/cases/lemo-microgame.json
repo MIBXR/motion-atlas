@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "lemo-microgame",
+  "entry": {
+    "id": "lemo-microgame",
+    "order": 55,
+    "title": "五秒宇航员 · 微游戏快闪",
+    "subtitle": "Five-Second Astronaut",
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "lemo-opuscar",
+      "微游戏快闪",
+      "游戏",
+      "代码影片"
+    ],
+    "summary": "见习宇航员在蜡笔、水墨、终端、孔版、像素、蓝图与瑞士排版微游戏中受训，失去两条命后在混合风格Boss关完成降落。",
+    "focus": "一词口令、动作、结果组成微游戏单元；速度阶梯同时改变音乐、关卡长度、舞台停留、口令时长和角色帧率。",
+    "accent": "#ffc928",
+    "background": "#2a0f5c",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 23.92,
+    "rhythm": {
+      "duration": 59.833333333333336,
+      "beats": [
+        {
+          "t": 0,
+          "label": "充气"
+        },
+        {
+          "t": 8,
+          "label": "忍住喷嚏"
+        },
+        {
+          "t": 14,
+          "label": "扣好安全带"
+        },
+        {
+          "t": 20,
+          "label": "接住"
+        },
+        {
+          "t": 26,
+          "label": "加速"
+        },
+        {
+          "t": 27.849577978704346,
+          "label": "闪避"
+        },
+        {
+          "t": 31.278149407275773,
+          "label": "拉上拉链"
+        },
+        {
+          "t": 34.7067208358472,
+          "label": "敬礼失败"
+        },
+        {
+          "t": 38.13529226441863,
+          "label": "最后一命"
+        },
+        {
+          "t": 39.849577978704346,
+          "label": "Boss翻牌"
+        },
+        {
+          "t": 41.45180527520344,
+          "label": "降落"
+        },
+        {
+          "t": 53.45180527520344,
+          "label": "成功回舞台"
+        },
+        {
+          "t": 57.20180527520344,
+          "label": "片尾"
+        }
+      ]
+    },
+    "energySegments": [
+      {
+        "t0": 0,
+        "t1": 8,
+        "from": 0.7,
+        "to": 0.75,
+        "label": "充气"
+      },
+      {
+        "t0": 8,
+        "t1": 14,
+        "from": 0.75,
+        "to": 0.65,
+        "label": "忍住喷嚏"
+      },
+      {
+        "t0": 14,
+        "t1": 20,
+        "from": 0.65,
+        "to": 0.8,
+        "label": "扣好安全带"
+      },
+      {
+        "t0": 20,
+        "t1": 26,
+        "from": 0.8,
+        "to": 0.9,
+        "label": "接住"
+      },
+      {
+        "t0": 26,
+        "t1": 27.849577978704346,
+        "from": 0.9,
+        "to": 0.9,
+        "label": "加速"
+      },
+      {
+        "t0": 27.849577978704346,
+        "t1": 31.278149407275773,
+        "from": 0.9,
+        "to": 0.85,
+        "label": "闪避"
+      },
+      {
+        "t0": 31.278149407275773,
+        "t1": 34.7067208358472,
+        "from": 0.85,
+        "to": 0.95,
+        "label": "拉上拉链"
+      },
+      {
+        "t0": 34.7067208358472,
+        "t1": 38.13529226441863,
+        "from": 0.95,
+        "to": 0.1,
+        "label": "敬礼失败"
+      },
+      {
+        "t0": 38.13529226441863,
+        "t1": 39.849577978704346,
+        "from": 0.1,
+        "to": 0.8,
+        "label": "最后一命"
+      },
+      {
+        "t0": 39.849577978704346,
+        "t1": 41.45180527520344,
+        "from": 0.8,
+        "to": 1,
+        "label": "Boss翻牌"
+      },
+      {
+        "t0": 41.45180527520344,
+        "t1": 53.45180527520344,
+        "from": 1,
+        "to": 0.65,
+        "label": "降落"
+      },
+      {
+        "t0": 53.45180527520344,
+        "t1": 57.20180527520344,
+        "from": 0.65,
+        "to": 0.3,
+        "label": "成功回舞台"
+      },
+      {
+        "t0": 57.20180527520344,
+        "t1": 59.833333333333336,
+        "from": 0.3,
+        "to": 0.05,
+        "label": "片尾"
+      }
+    ],
+    "energyNote": "段落取DEMO.md的Shots及源码时间线；0–1是根据动作、配乐、静默和画面密度标注的相对能量。",
+    "observations": [
+      "PUMP!在第一帧砸入，大字驻留后缩成角标，动作结果保持可见。",
+      "120→140→160 BPM；普通关由4秒缩至18/7秒，舞台由2秒缩至6/7秒。",
+      "命数通过头盔裂开跌落从3降到2再到1，最后一命在暗舞台闪烁。",
+      "Boss将孔版天空、蜡笔地球、蓝图舱体、终端高度表、像素小伞、水墨大伞与瑞士红圆拼在同一焦点链上。"
+    ],
+    "composition": {
+      "color": "#2a0f5c、#ff2e88、#ffc928、#1fd1d1、#ffffff、#151023。",
+      "typography": "Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。",
+      "layout": "1920×1080横屏，24fps；舞台等比缩放，字幕与画内信息保留原作位置。",
+      "imagery": "Canvas2D各媒介渲染器与WebGL2材质着色器，统一电视舞台、角色、口令和引线计时器。",
+      "motion": "第一轮8fps角色、第二轮12fps、Boss的运动连续更新；24fps镜头与引线火星贯穿全片，失败关保留半速回放。",
+      "sound": "原创放克配乐，MuldjordKit鼓CC BY 4.0、Salamander钢琴CC BY 3.0、VSCO/VCSL/Karoryfer/FreePats采样CC0；Kokoro am_fenrir与af_bella。",
+      "rhythm": "常规关、舞台反馈和两次加速交替；最后一命留静默，Boss延长为32拍。",
+      "coherence": "每种媒介保留自己的色板，统一舞台、主角和口令位置连接关卡。"
+    },
+    "layers": [
+      {
+        "name": "媒介关卡",
+        "role": "七种材料语法分别绘制一个动作。"
+      },
+      {
+        "name": "舞台",
+        "role": "固定正面舞台、电视框、主持人与命数。"
+      },
+      {
+        "name": "口令和计时",
+        "role": "动词砸入、角标、引线火花和结果印章。"
+      },
+      {
+        "name": "Boss",
+        "role": "前面关卡的画面材料合成降落场景。"
+      }
+    ],
+    "tokens": {
+      "palette": [
+        "#2a0f5c",
+        "#ff2e88",
+        "#ffc928",
+        "#1fd1d1",
+        "#ffffff",
+        "#151023"
+      ],
+      "type": "Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。",
+      "motion": [
+        {
+          "name": "五项加速",
+          "value": "film/timeline.js:SEGS；film/film.js:R2 / tvInDur / tvOutDur / hold；film/g_crayon.js等8fps、g_pixel.js等12fps、g_boss.js的lt连续运动。"
+        },
+        {
+          "name": "口令",
+          "value": "film/hud.js:command，.12秒由1.9→.92，接.08秒回1；hold=.75或.64秒，.22秒缩至.3倍角标。"
+        }
+      ]
+    },
+    "useCases": [
+      "游戏预告",
+      "快节奏操作引导",
+      "社交短片"
+    ],
+    "avoid": [],
+    "constraints": [],
+    "migration": [
+      {
+        "field": "film/timeline.js",
+        "how": "修改关卡、节拍、速度和口令。"
+      },
+      {
+        "field": "film/g_*.js / film/hud.js / film/film.js",
+        "how": "修改各媒介任务、口令表现、转场与命数；声音使用source/timeline.json同表制作。"
+      }
+    ],
+    "prompt": "制作见习宇航员在蜡笔、水墨、终端、孔版、像素、蓝图与瑞士排版微游戏中受训，失去两条命后在混合风格Boss关完成降落。 一词口令、动作、结果组成微游戏单元；速度阶梯同时改变音乐、关卡长度、舞台停留、口令时长和角色帧率。 第一轮8fps角色、第二轮12fps、Boss的运动连续更新；24fps镜头与引线火星贯穿全片，失败关保留半速回放。 Canvas2D各媒介渲染器与WebGL2材质着色器，统一电视舞台、角色、口令和引线计时器。 字体：Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。 声音：原创放克配乐，MuldjordKit鼓CC BY 4.0、Salamander钢琴CC BY 3.0、VSCO/VCSL/Karoryfer/FreePats采样CC0；Kokoro am_fenrir与af_bella。 实现沿用lemo-microgame的film/源码、素材与时间表。",
+    "demo": "demos/cases/lemo-microgame/index.html",
+    "patternIds": [
+      "speed-up-ladder",
+      "command-word-beat",
+      "collect-counter"
+    ],
+    "fidelity": "demos/cases/lemo-microgame/fidelity.md",
+    "upstream": {
+      "repository": "lemomo-ai/lemo-opuscar",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame",
+      "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+      "path": "styles/microgame/"
+    },
+    "license": {
+      "name": "MIT · CC BY 4.0",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+      "notes": "代码与文档MIT；示范成片与静帧CC BY 4.0，署名LemoLab；第三方资源沿用CREDITS的许可。"
+    },
+    "sources": [
+      {
+        "label": "风格与制作说明",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame"
+      },
+      {
+        "label": "Release公开成片",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/microgame.mp4"
+      },
+      {
+        "label": "第三方资源与署名",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame/demo/CREDITS"
+      }
+    ],
+    "attribution": [
+      {
+        "scope": "作品",
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）；[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame)，代码MIT、成片CC BY 4.0；本库接入MotionKit，删改与对照见[fidelity.md](fidelity.md)。"
+      },
+      {
+        "scope": "声音与第三方资源",
+        "notes": "原创放克配乐，MuldjordKit鼓CC BY 4.0、Salamander钢琴CC BY 3.0、VSCO/VCSL/Karoryfer/FreePats采样CC0；Kokoro am_fenrir与af_bella。 原始署名见[audio/CREDITS](audio/CREDITS)，许可全文见[LICENSES.md](LICENSES.md)。"
+      },
+      {
+        "scope": "字体",
+        "notes": "Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。 SIL OFL 1.1原文在fonts/，来源与重建方法见[source/README.md](source/README.md)。"
+      }
+    ],
+    "renderer": "gpu",
+    "licenses": "demos/cases/lemo-microgame/LICENSES.md",
+    "preview": "previews/cases/lemo-microgame.jpg",
+    "previewPortrait": null
+  },
+  "documents": {
+    "fidelity": "# 五秒宇航员 · 微游戏快闪 · 接入与保真说明\n\n完整代码影片的来源与固定版本见[条目JSON](../../../entries/cases/lemo-microgame.json)。\n\n## 相对原作的删改\n\n| 文件 | 删改内容 | 原因 |\n| --- | --- | --- |\n| `index.html` | 预载运行文件、字体与音轨，等待iframe的load和READY；按上游三个worker的479帧区间重建运行页，并先调用区间首帧。 | 接入MotionKit并保留原成片的媒介快照与CRT状态。 |\n| `film/index.html` | 字体入口指向../fonts/；import map把/core/lib.js映射至./core/lib.js。 | 相对路径接入。 |\n| `film/core/lib.js` | 复制固定提交的共享运行代码，文本使用LF。 | 本地运行依赖。 |\n| `audio/film.m4a` | 从Release以-c:a copy流复制。 | 沿用正式混音。 |\n| `fonts/` | 按上游字体、字重和子集保存字体与OFL原文。 | 本地字体加载。 |\n| `source/` | 保存成品运行之外的上游制作文件及目录，文本统一LF。 | 保存制作依赖。 |\n| `stills/` | 风格帧与制作截图保留在上游，预览由capture生成。 | 成品绘制的输入为源码。 |\n| `film/main.js` | 移除字符、字体、scene制作页分支，frames.js保存到source/。 | 分离成片运行与制作页。 |\n\n`film/`的绘制、材质、着色器、姿势和时间表沿用原作；许可索引见[LICENSES.md](LICENSES.md)。\n\n## 适配层\n\n`index.html`通过`MotionKit.load.prepare`预载，以同源iframe加载`film/index.html`，等待`window.READY === true`后调用`MotionKit.mountFilm`。舞台1920×1080、24fps、59.833333秒；`renderAt(t)`按原作`core/render/video.mjs`的三worker分段初始化页面后，等待`upstream.render(Math.round(t*24)/24)`。音轨来自Release正式混音，默认关闭。\n\n`?embed`隐藏控制条，`?render`暂停自动播放与声音，`?t=秒`定位；减少动态时暂停在条目的previewAt。镜头标记取DEMO.md的Shots和源码时间表。\n\n## 已接受差异\n\n### 高频材质与编码\n\n`film/glpass.js:21–44`以7px旋转网点、1.5px针孔、2px噪声和纸纹生成孔版材质；`g_riso.js:87–126`将版密度与固定seed=5交给该着色器。Boss的孔版天空也复用它。JPEG95、YUV420和H264 CRF14→20会重采样这些高频细点；单帧测量链与原片的帧间编码保留不同细节。\n\n| 帧号 | 低通σ2 SSIM | 低通σ4 SSIM | 独立入口/适配层 | 跨镜头历史/直接定位 | D3D11/SwiftShader |\n| --- | --- | --- | --- | --- | --- |\n| 574 | 0.988247 | 0.996526 | 1.000000 | 1.000000 | 0.995314 |\n| 1121 | 0.992802 | 0.997172 | 1.000000 | 1.000000 | 0.993750 |\n| 1157 | 0.986327 | 0.995829 | 1.000000 | 1.000000 | 0.996741 |\n\n574、1157帧从整片完整解码与定点精确提取的PNG互比均为1.000000。两帧本库前一帧/同帧/后一帧与参考比较分别为0.798328/0.798863/0.798325和0.832646/0.853737/0.832890；1121帧对应0.900348/0.923370/0.903599。所有实际字体已加载，资源及脚本错误为0，材质输入由原作代码生成。人物姿态、构图与文字沿用同帧原作输出。\n\n### Worker快照状态\n\n`source/build.sh`使用三个worker，1436帧分成479帧区间。`film/film.js:bossinSeg`先生成boss0，再读取各关末帧；`g_boss.js`的高度表通过`g_ascii.js:render`设置`uflat=1`，`g_ascii.js:print`保留该uniform，`film.js:lastFrame`缓存结果。第976帧属于第三个worker，第三张ASCII卡片使用平面屏幕。适配层按区间建立原作页面状态，独立入口与适配层PNG一致，976帧原始SSIM为0.957974、编码链为0.978121。\n\n## 与原片对照结果\n\n无头Edge使用`--enable-gpu --ignore-gpu-blocklist --font-render-hinting=none --force-color-profile=srgb`，1920×1080、DPR1。WebGL为Intel Iris Xe / ANGLE D3D11。等待`__motion.ready`、按`floor(t×fps+.5)`对齐帧号并等待定位完成；参考PNG从Release按该帧号精确提取。\n\n原始列比较本库PNG和参考PNG；编码链列在过程目录将PNG以浏览器捕获为JPEG95后，经过`JPEG95 → H264 medium CRF14 → H264 slow CRF20`，grain=0，解码为PNG再比较。SSIM取ffmpeg统一yuv444p后的All。\n\n| 序号 | 帧号 | 请求秒 | 对齐秒 | 原始SSIM | 编码链SSIM | 取样 |\n| --- | --- | --- | --- | --- | --- | --- |\n| 1 | 0 | 0.000000 | 0.000000 | 0.959013 | 0.970314 | 开头 |\n| 2 | 574 | 23.920000 | 23.916667 | 0.798863 | 0.905826 | frame_sec |\n| 3 | 48 | 2.000000 | 2.000000 | 0.955817 | 0.962818 | Shots · 口令开场 |\n| 4 | 144 | 6.000000 | 6.000000 | 0.976157 | 0.978476 | Shots · 退出电视 |\n| 5 | 312 | 13.000000 | 13.000000 | 0.983292 | 0.985050 | Shots · 固定舞台 |\n| 6 | 646 | 26.924789 | 26.916667 | 0.960114 | 0.979368 | Shots · 加速老虎机 |\n| 7 | 615 | 25.625000 | 25.625000 | 0.990268 | 0.993163 | Shots · 按钮插镜 |\n| 8 | 936 | 38.992435 | 39.000000 | 0.986299 | 0.988272 | Shots · 最后一条命 |\n| 9 | 976 | 40.650692 | 40.666667 | 0.957974 | 0.978121 | Shots · 八块翻牌入 Boss |\n| 10 | 1121 | 46.701805 | 46.708333 | 0.923370 | 0.950522 | Shots · 舷窗静默 |\n| 11 | 1157 | 48.201805 | 48.208333 | 0.853737 | 0.942841 | Shots · 墨伞绽开回全景 |\n| 12 | 1359 | 56.639305 | 56.625000 | 0.952519 | 0.974717 | Shots · 回舞台与片尾 |\n| 13 | 1412 | 58.833333 | 58.833333 | 0.987560 | 0.988450 | 片尾前1秒 |\n\n13帧：原始最低**0.798863**、最高**0.990268**；编码链最低**0.905826**、最高**0.993163**。\n\n| 低于0.95的帧 | 原始 | 编码链 | 代码位置与差异 |\n| --- | --- | --- | --- |\n| 574 / 23.916667秒 | 0.798863 | 0.905826 | film/glpass.js:21–44的7px旋转网点、1.5px针孔、2px噪声和纸纹；film/g_riso.js:87–126以固定seed=5合成。JPEG95、YUV420与H264 CRF14→20重采样网点，测量单帧编码和原片帧间编码的细节不同。 |\n| 1121 / 46.708333秒 | 0.923370 | 0.950522 | film/g_boss.js:218–251的舷窗推近叠加孔版天空与蜡笔地球；film/glpass.js:21–62处理网点、纸齿和覆盖率。原始列保留高频材质差异，相同编码链列达到0.95。 |\n| 1157 / 48.208333秒 | 0.853737 | 0.942841 | film/g_boss.js:238–249、274–288将孔版天空、水墨伞与舱体叠合；film/glpass.js:21–44的7px网点覆盖大部分画面。JPEG95与H26414→20的帧间重采样改变细点，单帧链仍保留编码上下文差异。 |\n\n声音：成片与本库音轨解码为48kHz单声道，以10ms RMS包络在±500ms内互相关，最佳偏移**0ms**，相关系数**1.000000**。\n",
+    "licenses": "# 第三方许可索引\n\n[来源与固定版本](../../../entries/cases/lemo-microgame.json)\n\n- 作品代码：[film/LICENSE](film/LICENSE)，MIT；LemoLab × Claude Opus 5.5。\n- [audio/film.m4a](audio/film.m4a)流复制自[Release成片](https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/microgame.mp4)，示范影片按[CC BY 4.0](audio/CC-BY-4.0.txt)发布，署名LemoLab并链接来源。\n- 音乐、声音与第三方来源：[audio/CREDITS](audio/CREDITS)；Kokoro配音许可为[Apache-2.0](audio/Apache-2.0.txt)。\n- 乐器采样署名：[audio/CREDITS-music.txt](audio/CREDITS-music.txt)；CC0全文：[audio/CC0-1.0.txt](audio/CC0-1.0.txt)。\n- Salamander Grand Piano V3（Alexander Holm）：[CC BY 3.0](audio/CC-BY-3.0.txt)；MuldjordKit（Lars Muldjord）：[CC BY 4.0](audio/CC-BY-4.0.txt)。\n- 字体均为SIL OFL 1.1：[OFL-architectsdaughter.txt](fonts/OFL-architectsdaughter.txt)、[OFL-gochihand.txt](fonts/OFL-gochihand.txt)、[OFL-inter.txt](fonts/OFL-inter.txt)、[OFL-lilitaone.txt](fonts/OFL-lilitaone.txt)、[OFL-silkscreen.txt](fonts/OFL-silkscreen.txt)、[OFL-titanone.txt](fonts/OFL-titanone.txt)、[OFL-vt323.txt](fonts/OFL-vt323.txt)。\n",
+    "prompt": "# 五秒宇航员 · 微游戏快闪\n\n## 实现 Prompt\n\n制作见习宇航员在蜡笔、水墨、终端、孔版、像素、蓝图与瑞士排版微游戏中受训，失去两条命后在混合风格Boss关完成降落。 一词口令、动作、结果组成微游戏单元；速度阶梯同时改变音乐、关卡长度、舞台停留、口令时长和角色帧率。 第一轮8fps角色、第二轮12fps、Boss的运动连续更新；24fps镜头与引线火星贯穿全片，失败关保留半速回放。 Canvas2D各媒介渲染器与WebGL2材质着色器，统一电视舞台、角色、口令和引线计时器。 字体：Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。 声音：原创放克配乐，MuldjordKit鼓CC BY 4.0、Salamander钢琴CC BY 3.0、VSCO/VCSL/Karoryfer/FreePats采样CC0；Kokoro am_fenrir与af_bella。 实现沿用lemo-microgame的film/源码、素材与时间表。\n\n## 动效 Token\n\n- **五项加速**：film/timeline.js:SEGS；film/film.js:R2 / tvInDur / tvOutDur / hold；film/g_crayon.js等8fps、g_pixel.js等12fps、g_boss.js的lt连续运动。\n- **口令**：film/hud.js:command，.12秒由1.9→.92，接.08秒回1；hold=.75或.64秒，.22秒缩至.3倍角标。\n\n## 迁移\n\n- `film/timeline.js`：修改关卡、节拍、速度和口令。\n- `film/g_*.js / film/hud.js / film/film.js`：修改各媒介任务、口令表现、转场与命数；声音使用source/timeline.json同表制作。\n\n[打开 Demo](../../demos/cases/lemo-microgame/index.html) · [在库中查看](../../cases.html#case/lemo-microgame)\n"
+  },
+  "entrypoint": "demos/cases/lemo-microgame/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-microgame/LICENSES.md",
+      "bytes": 1185,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC-BY-3.0.txt",
+      "bytes": 19467,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CREDITS",
+      "bytes": 1717,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/CREDITS-music.txt",
+      "bytes": 658,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/audio/film.m4a",
+      "bytes": 2011571,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fidelity.md",
+      "bytes": 6504,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/chars.js",
+      "bytes": 20159,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/film.js",
+      "bytes": 18389,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_ascii.js",
+      "bytes": 9981,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_blue.js",
+      "bytes": 10427,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_boss.js",
+      "bytes": 22311,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_crayon.js",
+      "bytes": 13920,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_ink.js",
+      "bytes": 14916,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_pixel.js",
+      "bytes": 9940,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_riso.js",
+      "bytes": 8874,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/g_swiss.js",
+      "bytes": 7693,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/glpass.js",
+      "bytes": 9187,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/hud.js",
+      "bytes": 9549,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/index.html",
+      "bytes": 460,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/lines.json",
+      "bytes": 2906,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/main.js",
+      "bytes": 1144,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/stage.js",
+      "bytes": 8756,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/timeline.js",
+      "bytes": 2424,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/toon.js",
+      "bytes": 4853,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/film/voices/dur.json",
+      "bytes": 356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/ArchitectsDaughter-Regular.ttf",
+      "bytes": 43352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/GochiHand-Regular.ttf",
+      "bytes": 37352,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Inter.ttf",
+      "bytes": 876576,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/LilitaOne-Regular.ttf",
+      "bytes": 28092,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-architectsdaughter.txt",
+      "bytes": 4362,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-gochihand.txt",
+      "bytes": 4423,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-inter.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-lilitaone.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-silkscreen.txt",
+      "bytes": 4394,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-titanone.txt",
+      "bytes": 4418,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/OFL-vt323.txt",
+      "bytes": 4367,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Silkscreen-Bold.ttf",
+      "bytes": 30632,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/Silkscreen-Regular.ttf",
+      "bytes": 32220,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/TitanOne-Regular.ttf",
+      "bytes": 55712,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/VT323-Regular.ttf",
+      "bytes": 153116,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/fonts/fonts.css",
+      "bytes": 924,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/index.html",
+      "bytes": 3363,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/CREDITS",
+      "bytes": 1717,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/README.md",
+      "bytes": 4505,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/build.sh",
+      "bytes": 2238,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/events.json",
+      "bytes": 6285,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/frames.js",
+      "bytes": 10563,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/lines.json.asr.json",
+      "bytes": 2974,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/mix.py",
+      "bytes": 16861,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/CREDITS_music.txt",
+      "bytes": 658,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/score.json",
+      "bytes": 2142,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/music/score.py",
+      "bytes": 28624,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/timeline.json",
+      "bytes": 5884,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/cuecheck.py",
+      "bytes": 3160,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/dump_timeline.mjs",
+      "bytes": 422,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/final_asr.py",
+      "bytes": 1416,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/mux.sh",
+      "bytes": 1241,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/review.sh",
+      "bytes": 511,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/subs.py",
+      "bytes": 864,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/tools/trim_cmd.py",
+      "bytes": 1543,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-microgame/source/voices/words.json",
+      "bytes": 1315,
+      "role": "process"
+    },
+    {
+      "path": "entries/cases/lemo-microgame.json",
+      "bytes": 9764,
+      "role": "entry"
+    },
+    {
+      "path": "previews/cases/lemo-microgame.jpg",
+      "bytes": 387254,
+      "role": "preview"
+    }
+  ]
+}

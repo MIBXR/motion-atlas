@@ -1,0 +1,71 @@
+{
+  "id": "timelapse-drop-to-realtime",
+  "order": 157,
+  "title": "延时骤降到实时",
+  "types": [
+    "rhythm",
+    "camera"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "拥堵密度达到顶点时，×40延时随连续俯冲降到×1，对准鸭子过路的一件小事；静留后释放回×40并升高镜头。",
+  "mechanism": "拥堵密度达到顶点时，×40延时随连续俯冲降到×1，对准鸭子过路的一件小事；静留后释放回×40并升高镜头。",
+  "trigger": "来源案例的时间轴进入所列动作区间。",
+  "effect": "拥堵密度达到顶点时，×40延时随连续俯冲降到×1，对准鸭子过路的一件小事；静留后释放回×40并升高镜头。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-tilt-shift 19.000000–30.800000秒；1倍速，总时长11.800000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "速度曲线",
+      "value": "film/story.js:jamRate，22.5–24秒1+39·(1−ss(u))，24–30秒×1，30–30.6秒1+39·ss(u)。"
+    },
+    {
+      "name": "世界与镜头",
+      "value": "film/main.js:stepped按倍率选8/12Hz或连续时间，jamCam在22.5–24.1秒对数降低高度，look先到鸭子；镜头始终逐帧更新。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-tilt-shift/film/story.js",
+    "demos/cases/lemo-tilt-shift/film/main.js"
+  ],
+  "locator": "film/story.js:jamRate，22.5–24秒1+39·(1−ss(u))，24–30秒×1，30–30.6秒1+39·ss(u)。；film/main.js:stepped按倍率选8/12Hz或连续时间，jamCam在22.5–24.1秒对数降低高度，look先到鸭子；镜头始终逐帧更新。",
+  "useCases": [
+    "拥堵密度达到顶点时，×40延时随连续俯冲降到×1，对准鸭子过路的一件小事；静留后释放回×40并升高镜头。"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "foundation",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+  },
+  "prompt": "调用来源案例原作render(t)重放“延时骤降到实时”。拥堵密度达到顶点时，×40延时随连续俯冲降到×1，对准鸭子过路的一件小事；静留后释放回×40并升高镜头。 参数：film/story.js:jamRate，22.5–24秒1+39·(1−ss(u))，24–30秒×1，30–30.6秒1+39·ss(u)。 film/main.js:stepped按倍率选8/12Hz或连续时间，jamCam在22.5–24.1秒对数降低高度，look先到鸭子；镜头始终逐帧更新。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/timelapse-drop-to-realtime/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-tilt-shift"
+    }
+  ],
+  "previewAt": 5.5,
+  "markers": [
+    {
+      "t": 0,
+      "label": "延时骤降到实时"
+    }
+  ],
+  "renderer": "gpu"
+}

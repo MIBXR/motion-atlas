@@ -1,0 +1,71 @@
+{
+  "id": "portal-universe-hop",
+  "order": 151,
+  "title": "传送门串平行宇宙",
+  "types": [
+    "transition",
+    "composition"
+  ],
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "summary": "角色冲入传送门，满屏旋涡遮住交接；下一宇宙换成独立的配色、怪物与道具规则，连续短世界沿用相同构图。",
+  "mechanism": "角色冲入传送门，满屏旋涡遮住交接；下一宇宙换成独立的配色、怪物与道具规则，连续短世界沿用相同构图。",
+  "trigger": "来源案例的时间轴进入所列动作区间。",
+  "effect": "角色冲入传送门，满屏旋涡遮住交接；下一宇宙换成独立的配色、怪物与道具规则，连续短世界沿用相同构图。",
+  "timing": [
+    {
+      "name": "原片重放区间",
+      "value": "lemo-scifi-toon 12.200000–14.500000秒；lemo-scifi-toon 28.100000–31.700000秒；1倍速，总时长5.900000秒。"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "门与世界表",
+      "value": "film/story.js:WIPES / SHOTS / TAGS；film/main.js:sucked / spit / renderWipe；film/worlds.js各宇宙与portal。"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-scifi-toon/film/main.js",
+    "demos/cases/lemo-scifi-toon/film/story.js",
+    "demos/cases/lemo-scifi-toon/film/worlds.js"
+  ],
+  "locator": "film/story.js:WIPES / SHOTS / TAGS；film/main.js:sucked / spit / renderWipe；film/worlds.js各宇宙与portal。",
+  "useCases": [
+    "角色冲入传送门，满屏旋涡遮住交接；下一宇宙换成独立的配色、怪物与道具规则，连续短世界沿用相同构图。"
+  ],
+  "avoid": [],
+  "accessibility": {
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+  },
+  "composition": {
+    "role": "foundation",
+    "pairsWellWith": [],
+    "conflicts": [],
+    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+  },
+  "prompt": "调用来源案例原作render(t)重放“传送门串平行宇宙”。角色冲入传送门，满屏旋涡遮住交接；下一宇宙换成独立的配色、怪物与道具规则，连续短世界沿用相同构图。 参数：film/story.js:WIPES / SHOTS / TAGS；film/main.js:sucked / spit / renderWipe；film/worlds.js各宇宙与portal。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+  "demo": "demos/patterns/portal-universe-hop/index.html",
+  "kit": true,
+  "timeline": true,
+  "sources": [
+    {
+      "caseId": "lemo-scifi-toon"
+    }
+  ],
+  "previewAt": 4,
+  "markers": [
+    {
+      "t": 0,
+      "label": "传送门串平行宇宙"
+    },
+    {
+      "t": 2.3000000000000007,
+      "label": "传送门串平行宇宙"
+    }
+  ]
+}

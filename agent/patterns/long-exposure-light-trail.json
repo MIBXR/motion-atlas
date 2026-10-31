@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "kind": "pattern",
+  "id": "long-exposure-light-trail",
+  "pattern": {
+    "id": "long-exposure-light-trail",
+    "order": 160,
+    "title": "长曝光光轨",
+    "types": [
+      "texture"
+    ],
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "summary": "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。",
+    "mechanism": "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。",
+    "trigger": "来源案例的时间轴进入所列动作区间。",
+    "effect": "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。",
+    "timing": [
+      {
+        "name": "原片重放区间",
+        "value": "lemo-tilt-shift 0.000000–5.000000秒；1倍速，总时长5.000000秒。"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "历史轨迹",
+        "value": "film/main.js:275–304，黎明主车14个历史位置铺成弯曲光轨；普通车根据曝光时间取首尾位置。"
+      },
+      {
+        "name": "条带网格",
+        "value": "film/traffic.js:202–239，K=14、HEAD=[1,.86,.62]、TAIL=[1,.08,.04]；fade=t^1.6·I，AdditiveBlending、depthWrite=false、fog=false。"
+      }
+    ],
+    "sourceFiles": [
+      "demos/cases/lemo-tilt-shift/film/main.js",
+      "demos/cases/lemo-tilt-shift/film/traffic.js"
+    ],
+    "locator": "film/main.js:275–304，黎明主车14个历史位置铺成弯曲光轨；普通车根据曝光时间取首尾位置。；film/traffic.js:202–239，K=14、HEAD=[1,.86,.62]、TAIL=[1,.08,.04]；fade=t^1.6·I，AdditiveBlending、depthWrite=false、fog=false。",
+    "useCases": [
+      "在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。"
+    ],
+    "avoid": [],
+    "accessibility": {
+      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
+      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
+    },
+    "composition": {
+      "role": "accent",
+      "pairsWellWith": [],
+      "conflicts": [],
+      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    },
+    "prompt": "调用来源案例原作render(t)重放“长曝光光轨”。在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。 参数：film/main.js:275–304，黎明主车14个历史位置铺成弯曲光轨；普通车根据曝光时间取首尾位置。 film/traffic.js:202–239，K=14、HEAD=[1,.86,.62]、TAIL=[1,.08,.04]；fade=t^1.6·I，AdditiveBlending、depthWrite=false、fog=false。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
+    "demo": "demos/patterns/long-exposure-light-trail/index.html",
+    "kit": true,
+    "timeline": true,
+    "sources": [
+      {
+        "caseId": "lemo-tilt-shift"
+      }
+    ],
+    "previewAt": 2.5,
+    "markers": [
+      {
+        "t": 0,
+        "label": "长曝光光轨"
+      }
+    ],
+    "renderer": "gpu",
+    "preview": "previews/patterns/long-exposure-light-trail.jpg",
+    "previewPortrait": null
+  },
+  "sourceCases": [
+    {
+      "caseId": "lemo-tilt-shift",
+      "bundle": "agent/cases/lemo-tilt-shift.json"
+    }
+  ],
+  "documents": {
+    "prompt": "# 长曝光光轨\n\n## 实现 Prompt\n\n调用来源案例原作render(t)重放“长曝光光轨”。在世界空间按车辆过去的位置生成白色头灯与红色尾灯条带，沿历史方向衰减并以加色混合留在路面上，焦带和镜头继续独立运动。 参数：film/main.js:275–304，黎明主车14个历史位置铺成弯曲光轨；普通车根据曝光时间取首尾位置。 film/traffic.js:202–239，K=14、HEAD=[1,.86,.62]、TAIL=[1,.08,.04]；fade=t^1.6·I，AdditiveBlending、depthWrite=false、fog=false。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。\n\n## 参数\n\n- **原片重放区间**：lemo-tilt-shift 0.000000–5.000000秒；1倍速，总时长5.000000秒。\n\n[打开 Demo](../../demos/patterns/long-exposure-light-trail/index.html) · [在库中查看](../../patterns.html#pattern/long-exposure-light-trail)\n"
+  },
+  "entrypoint": "demos/patterns/long-exposure-light-trail/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-tilt-shift/LICENSES.md",
+      "bytes": 899,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CREDITS",
+      "bytes": 767,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/CREDITS-music.txt",
+      "bytes": 131,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/audio/film.m4a",
+      "bytes": 1222144,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fidelity.md",
+      "bytes": 4652,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/city.js",
+      "bytes": 40951,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/ducks.js",
+      "bytes": 10038,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/geo.js",
+      "bytes": 6180,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/index.html",
+      "bytes": 603,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/main.js",
+      "bytes": 31300,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/post.js",
+      "bytes": 8134,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/sky.js",
+      "bytes": 6528,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/story.js",
+      "bytes": 3221,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/traffic.js",
+      "bytes": 18432,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/train.js",
+      "bytes": 3361,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/film/voices/dur.json",
+      "bytes": 86,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/OFL-Overpass.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/OFL-overpassmono.txt",
+      "bytes": 4392,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/Overpass-var.ttf",
+      "bytes": 318700,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/OverpassMono-var.ttf",
+      "bytes": 258800,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/fonts/fonts.css",
+      "bytes": 269,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/index.html",
+      "bytes": 2266,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/CREDITS",
+      "bytes": 767,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/README.md",
+      "bytes": 2907,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/build.sh",
+      "bytes": 1353,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/cues.json",
+      "bytes": 483,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/events.json",
+      "bytes": 157042,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/lines.json",
+      "bytes": 829,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/mix.py",
+      "bytes": 9549,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/music/CREDITS.txt",
+      "bytes": 131,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/music/cues.json",
+      "bytes": 531,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/music/score.py",
+      "bytes": 15748,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/subs.mjs",
+      "bytes": 692,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/source/voices/words.json",
+      "bytes": 896,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/LICENSE",
+      "bytes": 1081,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/build/three.module.js",
+      "bytes": 1314681,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 4625,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+      "bytes": 16582,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2524,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12410,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+      "bytes": 12990,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1147,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1490,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/cases/lemo-tilt-shift/vendor/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+      "bytes": 6614,
+      "role": "vendor"
+    },
+    {
+      "path": "demos/patterns/long-exposure-light-trail/index.html",
+      "bytes": 816,
+      "role": "source"
+    },
+    {
+      "path": "demos/patterns/long-exposure-light-trail/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "entries/cases/lemo-tilt-shift.json",
+      "bytes": 8554,
+      "role": "entry"
+    },
+    {
+      "path": "entries/patterns/long-exposure-light-trail.json",
+      "bytes": 3341,
+      "role": "entry"
+    },
+    {
+      "path": "previews/patterns/long-exposure-light-trail.jpg",
+      "bytes": 140105,
+      "role": "preview"
+    }
+  ]
+}

@@ -99,6 +99,9 @@
     },
     {
       "caseId": "lemo-rubber-hose"
+    },
+    {
+      "caseId": "lemo-scifi-toon"
     }
   ],
   "previewAt": 0.5333333333333333,
@@ -200,6 +203,10 @@
     {
       "name": "lemo-rubber-hose · 物件身体、无关节橡皮管四肢和逐拍呼吸",
       "value": "film/story.js:q以12fps采样；film/scenes.js:shotLeaving按K.crouch / hop / launch / plop将方糖从蹲压(.8高、1.12宽)推入起跳纵伸，杯身在接住方糖后以exp(−7dt)驱动sy+=.14、sx−=.06；shotWide2空中sy=1.25、sx=.85。"
+    },
+    {
+      "name": "lemo-scifi-toon",
+      "value": "film/main.js:40–41、70–81，sucked缩向门心同时sq=1+.6u；spit飞行sq=1.25→1；landSq以.22·exp(−9u)·cos(30u)衰减压扁，.5秒落定。"
     }
   ]
 }

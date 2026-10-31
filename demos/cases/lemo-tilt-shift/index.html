@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>玩具城早高峰 · 移轴微缩</title>
+  <style>html,body{margin:0;overflow:hidden}#film{display:block;width:1920px;height:1080px;border:0}</style>
+</head>
+<body>
+  <main id="stage" class="stage"></main>
+  <script src="motion-kit.js"></script>
+  <script type="module">
+    await MotionKit.load.prepare({
+  "styles": [
+    "fonts/fonts.css"
+  ],
+  "data": [
+    "film/city.js",
+    "film/core/lib.js",
+    "film/ducks.js",
+    "film/geo.js",
+    "film/index.html",
+    "film/main.js",
+    "film/post.js",
+    "film/sky.js",
+    "film/story.js",
+    "film/traffic.js",
+    "film/train.js",
+    "film/voices/dur.json"
+  ],
+  "audio": [
+    "audio/film.m4a"
+  ]
+});
+    const frame = document.createElement('iframe');
+    frame.id = 'film';
+    frame.title = "Toy Town Rush Hour";
+    const loaded = new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+    frame.src = 'film/index.html?noev';
+    document.querySelector('#stage').append(frame);
+    await loaded;
+    const upstream = frame.contentWindow;
+    while (upstream.READY !== true) await new Promise(requestAnimationFrame);
+    MotionKit.mountFilm({
+      film: {
+        duration: 38.0, width: 1920, height: 1080, fps: 24,
+        async renderAt(t) { await upstream.render(Math.round(t * 24) / 24); },
+      },
+      ...{
+  "title": "玩具城早高峰 · 移轴微缩",
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "background": "#f6d9bc",
+  "accent": "#0f5e3c",
+  "step": "frames",
+  "start": {
+    "t": 0,
+    "reduced": 22.8
+  },
+  "audio": {
+    "src": "audio/film.m4a",
+    "mime": "audio/mp4"
+  },
+  "markers": [
+  {
+    "t": 0,
+    "label": "黎明光轨"
+  },
+  {
+    "t": 5,
+    "label": "屋顶片名"
+  },
+  {
+    "t": 9,
+    "label": "路口苏醒"
+  },
+  {
+    "t": 14,
+    "label": "车站低音"
+  },
+  {
+    "t": 19,
+    "label": "拥堵密度"
+  },
+  {
+    "t": 22.5,
+    "label": "延时骤降"
+  },
+  {
+    "t": 24,
+    "label": "鸭群实时"
+  },
+  {
+    "t": 30,
+    "label": "释放车流"
+  },
+  {
+    "t": 34,
+    "label": "城市纹样与片尾"
+  }
+]
+}
+    });
+  </script>
+</body>
+</html>

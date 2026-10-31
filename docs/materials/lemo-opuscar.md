@@ -114,14 +114,14 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 - [1930s 橡皮管卡通 · 1930s Rubber Hose Cartoon](../../cases.html#case/lemo-rubber-hose) · 已复刻
 - [80 年代赛璐璐动画 · 80s Cel Anime](../../cases.html#case/lemo-cel-anime-80s) · 已复刻
-- 科幻情景喜剧卡通 · Sci-Fi Sitcom Toon
-- 50s 扁平卡通 · Mid-century Cartoon
+- [科幻情景喜剧卡通 · Sci-Fi Sitcom Toon](../../cases.html#case/lemo-scifi-toon) · 已复刻
+- [50s 扁平卡通 · Mid-century Cartoon](../../cases.html#case/lemo-midcentury-toon) · 已复刻
 
 ### 游戏 · Games
 
 - 16-bit 像素 RPG · 16-bit Pixel RPG
-- HD-2D · HD-2D
-- 微游戏快闪 · Microgame Frenzy
+- [HD-2D · HD-2D](../../cases.html#case/lemo-hd-2d) · 已复刻
+- [微游戏快闪 · Microgame Frenzy](../../cases.html#case/lemo-microgame) · 已复刻
 - 综艺节奏扁平 · Game Show Flat
 
 ### 电影与时代 · Cinema & Eras
@@ -131,9 +131,9 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 材质与 3D · Materials & 3D
 
-- 积木玩具 · Brick Toy
+- [积木玩具 · Brick Toy](../../cases.html#case/lemo-brick-toy) · 已复刻
 - 纸片立体书 · Paper Pop-up Book（已复刻，[本库案例](../../cases.html#case/lemo-paper-popup)）
-- 移轴微缩 · Tilt-Shift Miniature
+- [移轴微缩 · Tilt-Shift Miniature](../../cases.html#case/lemo-tilt-shift) · 已复刻
 - 低多边形等距 · Low-poly Isometric Island
 - 玻璃质感产品 · Glass Product Render
 - 孟菲斯微缩景观 · Memphis Diorama（[本库案例](../../cases.html#case/lemo-memphis-diorama)）
@@ -151,7 +151,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`，以及 `core/` 的代码与文字。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
-三十二个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
+三十八个案例各自保留运行画面、字体、成片音轨和 `source/` 制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见 [source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见 [source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -197,4 +197,11 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [咖啡杯追逐战 · 1930s 橡皮管卡通](../../cases.html#case/lemo-rubber-hose)：制作文件见[source/README.md](../../demos/cases/lemo-rubber-hose/source/README.md)。
 - [城市之光，1987 · 80 年代赛璐璐动画](../../cases.html#case/lemo-cel-anime-80s)：制作文件见[source/README.md](../../demos/cases/lemo-cel-anime-80s/source/README.md)。
 
-三十二个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。
+- [买咖啡 · 科幻情景喜剧卡通](../../cases.html#case/lemo-scifi-toon)：制作文件见[source/README.md](../../demos/cases/lemo-scifi-toon/source/README.md)。
+- [认识皮普 · 50s 扁平卡通](../../cases.html#case/lemo-midcentury-toon)：制作文件见[source/README.md](../../demos/cases/lemo-midcentury-toon/source/README.md)。
+- [提灯人 · HD-2D](../../cases.html#case/lemo-hd-2d)：制作文件见[source/README.md](../../demos/cases/lemo-hd-2d/source/README.md)。
+- [五秒宇航员 · 微游戏快闪](../../cases.html#case/lemo-microgame)：制作文件见[source/README.md](../../demos/cases/lemo-microgame/source/README.md)。
+- [用零件造火箭 · 积木玩具](../../cases.html#case/lemo-brick-toy)：制作文件见[source/README.md](../../demos/cases/lemo-brick-toy/source/README.md)。
+- [玩具城早高峰 · 移轴微缩](../../cases.html#case/lemo-tilt-shift)：制作文件见[source/README.md](../../demos/cases/lemo-tilt-shift/source/README.md)。
+
+三十八个 `source/` 共用的上游工具在[本快照的 core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，并以4秒无声循环动画展示。

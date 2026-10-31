@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 51,
+  "count": 57,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -1553,6 +1553,165 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-cel-anime-80s.json"
+    },
+    {
+      "id": "lemo-scifi-toon",
+      "title": "买咖啡 · 科幻情景喜剧卡通",
+      "summary": "厌世天才与紧张搭档为买咖啡穿过果冻、杯子、牙齿、鸽子与克隆宇宙，回家后发现带回的是无咖啡因咖啡。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "科幻情景喜剧卡通",
+        "卡通与动画",
+        "代码影片"
+      ],
+      "useCases": [
+        "喜剧短片",
+        "科技品牌叙事",
+        "社交短片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "portal-universe-hop",
+        "squash-stretch-bounce"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-scifi-toon.json"
+    },
+    {
+      "id": "lemo-midcentury-toon",
+      "title": "认识皮普 · 50s 扁平卡通",
+      "summary": "以1950年代教育片口吻介绍扫地机皮普：底座靠墙、手机配对、按下启动，最后把清扫路线拉成一张印刷平面图。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "50s 扁平卡通",
+        "卡通与动画",
+        "代码影片"
+      ],
+      "useCases": [
+        "产品安装指南",
+        "帮助中心影片",
+        "操作教学"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "medallion-iris-step",
+        "counter-rotate-pullback"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-midcentury-toon.json"
+    },
+    {
+      "id": "lemo-hd-2d",
+      "title": "提灯人 · HD-2D",
+      "summary": "灯塔熄灭，提灯人薇伦接过最后的火，穿越夜林与风暴石阶，重新点亮灯塔，海上的船灯随后逐盏亮起。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "HD-2D",
+        "游戏",
+        "代码影片"
+      ],
+      "useCases": [
+        "游戏预告",
+        "奇幻故事",
+        "像素三维叙事"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "carried-light-meter",
+        "tilt-shift-focus-band",
+        "rpg-dialog-box"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-hd-2d.json"
+    },
+    {
+      "id": "lemo-microgame",
+      "title": "五秒宇航员 · 微游戏快闪",
+      "summary": "见习宇航员在蜡笔、水墨、终端、孔版、像素、蓝图与瑞士排版微游戏中受训，失去两条命后在混合风格Boss关完成降落。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "微游戏快闪",
+        "游戏",
+        "代码影片"
+      ],
+      "useCases": [
+        "游戏预告",
+        "快节奏操作引导",
+        "社交短片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "speed-up-ladder",
+        "command-word-beat",
+        "collect-counter"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-microgame.json"
+    },
+    {
+      "id": "lemo-brick-toy",
+      "title": "用零件造火箭 · 积木玩具",
+      "summary": "积木宇航员把高塔一块块搭起，火箭崩塌后把散落零件拼成更宽的新火箭，飞到积木月亮；镜头拉回真实书桌。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "积木玩具",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "玩具影片",
+        "产品拼装",
+        "太空故事"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "snap-build-collapse-rebuild",
+        "anchor-pullback-phone"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-brick-toy.json"
+    },
+    {
+      "id": "lemo-tilt-shift",
+      "title": "玩具城早高峰 · 移轴微缩",
+      "summary": "玩具城从黎明车灯光轨加速到早高峰，拥堵最密时俯冲到一群过路鸭子并降为实时，随后释放车流，升到城市电路板般的纹样。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "移轴微缩",
+        "材质与 3D",
+        "代码影片"
+      ],
+      "useCases": [
+        "城市宣传",
+        "交通系统叙事",
+        "地产微缩影片"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "timelapse-drop-to-realtime",
+        "tilt-shift-focus-band",
+        "long-exposure-light-trail"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-tilt-shift.json"
     }
   ]
 }

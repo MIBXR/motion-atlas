@@ -1,0 +1,296 @@
+{
+  "id": "lemo-microgame",
+  "order": 55,
+  "title": "五秒宇航员 · 微游戏快闪",
+  "subtitle": "Five-Second Astronaut",
+  "carriers": [
+    "video"
+  ],
+  "orients": [
+    "landscape"
+  ],
+  "tags": [
+    "lemo-opuscar",
+    "微游戏快闪",
+    "游戏",
+    "代码影片"
+  ],
+  "summary": "见习宇航员在蜡笔、水墨、终端、孔版、像素、蓝图与瑞士排版微游戏中受训，失去两条命后在混合风格Boss关完成降落。",
+  "focus": "一词口令、动作、结果组成微游戏单元；速度阶梯同时改变音乐、关卡长度、舞台停留、口令时长和角色帧率。",
+  "accent": "#ffc928",
+  "background": "#2a0f5c",
+  "timeline": true,
+  "kit": true,
+  "previewAt": 23.92,
+  "rhythm": {
+    "duration": 59.833333333333336,
+    "beats": [
+      {
+        "t": 0,
+        "label": "充气"
+      },
+      {
+        "t": 8,
+        "label": "忍住喷嚏"
+      },
+      {
+        "t": 14,
+        "label": "扣好安全带"
+      },
+      {
+        "t": 20,
+        "label": "接住"
+      },
+      {
+        "t": 26,
+        "label": "加速"
+      },
+      {
+        "t": 27.849577978704346,
+        "label": "闪避"
+      },
+      {
+        "t": 31.278149407275773,
+        "label": "拉上拉链"
+      },
+      {
+        "t": 34.7067208358472,
+        "label": "敬礼失败"
+      },
+      {
+        "t": 38.13529226441863,
+        "label": "最后一命"
+      },
+      {
+        "t": 39.849577978704346,
+        "label": "Boss翻牌"
+      },
+      {
+        "t": 41.45180527520344,
+        "label": "降落"
+      },
+      {
+        "t": 53.45180527520344,
+        "label": "成功回舞台"
+      },
+      {
+        "t": 57.20180527520344,
+        "label": "片尾"
+      }
+    ]
+  },
+  "energySegments": [
+    {
+      "t0": 0,
+      "t1": 8,
+      "from": 0.7,
+      "to": 0.75,
+      "label": "充气"
+    },
+    {
+      "t0": 8,
+      "t1": 14,
+      "from": 0.75,
+      "to": 0.65,
+      "label": "忍住喷嚏"
+    },
+    {
+      "t0": 14,
+      "t1": 20,
+      "from": 0.65,
+      "to": 0.8,
+      "label": "扣好安全带"
+    },
+    {
+      "t0": 20,
+      "t1": 26,
+      "from": 0.8,
+      "to": 0.9,
+      "label": "接住"
+    },
+    {
+      "t0": 26,
+      "t1": 27.849577978704346,
+      "from": 0.9,
+      "to": 0.9,
+      "label": "加速"
+    },
+    {
+      "t0": 27.849577978704346,
+      "t1": 31.278149407275773,
+      "from": 0.9,
+      "to": 0.85,
+      "label": "闪避"
+    },
+    {
+      "t0": 31.278149407275773,
+      "t1": 34.7067208358472,
+      "from": 0.85,
+      "to": 0.95,
+      "label": "拉上拉链"
+    },
+    {
+      "t0": 34.7067208358472,
+      "t1": 38.13529226441863,
+      "from": 0.95,
+      "to": 0.1,
+      "label": "敬礼失败"
+    },
+    {
+      "t0": 38.13529226441863,
+      "t1": 39.849577978704346,
+      "from": 0.1,
+      "to": 0.8,
+      "label": "最后一命"
+    },
+    {
+      "t0": 39.849577978704346,
+      "t1": 41.45180527520344,
+      "from": 0.8,
+      "to": 1,
+      "label": "Boss翻牌"
+    },
+    {
+      "t0": 41.45180527520344,
+      "t1": 53.45180527520344,
+      "from": 1,
+      "to": 0.65,
+      "label": "降落"
+    },
+    {
+      "t0": 53.45180527520344,
+      "t1": 57.20180527520344,
+      "from": 0.65,
+      "to": 0.3,
+      "label": "成功回舞台"
+    },
+    {
+      "t0": 57.20180527520344,
+      "t1": 59.833333333333336,
+      "from": 0.3,
+      "to": 0.05,
+      "label": "片尾"
+    }
+  ],
+  "energyNote": "段落取DEMO.md的Shots及源码时间线；0–1是根据动作、配乐、静默和画面密度标注的相对能量。",
+  "observations": [
+    "PUMP!在第一帧砸入，大字驻留后缩成角标，动作结果保持可见。",
+    "120→140→160 BPM；普通关由4秒缩至18/7秒，舞台由2秒缩至6/7秒。",
+    "命数通过头盔裂开跌落从3降到2再到1，最后一命在暗舞台闪烁。",
+    "Boss将孔版天空、蜡笔地球、蓝图舱体、终端高度表、像素小伞、水墨大伞与瑞士红圆拼在同一焦点链上。"
+  ],
+  "composition": {
+    "color": "#2a0f5c、#ff2e88、#ffc928、#1fd1d1、#ffffff、#151023。",
+    "typography": "Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。",
+    "layout": "1920×1080横屏，24fps；舞台等比缩放，字幕与画内信息保留原作位置。",
+    "imagery": "Canvas2D各媒介渲染器与WebGL2材质着色器，统一电视舞台、角色、口令和引线计时器。",
+    "motion": "第一轮8fps角色、第二轮12fps、Boss的运动连续更新；24fps镜头与引线火星贯穿全片，失败关保留半速回放。",
+    "sound": "原创放克配乐，MuldjordKit鼓CC BY 4.0、Salamander钢琴CC BY 3.0、VSCO/VCSL/Karoryfer/FreePats采样CC0；Kokoro am_fenrir与af_bella。",
+    "rhythm": "常规关、舞台反馈和两次加速交替；最后一命留静默，Boss延长为32拍。",
+    "coherence": "每种媒介保留自己的色板，统一舞台、主角和口令位置连接关卡。"
+  },
+  "layers": [
+    {
+      "name": "媒介关卡",
+      "role": "七种材料语法分别绘制一个动作。"
+    },
+    {
+      "name": "舞台",
+      "role": "固定正面舞台、电视框、主持人与命数。"
+    },
+    {
+      "name": "口令和计时",
+      "role": "动词砸入、角标、引线火花和结果印章。"
+    },
+    {
+      "name": "Boss",
+      "role": "前面关卡的画面材料合成降落场景。"
+    }
+  ],
+  "tokens": {
+    "palette": [
+      "#2a0f5c",
+      "#ff2e88",
+      "#ffc928",
+      "#1fd1d1",
+      "#ffffff",
+      "#151023"
+    ],
+    "type": "Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。",
+    "motion": [
+      {
+        "name": "五项加速",
+        "value": "film/timeline.js:SEGS；film/film.js:R2 / tvInDur / tvOutDur / hold；film/g_crayon.js等8fps、g_pixel.js等12fps、g_boss.js的lt连续运动。"
+      },
+      {
+        "name": "口令",
+        "value": "film/hud.js:command，.12秒由1.9→.92，接.08秒回1；hold=.75或.64秒，.22秒缩至.3倍角标。"
+      }
+    ]
+  },
+  "useCases": [
+    "游戏预告",
+    "快节奏操作引导",
+    "社交短片"
+  ],
+  "avoid": [],
+  "constraints": [],
+  "migration": [
+    {
+      "field": "film/timeline.js",
+      "how": "修改关卡、节拍、速度和口令。"
+    },
+    {
+      "field": "film/g_*.js / film/hud.js / film/film.js",
+      "how": "修改各媒介任务、口令表现、转场与命数；声音使用source/timeline.json同表制作。"
+    }
+  ],
+  "prompt": "制作见习宇航员在蜡笔、水墨、终端、孔版、像素、蓝图与瑞士排版微游戏中受训，失去两条命后在混合风格Boss关完成降落。 一词口令、动作、结果组成微游戏单元；速度阶梯同时改变音乐、关卡长度、舞台停留、口令时长和角色帧率。 第一轮8fps角色、第二轮12fps、Boss的运动连续更新；24fps镜头与引线火星贯穿全片，失败关保留半速回放。 Canvas2D各媒介渲染器与WebGL2材质着色器，统一电视舞台、角色、口令和引线计时器。 字体：Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。 声音：原创放克配乐，MuldjordKit鼓CC BY 4.0、Salamander钢琴CC BY 3.0、VSCO/VCSL/Karoryfer/FreePats采样CC0；Kokoro am_fenrir与af_bella。 实现沿用lemo-microgame的film/源码、素材与时间表。",
+  "demo": "demos/cases/lemo-microgame/index.html",
+  "patternIds": [
+    "speed-up-ladder",
+    "command-word-beat",
+    "collect-counter"
+  ],
+  "fidelity": "demos/cases/lemo-microgame/fidelity.md",
+  "upstream": {
+    "repository": "lemomo-ai/lemo-opuscar",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "path": "styles/microgame/"
+  },
+  "license": {
+    "name": "MIT · CC BY 4.0",
+    "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+    "notes": "代码与文档MIT；示范成片与静帧CC BY 4.0，署名LemoLab；第三方资源沿用CREDITS的许可。"
+  },
+  "sources": [
+    {
+      "label": "风格与制作说明",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame"
+    },
+    {
+      "label": "Release公开成片",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/microgame.mp4"
+    },
+    {
+      "label": "第三方资源与署名",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame/demo/CREDITS"
+    }
+  ],
+  "attribution": [
+    {
+      "scope": "作品",
+      "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）；[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame)，代码MIT、成片CC BY 4.0；本库接入MotionKit，删改与对照见[fidelity.md](fidelity.md)。"
+    },
+    {
+      "scope": "声音与第三方资源",
+      "notes": "原创放克配乐，MuldjordKit鼓CC BY 4.0、Salamander钢琴CC BY 3.0、VSCO/VCSL/Karoryfer/FreePats采样CC0；Kokoro am_fenrir与af_bella。 原始署名见[audio/CREDITS](audio/CREDITS)，许可全文见[LICENSES.md](LICENSES.md)。"
+    },
+    {
+      "scope": "字体",
+      "notes": "Titan One、Lilita One、VT323、Architects Daughter、Gochi Hand、Inter；Silkscreen 400/700。 SIL OFL 1.1原文在fonts/，来源与重建方法见[source/README.md](source/README.md)。"
+    }
+  ],
+  "renderer": "gpu"
+}

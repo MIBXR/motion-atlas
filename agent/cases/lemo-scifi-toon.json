@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 1,
+  "kind": "case",
+  "id": "lemo-scifi-toon",
+  "entry": {
+    "id": "lemo-scifi-toon",
+    "order": 52,
+    "title": "买咖啡 · 科幻情景喜剧卡通",
+    "subtitle": "Coffee Run",
+    "carriers": [
+      "video"
+    ],
+    "orients": [
+      "landscape"
+    ],
+    "tags": [
+      "lemo-opuscar",
+      "科幻情景喜剧卡通",
+      "卡通与动画",
+      "代码影片"
+    ],
+    "summary": "厌世天才与紧张搭档为买咖啡穿过果冻、杯子、牙齿、鸽子与克隆宇宙，回家后发现带回的是无咖啡因咖啡。",
+    "focus": "传送门把世界切换变成同一动作；每个宇宙独立配色、怪物与音乐，反应特写和突然静默组织笑点。",
+    "accent": "#3fd93a",
+    "background": "#a7c3b1",
+    "timeline": true,
+    "kit": true,
+    "previewAt": 11.5,
+    "rhythm": {
+      "duration": 57.5,
+      "beats": [
+        {
+          "t": 0,
+          "label": "空壶冷开场"
+        },
+        {
+          "t": 9.5,
+          "label": "开门与片名"
+        },
+        {
+          "t": 12.85,
+          "label": "果冻宇宙"
+        },
+        {
+          "t": 20.9,
+          "label": "杯子宇宙"
+        },
+        {
+          "t": 28.4,
+          "label": "三连跳转"
+        },
+        {
+          "t": 31.4,
+          "label": "普通咖啡店"
+        },
+        {
+          "t": 36.05,
+          "label": "回到实验室"
+        },
+        {
+          "t": 40.7,
+          "label": "无咖啡因反转"
+        },
+        {
+          "t": 44,
+          "label": "冷场"
+        },
+        {
+          "t": 49.1,
+          "label": "回扣"
+        },
+        {
+          "t": 53,
+          "label": "片尾"
+        }
+      ],
+      "bpm": 120
+    },
+    "energySegments": [
+      {
+        "t0": 0,
+        "t1": 9.5,
+        "from": 0.15,
+        "to": 0.7,
+        "label": "空壶冷开场"
+      },
+      {
+        "t0": 9.5,
+        "t1": 12.85,
+        "from": 0.7,
+        "to": 0.65,
+        "label": "开门与片名"
+      },
+      {
+        "t0": 12.85,
+        "t1": 20.9,
+        "from": 0.65,
+        "to": 0.8,
+        "label": "果冻宇宙"
+      },
+      {
+        "t0": 20.9,
+        "t1": 28.4,
+        "from": 0.8,
+        "to": 1,
+        "label": "杯子宇宙"
+      },
+      {
+        "t0": 28.4,
+        "t1": 31.4,
+        "from": 1,
+        "to": 0.25,
+        "label": "三连跳转"
+      },
+      {
+        "t0": 31.4,
+        "t1": 36.05,
+        "from": 0.25,
+        "to": 0.4,
+        "label": "普通咖啡店"
+      },
+      {
+        "t0": 36.05,
+        "t1": 40.7,
+        "from": 0.4,
+        "to": 0.8,
+        "label": "回到实验室"
+      },
+      {
+        "t0": 40.7,
+        "t1": 44,
+        "from": 0.8,
+        "to": 0.05,
+        "label": "无咖啡因反转"
+      },
+      {
+        "t0": 44,
+        "t1": 49.1,
+        "from": 0.05,
+        "to": 0.65,
+        "label": "冷场"
+      },
+      {
+        "t0": 49.1,
+        "t1": 53,
+        "from": 0.65,
+        "to": 0.2,
+        "label": "回扣"
+      },
+      {
+        "t0": 53,
+        "t1": 57.5,
+        "from": 0.2,
+        "to": 0.05,
+        "label": "片尾"
+      }
+    ],
+    "energyNote": "段落取DEMO.md的Shots及源码时间线；0–1是根据动作、配乐、静默和画面密度标注的相对能量。",
+    "observations": [
+      "7px深紫描边在屏幕空间保持恒定宽度，三张线稿以12fps沸腾。",
+      "果冻、杯子、牙齿、鸽子与克隆世界保持相同双人关系，以换色和造型制造连续升级。",
+      "RMS和频谱重心口型来自voices/lips.json，双人字幕保留说话者色签。",
+      "44–46.4秒只有轮廓沸腾和极慢推镜，为无咖啡因反转留出冷场。"
+    ],
+    "composition": {
+      "color": "#1b1422、#a7c3b1、#ff4f9a、#b8f03c、#ff7a2f、#2b9c98、#f1e3c6。",
+      "typography": "Baloo 2 400–800、Titan One 400、Bungee 400、VT323 400；Google Fonts 拉丁子集。",
+      "layout": "1920×1080横屏，24fps；舞台等比缩放，字幕与画内信息保留原作位置。",
+      "imagery": "Canvas2D程序绘制角色、怪物、道具、平涂色块和传送门。",
+      "motion": "人物、口型与沸腾线稿按12fps取样；镜头、传送门与旋涡按24fps更新，吐出角色时先拉长、着地后衰减压扁。",
+      "sound": "原创代码合成配乐与拟音；Kokoro am_onyx、am_eric、af_sky（升7半音），荒诞揭示与冷场处切断音乐。",
+      "rhythm": "两次较长试喝后接三次一秒宇宙，普通店面减速；反转后44–46.4秒静默。",
+      "coherence": "主角眼白与深紫描边跨宇宙保持一致，世界标签随各自色板切换。"
+    },
+    "layers": [
+      {
+        "name": "环境",
+        "role": "分宇宙的背景与道具。"
+      },
+      {
+        "name": "角色",
+        "role": "对比鲜明的表情、口型与弹性肢体。"
+      },
+      {
+        "name": "传送门",
+        "role": "不规则描边、旋臂与满屏旋涡。"
+      },
+      {
+        "name": "文字",
+        "role": "世界终端标签、说话者字幕与原片片尾。"
+      }
+    ],
+    "tokens": {
+      "palette": [
+        "#1b1422",
+        "#a7c3b1",
+        "#ff4f9a",
+        "#b8f03c",
+        "#ff7a2f",
+        "#2b9c98",
+        "#f1e3c6"
+      ],
+      "type": "Baloo 2 400–800、Titan One 400、Bungee 400、VT323 400；Google Fonts 拉丁子集。",
+      "motion": [
+        {
+          "name": "传送门",
+          "value": "film/story.js:WIPES的中心时刻12.85、20.9、28.4、29.4、30.4、31.4、36.05秒，半宽.12–.2秒；film/main.js:renderWipe。"
+        },
+        {
+          "name": "落地形变",
+          "value": "film/main.js:landSq / sucked / spit；落地sq=1−.22·exp(−9u)·cos(30u)，持续.5秒；飞出sq从1.25回到1。"
+        }
+      ]
+    },
+    "useCases": [
+      "喜剧短片",
+      "科技品牌叙事",
+      "社交短片"
+    ],
+    "avoid": [],
+    "constraints": [],
+    "migration": [
+      {
+        "field": "film/story.js → SHOTS / WIPES / VO",
+        "how": "修改镜头、宇宙交接和对白起点。"
+      },
+      {
+        "field": "film/worlds.js / chars.js",
+        "how": "修改每个世界与角色造型、配色和姿势。"
+      }
+    ],
+    "prompt": "制作厌世天才与紧张搭档为买咖啡穿过果冻、杯子、牙齿、鸽子与克隆宇宙，回家后发现带回的是无咖啡因咖啡。 传送门把世界切换变成同一动作；每个宇宙独立配色、怪物与音乐，反应特写和突然静默组织笑点。 人物、口型与沸腾线稿按12fps取样；镜头、传送门与旋涡按24fps更新，吐出角色时先拉长、着地后衰减压扁。 Canvas2D程序绘制角色、怪物、道具、平涂色块和传送门。 字体：Baloo 2 400–800、Titan One 400、Bungee 400、VT323 400；Google Fonts 拉丁子集。 声音：原创代码合成配乐与拟音；Kokoro am_onyx、am_eric、af_sky（升7半音），荒诞揭示与冷场处切断音乐。 实现沿用lemo-scifi-toon的film/源码、素材与时间表。",
+    "demo": "demos/cases/lemo-scifi-toon/index.html",
+    "patternIds": [
+      "portal-universe-hop",
+      "squash-stretch-bounce"
+    ],
+    "fidelity": "demos/cases/lemo-scifi-toon/fidelity.md",
+    "upstream": {
+      "repository": "lemomo-ai/lemo-opuscar",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/scifi-toon",
+      "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+      "path": "styles/scifi-toon/"
+    },
+    "license": {
+      "name": "MIT · CC BY 4.0",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/LICENSE",
+      "notes": "代码与文档MIT；示范成片与静帧CC BY 4.0，署名LemoLab；第三方资源沿用CREDITS的许可。"
+    },
+    "sources": [
+      {
+        "label": "风格与制作说明",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/scifi-toon"
+      },
+      {
+        "label": "Release公开成片",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/scifi-toon.mp4"
+      },
+      {
+        "label": "第三方资源与署名",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/scifi-toon/demo/CREDITS"
+      }
+    ],
+    "attribution": [
+      {
+        "scope": "作品",
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）；[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/scifi-toon)，代码MIT、成片CC BY 4.0；本库接入MotionKit，删改与对照见[fidelity.md](fidelity.md)。"
+      },
+      {
+        "scope": "声音与第三方资源",
+        "notes": "原创代码合成配乐与拟音；Kokoro am_onyx、am_eric、af_sky（升7半音），荒诞揭示与冷场处切断音乐。 原始署名见[audio/CREDITS](audio/CREDITS)，许可全文见[LICENSES.md](LICENSES.md)。"
+      },
+      {
+        "scope": "字体",
+        "notes": "Baloo 2 400–800、Titan One 400、Bungee 400、VT323 400；Google Fonts 拉丁子集。 SIL OFL 1.1原文在fonts/，来源与重建方法见[source/README.md](source/README.md)。"
+      }
+    ],
+    "licenses": "demos/cases/lemo-scifi-toon/LICENSES.md",
+    "preview": "previews/cases/lemo-scifi-toon.jpg",
+    "previewPortrait": null
+  },
+  "documents": {
+    "fidelity": "# 买咖啡 · 科幻情景喜剧卡通 · 接入与保真说明\n\n完整代码影片的来源与固定版本见[条目JSON](../../../entries/cases/lemo-scifi-toon.json)。\n\n## 相对原作的删改\n\n| 文件 | 删改内容 | 原因 |\n| --- | --- | --- |\n| `index.html` | 预载运行文件、字体与音轨，等待iframe的load和READY，再按原fps调用并等待render(t)。 | 接入MotionKit舞台、时间线与声音。 |\n| `film/index.html` | 字体入口指向../fonts/；import map把/core/lib.js映射至./core/lib.js。 | 相对路径接入。 |\n| `film/core/lib.js` | 复制固定提交的共享运行代码，文本使用LF。 | 本地运行依赖。 |\n| `audio/film.m4a` | 从Release以-c:a copy流复制。 | 沿用正式混音。 |\n| `fonts/` | 按上游字体、字重和子集保存字体与OFL原文。 | 本地字体加载。 |\n| `source/` | 保存成品运行之外的上游制作文件及目录，文本统一LF。 | 保存制作依赖。 |\n| `stills/` | 风格帧与制作截图保留在上游，预览由capture生成。 | 成品绘制的输入为源码。 |\n\n`film/`的绘制、材质、着色器、姿势和时间表沿用原作；许可索引见[LICENSES.md](LICENSES.md)。\n\n## 适配层\n\n`index.html`通过`MotionKit.load.prepare`预载，以同源iframe加载`film/index.html`，等待`window.READY === true`后调用`MotionKit.mountFilm`。舞台1920×1080、24fps、57.500000秒；`renderAt(t)`等待`upstream.render(Math.round(t*24)/24)`。音轨来自Release正式混音，默认关闭。\n\n`?embed`隐藏控制条，`?render`暂停自动播放与声音，`?t=秒`定位；减少动态时暂停在条目的previewAt。镜头标记取DEMO.md的Shots和源码时间表。\n\n## 已接受差异\n\n本次全部取样的原始列与编码链列均达到0.95。\n\n## 与原片对照结果\n\n无头Edge使用`--enable-gpu --ignore-gpu-blocklist --font-render-hinting=none --force-color-profile=srgb`，1920×1080、DPR1。WebGL为Intel Iris Xe / ANGLE D3D11。等待`__motion.ready`、按`floor(t×fps+.5)`对齐帧号并等待定位完成；参考PNG从Release按该帧号精确提取。\n\n原始列比较本库PNG和参考PNG；编码链列在过程目录将PNG以浏览器捕获为JPEG95后，经过`JPEG95 → H264 medium CRF14 → H264 slow CRF19`，最终grain=2，解码为PNG再比较。SSIM取ffmpeg统一yuv444p后的All。\n\n| 序号 | 帧号 | 请求秒 | 对齐秒 | 原始SSIM | 编码链SSIM | 取样 |\n| --- | --- | --- | --- | --- | --- | --- |\n| 1 | 0 | 0.000000 | 0.000000 | 0.993896 | 0.994440 | 开头 |\n| 2 | 276 | 11.500000 | 11.500000 | 0.983765 | 0.986655 | frame_sec |\n| 3 | 28 | 1.150000 | 1.166667 | 0.994680 | 0.995255 | Shots · 空壶特写 |\n| 4 | 142 | 5.900000 | 5.916667 | 0.981388 | 0.982633 | Shots · 双人对话与打断 |\n| 5 | 462 | 19.250000 | 19.250000 | 0.989915 | 0.992275 | Shots · 荒诞细节与反应 |\n| 6 | 617 | 25.700000 | 25.708333 | 0.985383 | 0.987198 | Shots · 惊慌特写 |\n| 7 | 305 | 12.725000 | 12.708333 | 0.991108 | 0.994411 | Shots · 冲进传送门 |\n| 8 | 718 | 29.900000 | 29.916667 | 0.984257 | 0.986162 | Shots · 三连平行宇宙 |\n| 9 | 1085 | 45.200000 | 45.208333 | 0.980890 | 0.983382 | Shots · 冷场缓推 |\n| 10 | 1279 | 53.300000 | 53.291667 | 0.990337 | 0.991696 | Shots · 回扣与片尾 |\n| 11 | 1356 | 56.500000 | 56.500000 | 0.989309 | 0.990035 | 片尾前1秒 |\n\n11帧：原始最低**0.980890**、最高**0.994680**；编码链最低**0.982633**、最高**0.995255**。\n\n声音：成片与本库音轨解码为48kHz单声道，以10ms RMS包络在±500ms内互相关，最佳偏移**0ms**，相关系数**1.000000**。\n",
+    "licenses": "# 第三方许可索引\n\n[来源与固定版本](../../../entries/cases/lemo-scifi-toon.json)\n\n- 作品代码：[film/LICENSE](film/LICENSE)，MIT；LemoLab × Claude Opus 5.5。\n- [audio/film.m4a](audio/film.m4a)流复制自[Release成片](https://github.com/lemomo-ai/lemo-opuscar/releases/download/films/scifi-toon.mp4)，示范影片按[CC BY 4.0](audio/CC-BY-4.0.txt)发布，署名LemoLab并链接来源。\n- 音乐、声音与第三方来源：[audio/CREDITS](audio/CREDITS)；Kokoro配音许可为[Apache-2.0](audio/Apache-2.0.txt)。\n- 字体均为SIL OFL 1.1：[OFL-baloo2.txt](fonts/OFL-baloo2.txt)、[OFL-bungee.txt](fonts/OFL-bungee.txt)、[OFL-titanone.txt](fonts/OFL-titanone.txt)、[OFL-vt323.txt](fonts/OFL-vt323.txt)。\n",
+    "prompt": "# 买咖啡 · 科幻情景喜剧卡通\n\n## 实现 Prompt\n\n制作厌世天才与紧张搭档为买咖啡穿过果冻、杯子、牙齿、鸽子与克隆宇宙，回家后发现带回的是无咖啡因咖啡。 传送门把世界切换变成同一动作；每个宇宙独立配色、怪物与音乐，反应特写和突然静默组织笑点。 人物、口型与沸腾线稿按12fps取样；镜头、传送门与旋涡按24fps更新，吐出角色时先拉长、着地后衰减压扁。 Canvas2D程序绘制角色、怪物、道具、平涂色块和传送门。 字体：Baloo 2 400–800、Titan One 400、Bungee 400、VT323 400；Google Fonts 拉丁子集。 声音：原创代码合成配乐与拟音；Kokoro am_onyx、am_eric、af_sky（升7半音），荒诞揭示与冷场处切断音乐。 实现沿用lemo-scifi-toon的film/源码、素材与时间表。\n\n## 动效 Token\n\n- **传送门**：film/story.js:WIPES的中心时刻12.85、20.9、28.4、29.4、30.4、31.4、36.05秒，半宽.12–.2秒；film/main.js:renderWipe。\n- **落地形变**：film/main.js:landSq / sucked / spit；落地sq=1−.22·exp(−9u)·cos(30u)，持续.5秒；飞出sq从1.25回到1。\n\n## 迁移\n\n- `film/story.js → SHOTS / WIPES / VO`：修改镜头、宇宙交接和对白起点。\n- `film/worlds.js / chars.js`：修改每个世界与角色造型、配色和姿势。\n\n[打开 Demo](../../demos/cases/lemo-scifi-toon/index.html) · [在库中查看](../../cases.html#case/lemo-scifi-toon)\n"
+  },
+  "entrypoint": "demos/cases/lemo-scifi-toon/index.html",
+  "files": [
+    {
+      "path": "demos/cases/lemo-scifi-toon/LICENSES.md",
+      "bytes": 738,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/audio/CREDITS",
+      "bytes": 870,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/audio/film.m4a",
+      "bytes": 1879599,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fidelity.md",
+      "bytes": 3634,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/chars.js",
+      "bytes": 19699,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/index.html",
+      "bytes": 418,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/lines.json",
+      "bytes": 2344,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/main.js",
+      "bytes": 32084,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/story.js",
+      "bytes": 4224,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/toon.js",
+      "bytes": 8916,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/voices/dur.json",
+      "bytes": 235,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/voices/lips.json",
+      "bytes": 6296,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/film/worlds.js",
+      "bytes": 26186,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/OFL-baloo2.txt",
+      "bytes": 4384,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/OFL-bungee.txt",
+      "bytes": 4473,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/OFL-titanone.txt",
+      "bytes": 4418,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/OFL-vt323.txt",
+      "bytes": 4367,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/baloo2.woff2",
+      "bytes": 33056,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/bungee.woff2",
+      "bytes": 14296,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/fonts.css",
+      "bytes": 540,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/titanone.woff2",
+      "bytes": 10732,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/fonts/vt323.woff2",
+      "bytes": 7192,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/index.html",
+      "bytes": 2339,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/CREDITS",
+      "bytes": 870,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/README.md",
+      "bytes": 2871,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/asr.py",
+      "bytes": 1410,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/build.sh",
+      "bytes": 1155,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/events.json",
+      "bytes": 3987,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/levels.py",
+      "bytes": 741,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/mix.py",
+      "bytes": 11784,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/music/score.py",
+      "bytes": 23873,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/sheet.sh",
+      "bytes": 690,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/srt.mjs",
+      "bytes": 1012,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/strip.sh",
+      "bytes": 672,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/voice.py",
+      "bytes": 2687,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-scifi-toon/source/voices/words.json",
+      "bytes": 1580,
+      "role": "process"
+    },
+    {
+      "path": "entries/cases/lemo-scifi-toon.json",
+      "bytes": 8847,
+      "role": "entry"
+    },
+    {
+      "path": "previews/cases/lemo-scifi-toon.jpg",
+      "bytes": 109440,
+      "role": "preview"
+    }
+  ]
+}
