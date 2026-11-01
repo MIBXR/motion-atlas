@@ -9,4 +9,6 @@
 
 - [lemo-opuscar 使用说明](lemo-opuscar.md)
 
+- [Claude Animation Base · 手绘卡通动画套件](claude-animation-base.md)
+
 [打开素材库](../../materials.html) · [Agent 取材](../agent.md)

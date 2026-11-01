@@ -69,9 +69,9 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 68,
-    "patterns": 171,
-    "materials": 5
+    "cases": 69,
+    "patterns": 175,
+    "materials": 6
   },
   "caseCatalog": "agent/cases/index.json",
   "patternCatalog": "agent/patterns/index.json",
@@ -2485,6 +2485,48 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-transit-map.json"
+    },
+    {
+      "id": "pdoom-video",
+      "title": "I'm Upping My P(doom) · 手绘卡通音乐录像",
+      "summary": "JohnHeibel 用 Claude Opus 5.5 生成的 156.6 秒音乐录像。p5.brush 水彩笔触与 12fps 线条沸腾画出舞台剧：Clawd 在九章里从显示器涂鸦长到行星大小，四段副歌回到同一舞台逐次升级，P(doom) 计量表每段副歌被打气筒推高，最后拉远揭示整场末日只是演出。",
+      "carriers": [
+        "video"
+      ],
+      "style": "hand-drawn",
+      "purpose": "story",
+      "tech": [
+        "webgl",
+        "canvas2d"
+      ],
+      "tags": [
+        "p5.js",
+        "p5.brush",
+        "Clawd",
+        "歌词驱动",
+        "手绘卡通",
+        "舞台剧",
+        "Claude Opus 5.5"
+      ],
+      "useCases": [
+        "歌词驱动的手绘音乐录像",
+        "以重复场景逐次升级的叙事短片",
+        "角色表演、表情 take 与漫画转场参考"
+      ],
+      "avoid": [
+        "需要观众自行掌握阅读节奏的网页应用",
+        "要求实时 24fps 水彩绘制的低性能设备",
+        "以无字幕的安静画面为主的片段"
+      ],
+      "patternIds": [
+        "brush-wipe-chapter-break",
+        "karaoke-word-fill",
+        "escalating-chorus-meter",
+        "emotion-take-morph",
+        "cel-line-boil"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/pdoom-video.json"
     }
   ],
   "patterns": [
@@ -3121,7 +3163,7 @@
     {
       "id": "cel-line-boil",
       "title": "逐张重画：线条沸腾与换纸",
-      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。",
+      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。 PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）给每 1/12 秒换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。",
       "types": [
         "texture",
         "rhythm"
@@ -3133,9 +3175,12 @@
       "sourceCases": [
         "mg-cel-boil",
         "mg-hanazi",
-        "lemo-crayon-book"
+        "lemo-crayon-book",
+        "pdoom-video"
       ],
-      "pairsWellWith": [],
+      "pairsWellWith": [
+        "emotion-take-morph"
+      ],
       "bundle": "agent/patterns/cel-line-boil.json"
     },
     {
@@ -5735,9 +5780,115 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/levels-of-detail-pullback.json"
+    },
+    {
+      "id": "brush-wipe-chapter-break",
+      "title": "笔刷横扫换章",
+      "summary": "大章边界用五道错峰水彩笔刷横扫，边界前 0.3 秒盖住画面，边界后 0.3 秒揭开新章；章内由角色动作接镜。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "karaoke-word-fill"
+      ],
+      "bundle": "agent/patterns/brush-wipe-chapter-break.json"
+    },
+    {
+      "id": "karaoke-word-fill",
+      "title": "逐词卡拉 OK 歌词",
+      "summary": "墨紫笔刷底在底部展开，奶油白歌词按字符进度逐词从左到右填为赭黄，句尾收回。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "brush-wipe-chapter-break",
+        "escalating-chorus-meter"
+      ],
+      "bundle": "agent/patterns/karaoke-word-fill.json"
+    },
+    {
+      "id": "escalating-chorus-meter",
+      "title": "副歌计量表逐拍递增",
+      "summary": "四段副歌把同一个 P(doom) 计量表从 8 逐拍推到 99.9，副歌之间保持数值；舞台道具表与弹入的角落表互斥。",
+      "types": [
+        "rhythm",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "karaoke-word-fill"
+      ],
+      "bundle": "agent/patterns/escalating-chorus-meter.json"
+    },
+    {
+      "id": "emotion-take-morph",
+      "title": "表情过渡：闭眼、挤压、冒符号再睁眼",
+      "summary": "换情绪前先挤闭眼，在闭眼时换眼型，随后拉伸、挤压回弹并弹出汗滴或星光等反应符号。",
+      "types": [
+        "feedback"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "cel-line-boil"
+      ],
+      "bundle": "agent/patterns/emotion-take-morph.json"
     }
   ],
   "materials": [
+    {
+      "id": "claude-animation-base",
+      "title": "Claude Animation Base · 手绘卡通动画套件",
+      "summary": "JohnHeibel 从 P(doom) 音乐录像整理出的入门套件：p5.js + p5.brush 绘制、Clawd 角色（视角、31 种表情、帽子、符号与舞步）、镜头与笔刷擦除时间轴、逐帧渲染脚本，以及给模型读的 ANIMATION_GUIDE.md。让 Agent 先读指南、出分镜，再逐镜头写只取决于时刻 t 的场景函数。",
+      "type": "prompt-kit",
+      "carrierNote": "套件用于制作按时间线播放、可逐帧渲染的手绘卡通短片；快照包含完整源码、模型指南与角色设定图。",
+      "useCases": [
+        "让会写代码的 Agent 从分镜制作手绘卡通短片",
+        "替换角色、表情、服装与参考图后制作新的角色演出",
+        "参考表情过渡、关键视角转身、镜头衔接与逐帧渲染"
+      ],
+      "avoid": [
+        "需要观众自由阅读的普通网页与网页应用",
+        "直接复制示例故事而不安排新事件的短片",
+        "没有命令执行环境的纯文字对话"
+      ],
+      "snapshotPath": "demos/materials/claude-animation-base/",
+      "snapshotEntry": "README.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "pdoom-video",
+          "note": "套件整理自这支 MV 的代码，并加入作者对模型表现的分析"
+        }
+      ],
+      "bundle": "agent/materials/claude-animation-base.json"
+    },
     {
       "id": "lemo-opuscar",
       "title": "lemo-opuscar · 66 种代码影片风格",

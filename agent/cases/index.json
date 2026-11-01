@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 68,
+  "count": 69,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -2411,6 +2411,48 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-transit-map.json"
+    },
+    {
+      "id": "pdoom-video",
+      "title": "I'm Upping My P(doom) · 手绘卡通音乐录像",
+      "summary": "JohnHeibel 用 Claude Opus 5.5 生成的 156.6 秒音乐录像。p5.brush 水彩笔触与 12fps 线条沸腾画出舞台剧：Clawd 在九章里从显示器涂鸦长到行星大小，四段副歌回到同一舞台逐次升级，P(doom) 计量表每段副歌被打气筒推高，最后拉远揭示整场末日只是演出。",
+      "carriers": [
+        "video"
+      ],
+      "style": "hand-drawn",
+      "purpose": "story",
+      "tech": [
+        "webgl",
+        "canvas2d"
+      ],
+      "tags": [
+        "p5.js",
+        "p5.brush",
+        "Clawd",
+        "歌词驱动",
+        "手绘卡通",
+        "舞台剧",
+        "Claude Opus 5.5"
+      ],
+      "useCases": [
+        "歌词驱动的手绘音乐录像",
+        "以重复场景逐次升级的叙事短片",
+        "角色表演、表情 take 与漫画转场参考"
+      ],
+      "avoid": [
+        "需要观众自行掌握阅读节奏的网页应用",
+        "要求实时 24fps 水彩绘制的低性能设备",
+        "以无字幕的安静画面为主的片段"
+      ],
+      "patternIds": [
+        "brush-wipe-chapter-break",
+        "karaoke-word-fill",
+        "escalating-chorus-meter",
+        "emotion-take-morph",
+        "cel-line-boil"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/pdoom-video.json"
     }
   ]
 }

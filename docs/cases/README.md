@@ -70,3 +70,4 @@
 | [二十一键 · 产品拆解](../../cases.html#case/lemo-teardown) | [条目](../../entries/cases/lemo-teardown.json) |
 | [一百个夏天 · 数据叙事](../../cases.html#case/lemo-dataviz) | [条目](../../entries/cases/lemo-dataviz.json) |
 | [6 公里 · 地铁线路图](../../cases.html#case/lemo-transit-map) | [条目](../../entries/cases/lemo-transit-map.json) |
+| [I'm Upping My P(doom) · 手绘卡通音乐录像](../../cases.html#case/pdoom-video) | [研究](pdoom-video.md) |
