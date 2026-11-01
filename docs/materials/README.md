@@ -6,6 +6,7 @@
 - [web-video-presentation 使用说明](web-video-presentation.md)
 - [mg-styles-15 使用说明](mg-styles-15.md)
 - [video-shotcraft 使用说明](video-shotcraft.md)
+- [Remotion Agent Skills 使用说明](remotion-skills.md)
 
 - [lemo-opuscar 使用说明](lemo-opuscar.md)
 

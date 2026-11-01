@@ -1,0 +1,82 @@
+{
+  "id": "remotion-skills",
+  "title": "Remotion Agent Skills · 官方 React 视频技能包",
+  "type": "agent-skill",
+  "category": "视频制作",
+  "tags": [
+    "Remotion",
+    "React",
+    "Agent Skill",
+    "字幕",
+    "地图动画",
+    "渲染",
+    "逐帧渲染"
+  ],
+  "summary": "Remotion 官方维护的 12 个 Agent Skill，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目里写 React 视频：remotion-best-practices 作为总入口按任务路由，其余分管新建项目、画面与动画写法、字幕、地图动画、音视频处理、交互、预览、导出、在线应用、版本升级与文档检索。",
+  "carrierNote": "技能用于在 Remotion 中以 React 组件编写按帧渲染的视频，最终形态是视频，因此归入本库。",
+  "workflow": [
+    "用 `npx skills add remotion-dev/skills` 或 `gh skill install remotion-dev/skills` 安装全部技能；用 `bun create video` 新建项目时也可勾选安装。",
+    "不确定该用哪个技能时调用 `/remotion-best-practices`，由它按任务转到具体技能。",
+    "新建项目或合成用 `/remotion-create`；画面、动画与特效的写法按 `/remotion-markup`。",
+    "字幕用 `/remotion-captions`，地图动画用 `/remotion-maps`，音视频读取与转换用 `/remotion-multimedia`，要让 Studio 能直接选择、移动和调整画面元素时用 `/remotion-interactivity`。",
+    "用 `/remotion-studio` 预览，`/remotion-render` 导出；做成在线生成应用用 `/remotion-saas`，升级版本用 `/remotion-upgrade`，查官方文档用 `/remotion-docs`。"
+  ],
+  "useCases": [
+    "新建 Remotion 项目或合成，用 React 编写按帧驱动的画面、排版、动画与特效",
+    "转录、导入与制作动态字幕，编排静态地图、路线标记与三维地理飞越镜头",
+    "在浏览器中用 Mediabunny 读取音视频元数据、处理媒体，并在 Studio 中预览和编辑时间线",
+    "导出视频、静帧或透明视频，把 Remotion Player 与渲染能力接入视频生成应用",
+    "升级 Remotion、相关包与项目技能，检索官方 API 和组件文档"
+  ],
+  "avoid": [
+    "脱离 Remotion 项目的一般网页开发",
+    "用 CSS transition、CSS animation 或 Tailwind 动画类驱动逐帧视频动画",
+    "未明确要求导出时跳过 Studio 预览直接渲染"
+  ],
+  "upstream": {
+    "repository": "remotion-dev/skills",
+    "url": "https://github.com/remotion-dev/skills/tree/30d4553ecd46fbc5212fd0ff006ae43af522158b",
+    "commit": "30d4553ecd46fbc5212fd0ff006ae43af522158b",
+    "version": "4.0.539",
+    "verifiedAt": "2026-11-01"
+  },
+  "license": {
+    "name": "Remotion License",
+    "url": "https://github.com/remotion-dev/remotion/blob/35e07c283d704cd6c28bbc63a030e30356e62b09/LICENSE.md",
+    "notes": "skills 仓库未附许可文件，package.json 指向 Remotion 主仓库的 packages/skills；按主仓库 Remotion License 记录，原文见快照内 REMOTION-LICENSE.md。个人、3 名员工以内的营利组织与非营利组织可免费使用（含商用），更大规模的营利组织需购买公司许可。"
+  },
+  "install": "npx skills add remotion-dev/skills\ngh skill install remotion-dev/skills\n以上命令安装上游当前版本；本库快照固定在记录的提交。用 bun create video 新建项目时也可勾选安装技能。",
+  "snapshotPath": "demos/materials/remotion-skills/",
+  "snapshotEntry": "skills/remotion-best-practices/SKILL.md",
+  "relatedEntries": [
+    {
+      "kind": "case",
+      "id": "ink-press",
+      "note": "用 Remotion 4.0.484 编写的宣传片，可对照 remotion-markup 的写法"
+    }
+  ],
+  "gallery": [],
+  "sources": [
+    {
+      "title": "skills 发布仓库固定提交：README 与 12 个技能原文",
+      "url": "https://github.com/remotion-dev/skills/tree/30d4553ecd46fbc5212fd0ff006ae43af522158b"
+    },
+    {
+      "title": "Remotion 主仓库 packages/skills 源码",
+      "url": "https://github.com/remotion-dev/remotion/tree/35e07c283d704cd6c28bbc63a030e30356e62b09/packages/skills"
+    },
+    {
+      "title": "Remotion 官方 Agent Skills 文档",
+      "url": "https://www.remotion.dev/docs/ai/skills"
+    },
+    {
+      "title": "package.json：版本与源码仓库路径",
+      "url": "https://github.com/remotion-dev/skills/blob/30d4553ecd46fbc5212fd0ff006ae43af522158b/package.json"
+    },
+    {
+      "title": "Remotion License 原文快照",
+      "url": "demos/materials/remotion-skills/REMOTION-LICENSE.md"
+    }
+  ],
+  "research": "docs/materials/remotion-skills.md"
+}
