@@ -1,6 +1,6 @@
 {
   "id": "page-turn-popup-swap",
-  "order": 111,
+  "order": 99,
   "title": "翻页立体书换景",
   "types": [
     "transition"

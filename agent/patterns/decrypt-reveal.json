@@ -4,7 +4,7 @@
   "id": "decrypt-reveal",
   "pattern": {
     "id": "decrypt-reveal",
-    "order": 32,
+    "order": 15,
     "title": "对角解密与磨砂转清",
     "types": [
       "transition",

@@ -4,7 +4,7 @@
   "id": "eraser-rewind",
   "pattern": {
     "id": "eraser-rewind",
-    "order": 125,
+    "order": 113,
     "title": "板擦倒抹回溯",
     "types": [
       "transition"

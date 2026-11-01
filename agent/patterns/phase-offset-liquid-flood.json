@@ -4,7 +4,7 @@
   "id": "phase-offset-liquid-flood",
   "pattern": {
     "id": "phase-offset-liquid-flood",
-    "order": 86,
+    "order": 64,
     "title": "三层液浪漫屏",
     "types": [
       "transition",

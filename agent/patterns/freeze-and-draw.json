@@ -4,7 +4,7 @@
   "id": "freeze-and-draw",
   "pattern": {
     "id": "freeze-and-draw",
-    "order": 175,
+    "order": 160,
     "title": "定格画线",
     "types": [
       "hud",

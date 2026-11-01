@@ -1,6 +1,6 @@
 {
   "id": "write-wipe-rewrite",
-  "order": 127,
+  "order": 115,
   "title": "写擦原位重写",
   "types": [
     "type-motion",

@@ -4,7 +4,7 @@
   "id": "grid-reveals-score",
   "pattern": {
     "id": "grid-reveals-score",
-    "order": 103,
+    "order": 91,
     "title": "网格即乐谱",
     "types": [
       "composition",
@@ -292,7 +292,7 @@
     },
     {
       "path": "entries/patterns/grid-reveals-score.json",
-      "bytes": 3759,
+      "bytes": 3758,
       "role": "entry"
     },
     {

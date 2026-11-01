@@ -4,7 +4,7 @@
   "id": "dots-morph-to-stripes",
   "pattern": {
     "id": "dots-morph-to-stripes",
-    "order": 313,
+    "order": 170,
     "title": "点线化为条纹",
     "types": [
       "transition"

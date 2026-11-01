@@ -1,6 +1,6 @@
 {
   "id": "rpg-dialog-box",
-  "order": 49,
+  "order": 27,
   "title": "像素对话框",
   "types": [
     "hud",

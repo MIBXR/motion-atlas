@@ -4,7 +4,7 @@
   "id": "integer-pixel-parallax",
   "pattern": {
     "id": "integer-pixel-parallax",
-    "order": 47,
+    "order": 25,
     "title": "整像素多速视差",
     "types": [
       "camera",

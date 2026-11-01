@@ -4,7 +4,7 @@
   "id": "corner-hud",
   "pattern": {
     "id": "corner-hud",
-    "order": 10,
+    "order": 1,
     "title": "四角信息 HUD",
     "types": [
       "hud",
@@ -20896,7 +20896,7 @@
     },
     {
       "path": "entries/patterns/corner-hud.json",
-      "bytes": 6760,
+      "bytes": 6759,
       "role": "entry"
     },
     {

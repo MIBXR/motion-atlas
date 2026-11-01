@@ -4,7 +4,7 @@
   "id": "count-up-slam",
   "pattern": {
     "id": "count-up-slam",
-    "order": 141,
+    "order": 129,
     "title": "计数砸落",
     "types": [
       "type-motion",

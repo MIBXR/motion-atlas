@@ -4,7 +4,7 @@
   "id": "emotion-take-morph",
   "pattern": {
     "id": "emotion-take-morph",
-    "order": 318,
+    "order": 175,
     "title": "表情过渡：闭眼、挤压、冒符号再睁眼",
     "types": [
       "feedback"

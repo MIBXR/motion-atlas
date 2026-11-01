@@ -4,7 +4,7 @@
   "id": "snap-build-collapse-rebuild",
   "pattern": {
     "id": "snap-build-collapse-rebuild",
-    "order": 156,
+    "order": 143,
     "title": "拼搭、崩塌、用零件重建",
     "types": [
       "composition",

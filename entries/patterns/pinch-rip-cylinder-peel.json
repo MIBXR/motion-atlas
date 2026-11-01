@@ -1,6 +1,6 @@
 {
   "id": "pinch-rip-cylinder-peel",
-  "order": 85,
+  "order": 75,
   "title": "夹纸裂页翻卷",
   "types": [
     "transition"

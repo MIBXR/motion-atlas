@@ -1,6 +1,6 @@
 {
   "id": "outro-stat-stack",
-  "order": 19,
+  "order": 10,
   "title": "结尾数据堆叠与计数",
   "types": [
     "type-motion",

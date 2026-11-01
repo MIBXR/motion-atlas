@@ -4,7 +4,7 @@
   "id": "oblique-projection-camera",
   "pattern": {
     "id": "oblique-projection-camera",
-    "order": 132,
+    "order": 120,
     "title": "斜投影作镜头",
     "types": [
       "camera"

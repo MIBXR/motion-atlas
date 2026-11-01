@@ -4,7 +4,7 @@
   "id": "stepped-hand-placement",
   "pattern": {
     "id": "stepped-hand-placement",
-    "order": 82,
+    "order": 72,
     "title": "抽帧手摆抖动",
     "types": [
       "rhythm",

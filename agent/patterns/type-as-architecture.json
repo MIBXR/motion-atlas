@@ -4,7 +4,7 @@
   "id": "type-as-architecture",
   "pattern": {
     "id": "type-as-architecture",
-    "order": 110,
+    "order": 98,
     "title": "字即布景",
     "types": [
       "composition",
@@ -322,7 +322,7 @@
     },
     {
       "path": "entries/patterns/type-as-architecture.json",
-      "bytes": 3532,
+      "bytes": 3531,
       "role": "entry"
     },
     {

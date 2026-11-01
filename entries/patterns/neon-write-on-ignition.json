@@ -1,6 +1,6 @@
 {
   "id": "neon-write-on-ignition",
-  "order": 80,
+  "order": 58,
   "title": "霓虹描写通电",
   "types": [
     "type-motion",

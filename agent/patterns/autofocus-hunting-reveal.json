@@ -4,7 +4,7 @@
   "id": "autofocus-hunting-reveal",
   "pattern": {
     "id": "autofocus-hunting-reveal",
-    "order": 153,
+    "order": 140,
     "title": "对焦游移显隐",
     "types": [
       "camera",

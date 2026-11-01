@@ -1,6 +1,6 @@
 {
   "id": "collect-counter",
-  "order": 17,
+  "order": 8,
   "title": "收集计数徽章与收集物托盘",
   "types": [
     "feedback",

@@ -68,7 +68,7 @@ export function fileManifest(files) {
 export function loadEntries() {
   const cases = listJSON('entries/cases').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   const patterns = listJSON('entries/patterns').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
-  const materials = listJSON('entries/materials').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => a.id.localeCompare(b.id));
+  const materials = listJSON('entries/materials').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => a.order - b.order);
   for (const e of cases) {
     for (const [field, taxonomy] of [['style', 'styles'], ['purpose', 'purposes']]) {
       if (typeof e[field] !== 'string' || !Object.hasOwn(TAXONOMY[taxonomy], e[field])) throw new Error(`${e._file}: 未知或缺少 ${field} ${e[field]}`);

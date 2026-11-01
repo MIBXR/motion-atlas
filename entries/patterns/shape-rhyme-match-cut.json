@@ -1,6 +1,6 @@
 {
   "id": "shape-rhyme-match-cut",
-  "order": 112,
+  "order": 100,
   "title": "形状押韵硬切",
   "types": [
     "transition",

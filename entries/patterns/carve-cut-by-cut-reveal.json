@@ -1,6 +1,6 @@
 {
   "id": "carve-cut-by-cut-reveal",
-  "order": 108,
+  "order": 96,
   "title": "逐刀刻出画面",
   "types": [
     "texture",

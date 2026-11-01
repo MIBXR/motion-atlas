@@ -4,7 +4,7 @@
   "id": "seekable-timeline",
   "pattern": {
     "id": "seekable-timeline",
-    "order": 20,
+    "order": 11,
     "title": "可逐帧定位的时间轴",
     "types": [
       "rhythm"

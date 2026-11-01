@@ -1,5 +1,6 @@
 {
   "id": "remotion-skills",
+  "order": 7,
   "title": "Remotion Agent Skills · 官方 React 视频技能包",
   "type": "agent-skill",
   "category": "视频制作",

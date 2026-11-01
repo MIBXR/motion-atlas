@@ -4,7 +4,7 @@
   "id": "tilt-shift-focus-band",
   "pattern": {
     "id": "tilt-shift-focus-band",
-    "order": 159,
+    "order": 148,
     "title": "移轴焦带",
     "types": [
       "camera",

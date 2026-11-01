@@ -1,6 +1,6 @@
 {
   "id": "split-compare-stamp",
-  "order": 16,
+  "order": 7,
   "title": "分屏对比与时间戳盖章",
   "types": [
     "transition",

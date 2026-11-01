@@ -1,6 +1,6 @@
 {
   "id": "element-flight-regroup",
-  "order": 71,
+  "order": 49,
   "title": "同物飞排重组",
   "types": [
     "transition",

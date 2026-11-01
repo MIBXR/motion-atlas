@@ -4,7 +4,7 @@
   "id": "counter-rotate-pullback",
   "pattern": {
     "id": "counter-rotate-pullback",
-    "order": 158,
+    "order": 146,
     "title": "反旋拉远",
     "types": [
       "camera"

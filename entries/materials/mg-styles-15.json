@@ -1,5 +1,6 @@
 {
   "id": "mg-styles-15",
+  "order": 3,
   "title": "mg-styles-15 风格提示词套件",
   "type": "prompt-kit",
   "summary": "作者用一套“通用部分 + 风格四段”的提示词模板，让会写代码的 AI 逐风格制作 10 秒动态设计短片，并用独立 AI 评审迭代两轮；附代码合成配乐的 mgaudio 库与 103 个乐器采样。",

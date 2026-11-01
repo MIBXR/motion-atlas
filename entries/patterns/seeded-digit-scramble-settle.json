@@ -1,6 +1,6 @@
 {
   "id": "seeded-digit-scramble-settle",
-  "order": 90,
+  "order": 67,
   "title": "乱数跳变落定",
   "types": [
     "hud",

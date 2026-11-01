@@ -1,5 +1,6 @@
 {
   "id": "motion-showreel",
+  "order": 1,
   "title": "motion-showreel · 代码渲染短视频",
   "type": "agent-skill",
   "summary": "把图形、文字与界面动画编排为确定性时间线，逐帧渲染并交付 MP4 与可编辑源码。",

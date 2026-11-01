@@ -1,6 +1,6 @@
 {
   "id": "handscroll-pan-transition",
-  "order": 115,
+  "order": 103,
   "title": "画卷横移转场",
   "types": [
     "transition",

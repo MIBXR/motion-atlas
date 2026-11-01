@@ -1,6 +1,6 @@
 {
   "id": "list-stack-press",
-  "order": 95,
+  "order": 84,
   "title": "列表堆叠压入",
   "types": [
     "composition",

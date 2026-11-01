@@ -4,7 +4,7 @@
   "id": "sea-mask-sunset",
   "pattern": {
     "id": "sea-mask-sunset",
-    "order": 66,
+    "order": 44,
     "title": "海面遮罩吞日",
     "types": [
       "transition",

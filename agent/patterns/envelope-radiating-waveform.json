@@ -4,7 +4,7 @@
   "id": "envelope-radiating-waveform",
   "pattern": {
     "id": "envelope-radiating-waveform",
-    "order": 76,
+    "order": 54,
     "title": "音量包络放射声波",
     "types": [
       "hud",

@@ -4,7 +4,7 @@
   "id": "reprint-same-place",
   "pattern": {
     "id": "reprint-same-place",
-    "order": 138,
+    "order": 126,
     "title": "同地再印换时",
     "types": [
       "transition",

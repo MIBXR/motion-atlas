@@ -1,6 +1,6 @@
 {
   "id": "tape-rewind-chrome-slam",
-  "order": 81,
+  "order": 59,
   "title": "倒带冲入落版",
   "types": [
     "transition",

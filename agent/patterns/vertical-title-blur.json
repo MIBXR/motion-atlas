@@ -4,7 +4,7 @@
   "id": "vertical-title-blur",
   "pattern": {
     "id": "vertical-title-blur",
-    "order": 11,
+    "order": 2,
     "title": "竖排汉字模糊入场 + 英文打字",
     "types": [
       "type-motion"
@@ -1703,7 +1703,7 @@
     },
     {
       "path": "entries/patterns/vertical-title-blur.json",
-      "bytes": 7293,
+      "bytes": 7292,
       "role": "entry"
     },
     {

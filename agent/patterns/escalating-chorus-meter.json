@@ -4,7 +4,7 @@
   "id": "escalating-chorus-meter",
   "pattern": {
     "id": "escalating-chorus-meter",
-    "order": 317,
+    "order": 174,
     "title": "副歌计量表逐拍递增",
     "types": [
       "rhythm",

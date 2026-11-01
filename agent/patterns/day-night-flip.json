@@ -4,7 +4,7 @@
   "id": "day-night-flip",
   "pattern": {
     "id": "day-night-flip",
-    "order": 13,
+    "order": 4,
     "title": "昼夜翻转：逐层插值",
     "types": [
       "transition",
@@ -516,7 +516,7 @@
     },
     {
       "path": "entries/patterns/day-night-flip.json",
-      "bytes": 6156,
+      "bytes": 6155,
       "role": "entry"
     },
     {

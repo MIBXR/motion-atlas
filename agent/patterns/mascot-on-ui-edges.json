@@ -4,7 +4,7 @@
   "id": "mascot-on-ui-edges",
   "pattern": {
     "id": "mascot-on-ui-edges",
-    "order": 145,
+    "order": 133,
     "title": "小人只站界面上沿",
     "types": [
       "composition",

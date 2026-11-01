@@ -72,6 +72,7 @@ async function shoot(browser, e, dir, orient, renderers) {
   const url = `${base}/${e.demo}?render=1&orient=${orient}`;
   const out = path.join(outRoot, dir, `${e.id}${portrait ? '-portrait' : ''}.jpg`);
   try {
+    await page.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: 'light' }] });
     await page.goto(url, 45000);
     const hasMotion = await page.eval('new Promise(r => { let n = 0; const iv = setInterval(() => { if (window.__motion || ++n > 120) { clearInterval(iv); r(!!window.__motion); } }, 100); })', 120000);
     if (hasMotion) {
@@ -89,6 +90,19 @@ async function shoot(browser, e, dir, orient, renderers) {
       await page.eval(`new Promise(r => setTimeout(r, ${e.previewWait ?? 1500}))`);
       if (e.renderer === 'gpu') await checkRenderer(page, renderers);
     }
+    await page.eval(`(async () => {
+      const docs = [document];
+      for (const doc of docs) {
+        for (const frame of doc.querySelectorAll('iframe')) if (frame.contentDocument) docs.push(frame.contentDocument);
+        await doc.fonts.ready;
+        await Promise.all([...doc.images].filter(image => {
+          const rect = image.getBoundingClientRect();
+          const style = doc.defaultView.getComputedStyle(image);
+          return rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < doc.defaultView.innerHeight && style.visibility !== 'hidden';
+        }).map(image => image.decode()));
+      }
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    })()`, 60000);
     fs.mkdirSync(path.dirname(out), { recursive: true });
     await page.screenshot(out, { format: 'jpeg', quality: 82 });
     return 'ok';

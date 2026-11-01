@@ -1,6 +1,6 @@
 {
   "id": "specular-sweep-glint",
-  "order": 83,
+  "order": 61,
   "title": "斜向扫光与星芒",
   "types": [
     "texture",

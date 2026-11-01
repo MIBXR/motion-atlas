@@ -4,7 +4,7 @@
   "id": "flipbook-pullback",
   "pattern": {
     "id": "flipbook-pullback",
-    "order": 55,
+    "order": 33,
     "title": "拉远翻纸溯帧",
     "types": [
       "camera",

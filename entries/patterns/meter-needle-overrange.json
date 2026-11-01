@@ -1,6 +1,6 @@
 {
   "id": "meter-needle-overrange",
-  "order": 89,
+  "order": 79,
   "title": "量表扫针爆表",
   "types": [
     "hud",

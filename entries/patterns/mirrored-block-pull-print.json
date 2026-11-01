@@ -1,6 +1,6 @@
 {
   "id": "mirrored-block-pull-print",
-  "order": 109,
+  "order": 97,
   "title": "反刻版揭印转正",
   "types": [
     "transition",

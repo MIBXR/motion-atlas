@@ -38,7 +38,7 @@
     }
   ],
   "id": "staged-extrusion-build",
-  "order": 57,
+  "order": 35,
   "title": "分层伸展组装",
   "types": [
     "composition",

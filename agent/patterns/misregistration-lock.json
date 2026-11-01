@@ -4,7 +4,7 @@
   "id": "misregistration-lock",
   "pattern": {
     "id": "misregistration-lock",
-    "order": 46,
+    "order": 24,
     "title": "套印漂移与锁版",
     "types": [
       "texture",

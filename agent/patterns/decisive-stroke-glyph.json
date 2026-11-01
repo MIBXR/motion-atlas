@@ -4,7 +4,7 @@
   "id": "decisive-stroke-glyph",
   "pattern": {
     "id": "decisive-stroke-glyph",
-    "order": 106,
+    "order": 94,
     "title": "一笔斩浪成字",
     "types": [
       "type-motion",
@@ -377,7 +377,7 @@
     },
     {
       "path": "entries/patterns/decisive-stroke-glyph.json",
-      "bytes": 3346,
+      "bytes": 3345,
       "role": "entry"
     },
     {

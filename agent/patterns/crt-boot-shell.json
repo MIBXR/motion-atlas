@@ -4,7 +4,7 @@
   "id": "crt-boot-shell",
   "pattern": {
     "id": "crt-boot-shell",
-    "order": 50,
+    "order": 28,
     "title": "显像管开机与屏幕外壳",
     "types": [
       "transition",

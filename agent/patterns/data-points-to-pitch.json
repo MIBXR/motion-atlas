@@ -4,7 +4,7 @@
   "id": "data-points-to-pitch",
   "pattern": {
     "id": "data-points-to-pitch",
-    "order": 310,
+    "order": 167,
     "title": "数据点映射音高",
     "types": [
       "sound",
