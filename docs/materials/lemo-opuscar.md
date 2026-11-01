@@ -43,7 +43,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 ### 剪辑与纪实 · Edit & Documentary
 
 - [字幕新闻 · Caption News](../../cases.html#case/lemo-caption-news) · 已复刻
-- [1920s 新闻影片 · 1920s Newsreel](../../cases.html#case/lemo-newsreel) · 已复刻
+- 1920s 新闻影片 · 1920s Newsreel
 - [实时倒计时分屏 · Live Countdown Split-screen](../../cases.html#case/lemo-countdown) · 已复刻
 - 延时交响 · Time-lapse Symphony
 - [视觉调查 · Visual Investigation](../../cases.html#case/lemo-visual-investigation) · 已复刻
@@ -57,8 +57,8 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [工程简报板 · Engineering Briefing Board](../../cases.html#case/lemo-briefing-board) · 已复刻
 - [点云测绘 · LiDAR Survey](../../cases.html#case/lemo-lidar-survey) · 已复刻
 - [白模投影 · Projection on White Model](../../cases.html#case/lemo-white-model) · 已复刻
-- [数据实物化 · Data Physicalization](../../cases.html#case/lemo-data-physical) · 已复刻
-- 产品拆解 · Exploded Teardown
+- 数据实物化 · Data Physicalization
+- [产品拆解 · Exploded Teardown](../../cases.html#case/lemo-teardown) · 已复刻
 - [显微叙事 · Microscope Story](../../cases.html#case/lemo-microscope) · 已复刻
 - [档案灯台 · Archive Light Table](../../cases.html#case/lemo-archive-lighttable) · 已复刻
 
@@ -101,43 +101,43 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ### 信息与发布 · Information & Keynote
 
-- 数据叙事 · Data Storytelling
+- [数据叙事 · Data Storytelling](../../cases.html#case/lemo-dataviz) · 已复刻
 - 等距信息图 · Isometric Infographic
 - [暗色科技发布 · Dark Tech Keynote](../../cases.html#case/lemo-dark-keynote) · 已复刻
 - [活体实机录屏 · Living Screencast](../../cases.html#case/lemo-living-screencast) · 已复刻
-- 科幻全息界面 · Sci-fi Hologram HUD
-- 地铁线路图 · Transit Map
+- [科幻全息界面 · Sci-fi Hologram HUD](../../cases.html#case/lemo-hologram-hud) · 已复刻
+- [地铁线路图 · Transit Map](../../cases.html#case/lemo-transit-map) · 已复刻
 - 等距绘本 · Isometric Picture Book
 - [电路板 · Circuit Board](../../cases.html#case/lemo-circuit-board) · 已复刻
 
 ### 卡通与动画 · Cartoon & Anime
 
-- [1930s 橡皮管卡通 · 1930s Rubber Hose Cartoon](../../cases.html#case/lemo-rubber-hose) · 已复刻
-- [80 年代赛璐璐动画 · 80s Cel Anime](../../cases.html#case/lemo-cel-anime-80s) · 已复刻
-- [科幻情景喜剧卡通 · Sci-Fi Sitcom Toon](../../cases.html#case/lemo-scifi-toon) · 已复刻
+- 1930s 橡皮管卡通 · 1930s Rubber Hose Cartoon
+- 80 年代赛璐璐动画 · 80s Cel Anime
+- 科幻情景喜剧卡通 · Sci-Fi Sitcom Toon
 - [50s 扁平卡通 · Mid-century Cartoon](../../cases.html#case/lemo-midcentury-toon) · 已复刻
 
 ### 游戏 · Games
 
 - 16-bit 像素 RPG · 16-bit Pixel RPG
 - [HD-2D · HD-2D](../../cases.html#case/lemo-hd-2d) · 已复刻
-- [微游戏快闪 · Microgame Frenzy](../../cases.html#case/lemo-microgame) · 已复刻
+- 微游戏快闪 · Microgame Frenzy
 - 综艺节奏扁平 · Game Show Flat
 
 ### 电影与时代 · Cinema & Eras
 
-- [1920s 默片 · 1920s Silent Film](../../cases.html#case/lemo-silent-film) · 已复刻
+- 1920s 默片 · 1920s Silent Film
 - [后室 / 新怪谈 · Liminal Found Footage](../../cases.html#case/lemo-backrooms) · 已复刻
 
 ### 材质与 3D · Materials & 3D
 
 - [积木玩具 · Brick Toy](../../cases.html#case/lemo-brick-toy) · 已复刻
 - [纸片立体书 · Paper Pop-up Book](../../cases.html#case/lemo-paper-popup) · 已复刻
-- [移轴微缩 · Tilt-Shift Miniature](../../cases.html#case/lemo-tilt-shift) · 已复刻
+- 移轴微缩 · Tilt-Shift Miniature
 - [低多边形等距 · Low-poly Isometric Island](../../cases.html#case/lemo-lowpoly-island) · 已复刻
 - 玻璃质感产品 · Glass Product Render
 - [孟菲斯微缩景观 · Memphis Diorama](../../cases.html#case/lemo-memphis-diorama) · 已复刻
-- [桌面穿梭 · Desktop Flythrough](../../cases.html#case/lemo-desktop-flythrough) · 已复刻
+- 桌面穿梭 · Desktop Flythrough
 
 ## 改成我的风格
 
@@ -151,11 +151,9 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的`STYLE.md` / `DEMO.md` / `style.json`，以及`core/`的代码与文字。快照不含`core/assets/`、字体二进制、各风格的`demo/`代码和成片。
 
-以下10种风格与库中已有案例主题重合，未复刻：pixel-rpg → `mg-pixel`；hologram-hud → `mg-hud`；iso-infographic、isometric-picture-book → `mg-isometric`；one-line → `mg-line-art`；teardown → `mg-paperclip`；dataviz → `keeling-curve`；glass-product → `mg-aurora-glass`；transit-map → `map-pilgrimage`；game-show → `mg-hanazi`。
+以下16种风格未复刻：与已有案例重合的 pixel-rpg、iso-infographic、isometric-picture-book、one-line、glass-product；效果未达要求的 game-show、cel-anime-80s、scifi-toon、rubber-hose、microgame、tilt-shift、desktop-flythrough、silent-film、data-physical、newsreel；画面由 Python 离线合成的 city-symphony。
 
-city-symphony 的画面由上游 `tools/render.py` 用 Python 逐帧离线合成，浏览器页面不绘制画面，未复刻。
-
-55个案例各自保留运行画面、字体、成片音轨与`source/`制作文件：
+50个案例各自保留运行画面、字体、成片音轨与`source/`制作文件：
 
 - [跟着雨走 · 水彩笔刷](../../cases.html#case/lemo-watercolor)：制作文件见[source/README.md](../../demos/cases/lemo-watercolor/source/README.md)。
 - [海报五则 · 瑞士动态排版](../../cases.html#case/lemo-swiss-motion)：制作文件见[source/README.md](../../demos/cases/lemo-swiss-motion/source/README.md)。
@@ -187,30 +185,26 @@ city-symphony 的画面由上游 `tools/render.py` 用 Python 逐帧离线合成
 - [思考的空间 · 暗色科技发布](../../cases.html#case/lemo-dark-keynote)：制作文件见[source/README.md](../../demos/cases/lemo-dark-keynote/source/README.md)。
 - [Clawd 搬进来 · 活体实机录屏](../../cases.html#case/lemo-living-screencast)：制作文件见[source/README.md](../../demos/cases/lemo-living-screencast/source/README.md)。
 - [七毫秒 · 电路板](../../cases.html#case/lemo-circuit-board)：制作文件见[source/README.md](../../demos/cases/lemo-circuit-board/source/README.md)。
-- [咖啡杯追逐战 · 1930s 橡皮管卡通](../../cases.html#case/lemo-rubber-hose)：制作文件见[source/README.md](../../demos/cases/lemo-rubber-hose/source/README.md)。
-- [城市之光，1987 · 80 年代赛璐璐动画](../../cases.html#case/lemo-cel-anime-80s)：制作文件见[source/README.md](../../demos/cases/lemo-cel-anime-80s/source/README.md)。
-- [买咖啡 · 科幻情景喜剧卡通](../../cases.html#case/lemo-scifi-toon)：制作文件见[source/README.md](../../demos/cases/lemo-scifi-toon/source/README.md)。
 - [认识皮普 · 50s 扁平卡通](../../cases.html#case/lemo-midcentury-toon)：制作文件见[source/README.md](../../demos/cases/lemo-midcentury-toon/source/README.md)。
 - [提灯人 · HD-2D](../../cases.html#case/lemo-hd-2d)：制作文件见[source/README.md](../../demos/cases/lemo-hd-2d/source/README.md)。
-- [五秒宇航员 · 微游戏快闪](../../cases.html#case/lemo-microgame)：制作文件见[source/README.md](../../demos/cases/lemo-microgame/source/README.md)。
 - [用零件造火箭 · 积木玩具](../../cases.html#case/lemo-brick-toy)：制作文件见[source/README.md](../../demos/cases/lemo-brick-toy/source/README.md)。
-- [玩具城早高峰 · 移轴微缩](../../cases.html#case/lemo-tilt-shift)：制作文件见[source/README.md](../../demos/cases/lemo-tilt-shift/source/README.md)。
-- [叮之前 · 桌面穿梭](../../cases.html#case/lemo-desktop-flythrough)：制作文件见[source/README.md](../../demos/cases/lemo-desktop-flythrough/source/README.md)。
 - [长出来的小岛 · 低多边形等距](../../cases.html#case/lemo-lowpoly-island)：制作文件见[source/README.md](../../demos/cases/lemo-lowpoly-island/source/README.md)。
 - [夜班入职指引 · 后室 / 新怪谈](../../cases.html#case/lemo-backrooms)：制作文件见[source/README.md](../../demos/cases/lemo-backrooms/source/README.md)。
-- [逃跑的面包 · 1920s 默片](../../cases.html#case/lemo-silent-film)：制作文件见[source/README.md](../../demos/cases/lemo-silent-film/source/README.md)。
 - [地图上还写着海 · 卫星简报](../../cases.html#case/lemo-satellite-briefing)：制作文件见[source/README.md](../../demos/cases/lemo-satellite-briefing/source/README.md)。
 - [船说了算 · 工程简报板](../../cases.html#case/lemo-briefing-board)：制作文件见[source/README.md](../../demos/cases/lemo-briefing-board/source/README.md)。
 - [被炸平的城市怎样长回来 · 白模投影](../../cases.html#case/lemo-white-model)：制作文件见[source/README.md](../../demos/cases/lemo-white-model/source/README.md)。
-- [两条螺旋 · 数据实物化](../../cases.html#case/lemo-data-physical)：制作文件见[source/README.md](../../demos/cases/lemo-data-physical/source/README.md)。
 - [量出来的蓝 · 显微叙事](../../cases.html#case/lemo-microscope)：制作文件见[source/README.md](../../demos/cases/lemo-microscope/source/README.md)。
 - [差两秒 · 档案灯台](../../cases.html#case/lemo-archive-lighttable)：制作文件见[source/README.md](../../demos/cases/lemo-archive-lighttable/source/README.md)。
 - [蜜蜂账本 · 字幕新闻](../../cases.html#case/lemo-caption-news)：制作文件见[source/README.md](../../demos/cases/lemo-caption-news/source/README.md)。
-- [膝盖警报 · 1920s 新闻影片](../../cases.html#case/lemo-newsreel)：制作文件见[source/README.md](../../demos/cases/lemo-newsreel/source/README.md)。
 - [兴登堡号：四分钟与三十二秒 · 视觉调查](../../cases.html#case/lemo-visual-investigation)：制作文件见[source/README.md](../../demos/cases/lemo-visual-investigation/source/README.md)。
 - [本周 AI 四件事 · 电视新闻包装](../../cases.html#case/lemo-news-package)：制作文件见[source/README.md](../../demos/cases/lemo-news-package/source/README.md)。
 - [定格 · 体育战术板](../../cases.html#case/lemo-telestrator)：制作文件见[source/README.md](../../demos/cases/lemo-telestrator/source/README.md)。
 - [自己倒数 · 实时倒计时分屏](../../cases.html#case/lemo-countdown)：制作文件见[source/README.md](../../demos/cases/lemo-countdown/source/README.md)。
 - [410 天 · 构成主义蒙太奇](../../cases.html#case/lemo-kino-montage)：制作文件见[source/README.md](../../demos/cases/lemo-kino-montage/source/README.md)。
+
+- [伏特·规格扫描 · 科幻全息界面](../../cases.html#case/lemo-hologram-hud)：制作文件见[source/README.md](../../demos/cases/lemo-hologram-hud/source/README.md)。
+- [二十一键 · 产品拆解](../../cases.html#case/lemo-teardown)：制作文件见[source/README.md](../../demos/cases/lemo-teardown/source/README.md)。
+- [一百个夏天 · 数据叙事](../../cases.html#case/lemo-dataviz)：制作文件见[source/README.md](../../demos/cases/lemo-dataviz/source/README.md)。
+- [6 公里 · 地铁线路图](../../cases.html#case/lemo-transit-map)：制作文件见[source/README.md](../../demos/cases/lemo-transit-map/source/README.md)。
 
 共用工具在[本快照的core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，以无声循环WebP展示。

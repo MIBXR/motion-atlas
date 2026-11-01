@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 74,
+  "count": 68,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -345,39 +345,6 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/mg-paperclip.json"
-    },
-    {
-      "id": "mg-hud",
-      "title": "赛博朋克 HUD · KESTREL-9 · Target Acquired",
-      "summary": "青色 HUD 从中心分层开机，线框地球、雷达、遥测与候选目标依次上线；发现信号后括号向目标收拢，6.4 秒锁定并扩散橙色警报波，镜头穿入地图，显示目标与坐标。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "mg-styles-15",
-        "赛博朋克",
-        "HUD",
-        "线框地球",
-        "目标锁定",
-        "雷达扫描"
-      ],
-      "useCases": [
-        "科技数码测评",
-        "游戏剪辑",
-        "航天科普",
-        "AI 产品演示"
-      ],
-      "avoid": [],
-      "patternIds": [
-        "crt-line-dot-shutdown",
-        "radar-sweep-persistent-blips",
-        "seeded-digit-scramble-settle",
-        "hud-lock-alert-wave",
-        "chapter-frame",
-        "boot-typing"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/mg-hud.json"
     },
     {
       "id": "mg-collage",
@@ -1499,89 +1466,6 @@
       "bundle": "agent/cases/lemo-circuit-board.json"
     },
     {
-      "id": "lemo-rubber-hose",
-      "title": "咖啡杯追逐战 · 1930s 橡皮管卡通",
-      "summary": "苦咖啡杯追赶逃跑的方糖，跨过烤面包机和盘子阶梯，在水槽漩涡边伸长手臂救回方糖；善意让方糖自己跳进杯中，全厨房随爵士乐起舞。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "1930s 橡皮管卡通",
-        "卡通与动画",
-        "代码影片"
-      ],
-      "useCases": [
-        "复古餐饮广告",
-        "卡通品牌片",
-        "音乐动作短片"
-      ],
-      "avoid": [
-        "写实关节或现代渐变角色"
-      ],
-      "patternIds": [
-        "title-shade-rollup",
-        "squash-stretch-bounce"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-rubber-hose.json"
-    },
-    {
-      "id": "lemo-cel-anime-80s",
-      "title": "城市之光，1987 · 80 年代赛璐璐动画",
-      "summary": "快递少女穿过雨夜霓虹都市，在吊桥升起前飞跃缺口，把磁带送到火箭驾驶员手中；磁带按下播放，城市在黎明中放亮。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "80 年代赛璐璐动画",
-        "卡通与动画",
-        "代码影片"
-      ],
-      "useCases": [
-        "音乐短片",
-        "游戏预告",
-        "复古动画片头"
-      ],
-      "avoid": [
-        "依赖柔和渐变塑形的现代角色"
-      ],
-      "patternIds": [
-        "integer-pixel-parallax",
-        "stepped-hand-placement",
-        "specular-sweep-glint"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-cel-anime-80s.json"
-    },
-    {
-      "id": "lemo-scifi-toon",
-      "title": "买咖啡 · 科幻情景喜剧卡通",
-      "summary": "厌世天才与紧张搭档为买咖啡穿过果冻、杯子、牙齿、鸽子与克隆宇宙，回家后发现带回的是无咖啡因咖啡。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "科幻情景喜剧卡通",
-        "卡通与动画",
-        "代码影片"
-      ],
-      "useCases": [
-        "喜剧短片",
-        "科技品牌叙事",
-        "社交短片"
-      ],
-      "avoid": [],
-      "patternIds": [
-        "portal-universe-hop",
-        "squash-stretch-bounce"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-scifi-toon.json"
-    },
-    {
       "id": "lemo-midcentury-toon",
       "title": "认识皮普 · 50s 扁平卡通",
       "summary": "以1950年代教育片口吻介绍扫地机皮普：底座靠墙、手机配对、按下启动，最后把清扫路线拉成一张印刷平面图。",
@@ -1635,33 +1519,6 @@
       "bundle": "agent/cases/lemo-hd-2d.json"
     },
     {
-      "id": "lemo-microgame",
-      "title": "五秒宇航员 · 微游戏快闪",
-      "summary": "见习宇航员在蜡笔、水墨、终端、孔版、像素、蓝图与瑞士排版微游戏中受训，失去两条命后在混合风格Boss关完成降落。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "微游戏快闪",
-        "游戏",
-        "代码影片"
-      ],
-      "useCases": [
-        "游戏预告",
-        "快节奏操作引导",
-        "社交短片"
-      ],
-      "avoid": [],
-      "patternIds": [
-        "speed-up-ladder",
-        "command-word-beat",
-        "collect-counter"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-microgame.json"
-    },
-    {
       "id": "lemo-brick-toy",
       "title": "用零件造火箭 · 积木玩具",
       "summary": "积木宇航员把高塔一块块搭起，火箭崩塌后把散落零件拼成更宽的新火箭，飞到积木月亮；镜头拉回真实书桌。",
@@ -1686,60 +1543,6 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-brick-toy.json"
-    },
-    {
-      "id": "lemo-tilt-shift",
-      "title": "玩具城早高峰 · 移轴微缩",
-      "summary": "玩具城从黎明车灯光轨加速到早高峰，拥堵最密时俯冲到一群过路鸭子并降为实时，随后释放车流，升到城市电路板般的纹样。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "移轴微缩",
-        "材质与 3D",
-        "代码影片"
-      ],
-      "useCases": [
-        "城市宣传",
-        "交通系统叙事",
-        "地产微缩影片"
-      ],
-      "avoid": [],
-      "patternIds": [
-        "timelapse-drop-to-realtime",
-        "tilt-shift-focus-band",
-        "long-exposure-light-trail"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-tilt-shift.json"
-    },
-    {
-      "id": "lemo-desktop-flythrough",
-      "title": "叮之前 · 桌面穿梭",
-      "summary": "一张猫照片从自己的手机出发，经压缩卡片、服务器和通知铃铛抵达朋友手机；镜头跟着照片飞越桌面，片尾拉远显出整场接力。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "桌面穿梭",
-        "材质与 3D",
-        "代码影片"
-      ],
-      "useCases": [
-        "应用原理解说",
-        "产品工作流短片",
-        "数据传递科普"
-      ],
-      "avoid": [
-        "需要脱离来源时间线实时操控全部场景的应用"
-      ],
-      "patternIds": [
-        "object-flythrough-apps"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-desktop-flythrough.json"
     },
     {
       "id": "lemo-lowpoly-island",
@@ -1797,35 +1600,6 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-backrooms.json"
-    },
-    {
-      "id": "lemo-silent-film",
-      "title": "逃跑的面包 · 1920s 默片",
-      "summary": "面包店学徒追着滚下坡的面包，连锁事故把瓜弹到警察头上；面包最终停在饥饿女孩脚边，学徒将它掰成两半，光圈收在女孩的眨眼上。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "1920s 默片",
-        "电影与时代",
-        "代码影片"
-      ],
-      "useCases": [
-        "无声喜剧",
-        "复古品牌影片",
-        "动作叙事"
-      ],
-      "avoid": [
-        "需要脱离来源时间线实时操控全部场景的应用"
-      ],
-      "patternIds": [
-        "projection-speed-mood",
-        "medallion-iris-step",
-        "paper-title-card"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-silent-film.json"
     },
     {
       "id": "lemo-satellite-briefing",
@@ -1911,34 +1685,6 @@
       "bundle": "agent/cases/lemo-white-model.json"
     },
     {
-      "id": "lemo-data-physical",
-      "title": "两条螺旋 · 数据实物化",
-      "summary": "2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "数据实物化",
-        "实证影像",
-        "代码影片"
-      ],
-      "useCases": [
-        "年度报告影片",
-        "能源数据展示",
-        "实物化统计叙事"
-      ],
-      "avoid": [
-        "需要观看者自行决定节奏的网页交互"
-      ],
-      "patternIds": [
-        "paired-climb-spiral",
-        "chart-to-installation-pullback"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-data-physical.json"
-    },
-    {
       "id": "lemo-microscope",
       "title": "量出来的蓝 · 显微叙事",
       "summary": "从一张真实肝组织玻片连续推到细胞核，逐像素数出两个1毫米圆内13.5%与32.6%的蓝色，再拉回玻片。",
@@ -2022,35 +1768,6 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-caption-news.json"
-    },
-    {
-      "id": "lemo-newsreel",
-      "title": "膝盖警报 · 1920s 新闻影片",
-      "summary": "1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。",
-      "carriers": [
-        "video"
-      ],
-      "tags": [
-        "lemo-opuscar",
-        "1920s 新闻影片",
-        "剪辑与纪实",
-        "代码影片"
-      ],
-      "useCases": [
-        "历史新闻叙事",
-        "档案剪辑",
-        "时代回顾影片"
-      ],
-      "avoid": [
-        "需要观看者自行决定节奏的网页交互"
-      ],
-      "patternIds": [
-        "newsreel-intertitle-wipe",
-        "film-grain",
-        "route-draw-marker"
-      ],
-      "seekable": true,
-      "bundle": "agent/cases/lemo-newsreel.json"
     },
     {
       "id": "lemo-visual-investigation",
@@ -2195,6 +1912,116 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/lemo-kino-montage.json"
+    },
+    {
+      "id": "lemo-hologram-hud",
+      "title": "伏特·规格扫描 · 科幻全息界面",
+      "summary": "电助力车从扫描线中长成发光线框，依次锁定电池、电机和刹车，局部爆炸、引线与乱数读数给出规格；归拢后点亮实体全息并完成一圈转台。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "科幻全息界面",
+        "信息与发布",
+        "代码影片"
+      ],
+      "useCases": [
+        "硬件规格讲解",
+        "产品发布短片",
+        "展会循环画面"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "scan-in-wireframe-to-solid",
+        "spec-dock-rail",
+        "seeded-digit-scramble-settle",
+        "explode-parts-leaders"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-hologram-hud.json"
+    },
+    {
+      "id": "lemo-teardown",
+      "title": "二十一键 · 产品拆解",
+      "summary": "开源分体键盘的一半在一次连续镜头中按真实层次升起，镜头进入板下查看主控、灯珠与热插拔，再按从底到顶的顺序合拢，在实物上画出尺寸。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "产品拆解",
+        "实证影像",
+        "代码影片"
+      ],
+      "useCases": [
+        "硬件结构讲解",
+        "产品拆解影片",
+        "真实尺寸与装配说明"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "orbit-explode-3d",
+        "dimensions-drawn-on-object",
+        "explode-parts-leaders"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-teardown.json"
+    },
+    {
+      "id": "lemo-dataviz",
+      "title": "一百个夏天 · 数据叙事",
+      "summary": "铅笔把1926—2026年的夏季温度逐点画成一位女性的一生：蓝色人生批注进入后，红色记录批注随升温加密，数据破框、铅笔翻到红头，点线最后化为温度条纹。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "数据叙事",
+        "信息与发布",
+        "代码影片"
+      ],
+      "useCases": [
+        "数据新闻",
+        "气候科学短片",
+        "带人生批注的时间序列"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "data-points-to-pitch",
+        "pencil-plot-with-notes",
+        "dots-morph-to-stripes"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-dataviz.json"
+    },
+    {
+      "id": "lemo-transit-map",
+      "title": "6 公里 · 地铁线路图",
+      "summary": "上海地铁从1993年的五站六公里长成21条线、906公里；笔尖逐段描线，换乘点落地，镜头拉远切换站名层级，机械里程表与双城时间线呈现规模。",
+      "carriers": [
+        "video"
+      ],
+      "tags": [
+        "lemo-opuscar",
+        "地铁线路图",
+        "信息与发布",
+        "代码影片"
+      ],
+      "useCases": [
+        "交通网络演变",
+        "城市历史短片",
+        "随年份扩张的网络图"
+      ],
+      "avoid": [],
+      "patternIds": [
+        "network-growth-odometer",
+        "levels-of-detail-pullback",
+        "route-draw-marker",
+        "rolling-digits"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/lemo-transit-map.json"
     }
   ]
 }

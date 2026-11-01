@@ -43,7 +43,7 @@
     "role": "support",
     "pairsWellWith": [],
     "conflicts": [],
-    "notes": "按来源片段依次重放完整动作，保留原作的形体、镜头、字体与同段音轨。"
+    "notes": "按来源片段依次重放完整动作，保留原作的形体、镜头、字体与同段音轨。 三维零件引线同样按部件表面锚点、折线、索引与标签展开，层间拆解与3D镜头另见orbit-explode-3d。 全息局部爆炸沿子件装配轴展开，外壳离开、内部件留位发热；同一表面anchor经投影后拉出两段引线到规格卡。"
   },
   "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-paperclip 原片 0.98–2.6 秒；总时长 1.62 秒。部件从手机位置沿弧线飞到分解位，引线从锚点生长，端点与双语标签依次展开。直接调用来源案例的 renderAt(t)，保留原作参数、画面、字体与成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
   "migration": [
@@ -59,6 +59,12 @@
   "sources": [
     {
       "caseId": "mg-paperclip"
+    },
+    {
+      "caseId": "lemo-teardown"
+    },
+    {
+      "caseId": "lemo-hologram-hud"
     }
   ],
   "previewAt": 1.22,
@@ -78,6 +84,18 @@
     {
       "t": 1.42,
       "label": "机制画面"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "三维引线",
+      "value": "label每帧投影零件锚点，先画锚点与两段折线，再把名称平移10px显露；主控与灯珠标签分别覆盖15—18.125、18.125—21.875秒。",
+      "source": "demos/cases/lemo-teardown/film/src/overlay.js:label / drawOverlay"
+    },
+    {
+      "name": "全息局部拆解",
+      "value": "film.js以callBeats控制explode；leader按两段长度分配进度，anchor半径9px；电池9—10秒展开，电机14.5—15.25秒展开。",
+      "source": "demos/cases/lemo-hologram-hud/film/film.js:renderFrame；film/engine/hud.js:leader"
     }
   ]
 }

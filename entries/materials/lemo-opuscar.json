@@ -191,21 +191,6 @@
     },
     {
       "kind": "case",
-      "id": "lemo-rubber-hose",
-      "note": "咖啡杯追逐战 · 1930s 橡皮管卡通；本体保存运行代码、字体、原片音轨和制作资料。"
-    },
-    {
-      "kind": "case",
-      "id": "lemo-cel-anime-80s",
-      "note": "城市之光，1987 · 80 年代赛璐璐动画；本体保存运行代码、字体、原片音轨和制作资料。"
-    },
-    {
-      "kind": "case",
-      "id": "lemo-scifi-toon",
-      "note": "买咖啡 · 科幻情景喜剧卡通；保留运行代码、字体、成片音轨与制作文件。"
-    },
-    {
-      "kind": "case",
       "id": "lemo-midcentury-toon",
       "note": "认识皮普 · 50s 扁平卡通；保留运行代码、字体、成片音轨与制作文件。"
     },
@@ -216,23 +201,8 @@
     },
     {
       "kind": "case",
-      "id": "lemo-microgame",
-      "note": "五秒宇航员 · 微游戏快闪；保留运行代码、字体、成片音轨与制作文件。"
-    },
-    {
-      "kind": "case",
       "id": "lemo-brick-toy",
       "note": "用零件造火箭 · 积木玩具；保留运行代码、字体、成片音轨与制作文件。"
-    },
-    {
-      "kind": "case",
-      "id": "lemo-tilt-shift",
-      "note": "玩具城早高峰 · 移轴微缩；保留运行代码、字体、成片音轨与制作文件。"
-    },
-    {
-      "kind": "case",
-      "id": "lemo-desktop-flythrough",
-      "note": "叮之前 · 桌面穿梭；原作代码、原片音轨与制作文件。"
     },
     {
       "kind": "case",
@@ -243,11 +213,6 @@
       "kind": "case",
       "id": "lemo-backrooms",
       "note": "夜班入职指引 · 后室 / 新怪谈；原作代码、原片音轨与制作文件。"
-    },
-    {
-      "kind": "case",
-      "id": "lemo-silent-film",
-      "note": "逃跑的面包 · 1920s 默片；原作代码、原片音轨与制作文件。"
     },
     {
       "kind": "case",
@@ -266,11 +231,6 @@
     },
     {
       "kind": "case",
-      "id": "lemo-data-physical",
-      "note": "2014—2025年的太阳能和风电装机量叠成铝片与亚克力片，围绕胡桃木表盘形成两条螺旋，太阳能在2021年反超。"
-    },
-    {
-      "kind": "case",
       "id": "lemo-archive-lighttable",
       "note": "电报与报纸写着57秒，放大镜把莱特兄弟的负片转正并带入照片，档案记录的59秒让两份记录形成对照。"
     },
@@ -283,11 +243,6 @@
       "kind": "case",
       "id": "lemo-caption-news",
       "note": "美国一年损失130万箱蜜蜂，总数却上涨6%；大字字幕、原报告高亮、双栏账本、图表与地图逐项解释养蜂人的补建。"
-    },
-    {
-      "kind": "case",
-      "id": "lemo-newsreel",
-      "note": "1926年报纸警告查尔斯顿舞会跳坏膝盖，报纸、地图、九张舞步照片、福特舞会档案和1925年唱片组成一期新闻影片。"
     },
     {
       "kind": "case",
@@ -313,6 +268,26 @@
       "kind": "case",
       "id": "lemo-kino-montage",
       "note": "从1931年帝国大厦宣传册的“完成这项工作的人”出发，用工地实拍、刘易斯·海因照片和原始文档回答每天2500名工人的集体建造，再把剪下的人物叠成一座塔。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-hologram-hud",
+      "note": "伏特·规格扫描 · 科幻全息界面，原作代码接入。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-teardown",
+      "note": "二十一键 · 产品拆解，原作代码接入。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-dataviz",
+      "note": "一百个夏天 · 数据叙事，原作代码接入。"
+    },
+    {
+      "kind": "case",
+      "id": "lemo-transit-map",
+      "note": "6 公里 · 地铁线路图，原作代码接入。"
     }
   ],
   "sources": [

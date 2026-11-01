@@ -12,7 +12,6 @@
 | [3D 渲染 · soft. — Soft Landing](../../cases.html#case/mg-3d-render) | [研究](mg-3d-render.md) |
 | [形状变形 · morphe. — One Shape, Every Story](../../cases.html#case/mg-morph) | [条目](../../entries/cases/mg-morph.json) |
 | [贴纸科普 · How Many Elements Hide in a Phone?](../../cases.html#case/mg-paperclip) | [条目](../../entries/cases/mg-paperclip.json) |
-| [赛博朋克 HUD · KESTREL-9 · Target Acquired](../../cases.html#case/mg-hud) | [条目](../../entries/cases/mg-hud.json) |
 | [拼贴剪贴 · NOGGIN Quarterly](../../cases.html#case/mg-collage) | [条目](../../entries/cases/mg-collage.json) |
 | [极光与玻璃拟态 · Aurora — Think in Light](../../cases.html#case/mg-aurora-glass) | [条目](../../entries/cases/mg-aurora-glass.json) |
 | [几何包豪斯 · KONSTRUKTION · 20 Beats](../../cases.html#case/mg-bauhaus) | [条目](../../entries/cases/mg-bauhaus.json) |
@@ -51,28 +50,23 @@
 | [思考的空间 · 暗色科技发布](../../cases.html#case/lemo-dark-keynote) | [条目](../../entries/cases/lemo-dark-keynote.json) |
 | [Clawd 搬进来 · 活体实机录屏](../../cases.html#case/lemo-living-screencast) | [条目](../../entries/cases/lemo-living-screencast.json) |
 | [七毫秒 · 电路板](../../cases.html#case/lemo-circuit-board) | [条目](../../entries/cases/lemo-circuit-board.json) |
-| [咖啡杯追逐战 · 1930s 橡皮管卡通](../../cases.html#case/lemo-rubber-hose) | [条目](../../entries/cases/lemo-rubber-hose.json) |
-| [城市之光，1987 · 80 年代赛璐璐动画](../../cases.html#case/lemo-cel-anime-80s) | [条目](../../entries/cases/lemo-cel-anime-80s.json) |
-| [买咖啡 · 科幻情景喜剧卡通](../../cases.html#case/lemo-scifi-toon) | [条目](../../entries/cases/lemo-scifi-toon.json) |
 | [认识皮普 · 50s 扁平卡通](../../cases.html#case/lemo-midcentury-toon) | [条目](../../entries/cases/lemo-midcentury-toon.json) |
 | [提灯人 · HD-2D](../../cases.html#case/lemo-hd-2d) | [条目](../../entries/cases/lemo-hd-2d.json) |
-| [五秒宇航员 · 微游戏快闪](../../cases.html#case/lemo-microgame) | [条目](../../entries/cases/lemo-microgame.json) |
 | [用零件造火箭 · 积木玩具](../../cases.html#case/lemo-brick-toy) | [条目](../../entries/cases/lemo-brick-toy.json) |
-| [玩具城早高峰 · 移轴微缩](../../cases.html#case/lemo-tilt-shift) | [条目](../../entries/cases/lemo-tilt-shift.json) |
-| [叮之前 · 桌面穿梭](../../cases.html#case/lemo-desktop-flythrough) | [条目](../../entries/cases/lemo-desktop-flythrough.json) |
 | [长出来的小岛 · 低多边形等距](../../cases.html#case/lemo-lowpoly-island) | [条目](../../entries/cases/lemo-lowpoly-island.json) |
 | [夜班入职指引 · 后室 / 新怪谈](../../cases.html#case/lemo-backrooms) | [条目](../../entries/cases/lemo-backrooms.json) |
-| [逃跑的面包 · 1920s 默片](../../cases.html#case/lemo-silent-film) | [条目](../../entries/cases/lemo-silent-film.json) |
 | [地图上还写着海 · 卫星简报](../../cases.html#case/lemo-satellite-briefing) | [条目](../../entries/cases/lemo-satellite-briefing.json) |
 | [船说了算 · 工程简报板](../../cases.html#case/lemo-briefing-board) | [条目](../../entries/cases/lemo-briefing-board.json) |
 | [被炸平的城市怎样长回来 · 白模投影](../../cases.html#case/lemo-white-model) | [条目](../../entries/cases/lemo-white-model.json) |
-| [两条螺旋 · 数据实物化](../../cases.html#case/lemo-data-physical) | [条目](../../entries/cases/lemo-data-physical.json) |
 | [量出来的蓝 · 显微叙事](../../cases.html#case/lemo-microscope) | [条目](../../entries/cases/lemo-microscope.json) |
 | [差两秒 · 档案灯台](../../cases.html#case/lemo-archive-lighttable) | [条目](../../entries/cases/lemo-archive-lighttable.json) |
 | [蜜蜂账本 · 字幕新闻](../../cases.html#case/lemo-caption-news) | [条目](../../entries/cases/lemo-caption-news.json) |
-| [膝盖警报 · 1920s 新闻影片](../../cases.html#case/lemo-newsreel) | [条目](../../entries/cases/lemo-newsreel.json) |
 | [兴登堡号：四分钟与三十二秒 · 视觉调查](../../cases.html#case/lemo-visual-investigation) | [条目](../../entries/cases/lemo-visual-investigation.json) |
 | [本周 AI 四件事 · 电视新闻包装](../../cases.html#case/lemo-news-package) | [条目](../../entries/cases/lemo-news-package.json) |
 | [定格 · 体育战术板](../../cases.html#case/lemo-telestrator) | [条目](../../entries/cases/lemo-telestrator.json) |
 | [自己倒数 · 实时倒计时分屏](../../cases.html#case/lemo-countdown) | [条目](../../entries/cases/lemo-countdown.json) |
 | [410 天 · 构成主义蒙太奇](../../cases.html#case/lemo-kino-montage) | [条目](../../entries/cases/lemo-kino-montage.json) |
+| [伏特·规格扫描 · 科幻全息界面](../../cases.html#case/lemo-hologram-hud) | [条目](../../entries/cases/lemo-hologram-hud.json) |
+| [二十一键 · 产品拆解](../../cases.html#case/lemo-teardown) | [条目](../../entries/cases/lemo-teardown.json) |
+| [一百个夏天 · 数据叙事](../../cases.html#case/lemo-dataviz) | [条目](../../entries/cases/lemo-dataviz.json) |
+| [6 公里 · 地铁线路图](../../cases.html#case/lemo-transit-map) | [条目](../../entries/cases/lemo-transit-map.json) |
