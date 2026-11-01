@@ -1,6 +1,6 @@
 {
   "id": "flip-tile-cascade",
-  "order": 45,
+  "order": 23,
   "title": "方片翻牌级联波",
   "types": [
     "transition",

@@ -1,6 +1,6 @@
 {
   "id": "pixel-count-colour",
-  "order": 166,
+  "order": 152,
   "title": "逐像素数颜色",
   "types": [
     "hud",

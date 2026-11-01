@@ -4,7 +4,7 @@
   "id": "spec-dock-rail",
   "pattern": {
     "id": "spec-dock-rail",
-    "order": 307,
+    "order": 164,
     "title": "读数停驻再入侧栏",
     "types": [
       "hud",

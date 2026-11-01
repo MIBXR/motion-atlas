@@ -4,7 +4,7 @@
   "id": "tile-by-tile-island-growth",
   "pattern": {
     "id": "tile-by-tile-island-growth",
-    "order": 152,
+    "order": 139,
     "title": "逐块长岛配音符",
     "types": [
       "composition",

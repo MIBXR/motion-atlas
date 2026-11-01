@@ -4,7 +4,7 @@
   "id": "collect-counter",
   "pattern": {
     "id": "collect-counter",
-    "order": 17,
+    "order": 8,
     "title": "收集计数徽章与收集物托盘",
     "types": [
       "feedback",
@@ -748,7 +748,7 @@
     },
     {
       "path": "entries/patterns/collect-counter.json",
-      "bytes": 8775,
+      "bytes": 8774,
       "role": "entry"
     },
     {

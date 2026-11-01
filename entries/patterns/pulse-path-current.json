@@ -1,6 +1,6 @@
 {
   "id": "pulse-path-current",
-  "order": 146,
+  "order": 134,
   "title": "电流沿走线奔跑",
   "types": [
     "hud",

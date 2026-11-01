@@ -4,7 +4,7 @@
   "id": "deck-deal-flyin",
   "pattern": {
     "id": "deck-deal-flyin",
-    "order": 94,
+    "order": 83,
     "title": "加速发牌飞入",
     "types": [
       "composition",

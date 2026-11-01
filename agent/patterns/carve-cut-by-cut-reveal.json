@@ -4,7 +4,7 @@
   "id": "carve-cut-by-cut-reveal",
   "pattern": {
     "id": "carve-cut-by-cut-reveal",
-    "order": 108,
+    "order": 96,
     "title": "逐刀刻出画面",
     "types": [
       "texture",
@@ -645,7 +645,7 @@
     },
     {
       "path": "entries/patterns/carve-cut-by-cut-reveal.json",
-      "bytes": 4210,
+      "bytes": 4209,
       "role": "entry"
     },
     {

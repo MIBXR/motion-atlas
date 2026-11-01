@@ -4,7 +4,7 @@
   "id": "vhs-event-row-tear",
   "pattern": {
     "id": "vhs-event-row-tear",
-    "order": 82,
+    "order": 60,
     "title": "磁带行撕色偏",
     "types": [
       "texture",

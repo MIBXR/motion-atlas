@@ -42,7 +42,7 @@
       }
     ],
     "id": "blueprint-tile-drop-wave",
-    "order": 56,
+    "order": 34,
     "title": "蓝图落块波",
     "types": [
       "composition",

@@ -4,7 +4,7 @@
   "id": "tunnel-blink-black",
   "pattern": {
     "id": "tunnel-blink-black",
-    "order": 123,
+    "order": 111,
     "title": "隧道黑场换景",
     "types": [
       "transition",

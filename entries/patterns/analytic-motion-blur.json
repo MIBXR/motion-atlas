@@ -1,6 +1,6 @@
 {
   "id": "analytic-motion-blur",
-  "order": 68,
+  "order": 46,
   "title": "解析运动模糊",
   "types": [
     "texture",

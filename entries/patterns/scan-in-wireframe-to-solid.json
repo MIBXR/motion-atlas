@@ -1,6 +1,6 @@
 {
   "id": "scan-in-wireframe-to-solid",
-  "order": 306,
+  "order": 163,
   "title": "扫描成线框再实体化",
   "types": [
     "texture",

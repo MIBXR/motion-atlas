@@ -4,7 +4,7 @@
   "id": "drafting-order-build",
   "pattern": {
     "id": "drafting-order-build",
-    "order": 139,
+    "order": 127,
     "title": "按制图顺序自绘",
     "types": [
       "composition",

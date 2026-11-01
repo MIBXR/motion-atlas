@@ -4,7 +4,7 @@
   "id": "block-by-block-print-reveal",
   "pattern": {
     "id": "block-by-block-print-reveal",
-    "order": 114,
+    "order": 102,
     "title": "逐版套印成画",
     "types": [
       "texture",

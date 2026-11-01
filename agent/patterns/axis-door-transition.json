@@ -4,7 +4,7 @@
   "id": "axis-door-transition",
   "pattern": {
     "id": "axis-door-transition",
-    "order": 140,
+    "order": 128,
     "title": "中轴开门转场",
     "types": [
       "transition",

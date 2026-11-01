@@ -1,6 +1,6 @@
 {
   "id": "negative-to-positive-loupe",
-  "order": 167,
+  "order": 153,
   "title": "放大镜下负片转正",
   "types": [
     "transition",

@@ -1,6 +1,6 @@
 {
   "id": "crt-line-dot-shutdown",
-  "order": 84,
+  "order": 62,
   "title": "显像管线点收屏",
   "types": [
     "transition",

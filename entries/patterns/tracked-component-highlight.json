@@ -1,6 +1,6 @@
 {
   "id": "tracked-component-highlight",
-  "order": 128,
+  "order": 116,
   "title": "部件追色",
   "types": [
     "type-motion",

@@ -4,7 +4,7 @@
   "id": "dimensions-drawn-on-object",
   "pattern": {
     "id": "dimensions-drawn-on-object",
-    "order": 309,
+    "order": 166,
     "title": "实物上画尺寸",
     "types": [
       "hud"

@@ -4,7 +4,7 @@
   "id": "diagonal-strip-shatter-title",
   "pattern": {
     "id": "diagonal-strip-shatter-title",
-    "order": 113,
+    "order": 101,
     "title": "斜切条带退场与字形入场",
     "types": [
       "transition",

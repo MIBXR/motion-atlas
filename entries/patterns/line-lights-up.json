@@ -1,6 +1,6 @@
 {
   "id": "line-lights-up",
-  "order": 170,
+  "order": 155,
   "title": "逐行点亮原文",
   "types": [
     "type-motion"

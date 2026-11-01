@@ -4,6 +4,7 @@
   "id": "claude-animation-base",
   "material": {
     "id": "claude-animation-base",
+    "order": 6,
     "title": "Claude Animation Base · 手绘卡通动画套件",
     "type": "prompt-kit",
     "category": "手绘卡通动画",
@@ -229,7 +230,7 @@
     },
     {
       "path": "entries/materials/claude-animation-base.json",
-      "bytes": 4977,
+      "bytes": 4991,
       "role": "entry"
     },
     {

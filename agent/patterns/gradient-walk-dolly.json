@@ -4,7 +4,7 @@
   "id": "gradient-walk-dolly",
   "pattern": {
     "id": "gradient-walk-dolly",
-    "order": 101,
+    "order": 89,
     "title": "沿梯度横移长镜",
     "types": [
       "camera",
@@ -448,7 +448,7 @@
     },
     {
       "path": "entries/patterns/gradient-walk-dolly.json",
-      "bytes": 3594,
+      "bytes": 3593,
       "role": "entry"
     },
     {

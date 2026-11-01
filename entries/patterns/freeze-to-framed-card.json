@@ -1,6 +1,6 @@
 {
   "id": "freeze-to-framed-card",
-  "order": 90,
+  "order": 80,
   "title": "定格退为相框",
   "types": [
     "transition",

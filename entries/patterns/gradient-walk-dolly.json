@@ -1,6 +1,6 @@
 {
   "id": "gradient-walk-dolly",
-  "order": 101,
+  "order": 89,
   "title": "沿梯度横移长镜",
   "types": [
     "camera",

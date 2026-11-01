@@ -4,7 +4,7 @@
   "id": "flap-board-price-table",
   "pattern": {
     "id": "flap-board-price-table",
-    "order": 173,
+    "order": 158,
     "title": "翻牌价格表",
     "types": [
       "type-motion",

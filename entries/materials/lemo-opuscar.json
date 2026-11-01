@@ -1,5 +1,6 @@
 {
   "id": "lemo-opuscar",
+  "order": 5,
   "title": "lemo-opuscar · 66 种代码影片风格",
   "type": "agent-skill",
   "summary": "66 种影片风格，每种配一支完全由代码逐帧渲染的示范短片（Canvas / WebGL 画面、免费采样配乐、本地 TTS 旁白），附导演、技术指南与“改成我的风格”流程。",

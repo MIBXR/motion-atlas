@@ -4,7 +4,7 @@
   "id": "projection-layers-by-time",
   "pattern": {
     "id": "projection-layers-by-time",
-    "order": 161,
+    "order": 149,
     "title": "投影按年代逐层刷上白模",
     "types": [
       "composition",

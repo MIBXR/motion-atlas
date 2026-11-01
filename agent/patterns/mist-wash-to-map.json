@@ -4,7 +4,7 @@
   "id": "mist-wash-to-map",
   "pattern": {
     "id": "mist-wash-to-map",
-    "order": 102,
+    "order": 90,
     "title": "纸雾洗白转地图",
     "types": [
       "transition"
@@ -438,7 +438,7 @@
     },
     {
       "path": "entries/patterns/mist-wash-to-map.json",
-      "bytes": 3063,
+      "bytes": 3062,
       "role": "entry"
     },
     {

@@ -1,6 +1,6 @@
 {
   "id": "explode-parts-leaders",
-  "order": 70,
+  "order": 48,
   "title": "拆件引线联动",
   "types": [
     "composition",

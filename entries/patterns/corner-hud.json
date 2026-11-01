@@ -1,6 +1,6 @@
 {
   "id": "corner-hud",
-  "order": 10,
+  "order": 1,
   "title": "四角信息 HUD",
   "types": [
     "hud",

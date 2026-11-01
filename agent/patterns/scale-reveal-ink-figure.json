@@ -4,7 +4,7 @@
   "id": "scale-reveal-ink-figure",
   "pattern": {
     "id": "scale-reveal-ink-figure",
-    "order": 107,
+    "order": 95,
     "title": "拉远显微小人物",
     "types": [
       "camera",
@@ -373,7 +373,7 @@
     },
     {
       "path": "entries/patterns/scale-reveal-ink-figure.json",
-      "bytes": 3102,
+      "bytes": 3101,
       "role": "entry"
     },
     {

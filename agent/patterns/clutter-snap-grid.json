@@ -4,7 +4,7 @@
   "id": "clutter-snap-grid",
   "pattern": {
     "id": "clutter-snap-grid",
-    "order": 144,
+    "order": 132,
     "title": "杂物一拍归格",
     "types": [
       "composition",

@@ -4,7 +4,7 @@
   "id": "sun-clock-shadow-trace",
   "pattern": {
     "id": "sun-clock-shadow-trace",
-    "order": 162,
+    "order": 150,
     "title": "日晷与投影阴影轨迹",
     "types": [
       "hud",

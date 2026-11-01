@@ -1,6 +1,6 @@
 {
   "id": "document-typewriter-reveal",
-  "order": 96,
+  "order": 85,
   "title": "文档打字机自写",
   "types": [
     "type-motion"

@@ -1,6 +1,6 @@
 {
   "id": "levels-of-detail-pullback",
-  "order": 314,
+  "order": 171,
   "title": "拉远换细节层级",
   "types": [
     "camera"

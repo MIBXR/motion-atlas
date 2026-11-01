@@ -4,7 +4,7 @@
   "id": "many-into-one-countdown",
   "pattern": {
     "id": "many-into-one-countdown",
-    "order": 174,
+    "order": 159,
     "title": "多格倒数合一",
     "types": [
       "composition",

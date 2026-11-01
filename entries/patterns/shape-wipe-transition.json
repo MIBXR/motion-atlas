@@ -1,6 +1,6 @@
 {
   "id": "shape-wipe-transition",
-  "order": 42,
+  "order": 20,
   "title": "形状擦除转场",
   "types": [
     "transition"

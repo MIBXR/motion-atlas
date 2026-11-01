@@ -1,6 +1,6 @@
 {
   "id": "blade-sweep-print-next",
-  "order": 131,
+  "order": 119,
   "title": "刮板斜扫印出下一城",
   "types": [
     "transition",

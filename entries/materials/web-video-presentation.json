@@ -1,5 +1,6 @@
 {
   "id": "web-video-presentation",
+  "order": 2,
   "title": "web-video-presentation · 网页演示录屏",
   "type": "agent-skill",
   "summary": "把文章或口播稿变成按步骤推进的横屏网页演示，再通过录屏产出视频。",

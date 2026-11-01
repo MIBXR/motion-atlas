@@ -4,7 +4,7 @@
   "id": "text-sorts-into-image",
   "pattern": {
     "id": "text-sorts-into-image",
-    "order": 142,
+    "order": 130,
     "title": "字按墨度排成图",
     "types": [
       "type-motion",

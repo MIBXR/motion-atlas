@@ -1,6 +1,6 @@
 {
   "id": "card-expand-fullscreen",
-  "order": 14,
+  "order": 5,
   "title": "卡片展开为全屏",
   "types": [
     "transition"

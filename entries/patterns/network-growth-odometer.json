@@ -1,6 +1,6 @@
 {
   "id": "network-growth-odometer",
-  "order": 312,
+  "order": 169,
   "title": "线网按年生长",
   "types": [
     "composition",

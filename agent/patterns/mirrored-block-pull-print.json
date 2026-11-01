@@ -4,7 +4,7 @@
   "id": "mirrored-block-pull-print",
   "pattern": {
     "id": "mirrored-block-pull-print",
-    "order": 109,
+    "order": 97,
     "title": "反刻版揭印转正",
     "types": [
       "transition",
@@ -396,7 +396,7 @@
     },
     {
       "path": "entries/patterns/mirrored-block-pull-print.json",
-      "bytes": 3858,
+      "bytes": 3857,
       "role": "entry"
     },
     {

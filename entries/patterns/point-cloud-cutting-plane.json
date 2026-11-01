@@ -1,6 +1,6 @@
 {
   "id": "point-cloud-cutting-plane",
-  "order": 104,
+  "order": 92,
   "title": "切割面逐层剥除点云",
   "types": [
     "composition",

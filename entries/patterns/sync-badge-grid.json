@@ -1,6 +1,6 @@
 {
   "id": "sync-badge-grid",
-  "order": 177,
+  "order": 162,
   "title": "同步徽章格",
   "types": [
     "hud"

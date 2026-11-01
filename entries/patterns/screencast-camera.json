@@ -1,6 +1,6 @@
 {
   "id": "screencast-camera",
-  "order": 149,
+  "order": 136,
   "title": "录屏式相机",
   "types": [
     "camera"

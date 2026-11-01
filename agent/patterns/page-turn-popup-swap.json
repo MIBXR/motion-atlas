@@ -4,7 +4,7 @@
   "id": "page-turn-popup-swap",
   "pattern": {
     "id": "page-turn-popup-swap",
-    "order": 111,
+    "order": 99,
     "title": "翻页立体书换景",
     "types": [
       "transition"
@@ -650,7 +650,7 @@
     },
     {
       "path": "entries/patterns/page-turn-popup-swap.json",
-      "bytes": 3656,
+      "bytes": 3655,
       "role": "entry"
     },
     {

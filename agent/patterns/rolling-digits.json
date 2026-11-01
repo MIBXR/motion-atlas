@@ -4,7 +4,7 @@
   "id": "rolling-digits",
   "pattern": {
     "id": "rolling-digits",
-    "order": 31,
+    "order": 14,
     "title": "滚动数字与文字",
     "types": [
       "type-motion",

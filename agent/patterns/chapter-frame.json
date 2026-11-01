@@ -4,7 +4,7 @@
   "id": "chapter-frame",
   "pattern": {
     "id": "chapter-frame",
-    "order": 15,
+    "order": 6,
     "title": "章节主题：标签、强调色与四角框线",
     "types": [
       "composition",
@@ -281,7 +281,7 @@
     },
     {
       "path": "entries/patterns/chapter-frame.json",
-      "bytes": 5772,
+      "bytes": 5771,
       "role": "entry"
     },
     {

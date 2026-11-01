@@ -1,6 +1,6 @@
 {
   "id": "film-grain",
-  "order": 21,
+  "order": 12,
   "title": "可复现的胶片颗粒与暗角",
   "types": [
     "texture"

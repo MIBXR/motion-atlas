@@ -4,7 +4,7 @@
   "id": "alert-reroute",
   "pattern": {
     "id": "alert-reroute",
-    "order": 18,
+    "order": 9,
     "title": "警示横幅与改道",
     "types": [
       "feedback",
@@ -253,7 +253,7 @@
     },
     {
       "path": "entries/patterns/alert-reroute.json",
-      "bytes": 5834,
+      "bytes": 5833,
       "role": "entry"
     },
     {

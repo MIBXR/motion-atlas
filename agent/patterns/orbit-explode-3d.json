@@ -4,7 +4,7 @@
   "id": "orbit-explode-3d",
   "pattern": {
     "id": "orbit-explode-3d",
-    "order": 308,
+    "order": 165,
     "title": "环绕中逐层爆炸再合拢",
     "types": [
       "camera",

@@ -1,6 +1,6 @@
 {
   "id": "lamp-count-light-state",
-  "order": 116,
+  "order": 104,
   "title": "灯数即光照",
   "types": [
     "composition",

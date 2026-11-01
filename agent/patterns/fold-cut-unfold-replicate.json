@@ -4,7 +4,7 @@
   "id": "fold-cut-unfold-replicate",
   "pattern": {
     "id": "fold-cut-unfold-replicate",
-    "order": 117,
+    "order": 105,
     "title": "折剪展开复制",
     "types": [
       "transition",

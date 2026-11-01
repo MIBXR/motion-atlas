@@ -1,6 +1,6 @@
 {
   "id": "morph-primitive-bridge",
-  "order": 65,
+  "order": 43,
   "title": "简形桥接连续变形",
   "types": [
     "transition"

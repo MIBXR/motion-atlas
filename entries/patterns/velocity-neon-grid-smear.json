@@ -1,6 +1,6 @@
 {
   "id": "velocity-neon-grid-smear",
-  "order": 78,
+  "order": 56,
   "title": "网格速度拖影",
   "types": [
     "texture",

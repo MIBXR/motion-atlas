@@ -47,6 +47,8 @@
 
 内容分为案例 `cases`、巧思 `patterns`、素材 `materials`，同一 id 在各目录中对齐。只建立实际用到的目录。
 
+三库分别维护内部收录编号 `order`，正序按收录先后递增。新条目使用所属库现有最大编号加一；修改条目或为已有巧思补充来源时保留编号。编号仅用于排序，不在卡片显示。
+
 | 一级目录 | 角色 | 组织 |
 | --- | --- | --- |
 | `entries/` | 内容源：条目 | `{cases,patterns,materials}/<id>.json` |
@@ -169,6 +171,8 @@ node scripts/capture.mjs --only <id>
 node scripts/build.mjs
 node scripts/check.mjs
 ```
+
+预览截图使用独立临时浏览器配置目录，禁用扩展并隐藏滚动条；导航前传递 `prefers-color-scheme: light`，保留 Demo 自身的固定主题与主题行为。时间线等待 `__motion.ready`，定位后等待字体、可见图片解码与画面绘制完成；其他 Demo 等待其资源和入场过程完成。截图前查看实际画面，不以固定延时作为加载完成的依据。作者效果图保留原件。
 
 `node scripts/check.mjs` 检查文本换行、已跟踪的忽略类型、条目引用及双向一致性、单文件大小。单个文件超过 50 MiB 时报错；原文件确实超过且不能改动的，经仓库所有者同意后把路径和原因写进 `scripts/check.mjs` 的 `oversizeAllowed`，此后只列提示。
 

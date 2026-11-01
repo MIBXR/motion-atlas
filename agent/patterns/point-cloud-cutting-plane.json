@@ -4,7 +4,7 @@
   "id": "point-cloud-cutting-plane",
   "pattern": {
     "id": "point-cloud-cutting-plane",
-    "order": 104,
+    "order": 92,
     "title": "切割面逐层剥除点云",
     "types": [
       "composition",
@@ -455,7 +455,7 @@
     },
     {
       "path": "entries/patterns/point-cloud-cutting-plane.json",
-      "bytes": 3835,
+      "bytes": 3834,
       "role": "entry"
     },
     {

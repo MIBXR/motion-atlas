@@ -4,6 +4,7 @@
   "id": "video-shotcraft",
   "material": {
     "id": "video-shotcraft",
+    "order": 4,
     "title": "video-shotcraft · 镜头配方卡宣传片",
     "type": "agent-skill",
     "summary": "用 157 张镜头配方卡、218 个 Remotion 参考组件、已验收的 Ink Press 模板和 149 个音效，把 Web / 桌面产品做成电影感宣传片。",
@@ -7623,7 +7624,7 @@
     },
     {
       "path": "entries/materials/video-shotcraft.json",
-      "bytes": 171310,
+      "bytes": 171324,
       "role": "entry"
     },
     {

@@ -1,6 +1,6 @@
 {
   "id": "alert-reroute",
-  "order": 18,
+  "order": 9,
   "title": "警示横幅与改道",
   "types": [
     "feedback",

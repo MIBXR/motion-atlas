@@ -4,7 +4,7 @@
   "id": "silent-caption-news",
   "pattern": {
     "id": "silent-caption-news",
-    "order": 168,
+    "order": 154,
     "title": "静音可读字幕新闻",
     "types": [
       "type-motion",
