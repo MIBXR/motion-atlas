@@ -6,6 +6,11 @@
   "carriers": [
     "video"
   ],
+  "style": "interface",
+  "purpose": "explainer",
+  "tech": [
+    "canvas2d"
+  ],
   "orients": [
     "landscape"
   ],
@@ -21,7 +26,7 @@
   "background": "#05190F",
   "timeline": true,
   "kit": true,
-  "previewAt": 58.0,
+  "previewAt": 58,
   "rhythm": {
     "duration": 59.96666666666667,
     "bpm": 100,

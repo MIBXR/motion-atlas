@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "data",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -549,7 +555,7 @@
     },
     {
       "path": "entries/cases/lemo-printed-long-take.json",
-      "bytes": 10864,
+      "bytes": 10956,
       "role": "entry"
     },
     {

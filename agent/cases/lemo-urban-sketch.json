@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "hand-drawn",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -479,7 +485,7 @@
     },
     {
       "path": "entries/cases/lemo-urban-sketch.json",
-      "bytes": 10545,
+      "bytes": 10637,
       "role": "entry"
     },
     {

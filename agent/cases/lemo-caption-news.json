@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "documentary",
+    "purpose": "news",
+    "tech": [
+      "canvas2d",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -6164,7 +6170,7 @@
     },
     {
       "path": "entries/cases/lemo-caption-news.json",
-      "bytes": 11563,
+      "bytes": 11657,
       "role": "entry"
     },
     {

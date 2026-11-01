@@ -12,10 +12,10 @@
   const TAX = MA.taxonomy;
   const root = document.getElementById('app');
   const items = MA[KIND];
-  const group = KIND === 'cases' ? 'carrier' : 'type';
-  const categoryLabels = KIND === 'cases' ? TAX.carriers : isMaterial ? materialTypes : TAX.types;
+  const group = KIND === 'cases' ? 'style' : 'type';
+  const categoryLabels = KIND === 'cases' ? TAX.styles : isMaterial ? materialTypes : TAX.types;
   const categories = Object.entries(categoryLabels).filter(([value]) => !isMaterial || items.some(it => it.type === value));
-  const allCategories = KIND === 'cases' ? '全部载体' : '全部类型';
+  const allCategories = KIND === 'cases' ? '全部风格' : '全部类型';
   const byId = (list, id) => list.find((x) => x.id === id);
 
   /* ---------- 小工具 ---------- */
@@ -57,6 +57,9 @@
     const q = new URLSearchParams(location.search);
     return {
       carrier: q.get('carrier') || 'all',
+      style: q.get('style') || 'all',
+      purpose: q.get('purpose') || 'all',
+      tech: q.get('tech') || 'all',
       type: q.get('type') || 'all',
       caseId: q.get('case') || 'all',
       fav: q.get('fav') === '1',
@@ -70,6 +73,11 @@
   function syncURL(push = false) {
     const p = new URLSearchParams();
     if (state.carrier !== 'all') p.set('carrier', state.carrier);
+    if (KIND === 'cases') {
+      if (state.style !== 'all') p.set('style', state.style);
+      if (state.purpose !== 'all') p.set('purpose', state.purpose);
+      if (state.tech !== 'all') p.set('tech', state.tech);
+    }
     if (KIND !== 'cases' && state.type !== 'all') p.set('type', state.type);
     if (KIND === 'patterns' && state.caseId !== 'all') p.set('case', state.caseId);
     if (state.fav) p.set('fav', '1');
@@ -88,6 +96,11 @@
     const words = filters.query.toLowerCase().split(/\s+/).filter(Boolean);
     let list = items.filter((it) => {
       if (filters.carrier !== 'all' && !(it.carriers || []).includes(filters.carrier)) return false;
+      if (KIND === 'cases') {
+        if (filters.style !== 'all' && it.style !== filters.style) return false;
+        if (filters.purpose !== 'all' && it.purpose !== filters.purpose) return false;
+        if (filters.tech !== 'all' && !it.tech.includes(filters.tech)) return false;
+      }
       if (KIND === 'patterns' && filters.type !== 'all' && !(it.types || []).includes(filters.type)) return false;
       if (isMaterial && filters.type !== 'all' && it.type !== filters.type) return false;
       if (KIND === 'patterns' && filters.caseId !== 'all' && !(it.sources || []).some((s) => s.caseId === filters.caseId)) return false;
@@ -108,8 +121,8 @@
   function renderList(push = false) {
     document.title = libName + ' · Motion Atlas';
     const carriers = Object.entries(TAX.carriers);
-    const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '载体' : '类型'}</summary><ul class="side-list">
-      ${[['all', allCategories], ...categories].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, fav: false, [group]: value }).length)).join('')}
+    const side = `<details class="side-group" open><summary>${KIND === 'cases' ? '画面风格' : '类型'}</summary><ul class="side-list">
+      ${[['all', KIND === 'cases' ? '全部' : allCategories], ...categories].map(([value, label]) => sideButton(group, value, label, filtered({ ...state, fav: false, [group]: value }).length)).join('')}
       </ul></details><details class="side-group" open><summary>收藏</summary><ul class="side-list">
       ${sideButton('fav', '1', '我的收藏', favs.all()[KIND].length)}
       <li><button type="button" data-tool="export"><span>导出收藏</span>${ICONS.download}</button></li>
@@ -117,8 +130,10 @@
       </ul></details>`;
     const filterSelect = (id, label, all, values, value) => `<label class="filter-field"><span class="filter-label">${label}</span><select class="select" id="${id}" aria-label="${label}"><option value="all">${all}</option>${values.map(([k, v]) => `<option value="${k}"${value === k ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select></label>`;
     const filters = [
-      state.fav ? filterSelect('favorite-filter', KIND === 'cases' ? '载体' : '类型', allCategories, categories, state[group]) : '',
-      KIND === 'patterns' ? filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier) : '',
+      state.fav ? filterSelect('favorite-filter', KIND === 'cases' ? '画面风格' : '类型', allCategories, categories, state[group]) : '',
+      KIND !== 'materials' ? filterSelect('carrier-filter', '载体', '全部载体', carriers, state.carrier) : '',
+      KIND === 'cases' ? filterSelect('purpose-filter', '用途', '全部用途', Object.entries(TAX.purposes), state.purpose) : '',
+      KIND === 'cases' ? filterSelect('tech-filter', '技术', '全部技术', Object.entries(TAX.techs), state.tech) : '',
       KIND === 'patterns' ? filterSelect('case-filter', '所属案例', '全部案例', MA.cases.map(c => [c.id, c.title]), state.caseId) : '',
     ].join('');
     const sortOptions = [['order', '按编号'], ['title', '按名称']];
@@ -128,7 +143,7 @@
 
     root.innerHTML = `
       <div class="lib">
-        <aside class="lib-side" id="lib-side" aria-label="${KIND === 'cases' ? '载体' : '类型'}与收藏工具">${side}</aside>
+        <aside class="lib-side" id="lib-side" aria-label="${KIND === 'cases' ? '画面风格' : '类型'}与收藏工具">${side}</aside>
         <section>
           <header class="lib-head">
             <div>
@@ -168,7 +183,7 @@
 
   function cardHTML(it) {
     const tagLine = isMaterial ? `<span class="chip accent">${esc(materialTypes[it.type])}</span>` : KIND === 'cases'
-      ? it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`).join('')
+      ? `<span class="chip accent">${esc(TAX.styles[it.style])}</span>` + it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`).join('')
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)].join('');
     const preview = it.preview;
     const fav = favs.has(KIND, it.id);
@@ -197,13 +212,13 @@
     syncURL(push);
   }
   function paintCategoryCounts() {
-    document.querySelectorAll('.lib-side [data-group="carrier"], .lib-side [data-group="type"]').forEach((b) => {
+    document.querySelectorAll('.lib-side [data-group="style"], .lib-side [data-group="type"]').forEach((b) => {
       b.setAttribute('aria-pressed', String(!state.fav && state[b.dataset.group] === b.dataset.value));
       b.querySelector('.count').textContent = String(filtered({ ...state, fav: false, [b.dataset.group]: b.dataset.value }).length).padStart(2, '0');
     });
     const filter = root.querySelector('#favorite-filter');
     if (filter) {
-      const available = categories.filter(([value]) => items.some(it => favs.has(KIND, it.id) && (KIND === 'cases' ? it.carriers.includes(value) : isMaterial ? it.type === value : it.types.includes(value))));
+      const available = categories.filter(([value]) => items.some(it => favs.has(KIND, it.id) && (KIND === 'cases' ? it.style === value : isMaterial ? it.type === value : it.types.includes(value))));
       if (state[group] !== 'all' && !available.some(([value]) => value === state[group])) state[group] = 'all';
       filter.innerHTML = [['all', allCategories], ...available].map(([value, label]) => `<option value="${value}"${state[group] === value ? ' selected' : ''}>${esc(label)}</option>`).join('');
     }
@@ -241,7 +256,7 @@
     });
     root.querySelector('#filter-done').addEventListener('click', () => dialog.close());
     root.querySelector('#filter-clear').addEventListener('click', () => {
-      state.carrier = state.type = state.caseId = 'all';
+      state.carrier = state.style = state.purpose = state.tech = state.type = state.caseId = 'all';
       root.querySelectorAll('#lib-filters select').forEach(select => { select.value = 'all'; });
       paintGrid(true);
     });
@@ -271,7 +286,7 @@
     s.addEventListener('input', () => { state.query = s.value.trim(); paintGrid(); });
     root.querySelector('#sort').addEventListener('change', (e) => { state.sort = e.target.value; paintGrid(); });
     root.querySelector('#sort-dir').addEventListener('click', () => { state.dir = state.dir === 'asc' ? 'desc' : 'asc'; paintGrid(); });
-    for (const [id, key] of [['favorite-filter', group], ['carrier-filter', 'carrier'], ['case-filter', 'caseId']]) {
+    for (const [id, key] of [['favorite-filter', group], ['carrier-filter', 'carrier'], ['purpose-filter', 'purpose'], ['tech-filter', 'tech'], ['case-filter', 'caseId']]) {
       const select = root.querySelector('#' + id);
       if (select) select.addEventListener('change', (e) => { state[key] = e.target.value; paintGrid(true); });
     }
@@ -1076,7 +1091,7 @@
     const isCase = KIND === 'cases';
     const idx = items.indexOf(it);
     const chips = isCase
-      ? [...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), ...(it.tags || []).map((t) => `<span class="chip">${esc(t)}</span>`)]
+      ? [`<span class="chip accent">${esc(TAX.styles[it.style])}</span>`, ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`), `<span class="chip">${esc(TAX.purposes[it.purpose])}</span>`, ...it.tech.map((c) => `<span class="chip">${esc(TAX.techs[c])}</span>`), ...(it.tags || []).map((t) => `<span class="chip">${esc(t)}</span>`)]
       : [...it.types.map((c) => `<span class="chip accent">${esc(TAX.types[c])}</span>`), ...it.carriers.map((c) => `<span class="chip">${esc(TAX.carriers[c])}</span>`)];
     root.innerHTML = `
       ${pageActions(it)}

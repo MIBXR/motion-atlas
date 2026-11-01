@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "graphic-type",
+    "purpose": "title-art",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -481,7 +487,7 @@
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 19929,
+      "bytes": 20027,
       "role": "entry"
     },
     {

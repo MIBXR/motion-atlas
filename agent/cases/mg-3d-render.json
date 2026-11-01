@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "brand",
+    "tech": [
+      "prerendered",
+      "dom"
+    ],
     "orients": [
       "landscape"
     ],
@@ -1635,7 +1641,7 @@
     },
     {
       "path": "entries/cases/mg-3d-render.json",
-      "bytes": 17242,
+      "bytes": 17336,
       "role": "entry"
     },
     {

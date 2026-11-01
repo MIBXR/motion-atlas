@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "graphic-type",
+    "purpose": "brand",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -380,7 +385,7 @@
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 16288,
+      "bytes": 16369,
       "role": "entry"
     },
     {

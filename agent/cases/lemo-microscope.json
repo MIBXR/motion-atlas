@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "evidence",
+    "purpose": "data",
+    "tech": [
+      "canvas2d",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -594,7 +600,7 @@
     },
     {
       "path": "entries/cases/lemo-microscope.json",
-      "bytes": 10047,
+      "bytes": 10138,
       "role": "entry"
     },
     {

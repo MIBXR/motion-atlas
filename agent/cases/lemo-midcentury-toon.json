@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -470,7 +475,7 @@
     },
     {
       "path": "entries/cases/lemo-midcentury-toon.json",
-      "bytes": 8546,
+      "bytes": 8626,
       "role": "entry"
     },
     {

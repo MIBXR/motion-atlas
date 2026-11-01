@@ -10,6 +10,13 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "footage",
+      "dom"
+    ],
     "orients": [
       "portrait"
     ],
@@ -499,7 +506,7 @@
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 19250,
+      "bytes": 19356,
       "role": "entry"
     },
     {

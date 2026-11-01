@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "dom"
+    ],
     "orients": [
       "landscape"
     ],
@@ -2369,7 +2375,7 @@
     },
     {
       "path": "entries/cases/lemo-halftone-dossier.json",
-      "bytes": 10547,
+      "bytes": 10634,
       "role": "entry"
     },
     {

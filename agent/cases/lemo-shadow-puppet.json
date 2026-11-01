@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -551,7 +557,7 @@
     },
     {
       "path": "entries/cases/lemo-shadow-puppet.json",
-      "bytes": 10283,
+      "bytes": 10376,
       "role": "entry"
     },
     {

@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "graphic-type",
+    "purpose": "story",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -489,7 +494,7 @@
     },
     {
       "path": "entries/cases/lemo-pictogram-motion.json",
-      "bytes": 10761,
+      "bytes": 10840,
       "role": "entry"
     },
     {

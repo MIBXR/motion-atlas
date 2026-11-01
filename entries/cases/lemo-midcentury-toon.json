@@ -6,6 +6,11 @@
   "carriers": [
     "video"
   ],
+  "style": "dimensional",
+  "purpose": "explainer",
+  "tech": [
+    "canvas2d"
+  ],
   "orients": [
     "landscape"
   ],
@@ -23,7 +28,7 @@
   "kit": true,
   "previewAt": 3.2,
   "rhythm": {
-    "duration": 40.0,
+    "duration": 40,
     "beats": [
       {
         "t": 0,
@@ -112,7 +117,7 @@
     },
     {
       "t0": 36.36363636363636,
-      "t1": 40.0,
+      "t1": 40,
       "from": 0.15,
       "to": 0.05,
       "label": "圈收片尾"

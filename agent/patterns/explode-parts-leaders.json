@@ -916,17 +916,17 @@
     },
     {
       "path": "entries/cases/lemo-hologram-hud.json",
-      "bytes": 8296,
+      "bytes": 8372,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-teardown.json",
-      "bytes": 9603,
+      "bytes": 9699,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 18133,
+      "bytes": 18225,
       "role": "entry"
     },
     {

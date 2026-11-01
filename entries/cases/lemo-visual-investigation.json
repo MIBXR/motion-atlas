@@ -6,6 +6,12 @@
   "carriers": [
     "video"
   ],
+  "style": "documentary",
+  "purpose": "news",
+  "tech": [
+    "canvas2d",
+    "footage"
+  ],
   "orients": [
     "landscape"
   ],
@@ -23,7 +29,7 @@
   "kit": true,
   "previewAt": 30.9,
   "rhythm": {
-    "duration": 60.0,
+    "duration": 60,
     "beats": [
       {
         "t": 0,

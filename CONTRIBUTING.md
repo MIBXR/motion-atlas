@@ -196,11 +196,14 @@ git ls-files --others --ignored --exclude-standard
 
 ### 案例
 
-案例必填 `id`、`title`、`carriers`、`summary`、`prompt`、`demo`、`composition`。
+案例必填 `id`、`title`、`carriers`、`style`、`purpose`、`tech`、`summary`、`prompt`、`demo`、`composition`。
 
 | 字段 | 说明 |
 | --- | --- |
 | `carriers` | `video` 影像视频、`console` 交互操作台，可多选 |
+| `style` | 画面风格，单值：`hand-drawn` 手绘与绘画、`print-craft` 版画、剪纸与传统工艺、`graphic-type` 图形与排版、`interface` 界面与发布、`evidence` 实证与数据、`documentary` 剪辑与纪实、`dimensional` 3D、卡通与游戏 |
+| `purpose` | 按影片内容判定的用途题材，单值：`brand` 品牌与产品、`explainer` 知识讲解、`data` 数据与实证、`news` 新闻纪实、`story` 叙事短片、`title-art` 片头与视觉 |
+| `tech` | 按 `film/` 运行代码与实际加载的库判定，非空数组：`canvas2d` Canvas 2D、`webgl` 原生 WebGL 着色、`threejs` three.js 3D、`footage` 实拍素材、`prerendered` 离线渲染帧、`remotion` React + Remotion、`maplibre` MapLibre 地图、`dom` DOM / SVG |
 | `timeline` | 是否暴露 `window.__motion` |
 | `rhythm` | `{ duration, bpm?, beats: [{ t, label, note }] }`，时刻单位为秒 |
 | `energy` | 覆盖作品时长的 0–1 等距能量采样 |

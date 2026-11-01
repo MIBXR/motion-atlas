@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "graphic-type",
+    "purpose": "brand",
+    "tech": [
+      "dom"
+    ],
     "orients": [
       "landscape"
     ],
@@ -561,7 +566,7 @@
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 21410,
+      "bytes": 21486,
       "role": "entry"
     },
     {

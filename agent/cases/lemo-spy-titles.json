@@ -47,6 +47,11 @@
     "carriers": [
       "video"
     ],
+    "style": "graphic-type",
+    "purpose": "title-art",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -563,7 +568,7 @@
     },
     {
       "path": "entries/cases/lemo-spy-titles.json",
-      "bytes": 11576,
+      "bytes": 11657,
       "role": "entry"
     },
     {

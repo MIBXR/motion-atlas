@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -497,7 +503,7 @@
     },
     {
       "path": "entries/cases/lemo-risograph.json",
-      "bytes": 10478,
+      "bytes": 10569,
       "role": "entry"
     },
     {

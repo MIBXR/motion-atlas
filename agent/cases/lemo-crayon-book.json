@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "hand-drawn",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -524,7 +530,7 @@
     },
     {
       "path": "entries/cases/lemo-crayon-book.json",
-      "bytes": 9612,
+      "bytes": 9702,
       "role": "entry"
     },
     {

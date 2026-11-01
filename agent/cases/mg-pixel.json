@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -615,7 +621,7 @@
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 22452,
+      "bytes": 22545,
       "role": "entry"
     },
     {

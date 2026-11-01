@@ -6,6 +6,11 @@
   "carriers": [
     "video"
   ],
+  "style": "print-craft",
+  "purpose": "story",
+  "tech": [
+    "canvas2d"
+  ],
   "orients": [
     "landscape"
   ],
@@ -23,7 +28,7 @@
   "kit": true,
   "previewAt": 44.5,
   "rhythm": {
-    "duration": 50.0,
+    "duration": 50,
     "bpm": 108,
     "beats": [
       {

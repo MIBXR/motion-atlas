@@ -41,6 +41,12 @@
   "carriers": [
     "video"
   ],
+  "style": "hand-drawn",
+  "purpose": "story",
+  "tech": [
+    "canvas2d",
+    "webgl"
+  ],
   "orients": [
     "landscape"
   ],
@@ -54,7 +60,7 @@
   "kit": true,
   "previewAt": 34.56,
   "rhythm": {
-    "duration": 48.0,
+    "duration": 48,
     "beats": [
       {
         "t": 0,

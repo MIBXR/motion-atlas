@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "title-art",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -451,7 +457,7 @@
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 17027,
+      "bytes": 17126,
       "role": "entry"
     },
     {

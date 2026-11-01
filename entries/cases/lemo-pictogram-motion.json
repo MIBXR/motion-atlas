@@ -6,6 +6,11 @@
   "carriers": [
     "video"
   ],
+  "style": "graphic-type",
+  "purpose": "story",
+  "tech": [
+    "canvas2d"
+  ],
   "orients": [
     "landscape"
   ],
@@ -23,7 +28,7 @@
   "kit": true,
   "previewAt": 9.2,
   "rhythm": {
-    "duration": 50.0,
+    "duration": 50,
     "bpm": 120,
     "beats": [
       {

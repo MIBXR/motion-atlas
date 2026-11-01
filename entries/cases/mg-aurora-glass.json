@@ -6,6 +6,12 @@
   "carriers": [
     "video"
   ],
+  "style": "interface",
+  "purpose": "brand",
+  "tech": [
+    "canvas2d",
+    "webgl"
+  ],
   "orients": [
     "landscape"
   ],

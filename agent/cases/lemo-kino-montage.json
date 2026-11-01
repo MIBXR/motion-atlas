@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "documentary",
+    "purpose": "news",
+    "tech": [
+      "canvas2d",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -8772,7 +8778,7 @@
     },
     {
       "path": "entries/cases/lemo-kino-montage.json",
-      "bytes": 10376,
+      "bytes": 10468,
       "role": "entry"
     },
     {

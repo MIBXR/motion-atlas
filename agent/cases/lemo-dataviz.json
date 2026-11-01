@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "interface",
+    "purpose": "data",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -493,7 +498,7 @@
     },
     {
       "path": "entries/cases/lemo-dataviz.json",
-      "bytes": 9699,
+      "bytes": 9772,
       "role": "entry"
     },
     {

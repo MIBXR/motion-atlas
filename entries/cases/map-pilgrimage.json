@@ -6,6 +6,13 @@
   "carriers": [
     "video"
   ],
+  "style": "documentary",
+  "purpose": "story",
+  "tech": [
+    "canvas2d",
+    "maplibre",
+    "dom"
+  ],
   "tags": [
     "地图叙事",
     "游戏过场",

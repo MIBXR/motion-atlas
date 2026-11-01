@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "story",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -499,7 +504,7 @@
     },
     {
       "path": "entries/cases/lemo-ukiyoe.json",
-      "bytes": 9803,
+      "bytes": 9881,
       "role": "entry"
     },
     {

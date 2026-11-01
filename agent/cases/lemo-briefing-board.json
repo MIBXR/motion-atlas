@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "evidence",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -791,7 +796,7 @@
     },
     {
       "path": "entries/cases/lemo-briefing-board.json",
-      "bytes": 13374,
+      "bytes": 13453,
       "role": "entry"
     },
     {

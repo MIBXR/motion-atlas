@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "documentary",
+    "purpose": "news",
+    "tech": [
+      "canvas2d",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -20650,7 +20656,7 @@
     },
     {
       "path": "entries/cases/lemo-countdown.json",
-      "bytes": 11412,
+      "bytes": 11506,
       "role": "entry"
     },
     {
