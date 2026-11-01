@@ -80,6 +80,8 @@ async function ranged(response, header) {
   return new Response(blob.slice(start, end + 1), {status:206, headers});
 }
 
+const filling = new Set();
+
 async function remote(request, event) {
   const url = request.url;
   try {
@@ -91,14 +93,25 @@ async function remote(request, event) {
     }
   } catch { /* Use ordinary network loading when storage is unavailable. */ }
   const range = request.headers.get('Range');
-  const seek = range && !/^bytes=0-\d*$/.test(range);
+  // Cold range requests stream the network 206 so media stays seekable; the complete file is fetched once in the background for the cache.
+  if (range && !filling.has(url)) {
+    filling.add(url);
+    event.waitUntil((async () => {
+      const response = await sized(await fetch(new Request(url, {
+        mode:'cors', credentials:'omit', redirect:'follow'
+      })));
+      if (response.status === 200 && response.type !== 'opaque') await save(url, response);
+    })().finally(() => filling.delete(url)));
+  }
   const headers = new Headers();
-  if (seek) headers.set('Range', range);
-  const response = await sized(await fetch(new Request(url, {
+  if (range) headers.set('Range', range);
+  const response = await fetch(new Request(url, {
     mode:'cors', credentials:'omit', headers, redirect:'follow'
-  })));
-  if (response.status === 200 && response.type !== 'opaque') event.waitUntil(save(url, response.clone()));
-  return response;
+  }));
+  if (range) return response;
+  const full = await sized(response);
+  if (full.status === 200 && full.type !== 'opaque') event.waitUntil(save(url, full.clone()));
+  return full;
 }
 
 self.addEventListener('fetch', event => {
