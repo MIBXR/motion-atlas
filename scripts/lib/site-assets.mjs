@@ -17,7 +17,7 @@ export function assetSources(root, folders) {
   for (const row of git(root, ['ls-tree', '-r', '-l', '-z', commit]).split('\0').filter(Boolean)) {
     const [metadata, filename] = row.split('\t');
     const [, type, , bytes] = metadata.trim().split(/\s+/);
-    if (type !== 'blob' || !folders.includes(filename.split('/')[0]) || !extensions.has(path.posix.extname(filename).toLowerCase()) || Number(bytes) < ASSET_THRESHOLD) continue;
+    if (type !== 'blob' || !folders.includes(filename.split('/')[0]) || !extensions.has(path.posix.extname(filename).toLowerCase()) || (!filename.startsWith('demos/') && Number(bytes) < ASSET_THRESHOLD)) continue;
     assets[filename] = { url: baseUrl + filename.split('/').map(encodeURIComponent).join('/'), bytes: Number(bytes) };
   }
   return { commit, thresholdBytes: ASSET_THRESHOLD, assets };

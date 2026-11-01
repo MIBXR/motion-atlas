@@ -415,8 +415,13 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 
 ## 十三、发布素材地址
 
-完整本地包包含全部运行文件和素材。发布包的 `data/asset-sources.js` 记录源提交与大素材地址，至少 128 KiB 的图像、音视频、字体与模型从该提交的 GitHub 地址加载；JS、CSS 和小素材随站点部署。源码与完整本地包保留原始素材。
+完整本地包包含全部运行文件和素材。发布包的 `data/asset-sources.js` 记录源提交与素材地址，图像、音视频、字体与模型等媒体按所在目录分发：
+
+- `demos/` 下的全部媒体（含案例、巧思、素材本体与素材快照），不论大小，均从固定源提交的 GitHub 地址加载。
+- `site/`、`previews/`、根目录页面等其余位置的媒体，至少 128 KiB 时从固定源提交的 GitHub 地址加载，较小文件随站点部署。
+
+JS、CSS、HTML、JSON 等非媒体文件随站点部署。
 
 `MotionAtlasAssets.resolve(url)` 解析图片、字体与 `fetch` 使用的素材地址；MotionKit 提供预加载、缓存、进度与就绪通知。地图瓦片及清单外请求使用其配置地址，发布模式需要访问对应网络来源。
 
-文字快照由条目的 `snapshotPath` 确定，完整保存在源码与本地包内，原始素材与目录结构保持原样。发布副本的 HTML/CSS 改写素材地址并接入现有素材解析器，大素材按同一阈值从固定 GitHub 提交加载；文档中心的素材链接直接指向 GitHub。快照内的 Markdown、许可等原文不改写。
+文字快照由条目的 `snapshotPath` 确定，完整保存在源码与本地包内，原始素材与目录结构保持原样。发布副本的 HTML/CSS 改写素材地址并接入现有素材解析器；文档中心的素材链接直接指向 GitHub。快照内的 Markdown、许可等原文不改写。
