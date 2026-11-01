@@ -12,72 +12,60 @@
   "orients": [
     "landscape"
   ],
-  "tags": [
-    "mg-styles-15",
-    "赛博朋克 HUD"
-  ],
-  "summary": "等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。",
-  "mechanism": "等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。",
-  "trigger": "数据读数的上线节点到达时",
-  "effect": "数字先以固定帧种子离散替换字形，再落定当前数值。",
+  "summary": "等宽数字按字符位置、帧号与种子确定性跳变，按从右到左的锁定门限逐字落定；空格、小数点、逗号与中点保持，完整锁定时读数转为琥珀色。",
+  "mechanism": "等宽数字按字符位置、帧号与种子确定性跳变，按从右到左的锁定门限逐字落定；空格、小数点、逗号与中点保持，完整锁定时读数转为琥珀色。",
+  "trigger": "原作时间轴进入所列动作区间。",
+  "effect": "等宽数字按字符位置、帧号与种子确定性跳变，按从右到左的锁定门限逐字落定；空格、小数点、逗号与中点保持，完整锁定时读数转为琥珀色。",
   "timing": [
     {
       "name": "原片重放区间",
-      "value": "mg-hud 原片 2.2–9.7 秒；1 倍速，总时长 7.5 秒。"
-    },
-    {
-      "name": "乱数跳变落定参数",
-      "value": "export function roll(t, t0, final, id = 0, nFrames = 4) {\n  if (f >= nFrames) return final;\n    s += /[0-9]/.test(c) ? DIG[Math.floor(hash(id, i, f + 7) * 10)] : c;\n  const v = base + amp * (1 - (ey - y) / h);"
+      "value": "9.800—11.300秒；15.300—16.300秒；19.300—20.300秒，1倍速。"
     }
   ],
+  "parameters": [
+    {
+      "name": "字符门限",
+      "value": "order=(n−1−i)/max(1,n)，lockAt=.25+order×.7；hash(frame×13.7+i×7.1+seed)选字，frame=round(t×24)。",
+      "source": "demos/cases/lemo-hologram-hud/film/engine/hud.js:rollText"
+    },
+    {
+      "name": "规格读数",
+      "value": "数字使用0123456789，文字使用GLY_A；monoText以最宽数字固定adv；specCard在st.roll>=1时变琥珀色。",
+      "source": "demos/cases/lemo-hologram-hud/film/engine/hud.js:monoText / specCard"
+    }
+  ],
+  "sourceFiles": [
+    "demos/cases/lemo-hologram-hud/film/engine/hud.js"
+  ],
+  "locator": "film/engine/hud.js:rollText；film/engine/hud.js:monoText / specCard",
   "useCases": [
-    "遥测数字上线",
-    "候选匹配值与状态读数落定"
+    "乱数跳变落定"
   ],
   "avoid": [],
   "accessibility": {
-    "reducedMotion": "减少动态偏好下暂停在巧思 0.233333333 秒，声音默认关闭。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
+    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放与定位。",
+    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
   },
   "composition": {
     "role": "support",
     "pairsWellWith": [],
     "conflicts": [],
-    "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+    "notes": "画面与原音轨使用同一片段时间映射。"
   },
-  "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-hud 原片 2.2–9.7 秒；总时长 7.5 秒。等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。参数保持原作数值：export function roll(t, t0, final, id = 0, nFrames = 4) {\n  if (f >= nFrames) return final;\n    s += /[0-9]/.test(c) ? DIG[Math.floor(hash(id, i, f + 7) * 10)] : c;\n  const v = base + amp * (1 - (ey - y) / h);\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
-  "migration": [
-    {
-      "field": "index.html 内联配置 → segments / markers",
-      "how": "调整来源片段与中文节点，画面和声音使用同一时刻映射。"
-    }
-  ],
+  "prompt": "以来源案例lemo-hologram-hud的原作render(t)重放“乱数跳变落定”。等宽数字按字符位置、帧号与种子确定性跳变，按从右到左的锁定门限逐字落定；空格、小数点、逗号与中点保持，完整锁定时读数转为琥珀色。 参数：order=(n−1−i)/max(1,n)，lockAt=.25+order×.7；hash(frame×13.7+i×7.1+seed)选字，frame=round(t×24)。；数字使用0123456789，文字使用GLY_A；monoText以最宽数字固定adv；specCard在st.roll>=1时变琥珀色。。按入口segments映射原片，复用原作素材、字体与同段音轨，声音默认关闭。",
   "demo": "demos/patterns/seeded-digit-scramble-settle/index.html",
   "kit": true,
   "timeline": true,
-  "renderer": "gpu",
   "sources": [
     {
-      "caseId": "mg-hud"
+      "caseId": "lemo-hologram-hud"
     }
   ],
-  "previewAt": 0.233333333,
+  "previewAt": 0.7,
   "markers": [
     {
       "t": 0,
-      "label": "赛博朋克 HUD"
-    },
-    {
-      "t": 0.233333333,
-      "label": "机制画面 1"
-    },
-    {
-      "t": 0.8,
-      "label": "机制画面 2"
-    },
-    {
-      "t": 5.3,
-      "label": "机制画面 3"
+      "label": "乱数跳变落定"
     }
   ]
 }

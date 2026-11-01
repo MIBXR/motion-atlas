@@ -298,6 +298,7 @@
         "how": "调整声音事件，按巧思时间对齐，保留音色参数。"
       }
     ],
+    "parameters": [],
     "preview": "previews/patterns/film-grain.jpg",
     "previewPortrait": "previews/patterns/film-grain-portrait.jpg"
   },
@@ -2593,7 +2594,7 @@
     },
     {
       "path": "entries/patterns/film-grain.json",
-      "bytes": 11675,
+      "bytes": 11683,
       "role": "entry"
     },
     {

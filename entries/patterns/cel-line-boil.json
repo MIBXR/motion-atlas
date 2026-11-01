@@ -72,6 +72,9 @@
     },
     {
       "caseId": "mg-hanazi"
+    },
+    {
+      "caseId": "lemo-crayon-book"
     }
   ],
   "previewAt": 9.75,
@@ -173,5 +176,11 @@
       "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
     }
   ],
-  "previewAtPortrait": 10.267
+  "previewAtPortrait": 10.267,
+  "parameters": [
+    {
+      "name": "lemo-crayon-book · 蜡笔线条与入睡减幅",
+      "value": "film/main.js:BOIL.step=floor(t*12+1e-6)；film/crayon.js:BOIL控制线条偏移与波动；film/film.js:157在t>44.4后令BOIL.amp=.55，其余时刻为1。"
+    }
+  ]
 }

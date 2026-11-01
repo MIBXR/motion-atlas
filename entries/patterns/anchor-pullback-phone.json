@@ -59,6 +59,18 @@
   "sources": [
     {
       "caseId": "mg-paperclip"
+    },
+    {
+      "caseId": "lemo-ukiyoe"
+    },
+    {
+      "caseId": "lemo-shadow-puppet"
+    },
+    {
+      "caseId": "lemo-crayon-book"
+    },
+    {
+      "caseId": "lemo-brick-toy"
     }
   ],
   "previewAt": 1.2,
@@ -78,6 +90,24 @@
     {
       "t": 1.1,
       "label": "机制画面"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "lemo-ukiyoe · 画轴载体",
+      "value": "film/main.js:camera，38.9–40.9秒，对数缩放1.02→1920*.94/(TOTAL+420)，五景、装裱与轴头进入画幅。"
+    },
+    {
+      "name": "lemo-shadow-puppet · 幕布与幕后台",
+      "value": "film/story.js:T.pull0=40.6、truck0=43.2、cutBack=43.8、truck1=44.5；film/main.js:camera / renderBack从故事拉回框架，再经幕柱遮挡绕到操偶手与灯。"
+    },
+    {
+      "name": "lemo-crayon-book · 桌上绘本",
+      "value": "film/film.js:camT在44.8–46秒回到[1600,900,.6]；film/end.js:endFrame使画页成为桌上绘本，47.6秒起翻页。"
+    },
+    {
+      "name": "lemo-brick-toy",
+      "value": "film/main.js:cam的reveal分支，48–51.71秒从积木月面拉到[38,78,100]、look到[−20,4,−18]，fov38；tea_set_01、desk_lamp_arm_01与书堆显示整个故事发生在真实书桌。"
     }
   ]
 }

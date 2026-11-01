@@ -2,22 +2,10 @@
 
 ## 实现 Prompt
 
-通过 MotionKit.replay 以 1 倍速依次重放mg-hud 原片 2.2–9.7 秒；总时长 7.5 秒。等宽数字按字符与帧种子快速跳变数帧后落定真实读数，标点保持原位。参数保持原作数值：export function roll(t, t0, final, id = 0, nFrames = 4) {
-  if (f >= nFrames) return final;
-    s += /[0-9]/.test(c) ? DIG[Math.floor(hash(id, i, f + 7) * 10)] : c;
-  const v = base + amp * (1 - (ey - y) / h);
-直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。
+以来源案例lemo-hologram-hud的原作render(t)重放“乱数跳变落定”。等宽数字按字符位置、帧号与种子确定性跳变，按从右到左的锁定门限逐字落定；空格、小数点、逗号与中点保持，完整锁定时读数转为琥珀色。 参数：order=(n−1−i)/max(1,n)，lockAt=.25+order×.7；hash(frame×13.7+i×7.1+seed)选字，frame=round(t×24)。；数字使用0123456789，文字使用GLY_A；monoText以最宽数字固定adv；specCard在st.roll>=1时变琥珀色。。按入口segments映射原片，复用原作素材、字体与同段音轨，声音默认关闭。
 
 ## 参数
 
-- **原片重放区间**：mg-hud 原片 2.2–9.7 秒；1 倍速，总时长 7.5 秒。
-- **乱数跳变落定参数**：export function roll(t, t0, final, id = 0, nFrames = 4) {
-  if (f >= nFrames) return final;
-    s += /[0-9]/.test(c) ? DIG[Math.floor(hash(id, i, f + 7) * 10)] : c;
-  const v = base + amp * (1 - (ey - y) / h);
-
-## 迁移
-
-- `index.html 内联配置 → segments / markers`：调整来源片段与中文节点，画面和声音使用同一时刻映射。
+- **原片重放区间**：9.800—11.300秒；15.300—16.300秒；19.300—20.300秒，1倍速。
 
 [打开 Demo](../../demos/patterns/seeded-digit-scramble-settle/index.html) · [在库中查看](../../patterns.html#pattern/seeded-digit-scramble-settle)

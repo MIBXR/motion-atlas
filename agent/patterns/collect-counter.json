@@ -208,6 +208,7 @@
       "portrait"
     ],
     "previewAtPortrait": 8.8665,
+    "parameters": [],
     "preview": "previews/patterns/collect-counter.jpg",
     "previewPortrait": "previews/patterns/collect-counter-portrait.jpg"
   },
@@ -747,7 +748,7 @@
     },
     {
       "path": "entries/patterns/collect-counter.json",
-      "bytes": 8755,
+      "bytes": 8775,
       "role": "entry"
     },
     {

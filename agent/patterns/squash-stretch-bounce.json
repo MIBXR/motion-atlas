@@ -197,6 +197,7 @@
         "how": "设置巧思相对时间轴的中文节点与减少动态时刻。"
       }
     ],
+    "parameters": [],
     "preview": "previews/patterns/squash-stretch-bounce.jpg",
     "previewPortrait": null
   },
@@ -666,7 +667,7 @@
     },
     {
       "path": "entries/patterns/squash-stretch-bounce.json",
-      "bytes": 7454,
+      "bytes": 7474,
       "role": "entry"
     },
     {

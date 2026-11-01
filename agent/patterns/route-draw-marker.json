@@ -53,7 +53,7 @@
         "card-expand-fullscreen"
       ],
       "conflicts": [],
-      "notes": "三个固定镜头显示路线、车头、标记与双语标签。jrNara从minZoom=13显示。镜头之间以纸色转场，路线与标记始终对齐。"
+      "notes": "三个固定镜头显示路线、车头、标记与双语标签。jrNara从minZoom=13显示。镜头之间以纸色转场，路线与标记始终对齐。 笔尖沿已展开线路弧长推进，站点按通过时刻亮起，与已有路线描画及移动标记为同一机制。"
     },
     "prompt": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。复用地图巡礼的 cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt 与对应 CSS。三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。片段：kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65；时长 13.175s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 mechanism/score.json 挂接。前10.6秒保留原有地图巡礼段，之后追加等距城市原片5.835–7.07秒的数据弧线段，追加1.235秒。数据弧线采用QuadraticBezierCurve3和TubeGeometry(curve,72,.021,8,false)，uT0=PULSE_T+.05+k*.035，uDur=.45，uSpeed=1.3+A.hash(k*7)*.6；到达后的屋顶环按ph=(u*.9)%1放大1+ph*2.2并淡出，沿用同区间原片音轨，声音默认关闭。 通过 index.html 内联 segments 在前 11.835 秒之后依次重放mg-paperclip 原片 5.86–7.2 秒，总时长 13.175 秒。手机科普片的弧线从产地锚点画向组装点，箭头按路线切线落位；数据包随后沿线循环，汇点回弹并周期扩圈。沿用同区间原片音轨，声音默认关闭。",
     "demo": "demos/patterns/route-draw-marker/index.html",
@@ -67,6 +67,9 @@
       },
       {
         "caseId": "mg-paperclip"
+      },
+      {
+        "caseId": "lemo-transit-map"
       }
     ],
     "previewAt": 8.6,
@@ -194,6 +197,13 @@
       }
     ],
     "renderer": "gpu",
+    "parameters": [
+      {
+        "name": "地铁笔尖",
+        "value": "线宽.15G；白芯半径.11G，彩环.05G，光晕.8G；phase推进path截取，stopDots读取通过状态；相机跟随1999年2号线笔尖。",
+        "source": "demos/cases/lemo-transit-map/film/film.js:drawMap；film/timeline.js:camera"
+      }
+    ],
     "preview": "previews/patterns/route-draw-marker.jpg",
     "previewPortrait": "previews/patterns/route-draw-marker-portrait.jpg"
   },
@@ -209,6 +219,10 @@
     {
       "caseId": "mg-paperclip",
       "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "caseId": "lemo-transit-map",
+      "bundle": "agent/cases/lemo-transit-map.json"
     }
   ],
   "documents": {
@@ -216,6 +230,151 @@
   },
   "entrypoint": "demos/patterns/route-draw-marker/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-transit-map/LICENSES.md",
+      "bytes": 593,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/audio/CREDITS",
+      "bytes": 2285,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/audio/film.m4a",
+      "bytes": 1537256,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/fidelity.md",
+      "bytes": 3310,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/film/core/lib.js",
+      "bytes": 2782,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/film/film.js",
+      "bytes": 39070,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/film/gl.js",
+      "bytes": 8734,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/film/index.html",
+      "bytes": 567,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/film/net.js",
+      "bytes": 14857,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/film/timeline.js",
+      "bytes": 42492,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/fonts/Inter.ttf",
+      "bytes": 876576,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/fonts/NotoSansSC-sub.ttf",
+      "bytes": 118788,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/fonts/OFL-Inter.txt",
+      "bytes": 4377,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/fonts/OFL-NotoSansSC.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/fonts/fonts.css",
+      "bytes": 186,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/index.html",
+      "bytes": 2394,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/CREDITS",
+      "bytes": 2285,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/FACTS.md",
+      "bytes": 7872,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/README.md",
+      "bytes": 1636,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/audio.py",
+      "bytes": 17471,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/build.sh",
+      "bytes": 2555,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/events.json",
+      "bytes": 44929,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/tools/chars.txt",
+      "bytes": 695,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/tools/sheet.sh",
+      "bytes": 442,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-transit-map/source/tools/subset.py",
+      "bytes": 832,
+      "role": "process"
+    },
     {
       "path": "demos/cases/map-pilgrimage/LICENSES.md",
       "bytes": 1021,
@@ -662,6 +821,11 @@
       "role": "doc"
     },
     {
+      "path": "entries/cases/lemo-transit-map.json",
+      "bytes": 9511,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/map-pilgrimage.json",
       "bytes": 20793,
       "role": "entry"
@@ -678,7 +842,7 @@
     },
     {
       "path": "entries/patterns/route-draw-marker.json",
-      "bytes": 9142,
+      "bytes": 9637,
       "role": "entry"
     },
     {

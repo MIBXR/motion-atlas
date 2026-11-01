@@ -115,11 +115,6 @@
       "kind": "case",
       "id": "mg-pixel",
       "note": "按 prompts/20-pixel.md 制作，作者 AI 终评 8.07 / 10"
-    },
-    {
-      "kind": "case",
-      "id": "mg-hud",
-      "note": "按 prompts/22-hud.md 制作，作者 AI 终评 7.93 / 10"
     }
   ],
   "sources": [

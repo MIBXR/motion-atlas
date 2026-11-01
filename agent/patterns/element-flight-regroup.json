@@ -73,6 +73,9 @@
     "sources": [
       {
         "caseId": "mg-paperclip"
+      },
+      {
+        "caseId": "lemo-archive-lighttable"
       }
     ],
     "previewAt": 2.86,
@@ -94,6 +97,12 @@
         "label": "机制画面"
       }
     ],
+    "parameters": [
+      {
+        "name": "lemo-archive-lighttable",
+        "value": "film/film.js:644–676的ROWS / indexPanel；5份档案的编号、名称、日期、读数与目录ID从w2s(toW(r[5],[0,0]),st.cam)投影位置飞入索引行，t0=HIT.index+.2+.15i、.45秒eio、行高96；57秒的两条记录在终点划去。拉远由CAM/camLZ同时完成。"
+      }
+    ],
     "preview": "previews/patterns/element-flight-regroup.jpg",
     "previewPortrait": null
   },
@@ -101,6 +110,10 @@
     {
       "caseId": "mg-paperclip",
       "bundle": "agent/cases/mg-paperclip.json"
+    },
+    {
+      "caseId": "lemo-archive-lighttable",
+      "bundle": "agent/cases/lemo-archive-lighttable.json"
     }
   ],
   "documents": {
@@ -108,6 +121,301 @@
   },
   "entrypoint": "demos/patterns/element-flight-regroup/index.html",
   "files": [
+    {
+      "path": "demos/cases/lemo-archive-lighttable/LICENSES.md",
+      "bytes": 3234,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/layers.json",
+      "bytes": 83,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/news.jpg",
+      "bytes": 410911,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p1.jpg",
+      "bytes": 5300115,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p1_bg.jpg",
+      "bytes": 4963290,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p1_fly.png",
+      "bytes": 1689356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p1_mask.png",
+      "bytes": 7315,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p1_wil.png",
+      "bytes": 52311,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p2.jpg",
+      "bytes": 6313025,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p2_mask.png",
+      "bytes": 4775,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p3.jpg",
+      "bytes": 777897,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/p3_mask.png",
+      "bytes": 15188,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/assets/tex/tg.jpg",
+      "bytes": 991576,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/audio/Apache-2.0.txt",
+      "bytes": 10280,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/audio/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/audio/CC0-1.0.txt",
+      "bytes": 7048,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/audio/CREDITS",
+      "bytes": 3717,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/audio/film.m4a",
+      "bytes": 1293288,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fidelity.md",
+      "bytes": 4533,
+      "role": "doc"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/film/LICENSE",
+      "bytes": 1064,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/film/film.js",
+      "bytes": 45107,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/film/index.html",
+      "bytes": 1102,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/film/out/cues.json",
+      "bytes": 1356,
+      "role": "asset"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/film/timeline.js",
+      "bytes": 4361,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/IBMPlexMono-400.woff2",
+      "bytes": 5992,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/IBMPlexMono-500.woff2",
+      "bytes": 5908,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/IBMPlexSans-400.woff2",
+      "bytes": 11260,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/IBMPlexSans-500.woff2",
+      "bytes": 12488,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/NotoSansSC-400.woff2",
+      "bytes": 21212,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/NotoSansSC-500.woff2",
+      "bytes": 21400,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/NotoSansSC-600.woff2",
+      "bytes": 21464,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/NotoSerifSC-600.woff2",
+      "bytes": 28508,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/OFL-ibmplexmono.txt",
+      "bytes": 4363,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/OFL-ibmplexsans.txt",
+      "bytes": 4363,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/OFL-notosanssc.txt",
+      "bytes": 4388,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/OFL-notoserifsc.txt",
+      "bytes": 4350,
+      "role": "license"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/fonts/fonts.css",
+      "bytes": 605,
+      "role": "font"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/index.html",
+      "bytes": 2856,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/motion-kit.js",
+      "bytes": 134537,
+      "role": "source"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/CREDITS",
+      "bytes": 3717,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/FACTS.md",
+      "bytes": 6318,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/README.md",
+      "bytes": 2516,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/build.sh",
+      "bytes": 3403,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/licenses/CC-BY-3.0.html",
+      "bytes": 51105,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/mix.py",
+      "bytes": 12221,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/sources/sru_cph.3b12982.xml",
+      "bytes": 5394,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/sources/sru_cph.3b18080.xml",
+      "bytes": 4529,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/sources/sru_ppprs.00610.xml",
+      "bytes": 15244,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/sources/sru_ppprs.00626.xml",
+      "bytes": 11731,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/sources/sru_ppprs.00629.xml",
+      "bytes": 7804,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/tools/cuecheck.mjs",
+      "bytes": 989,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/tools/export.mjs",
+      "bytes": 2298,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/tools/fonts.py",
+      "bytes": 2316,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/tools/prep.py",
+      "bytes": 8423,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/tools/sru.py",
+      "bytes": 1003,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/tools/subcheck.mjs",
+      "bytes": 1807,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/voice/lines.json",
+      "bytes": 948,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/voice/out/dur.json",
+      "bytes": 100,
+      "role": "process"
+    },
+    {
+      "path": "demos/cases/lemo-archive-lighttable/source/voice/out/words.json",
+      "bytes": 1131,
+      "role": "process"
+    },
     {
       "path": "demos/cases/mg-paperclip/LICENSES.md",
       "bytes": 911,
@@ -284,13 +592,18 @@
       "role": "source"
     },
     {
+      "path": "entries/cases/lemo-archive-lighttable.json",
+      "bytes": 11233,
+      "role": "entry"
+    },
+    {
       "path": "entries/cases/mg-paperclip.json",
       "bytes": 18133,
       "role": "entry"
     },
     {
       "path": "entries/patterns/element-flight-regroup.json",
-      "bytes": 4017,
+      "bytes": 4445,
       "role": "entry"
     },
     {

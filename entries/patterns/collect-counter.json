@@ -203,5 +203,6 @@
     "landscape",
     "portrait"
   ],
-  "previewAtPortrait": 8.8665
+  "previewAtPortrait": 8.8665,
+  "parameters": []
 }

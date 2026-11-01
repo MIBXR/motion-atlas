@@ -50,3 +50,5 @@ Set-Location ../..
 ## 画面导出
 
 画面采用给定时刻绘制一帧的协议。上游的 `harness/render.mjs` 对应本库的 `scripts/render.mjs`：原作 `window.renderAt(t)` 由 MotionKit 接到 `window.__motion.seek(t)`，先导出画面，再用 ffmpeg 将配乐 WAV 与画面合成。三维画面先由 Blender 输出帧序列，再由案例页面叠加文字和颗粒，页面仍通过同一个逐帧入口导出。具体命令见[渲染管线](../pipeline.md)。
+
+本库收录该套件的14个案例。HUD风格提示词保留在快照中，HUD案例见[伏特·规格扫描 · 科幻全息界面](../../cases.html#case/lemo-hologram-hud)。

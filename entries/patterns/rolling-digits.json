@@ -54,7 +54,7 @@
       "corner-hud"
     ],
     "conflicts": [],
-    "notes": "与档案阵列的同一次选择更新编号、行列计数、标题、权限与列名；共享 460ms 时长，数字方向由导航决定，文字保持默认正向。"
+    "notes": "与档案阵列的同一次选择更新编号、行列计数、标题、权限与列名；共享 460ms 时长，数字方向由导航决定，文字保持默认正向。 机械里程表同样把每位数字拆成可滚动的字轮，竖向位移、裁切与速度模糊表达读数变化；digitsAt按十进制进位，年与公里数仅在来源数值停驻。"
   },
   "prompt": "实现当前 archive-os 的逐字符滚动：直接裁出案例 bundle 中的滚动库，使用 createRollingNumber/createRollingText，duration:460、motionBlur:true，文字 transition:direct、stagger:none。每个字符建独立 slot/reel/face，临界阻尼使用 49 点及 exp(-10h)；连续更新必须先通过 Bs.read 读取当前动画位置和速度，再向最新目标接续。数字按照上下、左右输入方向滚动；文字使用默认正向。数字 --rn-blur 为 0.35，文字为 0.2，SVG Gaussian blur 随字高和速度变化。档案数据保存在 mechanism/archives.json，字体引用 ../../cases/archive-os/film/app/fonts/，声音引用 ../../cases/archive-os/audio/film-audio.ogg。自动驾驶复用案例 62.6 秒后的四向输入，9 秒及 9.35 秒连续切列；真实输入接管，seek 恢复自动驾驶；默认静音并支持减少动态。",
   "demo": "demos/patterns/rolling-digits/index.html",
@@ -63,6 +63,9 @@
   "sources": [
     {
       "caseId": "archive-os"
+    },
+    {
+      "caseId": "lemo-transit-map"
     }
   ],
   "parameters": [
@@ -95,6 +98,11 @@
       "name": "内容与声音",
       "value": "档案数据读取 mechanism/archives.json，音轨读取 ../../cases/archive-os/audio/film-audio.ogg；自动声音读取案例 62.6–75.6s 片段",
       "source": "demos/cases/archive-os/source/rhinelabui/content/archives.json；demos/cases/archive-os/audio/film-audio.ogg"
+    },
+    {
+      "name": "里程表字轮",
+      "value": "digitsAt逐位计算整数与进位小数；drum裁切38×60px窗口，把floor(pos)邻位按分数偏移；过渡中加模糊，odometer按年份落定6.0／16.1／420.0／906.0。",
+      "source": "demos/cases/lemo-transit-map/film/timeline.js:digitsAt / drum / odometer"
     }
   ],
   "videoPrompt": "制作档案 HUD 的 13 秒滚轮片段，时间与 archive-os 的 62.6–75.6 秒对应。显示当前 RHINE LAB 档案的 X- 编号、行列号、中文标题、权限和列名；每次选择以 460ms 临界阻尼逐字符翻动，9 秒与 9.35 秒连续切列时保持当前位置和速度。保留 MiSans、浅灰底、字高相关速度模糊与案例原声音片段。",

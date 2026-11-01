@@ -16,50 +16,36 @@
   <script src="motion-kit.js"></script>
   <script type="module">
     const config = {
-      "title": "显像管线点收屏",
-      "segments": [
-        {
-          "caseId": "mg-synthwave",
-          "label": "合成波",
-          "from": 9.467,
-          "to": 9.966666666666667
-        },
-        {
-          "caseId": "mg-hud",
-          "label": "赛博朋克 HUD",
-          "from": 9.5667,
-          "to": 9.966666666666667
-        }
-      ],
-      "markers": [
-        {
-          "t": 0,
-          "label": "合成波"
-        },
-        {
-          "t": 0.399666667,
-          "label": "机制画面 1"
-        },
-        {
-          "t": 0.466333333,
-          "label": "机制画面 2"
-        },
-        {
-          "t": 0.499666667,
-          "label": "赛博朋克 HUD"
-        },
-        {
-          "t": 0.832966667,
-          "label": "机制画面 3"
-        }
-      ],
-      "reduced": 0.399666667,
-      "root": "#stage",
-      "orients": [
-        "landscape"
-      ],
-      "fps": 30
-    };
+  "title": "显像管线点收屏",
+  "segments": [
+    {
+      "caseId": "mg-synthwave",
+      "label": "合成波",
+      "from": 9.467,
+      "to": 9.966666666666667
+    }
+  ],
+  "markers": [
+    {
+      "t": 0,
+      "label": "合成波"
+    },
+    {
+      "t": 0.399666667,
+      "label": "机制画面 1"
+    },
+    {
+      "t": 0.466333333,
+      "label": "机制画面 2"
+    }
+  ],
+  "reduced": 0.399666667,
+  "root": "#stage",
+  "orients": [
+    "landscape"
+  ],
+  "fps": 30
+};
     await MotionKit.replay(config);
   </script>
 </body>

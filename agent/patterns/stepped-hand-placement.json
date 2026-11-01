@@ -129,6 +129,7 @@
       ],
       "type": "Anton 400；Bebas Neue 400；Alimama ShuHeiTi 700；Noto Serif SC 900；Noto Sans SC 700；IBM Plex Mono 500。"
     },
+    "parameters": [],
     "preview": "previews/patterns/stepped-hand-placement.jpg",
     "previewPortrait": null
   },
@@ -450,7 +451,7 @@
     },
     {
       "path": "entries/patterns/stepped-hand-placement.json",
-      "bytes": 3706,
+      "bytes": 3726,
       "role": "entry"
     },
     {

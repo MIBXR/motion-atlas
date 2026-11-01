@@ -90,6 +90,7 @@
         "label": "远山续移"
       }
     ],
+    "parameters": [],
     "preview": "previews/patterns/integer-pixel-parallax.jpg",
     "previewPortrait": null
   },
@@ -221,7 +222,7 @@
     },
     {
       "path": "entries/patterns/integer-pixel-parallax.json",
-      "bytes": 3339,
+      "bytes": 3359,
       "role": "entry"
     },
     {
