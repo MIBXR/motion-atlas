@@ -28,6 +28,8 @@
 
 `renderAt(t)` 的 Promise 负责画面准备；媒体音轨纳入 `__motion.ready`。cue 数据结构属于案例；通用接入只接收换算好的 markers。
 
+复刻作品的 `film/` 保持原作代码；`index.html` 的 `renderAt(t)` 调用原作暴露的帧函数（如 lemo-* 案例的 `window.render(t)`），按原作渲染脚本的方式等待该帧完成。下文“一、约定”的 `render(t)` 写法用于本库原创作品。
+
 只重放案例片段的巧思调用 `MotionKit.replay(config)`，由 `segments` 拼接片段并复用来源案例 iframe，返回外层时间轴。每条片段用 `caseId`、`from`、`to` 指定来源与时间范围；`title`、`accent`、`markers`、`fps`、`reduced` 配置外层播放，`overlay` 指定巧思自己的 cue 说明层。来源入口为 `../../cases/<id>/index.html?embed=1&render=1`；外层提供 `__motion`、控制条、URL 定位、声音同步及画幅与加载状态。片段设置 `nativeAudio: true` 时，由来源页自身的 MotionKit 时钟与声音驱动；其余片段使用音轨文件。巧思本体结构见 [CONTRIBUTING](../CONTRIBUTING.md#条目本体)。
 
 有自己时钟、状态或交互的作品在 `film/` 内自己接 MotionKit，使用下面的舞台、时间轴与协议接口；地图巡礼的缓冲和档案终端的仿真、交互由作品控制。
