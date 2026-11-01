@@ -43,6 +43,11 @@
   "carriers": [
     "video"
   ],
+  "style": "graphic-type",
+  "purpose": "title-art",
+  "tech": [
+    "canvas2d"
+  ],
   "orients": [
     "landscape"
   ],
@@ -69,7 +74,7 @@
         "note": "30°切线露出红色网格。"
       },
       {
-        "t": 5.0,
+        "t": 5,
         "label": "天鹅绒上的钥匙",
         "note": "网格百叶翻走。"
       },
@@ -109,7 +114,7 @@
         "note": "铜管短击硬切。"
       },
       {
-        "t": 25.0,
+        "t": 25,
         "label": "瞳孔",
         "note": "匹配间隔缩到两拍。"
       },

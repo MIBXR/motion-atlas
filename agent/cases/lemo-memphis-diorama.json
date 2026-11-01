@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "title-art",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -484,7 +490,7 @@
     },
     {
       "path": "entries/cases/lemo-memphis-diorama.json",
-      "bytes": 12100,
+      "bytes": 12195,
       "role": "entry"
     },
     {

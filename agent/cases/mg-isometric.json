@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "title-art",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -754,7 +760,7 @@
     },
     {
       "path": "entries/cases/mg-isometric.json",
-      "bytes": 25194,
+      "bytes": 25293,
       "role": "entry"
     },
     {

@@ -10,6 +10,13 @@
     "carriers": [
       "video"
     ],
+    "style": "documentary",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "maplibre",
+      "dom"
+    ],
     "tags": [
       "地图叙事",
       "游戏过场",
@@ -493,7 +500,7 @@
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 20793,
+      "bytes": 20900,
       "role": "entry"
     },
     {

@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "graphic-type",
+    "purpose": "brand",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -431,7 +437,7 @@
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 16474,
+      "bytes": 16568,
       "role": "entry"
     },
     {

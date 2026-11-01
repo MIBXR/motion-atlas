@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -478,7 +484,7 @@
     },
     {
       "path": "entries/cases/lemo-paper-lantern.json",
-      "bytes": 10200,
+      "bytes": 10295,
       "role": "entry"
     },
     {

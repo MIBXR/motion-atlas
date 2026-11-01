@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "evidence",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -672,7 +678,7 @@
     },
     {
       "path": "entries/cases/lemo-teardown.json",
-      "bytes": 9603,
+      "bytes": 9699,
       "role": "entry"
     },
     {

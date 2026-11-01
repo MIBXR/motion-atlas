@@ -11,6 +11,13 @@
     "carriers": [
       "console"
     ],
+    "style": "interface",
+    "purpose": "title-art",
+    "tech": [
+      "canvas2d",
+      "threejs",
+      "dom"
+    ],
     "tags": [
       "RhineLabUI",
       "白底开场",
@@ -5027,7 +5034,7 @@
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9811,
+      "bytes": 9919,
       "role": "entry"
     },
     {

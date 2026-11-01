@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "documentary",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -577,7 +583,7 @@
     },
     {
       "path": "entries/cases/lemo-backrooms.json",
-      "bytes": 10203,
+      "bytes": 10298,
       "role": "entry"
     },
     {

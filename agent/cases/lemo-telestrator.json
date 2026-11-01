@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "documentary",
+    "purpose": "news",
+    "tech": [
+      "canvas2d",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -3097,7 +3103,7 @@
     },
     {
       "path": "entries/cases/lemo-telestrator.json",
-      "bytes": 11377,
+      "bytes": 11471,
       "role": "entry"
     },
     {

@@ -7,6 +7,13 @@
   "carriers": [
     "console"
   ],
+  "style": "interface",
+  "purpose": "title-art",
+  "tech": [
+    "canvas2d",
+    "threejs",
+    "dom"
+  ],
   "tags": [
     "RhineLabUI",
     "白底开场",

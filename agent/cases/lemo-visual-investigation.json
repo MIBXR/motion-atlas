@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "documentary",
+    "purpose": "news",
+    "tech": [
+      "canvas2d",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -3581,7 +3587,7 @@
     },
     {
       "path": "entries/cases/lemo-visual-investigation.json",
-      "bytes": 9955,
+      "bytes": 10047,
       "role": "entry"
     },
     {

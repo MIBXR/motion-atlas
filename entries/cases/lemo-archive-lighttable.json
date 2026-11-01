@@ -6,6 +6,13 @@
   "carriers": [
     "video"
   ],
+  "style": "evidence",
+  "purpose": "data",
+  "tech": [
+    "canvas2d",
+    "webgl",
+    "footage"
+  ],
   "orients": [
     "landscape"
   ],
@@ -23,7 +30,7 @@
   "kit": true,
   "previewAt": 22.3,
   "rhythm": {
-    "duration": 40.0,
+    "duration": 40,
     "beats": [
       {
         "t": 0,

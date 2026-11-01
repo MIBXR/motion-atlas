@@ -5080,12 +5080,12 @@
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9811,
+      "bytes": 9919,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-ascii-crt.json",
-      "bytes": 9583,
+      "bytes": 9677,
       "role": "entry"
     },
     {

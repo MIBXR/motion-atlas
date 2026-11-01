@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "story",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -482,7 +487,7 @@
     },
     {
       "path": "entries/cases/lemo-silkscreen-poster.json",
-      "bytes": 9971,
+      "bytes": 10049,
       "role": "entry"
     },
     {

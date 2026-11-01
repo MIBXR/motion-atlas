@@ -10,6 +10,13 @@
       "carriers": [
         "video"
       ],
+      "style": "documentary",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "maplibre",
+        "dom"
+      ],
       "tags": [
         "地图叙事",
         "游戏过场",
@@ -57,6 +64,13 @@
       "carriers": [
         "console"
       ],
+      "style": "interface",
+      "purpose": "title-art",
+      "tech": [
+        "canvas2d",
+        "threejs",
+        "dom"
+      ],
       "tags": [
         "RhineLabUI",
         "白底开场",
@@ -95,6 +109,11 @@
       "carriers": [
         "video"
       ],
+      "style": "evidence",
+      "purpose": "data",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "真实数据",
         "基林曲线",
@@ -128,6 +147,11 @@
       "carriers": [
         "video"
       ],
+      "style": "hand-drawn",
+      "purpose": "title-art",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "mg-styles-15",
         "逐帧手绘",
@@ -160,6 +184,12 @@
       "carriers": [
         "video"
       ],
+      "style": "dimensional",
+      "purpose": "title-art",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "mg-styles-15",
         "等距投影",
@@ -190,6 +220,11 @@
       "summary": "珊瑚色圆点成为太阳，带出扁平城市；镜头推进窗口，人物与手机提示接续，气泡擦除转入图标落点，最后汇成 popwise 与中英文标语。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "brand",
+      "tech": [
+        "dom"
       ],
       "tags": [
         "mg-styles-15",
@@ -222,6 +257,11 @@
       "summary": "香槟金线在午夜蓝底上从种子长成幼苗，卷须展开为屋梁，延伸出建筑、天际与海浪；线条抬升成圆环拱门并填成金色徽章，镜头拉远为 ATELIER LINEA 与“始于一线”的海报落版。",
       "carriers": [
         "video"
+      ],
+      "style": "hand-drawn",
+      "purpose": "brand",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "mg-styles-15",
@@ -257,6 +297,12 @@
       "carriers": [
         "video"
       ],
+      "style": "dimensional",
+      "purpose": "brand",
+      "tech": [
+        "prerendered",
+        "dom"
+      ],
       "tags": [
         "mg-styles-15",
         "3D 渲染",
@@ -287,6 +333,11 @@
       "summary": "墨滴成为咖啡杯，再沿太阳、海上落日、海鸥、纸飞机、定位钉和爱心的链条连续变形，最后组成 morphe. 字标。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "brand",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "mg-styles-15",
@@ -319,6 +370,12 @@
       "summary": "照片贴纸与扁平部件铺在大画布上，镜头串起手机拆解、70/118 元素周期表、分类柱图和产地地图，最后拉远显露整张手机屏幕，70 贴纸飞出落版。",
       "carriers": [
         "video"
+      ],
+      "style": "evidence",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d",
+        "dom"
       ],
       "tags": [
         "mg-styles-15",
@@ -353,6 +410,11 @@
       "carriers": [
         "video"
       ],
+      "style": "print-craft",
+      "purpose": "brand",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "mg-styles-15",
         "拼贴剪贴",
@@ -384,6 +446,12 @@
       "summary": "极光色斑缓慢漂移，磨砂玻璃卡片展示对话、声波和控件；Focus 控钮拉出玻璃珠，成为滑过回复的折射透镜，再收成 Aurora 字标中的 o。",
       "carriers": [
         "video"
+      ],
+      "style": "interface",
+      "purpose": "brand",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "mg-styles-15",
@@ -418,6 +486,12 @@
       "carriers": [
         "video"
       ],
+      "style": "graphic-type",
+      "purpose": "title-art",
+      "tech": [
+        "canvas2d",
+        "webgl"
+      ],
       "tags": [
         "mg-styles-15",
         "几何构成",
@@ -445,6 +519,12 @@
       "summary": "镜头沿霓虹网格公路追随跑车，条纹落日从地平线升起；磁带倒带与停顿后，NEON DRIVE 镀铬字落版，Midnight 霓虹手写字描出并点亮，最后显像管关机。",
       "carriers": [
         "video"
+      ],
+      "style": "dimensional",
+      "purpose": "title-art",
+      "tech": [
+        "canvas2d",
+        "threejs"
       ],
       "tags": [
         "mg-styles-15",
@@ -479,6 +559,12 @@
       "carriers": [
         "video"
       ],
+      "style": "dimensional",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
+      ],
       "tags": [
         "像素艺术",
         "复古游戏",
@@ -509,6 +595,12 @@
       "summary": "液滴落下并压扁飞溅，液团跳跃融合后掀起三层液浪；液浪退去，四团液体挤成横条并分裂为 drop 字标，最后一滴落地，以涟漪揭示双语标语。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "brand",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "mg-styles-15",
@@ -542,6 +634,13 @@
       "summary": "喵呜日记以白猫晒太阳、灰猫凝视和长毛猫三段照片推进，逐字花字、问号、汗滴、三连推和炸毛主拍衔接，最后收成“猫主子认证”相框落版。",
       "carriers": [
         "video"
+      ],
+      "style": "dimensional",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "footage",
+        "dom"
       ],
       "tags": [
         "mg-styles-15",
@@ -578,6 +677,12 @@
       "carriers": [
         "video"
       ],
+      "style": "interface",
+      "purpose": "brand",
+      "tech": [
+        "remotion",
+        "dom"
+      ],
       "tags": [
         "video-shotcraft",
         "产品宣传片",
@@ -613,6 +718,11 @@
       "carriers": [
         "video"
       ],
+      "style": "hand-drawn",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "lemo-opuscar",
         "水彩笔刷",
@@ -642,6 +752,11 @@
       "summary": "五条规则把音乐会海报排进网格，唯一的红圆脱离格点，带动版面重排；海报旋转后揭示为正在播放的乐谱，再拉远成一墙变体。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -673,6 +788,12 @@
       "carriers": [
         "video"
       ],
+      "style": "evidence",
+      "purpose": "data",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "点云测绘",
@@ -701,6 +822,12 @@
       "carriers": [
         "video"
       ],
+      "style": "dimensional",
+      "purpose": "title-art",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "孟菲斯微缩景观",
@@ -728,6 +855,12 @@
       "summary": "侠客踏水过江，在静默后以书写“水”的末笔斩开巨浪；镜头拉远，整段旅程成为落有朱印的一卷山水。",
       "carriers": [
         "video"
+      ],
+      "style": "hand-drawn",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "lemo-opuscar",
@@ -758,6 +891,12 @@
       "carriers": [
         "video"
       ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
+      ],
       "tags": [
         "lemo-opuscar",
         "木刻版画",
@@ -786,6 +925,11 @@
       "summary": "虚构1964年间谍片的开场：特工追逐带着钥匙的信使，穿过字母柱廊、单词车厢和轮盘，钥匙最终打开片名中的锁孔。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "title-art",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -817,6 +961,12 @@
       "carriers": [
         "video"
       ],
+      "style": "dimensional",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "纸片立体书",
@@ -845,6 +995,11 @@
       "summary": "戴笠旅人走过稻田、雨桥与茶屋，巨浪冲出画框并洗回空纸；四次套印重新显出山景，镜头拉远露出五景画轴。",
       "carriers": [
         "video"
+      ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -875,6 +1030,12 @@
       "carriers": [
         "video"
       ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
+      ],
       "tags": [
         "lemo-opuscar",
         "皮影戏",
@@ -902,6 +1063,11 @@
       "summary": "年兽进村，灯火逐盏熄灭；女孩把红纸折三次、剪出楔形图案，展开后八盏灯笼飞向八扇窗，窗花镂空的光落在雪地与年兽脸上。",
       "carriers": [
         "video"
+      ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -931,6 +1097,12 @@
       "carriers": [
         "video"
       ],
+      "style": "hand-drawn",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
+      ],
       "tags": [
         "lemo-opuscar",
         "油画厚涂",
@@ -958,6 +1130,12 @@
       "summary": "月亮失眠，数羊失败；女孩爬上逐级画出的梯子，用水彩刷显纸上白蜡笔星星，再给月亮盖上拼布被，镜头拉远成桌上的绘本并翻到终页。",
       "carriers": [
         "video"
+      ],
+      "style": "hand-drawn",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "lemo-opuscar",
@@ -988,6 +1166,12 @@
       "carriers": [
         "video"
       ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "纸雕灯影",
@@ -1015,6 +1199,11 @@
       "summary": "从手机地图上的定位磁铁讲到GPS卫星、原子钟与相对论；每日38微秒的差别把定位推入海里，板擦倒抹轨迹，校准后拉远看见整堂课在同一块白板上。",
       "carriers": [
         "video"
+      ],
+      "style": "hand-drawn",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1046,6 +1235,12 @@
       "carriers": [
         "video"
       ],
+      "style": "hand-drawn",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
+      ],
       "tags": [
         "lemo-opuscar",
         "钢笔淡彩",
@@ -1072,6 +1267,12 @@
       "summary": "孩子在教室黑板上问“射和矮是不是弄反了”；老师把射从甲骨、金文、小篆写回楷书，用橙色追踪弓和箭，擦掉错误释义后在原位写回答案。",
       "carriers": [
         "video"
+      ],
+      "style": "hand-drawn",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1100,6 +1301,12 @@
       "summary": "骑车人带着篮子穿过沉睡的蓝色街道，经过面包店加上黄色、驶进公园加上粉色，鸽子搭上法棍；套印圆盘转为河边太阳，静默中错版漂开，下拍锁回后分享面包。",
       "carriers": [
         "video"
+      ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1130,6 +1337,12 @@
       "carriers": [
         "video"
       ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "dom"
+      ],
       "tags": [
         "lemo-opuscar",
         "复古半调案卷",
@@ -1156,6 +1369,11 @@
       "summary": "雕刀在铜版上推开第一条蜜蜂腹部曲线，揭印后轮廓、排线和交叉暗线逐层成形；复眼、翅钩与花粉篮放大镜飞到图版位置，静默后手工淡彩晕开，最后覆上薄护纸。",
       "carriers": [
         "video"
+      ],
+      "style": "print-craft",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1185,6 +1403,11 @@
       "carriers": [
         "video"
       ],
+      "style": "print-craft",
+      "purpose": "story",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "lemo-opuscar",
         "丝印旅行海报",
@@ -1213,6 +1436,12 @@
       "carriers": [
         "video"
       ],
+      "style": "print-craft",
+      "purpose": "data",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "印刷长镜头",
@@ -1239,6 +1468,11 @@
       "summary": "1930年除夕，门童赶在午夜前把一封信送上星光饭店顶楼；电梯故障后他爬楼、穿过厨房，把乐谱交给指挥，十二声钟响逐字点亮灯牌。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "story",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1268,6 +1502,12 @@
       "summary": "发明家的蓝图自行画出接云机器，展开、装回并运转；发现纸上没有云后，手影补上修订云线，云线变成雨云，落雨让画中的花盛开。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1299,6 +1539,12 @@
       "carriers": [
         "video"
       ],
+      "style": "graphic-type",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
+      ],
       "tags": [
         "lemo-opuscar",
         "彩色玻璃窗",
@@ -1327,6 +1573,11 @@
       "carriers": [
         "video"
       ],
+      "style": "graphic-type",
+      "purpose": "story",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "lemo-opuscar",
         "象形运动图形",
@@ -1354,6 +1605,12 @@
       "summary": "月球中继机沉默四十年后收到地球来信，把“I AM STILL HERE.”拆成字符地出图，推入一个由日志构成的字母，最后拉远到空无一人的月球房间并关机。",
       "carriers": [
         "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1386,6 +1643,11 @@
       "carriers": [
         "video"
       ],
+      "style": "interface",
+      "purpose": "brand",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "lemo-opuscar",
         "暗色科技发布",
@@ -1415,6 +1677,11 @@
       "carriers": [
         "video"
       ],
+      "style": "interface",
+      "purpose": "brand",
+      "tech": [
+        "dom"
+      ],
       "tags": [
         "lemo-opuscar",
         "活体实机录屏",
@@ -1442,6 +1709,11 @@
       "summary": "电流从四川水坝沿铜走线奔向江苏，在换流站由交流变成直流，经过降压与插座进入手机充电器，再一口气拉远到包含各级模块的整张电路板。",
       "carriers": [
         "video"
+      ],
+      "style": "interface",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1472,6 +1744,11 @@
       "carriers": [
         "video"
       ],
+      "style": "dimensional",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "lemo-opuscar",
         "50s 扁平卡通",
@@ -1497,6 +1774,12 @@
       "summary": "灯塔熄灭，提灯人薇伦接过最后的火，穿越夜林与风暴石阶，重新点亮灯塔，海上的船灯随后逐盏亮起。",
       "carriers": [
         "video"
+      ],
+      "style": "dimensional",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "threejs"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1525,6 +1808,12 @@
       "carriers": [
         "video"
       ],
+      "style": "dimensional",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "积木玩具",
@@ -1550,6 +1839,12 @@
       "summary": "空海中逐格长出岛屿、树木和村庄，每次生长都奏出一个音符；天黑后灯塔扫过房屋重奏旋律，为出海的小船指路。",
       "carriers": [
         "video"
+      ],
+      "style": "dimensional",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "threejs"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1578,6 +1873,12 @@
       "summary": "一名新夜班员工用摄像机记录入职路线；重复的告示、自动对焦的失灵和磁带断裂逐步让守则失去可信度，时钟与电量留下跳时的证据。",
       "carriers": [
         "video"
+      ],
+      "style": "documentary",
+      "purpose": "story",
+      "tech": [
+        "canvas2d",
+        "threejs"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1608,6 +1909,13 @@
       "carriers": [
         "video"
       ],
+      "style": "evidence",
+      "purpose": "data",
+      "tech": [
+        "canvas2d",
+        "webgl",
+        "footage"
+      ],
       "tags": [
         "lemo-opuscar",
         "卫星简报",
@@ -1634,6 +1942,11 @@
       "summary": "一条千米河道要架桥，船撞上桥墩后确立航道不立墩的条件；简报墙逐个比较梁桥、拱桥、斜拉桥和悬索桥，船从最终方案下通过后拉远整墙结论。",
       "carriers": [
         "video"
+      ],
+      "style": "evidence",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1663,6 +1976,12 @@
       "carriers": [
         "video"
       ],
+      "style": "evidence",
+      "purpose": "data",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "白模投影",
@@ -1691,6 +2010,12 @@
       "carriers": [
         "video"
       ],
+      "style": "evidence",
+      "purpose": "data",
+      "tech": [
+        "canvas2d",
+        "footage"
+      ],
       "tags": [
         "lemo-opuscar",
         "显微叙事",
@@ -1718,6 +2043,13 @@
       "summary": "电报与报纸写着57秒，放大镜把莱特兄弟的负片转正并带入照片，档案记录的59秒让两份记录形成对照。",
       "carriers": [
         "video"
+      ],
+      "style": "evidence",
+      "purpose": "data",
+      "tech": [
+        "canvas2d",
+        "webgl",
+        "footage"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1748,6 +2080,12 @@
       "carriers": [
         "video"
       ],
+      "style": "documentary",
+      "purpose": "news",
+      "tech": [
+        "canvas2d",
+        "footage"
+      ],
       "tags": [
         "lemo-opuscar",
         "字幕新闻",
@@ -1776,6 +2114,12 @@
       "carriers": [
         "video"
       ],
+      "style": "documentary",
+      "purpose": "news",
+      "tech": [
+        "canvas2d",
+        "footage"
+      ],
       "tags": [
         "lemo-opuscar",
         "视觉调查",
@@ -1803,6 +2147,11 @@
       "summary": "LEMO AI NEWS的一周四则AI新闻，从串联单进入模型开放、市场下跌、欧盟问询与开放权重，用翻牌价格表、阈值折线、地图信函和规格卡承载信息，再回到已勾选的串联单。",
       "carriers": [
         "video"
+      ],
+      "style": "documentary",
+      "purpose": "news",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1833,6 +2182,12 @@
       "carriers": [
         "video"
       ],
+      "style": "documentary",
+      "purpose": "news",
+      "tech": [
+        "canvas2d",
+        "footage"
+      ],
       "tags": [
         "lemo-opuscar",
         "体育战术板",
@@ -1861,6 +2216,12 @@
       "summary": "阿尔忒弥斯二号发射从T−32.5到T+27秒连续播放，多机位、控制室、乘组照片与任务文件逐格展开，点火瞬间九格合一，控制权由地面交给火箭再交给休斯敦。",
       "carriers": [
         "video"
+      ],
+      "style": "documentary",
+      "purpose": "news",
+      "tech": [
+        "canvas2d",
+        "footage"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1892,6 +2253,12 @@
       "carriers": [
         "video"
       ],
+      "style": "documentary",
+      "purpose": "news",
+      "tech": [
+        "canvas2d",
+        "footage"
+      ],
       "tags": [
         "lemo-opuscar",
         "构成主义蒙太奇",
@@ -1919,6 +2286,11 @@
       "summary": "电助力车从扫描线中长成发光线框，依次锁定电池、电机和刹车，局部爆炸、引线与乱数读数给出规格；归拢后点亮实体全息并完成一圈转台。",
       "carriers": [
         "video"
+      ],
+      "style": "interface",
+      "purpose": "brand",
+      "tech": [
+        "canvas2d"
       ],
       "tags": [
         "lemo-opuscar",
@@ -1948,6 +2320,12 @@
       "carriers": [
         "video"
       ],
+      "style": "evidence",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d",
+        "threejs"
+      ],
       "tags": [
         "lemo-opuscar",
         "产品拆解",
@@ -1975,6 +2353,11 @@
       "carriers": [
         "video"
       ],
+      "style": "interface",
+      "purpose": "data",
+      "tech": [
+        "canvas2d"
+      ],
       "tags": [
         "lemo-opuscar",
         "数据叙事",
@@ -2001,6 +2384,12 @@
       "summary": "上海地铁从1993年的五站六公里长成21条线、906公里；笔尖逐段描线，换乘点落地，镜头拉远切换站名层级，机械里程表与双城时间线呈现规模。",
       "carriers": [
         "video"
+      ],
+      "style": "interface",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d",
+        "webgl"
       ],
       "tags": [
         "lemo-opuscar",

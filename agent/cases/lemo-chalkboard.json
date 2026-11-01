@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "hand-drawn",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -555,7 +561,7 @@
     },
     {
       "path": "entries/cases/lemo-chalkboard.json",
-      "bytes": 11274,
+      "bytes": 11370,
       "role": "entry"
     },
     {

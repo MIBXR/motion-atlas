@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "hand-drawn",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -666,7 +671,7 @@
     },
     {
       "path": "entries/cases/lemo-watercolor.json",
-      "bytes": 11653,
+      "bytes": 11736,
       "role": "entry"
     },
     {

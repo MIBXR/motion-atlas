@@ -8,6 +8,12 @@ export const SCHEMA_VERSION = 1;
 
 export const TAXONOMY = {
   carriers: { video: '影像视频', console: '交互操作台' },
+  styles: {
+    'hand-drawn': '手绘与绘画', 'print-craft': '版画、剪纸与传统工艺', 'graphic-type': '图形与排版',
+    interface: '界面与发布', evidence: '实证与数据', documentary: '剪辑与纪实', dimensional: '3D、卡通与游戏',
+  },
+  purposes: { brand: '品牌与产品', explainer: '知识讲解', data: '数据与实证', news: '新闻纪实', story: '叙事短片', 'title-art': '片头与视觉' },
+  techs: { canvas2d: 'Canvas 2D', webgl: '原生 WebGL 着色', threejs: 'three.js 3D', footage: '实拍素材', prerendered: '离线渲染帧', remotion: 'React + Remotion', maplibre: 'MapLibre 地图', dom: 'DOM / SVG' },
   types: {
     composition: '画面构成', 'type-motion': '文字动效', transition: '转场', camera: '镜头与空间',
     feedback: '交互反馈', rhythm: '节奏与时序', hud: '信息层 HUD', texture: '质感与后期', sound: '声音',
@@ -63,6 +69,15 @@ export function loadEntries() {
   const cases = listJSON('entries/cases').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   const patterns = listJSON('entries/patterns').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.id.localeCompare(b.id));
   const materials = listJSON('entries/materials').map((x) => ({ ...x.data, _file: x.file })).sort((a, b) => a.id.localeCompare(b.id));
+  for (const e of cases) {
+    for (const [field, taxonomy] of [['style', 'styles'], ['purpose', 'purposes']]) {
+      if (typeof e[field] !== 'string' || !Object.hasOwn(TAXONOMY[taxonomy], e[field])) throw new Error(`${e._file}: 未知或缺少 ${field} ${e[field]}`);
+    }
+    if (!Array.isArray(e.tech) || !e.tech.length) throw new Error(`${e._file}: tech 必须为非空数组`);
+    for (const value of e.tech) {
+      if (typeof value !== 'string' || !Object.hasOwn(TAXONOMY.techs, value)) throw new Error(`${e._file}: 未知 tech ${value}`);
+    }
+  }
   for (const e of materials) {
     if (!Object.hasOwn(TAXONOMY.materialTypes, e.type)) throw new Error(`${e._file}: 未知素材类型 ${e.type}`);
     if (e.snapshotPath) {
@@ -206,7 +221,7 @@ export function buildAll() {
     const json = JSON.stringify(bundle, null, 2) + '\n';
     files[`agent/cases/${c.id}.json`] = json;
     bundleSummaries.cases.push({
-      id: c.id, title: c.title, summary: c.summary, carriers: c.carriers, tags: c.tags || [],
+      id: c.id, title: c.title, summary: c.summary, carriers: c.carriers, style: c.style, purpose: c.purpose, tech: c.tech, tags: c.tags || [],
       useCases: c.useCases || [], avoid: c.avoid || [], patternIds: c.patternIds || [], seekable: !!c.timeline,
       bundle: `agent/cases/${c.id}.json`,
     });

@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "evidence",
+    "purpose": "data",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -631,7 +637,7 @@
     },
     {
       "path": "entries/cases/lemo-white-model.json",
-      "bytes": 9938,
+      "bytes": 10027,
       "role": "entry"
     },
     {

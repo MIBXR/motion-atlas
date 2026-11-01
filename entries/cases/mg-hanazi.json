@@ -6,6 +6,13 @@
   "carriers": [
     "video"
   ],
+  "style": "dimensional",
+  "purpose": "story",
+  "tech": [
+    "canvas2d",
+    "footage",
+    "dom"
+  ],
   "orients": [
     "portrait"
   ],

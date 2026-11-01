@@ -6,6 +6,12 @@
   "carriers": [
     "video"
   ],
+  "style": "dimensional",
+  "purpose": "brand",
+  "tech": [
+    "prerendered",
+    "dom"
+  ],
   "orients": [
     "landscape"
   ],

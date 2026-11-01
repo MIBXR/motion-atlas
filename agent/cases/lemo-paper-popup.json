@@ -47,6 +47,12 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -916,7 +922,7 @@
     },
     {
       "path": "entries/cases/lemo-paper-popup.json",
-      "bytes": 12531,
+      "bytes": 12624,
       "role": "entry"
     },
     {

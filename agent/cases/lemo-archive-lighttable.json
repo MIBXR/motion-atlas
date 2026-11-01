@@ -10,6 +10,13 @@
     "carriers": [
       "video"
     ],
+    "style": "evidence",
+    "purpose": "data",
+    "tech": [
+      "canvas2d",
+      "webgl",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -652,7 +659,7 @@
     },
     {
       "path": "entries/cases/lemo-archive-lighttable.json",
-      "bytes": 11233,
+      "bytes": 11335,
       "role": "entry"
     },
     {

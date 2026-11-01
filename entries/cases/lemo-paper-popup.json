@@ -43,6 +43,12 @@
   "carriers": [
     "video"
   ],
+  "style": "dimensional",
+  "purpose": "story",
+  "tech": [
+    "canvas2d",
+    "threejs"
+  ],
   "orients": [
     "landscape"
   ],
@@ -56,7 +62,7 @@
   "kit": true,
   "previewAt": 26.6,
   "rhythm": {
-    "duration": 133.0,
+    "duration": 133,
     "beats": [
       {
         "t": 0,

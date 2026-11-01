@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "print-craft",
+    "purpose": "brand",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -564,7 +569,7 @@
     },
     {
       "path": "entries/cases/mg-collage.json",
-      "bytes": 19642,
+      "bytes": 19722,
       "role": "entry"
     },
     {

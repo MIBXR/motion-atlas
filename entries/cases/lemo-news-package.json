@@ -6,6 +6,11 @@
   "carriers": [
     "video"
   ],
+  "style": "documentary",
+  "purpose": "news",
+  "tech": [
+    "canvas2d"
+  ],
   "orients": [
     "landscape"
   ],

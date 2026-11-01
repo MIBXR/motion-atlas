@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "hand-drawn",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -503,7 +508,7 @@
     },
     {
       "path": "entries/cases/lemo-whiteboard.json",
-      "bytes": 11290,
+      "bytes": 11371,
       "role": "entry"
     },
     {

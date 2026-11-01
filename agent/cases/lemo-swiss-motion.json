@@ -10,6 +10,11 @@
     "carriers": [
       "video"
     ],
+    "style": "graphic-type",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d"
+    ],
     "orients": [
       "landscape"
     ],
@@ -536,7 +541,7 @@
     },
     {
       "path": "entries/cases/lemo-swiss-motion.json",
-      "bytes": 11849,
+      "bytes": 11932,
       "role": "entry"
     },
     {

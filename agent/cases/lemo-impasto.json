@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "hand-drawn",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -449,7 +455,7 @@
     },
     {
       "path": "entries/cases/lemo-impasto.json",
-      "bytes": 9685,
+      "bytes": 9777,
       "role": "entry"
     },
     {

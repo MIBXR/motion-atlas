@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "evidence",
+    "purpose": "explainer",
+    "tech": [
+      "canvas2d",
+      "dom"
+    ],
     "orients": [
       "landscape"
     ],
@@ -444,7 +450,7 @@
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 18133,
+      "bytes": 18225,
       "role": "entry"
     },
     {

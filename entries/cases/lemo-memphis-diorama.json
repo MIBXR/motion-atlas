@@ -6,6 +6,12 @@
   "carriers": [
     "video"
   ],
+  "style": "dimensional",
+  "purpose": "title-art",
+  "tech": [
+    "canvas2d",
+    "threejs"
+  ],
   "orients": [
     "landscape"
   ],
@@ -21,9 +27,9 @@
   "background": "#FFFCF6",
   "timeline": true,
   "kit": true,
-  "previewAt": 25.0,
+  "previewAt": 25,
   "rhythm": {
-    "duration": 45.0,
+    "duration": 45,
     "beats": [
       {
         "t": 0,

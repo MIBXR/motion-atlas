@@ -6,6 +6,12 @@
   "carriers": [
     "video"
   ],
+  "style": "dimensional",
+  "purpose": "story",
+  "tech": [
+    "canvas2d",
+    "threejs"
+  ],
   "orients": [
     "landscape"
   ],
@@ -23,7 +29,7 @@
   "kit": true,
   "previewAt": 38.88,
   "rhythm": {
-    "duration": 54.0,
+    "duration": 54,
     "beats": [
       {
         "t": 0,
@@ -166,7 +172,7 @@
     },
     {
       "t0": 51.71,
-      "t1": 54.0,
+      "t1": 54,
       "from": 0.15,
       "to": 0.05,
       "label": "片尾"

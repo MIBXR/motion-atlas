@@ -6,6 +6,11 @@
   "carriers": [
     "video"
   ],
+  "style": "evidence",
+  "purpose": "data",
+  "tech": [
+    "canvas2d"
+  ],
   "orients": [
     "landscape"
   ],

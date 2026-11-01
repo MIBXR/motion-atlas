@@ -822,22 +822,22 @@
     },
     {
       "path": "entries/cases/lemo-transit-map.json",
-      "bytes": 9511,
+      "bytes": 9604,
       "role": "entry"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 20793,
+      "bytes": 20900,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-isometric.json",
-      "bytes": 25194,
+      "bytes": 25293,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 18133,
+      "bytes": 18225,
       "role": "entry"
     },
     {

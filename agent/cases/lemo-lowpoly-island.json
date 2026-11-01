@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "dimensional",
+    "purpose": "story",
+    "tech": [
+      "canvas2d",
+      "threejs"
+    ],
     "orients": [
       "landscape"
     ],
@@ -515,7 +521,7 @@
     },
     {
       "path": "entries/cases/lemo-lowpoly-island.json",
-      "bytes": 10019,
+      "bytes": 10112,
       "role": "entry"
     },
     {

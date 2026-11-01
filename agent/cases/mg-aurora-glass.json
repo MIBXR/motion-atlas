@@ -10,6 +10,12 @@
     "carriers": [
       "video"
     ],
+    "style": "interface",
+    "purpose": "brand",
+    "tech": [
+      "canvas2d",
+      "webgl"
+    ],
     "orients": [
       "landscape"
     ],
@@ -402,7 +408,7 @@
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16960,
+      "bytes": 17051,
       "role": "entry"
     },
     {

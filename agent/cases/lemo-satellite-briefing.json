@@ -10,6 +10,13 @@
     "carriers": [
       "video"
     ],
+    "style": "evidence",
+    "purpose": "data",
+    "tech": [
+      "canvas2d",
+      "webgl",
+      "footage"
+    ],
     "orients": [
       "landscape"
     ],
@@ -711,7 +718,7 @@
     },
     {
       "path": "entries/cases/lemo-satellite-briefing.json",
-      "bytes": 12068,
+      "bytes": 12172,
       "role": "entry"
     },
     {

@@ -41,6 +41,12 @@
   "carriers": [
     "video"
   ],
+  "style": "print-craft",
+  "purpose": "story",
+  "tech": [
+    "canvas2d",
+    "webgl"
+  ],
   "orients": [
     "landscape"
   ],
