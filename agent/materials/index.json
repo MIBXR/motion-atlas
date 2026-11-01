@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "materials",
-  "count": 6,
+  "count": 7,
   "materials": [
     {
       "id": "claude-animation-base",
@@ -423,6 +423,35 @@
         }
       ],
       "bundle": "agent/materials/motion-showreel.json"
+    },
+    {
+      "id": "remotion-skills",
+      "title": "Remotion Agent Skills · 官方 React 视频技能包",
+      "summary": "Remotion 官方维护的 12 个 Agent Skill，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目里写 React 视频：remotion-best-practices 作为总入口按任务路由，其余分管新建项目、画面与动画写法、字幕、地图动画、音视频处理、交互、预览、导出、在线应用、版本升级与文档检索。",
+      "type": "agent-skill",
+      "carrierNote": "技能用于在 Remotion 中以 React 组件编写按帧渲染的视频，最终形态是视频，因此归入本库。",
+      "useCases": [
+        "新建 Remotion 项目或合成，用 React 编写按帧驱动的画面、排版、动画与特效",
+        "转录、导入与制作动态字幕，编排静态地图、路线标记与三维地理飞越镜头",
+        "在浏览器中用 Mediabunny 读取音视频元数据、处理媒体，并在 Studio 中预览和编辑时间线",
+        "导出视频、静帧或透明视频，把 Remotion Player 与渲染能力接入视频生成应用",
+        "升级 Remotion、相关包与项目技能，检索官方 API 和组件文档"
+      ],
+      "avoid": [
+        "脱离 Remotion 项目的一般网页开发",
+        "用 CSS transition、CSS animation 或 Tailwind 动画类驱动逐帧视频动画",
+        "未明确要求导出时跳过 Studio 预览直接渲染"
+      ],
+      "snapshotPath": "demos/materials/remotion-skills/",
+      "snapshotEntry": "skills/remotion-best-practices/SKILL.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "ink-press",
+          "note": "用 Remotion 4.0.484 编写的宣传片，可对照 remotion-markup 的写法"
+        }
+      ],
+      "bundle": "agent/materials/remotion-skills.json"
     },
     {
       "id": "video-shotcraft",

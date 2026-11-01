@@ -12,6 +12,7 @@ demos/cases/keeling-curve/audio/*/License.txt -text
 
 # 固定提交原文快照保留原始字节。
 demos/materials/claude-animation-base/** -text
+demos/materials/remotion-skills/** -text
 demos/cases/pdoom-video/film/index.html -text
 demos/cases/pdoom-video/film/src/** -text
 demos/cases/pdoom-video/source/** -text
