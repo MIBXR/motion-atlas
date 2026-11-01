@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 171,
+  "count": 175,
   "patterns": [
     {
       "id": "corner-hud",
@@ -636,7 +636,7 @@
     {
       "id": "cel-line-boil",
       "title": "逐张重画：线条沸腾与换纸",
-      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。",
+      "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。 PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）给每 1/12 秒换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。",
       "types": [
         "texture",
         "rhythm"
@@ -648,9 +648,12 @@
       "sourceCases": [
         "mg-cel-boil",
         "mg-hanazi",
-        "lemo-crayon-book"
+        "lemo-crayon-book",
+        "pdoom-video"
       ],
-      "pairsWellWith": [],
+      "pairsWellWith": [
+        "emotion-take-morph"
+      ],
       "bundle": "agent/patterns/cel-line-boil.json"
     },
     {
@@ -3250,6 +3253,85 @@
       ],
       "pairsWellWith": [],
       "bundle": "agent/patterns/levels-of-detail-pullback.json"
+    },
+    {
+      "id": "brush-wipe-chapter-break",
+      "title": "笔刷横扫换章",
+      "summary": "大章边界用五道错峰水彩笔刷横扫，边界前 0.3 秒盖住画面，边界后 0.3 秒揭开新章；章内由角色动作接镜。",
+      "types": [
+        "transition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "karaoke-word-fill"
+      ],
+      "bundle": "agent/patterns/brush-wipe-chapter-break.json"
+    },
+    {
+      "id": "karaoke-word-fill",
+      "title": "逐词卡拉 OK 歌词",
+      "summary": "墨紫笔刷底在底部展开，奶油白歌词按字符进度逐词从左到右填为赭黄，句尾收回。",
+      "types": [
+        "type-motion",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "brush-wipe-chapter-break",
+        "escalating-chorus-meter"
+      ],
+      "bundle": "agent/patterns/karaoke-word-fill.json"
+    },
+    {
+      "id": "escalating-chorus-meter",
+      "title": "副歌计量表逐拍递增",
+      "summary": "四段副歌把同一个 P(doom) 计量表从 8 逐拍推到 99.9，副歌之间保持数值；舞台道具表与弹入的角落表互斥。",
+      "types": [
+        "rhythm",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "karaoke-word-fill"
+      ],
+      "bundle": "agent/patterns/escalating-chorus-meter.json"
+    },
+    {
+      "id": "emotion-take-morph",
+      "title": "表情过渡：闭眼、挤压、冒符号再睁眼",
+      "summary": "换情绪前先挤闭眼，在闭眼时换眼型，随后拉伸、挤压回弹并弹出汗滴或星光等反应符号。",
+      "types": [
+        "feedback"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "pdoom-video"
+      ],
+      "pairsWellWith": [
+        "cel-line-boil"
+      ],
+      "bundle": "agent/patterns/emotion-take-morph.json"
     }
   ]
 }

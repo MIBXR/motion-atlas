@@ -1,8 +1,35 @@
 {
   "schemaVersion": 1,
   "kind": "materials",
-  "count": 5,
+  "count": 6,
   "materials": [
+    {
+      "id": "claude-animation-base",
+      "title": "Claude Animation Base · 手绘卡通动画套件",
+      "summary": "JohnHeibel 从 P(doom) 音乐录像整理出的入门套件：p5.js + p5.brush 绘制、Clawd 角色（视角、31 种表情、帽子、符号与舞步）、镜头与笔刷擦除时间轴、逐帧渲染脚本，以及给模型读的 ANIMATION_GUIDE.md。让 Agent 先读指南、出分镜，再逐镜头写只取决于时刻 t 的场景函数。",
+      "type": "prompt-kit",
+      "carrierNote": "套件用于制作按时间线播放、可逐帧渲染的手绘卡通短片；快照包含完整源码、模型指南与角色设定图。",
+      "useCases": [
+        "让会写代码的 Agent 从分镜制作手绘卡通短片",
+        "替换角色、表情、服装与参考图后制作新的角色演出",
+        "参考表情过渡、关键视角转身、镜头衔接与逐帧渲染"
+      ],
+      "avoid": [
+        "需要观众自由阅读的普通网页与网页应用",
+        "直接复制示例故事而不安排新事件的短片",
+        "没有命令执行环境的纯文字对话"
+      ],
+      "snapshotPath": "demos/materials/claude-animation-base/",
+      "snapshotEntry": "README.md",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "pdoom-video",
+          "note": "套件整理自这支 MV 的代码，并加入作者对模型表现的分析"
+        }
+      ],
+      "bundle": "agent/materials/claude-animation-base.json"
+    },
     {
       "id": "lemo-opuscar",
       "title": "lemo-opuscar · 66 种代码影片风格",
