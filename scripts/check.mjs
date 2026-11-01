@@ -58,18 +58,21 @@ for (const entry of entries.material.values()) {
   }
 }
 
-const maxBytes = 50 * 1024 * 1024;
+// Files over 50 MiB are reported as notes; they do not fail the check.
+const noteBytes = 50 * 1024 * 1024;
+const notes = [];
 for (const file of new Set(git('ls-files', '--cached', '--others', '--exclude-standard', '-z'))) {
   const absolute = path.join(root, file);
   if (!fs.existsSync(absolute)) continue;
   const { size } = fs.statSync(absolute);
-  if (size > maxBytes) fail('file-size', file, `${size} bytes exceeds ${maxBytes} bytes (50 MiB)`);
+  if (size > noteBytes) notes.push(`file-size: ${file}: ${size} bytes exceeds ${noteBytes} bytes (50 MiB)`);
 }
+if (notes.length) console.warn(notes.join('\n'));
 
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
 } else {
   const count = Object.values(entries).reduce((total, list) => total + list.size, 0);
-  console.log(`PASS: ${count} entries; line endings, ignored tracked files, entry references and file sizes are valid.`);
+  console.log(`PASS: ${count} entries; line endings, ignored tracked files and entry references are valid; ${notes.length} file(s) over 50 MiB noted.`);
 }

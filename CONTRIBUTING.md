@@ -170,7 +170,7 @@ node scripts/build.mjs
 node scripts/check.mjs
 ```
 
-`node scripts/check.mjs` 检查文本换行、已跟踪的忽略类型、条目引用及双向一致性、单个文件的 50 MiB 大小上限。
+`node scripts/check.mjs` 检查文本换行、已跟踪的忽略类型、条目引用及双向一致性；单个文件超过 50 MiB 时列出提示，不计为失败。
 
 可运行 Demo 按上述顺序更新预览；文字快照直接打开主文档并核对资料包与导出。运行文件随条目入库，检查被忽略的文件：
 
