@@ -46,6 +46,10 @@ gh skill install remotion-dev/skills
 - [Ink Press 纸墨宣传片](../../cases.html#case/ink-press)用 Remotion 4.0.484 制作，可对照 `remotion-markup` 的写法。
 - [video-shotcraft · 镜头配方卡宣传片](../../materials.html#material/video-shotcraft)的镜头配方卡以 Remotion 组件为参考实现。
 
+## 社区作品
+
+素材详情的效果画廊收录 [Remotion Prompt Showcase](https://www.remotion.dev/prompts) 中 25 件社区作品的静帧，每张链接到原片与提示词。
+
 ## 许可
 
 skills 仓库未附许可文件，package.json 指向 Remotion 主仓库的 packages/skills；按主仓库 Remotion License 记录，原文见快照内 [REMOTION-LICENSE.md](../../demos/materials/remotion-skills/REMOTION-LICENSE.md)。个人、3 名员工以内的营利组织与非营利组织可免费使用（含商用），更大规模的营利组织需购买公司许可。
