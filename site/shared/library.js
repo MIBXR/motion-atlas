@@ -440,7 +440,7 @@
   }
 
   function destroyDetail() {
-    if (detailColumns) { detailColumns.ro.disconnect(); detailColumns = null; }
+    if (detailColumns) { detailColumns.ro.disconnect(); detailColumns.toc.remove(); detailColumns = null; }
     const d = det;
     if (!d) return;
     det = null;
@@ -482,15 +482,55 @@
   }
   addEventListener('resize', scheduleLayout);
   addEventListener('scroll', () => { if (detailColumns?.registry) scheduleLayout(); }, { passive: true });
+  let tocRaf = 0;
+  addEventListener('scroll', () => {if (detailColumns && !tocRaf) tocRaf = requestAnimationFrame(syncDetailToc);}, {passive:true});
   function mountDetailColumns() {
     const el = root.querySelector('.detail'), cols = [...el.querySelector('.detail-grid').children];
     const header = document.getElementById('site-header'), actions = root.querySelector('.page-actions');
+    const headings = [el.querySelector('.detail-head h1'), ...el.querySelectorAll('.info-col h2')];
+    const toc = document.createElement('nav');
+    toc.className = 'detail-toc';
+    toc.setAttribute('aria-label', '详情目录');
+    const markers = headings.map(heading => {
+      const text = heading.cloneNode(true);
+      text.querySelectorAll('small').forEach(small => small.remove());
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', text.textContent.trim());
+      button.innerHTML = '<svg viewBox="0 0 24 4" aria-hidden="true"><path d="M2 2h20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+      const caption = document.createElement('span');
+      caption.className = 'detail-toc-label';
+      caption.textContent = text.textContent.trim();
+      caption.setAttribute('aria-hidden', 'true');
+      button.append(caption);
+      button.addEventListener('click', () => window.scrollTo({
+        top: Math.max(0, scrollY + heading.getBoundingClientRect().top - header.getBoundingClientRect().height - actions.getBoundingClientRect().height - 24),
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+      }));
+      toc.append(button);
+      return button;
+    });
+    document.body.append(toc);
     const ro = new ResizeObserver(scheduleLayout);
-    detailColumns = { el, cols, header, actions, ro, registry: cols[0].querySelector('.hf-registry') };
+    detailColumns = { el, cols, header, actions, ro, toc, headings, markers, registry: cols[0].querySelector('.hf-registry') };
     const targets = [el, ...cols, header, actions];
     if (det) targets.push(det.bar, det.sc, det.strip);
     targets.forEach(x => ro.observe(x));
     layoutColumns();
+  }
+  function syncDetailToc() {
+    tocRaf = 0;
+    if (!detailColumns) return;
+    const { header, actions, toc, headings, markers } = detailColumns;
+    const top = header.getBoundingClientRect().height + actions.getBoundingClientRect().height + 24;
+    toc.style.top = `${top}px`;
+    let current = 0;
+    headings.forEach((heading, index) => {if (heading.getBoundingClientRect().top <= top + 8) current = index;});
+    if (scrollY + innerHeight >= document.documentElement.scrollHeight - 2) current = headings.length - 1;
+    markers.forEach((button, index) => {
+      if (index === current) button.setAttribute('aria-current', 'location');
+      else button.removeAttribute('aria-current');
+    });
   }
   function layoutColumns() {
     if (!detailColumns) return;
@@ -505,6 +545,7 @@
     }
     cols[0].classList.toggle('is-sticky', sticky);
     cols[1].classList.toggle('is-sticky', sticky && cols[0].getBoundingClientRect().height > cols[1].getBoundingClientRect().height);
+    syncDetailToc();
   }
   function layout() {
     const d = det;
