@@ -8,45 +8,27 @@
 
   $('#stats').innerHTML = `<b>${MA.cases.length}</b> 个完整案例 · <b>${MA.patterns.length}</b> 个独立巧思 · <b>${MA.materials.length}</b> 个创作素材 · <b>${MA.cases.filter((c) => c.timeline).length}</b> 个可逐帧渲染的 Demo`;
 
-  // 监视器：轮播案例预览；时间码随轮播推进
   const withPrev = MA.cases.filter((c) => c.preview);
-  let idx = 0, t0 = performance.now();
+  const monitor = $('#monitor'), toggle = $('#preview-toggle');
+  let idx = 0, paused = reduce;
   function showCase(i) {
     const c = withPrev[i % withPrev.length];
-    if (!c) return;
     const img = $('#monImg');
-    img.style.opacity = 0;
-    setTimeout(() => { img.src = c.preview; img.alt = `${c.title} Demo 截图`; img.style.opacity = 1; }, reduce ? 0 : 250);
-    $('#monTag').textContent = `${String((i % withPrev.length) + 1).padStart(2, '0')} · ${c.title}`;
-    $('#monitor').onclick = () => { location.href = `cases.html#case/${c.id}`; };
-    $('#monitor').style.cursor = 'pointer';
+    img.src = c.preview;
+    img.alt = `${c.title} Demo 截图`;
+    monitor.href = `cases.html#case/${c.id}`;
+    $('#monTag').textContent = `截图预览 / ${c.title}`;
   }
-  showCase(0);
-  if (!reduce) setInterval(() => showCase(++idx), 3200);
-  (function tc() {
-    const s = (performance.now() - t0) / 1000, f = Math.floor((s % 1) * 24);
-    const pad = (n) => String(Math.floor(n)).padStart(2, '0');
-    $('#monTc').textContent = `00:${pad(s / 60)}:${pad(s % 60)}:${pad(f)}`;
-    if (!reduce) requestAnimationFrame(tc);
-  })();
-
-  // 时间轴示意：五条轨道 + 播放头（减少动态时静止）
-  const TRACKS = [
-    ['CAM', [[0, 34, 'var(--line-2)'], [36, 62, 'var(--line-2)']], [10, 48, 80]],
-    ['HUD', [[8, 96, 'var(--accent-4)']], []],
-    ['TYPE', [[14, 30, 'var(--ink-2)'], [52, 66, 'var(--ink-2)'], [78, 92, 'var(--ink-2)']], []],
-    ['FX', [[30, 36, 'var(--accent-1)'], [62, 68, 'var(--accent-1)']], [33, 65]],
-    ['SFX', [], [6, 18, 30, 42, 54, 66, 78, 90]],
-  ];
-  $('#tracks').innerHTML = TRACKS.map(([name, clips, keys]) => `<div class="trk"><b>${name}</b><div class="lane">${clips.map(([a, b, c]) => `<i class="clip" style="left:${a}%;width:${b - a}%;background:${c}"></i>`).join('')}${keys.map((k) => `<i class="key" style="left:${k}%"></i>`).join('')}</div></div>`).join('') + '<i class="playhead" id="ph"></i>';
-  if (!reduce) {
-    const ph = $('#ph');
-    (function loop(now) {
-      const lane = document.querySelector('.trk .lane');
-      if (lane) { const w = lane.clientWidth, p = ((now / 1000) % 8) / 8; ph.style.left = `${76 + p * w}px`; }
-      requestAnimationFrame(loop);
-    })(0);
+  function paintPause() {
+    toggle.textContent = paused ? '继续轮播' : '暂停轮播';
+    toggle.setAttribute('aria-pressed', String(paused));
   }
+  toggle.addEventListener('click', () => { paused = !paused; paintPause(); });
+  showCase(idx);
+  paintPause();
+  setInterval(() => {
+    if (!paused && !document.hidden && !monitor.matches(':hover') && !monitor.parentElement.contains(document.activeElement)) showCase(++idx);
+  }, 3200);
 
   // 载体
   const CARRIER_DESC = {
@@ -61,7 +43,7 @@
   // 案例卡片（与案例库相同的卡片结构）
   $('#caseGrid').innerHTML = MA.cases.map((c, i) => {
     const fav = favs.has('cases', c.id);
-    return `<article class="card"><div class="card-media">${c.preview ? `<img src="${esc(c.preview)}" alt="${esc(c.title)} Demo 实际截图" loading="lazy">` : '<span class="ph">PREVIEW</span>'}<span class="card-index">${String(i + 1).padStart(2, '0')} / ${esc(TAX.carriers[c.carriers[0]])}</span></div>
+    return `<article class="card"><div class="card-media">${c.preview ? `<img src="${esc(c.preview)}" alt="${esc(c.title)} Demo 实际截图" loading="lazy">` : '<span class="ph">PREVIEW</span>'}</div>
       <div class="card-body"><div class="card-title"><a href="cases.html#case/${c.id}">${esc(c.title)}</a><button class="fav-btn" type="button" data-fav="${c.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(c.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
       <p class="card-sum">${esc(c.summary)}</p><div class="card-tags">${c.carriers.map((k) => `<span class="chip">${esc(TAX.carriers[k])}</span>`).join('')}</div></div></article>`;
   }).join('');
@@ -76,6 +58,6 @@
   // 巧思类型
   $('#types').innerHTML = Object.entries(TAX.types).map(([k, v]) => {
     const n = MA.patterns.filter((p) => p.types.includes(k)).length;
-    return n ? `<a class="type" href="patterns.html?type=${k}"><span>${esc(v)}<br><small>${k}</small></span><b>${String(n).padStart(2, '0')}</b></a>` : '';
+    return n ? `<a class="type" href="patterns.html?type=${k}"><span>${esc(v)}</span><b>${String(n).padStart(2, '0')}</b></a>` : '';
   }).join('');
 })();

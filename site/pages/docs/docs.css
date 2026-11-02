@@ -10,7 +10,7 @@
 #docNav summary { position: sticky; top: calc(var(--doc-search-height) - var(--doc-side-padding)); z-index: 1; margin: 0 calc(-1 * var(--doc-side-padding)); padding: calc(2px + var(--doc-rail-fade)) calc(var(--doc-side-padding) + 4px) 8px; background: var(--surface); }
 #doc-side .doc-search::after, #docNav summary::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: var(--doc-rail-fade); background: linear-gradient(to bottom, var(--surface), transparent); pointer-events: none; }
 #docNav .doc-group-title { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#docNav .side-list a { display: block; min-width: 0; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#docNav .side-list a { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; min-width: 0; max-width: 100%; white-space: normal; overflow: hidden; }
 .doc { min-width: 0; width: 100%; padding: 36px 0 80px; max-width: 860px; margin: 0 auto; outline: none; }
 .doc-path { font: 12px/1.5 var(--f-mono); color: var(--muted); margin-bottom: 14px; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
 .doc-path > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -30,7 +30,7 @@
 .doc a { color: var(--accent-1); text-underline-offset: 3px; }
 .doc code { font: 14px/1.5 var(--f-mono); color: var(--ink); padding: 1px 6px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); }
 .doc pre { position: relative; padding: 16px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line); overflow: auto; }
-.doc pre code { padding: 0; border: 0; border-radius: 0; background: none; font-size: 12px; line-height: 1.7; color: var(--ink-2); white-space: pre; }
+.doc pre code { padding: 0; border: 0; border-radius: 0; background: none; font-size: 14px; line-height: 1.7; color: var(--ink-2); white-space: pre; }
 .doc pre .btn { position: absolute; top: 8px; right: 8px; min-height: 44px; padding: 3px 10px; border-color: var(--line); background: var(--surface); color: var(--ink); font-size: 12px; outline-color: var(--ink); }
 .doc blockquote { padding: 16px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-lg); color: var(--ink-2); }
 .doc blockquote p:last-child { margin: 0; }

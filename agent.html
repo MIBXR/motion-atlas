@@ -14,22 +14,11 @@
   <header id="site-header"></header>
   <main class="agent-page">
     <header class="ag-head">
-      <p class="eyebrow">FOR AGENTS · INDEX / BUNDLE / CLI / RENDER</p>
-      <h1>同一套资料，<em>机器也能读</em>。</h1>
+
+      <h1>Agent 工作流</h1>
       <p>人看站点，Agent 读 JSON。每个条目都有结构化索引、完整资料包（条目、Prompt、带 SHA256 的文件清单）和可运行的 Demo；CLI 负责检索、查看与导出，渲染脚本负责把结果变成视频。</p>
       <div class="cta"><a class="btn primary" href="agent/catalog.json">打开 agent/catalog.json</a><a class="btn" href="docs.html#doc/docs/agent.md">Agent 取材说明</a><a class="btn ghost" href="docs.html#doc/docs/pipeline.md">render(t) 协议</a></div>
     </header>
-
-    <section class="ag-band">
-      <h2>推荐工作流</h2>
-      <ol class="ag-steps">
-        <li><b>01 检索</b><p>读 <code>agent/catalog.json</code> 的摘要字段，或运行 <code>atlas.mjs search</code>。按载体与类型筛选。</p></li>
-        <li><b>02 读取</b><p>打开 <code>agent/&lt;kind&gt;/&lt;id&gt;.json</code>：条目全文、Prompt 文档、入口和文件清单。</p></li>
-        <li><b>03 组合</b><p>按职责挑选：1 个骨架 + 2–4 个支撑 + 1–2 个点睛；检查 <code>pairsWellWith</code> 与 <code>conflicts</code>。</p></li>
-        <li><b>04 导出</b><p><code>atlas.mjs export &lt;id&gt; --out dir</code> 得到可运行 Demo、PROMPT.md 与迁移说明；只改 <code>config.js</code> / <code>CONFIG</code>。</p></li>
-        <li><b>05 验证</b><p>按节拍表截图核对；按时间播放的作品用 <code>render.mjs</code> 逐帧出片；遵守 12px 字号与减少动态。</p></li>
-      </ol>
-    </section>
 
     <section class="ag-band">
       <div class="ag-row"><h2>指令生成器</h2><p class="ag-sub">勾选条目，生成一段可以直接交给编码 Agent 或视频模型的任务说明。</p></div>
@@ -46,6 +35,17 @@
           <p class="ag-note" id="genWarn" role="status"></p>
         </div>
       </div>
+    </section>
+
+    <section class="ag-band">
+      <h2>推荐工作流</h2>
+      <ol class="ag-steps">
+        <li><b>01 检索</b><p>读 <code>agent/catalog.json</code> 的摘要字段，或运行 <code>atlas.mjs search</code>。按载体与类型筛选。</p></li>
+        <li><b>02 读取</b><p>打开 <code>agent/&lt;kind&gt;/&lt;id&gt;.json</code>：条目全文、Prompt 文档、入口和文件清单。</p></li>
+        <li><b>03 组合</b><p>按职责挑选：1 个骨架 + 2–4 个支撑 + 1–2 个点睛；检查 <code>pairsWellWith</code> 与 <code>conflicts</code>。</p></li>
+        <li><b>04 导出</b><p><code>atlas.mjs export &lt;id&gt; --out dir</code> 得到可运行 Demo、PROMPT.md 与迁移说明；只改 <code>config.js</code> / <code>CONFIG</code>。</p></li>
+        <li><b>05 验证</b><p>按节拍表截图核对；按时间播放的作品用 <code>render.mjs</code> 逐帧出片；遵守 12px 字号与减少动态。</p></li>
+      </ol>
     </section>
 
     <section class="ag-band ag-two">

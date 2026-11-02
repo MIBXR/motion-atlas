@@ -147,8 +147,7 @@
         <section>
           <header class="lib-head">
             <div>
-              <p class="eyebrow">${KIND === 'cases' ? 'CASE COLLECTION · RHYTHM / MOTION / HUD' : isMaterial ? '素材库 · 工作流与实现手段' : 'PATTERN COLLECTION · ATOMIC MECHANISMS'}</p>
-              <h1>${KIND === 'cases' ? '先看懂节拍，<br>再拿走<em>动势</em>。' : isMaterial ? '找到<em>实现手段</em>，<br>让想法走向成片。' : '一个触发，<br>一种<em>可借用</em>的结果。'}</h1>
+              <h1>${KIND === 'cases' ? '案例库' : isMaterial ? '素材库' : '巧思库'}</h1>
               <p title="${esc(description)}">${esc(description)}</p>
             </div>
             ${isMaterial ? '' : heroArt}
@@ -512,7 +511,7 @@
     });
     document.body.append(toc);
     const ro = new ResizeObserver(scheduleLayout);
-    detailColumns = { el, cols, header, actions, ro, toc, headings, markers, registry: cols[0].querySelector('.hf-registry') };
+    detailColumns = { el, cols, header, actions, ro, toc, headings, markers, registry: cols[0].querySelector('.hf-registry'), head: el.querySelector('.info-col > .detail-head') };
     const targets = [el, ...cols, header, actions];
     if (det) targets.push(det.bar, det.sc, det.strip);
     targets.forEach(x => ro.observe(x));
@@ -534,7 +533,10 @@
   }
   function layoutColumns() {
     if (!detailColumns) return;
-    const { el, cols, actions } = detailColumns;
+    const { el, cols, actions, head } = detailColumns;
+    const grid = el.querySelector('.detail-grid');
+    if (head && innerWidth < 1160 && head.parentElement !== grid) grid.prepend(head);
+    else if (head && innerWidth >= 1160 && head.parentElement !== cols[1]) cols[1].prepend(head);
     const sticky = innerWidth > 1159 && !det?.fs;
     const top = actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
     el.style.setProperty('--detail-sticky-top', `calc(var(--header-offset) + ${top}px)`);
@@ -1015,7 +1017,7 @@
   });
 
   /* ---------- 详情：说明 ---------- */
-  const sec = (title, en, body) => `<section class="note-sec"><h2>${title}<small>${en}</small></h2>${body}</section>`;
+  const sec = (title, en, body) => `<section class="note-sec"><h2>${title}${en.startsWith('BEAT SHEET') ? `<small>${en.replace('BEAT SHEET · ', '')}</small>` : ''}</h2>${body}</section>`;
   const ul = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>—</p>');
   const promptBox = (id, text) => `<div class="prompt-box"><pre id="${id}">${esc(text)}</pre><button class="btn" type="button" data-copy="${id}">${ICONS.copy}<span>复制</span></button></div>`;
   const documentLinks = it => {
