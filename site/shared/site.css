@@ -246,6 +246,16 @@ details[open] > summary .group-indicator .icon:last-child { display: inline-bloc
 .detail-head .sub { font: 600 12px/1.4 var(--f-mono); letter-spacing: .14em; color: var(--muted); }
 .detail-head .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .info-col { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; min-width: 0; align-content: start; container: info / inline-size; }
+.detail-toc { position:fixed; right:2px; bottom:84px; z-index:35; display:flex; flex-direction:column; justify-content:center; width:24px; pointer-events:none; }
+.detail-toc > button { position:relative; display:flex; align-items:center; justify-content:center; flex:0 1 20px; min-height:0; width:100%; padding:0; border:0; background:transparent; color:var(--muted); opacity:.55; pointer-events:auto; }
+.detail-toc > button > svg { display:block; flex:none; width:12px; height:4px; }
+.detail-toc > button:is(:hover,:focus-visible,[aria-current]) { color:var(--accent-1); opacity:1; }
+.detail-toc > button:is(:hover,:focus-visible,[aria-current]) > svg { width:20px; }
+.detail-toc > button:focus-visible { outline-offset:0; }
+.detail-toc-label { position:absolute; top:50%; right:calc(100% + 8px); transform:translateY(-50%); width:max-content; max-width:min(260px,calc(100vw - 56px)); padding:8px 12px; border:1px solid var(--line); border-radius:var(--r); background:var(--surface); color:var(--ink); font:400 14px/1.5 var(--f-sans); text-align:left; overflow-wrap:anywhere; visibility:hidden; pointer-events:none; box-shadow:0 4px 16px color-mix(in srgb,var(--ink) 12%,transparent); }
+.detail-toc > button:is(:hover,:focus-visible) > .detail-toc-label { visibility:visible; }
+@media (hover:none) { .detail-toc > button:focus > .detail-toc-label { visibility:visible; } }
+@media (max-width:800px) { .detail-toc { right:0; width:16px; } .detail-toc > button > svg { width:8px; } .detail-toc > button:is(:hover,:focus-visible,[aria-current]) > svg { width:14px; } }
 .detail-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-width: 0; margin-left: auto; }
 @media (max-width: 1159px) { .detail-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 800px) {
