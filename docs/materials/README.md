@@ -12,4 +12,7 @@
 
 - [Claude Animation Base · 手绘卡通动画套件](claude-animation-base.md)
 
+- [HyperFrames Agent Skills 使用说明](hyperframes-skills.md)
+- [HyperFrames Registry 使用说明](hyperframes-registry.md)
+
 [打开素材库](../../materials.html) · [Agent 取材](../agent.md)
