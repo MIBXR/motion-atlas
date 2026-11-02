@@ -1,3 +1,4 @@
+@import url('../runtime/demo-scrollbars.css');
 /* Motion Atlas · 站点共享样式
  * 主题：跟随系统 / 浅色 / 深色（html[data-theme]）。全部界面文字的最终渲染字号 ≥ 12px。 */
 :root {
@@ -50,7 +51,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.65 var(--f-sans); -webkit-font-smoothing: antialiased; }
-html, body * { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 a { color: inherit; }
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
@@ -463,4 +464,20 @@ body .gen-list { overflow-y: auto; overflow-x: hidden; }
 
 @media (max-width: 389px) {
   .brand-word { display: none; }
+}
+.material-detail > .detail-head { margin-bottom:20px; }
+.skill-guide-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr)); gap:10px; }
+.skill-guide-list a { display:grid; align-content:start; gap:4px; padding:12px; border:1px solid var(--line); border-radius:8px; color:var(--ink); text-decoration:none; }
+.skill-guide-list a:hover { border-color:var(--accent-1); }
+.skill-guide-list code { color:var(--accent-1); font:12px/1.5 var(--f-mono); overflow-wrap:anywhere; }
+.skill-guide-list span { color:var(--ink-2); font-size:14px; }
+@media (max-width:767px) {
+  .material-detail > .detail-head { margin-bottom:12px; }
+  .material-detail > .detail-head .eyebrow, .material-detail > .detail-head .chips { display:none; }
+  .material-detail > .detail-head h1 { margin:0; font-size:22px; line-height:1.25; }
+}
+@media (max-height:520px) {
+  .material-detail:has(.hf-registry) > .detail-head { margin-bottom:8px; }
+  .material-detail:has(.hf-registry) > .detail-head :is(.eyebrow,.chips) { display:none; }
+  .material-detail:has(.hf-registry) > .detail-head h1 { font-size:22px; }
 }

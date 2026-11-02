@@ -481,11 +481,12 @@
     if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); layoutColumns(); });
   }
   addEventListener('resize', scheduleLayout);
+  addEventListener('scroll', () => { if (detailColumns?.registry) scheduleLayout(); }, { passive: true });
   function mountDetailColumns() {
     const el = root.querySelector('.detail'), cols = [...el.querySelector('.detail-grid').children];
     const header = document.getElementById('site-header'), actions = root.querySelector('.page-actions');
     const ro = new ResizeObserver(scheduleLayout);
-    detailColumns = { el, cols, header, actions, ro };
+    detailColumns = { el, cols, header, actions, ro, registry: cols[0].querySelector('.hf-registry') };
     const targets = [el, ...cols, header, actions];
     if (det) targets.push(det.bar, det.sc, det.strip);
     targets.forEach(x => ro.observe(x));
@@ -497,6 +498,11 @@
     const sticky = innerWidth > 1159 && !det?.fs;
     const top = actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
     el.style.setProperty('--detail-sticky-top', `calc(var(--header-offset) + ${top}px)`);
+    const { registry } = detailColumns;
+    if (registry) {
+      const stageTop = Math.max(registry.getBoundingClientRect().top, actions.getBoundingClientRect().bottom);
+      registry.style.setProperty('--hf-room', Math.max(0, innerHeight - stageTop - BOTTOM) + 'px');
+    }
     cols[0].classList.toggle('is-sticky', sticky);
     cols[1].classList.toggle('is-sticky', sticky && cols[0].getBoundingClientRect().height > cols[1].getBoundingClientRect().height);
   }
@@ -993,18 +999,27 @@
         <figcaption class="card-body"><span class="chip accent">${galleryKinds[image.kind]}</span><p class="card-sum">${esc(image.caption)}</p><p class="material-credit">作者产出效果，未复刻</p>${sourceUrl ? `<a class="material-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}${license ? `<p class="material-credit">${esc(license)}</p>` : ''}</figcaption></figure>`;
     }).join('')}</div>`;
     const related = it.relatedEntries?.length ? `<ul>${it.relatedEntries.map((relation) => {
-      const kind = { case: 'cases', pattern: 'patterns' }[relation.kind] || relation.kind;
+      const kind = { case: 'cases', pattern: 'patterns', material: 'materials' }[relation.kind] || relation.kind;
       const entry = byId(MA[kind], relation.id);
-      const hash = kind === 'cases' ? 'case' : 'pattern';
+      const hash = { cases: 'case', patterns: 'pattern', materials: 'material' }[kind];
       return `<li><a href="${kind}.html#${hash}/${esc(relation.id)}">${esc(entry.title)}</a>：${esc(relation.note)}</li>`;
     }).join('')}</ul>` : `<p>本库暂无由此 ${it.type === 'agent-skill' ? 'skill' : '素材'} 产出的复刻案例</p>`;
     const references = [['README.zh-CN.md', '中文说明'], ['README.md', '原版说明']];
     if (it.type === 'prompt-kit') references.push(['template.md', '提示词模板'], ['rubric.md', '评审量表'], ['lib/audio/README.md', 'mgaudio 配乐说明'], ...it.snapshotFiles.filter(file => file.startsWith(it.snapshotPath + 'prompts/') && file.endsWith('.md')).map(file => [file.slice(it.snapshotPath.length), '风格提示词']));
     const snapshotLinks = it.snapshotPath ? `<ul><li><a href="docs.html#doc/${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${references.filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="docs.html#doc/${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
-    return { preview: `${it.gallery?.length ? sec('效果图画廊', '', gallery) : ''}${it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`)}`, notes: [
+    let preview;
+    if (it.id === 'hyperframes-registry') {
+      preview = `<link rel="stylesheet" href="demos/materials/hyperframes-registry/demo/demo.css"><div class="hf-registry" aria-label="模块与模板预览"></div>`;
+    } else if (it.skillGuide) {
+      const cards = it.skillGuide.map(group => sec(group.title, '', `<div class="skill-guide-list">${group.skills.map(skill => `<a href="docs.html#doc/${esc(it.snapshotPath + 'skills/' + skill.id + '/SKILL.md')}"><strong>${esc(skill.title)}</strong><code>/${esc(skill.id)}</code><span>${esc(skill.description)}</span></a>`).join('')}</div>`));
+      preview = cards.join('') + sec('从计划到成片', '', `<ol>${it.workflow.map(step => `<li>${esc(step)}</li>`).join('')}</ol>`);
+    } else {
+      preview = `${it.gallery?.length ? sec('效果图画廊', '', gallery) : ''}${it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`)}`;
+    }
+    return { preview, notes: [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
       sec('为什么归入本库', '', `<p>${esc(it.carrierNote)}</p>`),
-      it.workflow?.length ? sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`) : '',
+      it.workflow?.length && !it.skillGuide ? sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`) : '',
       sec('适合与避用', '', `<h3>适合</h3>${ul(it.useCases)}<h3>避用</h3>${ul(it.avoid)}`),
       sec('关联条目', '', related),
       it.install ? sec('安装方式', '', promptBox('material-install', it.install)) : '',
@@ -1017,9 +1032,13 @@
     destroyDetail();
     document.title = `${it.title} · Motion Atlas`;
     const material = materialNotes(it);
-    root.innerHTML = `${pageActions(it)}<div class="detail material-detail"><div class="detail-grid"><section class="material-stage" aria-label="素材预览">${material.preview}</section><div class="info-col">
-      <header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 素材 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(materialTypes[it.type])}</span></div></header>
-      <div class="notes">${material.notes}</div></div></div></div>`;
+    const heading = `<header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 素材 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(materialTypes[it.type])}</span></div></header>`;
+    const guideFirst = it.id === 'hyperframes-registry' || it.skillGuide;
+    root.innerHTML = `${pageActions(it)}<div class="detail material-detail">${guideFirst ? heading : ''}<div class="detail-grid"><section class="material-stage" aria-label="素材预览">${material.preview}</section><div class="info-col">${guideFirst ? '' : heading}<div class="notes">${material.notes}</div></div></div></div>`;
+    if (it.id === 'hyperframes-registry') {
+      const panel = root.querySelector('.hf-registry');
+      import('../../demos/materials/hyperframes-registry/demo/demo.js').then(({mountRegistry}) => mountRegistry(panel));
+    }
     mountDetailColumns();
     bindDetailFavorite(it);
     root.querySelector('[data-copy]')?.addEventListener('click', () => copy(it.install, '安装方式已复制'));

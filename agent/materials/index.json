@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "materials",
-  "count": 7,
+  "count": 9,
   "materials": [
     {
       "id": "motion-showreel",
@@ -502,6 +502,60 @@
         }
       ],
       "bundle": "agent/materials/remotion-skills.json"
+    },
+    {
+      "id": "hyperframes-skills",
+      "title": "HyperFrames Agent Skills · HTML 视频技能包",
+      "summary": "HyperFrames 的 8 个技能目录快照：/hyperframes 作为总入口，核心四项负责 HTML 合成约定、CLI、模块安装与媒体；其余四项处理 Figma、演示文稿、既有视频代码迁移与视频重建。",
+      "type": "agent-skill",
+      "carrierNote": "技能用于把 HTML 编写的合成逐帧渲染为视频，最终形态是视频，因此归入本库。",
+      "useCases": [
+        "让编码 Agent 从计划制作 HTML 视频、产品宣传片、讲解片和竖屏短片",
+        "编排可定位动画、字幕、数据图表、地图与三维画面",
+        "检索并安装可编辑模块，取得图片、音视频和字幕媒体",
+        "把 Figma 设计、既有视频代码或视频重建为 HyperFrames 项目"
+      ],
+      "avoid": [
+        "脱离视频制作的一般网页开发",
+        "以墙钟时间、无种子的随机数或实时网络驱动画面",
+        "把 /slideshow 的现场演示文稿直接视为 MP4 成片"
+      ],
+      "snapshotPath": "demos/materials/hyperframes-skills/",
+      "snapshotEntry": "skills/hyperframes/SKILL.md",
+      "relatedEntries": [
+        {
+          "kind": "material",
+          "id": "hyperframes-registry",
+          "note": "同一上游的视频模块与模板精选，用 /hyperframes-registry 安装"
+        }
+      ],
+      "bundle": "agent/materials/hyperframes-skills.json"
+    },
+    {
+      "id": "hyperframes-registry",
+      "title": "HyperFrames Registry · 视频模块与模板精选",
+      "summary": "HyperFrames Registry 的 55 个精选模块与 8 个模板，提供可编辑的标题、字幕、转场、数据图表、三维场景、相机与质感源码。本地播放器预览精选项，完整索引覆盖 22 个官方分类的 448 个模块及 8 个模板。",
+      "type": "component-library",
+      "carrierNote": "模块与模板是按时间线逐帧渲染的 HTML 合成，最终形态是视频，因此归入本库。",
+      "useCases": [
+        "在视频项目中复用标题、动态字幕、转场、社交卡片与图表",
+        "以可编辑源码组合三维画面、镜头运动、纹理和效果",
+        "从完整模板开始搭建视频，再替换文案、变量与媒体"
+      ],
+      "avoid": [
+        "把 component 当作自带完整时间线的独立 block 安装",
+        "用 hyperframes add 安装完整项目模板",
+        "用实时网络或不可定位动画驱动逐帧视频"
+      ],
+      "demo": "demos/materials/hyperframes-registry/index.html",
+      "relatedEntries": [
+        {
+          "kind": "material",
+          "id": "hyperframes-skills",
+          "note": "同一上游的 Agent Skill，/hyperframes-registry 负责安装这些模块与模板"
+        }
+      ],
+      "bundle": "agent/materials/hyperframes-registry.json"
     }
   ]
 }
