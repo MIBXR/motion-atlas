@@ -149,7 +149,7 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 ## 本库收录
 
-原文快照包含根目录指南和许可、`plugin/skills/lemo-opuscar/`、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的`STYLE.md` / `DEMO.md` / `style.json`，以及`core/`的代码与文字。快照不含`core/assets/`、字体二进制、各风格的`demo/`代码和成片。
+原文快照包含根目录指南、许可和 Node / Python 依赖清单、`plugin/`中的技能与插件清单、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的`STYLE.md` / `DEMO.md` / `style.json`、`core/`的代码与文字，以及`tools/fetch.sh`和资源清单`tools/assets.json`。快照不含`core/assets/`、字体二进制、各风格的`demo/`代码和成片。
 
 以下16种风格未复刻：与已有案例重合的 pixel-rpg、iso-infographic、isometric-picture-book、one-line、glass-product；效果未达要求的 game-show、cel-anime-80s、scifi-toon、rubber-hose、microgame、tilt-shift、desktop-flythrough、silent-film、data-physical、newsreel；画面由 Python 离线合成的 city-symphony。
 
