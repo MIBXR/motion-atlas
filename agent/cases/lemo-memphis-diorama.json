@@ -325,7 +325,7 @@
     "attribution": [
       {
         "scope": "作品",
-        "notes": "Eian（[YIAN6557](https://github.com/YIAN6557)，[@EianLu](https://x.com/EianLu)）创作并贡献；LemoLab × Claude Opus 5.5，作者 Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/f17136060781a0068a7951245a3aa7835a7230de/styles/memphis-diorama)，代码 MIT、成片 CC BY 4.0；本库以原作代码接入 MotionKit，音轨流复制，具体改动见 [fidelity.md](fidelity.md)。"
+        "notes": "Eian（[YIAN6557](https://github.com/YIAN6557)，[@EianLu](https://x.com/EianLu)）创作并贡献；LemoLab × Claude Opus 5.5，作者 Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/f17136060781a0068a7951245a3aa7835a7230de/styles/memphis-diorama)，代码 MIT、成片 CC BY 4.0。"
       },
       {
         "scope": "声音与第三方资源",
@@ -490,7 +490,7 @@
     },
     {
       "path": "entries/cases/lemo-memphis-diorama.json",
-      "bytes": 12195,
+      "bytes": 12092,
       "role": "entry"
     },
     {

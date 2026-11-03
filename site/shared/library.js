@@ -384,7 +384,6 @@
     const d = det = {
       it, el, actions: root.querySelector('.page-actions'), col: $('stage-col'), bar: el.querySelector('.stage-bar'),
       frame: $('stage-frame'), ifr: $('demo-frame'), sc: $('scrubber'), track: $('scrub-track'), svg: $('scrub-svg'),
-      caption: el.querySelector('.stage-caption'),
       head: $('scrub-head'), tip: $('scrub-tip'), time: $('scrub-time'), dur: $('scrub-dur'), play: $('scrub-play'),
       strip: $('beat-list'), side: $('beat-side'), seg: el.querySelector('.orient-seg'), badge: el.querySelector('.orient-badge'),
       snd: el.querySelector('.sound-btn'), fsBtn: el.querySelector('[data-act="fullscreen"]'), open: el.querySelector('[data-act="open"]'),
@@ -564,7 +563,7 @@
       const stripBlock = parseFloat(getComputedStyle(d.strip).height) + (parseFloat(scCS.rowGap) || 0);
       const scBase = d.sc.querySelector('.scrub-row').offsetHeight + parseFloat(scCS.paddingTop) + parseFloat(scCS.paddingBottom) + parseFloat(scCS.borderTopWidth) + parseFloat(scCS.borderBottomWidth);
       const actionH = d.actions.getBoundingClientRect().height;
-      const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM + (d.caption ? d.caption.offsetHeight + gap : 0);
+      const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
       const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
       mode = innerWidth > 1159 ? 'split' : 'stack';
       Object.assign(vars, { '--stage-col': W });
@@ -1126,7 +1125,7 @@
       rows.push(`<dt>采用版本</dt><dd>${link(`https://github.com/${it.upstream.repository}/commit/${it.upstream.commit}`, esc(it.upstream.commit.slice(0, 7)))}${it.upstream.version && it.upstream.version !== it.upstream.commit ? ` · ${esc(it.upstream.version)}` : ''}</dd>`);
     }
     const sources = (it.sources || []).filter(source => !notes.includes(source.url));
-    return rows.length || sources.length ? sec('许可与来源', 'SOURCES', `${rows.length ? `<dl class="kv">${rows.join('')}</dl>` : ''}${sources.length ? `<ul style="margin-top:10px">${sources.map(source => `<li>${link(source.url, esc(source.label || source.title))}</li>`).join('')}</ul>` : ''}`) : '';
+    return rows.length || sources.length ? sec('许可与来源', 'SOURCES', `${rows.length ? `<dl class="kv">${rows.join('')}</dl>` : ''}${sources.length ? `<ul style="margin-top:10px">${sources.map(source => `<li>${link(source.url, esc(source.label))}</li>`).join('')}</ul>` : ''}`) : '';
   }
 
   function caseNotes(it) {

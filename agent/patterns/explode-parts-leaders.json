@@ -912,12 +912,12 @@
     },
     {
       "path": "entries/cases/lemo-hologram-hud.json",
-      "bytes": 8372,
+      "bytes": 8333,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-teardown.json",
-      "bytes": 9699,
+      "bytes": 9660,
       "role": "entry"
     },
     {

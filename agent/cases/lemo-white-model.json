@@ -277,7 +277,7 @@
     "attribution": [
       {
         "scope": "作品",
-        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/white-model)，代码MIT、成片CC BY 4.0；接入与对照见[fidelity.md](fidelity.md)。"
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）。[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/white-model)，代码MIT、成片CC BY 4.0。"
       },
       {
         "scope": "第三方素材与声音",
@@ -637,7 +637,7 @@
     },
     {
       "path": "entries/cases/lemo-white-model.json",
-      "bytes": 10027,
+      "bytes": 9980,
       "role": "entry"
     },
     {

@@ -42,7 +42,7 @@
     },
     {
       "name": "正文遮罩",
-      "value": "总长0.95秒，最大顺序延迟为进度的0.22，每行占进度0.78，translateX 0→101%",
+      "value": "只在玻璃clarity>0后开始，按DOM实际折行分配延迟；总长0.95秒，最大顺序延迟为进度的0.22，每行占进度0.78，translateX 0→101%",
       "source": "demos/cases/archive-os/source/rhinelabui/src/document-decryption.ts:25–66,72–95"
     }
   ],
@@ -53,11 +53,7 @@
     },
     {
       "name": "转清",
-      "value": "参考38.84→39.56秒，互动时间约0.48秒；总物理解密约3.6267秒"
-    },
-    {
-      "name": "遮挡条",
-      "value": "只在玻璃clarity>0后开始；总长0.95秒，按DOM实际折行分配0→0.22的进度延迟，每行占0.78进度"
+      "value": "参考38.84→39.56秒，互动时间约0.48秒"
     }
   ],
   "useCases": [

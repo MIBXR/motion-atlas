@@ -14,9 +14,6 @@
 
 ## 参数
 
-- **时长**：每次 460ms，49 点临界阻尼轨迹
-- **运动模糊**：SVG Gaussian blur 随字高与实时速度变化；数字 0.35、文字 0.2
 - **方向**：编号、行号与列号按导航方向；文字默认正向
-- **连续输入**：9s 与 9.35s 接连切列；第二次读取未完成动画的位置和速度
 
 [打开 Demo](../../demos/patterns/rolling-digits/index.html) · [在库中查看](../../patterns.html#pattern/rolling-digits)

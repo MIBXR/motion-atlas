@@ -71,7 +71,7 @@
   "parameters": [
     {
       "name": "时间基准",
-      "value": "25fps；原片帧号 floor((t+5)×25+0.00001)；开场 21.92s",
+      "value": "25fps；原片帧号 floor((t+5)×25+0.00001)",
       "source": "demos/cases/archive-os/source/rhinelabui/src/boot-motion.ts:20-24,137-138"
     },
     {
