@@ -5086,12 +5086,12 @@
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9919,
+      "bytes": 9770,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 16568,
+      "bytes": 16255,
       "role": "entry"
     },
     {

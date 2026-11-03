@@ -267,12 +267,6 @@
         "what": "竖排 BAUHAUS 逐字出现，德文与中文小字补齐，9.5 秒完成套印锁定。"
       }
     ],
-    "interaction": [
-      "播放、暂停、拖动时间轴和切换预览速度；仅提供横屏。",
-      "声音默认关闭；开启后播放无损抽取的原片音轨，跳转、暂停与变速跟随时间轴。",
-      "?embed 隐藏控制条，?render 停止自动播放并关闭声音，?t=秒定位。",
-      "减少动态时默认暂停在 9.75 秒，仍可主动播放与定位。"
-    ],
     "constraints": [
       "10 秒、1920×1080、30fps；原作 motionBlur 为 8 子帧、快门 0.5。",
       "原作来自 Vincentwei1021/mg-styles-15，作者 Vincentwei1021，固定提交 49052d80bfaf9fa8412cc9710530e5e95a3b8d8c，MIT 许可；完整出处与素材许可见 Demo 内 LICENSES.md。"
@@ -487,7 +481,7 @@
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 20027,
+      "bytes": 19633,
       "role": "entry"
     },
     {

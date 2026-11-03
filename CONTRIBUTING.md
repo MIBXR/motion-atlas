@@ -218,10 +218,10 @@ git ls-files --others --ignored --exclude-standard
 | `rhythm` | `{ duration, bpm?, beats: [{ t, label, note }] }`，时刻单位为秒 |
 | `energy` | 覆盖作品时长的 0–1 等距能量采样 |
 | `energySegments`、`energyNote` | `{ t0, t1, from, to, label }` 分段线性插值与数值来源；同时有等距采样时优先显示分段 |
-| `focus`、`observations` | 设计重点与画面观察 |
+| `focus`、`observations` | 设计重点与画面观察；观察可为纯文本或 `{ at?, what }`，`at` 为时间或画面位置标记 |
 | `composition`、`layers` | 视觉、声音构成与画面分层 |
 | `tokens` | `{ palette: [], type: '', motion: [{ name, value }] }` |
-| `interaction` | 操作与状态 |
+| `composition.interaction` | 可选，作品自身的操作与反馈 |
 | `migration` | 可选，`[{ field, how }]`：常改内容的位置与修改方法 |
 | `useCases`、`avoid`、`constraints` | 适用范围、避用与制作约束 |
 | `patternIds` | 关联巧思 id |

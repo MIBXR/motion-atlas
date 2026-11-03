@@ -1113,21 +1113,23 @@
   function caseNotes(it) {
     const c = it.composition || {};
     const beats = it.rhythm?.beats || [];
+    const composition = [['色彩', c.color], ['字体', c.typography], ['版式', c.layout], ['图像', c.imagery], ['动效', c.motion], ['交互', c.interaction], ['声音', c.sound], ['节奏', c.rhythm], ['协调', c.coherence]].filter(([, value]) => value);
+    const fit = [['适用', it.useCases], ['避免', it.avoid]].filter(([, values]) => values?.length);
+    const materials = (it.relatedEntries || []).filter(relation => relation.kind === 'material');
     return [
       sec('概述', 'OVERVIEW', `<p>${esc(it.summary)}</p>${it.focus ? `<p>${esc(it.focus)}</p>` : ''}`),
       beats.length ? sec('节奏结构', `BEAT SHEET · ${it.rhythm.duration ? it.rhythm.duration + 's' : ''}${it.rhythm.bpm ? ' · ' + it.rhythm.bpm + ' BPM' : ''}`,
         `<table class="beat-table"><thead><tr><th>时间</th><th>节拍</th><th>发生了什么</th></tr></thead><tbody>${beats.map((b) => `<tr><td><button type="button" data-seek="${b.t}">${fmtT(b.t).replace(/^00:/, '')}</button></td><td>${esc(b.label)}</td><td>${esc(b.note || '')}</td></tr>`).join('')}</tbody></table>${it.energyNote ? `<p>${esc(it.energyNote)}</p>` : ''}`) : '',
-      sec('构成', 'COMPOSITION', `${it.tokens?.palette ? `<div class="swatches" style="margin-bottom:14px">${it.tokens.palette.map((p) => `<span class="swatch"><i style="background:${esc(p)}"></i>${esc(p)}</span>`).join('')}</div>` : ''}
-        <dl class="kv">${[['色彩', c.color], ['字体', c.typography], ['版式', c.layout], ['图像', c.imagery], ['动效', c.motion], ['声音', c.sound], ['节奏', c.rhythm], ['协调', c.coherence]].filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`),
-      it.tokens?.motion ? sec('动效 Token', 'MOTION TOKENS', `<table class="token-table"><tbody>${it.tokens.motion.map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.value)}</td></tr>`).join('')}</tbody></table>`) : '',
-      it.layers ? sec('画面分层', 'LAYERS', `<table class="token-table"><tbody>${it.layers.map((l) => `<tr><td>${esc(l.name)}</td><td>${esc(l.role)}</td></tr>`).join('')}</tbody></table>`) : '',
-      it.observations ? sec('画面细节', 'DETAILS', `<table class="beat-table obs-table"><tbody>${it.observations.map((o) => `<tr><td>${esc(o.at)}</td><td>${esc(o.what)}</td></tr>`).join('')}</tbody></table>`) : '',
-      sec('交互与状态', 'INTERACTION', ul(it.interaction)),
+      composition.length || it.tokens?.palette?.length ? sec('构成', 'COMPOSITION', `${it.tokens?.palette?.length ? `<div class="swatches" style="margin-bottom:14px">${it.tokens.palette.map((p) => `<span class="swatch"><i style="background:${esc(p)}"></i>${esc(p)}</span>`).join('')}</div>` : ''}
+        ${composition.length ? `<dl class="kv">${composition.map(([key, value]) => `<dt>${key}</dt><dd>${esc(value)}</dd>`).join('')}</dl>` : ''}`) : '',
+      it.tokens?.motion?.length ? sec('动效 Token', 'MOTION TOKENS', `<table class="token-table"><tbody>${it.tokens.motion.map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.value)}</td></tr>`).join('')}</tbody></table>`) : '',
+      it.layers?.length ? sec('画面分层', 'LAYERS', `<table class="token-table"><tbody>${it.layers.map((l) => `<tr><td>${esc(l.name)}</td><td>${esc(l.role)}</td></tr>`).join('')}</tbody></table>`) : '',
+      it.observations?.length ? sec('画面细节', 'DETAILS', `<ul>${it.observations.map(o => `<li>${typeof o === 'string' ? esc(o) : `${o.at ? `<strong>${esc(o.at)}</strong>：` : ''}${esc(o.what)}`}</li>`).join('')}</ul>`) : '',
       sec('可复用 Prompt', 'PROMPT', promptTabs(it)),
-      it.migration ? sec('迁移指南', 'MIGRATE', `<table class="token-table"><tbody>${it.migration.map((m) => `<tr><td>${esc(m.field)}</td><td>${esc(m.how)}</td></tr>`).join('')}</tbody></table>`) : '',
-      sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl><div style="margin-top:10px">${ul(it.constraints)}</div>`),
-      sec('关联巧思', 'PATTERNS', relPatterns(it.patternIds)),
-      it.relatedEntries?.length ? sec('关联素材', 'MATERIALS', `<ul>${it.relatedEntries.filter(relation => relation.kind === 'material').map(relation => `<li><a href="materials.html#material/${esc(relation.id)}">${esc(byId(MA.materials, relation.id).title)}</a>：${esc(relation.note)}</li>`).join('')}</ul>`) : '',
+      it.migration?.length ? sec('迁移指南', 'MIGRATE', `<table class="token-table"><tbody>${it.migration.map((m) => `<tr><td>${esc(m.field)}</td><td>${esc(m.how)}</td></tr>`).join('')}</tbody></table>`) : '',
+      fit.length || it.constraints?.length ? sec('适用与边界', 'FIT', `${fit.length ? `<dl class="kv">${fit.map(([key, values]) => `<dt>${key}</dt><dd>${esc(values.join('、'))}</dd>`).join('')}</dl>` : ''}${it.constraints?.length ? `<div style="margin-top:10px">${ul(it.constraints)}</div>` : ''}`) : '',
+      it.patternIds?.length ? sec('关联巧思', 'PATTERNS', relPatterns(it.patternIds)) : '',
+      materials.length ? sec('关联素材', 'MATERIALS', `<ul>${materials.map(relation => `<li><a href="materials.html#material/${esc(relation.id)}">${esc(byId(MA.materials, relation.id).title)}</a>：${esc(relation.note)}</li>`).join('')}</ul>`) : '',
       documentLinks(it),
     ].join('');
   }

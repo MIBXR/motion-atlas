@@ -652,17 +652,17 @@
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24981,
+      "bytes": 24667,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 21486,
+      "bytes": 21173,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 16568,
+      "bytes": 16255,
       "role": "entry"
     },
     {

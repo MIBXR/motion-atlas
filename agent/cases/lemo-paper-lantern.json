@@ -179,10 +179,6 @@
         }
       ]
     },
-    "interaction": [
-      "播放、暂停与逐帧定位，声音默认关闭。",
-      "减少动态时暂停在9.6秒，可手动播放。"
-    ],
     "useCases": [
       "旅程与旅行短片",
       "告别与周年影像",
@@ -484,7 +480,7 @@
     },
     {
       "path": "entries/cases/lemo-paper-lantern.json",
-      "bytes": 10295,
+      "bytes": 10151,
       "role": "entry"
     },
     {
