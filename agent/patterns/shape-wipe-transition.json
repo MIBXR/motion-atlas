@@ -593,17 +593,17 @@
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 21486,
+      "bytes": 21173,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 19356,
+      "bytes": 19042,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 16369,
+      "bytes": 16056,
       "role": "entry"
     },
     {

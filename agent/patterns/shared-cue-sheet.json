@@ -949,27 +949,27 @@
     },
     {
       "path": "entries/cases/mg-bauhaus.json",
-      "bytes": 20027,
+      "bytes": 19633,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24981,
+      "bytes": 24667,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 21486,
+      "bytes": 21173,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19904,
+      "bytes": 19584,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 22545,
+      "bytes": 22267,
       "role": "entry"
     },
     {

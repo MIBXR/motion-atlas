@@ -253,11 +253,6 @@
         }
       ]
     },
-    "interaction": [
-      "时间线播放、暂停与按帧定位，可点击章节点跳转。",
-      "声音默认关闭，使用独立声音按钮开启原始 MP3。",
-      "减少动态时暂停在 24 秒；render 模式逐帧等待上游异步绘制。"
-    ],
     "migration": [
       {
         "field": "film/src/lyrics.js → LY",
@@ -569,7 +564,7 @@
     },
     {
       "path": "entries/cases/pdoom-video.json",
-      "bytes": 13652,
+      "bytes": 13392,
       "role": "entry"
     },
     {
