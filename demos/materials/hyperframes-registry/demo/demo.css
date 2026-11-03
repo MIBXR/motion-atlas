@@ -26,6 +26,7 @@ html[data-theme="light"] .hf-mark .hf-day,html[data-theme="dark"] .hf-mark .hf-n
 .hf-range span.active { color:var(--hf-paper); }
 @media(prefers-reduced-motion:reduce) { .hf-range::before { transition:none; } }
 .hf-search { width:100%; min-height:34px; border:1px solid var(--hf-rule); border-radius:5px; background:var(--hf-surface); padding:4px 8px; }
+.hf-empty { margin:0; padding:6px 4px; color:var(--hf-muted); font-size:12px; }
 .hf-tree { overflow-y:auto; flex:1; min-height:0; padding-right:4px; }
 .hf-tree details { margin:0 0 3px; }
 .hf-tree summary,.hf-tree button,.hf-toggle { cursor:pointer; }

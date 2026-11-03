@@ -337,7 +337,7 @@
 (() => {
   'use strict';
   let current;
-  const searchable = select => select instanceof HTMLSelectElement && !select.disabled && !select.multiple && select.options.length >= 12;
+  const singleSelect = select => select instanceof HTMLSelectElement && !select.disabled && !select.multiple;
 
   function close(focus = false) {
     if (!current) return;
@@ -350,17 +350,17 @@
 
   function position() {
     if (!current) return;
-    const { select, menu, list } = current;
+    const { select, menu, list, hasSearch } = current;
     const rect = select.getBoundingClientRect();
     if (!rect.width || !rect.height) { close(); return; }
     const viewport = window.visualViewport;
     const height = viewport?.height || innerHeight;
     const offset = viewport?.offsetTop || 0;
-    const width = Math.min(Math.max(rect.width, 260), innerWidth - 24);
+    const width = Math.min(Math.max(rect.width, hasSearch ? 260 : 160), innerWidth - 24);
     const below = offset + height - Math.max(offset, rect.bottom) - 16;
     const above = Math.min(rect.top, offset + height) - offset - 16;
     const up = below < 180 && above > below;
-    list.style.maxHeight = Math.max(64, Math.min(300, (up ? above : below) - 58)) + 'px';
+    list.style.maxHeight = Math.max(64, Math.min(300, (up ? above : below) - (hasSearch ? 58 : 14))) + 'px';
     menu.style.width = width + 'px';
     menu.style.left = Math.max(12, Math.min(rect.left, innerWidth - width - 12)) + 'px';
     menu.style.top = Math.max(offset + 12, Math.min(up ? rect.top - menu.offsetHeight - 4 : rect.bottom + 4, offset + height - menu.offsetHeight - 12)) + 'px';
@@ -371,35 +371,40 @@
     close();
     const label = select.getAttribute('aria-label') || select.labels[0]?.textContent.trim() || '选项';
     const menu = document.createElement('div');
+    const hasSearch = select.options.length >= 12;
     menu.className = 'atlas-select-menu';
     menu.setAttribute('popover', 'manual');
-    menu.innerHTML = '<div class="atlas-select-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input class="atlas-select-input" type="search" autocomplete="off" placeholder="搜索选项" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="atlas-select-options"></div><div class="atlas-select-list" id="atlas-select-options" role="listbox"></div>';
+    menu.innerHTML = (hasSearch ? '<div class="atlas-select-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input class="atlas-select-input" type="search" autocomplete="off" placeholder="搜索选项" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="atlas-select-options"></div>' : '') + '<div class="atlas-select-list" id="atlas-select-options" role="listbox" tabindex="-1"></div>';
     const input = menu.querySelector('input');
     const list = menu.querySelector('.atlas-select-list');
-    input.setAttribute('aria-label', '搜索' + label);
+    if (input) input.setAttribute('aria-label', '搜索' + label);
     list.setAttribute('aria-label', label);
+    const focusTarget = input || list;
     (select.closest('dialog') || document.body).append(menu);
-    current = { select, menu, list };
+    current = { select, menu, list, hasSearch };
     let active = 0;
     let buttons = [];
+    let typed = query.toLowerCase();
+    let typedAt = Date.now();
 
     function highlight(index) {
       active = index;
       buttons.forEach((button, i) => button.classList.toggle('active', i === active));
       if (buttons[active]) {
-        input.setAttribute('aria-activedescendant', buttons[active].id);
+        focusTarget.setAttribute('aria-activedescendant', buttons[active].id);
         buttons[active].scrollIntoView({ block: 'nearest' });
-      } else input.removeAttribute('aria-activedescendant');
+      } else focusTarget.removeAttribute('aria-activedescendant');
     }
 
     function choose(button) {
+      const changed = select.value !== button.dataset.value;
       select.value = button.dataset.value;
       close(true);
-      select.dispatchEvent(new Event('change', { bubbles: true }));
+      if (changed) select.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
     function render() {
-      const query = input.value.trim().toLowerCase();
+      const query = input?.value.trim().toLowerCase() || '';
       list.replaceChildren();
       buttons = [];
       for (const option of select.options) {
@@ -427,12 +432,16 @@
       position();
     }
 
-    input.value = query;
+    if (input) input.value = query;
     menu.showPopover();
     render();
-    input.focus({ preventScroll: true });
-    input.addEventListener('input', render);
-    input.addEventListener('keydown', event => {
+    if (!input && query) {
+      const index = buttons.findIndex(button => button.textContent.toLowerCase().startsWith(typed));
+      if (index >= 0) highlight(index);
+    }
+    focusTarget.focus({ preventScroll: true });
+    input?.addEventListener('input', render);
+    menu.addEventListener('keydown', event => {
       if (event.key === 'Escape') {
         event.preventDefault();
         event.stopPropagation();
@@ -441,30 +450,40 @@
       else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
         event.preventDefault();
         if (buttons.length) highlight((active + (event.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length);
-      } else if (event.key === 'Enter') {
+      } else if (event.key === 'Enter' || (!input && event.key === ' ')) {
         event.preventDefault();
         if (buttons[active]) choose(buttons[active]);
+      } else if (!input && ['Home', 'End'].includes(event.key)) {
+        event.preventDefault();
+        highlight(event.key === 'Home' ? 0 : buttons.length - 1);
+      } else if (!input && event.key.length === 1 && !event.ctrlKey && !event.metaKey) {
+        event.preventDefault();
+        typed = (Date.now() - typedAt > 700 ? '' : typed) + event.key.toLowerCase();
+        typedAt = Date.now();
+        const index = buttons.findIndex(button => button.textContent.toLowerCase().startsWith(typed));
+        if (index >= 0) highlight(index);
       }
+      if (event.defaultPrevented) event.stopPropagation();
     });
   }
 
   document.addEventListener('pointerdown', event => {
     const select = event.target.closest('select');
-    if (searchable(select) && event.button === 0) {
+    if (singleSelect(select) && event.button === 0) {
       event.preventDefault();
       open(select);
     } else if (current && !current.menu.contains(event.target)) close();
   }, true);
   document.addEventListener('click', event => {
     const select = event.target.closest('select');
-    if (!searchable(select)) return;
+    if (!singleSelect(select)) return;
     event.preventDefault();
     open(select);
   }, true);
   document.addEventListener('keydown', event => {
     const select = event.target;
-    if (!searchable(select) || event.ctrlKey || event.metaKey) return;
-    if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key) || event.key.length === 1) {
+    if (!singleSelect(select) || event.ctrlKey || event.metaKey) return;
+    if (['ArrowDown', 'ArrowUp', 'Enter', ' ', 'F4'].includes(event.key) || event.key.length === 1) {
       event.preventDefault();
       open(select, event.key.length === 1 && event.key !== ' ' ? event.key : '');
     }

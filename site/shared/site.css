@@ -495,6 +495,7 @@ body .gen-list { overflow-y: auto; overflow-x: hidden; }
 .atlas-select-menu .atlas-select-input{box-sizing:border-box;width:100%;min-width:0;min-height:36px;margin:0;padding:4px 0;border:0;border-radius:0;outline:none;background:transparent;color:inherit;font:inherit}
 .atlas-select-input::-webkit-search-cancel-button{appearance:none}
 .atlas-select-list{overflow-y:auto;overscroll-behavior:contain;padding-top:4px}
+.atlas-select-list:only-child{padding-top:0;outline:none}
 .atlas-select-menu .atlas-select-option{display:block;box-sizing:border-box;width:100%;min-height:36px;padding:7px 10px;border:0;border-radius:var(--r-sm);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .atlas-select-menu .atlas-select-option[aria-selected=true]{color:var(--accent-1);font-weight:600}
 .atlas-select-menu .atlas-select-option:is(.active,:hover){background:var(--accent-4)}
