@@ -90,7 +90,7 @@
   }
 
   const haystack = (it) => [it.id, it.title, it.subtitle, it.summary, ...(it.tags || []), ...(it.useCases || []), it.mechanism, it.trigger, it.effect,
-    it.carrierNote, ...(it.workflow || []), ...(it.avoid || []), materialTypes[it.type],
+    ...(it.workflow || []), ...(it.avoid || []), materialTypes[it.type],
     ...(it.carriers || []).map((c) => TAX.carriers[c]), ...(it.types || []).map((c) => TAX.types[c])].filter(Boolean).join(' ').toLowerCase();
   function filtered(filters = state) {
     const words = filters.query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -160,7 +160,7 @@
             <div class="toolbar-row"><button class="btn filter-toggle" id="filter-toggle" type="button" aria-haspopup="dialog" aria-controls="filter-dialog" aria-expanded="false">${ICONS.filter}<span>筛选</span></button><div class="sort-group"><select class="select" id="sort" aria-label="排序方式">${sortOptions.map(([v, l]) => `<option value="${v}"${state.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select><button class="sort-dir" id="sort-dir" type="button"></button></div></div>
           </div>
           <dialog class="filter-dialog" id="filter-dialog" aria-labelledby="filter-title"><div class="filter-head"><h2 id="filter-title">筛选</h2><button class="filter-clear" id="filter-clear" type="button">清除</button></div><div class="filter-content"></div><button class="btn primary filter-done" id="filter-done" type="button">完成</button></dialog>
-          <div class="result-line"><span id="result-count" role="status"></span><span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : isMaterial ? '作者产出效果，未复刻' : '每个巧思都有独立 Demo'}</span></div>
+          <div class="result-line"><span id="result-count" role="status"></span>${isMaterial ? '' : `<span>${KIND === 'cases' ? '每个案例都能拖动时间轴' : '每个巧思都有独立 Demo'}</span>`}</div>
           <div class="grid" id="grid"></div>
         </section>
       </div>`;
@@ -188,7 +188,7 @@
     const preview = it.preview;
     const fav = favs.has(KIND, it.id);
     return `<article class="card">
-      <div class="card-media">${preview ? `<img src="${esc(preview)}" alt="${esc(it.title)} ${isMaterial ? '作者产出效果，未复刻' : 'Demo 实际截图'}" loading="lazy">` : '<span class="ph">预览图</span>'}</div>
+      <div class="card-media">${preview ? `<img src="${esc(preview)}" alt="${esc(it.title)}${isMaterial ? '' : ' Demo 实际截图'}" loading="lazy">` : '<span class="ph">预览图</span>'}</div>
       <div class="card-body">
         <div class="card-title"><a href="#${hashKind}/${it.id}">${esc(it.title)}</a>
           <button class="fav-btn" type="button" data-fav="${it.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(it.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
@@ -1015,6 +1015,12 @@
   const sec = (title, en, body) => `<section class="note-sec"><h2>${title}<small>${en}</small></h2>${body}</section>`;
   const ul = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>—</p>');
   const promptBox = (id, text) => `<div class="prompt-box"><pre id="${id}">${esc(text)}</pre><button class="btn" type="button" data-copy="${id}">${ICONS.copy}<span>复制</span></button></div>`;
+  const sourceLink = (href, label, base = location.href) => {
+    const url = new URL(href, base);
+    const external = url.origin !== location.origin;
+    const target = !external && url.pathname.endsWith('.md') ? `docs.html#doc/${decodeURIComponent(url.pathname.slice(1))}` : url.href;
+    return `<a href="${esc(target)}"${external ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
+  };
   const documentLinks = it => {
     const links = [['research', '阅读说明与研究'], ['fidelity', '复刻对照'], ['licenses', '许可原文索引']].filter(([key]) => it[key]);
     return links.length ? sec('相关文档', 'DOCUMENTS', `<ul>${links.map(([key, label]) => `<li><a href="docs.html#doc/${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
@@ -1032,16 +1038,15 @@
     const galleryKinds = { style: '风格样张', work: '作品节选', theme: '主题预览' };
     const gallery = `<div class="grid material-gallery">${(it.gallery || []).map((image) => {
       const sourceUrl = image.sourceUrl || image.url;
-      const license = typeof image.license === 'string' ? image.license : image.license?.notes || image.license?.name;
       return `<figure class="material-preview"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
-        <figcaption class="card-body"><span class="chip accent">${galleryKinds[image.kind]}</span><p class="card-sum">${esc(image.caption)}</p><p class="material-credit">作者产出效果，未复刻</p>${sourceUrl ? `<a class="material-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}${license ? `<p class="material-credit">${esc(license)}</p>` : ''}</figcaption></figure>`;
+        <figcaption><div class="material-preview-meta"><span class="chip accent">${galleryKinds[image.kind]}</span>${sourceUrl ? `<a class="material-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}</div><p>${esc(image.caption)}</p></figcaption></figure>`;
     }).join('')}</div>`;
     const related = it.relatedEntries?.length ? `<ul>${it.relatedEntries.map((relation) => {
       const kind = { case: 'cases', pattern: 'patterns', material: 'materials' }[relation.kind] || relation.kind;
       const entry = byId(MA[kind], relation.id);
       const hash = { cases: 'case', patterns: 'pattern', materials: 'material' }[kind];
       return `<li><a href="${kind}.html#${hash}/${esc(relation.id)}">${esc(entry.title)}</a>：${esc(relation.note)}</li>`;
-    }).join('')}</ul>` : `<p>本库暂无由此 ${it.type === 'agent-skill' ? 'skill' : '素材'} 产出的复刻案例</p>`;
+    }).join('')}</ul>` : '';
     const references = [['README.zh-CN.md', '中文说明'], ['README.md', '原版说明']];
     if (it.type === 'prompt-kit') references.push(['template.md', '提示词模板'], ['rubric.md', '评审量表'], ['lib/audio/README.md', 'mgaudio 配乐说明'], ...it.snapshotFiles.filter(file => file.startsWith(it.snapshotPath + 'prompts/') && file.endsWith('.md')).map(file => [file.slice(it.snapshotPath.length), '风格提示词']));
     const snapshotLinks = it.snapshotPath ? `<ul><li><a href="docs.html#doc/${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${references.filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="docs.html#doc/${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
@@ -1056,12 +1061,11 @@
     }
     return { preview, notes: [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
-      sec('为什么归入本库', '', `<p>${esc(it.carrierNote)}</p>`),
       it.workflow?.length && !it.skillGuide ? sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`) : '',
       sec('适合与避用', '', `<h3>适合</h3>${ul(it.useCases)}<h3>避用</h3>${ul(it.avoid)}`),
-      sec('关联条目', '', related),
+      related ? sec('关联条目', '', related) : '',
       it.install ? sec('安装方式', '', promptBox('material-install', it.install)) : '',
-      sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd><a href="${esc(it.upstream.url)}">${esc(it.upstream.repository)}</a></dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd><dt>版本</dt><dd>${esc(it.upstream.version)}</dd><dt>${it.type === 'agent-skill' ? '技能' : '素材'}许可</dt><dd><a href="${esc(it.license.url)}">${esc(it.license.name)}</a></dd></dl><p>${esc(it.license.notes)}</p>${it.snapshotPath && it.snapshotFiles.includes(it.snapshotPath + 'LICENSE') ? `<p><a href="${esc(it.snapshotPath)}LICENSE">快照附带许可原文</a></p>` : ''}<ul>${it.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.title || source.label)}</a></li>`).join('')}</ul>`),
+      sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd>${sourceLink(it.upstream.url, esc(it.upstream.repository))}</dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd>${it.upstream.version ? `<dt>上游版本</dt><dd>${esc(it.upstream.version)}</dd>` : ''}<dt>${it.type === 'agent-skill' ? '技能' : '素材'}许可</dt><dd>${sourceLink(it.license.url, esc(it.license.name))}</dd></dl>${it.license.notes ? `<p>${esc(it.license.notes)}</p>` : ''}${it.snapshotPath && it.snapshotFiles.includes(it.snapshotPath + 'LICENSE') && it.license.url !== it.snapshotPath + 'LICENSE' ? `<p><a href="${esc(it.snapshotPath)}LICENSE">快照附带许可原文</a></p>` : ''}<ul>${it.sources.map((source) => `<li>${sourceLink(source.url, esc(source.title || source.label))}</li>`).join('')}</ul>`),
       documentLinks(it),
     ].join('') };
   }
@@ -1111,18 +1115,13 @@
     const scopes = it.attribution.some(a => a.scope === '制作来源') ? ['制作来源'] : ['作品', '作品代码', '原作', '参考'];
     const credits = it.attribution.filter(a => scopes.includes(a.scope));
     const notes = credits.map(a => a.notes).join('\n');
-    const link = (href, label) => {
-      const url = new URL(href, new URL(it.demo, location.href));
-      const external = url.origin !== location.origin;
-      const target = !external && url.pathname.endsWith('.md') ? `docs.html#doc/${decodeURIComponent(url.pathname.slice(1))}` : url.href;
-      return `<a href="${esc(target)}"${external ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
-    };
+    const link = (href, label) => sourceLink(href, label, new URL(it.demo, location.href));
     const inline = text => text.split(/(`[^`]+`)/).map(part => /^`[^`]+`$/.test(part) ? `<code>${esc(part.slice(1, -1))}</code>` : esc(part)
       .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => link(href.replace(/&amp;/g, '&'), label))
       .replace(/&lt;(https?:\/\/[^\s]+?)&gt;/g, (_, href) => link(href.replace(/&amp;/g, '&'), href))).join('');
     const rows = credits.map(a => `<dt>${esc(a.scope)}</dt><dd>${a.notes.split(/\n\s*\n/).map(text => `<p>${inline(text)}</p>`).join('')}</dd>`);
-    if (it.upstream?.commit && !notes.replace(/\]\([^)]+\)/g, ']').includes(it.upstream.commit)) {
-      rows.push(`<dt>采用版本</dt><dd>${link(`https://github.com/${it.upstream.repository}/commit/${it.upstream.commit}`, esc(it.upstream.commit.slice(0, 7)))}${it.upstream.version && it.upstream.version !== it.upstream.commit ? ` · ${esc(it.upstream.version)}` : ''}</dd>`);
+    if (it.upstream?.version && !notes.includes(it.upstream.version)) {
+      rows.push(`<dt>上游版本</dt><dd>${link(`https://github.com/${it.upstream.repository}/commit/${it.upstream.commit}`, esc(it.upstream.version))}</dd>`);
     }
     const sources = (it.sources || []).filter(source => !notes.includes(source.url));
     return rows.length || sources.length ? sec('许可与来源', 'SOURCES', `${rows.length ? `<dl class="kv">${rows.join('')}</dl>` : ''}${sources.length ? `<ul style="margin-top:10px">${sources.map(source => `<li>${link(source.url, esc(source.label))}</li>`).join('')}</ul>` : ''}`) : '';

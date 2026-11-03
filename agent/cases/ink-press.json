@@ -314,8 +314,7 @@
       "repository": "Vincentwei1021/video-shotcraft",
       "url": "https://github.com/Vincentwei1021/video-shotcraft",
       "commit": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
-      "path": "template/",
-      "version": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab"
+      "path": "template/"
     },
     "license": {
       "name": "Apache-2.0",
@@ -751,7 +750,7 @@
     },
     {
       "path": "entries/cases/ink-press.json",
-      "bytes": 12854,
+      "bytes": 12795,
       "role": "entry"
     },
     {

@@ -18,7 +18,6 @@
       "媒体"
     ],
     "summary": "HyperFrames 的 8 个技能目录快照：/hyperframes 作为总入口，核心四项负责 HTML 合成约定、CLI、模块安装与媒体；其余四项处理 Figma、演示文稿、既有视频代码迁移与视频重建。",
-    "carrierNote": "技能用于把 HTML 编写的合成逐帧渲染为视频，最终形态是视频，因此归入本库。",
     "workflow": [
       "先读 /hyperframes，规划视频内容、镜头与时长；新项目用 npx hyperframes init <目录>。",
       "以 HTML、CSS 和媒体编写合成，给定时元素声明起点与时长；每个合成注册可定位的暂停时间线。",
@@ -2095,7 +2094,7 @@
     },
     {
       "path": "entries/materials/hyperframes-skills.json",
-      "bytes": 5404,
+      "bytes": 5278,
       "role": "entry"
     },
     {
