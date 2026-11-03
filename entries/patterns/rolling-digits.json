@@ -16,20 +16,8 @@
   "effect": "X-001 等编号、行列计数、档案标题、权限与列名在同一次选择中逐字符滚动；快速连按保留中途运动状态。",
   "timing": [
     {
-      "name": "时长",
-      "value": "每次 460ms，49 点临界阻尼轨迹"
-    },
-    {
-      "name": "运动模糊",
-      "value": "SVG Gaussian blur 随字高与实时速度变化；数字 0.35、文字 0.2"
-    },
-    {
       "name": "方向",
       "value": "编号、行号与列号按导航方向；文字默认正向"
-    },
-    {
-      "name": "连续输入",
-      "value": "9s 与 9.35s 接连切列；第二次读取未完成动画的位置和速度"
     }
   ],
   "useCases": [
@@ -82,12 +70,12 @@
     },
     {
       "name": "模糊系数",
-      "value": "数字 --rn-blur:0.35；文字 0.2；--rn-edge-fade:0.08em",
+      "value": "SVG Gaussian blur 随字高与实时速度变化；数字 --rn-blur:0.35；文字 0.2；--rn-edge-fade:0.08em",
       "source": "demos/cases/archive-os/source/rhinelabui/src/style.css:574-579,2126-2134"
     },
     {
       "name": "自动输入",
-      "value": "从案例 62.6s 开始的 13s 四向浏览；9s 与 9.35s 的连续切列体现中途接续",
+      "value": "从案例 62.6s 开始的 13s 四向浏览；9s 与 9.35s 接连切列，第二次从未完成动画的位置和速度接续",
       "source": "demos/cases/archive-os/film/app/film/sequence.js:31-33"
     },
     {

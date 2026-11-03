@@ -276,7 +276,7 @@
     "attribution": [
       {
         "scope": "作品",
-        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（@lemomo-ai）；[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/halftone-dossier)，代码MIT、成片CC BY 4.0；接入删改与对照见[fidelity.md](fidelity.md)。"
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（@lemomo-ai）；[固定源码](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/halftone-dossier)，代码MIT、成片CC BY 4.0。"
       },
       {
         "scope": "声音与第三方资源",
@@ -2375,7 +2375,7 @@
     },
     {
       "path": "entries/cases/lemo-halftone-dossier.json",
-      "bytes": 10634,
+      "bytes": 10581,
       "role": "entry"
     },
     {

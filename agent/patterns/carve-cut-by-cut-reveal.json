@@ -630,12 +630,12 @@
     },
     {
       "path": "entries/cases/lemo-engraving.json",
-      "bytes": 10641,
+      "bytes": 10588,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-woodcut.json",
-      "bytes": 10912,
+      "bytes": 10865,
       "role": "entry"
     },
     {

@@ -247,7 +247,7 @@
     "attribution": [
       {
         "scope": "作品",
-        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（lemomo-ai）；固定版本与许可见upstream/license，接入与对照见[fidelity.md](fidelity.md)。"
+        "notes": "LemoLab × Claude Opus 5.5，作者Lemomo（lemomo-ai）；固定版本与许可见upstream/license。"
       },
       {
         "scope": "声音与第三方资源",
@@ -521,7 +521,7 @@
     },
     {
       "path": "entries/cases/lemo-lowpoly-island.json",
-      "bytes": 10112,
+      "bytes": 10065,
       "role": "entry"
     },
     {

@@ -552,12 +552,12 @@
     },
     {
       "path": "entries/cases/lemo-blueprint.json",
-      "bytes": 10302,
+      "bytes": 10225,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-chalkboard.json",
-      "bytes": 11370,
+      "bytes": 11317,
       "role": "entry"
     },
     {
