@@ -4,7 +4,6 @@
   "title": "mg-styles-15 风格提示词套件",
   "type": "prompt-kit",
   "summary": "作者用一套“通用部分 + 风格四段”的提示词模板，让会写代码的 AI 逐风格制作 10 秒动态设计短片，并用独立 AI 评审迭代两轮；附代码合成配乐的 mgaudio 库与 103 个乐器采样。",
-  "carrierNote": "提示词、评审与配乐工具用于制作可逐帧渲染的动态设计短片，成品按时间线播放。",
   "tags": [
     "动态设计",
     "提示词",
@@ -35,7 +34,6 @@
     "repository": "Vincentwei1021/mg-styles-15",
     "url": "https://github.com/Vincentwei1021/mg-styles-15/tree/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c",
     "commit": "49052d80bfaf9fa8412cc9710530e5e95a3b8d8c",
-    "version": "49052d8",
     "author": "Vincentwei1021"
   },
   "license": {
@@ -150,7 +148,6 @@
       "path": "previews/materials/mg-styles-15/01-flat-vector.webp",
       "caption": "扁平矢量成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/01-flat-vector.jpg",
       "license": "MIT"
     },
@@ -158,7 +155,6 @@
       "path": "previews/materials/mg-styles-15/02-line-art.webp",
       "caption": "线条艺术成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/02-line-art.jpg",
       "license": "MIT"
     },
@@ -166,7 +162,6 @@
       "path": "previews/materials/mg-styles-15/03-isometric.webp",
       "caption": "等距 2.5D成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/03-isometric.jpg",
       "license": "MIT"
     },
@@ -174,7 +169,6 @@
       "path": "previews/materials/mg-styles-15/04-3d-render.webp",
       "caption": "3D 渲染成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/04-3d-render.jpg",
       "license": "MIT"
     },
@@ -182,7 +176,6 @@
       "path": "previews/materials/mg-styles-15/05-cel-boil.webp",
       "caption": "逐帧线条抖动成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/05-cel-boil.jpg",
       "license": "MIT"
     },
@@ -190,7 +183,6 @@
       "path": "previews/materials/mg-styles-15/06-collage.webp",
       "caption": "拼贴剪贴成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/06-collage.jpg",
       "license": "MIT"
     },
@@ -198,7 +190,6 @@
       "path": "previews/materials/mg-styles-15/07-liquid.webp",
       "caption": "液态动效成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/07-liquid.jpg",
       "license": "MIT"
     },
@@ -206,7 +197,6 @@
       "path": "previews/materials/mg-styles-15/08-morph.webp",
       "caption": "形状变形成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/08-morph.jpg",
       "license": "MIT"
     },
@@ -214,7 +204,6 @@
       "path": "previews/materials/mg-styles-15/09-bauhaus.webp",
       "caption": "几何包豪斯成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/09-bauhaus.jpg",
       "license": "MIT"
     },
@@ -222,7 +211,6 @@
       "path": "previews/materials/mg-styles-15/10-synthwave.webp",
       "caption": "80 年代合成波成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/10-synthwave.jpg",
       "license": "MIT"
     },
@@ -230,7 +218,6 @@
       "path": "previews/materials/mg-styles-15/12-aurora-glass.webp",
       "caption": "极光与玻璃拟态成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/12-aurora-glass.jpg",
       "license": "MIT"
     },
@@ -238,7 +225,6 @@
       "path": "previews/materials/mg-styles-15/18-hanazi.webp",
       "caption": "综艺花字成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/18-hanazi.jpg",
       "license": "MIT"
     },
@@ -246,7 +232,6 @@
       "path": "previews/materials/mg-styles-15/19-paperclip.webp",
       "caption": "贴纸科普成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/19-paperclip.jpg",
       "license": "MIT"
     },
@@ -254,7 +239,6 @@
       "path": "previews/materials/mg-styles-15/20-pixel.webp",
       "caption": "像素艺术成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/20-pixel.jpg",
       "license": "MIT"
     },
@@ -262,7 +246,6 @@
       "path": "previews/materials/mg-styles-15/22-hud.webp",
       "caption": "赛博朋克 HUD成片封面",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/22-hud.jpg",
       "license": "MIT"
     }

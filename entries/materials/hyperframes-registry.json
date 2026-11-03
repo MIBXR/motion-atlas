@@ -15,7 +15,6 @@
     "逐帧渲染"
   ],
   "summary": "HyperFrames Registry 的 55 个精选模块与 8 个模板，提供可编辑的标题、字幕、转场、数据图表、三维场景、相机与质感源码。本地播放器预览精选项，完整索引覆盖 22 个官方分类的 448 个模块及 8 个模板。",
-  "carrierNote": "模块与模板是按时间线逐帧渲染的 HTML 合成，最终形态是视频，因此归入本库。",
   "workflow": [
     "用 /hyperframes-registry 或 catalog 搜索所需的视觉模块。",
     "用 npx hyperframes add <名字> 安装 block 或 component；模板用 npx hyperframes init <项目> --example <模板>。",

@@ -258,7 +258,7 @@ export function buildAll() {
     files[`agent/materials/${r.id}.json`] = JSON.stringify(bundle, null, 2) + '\n';
     bundleSummaries.materials.push({
       id: r.id, title: r.title, summary: r.summary, type: r.type,
-      carrierNote: r.carrierNote, useCases: r.useCases, avoid: r.avoid,
+      useCases: r.useCases, avoid: r.avoid,
       snapshotPath: r.snapshotPath, snapshotEntry: r.snapshotEntry, demo: r.demo, relatedEntries: r.relatedEntries,
       bundle: `agent/materials/${r.id}.json`,
     });

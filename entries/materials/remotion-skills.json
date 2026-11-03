@@ -14,7 +14,6 @@
     "逐帧渲染"
   ],
   "summary": "Remotion 官方维护的 12 个 Agent Skill，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目里写 React 视频：remotion-best-practices 作为总入口按任务路由，其余分管新建项目、画面与动画写法、字幕、地图动画、音视频处理、交互、预览、导出、在线应用、版本升级与文档检索。",
-  "carrierNote": "技能用于在 Remotion 中以 React 组件编写按帧渲染的视频，最终形态是视频，因此归入本库。",
   "workflow": [
     "用 `npx skills add remotion-dev/skills` 或 `gh skill install remotion-dev/skills` 安装全部技能；用 `bun create video` 新建项目时也可勾选安装。",
     "不确定该用哪个技能时调用 `/remotion-best-practices`，由它按任务转到具体技能。",
@@ -61,7 +60,6 @@
       "path": "previews/materials/remotion-skills/news-article-headline-highlight.jpg",
       "caption": "新闻标题高亮：@Remotion 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/news-article-headline-highlight",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -69,7 +67,6 @@
       "path": "previews/materials/remotion-skills/travel-route-on-map-with-3d-landmarks.jpg",
       "caption": "地图旅行路线与 3D 地标：@JNYBGR 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/travel-route-on-map-with-3d-landmarks",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -77,7 +74,6 @@
       "path": "previews/materials/remotion-skills/product-demo-for-presscut.jpg",
       "caption": "Presscut 产品演示：@Shpigford 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/product-demo-for-presscut",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -85,7 +81,6 @@
       "path": "previews/materials/remotion-skills/launch-video-on-x.jpg",
       "caption": "X 上的发布视频：@ghumare64 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/launch-video-on-x",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -93,7 +88,6 @@
       "path": "previews/materials/remotion-skills/cinematic-tech-intro.jpg",
       "caption": "电影感科技片头：@tiw_ari_ayu 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/cinematic-tech-intro",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -101,7 +95,6 @@
       "path": "previews/materials/remotion-skills/transparent-call-to-action-overlay.jpg",
       "caption": "透明背景行动号召叠层：@Remotion 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/transparent-call-to-action-overlay",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -109,7 +102,6 @@
       "path": "previews/materials/remotion-skills/rocket-launches-timeline.jpg",
       "caption": "火箭发射时间线：@crispynotfound 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/rocket-launches-timeline",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -117,7 +109,6 @@
       "path": "previews/materials/remotion-skills/real-estate-investing.jpg",
       "caption": "房地产投资讲解：HarisShah2345 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/real-estate-investing",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -125,7 +116,6 @@
       "path": "previews/materials/remotion-skills/threejs-top-20-games-sold-ranking-1.jpg",
       "caption": "Three.js 游戏销量前 20 排行：@DilumSanjaya 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/threejs-top-20-games-sold-ranking-1",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -133,7 +123,6 @@
       "path": "previews/materials/remotion-skills/promotion-video-for-vvterm.jpg",
       "caption": "VVTerm 宣传片：@wiedymi 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/promotion-video-for-vvterm",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -141,7 +130,6 @@
       "path": "previews/materials/remotion-skills/bar-line-chart-combined.jpg",
       "caption": "柱线组合图：samohovets 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/bar-line-chart-combined",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -149,7 +137,6 @@
       "path": "previews/materials/remotion-skills/music-cd-store-promo.jpg",
       "caption": "音乐 CD 店宣传片：samohovets 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/music-cd-store-promo",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -157,7 +144,6 @@
       "path": "previews/materials/remotion-skills/cursor-agent-skills-announcement.jpg",
       "caption": "Cursor Agent Skills 发布：@edwinarbus 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/cursor-agent-skills-announcement",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -165,7 +151,6 @@
       "path": "previews/materials/remotion-skills/shape-to-words-transformation.jpg",
       "caption": "形状变成文字：@tiw_ari_ayu 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/shape-to-words-transformation",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -173,7 +158,6 @@
       "path": "previews/materials/remotion-skills/apple-style-device-rise-animation.jpg",
       "caption": "Apple 风格设备升起：@gaucho_booleano 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/apple-style-device-rise-animation",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -181,7 +165,6 @@
       "path": "previews/materials/remotion-skills/spinning-glitching-svg-logo-turned-3d.jpg",
       "caption": "旋转故障的 3D 化 SVG 标志：@Remotion 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/spinning-glitching-svg-logo-turned-3d",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -189,7 +172,6 @@
       "path": "previews/materials/remotion-skills/3d-retro-pixel-font.jpg",
       "caption": "3D 复古像素字：@GogHeng 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/3d-retro-pixel-font",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -197,7 +179,6 @@
       "path": "previews/materials/remotion-skills/html-in-canvas-magnifying-glass.jpg",
       "caption": "HTML-in-canvas 放大镜：@JNYBGR 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/html-in-canvas-magnifying-glass",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -205,7 +186,6 @@
       "path": "previews/materials/remotion-skills/strava-run-visualized.jpg",
       "caption": "Strava 跑步轨迹可视化：@JNYBGR 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/strava-run-visualized",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -213,7 +193,6 @@
       "path": "previews/materials/remotion-skills/vintage-screen-effect-html-in-canvas.jpg",
       "caption": "复古屏幕效果（HTML-in-canvas）：@JNYBGR 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/vintage-screen-effect-html-in-canvas",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -221,7 +200,6 @@
       "path": "previews/materials/remotion-skills/the-kinetic-marketing.jpg",
       "caption": "动态排版营销片：@tiw_ari_ayu 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/the-kinetic-marketing",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -229,7 +207,6 @@
       "path": "previews/materials/remotion-skills/audio-spectrum-visualizer.jpg",
       "caption": "音频频谱可视化：samohovets 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/audio-spectrum-visualizer",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -237,7 +214,6 @@
       "path": "previews/materials/remotion-skills/bms-active-cell-balancing-animation-8s1p-pack-with-energy-flow-visualization.jpg",
       "caption": "电池组主动均衡与能量流动画：pasrom 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/bms-active-cell-balancing-animation-8s1p-pack-with-energy-flow-visualization",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -245,7 +221,6 @@
       "path": "previews/materials/remotion-skills/glitch-effect-html-in-canvas.jpg",
       "caption": "故障效果（HTML-in-canvas）：@Remotion 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/glitch-effect-html-in-canvas",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     },
@@ -253,16 +228,11 @@
       "path": "previews/materials/remotion-skills/solar-system-orbit-animation.jpg",
       "caption": "太阳系轨道动画：@GogHeng 用 Remotion Skills 与编码 Agent 制作，收录于 Remotion Prompt Showcase。此处为原片静帧，原片与提示词见来源页。",
       "kind": "work",
-      "replicated": false,
       "sourceUrl": "https://www.remotion.dev/prompts/solar-system-orbit-animation",
       "license": "作品与提示词归作者所有；静帧取自 Remotion Prompt Showcase 的 Mux 缩略图。"
     }
   ],
   "sources": [
-    {
-      "title": "skills 发布仓库固定提交：README 与 12 个技能原文",
-      "url": "https://github.com/remotion-dev/skills/tree/30d4553ecd46fbc5212fd0ff006ae43af522158b"
-    },
     {
       "title": "Remotion 主仓库 packages/skills 源码",
       "url": "https://github.com/remotion-dev/remotion/tree/35e07c283d704cd6c28bbc63a030e30356e62b09/packages/skills"

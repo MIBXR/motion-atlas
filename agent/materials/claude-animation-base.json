@@ -9,14 +9,12 @@
     "type": "prompt-kit",
     "category": "手绘卡通动画",
     "summary": "JohnHeibel 从 P(doom) 音乐录像整理出的入门套件：p5.js + p5.brush 绘制、Clawd 角色（视角、31 种表情、帽子、符号与舞步）、镜头与笔刷擦除时间轴、逐帧渲染脚本，以及给模型读的 ANIMATION_GUIDE.md。让 Agent 先读指南、出分镜，再逐镜头写只取决于时刻 t 的场景函数。",
-    "carrierNote": "套件用于制作按时间线播放、可逐帧渲染的手绘卡通短片；快照包含完整源码、模型指南与角色设定图。",
     "snapshotPath": "demos/materials/claude-animation-base/",
     "snapshotEntry": "README.md",
     "upstream": {
       "url": "https://github.com/JohnHeibel/ClaudeAnimationBase/tree/0ac8bf2b31942376cb6b8c4074715595d512acd2",
       "repository": "JohnHeibel/ClaudeAnimationBase",
       "commit": "0ac8bf2b31942376cb6b8c4074715595d512acd2",
-      "version": "0ac8bf2",
       "verifiedAt": "2026-11-01",
       "author": "JohnHeibel"
     },
@@ -45,7 +43,6 @@
         "path": "previews/materials/claude-animation-base/emotions.webp",
         "caption": "Clawd 31 种表情动画设定图",
         "kind": "style",
-        "replicated": false,
         "sourceUrl": "https://github.com/JohnHeibel/ClaudeAnimationBase/blob/0ac8bf2b31942376cb6b8c4074715595d512acd2/docs/emotions.webp",
         "license": "MIT"
       },
@@ -53,7 +50,6 @@
         "path": "previews/materials/claude-animation-base/views.jpg",
         "caption": "Clawd 视角、动作与帽子设定图",
         "kind": "style",
-        "replicated": false,
         "sourceUrl": "https://github.com/JohnHeibel/ClaudeAnimationBase/blob/0ac8bf2b31942376cb6b8c4074715595d512acd2/docs/views.jpg",
         "license": "MIT"
       }
@@ -74,10 +70,6 @@
       "角色用绘制的 front/q/side/qback/back 关键视角转身，镜头间动作与方向连续。",
       "p5.brush 水彩填充在集显上每帧需数秒；渲染脚本支持 --soft-gl 与 --gpu-angle。"
     ],
-    "accessibility": {
-      "reducedMotion": "本条目以原文快照与设定图呈现；emotions.webp 是作者的动画表情设定图。",
-      "keyboard": "通过站点链接打开主文档、图库与关联案例；套件 studio.html 提供时间滑杆。"
-    },
     "sources": [
       {
         "title": "上游 README：用途、运行与 GPU 环境",
@@ -86,10 +78,6 @@
       {
         "title": "ANIMATION_GUIDE.md：规则、流程与完整 API",
         "url": "https://github.com/JohnHeibel/ClaudeAnimationBase/blob/0ac8bf2b31942376cb6b8c4074715595d512acd2/ANIMATION_GUIDE.md"
-      },
-      {
-        "title": "完整固定提交",
-        "url": "https://github.com/JohnHeibel/ClaudeAnimationBase/tree/0ac8bf2b31942376cb6b8c4074715595d512acd2"
       }
     ],
     "tags": [
@@ -230,7 +218,7 @@
     },
     {
       "path": "entries/materials/claude-animation-base.json",
-      "bytes": 4991,
+      "bytes": 4326,
       "role": "entry"
     },
     {

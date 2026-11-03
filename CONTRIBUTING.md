@@ -40,7 +40,7 @@
 - **语言**：站点说明使用中文，装饰性的英文眉题除外；被复刻作品自身的原文、素材收录的 skill 与 prompt 原文保留原语言。
 - **声音**：原创作品采用非 AI 合成的连续公开音乐打底，在 3–4 个关键节点加入低于音乐音量的短音效，例如 Kevin MacLeod 的 CC BY 4.0 音乐、Kenney 的 CC0 音效；复刻作品沿用原作声音。
 - **第三方资源**：画面、字体、音乐、贴图与库保留完整素材、原字节、许可原文与署名，许可入口列在条目本体的 `LICENSES.md`。文字素材快照仅含上游原文文件与许可原文，保留原语言与原字节。第三方库按固定版本保存于 `vendor/<库>@<版本>/`；地图案例的 MapLibre 使用固定版本 CDN。
-- **作者效果图**：标注“作者产出，未复刻”，逐图在条目 JSON 中记录原 URL、许可与静态／动态属性。
+- **作者效果图**：逐图在条目 JSON 中记录原 URL、许可与静态／动态属性。
 - **界面**：站点正文、导航、标签、辅助信息和控件的最终字号至少 12px；案例、巧思、嵌入 Demo 及画面内文字按设计需要确定。功能图标使用内联 SVG，遵守 `prefers-reduced-motion`，声音默认关闭。
 
 ## 三类组织规范
@@ -199,7 +199,7 @@ git ls-files --others --ignored --exclude-standard
 | `previewAt`、`previewAtPortrait` | 横屏／竖屏预览时刻；竖屏缺省同横屏 |
 | `prompt` | 实现 Prompt，填写后生成同类 Prompt 文档 |
 | `videoPrompt`、`negativePrompt` | 可选的视频生成 Prompt 与负向约束 |
-| `upstream`、`license`、`sources` | 素材的上游仓库、固定提交、版本、许可与来源证据；案例可记录来源事实，巧思的 `sources` 为案例指针 |
+| `upstream`、`license`、`sources` | 素材的上游仓库、固定提交、版本、许可与来源证据；`upstream.version` 仅填写上游提供的版本号；案例可记录来源事实，巧思的 `sources` 为案例指针 |
 | `attribution` | 按 `scope` 归类的来源、资源、版本与许可说明，`notes` 保留对应事实；案例详情的“许可与来源”展示作品、参考或制作来源及其链接 |
 
 ### 案例
@@ -235,9 +235,9 @@ git ls-files --others --ignored --exclude-standard
 
 ### 素材
 
-素材填写 `type`、`carrierNote`、`workflow`、`useCases`、`avoid`、`upstream`、`license`、`install`、`relatedEntries` 与来源证据 `sources`。`relatedEntries` 为 `{ kind, id, note }[]`，`kind` 使用 `case`、`pattern`、`material`，`id` 指向本库条目。
+素材填写 `type`、`workflow`、`useCases`、`avoid`、`upstream`、`license`、`install`、`relatedEntries` 与来源证据 `sources`。`relatedEntries` 为 `{ kind, id, note }[]`，`kind` 使用 `case`、`pattern`、`material`，`id` 指向本库条目；`note` 用一句话描述内容或关联关系。
 
-`snapshotPath` 指向本体目录，`snapshotEntry` 是该目录内的主文档相对路径，Agent Skill 的主文档为 `SKILL.md`；可运行素材填写 `demo`。`gallery` 保存 `{ path, caption, kind, replicated, sourceUrl, license }`，作者效果图的 `replicated` 为 `false`。`gallery.kind` 区分 `work`、`style`、`theme`；`caption` 写明图像或动画的展示形式，`sourceUrl` 和 `license` 保存逐图来源与许可。
+`snapshotPath` 指向本体目录，`snapshotEntry` 是该目录内的主文档相对路径，Agent Skill 的主文档为 `SKILL.md`；可运行素材填写 `demo`。`gallery` 保存 `{ path, caption, kind, sourceUrl, license }`。`gallery.kind` 区分 `work`、`style`、`theme`；`caption` 写明图像或动画的展示形式，`sourceUrl` 和 `license` 保存逐图来源与许可。
 
 ## 验收与交付
 
