@@ -47,15 +47,10 @@
   "avoid": [
     "在关键动作和证据上叠加争夺注意的运动"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "accent",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "画面和声音使用同一来源时间映射。"
+    "conflicts": []
   },
   "prompt": "用来源案例的原作render(t)实现“对焦游移显隐”。镜头推向远处并反复拉动对焦距离；身影只在第一次正确对焦的短暂窗口可见，失焦后消失，第二次清晰锁定留下空走廊。参数：film/story.js:FOCUS/APER与W；原时间33.15–33.65秒对焦约33m，W后32.85–33.35秒；APER从3升到14。；film/story.js:T.figOn原时间32.2–33.95；film/main.js:render按T.figOn切换thing.visible并将FOCUS/APER送给原作DOF。。复用来源字体、素材和同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/autofocus-hunting-reveal/index.html",

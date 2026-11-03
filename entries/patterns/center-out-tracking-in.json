@@ -46,15 +46,10 @@
     "竖屏重排",
     "片段边界无缝循环"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览帧。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "accent",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "本巧思按所列原片区间重放，画面与音轨使用同一时间映射。"
+    "conflicts": []
   },
   "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 以1倍速重放原片8.133–9.85秒，巧思时长1.717秒。字标入场节点到达后，字母按离中轴的距离错峰，从宽字距向最终位置收拢显现；标语随后抬入，两侧细线由亮点领绘向外展开。const word = 'ATELIER LINEA', size = 50, track = 0.46;start: 8.333；stagger: 0.045；dur: 0.95；const d = Math.abs(i - mid);const spread = (1 - e) * 0.22 * size * (i - mid);tagline: 8.75；rules: [9.25, 9.6]；hl = 24 * ru；gap = 1.2 * ts。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
   "demo": "demos/patterns/center-out-tracking-in/index.html",
@@ -68,7 +63,7 @@
   "previewAt": 1.6170000000000009,
   "markers": [
     {
-      "t": 0.0,
+      "t": 0,
       "label": "字标入场前"
     },
     {

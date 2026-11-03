@@ -47,10 +47,6 @@
     "demos/cases/ink-press/film/src/aifl/live/SceneWbr.tsx"
   ],
   "locator": "SceneWbr / cueFor / WEEK_CUE / WEEK_DROP；Main.SFX",
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [

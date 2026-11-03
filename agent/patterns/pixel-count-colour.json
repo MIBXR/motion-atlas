@@ -54,15 +54,10 @@
     "avoid": [
       "在主要读数和证据上叠加争夺注意的运动"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "画面与音轨按同一来源时间映射。"
+      "conflicts": []
     },
     "prompt": "用来源案例的原作render(t)实现“逐像素数颜色”。圆内扫描前沿点亮实际计入的蓝色像素，累计曲线驱动百分比；第二个圆用同一方法计数，两份读数停留后给出2.4倍结论。保留参数：source/tools/plates.py：1µm/px层上，tissue=(lum<200)|(max−min>40)，blue=tissue&(B>R+12)&(B>=G)；两个直径1mm的圆。；film/film.js:roiState / shareAt / circle，读取plates.json的201点cum曲线；遮罩跟随measure_roll_deg=18.5°的屏幕扫描方向。；film/film.js:verdict，圆A13.5%、圆B32.6%，21.667秒起两者同屏，22.667秒出2.4倍结论。。按index.html内联segments定位原片，复用原作素材、字体与同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/pixel-count-colour/index.html",
@@ -396,7 +391,7 @@
     },
     {
       "path": "entries/patterns/pixel-count-colour.json",
-      "bytes": 3425,
+      "bytes": 3126,
       "role": "entry"
     },
     {

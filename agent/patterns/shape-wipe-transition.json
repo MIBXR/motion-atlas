@@ -61,15 +61,10 @@
       "竖屏重排",
       "片段边界无缝循环"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览帧。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "本巧思按所列原片区间顺序重放。"
+      "conflicts": []
     },
     "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放气泡预备与三段形状擦除。保留144/30–150/30秒的气泡挤压预备，150/30–160/30秒的珊瑚彗星放大旋转，154/30–163/30秒的薄荷胶囊放大旋正，以及158/30–164/30秒的奶油半圆加速砸落与余震。彗星圆半径58、尾长84→204；胶囊3000×1500、rx750；半圆半径1700。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。 通过 index.html 内联 segments 在前 1.233333 秒之后依次重放mg-morph 原片 1.42–8.82 秒，总时长 9.49333 秒。形变片的换景从主体在色域节点的位置出发，以扩张圆形与速度相关羽化边缘接管全屏。沿用同区间原片音轨，声音默认关闭。 按 index.html 内联 segments 在原有 8.63333 秒之后重放mg-hanazi 原片 3.57–4.43 秒，总时长 9.49333 秒。综艺片用带滚动糖果条纹的不透明斜带扫过全屏，遮住前镜并露出下一镜。画面与音轨沿用同一映射，声音默认关闭。",
     "demo": "demos/patterns/shape-wipe-transition/index.html",
@@ -608,7 +603,7 @@
     },
     {
       "path": "entries/patterns/shape-wipe-transition.json",
-      "bytes": 5918,
+      "bytes": 5663,
       "role": "entry"
     },
     {

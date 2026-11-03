@@ -55,15 +55,10 @@
     "竖屏重排",
     "片段边界无缝循环"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览帧。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "accent",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "本巧思按所列原片区间顺序重放。"
+    "conflicts": []
   },
   "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放穿窗推镜。保留86/30–90/30秒的负向预备、90/30–105/30秒的加速推进与105/30–115/30秒的过冲弹定；缩放按对数尺度计算，NP=2.2、OB=1.2。保留22条分三批出现且各持续2帧的速度条、105帧奶油色闪片、112与113帧的到达镜震，以及115/30–160/30秒的室内续推。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
   "demo": "demos/patterns/push-through-window/index.html",

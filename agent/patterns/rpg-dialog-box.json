@@ -56,10 +56,6 @@
       "把阶梯框高改成连续缩放",
       "把中文逐字揭示改成整行淡入"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 1.2 秒，即原片 5.6 秒的完整欢迎语。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [],
@@ -562,7 +558,7 @@
     },
     {
       "path": "entries/patterns/rpg-dialog-box.json",
-      "bytes": 3975,
+      "bytes": 3733,
       "role": "entry"
     },
     {

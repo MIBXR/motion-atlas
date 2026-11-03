@@ -36,15 +36,10 @@
       "萌宠与综艺短片的情绪花字。"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 3.77 秒的预览帧，声音默认关闭。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "按所列来源区间依次重放，每段在候选动作前后各保留 0.2 秒，片头片尾以原片边界为限。"
+      "conflicts": []
     },
     "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-hanazi 原片 0–2.7 秒；mg-hanazi 原片 5.73–7.83 秒；mg-hanazi 原片 7.9–10 秒；总时长 6.9 秒。逐字 cue 到达 → 挤出、彩边、白边、渐变与高光一起弹入，驻留轻摆并按标题拍点依次跳动。直接调用来源案例的 renderAt(t)，保留原画面、字体、素材、时刻映射和同段音轨，声音默认关闭。参数：function spring(t, z = 0.517, w = 22)\nconst hold = clamp((u - .22) / .35), wf = o.wf ?? 1.15;\nwhite: 13, outer: 12\ngloss: .55。使用 1080×1920 竖屏。",
     "migration": [
@@ -366,7 +361,7 @@
     },
     {
       "path": "entries/patterns/layered-hanazi-spring-pop.json",
-      "bytes": 3805,
+      "bytes": 3431,
       "role": "entry"
     },
     {

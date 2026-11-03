@@ -51,15 +51,10 @@
     "avoid": [
       "在关键动作和证据上叠加争夺注意的运动"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "foundation",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "画面和声音使用同一来源时间映射。"
+      "conflicts": []
     },
     "prompt": "用来源案例的原作render(t)实现“锁定画面里的时间环”。同一地理画面中各年卫星图沿扫描条切换，旧岸线留在原地形成逐年嵌套的时间环；年份加速落定后停在今天的岸线。参数：film/timeline.js:RINGS在7.8/9.6/10.8/11.7/12.3/13.2秒依次落定1977/1989/2000/2009/2014/2025。；film/film.js:drawRings与ringScan按V.rings投影实际海岸线；并非数学同心圆；camKeys仍从980km推到600km并转−15°，岸线锁在同一地理坐标。。复用来源字体、素材和同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/time-rings-locked-frame/index.html",
@@ -529,7 +524,7 @@
     },
     {
       "path": "entries/patterns/time-rings-locked-frame.json",
-      "bytes": 3244,
+      "bytes": 2942,
       "role": "entry"
     },
     {

@@ -40,15 +40,10 @@
       "管体描写后通电的品牌字标"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 1.233333333 秒，声音默认关闭。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+      "conflicts": []
     },
     "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-synthwave 原片 5.6–7.1 秒；总时长 1.5 秒。发亮笔头沿真实字形路径推进并留下暗玻璃管，通电节点按逐帧电平闪烁，最后整字稳定发光。参数保持原作数值：  const drawn = lvl > 0 ? TOTAL : p * TOTAL;\n    strokeRange(g, drawn - 60, drawn, LIT);\n  \"neon_trace\": [5.8, 6.6],\n  \"neon_strike\": [[6.6, 1], [6.633, 0.15], [6.667, 1], [6.7, 1], [6.733, 0.08], [6.767, 0.5], [6.8, 0.85], [6.833, 1]],\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
     "migration": [
@@ -296,7 +291,7 @@
     },
     {
       "path": "entries/patterns/neon-write-on-ignition.json",
-      "bytes": 3093,
+      "bytes": 2762,
       "role": "entry"
     },
     {

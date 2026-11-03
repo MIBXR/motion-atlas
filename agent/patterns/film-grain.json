@@ -56,10 +56,6 @@
       "需要高清细节的产品图",
       "大量小字区域（降低可读性）"
     ],
-    "accessibility": {
-      "reducedMotion": "可使用时间轴暂停在完整帧。",
-      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [
@@ -2594,7 +2590,7 @@
     },
     {
       "path": "entries/patterns/film-grain.json",
-      "bytes": 11683,
+      "bytes": 11490,
       "role": "entry"
     },
     {

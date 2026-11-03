@@ -47,10 +47,6 @@
   "avoid": [
     "在该片段内叠加第二条争夺注意的主动作"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动定位或播放。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [

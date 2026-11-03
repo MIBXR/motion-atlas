@@ -46,10 +46,6 @@
       "读数停驻再入侧栏"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放与定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [],
@@ -338,7 +334,7 @@
     },
     {
       "path": "entries/patterns/spec-dock-rail.json",
-      "bytes": 3087,
+      "bytes": 2850,
       "role": "entry"
     },
     {

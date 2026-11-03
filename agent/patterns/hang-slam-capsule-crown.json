@@ -37,15 +37,10 @@
       "主角重击触发径向翻跳的品牌主拍。"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 1.8 秒的预览帧，声音默认关闭。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "按所列来源区间依次重放，每段在候选动作前后各保留 0.2 秒，片头片尾以原片边界为限。"
+      "conflicts": []
     },
     "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-3d-render 原片 4.8–8.2 秒；总时长 3.4 秒。金属球进入并减速悬停 → 急砸软床触发镜震和径向胶囊翻跳，冠波顶点放慢后追上时钟，最后沉降。直接调用来源案例的 renderAt(t)，保留原画面、字体、素材、时刻映射和同段音轨，声音默认关闭。参数：herm(ts, HB, TC, 0.80, 0.0, -1.4, -30.0)\nt_launch = TC + rr_ / CS\nk_spin = np.where(v0 > 4.2, 3, 1)\n_w = 1 - 0.65 * _plateau(_tt, 6.42, 6.48, 6.70, 6.76)\nconst pun = df >= 0 ? 0.035 * (1 - expoOut(df / 6)) : 0;\nconst shk = [2, -1.5, 1, -0.5][df] || 0;。使用 1920×1080 横屏。",
     "migration": [
@@ -1506,7 +1501,7 @@
     },
     {
       "path": "entries/patterns/hang-slam-capsule-crown.json",
-      "bytes": 3446,
+      "bytes": 3071,
       "role": "entry"
     },
     {

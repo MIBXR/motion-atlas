@@ -36,10 +36,6 @@
     "avoid": [
       "主题过多导致色彩失去意义（建议 ≤5 种）"
     ],
-    "accessibility": {
-      "reducedMotion": "可使用时间轴暂停在完整帧。",
-      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [
@@ -281,7 +277,7 @@
     },
     {
       "path": "entries/patterns/chapter-frame.json",
-      "bytes": 5771,
+      "bytes": 5578,
       "role": "entry"
     },
     {

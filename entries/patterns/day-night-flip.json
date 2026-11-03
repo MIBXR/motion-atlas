@@ -32,10 +32,6 @@
   "avoid": [
     "频繁来回切换造成闪烁"
   ],
-  "accessibility": {
-    "reducedMotion": "可使用时间轴暂停在完整帧。",
-    "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [

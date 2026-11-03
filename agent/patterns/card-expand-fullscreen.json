@@ -35,10 +35,6 @@
       "连续多次展开造成疲劳",
       "卡片与全屏图片比例差距过大而又不允许裁切"
     ],
-    "accessibility": {
-      "reducedMotion": "可使用时间轴暂停在完整帧。",
-      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [
@@ -257,7 +253,7 @@
     },
     {
       "path": "entries/patterns/card-expand-fullscreen.json",
-      "bytes": 5723,
+      "bytes": 5530,
       "role": "entry"
     },
     {

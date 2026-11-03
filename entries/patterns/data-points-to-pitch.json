@@ -43,15 +43,10 @@
     "数据点映射音高"
   ],
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放与定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "画面与原音轨使用同一片段时间映射。"
+    "conflicts": []
   },
   "prompt": "以来源案例lemo-dataviz的原作render(t)重放“数据点映射音高”。每个数据点在落笔时发出一个音：温度决定音高，时间轴的点密度从四分音符加密到三十二分音符；低于中心的值吸附D大调五声，极端值逐渐失谐。 参数：midi=62+(v+.4)×17；低于中值吸附D大调五声；最后约15点偏移5—45 cents。；yearK依次以1、.5、.25、.125拍推进；90BPM、24fps使三十二分音符等于2帧。。按入口segments映射原片，复用原作素材、字体与同段音轨，声音默认关闭。",
   "demo": "demos/patterns/data-points-to-pitch/index.html",

@@ -44,15 +44,10 @@
       "玻璃透镜落位成为字母"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 4 秒，声音默认关闭。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "按来源片段依次重放完整动作，保留原作的形体、镜头、字体与同段音轨。"
+      "conflicts": []
     },
     "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-morph 原片 8.1–9.3 秒；mg-aurora-glass 原片 6.7–10 秒；总时长 4.5 秒。主体形状飞到字位、开合成字标中的一个字母，其余字母随后显现；先重放圆环伸展为 morphe，再重放透镜开成 Aurora 的 o。直接调用来源案例的 renderAt(t)，保留原作参数、画面、字体与成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
     "migration": [
@@ -361,7 +356,7 @@
     },
     {
       "path": "entries/patterns/shape-docks-wordmark.json",
-      "bytes": 3552,
+      "bytes": 3211,
       "role": "entry"
     },
     {

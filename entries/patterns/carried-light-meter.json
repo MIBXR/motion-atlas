@@ -45,15 +45,10 @@
     "主角提灯的lit参数同时改变精灵火焰、点光源和辉光，亮灭承载护火情节；初次点灯让两人的影子一起落在木板上。"
   ],
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "foundation",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    "conflicts": []
   },
   "prompt": "调用来源案例原作render(t)重放“随身灯即情绪”。主角提灯的lit参数同时改变精灵火焰、点光源和辉光，亮灭承载护火情节；初次点灯让两人的影子一起落在木板上。 参数：film/story.js:T.light=16.2、dim=41.3、dark=42、relight=45.6；film/harbor.js / forest.js / cliff.js的lit、lanternPos与PointLight。 film/px.js:billboard定义剪影阴影；film/chars.js:makeChar与灯焰姿态，点光源向相机移.42–.45m。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/carried-light-meter/index.html",

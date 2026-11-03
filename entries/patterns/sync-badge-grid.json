@@ -47,15 +47,10 @@
   "avoid": [
     "同一时刻叠加争夺主动作的多组信息"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "来源片段按原作时钟重放，画面与音轨使用同一时间映射。"
+    "conflicts": []
   },
   "prompt": "用来源案例lemo-countdown的原作render(t)重放“同步徽章格”。每个摄影机格携带自己的同步种类，徽章右对齐跟随格子矩形移动；空间不足时从上角移到下角。实时同步用橙色实心点，同一时段用灰色空心点和斜线底纹，恢复实时的慢动作另标1×。保留参数：film/index.html:LABEL / SYNC；sync、window、restored分别对应实时同步、同一时段和慢动作还原1×。；film/index.html:syncBadge；28px高，window为9px间隔斜线、空心点与灰框，其他类型用橙色实心点。；film/index.html:render；cw+bw+40<格宽时放右上，否则放右下；零点mergeK>.45时隐藏格内包装。。重放区间由入口segments配置，来源素材与音轨直接复用。",
   "demo": "demos/patterns/sync-badge-grid/index.html",

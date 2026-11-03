@@ -44,15 +44,10 @@
       "拼贴片将照片、文字纸片和刊名放大拍下，离纸阴影随高度塌缩，落地后逐格挤压回定。"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 1.82 秒，声音默认关闭。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "按来源片段依次重放完整动作，保留原作的形体、镜头、字体与同段音轨。"
+      "conflicts": []
     },
     "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-paperclip 原片 0–0.8 秒；mg-paperclip 原片 0.98–2.5 秒；mg-paperclip 原片 5.56–6.8 秒；总时长 8.73 秒。抬高、放大、倾转的贴纸下落，阴影同步收紧，落定后以衰减摆动与挤压回弹消力。直接调用来源案例的 renderAt(t)，保留原作参数、画面、字体与成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。 按 index.html 内联 segments 在原有 3.56 秒之后重放mg-collage 原片 0–1.4 秒；mg-collage 原片 2.05–2.8 秒；mg-collage 原片 5.96–7.54 秒；mg-collage 原片 7.96–9.4 秒，总时长 8.73 秒。拼贴片将照片、文字纸片和刊名放大拍下，离纸阴影随高度塌缩，落地后逐格挤压回定。画面与音轨沿用同一映射，声音默认关闭。",
     "migration": [
@@ -643,7 +638,7 @@
     },
     {
       "path": "entries/patterns/sticker-slap-shadow.json",
-      "bytes": 5202,
+      "bytes": 4860,
       "role": "entry"
     },
     {

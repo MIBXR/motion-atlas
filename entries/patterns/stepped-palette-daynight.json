@@ -52,10 +52,6 @@
     "把阶梯色板改成连续全色渐变",
     "让夜区星点覆盖水晶光池"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态偏好下暂停在 9.5 秒夜景预览帧，可主动播放或定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [],

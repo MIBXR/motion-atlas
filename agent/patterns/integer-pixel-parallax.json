@@ -55,10 +55,6 @@
       "把逻辑位置改为连续亚像素位移",
       "改写原作锐化采样函数"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在 3 秒预览帧，可主动播放或定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "foundation",
       "pairsWellWith": [],
@@ -222,7 +218,7 @@
     },
     {
       "path": "entries/patterns/integer-pixel-parallax.json",
-      "bytes": 3359,
+      "bytes": 3127,
       "role": "entry"
     },
     {

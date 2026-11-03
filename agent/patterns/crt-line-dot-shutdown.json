@@ -39,15 +39,10 @@
       "线点收屏式片尾"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 0.399666667 秒，声音默认关闭。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+      "conflicts": []
     },
     "prompt": "调用mg-synthwave原作renderAt(t)，重放9.467—9.966666667秒的显像管线点收屏，沿用原作CRT帧表、画面与同段音轨，声音默认关闭。",
     "migration": [
@@ -459,7 +454,7 @@
     },
     {
       "path": "entries/patterns/crt-line-dot-shutdown.json",
-      "bytes": 2879,
+      "bytes": 2548,
       "role": "entry"
     },
     {

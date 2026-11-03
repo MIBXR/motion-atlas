@@ -39,15 +39,10 @@
     "步骤编号圆章盖在上镜主体上，圆心移到画面中心并扩大成开圈，露出下一步；启动按钮开圈接俯视，片尾圆收在产品上。"
   ],
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "accent",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    "conflicts": []
   },
   "prompt": "调用来源案例原作render(t)重放“圆章开圈换步”。步骤编号圆章盖在上镜主体上，圆心移到画面中心并扩大成开圈，露出下一步；启动按钮开圈接俯视，片尾圆收在产品上。 参数：film/film.js:821–841，边界−.5拍至+.4拍，共.9拍，半径104→1250px；按钮40→1250px、.28秒。 film/film.js:sceneEnd，半径2300→70px、圆心[1680,880]，随后居中圆卡展开。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/medallion-iris-step/index.html",

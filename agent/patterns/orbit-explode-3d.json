@@ -46,10 +46,6 @@
       "环绕中逐层爆炸再合拢"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放与定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "foundation",
       "pairsWellWith": [],
@@ -484,7 +480,7 @@
     },
     {
       "path": "entries/patterns/orbit-explode-3d.json",
-      "bytes": 3177,
+      "bytes": 2940,
       "role": "entry"
     },
     {

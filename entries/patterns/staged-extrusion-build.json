@@ -8,10 +8,6 @@
   "kit": true,
   "timeline": true,
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "sound": {
     "description": "成品音轨按所选原片区间与画面同步播放，声音默认关闭。"
   },
@@ -82,7 +78,7 @@
   "prompt": "复用等距 2.5D 来源案例的原作 window.renderAt(t)，依次重放原片1.42–2.57秒土层、1.95–5.45秒楼房、4.325–6.185秒核心塔，时长6.51秒。土层三层分别延迟0/.15/.3秒向下伸展，后续层段的位置由前层当前伸展量计算。楼房基座先落，墙体延后1/30秒以A.spring(tau,14.8,.61,0)长高，roof_lag=.375秒后屋顶落下，细节再延后.05秒弹出，窗光在def.t0+.42秒启亮。核心塔的SH1/SH2/SH3/SHA为2.3/2/1.6/1.2，较细塔段从前段内部升出；按4.625/4.75/5/5.25/5.5/5.75秒组装基座、三段、天线与光环。保留原作模型、材质、字体、逐段上行音与同区间音轨，1920×1080、30fps，声音默认关闭。",
   "markers": [
     {
-      "t": 0.0,
+      "t": 0,
       "label": "土层片段"
     },
     {
@@ -142,8 +138,7 @@
   "composition": {
     "role": "support",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "本巧思按所列原片区间顺序重放。"
+    "conflicts": []
   },
   "demo": "demos/patterns/staged-extrusion-build/index.html",
   "sources": [
