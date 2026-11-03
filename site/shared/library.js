@@ -1110,6 +1110,27 @@
     return `<div class="rel-list">${ps.map((p) => `<a href="patterns.html#pattern/${p.id}">${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy">` : '<img alt="">'}<span><strong>${esc(p.title)}</strong><small>${p.types.map((t) => TAX.types[t]).join(' · ')}</small></span></a>`).join('')}</div>`;
   }
 
+  function caseSources(it) {
+    const scopes = it.attribution.some(a => a.scope === '制作来源') ? ['制作来源'] : ['作品', '作品代码', '原作', '参考'];
+    const credits = it.attribution.filter(a => scopes.includes(a.scope));
+    const notes = credits.map(a => a.notes).join('\n');
+    const link = (href, label) => {
+      const url = new URL(href, new URL(it.demo, location.href));
+      const external = url.origin !== location.origin;
+      const target = !external && url.pathname.endsWith('.md') ? `docs.html#doc/${decodeURIComponent(url.pathname.slice(1))}` : url.href;
+      return `<a href="${esc(target)}"${external ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
+    };
+    const inline = text => text.split(/(`[^`]+`)/).map(part => /^`[^`]+`$/.test(part) ? `<code>${esc(part.slice(1, -1))}</code>` : esc(part)
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => link(href.replace(/&amp;/g, '&'), label))
+      .replace(/&lt;(https?:\/\/[^\s]+?)&gt;/g, (_, href) => link(href.replace(/&amp;/g, '&'), href))).join('');
+    const rows = credits.map(a => `<dt>${esc(a.scope)}</dt><dd>${a.notes.split(/\n\s*\n/).map(text => `<p>${inline(text)}</p>`).join('')}</dd>`);
+    if (it.upstream?.commit && !notes.replace(/\]\([^)]+\)/g, ']').includes(it.upstream.commit)) {
+      rows.push(`<dt>采用版本</dt><dd>${link(`https://github.com/${it.upstream.repository}/commit/${it.upstream.commit}`, esc(it.upstream.commit.slice(0, 7)))}${it.upstream.version && it.upstream.version !== it.upstream.commit ? ` · ${esc(it.upstream.version)}` : ''}</dd>`);
+    }
+    const sources = (it.sources || []).filter(source => !notes.includes(source.url));
+    return rows.length || sources.length ? sec('许可与来源', 'SOURCES', `${rows.length ? `<dl class="kv">${rows.join('')}</dl>` : ''}${sources.length ? `<ul style="margin-top:10px">${sources.map(source => `<li>${link(source.url, esc(source.label || source.title))}</li>`).join('')}</ul>` : ''}`) : '';
+  }
+
   function caseNotes(it) {
     const c = it.composition || {};
     const beats = it.rhythm?.beats || [];
@@ -1130,6 +1151,7 @@
       fit.length || it.constraints?.length ? sec('适用与边界', 'FIT', `${fit.length ? `<dl class="kv">${fit.map(([key, values]) => `<dt>${key}</dt><dd>${esc(values.join('、'))}</dd>`).join('')}</dl>` : ''}${it.constraints?.length ? `<div style="margin-top:10px">${ul(it.constraints)}</div>` : ''}`) : '',
       it.patternIds?.length ? sec('关联巧思', 'PATTERNS', relPatterns(it.patternIds)) : '',
       materials.length ? sec('关联素材', 'MATERIALS', `<ul>${materials.map(relation => `<li><a href="materials.html#material/${esc(relation.id)}">${esc(byId(MA.materials, relation.id).title)}</a>：${esc(relation.note)}</li>`).join('')}</ul>`) : '',
+      caseSources(it),
       documentLinks(it),
     ].join('');
   }

@@ -431,6 +431,12 @@
         "notes": "本案例来自 garden-skills 的 motion-showreel skill，固定提交 `2b9a89340b70f632d31c0f1c69fce94a7912423e`，按其工作流制作。作品为 20 秒、1920×1080 横屏数据短片。"
       }
     ],
+    "sources": [
+      {
+        "label": "制作方法 · ConardLi / motion-showreel",
+        "url": "https://github.com/ConardLi/garden-skills/tree/2b9a89340b70f632d31c0f1c69fce94a7912423e/skills/motion-showreel"
+      }
+    ],
     "research": "docs/cases/keeling-curve.md",
     "licenses": "demos/cases/keeling-curve/LICENSES.md",
     "preview": "previews/cases/keeling-curve.jpg",
@@ -630,7 +636,7 @@
     },
     {
       "path": "entries/cases/keeling-curve.json",
-      "bytes": 23892,
+      "bytes": 24111,
       "role": "entry"
     },
     {
