@@ -51,15 +51,10 @@
       "竖屏重排",
       "片段边界无缝循环"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览帧。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "本巧思按所列原片区间重放，画面与音轨使用同一时间映射。"
+      "conflicts": []
     },
     "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 以1倍速重放原片0–8.02秒，巧思时长8.02秒。笔尖经过路径点后，新画线段和笔锋先保持明亮，旧线按绘制年龄降低亮度；抬升段逐渐增亮，标志保持高亮。FLOOR[i] = 0.4; (1 - smooth(0.2, 1.5, age))。FLOOR[i] = 0.96;glowAt(sx, sy, 56 * fl, 0.09 * vis, '214,178,112');7.5–7.82秒；const vis = 1 - smooth(cues.tip_fade[0], cues.tip_fade[1], t);沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
     "demo": "demos/patterns/fresh-ink-aging/index.html",
@@ -279,7 +274,7 @@
     },
     {
       "path": "entries/patterns/fresh-ink-aging.json",
-      "bytes": 3695,
+      "bytes": 3404,
       "role": "entry"
     },
     {

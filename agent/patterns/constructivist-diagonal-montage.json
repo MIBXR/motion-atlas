@@ -52,15 +52,10 @@
     "avoid": [
       "同一时刻叠加争夺主动作的多组信息"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "foundation",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "来源片段按原作时钟重放，画面与音轨使用同一时间映射。"
+      "conflicts": []
     },
     "prompt": "用来源案例lemo-kino-montage的原作render(t)重放“构成主义斜线蒙太奇”。以−18°斜梁承载大字，沿轴砸入；工地影像分成三条双窗条带逐拍换镜，剪下的工人和影像楼层再交替叠成塔。保留参数：film/index.html:TH=−18°；S1斜梁与片名字块沿同轴砸入。；film/index.html:S3；3条290px高、22px间隔的条带，每条2个1160px窗；BEAT=.5，交替漂移90px/s。；film/index.html:FLOORS / S9；43.25–48.25秒影像楼层与工人剪影逐层组装，计数在86处停后再升到102。。重放区间由入口segments配置，来源素材与音轨直接复用。",
     "demo": "demos/patterns/constructivist-diagonal-montage/index.html",
@@ -8564,7 +8559,7 @@
     },
     {
       "path": "entries/patterns/constructivist-diagonal-montage.json",
-      "bytes": 3044,
+      "bytes": 2712,
       "role": "entry"
     },
     {

@@ -45,15 +45,10 @@
       "保持地点和构图，用新纸、新数量和迟到的红版表达时间累积。"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "重放来源案例对应片段，画面与音轨使用同一时间映射。"
+      "conflicts": []
     },
     "prompt": "复用来源案例lemo-printed-long-take的原作render(t)，重放“同地再印换时”。固定机位把同一片田地印四次，纸角揭开下一年的鹤群；每次新印先没有红冠，.45秒后单独压上稍有偏位的红版。参数与源码：film/timeline.js:17–20的peels=[38.9,39.7,40.4]为慢镜前时刻；film/scene.js:546–569双路rtA/rtB在.3秒内从右上角揭纸，成片映射后为39.3/40.1/40.8秒。；film/scene.js:551–565：每版t>=lastPeel+.45时亮红，uShift=(1.6*SS,−1.1*SS)，freshInk在.3–1秒间干燥。按入口segments映射原片时刻，保留原作字体、画面与同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/reprint-same-place/index.html",
@@ -303,7 +298,7 @@
     },
     {
       "path": "entries/patterns/reprint-same-place.json",
-      "bytes": 2972,
+      "bytes": 2643,
       "role": "entry"
     },
     {

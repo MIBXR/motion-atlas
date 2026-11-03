@@ -39,15 +39,10 @@
       "按涟漪传播时间错峰显字"
     ],
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态偏好下暂停在巧思 2.3 秒，声音默认关闭。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "support",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "来源区间依次重放，保留原作形体、字形、镜头与同段音轨。"
+      "conflicts": []
     },
     "prompt": "通过 MotionKit.replay 以 1 倍速依次重放mg-liquid 原片 6.9–9.7 秒；总时长 2.8 秒。末滴落地后涟漪从落点传播，标语字形按距落点的距离延迟显现、抬入并去模糊。参数保持原作数值：  const hero = { x: (x0r + x1r) / 2, y: pyBest - 6, rMax: 25, tLand: cues.drip_land };\n        S.rip = { x: hero.x, y: FY, age: tl, amp: 1 };\n          const tPass = 0.02 + Math.abs(cx - rip.x) / 2000 + li * 0.06;   // r2: wave spreads outward from the splash, done in ~0.5 s\n          a = smooth(k); dy = 8 * (1 - flung(k)); blur = 4 * (1 - smooth(inv(0, 0.7, k)));\n直接调用来源案例 renderAt(t)，沿用画面、字体和同区间成品音轨，声音默认关闭。使用 1920×1080 横屏、30fps，支持播放、暂停、时间定位与减少动态偏好。",
     "migration": [
@@ -265,7 +260,7 @@
     },
     {
       "path": "entries/patterns/drip-ripple-glyph-reveal.json",
-      "bytes": 3235,
+      "bytes": 2912,
       "role": "entry"
     },
     {

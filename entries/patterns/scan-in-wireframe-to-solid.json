@@ -43,15 +43,10 @@
     "扫描成线框再实体化"
   ],
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放与定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "accent",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "画面与原音轨使用同一片段时间映射。"
+    "conflicts": []
   },
   "prompt": "以来源案例lemo-hologram-hud的原作render(t)重放“扫描成线框再实体化”。扫描前沿按高度显露青色三维线框；归拢后面片按Fresnel与交错扫描线点亮为实体全息，边线保留，产品完成一圈转台。 参数：扫描−0.35—2.6秒，y=.2→1.16；24—24.35秒solid以三次ease-out到1；24—28秒spin=eio(u)×2π。；Fresnel=.3+.7×(1−facing)^1.6；2px明／2px38%交错线，双层低分辨率辉光。。按入口segments映射原片，复用原作素材、字体与同段音轨，声音默认关闭。",
   "demo": "demos/patterns/scan-in-wireframe-to-solid/index.html",

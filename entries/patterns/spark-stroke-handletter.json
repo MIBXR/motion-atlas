@@ -50,15 +50,10 @@
     "竖屏重排",
     "片段边界无缝循环"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览帧。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "本巧思按所列原片区间顺序重放。"
+    "conflicts": []
   },
   "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放原片158/24−0.2至9.075秒，全长2.6916666666666664秒。保留22个火团圆形在0、0.32、0.6、0.82、1的阶梯进度下迁移到rx=520、ry=262的花边徽章；黄色核心以[0,0.55,1]进度和[1,0.45,0.2]尺寸接到第一笔。沿用S=352、gap=18的手绘字形，火星沿E.out2(p)控制的中心线前缀逐笔书写；笔画节点为7.25至8.5秒、间隔0.125秒。保留标题影块、徽章和字面的回弹落定、HAND MADE与中文标语入场。沿用原作字体、纹理和同区间成品音轨，保持1920×1080、24fps，声音默认关闭。",
   "demo": "demos/patterns/spark-stroke-handletter/index.html",

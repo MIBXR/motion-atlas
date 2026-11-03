@@ -339,7 +339,6 @@
     const t = Number(hashParams().get('t'));
     const autoplay = hashParams().get('autoplay') || q.get('autoplay');
     const src = `${it.demo}?embed=1&orient=${want}${Number.isFinite(t) && t > 0 ? `&t=${t}` : ''}${autoplay === '0' ? '&autoplay=0' : ''}`;
-    const caption = KIND === 'patterns' ? `<p class="stage-caption">所属案例：${(it.sources || []).map((s) => { const c = byId(MA.cases, s.caseId); return c ? `<a href="cases.html#case/${c.id}">${esc(c.title)}</a>` : ''; }).join('、')}</p>` : '';
     return `<section class="stage-col" id="stage-col" aria-label="${esc(it.title)} Demo">
       <div class="stage-bar">
         <div class="stage-views" role="group" aria-label="查看方式">
@@ -363,7 +362,6 @@
         </div>
         <div class="beat-side"><p class="side-h">节拍点<small>BEATS</small></p><div class="side-beats" id="beat-side"></div></div>
       </div>
-      ${caption}
       <div class="scrubber" id="scrubber" data-ready="0">
         <div class="scrub-row">
           <button class="icon-btn play-btn" type="button" id="scrub-play" disabled aria-disabled="true" data-playing="false" aria-label="播放" title="播放 / 暂停（空格）">${SI.play}${SI.pause}</button>
@@ -1158,13 +1156,17 @@
 
   function patternNotes(it) {
     const comp = it.composition || {};
+    const parameters = [...it.timing, ...(it.parameters || [])];
+    const fit = [['适用', it.useCases], ['避免', it.avoid]].filter(([, values]) => values?.length);
+    const relations = [['搭配', comp.pairsWellWith], ['冲突', comp.conflicts]].filter(([, ids]) => ids?.length);
+    const sources = it.sources.map(source => byId(MA.cases, source.caseId));
     return [
       sec('机制', 'MECHANISM', `<p>${esc(it.mechanism)}</p><dl class="kv" style="margin-top:12px"><dt>触发</dt><dd>${esc(it.trigger)}</dd><dt>结果</dt><dd>${esc(it.effect)}</dd></dl>`),
-      it.timing ? sec('参数', 'PARAMETERS', `<table class="token-table"><tbody>${it.timing.map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.value)}${m.note ? `<br><small style="color:var(--muted)">${esc(m.note)}</small>` : ''}</td></tr>`).join('')}</tbody></table>`) : '',
+      parameters.length ? sec('参数', 'PARAMETERS', `<table class="token-table"><tbody>${parameters.map(m => `<tr><td>${esc(m.name)}</td><td>${esc(m.value)}${[m.note, m.source].filter(Boolean).map(note => `<div style="color:var(--muted)">${esc(note)}</div>`).join('')}</td></tr>`).join('')}</tbody></table>`) : '',
       sec('可复用 Prompt', 'PROMPT', promptBox('p-impl', it.prompt)),
-      sec('适用与边界', 'FIT', `<dl class="kv"><dt>适用</dt><dd>${esc((it.useCases || []).join('、'))}</dd><dt>避免</dt><dd>${esc((it.avoid || []).join('、'))}</dd></dl>`),
-      sec('组合', 'COMPOSE', `<dl class="kv"><dt>职责</dt><dd>${esc(TAX.roles[comp.role] || comp.role || '—')}</dd><dt>搭配</dt><dd>${(comp.pairsWellWith || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd><dt>冲突</dt><dd>${(comp.conflicts || []).map((id) => { const p = byId(MA.patterns, id); return p ? `<a href="#pattern/${id}">${esc(p.title)}</a>` : esc(id); }).join('、') || '—'}</dd></dl>${comp.notes ? `<p style="margin-top:10px">${esc(comp.notes)}</p>` : ''}`),
-      sec('可访问性', 'A11Y', `<dl class="kv"><dt>减少动态</dt><dd>${esc(it.accessibility?.reducedMotion || '—')}</dd><dt>键盘</dt><dd>${esc(it.accessibility?.keyboard || '—')}</dd></dl>`),
+      fit.length ? sec('适用与边界', 'FIT', `<dl class="kv">${fit.map(([key, values]) => `<dt>${key}</dt><dd>${esc(values.join('、'))}</dd>`).join('')}</dl>`) : '',
+      comp.role || relations.length || comp.notes ? sec('组合', 'COMPOSE', `<dl class="kv">${comp.role ? `<dt>职责</dt><dd>${esc(TAX.roles[comp.role] || comp.role)}</dd>` : ''}${relations.map(([key, ids]) => `<dt>${key}</dt><dd>${ids.map(id => { const p = byId(MA.patterns, id); return `<a href="#pattern/${id}">${esc(p.title)}</a>`; }).join('、')}</dd>`).join('')}</dl>${comp.notes ? `<p style="margin-top:10px">${esc(comp.notes)}</p>` : ''}`) : '',
+      sources.length ? sec('来源案例', 'SOURCES', `<ul>${sources.map(source => `<li><a href="cases.html#case/${source.id}">${esc(source.title)}</a></li>`).join('')}</ul>`) : '',
       documentLinks(it),
     ].join('');
   }

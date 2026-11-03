@@ -68,15 +68,10 @@
       "竖屏重排",
       "片段边界无缝循环"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览帧。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "本巧思按所列原片区间顺序重放。"
+      "conflicts": []
     },
     "prompt": "复用来源案例的原作 window.renderAt(t)，按 index.html 内联配置 的 segments 重放柱条接字干、圆点升空悬停与落字。保留237/30–245/30秒的矩形形变，247→250帧的上升、250→251帧的悬停、251→255帧的下降；上升用 E.outQ，下降用 E.inQ。落字后按 abs(L.i-4) 帧延迟把10像素冲量传到各字母，保留1.22倍镜头推近、r60→1100的扩散环、持续5帧的六条放射线，以及9.000秒和9.500秒的回跳。沿用原画面、字体与成品音轨，保持1920×1080、30fps；画面和音轨共用同一时刻映射，声音默认关闭。",
     "demo": "demos/patterns/dot-drop-wordmark/index.html",
@@ -266,7 +261,7 @@
     },
     {
       "path": "entries/patterns/dot-drop-wordmark.json",
-      "bytes": 4937,
+      "bytes": 4682,
       "role": "entry"
     },
     {

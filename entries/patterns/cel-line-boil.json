@@ -61,17 +61,12 @@
     "竖屏重排",
     "片段边界无缝循环"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览帧。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [
       "emotion-take-morph"
     ],
-    "conflicts": [],
-    "notes": "本巧思按所列原片区间顺序重放。"
+    "conflicts": []
   },
   "prompt": "复用来源案例的原作渲染入口，按 index.html 内联 segments 顺序重放 mg-cel-boil 原片0–10秒、mg-hanazi 原片1.3–1.834秒与5.8–7.967秒、pdoom-video 原片3.6–5.9秒，全长15.001秒。保留24fps的SCHED曝光表，在一拍一、一拍二和一拍三之间切换；静态形体以D.id%4循环线稿，三帧曝光以D.id%3循环。沿用boil的amp=2.4、scale=70与z=seed*2.371+0.5；纸齿按同一绘制编号从470×310范围取偏移，以multiply、alpha=0.5合成；尘点以v%4轮换、alpha=0.22叠加并翻转。综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。PDoom以BOIL=12与randomSeed(1000+Math.floor(T*BOIL))每1/12秒更新笔触种子，调用并等待异步renderAt；源码位于film/src/core.js:3/195/209。沿用原画面、字体、纸纹和同区间成品音轨，保持1920×1080、24fps，画面与音轨使用同一映射，声音默认关闭。",
   "demo": "demos/patterns/cel-line-boil/index.html",

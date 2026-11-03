@@ -48,15 +48,10 @@
   "avoid": [
     "在关键动作和证据上叠加争夺注意的运动"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "foundation",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "画面和声音使用同一来源时间映射。"
+    "conflicts": []
   },
   "prompt": "用来源案例的原作render(t)实现“逐块长岛配音符”。海中地块按节拍由水下升起并带水花，随后树和房屋按部件生长；每个落定事件携带音高导出给配乐，转台镜头在同一世界里展示建造。参数：film/world.js:213–229的ev(t,rise,{note})、253的floor/roof、270的pop；source/music/score.py读取events.json合成旋律。；film/world.js:415–430：地块水下上升、弹性回落、六边形浪圈和14滴水花；film/main.js:cam的grow/grow2使用单调正交转台。。复用来源字体、素材和同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/tile-by-tile-island-growth/index.html",

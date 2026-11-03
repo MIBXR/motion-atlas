@@ -33,15 +33,10 @@
     "软胶产品字标的落地与回弹。"
   ],
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态偏好下暂停在巧思 2.85 秒的预览帧，声音默认关闭。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "accent",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "按所列来源区间依次重放，每段在候选动作前后各保留 0.2 秒，片头片尾以原片边界为限。"
+    "conflicts": []
   },
   "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-3d-render 原片 0.05–3.2 秒；总时长 3.15 秒。字母到达软床 → 接触力驱动下陷、反弹与延迟挤压，落点声音读取同一碰撞事件。直接调用来源案例的 renderAt(t)，保留原画面、字体、素材、时刻映射和同段音轨，声音默认关闭。参数：dt = 1 / 2400.0\nws, zs, beta = 2 * np.pi * 3.3, 0.14, 0.56\nFALL_Z = {'s': 1.8, 'o': 2.9, 'f': 2.9, 't': 2.9}。使用 1920×1080 横屏。",
   "migration": [

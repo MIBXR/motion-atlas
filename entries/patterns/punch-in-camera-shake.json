@@ -38,15 +38,10 @@
     "分级急推与镜震强调的喜剧或主拍段落。"
   ],
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态偏好下暂停在巧思 2.92 秒的预览帧，声音默认关闭。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "按所列来源区间依次重放，每段在候选动作前后各保留 0.2 秒，片头片尾以原片边界为限。"
+    "conflicts": []
   },
   "prompt": "通过 MotionKit.replay 以 1 倍速重放以下片段：mg-collage 原片 1.13–7.7 秒；mg-hanazi 原片 4.7–6.2 秒；总时长 8.07 秒。拍点到达 → 镜头分级急推，每级在少数帧内完成推近、过冲与镜震，之后继续缓推或加强颤动。直接调用来源案例的 renderAt(t)，保留原画面、字体、素材、时刻映射和同段音轨，声音默认关闭。参数：z = [1.11, 1.075, 1.056, 1.05][kp]; cx = [12, -8, 3, 0][kp]; cy = [26, -14, 6, 0][kp];\nif (q6 >= 5.5 - 1e-4) { z = 1 + 0.022 * eIO((q6 - 5.5) / 2.0); px = 900; py = 540; }；const u = tt - p, e = E.outExpo(clamp(u / (2 * FR)));\nos = 1 + .03 * Math.exp(-Math.pow((u - 1.6 * FR) / (.9 * FR), 2))\n9 + 4 * k\n\"pushZ\": [\n  1.4,\n  2.0,\n  2.9\n ]。横屏来源使用 1920×1080，竖屏来源使用 1080×1920。",
   "migration": [

@@ -64,17 +64,12 @@
       "没有眼型和身体变形余量的图标",
       "需要原片区间无缝循环的演出"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览帧。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [
         "cel-line-boil"
       ],
-      "conflicts": [],
-      "notes": "按所列原片区间顺序重放，画面与 MP3 音轨使用相同时间映射。"
+      "conflicts": []
     },
     "prompt": "复用 pdoom-video 原作的异步 renderAt(t)，按 index.html 内联 segments 重放“表情过渡：闭眼、挤压、冒符号再睁眼”，总时长5.25秒。mood(t,keys) 根据当前表情键和下一次切换的距离返回 eyes、squint、take、emote、emoteK；提前 .08 秒挤眼，在新眼型的前 .16 秒睁开并做负 take 拉伸，随后 .24 秒做衰减正 take 挤压。eyes 用 squint 压缩眼型，clawd 把 take 加到 sq；emote 用 backOut 弹出符号。 film/src/clawd.js:11/22：sq=(o.sq||0)+(o.take||0)，横向 1+sq*.6，纵向 1-sq。 film/src/clawd.js:90–93：squint>.8 时画闭眼线；否则横向 1+squint*.15、纵向 1-squint。 film/src/clawd.js:75/180–204：头边 (x±5.4u,y+dy-8.6u)，s=.9u；sweat/spark/heart 等以 backOut(k) 缩放，!/? 由 letter 的 pop 绘制。 film/src/ch/c01_lab.js:164/206/240：3.92秒 normal→spark 并冒星，6秒 Researcher star→wide 并冒汗；8秒段含 normal→wink→look。 保留原画面、固定版本 p5 与 p5.brush、完整字体和同区间 MP3，使用1920×1080、24fps。声音默认关闭，减少动态时暂停在预览帧。",
     "demo": "demos/patterns/emotion-take-morph/index.html",
@@ -349,7 +344,7 @@
     },
     {
       "path": "entries/patterns/emotion-take-morph.json",
-      "bytes": 5270,
+      "bytes": 4977,
       "role": "entry"
     },
     {

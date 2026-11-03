@@ -50,15 +50,10 @@
   "avoid": [
     "在主要读数和证据上叠加争夺注意的运动"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "accent",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "画面与音轨按同一来源时间映射。"
+    "conflicts": []
   },
   "prompt": "用来源案例的原作render(t)实现“日晷与投影阴影轨迹”。按真实冬至太阳位置推进时钟到正午，太阳阴影落在模型上，投影描出阴影边缘，量程线从塔楼伸到777米并依次标记16个屋顶。保留参数：film/main.js:sunAt / clockMin / sunVec，读取stats.json的太阳表，10:55→12:40；T.sun=22.8、T.noon=25.8。；film/studio.js:projLight，uZS采样2米高度场阴影，uZSProg沿距离从塔楼向外展开；main.js:shPts为79点。；film/main.js:rangeLine / SH.forEach，27–28.8秒展开777米量程，29.4–31.2秒点亮16屋顶，9个战前屋顶用琥珀色。。按index.html内联segments定位原片，复用原作素材、字体与同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/sun-clock-shadow-trace/index.html",

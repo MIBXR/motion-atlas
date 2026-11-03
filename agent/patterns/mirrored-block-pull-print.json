@@ -53,17 +53,12 @@
     "avoid": [
       "在关键动作或留白上叠加争夺注意的主动作"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [
         "carve-cut-by-cut-reveal"
       ],
-      "conflicts": [],
-      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+      "conflicts": []
     },
     "prompt": "用来源案例lemo-woodcut的原作render(t)重放“反刻版揭印转正”。木版以镜像变换显示反刻标题，滚墨覆纸后通过圆柱卷纸的正背条带绘制揭出可读正印；唯一铜色随浇铸放大，片尾收于小钟高光。保留参数：film/shots.js:blockFrame镜像木版；7秒滚墨、7.6667覆纸、8秒擦压、8.5–9秒peelState(u,230)并curl(F=1900)。；film/trans.js:curl以step=3条带绕圆柱，F默认2400；peelState前22%缓慢揭起，其后指数2.2加速，半径4+rmax*sin(π*min(1,1.05u))^.7。；film/engine/print.js:plate与白色刻痕相乘；shots2.js:39–41.6667秒浇铸扩大光，endScene在黑色片名板上保留小钟的铜色。。按index.html内联segments映射原片时刻，复用原作字体、素材与同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/mirrored-block-pull-print/index.html",
@@ -396,7 +391,7 @@
     },
     {
       "path": "entries/patterns/mirrored-block-pull-print.json",
-      "bytes": 3857,
+      "bytes": 3543,
       "role": "entry"
     },
     {

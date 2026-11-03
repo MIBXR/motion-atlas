@@ -12,10 +12,6 @@
     "kit": true,
     "timeline": true,
     "avoid": [],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，可手动播放和定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-    },
     "sound": {
       "description": "成品音轨按所选原片区间与画面同步播放，声音默认关闭。"
     },
@@ -146,8 +142,7 @@
     "composition": {
       "role": "support",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "本巧思按所列原片区间顺序重放。"
+      "conflicts": []
     },
     "demo": "demos/patterns/staged-extrusion-build/index.html",
     "sources": [
@@ -376,7 +371,7 @@
     },
     {
       "path": "entries/patterns/staged-extrusion-build.json",
-      "bytes": 4597,
+      "bytes": 4310,
       "role": "entry"
     },
     {

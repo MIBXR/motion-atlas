@@ -37,15 +37,10 @@
     "以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。"
   ],
   "avoid": [],
-  "accessibility": {
-    "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [],
-    "conflicts": [],
-    "notes": "按来源片段重放，画面和音轨共用时间映射。"
+    "conflicts": []
   },
   "prompt": "调用来源案例原作render(t)重放“移轴焦带”。以主体的屏幕投影高度定位一条清晰窄带，带外距离产生有符号散焦并与物理景深组合；带宽与追踪目标一起引导注意。 参数：film/main.js:tiltCenter追踪薇伦、广景固定.34/.36；film/post_ts.js:tiltAmt=17、tiltW=.075、tiltF=.3，与物理散焦取有符号合成。 使用index.html的segments映射原片时刻，复用来源素材、字体与同区间音轨，声音默认关闭。",
   "demo": "demos/patterns/tilt-shift-focus-band/index.html",

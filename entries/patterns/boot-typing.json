@@ -46,10 +46,6 @@
   "avoid": [
     "频繁重复的登录操作；该完整开场约 21.92 秒。"
   ],
-  "accessibility": {
-    "reducedMotion": "直接定位到 20.5 秒的静态欢迎画面；声音默认关闭。",
-    "keyboard": "空格播放或暂停；时间轴支持外部 seek。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [

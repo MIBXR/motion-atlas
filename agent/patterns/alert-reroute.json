@@ -37,10 +37,6 @@
     "avoid": [
       "频繁告警（会削弱紧张感）"
     ],
-    "accessibility": {
-      "reducedMotion": "可使用时间轴暂停在完整帧。",
-      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [
@@ -253,7 +249,7 @@
     },
     {
       "path": "entries/patterns/alert-reroute.json",
-      "bytes": 5833,
+      "bytes": 5640,
       "role": "entry"
     },
     {

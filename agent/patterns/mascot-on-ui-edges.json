@@ -49,15 +49,10 @@
     "avoid": [
       "在主动作发生时叠加争夺注意的另一主动作"
     ],
-    "accessibility": {
-      "reducedMotion": "减少动态时暂停在预览时刻，声音默认关闭，可手动播放和定位。",
-      "keyboard": "空格播放或暂停，左右方向键定位，Shift加方向键跳到标记。"
-    },
     "composition": {
       "role": "foundation",
       "pairsWellWith": [],
-      "conflicts": [],
-      "notes": "按来源片段重放，画面和音轨共用时间映射。"
+      "conflicts": []
     },
     "prompt": "用来源案例lemo-living-screencast的原作render(t)重放“小人只站界面上沿”。每帧测量真实DOM元素上边缘并换回世界坐标，像素吉祥物以这些点为站立、行走和跳跃端点；同一时间表触发文件高亮、计划生成和界面状态变化。保留参数：film/main.js:A：r=getBoundingClientRect()；x=(r.left+r.width×fx−960)/z+cx；y=(r.top+r.height×fy−540)/z+cy；fy默认0。；film/film.js:at / Actor.eval / appState：输入框、文件行、plan条目、按钮等data-a锚点；起跳前.14秒蹲压.28，落地.22秒衰减。。按index.html中的segments映射时间，复用原作素材、字体和同区间音轨，声音默认关闭。",
     "demo": "demos/patterns/mascot-on-ui-edges/index.html",
@@ -286,7 +281,7 @@
     },
     {
       "path": "entries/patterns/mascot-on-ui-edges.json",
-      "bytes": 3366,
+      "bytes": 3052,
       "role": "entry"
     },
     {

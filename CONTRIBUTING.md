@@ -148,7 +148,7 @@
 
 ### 巧思
 
-1. 在 `entries/patterns/<id>.json` 说明机制、触发、结果、参数、组合职责及可访问性，`sources` 仅保存 `{ caseId }`，并把该 id 加入来源案例的 `patternIds`。
+1. 在 `entries/patterns/<id>.json` 说明机制、触发、结果、参数与组合职责，`sources` 仅保存 `{ caseId }`，并把该 id 加入来源案例的 `patternIds`。
 2. 在 `demos/patterns/<id>/` 创建入口。模板位于 `scripts/templates/pattern-replay/` 与 `scripts/templates/pattern-split/`；复用来源案例的素材和上游源码。
 3. 有单条研究时写入 `docs/patterns/<id>.md`。
 4. 运行构建（见[“构建与检查”](#构建与检查)）。
@@ -229,7 +229,7 @@ git ls-files --others --ignored --exclude-standard
 
 ### 巧思
 
-巧思填写 `types`、`carriers`、`mechanism`、`trigger`、`effect`、`timing`、`accessibility`、`sources`、`demo` 与 `prompt`。`types` 使用 `composition`、`type-motion`、`transition`、`camera`、`feedback`、`rhythm`、`hud`、`texture`、`sound`，可多选。`parameters` 可附参数数值及源码定位。
+巧思填写 `types`、`carriers`、`mechanism`、`trigger`、`effect`、`timing`、`sources`、`demo` 与 `prompt`。`types` 使用 `composition`、`type-motion`、`transition`、`camera`、`feedback`、`rhythm`、`hud`、`texture`、`sound`，可多选。`parameters` 可附参数数值及源码定位，详情参数区按 `timing`、`parameters` 的顺序展示。机制自身需要说明的操作或静态替代写入 `mechanism`。
 
 `composition.role` 为 `foundation`（骨架）、`support`（支撑）或 `accent`（点睛）；`pairsWellWith`、`conflicts` 保存搭配和冲突的巧思 id，`notes` 说明组合条件。
 

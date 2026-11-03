@@ -47,10 +47,6 @@
     "avoid": [
       "计数与叙事无关时（会显得廉价）"
     ],
-    "accessibility": {
-      "reducedMotion": "可使用时间轴暂停在完整帧。",
-      "keyboard": "空格播放/暂停，←/→ 跳 1 秒，Shift+←/→ 跳到上/下一个标记。"
-    },
     "composition": {
       "role": "accent",
       "pairsWellWith": [
@@ -748,7 +744,7 @@
     },
     {
       "path": "entries/patterns/collect-counter.json",
-      "bytes": 8774,
+      "bytes": 8581,
       "role": "entry"
     },
     {

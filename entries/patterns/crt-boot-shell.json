@@ -55,10 +55,6 @@
     "需要保持直线无形变的画面",
     "需要取消开机闪光的重放"
   ],
-  "accessibility": {
-    "reducedMotion": "减少动态偏好下暂停在 1 秒的完整屏幕帧，可主动播放或定位开机过程。",
-    "keyboard": "空格播放或暂停，左右方向键定位，Shift 加方向键跳到相邻标记。"
-  },
   "composition": {
     "role": "support",
     "pairsWellWith": [],
