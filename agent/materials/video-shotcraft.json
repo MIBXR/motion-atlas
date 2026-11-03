@@ -1476,6 +1476,7 @@
       "demos/materials/video-shotcraft/demos/data/chart-live-moves/AxisRescaleShockV2.tsx",
       "demos/materials/video-shotcraft/demos/data/chart-live-moves/OscilloscopeStreamV2.tsx",
       "demos/materials/video-shotcraft/demos/data/chart-live-moves/UnitDotSwarmRegroupV2.tsx",
+      "demos/materials/video-shotcraft/demos/data/gauge-readout-moves/NeedleSweepSelftest.tsx",
       "demos/materials/video-shotcraft/demos/data/gauge-readout-moves/TapeScrollFixedPointer.tsx",
       "demos/materials/video-shotcraft/demos/data/scroll-brake-moves/BrakeReticleLock.tsx",
       "demos/materials/video-shotcraft/demos/data/scroll-brake-moves/ChangelogScrollBrake.tsx",
@@ -3270,6 +3271,11 @@
     {
       "path": "demos/materials/video-shotcraft/demos/data/chart-live-moves/UnitDotSwarmRegroupV2.tsx",
       "bytes": 14003,
+      "role": "source"
+    },
+    {
+      "path": "demos/materials/video-shotcraft/demos/data/gauge-readout-moves/NeedleSweepSelftest.tsx",
+      "bytes": 12592,
       "role": "source"
     },
     {
