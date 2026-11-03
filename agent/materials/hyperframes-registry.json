@@ -114,12 +114,12 @@
     },
     {
       "path": "demos/materials/hyperframes-registry/demo/demo.css",
-      "bytes": 5519,
+      "bytes": 5578,
       "role": "source"
     },
     {
       "path": "demos/materials/hyperframes-registry/demo/demo.js",
-      "bytes": 7603,
+      "bytes": 7674,
       "role": "source"
     },
     {
@@ -411,6 +411,11 @@
       "path": "demos/materials/hyperframes-registry/demo/examples/warm-grain/registry-item.json",
       "bytes": 843,
       "role": "asset"
+    },
+    {
+      "path": "demos/materials/hyperframes-registry/demo/initial.js",
+      "bytes": 20429,
+      "role": "source"
     },
     {
       "path": "demos/materials/hyperframes-registry/demo/labels.json",
@@ -1619,7 +1624,7 @@
     },
     {
       "path": "demos/materials/hyperframes-registry/index.html",
-      "bytes": 623,
+      "bytes": 744,
       "role": "source"
     },
     {

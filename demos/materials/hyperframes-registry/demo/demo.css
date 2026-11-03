@@ -4,6 +4,7 @@ html[data-theme="dark"] .hf-registry { color-scheme:dark; }
 html[data-theme="light"] .hf-registry { color-scheme:light; }
 .hf-registry { --hf-pad:clamp(12px,2vw,20px); --hf-space:calc(var(--hf-room,100dvh) - 2 * var(--hf-pad)); container-type:inline-size; box-sizing:border-box; width:100%; padding:var(--hf-pad); background:var(--hf-paper); color:var(--hf-ink); font:14px/1.5 system-ui,"Microsoft YaHei",sans-serif; border-radius:12px; }
 .hf-registry * { box-sizing:border-box; }
+.hf-pending :is(.hf-aside,.hf-info) { visibility:hidden; }
 .hf-registry [hidden] { display:none !important; }
 .hf-layout { display:grid; grid-template-columns:clamp(180px,23%,280px) minmax(0,1fr); gap:16px; }
 .hf-aside { contain:size; min-height:0; display:flex; flex-direction:column; gap:10px; }

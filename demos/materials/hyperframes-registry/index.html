@@ -10,6 +10,8 @@
 </head>
 <body class="hf-independent">
   <main class="hf-registry" aria-label="HyperFrames 模块与模板"></main>
+  <script src="demo/initial.js"></script>
+  <script>prepareHyperFramesRegistry(document.querySelector('main'));</script>
   <script type="module">
     import { mountRegistry } from './demo/demo.js';
     mountRegistry(document.querySelector('main'));

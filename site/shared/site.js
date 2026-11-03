@@ -333,3 +333,152 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderShell);
   else renderShell();
 })();
+
+(() => {
+  'use strict';
+  let current;
+  const searchable = select => select instanceof HTMLSelectElement && !select.disabled && !select.multiple && select.options.length >= 12;
+
+  function close(focus = false) {
+    if (!current) return;
+    const { menu, select } = current;
+    current = null;
+    menu.hidePopover();
+    menu.remove();
+    if (focus && select.isConnected) select.focus({ preventScroll: true });
+  }
+
+  function position() {
+    if (!current) return;
+    const { select, menu, list } = current;
+    const rect = select.getBoundingClientRect();
+    if (!rect.width || !rect.height) { close(); return; }
+    const viewport = window.visualViewport;
+    const height = viewport?.height || innerHeight;
+    const offset = viewport?.offsetTop || 0;
+    const width = Math.min(Math.max(rect.width, 260), innerWidth - 24);
+    const below = offset + height - Math.max(offset, rect.bottom) - 16;
+    const above = Math.min(rect.top, offset + height) - offset - 16;
+    const up = below < 180 && above > below;
+    list.style.maxHeight = Math.max(64, Math.min(300, (up ? above : below) - 58)) + 'px';
+    menu.style.width = width + 'px';
+    menu.style.left = Math.max(12, Math.min(rect.left, innerWidth - width - 12)) + 'px';
+    menu.style.top = Math.max(offset + 12, Math.min(up ? rect.top - menu.offsetHeight - 4 : rect.bottom + 4, offset + height - menu.offsetHeight - 12)) + 'px';
+  }
+
+  function open(select, query = '') {
+    if (current?.select === select) return;
+    close();
+    const label = select.getAttribute('aria-label') || select.labels[0]?.textContent.trim() || '选项';
+    const menu = document.createElement('div');
+    menu.className = 'atlas-select-menu';
+    menu.setAttribute('popover', 'manual');
+    menu.innerHTML = '<div class="atlas-select-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input class="atlas-select-input" type="search" autocomplete="off" placeholder="搜索选项" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="atlas-select-options"></div><div class="atlas-select-list" id="atlas-select-options" role="listbox"></div>';
+    const input = menu.querySelector('input');
+    const list = menu.querySelector('.atlas-select-list');
+    input.setAttribute('aria-label', '搜索' + label);
+    list.setAttribute('aria-label', label);
+    (select.closest('dialog') || document.body).append(menu);
+    current = { select, menu, list };
+    let active = 0;
+    let buttons = [];
+
+    function highlight(index) {
+      active = index;
+      buttons.forEach((button, i) => button.classList.toggle('active', i === active));
+      if (buttons[active]) {
+        input.setAttribute('aria-activedescendant', buttons[active].id);
+        buttons[active].scrollIntoView({ block: 'nearest' });
+      } else input.removeAttribute('aria-activedescendant');
+    }
+
+    function choose(button) {
+      select.value = button.dataset.value;
+      close(true);
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    function render() {
+      const query = input.value.trim().toLowerCase();
+      list.replaceChildren();
+      buttons = [];
+      for (const option of select.options) {
+        if (option.disabled || !(option.label + ' ' + option.value).toLowerCase().includes(query)) continue;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'atlas-select-option';
+        button.id = 'atlas-select-option-' + buttons.length;
+        button.setAttribute('role', 'option');
+        button.setAttribute('aria-selected', String(option.selected));
+        button.tabIndex = -1;
+        button.textContent = option.label;
+        button.dataset.value = option.value;
+        button.addEventListener('click', () => choose(button));
+        list.append(button);
+        buttons.push(button);
+      }
+      if (!buttons.length) {
+        const empty = document.createElement('p');
+        empty.className = 'atlas-select-empty';
+        empty.textContent = '没有匹配选项';
+        list.append(empty);
+      }
+      highlight(Math.max(0, buttons.findIndex(button => button.dataset.value === select.value)));
+      position();
+    }
+
+    input.value = query;
+    menu.showPopover();
+    render();
+    input.focus({ preventScroll: true });
+    input.addEventListener('input', render);
+    input.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        close(true);
+      } else if (event.key === 'Tab') close(true);
+      else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (buttons.length) highlight((active + (event.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length);
+      } else if (event.key === 'Enter') {
+        event.preventDefault();
+        if (buttons[active]) choose(buttons[active]);
+      }
+    });
+  }
+
+  document.addEventListener('pointerdown', event => {
+    const select = event.target.closest('select');
+    if (searchable(select) && event.button === 0) {
+      event.preventDefault();
+      open(select);
+    } else if (current && !current.menu.contains(event.target)) close();
+  }, true);
+  document.addEventListener('click', event => {
+    const select = event.target.closest('select');
+    if (!searchable(select)) return;
+    event.preventDefault();
+    open(select);
+  }, true);
+  document.addEventListener('keydown', event => {
+    const select = event.target;
+    if (!searchable(select) || event.ctrlKey || event.metaKey) return;
+    if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key) || event.key.length === 1) {
+      event.preventDefault();
+      open(select, event.key.length === 1 && event.key !== ' ' ? event.key : '');
+    }
+  }, true);
+  document.addEventListener('focusin', event => {
+    if (current && event.target !== current.select && !current.menu.contains(event.target)) close();
+  });
+  document.addEventListener('change', event => { if (current?.select === event.target) close(); });
+  document.addEventListener('close', () => close(), true);
+  document.addEventListener('scroll', event => {
+    if (current && !current.menu.contains(event.target)) close();
+  }, true);
+  addEventListener('resize', position);
+  addEventListener('popstate', () => close());
+  addEventListener('hashchange', () => close());
+  window.visualViewport?.addEventListener('resize', position);
+})();

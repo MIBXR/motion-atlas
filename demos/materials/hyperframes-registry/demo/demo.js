@@ -78,6 +78,7 @@ export async function mountRegistry(root) {
     const item = catalog.find(item => item.name === name);
     const spec = playable[name];
     stage.hidden = !spec;
+    if (spec) root.style.setProperty('--hf-ratio',String(spec.width/spec.height));
     info.replaceChildren();
     if (!item) { info.textContent = '没有匹配的条目，换一个关键词试试。'; return; }
     if (standalone) {
@@ -122,7 +123,6 @@ export async function mountRegistry(root) {
     player.setAttribute('runtime-src',file('vendor/@hyperframes/core@0.8.231/dist/hyperframe.runtime.iife.js'));
     player.setAttribute('srcdoc',html.replace(/<head\b[^>]*>/i, tag => tag + '<base href="' + src + '"><link rel="stylesheet" href="' + scrollbars + '">'));
     if (!matchMedia('(prefers-reduced-motion:reduce)').matches) player.addEventListener('ready',() => player.play(),{once:true});
-    root.style.setProperty('--hf-ratio',String(spec.width/spec.height));
     stage.replaceChildren(player);
   }
   toggle.onclick = () => { aside.classList.toggle('open'); updateToggle(); };
@@ -138,4 +138,6 @@ export async function mountRegistry(root) {
   filter.oninput = choose;
   selection = initial?.name || 'product-turntable';
   choose();
+  root.classList.remove('hf-pending');
+  root.inert = false;
 }
