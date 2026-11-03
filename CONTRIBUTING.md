@@ -200,7 +200,7 @@ git ls-files --others --ignored --exclude-standard
 | `prompt` | 实现 Prompt，填写后生成同类 Prompt 文档 |
 | `videoPrompt`、`negativePrompt` | 可选的视频生成 Prompt 与负向约束 |
 | `upstream`、`license`、`sources` | 素材的上游仓库、固定提交、版本、许可与来源证据；案例可记录来源事实，巧思的 `sources` 为案例指针 |
-| `attribution` | 按 `scope` 归类的来源、资源、版本与许可说明，`notes` 保留对应事实 |
+| `attribution` | 按 `scope` 归类的来源、资源、版本与许可说明，`notes` 保留对应事实；案例详情的“许可与来源”展示作品、参考或制作来源及其链接 |
 
 ### 案例
 
