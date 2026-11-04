@@ -34,14 +34,14 @@ export async function mountRegistry(root) {
     toggle.setAttribute('aria-expanded',String(open));
     toggle.textContent = open ? '收起作品目录' : '作品目录 · ' + (labels.items[selection] || selection || '全部条目');
   }
-  function choose() {
+  function renderDirectory() {
     const scope = Number(slider.value);
     const tabs = [...range.querySelectorAll('span')];
     range.style.setProperty('--scope',String(scope));
     tabs.forEach((tab,i) => tab.classList.toggle('active',i === scope));
     slider.setAttribute('aria-valuetext',tabs[scope].textContent);
-    filter.hidden = scope !== 2;
-    const query = scope === 2 ? filter.value.trim().toLowerCase() : '';
+    filter.hidden = scope === 1;
+    const query = scope === 1 ? '' : filter.value.trim().toLowerCase();
     const groups = new Map();
     tree.replaceChildren();
     for (const item of catalog) {
@@ -63,11 +63,17 @@ export async function mountRegistry(root) {
       button.type = 'button';
       button.dataset.name = item.name;
       button.textContent = title + (item.local ? '' : '（官网）');
+      button.setAttribute('aria-current',String(item.name === selection));
       groups.get(category).append(button);
     }
     const current = [...tree.querySelectorAll('button')].find(button => button.dataset.name === selection) || tree.querySelector('button');
     if (current) current.parentElement.open = true;
-    show(current?.dataset.name);
+    else {
+      const empty = document.createElement('p');
+      empty.className = 'hf-empty';
+      empty.textContent = '没有匹配的条目';
+      tree.append(empty);
+    }
   }
   async function show(name) {
     selection = name;
@@ -78,8 +84,8 @@ export async function mountRegistry(root) {
     const item = catalog.find(item => item.name === name);
     const spec = playable[name];
     stage.hidden = !spec;
+    if (spec) root.style.setProperty('--hf-ratio',String(spec.width/spec.height));
     info.replaceChildren();
-    if (!item) { info.textContent = '没有匹配的条目，换一个关键词试试。'; return; }
     if (standalone) {
       const url = new URL(location.href);
       url.searchParams.set('demo', name);
@@ -122,7 +128,6 @@ export async function mountRegistry(root) {
     player.setAttribute('runtime-src',file('vendor/@hyperframes/core@0.8.231/dist/hyperframe.runtime.iife.js'));
     player.setAttribute('srcdoc',html.replace(/<head\b[^>]*>/i, tag => tag + '<base href="' + src + '"><link rel="stylesheet" href="' + scrollbars + '">'));
     if (!matchMedia('(prefers-reduced-motion:reduce)').matches) player.addEventListener('ready',() => player.play(),{once:true});
-    root.style.setProperty('--hf-ratio',String(spec.width/spec.height));
     stage.replaceChildren(player);
   }
   toggle.onclick = () => { aside.classList.toggle('open'); updateToggle(); };
@@ -134,8 +139,11 @@ export async function mountRegistry(root) {
     show(button.dataset.name);
     if (wasOpen) toggle.focus({preventScroll:true});
   };
-  slider.oninput = choose;
-  filter.oninput = choose;
+  slider.oninput = renderDirectory;
+  filter.oninput = renderDirectory;
   selection = initial?.name || 'product-turntable';
-  choose();
+  renderDirectory();
+  show(selection);
+  root.classList.remove('hf-pending');
+  root.inert = false;
 }

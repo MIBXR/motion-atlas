@@ -1052,7 +1052,7 @@
     const snapshotLinks = it.snapshotPath ? `<ul><li><a href="docs.html#doc/${esc(it.snapshotPath + it.snapshotEntry)}">${it.type === 'agent-skill' ? '技能原文' : '素材原文'}（${esc(it.snapshotEntry)}）</a></li>${references.filter(([file]) => it.snapshotFiles.includes(it.snapshotPath + file) && file !== it.snapshotEntry).map(([file, label]) => `<li><a href="docs.html#doc/${esc(it.snapshotPath + file)}">${label}（${file}）</a></li>`).join('')}</ul>` : '';
     let preview;
     if (it.id === 'hyperframes-registry') {
-      preview = `<link rel="stylesheet" href="demos/materials/hyperframes-registry/demo/demo.css"><div class="hf-registry" aria-label="模块与模板预览"></div>`;
+      preview = `<div class="hf-registry" aria-label="模块与模板预览"></div>`;
     } else if (it.skillGuide) {
       const cards = it.skillGuide.map(group => sec(group.title, '', `<div class="skill-guide-list">${group.skills.map(skill => `<a href="docs.html#doc/${esc(it.snapshotPath + 'skills/' + skill.id + '/SKILL.md')}"><strong>${esc(skill.title)}</strong><code>/${esc(skill.id)}</code><span>${esc(skill.description)}</span></a>`).join('')}</div>`));
       preview = cards.join('') + sec('从计划到成片', '', `<ol>${it.workflow.map(step => `<li>${esc(step)}</li>`).join('')}</ol>`);
@@ -1079,12 +1079,13 @@
     root.innerHTML = `${pageActions(it)}<div class="detail material-detail">${guideFirst ? heading : ''}<div class="detail-grid"><section class="material-stage" aria-label="素材预览">${material.preview}</section><div class="info-col">${guideFirst ? '' : heading}<div class="notes">${material.notes}</div></div></div></div>`;
     if (it.id === 'hyperframes-registry') {
       const panel = root.querySelector('.hf-registry');
+      window.prepareHyperFramesRegistry(panel);
       import('../../demos/materials/hyperframes-registry/demo/demo.js').then(({mountRegistry}) => mountRegistry(panel));
     }
+    window.scrollTo(0, 0);
     mountDetailColumns();
     bindDetailFavorite(it);
     root.querySelector('[data-copy]')?.addEventListener('click', () => copy(it.install, '安装方式已复制'));
-    window.scrollTo(0, 0);
   }
 
   function bindDetailFavorite(it) {
@@ -1232,5 +1233,6 @@
     if (c) c.textContent = String(favs.all()[KIND].length).padStart(2, '0');
     paintCategoryCounts();
   });
-  route();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', route);
+  else route();
 })();
