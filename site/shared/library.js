@@ -1037,9 +1037,8 @@
   function materialNotes(it) {
     const galleryKinds = { style: '风格样张', work: '作品节选', theme: '主题预览' };
     const gallery = `<div class="grid material-gallery">${(it.gallery || []).map((image) => {
-      const sourceUrl = image.sourceUrl || image.url;
       return `<figure class="material-preview"><a class="card-media" href="${esc(image.path)}" target="_blank" rel="noopener" aria-label="查看原图：${esc(image.caption)}"><img src="${esc(image.path)}" alt="${esc(image.caption)}" loading="lazy"></a>
-        <figcaption><div class="material-preview-meta"><span class="chip accent">${galleryKinds[image.kind]}</span>${sourceUrl ? `<a class="material-credit" href="${esc(sourceUrl)}" target="_blank" rel="noopener">原图来源</a>` : ''}</div><p>${esc(image.caption)}</p></figcaption></figure>`;
+        <figcaption><div class="material-preview-meta"><span class="chip accent">${galleryKinds[image.kind]}</span></div><p>${esc(image.caption)}</p></figcaption></figure>`;
     }).join('')}</div>`;
     const related = it.relatedEntries?.length ? `<ul>${it.relatedEntries.map((relation) => {
       const kind = { case: 'cases', pattern: 'patterns', material: 'materials' }[relation.kind] || relation.kind;

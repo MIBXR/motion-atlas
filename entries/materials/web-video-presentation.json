@@ -229,6 +229,11 @@
     {
       "title": "manifest.json：版本",
       "url": "https://github.com/ConardLi/garden-skills/blob/2b9a89340b70f632d31c0f1c69fce94a7912423e/skills/web-video-presentation/manifest.json"
+    },
+    {
+      "title": "ConardLi/assets",
+      "url": "https://github.com/ConardLi/assets",
+      "note": "画廊主题图的托管仓库。"
     }
   ],
   "research": "docs/materials/web-video-presentation.md"
