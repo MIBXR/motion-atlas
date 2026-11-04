@@ -105,7 +105,7 @@
       },
       {
         "name": "霓虹与字幕",
-        "role": "Mr Dafoe 的真实轮廓用于 Midnight 路径描写，Michroma 排夏日标语，VT323 排磁带 OSD。"
+        "role": "用 Mr Dafoe 的真实轮廓描出 Midnight；夏日标语用 Michroma 排版，磁带 OSD 用 VT323 排版。"
       },
       {
         "name": "模拟媒介",
@@ -114,8 +114,8 @@
     ],
     "composition": {
       "color": "黑色底、洋红霓虹网格、青蓝镀铬高光与橙粉落日；原作强调色 #FF3DA8。",
-      "typography": "Archivo Italic 900、125% 字宽构成镀铬标题；Mr Dafoe 写 Midnight；Michroma 排标语，VT323 排 OSD。",
-      "layout": "1920×1080；公路透视收向下移 75px 的地平线，镀铬标题在上部，霓虹手写叠于标题下方，OSD 位于画面边缘。",
+      "typography": "镀铬标题使用 Archivo Italic 900、125% 字宽；Midnight 使用 Mr Dafoe；标语使用 Michroma，OSD 使用 VT323。",
+      "layout": "1920×1080；公路透视收束于下移 75px 的地平线，镀铬标题在上部，霓虹手写字叠于标题下方，OSD 位于画面边缘。",
       "imagery": "线框网格、切带落日、棕榈和后视跑车构成夜驰场景。",
       "motion": "镜头追车、变焦、换道侧倾与迎面车灯形成推进；磁带倒退后标题两帧冲入，霓虹描出后闪烁点亮。",
       "sound": "开启后播放原片 AAC 音轨；100BPM、A 小调 synthwave 配乐与换道、擦身、倒带、镀铬落版和点亮音效共用 cues。",
@@ -451,7 +451,7 @@
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16813,
+      "bytes": 16835,
       "role": "entry"
     },
     {

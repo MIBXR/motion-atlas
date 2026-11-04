@@ -20,10 +20,10 @@
       "mg-styles-15",
       "贴纸科普"
     ],
-    "summary": "以屏幕空间锚点约束两段拉远和旋转，先露局部屏幕，再揭示全部内容都在一部手机内。",
-    "mechanism": "以屏幕空间锚点约束两段拉远和旋转，先露局部屏幕，再揭示全部内容都在一部手机内。",
+    "summary": "以屏幕空间锚点约束两段拉远和旋转，先露出屏幕局部，再揭示全部内容都在一部手机内。",
+    "mechanism": "以屏幕空间锚点约束两段拉远和旋转，先露出屏幕局部，再揭示全部内容都在一部手机内。",
     "trigger": "地图段结束、两段拉远开始时",
-    "effect": "镜头围绕给定屏幕锚点改变距离和旋转，显露承载整张信息画布的手机。",
+    "effect": "镜头围绕给定的屏幕锚点改变距离并旋转，显露承载整张信息画布的手机。",
     "timing": [
       {
         "name": "原片重放区间",
@@ -1336,32 +1336,32 @@
     },
     {
       "path": "entries/cases/lemo-brick-toy.json",
-      "bytes": 9462,
+      "bytes": 9486,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-crayon-book.json",
-      "bytes": 9598,
+      "bytes": 9634,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-shadow-puppet.json",
-      "bytes": 10272,
+      "bytes": 10296,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-ukiyoe.json",
-      "bytes": 9777,
+      "bytes": 9828,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 17912,
+      "bytes": 17924,
       "role": "entry"
     },
     {
       "path": "entries/patterns/anchor-pullback-phone.json",
-      "bytes": 3566,
+      "bytes": 3575,
       "role": "entry"
     },
     {

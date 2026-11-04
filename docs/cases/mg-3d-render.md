@@ -4,7 +4,7 @@
 
 ## 技术路线与决定
 
-运动由 `source/blender/sim.py` 生成 `work/anim.npz`，`scene.py` 读取模拟、四个 PLY 字母网格与 HDRI 搭建 Cycles 场景，`render.py` 输出 240 帧三维底片。模拟包含 9991 个胶囊与 60 个散落胶囊，碰撞事件由 `source/out/events.json` 供配乐读取。
+`source/blender/sim.py` 将运动模拟结果写入 `work/anim.npz`，`scene.py` 读取模拟、四个 PLY 字母网格与 HDRI 搭建 Cycles 场景，`render.py` 输出 240 帧三维底片。模拟包含 9991 个胶囊与 60 个散落胶囊，配乐从 `source/out/events.json` 读取碰撞事件。
 
 Blender 负责胶囊、充气字母、金属句点、灯光、景深和运动模糊；案例页面读取 WebP q95 帧序列，再合成文字、调色、暗角与颗粒。时间轴固定为 24 fps、10 秒，最终逐帧导出使用[本库渲染管线](../pipeline.md)。这个分工将高成本的三维渲染与可直接修改的文字、节奏和画面合成分开。
 
@@ -24,7 +24,7 @@ Blender 5.1.2 位于 `C:/Program Files/Blender Foundation/Blender 5.1/blender.ex
 | 按三帧均值估算 240 帧 | 5.53 小时 |
 | 同设置完整 240 帧 | 约 7 小时 31 分 |
 
-单帧耗时包括帧切换、渲染、Blender 合成与 PNG 保存。先用帧 0、120、200 覆盖开场、字母全景与收尾，确认场景后再渲染全部帧。复现目录按[素材使用说明](../materials/mg-styles-15.md#配乐复现)组装，在 `demos/04-3d-render/` 运行：
+单帧耗时包括帧切换、渲染、Blender 合成与 PNG 保存。先渲染帧 0、120、200，查看开场、字母全景与收尾，确认场景后再渲染全部帧。复现目录按[素材使用说明](../materials/mg-styles-15.md#配乐复现)组装，在 `demos/04-3d-render/` 运行：
 
 ```powershell
 $env:MG_ROOT='<复现根目录>'

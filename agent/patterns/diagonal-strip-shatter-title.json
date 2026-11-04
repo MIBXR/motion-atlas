@@ -16,8 +16,8 @@
     "orients": [
       "landscape"
     ],
-    "summary": "film.js把旧屋顶画面截成260px斜向条带，沿DIR交替滑出画外；新片名字形从1500px外按letterLand沿同一方向入场。",
-    "mechanism": "film.js把旧屋顶画面截成260px斜向条带，沿DIR交替滑出画外；新片名字形从1500px外按letterLand沿同一方向入场。",
+    "summary": "film.js把旧屋顶画面截成260px斜向条带，条带沿DIR交替滑出画外；新片名的字形按letterLand从1500px外沿同一方向入场。",
+    "mechanism": "film.js把旧屋顶画面截成260px斜向条带，条带沿DIR交替滑出画外；新片名的字形按letterLand从1500px外沿同一方向入场。",
     "trigger": "时间轴到达T.shatter，旧屋顶开始分条滑走，片名字形按各自落点时刻进入。",
     "effect": "旧景拆开退场与新字形斜向入场交叠，沿统一切线完成从追逐场景到片名的交接。",
     "timing": [
@@ -323,12 +323,12 @@
     },
     {
       "path": "entries/cases/lemo-spy-titles.json",
-      "bytes": 11610,
+      "bytes": 11658,
       "role": "entry"
     },
     {
       "path": "entries/patterns/diagonal-strip-shatter-title.json",
-      "bytes": 3500,
+      "bytes": 3518,
       "role": "entry"
     },
     {

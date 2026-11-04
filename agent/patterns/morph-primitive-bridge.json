@@ -19,8 +19,8 @@
       "mg-styles-15",
       "形状变形"
     ],
-    "summary": "主体、孔洞与子件经圆或胶囊中介连续变形，同时位移、旋转并挤压回弹。",
-    "mechanism": "主体、孔洞与子件经圆或胶囊中介连续变形，同时位移、旋转并挤压回弹。",
+    "summary": "主体、孔洞与子件以圆或胶囊为中间形状连续变形，同时位移、旋转并挤压回弹。",
+    "mechanism": "主体、孔洞与子件以圆或胶囊为中间形状连续变形，同时位移、旋转并挤压回弹。",
     "trigger": "形变链中的转接节点到达时",
     "effect": "主体轮廓与子件保持对应点序，完成从一个图形到下一个图形的连续叙事。",
     "timing": [
@@ -219,12 +219,12 @@
     },
     {
       "path": "entries/cases/mg-morph.json",
-      "bytes": 16056,
+      "bytes": 16052,
       "role": "entry"
     },
     {
       "path": "entries/patterns/morph-primitive-bridge.json",
-      "bytes": 2304,
+      "bytes": 2322,
       "role": "entry"
     },
     {

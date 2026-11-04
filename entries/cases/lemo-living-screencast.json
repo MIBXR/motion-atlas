@@ -179,22 +179,22 @@
       "from": 0.08
     }
   ],
-  "energyNote": "段落取DEMO.md Shots与film内时间表；0–1为画面密度、动作和声音强度的相对编辑标注。",
+  "energyNote": "段落划分取自 DEMO.md Shots 与 film 内时间表；0–1 为画面密度、动作和声音强度的相对编辑标注。",
   "observations": [
-    "18×10像素小人由终端标志象限字符逐块变成方像素。",
+    "终端标志的象限字符逐块变成方像素，组成18×10像素的小人。",
     "main.js每帧测量data-a元素的getBoundingClientRect，再除以相机缩放求世界坐标。",
     "Actor将输入框、文件行、菜单、按钮和标题文字的顶部作为落脚点。",
     "连续相机按对数插值缩放并叠加微漂移，只有快速摇镜启用方向高斯模糊。"
   ],
   "composition": {
-    "color": "沿用Claude应用明暗主题；陶土#D97757的小人与中性毛玻璃字幕形成主次。",
+    "color": "沿用Claude应用明暗主题；陶土色#D97757的小人与中性毛玻璃字幕形成主次。",
     "typography": "Inter界面、JetBrains Mono代码、Newsreader标题和标语。",
     "layout": "1920×1080；应用浮在桌面壁纸上，字幕与键位HUD固定在屏幕层。",
     "imagery": "HTML/CSS/SVG重绘界面，像素精灵与道具使用同一方格。",
     "motion": "小人落在DOM上沿；相机一镜内推近、漂移、急摇，缩放始终不小于1。",
     "sound": "原片钢琴、爵士贝斯、鼓与8位音色，UI拟音和Kokoro旁白。",
     "rhythm": "100BPM；每章以像素块遮挡转场，动作按旁白单词定位。",
-    "coherence": "UI状态、镜头、吉祥物与声音事件由film.js同一时间表派生。"
+    "coherence": "UI状态、镜头、吉祥物与声音事件由film.js中的同一时间表派生。"
   },
   "layers": [
     {

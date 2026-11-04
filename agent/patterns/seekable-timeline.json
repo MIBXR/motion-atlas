@@ -4989,22 +4989,22 @@
     },
     {
       "path": "docs/cases/archive-os.md",
-      "bytes": 2473,
+      "bytes": 2503,
       "role": "doc"
     },
     {
       "path": "docs/cases/map-pilgrimage.md",
-      "bytes": 6454,
+      "bytes": 6404,
       "role": "doc"
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9770,
+      "bytes": 9784,
       "role": "entry"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 20430,
+      "bytes": 20565,
       "role": "entry"
     },
     {

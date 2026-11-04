@@ -18,7 +18,7 @@
     "summary": "粉色专版圆从车篮扩张至全屏，与原景蓝版透印叠成紫色；全屏时切换底景，再把同一粉圆收成河上的太阳。",
     "mechanism": "以lighter增加独立粉版密度，透明墨色与旧景相乘；圆扩张到全屏时切换底景，随后收缩并移动到新景太阳的位置。",
     "trigger": "24秒从法棍乘客镜头转入河边。",
-    "effect": "旧景先经历套印改色，再由同一粉色圆盘接成新景中的太阳。",
+    "effect": "旧景先经套印改色，同一粉色圆盘随后变成新景中的太阳。",
     "timing": [
       {
         "name": "原片重放区间",
@@ -292,12 +292,12 @@
     },
     {
       "path": "entries/cases/lemo-risograph.json",
-      "bytes": 10516,
+      "bytes": 10576,
       "role": "entry"
     },
     {
       "path": "entries/patterns/overprint-disc-transition.json",
-      "bytes": 2539,
+      "bytes": 2536,
       "role": "entry"
     },
     {

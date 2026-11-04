@@ -7,8 +7,8 @@ JohnHeibel 将 [P(doom) 手绘 MV](../../cases.html#case/pdoom-video) 的代码�
 1. 克隆套件，在 Claude Code 等 Agent 中先让模型阅读 ANIMATION_GUIDE.md。
 2. 用一句话说明要做的短片（如“15 秒，Clawd 追蝴蝶”），模型先给分镜，再逐镜头实现。
 3. 场景写在 src/scenes/，每个镜头是只取决于时刻 t 的纯函数；时长与节拍在 src/config.js。
-4. 在 Chrome 打开 studio.html 拖动时间检查；?loop=emotions、?loop=views 查看表情与视角设定图。
-5. npm install 后运行 node render.mjs --clip --out=out/video.mp4 输出成片；没有独立显卡时让模型换掉水彩填充，或加 --soft-gl。
+4. 在 Chrome 中打开 studio.html，拖动时间轴检查；用 ?loop=emotions、?loop=views 查看表情与视角设定图。
+5. 运行 npm install 后，用 node render.mjs --clip --out=out/video.mp4 输出成片；没有独立显卡时让模型换掉水彩填充，或加 --soft-gl。
 
 ## 套件内容
 

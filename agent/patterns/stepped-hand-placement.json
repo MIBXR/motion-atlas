@@ -20,7 +20,7 @@
       "mg-styles-15"
     ],
     "summary": "运动或停留状态变化后，位置与旋转按 12fps 或 6fps 取样，并用种子抖动保持手摆纸片感。",
-    "mechanism": "运动或停留状态变化 → 位置与旋转按 12fps 或 6fps 取样，并用种子抖动保持手摆纸片感。",
+    "mechanism": "运动或停留状态变化后，位置与旋转按 12fps 或 6fps 取样，并用种子抖动保持手摆纸片感。",
     "trigger": "运动或停留状态变化时",
     "effect": "位置与旋转按 12fps 或 6fps 取样，并用种子抖动保持手摆纸片感。",
     "timing": [
@@ -441,12 +441,12 @@
     },
     {
       "path": "entries/cases/mg-collage.json",
-      "bytes": 19409,
+      "bytes": 19427,
       "role": "entry"
     },
     {
       "path": "entries/patterns/stepped-hand-placement.json",
-      "bytes": 3353,
+      "bytes": 3354,
       "role": "entry"
     },
     {

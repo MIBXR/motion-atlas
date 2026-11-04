@@ -14,7 +14,7 @@
     "landscape"
   ],
   "summary": "海报旋转九十度后，七列读作七音、十六行读作两小节，条块与声音成为同一份乐谱。",
-  "mechanism": "score.json 同时被画面和 music/score.py 读取，column 对应 A 多利亚调音高、row 对应八分音符起音、length 对应音长；旋转与标签先后完成后，playRow 扫到条块起点时染红并播放对应音符。",
+  "mechanism": "画面和 music/score.py 同时读取 score.json，column 对应 A 多利亚调音高、row 对应八分音符起音、length 对应音长；旋转与标签先后完成后，playRow 扫到条块起点时，将条块染红并播放对应音符。",
   "trigger": "红圆带动版面重排，29.25 秒开始把海报转成横向乐谱。",
   "effect": "先前的平面构成被重新解释为能听见的系统。",
   "timing": [
@@ -47,7 +47,7 @@
     "先前的平面构成被重新解释为能听见的系统。"
   ],
   "avoid": [
-    "在该片段内叠加第二条争夺注意的主动作"
+    "在该片段内叠加第二条争夺注意力的主动作"
   ],
   "composition": {
     "role": "foundation",

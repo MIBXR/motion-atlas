@@ -52,7 +52,7 @@
       "档案与科学短片"
     ],
     "avoid": [
-      "在主要读数和证据上叠加争夺注意的运动"
+      "在主要读数和证据上叠加争夺注意力的运动"
     ],
     "composition": {
       "role": "accent",
@@ -386,12 +386,12 @@
     },
     {
       "path": "entries/cases/lemo-microscope.json",
-      "bytes": 10091,
+      "bytes": 10115,
       "role": "entry"
     },
     {
       "path": "entries/patterns/pixel-count-colour.json",
-      "bytes": 3126,
+      "bytes": 3129,
       "role": "entry"
     },
     {

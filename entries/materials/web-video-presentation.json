@@ -6,11 +6,11 @@
   "summary": "把文章或口播稿变成按步骤推进的横屏网页演示，再通过录屏产出视频。",
   "workflow": [
     "识别原始文章或已有口播稿，保留原文；一次产出口播稿 script.md 与开发计划 outline.md，规划章节、节拍、每步内容与章节信息池。",
-    "由用户一次确认稿子、开发计划、主题、真实素材准备方式与开发模式；大纲规划内容与节奏，具体动画留给章节开发。",
-    "按选定主题运行脚手架，构建 Vite、React 与 TypeScript 演示；第 1 章由主线程完成真实素材与完整视觉，并等待用户验收。",
-    "按用户选择逐章确认、顺序开发或并行开发后续章节；以统一主题和全局章节、步骤游标组织 1920×1080 舞台。",
+    "由用户一次确认口播稿、开发计划、主题、真实素材准备方式与开发模式；大纲用于规划内容与节奏，具体动画留给章节开发。",
+    "按选定主题运行脚手架，构建基于 Vite、React 与 TypeScript 的演示；主线程完成第 1 章的真实素材准备和完整视觉呈现，并等待用户验收。",
+    "按用户选择的方式逐章确认、顺序开发或并行开发后续章节；以统一主题和全局章节、步骤游标组织 1920×1080 舞台。",
     "网页完成后询问是否合成口播音频；需要时从 narrations.ts 提取每步文案，确认后通过可替换的语音服务合成。",
-    "有音频时使用自动模式连续录屏；没有合成音频时手动点击推进录屏，再进行配音与后期。"
+    "有音频时使用自动模式连续录屏；没有合成音频时，在录屏过程中手动点击推进，再进行配音与后期。"
   ],
   "useCases": [
     "把文章或口播稿制作成视频平台的讲解内容",
@@ -35,7 +35,7 @@
     "url": "https://github.com/ConardLi/garden-skills/blob/2b9a89340b70f632d31c0f1c69fce94a7912423e/LICENSE",
     "notes": "skill 源码与文档采用 MIT，快照附原 LICENSE。23 张主题图与 1 张总览图来自 ConardLi/assets 的公开 CDN，作者为 ConardLi，图片许可未声明。"
   },
-  "install": "按来源中文 README，把 skill 目录复制到 Agent 会扫描的目录，然后让 Agent 把文章或口播稿制作成网页视频演示。手动创建演示项目：\nbash skills/web-video-presentation/scripts/scaffold.sh ./presentation --theme=paper-press\n查看可用主题：\nbash skills/web-video-presentation/scripts/scaffold.sh --list-themes\n生成的 presentation/ 是 Vite、React 与 TypeScript 项目；启动后使用录屏工具录制 16:9 舞台。来源集合 README 也支持单独安装：\nnpx skills add ConardLi/garden-skills -s web-video-presentation\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。",
+  "install": "按来源中文 README 的说明，把 skill 目录复制到 Agent 会扫描的目录，然后让 Agent 把文章或口播稿制作成网页视频演示。手动创建演示项目：\nbash skills/web-video-presentation/scripts/scaffold.sh ./presentation --theme=paper-press\n查看可用主题：\nbash skills/web-video-presentation/scripts/scaffold.sh --list-themes\n生成的 presentation/ 是基于 Vite、React 与 TypeScript 的项目；启动后使用录屏工具录制 16:9 舞台。来源集合 README 也提供单独安装命令：\nnpx skills add ConardLi/garden-skills -s web-video-presentation\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。",
   "snapshotPath": "demos/materials/web-video-presentation/",
   "snapshotEntry": "SKILL.md",
   "relatedEntries": [],

@@ -17,7 +17,7 @@
     ],
     "renderer": "gpu",
     "summary": "换情绪前先挤闭眼，在闭眼时换眼型，随后拉伸、挤压回弹并弹出汗滴或星光等反应符号。",
-    "mechanism": "mood(t,keys) 根据当前表情键和下一次切换的距离返回 eyes、squint、take、emote、emoteK；提前 .08 秒挤眼，在新眼型的前 .16 秒睁开并做负 take 拉伸，随后 .24 秒做衰减正 take 挤压。eyes 用 squint 压缩眼型，clawd 把 take 加到 sq；emote 用 backOut 弹出符号。",
+    "mechanism": "mood(t,keys) 根据当前表情键和距下一次切换的时间返回 eyes、squint、take、emote、emoteK；提前 .08 秒挤眼，在新眼型的前 .16 秒睁开并做负 take 拉伸，随后 .24 秒做衰减正 take 挤压。eyes 用 squint 压缩眼型，clawd 把 take 加到 sq；emote 用 backOut 弹出符号。",
     "trigger": "mood 的时间线接近或越过下一个表情键。",
     "effect": "眼型变化藏在闭眼动作里，身体先拉伸再挤压恢复，反应符号在头边弹出并收回，情绪切换成为一次可见表演。",
     "timing": [
@@ -334,17 +334,17 @@
     },
     {
       "path": "docs/cases/pdoom-video.md",
-      "bytes": 3569,
+      "bytes": 3611,
       "role": "doc"
     },
     {
       "path": "entries/cases/pdoom-video.json",
-      "bytes": 13392,
+      "bytes": 13469,
       "role": "entry"
     },
     {
       "path": "entries/patterns/emotion-take-morph.json",
-      "bytes": 4977,
+      "bytes": 4980,
       "role": "entry"
     },
     {

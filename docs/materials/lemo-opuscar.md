@@ -1,6 +1,6 @@
 # lemo-opuscar
 
-Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）的代码影片风格库，包含66种风格、每种的示范短片、导演和技术指南，以及串起98部奥斯卡最佳影片的长片 OPUSCAR 98。本库原文快照固定在 [`bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00`](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00)；代码与文档为 MIT，示范成片和静帧为 CC BY 4.0，第三方资源与配音例外见[素材条目的许可](../../materials.html#material/lemo-opuscar)。
+Lemomo（[@lemomo-ai](https://github.com/lemomo-ai)）的代码影片风格库，收录66种风格及各自的示范短片，提供导演和技术指南，还包含串起98部奥斯卡最佳影片的长片 OPUSCAR 98。本库原文快照固定在 [`bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00`](https://github.com/lemomo-ai/lemo-opuscar/tree/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00)；代码与文档为 MIT，示范成片和静帧为 CC BY 4.0，第三方资源与配音例外见[素材条目的许可](../../materials.html#material/lemo-opuscar)。
 
 ## 组成
 
@@ -36,7 +36,7 @@ claude
 
 > Make a 40-second **LiDAR Survey** film about the old quarry in the hills behind our town, from public laser-scan data.
 
-Agent 先一次询问三件事：主题中需要用户决定的事实；用户自己的声音、音乐或其他素材；是否先审阅分镜。语言由请求确定，默认与用户使用的语言相同。安装插件后空调用 `/lemo-opuscar:lemo-opuscar` 可先选语言，再选制作影片、改风格或使用已保存风格。
+Agent 开始时会一次询问三件事：主题中需要用户决定的事实；用户自己的声音、音乐或其他素材；是否先审阅分镜。语言由请求确定，默认与用户使用的语言相同。安装插件后，不带参数调用 `/lemo-opuscar:lemo-opuscar` 可先选语言，再选制作影片、改风格或使用已保存风格。
 
 ## 风格目录
 
@@ -143,13 +143,13 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 
 1. 选择库内风格或从空白描述外观，逐题确定用途、平台、品牌、改动方向与名称，每轮最多五项改动。
 2. 审阅每项前后状态及其代价，确认摘要后再写入。
-3. 用实际代码先绘风格帧，改库内风格时将原版置左、个人版置右比较。
+3. 先用实际代码绘制风格帧，改库内风格时将原版置左、个人版置右比较。
 4. 制作15–30秒、有音乐和音效的示范短片，让每项改动都在画面中出现。
 5. 确认满意后保存到 `~/lemo-my-styles/<name>/`，同时保留风格提示词、改动说明、成片和源码，以名称复用。
 
 ## 本库收录
 
-原文快照包含根目录指南、许可和 Node / Python 依赖清单、`plugin/`中的技能与插件清单、`.claude-plugin/marketplace.json`、`styles/README.md`、`styles/_template/`、全部66个风格的`STYLE.md` / `DEMO.md` / `style.json`、`core/`的代码与文字，以及`tools/fetch.sh`和资源清单`tools/assets.json`。快照不含`core/assets/`、字体二进制、各风格的`demo/`代码和成片。
+原文快照包含根目录的指南、许可和 Node / Python 依赖清单，`plugin/` 中的技能与插件清单，以及 `.claude-plugin/marketplace.json`、`styles/README.md` 和 `styles/_template/`。此外还包含全部66个风格的 `STYLE.md` / `DEMO.md` / `style.json`、`core/` 的代码与文字，以及 `tools/fetch.sh` 和资源清单 `tools/assets.json`。快照不含 `core/assets/`、字体二进制、各风格的 `demo/` 代码和成片。
 
 以下16种风格未复刻：与已有案例重合的 pixel-rpg、iso-infographic、isometric-picture-book、one-line、glass-product；效果未达要求的 game-show、cel-anime-80s、scifi-toon、rubber-hose、microgame、tilt-shift、desktop-flythrough、silent-film、data-physical、newsreel；画面由 Python 离线合成的 city-symphony。
 
@@ -207,4 +207,4 @@ Agent 先一次询问三件事：主题中需要用户决定的事实；用户�
 - [一百个夏天 · 数据叙事](../../cases.html#case/lemo-dataviz)：制作文件见[source/README.md](../../demos/cases/lemo-dataviz/source/README.md)。
 - [6 公里 · 地铁线路图](../../cases.html#case/lemo-transit-map)：制作文件见[source/README.md](../../demos/cases/lemo-transit-map/source/README.md)。
 
-共用工具在[本快照的core/](../../demos/materials/lemo-opuscar/core/README.md)。68项作者画廊保留公开成片链接，以无声循环WebP展示。
+共用工具见[本快照的core/](../../demos/materials/lemo-opuscar/core/README.md)。作者画廊共68项，以无声循环 WebP 展示，并保留公开成片链接。

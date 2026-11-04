@@ -31,7 +31,7 @@
     const pats = sel.filter((x) => x.kind === 'patterns');
     const f = pats.filter((x) => x.role === 'foundation');
     if (f.length > 1) w.push(`选了 ${f.length} 个骨架（${f.map((x) => x.e.title).join('、')}），通常只保留一个。`);
-    if (pats.filter((x) => x.role === 'accent').length > 2) w.push('点睛超过 2 个，容易互相抢戏；让它们出现在不同时刻。');
+    if (pats.filter((x) => x.role === 'accent').length > 2) w.push('点睛超过 2 个，容易分散注意力；让它们出现在不同时刻。');
     for (const x of pats) for (const c of (x.e.composition && x.e.composition.conflicts) || []) {
       if (S.sel.includes(c) && x.e.id < c) w.push(`${x.e.title} 与 ${byId.get(c).e.title} 标注为冲突，不要放在同一时刻。`);
     }

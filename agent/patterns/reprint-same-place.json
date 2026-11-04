@@ -16,8 +16,8 @@
     "orients": [
       "landscape"
     ],
-    "summary": "固定机位把同一片田地印四次，纸角揭开下一年的鹤群；每次新印先没有红冠，.45秒后单独压上稍有偏位的红版。",
-    "mechanism": "固定机位把同一片田地印四次，纸角揭开下一年的鹤群；每次新印先没有红冠，.45秒后单独压上稍有偏位的红版。",
+    "summary": "机位固定，同一片田地印四次，纸角揭开后露出下一年的鹤群；每次新印先没有红冠，.45秒后单独压上稍有偏位的红版。",
+    "mechanism": "机位固定，同一片田地印四次，纸角揭开后露出下一年的鹤群；每次新印先没有红冠，.45秒后单独压上稍有偏位的红版。",
     "trigger": "三次peel事件切换年代数量。",
     "effect": "保持地点和构图，用新纸、新数量和迟到的红版表达时间累积。",
     "timing": [
@@ -293,12 +293,12 @@
     },
     {
       "path": "entries/cases/lemo-printed-long-take.json",
-      "bytes": 10879,
+      "bytes": 10942,
       "role": "entry"
     },
     {
       "path": "entries/patterns/reprint-same-place.json",
-      "bytes": 2643,
+      "bytes": 2661,
       "role": "entry"
     },
     {

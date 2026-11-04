@@ -16,13 +16,13 @@
   "summary": "HyperFrames 的 8 个技能目录快照：/hyperframes 作为总入口，核心四项负责 HTML 合成约定、CLI、模块安装与媒体；其余四项处理 Figma、演示文稿、既有视频代码迁移与视频重建。",
   "workflow": [
     "先读 /hyperframes，规划视频内容、镜头与时长；新项目用 npx hyperframes init <目录>。",
-    "以 HTML、CSS 和媒体编写合成，给定时元素声明起点与时长；每个合成注册可定位的暂停时间线。",
+    "以 HTML、CSS 和媒体编写合成，为定时元素声明起点与时长；为每个合成注册可定位的暂停时间线。",
     "需要现成视觉时用 /hyperframes-registry 查找并安装模块；媒体与声音按 /media-use 处理。",
     "编写过程中运行 lint，完成后运行 check --json，查看关键帧并在 preview 中预览。",
     "确认 Studio 预览或需要成片时运行 render，逐帧导出 MP4。"
   ],
   "useCases": [
-    "让编码 Agent 从计划制作 HTML 视频、产品宣传片、讲解片和竖屏短片",
+    "让编码 Agent 从计划开始制作 HTML 视频、产品宣传片、讲解片和竖屏短片",
     "编排可定位动画、字幕、数据图表、地图与三维画面",
     "检索并安装可编辑模块，取得图片、音视频和字幕媒体",
     "把 Figma 设计、既有视频代码或视频重建为 HyperFrames 项目"

@@ -3,14 +3,14 @@
   "order": 4,
   "title": "video-shotcraft · 镜头配方卡宣传片",
   "type": "agent-skill",
-  "summary": "用 124 张镜头配方卡、150 个镜头样式与 Ink Press 模板，把 Web / 桌面产品做成电影感宣传片；音效按项目从 Freesound 选材，另有 5 首 BGM 备选。",
+  "summary": "用 124 张镜头配方卡、150 个镜头样式与 Ink Press 模板，为 Web / 桌面产品制作电影感宣传片；音效按项目从 Freesound 选材，另有 5 首 BGM 备选。",
   "workflow": [
-    "判断任务范围：已有视频的音效需求直接进入声音选材与对齐；完整宣传片选择 Ink Press 模板、Agent 自主创作或与用户逐阶段共同创作。",
-    "只读检查产品，起本地 dev server，用无头浏览器采集整页 2x 截图、元素透明底切片与 layout.json 坐标表；敏感数据换成虚构内容。",
+    "判断任务范围：为已有视频处理音效时，直接进入声音选材与对齐；制作完整宣传片时，选择 Ink Press 模板、Agent 自主创作或与用户逐阶段共同创作。",
+    "只读检查产品，启动本地 dev server，用无头浏览器采集整页 2x 截图、元素透明底切片与 layout.json 坐标表；敏感数据换成虚构内容。",
     "从产品自身的设计系统提取字体、栅格与配色写入设计 spec，按能量曲线从镜头卡选镜头，依次做文字方向、styleframe、镜头映射与分镜。",
-    "用镜头卡时先用 gallery/api/library.json 校验卡名，再读卡片指向的准确 demo 源码，连同所用的共享组件与纹理适配。",
+    "使用镜头卡时，先用 gallery/api/library.json 校验卡名，再读取卡片指向的准确 Demo 源码，连同所用的共享组件与纹理一并适配。",
     "有配乐时先做节奏分析，时间线按拍写；SFX 从 Freesound 按动作、材质、时长和许可选材，默认 CC0，可接受署名时选 CC BY，下载到当前工程并保留来源与署名。",
-    "每个镜头用 remotion still 出静帧自检，整片渲染后抽帧回看，按上游终检流程确认画面与声音。",
+    "每个镜头都用 remotion still 生成静帧自检；整片渲染后抽帧回看，按上游终检流程确认画面与声音。",
     "有配乐时交付带配乐与无配乐两版；上游另提供剪映草稿导出和浏览器后期工作台。"
   ],
   "useCases": [
@@ -35,7 +35,7 @@
     "url": "https://github.com/Vincentwei1021/video-shotcraft/blob/1266a3ec4831289c4d893d42dd5102723658039a/LICENSE",
     "notes": "代码与作者自制素材采用 Apache-2.0；镜头手法来源见 references/shots/ATTRIBUTION.md。新项目 SFX 从 Freesound 按条目许可取得，BGM 来源见 assets/audio/ATTRIBUTION.md；模板固定音频的来源与未确认项见 template/public/audio/ATTRIBUTION.md。Remotion 另有独立许可。"
   },
-  "install": "npx skills add Vincentwei1021/video-shotcraft\n也可 git clone 上游仓库，把仓库目录链接到 ~/.claude/skills/video-shotcraft 或 ~/.codex/skills/video-shotcraft。\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。模板在 template/ 内 npm install 后用 Remotion 预览和渲染，抽帧与音频处理需要 PATH 中的 ffmpeg。\n本库快照含镜头配方、组件、共享素材、模板、BGM 与 Freesound 选材方法；不含 workbench/、社交发布模块、音效自动下载脚本及测试工具，需要这些工具时从固定提交的上游仓库取得。",
+  "install": "npx skills add Vincentwei1021/video-shotcraft\n也可 git clone 上游仓库，把仓库目录链接到 ~/.claude/skills/video-shotcraft 或 ~/.codex/skills/video-shotcraft。\n此命令安装上游 main 的当前版本；本库原文快照固定在记录的提交。在 template/ 内执行 npm install 后，用 Remotion 预览和渲染模板；抽帧与音频处理需要 PATH 中的 ffmpeg。\n本库快照含镜头配方、组件、共享素材、模板、BGM 与 Freesound 选材方法；不含 workbench/、社交发布模块、音效自动下载脚本及测试工具，需要这些工具时从固定提交的上游仓库取得。",
   "snapshotPath": "demos/materials/video-shotcraft/",
   "snapshotEntry": "SKILL.md",
   "research": "docs/materials/video-shotcraft.md",

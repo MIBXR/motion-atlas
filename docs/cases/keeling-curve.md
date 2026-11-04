@@ -14,10 +14,10 @@
 
 ## 拆解与估计
 
-实现 Prompt、视频生成 Prompt 和负向约束由 Motion Atlas 依据 brief 撰写。音乐拍点来自 `candidate-1-beats-60.json` 的 `beats` 减去 7.162 秒，不把原时间轴的视觉参考拍点当作当前音乐拍点。
+实现 Prompt、视频生成 Prompt 和负向约束由 Motion Atlas 依据 brief 撰写。当前音乐拍点由 `candidate-1-beats-60.json` 的 `beats` 减去 7.162 秒得到；原时间轴中的拍点用于视觉参考。
 
 能量值由 Motion Atlas 依据成片的运动量与停留时间估计，不是 skill brief 中给出的数值。
 
-六段使用经用户指定的起止能量值和最终时间轴的实际秒数，段内线性插值、边界允许跳变。`energySegments` 是精确端点；`energy` 是每 0.5 秒的等距采样。它们描述视觉运动与停留。
+六段的起止能量值由用户指定，时间取自最终时间轴的实际秒数；段内线性插值，边界允许跳变。`energySegments` 记录精确端点；`energy` 是每 0.5 秒的等距采样。它们描述视觉运动与停留。
 
 数据来源和画面数值映射见 [DATA.md](../../demos/cases/keeling-curve/source/DATA.md)，音乐、音效及署名见 [AUDIO.md](../../demos/cases/keeling-curve/source/AUDIO.md)。

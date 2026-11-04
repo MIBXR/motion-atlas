@@ -13,7 +13,7 @@
     "渲染",
     "逐帧渲染"
   ],
-  "summary": "Remotion 官方维护的 12 个 Agent Skill，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目里写 React 视频：remotion-best-practices 作为总入口按任务路由，其余分管新建项目、画面与动画写法、字幕、地图动画、音视频处理、交互、预览、导出、在线应用、版本升级与文档检索。",
+  "summary": "Remotion 官方维护的 12 个 Agent Skill，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目里写 React 视频。remotion-best-practices 是总入口，按任务转到具体技能；其余技能分别负责新建项目、画面与动画写法、字幕、地图动画、音视频处理、交互、预览、导出、在线应用、版本升级与文档检索。",
   "workflow": [
     "用 `npx skills add remotion-dev/skills` 或 `gh skill install remotion-dev/skills` 安装全部技能；用 `bun create video` 新建项目时也可勾选安装。",
     "不确定该用哪个技能时调用 `/remotion-best-practices`，由它按任务转到具体技能。",

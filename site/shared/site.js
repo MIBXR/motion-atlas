@@ -309,7 +309,7 @@
     if (footer) {
       footer.className = 'site-footer';
       footer.innerHTML = `<div class="footer-inner">
-        <div class="footer-about"><a class="footer-brand" href="index.html"><span class="footer-mark">${ICONS.logo}</span><strong>MOTION ATLAS</strong></a><p>以时间线为线索，拆解影像与操作台。</p><small>由 MIBXR 维护 · 素材署名见各条目</small></div>
+        <div class="footer-about"><a class="footer-brand" href="index.html"><span class="footer-mark">${ICONS.logo}</span><strong>MOTION ATLAS</strong></a><p>按时间线拆解影像与操作台。</p><small>由 MIBXR 维护 · 素材署名见各条目</small></div>
         <nav class="footer-nav" aria-label="页脚导航"><div class="footer-links footer-explore"><p>探索 Atlas</p>${NAV.map(([href, label]) => `<a href="${href}">${label}</a>`).join('')}</div>
         <div class="footer-links"><p>项目资料</p><a href="docs.html#doc/docs/guide.md">使用与维护</a><a href="docs.html#doc/docs/methodology.md">调研方法</a><a href="https://github.com/MIBXR/motion-atlas" target="_blank" rel="noopener noreferrer">项目 GitHub${ICONS.external}</a></div></nav></div>`;
     }

@@ -30,7 +30,7 @@ A Rhine Lab archive terminal with a white opening, Rhine Lab identity, a five-co
 
 ## 迁移
 
-- `source/rhinelabui/content/archives.json；source/rhinelabui/src/`：archives.json 修改四十份档案；src/scene.ts、src/model-viewer.ts 和相关样式修改场景、模型查看器与外观。
+- `source/rhinelabui/content/archives.json；source/rhinelabui/src/`：在 archives.json 中修改四十份档案；在 src/scene.ts、src/model-viewer.ts 和相关样式中修改场景、模型查看器与外观。
 - `source/rhinelabui/film/sequence.js → timeline、inputs、createSequence`：修改演示节拍与页签、查看器、拆解、重组、浏览动作；离线音频入口为同目录 render-audio.mjs。
 - `film/app/；source/rhinelabui/art/`：film/app/ 保存模型、字体与声音；art/build_archive.py、art/build_assembly.py 和两个 Blender 工程用于制作模型，用法见 art/README.md。
 - `film/config.js → ARCHIVE_FILM；film/script.js → loadFrame、seekFrame`：film/config.js 设置开场锚点 A、array；film/script.js 接入舞台、时间轴、定位、手动操作与完整音轨。

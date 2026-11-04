@@ -16,8 +16,8 @@
     "orients": [
       "landscape"
     ],
-    "summary": "变宽半透明色带与断续毛刷叠成飞白，植物按结构顺序画入，完成后使用缓存精灵并摇曳。",
-    "mechanism": "mk 为中心线生成宽度轮廓与噪声边缘，drawS 先填色带，再画断续毛刷；drawList 顺序分配笔画进度，sprite 缓存完成物体，scene.js 的 plantP 由屏幕入场距离推动。",
+    "summary": "变宽的半透明色带与断续毛刷叠成飞白，植物按结构顺序画入，画完后以缓存精灵呈现并摇曳。",
+    "mechanism": "mk 为中心线生成宽度轮廓与噪声边缘，drawS 先填色带，再画断续毛刷；drawList 按顺序分配笔画进度，sprite 缓存画完的物体，scene.js 的 plantP 由物体进入屏幕的距离驱动。",
     "trigger": "初始刷边揭景，或植物从右侧进入可视范围。",
     "effect": "树干、枝条、叶群连续长成，交叠加深且纸白透出，完成后只保留轻微摇曳。",
     "timing": [
@@ -435,12 +435,12 @@
     },
     {
       "path": "entries/cases/lemo-watercolor.json",
-      "bytes": 11633,
+      "bytes": 11657,
       "role": "entry"
     },
     {
       "path": "entries/patterns/brush-ribbon-bristle-paint-in.json",
-      "bytes": 3252,
+      "bytes": 3273,
       "role": "entry"
     },
     {

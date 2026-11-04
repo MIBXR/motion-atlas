@@ -56,7 +56,7 @@
     {
       "id": "mg-styles-15",
       "title": "mg-styles-15 风格提示词套件",
-      "summary": "作者用一套“通用部分 + 风格四段”的提示词模板，让会写代码的 AI 逐风格制作 10 秒动态设计短片，并用独立 AI 评审迭代两轮；附代码合成配乐的 mgaudio 库与 103 个乐器采样。",
+      "summary": "作者用一套“通用部分 + 风格四段”的提示词模板，让会写代码的 AI 按不同风格分别制作 10 秒动态设计短片，并通过独立 AI 评审迭代两轮；附用代码合成配乐的 mgaudio 库与 103 个乐器采样。",
       "type": "prompt-kit",
       "useCases": [
         "用代码制作动态设计短片、品牌片头与风格练习",
@@ -148,7 +148,7 @@
     {
       "id": "video-shotcraft",
       "title": "video-shotcraft · 镜头配方卡宣传片",
-      "summary": "用 124 张镜头配方卡、150 个镜头样式与 Ink Press 模板，把 Web / 桌面产品做成电影感宣传片；音效按项目从 Freesound 选材，另有 5 首 BGM 备选。",
+      "summary": "用 124 张镜头配方卡、150 个镜头样式与 Ink Press 模板，为 Web / 桌面产品制作电影感宣传片；音效按项目从 Freesound 选材，另有 5 首 BGM 备选。",
       "type": "agent-skill",
       "useCases": [
         "Web / 桌面产品的宣传片、发布片与演示视频",
@@ -175,7 +175,7 @@
     {
       "id": "lemo-opuscar",
       "title": "lemo-opuscar · 66 种代码影片风格",
-      "summary": "66 种影片风格，每种配一支完全由代码逐帧渲染的示范短片（Canvas / WebGL 画面、免费采样配乐、本地 TTS 旁白），附导演、技术指南与“改成我的风格”流程。",
+      "summary": "66 种影片风格，每种配一支完全由代码逐帧渲染的示范短片（Canvas / WebGL 画面、免费采样配乐、本地 TTS 旁白），附导演指南、技术指南与“改成我的风格”流程。",
       "type": "agent-skill",
       "useCases": [
         "按指定风格制作主题短片与科普、旅行、品牌、纪实影片",
@@ -183,7 +183,7 @@
         "把现有风格改成品牌或频道自己的风格，或从空白开始保存个人风格"
       ],
       "avoid": [
-        "上游声明为 Claude Opus 5.5 调校，其他模型可能难以复现。",
+        "上游声明该素材为 Claude Opus 5.5 调校，其他模型可能难以复现。",
         "单支影片约需30–60分钟 Agent 时间与相应 token。",
         "运行环境需要 Node 20+、ffmpeg 7+、Python 3.11+（或 uv）。"
       ],
@@ -449,7 +449,7 @@
       "summary": "JohnHeibel 从 P(doom) 音乐录像整理出的入门套件：p5.js + p5.brush 绘制、Clawd 角色（视角、31 种表情、帽子、符号与舞步）、镜头与笔刷擦除时间轴、逐帧渲染脚本，以及给模型读的 ANIMATION_GUIDE.md。让 Agent 先读指南、出分镜，再逐镜头写只取决于时刻 t 的场景函数。",
       "type": "prompt-kit",
       "useCases": [
-        "让会写代码的 Agent 从分镜制作手绘卡通短片",
+        "让会写代码的 Agent 从分镜开始制作手绘卡通短片",
         "替换角色、表情、服装与参考图后制作新的角色演出",
         "参考表情过渡、关键视角转身、镜头衔接与逐帧渲染"
       ],
@@ -472,7 +472,7 @@
     {
       "id": "remotion-skills",
       "title": "Remotion Agent Skills · 官方 React 视频技能包",
-      "summary": "Remotion 官方维护的 12 个 Agent Skill，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目里写 React 视频：remotion-best-practices 作为总入口按任务路由，其余分管新建项目、画面与动画写法、字幕、地图动画、音视频处理、交互、预览、导出、在线应用、版本升级与文档检索。",
+      "summary": "Remotion 官方维护的 12 个 Agent Skill，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目里写 React 视频。remotion-best-practices 是总入口，按任务转到具体技能；其余技能分别负责新建项目、画面与动画写法、字幕、地图动画、音视频处理、交互、预览、导出、在线应用、版本升级与文档检索。",
       "type": "agent-skill",
       "useCases": [
         "新建 Remotion 项目或合成，用 React 编写按帧驱动的画面、排版、动画与特效",
@@ -503,7 +503,7 @@
       "summary": "HyperFrames 的 8 个技能目录快照：/hyperframes 作为总入口，核心四项负责 HTML 合成约定、CLI、模块安装与媒体；其余四项处理 Figma、演示文稿、既有视频代码迁移与视频重建。",
       "type": "agent-skill",
       "useCases": [
-        "让编码 Agent 从计划制作 HTML 视频、产品宣传片、讲解片和竖屏短片",
+        "让编码 Agent 从计划开始制作 HTML 视频、产品宣传片、讲解片和竖屏短片",
         "编排可定位动画、字幕、数据图表、地图与三维画面",
         "检索并安装可编辑模块，取得图片、音视频和字幕媒体",
         "把 Figma 设计、既有视频代码或视频重建为 HyperFrames 项目"

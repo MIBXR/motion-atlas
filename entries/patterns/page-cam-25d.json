@@ -11,8 +11,8 @@
   "orients": [
     "landscape"
   ],
-  "summary": "整页 2x 截图作为平面，关键帧插值相机位姿做 2.5D 运镜，CSS zoom 布局级放大保住小字清晰。",
-  "mechanism": "页面截图是相机下的一个平面，关键帧 {frame, cx, cy, zoom, rotX, rotY, rotZ, persp} 插值得到每帧位姿；子元素按页面 CSS 像素定位，与 layout.json 同一坐标系；3D 模式用 CSS zoom 放大布局，不用 transform scale。",
+  "summary": "整页 2x 截图作为平面，通过关键帧插值计算相机位姿，完成 2.5D 运镜；CSS zoom 从布局层面放大，保持小字清晰。",
+  "mechanism": "页面截图是相机下的一个平面，对关键帧 {frame, cx, cy, zoom, rotX, rotY, rotZ, persp} 插值，得到每帧位姿；子元素按页面 CSS 像素定位，与 layout.json 使用同一坐标系；3D 模式用 CSS zoom 放大布局，不用 transform scale。",
   "trigger": "镜头内的关键帧依次到达。",
   "effect": "详情页从全景推到宏观特写，行元素在同一相机下逐条嵌入，文字在大倍率下仍清晰。",
   "timing": [

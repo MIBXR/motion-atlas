@@ -15,7 +15,7 @@
       "console"
     ],
     "summary": "每完成一个节点，计数滚动加一，收集物落进托盘，进度步进器同步前进。 手机科普片中，周期表格子级联点亮，计数直接统计已亮元素，整十和终值触发回弹。 综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。",
-    "mechanism": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。 手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。 综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。",
+    "mechanism": "计数变化时，数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度累积。来源案例（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。 手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。 综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。",
     "trigger": "到站、盖章或发现角色时",
     "effect": "每次抵达都有积累感，进度看得见。",
     "timing": [
@@ -54,7 +54,7 @@
         "outro-stat-stack"
       ],
       "conflicts": [],
-      "notes": "计数变化时数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度一起累积。本库来源（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。"
+      "notes": "计数变化时，数字上滚、徽章回弹；托盘里的收集物逐格点亮，随进度累积。来源案例（地图巡礼）中的收集物是车站印章，可替换为任意徽章、卡片或图标。"
     },
     "prompt": "每到一站计数滚动加一，印章落进托盘，步进器同步前进。复用地图巡礼的 drawHud、stepAtX、ruleX、stampXY 与对应 CSS。MIKAN 徽章、收集计数、印章托盘与 drawHud 的步进器。片段：caseT 8.1→8.9；caseT 12.6→14；caseT 19.2→20.4；caseT 41.8→43；caseT 51.2→52.6；时长 9.533s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。 通过 index.html 内联 segments 在前 6.6 秒之后依次重放mg-paperclip 原片 3.1–4.7 秒，总时长 9.533 秒。手机科普片按斜向种子次序点亮余下格子，数字统计当前已亮格数，并在整十及终值处回弹。沿用同区间原片音轨，声音默认关闭。 按 index.html 内联 segments 在原有 8.2 秒之后重放mg-hanazi 原片 1.367–2.7 秒，总时长 9.533 秒。综艺片将三格快乐电池依次充满，满电时弹出闪电、放射标记并轻推照片。画面与音轨沿用同一映射，声音默认关闭。",
     "demo": "demos/patterns/collect-counter/index.html",
@@ -724,27 +724,27 @@
     },
     {
       "path": "docs/cases/map-pilgrimage.md",
-      "bytes": 6454,
+      "bytes": 6404,
       "role": "doc"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 20430,
+      "bytes": 20565,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 19042,
+      "bytes": 19096,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 17912,
+      "bytes": 17924,
       "role": "entry"
     },
     {
       "path": "entries/patterns/collect-counter.json",
-      "bytes": 8581,
+      "bytes": 8575,
       "role": "entry"
     },
     {

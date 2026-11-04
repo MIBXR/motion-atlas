@@ -16,9 +16,9 @@
     "orients": [
       "landscape"
     ],
-    "summary": "保留黑板上的两个主字和位置，把错误解释及交叉箭头标记为待擦；一次路径板擦移除旧释义，再在同一区域逐笔写回正确拆字。",
-    "mechanism": "保留黑板上的两个主字和位置，把错误解释及交叉箭头标记为待擦；一次路径板擦移除旧释义，再在同一区域逐笔写回正确拆字。",
-    "trigger": "橙色引线回到原问题，T.wipe0启动一次.75秒擦除。",
+    "summary": "保留黑板上的两个主字及其位置，把错误解释及交叉箭头标记为待擦；用板擦沿路径一次擦除旧释义，再在同一区域逐笔写回正确拆字。",
+    "mechanism": "保留黑板上的两个主字及其位置，把错误解释及交叉箭头标记为待擦；用板擦沿路径一次擦除旧释义，再在同一区域逐笔写回正确拆字。",
+    "trigger": "橙色引线回到原问题，T.wipe0启动一次持续.75秒的擦除。",
     "effect": "观众直接在相同位置比较纠正后的解释，书写本身完成论证。",
     "timing": [
       {
@@ -552,17 +552,17 @@
     },
     {
       "path": "entries/cases/lemo-blueprint.json",
-      "bytes": 10225,
+      "bytes": 10249,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-chalkboard.json",
-      "bytes": 11317,
+      "bytes": 11353,
       "role": "entry"
     },
     {
       "path": "entries/patterns/write-wipe-rewrite.json",
-      "bytes": 3030,
+      "bytes": 3057,
       "role": "entry"
     },
     {

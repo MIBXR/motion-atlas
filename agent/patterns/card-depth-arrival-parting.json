@@ -20,8 +20,8 @@
       "mg-styles-15",
       "极光玻璃"
     ],
-    "summary": "卡片从纵深与下方倾斜进入并衰减回摆，浮动后沿独立轴向退开，失焦先于离场。",
-    "mechanism": "卡片从纵深与下方倾斜进入并衰减回摆，浮动后沿独立轴向退开，失焦先于离场。",
+    "summary": "卡片从纵深与下方倾斜进入，回摆逐渐衰减；浮动后沿独立轴向退开，失焦先于离场。",
+    "mechanism": "卡片从纵深与下方倾斜进入，回摆逐渐衰减；浮动后沿独立轴向退开，失焦先于离场。",
     "trigger": "卡片的进入和分离节点到达时",
     "effect": "深度位移、倾角回摆、浮动与失焦共同组织三张卡片的入场、停留和离场。",
     "timing": [
@@ -215,12 +215,12 @@
     },
     {
       "path": "entries/cases/mg-aurora-glass.json",
-      "bytes": 16738,
+      "bytes": 16722,
       "role": "entry"
     },
     {
       "path": "entries/patterns/card-depth-arrival-parting.json",
-      "bytes": 2446,
+      "bytes": 2458,
       "role": "entry"
     },
     {

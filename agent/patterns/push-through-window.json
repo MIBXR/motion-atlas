@@ -19,7 +19,7 @@
     "summary": "从城市主窗连续推进到室内，重放预备拉回、穿窗过冲、速度条、闪白与到达镜震。",
     "mechanism": "推镜前预备拉回，穿过窗口时过冲弹定，配放射速度条、单帧闪白与到达两帧镜震，回摆结束后继续向室内推进。",
     "trigger": "镜头依次进入预备拉回、推进、穿玻璃和到达节点时。",
-    "effect": "嵌入主窗的室内沿同一世界坐标放满画面，穿窗与到达由速度条、亮闪和短帧镜震共同标记。",
+    "effect": "嵌入主窗的室内沿用同一世界坐标并填满画面；速度条、亮闪和短帧镜震共同标记穿窗与到达。",
     "timing": [
       {
         "name": "预备拉回",
@@ -467,17 +467,17 @@
     },
     {
       "path": "entries/cases/lemo-circuit-board.json",
-      "bytes": 11380,
+      "bytes": 11419,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 21173,
+      "bytes": 21215,
       "role": "entry"
     },
     {
       "path": "entries/patterns/push-through-window.json",
-      "bytes": 4323,
+      "bytes": 4326,
       "role": "entry"
     },
     {

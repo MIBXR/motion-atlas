@@ -15,8 +15,8 @@
     "orients": [
       "landscape"
     ],
-    "summary": "沿固定45度深度轴把二维图纸坐标偏移，投影系数从0升到.5；立面转出厚度并沿同一轴展开部件。",
-    "mechanism": "沿固定45度深度轴把二维图纸坐标偏移，投影系数从0升到.5；立面转出厚度并沿同一轴展开部件。",
+    "summary": "沿固定45度深度轴偏移二维图纸坐标，投影系数从0升到.5；立面转出厚度，部件沿同一轴展开。",
+    "mechanism": "沿固定45度深度轴偏移二维图纸坐标，投影系数从0升到.5；立面转出厚度，部件沿同一轴展开。",
     "trigger": "B(6)启动爆炸图。",
     "effect": "不经过三维场景，平面机器逐步显出背面、厚度和部件纵深。",
     "timing": [
@@ -313,12 +313,12 @@
     },
     {
       "path": "entries/cases/lemo-blueprint.json",
-      "bytes": 10225,
+      "bytes": 10249,
       "role": "entry"
     },
     {
       "path": "entries/patterns/oblique-projection-camera.json",
-      "bytes": 2333,
+      "bytes": 2327,
       "role": "entry"
     },
     {

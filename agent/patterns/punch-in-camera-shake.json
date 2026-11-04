@@ -21,7 +21,7 @@
       "mg-styles-15"
     ],
     "summary": "拍点到达后，镜头分级急推，每级在少数帧内完成推近、过冲与镜震，之后继续缓推或加强颤动。",
-    "mechanism": "拍点到达 → 镜头分级急推，每级在少数帧内完成推近、过冲与镜震，之后继续缓推或加强颤动。",
+    "mechanism": "拍点到达后，镜头分级急推，每级在少数帧内完成推近、过冲与镜震，之后继续缓推或加强颤动。",
     "trigger": "拍点到达时",
     "effect": "镜头分级急推，每级在少数帧内完成推近、过冲与镜震，之后继续缓推或加强颤动。",
     "timing": [
@@ -668,17 +668,17 @@
     },
     {
       "path": "entries/cases/mg-collage.json",
-      "bytes": 19409,
+      "bytes": 19427,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-hanazi.json",
-      "bytes": 19042,
+      "bytes": 19096,
       "role": "entry"
     },
     {
       "path": "entries/patterns/punch-in-camera-shake.json",
-      "bytes": 4308,
+      "bytes": 4309,
       "role": "entry"
     },
     {
