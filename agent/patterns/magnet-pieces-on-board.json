@@ -17,7 +17,7 @@
     ],
     "summary": "有厚度和贴板阴影的磁贴作为可计数的故事物件：磁铁代表桥墩，受撞后被逐个拔除；白板地图中的磁铁沿道路漂移并倒带归位。",
     "mechanism": "有厚度和贴板阴影的磁贴作为可计数的故事物件：磁铁代表桥墩，受撞后被逐个拔除；白板地图中的磁铁沿道路漂移并倒带归位。",
-    "trigger": "来源时间线进入磁贴在板上移动段。",
+    "trigger": "来源时间线进入磁贴在板上移动的片段。",
     "effect": "有厚度和贴板阴影的磁贴作为可计数的故事物件：磁铁代表桥墩，受撞后被逐个拔除；白板地图中的磁铁沿道路漂移并倒带归位。",
     "timing": [
       {
@@ -714,17 +714,17 @@
     },
     {
       "path": "entries/cases/lemo-briefing-board.json",
-      "bytes": 13406,
+      "bytes": 13466,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-whiteboard.json",
-      "bytes": 11318,
+      "bytes": 11372,
       "role": "entry"
     },
     {
       "path": "entries/patterns/magnet-pieces-on-board.json",
-      "bytes": 3286,
+      "bytes": 3292,
       "role": "entry"
     },
     {

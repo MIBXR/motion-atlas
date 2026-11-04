@@ -133,7 +133,7 @@
     },
     {
       "name": "档案阅读",
-      "role": "对角解密与正文同步揭示，页签分为概述、研究记录、访问日志。"
+      "role": "正文随对角解密同步显现，页签分为概述、研究记录、访问日志。"
     },
     {
       "name": "模型查看器",
@@ -249,7 +249,7 @@
   "migration": [
     {
       "field": "source/rhinelabui/content/archives.json；source/rhinelabui/src/",
-      "how": "archives.json 修改四十份档案；src/scene.ts、src/model-viewer.ts 和相关样式修改场景、模型查看器与外观。"
+      "how": "在 archives.json 中修改四十份档案；在 src/scene.ts、src/model-viewer.ts 和相关样式中修改场景、模型查看器与外观。"
     },
     {
       "field": "source/rhinelabui/film/sequence.js → timeline、inputs、createSequence",

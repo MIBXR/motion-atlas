@@ -21,10 +21,10 @@
       "mg-styles-15",
       "液态流动"
     ],
-    "summary": "液体在主拍前挤成横条，主拍沿字缝断颈，每段距离场切换为字形并弹开，碎滴与光环跟随冲量。",
-    "mechanism": "液体在主拍前挤成横条，主拍沿字缝断颈，每段距离场切换为字形并弹开，碎滴与光环跟随冲量。",
+    "summary": "液体在主拍前挤成横条，到主拍时沿字缝断颈。每段距离场切换为字形并弹开，碎滴与光环跟随冲量。",
+    "mechanism": "液体在主拍前挤成横条，到主拍时沿字缝断颈。每段距离场切换为字形并弹开，碎滴与光环跟随冲量。",
     "trigger": "液体横条到达成字主拍时",
-    "effect": "同一条液体分裂成 drop 四个字形，字间细颈断裂回缩。",
+    "effect": "同一条液体分裂成 drop 的四个字形，字间细颈断裂回缩。",
     "timing": [
       {
         "name": "原片重放区间",
@@ -256,12 +256,12 @@
     },
     {
       "path": "entries/cases/mg-liquid.json",
-      "bytes": 16255,
+      "bytes": 16286,
       "role": "entry"
     },
     {
       "path": "entries/patterns/liquid-bar-split-wordmark.json",
-      "bytes": 2974,
+      "bytes": 2989,
       "role": "entry"
     },
     {

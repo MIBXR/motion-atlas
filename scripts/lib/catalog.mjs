@@ -269,10 +269,10 @@ export function buildAll() {
   const catalog = {
     schemaVersion: SCHEMA_VERSION,
     name: 'Motion Atlas',
-    description: '影像与操作台参考库：按时间线播放的影像视频、交互操作台与展示台的案例、巧思、节拍表、Prompt 与可运行的 Demo。',
+    description: '影像与操作台参考库，收录按时间线播放的影像视频、交互操作台与展示台案例，以及巧思、节拍表、Prompt 与可运行的 Demo。',
     taxonomy: TAXONOMY,
     protocol: {
-      seek: 'Demo 若 entry.timeline 为 true，则暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示自适应布局。',
+      seek: 'entry.timeline 为 true 时，Demo 暴露 window.__motion = { duration, markers, seek(t)→Promise, play(), pause(), on(fn), ready, orient, orients, setOrient(o), audio }；orients 为空表示自适应布局。',
       urlParams: '?embed 隐藏控制条；?render 关闭自动播放供逐帧渲染；?t=秒 定位到指定时刻；?orient=landscape|portrait 固定画幅；?autoplay=0 不自动播放；?sound=1 尝试开启声音。',
       stage: '固定画幅舞台：横屏 1920×1080 / 竖屏 1080×1920，整体等比缩放；声音为乐谱（MotionKit.audio），可离线导出 WAV。见 docs/pipeline.md。',
       mountFilm: '时间纯函数作品提供 renderAt(t)、时长、尺寸与 fps，通过 MotionKit.mountFilm 创建舞台、播放控制与 window.__motion。',

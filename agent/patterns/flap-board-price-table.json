@@ -16,8 +16,8 @@
     "orients": [
       "landscape"
     ],
-    "summary": "价格牌把上半和下半分别裁切，先画新值上半与旧值下半；旧上半压缩至零后，新下半从零展开，再停在完整价格。",
-    "mechanism": "价格牌把上半和下半分别裁切，先画新值上半与旧值下半；旧上半压缩至零后，新下半从零展开，再停在完整价格。",
+    "summary": "将价格牌的上半和下半分别裁切，先画新值上半与旧值下半；旧上半压缩至零后，新下半从零展开，最后显示完整价格并停留。",
+    "mechanism": "将价格牌的上半和下半分别裁切，先画新值上半与旧值下半；旧上半压缩至零后，新下半从零展开，最后显示完整价格并停留。",
     "trigger": "入门价与12月新价格按列到达。",
     "effect": "在同一表格内读取价格前后变化，并在右侧显示翻倍结论。",
     "timing": [
@@ -345,12 +345,12 @@
     },
     {
       "path": "entries/cases/lemo-news-package.json",
-      "bytes": 10119,
+      "bytes": 10131,
       "role": "entry"
     },
     {
       "path": "entries/patterns/flap-board-price-table.json",
-      "bytes": 2393,
+      "bytes": 2423,
       "role": "entry"
     },
     {

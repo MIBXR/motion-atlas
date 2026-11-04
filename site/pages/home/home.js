@@ -50,8 +50,8 @@
 
   // 载体
   const CARRIER_DESC = {
-    video: ['只能看的影像：转场、HUD、字幕与镜头都写在时间轴上，可以逐帧导出成视频。', '地图巡礼'],
-    console: ['可以操作的界面：选择、确认、翻页都有清楚的反馈，随时可以暂停。', '档案终端'],
+    video: ['只能看的影像：转场、HUD、字幕与镜头都按时间轴编排，可以逐帧导出成视频。', '地图巡礼'],
+    console: ['可操作的界面：选择、确认和翻页都有明确反馈，随时可以暂停。', '档案终端'],
   };
   $('#carriers').innerHTML = Object.entries(TAX.carriers).map(([k, v]) => {
     const n = MA.cases.filter((c) => c.carriers.includes(k)).length;

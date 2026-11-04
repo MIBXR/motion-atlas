@@ -16,7 +16,7 @@
       "landscape"
     ],
     "summary": "重放火柴后撤蓄力、划火拖影、多重残像、点火闪光、翻转抛起与摆动落定。",
-    "mechanism": "后撤蓄力后，高速划火位移用一格扫掠拖影与一格多重残像连接；点火闪光后翻转抛起，再以摆动衰减落定。",
+    "mechanism": "后撤蓄力后，用一格扫掠拖影与一格多重残像连接高速划火时的位移；点火闪光后翻转抛起，再通过逐渐衰减的摆动落定。",
     "trigger": "火柴从预备姿态开始划过摩擦面，并到达点火与落地节点时。",
     "effect": "扫掠轮廓和多个中间姿态连接高速位移，闪光、抛转与落定摆动完成同一次划火动作。",
     "timing": [
@@ -333,12 +333,12 @@
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24667,
+      "bytes": 24679,
       "role": "entry"
     },
     {
       "path": "entries/patterns/smear-frame-strike.json",
-      "bytes": 3566,
+      "bytes": 3584,
       "role": "entry"
     },
     {

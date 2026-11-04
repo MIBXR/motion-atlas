@@ -3,7 +3,7 @@
   "order": 3,
   "title": "mg-styles-15 风格提示词套件",
   "type": "prompt-kit",
-  "summary": "作者用一套“通用部分 + 风格四段”的提示词模板，让会写代码的 AI 逐风格制作 10 秒动态设计短片，并用独立 AI 评审迭代两轮；附代码合成配乐的 mgaudio 库与 103 个乐器采样。",
+  "summary": "作者用一套“通用部分 + 风格四段”的提示词模板，让会写代码的 AI 按不同风格分别制作 10 秒动态设计短片，并通过独立 AI 评审迭代两轮；附用代码合成配乐的 mgaudio 库与 103 个乐器采样。",
   "tags": [
     "动态设计",
     "提示词",
@@ -160,7 +160,7 @@
     },
     {
       "path": "previews/materials/mg-styles-15/03-isometric.webp",
-      "caption": "等距 2.5D成片封面",
+      "caption": "等距 2.5D 成片封面",
       "kind": "work",
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/03-isometric.jpg",
       "license": "MIT"
@@ -244,7 +244,7 @@
     },
     {
       "path": "previews/materials/mg-styles-15/22-hud.webp",
-      "caption": "赛博朋克 HUD成片封面",
+      "caption": "赛博朋克 HUD 成片封面",
       "kind": "work",
       "sourceUrl": "https://raw.githubusercontent.com/Vincentwei1021/mg-styles-15/49052d80bfaf9fa8412cc9710530e5e95a3b8d8c/videos/22-hud.jpg",
       "license": "MIT"

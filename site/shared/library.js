@@ -138,7 +138,7 @@
     ].join('');
     const sortOptions = [['order', '按编号'], ['title', '按名称']];
     const description = isMaterial ? '工作流、适用场景、作者效果图与固定版本的技能原文。' : KIND === 'cases'
-      ? '节拍表、动效参数、可复用 Prompt，以及能拖动逐帧查看的 Demo。'
+      ? '节拍表、动效参数、可复用 Prompt，以及可拖动时间轴逐帧查看的 Demo。'
       : '每个巧思都有触发方式、效果、参数、可复制的 Prompt 和独立 Demo。';
 
     root.innerHTML = `
@@ -267,7 +267,7 @@
       if (b.dataset.tool === 'import') {
         const inp = document.createElement('input');
         inp.type = 'file'; inp.accept = 'application/json';
-        inp.onchange = () => inp.files[0] && favs.import(inp.files[0]).then(() => { toast('已合并导入收藏'); renderList(); }).catch(() => toast('文件无法读取'));
+        inp.onchange = () => inp.files[0] && favs.import(inp.files[0]).then(() => { toast('收藏已导入并合并'); renderList(); }).catch(() => toast('文件无法读取'));
         return inp.click();
       }
       const g = b.dataset.group;
@@ -328,7 +328,7 @@
   const SOUND_TEXT = { off: '关', on: '开', blocked: '待启用', pending: '开启中', none: '无' };
   const SOUND_TITLE = {
     off: '声音已关闭：点击开启（M）', on: '声音已开启：点击关闭（M）', pending: '正在开启声音…',
-    blocked: '浏览器拦截了自动播放：点击这里或点击舞台一次即可出声', none: '这个 Demo 还没有声音设计',
+    blocked: '浏览器阻止了自动播放：点击此按钮或舞台一次即可开启声音', none: '这个 Demo 还没有声音设计',
   };
 
   let det = null; // 当前详情页的舞台控制器（离开详情页时销毁）
@@ -716,7 +716,7 @@
     d.seg.hidden = d.orients.length < 2;
     d.badge.hidden = d.orients.length > 1;
     d.badge.textContent = adaptive ? '16:9 · 自适应' : d.orients[0] === 'portrait' ? '仅竖屏 9:16' : '仅横屏 16:9';
-    d.badge.title = adaptive ? '这个 Demo 按 16:9 显示，内容随画框自适应。' : '这个 Demo 只提供一种画幅。';
+    d.badge.title = adaptive ? '这个 Demo 以 16:9 画幅显示，内容会自动适应画框。' : '这个 Demo 只提供一种画幅。';
     paintOrient();
     layout();
   }
@@ -900,7 +900,7 @@
     d.svg.innerHTML = `<rect class="base" x="0" y="${H - 5}" width="${W}" height="2"/>
       ${line ? `<path class="e-fill" d="${line}L${W} ${H}L0 ${H}Z"/><path class="e-line" d="${line}" vector-effect="non-scaling-stroke"/>` : ''}
       ${D ? beats.map((b, i) => { const x = ((b.t / D) * W).toFixed(2); return `<line class="tick" data-i="${i}" x1="${x}" x2="${x}" y1="2" y2="${H - 5}" vector-effect="non-scaling-stroke"/>`; }).join('') : ''}`;
-    const empty = initial && !beats.length ? '正在读取节拍点…' : '这个 Demo 没有节拍标记：拖动刻度条逐帧查看';
+    const empty = initial && !beats.length ? '正在读取节拍点…' : '这个 Demo 没有节拍标记，可拖动时间轴逐帧查看。';
     d.strip.innerHTML = beats.length
       ? beats.map((b, i) => `<button type="button" data-t="${b.t}" data-i="${i}"><b>${fmtB(b.t)}</b>${esc(b.label)}</button>`).join('')
       : `<span class="beat-empty">${empty}</span>`;

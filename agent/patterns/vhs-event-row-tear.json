@@ -20,8 +20,8 @@
       "mg-styles-15",
       "合成波"
     ],
-    "summary": "故障节点按固定帧种子选择行段错位，叠加色偏与一次垂直跳帧，随后恢复稳定画面。",
-    "mechanism": "故障节点按固定帧种子选择行段错位，叠加色偏与一次垂直跳帧，随后恢复稳定画面。",
+    "summary": "在故障节点，按固定帧种子选择行段，使其错位，并叠加色偏与一次垂直跳帧，随后恢复稳定画面。",
+    "mechanism": "在故障节点，按固定帧种子选择行段，使其错位，并叠加色偏与一次垂直跳帧，随后恢复稳定画面。",
     "trigger": "磁带故障与垂直跳帧节点到达时",
     "effect": "随机行段短暂撕裂、错位和分色，画面在故障窗口后恢复。",
     "timing": [
@@ -285,12 +285,12 @@
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16813,
+      "bytes": 16835,
       "role": "entry"
     },
     {
       "path": "entries/patterns/vhs-event-row-tear.json",
-      "bytes": 2943,
+      "bytes": 2979,
       "role": "entry"
     },
     {

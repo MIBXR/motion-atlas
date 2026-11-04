@@ -20,8 +20,8 @@
       "mg-styles-15",
       "合成波"
     ],
-    "summary": "横向镂空条纹的渐变落日从地平线后升起，下半圆条纹按相位卷动且向下加宽。",
-    "mechanism": "横向镂空条纹的渐变落日从地平线后升起，下半圆条纹按相位卷动且向下加宽。",
+    "summary": "带有横向镂空条纹的渐变落日从地平线后升起，下半圆的条纹按相位卷动并向下加宽。",
+    "mechanism": "带有横向镂空条纹的渐变落日从地平线后升起，下半圆的条纹按相位卷动并向下加宽。",
     "trigger": "升日时间窗口推进时",
     "effect": "落日从地平线后完整显露，条纹与光晕继续运动。",
     "timing": [
@@ -285,12 +285,12 @@
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16813,
+      "bytes": 16835,
       "role": "entry"
     },
     {
       "path": "entries/patterns/striped-sun-rise.json",
-      "bytes": 2620,
+      "bytes": 2638,
       "role": "entry"
     },
     {

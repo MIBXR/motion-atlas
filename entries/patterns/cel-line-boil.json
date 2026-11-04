@@ -13,8 +13,8 @@
     "landscape",
     "portrait"
   ],
-  "summary": "重放曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。 PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）给每 1/12 秒换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。",
-  "mechanism": "按曝光表一拍一、二、三取整绘制时间，循环噪声线稿变体让静止形体持续轻抖；同一绘制编号同时换纸齿采样区与尘点板。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。 PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）给每 1/12 秒换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。",
+  "summary": "重放由曝光表驱动的微差线稿循环、纸齿换位与尘点轮换，使停留的形体与纸面持续重画。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。 PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）每 1/12 秒更换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。",
+  "mechanism": "依据曝光表，按一拍一、二、三对绘制时间取整，循环使用噪声线稿变体，让静止形体持续轻抖；同一绘制编号同时切换纸齿采样区与尘点板。 综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。 PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）每 1/12 秒更换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。",
   "trigger": "时间进入下一张曝光画格时。",
   "effect": "线稿几何、纸齿位置与尘点板随绘制编号一起切换。",
   "timing": [
@@ -55,7 +55,7 @@
     "逐帧手绘线稿的停留质感",
     "纸纹与线稿共用曝光节奏",
     "综艺片按帧号替换照片贴图边缘，以耳朵四帧扭动和三张炸毛轮换形成动作。",
-    "PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）给每 1/12 秒换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。"
+    "PDoom 以 randomSeed(1000+floor(T*BOIL))（BOIL=12，film/src/core.js:3/195）每 1/12 秒更换一次笔触随机种子，使 p5.brush 线条以 12fps 沸腾。"
   ],
   "avoid": [
     "竖屏重排",

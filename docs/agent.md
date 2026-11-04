@@ -4,7 +4,7 @@
 
 ## 检索与读取
 
-从 `agent/catalog.json` 取得三类摘要、协议与单类索引地址，或运行：
+从 `agent/catalog.json` 读取三类条目的摘要、协议与各类索引地址，或运行：
 
 ```bash
 node scripts/atlas.mjs search "<关键词>" --json
@@ -29,6 +29,6 @@ node scripts/atlas.mjs show <id> --source
 node scripts/atlas.mjs export <id> --out <目录>
 ```
 
-导出保留仓库相对树与全部文件，巧思带上来源案例。导出根目录的 `README.md` 提供入口，`entry.json` 保存条目；有 Prompt 时另附 `PROMPT.md`。素材使用说明和原文快照随文件清单取得。
+导出时保留仓库相对目录结构与全部文件，巧思同时包含来源案例。导出根目录的 `README.md` 提供入口，`entry.json` 保存条目；有 Prompt 时另附 `PROMPT.md`。按文件清单取得素材使用说明和原文快照。
 
 逐帧视频与声音导出见[渲染管线](pipeline.md#九逐帧渲染成视频)，素材阅读入口见[素材总览](materials/README.md)。

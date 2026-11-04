@@ -15,8 +15,8 @@
       "console",
       "video"
     ],
-    "summary": "按 25fps 帧表逐字请求权限，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒开场。",
-    "mechanism": "直接复用当前案例的 bootMotion、单轮廓标志轨道与逐字字形。时间 t 先加 5 秒再换算为 25fps 原片帧号；权限文本使用非均匀字符数量表，身份、请求、处理和省略号按各自采样帧揭示。标志的前后端沿同一条轮廓移动，同时改变线宽、位置及加减符号。扫描和欢迎阶段继续使用同一份轨道，声音直接读取案例 audio/film-audio.ogg 的开场片段。",
+    "summary": "按 25fps 帧表逐字显示权限请求，描出单轮廓标志，确认 JOYCE MOORE 身份，再经扫描与欢迎画面完成约 21.92 秒的开场。",
+    "mechanism": "直接复用当前案例的 bootMotion、单轮廓标志轨道与逐字字形。时间 t 先加 5 秒再换算为 25fps 原片帧号；权限文本使用非均匀字符数量表，身份、请求、处理和省略号按各自的采样帧显示。标志的前后端沿同一条轮廓移动，同时改变线宽、位置及加减符号。扫描和欢迎阶段继续使用同一份轨道，声音直接读取案例 audio/film-audio.ogg 的开场片段。",
     "trigger": "时间轴从 0 秒播放或外部 seek 到开场任意时刻。",
     "effect": "权限请求、RHINE·LAB 标志、ID CONFIRMED : JOYCE MOORE、扫描与欢迎按当前案例节拍依次出现。",
     "timing": [
@@ -5071,22 +5071,22 @@
     },
     {
       "path": "docs/cases/archive-os.md",
-      "bytes": 2473,
+      "bytes": 2503,
       "role": "doc"
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9770,
+      "bytes": 9784,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-ascii-crt.json",
-      "bytes": 9630,
+      "bytes": 9699,
       "role": "entry"
     },
     {
       "path": "entries/patterns/boot-typing.json",
-      "bytes": 5405,
+      "bytes": 5417,
       "role": "entry"
     },
     {

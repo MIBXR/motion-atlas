@@ -1,10 +1,10 @@
 # 渲染管线：舞台、时间轴、声音与预加载
 
-本库按时间播放的 Demo 通过 `window.__motion` 提供定位与播放；时间纯函数作品的**画面只取决于时刻 t**，有自己时钟、状态或交互的作品负责重建相应画面。同一份代码可以实时播放、被站点刻度条拖动、被脚本逐帧渲染成视频，结果完全一致。Motion Kit 提供以下接口：
+本库按时间播放的 Demo 通过 `window.__motion` 提供定位与播放；时间纯函数作品的**画面只取决于时刻 t**，有自己时钟、状态或交互的作品负责重建相应画面。同一份代码支持实时播放、站点刻度条拖动和脚本逐帧渲染视频，结果完全一致。Motion Kit 提供以下接口：
 
 - **固定画幅舞台** `MotionKit.stage()`：横屏 1920×1080、竖屏 1080×1920 两套构图，整体等比缩放（黑边），舞台内部只用像素。
 - **声音引擎** `MotionKit.audio`：零素材的 WebAudio 合成音色库 + 乐谱调度；同一份乐谱可离线渲染成 WAV。
-- **预加载** `MotionKit.preload()`：资源就绪后才宣告 ready，进度可被站点显示。
+- **预加载** `MotionKit.preload()`：资源就绪后才宣告 ready，站点可显示进度。
 - **宿主通信**：站点用 postMessage 切换画幅、开关声音，Demo 回报就绪、画幅、加载进度与声音状态。
 
 参考模板位于 `scripts/templates/`：`case-film/`（时间纯函数作品）、`case-native/`（作品自接 MotionKit）、`pattern-replay/`（片段重放）、`pattern-split/`（入口与 `mechanism/`）和 `material-demo/`（可运行素材）。复制模板后运行构建，由构建生成条目内的 `motion-kit.js` 副本。
@@ -32,7 +32,7 @@
 
 只重放案例片段的巧思调用 `MotionKit.replay(config)`，由 `segments` 拼接片段并复用来源案例 iframe，返回外层时间轴。每条片段用 `caseId`、`from`、`to` 指定来源与时间范围；`title`、`accent`、`markers`、`fps`、`reduced` 配置外层播放，`overlay` 指定巧思自己的 cue 说明层。来源入口为 `../../cases/<id>/index.html?embed=1&render=1`；外层提供 `__motion`、控制条、URL 定位、声音同步及画幅与加载状态。片段设置 `nativeAudio: true` 时，由来源页自身的 MotionKit 时钟与声音驱动；其余片段使用音轨文件。巧思本体结构见 [CONTRIBUTING](../CONTRIBUTING.md#条目本体)。
 
-有自己时钟、状态或交互的作品在 `film/` 内自己接 MotionKit，使用下面的舞台、时间轴与协议接口；地图巡礼的缓冲和档案终端的仿真、交互由作品控制。
+有自己时钟、状态或交互的作品在 `film/` 内自行接入 MotionKit，使用下面的舞台、时间轴与协议接口；地图巡礼的缓冲和档案终端的仿真、交互由作品控制。
 
 ## 一、约定
 
@@ -69,7 +69,7 @@ MK.start(tl, { t: 0, reduced: at(8) });                     // 6. 按 ?t / 减�
 
 ## 二、舞台 `MotionKit.stage(opts)`
 
-舞台根节点（默认 `[data-stage]`、`#stage` 或 `.stage`）被设为固定像素尺寸，并用 `transform: translate() scale()` 等比缩放到容器（默认整个窗口）居中，四周是黑边。缩放只发生在根节点上，所以根节点的 `clientWidth` 恒为 1920（或 1080）——MapLibre、Canvas 等按 `clientWidth` 测量的库直接按舞台像素工作。
+舞台根节点（默认 `[data-stage]`、`#stage` 或 `.stage`）被设为固定像素尺寸，并用 `transform: translate() scale()` 等比缩放，在容器（默认整个窗口）中居中，四周留黑边。缩放只发生在根节点上，所以根节点的 `clientWidth` 恒为 1920（或 1080）——MapLibre、Canvas 等按 `clientWidth` 测量的库直接按舞台像素工作。
 
 | 选项 | 默认 | 说明 |
 | --- | --- | --- |
@@ -114,7 +114,7 @@ CSS 写法（横竖两套构图）：
 
 - 子元素显式写 `visibility: visible` 会盖过父层的 `hidden`；闪烁、显隐优先用 `opacity`。
 - 交互 Demo 的指针坐标一律先过 `stage.toStage()`；不要用 `offsetX`（会受缩放影响）。
-- MapLibre 的鼠标换算本身支持缩放容器；地图画布按舞台像素 × `devicePixelRatio` 渲染，若嫌重可设 `pixelRatio: Math.max(1, devicePixelRatio * stage.scale)` 并在 `stage.on('resize')` 里更新。
+- MapLibre 的鼠标换算本身支持缩放容器；地图画布按舞台像素 × `devicePixelRatio` 渲染，若渲染开销过大，可设 `pixelRatio: Math.max(1, devicePixelRatio * stage.scale)` 并在 `stage.on('resize')` 里更新。
 - 渲染模式（`?render`）下视口等于舞台尺寸，`scale` 恰为 1。
 
 ## 三、时间轴与 `window.__motion`
@@ -248,7 +248,7 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 
 ### 4.6 即时声音接口
 
-`MotionKit.sound()` 返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，与 `MotionKit.audio` 共用引擎、声音开关及混音链，所以站点的 `motion:sound` 对自适应Demo 同样有效。使用即时音效的 Demo 自己做的前瞻排程在暂停或跳转时也会被淡出。时间轴声音使用乐谱。
+`MotionKit.sound()` 返回 `{ enabled, ctx, enable, disable, toggle, tone({f, d, type, g, slide, attack, delay}), noise({d, g, lp, hp, delay}) }`，与 `MotionKit.audio` 共用引擎、声音开关及混音链，所以站点的 `motion:sound` 对自适应 Demo 同样有效。使用即时音效的 Demo 自行安排的前瞻排程在暂停或跳转时也会被淡出。时间轴声音使用乐谱。
 
 `motion:ready.sound` 取乐谱、`expose()` 的声音元数据和 kit 的声音使用标记：创建 `sound()`、调用 `audio.play()` / `audio.attach()`，或给 `controls()` 传入声音对象都会登记。它表示 Demo 使用声音，不表示当前已开启；`__motion.audio` 只表示可离线导出的乐谱接口，不能用于判断即时音效是否存在。仅在用户操作后才调用 `audio.play()` 的 Demo，应在 `expose(tl, { sound: true })` 中预先声明声音能力。
 
@@ -271,11 +271,11 @@ const sched = MK.audio.attach(tl, SCORE);   // 一个时间轴挂一份乐谱；
 
 字节总量优先使用固定素材映射的 bytes，其次使用未压缩响应的 Content-Length；未知总量以已下载字节计并标记 unknownTotal。速度使用最近三秒的下载字节变化。下载百分比单调不减，就绪前最高为 99%，100% 与 ready 同步发布；解码和首帧准备使用独立阶段。
 
-`MotionKit.preload(tasks, { onProgress, timeout = 3600000 })` 登记必需准备任务。tasks 接受 Promise、返回 Promise 的函数或 `{ run, weight, label }`。失败和超时拒绝 ready；计数请求收到响应头后，响应体连续 60 秒没有数据时失败。
+`MotionKit.preload(tasks, { onProgress, timeout = 3600000 })` 登记必需准备任务。tasks 接受 Promise、返回 Promise 的函数或 `{ run, weight, label }`。失败或超时会拒绝 ready；计数请求收到响应头后，响应体连续 60 秒没有数据时失败。
 
 公共 expose 层在 ready 前禁用 play、toggle、seek、快捷键与宿主播放／定位消息。控制条、站点播放、重播、刻度条和节拍点同时禁用。URL 的 t 和默认初始时刻在就绪时提交一次；render 模式的 API seek 等待 ready 后执行。音轨是必需资源；声音默认关闭。
 
-replay 等全部来源 iframe、音轨与初始帧完成，按 URL 合并字节并共享下载缓存。地图巡礼在开头缓冲完成后就绪，播放中的后续瓦片沿用缓冲泵：解析窗口 10 秒，下载窗口 45 秒，开头 6 秒；前方不足 0.5 秒时暂停，缓冲 4 秒后继续。渲染模式逐帧等待地图。档案终端以应用字体、模型、音轨和初始帧的最终完成状态发布 ready。
+replay 等待全部来源 iframe、音轨与初始帧完成，按 URL 合并字节并共享下载缓存。地图巡礼在开头缓冲完成后就绪，播放中的后续瓦片沿用缓冲泵：解析窗口 10 秒，下载窗口 45 秒，开头 6 秒；前方不足 0.5 秒时暂停，缓冲 4 秒后继续。渲染模式逐帧等待地图。档案终端以应用字体、模型、音轨和初始帧的最终完成状态发布 ready。
 
 独立 Demo 与站点详情都显示进度条和“已下载 23.4 / 56.0 MB · 1.8 MB/s · 文件 87 / 243 · 下载中”。阶段为下载中、解码中、准备首帧；失败显示原因与重试，重试重新加载 Demo。减少动态偏好下进度条没有动画。
 
@@ -311,7 +311,7 @@ Demo → 父页面：
 | `{ type: 'motion:loading', … }` | 字节、速度、文件数与阶段，格式见加载与就绪 |
 | `{ type: 'motion:sound', on, state }` | 声音状态变化：`state` 为 `off` / `on` / `blocked` |
 
-**开启声音**：点击声音按钮即可开启。若显示“待启用”，点击舞台或再次点击声音按钮。嵌入页面使用`allow="autoplay"`，通过`motion:sound`接收开关状态。画幅按钮只在Demo支持多种画幅时显示，切换后保持当前时刻。
+**开启声音**：点击声音按钮即可开启。若显示“待启用”，点击舞台或再次点击声音按钮。嵌入页面使用 `allow="autoplay"`，通过 `motion:sound` 接收开关状态。画幅按钮只在 Demo 支持多种画幅时显示，切换后保持当前时刻。
 
 ## 七、URL 参数
 
@@ -334,7 +334,7 @@ Demo → 父页面：
 
 ## 九、逐帧渲染成视频
 
-`scripts/render.mjs` 用本机的 Edge 或 Chrome（无头模式，通过 DevTools 协议控制，无需安装依赖）打开 Demo，等 `__motion.ready`，按帧率逐帧 `seek` 并截图：
+`scripts/render.mjs` 用本机的 Edge 或 Chrome（无头模式，通过 DevTools 协议控制，无需安装依赖）打开 Demo，等待 `__motion.ready`，按帧率逐帧 `seek` 并截图：
 
 ```bash
 node scripts/render.mjs demos/cases/map-pilgrimage/index.html --fps 30
@@ -367,7 +367,7 @@ ffmpeg -y -framerate 30 -i renders/map-pilgrimage/frame-%05d.png -i renders/map-
 ### 性能提示
 
 - 1920×1080、30fps、30 秒约 900 帧，PNG 序列约 1–2GB；用 `--format jpeg` 可显著减小体积。
-- 地图类 Demo 每帧需要等瓦片空闲，渲染较慢；先用 `--fps 12` 预览节奏，再出正式版本。
+- 地图类 Demo 每帧需要等待瓦片空闲，渲染较慢；先用 `--fps 12` 预览节奏，再渲染正式版本。
 - 渲染时页面不会播放，所以“播放中才出现”的效果（例如运动模糊残影）需要在 render(t) 里用 `t` 计算，而不是依赖上一帧。
 
 ## 十、预览图与截图

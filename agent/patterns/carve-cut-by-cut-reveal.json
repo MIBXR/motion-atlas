@@ -17,10 +17,10 @@
     "orients": [
       "landscape"
     ],
-    "summary": "每条刻痕持有起始时刻、持续时间和刀宽，沿刀路逐步显露；形体的reveal key分配粗细刀次，高潮光线由放射刻痕爆开。",
-    "mechanism": "每条刻痕持有起始时刻、持续时间和刀宽，沿刀路逐步显露；形体的reveal key分配粗细刀次，高潮光线由放射刻痕爆开。",
+    "summary": "每条刻痕都有起始时刻、持续时间和刀宽，并沿刀路逐步显露；形体的reveal key用于分配粗细刀次，高潮处的光线由放射刻痕爆开。",
+    "mechanism": "每条刻痕都有起始时刻、持续时间和刀宽，并沿刀路逐步显露；形体的reveal key用于分配粗细刀次，高潮处的光线由放射刻痕爆开。",
     "trigger": "首刀开始，随后reveal时刻按粗刀、村庄、细线推进；第二次浇铸触发放射刻痕。",
-    "effect": "时间可由刻刀读出，亮面以被削去的木材出现，放射光成为真实刀痕。",
+    "effect": "时间可由刻刀读出，亮面随着木材被削去而显露，放射光成为真实刀痕。",
     "timing": [
       {
         "name": "原片重放区间",
@@ -54,7 +54,7 @@
     ],
     "locator": "progOf / hatch / buildWorld / buildOpen / rays2",
     "useCases": [
-      "时间可由刻刀读出，亮面以被削去的木材出现，放射光成为真实刀痕。"
+      "时间可由刻刀读出，亮面随着木材被削去而显露，放射光成为真实刀痕。"
     ],
     "avoid": [
       "在关键动作或留白上叠加争夺注意的主动作"
@@ -630,17 +630,17 @@
     },
     {
       "path": "entries/cases/lemo-engraving.json",
-      "bytes": 10588,
+      "bytes": 10603,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-woodcut.json",
-      "bytes": 10865,
+      "bytes": 10904,
       "role": "entry"
     },
     {
       "path": "entries/patterns/carve-cut-by-cut-reveal.json",
-      "bytes": 3695,
+      "bytes": 3731,
       "role": "entry"
     },
     {

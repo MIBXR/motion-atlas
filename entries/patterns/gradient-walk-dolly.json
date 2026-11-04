@@ -12,10 +12,10 @@
   "orients": [
     "landscape"
   ],
-  "summary": "把降雨量映射为横向距离，单调分段相机穿过五区，四层视差与区域混色随数据变化。",
-  "mechanism": "RAINK 给世界坐标对应雨量，rainAt 在量级间做对数插值；camXf 用 monotone 连续横移，LAY 派生各层位置，mixZone / zoneGrad 随区域混色，事件附近的相机键减小速度。",
+  "summary": "把降雨量映射为横向距离，相机沿单调分段路径穿过五区，四层视差与区域混色随数据变化。",
+  "mechanism": "RAINK 将世界坐标与雨量对应起来，rainAt 在量级间做对数插值；camXf 用 monotone 实现连续横移，LAY 派生各层位置，mixZone / zoneGrad 随区域混色，事件附近的相机键用于减速。",
   "trigger": "刷边揭景完成，相机从红色腹地向绿色海岸前进。",
-  "effect": "观众用连续路程读出一个测量梯度，并在火、王桉和雨林处获得停留。",
+  "effect": "观众通过连续路程读出一个测量梯度，并有时间在火、王桉和雨林处停留。",
   "timing": [
     {
       "name": "来源片段",
@@ -46,7 +46,7 @@
   ],
   "locator": "camXf / LAY / RAINK / rainAt / ZCOL / mixZone / zoneGrad",
   "useCases": [
-    "观众用连续路程读出一个测量梯度，并在火、王桉和雨林处获得停留。"
+    "观众通过连续路程读出一个测量梯度，并有时间在火、王桉和雨林处停留。"
   ],
   "avoid": [
     "在该片段内叠加第二条争夺注意的主动作"

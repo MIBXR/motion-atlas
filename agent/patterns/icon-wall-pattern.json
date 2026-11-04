@@ -18,7 +18,7 @@
     "summary": "313把伞在规则货架上从主伞向外撑开，按行变成同一黄系，整行交替错移半格；打开的伞冠成为网格半圆纹样。",
     "mechanism": "313把伞在规则货架上从主伞向外撑开，按行变成同一黄系，整行交替错移半格；打开的伞冠成为网格半圆纹样。",
     "trigger": "36.5秒BLOOM与37.5秒逐行变色。",
-    "effect": "数量集合转成整幅识别图案，物件轮廓与背景纹样连续衔接。",
+    "effect": "成组的物件转成整幅识别图案，物件轮廓与背景纹样连续衔接。",
     "timing": [
       {
         "name": "原片重放区间",
@@ -41,7 +41,7 @@
     ],
     "locator": "film.js / engine.js",
     "useCases": [
-      "数量集合转成整幅识别图案，物件轮廓与背景纹样连续衔接。"
+      "成组的物件转成整幅识别图案，物件轮廓与背景纹样连续衔接。"
     ],
     "avoid": [],
     "composition": {
@@ -256,12 +256,12 @@
     },
     {
       "path": "entries/cases/lemo-pictogram-motion.json",
-      "bytes": 10763,
+      "bytes": 10793,
       "role": "entry"
     },
     {
       "path": "entries/patterns/icon-wall-pattern.json",
-      "bytes": 2509,
+      "bytes": 2515,
       "role": "entry"
     },
     {

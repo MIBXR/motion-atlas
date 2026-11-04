@@ -51,7 +51,7 @@
       "role": "foundation",
       "pairsWellWith": [],
       "conflicts": [],
-      "notes": "机械里程表的逐位滚动归入rolling-digits，本条只拆线网按年份生长。"
+      "notes": "机械里程表的逐位滚动归入rolling-digits，本条只拆解线网按年份生长的机制。"
     },
     "prompt": "以来源案例lemo-transit-map的原作render(t)重放“线网按年生长”。线路依各年份的phase沿八方向路径逐段画出，笔尖经过时站点亮起；新线抵达后生成换乘胶囊，线路圆标带出年份，既有线网保持原位。 参数：14.3—21.7秒依次展开2002—2010线路；phase按t0/t1插值路径弧长，2010在19.9秒落定。；路径先画到tip，passed状态驱动站点显现与换乘；多线共享走廊用平行偏移保持可读。。按入口segments映射原片，复用原作素材、字体与同段音轨，声音默认关闭。",
     "demo": "demos/patterns/network-growth-odometer/index.html",
@@ -241,12 +241,12 @@
     },
     {
       "path": "entries/cases/lemo-transit-map.json",
-      "bytes": 9565,
+      "bytes": 9619,
       "role": "entry"
     },
     {
       "path": "entries/patterns/network-growth-odometer.json",
-      "bytes": 2842,
+      "bytes": 2854,
       "role": "entry"
     },
     {

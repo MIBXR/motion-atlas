@@ -16,10 +16,10 @@
     "orients": [
       "landscape"
     ],
-    "summary": "26 张卡先在右上角堆成一叠做 3D 特写，拉远后按阅读顺序加速发牌，飞入网格各自的槽位。",
-    "mechanism": "牌堆姿态带由 index 派生的微小错位与堆高；镜头先旋转特写牌堆再拉远露出页面；发牌按阅读顺序，第 k 张出发时刻 cue = DEAL_START + 4k − 0.0792k(k−1)，间隔从 4 帧缩到 0.2 帧。",
+    "summary": "26 张卡先在右上角堆成一叠，镜头对牌堆做 3D 特写。拉远后，按阅读顺序加速发牌，让卡片飞入各自的网格槽位。",
+    "mechanism": "牌堆姿态包含由 index 派生的微小错位与堆高；镜头先以旋转特写展示牌堆，再拉远露出页面；发牌按阅读顺序，第 k 张出发时刻 cue = DEAL_START + 4k − 0.0792k(k−1)，间隔从 4 帧缩到 0.2 帧。",
     "trigger": "字卡一结束，切入牌堆特写。",
-    "effect": "发牌从从容到连成一片，用物理隐喻的加速度把一页卡片铺满。",
+    "effect": "发牌起初从容，随后连成一片，以加速发牌的物理隐喻铺满一页卡片。",
     "timing": [
       {
         "name": "片段",
@@ -519,12 +519,12 @@
     },
     {
       "path": "entries/cases/ink-press.json",
-      "bytes": 12795,
+      "bytes": 12883,
       "role": "entry"
     },
     {
       "path": "entries/patterns/deck-deal-flyin.json",
-      "bytes": 2997,
+      "bytes": 3051,
       "role": "entry"
     },
     {

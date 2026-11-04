@@ -21,8 +21,8 @@
       "mg-styles-15",
       "合成波"
     ],
-    "summary": "发亮笔头沿真实字形路径推进并留下暗玻璃管，通电节点按逐帧电平闪烁，最后整字稳定发光。",
-    "mechanism": "发亮笔头沿真实字形路径推进并留下暗玻璃管，通电节点按逐帧电平闪烁，最后整字稳定发光。",
+    "summary": "发亮笔头沿真实字形路径推进并留下暗玻璃管；到达通电节点时，霓虹字按逐帧电平闪烁，最后整字稳定发光。",
+    "mechanism": "发亮笔头沿真实字形路径推进并留下暗玻璃管；到达通电节点时，霓虹字按逐帧电平闪烁，最后整字稳定发光。",
     "trigger": "描写窗口启动并到达通电节点时",
     "effect": "Midnight 从暗玻璃轮廓与发亮笔头变成完整点亮的霓虹字。",
     "timing": [
@@ -286,12 +286,12 @@
     },
     {
       "path": "entries/cases/mg-synthwave.json",
-      "bytes": 16813,
+      "bytes": 16835,
       "role": "entry"
     },
     {
       "path": "entries/patterns/neon-write-on-ignition.json",
-      "bytes": 2762,
+      "bytes": 2804,
       "role": "entry"
     },
     {

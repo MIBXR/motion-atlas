@@ -20872,22 +20872,22 @@
     },
     {
       "path": "docs/cases/map-pilgrimage.md",
-      "bytes": 6454,
+      "bytes": 6404,
       "role": "doc"
     },
     {
       "path": "entries/cases/lemo-backrooms.json",
-      "bytes": 10251,
+      "bytes": 10335,
       "role": "entry"
     },
     {
       "path": "entries/cases/lemo-countdown.json",
-      "bytes": 11506,
+      "bytes": 11530,
       "role": "entry"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 20430,
+      "bytes": 20565,
       "role": "entry"
     },
     {

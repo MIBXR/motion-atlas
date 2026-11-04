@@ -16,7 +16,7 @@
     "orients": [
       "landscape"
     ],
-    "summary": "重放落版后三步拉远灯箱、拇指翻阅旧画格，以及红铅笔圈注总张数与箭头。",
+    "summary": "重放落版后三步拉远显露灯箱、拇指翻阅旧画格，以及红铅笔圈注总张数并画出箭头的过程。",
     "mechanism": "落版后三步拉远显露灯箱与叠纸，拇指连续掀角翻页，重放早先六张画格，再返回顶层标题；红铅笔分两格圈注总张数并画出箭头。",
     "trigger": "标题完成后，时间进入拉回、圈注与翻页节点时。",
     "effect": "平面落版显露为灯箱上的动画纸页，旧画格在翻阅中重现，张数圈注连接到手作标语。",
@@ -330,12 +330,12 @@
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24667,
+      "bytes": 24679,
       "role": "entry"
     },
     {
       "path": "entries/patterns/flipbook-pullback.json",
-      "bytes": 3819,
+      "bytes": 3840,
       "role": "entry"
     },
     {

@@ -16,7 +16,7 @@
     "orients": [
       "landscape"
     ],
-    "summary": "依次重放三片的密集节点段，在画面上用中文标出当前节点，并沿用原片音轨。 追加逐帧手绘的旋转、爆炸与逐笔书写，以及线条艺术的停笔续笔段。",
+    "summary": "依次重放三片的密集节点段，在画面上用中文标出当前节点，并沿用原片音轨。重放内容还包括逐帧手绘的旋转、爆炸与逐笔书写，以及线条艺术的停笔续笔段。",
     "mechanism": "画面与配乐读取同一份 film/cues.json，将动作和对应音效定位在同一时间轴；三个来源依次重放，说明层显示当前节点的中文名称。 逐帧手绘共用划火、跳跃、爆炸与书写节点；线条艺术额外从同一路径导出笔尖速度与转角，供笔触响度和结构音使用。",
     "trigger": "共享时间表中的画面与声音节点到达时。",
     "effect": "同一节点同时决定原片画面的动作位置与对应音轨时刻，节点说明随来源和时间更新。",
@@ -939,7 +939,7 @@
     },
     {
       "path": "entries/cases/lemo-swiss-motion.json",
-      "bytes": 11829,
+      "bytes": 11857,
       "role": "entry"
     },
     {
@@ -949,27 +949,27 @@
     },
     {
       "path": "entries/cases/mg-cel-boil.json",
-      "bytes": 24667,
+      "bytes": 24679,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-flat-vector.json",
-      "bytes": 21173,
+      "bytes": 21215,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-line-art.json",
-      "bytes": 19584,
+      "bytes": 19614,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 22267,
+      "bytes": 22301,
       "role": "entry"
     },
     {
       "path": "entries/patterns/shared-cue-sheet.json",
-      "bytes": 4322,
+      "bytes": 4336,
       "role": "entry"
     },
     {

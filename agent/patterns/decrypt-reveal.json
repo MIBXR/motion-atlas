@@ -15,8 +15,8 @@
       "video"
     ],
     "summary": "GLB 档案的一条模型空间对角线从两端接通再收束，约3.6267秒完成物理解密；玻璃转清后，正文按实际折行逐行移走遮罩。",
-    "mechanism": "直接复用当前 archive-os 的 archive-cassette.glb、CardAppearance 材质与测量曲线。在模型平面中从(-1.6,0.5)到(1.98,3.24)仅有一条对角线，两端向中心接通，再收向中心；四角标与中心点同源投影。Frosted_Polymer 的高度相关着色器将粗糙度0.42转为0.025，形成自上而下的清晰前沿。正文用 Range.getClientRects() 测量实际折行，每行独立遮罩，待 clarity>0 后按阅读顺序 translateX 至101%。 移动遮罩作为 aria-hidden 装饰节点，正文始终保留在 DOM 中且不阻挡焦点；减少动态时直接显示清晰模型与完整正文，不绘制移动遮罩。",
-    "trigger": "交互时进入档案详情，detail>0.78且模型lift>3.3后开始物理解密；Demo 从该门槛通过的时刻抽取单个机制",
+    "mechanism": "直接复用当前 archive-os 的 archive-cassette.glb、CardAppearance 材质与测量曲线。在模型平面中从(-1.6,0.5)到(1.98,3.24)仅有一条对角线，两端向中心接通，再收向中心；四角标与中心点同源投影。Frosted_Polymer 的高度相关着色器将粗糙度0.42转为0.025，形成自上而下的清晰前沿。正文用 Range.getClientRects() 测量实际折行，每行设置独立遮罩；待 clarity>0 后，遮罩按阅读顺序 translateX 至101%。移动遮罩是 aria-hidden 装饰节点，正文始终保留在 DOM 中且不阻挡焦点；减少动态时直接显示清晰模型与完整正文，不绘制移动遮罩。",
+    "trigger": "交互时进入档案详情，detail>0.78且模型lift>3.3后开始物理解密；Demo 从通过该门槛的时刻抽取单个机制",
     "effect": "先接通信号并收束，再让真实玻璃材质与折行正文接续转清，读取顺序与物理模型共用同一解密提示。",
     "parameters": [
       {
@@ -67,7 +67,7 @@
       "保密信息展示"
     ],
     "avoid": [
-      "频繁打开的列表详情（每次都揭示会拖慢效率，可只在首次）"
+      "频繁打开的列表详情（每次都揭示会降低效率，可只在首次揭示）"
     ],
     "composition": {
       "role": "support",
@@ -4945,17 +4945,17 @@
     },
     {
       "path": "docs/cases/archive-os.md",
-      "bytes": 2473,
+      "bytes": 2503,
       "role": "doc"
     },
     {
       "path": "entries/cases/archive-os.json",
-      "bytes": 9770,
+      "bytes": 9784,
       "role": "entry"
     },
     {
       "path": "entries/patterns/decrypt-reveal.json",
-      "bytes": 6298,
+      "bytes": 6315,
       "role": "entry"
     },
     {

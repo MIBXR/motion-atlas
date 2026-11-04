@@ -449,7 +449,7 @@
     b.innerHTML = `${on || blocked ? IC.sndOn : IC.sndOff}<span class="tp-snd-label">${on ? '声音 开' : blocked ? '声音 待启用' : '声音 关'}</span>`;
     b.setAttribute('aria-pressed', String(audio.enabled));
     b.dataset.state = st;
-    b.title = blocked ? '浏览器暂时挡住了声音：在页面上点一下即可' : on ? '关闭声音' : '开启声音';
+    b.title = blocked ? '浏览器暂时阻止了声音播放，点击页面即可开启' : on ? '关闭声音' : '开启声音';
   }
   $('#snd').addEventListener('click', () => {
     if (audio.enabled) { audio.disable(); S.sound = false; } else { audio.enable(); S.sound = true; }
@@ -697,7 +697,7 @@
     const ev = EVOICES[S.evVoice];
     if (live()) audio.play(ev.v, Object.assign({}, ev.p, { gain: (S.vol / 100) * 0.85 }));
     flashHit($('#pad'));
-    if (!T.run) { $('#padFb').textContent = '先点“播放”，跟着节拍器敲。'; return; }
+    if (!T.run) { $('#padFb').textContent = '先点击“播放”，再跟着节拍器敲击。'; return; }
     const c = clip(), tc = tapClock(stamp) - S.lat / 1000, p = beatAt(tc), x = p - T.bar, q = snapX(x), dev = Math.round((x - q.p) * c.spb * 1000);
     const C = clipAbs(p, c), [word, cls] = judge(dev);
     TAPS.push({ dev, cls });
@@ -746,7 +746,7 @@
       S.example = '';
       S.mode = 'ab';
       T.abPhase = Math.round(r.start / c.L) + 1; // 录完的下一圈先放 A（你敲的），再放 B（吸附后）
-      toast(`已录入 ${S.ev.length} 个事件：接下来一圈 A（你敲的）、一圈 B（吸附后）`);
+      toast(`已录入 ${S.ev.length} 个事件：接下来先播放一圈 A（原始敲击），再播放一圈 B（吸附后）`);
     } else toast('这一圈没有敲击，事件保持不变');
     recUI();
     resched(); save(); invalidate();
@@ -988,7 +988,7 @@
     $('#startCue').checked = S.startCue;
     segSet($('#examples'), S.example);
     const ex = EXAMPLES[S.example];
-    setHTML($('#exHint'), ex ?`<p><b>${ex.name}</b>：${ex.desc}${ex.tip}</p><div class="tries">${ex.tries.map(([l], j) => `<button type="button" class="chip-btn" data-try="${j}">${l}</button>`).join('')}</div>` : `<p>${S.ev.length ? '自定义事件（拖动、键盘或打拍录入得到）。' : '还没有事件：点上方示例、在 A 道空白处点一下，或用打拍录入。'}</p>`);
+    setHTML($('#exHint'), ex ?`<p><b>${ex.name}</b>：${ex.desc}${ex.tip}</p><div class="tries">${ex.tries.map(([l], j) => `<button type="button" class="chip-btn" data-try="${j}">${l}</button>`).join('')}</div>` : `<p>${S.ev.length ? '自定义事件（通过拖动、键盘操作或打拍录入创建）。' : '还没有事件。选择上方示例、点击 A 道空白处，或使用打拍录入来添加事件。'}</p>`);
     if (document.activeElement !== evTa) evTa.value = S.ev.map((t) => t.toFixed(3)).join(', ');
     $('#lat').value = S.lat; $('#latV').textContent = signed(S.lat);
     Object.entries(SLD).forEach(([k, f]) => { $('#' + k).value = S[k]; $('#' + k + 'V').textContent = f(S[k]); });

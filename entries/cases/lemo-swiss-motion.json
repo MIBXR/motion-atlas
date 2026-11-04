@@ -187,7 +187,7 @@
       "label": "主海报收束"
     }
   ],
-  "energyNote": "分段依据 DEMO.md 的 Score structure（每规则加一层、24–26 秒断鼓、30–32 秒呼吸、32–36 秒揭谱），时刻由 film/score.json:timeline 与 film/film.js:T 对齐；0–1 是编排密度的相对标注。",
+  "energyNote": "分段依据 DEMO.md 的 Score structure（每条规则加一层、24–26 秒断鼓、30–32 秒呼吸、32–36 秒揭谱），时刻按 film/score.json:timeline 与 film/film.js:T 对齐；0–1 是编排密度的相对标注。",
   "observations": [
     "黑白灰与唯一信号红建立系统，红圆是唯一能够离网的元素。",
     "七列代表 A 多利亚调七个音，十六行代表十六个八分音符，条长就是音长。",
@@ -199,9 +199,9 @@
     "typography": "Archivo 可变字重 300–900；早期错误字体桥段使用 Fraktur 与 DM Serif Display。",
     "layout": "1920×1080、24fps；12 列画幅、96px 边距、24px 沟槽；左页说明，右页 706×1008 海报。",
     "imagery": "纯 Canvas2D 平涂条块、文字、纸面与网格；海报七列 91px、十六行 40px。",
-    "motion": "精准缓动 cubic-bezier(.7,0,.2,1) 加线性两种曲线；擦入、刀切、基线裁切与按距离重排。",
+    "motion": "曲线有两种：精准缓动 cubic-bezier(.7,0,.2,1) 与线性；动作包括擦入、刀切、基线裁切与按距离重排。",
     "sound": "120BPM、A 多利亚调 motorik，帽镲、鼓组、贝斯、琶音与钟琴逐层加入；Kokoro af_sarah 旁白与干燥印刷拟音。",
-    "rhythm": "每规则增加一层乐器，红圆离网时抽走鼓组，揭谱前近静音，两小节扫奏后拉远。",
+    "rhythm": "每条规则增加一层乐器，红圆离网时抽走鼓组，揭谱前近静音，两小节扫奏后拉远。",
     "coherence": "score.json 同时规定条块格点、音高、音长与音乐结构，buildEvents 的绝对时刻定位拟音。"
   },
   "layers": [
@@ -269,7 +269,7 @@
     "海报列宽保持图形分量，过窄会变成数据图表。",
     "旋转、停顿、标签、播放线按顺序出现。",
     "合并条块多画 1px，旋转后保持无缝。",
-    "修改字幕后重新对齐 Whisper 词时刻，Canvas 字距设置后再测宽。"
+    "修改字幕后重新对齐 Whisper 词时刻；先设置 Canvas 字距，再测宽。"
   ],
   "migration": [
     {

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>节奏实验室 · Motion Atlas</title>
-  <meta name="description" content="跟着节拍器感受速度、拍号、细分与摇摆；听见事件吸附到网格前后的差别（A/B 对比、量化强度、首拍偏移、打拍录入）；把缓动曲线、时长与错峰对到拍子上；导出 CSS、JS 代码、Prompt 与 WAV。">
+  <meta name="description" content="跟着节拍器感受速度、拍号、细分与摇摆；听见事件吸附到网格前后的差别（A/B 对比、量化强度、首拍偏移、打拍录入）；将缓动曲线、时长与错峰对齐拍子；导出 CSS、JS 代码、Prompt 与 WAV。">
   <link rel="icon" href="site/icons/favicon.svg?v=onion-1" type="image/svg+xml">
   <link rel="stylesheet" href="site/shared/site.css">
   <link rel="stylesheet" href="site/pages/lab/lab.css">
@@ -28,7 +28,7 @@
     <header class="lab-head">
       <p class="eyebrow">RHYTHM LAB · BEAT / QUANTIZE / EASE / EXPORT</p>
       <h1>把“手感”调成<em>数字</em>。</h1>
-      <p>先用节拍器听速度、拍号与细分，再比较事件吸附前后的差别。把曲线、时长和错峰对齐拍子，导出代码、Prompt或WAV。</p>
+      <p>先用节拍器感受速度、拍号与细分，再比较事件吸附前后的差别。把曲线、时长和错峰对齐拍子，导出代码、Prompt 或 WAV。</p>
     </header>
 
     <div class="transport" id="transport" role="group" aria-label="走带：播放、速度与声音">
@@ -54,7 +54,7 @@
       <header class="step-head">
         <span class="step-no">01</span>
         <div><h2 id="h-beat">感受节拍 <small>METRONOME</small></h2>
-        <p>节拍器把时间切成等长的格子：小节重拍最重，拍次之，细分最轻。改速度、拍号、细分或摇摆都在下一个格子立刻生效，相位不跳、不重启。先在这里找到你的速度。</p></div>
+        <p>节拍器把时间切成等长的格子：小节重拍最重，拍次之，细分最轻。调整速度、拍号、细分或摇摆，都会在下一个格子生效，相位保持连续，节拍器不会重启。先在这里选定速度。</p></div>
       </header>
       <div class="beat-grid">
         <div class="pane metro-pane">
@@ -87,7 +87,7 @@
       <header class="step-head">
         <span class="step-no">02</span>
         <div><h2 id="h-quant">理解吸附 <small>QUANTIZE</small></h2>
-        <p>剪辑点、动作落点这些事件很少正好落在拍上。吸附就是把它们挪到最近的网格点：网格越细，保留的节奏越多；网格太粗会把切分抹平。打开 A/B 对比，听原始与吸附后的差别。</p></div>
+        <p>剪辑点、动作落点这些事件很少正好落在拍上。吸附会把它们移到最近的网格点：网格越细，保留的节奏越多；网格太粗会把切分抹平。选择 A/B 交替播放，听事件吸附前后的差别。</p></div>
       </header>
 
       <div class="pane q-pane">
@@ -105,7 +105,7 @@
         </div>
         <div class="ex-hint" id="exHint" aria-live="polite"></div>
 
-        <div class="tl-legend" aria-hidden="true"><span><i class="lg-a"></i>A 原始</span><span><i class="lg-b"></i>B 吸附后</span><span><i class="lg-early"></i>偏早 → 往后挪</span><span><i class="lg-late"></i>偏晚 → 往前挪</span><span class="tl-tip">拖动 A 点改时刻 · 点空白处添加 · 选中后 Delete 删除</span></div>
+        <div class="tl-legend" aria-hidden="true"><span><i class="lg-a"></i>A 原始</span><span><i class="lg-b"></i>B 吸附后</span><span><i class="lg-early"></i>偏早 → 往后挪</span><span><i class="lg-late"></i>偏晚 → 往前挪</span><span class="tl-tip">拖动 A 点调整时刻 · 点击 A 道空白处添加事件 · 选中后按 Delete 删除</span></div>
         <div class="timeline" id="tlBox"><svg id="tl" role="group" aria-label="吸附时间线"></svg></div>
 
         <div class="play-row">
@@ -122,13 +122,13 @@
           </figure>
           <div class="rec-box">
             <h3>打拍录入 <small>TAP &amp; RECORD</small></h3>
-            <p>跟着节拍器在打拍板上敲（或按 <kbd class="kbd">J</kbd>），实时显示早 / 晚多少毫秒。按“录入一遍”会从下一圈开头录一整圈，录完自动 A/B 交替播放：先听你敲的，再听吸附后的。</p>
+            <p>跟着节拍器点击打拍板（或按 <kbd class="kbd">J</kbd>），实时查看敲击早 / 晚多少毫秒。点击“录入一遍”会从下一圈开头录入一整圈，录完后自动 A/B 交替播放：先听原始敲击，再听吸附后的事件。</p>
             <div class="rec-btns">
               <button class="btn rec-btn" type="button" id="rec" aria-pressed="false"><span class="ic-rec"></span><span id="recLabel">录入一遍</span> <kbd class="kbd">R</kbd></button>
               <button class="pad" type="button" id="pad" aria-describedby="padFb"><span>打拍板</span><kbd class="kbd">J</kbd></button>
             </div>
             <div class="rec-prog" id="recProg" aria-hidden="true"><i></i></div>
-            <p class="pad-fb" id="padFb" aria-live="polite">敲一下试试：显示与最近网格点的偏差。</p>
+            <p class="pad-fb" id="padFb" aria-live="polite">敲击后显示与最近网格点的偏差。</p>
             <div class="tap-hist" id="tapHist" aria-hidden="true"></div>
             <div class="lat-row"><span class="fl">延迟补偿</span><input type="range" id="lat" min="-150" max="150" step="1" aria-label="输入延迟补偿（毫秒）"><output id="latV"></output><button class="btn ghost small" type="button" id="latCal">按平均偏差校准</button></div>
           </div>
@@ -151,7 +151,7 @@
       <header class="step-head">
         <span class="step-no">03</span>
         <div><h2 id="h-ease">曲线 × 时长 × 拍子 <small>EASE / DURATION / STAGGER</small></h2>
-        <p>曲线决定性格，时长决定重量，错峰决定层次。开启“跟随节拍”，预览每小节重播。选“落点踩重拍”，最后一个元素在重拍落定。起步有呼啸，每次落定有提示音。</p></div>
+        <p>曲线决定动作的速度变化，时长决定轻重感，错峰通过控制元素起步的间隔形成视觉层次。开启“跟随节拍”后，预览每小节重播。选择“落点踩重拍”，最后一个元素在重拍落定。起步时有呼啸音，每次落定时有提示音。</p></div>
       </header>
       <div class="ease-grid">
         <article class="pane">
@@ -208,7 +208,7 @@
       <header class="step-head">
         <span class="step-no">04</span>
         <div><h2 id="h-export">导出 <small>CSS · JS · PROMPT · WAV</small></h2>
-        <p>导出会带上当前节拍、事件、曲线、时长与错峰参数。WAV使用同一套音色，可拖进剪辑软件对拍。</p></div>
+        <p>导出内容包含当前节拍、事件、曲线、时长与错峰参数。WAV 使用同一套音色，可拖入剪辑软件对拍。</p></div>
       </header>
       <div class="export-grid">
         <article class="pane export">
@@ -217,14 +217,14 @@
         </article>
         <article class="pane wav-pane">
           <h3 class="pane-h">导出 WAV <small>OFFLINE RENDER</small></h3>
-          <p class="hint">WAV包含当前节拍器、事件、循环起点与曲线提示音。节拍器保持三级音量，A/B交替按圈切换。曲线跟随节拍时加入提示音。从第0秒导出整数圈，方便循环使用。</p>
+          <p class="hint">WAV 包含当前节拍器和事件的声音，以及循环起点提示音与曲线提示音。节拍器保留三级音量，A/B 交替按圈切换。曲线跟随节拍时加入提示音。从第 0 秒开始导出整数圈，方便循环使用。</p>
           <div class="field-row"><span class="fl">长度</span><div class="seg" role="group" aria-label="导出圈数" id="wavCycles"><button type="button" data-v="1">1 圈</button><button type="button" data-v="2">2 圈</button><button type="button" data-v="4">4 圈</button></div></div>
           <p class="wav-sum" id="wavSum"></p>
           <button class="btn primary" type="button" id="wavBtn"></button>
           <p class="wav-res" id="wavRes" aria-live="polite"></p>
         </article>
       </div>
-      <p class="note">设置会记在本浏览器里，方便下次继续调；换设备不会同步。声音默认关闭，第一次点“播放”时开启。</p>
+      <p class="note">设置会保存在当前浏览器中，下次打开可继续调整；换设备不会同步。声音默认关闭，第一次点击“播放”时开启。</p>
     </section>
     </div>
   </main>

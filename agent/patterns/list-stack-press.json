@@ -17,9 +17,9 @@
       "landscape"
     ],
     "summary": "论文列表逐条堆叠压入页面，计数器随之滚动落定。",
-    "mechanism": "五张论文卡按 CUES=[18,30,42,54,66] 的顺序从下方 600px 飞入，各用 22 帧带超调压实；后续卡片进入时，已落位列表在 cue、cue+4、cue+8 帧下压 0、6、0px，计数器按 frame>=cue+22 更新并由 DigitRoll 落定。",
+    "mechanism": "五张论文卡按 CUES=[18,30,42,54,66] 的顺序从下方 600px 飞入，各用 22 帧压实，过程中带有超调。后续卡片进入时，已落位列表在 cue、cue+4、cue+8 帧分别下压 0、6、0px。计数器按 frame>=cue+22 更新，并由 DigitRoll 落定。",
     "trigger": "字卡二结束后切入列表页。",
-    "effect": "列表一条条压实，数字落定在最后一条之后。",
+    "effect": "列表一条条压实，数字在最后一条之后落定。",
     "timing": [
       {
         "name": "片段",
@@ -535,12 +535,12 @@
     },
     {
       "path": "entries/cases/ink-press.json",
-      "bytes": 12795,
+      "bytes": 12883,
       "role": "entry"
     },
     {
       "path": "entries/patterns/list-stack-press.json",
-      "bytes": 3129,
+      "bytes": 3153,
       "role": "entry"
     },
     {

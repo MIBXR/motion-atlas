@@ -1,6 +1,6 @@
 # Remotion Agent Skills 使用说明
 
-Remotion 官方维护的 Agent Skills 发布在 [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/30d4553ecd46fbc5212fd0ff006ae43af522158b)，源码位于主仓库的 [packages/skills](https://github.com/remotion-dev/remotion/tree/35e07c283d704cd6c28bbc63a030e30356e62b09/packages/skills)，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目中编写 React 视频。本库保存版本 4.0.539、提交 `30d4553ecd46fbc5212fd0ff006ae43af522158b` 的完整原文快照，主入口为 [remotion-best-practices/SKILL.md](../../demos/materials/remotion-skills/skills/remotion-best-practices/SKILL.md)。
+Remotion 官方维护的 Agent Skills 发布在 [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/30d4553ecd46fbc5212fd0ff006ae43af522158b)，源码位于主仓库的 [packages/skills](https://github.com/remotion-dev/remotion/tree/35e07c283d704cd6c28bbc63a030e30356e62b09/packages/skills)，供 Claude Code、Codex、Cursor 等 Agent 在 Remotion 项目中用 React 制作视频。本库保存版本 4.0.539、提交 `30d4553ecd46fbc5212fd0ff006ae43af522158b` 的完整原文快照，主入口为 [remotion-best-practices/SKILL.md](../../demos/materials/remotion-skills/skills/remotion-best-practices/SKILL.md)。
 
 ## 安装
 

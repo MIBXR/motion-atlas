@@ -13,8 +13,8 @@
     "carriers": [
       "video"
     ],
-    "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。等距城市中，数据弧线从核心向屋顶生长，到达后屋顶标记循环扩圈。 手机科普片中，矿石产地路线画向深圳组装点，箭头落定后数据包循环前进，汇点回弹扩圈。",
-    "mechanism": "三个固定镜头显示路线、车头、标记与双语标签。jrNara从minZoom=13显示。镜头之间以纸色转场，路线与标记始终对齐。等距城市的弧线错峰从核心连向屋顶，亮头携光脉沿线行进，到达后屋顶扩散环循环标记连接点。 手机科普片的弧线从产地锚点画向组装点，箭头按路线切线落位；数据包随后沿线循环，汇点回弹并周期扩圈。",
+    "summary": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。等距城市中，数据弧线从核心向屋顶生长，到达后屋顶标记循环扩圈。手机科普片中，路线从矿石产地画向深圳组装点，箭头落定后数据包循环前进，汇点回弹扩圈。",
+    "mechanism": "三个固定镜头显示路线、车头、标记与双语标签。jrNara 从 minZoom=13 起显示。镜头之间以纸色转场，路线与标记始终对齐。等距城市的弧线错峰从核心连向屋顶，亮头携带光脉沿线行进，到达后，屋顶的扩散环循环标记连接点。手机科普片的弧线从产地锚点画向组装点，箭头按路线切线落位；数据包随后沿线循环，汇点回弹并周期性扩圈。",
     "trigger": "启程、抵达或切换交通方式时",
     "effect": "下一站与行进方向一眼可见。",
     "timing": [
@@ -49,7 +49,7 @@
         "card-expand-fullscreen"
       ],
       "conflicts": [],
-      "notes": "三个固定镜头显示路线、车头、标记与双语标签。jrNara从minZoom=13显示。镜头之间以纸色转场，路线与标记始终对齐。 笔尖沿已展开线路弧长推进，站点按通过时刻亮起，与已有路线描画及移动标记为同一机制。"
+      "notes": "三个固定镜头显示路线、车头、标记与双语标签。jrNara 从 minZoom=13 起显示。镜头之间以纸色转场，路线与标记始终对齐。笔尖沿已展开线路的弧长推进，站点按通过时刻亮起，与已有路线描画及移动标记为同一机制。"
     },
     "prompt": "路线按进度描画，车头沿线前进，站点标记弹入并打出双语站名。复用地图巡礼的 cameraAt、addRouteLayers、updateRoutesGL、drawRoutesSVG、drawMarkers、measureMarkerLabels、project、routeP、pointAt 与对应 CSS。三个固定镜头中的路线、车头、标记圆点与双语标签；jrNara minZoom=13；镜头间使用案例纸色转场。片段：kix: caseT 1.5→2.35；haruka: caseT 14.6→17.05；kyoto: caseT 16.6→17.45；naraLine: caseT 37.4→39.85；jrNara: caseT 39.4→40.25；walk1: caseT 39.4→41.25；naraPark: caseT 40.8→41.65；时长 13.175s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定镜头的实时地图，声音由 mechanism/score.json 挂接。前10.6秒保留原有地图巡礼段，之后追加等距城市原片5.835–7.07秒的数据弧线段，追加1.235秒。数据弧线采用QuadraticBezierCurve3和TubeGeometry(curve,72,.021,8,false)，uT0=PULSE_T+.05+k*.035，uDur=.45，uSpeed=1.3+A.hash(k*7)*.6；到达后的屋顶环按ph=(u*.9)%1放大1+ph*2.2并淡出，沿用同区间原片音轨，声音默认关闭。 通过 index.html 内联 segments 在前 11.835 秒之后依次重放mg-paperclip 原片 5.86–7.2 秒，总时长 13.175 秒。手机科普片的弧线从产地锚点画向组装点，箭头按路线切线落位；数据包随后沿线循环，汇点回弹并周期扩圈。沿用同区间原片音轨，声音默认关闭。",
     "demo": "demos/patterns/route-draw-marker/index.html",
@@ -813,32 +813,32 @@
     },
     {
       "path": "docs/cases/map-pilgrimage.md",
-      "bytes": 6454,
+      "bytes": 6404,
       "role": "doc"
     },
     {
       "path": "entries/cases/lemo-transit-map.json",
-      "bytes": 9565,
+      "bytes": 9619,
       "role": "entry"
     },
     {
       "path": "entries/cases/map-pilgrimage.json",
-      "bytes": 20430,
+      "bytes": 20565,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-isometric.json",
-      "bytes": 24979,
+      "bytes": 24989,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-paperclip.json",
-      "bytes": 17912,
+      "bytes": 17924,
       "role": "entry"
     },
     {
       "path": "entries/patterns/route-draw-marker.json",
-      "bytes": 9443,
+      "bytes": 9470,
       "role": "entry"
     },
     {

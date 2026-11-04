@@ -45,7 +45,7 @@
       "rhythm"
     ],
     "summary": "蓝图先从中心扩开，地块按方形同心环与角向错峰倾斜落位，触地压扁并微回弹。",
-    "mechanism": "地块按方形同心环与角向错峰倾斜落位，触地压扁、两次微回弹，木质点击与环音符跟随落点。",
+    "mechanism": "地块按方形同心环与角向错峰倾斜落位，触地时压扁并微回弹两次，木质点击与环音符跟随落点。",
     "trigger": "蓝图起绘后，cues.rings 的六个地块环节点依次到达。",
     "effect": "12×12 蓝图被逐圈落定的地块覆盖，地块的倾角、位置与横纵尺寸随下落和接触阶段联动。",
     "timing": [
@@ -337,12 +337,12 @@
     },
     {
       "path": "entries/cases/mg-isometric.json",
-      "bytes": 24979,
+      "bytes": 24989,
       "role": "entry"
     },
     {
       "path": "entries/patterns/blueprint-tile-drop-wave.json",
-      "bytes": 3411,
+      "bytes": 3414,
       "role": "entry"
     },
     {

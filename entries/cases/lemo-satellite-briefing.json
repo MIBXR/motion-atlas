@@ -22,8 +22,8 @@
     "实证影像",
     "代码影片"
   ],
-  "summary": "卫星按地图俯冲到咸海，却看到沙漠；同一地理画面逐年留出海岸线，量出旧港口到海边的距离，再转向科卡拉尔大坝，显出北咸海的回水。",
-  "focus": "公开卫星影像与原位岸线组成证据链；地图和照片对照、逐年时间环与测距线把尺度变化变为叙事节奏。",
+  "summary": "卫星按地图俯冲到咸海，却看到沙漠；同一地理画面中逐年留下海岸线，量出旧港口到海边的距离，再转向科卡拉尔大坝，显出北咸海的回水。",
+  "focus": "公开卫星影像与原位岸线组成证据链；地图与照片的对照、逐年时间环和测距线将尺度变化转为叙事节奏。",
   "accent": "#dae4d5",
   "background": "#030507",
   "timeline": true,
@@ -181,7 +181,7 @@
       "label": "轨道片尾"
     }
   ],
-  "energyNote": "段落取DEMO.md Shots与原作时间表；0–1数值为画面运动、事件和声音密度的相对编辑标注。",
+  "energyNote": "段落划分取自DEMO.md Shots与原作时间表；0–1数值是根据画面运动、事件和声音密度作出的相对编辑标注。",
   "observations": [
     "时间环是每年实际岸线的留痕，形状随海盆变化；图层通过扫描蒙版交替。",
     "水声提前0.6秒出现后镜头转向北咸海，水面恢复真实颜色。",
@@ -191,16 +191,16 @@
     "color": "#030507、#dae4d5、#ebdfc6、#8cb9b6、#b6c39a",
     "typography": "Barlow Condensed 300/400/500/600、IBM Plex Mono 400/500、Noto Sans SC 400/500与Noto Serif SC 600原字符子集。",
     "layout": "1920×1080横屏，保留原作构图、字幕、片头与片尾。",
-    "imagery": "USGS/NASA Landsat各年实景、NASA GIBS Blue Marble与Natural Earth岸线；原作代码投影、拼接、蒙版和标注。",
+    "imagery": "USGS/NASA Landsat各年实景、NASA GIBS Blue Marble与Natural Earth岸线；投影、拼接、蒙版和标注均由原作代码完成。",
     "motion": "同一连续镜头以高度与倾角改变取景；年度扫描留下地理岸线，测距镜头追随量线端点，北方水面沿旧岸线向外增长。",
     "sound": "100 BPM D小调转D大调；遥测、低铜管、金属环、船笛、风与水声，Kokoro bf_emma英语旁白与双语字幕。",
     "rhythm": "轨道锁定；俯冲地图；扫描揭开盐地；回卷年份；海岸时间环；旧港口锁定；推近莫伊纳克；量出九十五公里；甩向北方；北咸海回水；重贴海名与爬升；轨道片尾",
-    "coherence": "公开卫星影像与原位岸线组成证据链；地图和照片对照、逐年时间环与测距线把尺度变化变为叙事节奏。"
+    "coherence": "公开卫星影像与原位岸线组成证据链；地图与照片的对照、逐年时间环和测距线将尺度变化转为叙事节奏。"
   },
   "layers": [
     {
       "name": "原作场景",
-      "role": "USGS/NASA Landsat各年实景、NASA GIBS Blue Marble与Natural Earth岸线；原作代码投影、拼接、蒙版和标注。"
+      "role": "USGS/NASA Landsat各年实景、NASA GIBS Blue Marble与Natural Earth岸线；投影、拼接、蒙版和标注均由原作代码完成。"
     },
     {
       "name": "镜头与质感",

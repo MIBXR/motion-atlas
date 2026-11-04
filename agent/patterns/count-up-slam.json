@@ -16,8 +16,8 @@
     "orients": [
       "landscape"
     ],
-    "summary": "同一大字号数值按ease-out从1累计到313，到终值时整体瞬间放大7%，以指数衰减回原尺寸并停住。",
-    "mechanism": "同一大字号数值按ease-out从1累计到313，到终值时整体瞬间放大7%，以指数衰减回原尺寸并停住。",
+    "summary": "同一大字号数值按ease-out从1累计到313，到达终值时整体瞬间放大7%，再按指数衰减回到原尺寸并停住。",
+    "mechanism": "同一大字号数值按ease-out从1累计到313，到达终值时整体瞬间放大7%，再按指数衰减回到原尺寸并停住。",
     "trigger": "22.1秒开始计数，24秒到达终值。",
     "effect": "与整墙313把伞一起显出规模，最后一拍给终值明确重音。",
     "timing": [
@@ -257,12 +257,12 @@
     },
     {
       "path": "entries/cases/lemo-pictogram-motion.json",
-      "bytes": 10763,
+      "bytes": 10793,
       "role": "entry"
     },
     {
       "path": "entries/patterns/count-up-slam.json",
-      "bytes": 2304,
+      "bytes": 2322,
       "role": "entry"
     },
     {

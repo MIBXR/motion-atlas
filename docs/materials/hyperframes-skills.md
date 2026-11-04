@@ -4,7 +4,7 @@ HyperFrames 把 HTML、CSS、媒体与可定位动画逐帧渲染为 MP4。技�
 
 ## 总入口
 
-制作、编辑、动画或渲染视频时先读 `/hyperframes`。它定义根合成、定时元素、暂停时间线、媒体与字体的写法，并按宣传片、讲解片、数据、竖屏、三维等任务指向对应参考。独立技能以 `/hyperframes` 调用；Claude Code 插件的入口是 `/hyperframes:hyperframes`。
+处理视频制作、编辑、动画或渲染任务时，先读 `/hyperframes`。它定义根合成、定时元素、暂停时间线、媒体与字体的写法，并按宣传片、讲解片、数据、竖屏、三维等任务指向对应参考。独立技能以 `/hyperframes` 调用；Claude Code 插件的入口是 `/hyperframes:hyperframes`。
 
 ## 核心四件
 
@@ -30,9 +30,9 @@ HyperFrames 把 HTML、CSS、媒体与可定位动画逐帧渲染为 MP4。技�
 
 1. **计划**：确定视频类型、尺寸、时长、镜头与媒体。新项目用 `npx hyperframes init <目录>`；完整影片按主技能的叙事与规格参考组织计划。
 2. **写 HTML**：以 `index.html` 为根合成，场景放在 `compositions/`，媒体与字体放在 `assets/`。定时元素用 `class="clip"`、`data-start` 和 `data-duration` 声明时间。
-3. **接入可定位动画**：每个合成建立暂停时间线，注册到 `window.__timelines[合成 id]`。画面由时间线时刻确定，媒体定位由运行时处理。需要现成视觉时先查 Registry。
+3. **接入可定位动画**：为每个合成建立暂停时间线，注册到 `window.__timelines[合成 id]`。画面由时间线时刻确定，媒体定位由运行时处理。需要现成视觉时先查 Registry。
 4. **lint**：编写过程中用 `npx hyperframes lint`，完成后用 `npx hyperframes check --json`，并查看关键帧。
 5. **预览**：用 `npx hyperframes preview` 打开 Studio 预览，查看画面与时间线。
-6. **渲染**：确认预览或需要成片时用 `npx hyperframes render` 导出 MP4。
+6. **渲染**：确认预览结果或需要成片时，用 `npx hyperframes render` 导出 MP4。
 
 模块与模板的本地预览见 [HyperFrames Registry](../../materials.html#material/hyperframes-registry)。

@@ -17,7 +17,7 @@
       "landscape"
     ],
     "summary": "中心亮点拉成扫描线并展开，经过短促滚屏与交错行摆后，弧屏、边缘遮罩、扫描线和磷光辉光持续覆盖画面。",
-    "mechanism": "亮点展屏、纵向滚屏和交错行摆完成开机；弧屏桶形变形、边缘遮罩、亮度自适应扫描线与磷光辉光包住整片。",
+    "mechanism": "亮点展屏、纵向滚屏和交错行摆完成开机；弧屏桶形变形、边缘遮罩、亮度自适应扫描线与磷光辉光持续覆盖整片画面。",
     "trigger": "开机帧表推进及每帧显像管输出采样时",
     "effect": "画面从中心亮点展开，短暂出现纵向滚动、奇偶行横摆和偏色，之后保留弧屏与磷光外壳。",
     "timing": [
@@ -387,17 +387,17 @@
     },
     {
       "path": "entries/cases/lemo-ascii-crt.json",
-      "bytes": 9630,
+      "bytes": 9699,
       "role": "entry"
     },
     {
       "path": "entries/cases/mg-pixel.json",
-      "bytes": 22267,
+      "bytes": 22301,
       "role": "entry"
     },
     {
       "path": "entries/patterns/crt-boot-shell.json",
-      "bytes": 3968,
+      "bytes": 3980,
       "role": "entry"
     },
     {

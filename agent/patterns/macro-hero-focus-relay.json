@@ -19,7 +19,7 @@
       "mg-styles-15"
     ],
     "summary": "各段相机 cue 到达后，镜头在微距、全字、金属球与正面落版之间换位，独立焦点跟随主角，片尾持续微推。",
-    "mechanism": "各段相机 cue 到达 → 镜头在微距、全字、金属球与正面落版之间换位，独立焦点跟随主角，片尾持续微推。",
+    "mechanism": "各段相机 cue 到达后，镜头在微距、全字、金属球与正面落版之间换位，独立焦点跟随主角，片尾持续微推。",
     "trigger": "各段相机 cue 到达时",
     "effect": "镜头在微距、全字、金属球与正面落版之间换位，独立焦点跟随主角，片尾持续微推。",
     "timing": [
@@ -1510,17 +1510,17 @@
     },
     {
       "path": "docs/cases/mg-3d-render.md",
-      "bytes": 3255,
+      "bytes": 3268,
       "role": "doc"
     },
     {
       "path": "entries/cases/mg-3d-render.json",
-      "bytes": 17023,
+      "bytes": 17026,
       "role": "entry"
     },
     {
       "path": "entries/patterns/macro-hero-focus-relay.json",
-      "bytes": 3227,
+      "bytes": 3228,
       "role": "entry"
     },
     {

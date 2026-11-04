@@ -24,6 +24,6 @@
 - `film/main.js → TEXT / TITLE / SWAPS`：修改底部文字与淡换时刻。
 - `film/main.js → WAVES / camAt / place`：修改季节、镜头与微动时刻。
 - `film/main.js → S / SEASONAL；film/memphis.js → flat`：修改四季材质色、纹样和描边。
-- `film/main.js → 场景几何与 PLAZA / POND`：修改村庄、田地与换季中心；source/music.py 同步音符和拟音。
+- `film/main.js → 场景几何与 PLAZA / POND`：修改村庄、田地与换季中心，并在 source/music.py 中同步音符和拟音。
 
 [打开 Demo](../../demos/cases/lemo-memphis-diorama/index.html) · [在库中查看](../../cases.html#case/lemo-memphis-diorama)
