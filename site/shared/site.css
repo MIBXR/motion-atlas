@@ -436,7 +436,6 @@ body .gen-list { overflow-y: auto; overflow-x: hidden; }
 .material-gallery .card-media img { object-fit: contain; }
 .material-preview figcaption { display: grid; gap: 8px; font-size: 14px; line-height: 1.6; color: var(--ink-2); }
 .material-preview-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.material-credit { font-size: 12px; color: var(--muted); }
 
 /* ---------- 页脚 ---------- */
 .site-footer { border-top: 1px solid var(--line); background: var(--bg); font-size: 14px; line-height: 1.75; }
