@@ -275,8 +275,8 @@
     art.innerHTML = `<div class="doc-path"><span title="${esc(d.group)} / ${esc(d.path)}">${esc(d.group)} / ${esc(d.path)}</span><a class="btn" href="${esc(d.path)}" download="${esc(d.path.split('/').pop())}" aria-label="下载原始 Markdown">${ICONS.download}<span>下载 Markdown</span></a></div>${heads.length ? '' : `<h1>${esc(d.title)}</h1>`}${body}`;
     art.querySelectorAll('pre').forEach((pre) => {
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'btn'; b.innerHTML = `${ICONS.copy}复制`;
-      b.addEventListener('click', () => copy(pre.querySelector('code').textContent));
+      b.type = 'button'; b.className = 'btn'; b.innerHTML = `${ICONS.copy}<span>复制</span>`;
+      b.addEventListener('click', () => copy(pre.querySelector('code').textContent, '代码已复制'));
       pre.appendChild(b);
     });
     document.title = `${d.title} · Motion Atlas`;

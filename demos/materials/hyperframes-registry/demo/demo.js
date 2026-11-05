@@ -106,7 +106,10 @@ export async function mountRegistry(root) {
       code.textContent = command;
       state.textContent = '复制命令';
       copy.append(code,state);
-      copy.onclick = async () => { await navigator.clipboard.writeText(command); state.textContent = '已复制'; };
+      copy.onclick = async () => {
+        if (window.Site) return window.Site.copy(command, '命令已复制');
+        try { await navigator.clipboard.writeText(command); state.textContent = '已复制'; } catch { state.textContent = '复制失败'; }
+      };
       actions.append(copy);
     }
     const link = document.createElement('a');

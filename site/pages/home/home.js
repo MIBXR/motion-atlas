@@ -10,19 +10,39 @@
 
   // 监视器：轮播案例预览；时间码随轮播推进
   const withPrev = MA.cases.filter((c) => c.preview);
-  let idx = 0, t0 = performance.now();
-  function showCase(i) {
-    const c = withPrev[i % withPrev.length];
-    if (!c) return;
+  let idx = -1, busy = false;
+  const t0 = performance.now();
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  // 预加载并解码：就绪才切换，失败的跳过
+  const load = (c) => c.ready ||= (() => { const im = new Image(); im.src = c.preview; return im.decode().then(() => true, () => false); })();
+  async function show(i, first) {
+    const c = withPrev[i];
     const img = $('#monImg');
-    img.style.opacity = 0;
-    setTimeout(() => { img.src = c.preview; img.alt = `${c.title} Demo 截图`; img.style.opacity = 1; }, reduce ? 0 : 250);
-    $('#monTag').textContent = `${String((i % withPrev.length) + 1).padStart(2, '0')} · ${c.title}`;
+    if (!first) { img.style.opacity = 0; if (!reduce) await wait(250); }
+    img.src = c.preview;
+    img.alt = `${c.title} Demo 截图`;
+    await img.decode().catch(() => {});
+    img.style.opacity = 1;
+    idx = i;
+    $('#monTag').textContent = `${String(i + 1).padStart(2, '0')} · ${c.title}`;
     $('#monitor').onclick = () => { location.href = `cases.html#case/${c.id}`; };
     $('#monitor').style.cursor = 'pointer';
   }
-  showCase(0);
-  if (!reduce) setInterval(() => showCase(++idx), 3200);
+  async function advance(first) {
+    if (busy) return;
+    busy = true;
+    for (let k = 1; k <= withPrev.length; k++) {
+      const i = (idx + k + withPrev.length) % withPrev.length;
+      if (await load(withPrev[i])) { await show(i, first); break; }
+    }
+    busy = false;
+    if (withPrev.length > 1) load(withPrev[(idx + 1) % withPrev.length]);
+  }
+  if (withPrev.length) {
+    $('#monImg').style.opacity = 0;
+    advance(true);
+    if (!reduce) setInterval(() => advance(false), 3200);
+  }
   (function tc() {
     const s = (performance.now() - t0) / 1000, f = Math.floor((s % 1) * 24);
     const pad = (n) => String(Math.floor(n)).padStart(2, '0');

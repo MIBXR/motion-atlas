@@ -56,7 +56,7 @@
       wrap.append(select);
       wrap.insertAdjacentHTML('beforeend', ICONS.chevronDown);
     });
-    root.querySelectorAll('input[type="search"]').forEach(input => {
+    root.querySelectorAll('input[type="search"]:not(.atlas-select-input)').forEach(input => {
       let field = input.closest('.field');
       if (!field) {
         field = document.createElement('span');
@@ -65,6 +65,14 @@
         field.append(input);
       }
       if (!field.querySelector('svg')) field.insertAdjacentHTML('afterbegin', ICONS.search);
+      if (!field.querySelector('.search-clear')) {
+        input.insertAdjacentHTML('afterend', `<button class="search-clear" type="button" aria-label="清除搜索">${ICONS.close}</button>`);
+        field.querySelector('.search-clear').addEventListener('click', () => {
+          input.value = '';
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+          input.focus();
+        });
+      }
       if (!field.querySelector('.kbd')) field.insertAdjacentHTML('beforeend', '<span class="kbd" aria-hidden="true">/</span>');
     });
   }
@@ -144,7 +152,11 @@
     catch {
       const ta = document.createElement('textarea');
       ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      document.body.appendChild(ta); ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch { /* 视为失败 */ }
+      ta.remove();
+      if (!ok) return toast('复制失败');
     }
     toast(label);
   }
