@@ -247,7 +247,13 @@ audio.addEventListener('ended', async () => {
 });
 for (const event of ['timeupdate', 'play', 'pause', 'loadedmetadata']) audio.addEventListener(event, updatePosition);
 
-let context, master, delay, feedback;
+let context, master, delay, feedback, soundOn = true;
+addEventListener('message', event => {
+  if (event.origin !== location.origin || event.data?.type !== 'motion:sound') return;
+  soundOn = !!event.data.on;
+  audio.muted = !soundOn;
+  if (master) master.gain.value = soundOn ? .25 : 0;
+});
 let oscillators = [], synthTimer, synthPlaying = false, lastCell = null;
 function stopSynth() {
   clearTimeout(synthTimer);
@@ -297,7 +303,7 @@ async function playCells(cells) {
   stopSynth();
   if (!context) {
     context = new AudioContext();
-    master = context.createGain(); master.gain.value = .25; master.connect(context.destination);
+    master = context.createGain(); master.gain.value = soundOn ? .25 : 0; master.connect(context.destination);
     delay = context.createDelay(); delay.delayTime.value = .18;
     feedback = context.createGain(); feedback.gain.value = .25;
     master.connect(delay); delay.connect(feedback); feedback.connect(delay); feedback.connect(context.destination);
