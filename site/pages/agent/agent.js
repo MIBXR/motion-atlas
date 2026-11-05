@@ -53,7 +53,7 @@
     L.push('', '要点摘录：');
     for (const x of sel) L.push(`【${x.e.title}】${x.e.prompt}`, '');
     const pairs = [...new Set(sel.flatMap((x) => (x.e.composition && x.e.composition.pairsWellWith) || []))].filter((id) => !S.sel.includes(id) && byId.has(id)).slice(0, 4);
-    L.push('约束：', '- 普通网页文字 ≥ 12px；案例、巧思和画面内文字按设计需要决定字号；功能图标用 SVG。', '- prefers-reduced-motion 时去掉位移、缩放、震动与闪烁，只保留透明度变化，长动画停在可读的关键帧。', '- 不使用任何第三方作品的画面、角色、名称、标志、音乐与字体文件。');
+    L.push('约束：', '- 普通网页文字 ≥ 12px；案例、巧思和画面内文字按设计需要决定字号；功能图标用 SVG。', '- 不使用任何第三方作品的画面、角色、名称、标志、音乐与字体文件。');
     const neg = sel.map((x) => x.e.negativePrompt).filter(Boolean);
     if (neg.length) L.push(`- 避免：${neg.join('；')}`);
     if (pairs.length) L.push(`- 可选搭配：${pairs.map((id) => byId.get(id).e.title).join('、')}。`);
