@@ -7,5 +7,5 @@
 - 内容源为 `entries/`、`demos/`、`docs/`。修改 Demo 共享运行时只改 `kit/motion-kit.js`；Demo 内的副本由构建同步。
 - `prompts/`、`agent/`、`data/`、`docs/cases/README.md` 和 README 计数块由构建生成，不手改。`previews/` 中的截图用 `scripts/capture.mjs` 生成。
 - 内容更新后运行 `node scripts/build.mjs`，再运行 `node scripts/check.mjs`。
-- 新增测试代码、自动检查脚本或额外哈希机制，须先获仓库所有者明确授权。
+- 向仓库新增测试代码、测试数据、测试框架、自动检查脚本或额外完整性校验，须先获仓库所有者明确授权。
 - 预览与检查命令见 [CONTRIBUTING 的构建与检查](CONTRIBUTING.md#构建与检查)，交付文件见[验收与交付](CONTRIBUTING.md#验收与交付)。
