@@ -506,6 +506,6 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 .field:has(input:not(:placeholder-shown)) > .kbd { display: none; }
 .filter-reset[hidden] { display: none; }
 
-/* 空状态按钮：中性实底（墨色底配反色字），悬浮用主题色内描边 */
+/* 空状态按钮：中性实底（墨色底配反色字），悬浮只做轻微提亮 */
 .empty .btn { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-.empty .btn.btn:hover:not(:disabled) { background: var(--ink); border-color: var(--accent-1); color: var(--bg); box-shadow: inset 0 0 0 2px var(--accent-1); }
+.empty .btn.btn:hover:not(:disabled) { background: var(--ink); border-color: var(--ink); color: var(--bg); filter: brightness(1.06); }
