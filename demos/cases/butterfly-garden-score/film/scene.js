@@ -23,9 +23,8 @@ const SCENES = [
   { t: 81.016667, ja: '第四場', en: 'Scene IV — Sections E–F · bars 43–57', keyJa: 'ホ長調', keyEn: 'E major' }
 ];
 const getJSON = async path => (await MotionKit.load.fetch(new URL(path, import.meta.url).href)).json();
-const [score, timeline, bars, shots, annotations, rowStates] = await Promise.all(['notes', 'timeline', 'bars', 'shots', 'annotations', 'rowStates'].map(name => getJSON(`./data/${name}.json`)));
+const [score, timeline, bars, shots, annotations, rowStates, titleGlyphs] = await Promise.all(['notes', 'timeline', 'bars', 'shots', 'annotations', 'rowStates', 'titleGlyphs'].map(name => getJSON(`./data/${name}.json`)));
 await Promise.all([
-  document.fonts.load('900 190px Giant', '第二場第三場第四場ニ長調イ長調ホ長調'),
   document.fonts.load('700 62px Shippori', '蝶の舞う庭第一場第二場第三場第四場間奏'),
   document.fonts.load('italic 500 26px Cormorant', 'Scene I Section A Fl. Ob. Cl. 0123456789'),
   document.fonts.load('italic 600 111px Cormorant', '0123456789'),
@@ -94,23 +93,43 @@ function rowOpacity(row, focus) { return focus.states.get(row)[1]; }
 function rowShift(row, focus) { return focus.states.get(row)[0] - (ROWS.find(r => r[0] === row)?.[1] ?? 798); }
 function stateAt(note, t, q) {
   const get = mode => {
-    const s = score.rowColors[`${note.row}:${mode}`], attack = smooth((t - note.x0 / 190) / Math.max(s.attack, .000001)), release = smooth((t - (note.x1 + 6) / 190 - s.delay) / s.release);
+    const s = score.rowColors[`${note.row}:${mode}`], timing = note.dotStates?.[mode] ?? s;
+    const attack = smooth((t - note.x0 / 190) / Math.max(timing.attack, .000001)), release = smooth((t - (note.x1 + 6) / 190 - timing.delay) / timing.release);
     const current = attack * (1 - release), past = attack * release;
-    const levels = note.stateAlpha ? note.stateAlpha[mode] : s.paint.alpha;
-    return { color: s.paint.color, opacity: levels[0] * (1 - attack) + levels[1] * current + levels[2] * past, current, attack };
+    const levels = (note.stateAlpha ? note.stateAlpha[mode] : s.paint.alpha).slice();
+    if (note.swell?.[mode]) { const [a, b, power] = note.swell[mode]; levels[1] = lerp(a, b, clamp((190 * t - note.x0) / (note.x1 - note.x0)) ** power); }
+    let radius = (note.x1 - note.x0) / 2;
+    if (note.dotStates?.[mode]) {
+      const p = note.dotStates[mode], ra = smooth((t - note.x0 / 190) / p.radiusAttack), rc = ra * (1 - smooth((t - (note.x1 + 6) / 190 - p.radiusDelay) / p.radiusRelease));
+      radius = p.radii[0] * (1 - ra) + p.radii[1] * rc + p.radii[2] * (ra - rc);
+    }
+    return { color: s.paint.color, opacity: levels[0] * (1 - attack) + levels[1] * current + levels[2] * past, current, attack, radius };
   };
   const a = get(0), b = get(1);
   const opacity = lerp(a.opacity, b.opacity, q);
-  return { color: a.color.map((v, i) => opacity ? (v * a.opacity * (1 - q) + b.color[i] * b.opacity * q) / opacity : v), opacity, current: lerp(a.current, b.current, q), attack: lerp(a.attack, b.attack, q) };
+  return { color: a.color.map((v, i) => opacity ? (v * a.opacity * (1 - q) + b.color[i] * b.opacity * q) / opacity : v), opacity, current: lerp(a.current, b.current, q), attack: lerp(a.attack, b.attack, q), radius: lerp(a.radius, b.radius, q) };
 }
 
 function giants(t, q) {
   for (const e of shots.giants) {
     if (t < e.t0 || t >= e.t1) continue;
-    for (const g of e.glyphs) {
-      const [a, b, c, d, x, y, alpha] = sample(g.keys, t);
-      ctx.save(); ctx.globalAlpha = clamp(alpha); ctx.fillStyle = e.color === 'white' ? '#fff' : rgb(C.red);
-      ctx.transform(a, b, c, d, x, y); glyph(g.char, 0, 0, e.fontSize, e.fontFamily, e.fontWeight); ctx.restore();
+    for (const group of e.groups) {
+      const m = sample(group.homography, t);
+      for (const g of group.glyphs) {
+        const alpha = sample(g.opacity, t)[0];
+        if (alpha <= 0) continue;
+        ctx.save(); ctx.globalAlpha = clamp(alpha); ctx.fillStyle = e.color === 'white' ? '#fff' : rgb(C.red);
+        ctx.beginPath();
+        for (const contour of titleGlyphs.glyphs[g.char].contours) {
+          contour.forEach(([dx, dy], i) => {
+            const u = g.x + dx, v = g.baseline + dy, w = m[6] * u + m[7] * v + m[8];
+            const x = (m[0] * u + m[1] * v + m[2]) / w, y = (m[3] * u + m[4] * v + m[5]) / w;
+            if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+          });
+          ctx.closePath();
+        }
+        ctx.fill(titleGlyphs.fillRule); ctx.restore();
+      }
     }
   }
 }
@@ -121,7 +140,7 @@ function scoreRows(t, q, focus, alpha) {
     const selected = focus.rows.has(row), cy = positionY(row, 0, focus), sx = focus.sx, op = rowOpacity(row, focus, t);
     if (op < .001) continue;
     ctx.save(); ctx.globalAlpha *= op; ctx.strokeStyle = ink(q); ctx.globalAlpha *= lerp((255 - 230) / (255 - 24), (43 - 8) / (255 - 8), q);
-    line(positionX(190 * t - 700, t, focus), cy + .5, positionX(190 * t + 700, t, focus), cy + .5, 1);
+    line(positionX(190 * t - 700, t, focus), cy + .5, positionX(190 * t + 700, t, focus), cy + .5, sx);
     ctx.globalAlpha /= lerp((255 - 230) / (255 - 24), (43 - 8) / (255 - 8), q);
     const active = sample(rowStates.nameStates[row], t)[0], marker = sample(rowStates.markers[row], t)[0];
     ctx.fillStyle = rgb(mix(mix(C.muted, [35, 0, 5], q), mix(C.ink, C.white, q), active));
@@ -133,15 +152,22 @@ function scoreRows(t, q, focus, alpha) {
   for (const n of score.notes) {
     const selected = focus.rows.has(n.row), sx = focus.sx;
     const shotValues = n.shotCurves?.[focus.id] ? sample(n.shotCurves[focus.id], t) : null;
-    const x0 = shotValues ? shotValues[0] : positionX(n.x0, t, focus), x1 = shotValues ? shotValues[1] : positionX(n.x1, t, focus);
+    const x0 = shotValues ? shotValues[0] : positionX(n.x0, t, focus);
+    let x1 = shotValues ? shotValues[1] : positionX(n.x1, t, focus);
     if (x1 < (focus.id === 'focus-cym-pf' ? 0 : 120) || x0 > 1620) continue;
     const op = rowOpacity(n.row, focus, t); if (op < .001) continue;
-    const s = stateAt(n, t, q), h = shotValues ? shotValues[3] : (n.futureThickness * (1 - s.attack) + n.currentThickness * s.current + n.thickness * (s.attack - s.current)) * sx;
+    const s = stateAt(n, t, q), sounding = t >= n.x0 / 190 && t <= (n.x1 + 6) / 190;
+    const h = shotValues ? shotValues[3] : (sounding ? lerp(n.futureThickness, n.currentThickness, s.attack) : t > (n.x1 + 6) / 190 ? n.thickness : n.futureThickness) * sx;
     ctx.save(); ctx.globalAlpha *= op * s.opacity; ctx.fillStyle = rgb(s.color);
-    const y = shotValues ? shotValues[2] : positionY(n.row, n.yOffset, focus);
-    if (n.kind === 'dot') { ctx.beginPath(); ctx.ellipse((x0 + x1) / 2, y, (x1 - x0) * (.5 + .12 * s.current), h / 2, 0, 0, Math.PI * 2); ctx.fill(); }
+    const trace = focus.traces.get(n.row);
+    if (trace) {
+      if (n.stateAlpha[0][0] < .01 && t >= n.x0 / 190) x1 = Math.min(x1, focus.head);
+      ctx.beginPath(); ctx.rect(0, 185, trace[2], 661); ctx.rect(trace[3], 185, 1920 - trace[3], 661); ctx.clip();
+    }
+    const y = shotValues ? shotValues[2] : positionY(n.row, n.yOffset, focus) + (sounding ? (n.currentYOffset ?? 0) * sx : 0);
+    if (n.kind === 'dot') { ctx.beginPath(); ctx.arc((x0 + x1) / 2, y, s.radius * sx, 0, Math.PI * 2); ctx.fill(); }
     else if (n.taper) {
-      const ends = [0, 1].map(i => (n.taper[0][i] * (1 - s.attack) + n.taper[1][i] * s.current + n.taper[2][i] * (s.attack - s.current)) * sx);
+      const ends = [0, 1].map(i => (sounding ? lerp(n.taper[0][i], n.taper[1][i], s.attack) : t > (n.x1 + 6) / 190 ? n.taper[2][i] : n.taper[0][i]) * sx);
       ctx.beginPath(); ctx.moveTo(x0, y - ends[0] / 2); ctx.lineTo(x1, y - ends[1] / 2); ctx.lineTo(x1, y + ends[1] / 2); ctx.lineTo(x0, y + ends[0] / 2); ctx.closePath(); ctx.fill();
     } else bar(x0, x1, y, h);
     ctx.restore();
@@ -170,10 +196,22 @@ function scoreRows(t, q, focus, alpha) {
 function annotationsAt(t, q, focus) {
   ctx.save(); ctx.beginPath(); ctx.rect(180 - 60 * focus.p, 185, 1440 + 60 * focus.p, 665); ctx.clip();
   ctx.save(); ctx.strokeStyle = ink(q); ctx.fillStyle = ink(q);
+  for (const e of annotations.scoreTraces ?? []) {
+    const v = focus.traces.get(e.row); if (!v) continue;
+    const [opacity, thickness, left, right, ...ys] = v;
+    const noteOpacity = e.tailNote && t > e.tailAt ? stateAt(score.notes.find(n => n.row === e.row && n.x0 === e.tailNote[0] && n.x1 === e.tailNote[1]), t, q).opacity : opacity;
+    ctx.save(); ctx.globalAlpha *= noteOpacity * rowOpacity(e.row, focus); ctx.strokeStyle = accent(q); ctx.lineWidth = thickness; ctx.beginPath();
+    let started = false;
+    for (let i = 0; i < e.xs.length; i++) {
+      if (e.xs[i] < left || e.xs[i] > right) continue;
+      if (started) ctx.lineTo(e.xs[i], ys[i]); else { ctx.moveTo(e.xs[i], ys[i]); started = true; }
+    }
+    ctx.stroke(); ctx.restore();
+  }
   for (const a of annotations.arcs) {
-    const op = segment(t, a.appear, a.appear + .6); if (!op) continue;
+    const op = a.visibilityWord ? .45 * sample(annotations.words.find(w => w.id === a.visibilityWord).curve, t)[0] : a.opacityCurve ? sample(a.opacityCurve, t)[0] : .45 * segment(t, a.appear, a.appear + .6); if (!op) continue;
     ctx.save(); const dy0 = rowShift(a.fromRow, focus), dy1 = rowShift(a.toRow, focus);
-    ctx.globalAlpha *= .45 * op * Math.max(rowOpacity(a.fromRow, focus), rowOpacity(a.toRow, focus)); ctx.setLineDash([6, 6]); ctx.lineWidth = 1.4;
+    ctx.globalAlpha *= op * Math.max(rowOpacity(a.fromRow, focus), rowOpacity(a.toRow, focus)); ctx.setLineDash([6, 6]); ctx.lineWidth = 1.4;
     ctx.beginPath(); ctx.moveTo(positionX(a.x0, t, focus), a.y0 + dy0); ctx.bezierCurveTo(positionX(a.c1[0], t, focus), a.c1[1] + lerp(dy0, dy1, 1 / 3), positionX(a.c2[0], t, focus), a.c2[1] + lerp(dy0, dy1, 2 / 3), positionX(a.x1, t, focus), a.y1 + dy1); ctx.stroke(); ctx.restore();
   }
   for (const a of annotations.leggiero) {
@@ -196,6 +234,12 @@ function annotationsAt(t, q, focus) {
   }
   for (const e of annotations.outlines) {
     if (t < e.t0 || t >= e.t1) continue;
+    if (e.geometryCurve) {
+      const [x0, y0, x1, y1, opacity] = sample(e.geometryCurve, t), h = e.baseHeight - e.stroke;
+      ctx.save(); ctx.globalAlpha *= opacity; ctx.strokeStyle = ink(q); ctx.lineWidth = e.stroke;
+      ctx.translate(x0 + e.stroke / 2, (y0 + y1) / 2); ctx.scale(1, (y1 - y0) / e.baseHeight);
+      ctx.beginPath(); ctx.roundRect(0, -h / 2, x1 - x0 - e.stroke, h, h / 2); ctx.stroke(); ctx.restore(); continue;
+    }
     const opacity = sample(e.curve, t)[0]; if (opacity < .005) continue;
     const x0 = positionX(e.x0, t, focus), x1 = positionX(e.x1, t, focus), y = positionY(e.row, e.pitch, focus);
     ctx.save(); ctx.globalAlpha *= opacity; ctx.strokeStyle = ink(q); ctx.lineWidth = e.stroke; ctx.beginPath(); ctx.roundRect(x0 - e.padding, y - e.h / 2, x1 - x0 + 2 * e.padding, e.h, e.h / 2); ctx.stroke(); ctx.restore();
@@ -203,15 +247,17 @@ function annotationsAt(t, q, focus) {
   for (const m of annotations.modulations) {
     if (t < m.t0 || t >= m.t1) continue;
     const [opacity, r, g, b] = sample(m.curve, t), x = positionX(m.globalX + .5, t, focus);
-    ctx.save(); ctx.globalAlpha *= opacity; ctx.strokeStyle = rgb([r, g, b]); ctx.setLineDash(m.dash); line(x, m.dashY, x, m.y1, m.width); ctx.restore();
+    const wordOpacity = m.alphaFromLabel ? sample(annotations.words.find(w => w.id === m.id).curve, t)[0] : opacity;
+    ctx.save(); ctx.globalAlpha *= wordOpacity; ctx.strokeStyle = m.colorSource === 'accent' ? accent(q) : rgb([r, g, b]); ctx.setLineDash(m.dash); line(x, m.dashY, x, m.y1, m.width); ctx.restore();
   }
   for (const r of annotations.rulers) {
     if (!r.curve.length || t < r.curve[0][0] || t > r.curve.at(-1)[0]) continue;
     const [end, offset, opacity, post] = sample(r.curve, t), cy = positionY(r.row, 0, focus), sx = focus.sx;
     const word = annotations.words.find(w => w.id === r.id), color = sample(word.curve, t).slice(1, 4);
-    ctx.save(); ctx.globalAlpha *= opacity; ctx.strokeStyle = rgb(color);
+    ctx.save(); ctx.globalAlpha *= r.alphaFromLabel && t < r.rightPostFrom ? sample(word.curve, t)[0] : opacity; ctx.strokeStyle = rgb(color);
     const x = positionX(r.worldX, t, focus), y = cy + offset, ex = positionX(end, t, focus);
-    line(x, y, ex, y, 1.8 * sx); line(x, y, x, y + post * sx, 1.8 * sx); line(ex, y, ex, y + post * sx, 1.8 * sx); ctx.restore();
+    line(x, y, ex, y, 1.8 * sx); line(x, y, x, y + post * sx, 1.8 * sx);
+    if (r.rightPostFrom === undefined || t >= r.rightPostFrom) line(ex, y, ex, y + post * sx, 1.8 * sx); ctx.restore();
   }
   for (const w of annotations.wedges) {
     if (!w.curve.length || t < w.t0 || t >= w.t1) continue;
@@ -234,14 +280,24 @@ function annotationsAt(t, q, focus) {
   }
   for (const w of annotations.words) {
     if (t < w.t0 || t >= w.t1) continue;
-    const [a, r, g, b, dx, dy, scale] = sample(w.curve, t); if (a < .005) continue;
+    let [a, r, g, b, dx, dy, scale] = sample(w.curve, t);
+    const ruler = w.followRuler ? sample(annotations.rulers.find(e => e.id === w.followRuler).curve, t) : null;
+    if (ruler) { a = ruler[2]; dy = 0; }
+    if (a < .005) continue;
     const sx = w.row || w.worldX !== undefined ? focus.sx : 1;
     let x = w.screenX ?? positionX(w.worldX, t, focus), y;
-    if (w.kind === 'motifLabel') {
-      const off = 20 + (w.motif === 9 ? 96 * focus.p : focus.rows.has(w.row) ? 40 * focus.p : 0);
+    if (ruler) y = positionY(w.row, 0, focus) + ruler[1] - 7 * sx;
+    else if (w.kind === 'motifLabel') {
+      const off = 20 + (focus.rows.has(w.row) ? 40 * focus.p : 0);
       y = positionY(w.row, 0, focus) - off - 7 * sx + (w.labelDy ?? 0) * sx;
     } else y = w.row ? positionY(w.row, w.pitch ?? 0, focus) + (w.offset ?? 0) * sx : w.screenY;
-    ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = rgb([r, g, b]); text(w.text, x + dx * sx, y + dy * sx, w.fontSize * sx * scale, w.fontFamily, w.fontWeight); ctx.restore();
+    ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = rgb([r, g, b]);
+    if (w.kind === 'repeatSign') {
+      ctx.translate(x + dx * sx, y + dy * sx); ctx.scale(sx, sx);
+      for (const box of w.signLines) ctx.fillRect(...box);
+      for (const [cx, cy, radius] of w.signDots) { ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fill(); }
+    } else text(w.text, x + dx * sx, y + dy * sx, w.fontSize * sx * scale, w.fontFamily, w.fontWeight);
+    ctx.restore();
   }
   ctx.restore(); ctx.restore();
 }
@@ -389,6 +445,7 @@ export function renderAt(time) {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.setLineDash([]); ctx.lineCap = 'butt';
   const q = background(t), alpha = segment(t, 2.316667, 3.016667), focus = focusAt(t);
   focus.states = new Map(Object.entries(rowStates.rows).map(([row, keys]) => [row, sample(keys, t)]));
+  focus.traces = new Map((annotations.scoreTraces ?? []).filter(e => t >= e.t0 && t < e.t1).map(e => [e.row, sample(e.curve, t)]));
   if (focus.id === 'focus-cym-pf') { const f = shots.focus.find(f => f.id === focus.id); [focus.sx, focus.sy] = sample(f.scaleCurve, t); [focus.globalSy] = sample(f.verticalCurve, t); }
   ctx.fillStyle = rgb(mix(C.white, C.red, q)); ctx.fillRect(0, 0, width, height);
   ctx.save(); ctx.beginPath(); ctx.rect(0, 0, 1620, height); ctx.clip();

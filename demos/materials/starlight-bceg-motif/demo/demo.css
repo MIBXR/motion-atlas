@@ -2,7 +2,7 @@
 @font-face { font-family: 'Noto Serif JP'; src: url('../fonts/NotoSerifJP-900.woff2') format('woff2'); font-style: normal; font-weight: 900; font-display: swap; }
 :root { color-scheme: dark; --bg: #500C13; --star: #5E1019; --selected: #6E1620; --card: #3F090F; --gold: #F4CF75; --muted: #E9C7C9; --bar: #7A2A32; --white: #fff; --line: #88414A; --shadow: #21040866; --grid-line: #88414A44; }
 * { box-sizing: border-box; }
-html { min-width: 320px; scrollbar-color: var(--bar) var(--bg); scrollbar-width: thin; }
+html { scrollbar-color: var(--bar) var(--bg); scrollbar-width: thin; }
 body { margin: 0; color: var(--white); font: 14px/1.6 system-ui, sans-serif; background-color: var(--bg); isolation: isolate; }
 body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--star); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 107 107'%3E%3Cpath d='M53.5 32 59 47 75 47 62 57 67 73 53.5 63 40 73 45 57 32 47 48 47Z'/%3E%3C/svg%3E"); mask-size: 107px 107px; mask-repeat: repeat; }
 a { color: var(--gold); text-underline-offset: 4px; }

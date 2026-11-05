@@ -1,7 +1,7 @@
 from pathlib import Path
 import sys
 import json,subprocess,cv2,numpy as np,shutil
-from PIL import Image,ImageFont,ImageDraw
+from PIL import Image
 ROOT=Path(sys.argv[1]).resolve();ANA=ROOT/'analysis/case';WORK=ROOT/'codex/case-impl';CASE=Path(sys.argv[2]).resolve()/'demos/cases/butterfly-garden-score'
 def read(p):return json.loads(Path(p).read_text(encoding='utf8'))
 def write(p,d):Path(p).write_text(json.dumps(d,ensure_ascii=False,separators=(',',':')),encoding='utf8')
@@ -57,43 +57,7 @@ for e in [x for x in events if x['type']=='row-focus']:
         curve.append([round(f/60,6),round(q,6),round(880+290*q if e['id']!='focus-cym-hp'else 880,3),*rowpos])
     shots['focus'].append(dict(id=e['id'],t0=start/60,t1=stop/60,rows=rows,maxX=2 if e['id']=='focus-cym-hp'else 1.5,maxY=6,curve=curve))
 
-# Affine maps use font outlines as templates; only their fitted matrices and alpha are shipped.
-font=ImageFont.truetype(str(CASE/'fonts/ShipporiMincho-Bold.ttf'),190)
-slots=[(250,495),(490,665),(660,855),(950,1105),(1100,1285),(1280,1500)]
-for ev in [x for x in events if x['type']=='giant-title']:
-    chars=ev['text'].replace(' ','');out=[dict(char=c,keys=[])for c in chars];previous=[None]*6
-    s=ev['startFrame'];end=ev['endFrame']
-    for f,a in seq(s,end,3):
-        backdrop=np.median(a[195:220,300:650],axis=(0,1)).astype(float)
-        fg=np.array([255,255,255]if ev['id']=='giant-scene-ii'else[232,8,39],float);v=fg-backdrop
-        alpha=np.sum((a.astype(float)-backdrop)*v,axis=2)/max(float(v@v),1)
-        if ev['id']!='giant-scene-ii':alpha[(a[:,:,0].astype(int)-a[:,:,1])<5]=0
-        alpha=np.clip(alpha,0,1).astype(np.float32)
-        for j,(char,(left,right))in enumerate(zip(chars,slots)):
-            x0=left-15;y0=375;crop=alpha[y0:705,x0:right+15]
-            binary=(crop>max(.01,float(np.percentile(crop,97))*.3)).astype(np.uint8)
-            clean=cv2.morphologyEx(binary,cv2.MORPH_OPEN,np.ones((9,2),np.uint8)).astype(np.float32)
-            canvas=Image.new('L',(crop.shape[1],crop.shape[0]));painter=ImageDraw.Draw(canvas);bb=font.getbbox(char);iw=bb[2]-bb[0];ih=bb[3]-bb[1];ix=(crop.shape[1]-iw)/2;iy=(crop.shape[0]-ih)/2
-            painter.text((ix-bb[0],iy-bb[1]),char,font=font,fill=255);template=np.array(canvas,dtype=np.float32)/255
-            mask=clean>.1;py,px=np.where(mask)
-            if len(px)<150:
-                mat=previous[j]if previous[j]is not None else np.array([[1,0,0],[0,1,0]],np.float32);cc=0;opacity=0
-            else:
-                w=(px.max()-px.min()+1)/max(iw,1);h=(py.max()-py.min()+1)/max(ih,1)
-                guess=np.array([[w,0,px.min()-ix*w],[0,h,py.min()-iy*h]],np.float32)
-                mat=previous[j].copy()if previous[j]is not None else guess
-                try:
-                    cc,mat=cv2.findTransformECC(template,clean,mat,cv2.MOTION_AFFINE,(cv2.TERM_CRITERIA_EPS|cv2.TERM_CRITERIA_COUNT,45,1e-5),None,3)
-                    if cc<.35 or not(.4<np.linalg.det(mat[:,:2])<2.7):mat=guess
-                except cv2.error:cc=0;mat=guess
-                painted=cv2.warpAffine(template,mat,(crop.shape[1],crop.shape[0]));values=crop[painted>.9];values=values[values>.01]
-                opacity=float(np.percentile(values,60))if len(values)else 0
-            previous[j]=mat.copy()
-            # The runtime positions the font ink at its own local (0,0).
-            ox=x0+mat[0,0]*ix+mat[0,1]*iy+mat[0,2];oy=y0+mat[1,0]*ix+mat[1,1]*iy+mat[1,2]
-            out[j]['keys'].append([round(f/60,6),round(float(mat[0,0]),6),round(float(mat[1,0]),6),round(float(mat[0,1]),6),round(float(mat[1,1]),6),round(float(ox),3),round(float(oy),3),round(opacity,5)])
-    shots['giants'].append(dict(id=ev['id'],t0=s/60,t1=end/60,fontSize=190,color='white'if ev['id']=='giant-scene-ii'else'red',glyphs=out))
-    print('affine',ev['id'],flush=True)
+shots['giants']=read(CASE/'source/analysis/title-planes.json')['giants']
 
 ann=dict(motifs=[],arcs=[],leggiero=[],wedges=[],dynamics=[],ladders=[])
 srcnotes=read(WORK/'repaired-notes.json');selections=read(ANA/'frames/footer-selection.json')

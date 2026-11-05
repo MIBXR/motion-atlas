@@ -19,7 +19,7 @@
   font-style: normal;
   font-display: block;
 }
+body { position: fixed; inset: 0; }
 .stage { background: #fff; }
 .stage canvas { display: block; width: 1920px; height: 1080px; }
 
-@font-face { font-family: "Giant"; src: url("../fonts/ZenKakuGothicNew-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: block; }

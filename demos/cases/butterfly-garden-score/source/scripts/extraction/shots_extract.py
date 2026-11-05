@@ -99,7 +99,7 @@ for ident,s,e,text,polarity in [('giant-scene-ii',1190,1470,'第二場 ニ長調
         selected=np.linspace(0,len(pts)-1,25).round().astype(int)
         samples=[pts[j]|{'areaProgress':round(pts[j]['area']/peak,6)}for j in selected]
         Image.fromarray(peakim).save(OUT/'frames'/f'{ident}-peak.png')
-        events.append(dict(id=ident,type='giant-title',text=text,startFrame=min(active),endFrame=max(active)+1,t0=min(active)/60,t1=(max(active)+1)/60,font='Shippori Mincho Bold, inferred from scene/sidebar glyph comparison',fontSize=190,position='measured ink bounds in samples',animation='letters enter with skew/rotation and opacity; hold; fade out',samples=samples,uncertainty='background/notes occlude title ink; per-glyph skew and underlying unoccluded outlines are not uniquely measured'))
+        events.append(dict(id=ident,type='giant-title',text=text,startFrame=min(active),endFrame=max(active)+1,t0=min(active)/60,t1=(max(active)+1)/60,font='Noto Sans JP 900; shared planes in title-planes.json',fontSize=190,position='measured ink bounds in samples',animation='shared projective planes and per-letter opacity',samples=samples,uncertainty='title planes are measured from native contour boundaries and group registration'))
 
 # Final key ladder: local line/text groups are sampled frame by frame.
 groups=[('F',(342,350,515,389),(384.5,367,513.5,373.5)),('D',(458,418,576,457),(507,434.5,574.5,441)),('B♭',(475,508,701,549),(568,524,700,530.5)),('A',(645,530,1001,574),(693.5,546.5,1000,553)),('E',(950,642,1288,686),(993.5,658.5,1287,665))]
