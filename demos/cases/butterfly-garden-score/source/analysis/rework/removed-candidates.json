@@ -1,0 +1,377 @@
+[
+  {
+    "index": 29,
+    "note": {
+      "row": "Va.",
+      "x0": 1170.0,
+      "x1": 1178.0,
+      "yOffset": 11.0,
+      "thickness": 6.0,
+      "kind": "dot",
+      "group": 3,
+      "futureThickness": 6.0,
+      "currentThickness": 6.0
+    },
+    "samples": 50
+  },
+  {
+    "index": 104,
+    "note": {
+      "row": "Vc.",
+      "x0": 1997.0,
+      "x1": 2004.0,
+      "yOffset": -12.0,
+      "thickness": 4.0,
+      "kind": "bar",
+      "group": 3,
+      "futureThickness": 4.0,
+      "currentThickness": 5.5
+    },
+    "samples": 91
+  },
+  {
+    "index": 507,
+    "note": {
+      "row": "Pf.",
+      "x0": 4043.5,
+      "x1": 4058.0,
+      "yOffset": -7.5,
+      "thickness": 4.864,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 4.062,
+      "currentThickness": 4.946
+    },
+    "samples": 51
+  },
+  {
+    "index": 563,
+    "note": {
+      "row": "Mar.",
+      "x0": 4303.5,
+      "x1": 4327.0,
+      "yOffset": -2.5,
+      "thickness": 2.0,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 4.923,
+      "currentThickness": 5.917
+    },
+    "samples": 89
+  },
+  {
+    "index": 568,
+    "note": {
+      "row": "Pf.",
+      "x0": 4334.0,
+      "x1": 4356.5,
+      "yOffset": -4.5,
+      "thickness": 4.864,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 5.0,
+      "currentThickness": 4.946
+    },
+    "samples": 93
+  },
+  {
+    "index": 652,
+    "note": {
+      "row": "Mar.",
+      "x0": 4788.0,
+      "x1": 4812.0,
+      "yOffset": -3.5,
+      "thickness": 2.0,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 25
+  },
+  {
+    "index": 653,
+    "note": {
+      "row": "Mar.",
+      "x0": 4788.0,
+      "x1": 4842.0,
+      "yOffset": -3.0,
+      "thickness": 3.201,
+      "kind": "line",
+      "group": 2,
+      "futureThickness": 2.5,
+      "currentThickness": 5.917
+    },
+    "samples": 40
+  },
+  {
+    "index": 665,
+    "note": {
+      "row": "Mar.",
+      "x0": 4849.0,
+      "x1": 4873.0,
+      "yOffset": -2.5,
+      "thickness": 4.989,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 109
+  },
+  {
+    "index": 680,
+    "note": {
+      "row": "Mar.",
+      "x0": 4909.0,
+      "x1": 4964.0,
+      "yOffset": -1.5,
+      "thickness": 4.068,
+      "kind": "line",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 111
+  },
+  {
+    "index": 681,
+    "note": {
+      "row": "Mar.",
+      "x0": 4909.0,
+      "x1": 4934.0,
+      "yOffset": -1.5,
+      "thickness": 4.88,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 106
+  },
+  {
+    "index": 690,
+    "note": {
+      "row": "Mar.",
+      "x0": 4940.0,
+      "x1": 4964.0,
+      "yOffset": -1.5,
+      "thickness": 5.244,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 106
+  },
+  {
+    "index": 694,
+    "note": {
+      "row": "Mar.",
+      "x0": 4970.0,
+      "x1": 4995.0,
+      "yOffset": -1.5,
+      "thickness": 4.875,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 106
+  },
+  {
+    "index": 700,
+    "note": {
+      "row": "Mar.",
+      "x0": 5001.0,
+      "x1": 5025.0,
+      "yOffset": -1.5,
+      "thickness": 4.068,
+      "kind": "line",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 110
+  },
+  {
+    "index": 701,
+    "note": {
+      "row": "Mar.",
+      "x0": 5001.0,
+      "x1": 5025.0,
+      "yOffset": -1.5,
+      "thickness": 5.289,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 110
+  },
+  {
+    "index": 705,
+    "note": {
+      "row": "Mar.",
+      "x0": 5031.0,
+      "x1": 5056.0,
+      "yOffset": -1.5,
+      "thickness": 4.945,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 111
+  },
+  {
+    "index": 710,
+    "note": {
+      "row": "Mar.",
+      "x0": 5062.0,
+      "x1": 5086.0,
+      "yOffset": -1.5,
+      "thickness": 4.068,
+      "kind": "line",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 112
+  },
+  {
+    "index": 711,
+    "note": {
+      "row": "Mar.",
+      "x0": 5062.0,
+      "x1": 5086.0,
+      "yOffset": -1.5,
+      "thickness": 5.357,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 2.0,
+      "currentThickness": 5.917
+    },
+    "samples": 112
+  },
+  {
+    "index": 890,
+    "note": {
+      "row": "Pf.",
+      "x0": 8606.0,
+      "x1": 8653.5,
+      "yOffset": 6.0,
+      "thickness": 5.0,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 5.0,
+      "currentThickness": 4.946
+    },
+    "samples": 131
+  },
+  {
+    "index": 917,
+    "note": {
+      "row": "Pf.",
+      "x0": 8766.0,
+      "x1": 8828.0,
+      "yOffset": 6.0,
+      "thickness": 5.0,
+      "kind": "bar",
+      "group": 2,
+      "futureThickness": 5.0,
+      "currentThickness": 4.946
+    },
+    "samples": 158
+  },
+  {
+    "index": 1302,
+    "note": {
+      "row": "Pf.",
+      "x0": 11539.0,
+      "x1": 11549.0,
+      "yOffset": 6.5,
+      "thickness": 1.279,
+      "kind": "line",
+      "group": 2,
+      "futureThickness": 4.6,
+      "currentThickness": 4.946
+    },
+    "samples": 29
+  },
+  {
+    "index": 1587,
+    "note": {
+      "row": "Bsn.",
+      "x0": 13438.0,
+      "x1": 13620.0,
+      "yOffset": 2.0,
+      "thickness": 5.0,
+      "kind": "bar",
+      "group": 0,
+      "futureThickness": 5.0,
+      "currentThickness": 6.132
+    },
+    "samples": 45
+  },
+  {
+    "index": 1619,
+    "note": {
+      "row": "Bsn.",
+      "x0": 13626.0,
+      "x1": 13803.0,
+      "yOffset": 2.0,
+      "thickness": 5.0,
+      "kind": "bar",
+      "group": 0,
+      "futureThickness": 5.0,
+      "currentThickness": 6.132
+    },
+    "samples": 104
+  },
+  {
+    "index": 1636,
+    "note": {
+      "row": "Bsn.",
+      "x0": 13678.0,
+      "x1": 13699.0,
+      "yOffset": 7.5,
+      "thickness": 4.529,
+      "kind": "line",
+      "group": 0,
+      "futureThickness": 4.226,
+      "currentThickness": 6.132
+    },
+    "samples": 101
+  },
+  {
+    "index": 1663,
+    "note": {
+      "row": "Bsn.",
+      "x0": 13808.5,
+      "x1": 13986.0,
+      "yOffset": 1.0,
+      "thickness": 5.0,
+      "kind": "bar",
+      "group": 0,
+      "futureThickness": 5.0,
+      "currentThickness": 6.132
+    },
+    "samples": 81
+  },
+  {
+    "index": 1695,
+    "note": {
+      "row": "Bsn.",
+      "x0": 13991.5,
+      "x1": 14156.0,
+      "yOffset": 1.0,
+      "thickness": 5.0,
+      "kind": "bar",
+      "group": 0,
+      "futureThickness": 5.0,
+      "currentThickness": 6.132
+    },
+    "samples": 110
+  }
+]

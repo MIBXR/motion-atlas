@@ -14,5 +14,6 @@
 
 - [HyperFrames Agent Skills 使用说明](hyperframes-skills.md)
 - [HyperFrames Registry 使用说明](hyperframes-registry.md)
+- [少女歌剧 BCEG（7135）动机](starlight-bceg-motif.md)
 
 [打开素材库](../../materials.html) · [Agent 取材](../agent.md)
