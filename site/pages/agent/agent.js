@@ -101,7 +101,7 @@
   $('#genTarget').addEventListener('click', (e) => { const b = e.target.closest('[data-t]'); if (b) { S.target = b.dataset.t; save(); drawOut(); } });
   $('#genBrief').value = S.brief;
   $('#genBrief').addEventListener('input', (e) => { S.brief = e.target.value; save(); drawOut(); });
-  $('#genCopy').innerHTML = `${ICONS.copy}复制`;
-  $('#genCopy').addEventListener('click', () => copy($('#genOut').textContent));
+  $('#genCopy').innerHTML = `${ICONS.copy}<span>复制</span>`;
+  $('#genCopy').addEventListener('click', () => copy($('#genOut').textContent, 'Prompt 已复制'));
   drawList(); drawOut();
 })();

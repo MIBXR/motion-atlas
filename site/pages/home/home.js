@@ -1,7 +1,7 @@
 /* Motion Atlas · 首页：统计、监视器轮播、时间轴示意、载体与类型入口 */
 (function () {
   'use strict';
-  const { esc, ICONS, favs } = window.Site;
+  const { esc, favs, favBtn } = window.Site;
   const MA = window.MA, TAX = MA.taxonomy;
   const $ = (s) => document.querySelector(s);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -10,19 +10,39 @@
 
   // 监视器：轮播案例预览；时间码随轮播推进
   const withPrev = MA.cases.filter((c) => c.preview);
-  let idx = 0, t0 = performance.now();
-  function showCase(i) {
-    const c = withPrev[i % withPrev.length];
-    if (!c) return;
+  let idx = -1, busy = false;
+  const t0 = performance.now();
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  // 预加载并解码：就绪才切换，失败的跳过
+  const load = (c) => c.ready ||= (() => { const im = new Image(); im.src = c.preview; return im.decode().then(() => true, () => false); })();
+  async function show(i, first) {
+    const c = withPrev[i];
     const img = $('#monImg');
-    img.style.opacity = 0;
-    setTimeout(() => { img.src = c.preview; img.alt = `${c.title} Demo 截图`; img.style.opacity = 1; }, reduce ? 0 : 250);
-    $('#monTag').textContent = `${String((i % withPrev.length) + 1).padStart(2, '0')} · ${c.title}`;
+    if (!first) { img.style.opacity = 0; if (!reduce) await wait(250); }
+    img.src = c.preview;
+    img.alt = `${c.title} Demo 截图`;
+    await img.decode().catch(() => {});
+    img.style.opacity = 1;
+    idx = i;
+    $('#monTag').textContent = `${String(i + 1).padStart(2, '0')} · ${c.title}`;
     $('#monitor').onclick = () => { location.href = `cases.html#case/${c.id}`; };
     $('#monitor').style.cursor = 'pointer';
   }
-  showCase(0);
-  if (!reduce) setInterval(() => showCase(++idx), 3200);
+  async function advance(first) {
+    if (busy) return;
+    busy = true;
+    for (let k = 1; k <= withPrev.length; k++) {
+      const i = (idx + k + withPrev.length) % withPrev.length;
+      if (await load(withPrev[i])) { await show(i, first); break; }
+    }
+    busy = false;
+    if (withPrev.length > 1) load(withPrev[(idx + 1) % withPrev.length]);
+  }
+  if (withPrev.length) {
+    $('#monImg').style.opacity = 0;
+    advance(true);
+    if (!reduce) setInterval(() => advance(false), 3200);
+  }
   (function tc() {
     const s = (performance.now() - t0) / 1000, f = Math.floor((s % 1) * 24);
     const pad = (n) => String(Math.floor(n)).padStart(2, '0');
@@ -62,15 +82,13 @@
   $('#caseGrid').innerHTML = MA.cases.map((c, i) => {
     const fav = favs.has('cases', c.id);
     return `<article class="card"><div class="card-media">${c.preview ? `<img src="${esc(c.preview)}" alt="${esc(c.title)} Demo 实际截图" loading="lazy">` : '<span class="ph">PREVIEW</span>'}<span class="card-index">${String(i + 1).padStart(2, '0')} / ${esc(TAX.carriers[c.carriers[0]])}</span></div>
-      <div class="card-body"><div class="card-title"><a href="cases.html#case/${c.id}">${esc(c.title)}</a><button class="fav-btn" type="button" data-fav="${c.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(c.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
+      <div class="card-body"><div class="card-title"><a href="cases.html#case/${c.id}">${esc(c.title)}</a>${favBtn.html(c.id, c.title, fav)}</div>
       <p class="card-sum">${esc(c.summary)}</p><div class="card-tags">${c.carriers.map((k) => `<span class="chip">${esc(TAX.carriers[k])}</span>`).join('')}</div></div></article>`;
   }).join('');
   $('#caseGrid').addEventListener('click', (e) => {
     const b = e.target.closest('[data-fav]');
     if (!b) return;
-    const on = favs.toggle('cases', b.dataset.fav);
-    b.setAttribute('aria-pressed', String(on));
-    b.innerHTML = on ? ICONS.starFill : ICONS.star;
+    favBtn.paint(b, favs.toggle('cases', b.dataset.fav));
   });
 
   // 巧思类型

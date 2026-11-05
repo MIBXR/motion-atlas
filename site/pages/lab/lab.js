@@ -938,8 +938,8 @@
     $('#exOut').textContent = exportText(S.tab);
     $$('#exTabs button').forEach((b) => { const on = b.dataset.k === S.tab; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
   }
-  $('#copyEx').innerHTML = `${ICONS.copy}复制`;
-  $('#copyEx').addEventListener('click', () => copy($('#exOut').textContent));
+  $('#copyEx').innerHTML = `${ICONS.copy}<span>复制</span>`;
+  $('#copyEx').addEventListener('click', () => copy($('#exOut').textContent, '导出内容已复制'));
   segBuild($('#wavCycles'), [[1, '1 圈'], [2, '2 圈'], [4, '4 圈']]);
   segOn($('#wavCycles'), (v) => { S.wavCycles = +v; save(); invalidate(); });
   $('#wavBtn').innerHTML = `${IC.wave}导出 WAV`;
