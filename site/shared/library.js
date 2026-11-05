@@ -332,6 +332,7 @@
   };
 
   let det = null; // 当前详情页的舞台控制器（离开详情页时销毁）
+  let materialStage = null;
   let detailColumns = null;
 
   function stageHTML(it) {
@@ -438,16 +439,19 @@
 
   function destroyDetail() {
     if (detailColumns) { detailColumns.ro.disconnect(); detailColumns.toc.remove(); detailColumns = null; }
-    const d = det;
-    if (!d) return;
+    const d = det, stage = det || materialStage;
     det = null;
-    clearInterval(d.poll);
-    d.timers.forEach(clearTimeout);
-    clearTimeout(d.idleT);
-    if (d.unsub) { try { d.unsub(); } catch { /* iframe 已卸载 */ } }
+    materialStage = null;
+    if (d) {
+      clearInterval(d.poll);
+      d.timers.forEach(clearTimeout);
+      clearTimeout(d.idleT);
+      if (d.unsub) { try { d.unsub(); } catch { /* iframe 已卸载 */ } }
+    }
+    if (!stage) return;
     document.documentElement.classList.remove('ma-fs-lock');
     const fe = document.fullscreenElement || document.webkitFullscreenElement;
-    if (fe && fe === d.col) { try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch { /* 已退出 */ } }
+    if (fe && fe === stage.col) { try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch { /* 已退出 */ } }
   }
   function later(fn, ms) {
     const d = det;
@@ -478,7 +482,6 @@
     if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); layoutColumns(); });
   }
   addEventListener('resize', scheduleLayout);
-  addEventListener('scroll', () => { if (detailColumns?.registry) scheduleLayout(); }, { passive: true });
   let tocRaf = 0;
   addEventListener('scroll', () => {if (detailColumns && !tocRaf) tocRaf = requestAnimationFrame(syncDetailToc);}, {passive:true});
   function mountDetailColumns() {
@@ -509,9 +512,11 @@
     });
     document.body.append(toc);
     const ro = new ResizeObserver(scheduleLayout);
-    detailColumns = { el, cols, header, actions, ro, toc, headings, markers, registry: cols[0].querySelector('.hf-registry') };
+    const materialBar = cols[0].querySelector('.material-stage > .stage-bar');
+    detailColumns = { el, cols, header, actions, ro, toc, headings, markers, materialBar };
     const targets = [el, ...cols, header, actions];
     if (det) targets.push(det.bar, det.sc, det.strip);
+    if (materialBar) targets.push(materialBar);
     targets.forEach(x => ro.observe(x));
     layoutColumns();
   }
@@ -531,15 +536,16 @@
   }
   function layoutColumns() {
     if (!detailColumns) return;
-    const { el, cols, actions, header } = detailColumns;
-    const sticky = innerWidth > 1159 && !det?.fs;
+    const { el, cols, actions, header, materialBar } = detailColumns;
+    const sticky = innerWidth > 1159 && !det?.fs && !materialStage?.fs;
     const top = actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
     const availableHeight = innerHeight - header.getBoundingClientRect().height - top;
     el.style.setProperty('--detail-sticky-top', `calc(var(--header-offset) + ${top}px)`);
-    const { registry } = detailColumns;
-    if (registry) {
-      const stageTop = Math.max(registry.getBoundingClientRect().top, actions.getBoundingClientRect().bottom);
-      registry.style.setProperty('--hf-room', Math.max(0, innerHeight - stageTop - BOTTOM) + 'px');
+    if (materialBar) {
+      const gap = parseFloat(getComputedStyle(cols[0]).rowGap);
+      const height = materialStage.fs ? cols[0].clientHeight : availableHeight - BOTTOM;
+      const room = Math.max(MIN_STAGE_H, height - materialBar.getBoundingClientRect().height - gap);
+      cols[0].style.setProperty('--material-room', room + 'px');
     }
     const leftHeight = cols[0].getBoundingClientRect().height;
     const rightHeight = cols[1].getBoundingClientRect().height;
@@ -785,26 +791,26 @@
     later(() => { if (d.sound.pending && d.sound.seq === seq) { d.sound.pending = false; syncSound(); } }, 2500);
   }
   /* ----- 全屏 ----- */
-  function toggleFs() { if (det) (det.fs ? exitFs : enterFs)(); }
+  function toggleFs() { const d = det || materialStage; if (d) (d.fs ? exitFs : enterFs)(); }
   function enterFs() {
-    const c = det.col, req = c.requestFullscreen || c.webkitRequestFullscreen;
+    const c = (det || materialStage).col, req = c.requestFullscreen || c.webkitRequestFullscreen;
     if (!req) return setPseudo(true); // iPhone Safari 等不支持元素全屏：用固定定位铺满窗口
     try { Promise.resolve(req.call(c)).catch(() => setPseudo(true)); } catch { setPseudo(true); }
   }
   function exitFs() {
-    const d = det;
+    const d = det || materialStage;
     if (d.pseudo) return setPseudo(false);
     const ex = document.exitFullscreen || document.webkitExitFullscreen;
     if (ex && (document.fullscreenElement || document.webkitFullscreenElement)) { try { Promise.resolve(ex.call(document)).catch(() => {}); } catch { /* 已退出 */ } }
   }
   function setPseudo(on) {
-    const d = det;
+    const d = det || materialStage;
     d.pseudo = on;
     document.documentElement.classList.toggle('ma-fs-lock', on);
     setFs(on);
   }
   function setFs(on) {
-    const d = det;
+    const d = det || materialStage;
     if (!d || d.fs === on) return;
     d.fs = on;
     d.col.classList.toggle('is-fs', on);
@@ -814,12 +820,14 @@
     d.fsBtn.title = on ? '退出全屏（Esc）' : '全屏查看（F）';
     d.fsBtn.querySelector('.lbl-wide').textContent = on ? '退出全屏' : '全屏';
     layout();
+    layoutColumns();
     poke();
   }
   const onFsChange = () => {
-    if (!det) return;
+    const d = det || materialStage;
+    if (!d) return;
     const fe = document.fullscreenElement || document.webkitFullscreenElement;
-    if (!det.pseudo) setFs(!!fe && fe === det.col);
+    if (!d.pseudo) setFs(!!fe && fe === d.col);
   };
   document.addEventListener('fullscreenchange', onFsChange);
   document.addEventListener('webkitfullscreenchange', onFsChange);
@@ -993,6 +1001,7 @@
   // 焦点在按钮 / 链接上时空格与回车交给它们自己（避免双重切换）；焦点在 Demo 里时由 Demo 自己的快捷键处理（父页面收不到）。
   document.addEventListener('pointerdown', (e) => { if (det) det.lastPointerInCol = det.col.contains(e.target); }, true);
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && materialStage?.pseudo) { e.preventDefault(); setPseudo(false); return; }
     const d = det;
     if (!d || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
     if (e.key === 'Escape' && d.pseudo) { e.preventDefault(); setPseudo(false); return; }
@@ -1060,7 +1069,7 @@
       const cards = it.skillGuide.map(group => sec(group.title, '', `<div class="skill-guide-list">${group.skills.map(skill => `<a href="docs.html#doc/${esc(it.snapshotPath + 'skills/' + skill.id + '/SKILL.md')}"><strong>${esc(skill.title)}</strong><code>/${esc(skill.id)}</code><span>${esc(skill.description)}</span></a>`).join('')}</div>`));
       preview = cards.join('') + sec('从计划到成片', '', `<ol>${it.workflow.map(step => `<li>${esc(step)}</li>`).join('')}</ol>`);
     } else {
-      preview = `${it.gallery?.length ? sec('效果图画廊', '', gallery) : ''}${it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : sec('样例', '', `<a href="${esc(it.demo)}">打开样例</a><div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}"></iframe></div>`)}`;
+      preview = `${it.gallery?.length ? sec('效果图画廊', '', gallery) : ''}${it.snapshotPath ? sec(it.type === 'agent-skill' ? 'skill 原文入口' : '素材原文入口', '', snapshotLinks) : `<div class="stage-frame"><iframe src="${esc(it.demo)}" title="${esc(it.title)}" allow="autoplay; fullscreen"></iframe></div>`}`;
     }
     return { preview, notes: [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
@@ -1078,8 +1087,33 @@
     document.title = `${it.title} · Motion Atlas`;
     const material = materialNotes(it);
     const heading = `<header class="detail-head"><p class="eyebrow">${String(items.indexOf(it) + 1).padStart(2, '0')} / 素材 · ${esc(it.id)}</p><h1>${esc(it.title)}</h1><div class="chips"><span class="chip accent">${esc(materialTypes[it.type])}</span></div></header>`;
-    const guideFirst = it.id === 'hyperframes-registry' || it.skillGuide;
-    root.innerHTML = `${pageActions(it)}<div class="detail material-detail">${guideFirst ? heading : ''}<div class="detail-grid"><section class="material-stage" aria-label="素材预览">${material.preview}</section><div class="info-col">${guideFirst ? '' : heading}<div class="notes">${material.notes}</div></div></div></div>`;
+    const controls = it.demo ? `<div class="stage-bar"><div class="stage-controls" role="group" aria-label="查看方式">
+      ${it.type === 'sound' ? `<button class="sound-btn" type="button" data-state="on" aria-pressed="true" aria-label="声音：开" title="声音已开启：点击关闭">${SI.soundOff}${SI.soundOn}<span class="sound-state">开</span></button>` : ''}
+      <button class="tool-btn" type="button" data-act="fullscreen" aria-label="全屏查看" title="全屏查看">${SI.expand}${SI.collapse}<span class="lbl-wide">全屏</span></button>
+      <a class="tool-btn" data-act="open" href="${esc(it.demo)}" target="_blank" rel="noopener" aria-label="独立打开 Demo" title="在新标签页独立打开">${ICONS.external}<span class="lbl-wide">独立打开</span></a>
+    </div></div>` : '';
+    root.innerHTML = `${pageActions(it)}<div class="detail material-detail"><div class="detail-grid"><section class="material-stage" aria-label="素材预览">${controls}${material.preview}</section><div class="info-col">${heading}<div class="notes">${material.notes}</div></div></div></div>`;
+    if (controls) {
+      const col = root.querySelector('.material-stage');
+      const fsBtn = col.querySelector('[data-act="fullscreen"]');
+      materialStage = { col, fsBtn, fs: false, pseudo: false };
+      fsBtn.addEventListener('click', toggleFs);
+      if (it.type === 'sound') {
+        const snd = col.querySelector('.sound-btn'), frame = col.querySelector('iframe');
+        let on = true;
+        const sendSound = () => frame.contentWindow.postMessage({ type: 'motion:sound', on }, location.origin);
+        frame.addEventListener('load', sendSound);
+        snd.addEventListener('click', () => {
+          on = !on;
+          snd.dataset.state = on ? 'on' : 'off';
+          snd.setAttribute('aria-pressed', String(on));
+          snd.setAttribute('aria-label', `声音：${SOUND_TEXT[snd.dataset.state]}`);
+          snd.querySelector('.sound-state').textContent = SOUND_TEXT[snd.dataset.state];
+          snd.title = on ? '声音已开启：点击关闭' : '声音已关闭：点击开启';
+          sendSound();
+        });
+      }
+    }
     if (it.id === 'hyperframes-registry') {
       const panel = root.querySelector('.hf-registry');
       window.prepareHyperFramesRegistry(panel);
