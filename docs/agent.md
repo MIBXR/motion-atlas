@@ -32,3 +32,5 @@ node scripts/atlas.mjs export <id> --out <目录>
 导出时保留仓库相对目录结构与全部文件，巧思同时包含来源案例。导出根目录的 `README.md` 提供入口，`entry.json` 保存条目；有 Prompt 时另附 `PROMPT.md`。按文件清单取得素材使用说明和原文快照。
 
 逐帧视频与声音导出见[渲染管线](pipeline.md#九逐帧渲染成视频)，素材阅读入口见[素材总览](materials/README.md)。
+
+上述取材 CLI 不需要安装站点依赖；开发 React 页面时的依赖与构建命令见[站点实现](../CONTRIBUTING.md#站点实现)。

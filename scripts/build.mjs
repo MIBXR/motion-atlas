@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, PROJECT_DOCS, buildAll, walk, documentTitle, compareDocuments } from './lib/catalog.mjs';
+import { buildApp } from './build-app.mjs';
 
 let changed = 0;
 function writeFile(rel, content) {
@@ -105,4 +106,5 @@ for (const dir of ['agent', 'prompts', 'data']) {
     if (!(rel in files)) { fs.rmSync(path.join(ROOT, rel)); console.log('remove', rel); }
   }
 }
+await buildApp();
 console.log(`build ok · ${cases.length} cases · ${patterns.length} patterns · ${materials.length} materials · ${changed} files updated`);

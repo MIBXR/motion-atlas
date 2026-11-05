@@ -49,4 +49,4 @@ Motion Atlas 提供完整案例、独立巧思和制作素材。案例与巧思�
 
 ## 本地使用
 
-需要 Node.js 22+，运行时无需安装项目依赖；截图与渲染需要本机 Edge 或 Chrome，合成 MP4 需要 PATH 中的 ffmpeg。启动命令见[贡献指南](../CONTRIBUTING.md#新增流程)。通过本地服务器访问页面，地图 Demo 的 MapLibre、底图与高程瓦片需要网络。
+需要 Node.js 22+。开发站点先执行 `npm ci`，再执行 `npm start`；取材 CLI 与独立 Demo 无需安装站点依赖。截图与渲染需要本机 Edge 或 Chrome，合成 MP4 需要 PATH 中的 ffmpeg。启动命令和界面配置见[站点实现](../CONTRIBUTING.md#站点实现)。通过本地服务器访问页面，地图 Demo 的 MapLibre、底图与高程瓦片需要网络。

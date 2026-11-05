@@ -1,34 +1,22 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>文档中心 · Motion Atlas</title>
-  <meta name="description" content="使用指南、节奏方法、Prompt 写法、条目结构、渲染管线与全部 Prompt。">
-  <link rel="icon" href="site/icons/favicon.svg?v=onion-1" type="image/svg+xml">
-  <link rel="stylesheet" href="site/shared/site.css">
-  <link rel="stylesheet" href="site/pages/docs/docs.css">
-  <link rel="expect" href="#mobile-menu" blocking="render">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script src="site/app/theme-boot.js"></script>
+<title>文档中心 · Motion Atlas</title>
+<meta name="description" content="使用指南、节奏方法、Prompt 写法、条目结构、渲染管线与全部 Prompt。">
+<link rel="icon" href="site/icons/favicon.svg?v=onion-1" type="image/svg+xml">
+<link rel="stylesheet" href="site/client/main.css">
+<script src="data/asset-sources.js"></script>
+<script src="site/runtime/asset-runtime.js"></script>
+<script src="site/runtime/asset-cache.js"></script>
+<script src="kit/motion-kit.js"></script>
+<script type="module" src="site/client/main.js"></script>
 </head>
 <body>
-  <header id="site-header"></header>
-  <main class="docs">
-    <aside class="lib-side" id="doc-side" aria-label="文档目录">
-      <label class="field"><span id="doc-search-icon"></span><span class="sr-only">搜索文档</span><input type="search" id="docQ" placeholder="搜索文档标题"></label>
-      <nav id="docNav"></nav>
-    </aside>
-    <article class="doc" id="doc" tabindex="-1"></article>
-    <aside class="doc-toc" aria-label="本页目录">
-      <button class="btn toc-toggle" id="toc-toggle" type="button" aria-controls="toc-panel" aria-expanded="false" aria-label="打开本文目录" hidden>本文目录</button>
-      <div class="toc-panel" id="toc-panel">
-        <div class="toc-head"><p class="eyebrow">本文目录</p><button class="btn toc-close" id="toc-close" type="button" hidden>关闭</button></div>
-        <nav id="toc"></nav>
-      </div>
-    </aside>
-  </main>
-  <footer id="site-footer"></footer>
-  <script src="data/docs.js"></script>
-  <script src="site/shared/site.js"></script>
-  <script src="site/pages/docs/docs.js"></script>
+<div id="app"></div>
+<noscript>请启用 JavaScript 以浏览 Motion Atlas。</noscript>
 </body>
 </html>

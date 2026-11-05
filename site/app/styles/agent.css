@@ -1,0 +1,120 @@
+.agent-content {
+  max-width: 1440px;
+  margin: auto;
+}
+.agent-content .page-heading {
+  padding-top: 60px;
+  padding-bottom: 44px;
+}
+.agent-section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+.agent-section h2 {
+  margin-bottom: 24px;
+}
+.agent-description {
+  font-size: 16px;
+  color: var(--ink-2);
+  line-height: 1.8;
+  margin: 20px 0;
+}
+.agent-workflow {
+  padding-left: 24px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+.agent-workflow li + li {
+  margin-top: 10px;
+}
+.agent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.generator {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
+  gap: 24px;
+  align-items: start;
+}
+.generator-selection,
+.generator-output {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  display: grid;
+  gap: 18px;
+}
+.generator-list {
+  max-height: 620px;
+  overflow: auto;
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+.generator-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: var(--r);
+}
+.generator-item > div {
+  flex: 1;
+  min-width: 0;
+}
+.generator-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 650;
+}
+.generator-item small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+.generator-role {
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  background: var(--surface);
+}
+.generator-role.role-foundation {
+  color: var(--accent-1);
+  background: var(--accent-4);
+}
+.generator-warning {
+  font-size: 14px;
+  color: var(--accent-1);
+  line-height: 1.8;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface-2);
+}
+@media (max-width: 800px) {
+  .agent-content .page-heading {
+    padding-top: 40px;
+  }
+  .generator {
+    grid-template-columns: 1fr;
+  }
+  .generator-selection,
+  .generator-output {
+    padding: 20px;
+  }
+  .generator-list {
+    max-height: 420px;
+  }
+  .agent-section {
+    padding: 32px 0;
+  }
+}

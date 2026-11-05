@@ -1,0 +1,1512 @@
+.rhythm-lab {
+  --lab-early: #5aa9ff;
+  --lab-acc: #ffb547;
+  --lab-rec: #ff4d6d;
+  --lab-sample-color: #ff5b2e;
+}
+:root[data-theme='light'] .rhythm-lab {
+  --lab-early: #1b64c8;
+  --lab-acc: #a86200;
+  --lab-rec: #c9203f;
+  --lab-sample-color: #df3f17;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .rhythm-lab {
+    --lab-early: #1b64c8;
+    --lab-acc: #a86200;
+    --lab-rec: #c9203f;
+    --lab-sample-color: #df3f17;
+  }
+}
+.rhythm-lab .lab-main {
+  min-width: 0;
+  padding-top: 24px;
+}
+@media (max-width: 560px) {
+}
+.rhythm-lab .lab-head {
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.rhythm-lab .lab-head h1 {
+  margin-top: 10px;
+  font: 700 clamp(34px, 4.4vw, 64px) / 1.1 var(--f-sans);
+}
+.rhythm-lab .lab-head h1 em {
+  font-style: normal;
+  color: var(--accent-2);
+}
+.rhythm-lab .lab-head > p:not(.eyebrow) {
+  margin-top: 12px;
+  max-width: 72ch;
+  color: var(--ink-2);
+  font-size: 16px;
+}
+.rhythm-lab .transport {
+  position: sticky;
+  top: calc(var(--header-h) + 8px);
+  z-index: 30;
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  padding: 16px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+}
+.rhythm-lab .transport::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: -10px;
+  height: 9px;
+  background: var(--bg);
+}
+.rhythm-lab .transport .icon {
+  pointer-events: none;
+}
+.rhythm-lab .tp-play .i-stop,
+.rhythm-lab .tp-play[data-playing='true'] .i-play {
+  display: none;
+}
+.rhythm-lab .tp-play[data-playing='true'] .i-stop {
+  display: inline-block;
+}
+.rhythm-lab .tp-tap {
+  height: 44px;
+}
+.rhythm-lab .tp-tap.hit,
+.rhythm-lab .pad.hit {
+  animation: lab-hit 0.2s ease-out;
+}
+@keyframes lab-hit {
+  from {
+    box-shadow: 0 0 0 0 var(--accent-1);
+  }
+  to {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+.rhythm-lab .tp-tapinfo {
+  min-width: 10ch;
+  font: 12px/1.3 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .tp-lights {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.rhythm-lab .tp-lights i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--line-2);
+}
+.rhythm-lab .tp-lights i.gs {
+  margin-left: 6px;
+}
+.rhythm-lab .tp-lights i.on {
+  background: var(--ink);
+}
+.rhythm-lab .tp-lights i.on[data-lv='bar'] {
+  background: var(--accent-1);
+}
+.rhythm-lab .tp-lights i.on[data-lv='acc'] {
+  background: var(--lab-acc);
+}
+.rhythm-lab .tp-pos {
+  min-width: 6.5ch;
+  font: 700 16px/1 var(--f-mono);
+  text-align: center;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.rhythm-lab .tp-sound {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.rhythm-lab .tp-snd {
+  height: 44px;
+}
+.rhythm-lab .tp-snd[data-state='on'] {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+.rhythm-lab .tp-snd[data-state='blocked'] {
+  border-style: dashed;
+  border-color: var(--accent-2);
+}
+.rhythm-lab .tp-vol input {
+  width: 96px;
+  accent-color: var(--accent-1);
+  vertical-align: middle;
+}
+.rhythm-lab .keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.rhythm-lab .keys span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.rhythm-lab .step {
+  margin-top: 38px;
+}
+.rhythm-lab [id] {
+  scroll-margin-top: calc(var(--header-h) + 96px);
+}
+.rhythm-lab .step-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+.rhythm-lab .step-no {
+  padding-top: 2px;
+  font: 700 28px/1 var(--f-display);
+  color: var(--accent-2);
+}
+.rhythm-lab .step-head h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  font: 700 20px/1.3 var(--f-sans);
+}
+.rhythm-lab .step-head h2 small,
+.rhythm-lab .pane-h small,
+.rhythm-lab .rec-box h3 small {
+  font: 600 12px/1 var(--f-mono);
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+.rhythm-lab .step-head p {
+  margin-top: 6px;
+  max-width: 86ch;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.rhythm-lab .pane {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 20px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.rhythm-lab .pane-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font: 700 16px/1.3 var(--f-sans);
+}
+.rhythm-lab .hint {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.rhythm-lab .fl {
+  font-size: 14px;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.rhythm-lab .field-row {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+}
+.rhythm-lab .field-row > select:last-child {
+  grid-column: 2 / -1;
+}
+.rhythm-lab .field-row output {
+  min-width: 6.5ch;
+  font: 12px/1 var(--f-mono);
+  color: var(--ink-2);
+  text-align: right;
+}
+.rhythm-lab .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.rhythm-lab .chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.rhythm-lab .chk input {
+  accent-color: var(--accent-3);
+  width: 16px;
+  height: 16px;
+}
+.rhythm-lab .btn.small {
+  min-height: 44px;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.rhythm-lab .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.rhythm-lab .lg {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-sm);
+  margin: 0 2px 0 8px;
+  vertical-align: -1px;
+}
+.rhythm-lab .lg:first-child {
+  margin-left: 0;
+}
+.rhythm-lab .lg-bar {
+  background: var(--accent-1);
+}
+.rhythm-lab .lg-acc {
+  background: var(--lab-acc);
+}
+.rhythm-lab .lg-beat {
+  background: var(--ink);
+}
+.rhythm-lab .lg-sub {
+  background: var(--muted);
+}
+.rhythm-lab .beat-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 16px;
+}
+.rhythm-lab .metro-pane {
+  gap: 10px;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+}
+.rhythm-lab .metro-top {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  min-height: 80px;
+}
+.rhythm-lab .metro-count {
+  min-width: 1.1ch;
+  font: 700 28px/0.85 var(--f-display);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.rhythm-lab .metro-count[data-lv='bar'] {
+  color: var(--accent-1);
+}
+.rhythm-lab .metro-count[data-lv='acc'] {
+  color: var(--lab-acc);
+}
+.rhythm-lab .metro-count[data-lv='beat'] {
+  color: var(--ink);
+}
+.rhythm-lab .metro-read {
+  padding-bottom: 6px;
+  font: 12px/1.5 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .metro-bar {
+  position: relative;
+  display: flex;
+  margin-top: 44px;
+}
+.rhythm-lab .metro-cells {
+  display: flex;
+  flex: 1;
+  gap: 6px;
+}
+.rhythm-lab .cell {
+  --glow: 0;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 88px;
+  padding: 12px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.rhythm-lab .cell.gs {
+  margin-left: 10px;
+}
+.rhythm-lab .cell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  opacity: calc(var(--glow) * 0.85);
+}
+.rhythm-lab .cell[data-lv='bar']::before {
+  background: var(--accent-1);
+}
+.rhythm-lab .cell[data-lv='acc']::before {
+  background: var(--lab-acc);
+}
+.rhythm-lab .cell.pre::before {
+  background: var(--muted);
+}
+.rhythm-lab .cell::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--line-2);
+}
+.rhythm-lab .cell[data-lv='bar']::after {
+  background: var(--accent-1);
+}
+.rhythm-lab .cell[data-lv='acc']::after {
+  background: var(--lab-acc);
+}
+.rhythm-lab .cell.on {
+  border-color: var(--line-2);
+}
+.rhythm-lab .cell b {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  font: 700 16px/1 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .cell.on b {
+  color: var(--ink);
+}
+.rhythm-lab .cell i {
+  --glow: 0;
+  position: absolute;
+  bottom: 12px;
+  z-index: 1;
+  width: 3px;
+  height: max(22px, 26%);
+  margin-left: -1.5px;
+  border-radius: var(--r-sm);
+  background: color-mix(
+    in srgb,
+    var(--ink) calc(var(--glow) * 100%),
+    var(--line-2)
+  );
+  transform: scaleY(calc(1 + var(--glow) * 0.6));
+  transform-origin: bottom;
+}
+.rhythm-lab .metro-ball {
+  position: absolute;
+  left: 0;
+  top: -15px;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--accent-1);
+  box-shadow: 0 0 0 4px var(--accent-4);
+  opacity: 0;
+  pointer-events: none;
+}
+.rhythm-lab .metro-legend {
+  font-size: 12px;
+  color: var(--muted);
+}
+.rhythm-lab .ctrl-pane {
+  gap: 8px;
+}
+.rhythm-lab .levels {
+  display: grid;
+  gap: 6px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.rhythm-lab .levels label {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 6.5ch;
+  gap: 12px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.rhythm-lab .levels .lv-name {
+  white-space: nowrap;
+}
+.rhythm-lab .levels .lg {
+  margin: 0 6px 0 0;
+}
+.rhythm-lab .tp-snd[aria-pressed='true'] {
+  background: var(--accent-4);
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+.rhythm-lab .levels input {
+  width: 100%;
+  accent-color: var(--accent-1);
+}
+.rhythm-lab .levels output {
+  font: 12px/1 var(--f-mono);
+  color: var(--ink-2);
+  text-align: right;
+}
+.rhythm-lab .q-pane {
+  gap: 16px;
+}
+.rhythm-lab .q-ctrls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 32px;
+}
+.rhythm-lab .loop-len {
+  font: 12px/1 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.rhythm-lab .ex-hint {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.rhythm-lab .ex-hint b {
+  color: var(--ink);
+}
+.rhythm-lab .ex-hint .tries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rhythm-lab .tl-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.rhythm-lab .tl-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.rhythm-lab .tl-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.rhythm-lab .tl-legend .lg-a {
+  border: 2px solid var(--ink);
+}
+.rhythm-lab .tl-legend .lg-b {
+  background: var(--accent-1);
+}
+.rhythm-lab .tl-legend .lg-early {
+  height: 3px;
+  border-radius: var(--r-sm);
+  background: var(--lab-early);
+}
+.rhythm-lab .tl-legend .lg-late {
+  height: 3px;
+  border-radius: var(--r-sm);
+  background: var(--accent-1);
+}
+.rhythm-lab .tl-legend .tl-tip {
+  margin-left: auto;
+}
+.rhythm-lab .timeline {
+  overflow: hidden;
+  padding: 12px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.rhythm-lab #tl {
+  display: block;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rhythm-lab #tl text {
+  font-family: var(--f-mono);
+  font-size: 12px;
+}
+.rhythm-lab .tl-lane {
+  fill: var(--surface);
+  stroke: var(--line);
+}
+.rhythm-lab .tl-tag {
+  font-weight: 700;
+  font-size: 12px !important;
+  fill: var(--ink-2);
+}
+.rhythm-lab .tl-tag.b {
+  fill: var(--accent-1);
+}
+.rhythm-lab .tl-off {
+  fill: var(--accent-4);
+}
+.rhythm-lab .tl-offt {
+  fill: var(--accent-1);
+}
+.rhythm-lab .g-bar {
+  stroke: var(--accent-1);
+  stroke-width: 2;
+}
+.rhythm-lab .g-acc {
+  stroke: var(--lab-acc);
+  stroke-width: 1.5;
+}
+.rhythm-lab .g-beat {
+  stroke: var(--ink-2);
+  stroke-opacity: 0.55;
+}
+.rhythm-lab .g-sub {
+  stroke: var(--line-2);
+  stroke-dasharray: 3 3;
+}
+.rhythm-lab .tl-num {
+  fill: var(--muted);
+}
+.rhythm-lab .tl-num.bar {
+  font-weight: 700;
+  fill: var(--accent-1);
+}
+.rhythm-lab .tl-end {
+  stroke: var(--accent-1);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 4;
+}
+.rhythm-lab .tl-sec {
+  stroke: var(--line-2);
+}
+.rhythm-lab .tl-sect {
+  fill: var(--muted);
+  text-anchor: middle;
+}
+.rhythm-lab .tl-hitA {
+  fill: transparent;
+  cursor: copy;
+}
+.rhythm-lab .tl-arrow {
+  fill: none;
+  stroke-width: 1.6;
+  pointer-events: none;
+}
+.rhythm-lab .tl-arrow.early {
+  stroke: var(--lab-early);
+}
+.rhythm-lab .tl-arrow.late {
+  stroke: var(--accent-1);
+}
+.rhythm-lab .ah-e {
+  fill: var(--lab-early);
+}
+.rhythm-lab .ah-l {
+  fill: var(--accent-1);
+}
+.rhythm-lab .tl-target {
+  stroke: var(--ink-2);
+  stroke-dasharray: 2 2;
+  pointer-events: none;
+}
+.rhythm-lab .tl-b {
+  pointer-events: none;
+}
+.rhythm-lab .tl-b circle {
+  fill: var(--accent-1);
+  transform: scale(calc(1 + var(--hit, 0) * 0.7));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.rhythm-lab .tl-b .dup-ring {
+  fill: none;
+  stroke: var(--accent-1);
+  stroke-width: 1.5;
+}
+.rhythm-lab .tl-a {
+  cursor: grab;
+  outline: none;
+}
+.rhythm-lab .tl-a .hit-area {
+  fill: transparent;
+}
+.rhythm-lab .tl-a .dot {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  transform: scale(calc(1 + var(--hit, 0) * 0.7));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.rhythm-lab .tl-a:hover .dot {
+  stroke: var(--accent-1);
+}
+.rhythm-lab .tl-a:focus-visible .dot {
+  stroke: var(--accent-1);
+  stroke-width: 3.5;
+}
+.rhythm-lab .tl-dev {
+  text-anchor: middle;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.rhythm-lab .tl-dev.early {
+  fill: var(--lab-early);
+}
+.rhythm-lab .tl-dev.late {
+  fill: var(--accent-1);
+}
+.rhythm-lab .tl-dev.on {
+  fill: var(--ok);
+}
+.rhythm-lab .tl-head {
+  pointer-events: none;
+  opacity: 0;
+}
+.rhythm-lab .tl-head line {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.rhythm-lab .tl-head path {
+  fill: var(--ink);
+}
+.rhythm-lab .rec-tap {
+  fill: var(--lab-rec);
+  pointer-events: none;
+}
+.rhythm-lab #tl.rec .tl-a,
+.rhythm-lab #tl.rec .tl-b,
+.rhythm-lab #tl.rec .tl-arrow,
+.rhythm-lab #tl.rec .tl-target {
+  opacity: 0.22;
+}
+.rhythm-lab .play-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 24px;
+}
+.rhythm-lab .play-row .field-row {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+.rhythm-lab .ab-now {
+  margin-left: auto;
+  font: 600 12px/1.4 var(--f-mono);
+  color: var(--accent-1);
+}
+.rhythm-lab .ab-now[data-ab='rec'] {
+  color: var(--lab-rec);
+}
+.rhythm-lab .demo-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.rhythm-lab .bounce {
+  margin: 0;
+}
+.rhythm-lab #bnc {
+  display: block;
+}
+.rhythm-lab #bnc text {
+  font-family: var(--f-mono);
+  font-size: 12px;
+}
+.rhythm-lab .bounce figcaption {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.rhythm-lab .bounce figcaption b {
+  color: var(--ink-2);
+}
+.rhythm-lab .bn-bg {
+  fill: var(--bg-2);
+  stroke: var(--line);
+}
+.rhythm-lab .bn-lane.live .bn-bg {
+  stroke: var(--accent-1);
+  stroke-width: 2;
+}
+.rhythm-lab #bnc .bn-title {
+  font-family: var(--f-sans);
+  font-weight: 700;
+  font-size: 12px;
+  fill: var(--ink);
+}
+.rhythm-lab .bn-live {
+  fill: var(--accent-1);
+  opacity: 0;
+}
+.rhythm-lab .bn-lane.live .bn-live {
+  opacity: 1;
+}
+.rhythm-lab .bn-lamp {
+  --glow: 0;
+  fill: color-mix(in srgb, var(--ink) calc(var(--glow) * 100%), var(--line-2));
+}
+.rhythm-lab .bn-lamp.bar {
+  fill: color-mix(
+    in srgb,
+    var(--accent-1) calc(var(--glow) * 100%),
+    var(--line-2)
+  );
+}
+.rhythm-lab .bn-lampt {
+  fill: var(--muted);
+}
+.rhythm-lab .bn-ground {
+  stroke: var(--line-2);
+  stroke-width: 2;
+}
+.rhythm-lab .bn-ball {
+  fill: var(--ink);
+}
+.rhythm-lab #bn-b .bn-ball {
+  fill: var(--accent-1);
+}
+.rhythm-lab .bn-ring {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 2;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.rhythm-lab .bn-lab {
+  fill: var(--ink-2);
+}
+.rhythm-lab .bn-pos {
+  fill: var(--muted);
+}
+.rhythm-lab .bn-lab[data-k='miss'] {
+  fill: var(--accent-1);
+}
+.rhythm-lab .bn-lab[data-k='off'],
+.rhythm-lab .bn-lab[data-k='trip'],
+.rhythm-lab .bn-lab[data-k='weak'] {
+  fill: var(--lab-acc);
+}
+.rhythm-lab .rec-box {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 16px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.rhythm-lab .rec-box h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font: 700 16px/1.3 var(--f-sans);
+}
+.rhythm-lab .rec-box > p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.rhythm-lab .rec-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: stretch;
+}
+.rhythm-lab .rec-btn .icon {
+  color: var(--lab-rec);
+}
+.rhythm-lab .rec-btn[aria-pressed='true'] {
+  background: var(--surface);
+}
+.rhythm-lab .rec-btn[data-state='armed'] {
+  border-color: var(--lab-rec);
+  color: var(--lab-rec);
+}
+.rhythm-lab .rec-btn[data-state='on'] {
+  border-color: var(--lab-rec);
+  background: var(--lab-rec);
+  color: #fff;
+}
+.rhythm-lab .rec-btn[data-state='on'] .icon {
+  color: #fff;
+}
+.rhythm-lab .pad {
+  display: flex;
+  flex: 1 1 160px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 64px;
+  border: 1px dashed var(--line-2);
+  border-radius: var(--r);
+  background: var(--surface);
+  font: 700 16px/1 var(--f-sans);
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rhythm-lab .pad.hit {
+  border-color: var(--accent-1);
+  background: var(--accent-4);
+}
+.rhythm-lab .rec-prog {
+  height: 4px;
+  border-radius: var(--r-sm);
+  background: var(--line);
+  overflow: hidden;
+  opacity: 0;
+}
+.rhythm-lab .rec-prog.on {
+  opacity: 1;
+}
+.rhythm-lab .rec-prog i {
+  display: block;
+  height: 100%;
+  background: var(--lab-rec);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.rhythm-lab .pad-fb {
+  min-height: 1.5em;
+  font: 600 14px/1.5 var(--f-mono);
+  color: var(--ink-2);
+}
+.rhythm-lab .pad-fb[data-cls='early'] {
+  color: var(--lab-early);
+}
+.rhythm-lab .pad-fb[data-cls='late'] {
+  color: var(--accent-2);
+}
+.rhythm-lab .pad-fb[data-cls='on'] {
+  color: var(--ok);
+}
+.rhythm-lab .tap-hist {
+  position: relative;
+  height: 48px;
+  padding: 12px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 7%),
+      color-mix(in srgb, var(--ok) 16%, transparent) calc(50% - 7%)
+        calc(50% + 7%)
+    ),
+    var(--surface-2);
+}
+.rhythm-lab .tap-hist::before {
+  content: '\65e9';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--lab-early);
+}
+.rhythm-lab .tap-hist::after {
+  content: '\665a';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--accent-2);
+}
+.rhythm-lab .tap-hist i {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + var(--d) * 42%);
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  background: var(--ink-2);
+  opacity: 0.35;
+}
+.rhythm-lab .tap-hist i:last-of-type {
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+}
+.rhythm-lab .tap-hist i.early {
+  background: var(--lab-early);
+}
+.rhythm-lab .tap-hist i.late {
+  background: var(--accent-1);
+}
+.rhythm-lab .tap-hist i.on {
+  background: var(--ok);
+}
+.rhythm-lab .tap-hist span {
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  font: 12px/1 var(--f-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.rhythm-lab .tap-hist:has(span) {
+  margin-bottom: 18px;
+}
+.rhythm-lab .lat-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 6ch auto;
+  gap: 10px;
+  align-items: center;
+}
+.rhythm-lab .lat-row input {
+  width: 100%;
+  accent-color: var(--accent-1);
+}
+.rhythm-lab .lat-row output {
+  font: 12px/1 var(--f-mono);
+  color: var(--ink-2);
+  text-align: right;
+}
+.rhythm-lab .ev-edit {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.rhythm-lab .ev-edit summary {
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.rhythm-lab .ev-edit-body {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+.rhythm-lab .ta-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+.rhythm-lab textarea,
+.rhythm-lab .cv-vals input {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 8px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font: 12px/1.5 var(--f-mono);
+}
+.rhythm-lab .ev-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.rhythm-lab .q-stats {
+  font: 12px/1.5 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .q-scroll {
+  overflow-x: auto;
+}
+.rhythm-lab .qtable {
+  width: 100%;
+  min-width: 540px;
+  border-collapse: collapse;
+  font: 12px/1.5 var(--f-mono);
+}
+.rhythm-lab .qtable th,
+.rhythm-lab .qtable td {
+  padding: 6px 8px;
+  border-top: 1px solid var(--line);
+  text-align: right;
+  white-space: nowrap;
+}
+.rhythm-lab .qtable th {
+  font-weight: 600;
+  color: var(--muted);
+}
+.rhythm-lab .qtable td:first-child,
+.rhythm-lab .qtable th:first-child,
+.rhythm-lab .qtable td:last-child,
+.rhythm-lab .qtable th:last-child {
+  text-align: left;
+}
+.rhythm-lab .qtable td.early {
+  color: var(--lab-early);
+}
+.rhythm-lab .qtable td.late {
+  color: var(--accent-1);
+}
+.rhythm-lab .qtable td.on {
+  color: var(--ok);
+}
+.rhythm-lab .ease-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.rhythm-lab .presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rhythm-lab .curve-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 14px;
+  align-items: center;
+}
+.rhythm-lab #curve {
+  width: 100%;
+  max-height: 420px;
+  touch-action: none;
+  user-select: none;
+}
+.rhythm-lab .cv-box {
+  fill: var(--bg-2);
+  stroke: var(--line-2);
+}
+.rhythm-lab .cv-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.rhythm-lab .cv-lin {
+  stroke: var(--line-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+}
+.rhythm-lab .cv-path {
+  fill: none;
+  stroke: var(--accent-1);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.rhythm-lab .cv-handle-line {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.rhythm-lab .cv-t {
+  stroke: var(--accent-1);
+  stroke-width: 1.5;
+  opacity: 0.3;
+}
+.rhythm-lab .cv-pt {
+  fill: var(--ink);
+  stroke: var(--surface);
+  stroke-width: 3;
+  cursor: grab;
+}
+.rhythm-lab .cv-pt:focus-visible {
+  outline: none;
+  stroke: var(--accent-1);
+  stroke-width: 5;
+}
+.rhythm-lab .cv-dot {
+  fill: var(--accent-1);
+}
+.rhythm-lab .cv-vals {
+  display: grid;
+  gap: 8px;
+}
+.rhythm-lab .cv-vals label {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 8px;
+  align-items: center;
+  font: 12px/1 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .cv-css {
+  font: 12px/1.5 var(--f-mono);
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.rhythm-lab .sliders {
+  display: grid;
+  gap: 4px;
+}
+.rhythm-lab .snap-chips .fl {
+  margin-right: 4px;
+}
+.rhythm-lab .preview {
+  position: relative;
+  height: 230px;
+  padding: 12px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.rhythm-lab .preview i {
+  position: absolute;
+  left: 14px;
+  width: 34px;
+  height: 14px;
+  border-radius: var(--r-sm);
+}
+.rhythm-lab .preview i.box {
+  background: var(--lab-sample-color);
+}
+.rhythm-lab .preview i.ghost {
+  border: 1.5px dashed var(--muted);
+}
+.rhythm-lab .preview .lane {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: var(--line);
+}
+.rhythm-lab .preview b.trail {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lab-sample-color);
+  opacity: 0.5;
+}
+.rhythm-lab .pv-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+.rhythm-lab .pv-tools .btn {
+  margin-left: auto;
+}
+.rhythm-lab .total {
+  font: 12px/1.6 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .total b {
+  color: var(--ink);
+}
+.rhythm-lab .total .warn {
+  color: var(--accent-2);
+}
+.rhythm-lab .export-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 16px;
+}
+.rhythm-lab .export .prompt-box pre {
+  max-height: 440px;
+  padding-right: 92px;
+}
+.rhythm-lab .wav-pane {
+  gap: 12px;
+}
+.rhythm-lab .wav-pane .btn.primary {
+  justify-self: start;
+}
+.rhythm-lab .wav-sum {
+  font: 12px/1.6 var(--f-mono);
+  color: var(--ink-2);
+}
+.rhythm-lab .wav-res {
+  min-height: 1.5em;
+  font: 12px/1.6 var(--f-mono);
+  color: var(--muted);
+}
+.rhythm-lab .note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
+@media (max-width: 1100px) {
+  .rhythm-lab .beat-grid,
+  .rhythm-lab .ease-grid,
+  .rhythm-lab .export-grid,
+  .rhythm-lab .demo-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rhythm-lab .q-ctrls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .rhythm-lab .tp-lights {
+    margin-left: 0;
+  }
+  .rhythm-lab .tp-tapinfo {
+    display: none;
+  }
+  .rhythm-lab .tl-legend .tl-tip {
+    margin-left: 0;
+  }
+  .rhythm-lab .metro-count {
+    font-size: 28px;
+  }
+  .rhythm-lab .cell {
+    min-height: 70px;
+  }
+  .rhythm-lab .step-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+  .rhythm-lab .ab-now {
+    margin-left: 0;
+  }
+}
+@media (max-width: 560px) {
+  .rhythm-lab [id] {
+    scroll-margin-top: calc(var(--header-h) + 128px);
+  }
+  .rhythm-lab .transport {
+    top: calc(var(--header-h) + 4px);
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    grid-template-areas: 'play bpm tap' 'lights pos sound';
+    gap: 8px;
+  }
+  .rhythm-lab .tp-tap {
+    grid-area: tap;
+    justify-content: center;
+    padding: 8px 10px;
+  }
+  .rhythm-lab .tp-lights {
+    grid-area: lights;
+    height: 36px;
+  }
+  .rhythm-lab .tp-pos {
+    grid-area: pos;
+    justify-self: start;
+    font-size: 16px;
+    min-width: 5.5ch;
+  }
+  .rhythm-lab .tp-sound {
+    grid-area: sound;
+    justify-self: end;
+  }
+  .rhythm-lab .tp-snd {
+    height: 36px;
+    min-height: 36px;
+    padding: 0 10px;
+  }
+  .rhythm-lab .tp-snd-label,
+  .rhythm-lab .tp-long {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .rhythm-lab .tp-tap .kbd,
+  .rhythm-lab .keys {
+    display: none;
+  }
+  .rhythm-lab .tp-vol input {
+    width: 72px;
+  }
+  .rhythm-lab .field-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 12px;
+  }
+  .rhythm-lab .field-row > .fl {
+    grid-column: 1 / -1;
+  }
+  .rhythm-lab .field-row > select:last-child {
+    grid-column: 1 / -1;
+  }
+  .rhythm-lab .levels label {
+    grid-template-columns: 60px minmax(0, 1fr) 5.5ch;
+  }
+  .rhythm-lab .curve-wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rhythm-lab .cv-vals {
+    grid-template-columns: 1fr 1fr;
+  }
+  .rhythm-lab .cv-css {
+    grid-column: 1 / -1;
+  }
+  .rhythm-lab .lat-row {
+    grid-template-columns: auto minmax(0, 1fr) 6ch;
+  }
+  .rhythm-lab .lat-row .btn {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  .rhythm-lab .pane {
+    padding: 16px;
+  }
+  .rhythm-lab .cell.gs {
+    margin-left: 6px;
+  }
+  .rhythm-lab .cell b {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rhythm-lab .tp-tap.hit,
+  .rhythm-lab .pad.hit {
+    animation: none;
+  }
+}
+.rhythm-lab .field-row {
+  display: block;
+}
+.rhythm-lab .field-label {
+  display: none;
+}
+.rhythm-control {
+  min-width: 0;
+  width: 100%;
+}
+.rhythm-group-label {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-bottom: 10px;
+}
+.rhythm-control-fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+.rhythm-control-fieldset:disabled {
+  opacity: 0.45;
+}
+.rhythm-lab .field-row + .field-row {
+  margin-top: 18px;
+}
+.rhythm-lab .transport {
+  z-index: 20;
+}
+.rhythm-lab .coord-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.rhythm-lab .tries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.rhythm-lab .lab-section-links {
+  display: grid;
+  gap: 4px;
+}
+.rhythm-lab .lab-section-links > a {
+  padding: 12px;
+  border-radius: var(--r);
+  font-size: 14px;
+}
+.rhythm-lab .lab-section-links > a[aria-current='location'] {
+  color: var(--accent-1);
+  background: var(--accent-4);
+}
+.rhythm-lab .snap-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rhythm-lab .export {
+  min-width: 0;
+}
+.rhythm-lab .tp-bpm {
+  display: block;
+  width: 150px;
+  flex: 0 0 150px;
+  --number-field-width: 150px;
+}
+.rhythm-lab .tp-sound > .rhythm-control {
+  width: 130px;
+}
+.rhythm-lab .field-row {
+  min-width: 0;
+}
+.rhythm-lab .cv-vals label {
+  display: block;
+  font: inherit;
+}
+.rhythm-lab .cv-vals input {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+}
+.rhythm-lab .lat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.rhythm-lab .lat-row > .rhythm-control {
+  flex: 1 1 160px;
+}
+@media (max-width: 560px) {
+  .rhythm-lab .transport {
+    display: flex;
+    gap: 12px;
+  }
+  .rhythm-lab .tp-bpm {
+    width: 145px;
+    flex-basis: 145px;
+    --number-field-width: 145px;
+  }
+  .rhythm-lab .tp-tap {
+    flex: 1;
+  }
+  .rhythm-lab .tp-lights {
+    flex: 1;
+  }
+  .rhythm-lab .tp-sound {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .rhythm-lab .tp-sound > .rhythm-control {
+    width: 140px;
+  }
+  .rhythm-lab .transport {
+    position: relative;
+    top: auto;
+  }
+}
+.rhythm-lab .pane {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+.rhythm-lab .pane > * {
+  min-width: 0;
+}

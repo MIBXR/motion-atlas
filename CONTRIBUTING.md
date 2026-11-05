@@ -58,7 +58,7 @@
 | `agent/` | 生成 | 根目录仅 `catalog.json`；各类目录含 `index.json` 与 `<id>.json` 资料包 |
 | `previews/` | 生成或截图 | `{cases,patterns,materials}/<id>.<ext>`；变体后缀 `-portrait`、`-mobile`、`-reference`；作者效果图放 `materials/<id>/` |
 | `data/` | 生成：站点运行时数据 | 按用途平铺 `cases.js`、`patterns.js`、`materials.js`、`docs.js`、`asset-sources.js` |
-| `site/` | 站点代码 | `shared/`、`pages/<页>/`、`runtime/`、`icons/` |
+| `site/` | 站点代码 | `app/`、`client/`、`runtime/`、`vendor/`、`icons/` |
 | `kit/` | Demo 运行时 | `motion-kit.js` |
 | `scripts/` | 工具与制作模板 | 构建、播放、截图、渲染、取帧与 CLI；`templates/` 放条目模板 |
 | 根目录 | 页面与说明 | `index.html`、`cases.html`、`patterns.html`、`materials.html`、`lab.html`、`agent.html`、`docs.html`、`README.md`、`CONTRIBUTING.md`、`AGENTS.md`、`package.json`、`asset-cache-worker.js`（位于根目录，使 Service Worker 作用域覆盖 `demos/`）、`.gitattributes`、`.gitignore`、`.openai/` |
@@ -139,6 +139,17 @@
 
 `README.md` 介绍项目并提供入口；本文件集中说明收录规则、目录规范、新增流程与字段；`AGENTS.md` 规定仓库修改操作。
 
+## 站点实现
+
+站点页面由 React 管理，基础控件来自 Arc UI 免费源码的固定提交 `df3a600fd9ffca85ec8607438b599a4408ab8562`。源码与许可在 `site/app/arc/`，仅保留实际使用的组件及其依赖。
+
+- `site/app/pages/`：七个站点页面；`components/`：页面共享组件。
+- `site/app/state/`：URL、主题与收藏状态；`domain/`：文档、预览和实验室的专属计算与运行时。
+- `site/app/styles/theme.css`：站点颜色、字号、圆角、控件尺寸与 Arc UI Token 的对应；页面布局位于同目录的独立样式表。
+- `scripts/build-app.mjs`：使用 esbuild 编译 JSX、TSX 与 CSS Modules；`scripts/dev.mjs`：编译监听与本地服务。
+
+首次开发执行 `npm ci`，再执行 `npm start -- --port 4321`。完整生成数据与页面执行 `npm run build`。`site/client/` 是本地生成的运行文件，不纳入 Git；开发服务和完整构建均会生成，静态打包将其带入 `dist/`。 取材 CLI 和独立 Demo 不需要安装站点依赖。
+
 ## 新增流程
 
 复制模板后运行构建，由构建生成条目内的 `motion-kit.js` 副本。
@@ -169,8 +180,9 @@
 在仓库根目录运行；需要更新预览时，静态服务单独保持运行：
 
 ```bash
+npm ci
 node scripts/build.mjs
-node scripts/serve.mjs --port 4321
+npm start -- --port 4321
 node scripts/capture.mjs --only <id>
 node scripts/build.mjs
 node scripts/check.mjs

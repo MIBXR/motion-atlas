@@ -8,7 +8,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "start": "node scripts/serve.mjs --port 4321",
+    "start": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "build:archive": "node demos/cases/archive-os/source/rhinelabui/build.mjs",
@@ -17,6 +17,24 @@
     "capture": "node scripts/capture.mjs",
     "render": "node scripts/render.mjs",
     "frames": "node scripts/frames.mjs",
-    "atlas": "node scripts/atlas.mjs"
+    "atlas": "node scripts/atlas.mjs",
+    "build:app": "node scripts/build-app.mjs"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "motion": "13.4.0",
+    "lucide-react": "1.47.0",
+    "@radix-ui/react-dialog": "1.1.23",
+    "@radix-ui/react-tabs": "1.1.21",
+    "@radix-ui/react-accordion": "1.2.20",
+    "@radix-ui/react-checkbox": "1.3.11",
+    "@radix-ui/react-popover": "1.1.23",
+    "@radix-ui/react-select": "2.3.7",
+    "@radix-ui/react-switch": "1.3.7",
+    "@radix-ui/react-tooltip": "1.2.16"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
   }
 }
