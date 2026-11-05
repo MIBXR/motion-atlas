@@ -345,7 +345,7 @@
       },
       {
         "scope": "字体",
-        "notes": "Shippori Mincho Bold、Cormorant Garamond Italic、Noto Serif SC；SIL OFL 1.1，许可原文见[LICENSES.md](LICENSES.md)。"
+        "notes": "Shippori Mincho Bold、Noto Sans JP 900（巨型标题轮廓）、Cormorant Garamond Italic、Noto Serif SC；SIL OFL 1.1，许可原文见[LICENSES.md](LICENSES.md)。"
       }
     ],
     "relatedEntries": [
@@ -1044,7 +1044,7 @@
     },
     {
       "path": "entries/cases/butterfly-garden-score.json",
-      "bytes": 10287,
+      "bytes": 10330,
       "role": "entry"
     },
     {
