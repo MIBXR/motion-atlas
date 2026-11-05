@@ -32,7 +32,7 @@
   };
   const heroArt = KIND === 'cases'
     ? `<svg class="hero-art" viewBox="0 0 380 220" aria-hidden="true">
-        <g font-family="var(--f-mono)" font-size="12" fill="var(--muted)"><text x="0" y="34">CAM</text><text x="0" y="84">HUD</text><text x="0" y="134">TYPE</text><text x="0" y="184">SFX</text></g>
+        <g font-family="var(--f-mono)" font-size="12" fill="var(--muted)"><text x="0" y="34">cam</text><text x="0" y="84">hud</text><text x="0" y="134">type</text><text x="0" y="184">sfx</text></g>
         <g stroke="var(--line-2)"><path d="M50 30H380M50 80H380M50 130H380M50 180H380"/></g>
         <g fill="var(--ink)"><path d="M90 30l7-7 7 7-7 7zM190 30l7-7 7 7-7 7zM320 30l7-7 7 7-7 7z"/><rect x="120" y="74" width="120" height="12" rx="3" opacity=".85"/><rect x="260" y="74" width="80" height="12" rx="3" opacity=".4"/>
         <path d="M70 130l7-7 7 7-7 7zM100 130l7-7 7 7-7 7zM130 130l7-7 7 7-7 7z" opacity=".6"/></g>
@@ -43,14 +43,14 @@
     : isMaterial ? `<svg class="hero-art" viewBox="0 0 380 220" aria-hidden="true">
         <g stroke="var(--line-2)" fill="none"><rect x="10" y="10" width="110" height="22" rx="6"/><rect x="10" y="48" width="110" height="22" rx="6"/><rect x="10" y="86" width="110" height="22" rx="6"/>
         <rect x="135" y="10" width="52" height="52" rx="6"/><rect x="193" y="10" width="52" height="52" rx="6"/><rect x="135" y="68" width="52" height="52" rx="6"/><rect x="193" y="68" width="52" height="52" rx="6"/>
-        <path d="M260 65h110"/><path d="M10 200h360"/></g>
+        <path d="M260 65h110"/><path d="M76 200h294"/></g>
         <path d="M65 32v16M65 70v16" fill="none" stroke="var(--accent-1)" stroke-width="2"/>
         <g fill="var(--ink)"><circle cx="24" cy="21" r="4"/><circle cx="24" cy="59" r="4"/><circle cx="24" cy="97" r="4"/><rect x="38" y="17" width="64" height="8" rx="3" opacity=".7"/><rect x="38" y="55" width="48" height="8" rx="3" opacity=".5"/><rect x="38" y="93" width="56" height="8" rx="3" opacity=".3"/>
         <rect x="141" y="16" width="40" height="40" rx="4" opacity=".85"/><rect x="199" y="16" width="40" height="40" rx="4" opacity=".4"/><rect x="199" y="74" width="40" height="40" rx="4" opacity=".25"/>
         <rect x="262" y="55" width="8" height="20" rx="3"/><rect x="274" y="43" width="8" height="44" rx="3"/><rect x="286" y="30" width="8" height="70" rx="3"/><rect x="298" y="47" width="8" height="36" rx="3"/><rect x="322" y="39" width="8" height="52" rx="3"/><rect x="334" y="51" width="8" height="28" rx="3"/><rect x="346" y="35" width="8" height="60" rx="3"/><rect x="358" y="53" width="8" height="24" rx="3"/></g>
         <g fill="var(--accent-1)"><circle cx="161" cy="94" r="13"/><rect x="310" y="20" width="8" height="90" rx="3"/><circle cx="220" cy="200" r="5"/></g>
-        <path d="M10 200h210" fill="none" stroke="var(--accent-1)" stroke-width="2.5"/>
-        <g font-family="var(--f-mono)" font-size="12" fill="var(--muted)"><text x="10" y="146">workflow</text><text x="135" y="146">gallery</text><text x="260" y="146">sound</text><text x="10" y="178">sample</text></g>
+        <path d="M76 200h144" fill="none" stroke="var(--accent-1)" stroke-width="2.5"/>
+        <g font-family="var(--f-mono)" font-size="12" fill="var(--muted)"><text x="10" y="146">flow</text><text x="135" y="146">gallery</text><text x="260" y="146">sound</text><text x="10" y="204">sample</text></g>
       </svg>`
     : `<svg class="hero-art" viewBox="0 0 380 220" aria-hidden="true">
         <g stroke="var(--line-2)" fill="none"><rect x="10" y="10" width="110" height="110"/><rect x="135" y="10" width="110" height="110"/><rect x="260" y="10" width="110" height="110"/></g>
@@ -212,21 +212,37 @@
   }
   const FILTER_KEYS = ['carrier', 'style', 'purpose', 'tech', 'type', 'caseId'];
   const hasFilters = () => FILTER_KEYS.some((key) => state[key] !== 'all');
-  function emptyText() {
-    if (state.fav) return state.query ? `收藏的${itemName}里没有符合的结果。换个关键词试试。` : `还没有收藏的${itemName}。`;
-    if (hasFilters()) return `没有符合条件的${itemName}。${state.query ? '换个关键词，或清除筛选。' : '可以清除筛选后再试。'}`;
-    return `没有符合条件的${itemName}。换个关键词试试。`;
+  const EMPTY_HINT = {
+    cases: '试试“转场”“字幕”“地图”或某个案例名称。',
+    patterns: '试试“转场”“HUD”“计数”或某个巧思名称。',
+    materials: '试试“配乐”“工作流”“Registry”或某个素材名称。',
+  };
+  function emptyHTML() {
+    if (state.fav) {
+      const none = !favs.all()[KIND].length;
+      return `<h2>没有找到对应条目</h2><p>${none ? `还没有收藏的${itemName}，点卡片上的星标即可收藏。` : `收藏里没有符合当前条件的${itemName}。`}</p><button class="btn primary" id="empty-all" type="button">查看全部</button>`;
+    }
+    return `<h2>没有找到对应条目</h2><p>${EMPTY_HINT[KIND]}</p><button class="btn primary" id="empty-reset" type="button">清除筛选</button>`;
   }
+  // 清除筛选与搜索词，保留排序方式与方向
   function clearFilters() {
     FILTER_KEYS.forEach((key) => { state[key] = 'all'; });
+    state.query = '';
+    root.querySelector('#search').value = '';
     root.querySelectorAll('#lib-filters select').forEach(select => { select.value = 'all'; });
     paintGrid(true);
+  }
+  function showAll() {
+    state.fav = false;
+    FILTER_KEYS.forEach((key) => { state[key] = 'all'; });
+    state.query = '';
+    renderList(true);
   }
   function paintGrid(push = false) {
     paintCategoryCounts();
     const list = filtered();
     const grid = document.getElementById('grid');
-    grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">${emptyText()}</div>`;
+    grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty">${emptyHTML()}</div>`;
     const dir = root.querySelector('#sort-dir');
     dir.setAttribute('aria-label', state.dir === 'asc' ? '正序' : '反序');
     dir.setAttribute('aria-pressed', String(state.dir === 'desc'));
@@ -234,6 +250,8 @@
     const category = state[group] === 'all' ? '' : ` · ${categoryLabels[state[group]]}`;
     document.getElementById('result-count').textContent = `${state.fav ? '我的收藏' + category : '当前筛选'} / ${list.length} 个条目`;
     paintFilterToggle();
+    // 无结果时由空状态里的按钮清除，筛选行上的不重复显示
+    root.querySelector('#filter-reset').hidden = !(hasFilters() || state.query) || !list.length;
     syncURL(push);
   }
   function paintCategoryCounts() {
@@ -253,7 +271,6 @@
     const count = [...root.querySelectorAll('#lib-filters select')].filter(select => select.value !== 'all').length;
     button.querySelector('span').textContent = count ? `筛选 · ${count}` : '筛选';
     button.setAttribute('aria-pressed', String(count > 0));
-    root.querySelector('#filter-reset').hidden = !hasFilters();
   }
   function syncFilterControls() {
     const filters = root.querySelector('#lib-filters');
@@ -316,6 +333,8 @@
     root.querySelector('#grid').addEventListener('click', (e) => {
       // 进入详情前把列表的滚动位置记在当前历史条目上，返回时恢复
       if (e.target.closest('a[href^="#"]')) history.replaceState({ ...history.state, listScroll: scrollY }, '');
+      if (e.target.closest('#empty-reset')) return clearFilters();
+      if (e.target.closest('#empty-all')) return showAll();
       const b = e.target.closest('[data-fav]');
       if (!b) return;
       e.preventDefault();

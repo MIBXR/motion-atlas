@@ -229,7 +229,9 @@ details[open] > summary .group-indicator .icon:last-child { display: inline-bloc
 .energy { display: block; flex: none; width: 100%; height: 26px; }
 .energy path.fill { fill: var(--accent-4); }
 .energy path.stroke { fill: none; stroke: var(--accent-1); stroke-width: 1.5; }
-.empty { padding: 60px 20px; text-align: center; color: var(--muted); border: 1px dashed var(--line-2); border-radius: var(--r-lg); }
+.empty { grid-column: 1 / -1; padding: 70px 20px; text-align: center; }
+.empty h2 { font-size: 20px; }
+.empty p { margin: 8px 0 20px; color: var(--muted); }
 
 /* ---------- 详情 ----------
  * 舞台在 2fr 列内按可用高度等比适配，data-side="1" 时节拍列表位于竖屏舞台右侧。 */
@@ -498,7 +500,8 @@ body .gen-list { overflow-y: auto; overflow-x: hidden; }
 
 /* ---------- 搜索框清除按钮 ---------- */
 input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
-.search-clear { display: none; flex: none; place-items: center; width: 32px; height: 32px; margin-right: -8px; padding: 0; border: 0; border-radius: var(--r-sm); background: transparent; color: var(--muted); cursor: pointer; }
+.search-clear { display: none; flex: none; place-items: center; width: 32px; height: 32px; margin-right: -8px; padding: 0; border: 0; border-radius: var(--r-sm); background: transparent; color: var(--ink-2); cursor: pointer; }
+.search-clear svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; pointer-events: none; }
 .search-clear:hover { color: var(--accent-1); }
 .field:has(input:not(:placeholder-shown)) > .search-clear { display: inline-grid; }
 .field:has(input:not(:placeholder-shown)) > .kbd { display: none; }
