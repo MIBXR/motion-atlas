@@ -1,6 +1,6 @@
 # 制作资料
 
-`analysis/` 保存视频分析档案和测量结果，`scripts/extraction/` 保存提取脚本。原片、取帧、全景图片、字体候选和对照输出放在制作工作区。运行画面由 `film/data/` 和 Canvas 绘制代码组成。
+`analysis/` 保存视频分析档案和测量结果，`scripts/extraction/` 保存提取脚本。原片、取帧、全景图片、字体候选和对照输出放在制作工作区。Canvas 绘制代码使用 `film/data/` 中的数据生成运行画面。
 
 脚本中的“工作区”包含 `analysis/case/`、`audio/case.mp4`、`audio/song/butterfly.mp3`；“仓库”为 Motion Atlas 根目录。下面的相对路径以本例目录为起点。
 
@@ -10,7 +10,7 @@ uv run --no-project --with numpy --with pillow --with opencv-python-headless pyt
 bash source/scripts/build-audio.sh <butterfly.mp3路径>
 ```
 
-`scripts/rework/` 中的 Python 脚本也接收 `<工作区> <仓库>` 两个参数，输入使用分析档案、既有运行数据和工作区 `codex/case-impl/` 内的测量缓存，输出测量文件到该工作区；`apply_*.py` 将测量结果写入 `film/data/`。文字栅格脚本接收同样两个参数，并使用端口 4362 上的本例页面和仓库的 Edge CDP 工具。
+`scripts/rework/` 中的 Python 脚本也接收 `<工作区> <仓库>` 两个参数，以分析档案、既有运行数据和工作区 `codex/case-impl/` 内的测量缓存为输入，将测量文件输出到该工作区；`apply_*.py` 将测量结果写入 `film/data/`。文字栅格脚本接收同样两个参数，并使用端口 4362 上的本例页面和仓库的 Edge CDP 工具。
 
 ```bash
 uv run --no-project --with numpy --with pillow --with opencv-python-headless python source/scripts/rework/measure_counters_round2.py <工作区> <仓库>
