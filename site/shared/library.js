@@ -220,9 +220,9 @@
   function emptyHTML() {
     if (state.fav) {
       const none = !favs.all()[KIND].length;
-      return `<h2>没有找到对应条目</h2><p>${none ? `还没有收藏的${itemName}，点卡片上的星标即可收藏。` : `收藏里没有符合当前条件的${itemName}。`}</p><button class="btn primary" id="empty-all" type="button">查看全部</button>`;
+      return `<h2>没有找到对应条目</h2><p>${none ? `还没有收藏的${itemName}，点卡片上的星标即可收藏。` : `收藏里没有符合当前条件的${itemName}。`}</p><button class="btn" id="empty-all" type="button">查看全部</button>`;
     }
-    return `<h2>没有找到对应条目</h2><p>${EMPTY_HINT[KIND]}</p><button class="btn primary" id="empty-reset" type="button">清除筛选</button>`;
+    return `<h2>没有找到对应条目</h2><p>${EMPTY_HINT[KIND]}</p><button class="btn" id="empty-reset" type="button">清除筛选</button>`;
   }
   // 清除筛选与搜索词，保留排序方式与方向
   function clearFilters() {
