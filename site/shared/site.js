@@ -162,6 +162,11 @@
   }
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // 收藏按钮：aria-label 固定为“收藏：<条目名>”，状态只用 aria-pressed 表达；初始化与点击更新共用
+  const favBtn = {
+    html: (id, title, on) => `<button class="fav-btn" type="button" data-fav="${esc(id)}" aria-pressed="${on}" aria-label="收藏：${esc(title)}">${on ? ICONS.starFill : ICONS.star}</button>`,
+    paint(button, on) { button.setAttribute('aria-pressed', String(on)); button.innerHTML = on ? ICONS.starFill : ICONS.star; },
+  };
   let syncMenu = () => {};
 
   function bindMenu(header) {
@@ -341,7 +346,7 @@
     else update();
   }
 
-  window.Site = { ICONS, icon, decorateControls, store, favs, toast, copy, esc, renderShell, viewTransition, syncMenu: () => syncMenu() };
+  window.Site = { favBtn, ICONS, icon, decorateControls, store, favs, toast, copy, esc, renderShell, viewTransition, syncMenu: () => syncMenu() };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderShell);
   else renderShell();
 })();

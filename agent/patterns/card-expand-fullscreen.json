@@ -42,8 +42,7 @@
         "vertical-title-blur",
         "split-compare-stamp"
       ],
-      "conflicts": [],
-      "notes": "照片卡片在地图上浮入，引线连接地点。卡片展开占满画面，停留后收回，HUD持续可见。"
+      "conflicts": []
     },
     "prompt": "照片卡片由引线牵出，展开到全屏停留，再收回原位。复用地图巡礼的 drawCards、drawLeader、drawMarkers、measureMarkerLabels、mountScene、sceneCanvas、paintScene 与对应 CSS。inari 标记、引线、照片卡片、全屏展开与收回。片段：caseT 18.4→24.6；时长 6.6s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。",
     "demo": "demos/patterns/card-expand-fullscreen/index.html",
@@ -253,7 +252,7 @@
     },
     {
       "path": "entries/patterns/card-expand-fullscreen.json",
-      "bytes": 5530,
+      "bytes": 5396,
       "role": "entry"
     },
     {

@@ -1,7 +1,7 @@
 /* Motion Atlas · 案例库、巧思库与素材库（共用浏览、筛选和收藏） */
 (function () {
   'use strict';
-  const { ICONS, favs, copy, esc, toast, store } = window.Site;
+  const { ICONS, favs, copy, esc, toast, store, favBtn } = window.Site;
   const MA = window.MA;
   const KIND = document.body.dataset.lib;
   const isMaterial = KIND === 'materials';
@@ -204,7 +204,7 @@
       <div class="card-media">${preview ? `<img src="${esc(preview)}" alt="${esc(it.title)}${isMaterial ? '' : ' Demo 实际截图'}" loading="lazy">` : '<span class="ph">预览图</span>'}</div>
       <div class="card-body">
         <div class="card-title"><a href="#${hashKind}/${it.id}">${esc(it.title)}</a>
-          <button class="fav-btn" type="button" data-fav="${it.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(it.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
+          ${favBtn.html(it.id, it.title, fav)}</div>
         <p class="card-sum" title="${esc(it.summary)}">${esc(it.summary)}</p>
         ${KIND === 'cases' ? energyPath(it) : ''}
         <div class="card-tags">${tagLine}</div>
@@ -319,9 +319,7 @@
       const b = e.target.closest('[data-fav]');
       if (!b) return;
       e.preventDefault();
-      const on = favs.toggle(KIND, b.dataset.fav);
-      b.setAttribute('aria-pressed', String(on));
-      b.innerHTML = on ? ICONS.starFill : ICONS.star;
+      favBtn.paint(b, favs.toggle(KIND, b.dataset.fav));
       if (state.fav) paintGrid();
     });
   }
@@ -1062,10 +1060,11 @@
     const links = [['research', '阅读说明与研究'], ['fidelity', '复刻对照'], ['licenses', '许可原文索引']].filter(([key]) => it[key]);
     return links.length ? sec('相关文档', `<ul>${links.map(([key, label]) => `<li><a href="docs.html#doc/${esc(it[key])}">${label}</a></li>`).join('')}</ul>`) : '';
   };
+  const detailFavInner = (on) => `${on ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${on ? '已收藏' : '收藏'}</span>`;
   function pageActions(it) {
     const fav = favs.has(KIND, it.id);
     return `<div class="page-actions"><a class="btn back-btn" href="${KIND}.html${esc(location.search)}" aria-label="返回${libName}">${ICONS.back}<span>返回${libName}</span></a><div class="detail-actions" role="group" aria-label="条目操作">
-      <button class="btn" type="button" data-act="fav" aria-label="收藏" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${fav ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${fav ? '已收藏' : '收藏'}</span></button>
+      <button class="btn" type="button" data-act="fav" aria-label="收藏：${esc(it.title)}" aria-pressed="${fav}" title="${fav ? '取消收藏' : '收藏'}">${detailFavInner(fav)}</button>
       <a class="btn bundle-btn" href="agent/${KIND}/${it.id}.json" download aria-label="下载资料包 JSON">${ICONS.download}<span>资料包 JSON</span></a>
       ${isMaterial ? '' : `<button class="btn primary" type="button" data-copy="p-impl">${ICONS.copy}<span>复制 Prompt</span></button>`}
     </div></div>`;
@@ -1154,8 +1153,7 @@
       const b = e.currentTarget;
       const on = favs.toggle(KIND, it.id);
       b.setAttribute('aria-pressed', String(on));
-      b.setAttribute('aria-label', on ? '取消收藏' : '收藏');
-      b.innerHTML = `${on ? ICONS.starFill : ICONS.star}<span class="fav-lbl">${on ? '已收藏' : '收藏'}</span>`;
+      b.innerHTML = detailFavInner(on);
       b.title = on ? '取消收藏' : '收藏';
     });
   }

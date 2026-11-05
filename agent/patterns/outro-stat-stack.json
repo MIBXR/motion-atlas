@@ -42,8 +42,7 @@
         "collect-counter",
         "corner-hud"
       ],
-      "conflicts": [],
-      "notes": "统计行依次堆叠，数值逐项计数。fin.随后出现，让旅程在读完结果后结束。"
+      "conflicts": []
     },
     "prompt": "收尾时统计数字逐行堆叠，最后以 fin. 收束。复用地图巡礼的 drawOutro、blurIn 与对应 CSS。drawOutro 的统计行、数值计数与 fin.。片段：caseT 55.6→60；时长 5.2s。使用横屏 1920×1080 与竖屏 1080×1920 的案例布局；按 mechanism/config.js 的 segments / markers 重放，使用固定底图与屏幕锚点，声音由 mechanism/score.json 挂接。",
     "demo": "demos/patterns/outro-stat-stack/index.html",
@@ -246,7 +245,7 @@
     },
     {
       "path": "entries/patterns/outro-stat-stack.json",
-      "bytes": 5146,
+      "bytes": 5029,
       "role": "entry"
     },
     {

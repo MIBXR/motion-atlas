@@ -1,7 +1,7 @@
 /* Motion Atlas · 首页：统计、监视器轮播、时间轴示意、载体与类型入口 */
 (function () {
   'use strict';
-  const { esc, ICONS, favs } = window.Site;
+  const { esc, favs, favBtn } = window.Site;
   const MA = window.MA, TAX = MA.taxonomy;
   const $ = (s) => document.querySelector(s);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -82,15 +82,13 @@
   $('#caseGrid').innerHTML = MA.cases.map((c, i) => {
     const fav = favs.has('cases', c.id);
     return `<article class="card"><div class="card-media">${c.preview ? `<img src="${esc(c.preview)}" alt="${esc(c.title)} Demo 实际截图" loading="lazy">` : '<span class="ph">PREVIEW</span>'}<span class="card-index">${String(i + 1).padStart(2, '0')} / ${esc(TAX.carriers[c.carriers[0]])}</span></div>
-      <div class="card-body"><div class="card-title"><a href="cases.html#case/${c.id}">${esc(c.title)}</a><button class="fav-btn" type="button" data-fav="${c.id}" aria-pressed="${fav}" aria-label="${fav ? '取消收藏' : '收藏'}：${esc(c.title)}">${fav ? ICONS.starFill : ICONS.star}</button></div>
+      <div class="card-body"><div class="card-title"><a href="cases.html#case/${c.id}">${esc(c.title)}</a>${favBtn.html(c.id, c.title, fav)}</div>
       <p class="card-sum">${esc(c.summary)}</p><div class="card-tags">${c.carriers.map((k) => `<span class="chip">${esc(TAX.carriers[k])}</span>`).join('')}</div></div></article>`;
   }).join('');
   $('#caseGrid').addEventListener('click', (e) => {
     const b = e.target.closest('[data-fav]');
     if (!b) return;
-    const on = favs.toggle('cases', b.dataset.fav);
-    b.setAttribute('aria-pressed', String(on));
-    b.innerHTML = on ? ICONS.starFill : ICONS.star;
+    favBtn.paint(b, favs.toggle('cases', b.dataset.fav));
   });
 
   // 巧思类型
