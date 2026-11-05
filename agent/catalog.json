@@ -69,9 +69,9 @@
     "kit": "kit/motion-kit.js"
   },
   "counts": {
-    "cases": 69,
-    "patterns": 175,
-    "materials": 9
+    "cases": 70,
+    "patterns": 179,
+    "materials": 10
   },
   "caseCatalog": "agent/cases/index.json",
   "patternCatalog": "agent/patterns/index.json",
@@ -2527,6 +2527,46 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/pdoom-video.json"
+    },
+    {
+      "id": "butterfly-garden-score",
+      "title": "蝶の舞う庭 · 曲式赏析滚动总谱",
+      "summary": "把剧场版《少女歌剧》配乐《蝶の舞う庭》前 57 小节画成一张向左滚动的总谱：每件乐器一行，动机 7135 九次入场逐个点亮，调性转换时全画面红白反色，场次与调名采用类似戏单的排版。",
+      "carriers": [
+        "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
+      ],
+      "tags": [
+        "少女歌剧",
+        "Revue Starlight",
+        "配乐可视化",
+        "曲式分析",
+        "滚动总谱",
+        "红白反色",
+        "动机",
+        "7135"
+      ],
+      "useCases": [
+        "配乐、曲式或编曲的讲解视频",
+        "需要“声音看得见”的片头或音乐专题",
+        "用强品牌色和戏单版式做的知识短片"
+      ],
+      "avoid": [
+        "没有分轨或总谱信息的音乐",
+        "主要靠解说词推进的视频"
+      ],
+      "patternIds": [
+        "scrolling-score-timeline",
+        "motif-entry-focus",
+        "key-change-color-flip",
+        "perspective-scene-title"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/butterfly-garden-score.json"
     }
   ],
   "patterns": [
@@ -5859,6 +5899,90 @@
         "cel-line-boil"
       ],
       "bundle": "agent/patterns/emotion-take-morph.json"
+    },
+    {
+      "id": "scrolling-score-timeline",
+      "title": "滚动总谱",
+      "summary": "每件乐器一行、播放线固定，乐谱按每秒 190px 匀速向左滚动，音符按未来、发声、已过三态变化，画面节奏全部来自音符本身。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "motif-entry-focus",
+        "key-change-color-flip",
+        "perspective-scene-title"
+      ],
+      "bundle": "agent/patterns/scrolling-score-timeline.json"
+    },
+    {
+      "id": "motif-entry-focus",
+      "title": "动机入场聚焦",
+      "summary": "动机每次入场时镜头聚焦到该行，用括号、级数和空心框标出音符，再用虚线弧把上一次入场连到这一次。",
+      "types": [
+        "camera",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "scrolling-score-timeline"
+      ],
+      "bundle": "agent/patterns/motif-entry-focus.json"
+    },
+    {
+      "id": "key-change-color-flip",
+      "title": "转调红白反色",
+      "summary": "转调处全画面红白反色：转调竖线和文字标记随乐谱滚到播放线，底色、笔触、行名和音符同步经粉色过渡，调号与场次同时切换。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "scrolling-score-timeline",
+        "perspective-scene-title"
+      ],
+      "bundle": "agent/patterns/key-change-color-flip.json"
+    },
+    {
+      "id": "perspective-scene-title",
+      "title": "透视场次标题",
+      "summary": "场次与调名两组字各在一张透视平面上，外侧大、向中央收拢，每组共用一条单应轨迹；字形投影后填充，音符与网格叠在上面。",
+      "types": [
+        "type-motion",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "scrolling-score-timeline",
+        "key-change-color-flip"
+      ],
+      "bundle": "agent/patterns/perspective-scene-title.json"
     }
   ],
   "materials": [
@@ -6407,6 +6531,30 @@
         }
       ],
       "bundle": "agent/materials/hyperframes-registry.json"
+    },
+    {
+      "id": "starlight-bceg-motif",
+      "title": "少女歌剧 BCEG（7135）动机 · TV 原声带片段与节奏型",
+      "summary": "《少女歌剧》TV 原声带里反复出现的 7-1-3-5 动机：16 首曲目的音频片段、视频给出的谱例、移调级数和 9 种节奏型，可按曲目回听片段，也可将动机移到任意调试听取用。",
+      "type": "sound",
+      "useCases": [
+        "为舞台、星光、命运主题的配乐写一个可识别的短动机",
+        "研究一个动机如何靠移调和换节奏贯穿整张原声带",
+        "给视频里的高光或转场找一个四音“呼唤”"
+      ],
+      "avoid": [
+        "直接把原声带片段用于公开发布的作品配乐",
+        "把“音频候选”当作作曲者确认过的动机"
+      ],
+      "demo": "demos/materials/starlight-bceg-motif/index.html",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "butterfly-garden-score",
+          "note": "《蝶の舞う庭》总谱可视化复刻，同一配乐世界里的完整曲目案例"
+        }
+      ],
+      "bundle": "agent/materials/starlight-bceg-motif.json"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "patterns",
-  "count": 175,
+  "count": 179,
   "patterns": [
     {
       "id": "corner-hud",
@@ -3332,6 +3332,90 @@
         "cel-line-boil"
       ],
       "bundle": "agent/patterns/emotion-take-morph.json"
+    },
+    {
+      "id": "scrolling-score-timeline",
+      "title": "滚动总谱",
+      "summary": "每件乐器一行、播放线固定，乐谱按每秒 190px 匀速向左滚动，音符按未来、发声、已过三态变化，画面节奏全部来自音符本身。",
+      "types": [
+        "composition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "foundation",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "motif-entry-focus",
+        "key-change-color-flip",
+        "perspective-scene-title"
+      ],
+      "bundle": "agent/patterns/scrolling-score-timeline.json"
+    },
+    {
+      "id": "motif-entry-focus",
+      "title": "动机入场聚焦",
+      "summary": "动机每次入场时镜头聚焦到该行，用括号、级数和空心框标出音符，再用虚线弧把上一次入场连到这一次。",
+      "types": [
+        "camera",
+        "hud"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "scrolling-score-timeline"
+      ],
+      "bundle": "agent/patterns/motif-entry-focus.json"
+    },
+    {
+      "id": "key-change-color-flip",
+      "title": "转调红白反色",
+      "summary": "转调处全画面红白反色：转调竖线和文字标记随乐谱滚到播放线，底色、笔触、行名和音符同步经粉色过渡，调号与场次同时切换。",
+      "types": [
+        "transition",
+        "rhythm"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "support",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "scrolling-score-timeline",
+        "perspective-scene-title"
+      ],
+      "bundle": "agent/patterns/key-change-color-flip.json"
+    },
+    {
+      "id": "perspective-scene-title",
+      "title": "透视场次标题",
+      "summary": "场次与调名两组字各在一张透视平面上，外侧大、向中央收拢，每组共用一条单应轨迹；字形投影后填充，音符与网格叠在上面。",
+      "types": [
+        "type-motion",
+        "composition"
+      ],
+      "carriers": [
+        "video"
+      ],
+      "role": "accent",
+      "sourceCases": [
+        "butterfly-garden-score"
+      ],
+      "pairsWellWith": [
+        "scrolling-score-timeline",
+        "key-change-color-flip"
+      ],
+      "bundle": "agent/patterns/perspective-scene-title.json"
     }
   ]
 }

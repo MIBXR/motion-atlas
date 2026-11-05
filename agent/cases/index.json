@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "cases",
-  "count": 69,
+  "count": 70,
   "cases": [
     {
       "id": "map-pilgrimage",
@@ -2453,6 +2453,46 @@
       ],
       "seekable": true,
       "bundle": "agent/cases/pdoom-video.json"
+    },
+    {
+      "id": "butterfly-garden-score",
+      "title": "蝶の舞う庭 · 曲式赏析滚动总谱",
+      "summary": "把剧场版《少女歌剧》配乐《蝶の舞う庭》前 57 小节画成一张向左滚动的总谱：每件乐器一行，动机 7135 九次入场逐个点亮，调性转换时全画面红白反色，场次与调名采用类似戏单的排版。",
+      "carriers": [
+        "video"
+      ],
+      "style": "graphic-type",
+      "purpose": "explainer",
+      "tech": [
+        "canvas2d"
+      ],
+      "tags": [
+        "少女歌剧",
+        "Revue Starlight",
+        "配乐可视化",
+        "曲式分析",
+        "滚动总谱",
+        "红白反色",
+        "动机",
+        "7135"
+      ],
+      "useCases": [
+        "配乐、曲式或编曲的讲解视频",
+        "需要“声音看得见”的片头或音乐专题",
+        "用强品牌色和戏单版式做的知识短片"
+      ],
+      "avoid": [
+        "没有分轨或总谱信息的音乐",
+        "主要靠解说词推进的视频"
+      ],
+      "patternIds": [
+        "scrolling-score-timeline",
+        "motif-entry-focus",
+        "key-change-color-flip",
+        "perspective-scene-title"
+      ],
+      "seekable": true,
+      "bundle": "agent/cases/butterfly-garden-score.json"
     }
   ]
 }

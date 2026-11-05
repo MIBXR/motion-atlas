@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "materials",
-  "count": 9,
+  "count": 10,
   "materials": [
     {
       "id": "motion-showreel",
@@ -548,6 +548,30 @@
         }
       ],
       "bundle": "agent/materials/hyperframes-registry.json"
+    },
+    {
+      "id": "starlight-bceg-motif",
+      "title": "少女歌剧 BCEG（7135）动机 · TV 原声带片段与节奏型",
+      "summary": "《少女歌剧》TV 原声带里反复出现的 7-1-3-5 动机：16 首曲目的音频片段、视频给出的谱例、移调级数和 9 种节奏型，可按曲目回听片段，也可将动机移到任意调试听取用。",
+      "type": "sound",
+      "useCases": [
+        "为舞台、星光、命运主题的配乐写一个可识别的短动机",
+        "研究一个动机如何靠移调和换节奏贯穿整张原声带",
+        "给视频里的高光或转场找一个四音“呼唤”"
+      ],
+      "avoid": [
+        "直接把原声带片段用于公开发布的作品配乐",
+        "把“音频候选”当作作曲者确认过的动机"
+      ],
+      "demo": "demos/materials/starlight-bceg-motif/index.html",
+      "relatedEntries": [
+        {
+          "kind": "case",
+          "id": "butterfly-garden-score",
+          "note": "《蝶の舞う庭》总谱可视化复刻，同一配乐世界里的完整曲目案例"
+        }
+      ],
+      "bundle": "agent/materials/starlight-bceg-motif.json"
     }
   ]
 }
