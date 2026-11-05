@@ -327,7 +327,6 @@ button:disabled { opacity: .5; }
 .detail[data-side="1"] .beat-side { display: flex; }
 .detail[data-side="1"] .beat-list { display: none; }
 .beat-side .side-h { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 14px 8px; font-weight: 700; font-size: 14px; border-bottom: 1px solid var(--line); }
-.beat-side .side-h small { font: 600 12px/1 var(--f-mono); letter-spacing: .16em; color: var(--muted); }
 .side-beats { position: relative; flex: 1; overflow-y: auto; overflow-x: hidden; padding: 6px; display: grid; align-content: start; gap: 2px; }
 .side-beats button { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 2px 8px; width: 100%; padding: 8px 10px; border: 0; border-radius: var(--r-sm); background: transparent; color: var(--ink-2); text-align: left; cursor: pointer; }
 .side-beats button:hover { background: var(--surface-2); color: var(--ink); }

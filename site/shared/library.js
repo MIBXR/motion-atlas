@@ -403,7 +403,7 @@
           <div class="stage-loading" role="status"><div class="ld-card"><i class="ld-bar" role="progressbar" aria-label="资源下载" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><b></b></i><span class="ld-text">已下载 0.0 / 未知总量 · 0.0 MB/s · 文件 0 / 0 · 下载中</span><span class="ld-error" hidden></span><button type="button" class="btn ld-retry" hidden>重试</button></div></div>
           <div class="stage-hint" hidden>${SI.soundOn}<span>点击舞台启用声音</span></div>
         </div>
-        <div class="beat-side"><p class="side-h">节拍点<small>BEATS</small></p><div class="side-beats" id="beat-side"></div></div>
+        <div class="beat-side"><p class="side-h">节拍点</p><div class="side-beats" id="beat-side"></div></div>
       </div>
       <div class="scrubber" id="scrubber" data-ready="0">
         <div class="scrub-row">
