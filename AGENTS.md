@@ -3,6 +3,7 @@
 仓库定位与收录原则见 [CONTRIBUTING.md](CONTRIBUTING.md#仓库定位)。
 
 - 修改内容前阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。新增目录、条目或内容类型前，先确认符合其中的三类组织规范；收录、字段、新增流程与验收规则以该文件为准。
+- 执行内容或界面审查时，先读[审查清单](docs/review.md)，确定基准版本与增量或全库范围。
 - 修改站点页面或组件前，阅读 [站点设计与交互约束](CONTRIBUTING.md#站点设计与交互约束)，核对现有共享样式和对应页面。
 - 内容源为 `entries/`、`demos/`、`docs/`。修改 Demo 共享运行时只改 `kit/motion-kit.js`；Demo 内的副本由构建同步。
 - `prompts/`、`agent/`、`data/`、`docs/cases/README.md` 和 README 计数块由构建生成，不手改。`previews/` 中的截图用 `scripts/capture.mjs` 生成。
