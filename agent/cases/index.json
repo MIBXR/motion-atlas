@@ -2485,7 +2485,12 @@
         "没有分轨或总谱信息的音乐",
         "主要靠解说词推进的视频"
       ],
-      "patternIds": [],
+      "patternIds": [
+        "scrolling-score-timeline",
+        "motif-entry-focus",
+        "key-change-color-flip",
+        "perspective-scene-title"
+      ],
       "seekable": true,
       "bundle": "agent/cases/butterfly-garden-score.json"
     }

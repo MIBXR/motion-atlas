@@ -7,7 +7,7 @@
 面向**按时间线播放的影像视频、交互操作台与展示台**的参考库。完整案例展示镜头、信息层、文字、转场与声音如何协作，独立巧思提供可借用的具体机制。结合节拍表、能量曲线、动效 Token 与可复用 Prompt，可以在可运行的 Demo 中拖动时间轴、跳拍，再逐帧渲染成自己的作品。
 
 <!-- counts:start -->
-**70 个案例**　·　**175 个巧思**　·　**10 个素材**　·　**70 个可逐帧渲染的 Demo**
+**70 个案例**　·　**179 个巧思**　·　**10 个素材**　·　**70 个可逐帧渲染的 Demo**
 <!-- counts:end -->
 
 [首页](https://motion-atlas.mibxranime.chatgpt.site/) · [案例库](https://motion-atlas.mibxranime.chatgpt.site/cases.html) · [巧思库](https://motion-atlas.mibxranime.chatgpt.site/patterns.html) · [素材库](https://motion-atlas.mibxranime.chatgpt.site/materials.html) · [节奏实验室](https://motion-atlas.mibxranime.chatgpt.site/lab.html) · [Agent 工作流](https://motion-atlas.mibxranime.chatgpt.site/agent.html) · [文档中心](https://motion-atlas.mibxranime.chatgpt.site/docs.html)

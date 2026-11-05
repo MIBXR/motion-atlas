@@ -304,7 +304,12 @@
       "how": "film/scene.js 的 ROWS 与 film/data/notes.json 的 row。"
     }
   ],
-  "patternIds": [],
+  "patternIds": [
+    "scrolling-score-timeline",
+    "motif-entry-focus",
+    "key-change-color-flip",
+    "perspective-scene-title"
+  ],
   "prompt": "做一部 1920×1080、60fps 的配乐可视化短片。左侧是向左匀速滚动的总谱：每件乐器一行，音符画成圆头横条，厚度和透明度区分未来、发声、已过去三态，播放头竖线固定。右侧是一条红色竖栏，放竖排曲名和标志。顶部写场次、调名和小节数，底部写当前段落的解说。用括号和数字标出主动机每次入场；转调和高潮时全画面红白反色，并压上巨型场次标题；重要呼应时把镜头聚焦到相关的几行。画面只由时刻 t 决定，声音用原曲。",
   "demo": "demos/cases/butterfly-garden-score/index.html",
   "fidelity": "demos/cases/butterfly-garden-score/fidelity.md",
