@@ -26,6 +26,8 @@
   --header-h: 68px;
   --header-offset: var(--header-h);
   --header-motion: .2s ease;
+  --bar-bg: color-mix(in srgb, var(--bg) 88%, transparent);
+  --bar-blur: blur(14px);
   --f-sans: Inter, "Segoe UI Variable", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   --f-display: var(--f-sans);
   --f-mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
@@ -64,7 +66,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .mono { font-family: var(--f-mono); }
 
 /* ---------- 顶栏 ---------- */
-.site-header { position: sticky; top: 0; z-index: 50; height: var(--header-h); display: flex; align-items: center; gap: 24px; padding: 0 32px; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.site-header { position: sticky; top: 0; z-index: 50; height: var(--header-h); display: flex; align-items: center; gap: 24px; padding: 0 32px; background: var(--bar-bg); backdrop-filter: var(--bar-blur); border-bottom: 1px solid var(--line); }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex: none; }
 .brand-mark { width: 34px; height: 34px; }
 .brand-word strong { display: block; font: 700 16px/1 var(--f-display); letter-spacing: 0; }
@@ -232,7 +234,7 @@ details[open] > summary .group-indicator .icon:last-child { display: inline-bloc
 
 /* ---------- 详情 ----------
  * 舞台在 2fr 列内按可用高度等比适配，data-side="1" 时节拍列表位于竖屏舞台右侧。 */
-.page-actions { position: sticky; top: var(--header-offset); z-index: 40; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 12px 32px; background: var(--bg); border-bottom: 1px solid var(--line); }
+.page-actions { position: sticky; top: var(--header-offset); z-index: 40; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 12px 32px; background: var(--bar-bg); backdrop-filter: var(--bar-blur); border-bottom: 1px solid var(--line); }
 .page-actions .btn[aria-pressed="true"] { background: var(--surface-2); color: var(--ink); border-color: var(--line-2); }
 .page-actions [data-act="fav"][aria-pressed="true"] .icon { color: var(--accent-2); }
 .page-actions :focus-visible { outline-color: var(--ink); }
