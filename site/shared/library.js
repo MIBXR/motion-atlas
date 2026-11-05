@@ -531,17 +531,20 @@
   }
   function layoutColumns() {
     if (!detailColumns) return;
-    const { el, cols, actions } = detailColumns;
+    const { el, cols, actions, header } = detailColumns;
     const sticky = innerWidth > 1159 && !det?.fs;
     const top = actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
+    const availableHeight = innerHeight - header.getBoundingClientRect().height - top;
     el.style.setProperty('--detail-sticky-top', `calc(var(--header-offset) + ${top}px)`);
     const { registry } = detailColumns;
     if (registry) {
       const stageTop = Math.max(registry.getBoundingClientRect().top, actions.getBoundingClientRect().bottom);
       registry.style.setProperty('--hf-room', Math.max(0, innerHeight - stageTop - BOTTOM) + 'px');
     }
-    cols[0].classList.toggle('is-sticky', sticky);
-    cols[1].classList.toggle('is-sticky', sticky && cols[0].getBoundingClientRect().height > cols[1].getBoundingClientRect().height);
+    const leftHeight = cols[0].getBoundingClientRect().height;
+    const rightHeight = cols[1].getBoundingClientRect().height;
+    cols[0].classList.toggle('is-sticky', sticky && leftHeight <= availableHeight);
+    cols[1].classList.toggle('is-sticky', sticky && leftHeight > rightHeight && rightHeight <= availableHeight);
     syncDetailToc();
   }
   function layout() {
@@ -1012,10 +1015,11 @@
   });
 
   /* ---------- 详情：说明 ---------- */
-  const sec = (title, en, body) => `<section class="note-sec"><h2>${title}<small>${en}</small></h2>${body}</section>`;
-  const ul = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>—</p>');
+  const sec = (title, en, body) => body ? `<section class="note-sec"><h2>${title}<small>${en}</small></h2>${body}</section>` : '';
+  const ul = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '');
   const promptBox = (id, text) => `<div class="prompt-box"><pre id="${id}">${esc(text)}</pre><button class="btn" type="button" data-copy="${id}">${ICONS.copy}<span>复制</span></button></div>`;
   const sourceLink = (href, label, base = location.href) => {
+    if (!href) return label;
     const url = new URL(href, base);
     const external = url.origin !== location.origin;
     const target = !external && url.pathname.endsWith('.md') ? `docs.html#doc/${decodeURIComponent(url.pathname.slice(1))}` : url.href;
@@ -1061,10 +1065,10 @@
     return { preview, notes: [
       sec('说明', '', `<p>${esc(it.summary)}</p>`),
       it.workflow?.length && !it.skillGuide ? sec('工作流', '', `<ol>${it.workflow.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>`) : '',
-      sec('适合与避用', '', `<h3>适合</h3>${ul(it.useCases)}<h3>避用</h3>${ul(it.avoid)}`),
+      sec('适合与避用', '', `${it.useCases?.length ? `<h3>适合</h3>${ul(it.useCases)}` : ''}${it.avoid?.length ? `<h3>避用</h3>${ul(it.avoid)}` : ''}`),
       related ? sec('关联条目', '', related) : '',
       it.install ? sec('安装方式', '', promptBox('material-install', it.install)) : '',
-      sec('许可与来源', '', `<dl class="kv"><dt>上游仓库</dt><dd>${sourceLink(it.upstream.url, esc(it.upstream.repository))}</dd><dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd>${it.upstream.version ? `<dt>上游版本</dt><dd>${esc(it.upstream.version)}</dd>` : ''}<dt>${it.type === 'agent-skill' ? '技能' : '素材'}许可</dt><dd>${sourceLink(it.license.url, esc(it.license.name))}</dd></dl>${it.license.notes ? `<p>${esc(it.license.notes)}</p>` : ''}${it.snapshotPath && it.snapshotFiles.includes(it.snapshotPath + 'LICENSE') && it.license.url !== it.snapshotPath + 'LICENSE' ? `<p><a href="${esc(it.snapshotPath)}LICENSE">快照附带许可原文</a></p>` : ''}<ul>${it.sources.map((source) => `<li>${sourceLink(source.url, esc(source.title || source.label))}</li>`).join('')}</ul>`),
+      sec('许可与来源', '', `<dl class="kv"><dt>${it.upstream.repository ? '上游仓库' : '原始出处'}</dt><dd>${sourceLink(it.upstream.url, esc(it.upstream.repository || it.upstream.url))}</dd>${it.upstream.commit ? `<dt>固定提交</dt><dd>${esc(it.upstream.commit)}</dd>` : ''}${it.upstream.version ? `<dt>上游版本</dt><dd>${esc(it.upstream.version)}</dd>` : ''}<dt>${it.type === 'agent-skill' ? '技能' : '素材'}许可</dt><dd>${sourceLink(it.license.url, esc(it.license.name))}</dd></dl>${it.license.notes ? `<p>${esc(it.license.notes)}</p>` : ''}${it.snapshotPath && it.snapshotFiles.includes(it.snapshotPath + 'LICENSE') && it.license.url !== it.snapshotPath + 'LICENSE' ? `<p><a href="${esc(it.snapshotPath)}LICENSE">快照附带许可原文</a></p>` : ''}<ul>${it.sources.map((source) => `<li>${sourceLink(source.url, esc(source.title || source.label))}</li>`).join('')}</ul>`),
       documentLinks(it),
     ].join('') };
   }
