@@ -253,10 +253,13 @@
     header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
     addEventListener('scroll', () => {
       const y = Math.max(0, scrollY);
-      if (!mobile.matches || open || y <= 80) header.classList.remove('is-hidden');
-      else if (y > lastY) header.classList.add('is-hidden');
-      else if (y < lastY - 8) header.classList.remove('is-hidden');
-      if (y > lastY || y < lastY - 8 || y <= 80 || open) lastY = y;
+      if (!mobile.matches || open || y <= 80) {
+        header.classList.remove('is-hidden');
+        lastY = y;
+      } else if (Math.abs(y - lastY) > 8) {
+        header.classList.toggle('is-hidden', y > lastY);
+        lastY = y;
+      }
     }, { passive: true });
     syncMenu = sync;
     sync();

@@ -519,6 +519,7 @@
   }
 
   /* ----- 尺寸 ----- */
+  const stageViewportHeight = () => parseFloat(getComputedStyle(document.body).minHeight) || innerHeight;
   let layoutRaf = 0;
   function scheduleLayout() {
     if (!layoutRaf) layoutRaf = requestAnimationFrame(() => { layoutRaf = 0; sizeHeroLabels(); layout(); layoutColumns(); });
@@ -580,8 +581,8 @@
     const { el, cols, actions, header, materialBar } = detailColumns;
     const sticky = innerWidth > 1159 && !det?.fs && !materialStage?.fs;
     const top = actions.getBoundingClientRect().height + parseFloat(getComputedStyle(el).paddingTop);
-    const availableHeight = innerHeight - header.getBoundingClientRect().height - top;
-    el.style.setProperty('--detail-sticky-top', `calc(var(--header-offset) + ${top}px)`);
+    const availableHeight = stageViewportHeight() - header.getBoundingClientRect().height - top;
+    el.style.setProperty('--detail-sticky-top', `calc(var(--header-h) + ${top}px)`);
     if (materialBar) {
       const gap = parseFloat(getComputedStyle(cols[0]).rowGap);
       const height = materialStage.fs ? cols[0].clientHeight : availableHeight - BOTTOM;
@@ -614,7 +615,8 @@
       const scBase = d.sc.querySelector('.scrub-row').offsetHeight + parseFloat(scCS.paddingTop) + parseFloat(scCS.paddingBottom) + parseFloat(scCS.borderTopWidth) + parseFloat(scCS.borderBottomWidth);
       const actionH = d.actions.getBoundingClientRect().height;
       const chrome = headH + actionH + parseFloat(cs.paddingTop) + d.bar.offsetHeight + 2 * gap + BOTTOM;
-      const availH = (strip) => Math.max(MIN_STAGE_H, innerHeight - chrome - scBase - (strip ? stripBlock : 0));
+      const viewportHeight = stageViewportHeight();
+      const availH = (strip) => Math.max(MIN_STAGE_H, viewportHeight - chrome - scBase - (strip ? stripBlock : 0));
       mode = innerWidth > 1159 ? 'split' : 'stack';
       Object.assign(vars, { '--stage-col': W });
       if (d.orient === 'portrait') {
@@ -975,7 +977,9 @@
       if (b) {
         b.setAttribute('aria-current', 'true');
         if (box === d.side) follow(box, b);
-        else if (box.clientWidth && performance.now() - (d.touchAt.get(box) ?? -Infinity) >= 2000) b.scrollIntoView({ block: 'nearest', inline: 'center', container: 'nearest' });
+        else if (box.clientWidth && performance.now() - (d.touchAt.get(box) ?? -Infinity) >= 2000) {
+          box.scrollTo({ left: b.offsetLeft + (b.offsetWidth - box.clientWidth) / 2 });
+        }
       }
     }
     const on = d.svg.querySelector('.tick.on');
